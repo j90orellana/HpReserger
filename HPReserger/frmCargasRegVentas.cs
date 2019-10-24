@@ -71,15 +71,12 @@ namespace HPReserger
         {
             ValidarRutaExiste(txtruta);
         }
-        public DialogResult msgP(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         DataTable Tipocomprobantes = new DataTable();
         DataTable TipoId = new DataTable();
         private void btnprocesar_Click(object sender, EventArgs e)
         {
-            if (msgP("Desea Continuar con la Carga ") == DialogResult.Yes)
+            if (msgp("Desea Continuar con la Carga ") == DialogResult.Yes)
             {
                 //Si Cargar Todo a la Base;
                 //Verifico si Existe la ruta del Archivo

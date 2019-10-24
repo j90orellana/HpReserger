@@ -416,7 +416,7 @@ namespace HPReserger.ModuloCompensaciones
         {
             if (ContarEntregas + ContaFacturas > 0)
             {
-                if (msgOk("¿Seguro Desea Salir?") == DialogResult.OK) this.Close();
+                if (msgp("¿Seguro Desea Salir?") == DialogResult.Yes) this.Close();
             }
             else
                 this.Close();
@@ -598,11 +598,7 @@ namespace HPReserger.ModuloCompensaciones
                 cboempleado_Click(sender, e);
             }
         }
-
-        public DialogResult msgOk(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
@@ -679,7 +675,7 @@ namespace HPReserger.ModuloCompensaciones
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }
-            if (msgOk("¿Seguro Desea Aplicar las Entregas a Rendir?") == DialogResult.OK)
+            if (msgp("¿Seguro Desea Aplicar las Entregas a Rendir?") == DialogResult.Yes)
             {
                 //Asientos
                 int numasiento = 0;

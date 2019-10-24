@@ -110,13 +110,14 @@ namespace HPReserger
             estado = 0;
             CargarDatos();
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Delete || e.KeyData == Keys.Back)
             {
                 if (dtgconten.SelectedRows.Count > 0)
                 {
-                    if (HPResergerFunciones.Utilitarios.msgYesNo("Desea Eliminar Fila") == DialogResult.Yes)
+                    if (msgp("Desea Eliminar Fila") == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow item in dtgconten.SelectedRows)
                         {

@@ -143,7 +143,7 @@ namespace HPReserger
                 mensajito.ShowDialog();
                 if (mensajito.ok)
                 {
-                    //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Message Box.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (!backgroundWorker1.IsBusy)
                     {
                         backgroundWorker1.RunWorkerAsync();

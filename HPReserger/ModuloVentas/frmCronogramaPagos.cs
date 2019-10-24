@@ -480,7 +480,7 @@ namespace HPReserger
                         return;
                     }
                 }
-                if (HPResergerFunciones.Utilitarios.msgYesNo("Seguro Desea Grabar el Cronograma de Pagos") == DialogResult.Yes)
+                if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("Seguro Desea Grabar el Cronograma de Pagos") == DialogResult.Yes)
                 {
                     string cadena = "";
                     var NumCot = int.Parse(txtnumcot.Text);

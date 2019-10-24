@@ -85,6 +85,6 @@ namespace HPReserger
         }
 
 
-        //MessageBox.Show("keyvalue:" + e.KeyValue + " keycode:" + e.KeyCode + " keydata:" + e.KeyData + " keymodificador:" + e.Modifiers);
+        //Message Box.Show("keyvalue:" + e.KeyValue + " keycode:" + e.KeyCode + " keydata:" + e.KeyData + " keymodificador:" + e.Modifiers);
     }
 }

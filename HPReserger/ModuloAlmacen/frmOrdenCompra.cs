@@ -96,15 +96,10 @@ namespace HPReserger
                 }
             }
         }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         frmMensajeCorreo mensajito;
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         string Ruta = "";
         private void btnEnviar_Click(object sender, EventArgs e)
         {
@@ -113,14 +108,14 @@ namespace HPReserger
             //Boolean salir = false;
             OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
             if (gridOC.RowCount > 0)
-                if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (msgp("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?") == DialogResult.Yes)
                 {
                     drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC["cotizacion", gridOC.CurrentCell.RowIndex].Value.ToString().Substring(2)));
                     if (drCOT != null)
                         if (string.IsNullOrWhiteSpace(drCOT["correo"].ToString()))
                         {
-                            MSG("Proveedor " + drCOT["correo"].ToString() + " no tiene correo Electrónico");
-                            //if (MessageBox.Show("Proveedor No tiene Correo Electrónico, Desea igual enviar", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            msg("Proveedor " + drCOT["correo"].ToString() + " no tiene correo Electrónico");
+                            //if (Message Box.Show("Proveedor No tiene Correo Electrónico, Desea igual enviar", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             //{
                             //    salir = true;                               
                             //}
@@ -146,11 +141,11 @@ namespace HPReserger
                         {
                             backgroundWorker1.RunWorkerAsync();
                         }
-                        else { MSG("Orden De compra no enviada"); return; }
+                        else { msg("Orden De compra no enviada"); return; }
                     }
                     else
                     {
-                        MSG("Orden De compra no enviada");
+                        msg("Orden De compra no enviada");
                     }
                 }
             txtFechaEntrega.Text = txtImporte.Text = txtmoneda.Text = txtProveedor.Text = "";
@@ -164,17 +159,17 @@ namespace HPReserger
             if (backgroundWorker1.IsBusy) { msg("Enviando Correo..."); return; }
             if (gridOC.RowCount > 0)
             {
-                if (MessageBox.Show("¿ Seguro de Anular la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + "  ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (msgp("¿ Seguro de Anular la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + "  ?") == DialogResult.Yes)
                 {
                     clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 0);
                     string OC2 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
                     Listar(frmLogin.CodigoUsuario);
-                    MessageBox.Show("La OC Nº " + OC2 + " se Anuló como éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    msgOK("La OC Nº " + OC2 + " se Anuló como éxito");
                     txtProveedor.Text = txtImporte.Text = txtFechaEntrega.Text = "";
                 }
 
             }
-            else MSG("No Hay Ordenes de Compra");
+            else msg("No Hay Ordenes de Compra");
         }
 
         private void TitulosGrid(DataGridView Grid, int Tipo)
@@ -459,7 +454,7 @@ namespace HPReserger
         {
             if (Verificar)
             {
-                MSG("La OC Nº " + OC1 + " se marcó como Enviado\nCorreo electrónico fue enviado a " + mensajito.txtcorreo.Text + " satisfactoriamente.");
+                msgOK("La OC Nº " + OC1 + " se marcó como Enviado\nCorreo electrónico fue enviado a " + mensajito.txtcorreo.Text + " satisfactoriamente.");
                 txtFechaEntrega.Text = txtImporte.Text = txtmoneda.Text = txtProveedor.Text = "";
                 pbCotizacion.Image = null;
                 btndescargar.Visible = false;
@@ -471,7 +466,7 @@ namespace HPReserger
             if (backgroundWorker1.IsBusy)
             {
                 e.Cancel = true;
-                MSG("No se Puede Cerrar, Se está Enviando el Correo …");
+                msg("No se Puede Cerrar, Se está Enviando el Correo …");
             }
         }
         private void btnaprobar_Click(object sender, EventArgs e)
@@ -482,7 +477,7 @@ namespace HPReserger
             txtFechaEntrega.Text = txtImporte.Text = txtmoneda.Text = txtProveedor.Text = "";
             pbCotizacion.Image = null;
             Listar(frmLogin.CodigoUsuario); btndescargar.Visible = false;
-            MSG("La OC Nº " + OC1 + " se marcó como Enviado");
+            msgOK("La OC Nº " + OC1 + " se marcó como Enviado");
         }
     }
 }

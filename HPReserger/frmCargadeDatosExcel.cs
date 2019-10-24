@@ -43,12 +43,8 @@ namespace HPReserger
                 Grid.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, Hoja);
             }
             else HPResergerFunciones.frmInformativo.MostrarDialogError("No Hay Hojas que Mostrar");
-        }       
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncargar_Click(object sender, EventArgs e)
         {
             OpenFileDialog.Filter = "Archivo de Excel|*.xls;*.xlsx";
@@ -99,7 +95,7 @@ namespace HPReserger
         {
             if (e.KeyData == Keys.Delete || e.KeyValue == 8)
             {
-                if (msg("Desea ELiminar Filas") == DialogResult.OK)
+                if (msgp("Desea ELiminar Filas") == DialogResult.Yes)
                     foreach (DataGridViewRow item in Grid.SelectedRows)
                     {
                         Grid.Rows.Remove(item);

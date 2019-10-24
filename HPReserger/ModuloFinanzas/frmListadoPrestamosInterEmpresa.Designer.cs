@@ -307,7 +307,7 @@
             this.xFechaAbono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xFechaAbono.DataPropertyName = "FechaAbono";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.Format = "dd/MM/yyyy";
             this.xFechaAbono.DefaultCellStyle = dataGridViewCellStyle7;
             this.xFechaAbono.FillWeight = 48.54369F;
             this.xFechaAbono.HeaderText = "Fecha Abono";

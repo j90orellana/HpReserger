@@ -157,7 +157,7 @@ namespace HPReserger
             //    this.ObservacionesModificar = txtObservaciones.Text.ToString().Trim();
             //}
 
-            //this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            //this.DialogResult = System.Windows.Forms.Dialog Result.OK;
             //this.Close();
         }
     }

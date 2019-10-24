@@ -558,7 +558,7 @@
             this.xFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaEmision.DataPropertyName = "fechaemision";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle3;
             this.xFechaEmision.HeaderText = "F.Emision";
             this.xFechaEmision.Name = "xFechaEmision";
@@ -570,7 +570,7 @@
             this.xFCtble.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFCtble.DataPropertyName = "FCtble";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
             this.xFCtble.DefaultCellStyle = dataGridViewCellStyle4;
             this.xFCtble.HeaderText = "F.Ctble";
             this.xFCtble.Name = "xFCtble";

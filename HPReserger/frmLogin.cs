@@ -54,9 +54,15 @@ namespace HPReserger
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            //var result = HPResergerFunciones.frmPregunta.MostrarDialogYesCancel($"y que dice pe jeff {(char)13} bay bay");
+            //msg(result.ToString());
+            //result = HPResergerFunciones.frmPregunta.MostrarDialogYesNoCancel("y que dice pe jeff\n asdasd");
+            //msg(result.ToString());
+            //result = HPResergerFunciones.frmPregunta.MostrarDialogYesNoCancel("y que dice pe jeff 12312312\nasdasdas");
+            //msg(result.ToString());
             cboBase.Items.Add("Actual");
             cboBase.Items.Add("SiGE");
-            cboBase.Items.Add("Actual_Beta");      
+            cboBase.Items.Add("Actual_Beta");
             cboBase.SelectedIndex = 0;
             clLogueo.CambiarBase(Basedatos);
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
@@ -78,9 +84,9 @@ namespace HPReserger
             //GRafico.AddEllipse(0.12f, 0.12f,this.Width, this.Width );
             //this.Region = new Region(GRafico);
         }
-        public DialogResult msg(string cadena)
+        public void msg(string cadena)
         {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         private void btnLogueo_Click(object sender, EventArgs e)
         {
@@ -102,14 +108,14 @@ namespace HPReserger
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
             if (txtUsuario.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Usuario", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msg("Ingrese Usuario");
                 txtUsuario.Focus();
                 return;
             }
 
             if (txtContraseña.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Contraseña", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msg("Ingrese Contraseña");
                 txtContraseña.Focus();
                 return;
             }
@@ -184,7 +190,7 @@ namespace HPReserger
                 drAcceso = clLogueo.Loguearse(txtUsuario.Text, 2);
                 if (Convert.ToInt32(drAcceso["Estado"].ToString()) == 0)
                 {
-                    MessageBox.Show("Usuario bloqueado, contáctese con el Área de Sistemas", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Usuario bloqueado, contáctese con el Área de Sistemas");
                     txtUsuario.Focus();
                     return;
                 }
@@ -231,14 +237,14 @@ namespace HPReserger
                         if (Convert.ToInt32(drAcceso["intentos"].ToString()) == 4)
                         {
                             clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 2);
-                            MessageBox.Show("5 intentos fallidos, se bloqueó al Usuario " + txtUsuario.Text + "", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            msg("5 intentos fallidos, se bloqueó al Usuario ");
                             return;
                         }
                         else
                         {
                             clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 0);
                             drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
-                            MessageBox.Show("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            msg("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "");
                             txtUsuario.Text = "";
                             txtContraseña.Text = "";
                             txtUsuario.Focus();
@@ -332,7 +338,7 @@ namespace HPReserger
             cadena = (string[])e.Data.GetData(DataFormats.FileDrop);
             if (cadena != null)
                 foreach (string x in cadena)
-                    MessageBox.Show(x);
+                    msg(x);
         }
 
         private void textBoxPer1_KeyPress(object sender, KeyPressEventArgs e)

@@ -151,16 +151,13 @@ namespace HPReserger
                 }
 
         }
-        public DialogResult msgyesno(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnabriperiodo_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
                 if (btnabriperiodo.Text == "Abrir")
                 {
-                    if (msgyesno("Seguro Desea Abrir el Periodo") == DialogResult.Yes)
+                    if (msgp("Seguro Desea Abrir el Periodo") == DialogResult.Yes)
                     {
                         int x = dtgconten.CurrentRow.Index;
                         CapaLogica.Periodos(2, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
@@ -171,7 +168,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    if (msgyesno("Seguro Desea Cerrar el Periodo") == DialogResult.Yes)
+                    if (msgp("Seguro Desea Cerrar el Periodo") == DialogResult.Yes)
                     {
                         int x = dtgconten.CurrentRow.Index;
                         CapaLogica.Periodos(3, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));

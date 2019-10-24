@@ -601,7 +601,7 @@ namespace HPReserger
             {
                 gridCotizacion.ClearSelection();
                 dtgpedido.ClearSelection();
-                if (DialogResult.Yes == msgP("Desea Eliminar COTIZACIONES Asociadas"))
+                if (DialogResult.Yes == msgp("Desea Eliminar COTIZACIONES Asociadas"))
                 {
                     foreach (DataGridViewRow item in gridCotizacionesAsociadas.SelectedRows)
                     {
@@ -617,7 +617,7 @@ namespace HPReserger
             {
                 dtgpedido.ClearSelection();
                 gridCotizacionesAsociadas.ClearSelection();
-                if (DialogResult.Yes == msgP("Desea dar de Bajas a las ORDENES DE PEDIDO Seleccionadas"))
+                if (DialogResult.Yes == msgp("Desea dar de Bajas a las ORDENES DE PEDIDO Seleccionadas"))
                 {
                     foreach (DataGridViewRow item in gridCotizacion.SelectedRows)
                     {
@@ -659,7 +659,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Message Box.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         decimal sumatoria = 0, valor = 0, total = 0;
 
@@ -745,10 +745,7 @@ namespace HPReserger
                 gridCotizacionesAsociadas_CellContentDoubleClick(sender, new DataGridViewCellEventArgs(x, y));
             }
         }
-        public DialogResult msgP(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void gridCotizacion_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (gridCotizacion.IsCurrentCellDirty)
@@ -771,7 +768,7 @@ namespace HPReserger
         {
             if (ValidarSiCheck(gridCotizacion, BorrarOrdenx))
             {
-                if (msgP("Desea Dar de Baja a las Ordenes de Pedido Seleccionadas") == DialogResult.Yes)
+                if (msgp("Desea Dar de Baja a las Ordenes de Pedido Seleccionadas") == DialogResult.Yes)
                 {
                     foreach (DataGridViewRow item in gridCotizacion.Rows)
                     {
@@ -862,7 +859,7 @@ namespace HPReserger
         {
             if (ValidarSiCheck(gridCotizacionesAsociadas, borrarcotizacionesx))
             {
-                if (msgP("Desea Eliminar Cotizaciones Seleccionadas") == DialogResult.Yes)
+                if (msgp("Desea Eliminar Cotizaciones Seleccionadas") == DialogResult.Yes)
                 {
                     foreach (DataGridViewRow item in gridCotizacionesAsociadas.Rows)
                     {

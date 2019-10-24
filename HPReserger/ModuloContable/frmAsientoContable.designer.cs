@@ -1192,7 +1192,7 @@ namespace HPReserger
             // 
             this.fechavalorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechavalorx.DataPropertyName = "fechavalor";
-            dataGridViewCellStyle12.Format = "d";
+            dataGridViewCellStyle12.Format = "dd/MM/yyyy";
             dataGridViewCellStyle12.NullValue = null;
             this.fechavalorx.DefaultCellStyle = dataGridViewCellStyle12;
             this.fechavalorx.FillWeight = 70F;

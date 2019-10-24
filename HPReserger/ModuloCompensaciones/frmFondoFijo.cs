@@ -203,11 +203,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
-
-        public DialogResult msgOk(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Validaciones
@@ -299,7 +295,7 @@ namespace HPReserger.ModuloCompensaciones
                     else
                         numasiento = ((int)asiento["codigo"]);
                 }
-                if (msgOk("¿Seguro Desea Actualizar el Fondo Fijo?") == DialogResult.OK)
+                if (msgp("¿Seguro Desea Actualizar el Fondo Fijo?") == DialogResult.Yes)
                 {
                     int PosFila = 0;
                     string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
@@ -380,7 +376,7 @@ namespace HPReserger.ModuloCompensaciones
                     else
                         numasiento = ((int)asiento["codigo"]);
                 }
-                if (msgOk("¿Seguro Desea Dar de Baja el Fondo Fijo?") == DialogResult.OK)
+                if (msgp("¿Seguro Desea Dar de Baja el Fondo Fijo?") == DialogResult.Yes)
                 {
                     int PosFila = 0;
                     string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
@@ -437,7 +433,7 @@ namespace HPReserger.ModuloCompensaciones
                     CargarDatos();
                 }
             }
-            else if (msgOk("¿Seguro Desea Crear el Fondo Fijo?") == DialogResult.OK)
+            else if (msgp("¿Seguro Desea Crear el Fondo Fijo?") == DialogResult.Yes)
             {
                 int numasiento = 0;
                 if (numasiento == 0)

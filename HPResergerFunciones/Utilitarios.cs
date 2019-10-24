@@ -111,7 +111,7 @@ namespace HPResergerFunciones
          /// </summary>
          /// <param name="cadena"></param>
          /// <returns>Regresa el Yes</returns>
-        public static DialogResult msgYesNo(string cadena)
+        public static DialogResult msgp(string cadena)
         {
             return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
@@ -123,10 +123,7 @@ namespace HPResergerFunciones
         {
             return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
-        public static DialogResult msgYesNoCancel(string cadena)
-        {
-            return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
-        }
+        public static DialogResult msgync(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesNoCancel(cadena); }
         public static Boolean SoloNumerosDecimalesX(KeyPressEventArgs P, string Numero)
         {
             string cadena = "1234567890." + (char)8;

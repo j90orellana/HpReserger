@@ -272,6 +272,7 @@ namespace HPReserger
             }
         }
         DataTable tablita;
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnAprobar_Click(object sender, EventArgs e)
         {
             if (Grid2.Rows.Count > 0 && grid3.Rows.Count > 0)
@@ -298,11 +299,11 @@ namespace HPReserger
                     {
                         if (grid3.RowCount < 3)
                         {
-                            if (MessageBox.Show("Necesita 3 Postulantes para Aprobar Terna¿ Desea Continuar ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                            if (msgp("Necesita 3 Postulantes para Aprobar Terna¿ Desea Continuar ?") != DialogResult.No)
                                 return;
                         }
                     }
-                    if (MessageBox.Show("¿ Seguro desea Aprobar ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                    if (msgp("¿ Seguro desea Aprobar ?") == DialogResult.Yes)
                     {
                         clPostulante.AprobarPostulantePrevia(Convert.ToInt32(grid3.CurrentRow.Cells[0].Value.ToString()), grid3.CurrentRow.Cells[2].Value.ToString(), Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)), 10);
                         //Solicitar AProbacion

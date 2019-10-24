@@ -400,7 +400,7 @@
             // 
             this.xFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaEmision.DataPropertyName = "FechaEmision";
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle3;
             this.xFechaEmision.HeaderText = "Fecha Emisíon";
             this.xFechaEmision.Name = "xFechaEmision";
@@ -411,7 +411,7 @@
             // 
             this.xFechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaVencimiento.DataPropertyName = "FechaVencimiento";
-            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
             this.xFechaVencimiento.DefaultCellStyle = dataGridViewCellStyle4;
             this.xFechaVencimiento.HeaderText = "Fecha Vencimiento";
             this.xFechaVencimiento.Name = "xFechaVencimiento";
@@ -597,7 +597,7 @@
             // 
             this.xFechaDocRef.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaDocRef.DataPropertyName = "FechaDocRef";
-            dataGridViewCellStyle16.Format = "d";
+            dataGridViewCellStyle16.Format = "dd/MM/yyyy";
             this.xFechaDocRef.DefaultCellStyle = dataGridViewCellStyle16;
             this.xFechaDocRef.HeaderText = "Fecha Doc. Referencia";
             this.xFechaDocRef.Name = "xFechaDocRef";

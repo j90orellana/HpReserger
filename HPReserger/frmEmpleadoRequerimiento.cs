@@ -230,7 +230,7 @@ namespace HPReserger
                  //       }
                  //    catch (Exception ex)
                  //   {
-                 //     MessageBox.Show(ex.Message + " --" + ex.StackTrace.ToString());
+                 //     Message Box.Show(ex.Message + " --" + ex.StackTrace.ToString());
                  //   }
 
              }*/
@@ -285,7 +285,7 @@ namespace HPReserger
         {
             //  savefile.FileName = NumeroDocumento + "_" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year;
 
-            //    if (!string.IsNullOrWhiteSpace(savefile.FileName) && savefile.ShowDialog() == DialogResult.OK)
+            //    if (!string.IsNullOrWhiteSpace(savefile.FileName) && savefile.ShowDialog() == Dialog Result.OK)
             //    {
             //DtgConten.DataSource = clEmpleadoRequerimiento.ExportarRequerimientos(NumeroDocumento, CodigoDocumento + "");
             //PBExportarPDF_Click(sender, e, savefile.FileName);

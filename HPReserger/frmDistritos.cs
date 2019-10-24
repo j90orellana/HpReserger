@@ -140,7 +140,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar: " + cbodistrito.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar: " + cbodistrito.Text)==DialogResult.Yes)
                         {
                             CDistrito.eliminardistrito(coddep, codpro, coddis);
                             HPResergerFunciones.frmInformativo.MostrarDialog("Distrito Eliminado Exitosamente");
@@ -152,7 +152,7 @@ namespace HPReserger
             estado = 0;
             Activar();
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado == 0)

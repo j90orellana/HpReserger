@@ -936,7 +936,7 @@
             this.xFechaPrestado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xFechaPrestado.DataPropertyName = "FechaPrestado";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.Format = "dd/MM/yyyy";
             this.xFechaPrestado.DefaultCellStyle = dataGridViewCellStyle7;
             this.xFechaPrestado.HeaderText = "Fecha Prestado";
             this.xFechaPrestado.MinimumWidth = 80;

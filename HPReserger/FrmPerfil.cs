@@ -171,7 +171,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar " + txtdes.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar " + txtdes.Text) == DialogResult.Yes)
                         {
                             cperfil.EliminarPerfil(Convert.ToInt32(txtcodigo.Text));
                             cperfil.ListarPerfiles((int)cboperfiles.SelectedValue, 10, 0, frmLogin.CodigoUsuario, DateTime.Now);
@@ -187,6 +187,7 @@ namespace HPReserger
             ((frmMenu)this.MdiParent).RecargarMenu();
             cboperfiles.Text = cade;
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado == 0)
@@ -271,7 +272,7 @@ namespace HPReserger
         {
             if (cboperfiles.Items.Count > 0)
             {
-                txtcodigo.Text = cboperfiles.SelectedValue.ToString(); 
+                txtcodigo.Text = cboperfiles.SelectedValue.ToString();
                 txtdes.Text = cboperfiles.Text;
                 CargarDAtosalTRee(int.Parse(cboperfiles.SelectedValue.ToString()), 0, 0);
             }

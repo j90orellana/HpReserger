@@ -203,12 +203,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
-
-        public DialogResult msgOk(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
-        }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (Estado == 2)
@@ -360,7 +355,7 @@ namespace HPReserger.ModuloCompensaciones
                     else
                         numasiento = ((int)asiento["codigo"]);
                 }
-                if (msgOk("¿Seguro Desea Actualizar la Entrega a Rendir?") == DialogResult.OK)
+                if (msgp("¿Seguro Desea Actualizar la Entrega a Rendir?") == DialogResult.Yes)
                 {
                     int PosFila = 0;
                     string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
@@ -428,7 +423,7 @@ namespace HPReserger.ModuloCompensaciones
 
             }
             //Creacion de la entrega a rendir
-            else if (msgOk("¿Seguro Desea Crear la Entrega a Rendir?") == DialogResult.OK)
+            else if (msgp("¿Seguro Desea Crear la Entrega a Rendir?") == DialogResult.Yes)
             {
                 int numasiento = 0;
                 if (numasiento == 0)

@@ -213,7 +213,7 @@ namespace HPReserger
             }
             else if (estado == 1)
             {
-                if (msgp("Serguro Desea Cancelar") == DialogResult.No) { return; }
+                if (msgp("Seguro Desea Cancelar") == DialogResult.Yes) { return; }
                 ProcesoDeCotizar(false);
             }
                     ((DataTable)(dtgconten.DataSource)).Rows.Clear();
@@ -646,7 +646,7 @@ namespace HPReserger
         }
         public DialogResult msgp(string cadena)
         {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
+            return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena);
         }
         private void dtgconten_KeyDown(object sender, KeyEventArgs e)
         {

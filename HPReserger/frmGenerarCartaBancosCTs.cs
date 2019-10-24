@@ -60,12 +60,7 @@ namespace HPReserger
             }
             crvReporte.ReportSource = reporte;
             crvReporte.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
+        }        
         private void crvLocacionServicios_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {
             e.Handled = true;

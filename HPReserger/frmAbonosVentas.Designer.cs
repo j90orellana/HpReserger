@@ -404,7 +404,7 @@
             // 
             this.xFechaEmision.DataPropertyName = "FechaEmision";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.Format = "dd/MM/yyyy";
             this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle7;
             this.xFechaEmision.FillWeight = 46.39175F;
             this.xFechaEmision.HeaderText = "Fecha Emision";
@@ -416,7 +416,7 @@
             // 
             this.xFechaVencimiento.DataPropertyName = "FechaVencimiento";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "d";
+            dataGridViewCellStyle8.Format = "dd/MM/yyyy";
             this.xFechaVencimiento.DefaultCellStyle = dataGridViewCellStyle8;
             this.xFechaVencimiento.FillWeight = 46.39175F;
             this.xFechaVencimiento.HeaderText = "Fecha Venc.";

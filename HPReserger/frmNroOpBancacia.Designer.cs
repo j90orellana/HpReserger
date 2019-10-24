@@ -359,7 +359,7 @@
             this.FechaPagox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.FechaPagox.DataPropertyName = "FechaPago";
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "d";
+            dataGridViewCellStyle19.Format = "dd/MM/yyyy";
             this.FechaPagox.DefaultCellStyle = dataGridViewCellStyle19;
             this.FechaPagox.HeaderText = "FechaPago";
             this.FechaPagox.MinimumWidth = 70;

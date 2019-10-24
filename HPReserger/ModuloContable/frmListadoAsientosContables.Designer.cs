@@ -469,7 +469,7 @@
             // 
             this.fechavalorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechavalorx.DataPropertyName = "fechavalor";
-            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
             dataGridViewCellStyle4.NullValue = null;
             this.fechavalorx.DefaultCellStyle = dataGridViewCellStyle4;
             this.fechavalorx.FillWeight = 70F;

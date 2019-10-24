@@ -403,8 +403,8 @@ namespace HPReserger.ModuloFinanzas
                 cboDesCuentaBanco.DisplayMember = "banco";
                 cboDesCuentaBanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cboDesBanco.SelectedValue.ToString(), (int)cboDesEmpresa.SelectedValue, (int)cbomoneda.SelectedValue);
             }
-        }      
-        private DialogResult msgYesNo(string v) { return HPResergerFunciones.Utilitarios.msgYesNo(v); }
+        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             CalcularTotal();
@@ -487,7 +487,7 @@ namespace HPReserger.ModuloFinanzas
             int IdProyectoDes = (int)(cboDesProyecto.SelectedValue);
             int IdEtapaOri = (int)(cboOriEtapa.SelectedValue);
             int IdEtapaDes = (int)(cboDesEtapa.SelectedValue);
-            if (msgYesNo("Seguro Desea Proceder con el Abono") == DialogResult.Yes)
+            if (msgp("Seguro Desea Proceder con el Abono") == DialogResult.Yes)
             {
                 //Proceso de Abono
                 ///Asiento Empresa Origen y Destino

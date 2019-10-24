@@ -654,19 +654,13 @@ namespace HPReserger
         private void Dtgconten_KeyPress(object sender, KeyPressEventArgs e)
         {
         }
-        public DialogResult msgyes(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
-        }
-        public DialogResult MsgYesNOCancel(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNoCancel(cadena);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
+        public DialogResult msgync(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesNoCancel(cadena); }
         private void Dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Delete || e.KeyData == Keys.Back)
                 if (Estado == 1 || Estado == 2)
-                    if (msgyes("Desea Eliminar Filas") == DialogResult.Yes)
+                    if (msgp("Desea Eliminar Filas") == DialogResult.Yes)
                     {
                         foreach (DataGridViewCell item in Dtgconten.SelectedCells)
                             if (item.RowIndex >= 0)
@@ -753,7 +747,7 @@ namespace HPReserger
                 if (cbotipodoc.Items.Count == 0) { msg("No hay Tipo"); cbotipodoc.Focus(); return; }
                 if (txtcodfactura.Text.Length == 0) { msg($"Ingrese Codigo de {cbotipodoc.Text}"); txtcodfactura.Focus(); return; }
                 if (txtnrofactura.Text.Length == 0) { msg($"Ingrese Número de {cbotipodoc.Text}"); txtnrofactura.Focus(); return; }
-                if (!txttotalfac.EstaLLeno()) { if (msgyes("Desea Graba el Comprobante con Total Cero.") != DialogResult.Yes) { txttotalfac.Focus(); return; } }
+                if (!txttotalfac.EstaLLeno()) { if (msgp("Desea Graba el Comprobante con Total Cero.") != DialogResult.Yes) { txttotalfac.Focus(); return; } }
                 if (decimal.Parse(txttipocambio.TextValido()) == 0) { msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
                 if (!txtruc.EstaLLeno()) { msg("Ingrese RUC del Comprobante"); txtruc.Focus(); return; }
                 if (_TipoDoc == 0) if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
@@ -1060,7 +1054,7 @@ namespace HPReserger
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
-            if (msgyes("Eliminar Todas Las Filas") == DialogResult.Yes)
+            if (msgp("Eliminar Todas Las Filas") == DialogResult.Yes)
                 ((DataTable)Dtgconten.DataSource).Clear();
         }
         public void BloquearColumnas()
@@ -1093,7 +1087,7 @@ namespace HPReserger
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                 if (TPrueba1.Rows.Count > 0 || dtgBusqueda[ynamestado.Name, dtgBusqueda.CurrentRow.Index].Value.ToString().ToUpper() == "PAGADA")
                 {
-                    DialogResult Result = MsgYesNOCancel("La Factura ya tiene un Pago. \nSolo se puede Actualizar la Imagen.");
+                    DialogResult Result = msgync("La Factura ya tiene un Pago. \nSolo se puede Actualizar la Imagen.");
                     if (Result == DialogResult.Cancel) { return; }
                     if (Result == DialogResult.Yes)
                     {
@@ -1105,7 +1099,7 @@ namespace HPReserger
                     }
                     if (Result == DialogResult.No)
                     {
-                        msg("Se Modificará el Registro de La Factura");
+                        msgOK("Se Modificará el Registro de La Factura");
                         ////lo eliminamos 
                         ModoEdicion(true);
                         BloquearColumnas();
@@ -1667,7 +1661,7 @@ namespace HPReserger
         }
         private void borrarImagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (msgyes("Desea Eliminar la Imagen") == DialogResult.Yes)
+            if (msgp("Desea Eliminar la Imagen") == DialogResult.Yes)
             {
                 imgfactura = null; frmimagen.Imagen = null;
             }
@@ -1692,7 +1686,7 @@ namespace HPReserger
             {
                 if (Dtgconten.RowCount == 0)
                 {
-                    if (msgyes("Seguro Desea Eliminar Factura") == DialogResult.Yes)
+                    if (msgp("Seguro Desea Eliminar Factura") == DialogResult.Yes)
                     {
                         CapaLogica.FacturaManualCabeceraRemover((int)dtgBusqueda[yid.Name, dtgBusqueda.CurrentRow.Index].Value, OpcionBusqueda == 1 ? 3 : 300);
                         msgOK("Eliminado Con Éxito");
@@ -1701,7 +1695,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    if (msgyes("Seguro Desea Eliminar Factura con su Asiento") == DialogResult.Yes)
+                    if (msgp("Seguro Desea Eliminar Factura con su Asiento") == DialogResult.Yes)
                     {
                         DataTable TPrueba1 = CapaLogica.VerFacturasPagadasCompras(txtruc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
                         DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);

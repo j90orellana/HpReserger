@@ -321,6 +321,7 @@ namespace HPReserger
             chknuevorus.Checked = chkAgentePercepcion.Checked = chkbuenContribuyente.Checked = chkretencion.Checked = false;
             cbodocumento_SelectedIndexChanged(sender, e);
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             Iniciar(false); llamada = 100;
@@ -333,7 +334,7 @@ namespace HPReserger
             {
                 if (estado == 1)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (msgp("Hay datos Ingresados, Desea Salir?") == DialogResult.Yes)
                     {
                         estado = 0;
                         Activar();
@@ -446,7 +447,7 @@ namespace HPReserger
                 , int.Parse(cbocondicion.SelectedValue.ToString()), int.Parse(cboestado.SelectedValue.ToString()), chknuevorus.Checked, chkretencion.Checked, chkbuenContribuyente.Checked, chkAgentePercepcion.Checked);
                 PresentarValor("");
                 Iniciar(false);
-                MessageBox.Show("Se Insertó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msgOK("Se Insertó con Exito");
             }
             else
             {
@@ -477,13 +478,13 @@ namespace HPReserger
                     PresentarValor("");
                     Iniciar(false);
                     dtgconten.CurrentCell = dtgconten[xy[0], xy[1]];
-                    // MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Message Box.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrerazonsocial.Text + " Nro Documento: " + txtnumeroidentidad.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar; " + txtnombrerazonsocial.Text + " Nro Documento: " + txtnumeroidentidad.Text) == DialogResult.Yes)
                         {
                             DataRow Filita = CProveedor.EliminarProveedor((int)cbodocumento.SelectedValue, txtnumeroidentidad.Text);
                             if ((int)Filita["Resultado"] == 0)

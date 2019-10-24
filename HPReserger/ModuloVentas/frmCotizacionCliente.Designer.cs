@@ -1567,7 +1567,7 @@
             this.xfechaVence.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.xfechaVence.DataPropertyName = "FechaVencimiento";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "d";
+            dataGridViewCellStyle13.Format = "dd/MM/yyyy";
             this.xfechaVence.DefaultCellStyle = dataGridViewCellStyle13;
             this.xfechaVence.HeaderText = "FecVenc";
             this.xfechaVence.Name = "xfechaVence";

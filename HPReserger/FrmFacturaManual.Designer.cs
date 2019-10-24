@@ -1389,7 +1389,7 @@
             this.yFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.yFechaEmision.DataPropertyName = "FechaEmision";
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "d";
+            dataGridViewCellStyle12.Format = "dd/MM/yyyy";
             this.yFechaEmision.DefaultCellStyle = dataGridViewCellStyle12;
             this.yFechaEmision.HeaderText = "F.Emite";
             this.yFechaEmision.Name = "yFechaEmision";
@@ -1401,7 +1401,7 @@
             this.yFechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.yFechaRecepcion.DataPropertyName = "FechaRecepcion";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "d";
+            dataGridViewCellStyle13.Format = "dd/MM/yyyy";
             this.yFechaRecepcion.DefaultCellStyle = dataGridViewCellStyle13;
             this.yFechaRecepcion.HeaderText = "F.Recibe";
             this.yFechaRecepcion.Name = "yFechaRecepcion";
@@ -1413,7 +1413,7 @@
             this.yFechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.yFechaVencimiento.DataPropertyName = "FechaVencimiento";
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "d";
+            dataGridViewCellStyle14.Format = "dd/MM/yyyy";
             this.yFechaVencimiento.DefaultCellStyle = dataGridViewCellStyle14;
             this.yFechaVencimiento.HeaderText = "F.Vence";
             this.yFechaVencimiento.Name = "yFechaVencimiento";

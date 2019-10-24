@@ -51,17 +51,14 @@ namespace HPReserger
                 btngenerar.Enabled = true;
             else btngenerar.Enabled = false;
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }       
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         DataTable tablita;
         private void btngenerar_Click(object sender, EventArgs e)
         {
             // msg(comboMesAño1.GetFecha().ToLongDateString());
             tablita = new DataTable();
             tablita = CapaLogica.ListarJefeInmediato(frmLogin.CodigoUsuario, "", 10);
-            if (msg("Desea Eliminar Periodo") == DialogResult.OK)
+            if (msgp("Desea Eliminar Periodo") == DialogResult.Yes)
                 if (tablita.Rows.Count != 0)
                 {
                     DataRow filita = tablita.Rows[0];

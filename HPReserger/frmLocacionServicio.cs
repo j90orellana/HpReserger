@@ -48,21 +48,18 @@ namespace HPReserger
         {
             if (!string.IsNullOrWhiteSpace(txtdetalle.Text))
             {
-                if (Preguntar("Hay Datos en detalle, Desea Salir") == DialogResult.No)
+                if (msgp("Hay Datos en detalle, Desea Salir") != DialogResult.Yes)
                     return;
             }
             if (!string.IsNullOrWhiteSpace(txtocupacion.Text))
             {
-                if (Preguntar("Hay Datos en la Ocupacion, Desea Salir") == DialogResult.No)
+                if (msgp("Hay Datos en la Ocupacion, Desea Salir") != DialogResult.Yes)
                     return;
             }
             acepta = false;
             this.Close();
         }
-        public DialogResult Preguntar(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtdetalle.Text))

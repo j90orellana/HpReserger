@@ -206,10 +206,11 @@ namespace HPReserger
 
         }
         public string detraccion = "No";
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btneliminar_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
-                if (HPResergerFunciones.Utilitarios.msgYesNo("Desea Eliminar Registro") == DialogResult.Yes)
+                if (msgp("Desea Eliminar Registro") == DialogResult.Yes)
                 {
                     CapaLogica.Detraciones(5, CodigoDet, txtsunat.Text, txtAnexo.TextValido(), txtdescripcion.Text, 0, frmLogin.CodigoUsuario, DateTime.Now);
                     CArgarDatosDetraccion();

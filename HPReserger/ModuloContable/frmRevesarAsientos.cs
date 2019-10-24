@@ -46,8 +46,7 @@ namespace HPReserger.ModuloContable
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
-
-        public DialogResult msgYesNo(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnTxt_Click(object sender, EventArgs e)
         {
             if (rbReversar.Checked)
@@ -55,7 +54,7 @@ namespace HPReserger.ModuloContable
                 //Verifico si el Periodo esta Abierto para Proceder con la Anulacion - REversa
                 if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))
                 {
-                    if (msgYesNo("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
+                    if (msgp("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
                     {
                         DialogResult = DialogResult.Cancel;
                         this.Close();
@@ -63,7 +62,7 @@ namespace HPReserger.ModuloContable
                     else return;
                 }
                 //Proceso de la Reversa
-                if (HPResergerFunciones.Utilitarios.msgYesNo($"Seguro Desea Reversar Este Asiento Nro {Cuo}") == DialogResult.Yes)
+                if (msgp($"Seguro Desea Reversar Este Asiento Nro {Cuo}") == DialogResult.Yes)
                 {
                     //Proceso Reversa del Asiento               
                     DataRow Filita = CapaLogica.ReversarAsientos(Codigo, IdProyecto, frmLogin.CodigoUsuario, FechaValor).Rows[0];
@@ -89,7 +88,7 @@ namespace HPReserger.ModuloContable
                 //Verificio si el Periodo esta Abierto para Proceder con la Anulacion - REversa
                 if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))
                 {
-                    if (msgYesNo("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
+                    if (msgp("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
                     {
                         DialogResult = DialogResult.Cancel;
                         this.Close();
@@ -99,7 +98,7 @@ namespace HPReserger.ModuloContable
                 //Verificio si el Periodo Destino Esta Abierto
                 if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContableDes))
                 {
-                    if (msgYesNo("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
+                    if (msgp("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
                     {
                         DialogResult = DialogResult.Cancel;
                         this.Close();

@@ -89,10 +89,10 @@ namespace HPReserger
             }
             iniciar(true);
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro, Desea Salir", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            if (msgp("Seguro, Desea Salir") == DialogResult.Yes)
                 this.Close();
             iniciar(false);
         }

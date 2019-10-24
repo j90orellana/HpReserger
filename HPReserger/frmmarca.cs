@@ -56,7 +56,7 @@ namespace HPReserger
                 Activar();
             }
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
@@ -77,7 +77,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar " + txtmarca.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar " + txtmarca.Text) == DialogResult.Yes)
                         {
                             Cmarca.EliminarMarca(Convert.ToInt32(txtcodigo.Text));
                             msgOK("Marca Eliminada con Id: " + txtcodigo.Text);

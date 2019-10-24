@@ -325,7 +325,7 @@ namespace HPReserger
         }
         public DialogResult msgp(string cadena)
         {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
+            return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena);
         }
         private void btnaddproducto_Click(object sender, EventArgs e)
         {

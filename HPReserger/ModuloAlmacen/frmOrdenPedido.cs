@@ -88,21 +88,19 @@ namespace HPReserger
             }
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
-                if (MessageBox.Show("Seguro Desea Eliminar esta fila", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (msgp("Seguro Desea Eliminar esta fila") == DialogResult.Yes)
                 {
                     gridItem.Rows.RemoveAt(e.RowIndex);
                 }
             }
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void gridItem_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("¿ Seguro de Eliminar ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                if (msgp("¿ Seguro de Eliminar ?") == DialogResult.Yes)
                 {
                     e.Handled = true;
                 }
@@ -266,7 +264,7 @@ namespace HPReserger
                         if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Item.Name].Value.ToString()) && fila != filaBuscar)
                         {
                             //VALIDAR QUE NO REPITA SERVICIOS
-                            //   MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " se esta duplicando", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            //   Message Box.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " se esta duplicando", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             //  return false;
                         }
                     }

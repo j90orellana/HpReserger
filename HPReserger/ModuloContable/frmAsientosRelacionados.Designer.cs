@@ -143,7 +143,7 @@
             // 
             this.xfechapago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.xfechapago.DataPropertyName = "fechapago";
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             this.xfechapago.DefaultCellStyle = dataGridViewCellStyle3;
             this.xfechapago.HeaderText = "FechaPago";
             this.xfechapago.Name = "xfechapago";

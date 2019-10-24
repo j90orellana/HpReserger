@@ -293,7 +293,7 @@
             this.FechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.FechaVencimiento.DataPropertyName = "FechaVencimiento";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "d";
+            dataGridViewCellStyle9.Format = "dd/MM/yyyy";
             this.FechaVencimiento.DefaultCellStyle = dataGridViewCellStyle9;
             this.FechaVencimiento.HeaderText = "Fech.Venc.";
             this.FechaVencimiento.Name = "FechaVencimiento";

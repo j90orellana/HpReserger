@@ -298,7 +298,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtdescripcion.Text + " Marca: " + cbomarca.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar; " + txtdescripcion.Text + " Marca: " + cbomarca.Text) == DialogResult.Yes)
                         {
                             CArticulo.EliminarARticuloMarca(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));
                             estado = 0;
@@ -315,6 +315,7 @@ namespace HPReserger
             Iniciar(false);
             //Activar(); Txtbusca.Enabled = false;
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         public Boolean VerificarValores(string concepto, int marca)
         {
             if (dtgconten.RowCount > 0)
@@ -425,7 +426,7 @@ namespace HPReserger
         private void txtdescripcion_TextChanged(object sender, EventArgs e)
         {
 
-        }       
+        }
         frmccosto fccentro;
         private void btncentro_Click(object sender, EventArgs e)
         {

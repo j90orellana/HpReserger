@@ -221,7 +221,7 @@ namespace HPReserger
 
                     //    if (Dtgconten[0, e.RowIndex].Value.ToString() == Dtgconten[0, i].Value.ToString() && i != e.RowIndex)
                     //    {
-                    //        MessageBox.Show("No se pueden Repetir Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //        Message Box.Show("No se pueden Repetir Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //        Dtgconten.Rows.RemoveAt(Dtgconten.CurrentRow.Index); fila--;
                     //        break;
                     //    }
@@ -285,11 +285,12 @@ namespace HPReserger
             catch { }
             msg(Dtgconten);
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void Dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("Desea Borrar esta fila", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (msgp("Desea Borrar esta fila") == DialogResult.Yes)
                 {
                     fila--; filamax--;
                 }
@@ -335,7 +336,7 @@ namespace HPReserger
             {
                 if (estado == 1 && fila > 0)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (msgp("Hay datos Ingresados, Desea Salir?") == DialogResult.Yes)
                     {
                         estado = 0;
                         Activar(); DesactivarModi();
@@ -349,7 +350,7 @@ namespace HPReserger
                 {
                     if (estado == 2 && fila > 0)
                     {
-                        if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (msgp("Hay datos Ingresados, Desea Salir?") == DialogResult.Yes)
                         {
                             estado = 0;
                             Activar(); DesactivarModi();
@@ -583,7 +584,7 @@ namespace HPReserger
                     {
                         if (estado == 3)
                         {
-                            if (MessageBox.Show("Seguró Desea Eliminar; Dinámica Contable: DC_0" + codigo, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (msgp("Seguró Desea Eliminar; Dinámica Contable: DC_0" + codigo) == DialogResult.Yes)
                             {
                                 CDinamica.EliminarDinamica(codigo);
                                 msgOK("Eliminado Exitosamente ");

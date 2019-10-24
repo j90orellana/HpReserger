@@ -273,6 +273,7 @@ namespace HPReserger
             //txtcuentacierre.Text = "";
             //cborefleja_SelectedIndexChanged(sender, e);
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado == 0)
@@ -283,7 +284,7 @@ namespace HPReserger
             {
                 if (estado == 1)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (msgp("Hay datos Ingresados, Desea Salir?") == DialogResult.Yes)
                     {
                         estado = 0;
                         Activar();
@@ -409,7 +410,7 @@ namespace HPReserger
             if (cbocuentabc.Text != "")
                 CuentaBC = cbocuentabc.SelectedValue.ToString();
             else CuentaBC = "";
-        }       
+        }
         public void ActualizarReflejo()
         {
             CapaLogica.CreaciondeCuentasReflejo(txtcodcuenta.Text);
@@ -456,7 +457,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrecuenta.Text + " Código Cuenta: " + txtcodcuenta.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar; " + txtnombrecuenta.Text + " Código Cuenta: " + txtcodcuenta.Text) == DialogResult.Yes)
                         {
                             //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
                             msgOK("Eliminado Exitosamente");
@@ -553,18 +554,18 @@ namespace HPReserger
             int PosFila = dtgconten.CurrentRow.Index;
             if (Fila != null)
             {
-                if (HPResergerFunciones.Utilitarios.msgYesNo("La Cuenta Ya tiene Asientos, ¿Desea Bloquear la Cuenta?") == DialogResult.Yes)
+                if (msgp("La Cuenta Ya tiene Asientos, ¿Desea Bloquear la Cuenta?") == DialogResult.Yes)
                 {
                     CapaLogica.CuentaContable_EnUso(3, txtcodcuenta.Text);
-                    HPResergerFunciones.Utilitarios.msg("Cuenta contable Bloqueada");
+                    msgOK("Cuenta contable Bloqueada");
                 }
             }
             else
             {
-                if (HPResergerFunciones.Utilitarios.msgYesNo("¿Seguro Desea Eliminar la Cuenta?") == DialogResult.Yes)
+                if (msgp("¿Seguro Desea Eliminar la Cuenta?") == DialogResult.Yes)
                 {
                     CapaLogica.CuentaContable_EnUso(33, txtcodcuenta.Text);
-                    HPResergerFunciones.Utilitarios.msg("Cuenta contable Eliminada");
+                    msgOK("Cuenta contable Eliminada");
                 }
             }
             ///listado de Resultados
@@ -646,7 +647,7 @@ namespace HPReserger
             {
                 msg("No hay Datos que Exportar");
             }
-        }      
+        }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             if (dtgconten.RowCount > 0)

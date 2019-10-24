@@ -389,16 +389,12 @@ namespace HPReserger
         {
 
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-        }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void fmrProyectodatos_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (frmproducs != null)
             {
-                if (msg("La Ventada de Productos esta Abierta, Desea Cerrar todo") == DialogResult.Yes)
+                if (msgp("La Ventada de Productos esta Abierta, Desea Cerrar todo") == DialogResult.Yes)
                 {
                     frmproducs.Close();
                 }

@@ -417,7 +417,7 @@ namespace HPReserger
             this.FECHAENTREGA.DataPropertyName = "FECHAENTREGA";
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.Format = "d";
+            dataGridViewCellStyle15.Format = "dd/MM/yyyy";
             dataGridViewCellStyle15.NullValue = null;
             this.FECHAENTREGA.DefaultCellStyle = dataGridViewCellStyle15;
             this.FECHAENTREGA.HeaderText = "Fecha Entrega";

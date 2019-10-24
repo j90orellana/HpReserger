@@ -319,7 +319,7 @@
             this.xFechaContable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaContable.DataPropertyName = "FechaContable";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             this.xFechaContable.DefaultCellStyle = dataGridViewCellStyle3;
             this.xFechaContable.HeaderText = "F.Ctble";
             this.xFechaContable.Name = "xFechaContable";
@@ -330,7 +330,7 @@
             // 
             this.xFechaRegistro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaRegistro.DataPropertyName = "FechaRegistro";
-            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
             this.xFechaRegistro.DefaultCellStyle = dataGridViewCellStyle4;
             this.xFechaRegistro.HeaderText = "F.Reg.Asi.";
             this.xFechaRegistro.Name = "xFechaRegistro";
@@ -342,7 +342,7 @@
             this.xFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaEmision.DataPropertyName = "FechaEmision";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
             this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle5;
             this.xFechaEmision.HeaderText = "F.Emis.";
             this.xFechaEmision.Name = "xFechaEmision";

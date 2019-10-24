@@ -302,7 +302,7 @@ namespace HPReserger
             // 
             this.fechainicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechainicio.DataPropertyName = "fecha_inicio";
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             dataGridViewCellStyle3.NullValue = null;
             this.fechainicio.DefaultCellStyle = dataGridViewCellStyle3;
             this.fechainicio.HeaderText = "Fecha Inicio";
@@ -314,7 +314,7 @@ namespace HPReserger
             // 
             this.fechafin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechafin.DataPropertyName = "fecha_fin";
-            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
             this.fechafin.DefaultCellStyle = dataGridViewCellStyle4;
             this.fechafin.HeaderText = "Fecha Fin";
             this.fechafin.Name = "fechafin";

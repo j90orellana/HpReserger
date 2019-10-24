@@ -112,7 +112,7 @@ namespace HPReserger
                     {
                         if (estado == 3)
                         {
-                            if (MessageBox.Show("Seguró Desea Eliminar " + txtdepartamento.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                            if (msgp("Seguró Desea Eliminar " + txtdepartamento.Text) == DialogResult.Yes)
                             {
                                 Cdepartamento.EliminarDepartamento(Convert.ToInt32(txtcodigo.Text));
                             }
@@ -125,7 +125,7 @@ namespace HPReserger
                 txtdepartamento.ReadOnly = true;
             }
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try

@@ -657,7 +657,7 @@
             this.xFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xFechaEmision.DataPropertyName = "FechaEmision";
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "d";
+            dataGridViewCellStyle16.Format = "dd/MM/yyyy";
             this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle16;
             this.xFechaEmision.HeaderText = "Fec.Emis.";
             this.xFechaEmision.MinimumWidth = 65;

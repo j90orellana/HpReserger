@@ -26,7 +26,7 @@ namespace HPReserger
         }
         public void CargarDatos()
         {
-            dtgconten.DataSource = CapaLogica.ActualizarParametros(0, "", 3, "", 1,dtpfecha.Value);
+            dtgconten.DataSource = CapaLogica.ActualizarParametros(0, "", 3, "", 1, dtpfecha.Value);
         }
         private void frmParametros_Load(object sender, EventArgs e)
         {
@@ -113,14 +113,14 @@ namespace HPReserger
             btnexportarExcel.Enabled = !a;
             btneliminar.Enabled = !a;
             txtobservacion.Enabled = txtdescripcion.Enabled = txtvalor.Enabled = a;
-            dtpfecha.Enabled = a;btnnuevo.Enabled = !a;
+            dtpfecha.Enabled = a; btnnuevo.Enabled = !a;
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             iniciar(true);
             estado = 1;
             txtdescripcion.Text = txtobservacion.Text = "";
-            txtvalor.txt.Text = "0";dtpfecha.Value = DateTime.Now;
+            txtvalor.txt.Text = "0"; dtpfecha.Value = DateTime.Now;
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
@@ -291,10 +291,10 @@ namespace HPReserger
         {
             // HPResergerFunciones.Utilitarios.ValidarPegarSoloLetrasyEspacio(e, txt, 70);
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btneliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro Quiere Eliminar", CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (msgp("Seguro Quiere Eliminar") == DialogResult.Yes)
             {
                 CapaLogica.ActualizarParametros(10, dtgconten["descripcion", dtgconten.CurrentCell.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", dtgconten.CurrentCell.RowIndex].Value, dtpfecha.Value);
                 CargarDatos();

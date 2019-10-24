@@ -251,13 +251,10 @@ namespace HPReserger
         {
             if (Modifica == 0)
                 this.Close();
-            if (mensaje("Seguro desea Salir") == DialogResult.OK)
+            if (msgp("Seguro desea Salir") == DialogResult.Yes)
                 this.Close();
         }
-        public DialogResult mensaje(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         TextBox txt;
         private void dtgpedidoY_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {

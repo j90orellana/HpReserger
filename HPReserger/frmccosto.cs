@@ -99,6 +99,7 @@ namespace HPReserger
             estado = 2; gp1.Enabled = false; txtcodigo.Focus();
         }
 
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             cadeaux = cbocuentas.Text; siono = cbotiene.Text;
@@ -121,7 +122,7 @@ namespace HPReserger
                     {
                         if (estado == 3)
                         {
-                            if (MessageBox.Show("Seguró Desea Eliminar " + txtcosto.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                            if (msgp("Seguró Desea Eliminar " + txtcosto.Text) == DialogResult.Yes)
                             {
                                 //Ccostos.EliminarGerencia(Convert.ToInt32(txtcodigo.Text));
                             }

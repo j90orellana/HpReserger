@@ -30,6 +30,7 @@ namespace HPReserger
 
         private void frmAsientoContable_Load(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             //cargar TExtos por defecto
             txtbuscuo.CargarTextoporDefecto(); txtbusGlosa.CargarTextoporDefecto(); txtbusSuboperacion.CargarTextoporDefecto(); txtbuscuenta.CargarTextoporDefecto();
             dtpfechaini.Value = new DateTime(DateTime.Now.Year, 1, 1);
@@ -73,6 +74,7 @@ namespace HPReserger
                 //dtgbusca_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
             }
             this.Activated += frmAsientoContable_Activated;
+            this.Cursor = Cursors.Default;
         }
         public void cARgarEmpresas()
         {
@@ -339,7 +341,7 @@ namespace HPReserger
             if (coddinamica != 0)
             {
             }
-        }        
+        }
         private void txtdinamica_Leave(object sender, EventArgs e)
         {
             txtdinamica.Text = coddinamica.ToString("DC_000; DC_ - 000; DC_000");
@@ -460,7 +462,8 @@ namespace HPReserger
             if ((Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[debe.Name].Index) || (Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[haber.Name].Index))
                 if (e.KeyChar == 'D' || e.KeyChar == 'd')
                 {
-                    if (HPResergerFunciones.Utilitarios.msgYesNo("Desea Rellenar Automáticamente") == DialogResult.Yes)
+                    var Result = HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("¿Desea Rellenar Automáticamente?", "Llenará Automáticamente los Montos del Asiento");
+                    if (Result == DialogResult.Yes)
                     {
                         if (Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[debe.Name].Index)
                             Configuraciones.RellenarGrillasAutomatico(Dtgconten, haber, debe);
@@ -1304,7 +1307,7 @@ namespace HPReserger
             ESTADO = Convert.ToInt32(cboestado.SelectedValue.ToString());
             FECHA = dtpfecha.Value;
             DINAMICA = coddinamica;
-        }   
+        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (cboempresa.SelectedIndex < 0)
@@ -1495,10 +1498,6 @@ namespace HPReserger
                 return true;
             else return false;
         }
-        public DialogResult msgp(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
-        }
         public void BuscarAsiento(string cadena, int empresa, DateTime Fecha)
         {
             cARgarEmpresas();
@@ -1509,6 +1508,7 @@ namespace HPReserger
             //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(cadena, 1, empresa);
             chkfecha_CheckedChanged(new object { }, new EventArgs());
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             aceptar = false;
@@ -1520,7 +1520,7 @@ namespace HPReserger
             {
                 if (estado == 1 && Dtgconten.RowCount > 0)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (msgp("Hay datos Ingresados, Desea Salir?") == DialogResult.Yes)
                     {
                         estado = 0;
                         activar();
@@ -1536,7 +1536,7 @@ namespace HPReserger
                 {
                     if (estado == 2 && Dtgconten.RowCount > 0)
                     {
-                        if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (msgp("Hay datos Ingresados, Desea Salir?") == DialogResult.Yes)
                         {
                             estado = 0;
                             activar();
@@ -1573,7 +1573,7 @@ namespace HPReserger
         {
             if (e.KeyCode == Keys.Delete && (estado == 1 || estado == 2))
             {
-                if (MessageBox.Show("Desea Borrar esta fila", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (msgp("Desea Borrar esta fila") == DialogResult.Yes)
                 {
                     if (Dtgconten.CurrentCell != null)
                     {
@@ -1714,10 +1714,10 @@ namespace HPReserger
                 cboetapa.DisplayMember = "descripcion";
             }
             else msg("No Hay Proyectos");
-        }        
+        }
         private DialogResult msgP(string v)
         {
-            return HPResergerFunciones.Utilitarios.msgYesNo(v);
+            return HPResergerFunciones.Utilitarios.msgp(v);
         }
         private void cboproyecto_Enter(object sender, EventArgs e)
         {
@@ -1794,7 +1794,7 @@ namespace HPReserger
         private void Dtgconten_Sorted(object sender, EventArgs e)
         {
             PintardeCOlores();
-        }       
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             //No se Pueden reversar Asientos Reversados
@@ -1810,7 +1810,7 @@ namespace HPReserger
             if (1 != 1)
             {
                 //Proceso de la Reversa
-                if (HPResergerFunciones.Utilitarios.msgYesNo($"Seguro Desea Reversar Este Asiento Nro {txtcuo.Text}") == DialogResult.Yes)
+                if (HPResergerFunciones.Utilitarios.msgp($"Seguro Desea Reversar Este Asiento Nro {txtcuo.Text}") == DialogResult.Yes)
                 {
                     //Proceso Reversa del Asiento               
                     DataRow Filita = CapaLogica.ReversarAsientos((int.Parse(txtcodigo.Text)), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, dtpfechavalor.Value).Rows[0];

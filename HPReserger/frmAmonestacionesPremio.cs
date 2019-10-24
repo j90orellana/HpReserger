@@ -382,10 +382,7 @@ namespace HPReserger
         {
 
         }
-        public DialogResult MSG(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         DataTable tablita;
         private void btneliminar_Click(object sender, EventArgs e)
         {
@@ -393,7 +390,7 @@ namespace HPReserger
             {
                 tablita = new DataTable();
                 tablita = clAmonestacionesPremio.ListarJefeInmediato(frmLogin.CodigoUsuario, "", 10);
-                if (MSG("Desea Eliminar Registro?") == DialogResult.OK)
+                if (msgp("Desea Eliminar Registro?") == DialogResult.Yes)
                     if (tablita.Rows.Count != 0)
                     {
                         int x = Grid.CurrentCell.RowIndex;

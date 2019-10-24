@@ -129,10 +129,11 @@ namespace HPReserger
                     VerificarParaModificar(dtgconten.CurrentRow.Index);
             }
         }
-        private DialogResult msgYesNo(string v)
+        public DialogResult msgp(string cadena)
         {
-            return HPResergerFunciones.Utilitarios.msgYesNo(v);
+            return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena);
         }
+
         private void txtTipoCambio_Leave(object sender, EventArgs e)
         {
             decimal valor = 0;
@@ -387,7 +388,7 @@ namespace HPReserger
             //Modificar Cartel Consulta
             string CartelPregunta = Estado == 1 ? "Seguro Desea Proceder con el Préstamo" : "Seguro Desea Proceder con la Modificación";
             //Procedemos
-            if (msgYesNo(CartelPregunta) == DialogResult.Yes)
+            if (msgp(CartelPregunta) == DialogResult.Yes)
             {
                 //Sí es Modificación Debemos Eliminar Asiento y su Detalle 
                 if (Estado == 2)

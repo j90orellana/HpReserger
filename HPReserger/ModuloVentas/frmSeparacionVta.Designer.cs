@@ -542,7 +542,7 @@
             this.FechaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.FechaPago.DataPropertyName = "FechaPago";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.Format = "dd/MM/yyyy";
             this.FechaPago.DefaultCellStyle = dataGridViewCellStyle7;
             this.FechaPago.HeaderText = "Fecha del Pago";
             this.FechaPago.Name = "FechaPago";

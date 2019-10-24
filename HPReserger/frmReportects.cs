@@ -67,7 +67,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Message Box.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void crvReporte_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)

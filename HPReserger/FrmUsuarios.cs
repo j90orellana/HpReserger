@@ -275,10 +275,11 @@ namespace HPReserger
             }
             ModoEdicion(false);
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btneliminar_Click(object sender, EventArgs e)
         {
             estado = 3;
-            if (MessageBox.Show("Desea dar de Baja a este Usuario", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (msgp("Desea dar de Baja a este Usuario") == DialogResult.Yes)
             {
                 btnaceptar_Click(sender, e);
             }
@@ -620,14 +621,13 @@ namespace HPReserger
         {
             btndesconectar.Enabled = btnmodificar.Enabled;
         }
-        public DialogResult msgyes(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
         int PosicionFila = 0;
         int PosicionColumna = 0;
         private void btndesconectar_Click(object sender, EventArgs e)
         {
             //desconectado al usuario
             string cadeusua = GridUser[loginx.Name, GridUser.CurrentRow.Index].Value.ToString();
-            if (msgyes($"Seguro desea Desconectar al Usuario: {cadeusua}") == DialogResult.Yes)
+            if (msgp($"Seguro desea Desconectar al Usuario: {cadeusua}") == DialogResult.Yes)
             {
                 HPResergerFunciones.Utilitarios.SacarPosicionActualFilaColumna(GridUser, out PosicionFila, out PosicionColumna);
                 Cusuario.UsuarioConectado((int)GridUser[Codigox.Name, GridUser.CurrentRow.Index].Value, "", 2);

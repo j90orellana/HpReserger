@@ -404,19 +404,19 @@ namespace HPReserger
             }
             //if (cboBono.SelectedIndex != 0 && txtImporteBono.Text.Length == 0)
             //{
-            //    MessageBox.Show("Ingrese Importe Bono", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Ingrese Importe Bono", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    txtImporteBono.Focus();
             //    return false;
             //}
             //if (txtPeriodicidad.Text.Length == 0 && cboBono.SelectedIndex != 0)
             //{
-            //    MessageBox.Show("Ingrese Periodicidad", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Ingrese Periodicidad", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    txtPeriodicidad.Focus();
             //    return false;
             //}
             //if (txtContrato.Text.Length == 0)
             //{
-            //    MessageBox.Show("Selecione Imagen de Contrato", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Selecione Imagen de Contrato", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    btnBuscarImagenContrato.Focus();
             //    return false;
             //}
@@ -484,19 +484,19 @@ namespace HPReserger
             /*
             if (txtAnexoFunciones.Text.Length == 0)
             {
-                MessageBox.Show("Selecione Imagen de Anexo de Funciones", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                Message Box.Show("Selecione Imagen de Anexo de Funciones", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarImagenAnexoFunciones.Focus();
                 return false;
             }
             if (txtSolicitudPracticas.Text.Length == 0)
             {
-                MessageBox.Show("Selecione Imagen de Solicitud de Practicas", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                Message Box.Show("Selecione Imagen de Solicitud de Practicas", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarImagenSolicitudPracticas.Focus();
                 return false;
             }
             if (txtOtros.Text.Length == 0)
             {
-                MessageBox.Show("Selecione Imagen de Otros", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                Message Box.Show("Selecione Imagen de Otros", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarImagenOtros.Focus();
                 return false;
             }*/
@@ -564,14 +564,14 @@ namespace HPReserger
                 tipojefe = Convert.ToInt32(cboJefeInmediato.SelectedValue.ToString().Substring(0, 1));
             docjefe = cboJefeInmediato.SelectedValue.ToString().Substring(1);
             tipocontra = Int32.Parse(cbotipocontratacion.SelectedValue.ToString());
-            //MessageBox.Show(tipojefe + " " + docjefe);
+            //Message Box.Show(tipojefe + " " + docjefe);
             if (dtgconten.RowCount > 0)
             {
                 numero = Convert.ToInt32(dtgconten["NRO", dtgconten.CurrentCell.RowIndex].Value.ToString());
             }
             else { numero = 0; }
             clContrato.EmpleadoContrato(numero, CodigoDocumento, NumeroDocumento, tipocontra, adendas, mercadoobras, jefe, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()), Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), tipojefe, docjefe, Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value, Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), "SI", ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones, txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
-            //MessageBox.Show(numero+" "+CodigoDocumento +" "+ NumeroDocumento);
+            //Message Box.Show(numero+" "+CodigoDocumento +" "+ NumeroDocumento);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -775,7 +775,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(1);
-                    HPResergerFunciones.frmInformativo.MostrarDialog("Contrato generado con éxito");
+                    msgOK("Contrato generado con éxito");
                     btnRegistrar.Enabled = false;
                     btnModificar.Enabled = true;
                     btncancelar_Click(sender, e);
@@ -814,7 +814,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(0);
-                    HPResergerFunciones.frmInformativo.MostrarDialogError("Contrato modificado con éxito");
+                    msgOK("Contrato modificado con éxito");
                     //Limpiar();
                     btncancelar_Click(sender, e);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
@@ -862,7 +862,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(3);
-                    HPResergerFunciones.frmInformativo.MostrarDialogError("Adenda Agregada con éxito");
+                    msgOK("Adenda Agregada con éxito");
                     btncancelar_Click(sender, e);
                     PasosAdenda(false);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
@@ -1111,10 +1111,11 @@ namespace HPReserger
                 }
                 if (dtgconten["mercadoobra", dtgconten.CurrentCell.RowIndex].Value.ToString() == "2")//&& dtgconten["adenda", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
                 {
-                    MensajeAlerta("Contrato de Planillas Programando");
+                    msgOK("Contrato de Planillas Programando");
                 }
             }
         }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void btnmercado_Click(object sender, EventArgs e)
         {
             btnobradeterminada.ForeColor = Color.Black;
@@ -1146,7 +1147,7 @@ namespace HPReserger
                         cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento, NumeroDocumento, 1);
                         if (dtgconten["mercadoobra", i].Value.ToString() == "1")
                         {
-                            btnobradeterminada.Visible = false; MensajeAlerta("Generando Adenda de Contrato de Necesidad de Mercado");
+                            btnobradeterminada.Visible = false; msgOK("Generando Adenda de Contrato de Necesidad de Mercado");
                         }
                         else
                         {

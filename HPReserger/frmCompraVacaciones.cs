@@ -121,14 +121,14 @@ namespace HPReserger
                     return;
                 }
             }
-            if (MessageBox.Show("¿ Seguro de Comprar las Vacaciones ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (msgp("¿ Seguro de Comprar las Vacaciones ?") == DialogResult.Yes)
             {
                 clCompraVacaciones.ComprarVacaciones(TipoDocumento, NumeroDocumento, dtpPeriodoComprarDesde.Value, dtpPeriodoComprarHasta.Value, Convert.ToInt32(txtDiasComprar.Text), Convert.ToDecimal(txtMontoPropuesto.Text), Convert.ToDecimal(txtMontoPactado.Text), frmLogin.CodigoUsuario, cbopago.SelectedIndex + 1, txtobservacion.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void txtMontoPactado_Leave(object sender, EventArgs e)
         {
             if (txtMontoPactado.TextLength > 0)

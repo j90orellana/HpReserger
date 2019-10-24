@@ -339,10 +339,7 @@ namespace HPReserger
             pbfactura.Image = null;
             detrac = ""; numdetraccion.Value = 0;
         }
-        public DialogResult msgp(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (estado == 1 && validar())
@@ -890,7 +887,7 @@ namespace HPReserger
                                 ch1.Value = true;
                                 break;
                         }
-                        MessageBox.Show(ch1.Value.ToString());*/
+                        Message Box.Show(ch1.Value.ToString());*/
         }
 
         private void Dtguias_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -1130,7 +1127,7 @@ namespace HPReserger
             cboigv.SelectedIndex = frmProvi.cboigv.SelectedIndex;
             cbodetraccion.SelectedIndex = frmProvi.cbodetraccion.SelectedIndex;
             numdetraccion.Value = frmProvi.numdetraccion.Value;
-            if (MessageBox.Show("Seguro Desea Provisionar esta Factura", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (msgp("Seguro Desea Provisionar esta Factura") == DialogResult.Yes)
             {
                 int detracc = 0;
                 if (cbodetraccion.Text == "NO")

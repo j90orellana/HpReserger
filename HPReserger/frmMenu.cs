@@ -1025,6 +1025,7 @@ namespace HPReserger
         }
         int cerrar = 0;
         public static Boolean AbortarCerrarPrograma = false;
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (ValidacionesParaCerrar()) e.Cancel = true;
@@ -1037,7 +1038,7 @@ namespace HPReserger
                 }
                 if (cerrar == 0)
                 {
-                    if (MessageBox.Show("Seguro Desea Salir del Sistema", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    if (msgp("Seguro Desea Salir del Sistema") == DialogResult.Yes)
                     {
                         cerrado = 0; cerrar = 10;
                         frmLogin.DesconectarUsuario();
@@ -1183,7 +1184,7 @@ namespace HPReserger
         {
             if (!ValidacionesParaCerrar())
             {
-                if (MessageBox.Show("Seguro Desea Cerrar Sesión", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (msgp("Seguro Desea Cerrar Sesión") == DialogResult.Yes)
 
                 {
                     cerrado = 1; cerrar = 5;
@@ -2074,7 +2075,7 @@ namespace HPReserger
         }
         private void cerrarTodasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea Cerrar Todas las Ventanas", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (msgp("Desea Cerrar Todas las Ventanas") == DialogResult.Yes)
             {
                 foreach (Form ventanitas in this.MdiChildren)
                 {
@@ -2439,7 +2440,7 @@ namespace HPReserger
 
         private void frmMenu_Validated(object sender, EventArgs e)
         {
-            //MessageBox.Show("y que dice Validado");
+            //Message Box.Show("y que dice Validado");
         }
         frmPagarBoletas pagarBoletas;
         private void pagarBoletasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2520,7 +2521,7 @@ namespace HPReserger
         }
         private void cerrarTodasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea Cerrar Todas las Ventanas", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (msgp("Desea Cerrar Todas las Ventanas") == DialogResult.Yes)
                 foreach (Form ventanitas in this.MdiChildren)
                     ventanitas.Close();
         }

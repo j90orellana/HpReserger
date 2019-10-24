@@ -57,11 +57,6 @@ namespace HPReserger
         {
 
         }
-        public void mensajito(string cadena)
-        {
-            MessageBox.Show(cadena);
-        }
-
         private void dtgconten_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -266,7 +261,7 @@ namespace HPReserger
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Message Box.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             try
             {
                 MailMessage email = new MailMessage();

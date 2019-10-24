@@ -417,7 +417,7 @@ namespace HPReserger
             }
             /*if (txtTelefonoFijo.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Teléfono Fijo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                Message Box.Show("Ingrese Teléfono Fijo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtTelefonoFijo.Focus();
                 return;
             }*/
@@ -1267,13 +1267,13 @@ namespace HPReserger
 
             /*if (txtTelefonoFijo.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Teléfono Fijo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                Message Box.Show("Ingrese Teléfono Fijo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtTelefonoFijo.Focus();
                 return;
             }*/
             //if (txtTelefonoCelular.Text.Length == 0)
             //{
-            //    MessageBox.Show("Ingrese Teléfono Celular", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Ingrese Teléfono Celular", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    txtTelefonoCelular.Focus();
             //    return;
             //}
@@ -1281,19 +1281,19 @@ namespace HPReserger
             //{
             //    if (txtAntecedentesPoliciales.Text.Length == 0)
             //    {
-            //        MessageBox.Show("Seleccione Imagen Antecedentes Policiales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //        Message Box.Show("Seleccione Imagen Antecedentes Policiales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //        btnAntecedentesPoliciales.Focus();
             //        return;
             //    }
             //    if (txtAntecedentesPenales.Text.Length == 0)
             //    {
-            //        MessageBox.Show("Seleccione Imagen Antecedentes Penales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //        Message Box.Show("Seleccione Imagen Antecedentes Penales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //        btnAntecedentesPenales.Focus();
             //        return;
             //    }
             //    if (txtReciboServicio.Text.Length == 0)
             //    {
-            //        MessageBox.Show("Seleccione Imagen de Recibo Servicios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //        Message Box.Show("Seleccione Imagen de Recibo Servicios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //        btnReciboServicios.Focus();
             //        return;
             //    }
@@ -1307,48 +1307,48 @@ namespace HPReserger
 
             //if (cboDepartamento.SelectedIndex == -1)
             //{
-            //    MessageBox.Show("Seleccione Departamento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Seleccione Departamento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    cboDepartamento.Focus();
             //    return;
             //}
 
             //if (cboProvincia.SelectedIndex == -1)
             //{
-            //    MessageBox.Show("Seleccione Provincia", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Seleccione Provincia", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    cboProvincia.Focus();
             //    return;
             //}
 
             //if (cboDistrito.SelectedIndex == -1)
             //{
-            //    MessageBox.Show("Seleccione Distrito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Seleccione Distrito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    cboDistrito.Focus();
             //    return;
             //}
 
             //if (cboSexo.SelectedIndex == -1)
             //{
-            //    MessageBox.Show("Seleccione Sexo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Seleccione Sexo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    cboSexo.Focus();
             //    return;
             //}
 
             //if (cboEstadoCivil.SelectedIndex == -1)
             //{
-            //    MessageBox.Show("Seleccione Estado Civil", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Seleccione Estado Civil", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    cboEstadoCivil.Focus();
             //    return;
             //}
 
             //if (cboLugarNacimiento.SelectedIndex == -1 && cbopais.Text.Trim() == "PERÚ")
             //{
-            //    MessageBox.Show("Seleccione Lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Seleccione Lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    cboLugarNacimiento.Focus();
             //    return;
             //}
             //if (cbopais.Text.Trim() != "PERÚ" && string.IsNullOrWhiteSpace(txtlugarnacimiento.Text))
             //{
-            //    MessageBox.Show("Ingresé El lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Ingresé El lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    txtlugarnacimiento.Focus();
             //    return;
             //}
@@ -1358,14 +1358,14 @@ namespace HPReserger
             //}
             //if (cboProfesion.SelectedIndex == -1)
             //{
-            //    MessageBox.Show("Seleccione Profesión", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Seleccione Profesión", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    cboProfesion.Focus();
             //    return;
             //}
 
             //if (cboGradoInstruccion.SelectedIndex == -1)
             //{
-            //    MessageBox.Show("Seleccione Grado de Instrucción", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    Message Box.Show("Seleccione Grado de Instrucción", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    cboGradoInstruccion.Focus();
             //    return;
             //}

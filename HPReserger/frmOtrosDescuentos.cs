@@ -190,14 +190,11 @@ namespace HPReserger
             }
 
         }
-        public DialogResult MSG(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btneliminar_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
-                if (MSG("Desea Eliminar Registro") == DialogResult.OK)
+                if (msgp("Desea Eliminar Registro") == DialogResult.Yes)
                 {
                     regis = (int)dtgconten[registro.Name, dtgconten.CurrentCell.RowIndex].Value;
                     CapaLogica.DesvinculacionOtrosDscto(10, regis, tipodoc, numerodoc, "", 0, null, "", desvinculacion);

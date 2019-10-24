@@ -238,7 +238,7 @@
             // 
             this.FECVENDOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.FECVENDOC.DataPropertyName = "fechaven";
-            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.Format = "dd/MM/yyyy";
             dataGridViewCellStyle7.NullValue = null;
             this.FECVENDOC.DefaultCellStyle = dataGridViewCellStyle7;
             this.FECVENDOC.HeaderText = "FEC. VENC. DOC. (DDMMAAAA)";
@@ -314,7 +314,7 @@
             // 
             this.FECHAADELANTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.FECHAADELANTO.DataPropertyName = "FECHAADE";
-            dataGridViewCellStyle9.Format = "d";
+            dataGridViewCellStyle9.Format = "dd/MM/yyyy";
             dataGridViewCellStyle9.NullValue = null;
             this.FECHAADELANTO.DefaultCellStyle = dataGridViewCellStyle9;
             this.FECHAADELANTO.HeaderText = "FECHA DE ADELANTO (DDMMAAAA)";

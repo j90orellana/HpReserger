@@ -217,7 +217,7 @@ namespace HPReserger
             cbobanco.SelectedIndex = 0;
             chkNroop.CheckState = CheckState.Indeterminate;
         }
-        public DialogResult msgp(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (msgp("Desea Cerrar Ventana") == DialogResult.Yes) { this.Close(); }

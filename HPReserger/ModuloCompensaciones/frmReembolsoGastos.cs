@@ -316,11 +316,8 @@ namespace HPReserger.ModuloCompensaciones
                 cbocuentabanco.DisplayMember = "banco";
                 cbocuentabanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue, (int)cbomoneda.SelectedValue);
             }
-        }       
-        public DialogResult msgOk(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         string BanCuenta;
         int idTipocuenta;
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -385,7 +382,7 @@ namespace HPReserger.ModuloCompensaciones
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }
-            if (msgOk("¿Seguro Desea Hacer el Abono?") == DialogResult.OK)
+            if (msgp("¿Seguro Desea Hacer el Abono?") == DialogResult.Yes)
             {
                 int numasiento = 0;
                 if (numasiento == 0)

@@ -444,7 +444,6 @@ namespace HPReserger
                 }
             }
         }
-        public DialogResult msgp(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
         private void gridDetalle_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             ItemListar = e.RowIndex;
@@ -481,7 +480,7 @@ namespace HPReserger
                     return;
                 }
 
-                if (msgp("¿ Seguro de anular Pedido Nº " + gridListar.CurrentRow.Cells[1].Value.ToString().Trim() + " ?") == System.Windows.Forms.DialogResult.Yes)
+                if (msgp("¿ Seguro de anular Pedido Nº " + gridListar.CurrentRow.Cells[1].Value.ToString().Trim() + " ?") == DialogResult.Yes)
                 {
                     clListarPedido.AnularOrdenPedido(Convert.ToInt32(gridListar.CurrentRow.Cells[1].Value.ToString()));
                     MostrarPedidos(frmLogin.CodigoUsuario);
@@ -490,6 +489,7 @@ namespace HPReserger
             }
         }
         DataTable tablita;
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         public void Cargarsiono()
         {
             tablita = new DataTable();

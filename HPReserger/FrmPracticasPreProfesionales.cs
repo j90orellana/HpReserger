@@ -53,6 +53,7 @@ namespace HPReserger
             }
         }
         public Boolean busca, acepta;
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (txtrucuni.TextLength < 10)
@@ -123,7 +124,7 @@ namespace HPReserger
             }
             if (institucion == false)
             {
-                if (MessageBox.Show("Institución Educativa no existe, Desea Guardarla ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (msgp("Institución Educativa no existe, Desea Guardarla ?") == DialogResult.Yes)
                 {
                     cdatospreprofesionales.InstitucionEducativa(txtrucuni.Text, txtrazonsocialuni.Text, txtdireccionuni.Text, 2, 2);
                     msgOK("Institución Educativa Guardada!");
@@ -258,7 +259,7 @@ namespace HPReserger
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (msgp("Desea Salir?") == DialogResult.Yes)
             {
                 acepta = false;
                 this.Close();

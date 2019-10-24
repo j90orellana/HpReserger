@@ -39,13 +39,18 @@ namespace HPReserger
         {
             CapaLogica.TablaEmpresa(cboempresa);
         }
+        Boolean Cargado;
         public void CargarDAtos()
         {
+            Cursor = Cursors.WaitCursor;
+            Cargado = false;
             dtgconten.DataSource = CapaLogica.DetraccionesPorPAgarVentas((int)cboempresa.SelectedValue);
             NumRegistrosdtg();
             SeleccionarDetracionesSeleccionadas();
             CalcularValoresRedondeoyDiferencia();
             Cursor = Cursors.Default;
+            Cargado = true;
+            CalcularTotal();
         }
         public void CalcularValoresRedondeoyDiferencia()
         {
@@ -86,6 +91,8 @@ namespace HPReserger
         }
         private void btnseleccion_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
+            Cargado = false;
             if (btnseleccion.Text == "Seleccionar Todo")
             {
                 foreach (DataGridViewRow item in dtgconten.Rows)
@@ -102,6 +109,9 @@ namespace HPReserger
                     item.Cells[opcionx.Name].Value = 0;
                 }
             }
+            Cargado = true;
+            CalcularTotal();
+            Cursor = Cursors.Default;
         }
         private void dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -206,9 +216,9 @@ namespace HPReserger
 
         private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            int x = e.RowIndex;
-            dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.OscuroUISelect;
-            dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUI;
+            //int x = e.RowIndex;
+            //dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.OscuroUISelect;
+            //dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUI;
         }
         private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -226,31 +236,35 @@ namespace HPReserger
                 //{
                 //    dtgconten[porpagarx.Name, x].Value = (decimal)dtgconten[Detraccionx.Name, x].Value;
                 //}
-                CalcularTotal();
+                if (Cargado)
+                    CalcularTotal();
             }
         }
         decimal SumDiferencia = 0, SumRedondeo = 0;
         public void CalcularTotal()
         {
-            SumDiferencia = SumRedondeo = 0;
-            sumatoria = 0;
-            int Seleccionados = 0;
-            foreach (DataGridViewRow item in dtgconten.Rows)
+            if (Cargado)
             {
-                if ((int)item.Cells[opcionx.Name].Value == 1)
-                //Valores Seleccionados
+                SumDiferencia = SumRedondeo = 0;
+                sumatoria = 0;
+                int Seleccionados = 0;
+                foreach (DataGridViewRow item in dtgconten.Rows)
                 {
-                    sumatoria += Redondear((decimal)item.Cells[ImportePEN.Name].Value);
-                    SumDiferencia += Redondear((decimal)item.Cells[xdiferencia.Name].Value);
-                    SumRedondeo += Redondear((decimal)item.Cells[xredondeo.Name].Value);
-                    Seleccionados++;
+                    if ((int)item.Cells[opcionx.Name].Value == 1)
+                    //Valores Seleccionados
+                    {
+                        sumatoria += Redondear((decimal)item.Cells[ImportePEN.Name].Value);
+                        SumDiferencia += Redondear((decimal)item.Cells[xdiferencia.Name].Value);
+                        SumRedondeo += Redondear((decimal)item.Cells[xredondeo.Name].Value);
+                        Seleccionados++;
+                    }
                 }
+                txttotal.Text = sumatoria.ToString("n2");
+                txtredondeo.Text = SumRedondeo.ToString("n2");
+                txtdiferencia.Text = SumDiferencia.ToString("n2");
+                if (Seleccionados > 0) btnaceptar.Enabled = true;
+                else btnaceptar.Enabled = false;
             }
-            txttotal.Text = sumatoria.ToString("n2");
-            txtredondeo.Text = SumRedondeo.ToString("n2");
-            txtdiferencia.Text = SumDiferencia.ToString("n2");
-            if (Seleccionados > 0) btnaceptar.Enabled = true;
-            else btnaceptar.Enabled = false;
         }
         public decimal Redondear(decimal valor) { return Configuraciones.Redondear(valor); }
         public Boolean VerificarErrorDiferencia()
@@ -284,7 +298,7 @@ namespace HPReserger
             }
             return Prueba;
         }
-        public DialogResult msgP(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNoCancel(cadena); }
+        public DialogResult msgP(string cadena) { return HPResergerFunciones.Utilitarios.msgync(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)

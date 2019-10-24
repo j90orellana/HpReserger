@@ -70,10 +70,9 @@ namespace HPReserger
         //    comboaño.DisplayMember = "codigo";
         //    comboaño.DataSource = años;
         //}
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

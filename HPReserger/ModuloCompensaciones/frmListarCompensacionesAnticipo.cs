@@ -388,15 +388,12 @@ namespace HPReserger.ModuloCompensaciones
             }
             cbopago.Text = cadena;
         }
-        public DialogResult msgOk(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
-        }      
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (ContaAnticipos + ContaFacturas > 0)
             {
-                if (msgOk("¿Seguro Desea Salir?") == DialogResult.OK) this.Close();
+                if (msgp("¿Seguro Desea Salir?") == DialogResult.Yes) this.Close();
             }
             else
                 this.Close();
@@ -474,7 +471,7 @@ namespace HPReserger.ModuloCompensaciones
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }
-            if (msgOk("¿Seguro Desea Aplicar el Anticipo?") == DialogResult.OK)
+            if (msgp("¿Seguro Desea Aplicar el Anticipo?") == DialogResult.Yes)
             {
                 //Asientos
                 int numasiento = 0;

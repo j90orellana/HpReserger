@@ -370,7 +370,7 @@ namespace HPReserger
                     //   IEnumerable<int> lista = from score in Scores where score > 80 select score;
                 }
                 dtgconten.CurrentCell = dtgconten[e.ColumnIndex, e.RowIndex];
-                // MessageBox.Show("hola");
+                // Message Box.Show("hola");
             }
         }
         public class numeros

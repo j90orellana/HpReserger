@@ -255,7 +255,7 @@ namespace HPReserger.ModuloBancario
             return Prueba;
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
-        public DialogResult msgYesNO(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        public DialogResult msgYesNO(string cadena) { return HPResergerFunciones.Utilitarios.msgp(cadena); }
         string cadenatxt = "";
         private StreamWriter st;
         private void btnaceptar_Click(object sender, EventArgs e)

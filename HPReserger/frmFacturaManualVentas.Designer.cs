@@ -599,7 +599,7 @@
             this.yFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.yFechaEmision.DataPropertyName = "FechaEmision";
             dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle49.Format = "d";
+            dataGridViewCellStyle49.Format = "dd/MM/yyyy";
             this.yFechaEmision.DefaultCellStyle = dataGridViewCellStyle49;
             this.yFechaEmision.HeaderText = "F.Emite";
             this.yFechaEmision.Name = "yFechaEmision";
@@ -611,7 +611,7 @@
             this.yFechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.yFechaVencimiento.DataPropertyName = "FechaVencimiento";
             dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle50.Format = "d";
+            dataGridViewCellStyle50.Format = "dd/MM/yyyy";
             this.yFechaVencimiento.DefaultCellStyle = dataGridViewCellStyle50;
             this.yFechaVencimiento.HeaderText = "F.Vence";
             this.yFechaVencimiento.Name = "yFechaVencimiento";

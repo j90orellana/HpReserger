@@ -120,10 +120,10 @@ namespace HPReserger
             //{
             //    cadena += $"codigo= {per.codigo} nombre={per.nombre} Edad={per.edad}\n";
             //}
-            //MessageBox.Show($"{cadena} Prueba de contain={personas.Contains(person2)} Prueba de exists= {personas.Exists(cust => cust.codigo == 1 && cust.edad == 27 && cust.nombre == "jefferson")}");
+            //Message Box.Show($"{cadena} Prueba de contain={personas.Contains(person2)} Prueba de exists= {personas.Exists(cust => cust.codigo == 1 && cust.edad == 27 && cust.nombre == "jefferson")}");
             //Persona p = personas.Find(cust => cust.codigo == 1 && cust.edad == 27 && cust.nombre == "jefferson");
             //if (p != null)
-            //    MessageBox.Show($"{p.codigo} {p.nombre} {p.edad}");
+            //    Message Box.Show($"{p.codigo} {p.nombre} {p.edad}");
             //msg("Prueba de Any= " + personas.Any(cust => cust.edad >= 27));
             //Horas Horita = new Horas() { minutos = 10, segundos = 59 };
             //List<Horas> horas = new List<Horas>();
@@ -269,14 +269,7 @@ namespace HPReserger
         {
             //HPResergerFunciones.Utilitarios.Validardocumentos(e, txtruc, 11);
         }
-        public DialogResult msgp(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
-        }
-        public DialogResult msgOkCancel(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         DialogResult PAsoBanco = DialogResult.Cancel;
         public class NotaCreditoDebito
         {
@@ -327,10 +320,7 @@ namespace HPReserger
                 {
                     msg("El Banco Seleccionado No tiene Cuenta");
                     cbobanco.Focus();
-                    //if (MSG("Desea Continuar el Proceso de pago") != DialogResult.OK)
-                    //{
                     return;
-                    //}
                 }
             //Valido Cuenta en Exceso
             if (!txtCuentaExceso.ReadOnly)
@@ -412,7 +402,7 @@ namespace HPReserger
                 if (Tdatos.Rows.Count > 0) { msg("Número de Cheque Ya Existe"); return; }
             }
             Boolean GenerarTxt = false;
-            DialogResult ResultadoDialogo = CodigoPago == "007" ? DialogResult.No : HPResergerFunciones.Utilitarios.msgYesNoCancel("Desea Generar TXT del pago?");
+            DialogResult ResultadoDialogo = CodigoPago == "007" ? DialogResult.No : HPResergerFunciones.Utilitarios.msgync("Desea Generar TXT del pago?");
             if (ResultadoDialogo == DialogResult.Yes)
             {
                 GenerarTxt = false;
@@ -425,7 +415,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    if (msgOkCancel("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?") == DialogResult.OK)
+                    if (msgp("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?") == DialogResult.Yes)
                     {
                         GenerarTxt = false;
                     }
@@ -1259,7 +1249,7 @@ namespace HPReserger
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            if (msgOkCancel("¿Desea Salir?") == DialogResult.OK)
+            if (msgp("¿Desea Salir?") == DialogResult.Yes)
             {
                 this.Close();
             }
@@ -1464,15 +1454,11 @@ namespace HPReserger
             Dtguias.EndEdit();
             Dtguias.RefreshEdit();
         }
-        public DialogResult MSG(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        }
         private void btnReversar_Click(object sender, EventArgs e)
         {
             if (Comprobantes.Count > 0)
             {
-                if (MSG("Seguro Desea Reversar") == DialogResult.OK)
+                if (msgp("Seguro Desea Reversar") == DialogResult.Yes)
                 {
                     foreach (FACTURAS xx in Comprobantes)
                     {

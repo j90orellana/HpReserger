@@ -442,6 +442,7 @@ namespace HPReserger
                 }
             }
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void Dtguias_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -452,7 +453,7 @@ namespace HPReserger
                 {
                     if (e.KeyCode == Keys.Delete)
                     {
-                        if (MessageBox.Show("Desea Eliminar la Fila", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (msgp("Desea Eliminar la Fila") == DialogResult.Yes)
                         {
                             TablaConsulta.Rows.RemoveAt(x);
                         }
@@ -579,7 +580,7 @@ namespace HPReserger
                     st = File.CreateText(path);
                     st.Write(cadenatxt);
                     st.Close();
-                    if (msgYesNO("Generado TXT con Éxito, Desea Continuar.") == DialogResult.Yes)//Cambiamos a Yes Cuando ya este!
+                    if (msgp("Generado TXT con Éxito, Desea Continuar.") == DialogResult.Yes)//Cambiamos a Yes Cuando ya este!
                     {
                         PAgoFactura = true;
                         DialogResult = DialogResult.OK;
@@ -611,8 +612,6 @@ namespace HPReserger
             return Control;
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
-        public DialogResult msgYesNO(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
-
         public void CalcularTotales()
         {
             int cont1 = 0, cont2 = 0, registros = 0;

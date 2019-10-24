@@ -622,10 +622,10 @@ namespace HPReserger
                 btnaceptar_Click(sender, new EventArgs());
             }
         }
-        public DialogResult msgyesno(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btneliminar_Click(object sender, EventArgs e)
         {
-            if (msgyesno("Desea Eliminar Cliente") == DialogResult.Yes)
+            if (msgp("Desea Eliminar Cliente") == DialogResult.Yes)
             {
                 DataRow Filita = CapaLogica.EliminarCliente((int)cbotipoid.SelectedValue, txtnroid.Text);
                 if ((int)Filita["Resultado"] == 0)

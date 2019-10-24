@@ -162,13 +162,12 @@ namespace HPReserger
             CerrarPanelTxt();
         }
         private StreamWriter st;
-        public DialogResult msgYesNo(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnTxt_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount == 0)
             {
-                var Result = msgYesNo("No hay Datos en la Grilla, Igual Desea Generar?");
+                var Result = msgp("No hay Datos en la Grilla, Igual Desea Generar?");
                 if (Result != DialogResult.Yes)
                 {
                     msg("Cancelado por el Usuario");

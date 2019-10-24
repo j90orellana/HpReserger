@@ -96,13 +96,14 @@ namespace HPReserger
                 numup.Value = (int)dtgconten[Tamañox.Name, e.RowIndex].Value;
             }
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
             if (estado == 1 && ValidarDes(txtgerencia.Text))
             {
                 cTipoId.TiposID(1, 0, txtgerencia.Text, Convert.ToInt32(numup.Value), txtcodsunat.Text);
-                msg("Ingresado Con Exito");
+                msgOK("Ingresado Con Exito");
             }
             else
             {
@@ -115,7 +116,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar " + txtgerencia.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar " + txtgerencia.Text) == DialogResult.Yes)
                         {
                             cTipoId.EliminarTipoId(Convert.ToInt32(txtcodigo.Text));
                             msgOK("Eliminado Con Exito");

@@ -324,6 +324,7 @@ namespace HPReserger
         public Boolean PasoFactura = false;
         DialogResult PAsoBancos = DialogResult.Cancel;
         DataTable TablaConsulta = new DataTable();
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (Comprobantes.Count > 0)
@@ -352,7 +353,7 @@ namespace HPReserger
                 }
                 //proceso de calculos
                 Boolean GenerarTxt = false;
-                DialogResult ResultadoDialogo = HPResergerFunciones.Utilitarios.msgYesNoCancel("Desea Generar TXT del pago?");
+                DialogResult ResultadoDialogo = HPResergerFunciones.Utilitarios.msgync("Desea Generar TXT del pago?");
                 if (ResultadoDialogo == DialogResult.Yes)
                 {
                     GenerarTxt = false;
@@ -365,7 +366,7 @@ namespace HPReserger
                     }
                     else
                     {
-                        if (HPResergerFunciones.Utilitarios.msgOkCancel("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?") == DialogResult.OK)
+                        if (msgp("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?") == DialogResult.Yes)
                         {
                             GenerarTxt = false;
                         }

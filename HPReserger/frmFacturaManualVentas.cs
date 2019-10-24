@@ -119,14 +119,7 @@ namespace HPReserger
             filita["Porcentaje"] = 0.00;
             DatosDetracciones.Rows.InsertAt(filita, 0);
         }
-        public DialogResult MsgAceptCancel(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.MsgAcceptCancel(cadena);
-        }
-        public DialogResult MsgYesNoCancel(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNoCancel(cadena);
-        }
+        public DialogResult msgync(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesNoCancel(cadena); }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboempresa.Items.Count > 0)
@@ -409,13 +402,10 @@ namespace HPReserger
             if (Dtgconten.RowCount > 0) btnAceptar.Enabled = false;
             txtmontodetraccion.Text = (decimal.Parse(txtmontodetraccion.Text)).ToString(txtmontodetraccion.Format);
         }
-        public DialogResult msgyes(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
-            if (msgyes("Eliminar Todas Las Filas") == DialogResult.Yes)
+            if (msgp("Eliminar Todas Las Filas") == DialogResult.Yes)
                 ((DataTable)Dtgconten.DataSource).Clear();
         }
         private void frmimagen_DragDrop(object sender, DragEventArgs e)
@@ -842,7 +832,7 @@ namespace HPReserger
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                 if (TPrueba1.Rows.Count > 0)
                 {
-                    DialogResult Result = MsgYesNoCancel("La Factura ya tiene un Pago. \nSolo se puede Actualizar la Imagen.");
+                    DialogResult Result = msgync("La Factura ya tiene un Pago. \nSolo se puede Actualizar la Imagen.");
                     if (Result == DialogResult.Cancel) { return; }
                     if (Result == DialogResult.Yes)
                     {
@@ -854,7 +844,7 @@ namespace HPReserger
                     }
                     if (Result == DialogResult.No)
                     {
-                        msg("Se Modificará el Registro de La Factura");
+                        msgOK("Se Modificará el Registro de La Factura");
                         ////lo eliminamos 
                         ModoEdicion(true);
                         BloquearColumnas();
@@ -1237,7 +1227,7 @@ namespace HPReserger
         {
             if (e.KeyData == Keys.Delete || e.KeyData == Keys.Back)
                 if (Estado == 1 || Estado == 2)
-                    if (msgyes("Desea Eliminar Filas") == DialogResult.Yes)
+                    if (msgp("Desea Eliminar Filas") == DialogResult.Yes)
                     {
                         foreach (DataGridViewCell item in Dtgconten.SelectedCells)
                             if (item.RowIndex >= 0)
@@ -1387,7 +1377,7 @@ namespace HPReserger
         {
             if (e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete)
             {
-                if (msgyes("Desea Eliminar la Imagen") == DialogResult.Yes)
+                if (msgp("Desea Eliminar la Imagen") == DialogResult.Yes)
                 {
                     imgfactura = null; frmimagen.Imagen = null;
                 }
@@ -1412,7 +1402,7 @@ namespace HPReserger
         }
         private void borrarImagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (msgyes("Desea Eliminar la Imagen") == DialogResult.Yes)
+            if (msgp("Desea Eliminar la Imagen") == DialogResult.Yes)
             {
                 imgfactura = null; frmimagen.Imagen = null;
             }
@@ -1634,7 +1624,7 @@ namespace HPReserger
             {
                 if (Dtgconten.RowCount == 0)
                 {
-                    if (msgyes("Seguro Desea Eliminar Factura") == DialogResult.Yes)
+                    if (msgp("Seguro Desea Eliminar Factura") == DialogResult.Yes)
                     {
                         CapaLogica.FacturaManualVentaCabeceraRemover((int)dtgBusqueda[yid.Name, dtgBusqueda.CurrentRow.Index].Value, OpcionBusqueda == 1 ? 3 : 300, (int)cbotipodoc.SelectedValue, cbotipoid.SelectedValue.ToString() + "-" + txtdoc.Text);
                         msgOK("Eliminado Con Éxito");
@@ -1643,7 +1633,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    if (msgyes("Seguro Desea Eliminar Factura con su Asiento") == DialogResult.Yes)
+                    if (msgp("Seguro Desea Eliminar Factura con su Asiento") == DialogResult.Yes)
                     {
                         DataTable TPrueba1 = CapaLogica.VerFacturasPagadasVentas((int)cbotipoid.SelectedValue + "-" + txtdoc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue, (int)cboempresa.SelectedValue);
                         DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);

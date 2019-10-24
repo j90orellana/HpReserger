@@ -418,17 +418,14 @@ namespace HPReserger
         {
             lblmsg.Text = $"Total de Registros :{Dtgconten.RowCount} " + cadena;
         }
-        public DialogResult MSG(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-        }       
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void Dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
                 if (Dtgconten.SelectedRows.Count > 0)
                 {
-                    if (MSG("Desea Eliminar Fila") == DialogResult.Yes)
+                    if (msgp("Desea Eliminar Fila") == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow item in Dtgconten.SelectedRows)
                         {
@@ -592,7 +589,7 @@ namespace HPReserger
             {
                 if (Dtgconten.SelectedRows.Count > 0)
                 {
-                    if (MSG("Desea Eliminar Fila") == DialogResult.Yes)
+                    if (msgp("Desea Eliminar Fila") == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow item in Dtgconten.SelectedRows)
                         {
@@ -800,7 +797,7 @@ namespace HPReserger
                 }
                 if (y == Dtgconten.Columns[btnborrar.Name].Index && estado == 2)
                 {
-                    if (HPResergerFunciones.Utilitarios.msgYesNo("Seguro Desea Borrar Fila") == DialogResult.Yes)
+                    if (msgp("Seguro Desea Borrar Fila") == DialogResult.Yes)
                     {
                         Dtgconten.Rows.Remove(Dtgconten.Rows[Dtgconten.CurrentRow.Index]);
                         SacarTotales();
@@ -897,7 +894,7 @@ namespace HPReserger
             {
                 if (Dtgconten.SelectedRows.Count > 0)
                 {
-                    if (MSG("Desea Eliminar Fila") == DialogResult.Yes)
+                    if (msgp("Desea Eliminar Fila") == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow item in Dtgconten.SelectedRows)
                         {

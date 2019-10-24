@@ -391,7 +391,7 @@
             this.xFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaEmision.DataPropertyName = "FechaEmision";
             dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Format = "d";
+            dataGridViewCellStyle25.Format = "dd/MM/yyyy";
             this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle25;
             this.xFechaEmision.HeaderText = "FechaEmision";
             this.xFechaEmision.Name = "xFechaEmision";
@@ -403,7 +403,7 @@
             this.xFechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaRecepcion.DataPropertyName = "FechaRecepcion";
             dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "d";
+            dataGridViewCellStyle26.Format = "dd/MM/yyyy";
             this.xFechaRecepcion.DefaultCellStyle = dataGridViewCellStyle26;
             this.xFechaRecepcion.HeaderText = "FechaRecepcion";
             this.xFechaRecepcion.Name = "xFechaRecepcion";
@@ -415,7 +415,7 @@
             this.xFechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaVencimiento.DataPropertyName = "FechaVencimiento";
             dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "d";
+            dataGridViewCellStyle27.Format = "dd/MM/yyyy";
             this.xFechaVencimiento.DefaultCellStyle = dataGridViewCellStyle27;
             this.xFechaVencimiento.HeaderText = "FechaVencimiento";
             this.xFechaVencimiento.Name = "xFechaVencimiento";
@@ -427,7 +427,7 @@
             this.xFechaContable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaContable.DataPropertyName = "FechaContable";
             dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.Format = "d";
+            dataGridViewCellStyle28.Format = "dd/MM/yyyy";
             this.xFechaContable.DefaultCellStyle = dataGridViewCellStyle28;
             this.xFechaContable.HeaderText = "FechaContable";
             this.xFechaContable.Name = "xFechaContable";

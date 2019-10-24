@@ -178,17 +178,14 @@ namespace HPReserger
             }
             msj("Agregado Todo el Grupo");
         }
-        public DialogResult MSG(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void dtgConten_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Delete || e.KeyData == Keys.Back)
             {
                 if (dtgConten.SelectedRows.Count > 0)
                 {
-                    if (MSG("Desea Eliminar Fila") == DialogResult.Yes)
+                    if (msgp("Desea Eliminar Fila") == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow item in dtgConten.SelectedRows)
                         {

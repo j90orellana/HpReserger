@@ -160,7 +160,7 @@
             // 
             this.FECVENDOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.FECVENDOC.DataPropertyName = "fecha";
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             dataGridViewCellStyle3.NullValue = null;
             this.FECVENDOC.DefaultCellStyle = dataGridViewCellStyle3;
             this.FECVENDOC.HeaderText = "FEC. VENC. DOC. (DDMMAAAA)";

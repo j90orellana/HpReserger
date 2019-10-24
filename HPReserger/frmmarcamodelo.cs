@@ -160,7 +160,7 @@ namespace HPReserger
         {
             Txtbusca.Text = "";
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
@@ -177,22 +177,22 @@ namespace HPReserger
             {
                 if (estado == 2 && VerificarDatos(marca, modelo))
                 {
-                    CArticulo.ActualizarMarcaModelo(marca, modelo, modmarca, modmodelo);estado = 0;
+                    CArticulo.ActualizarMarcaModelo(marca, modelo, modmarca, modmodelo); estado = 0;
                     msgOK("Relación Modificada Exitosamente");
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; Marca: " + cbomarca.Text + " Modelo: " + cbomodelo.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar; Marca: " + cbomarca.Text + " Modelo: " + cbomodelo.Text) == DialogResult.Yes)
                         {
-                            CArticulo.EliminarMarcaModelo(marca, modelo);estado = 0;
+                            CArticulo.EliminarMarcaModelo(marca, modelo); estado = 0;
                             msgOK("Relación Modificada Exitosamente ");
-
                         }
                     }
                 }
-            }estado = 0;
+            }
+            estado = 0;
             CargarMarcas();
             CargarModelos();
             dtgconten.DataSource = CargarModeloMarca("");

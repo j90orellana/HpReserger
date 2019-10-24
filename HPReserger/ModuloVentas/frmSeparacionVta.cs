@@ -352,7 +352,7 @@ namespace HPReserger
             {
                 if (y == dtgconten.Columns[btneliminar.Name].Index && estado == 0)
                 {
-                    if (HPResergerFunciones.Utilitarios.msgYesNo("Seguro Desea Eliminar Registro de Abono") == DialogResult.Yes)
+                    if (msgp("Seguro Desea Eliminar Registro de Abono") == DialogResult.Yes)
                     {
                         //cambiamos a estado anulado en el nombre de la imagen
                         CapaLogica.SeparacionVentaDarBajaAbono((int)dtgconten[IdSepVta.Name, x].Value);
@@ -360,6 +360,10 @@ namespace HPReserger
                     }
                 }
             }
+        }
+        public DialogResult msgp(string cadena)
+        {
+            return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena);
         }
         private void btncontrato_Click(object sender, EventArgs e)
         {

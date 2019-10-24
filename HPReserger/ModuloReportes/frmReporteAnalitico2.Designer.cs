@@ -551,7 +551,7 @@
             this.xFCtble.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFCtble.DataPropertyName = "FCtble";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             this.xFCtble.DefaultCellStyle = dataGridViewCellStyle3;
             this.xFCtble.HeaderText = "F.Ctble";
             this.xFCtble.Name = "xFCtble";

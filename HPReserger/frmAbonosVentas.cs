@@ -409,12 +409,12 @@ namespace HPReserger
             cbobanco.DataSource = CapaLogica.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
             cbobanco.Text = cadenar;
         }
-        public DialogResult msgyes(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (ListaFacturas.Count > 0)
             {
-                if (msgyes("Seguro Desea Salir") == DialogResult.Yes) this.Close();
+                if (msgp("Seguro Desea Salir") == DialogResult.Yes) this.Close();
             }
             else this.Close();
         }
@@ -496,7 +496,7 @@ namespace HPReserger
                     msg("Solo debe haber una factura seleccionada."); return;
                 }
                 ////validacion para proceder;
-                if (msgyes("¿Seguro desea aplicar la penalidad?") != DialogResult.Yes)
+                if (msgp("¿Seguro desea aplicar la penalidad?") != DialogResult.Yes)
                 {
                     return;
                 }

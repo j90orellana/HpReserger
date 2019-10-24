@@ -238,7 +238,7 @@
             this.xFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xFechaEmision.DataPropertyName = "FechaEmision";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle3;
             this.xFechaEmision.FillWeight = 165.3543F;
             this.xFechaEmision.HeaderText = "Fecha De Emisión Del Comprobante De Pago O Documento";
@@ -251,7 +251,7 @@
             this.xFechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xFechaVencimiento.DataPropertyName = "FechaVencimiento";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
             this.xFechaVencimiento.DefaultCellStyle = dataGridViewCellStyle4;
             this.xFechaVencimiento.FillWeight = 68.86443F;
             this.xFechaVencimiento.HeaderText = "Fecha De Vencimiento O Fecha De Pago (1)";
@@ -465,7 +465,7 @@
             this.xFechaDet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xFechaDet.DataPropertyName = "FechaDet";
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "d";
+            dataGridViewCellStyle19.Format = "dd/MM/yyyy";
             this.xFechaDet.DefaultCellStyle = dataGridViewCellStyle19;
             this.xFechaDet.HeaderText = "Constancia De Depósito De Detracción (3) Fecha De Emisión";
             this.xFechaDet.MinimumWidth = 100;

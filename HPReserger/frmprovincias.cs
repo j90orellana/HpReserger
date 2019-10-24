@@ -83,7 +83,7 @@ namespace HPReserger
                     }
                 }
                 Cprovincia.InsertarProvincia(coddep, codpro, cboprovincia.Text);
-                MessageBox.Show("Provincia Ingresada Exitosamente con Id:'" + codpro + "'", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                msgOK("Provincia Ingresada Exitosamente con Id:'" + codpro + "'");
                 Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
             }
             else
@@ -91,17 +91,17 @@ namespace HPReserger
                 if (estado == 2 && ValidarDes(cboprovincia.Text))
                 {
                     Cprovincia.ActualizarProvincia(coddep, codpro, cboprovincia.Text);
-                    MessageBox.Show("Provincia Modificada Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    msgOK("Provincia Modificada Exitosamente");
                     Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar: " + cboprovincia.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar: " + cboprovincia.Text) == DialogResult.Yes)
                         {
                             Cprovincia.EliminarProvincia(coddep, codpro);
-                            MessageBox.Show("Provincia Eliminada Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            msgOK("Provincia Eliminada Exitosamente");
                             Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
                         }
                     }
@@ -113,7 +113,8 @@ namespace HPReserger
             codpro = Convert.ToInt32(cboprovincia.SelectedValue.ToString());
             codprofinal = cboprovincia.Items.Count;
         }
-
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try

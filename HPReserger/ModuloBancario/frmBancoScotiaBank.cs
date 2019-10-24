@@ -293,7 +293,7 @@ namespace HPReserger.ModuloBancario
             return Prueba;
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
-        public DialogResult msgYesNO(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
 
         string cadenatxt = "";
         private StreamWriter st;
@@ -334,7 +334,7 @@ namespace HPReserger.ModuloBancario
                         st = File.CreateText(path);
                         st.Write(cadenatxt);
                         st.Close();
-                        if (msgYesNO("Generado TXT con Éxito, Desea Continuar.") == DialogResult.Yes)//Cambiamos a Yes Cuando ya este!
+                        if (msgp("Generado TXT con Éxito, Desea Continuar.") == DialogResult.Yes)//Cambiamos a Yes Cuando ya este!
                         {
                             PAgoFactura = true;
                             DialogResult = DialogResult.OK;

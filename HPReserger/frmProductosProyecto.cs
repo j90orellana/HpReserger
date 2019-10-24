@@ -144,7 +144,7 @@ namespace HPReserger
             }
             else
             {
-                if (msgyESnO("No Hay Productos, Desea Ingresar Nuevos") == DialogResult.Yes)
+                if (msgp("No Hay Productos, Desea Ingresar Nuevos") == DialogResult.Yes)
                 {
                     frmProductos frmpro = new frmProductos();
                     frmpro.FormClosed += Frmpro_FormClosed;
@@ -162,10 +162,7 @@ namespace HPReserger
             if (find)
                 btnbuscar_Click(new object { }, new EventArgs());
         }
-        public DialogResult msgyESnO(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
-        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado != 0)

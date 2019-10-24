@@ -568,7 +568,7 @@
             this.VencimientoPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.VencimientoPago.DataPropertyName = "vence";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
             this.VencimientoPago.DefaultCellStyle = dataGridViewCellStyle5;
             this.VencimientoPago.HeaderText = "Vencimiento Pago/Fecha Pagado";
             this.VencimientoPago.Name = "VencimientoPago";

@@ -75,6 +75,7 @@ namespace HPReserger
             }
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnAprobar_Click(object sender, EventArgs e)
         {
             if (ItemAprob < 0)
@@ -95,7 +96,7 @@ namespace HPReserger
                 return;
             }
 
-            if (MessageBox.Show("¿ Desea Aprobar Cotización Nº " + gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString() + " ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (msgp("¿ Desea Aprobar Cotización Nº " + gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString() + " ?") == DialogResult.Yes)
             {
                 clAprobarCotizacion.AprobacionNOCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2)), "usp_Set_Aprobacion_Cotizacion");
 
@@ -298,7 +299,7 @@ namespace HPReserger
                 frmMostrarCotizacionDetalle frmmotrar = new frmMostrarCotizacionDetalle();
                 int len = gridCotizacionesAsociadas["COTIZACION", e.RowIndex].Value.ToString().Length;
                 int numero = frmmotrar.numero = int.Parse(gridCotizacionesAsociadas["COTIZACION", e.RowIndex].Value.ToString().Substring(2, len - 2));
-                //MessageBox.Show(gridCotizacionesAsociadas["COTIZACION", e.RowIndex].Value.ToString().Substring(2, len - 2));
+                //Message Box.Show(gridCotizacionesAsociadas["COTIZACION", e.RowIndex].Value.ToString().Substring(2, len - 2));
                 frmmotrar.txtcotizacion.Text = numero.ToString();
                 frmmotrar.txtimporte.Text = gridCotizacionesAsociadas["IMPORTE", e.RowIndex].Value.ToString();
                 frmmotrar.txtruc.Text = gridCotizacionesAsociadas["CODIGOPROVEEDOR", e.RowIndex].Value.ToString();

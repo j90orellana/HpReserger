@@ -194,7 +194,7 @@
             this.fechax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechax.DataPropertyName = "fecha";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
             dataGridViewCellStyle5.NullValue = null;
             this.fechax.DefaultCellStyle = dataGridViewCellStyle5;
             this.fechax.HeaderText = "Fecha";

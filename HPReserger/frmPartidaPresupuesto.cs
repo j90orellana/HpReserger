@@ -48,7 +48,7 @@ namespace HPReserger
             {
                 estado = 0;
                 Activar();
-                frmPartidaPresupuesto_Load(sender,e);
+                frmPartidaPresupuesto_Load(sender, e);
             }
         }
 
@@ -95,7 +95,7 @@ namespace HPReserger
         {
             btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
@@ -113,7 +113,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar " + txtgerencia.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (msgp("Seguró Desea Eliminar " + txtgerencia.Text) == DialogResult.Yes)
                         {
                             cpresupuesto.EliminarParPrespuesto(Convert.ToInt32(txtcodigo.Text));
                         }

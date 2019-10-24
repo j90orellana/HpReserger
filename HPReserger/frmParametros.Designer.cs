@@ -208,7 +208,7 @@ namespace HPReserger
             // 
             this.fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fecha.DataPropertyName = "fecha";
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             this.fecha.DefaultCellStyle = dataGridViewCellStyle3;
             this.fecha.HeaderText = "Fecha";
             this.fecha.Name = "fecha";
@@ -219,7 +219,7 @@ namespace HPReserger
             // 
             this.usuari.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.usuari.DataPropertyName = "usuario";
-            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
             dataGridViewCellStyle4.NullValue = null;
             this.usuari.DefaultCellStyle = dataGridViewCellStyle4;
             this.usuari.HeaderText = "usuario";

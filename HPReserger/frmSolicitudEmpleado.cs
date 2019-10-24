@@ -253,7 +253,7 @@ namespace HPReserger
                 // CargarCombos(cboCargoPuesto, "Id_Cargo", "Cargo", "TBL_Cargo");
             }
         }
-
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void Grid2_KeyDown(object sender, KeyEventArgs e)
         {
             if (Grid2.Rows.Count > 0 && Grid2.CurrentRow.Cells[0].Value != null)
@@ -262,7 +262,7 @@ namespace HPReserger
                 {
                     if (SolicitudTienePostulantes(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2))) == false)
                     {
-                        if (MessageBox.Show("¿ Seguro de eliminar la Solicitud Nº " + Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2) + " ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        if (msgp("¿ Seguro de eliminar la Solicitud Nº " + Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2) + " ?") == DialogResult.Yes)
                         {
                             clSolicitudEmpleado.EliminarSolicitudEmpleado(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)));
                             MostrarGrid(frmLogin.CodigoUsuario);
@@ -270,7 +270,7 @@ namespace HPReserger
                     }
                     else
                     {
-                        if (MessageBox.Show("Solicitud YA tiene Postulantes, Desea Eliminar?") == DialogResult.OK)
+                        if (msgp("Solicitud YA tiene Postulantes, Desea Eliminar?") == DialogResult.Yes)
                         {
                             clSolicitudEmpleado.EliminarSolicitudEmpleado(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)));
                             MostrarGrid(frmLogin.CodigoUsuario);

@@ -412,7 +412,7 @@ namespace HPReserger
             // 
             this.fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fecha.DataPropertyName = "fecha";
-            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
             dataGridViewCellStyle3.NullValue = null;
             this.fecha.DefaultCellStyle = dataGridViewCellStyle3;
             this.fecha.HeaderText = "Fecha";
