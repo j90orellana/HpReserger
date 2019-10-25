@@ -16,7 +16,7 @@ namespace HPReserger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ModuloBancario.frmBancoBBVA());
+            //Application.Run(new ModuloCompensaciones.frmReembolsoGastosPago());
             Application.Run(new frmLogin());
         }
     }

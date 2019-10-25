@@ -108,6 +108,8 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.reembolsoGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aplicaciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anticipoProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1002,11 +1004,30 @@
             // 
             // reembolsoGastosToolStripMenuItem
             // 
+            this.reembolsoGastosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aplicaciónToolStripMenuItem1,
+            this.pagoToolStripMenuItem});
             this.reembolsoGastosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reembolsoGastosToolStripMenuItem.Image")));
             this.reembolsoGastosToolStripMenuItem.Name = "reembolsoGastosToolStripMenuItem";
             this.reembolsoGastosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.reembolsoGastosToolStripMenuItem.Text = "Reembolso Gastos";
             this.reembolsoGastosToolStripMenuItem.Click += new System.EventHandler(this.reembolsoGastosToolStripMenuItem_Click);
+            // 
+            // aplicaciónToolStripMenuItem1
+            // 
+            this.aplicaciónToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem1.Image")));
+            this.aplicaciónToolStripMenuItem1.Name = "aplicaciónToolStripMenuItem1";
+            this.aplicaciónToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aplicaciónToolStripMenuItem1.Text = "Aplicación";
+            this.aplicaciónToolStripMenuItem1.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem1_Click);
+            // 
+            // pagoToolStripMenuItem
+            // 
+            this.pagoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagoToolStripMenuItem.Image")));
+            this.pagoToolStripMenuItem.Name = "pagoToolStripMenuItem";
+            this.pagoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pagoToolStripMenuItem.Text = "Pago";
+            this.pagoToolStripMenuItem.Click += new System.EventHandler(this.pagoToolStripMenuItem_Click);
             // 
             // anticipoProveedoresToolStripMenuItem
             // 
@@ -2681,5 +2702,7 @@
         private System.Windows.Forms.ToolStripMenuItem reporteSaldosContablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem cobroInterEmpresasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aplicaciónToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem pagoToolStripMenuItem;
     }
 }

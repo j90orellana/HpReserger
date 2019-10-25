@@ -148,7 +148,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADe
-        XAAAAk1TRnQBSQFMAwEBAAH4AQQB+AEEAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
+        XAAAAk1TRnQBSQFMAwEBAAEIAQUBCAEFAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
         AgABZAMAAQEBAAEgBgABcQEC/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wBqAAMpAT8DXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
         AcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
@@ -1097,6 +1097,23 @@
         /6BwAeHa3fVwcZCalNUZ/12nuV+Aamdg8J7p+wZkU8Gmov+N+5rxYpAakFqnya63oNoZGNLWZqekrkzr
         Q8crt1n+B2FscqELIvyg2nGD/0cY/oMwlEs8+H+Uwfv/YYZQmAFgNlAMKk0YABU7ATX+gBsAYTtCpYkD
         QEMigJr+gjGQDRUmDQCdXgzCUC4tAAMDACI+RxvYpBURAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="aplicaciónToolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAD9JREFUOE9j
+        GNxgjvqG/3PVN6yGckkHI80AkGJiMVZDQYLoGKr4Mbr4XLWNRVBt+AFO24gFw8AAkgJsgAADAwAnUWPq
+        1/vwNwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="pagoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAPpJREFUOE9j
+        GAUIMEdtY8Qc9fUT5qhvWAXEM+ZqrE9YqLFOGCqNAuaprBKFMhEAqOk/FvwLiLfPVt9QPVt9fSbQguY5
+        GhsOAsX+QLUhwGy1DdkzVdYrT9PdIjhfc7PqXLWNqUC8Gaj5G5KBIPwZJA7VRhhMUtnGPk9lg9Y8tQ0u
+        s7Q2aa/SXsUGlUIFDQwNTDCF8zQ3G800nskKlSIOAJ32Ac2pX0FOnaO+MWmWxjo1kNfmqa1VAgUuUG4n
+        VBsCAAVPz9XYUDVbY30aiAbyDwHxPyBGNhSGf0O14QcL1TZLz1HbkAKL3rnqGyYCYyNmjvYqIaiSUcDA
+        wAAA3QiRLVfJgYgAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="reembolsoGastosToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

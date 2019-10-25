@@ -3443,29 +3443,10 @@ namespace HPReserger
         {
 
         }
-        ModuloCompensaciones.frmReembolsoGastos frmreembolso;
         private void reembolsoGastosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmreembolso == null)
-            {
-                frmreembolso = new ModuloCompensaciones.frmReembolsoGastos();
-                frmreembolso.MdiParent = this;
-                frmreembolso.Icon = ICono;
-                frmreembolso.FormClosed += new FormClosedEventHandler(cerrarreembolsobancario);
-                frmreembolso.Show();
-                frmMenu_SizeChanged(sender, new EventArgs());
-            }
-            else
-            {
-                frmreembolso.Activate();
-                ValidarVentanas(frmreembolso);
-            }
-        }
-        private void cerrarreembolsobancario(object sender, FormClosedEventArgs e)
-        {
-            frmreembolso = null;
-        }
 
+        }
         private void compensacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -3782,6 +3763,51 @@ namespace HPReserger
         private void Frmcobrointerempresas_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmcobrointerempresas = null;
+        }
+        ModuloCompensaciones.frmReembolsoGastos frmreembolso;
+        private void aplicaciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (frmreembolso == null)
+            {
+                frmreembolso = new ModuloCompensaciones.frmReembolsoGastos();
+                frmreembolso.MdiParent = this;
+                frmreembolso.Icon = ICono;
+                frmreembolso.FormClosed += new FormClosedEventHandler(cerrarreembolsobancario);
+                frmreembolso.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreembolso.Activate();
+                ValidarVentanas(frmreembolso);
+            }
+        }
+        private void cerrarreembolsobancario(object sender, FormClosedEventArgs e)
+        {
+            frmreembolso = null;
+        }
+        ModuloCompensaciones.frmReembolsoGastosPago frmpagoreembolso;
+        private void pagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmpagoreembolso == null)
+            {
+                frmpagoreembolso = new ModuloCompensaciones.frmReembolsoGastosPago();
+                frmpagoreembolso.MdiParent = this;
+                frmpagoreembolso.Icon = ICono;
+                frmpagoreembolso.FormClosed += new FormClosedEventHandler(cerrarpagoreembolso);
+                frmpagoreembolso.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmpagoreembolso.Activate();
+                ValidarVentanas(frmpagoreembolso);
+            }
+        }
+
+        private void cerrarpagoreembolso(object sender, FormClosedEventArgs e)
+        {
+            frmpagoreembolso = null;
         }
     }
 }

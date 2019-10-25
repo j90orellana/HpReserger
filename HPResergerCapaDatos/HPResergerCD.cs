@@ -4780,6 +4780,12 @@ namespace HPResergerCapaDatos
             object[] valores = { id, @idcomprobante, estado, Fechacompensa, tipopago, nropago };
             return bd.DataTableFromProcedure("usp_ActualizaEstadoFacturas", parametros, valores, null);
         }
+        public DataTable ReembolsoGastos_Detalle(int @opcion, int @pkid, int @empresa, int @idcomprobante, int @tipoid, string @proveedor, string @razon, string @nrocomprobante, DateTime @fechaemision, string @usuariocompensa, int @idmoneda, decimal @tcreg, decimal @montomn, decimal @montome, string @cuo, string @cuopago, int @tipopago, string @cuentabanco, string @nrooperacion, string @numpago, DateTime @fechapago, string @cuentacontable, string @glosapagos, string @glosafacturas, int @estado, int @idusuario)
+        {
+            string[] parametros = { "@opcion", "@pkid", "@empresa", "@idcomprobante", "@tipoid", "@proveedor", "@razon", "@nrocomprobante", "@fechaemision", "@usuariocompensa", "@idmoneda", "@tcreg", "@montomn", "@montome", "@cuo", "@cuopago", "@tipopago", "@cuentabanco", "@nrooperacion", "@numpago", "@fechapago", "@cuentacontable", "@glosapagos", "@glosafacturas", "@estado", "@idusuario" };
+            object[] valores = { @opcion, @pkid, @empresa, @idcomprobante, @tipoid, @proveedor, @razon, @nrocomprobante, @fechaemision, @usuariocompensa, @idmoneda, @tcreg, @montomn, @montome, @cuo, @cuopago, @tipopago, @cuentabanco, @nrooperacion, @numpago, @fechapago, @cuentacontable, @glosapagos, @glosafacturas, @estado, @idusuario };
+            return bd.DataTableFromProcedure("usp_ReembolsoGastos_Detalle", parametros, valores, null);
+        }
         public DataTable ListarCompensaciones(int empresa, int tipo, int Tipoid, string numdoc, int Estado)
         {
             string[] parametros = { "@empresa", "@tipo", "@tipoid", "@numdoc", "@Estado" };

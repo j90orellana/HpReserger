@@ -152,6 +152,12 @@
     <Compile Include="ModuloBancario\frmBancoScotiaBank.Designer.cs">
       <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCompensaciones\frmReembolsoGastosPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmReembolsoGastosPago.Designer.cs">
+      <DependentUpon>frmReembolsoGastosPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmAsientosRelacionados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1667,6 +1673,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoScotiaBank.resx">
       <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmReembolsoGastosPago.resx">
+      <DependentUpon>frmReembolsoGastosPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmAsientosRelacionados.resx">
       <DependentUpon>frmAsientosRelacionados.cs</DependentUpon>

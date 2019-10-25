@@ -85,9 +85,6 @@
             this.txttotaldifMN = new HpResergerUserControls.TextBoxPer();
             this.label6 = new System.Windows.Forms.Label();
             this.txttipocambio = new HpResergerUserControls.TextBoxPer();
-            this.cbocuentabanco = new System.Windows.Forms.ComboBox();
-            this.cbobanco = new System.Windows.Forms.ComboBox();
-            this.lblguia = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtglosa = new HpResergerUserControls.TextBoxPer();
             this.label8 = new System.Windows.Forms.Label();
@@ -98,10 +95,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txttotaldifME = new HpResergerUserControls.TextBoxPer();
             this.btnVer = new HpResergerUserControls.ButtonPer();
-            this.lblmsgsalida = new System.Windows.Forms.Label();
-            this.txtnrocheque = new HpResergerUserControls.TextBoxPer();
-            this.cbopago = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siGeDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siGeDataSetBindingSource)).BeginInit();
@@ -191,7 +184,7 @@
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtgconten.EnableHeadersVisualStyles = false;
             this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.Dtgconten.Location = new System.Drawing.Point(12, 157);
+            this.Dtgconten.Location = new System.Drawing.Point(12, 133);
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -199,7 +192,7 @@
             this.Dtgconten.RowTemplate.Height = 18;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
-            this.Dtgconten.Size = new System.Drawing.Size(910, 301);
+            this.Dtgconten.Size = new System.Drawing.Size(910, 324);
             this.Dtgconten.TabIndex = 16;
             this.Dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentClick);
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
@@ -433,7 +426,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 142);
+            this.label2.Location = new System.Drawing.Point(12, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 13);
             this.label2.TabIndex = 34;
@@ -686,39 +679,6 @@
             this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
             // 
-            // cbocuentabanco
-            // 
-            this.cbocuentabanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbocuentabanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbocuentabanco.FormattingEnabled = true;
-            this.cbocuentabanco.Location = new System.Drawing.Point(513, 118);
-            this.cbocuentabanco.Name = "cbocuentabanco";
-            this.cbocuentabanco.Size = new System.Drawing.Size(244, 21);
-            this.cbocuentabanco.TabIndex = 11;
-            // 
-            // cbobanco
-            // 
-            this.cbobanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbobanco.FormattingEnabled = true;
-            this.cbobanco.Location = new System.Drawing.Point(284, 118);
-            this.cbobanco.Name = "cbobanco";
-            this.cbobanco.Size = new System.Drawing.Size(140, 21);
-            this.cbobanco.TabIndex = 10;
-            this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
-            this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
-            // 
-            // lblguia
-            // 
-            this.lblguia.AutoSize = true;
-            this.lblguia.BackColor = System.Drawing.Color.Transparent;
-            this.lblguia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblguia.Location = new System.Drawing.Point(243, 122);
-            this.lblguia.Name = "lblguia";
-            this.lblguia.Size = new System.Drawing.Size(42, 13);
-            this.lblguia.TabIndex = 36;
-            this.lblguia.Text = "Banco:";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -726,9 +686,9 @@
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(12, 32);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(217, 13);
+            this.label7.Size = new System.Drawing.Size(284, 13);
             this.label7.TabIndex = 28;
-            this.label7.Text = "Opciones Para el Desembolso de Gastos:";
+            this.label7.Text = "Opciones Para la Aplicación de Reembolso de Gastos:";
             // 
             // txtglosa
             // 
@@ -863,9 +823,9 @@
             this.btnVer.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.btnVer.ForeColor = System.Drawing.Color.White;
             this.btnVer.Image = ((System.Drawing.Image)(resources.GetObject("btnVer.Image")));
-            this.btnVer.Location = new System.Drawing.Point(847, 94);
+            this.btnVer.Location = new System.Drawing.Point(847, 93);
             this.btnVer.Name = "btnVer";
-            this.btnVer.Size = new System.Drawing.Size(75, 21);
+            this.btnVer.Size = new System.Drawing.Size(75, 23);
             this.btnVer.TabIndex = 0;
             this.btnVer.Text = "Ver";
             this.btnVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -874,80 +834,16 @@
             this.btnVer.Visible = false;
             this.btnVer.Click += new System.EventHandler(this.btnVer_Click);
             // 
-            // lblmsgsalida
-            // 
-            this.lblmsgsalida.AutoEllipsis = true;
-            this.lblmsgsalida.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsgsalida.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmsgsalida.Location = new System.Drawing.Point(423, 122);
-            this.lblmsgsalida.Name = "lblmsgsalida";
-            this.lblmsgsalida.Size = new System.Drawing.Size(90, 13);
-            this.lblmsgsalida.TabIndex = 40;
-            this.lblmsgsalida.Text = "Salida del Pago:";
-            // 
-            // txtnrocheque
-            // 
-            this.txtnrocheque.BackColor = System.Drawing.Color.White;
-            this.txtnrocheque.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnrocheque.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtnrocheque.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnrocheque.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnrocheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnrocheque.ForeColor = System.Drawing.Color.Black;
-            this.txtnrocheque.Format = null;
-            this.txtnrocheque.Location = new System.Drawing.Point(762, 118);
-            this.txtnrocheque.MaxLength = 20;
-            this.txtnrocheque.Name = "txtnrocheque";
-            this.txtnrocheque.NextControlOnEnter = null;
-            this.txtnrocheque.Size = new System.Drawing.Size(160, 21);
-            this.txtnrocheque.TabIndex = 12;
-            this.txtnrocheque.Text = "INGRESE NRO OPERACIÓN";
-            this.txtnrocheque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnrocheque.TextoDefecto = "INGRESE NRO OPERACIÓN";
-            this.txtnrocheque.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnrocheque.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // cbopago
-            // 
-            this.cbopago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbopago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbopago.FormattingEnabled = true;
-            this.cbopago.Items.AddRange(new object[] {
-            "003 Transferencias Fondos",
-            "007 Cheque."});
-            this.cbopago.Location = new System.Drawing.Point(80, 118);
-            this.cbopago.Name = "cbopago";
-            this.cbopago.Size = new System.Drawing.Size(163, 21);
-            this.cbopago.TabIndex = 9;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 122);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 13);
-            this.label11.TabIndex = 33;
-            this.label11.Text = "Tipo Pago:";
-            // 
             // frmReembolsoGastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 493);
-            this.Controls.Add(this.cbobanco);
-            this.Controls.Add(this.lblmsgsalida);
-            this.Controls.Add(this.txtnrocheque);
-            this.Controls.Add(this.cbopago);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnVer);
             this.Controls.Add(this.cboproyecto);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtglosa);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.cbocuentabanco);
-            this.Controls.Add(this.lblguia);
             this.Controls.Add(this.cbomoneda);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnaceptar);
@@ -980,8 +876,8 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(950, 532);
             this.Name = "frmReembolsoGastos";
-            this.Nombre = "Reembolso de Gastos";
-            this.Text = "Reembolso de Gastos";
+            this.Nombre = "Reembolso de Gastos [Aplicación]";
+            this.Text = "Reembolso de Gastos [Aplicación]";
             this.Load += new System.EventHandler(this.frmReembolsoGastos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siGeDataSet)).EndInit();
@@ -1019,9 +915,6 @@
         private HpResergerUserControls.TextBoxPer txttotaldifMN;
         private System.Windows.Forms.Label label6;
         private HpResergerUserControls.TextBoxPer txttipocambio;
-        private System.Windows.Forms.ComboBox cbocuentabanco;
-        private System.Windows.Forms.ComboBox cbobanco;
-        private System.Windows.Forms.Label lblguia;
         private System.Windows.Forms.Label label7;
         private HpResergerUserControls.TextBoxPer txtglosa;
         private System.Windows.Forms.Label label8;
@@ -1051,9 +944,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuenta;
-        private System.Windows.Forms.Label lblmsgsalida;
-        private HpResergerUserControls.TextBoxPer txtnrocheque;
-        private System.Windows.Forms.ComboBox cbopago;
-        private System.Windows.Forms.Label label11;
     }
 }

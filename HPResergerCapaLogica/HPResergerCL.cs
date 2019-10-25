@@ -1564,7 +1564,6 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerUltimoIdentificador(tabla, campo);
         }
-
         public DataTable InsertarActualizarCargo(int @cod, int @opcion, string @cargo, int @usuario)
         {
             return cdOrdenPedido.InsertarActualizarCargo(cod, opcion, cargo, usuario);
@@ -2515,6 +2514,20 @@ namespace HPResergerCapaLogica
         public DataTable ActualizaEstadoFacturas(int id, int @idcomprobante, int estado, DateTime Fechacompensa, int tipopago, string nropago)
         {
             return cdOrdenPedido.ActualizaEstadoFacturas(id, @idcomprobante, estado, Fechacompensa, tipopago, nropago);
+        }
+        public DataTable ReembolsoGastos_Detalle(int @opcion, int @pkid, int @empresa, int @idcomprobante, int @tipoid, string @proveedor, string @razon, string @nrocomprobante, DateTime @fechaemision, string @usuariocompensa, int @idmoneda, decimal @tcreg, decimal @montomn, decimal @montome, string @cuo, string @cuopago, int @tipopago, string @cuentabanco, string @nrooperacion, string @numpago, DateTime @fechapago, string @cuentacontable, string @glosapagos, string @glosafacturas, int @estado, int @idusuario)
+        {
+            return cdOrdenPedido.ReembolsoGastos_Detalle(@opcion, @pkid, @empresa, @idcomprobante, @tipoid, @proveedor, @razon, @nrocomprobante, @fechaemision, @usuariocompensa, @idmoneda, @tcreg, @montomn, @montome, @cuo, @cuopago, @tipopago, @cuentabanco, @nrooperacion, @numpago, @fechapago, @cuentacontable, @glosapagos, @glosafacturas, @estado, @idusuario);
+        }
+        public DataTable ReembolsoGastos_Detalle(int @empresa)
+        {
+            DateTime f = new DateTime(); f = DateTime.Now;
+            return cdOrdenPedido.ReembolsoGastos_Detalle(6, 0, empresa, 0, 0, "", "", "", f, "", 0, 0, 0, 0, "", "", 0, "", "", "", f, "", "", "", 0, 0);
+        }
+        public DataTable ReembolsoGastos_Detalle(string usuariocompensa, int @empresa)
+        {
+            DateTime f = new DateTime(); f = DateTime.Now;
+            return cdOrdenPedido.ReembolsoGastos_Detalle(7, 0, empresa, 0, 0, "", "", "", f, usuariocompensa, 0, 0, 0, 0, "", "", 0, "", "", "", f, "", "", "", 0, 0);
         }
         public DataTable ListarCompensaciones(int empresa, int tipo, int tipoid, string numdoc)
         {
