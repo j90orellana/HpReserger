@@ -66,12 +66,12 @@
             this.lbldetalle.Name = "lbldetalle";
             this.lbldetalle.Size = new System.Drawing.Size(456, 68);
             this.lbldetalle.TabIndex = 0;
-            this.lbldetalle.Text = "Seleccione bien la opción que va a tomar";
+            this.lbldetalle.Text = "Seleccione una Opción";
             this.lbldetalle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(50)))), ((int)(((byte)(51)))));
+            this.panel1.BackColor = System.Drawing.Color.Crimson;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pbFoto);
             this.panel1.Controls.Add(this.lblmensaje);
@@ -134,7 +134,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(50)))), ((int)(((byte)(51)))));
+            this.btnCancelar.BackColor = System.Drawing.Color.Crimson;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;

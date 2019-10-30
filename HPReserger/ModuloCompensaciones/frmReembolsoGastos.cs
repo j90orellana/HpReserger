@@ -275,7 +275,7 @@ namespace HPReserger.ModuloCompensaciones
             {
                 Dtgconten[xok.Name, x].Value = ((int)Dtgconten[xok.Name, x].Value) == 1 ? 0 : 1;
             }
-            else if (e.ColumnIndex == Dtgconten.Columns[xok.Name].Index && e.ColumnIndex == 0)
+            else if (e.ColumnIndex == Dtgconten.Columns[xok.Name].Index && e.RowIndex == -1)
             {
                 if (Dtgconten.RowCount > 0)
                 {
@@ -289,8 +289,7 @@ namespace HPReserger.ModuloCompensaciones
             Dtgconten.EndEdit(); Dtgconten.RefreshEdit();
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
-        string BanCuenta;
-        int idTipocuenta;
+      
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Validaciones
@@ -319,7 +318,6 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Seleccione la Cuenta por Pagar");
                 cbocuentaxpagar.Focus(); return;
             }
-
             if (decimal.Parse(txttotalMN.Text) <= 0)
             {
                 msg("El monto del Desembolso debe ser Mayor a Cero");
@@ -353,7 +351,7 @@ namespace HPReserger.ModuloCompensaciones
                 int PosFila = 0;
                 string mensaje = "";
                 string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
-                mensaje += $"Se ha Reembolsado Abono con cuo {Cuo}";
+                mensaje += $"Se ha Aplicado Reembolsado con cuo {Cuo}";
                 int TipoPago = 0;
                 string[] Empleado = cboempleado.SelectedValue.ToString().Split('-');
                 string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper();
@@ -368,7 +366,7 @@ namespace HPReserger.ModuloCompensaciones
                 DataRow Fila = CapaLogica.VerUltimoIdentificador("tbl_reembolsogastos_Det", "pkid");
                 int SiguientePkId = 0;
                 int.TryParse(Fila["ultimo"].ToString(), out SiguientePkId);
-                SiguientePkId = +1;
+                SiguientePkId++;
                 string[] UserCompensa = cboempleado.SelectedValue.ToString().Split('-');
                 int IdLogin = frmLogin.CodigoUsuario;
                 //FActuras

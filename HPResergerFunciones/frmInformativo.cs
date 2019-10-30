@@ -19,6 +19,21 @@ namespace HPResergerFunciones
             lblmensaje.Text = cadena;
             DialogResult = DialogResult.Cancel;
         }
+        private int fkEmpresa;
+        public string Cuo { get; private set; }
+        public DateTime FechaAsiento { get; private set; }
+        public frmInformativo(string cadena, int _fkEmpresa, string _cuo, DateTime _FechaAsiento)
+        {
+            InitializeComponent();
+            lblmensaje.Text = cadena;
+            fkEmpresa = _fkEmpresa;
+            Cuo = _cuo;
+            FechaAsiento = _FechaAsiento;
+            btnAsiento.Visible = true;
+
+            
+            DialogResult = DialogResult.Cancel;
+        }
         public frmInformativo(string cabecera, string detalle)
         {
             InitializeComponent();
@@ -26,8 +41,9 @@ namespace HPResergerFunciones
             lbldetalle.Text = detalle;
             if (Error)
             {
-                panel1.BackColor = Color.FromArgb(246, 50, 51);
-                btnOK.BackColor = Color.FromArgb(246, 50, 51);
+                //246, 50, 51
+                panel1.BackColor = Color.Crimson;
+                btnOK.BackColor = Color.Crimson;
                 pbFoto.Image = ImgList.Images[1];
             }
             DialogResult = DialogResult.Cancel;
@@ -35,6 +51,12 @@ namespace HPResergerFunciones
         public static void MostrarDialog(string cadena)
         {
             frmInformativo frmInformar = new frmInformativo(cadena);
+            Error = false;
+            frmInformar.ShowDialog();
+        }
+        public static void MostrarDialog(string cadena, int fkEmpresa, string cuo, DateTime FechaAsiento)
+        {
+            frmInformativo frmInformar = new frmInformativo(cadena, fkEmpresa, cuo, FechaAsiento);
             Error = false;
             frmInformar.ShowDialog();
         }
@@ -75,8 +97,8 @@ namespace HPResergerFunciones
             btnOK.Focus();
             if (Error)
             {
-                panel1.BackColor = Color.FromArgb(246, 50, 51);
-                btnOK.BackColor = Color.FromArgb(246, 50, 51);
+                panel1.BackColor = Color.Crimson;//.FromArgb(246, 50, 51);
+                btnOK.BackColor = Color.Crimson;//.FromArgb(246, 50, 51);
                 pbFoto.Image = ImgList.Images[1];
                 lbldetalle.Text = "La Operación será Cancelada";
                 SystemSounds.Asterisk.Play();

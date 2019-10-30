@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarFacturasPagadas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,6 +42,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -83,10 +84,11 @@
             this.FechaCancelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrofic1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.centrocostox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnVer = new System.Windows.Forms.DataGridViewButtonColumn();
             this.fkasientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xidmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVer = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.SuspendLayout();
@@ -315,18 +317,19 @@
             this.FechaCancelado,
             this.nrofic1,
             this.centrocostox,
-            this.btnVer,
             this.fkasientox,
             this.xidmoneda,
-            this.xCuentaContable});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dtguias.DefaultCellStyle = dataGridViewCellStyle13;
+            this.xCuentaContable,
+            this.xglosa,
+            this.btnVer});
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dtguias.DefaultCellStyle = dataGridViewCellStyle14;
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtguias.EnableHeadersVisualStyles = false;
             this.Dtguias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -339,6 +342,7 @@
             this.Dtguias.Size = new System.Drawing.Size(1077, 341);
             this.Dtguias.TabIndex = 345;
             this.Dtguias.TabStop = false;
+            this.Dtguias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellContentClick);
             // 
             // btncancelar
             // 
@@ -510,11 +514,11 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle4.Format = "n2";
             this.subtotal.DefaultCellStyle = dataGridViewCellStyle4;
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.MinimumWidth = 70;
+            this.subtotal.HeaderText = "Sub Total";
+            this.subtotal.MinimumWidth = 50;
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 70;
+            this.subtotal.Width = 50;
             // 
             // Igv
             // 
@@ -537,10 +541,10 @@
             dataGridViewCellStyle6.Format = "n2";
             this.Total.DefaultCellStyle = dataGridViewCellStyle6;
             this.Total.HeaderText = "Total";
-            this.Total.MinimumWidth = 56;
+            this.Total.MinimumWidth = 50;
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
-            this.Total.Width = 56;
+            this.Total.Width = 50;
             // 
             // detraccion
             // 
@@ -550,10 +554,10 @@
             dataGridViewCellStyle7.Format = "n2";
             this.detraccion.DefaultCellStyle = dataGridViewCellStyle7;
             this.detraccion.HeaderText = "Detrac.";
-            this.detraccion.MinimumWidth = 70;
+            this.detraccion.MinimumWidth = 50;
             this.detraccion.Name = "detraccion";
             this.detraccion.ReadOnly = true;
-            this.detraccion.Width = 70;
+            this.detraccion.Width = 50;
             // 
             // Saldox
             // 
@@ -571,7 +575,7 @@
             // 
             // Pagox
             // 
-            this.Pagox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Pagox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.Pagox.DataPropertyName = "pago";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle9.Format = "n2";
@@ -580,13 +584,13 @@
             this.Pagox.MinimumWidth = 50;
             this.Pagox.Name = "Pagox";
             this.Pagox.ReadOnly = true;
-            this.Pagox.Width = 70;
+            this.Pagox.Width = 50;
             // 
             // FechaEmision
             // 
             this.FechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.FechaEmision.DataPropertyName = "FechaEmision";
-            dataGridViewCellStyle10.Format = "g";
+            dataGridViewCellStyle10.Format = "d";
             this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle10;
             this.FechaEmision.HeaderText = "Fecha Emisión";
             this.FechaEmision.MinimumWidth = 70;
@@ -598,14 +602,14 @@
             // 
             this.fechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.fechaRecepcion.DataPropertyName = "fechaRecepcion";
-            dataGridViewCellStyle11.Format = "g";
+            dataGridViewCellStyle11.Format = "d";
             dataGridViewCellStyle11.NullValue = null;
             this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle11;
-            this.fechaRecepcion.HeaderText = "Fecha Recepción";
-            this.fechaRecepcion.MinimumWidth = 80;
+            this.fechaRecepcion.HeaderText = "Fecha Recepc.";
+            this.fechaRecepcion.MinimumWidth = 70;
             this.fechaRecepcion.Name = "fechaRecepcion";
             this.fechaRecepcion.ReadOnly = true;
-            this.fechaRecepcion.Width = 80;
+            this.fechaRecepcion.Width = 70;
             // 
             // FechaCancelado
             // 
@@ -633,19 +637,6 @@
             this.centrocostox.Name = "centrocostox";
             this.centrocostox.Visible = false;
             // 
-            // btnVer
-            // 
-            this.btnVer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.btnVer.DataPropertyName = "ver";
-            this.btnVer.HeaderText = "Ver";
-            this.btnVer.MinimumWidth = 55;
-            this.btnVer.Name = "btnVer";
-            this.btnVer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnVer.Text = "";
-            this.btnVer.Visible = false;
-            this.btnVer.Width = 55;
-            // 
             // fkasientox
             // 
             this.fkasientox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -670,6 +661,29 @@
             this.xCuentaContable.HeaderText = "CuentaContable";
             this.xCuentaContable.Name = "xCuentaContable";
             this.xCuentaContable.Visible = false;
+            // 
+            // xglosa
+            // 
+            this.xglosa.DataPropertyName = "glosa";
+            this.xglosa.HeaderText = "Glosa";
+            this.xglosa.Name = "xglosa";
+            this.xglosa.Visible = false;
+            // 
+            // btnVer
+            // 
+            this.btnVer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.btnVer.DataPropertyName = "ver";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnVer.DefaultCellStyle = dataGridViewCellStyle13;
+            this.btnVer.HeaderText = "Ver";
+            this.btnVer.MinimumWidth = 55;
+            this.btnVer.Name = "btnVer";
+            this.btnVer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnVer.Text = "PDF";
+            this.btnVer.UseColumnTextForButtonValue = true;
+            this.btnVer.Width = 55;
             // 
             // frmListarFacturasPagadas
             // 
@@ -741,9 +755,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCancelado;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrofic1;
         private System.Windows.Forms.DataGridViewTextBoxColumn centrocostox;
-        private System.Windows.Forms.DataGridViewButtonColumn btnVer;
         private System.Windows.Forms.DataGridViewTextBoxColumn fkasientox;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidmoneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xglosa;
+        private System.Windows.Forms.DataGridViewButtonColumn btnVer;
     }
 }

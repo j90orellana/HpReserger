@@ -2529,6 +2529,16 @@ namespace HPResergerCapaLogica
             DateTime f = new DateTime(); f = DateTime.Now;
             return cdOrdenPedido.ReembolsoGastos_Detalle(7, 0, empresa, 0, 0, "", "", "", f, usuariocompensa, 0, 0, 0, 0, "", "", 0, "", "", "", f, "", "", "", 0, 0);
         }
+        public DataTable ReembolsoGastos_Detalle(int pkid, int @empresa)
+        {
+            DateTime f = new DateTime(); f = DateTime.Now;
+            return cdOrdenPedido.ReembolsoGastos_Detalle(8, pkid, empresa, 0, 0, "", "", "", f, "", 0, 0, 0, 0, "", "", 0, "", "", "", f, "", "", "", 0, 0);
+        }
+        public DataTable ReembolsoGastos_Detalle(int pkid, int empresa, string cuopago, string cuentabanco, string nrooperacion, string numpago, int tipopago, DateTime fechapago, int idlogin)
+        {
+            DateTime f = new DateTime(); f = DateTime.Now;
+            return cdOrdenPedido.ReembolsoGastos_Detalle(2, pkid, empresa, 0, 0, "", "", "", f, "", 0, 0, 0, 0, "", cuopago, tipopago, cuentabanco, nrooperacion, numpago, fechapago, "", "", "", 0, idlogin);
+        }
         public DataTable ListarCompensaciones(int empresa, int tipo, int tipoid, string numdoc)
         {
             //--Todos==10

@@ -18,19 +18,58 @@ namespace HPResergerCapaDatos
     {
         abcBaseDatos.Database bd;
         //public string DATASOURCE = "HPLAPTOP";   
-        //public static string BASEDEDATOS = "Actual";
-        //public string DATASOURCE = @"192.168.1.6\SQLEXPRESS";
-        public string DATASOURCE = "192.168.0.102";
-        public static string BASEDEDATOS = "sige";
+        public static string BASEDEDATOS = "";// "Actual";
+        public string DATASOURCE = DataBase;
+        //public string DATASOURCE = "192.168.0.102";
+        //public static string BASEDEDATOS = "sige";
         public string USERID = "jorellana";
         public string USERPASS = "Ore456";
+        public static DateTime FechaCaduca;
+        public static List<string> ListaBases;
+        public static string DataBase;
         public HPResergerCD()
         {
+            XmlDocument dato = new XmlDocument();
+            dato.Load(Application.StartupPath + "\\Datos.xml");
+            var datito = dato.ChildNodes[1];
+            BASEDEDATOS = datito["BaseDeDatos"].InnerText;
+            DataBase = @datito["DataSource"].InnerText;
+            var Bases = datito.ChildNodes[2];
+            ListaBases = new List<string>();
+            foreach (XmlNode item in Bases.ChildNodes)
+            {
+                ListaBases.Add(item.InnerText.Trim());
+            }
+            var licencia = datito.ChildNodes[3];
+            var Code = licencia["Code"].InnerText;
+            var Key = licencia["Key"].InnerText;
+            FechaCaduca = CalculoDeFechaLicencia(Code, Key);
             bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
+        }
+        private DateTime CalculoDeFechaLicencia(string code, string key)
+        {
+            DateTime FechaResul = DateTime.Now;
+            if (code.Substring(0, 1) != ((int.Parse(key.Substring(0, 2)) - 9) / 2).ToString())
+            {
+                return FechaResul;
+            }
+            if (code.Substring(2, 1) != ((int.Parse(key.Substring(4, 2)) - 7) / 4).ToString())
+            {
+                return FechaResul;
+            }
+            int añopart1 = 2000 + ((int.Parse(key.Substring(2, 2)) - 20) / 3);
+            int mespar1 = int.Parse(key.Substring(10, 2)) - 12;
+            int diapar1 = int.Parse(key.Substring(6, 2)) / 3;
+            if ((int.Parse(code.Substring(3, 1)) + int.Parse(code.Substring(1, 1))) != (int.Parse(key.Substring(8, 2))) - diapar1 - (mespar1 * 2))
+            {
+                return FechaResul;
+            }         
+            return new DateTime(añopart1, mespar1, diapar1);
         }
         public void HPResergerCDs(string BaseDatos)
         {
             BASEDEDATOS = BaseDatos;
+            DATASOURCE = @DataBase;
             bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
         }
         public DataTable ListarContratoEmpleado(int tipo, string numero)

@@ -280,5 +280,22 @@ namespace HPReserger
                 msg("No hay Datos que Exportar");
             }
         }
+
+        private void Dtguias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow R = Dtguias.Rows[e.RowIndex];
+                if (e.ColumnIndex == Dtguias.Columns[btnVer.Name].Index)
+                {
+                    if (R.Cells[fkasientox.Name].Value.ToString() != "")
+                    {
+                        ModuloContable.frmListadoAsientosContables frmReportito = new ModuloContable.frmListadoAsientosContables((int)cboempresa.SelectedValue, R.Cells[fkasientox.Name].Value.ToString(), (DateTime)R.Cells[FechaCancelado.Name].Value);
+                        frmReportito.MdiParent = this.MdiParent;
+                        frmReportito.Show();
+                    }
+                }
+            }
+        }
     }
 }

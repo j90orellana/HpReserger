@@ -134,6 +134,12 @@
     <Compile Include="frmCuadreAsientos.Designer.cs">
       <DependentUpon>frmCuadreAsientos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInformativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInformativo.Designer.cs">
+      <DependentUpon>frmInformativo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmListarFacturasPagadas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,12 @@
     </Compile>
     <Compile Include="ModuloBancario\frmBancoScotiaBank.Designer.cs">
       <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmReembolsoGastosDetalleFact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmReembolsoGastosDetalleFact.Designer.cs">
+      <DependentUpon>frmReembolsoGastosDetalleFact.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloCompensaciones\frmReembolsoGastosPago.cs">
       <SubType>Form</SubType>
@@ -1665,6 +1677,9 @@
     <EmbeddedResource Include="frmCuadreAsientos.resx">
       <DependentUpon>frmCuadreAsientos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInformativo.resx">
+      <DependentUpon>frmInformativo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmListarFacturasPagadas.resx">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
     </EmbeddedResource>
@@ -1673,6 +1688,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoScotiaBank.resx">
       <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmReembolsoGastosDetalleFact.resx">
+      <DependentUpon>frmReembolsoGastosDetalleFact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmReembolsoGastosPago.resx">
       <DependentUpon>frmReembolsoGastosPago.cs</DependentUpon>
@@ -2710,6 +2728,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Datos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Icono.ico" />
     <Content Include="ImgFiles\icons8_Close_Window_50px_3.png" />
     <None Include="Resources\erase.ico" />

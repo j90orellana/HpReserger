@@ -325,6 +325,19 @@ namespace HPReserger
             {
                 dtgconten.EndEdit(); dtgconten.RefreshEdit();
             }
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow R = dtgconten.Rows[e.RowIndex];
+                if (e.ColumnIndex == dtgconten.Columns[xcuo.Name].Index)
+                {
+                    if (R.Cells[xcuo.Name].Value.ToString() != "")
+                    {
+                        ModuloContable.frmListadoAsientosContables frmReportito = new ModuloContable.frmListadoAsientosContables((int)cboempresa.SelectedValue, R.Cells[xcuo.Name].Value.ToString());
+                        frmReportito.MdiParent = this.MdiParent;
+                        frmReportito.Show();
+                    }
+                }
+            }
             if (dtgconten.Columns[xAbonos.Name].Index == y && x >= 0)
             {
                 if (dtgconten[xAbonos.Name, x].Value.ToString() != "")
@@ -961,6 +974,7 @@ namespace HPReserger
             dtgconten.Columns[xopcion.Name].Visible = a;
             dtgconten.Columns[xpagar.Name].Visible = a;
             dtgconten.Columns[xCuentaContable.Name].Visible = !a;
+            dtgconten.Columns[xcuo.Name].Visible = !a;
             BusquedaDatos();
             if (!a) txttotalAbonado.Text = txttotaldiferencial.Text = "0.00";
         }

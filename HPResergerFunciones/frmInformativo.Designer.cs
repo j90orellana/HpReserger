@@ -36,6 +36,7 @@
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.ImgList = new System.Windows.Forms.ImageList(this.components);
+            this.btnAsiento = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
@@ -44,11 +45,11 @@
             // 
             this.lblmensaje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
-            this.lblmensaje.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmensaje.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensaje.ForeColor = System.Drawing.Color.White;
-            this.lblmensaje.Location = new System.Drawing.Point(12, 109);
+            this.lblmensaje.Location = new System.Drawing.Point(0, 109);
             this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(456, 79);
+            this.lblmensaje.Size = new System.Drawing.Size(480, 79);
             this.lblmensaje.TabIndex = 0;
             this.lblmensaje.Text = "Cabecera del Mensaje";
             this.lblmensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -57,11 +58,11 @@
             // 
             this.lbldetalle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbldetalle.BackColor = System.Drawing.Color.Transparent;
-            this.lbldetalle.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldetalle.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldetalle.ForeColor = System.Drawing.Color.DimGray;
-            this.lbldetalle.Location = new System.Drawing.Point(12, 181);
+            this.lbldetalle.Location = new System.Drawing.Point(0, 180);
             this.lbldetalle.Name = "lbldetalle";
-            this.lbldetalle.Size = new System.Drawing.Size(456, 67);
+            this.lbldetalle.Size = new System.Drawing.Size(480, 73);
             this.lbldetalle.TabIndex = 0;
             this.lbldetalle.Text = "La Operación Finalizo Exitosamente";
             this.lbldetalle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,7 +75,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(480, 188);
+            this.panel1.Size = new System.Drawing.Size(480, 182);
             this.panel1.TabIndex = 1;
             // 
             // pbFoto
@@ -93,10 +94,11 @@
             this.btnOK.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnOK.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.ForeColor = System.Drawing.Color.White;
-            this.btnOK.Location = new System.Drawing.Point(181, 247);
+            this.btnOK.Location = new System.Drawing.Point(181, 254);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(118, 42);
+            this.btnOK.Size = new System.Drawing.Size(118, 38);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "Aceptar";
             this.btnOK.UseVisualStyleBackColor = false;
@@ -111,12 +113,28 @@
             this.ImgList.Images.SetKeyName(0, "icons8_checkmark_filled_100px.png");
             this.ImgList.Images.SetKeyName(1, "icons8_delete_sign_filled_100px.png");
             // 
+            // btnAsiento
+            // 
+            this.btnAsiento.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAsiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(250)))));
+            this.btnAsiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsiento.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsiento.ForeColor = System.Drawing.Color.White;
+            this.btnAsiento.Location = new System.Drawing.Point(350, 255);
+            this.btnAsiento.Name = "btnAsiento";
+            this.btnAsiento.Size = new System.Drawing.Size(118, 37);
+            this.btnAsiento.TabIndex = 3;
+            this.btnAsiento.Text = "Ver Asiento";
+            this.btnAsiento.UseVisualStyleBackColor = false;
+            this.btnAsiento.Visible = false;
+            // 
             // frmInformativo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(480, 300);
+            this.Controls.Add(this.btnAsiento);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbldetalle);
@@ -145,5 +163,6 @@
         private System.Windows.Forms.PictureBox pbFoto;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.ImageList ImgList;
+        private System.Windows.Forms.Button btnAsiento;
     }
 }

@@ -309,21 +309,21 @@ namespace HPReserger.ModuloBancario
                     string[] campo = new string[14];
                     foreach (DataGridViewRow item in dtgconten.Rows)
                     {
-                        campo[0] = item.Cells[xRuc.Name].Value.ToString().Trim();
-                        campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xRazonSocial.Name].Value.ToString().Trim(), ' ', 60, HPResergerFunciones.Utilitarios.Direccion.izquierda);
-                        campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xNroFactura.Name].Value.ToString().Trim(), ' ', 14, HPResergerFunciones.Utilitarios.Direccion.izquierda);
-                        campo[3] = ((DateTime)item.Cells[xFechaFactura.Name].Value).ToString("yyyyMMdd");
-                        campo[4] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100(item.Cells[xMontoPagar.Name].Value.ToString(), '0', 11, HPResergerFunciones.Utilitarios.Direccion.derecha);
-                        campo[5] = item.Cells[xFormaPago.Name].Value.ToString();
-                        campo[6] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xCodigoOficina.Name].Value.ToString().Trim(), ' ', 3, HPResergerFunciones.Utilitarios.Direccion.izquierda);
-                        campo[7] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xCodigoCuenta.Name].Value.ToString().Trim(), ' ', 7, HPResergerFunciones.Utilitarios.Direccion.izquierda);
+                        campo[0] = item.Cells[xRuc.Name].Value.ToString().Trim();//11
+                        campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xRazonSocial.Name].Value.ToString().Trim(), ' ', 60, HPResergerFunciones.Utilitarios.Direccion.izquierda);//60
+                        campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xNroFactura.Name].Value.ToString().Trim(), ' ', 14, HPResergerFunciones.Utilitarios.Direccion.izquierda);//14
+                        campo[3] = ((DateTime)item.Cells[xFechaFactura.Name].Value).ToString("yyyyMMdd");//8
+                        campo[4] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100(item.Cells[xMontoPagar.Name].Value.ToString(), '0', 11, HPResergerFunciones.Utilitarios.Direccion.derecha);//11
+                        campo[5] = item.Cells[xFormaPago.Name].Value.ToString();//1
+                        campo[6] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xCodigoOficina.Name].Value.ToString().Trim(), ' ', 3, HPResergerFunciones.Utilitarios.Direccion.izquierda);//3
+                        campo[7] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xCodigoCuenta.Name].Value.ToString().Trim(), ' ', 7, HPResergerFunciones.Utilitarios.Direccion.izquierda);//7
                         //SimplePay
-                        campo[8] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xSimplePay.Name].Value.ToString().Trim(), ' ', 1, HPResergerFunciones.Utilitarios.Direccion.izquierda);
-                        campo[9] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xEmail.Name].Value.ToString().Trim(), ' ', 30, HPResergerFunciones.Utilitarios.Direccion.izquierda);
-                        campo[10] = item.Cells[xcci.Name].Value.ToString();
-                        campo[11] = item.Cells[xFactoring.Name].Value.ToString();
-                        campo[12] = item.Cells[xFechaVencimiento.Name].Value.ToString() == "" ? "        " : ((DateTime)item.Cells[xFechaVencimiento.Name].Value).ToString("yyyyMMdd");
-                        campo[13] = item.Cells[xTransExterior.Name].Value.ToString();
+                        campo[8] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xSimplePay.Name].Value.ToString().Trim(), ' ', 1, HPResergerFunciones.Utilitarios.Direccion.izquierda);//1
+                        campo[9] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xEmail.Name].Value.ToString().Trim(), ' ', 30, HPResergerFunciones.Utilitarios.Direccion.izquierda);//30
+                        campo[10] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xcci.Name].Value.ToString().Trim(), ' ', 20, HPResergerFunciones.Utilitarios.Direccion.izquierda);//20                        
+                        campo[11] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xFactoring.Name].Value.ToString().Trim(), ' ', 1, HPResergerFunciones.Utilitarios.Direccion.izquierda);//1
+                        campo[12] = item.Cells[xFechaVencimiento.Name].Value.ToString() == "" ? "        " : ((DateTime)item.Cells[xFechaVencimiento.Name].Value).ToString("yyyyMMdd");//8
+                        campo[13] = item.Cells[xTransExterior.Name].Value.ToString().Trim();//1
                         cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                     }
                     //msg(cadenatxt);

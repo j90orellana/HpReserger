@@ -172,6 +172,16 @@ namespace HPReserger
                         CargarGrilla();
                     }
                 }
+                if (e.ColumnIndex == dtgconten.Columns[xcuo.Name].Index)
+                {
+                    DataGridViewRow R = dtgconten.Rows[e.RowIndex];
+                    if (R.Cells[xcuo.Name].Value.ToString() != "")
+                    {
+                        ModuloContable.frmListadoAsientosContables frmReportito = new ModuloContable.frmListadoAsientosContables((int)cboEmpresa.SelectedValue, R.Cells[xcuo.Name].Value.ToString());
+                        frmReportito.MdiParent = this.MdiParent;
+                        frmReportito.Show();
+                    }
+                }
             }
         }
         private void cbobanco_Click(object sender, EventArgs e)

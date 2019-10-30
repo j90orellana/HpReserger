@@ -10,6 +10,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace HPReserger
 {
@@ -54,15 +55,26 @@ namespace HPReserger
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            //XmlDocument dato = new XmlDocument();
+            //dato.Load(Application.StartupPath + "\\Datos.xml");
+            //var datito = dato.ChildNodes[1];
+            //var Base = datito["BaseDeDatos"].InnerText;
+            //var Source = datito["DataSource"].InnerText;
+            //var Bases = datito.ChildNodes[2];
+            //foreach (XmlNode item in Bases.ChildNodes)
+            //{
+            //    msg(item.InnerText);
+            //}
             //var result = HPResergerFunciones.frmPregunta.MostrarDialogYesCancel($"y que dice pe jeff {(char)13} bay bay");
             //msg(result.ToString());
             //result = HPResergerFunciones.frmPregunta.MostrarDialogYesNoCancel("y que dice pe jeff\n asdasd");
             //msg(result.ToString());
             //result = HPResergerFunciones.frmPregunta.MostrarDialogYesNoCancel("y que dice pe jeff 12312312\nasdasdas");
             //msg(result.ToString());
-            cboBase.Items.Add("Actual");
-            cboBase.Items.Add("SiGE");
-            cboBase.Items.Add("Actual_Beta");
+            foreach (string item in HPResergerCapaDatos.HPResergerCD.ListaBases)
+            {
+                cboBase.Items.Add(item);
+            }
             cboBase.SelectedIndex = 0;
             clLogueo.CambiarBase(Basedatos);
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
@@ -91,7 +103,7 @@ namespace HPReserger
         private void btnLogueo_Click(object sender, EventArgs e)
         {
             //VERIFICAR LA LICENCIA
-            if (frmMenu.DateLicense.AddYears(1) < DateTime.Now)
+            if (HPResergerCapaDatos.HPResergerCD.FechaCaduca < DateTime.Now)
             {
                 frmMensajeLicencia frmmensa = new frmMensajeLicencia();
                 frmmensa.NombreTitulo = "Tu Licencia ha Caducado";

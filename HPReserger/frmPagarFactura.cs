@@ -92,6 +92,7 @@ namespace HPReserger
         }
         private void frmPagarFactura_Load(object sender, EventArgs e)
         {
+            Busqueda = false;
             cboempresa_Click_1(sender, e);
             DataRow Filita = CapaLogica.VerUltimoIdentificador("TBL_Factura", "Nro_DocPago");
             if (Filita != null)
@@ -106,6 +107,7 @@ namespace HPReserger
             frmproce.Close();
             txtCuentaExceso.Text = "";
             txtCuentaExceso.CargarTextoporDefecto();
+            Busqueda = true;
             CargarProyecto();
             //if (decimal.Parse(txttipocambio.Text) == 0) SacarTipoCambio();
             //List<Persona> personas = new List<Persona>();
@@ -873,6 +875,7 @@ namespace HPReserger
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, IdMonedaAsiento == 1 ? totalExcesoMN : totalExcesoME, 0, tc, proyecto, 0
                         , Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
                 //fin de cabecera en exceso
+                //frmInformativo.MostrarDialog($"Documento Pagado \nGenerado su Asiento {Cuo}", fkEmpresa, Cuo, FechaContable);
                 msgOK($"Documento Pagado \nGenerado su Asiento {Cuo}");
                 //btnActualizar_Click(sender, e);
                 //Cuadrar Asiento
@@ -1097,107 +1100,110 @@ namespace HPReserger
         int NumRegistros;
         public void CalcularTotal()
         {
-            //Soles
-            SumatoriaTotalsMN = 0; decimal SumaTotalPagadaMN = 0;
-            //Dolares
-            decimal SumatoriaTotalsME = 0, SumaTotalPagadaME = 0;
-            detrac = 0; NumRegistros = 0;
-            Boolean señal = false;
-            if (Dtguias.RowCount > 0)
+            if (Busqueda)
             {
-                // btnaceptar.Enabled = true;                
-                foreach (DataGridViewRow lista in Dtguias.Rows)
+                //Soles
+                SumatoriaTotalsMN = 0; decimal SumaTotalPagadaMN = 0;
+                //Dolares
+                decimal SumatoriaTotalsME = 0, SumaTotalPagadaME = 0;
+                detrac = 0; NumRegistros = 0;
+                Boolean señal = false;
+                if (Dtguias.RowCount > 0)
                 {
-                    //DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
-                    //ch1 = (DataGridViewCheckBoxCell)lista.Cells["ok"];
-                    //if (ch1.Value == null)
-                    //    ch1.Value = false;
-                    //if (lista.Cells["OK"].Value == null)
-                    //    lista.Cells["OK"].Value = false;
-                    switch ((int)lista.Cells["OK"].Value)
+                    // btnaceptar.Enabled = true;                
+                    foreach (DataGridViewRow lista in Dtguias.Rows)
                     {
-                        case 1:
-                            NumRegistros++;
-                            decimal Valor = (decimal)lista.Cells[Pagox.Name].Value;
-                            decimal Pagar = (decimal)lista.Cells[Pagox.Name].Value;
-                            if ((decimal)lista.Cells[Pagox.Name].Value > (decimal)lista.Cells[Saldox.Name].Value)
-                            {
-                                Valor = (decimal)lista.Cells[Saldox.Name].Value;
-                            }
-                            var moneda = lista.Cells[monedax.Name].Value.ToString();
-                            int idmoneda = (moneda == "SOL" ? 1 : moneda == "USD" ? 2 : 0);
-                            decimal tc = decimal.Parse(txttipocambio.TextValido());
-                            if (tc == 0) tc = 3;
-                            //Procesando
-                            if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "RH")
-                            {
-                                //soles
-                                SumatoriaTotalsMN += idmoneda == 1 ? Valor : Valor * tc;
-                                SumaTotalPagadaMN += idmoneda == 1 ? Pagar : Pagar * tc;
-                                //dolares
-                                SumatoriaTotalsME += idmoneda == 2 ? Valor : Valor / tc;
-                                SumaTotalPagadaME += idmoneda == 2 ? Pagar : Pagar / tc;
-                            }
-                            else if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "NC")
-                            {
-                                //soles
-                                SumatoriaTotalsMN -= idmoneda == 1 ? Valor : Valor * tc;
-                                SumaTotalPagadaMN -= idmoneda == 1 ? Pagar : Pagar * tc;
-                                //dolares
-                                SumatoriaTotalsME -= idmoneda == 2 ? Valor : Valor / tc;
-                                SumaTotalPagadaME -= idmoneda == 2 ? Pagar : Pagar / tc;
-                                señal = true;
-                            }
-                            else if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "ND")
-                            {
-                                //soles
-                                SumatoriaTotalsMN += idmoneda == 1 ? Valor : Valor * tc;
-                                SumaTotalPagadaMN += idmoneda == 1 ? Pagar : Pagar * tc;
-                                //dolares
-                                SumatoriaTotalsME += idmoneda == 2 ? Valor : Valor / tc;
-                                SumaTotalPagadaME += idmoneda == 2 ? Pagar : Pagar / tc;
-                                señal = true;
-                            }
-                            else
-                            {
-                                //soles
-                                SumatoriaTotalsMN += idmoneda == 1 ? Valor : Valor * tc;
-                                SumaTotalPagadaMN += idmoneda == 1 ? Pagar : Pagar * tc;
-                                //dolares
-                                SumatoriaTotalsME += idmoneda == 2 ? Valor : Valor / tc;
-                                SumaTotalPagadaME += idmoneda == 2 ? Pagar : Pagar / tc;
-                                señal = true;
-                                detrac += (decimal)lista.Cells["detraccion"].Value;
-                            }
-                            break;
-                        case 0:
-                            break;
+                        //DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
+                        //ch1 = (DataGridViewCheckBoxCell)lista.Cells["ok"];
+                        //if (ch1.Value == null)
+                        //    ch1.Value = false;
+                        //if (lista.Cells["OK"].Value == null)
+                        //    lista.Cells["OK"].Value = false;
+                        switch ((int)lista.Cells["OK"].Value)
+                        {
+                            case 1:
+                                NumRegistros++;
+                                decimal Valor = (decimal)lista.Cells[Pagox.Name].Value;
+                                decimal Pagar = (decimal)lista.Cells[Pagox.Name].Value;
+                                if ((decimal)lista.Cells[Pagox.Name].Value > (decimal)lista.Cells[Saldox.Name].Value)
+                                {
+                                    Valor = (decimal)lista.Cells[Saldox.Name].Value;
+                                }
+                                var moneda = lista.Cells[monedax.Name].Value.ToString();
+                                int idmoneda = (moneda == "SOL" ? 1 : moneda == "USD" ? 2 : 0);
+                                decimal tc = decimal.Parse(txttipocambio.TextValido());
+                                if (tc == 0) tc = 3;
+                                //Procesando
+                                if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "RH")
+                                {
+                                    //soles
+                                    SumatoriaTotalsMN += idmoneda == 1 ? Valor : Valor * tc;
+                                    SumaTotalPagadaMN += idmoneda == 1 ? Pagar : Pagar * tc;
+                                    //dolares
+                                    SumatoriaTotalsME += idmoneda == 2 ? Valor : Valor / tc;
+                                    SumaTotalPagadaME += idmoneda == 2 ? Pagar : Pagar / tc;
+                                }
+                                else if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "NC")
+                                {
+                                    //soles
+                                    SumatoriaTotalsMN -= idmoneda == 1 ? Valor : Valor * tc;
+                                    SumaTotalPagadaMN -= idmoneda == 1 ? Pagar : Pagar * tc;
+                                    //dolares
+                                    SumatoriaTotalsME -= idmoneda == 2 ? Valor : Valor / tc;
+                                    SumaTotalPagadaME -= idmoneda == 2 ? Pagar : Pagar / tc;
+                                    señal = true;
+                                }
+                                else if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "ND")
+                                {
+                                    //soles
+                                    SumatoriaTotalsMN += idmoneda == 1 ? Valor : Valor * tc;
+                                    SumaTotalPagadaMN += idmoneda == 1 ? Pagar : Pagar * tc;
+                                    //dolares
+                                    SumatoriaTotalsME += idmoneda == 2 ? Valor : Valor / tc;
+                                    SumaTotalPagadaME += idmoneda == 2 ? Pagar : Pagar / tc;
+                                    señal = true;
+                                }
+                                else
+                                {
+                                    //soles
+                                    SumatoriaTotalsMN += idmoneda == 1 ? Valor : Valor * tc;
+                                    SumaTotalPagadaMN += idmoneda == 1 ? Pagar : Pagar * tc;
+                                    //dolares
+                                    SumatoriaTotalsME += idmoneda == 2 ? Valor : Valor / tc;
+                                    SumaTotalPagadaME += idmoneda == 2 ? Pagar : Pagar / tc;
+                                    señal = true;
+                                    detrac += (decimal)lista.Cells["detraccion"].Value;
+                                }
+                                break;
+                            case 0:
+                                break;
+                        }
                     }
+                    txttotaldetrac.Text = detrac.ToString("n2");
+                    //SOLES
+                    txttotalAbonadoMN.Text = SumaTotalPagadaMN.ToString("n2");
+                    txttotalMN.Text = SumatoriaTotalsMN.ToString("n2");
+                    //DOLARES
+                    txttotalAbonadoME.Text = SumaTotalPagadaME.ToString("n2");
+                    txttotalME.Text = SumatoriaTotalsME.ToString("n2");
+                    CalcularDiferencial();
                 }
-                txttotaldetrac.Text = detrac.ToString("n2");
-                //SOLES
-                txttotalAbonadoMN.Text = SumaTotalPagadaMN.ToString("n2");
-                txttotalMN.Text = SumatoriaTotalsMN.ToString("n2");
-                //DOLARES
-                txttotalAbonadoME.Text = SumaTotalPagadaME.ToString("n2");
-                txttotalME.Text = SumatoriaTotalsME.ToString("n2");
-                CalcularDiferencial();
-            }
-            //if (!señal)
-            //{
-            //    if (sumatoria == 0)
-            //        btnaceptar.Enabled = false;
-            //    else
-            //        btnaceptar.Enabled = true;
-            //}
-            //else if (sumatoria >= 0)
-            //{
-            //    btnaceptar.Enabled = true;
-            //}
-            //else btnaceptar.Enabled = false;
-            if (NumRegistros > 0) btnaceptar.Enabled = true; else btnaceptar.Enabled = false;
+                //if (!señal)
+                //{
+                //    if (sumatoria == 0)
+                //        btnaceptar.Enabled = false;
+                //    else
+                //        btnaceptar.Enabled = true;
+                //}
+                //else if (sumatoria >= 0)
+                //{
+                //    btnaceptar.Enabled = true;
+                //}
+                //else btnaceptar.Enabled = false;
+                if (NumRegistros > 0) btnaceptar.Enabled = true; else btnaceptar.Enabled = false;
 
-            lblmensaje.Text = $"Número de Registros: { NumRegistros}/{Dtguias.RowCount} ";
+                lblmensaje.Text = $"Número de Registros: { NumRegistros}/{Dtguias.RowCount} ";
+            }
         }
         public void CalcularDiferencial()
         {
@@ -1420,15 +1426,18 @@ namespace HPReserger
                     else
                         estado = (int)Dtguias["ok", 0].Value;
                     int y = 0;
+                    Busqueda = false;
                     foreach (DataGridViewRow xx in Dtguias.Rows)
                     {
                         xx.Cells["ok"].Value = estado == 0 ? 1 : 0;
-                        Dtguias_CellContentClick(sender, new DataGridViewCellEventArgs(0, y));
+                        Dtguias_CellContentClick(sender, new DataGridViewCellEventArgs(0, xx.Index));
                         y++;
                     }
+                    Busqueda = true; CalcularTotal();
                 }
             }
         }
+        Boolean Busqueda = false;
         private void btnseleccion_Click(object sender, EventArgs e)
         {
 
@@ -1440,12 +1449,15 @@ namespace HPReserger
                 else
                     estado = (int)Dtguias["ok", 0].Value;
                 int y = 0;
+                Busqueda = false;
                 foreach (DataGridViewRow xx in Dtguias.Rows)
                 {
                     xx.Cells["ok"].Value = (estado == 0 ? 1 : 0);
                     Dtguias_CellContentClick(sender, new DataGridViewCellEventArgs(xx.Cells[OK.Name].ColumnIndex, xx.Index));
                     y++;
                 }
+                Busqueda = true;
+                CalcularTotal();
                 if (estado == 0)
                     btnseleccion.Text = "Deseleccionar  Todos";
                 else

@@ -24,6 +24,16 @@ namespace HPReserger.ModuloContable
             fkempresa = _fkEmpresa;
             cuo = _cuo;
             FechaIni = _FechaIni;
+            FechaFin = _FechaIni;
+            Busqueda = true;
+        }
+        public frmListadoAsientosContables(int _fkEmpresa, string _cuo)
+        {
+            InitializeComponent();
+            fkempresa = _fkEmpresa;
+            cuo = _cuo;
+            FechaIni = new DateTime(DateTime.Now.Year, 1, 1);
+            FechaFin = new DateTime(DateTime.Now.Year, 12, 31);
             Busqueda = true;
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
@@ -32,6 +42,7 @@ namespace HPReserger.ModuloContable
         private int fkempresa;
         private string cuo;
         private DateTime FechaIni;
+        public DateTime FechaFin;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmListadoAsientosContables_Load(object sender, EventArgs e)
         {
@@ -46,7 +57,7 @@ namespace HPReserger.ModuloContable
                 cboempresa.SelectedValue = fkempresa;
                 txtbuscuo.Text = cuo;
                 dtpfechaini.Value = FechaIni;
-                dtpfechafin.Value = FechaIni;
+                dtpfechafin.Value = FechaFin;
                 btnActualizar_Click(sender, e);
             }
         }
