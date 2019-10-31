@@ -328,9 +328,9 @@
             this.FlowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.FlowPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.FlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.FlowPanel.Location = new System.Drawing.Point(934, 54);
+            this.FlowPanel.Location = new System.Drawing.Point(934, 44);
             this.FlowPanel.Name = "FlowPanel";
-            this.FlowPanel.Size = new System.Drawing.Size(327, 507);
+            this.FlowPanel.Size = new System.Drawing.Size(327, 517);
             this.FlowPanel.TabIndex = 58;
             this.FlowPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.FlowPanel_ControlAdded);
             this.FlowPanel.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.FlowPanel_ControlRemoved_1);
@@ -361,9 +361,9 @@
             this.pbfotoempleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.pbfotoempleado.ContextMenuStrip = this.cmenuclick;
             this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
-            this.pbfotoempleado.Location = new System.Drawing.Point(1110, 23);
+            this.pbfotoempleado.Location = new System.Drawing.Point(1110, 4);
             this.pbfotoempleado.Name = "pbfotoempleado";
-            this.pbfotoempleado.Size = new System.Drawing.Size(40, 30);
+            this.pbfotoempleado.Size = new System.Drawing.Size(35, 40);
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfotoempleado.TabIndex = 54;
             this.pbfotoempleado.TabStop = false;
@@ -1017,7 +1017,7 @@
             // 
             this.aplicaciónToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem1.Image")));
             this.aplicaciónToolStripMenuItem1.Name = "aplicaciónToolStripMenuItem1";
-            this.aplicaciónToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aplicaciónToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
             this.aplicaciónToolStripMenuItem1.Text = "Aplicación";
             this.aplicaciónToolStripMenuItem1.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem1_Click);
             // 
@@ -1025,7 +1025,7 @@
             // 
             this.pagoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagoToolStripMenuItem.Image")));
             this.pagoToolStripMenuItem.Name = "pagoToolStripMenuItem";
-            this.pagoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pagoToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.pagoToolStripMenuItem.Text = "Pago";
             this.pagoToolStripMenuItem.Click += new System.EventHandler(this.pagoToolStripMenuItem_Click);
             // 
@@ -2375,7 +2375,7 @@
             this.panelOre1.Location = new System.Drawing.Point(0, 24);
             this.panelOre1.Movible = false;
             this.panelOre1.Name = "panelOre1";
-            this.panelOre1.Size = new System.Drawing.Size(1261, 30);
+            this.panelOre1.Size = new System.Drawing.Size(1261, 20);
             this.panelOre1.TabIndex = 56;
             // 
             // lblpuntero
@@ -2383,7 +2383,7 @@
             this.lblpuntero.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblpuntero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblpuntero.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblpuntero.Location = new System.Drawing.Point(621, 16);
+            this.lblpuntero.Location = new System.Drawing.Point(621, 6);
             this.lblpuntero.Name = "lblpuntero";
             this.lblpuntero.Size = new System.Drawing.Size(16, 12);
             this.lblpuntero.TabIndex = 22;
@@ -2398,12 +2398,12 @@
             this.lblwelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblwelcome.ContextMenuStrip = this.cmenuclick;
             this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblwelcome.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblwelcome.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblwelcome.ImageIndex = 0;
             this.lblwelcome.Location = new System.Drawing.Point(0, 0);
             this.lblwelcome.Name = "lblwelcome";
             this.lblwelcome.Padding = new System.Windows.Forms.Padding(0, 0, 150, 0);
-            this.lblwelcome.Size = new System.Drawing.Size(1261, 30);
+            this.lblwelcome.Size = new System.Drawing.Size(1261, 20);
             this.lblwelcome.TabIndex = 20;
             this.lblwelcome.Text = "Bienvenidos";
             this.lblwelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

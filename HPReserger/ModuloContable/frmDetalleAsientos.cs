@@ -39,6 +39,8 @@ namespace HPReserger
         public int _Moneda { get; set; }
         public bool _EsManual { get; internal set; }
         public int Estado { get; internal set; }
+        public string Glosa { get; internal set; }
+
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
         {
@@ -405,7 +407,7 @@ namespace HPReserger
                 btnaceptar.Enabled = false;
                 Dtgconten.ReadOnly = true;
                 msj("Guardado..");
-                msg("Guardado con Exito");
+                msgOK("Guardado con Exito");
             }
         }
         private void Dtgconten_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -844,6 +846,7 @@ namespace HPReserger
                     Dtgconten[codcomprobantex.Name, x - 1].Value = "0";
                     Dtgconten[tipodocx.Name, x - 1].Value = 0;
                     Dtgconten[numdocx.Name, x - 1].Value = "0";
+                    Dtgconten[glosax.Name, x - 1].Value = Glosa;
                 }
             }
 

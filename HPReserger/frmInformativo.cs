@@ -97,6 +97,7 @@ namespace HPReserger
         Timer Time = new Timer();
         private void frmInformativo_Load(object sender, EventArgs e)
         {
+            RedondearEsquinas(15, this, btnOK);
             Time.Interval = 25;
             Time.Tick += Time_Tick;
             this.Opacity = 0;
@@ -112,6 +113,19 @@ namespace HPReserger
             }
             else
                 SystemSounds.Beep.Play();
+        }
+        public static void RedondearEsquinas(int radio, params Control[] botones)
+        {
+            foreach (Control boton in botones)
+            {
+                Rectangle r = new Rectangle(0, 0, boton.Width, boton.Height);
+                System.Drawing.Drawing2D.GraphicsPath Buton = new System.Drawing.Drawing2D.GraphicsPath();
+                Buton.AddArc(r.X, r.Y, radio, radio, 180, 90);
+                Buton.AddArc(r.X + r.Width - radio, r.Y, radio, radio, 270, 90);
+                Buton.AddArc(r.X + r.Width - radio, r.Y + r.Height - radio, radio, radio, 0, 90);
+                Buton.AddArc(r.X, r.Y + r.Height - radio, radio, radio, 90, 90);
+                boton.Region = new Region(Buton);
+            }
         }
         private void Time_Tick(object sender, EventArgs e)
         {

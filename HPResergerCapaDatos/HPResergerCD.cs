@@ -32,7 +32,8 @@ namespace HPResergerCapaDatos
             XmlDocument dato = new XmlDocument();
             dato.Load(Application.StartupPath + "\\Datos.xml");
             var datito = dato.ChildNodes[1];
-            BASEDEDATOS = datito["BaseDeDatos"].InnerText;
+            if (BASEDEDATOS == "")
+                BASEDEDATOS = datito["BaseDeDatos"].InnerText;
             DataBase = @datito["DataSource"].InnerText;
             var Bases = datito.ChildNodes[2];
             ListaBases = new List<string>();
@@ -63,7 +64,7 @@ namespace HPResergerCapaDatos
             if ((int.Parse(code.Substring(3, 1)) + int.Parse(code.Substring(1, 1))) != (int.Parse(key.Substring(8, 2))) - diapar1 - (mespar1 * 2))
             {
                 return FechaResul;
-            }         
+            }
             return new DateTime(añopart1, mespar1, diapar1);
         }
         public void HPResergerCDs(string BaseDatos)

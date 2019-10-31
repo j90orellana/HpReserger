@@ -13,15 +13,16 @@ namespace HPResergerFunciones
 {
     public partial class frmInformativo : Form
     {
+
+        private int fkEmpresa;
+        public string Cuo { get; private set; }
+        public DateTime FechaAsiento { get; private set; }
         public frmInformativo(string cadena)
         {
             InitializeComponent();
             lblmensaje.Text = cadena;
             DialogResult = DialogResult.Cancel;
         }
-        private int fkEmpresa;
-        public string Cuo { get; private set; }
-        public DateTime FechaAsiento { get; private set; }
         public frmInformativo(string cadena, int _fkEmpresa, string _cuo, DateTime _FechaAsiento)
         {
             InitializeComponent();
@@ -30,8 +31,6 @@ namespace HPResergerFunciones
             Cuo = _cuo;
             FechaAsiento = _FechaAsiento;
             btnAsiento.Visible = true;
-
-            
             DialogResult = DialogResult.Cancel;
         }
         public frmInformativo(string cabecera, string detalle)
@@ -90,6 +89,7 @@ namespace HPResergerFunciones
         Timer Time = new Timer();
         private void frmInformativo_Load(object sender, EventArgs e)
         {
+            RedondearEsquinas(10, this, btnOK);
             Time.Interval = 25;
             Time.Tick += Time_Tick;
             this.Opacity = 0;
@@ -105,6 +105,19 @@ namespace HPResergerFunciones
             }
             else
                 SystemSounds.Beep.Play();
+        }
+        public static void RedondearEsquinas(int radio, params Control[] botones)
+        {
+            foreach (Control boton in botones)
+            {
+                Rectangle r = new Rectangle(0, 0, boton.Width, boton.Height);
+                System.Drawing.Drawing2D.GraphicsPath Buton = new System.Drawing.Drawing2D.GraphicsPath();
+                Buton.AddArc(r.X, r.Y, radio, radio, 180, 90);
+                Buton.AddArc(r.X + r.Width - radio, r.Y, radio, radio, 270, 90);
+                Buton.AddArc(r.X + r.Width - radio, r.Y + r.Height - radio, radio, radio, 0, 90);
+                Buton.AddArc(r.X, r.Y + r.Height - radio, radio, radio, 90, 90);
+                boton.Region = new Region(Buton);
+            }
         }
         private void Time_Tick(object sender, EventArgs e)
         {

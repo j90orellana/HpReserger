@@ -286,7 +286,7 @@ namespace HPReserger
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow R = Dtguias.Rows[e.RowIndex];
-                if (e.ColumnIndex == Dtguias.Columns[btnVer.Name].Index)
+                if (e.ColumnIndex == Dtguias.Columns[fkasientox.Name].Index)
                 {
                     if (R.Cells[fkasientox.Name].Value.ToString() != "")
                     {

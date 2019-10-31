@@ -36,12 +36,12 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnLogueo = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.lblmsg = new System.Windows.Forms.Label();
             this.cboBase = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbclose = new System.Windows.Forms.PictureBox();
             this.pbfoto = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblmsg = new System.Windows.Forms.Label();
             this.moveControl1 = new HpResergerUserControls.MoveControl(this.components);
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -145,6 +145,16 @@
             this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
             // 
+            // lblmsg
+            // 
+            this.lblmsg.ForeColor = System.Drawing.Color.White;
+            this.lblmsg.Location = new System.Drawing.Point(16, 197);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblmsg.Size = new System.Drawing.Size(309, 19);
+            this.lblmsg.TabIndex = 6;
+            this.lblmsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // cboBase
             // 
             this.cboBase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
@@ -211,16 +221,6 @@
             this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
             this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.label4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.ForeColor = System.Drawing.Color.White;
-            this.lblmsg.Location = new System.Drawing.Point(16, 197);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblmsg.Size = new System.Drawing.Size(309, 19);
-            this.lblmsg.TabIndex = 6;
-            this.lblmsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // moveControl1
             // 

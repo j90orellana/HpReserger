@@ -68,6 +68,7 @@
             this.Name = "frmReporteListadoAsientos";
             this.Nombre = "Reporte Asientos";
             this.Text = "Reporte Asientos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmReporteListadoAsientos_FormClosed);
             this.Load += new System.EventHandler(this.frmReporteListadoAsientos_Load);
             this.ResumeLayout(false);
 

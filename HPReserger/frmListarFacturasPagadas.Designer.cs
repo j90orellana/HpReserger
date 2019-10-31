@@ -84,7 +84,7 @@
             this.FechaCancelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrofic1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.centrocostox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fkasientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fkasientox = new System.Windows.Forms.DataGridViewButtonColumn();
             this.xidmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -639,14 +639,15 @@
             // 
             // fkasientox
             // 
-            this.fkasientox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.fkasientox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.fkasientox.DataPropertyName = "fkasiento";
-            this.fkasientox.HeaderText = "Cuo Pago";
+            this.fkasientox.HeaderText = "Ver PDF";
             this.fkasientox.MinimumWidth = 60;
             this.fkasientox.Name = "fkasientox";
             this.fkasientox.ReadOnly = true;
-            this.fkasientox.Visible = false;
-            this.fkasientox.Width = 75;
+            this.fkasientox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.fkasientox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.fkasientox.Width = 60;
             // 
             // xidmoneda
             // 
@@ -683,6 +684,7 @@
             this.btnVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.btnVer.Text = "PDF";
             this.btnVer.UseColumnTextForButtonValue = true;
+            this.btnVer.Visible = false;
             this.btnVer.Width = 55;
             // 
             // frmListarFacturasPagadas
@@ -755,7 +757,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCancelado;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrofic1;
         private System.Windows.Forms.DataGridViewTextBoxColumn centrocostox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fkasientox;
+        private System.Windows.Forms.DataGridViewButtonColumn fkasientox;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidmoneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xglosa;

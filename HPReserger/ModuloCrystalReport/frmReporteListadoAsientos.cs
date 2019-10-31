@@ -19,6 +19,7 @@ namespace HPReserger.ModuloCrystalReport
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
+        public FormWindowState StateInicialForm;
         public frmReporteListadoAsientos(int _empresa, DateTime _Fechaini, DateTime _Fechafin, string _cuo, string _cuenta, string _glosa, string _suboperacion, int _Estado)
         {
             InitializeComponent();
@@ -63,10 +64,10 @@ namespace HPReserger.ModuloCrystalReport
             iConnectionInfo.UserID = datos.USERID;
             iConnectionInfo.Password = datos.USERPASS;
             iConnectionInfo.ServerName = datos.DATASOURCE;
-
+            //
             iConnectionInfo.Type = ConnectionInfoType.SQL;
             CrystalDecisions.CrystalReports.Engine.Tables myTables;
-
+            //
             myTables = Reporte.Database.Tables;
             foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
             {
@@ -80,11 +81,17 @@ namespace HPReserger.ModuloCrystalReport
             crvReporte.AllowedExportFormats = (int)(ExportFormatType.PortableDocFormat | ExportFormatType.Excel | ExportFormatType.ExcelWorkbook);
             //crvReporte.Zoom(1);
             crvReporte.ReportSource = Reporte;
+            crvReporte.ToolPanelWidth = 115;
+            crvReporte.Zoom(1);
         }
         private void crystalReportViewer2_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {
             e.Handled = true;
             frmReporteListadoAsientos_Load(crvReporte, e);
+        }
+        private void frmReporteListadoAsientos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.WindowState = StateInicialForm;
         }
     }
 }

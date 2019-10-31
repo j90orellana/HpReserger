@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BorderEsquinas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BorderEsquinas.Designer.cs">
+      <DependentUpon>BorderEsquinas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ButtonOre.cs">
       <SubType>UserControl</SubType>
     </Compile>

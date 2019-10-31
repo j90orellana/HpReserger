@@ -46,7 +46,7 @@ namespace HPReserger
             tipobusca = 1;
             RellenarEstado(cboestado);
             System.Globalization.CultureInfo.CreateSpecificCulture("es-ES");
-            cARgarEmpresas();
+            CargarEmpresas();
             DateTime fechita;
             //if (chkfechavalor.Checked) 
             fechita = dtpfechavalor.Value;
@@ -76,7 +76,7 @@ namespace HPReserger
             this.Activated += frmAsientoContable_Activated;
             this.Cursor = Cursors.Default;
         }
-        public void cARgarEmpresas()
+        public void CargarEmpresas()
         {
             cboempresa.DisplayMember = "descripcion";
             cboempresa.ValueMember = "codigo";
@@ -234,6 +234,7 @@ namespace HPReserger
                                 frmdetalle.Total = (decimal)Dtgconten[debe.Name, y].Value + (decimal)Dtgconten[haber.Name, y].Value;
                                 frmdetalle.Estado = (int)Dtgconten[EstadoCuen.Name, e.RowIndex].Value;
                                 frmdetalle._dinamica = (int)dtgbusca[Iddinamica.Name, dtgbusca.CurrentCell.RowIndex].Value;
+                                frmdetalle.Glosa = txtglosa.TextValido();
                                 frmdetalle.FormClosed += new FormClosedEventHandler(Frmdetalle_FormClosed);
                                 frmdetalle.Show();
                             }
@@ -1500,7 +1501,7 @@ namespace HPReserger
         }
         public void BuscarAsiento(string cadena, int empresa, DateTime Fecha)
         {
-            cARgarEmpresas();
+            CargarEmpresas();
             Txtbusca.Text = cadena;
             cboempresa.SelectedValue = empresa;
             chkfecha.Checked = true;
@@ -1900,7 +1901,7 @@ namespace HPReserger
         {
             BuscarEmpresa = false;
             string CodText = cboempresa.Text;
-            cARgarEmpresas();
+            CargarEmpresas();
             cboempresa.Text = CodText;
             BuscarEmpresa = true;
         }

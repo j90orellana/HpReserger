@@ -55,6 +55,7 @@ namespace HPReserger
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(5, txtContraseña, txtUsuario, btnLogueo, this, cboBase);
             //XmlDocument dato = new XmlDocument();
             //dato.Load(Application.StartupPath + "\\Datos.xml");
             //var datito = dato.ChildNodes[1];
@@ -229,7 +230,7 @@ namespace HPReserger
                             this.Hide();
                             frmM = new frmMenu();
                             frmM.usuario = CodigoUsuario;
-                            frmM.Nombres = Usuario;
+                            frmM.Nombres = HpResergerUserControls.Configuraciones.MayusculaCadaPalabra(Usuario);
                             frmM.nick = txtUsuario.Text;
                             if (drAcceso["FOTO"] != null && drAcceso["FOTO"].ToString().Length > 0)
                             {

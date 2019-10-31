@@ -106,6 +106,7 @@ namespace HPReserger.ModuloContable
             //
             ModuloCrystalReport.frmReporteListadoAsientos frmReportito = new ModuloCrystalReport.frmReporteListadoAsientos((int)cboempresa.SelectedValue, dtpfechaini.Value, dtpfechafin.Value, txtbuscuo.TextValido(), txtbuscuenta.TextValido(),
                 txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido(), Valor);
+            frmReportito.StateInicialForm = this.WindowState;
             frmReportito.MdiParent = this.MdiParent;
             frmReportito.Show();
         }
