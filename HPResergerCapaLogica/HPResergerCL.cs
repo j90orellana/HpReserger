@@ -2142,9 +2142,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarProductosVender(valor, empresa, proyecto);
         }
-        public DataTable ListarNroOpBancaria(int banco, string nrocuenta, string ruc, string razon, string nroop, DateTime fecha1, DateTime fecha2, int CheckEstados, string empresa, string tipocomprobante)
+        public DataTable ListarNroOpBancaria(int banco, string nrocuenta, string ruc, string razon, string nroop, DateTime fecha1, DateTime fecha2, int CheckEstados, string empresa, string tipocomprobante, string cuo)
         {
-            return cdOrdenPedido.ListarNroOpBancaria(banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2, CheckEstados, empresa, tipocomprobante);
+            return cdOrdenPedido.ListarNroOpBancaria(banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2, CheckEstados, empresa, tipocomprobante, cuo);
         }
         public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet, int fkempresa, string cuo)
         {
@@ -2470,6 +2470,10 @@ namespace HPResergerCapaLogica
         public DataTable ReporteSaldosContables(int empresa, DateTime FechaInicioAnio, DateTime FechaFinMes)
         {
             return cdOrdenPedido.ReporteSaldosContables(empresa, FechaInicioAnio, FechaFinMes);
+        }
+        public DataTable CierreMensualSaldos(int empresa, DateTime fechaini, DateTime fechafin, decimal tccomprasbs, decimal tcventasbs)
+        {
+            return cdOrdenPedido.CierreMensualSaldos(empresa, fechaini, fechafin, tccomprasbs, tcventasbs);
         }
         public DataTable ReporteSaldosContables2(int empresa, DateTime FechaInicioAnio, DateTime FechaFinMes)
         {

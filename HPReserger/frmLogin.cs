@@ -55,6 +55,7 @@ namespace HPReserger
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(15, this, txtUsuario);
             //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(5, txtContraseña, txtUsuario, btnLogueo, this, cboBase);
             //XmlDocument dato = new XmlDocument();
             //dato.Load(Application.StartupPath + "\\Datos.xml");

@@ -130,8 +130,10 @@
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeCambioCierreSBSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.diferenciaDeCambioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.tipoDeCambioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vouchersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitudEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postulanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -363,7 +365,7 @@
             this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
             this.pbfotoempleado.Location = new System.Drawing.Point(1110, 4);
             this.pbfotoempleado.Name = "pbfotoempleado";
-            this.pbfotoempleado.Size = new System.Drawing.Size(35, 40);
+            this.pbfotoempleado.Size = new System.Drawing.Size(45, 40);
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfotoempleado.TabIndex = 54;
             this.pbfotoempleado.TabStop = false;
@@ -831,8 +833,10 @@
             this.toolStripSeparator14,
             this.periodosToolStripMenuItem,
             this.asientosAbiertosToolStripMenuItem,
-            this.tipoDeCambioToolStripMenuItem,
-            this.vouchersToolStripMenuItem});
+            this.tipoDeCambioCierreSBSToolStripMenuItem,
+            this.diferenciaDeCambioToolStripMenuItem,
+            this.toolStripSeparator17,
+            this.tipoDeCambioToolStripMenuItem});
             this.contabilidadToolStripMenuItem.Name = "contabilidadToolStripMenuItem";
             this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.contabilidadToolStripMenuItem.Tag = "2";
@@ -1199,6 +1203,27 @@
             this.asientosAbiertosToolStripMenuItem.Text = "Cierre Mensual";
             this.asientosAbiertosToolStripMenuItem.Click += new System.EventHandler(this.asientosAbiertosToolStripMenuItem_Click);
             // 
+            // tipoDeCambioCierreSBSToolStripMenuItem
+            // 
+            this.tipoDeCambioCierreSBSToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tipoDeCambioCierreSBSToolStripMenuItem.Image")));
+            this.tipoDeCambioCierreSBSToolStripMenuItem.Name = "tipoDeCambioCierreSBSToolStripMenuItem";
+            this.tipoDeCambioCierreSBSToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.tipoDeCambioCierreSBSToolStripMenuItem.Text = "Tipo de Cambio Cierre SBS";
+            this.tipoDeCambioCierreSBSToolStripMenuItem.Click += new System.EventHandler(this.tipoDeCambioCierreSBSToolStripMenuItem_Click);
+            // 
+            // diferenciaDeCambioToolStripMenuItem
+            // 
+            this.diferenciaDeCambioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("diferenciaDeCambioToolStripMenuItem.Image")));
+            this.diferenciaDeCambioToolStripMenuItem.Name = "diferenciaDeCambioToolStripMenuItem";
+            this.diferenciaDeCambioToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.diferenciaDeCambioToolStripMenuItem.Text = "Diferencia de Cambio Mensual";
+            this.diferenciaDeCambioToolStripMenuItem.Click += new System.EventHandler(this.diferenciaDeCambioToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            this.toolStripSeparator17.Size = new System.Drawing.Size(235, 6);
+            // 
             // tipoDeCambioToolStripMenuItem
             // 
             this.tipoDeCambioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tipoDeCambioToolStripMenuItem.Image")));
@@ -1209,14 +1234,6 @@
             this.tipoDeCambioToolStripMenuItem.Tag = "205";
             this.tipoDeCambioToolStripMenuItem.Text = "Tipo de Cambio";
             this.tipoDeCambioToolStripMenuItem.Click += new System.EventHandler(this.tipoDeCambioToolStripMenuItem_Click);
-            // 
-            // vouchersToolStripMenuItem
-            // 
-            this.vouchersToolStripMenuItem.Name = "vouchersToolStripMenuItem";
-            this.vouchersToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.vouchersToolStripMenuItem.Text = "Vouchers";
-            this.vouchersToolStripMenuItem.Visible = false;
-            this.vouchersToolStripMenuItem.Click += new System.EventHandler(this.vouchersToolStripMenuItem_Click);
             // 
             // planillaToolStripMenuItem
             // 
@@ -2697,12 +2714,14 @@
         public System.Windows.Forms.ToolStripMenuItem prestamoInterEmpresasToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripMenuItem reporteAnalíticoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem vouchersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem reporteSaldosContablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem cobroInterEmpresasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aplicaciónToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem pagoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeCambioCierreSBSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
+        private System.Windows.Forms.ToolStripMenuItem diferenciaDeCambioToolStripMenuItem;
     }
 }

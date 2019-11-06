@@ -72,7 +72,7 @@ namespace HPResergerFunciones
             foreach (Control boton in botones)
             {
                 Rectangle r = new Rectangle(0, 0, boton.Width, boton.Height);
-                System.Drawing.Drawing2D.GraphicsPath Buton = new System.Drawing.Drawing2D.GraphicsPath();
+                System.Drawing.Drawing2D.GraphicsPath Buton = new System.Drawing.Drawing2D.GraphicsPath(System.Drawing.Drawing2D.FillMode.Alternate);
                 Buton.AddArc(r.X, r.Y, radio, radio, 180, 90);
                 Buton.AddArc(r.X + r.Width - radio, r.Y, radio, radio, 270, 90);
                 Buton.AddArc(r.X + r.Width - radio, r.Y + r.Height - radio, radio, radio, 0, 90);

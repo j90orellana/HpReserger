@@ -18,10 +18,17 @@ namespace HPReserger
             InitializeComponent();
         }
         public DateTime fechatipo { get; set; }
+        public bool TipoCambioSBS { get; internal set; }
+
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmaddtipoCambio_Load(object sender, EventArgs e)
         {
             comboMesAño1.ActualizarMesAÑo(fechatipo.Month.ToString(), fechatipo.Year.ToString());
+            if (TipoCambioSBS)
+            {
+                txtdia.Enabled = false;
+                txtdia.Text = Configuraciones.FinDelMes(fechatipo).Day.ToString();
+            }
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
@@ -48,19 +55,38 @@ namespace HPReserger
             if (cadena == "")
             {
                 //15=si existe lo reemplaza
-                CapaLogica.TipodeCambio(15, fechas.Year, fechas.Month, fechas.Day, decimal.Parse(txtcompra.Text), decimal.Parse(txtventa.Text), null);
-                lblmsg.ForeColor = Color.Black;
-                lblmsg.Text = "Agregado con Éxito";
-                txtcompra.Text = "0.00";
-                txtventa.Text = "0.00";
-                txtdia.Text = "0";
-                txtdia.Focus();
+                if (TipoCambioSBS)
+                {
+                    CapaLogica.TipodeCambio(150, fechas.Year, fechas.Month, fechas.Day, decimal.Parse(txtcompra.Text), decimal.Parse(txtventa.Text), null);
+                    lblmsg.ForeColor = Color.Black;
+                    lblmsg.Text = "Agregado con Éxito";
+                    txtdia.Focus();
+                }
+                else
+                {
+                    CapaLogica.TipodeCambio(15, fechas.Year, fechas.Month, fechas.Day, decimal.Parse(txtcompra.Text), decimal.Parse(txtventa.Text), null);
+                    lblmsg.ForeColor = Color.Black;
+                    lblmsg.Text = "Agregado con Éxito";
+                    //txtcompra.Text = "0.00";
+                    //txtventa.Text = "0.00";
+                    txtdia.Text = "0";
+                    txtdia.Focus();
+                }
             }
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboMesAño1_CambioFechas(object sender, EventArgs e)
+        {
+            if (TipoCambioSBS)
+            {
+                txtdia.Enabled = false;
+                txtdia.Text = Configuraciones.FinDelMes(comboMesAño1.FechaInicioMes).Day.ToString();
+            }
         }
     }
 }

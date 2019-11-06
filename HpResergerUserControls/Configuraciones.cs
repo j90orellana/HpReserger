@@ -46,6 +46,16 @@ namespace HpResergerUserControls
         {
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cadena.ToLower());
         }
+        public static DateTime InicioDelMes(DateTime Fecha)
+        {
+            Fecha = new DateTime(Fecha.Year, Fecha.Month, 1);
+            return Fecha;
+        }
+        public static DateTime FinDelMes(DateTime Fecha)
+        {
+            Fecha = new DateTime(Fecha.Year, Fecha.Month, 1);
+            return Fecha.AddMonths(1).AddDays(-1);
+        }
         public static decimal Redondear(decimal valor) { return Math.Round(valor, 2, MidpointRounding.AwayFromZero); }
         public static void TiempoEjecucionMsg(Stopwatch st)
         {

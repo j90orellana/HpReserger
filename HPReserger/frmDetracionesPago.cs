@@ -222,6 +222,18 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            //Validacion de la Fecha de Recepción sea meno a la de pago
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                if ((int)item.Cells[opcionx.Name].Value == 1)
+                {
+                    if (((DateTime)item.Cells[FechaRecepcionx.Name].Value).Date > dtpFechaPago.Value.Date || ((DateTime)item.Cells[FechaRecepcionx.Name].Value).Date > dtpFechaContable.Value.Date)
+                    {
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("No se Puede Pagar Documentos con fecha de Recepción superior a la Fecha de Pago", $"No se Proceso por: La Factura: {item.Cells[nrofacturax.Name].Value.ToString()} \nRazonSocial: {item.Cells[razonx.Name].Value}");
+                        return;
+                    }
+                }
+            }
             if (dtgconten.RowCount > 0)
             {
                 if (sumatoria > 0)

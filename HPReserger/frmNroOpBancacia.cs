@@ -58,7 +58,7 @@ namespace HPReserger
                 if (chkNroop.CheckState == CheckState.Checked) CheckEstado = 1;
                 else if (chkNroop.CheckState == CheckState.Unchecked) CheckEstado = -1;
                 //
-                TDatos = CapaLogica.ListarNroOpBancaria(CodigoBanco, cuenta, txtruc.TextValido(), txtrazon.TextValido(), txtnrobanco.TextValido(), dtpfecha1.Value, dtpfecha2.Value, CheckEstado, cboEmpresa.Text, txttipodoc.Text);
+                TDatos = CapaLogica.ListarNroOpBancaria(CodigoBanco, cuenta, txtruc.TextValido(), txtrazon.TextValido(), txtnrobanco.TextValido(), dtpfecha1.Value, dtpfecha2.Value, CheckEstado, cboEmpresa.Text, txttipodoc.Text, txtcuo.TextValido());
                 foreach (DataRow item in TDatos.Rows)//id   ok
                 {
                     int valor = (int)item[idx.DataPropertyName];
@@ -219,13 +219,17 @@ namespace HPReserger
         }
         public void LimpiarDatos()
         {
+            Busqueda = false;
             dtpfecha1.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtpfecha2.Value = new DateTime(DateTime.Now.Year, 12, 31);
+            txtcuo.CargarTextoporDefecto();
             txtruc.CargarTextoporDefecto();
             txtnrobanco.CargarTextoporDefecto();
             txtrazon.CargarTextoporDefecto();
             cbobanco.SelectedIndex = 0;
             chkNroop.CheckState = CheckState.Indeterminate;
+            Busqueda = true;
+            CargarGrilla();
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
@@ -265,15 +269,22 @@ namespace HPReserger
                 msg("Ingrese Número de Operación");
                 return;
             }
-            foreach (Listado item in lista)
+            if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel($"Seguro Desea Grabar el Nro de Operación: {txtnroid.TextValido()}","Una Vez modificado, se tendra que modificar uno a uno") == DialogResult.Yes)
             {
-                CapaLogica.ActualizarNroOperacion(item.index, txtnroid.TextValido(), item.tipo, item.fkempresa, item.cuo);
+                Cursor = Cursors.WaitCursor;
+                foreach (Listado item in lista)
+                {
+                    CapaLogica.ActualizarNroOperacion(item.index, txtnroid.TextValido(), item.tipo, item.fkempresa, item.cuo);
+                }
+                msgOK("Actualizado Número de Operación");
+                txtnroid.CargarTextoporDefecto();
+                lista.Clear();
+                string cadena = txtcuo.Text;
+                LimpiarDatos();
+                txtcuo.Text = cadena;
+                CargarGrilla();
+                Cursor = Cursors.Default;
             }
-            msgOK("Actualizado Número de Operación");
-            txtnroid.CargarTextoporDefecto();
-            lista.Clear();
-            LimpiarDatos();
-            CargarGrilla();
         }
         private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -404,6 +415,11 @@ namespace HPReserger
                 CapaLogica.TablaEmpresa(cboEmpresa);
                 cboEmpresa.Text = cadena;
             }
+        }
+
+        private void txtcuo_TextChanged(object sender, EventArgs e)
+        {
+            CargarGrilla();
         }
     }
 }

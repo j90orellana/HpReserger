@@ -2608,6 +2608,10 @@ namespace HPReserger
         {
             if (Mostrado)
             {
+                foreach (var formularios in MdiChildren)
+                {
+                    formularios.SuspendLayout();
+                }
                 FlowPanel.SuspendLayout();
                 //Oculto
                 for (int i = length; i > 20; i -= 10)
@@ -2620,9 +2624,18 @@ namespace HPReserger
                 pbesquina.Image = pbesquina.ErrorImage;
                 Mostrado = false;
                 FlowPanel.ResumeLayout();
+                foreach (var formularios in MdiChildren)
+                {
+                    formularios.ResumeLayout();
+                }
             }
             else
             {
+                foreach (var formularios in MdiChildren)
+                {
+                    formularios.SuspendLayout();
+                }
+
                 FlowPanel.SuspendLayout();
                 //Muestra
                 for (int i = 20; i < length; i += 10)
@@ -2635,6 +2648,10 @@ namespace HPReserger
                 pbesquina.Image = ImagenDefault;
                 Mostrado = true;
                 FlowPanel.ResumeLayout();
+                foreach (var formularios in MdiChildren)
+                {
+                    formularios.ResumeLayout();
+                }
             }
         }
         frmPLanesEPS frplaneseps;
@@ -3808,6 +3825,51 @@ namespace HPReserger
         private void cerrarpagoreembolso(object sender, FormClosedEventArgs e)
         {
             frmpagoreembolso = null;
+        }
+        frmTipodeCambioSBS frmtipocambiosbs;
+        private void tipoDeCambioCierreSBSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmtipocambiosbs == null)
+            {
+                frmtipocambiosbs = new frmTipodeCambioSBS();
+                frmtipocambiosbs.MdiParent = this;
+                frmtipocambiosbs.Icon = ICono;
+                frmtipocambiosbs.FormClosed += new FormClosedEventHandler(cerrartipocambiosbs);
+                frmtipocambiosbs.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmtipocambiosbs.Activate();
+                ValidarVentanas(frmtipocambiosbs);
+            }
+        }
+
+        private void cerrartipocambiosbs(object sender, FormClosedEventArgs e)
+        {
+            frmtipocambiosbs = null;
+        }
+        frmDiferenciaCambioMensual frmcierremensual;
+        private void diferenciaDeCambioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcierremensual == null)
+            {
+                frmcierremensual = new frmDiferenciaCambioMensual();
+                frmcierremensual.MdiParent = this;
+                frmcierremensual.Icon = ICono;
+                frmcierremensual.FormClosed += new FormClosedEventHandler(Diferenciacerrarcierremensusal);
+                frmcierremensual.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcierremensual.Activate();
+                ValidarVentanas(frmcierremensual);
+            }
+        }
+        private void Diferenciacerrarcierremensusal(object sender, FormClosedEventArgs e)
+        {
+            frmcierremensual = null;
         }
     }
 }

@@ -100,7 +100,8 @@ namespace HPResergerFunciones
                 panel1.BackColor = Color.Crimson;//.FromArgb(246, 50, 51);
                 btnOK.BackColor = Color.Crimson;//.FromArgb(246, 50, 51);
                 pbFoto.Image = ImgList.Images[1];
-                lbldetalle.Text = "La Operación será Cancelada";
+                if (lbldetalle.Text == "La Operación Finalizo Exitosamente")
+                    lbldetalle.Text = "La Operación será Cancelada";
                 SystemSounds.Asterisk.Play();
             }
             else
@@ -111,7 +112,7 @@ namespace HPResergerFunciones
             foreach (Control boton in botones)
             {
                 Rectangle r = new Rectangle(0, 0, boton.Width, boton.Height);
-                System.Drawing.Drawing2D.GraphicsPath Buton = new System.Drawing.Drawing2D.GraphicsPath();
+                System.Drawing.Drawing2D.GraphicsPath Buton = new System.Drawing.Drawing2D.GraphicsPath( System.Drawing.Drawing2D.FillMode.Alternate);
                 Buton.AddArc(r.X, r.Y, radio, radio, 180, 90);
                 Buton.AddArc(r.X + r.Width - radio, r.Y, radio, radio, 270, 90);
                 Buton.AddArc(r.X + r.Width - radio, r.Y + r.Height - radio, radio, radio, 0, 90);

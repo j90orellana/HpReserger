@@ -29,22 +29,30 @@ namespace HPResergerCapaDatos
         public static string DataBase;
         public HPResergerCD()
         {
-            XmlDocument dato = new XmlDocument();
-            dato.Load(Application.StartupPath + "\\Datos.xml");
-            var datito = dato.ChildNodes[1];
-            if (BASEDEDATOS == "")
-                BASEDEDATOS = datito["BaseDeDatos"].InnerText;
-            DataBase = @datito["DataSource"].InnerText;
-            var Bases = datito.ChildNodes[2];
-            ListaBases = new List<string>();
-            foreach (XmlNode item in Bases.ChildNodes)
+            try
             {
-                ListaBases.Add(item.InnerText.Trim());
+                XmlDocument dato = new XmlDocument();
+                dato.Load(Application.StartupPath + "\\Datos.xml");
+                var datito = dato.ChildNodes[1];
+                if (BASEDEDATOS == "")
+                    BASEDEDATOS = datito["BaseDeDatos"].InnerText;
+                DataBase = @datito["DataSource"].InnerText;
+                var Bases = datito.ChildNodes[2];
+                ListaBases = new List<string>();
+                foreach (XmlNode item in Bases.ChildNodes)
+                {
+                    ListaBases.Add(item.InnerText.Trim());
+                }
+                var licencia = datito.ChildNodes[3];
+                var Code = licencia["Code"].InnerText;
+                var Key = licencia["Key"].InnerText;
+                FechaCaduca = CalculoDeFechaLicencia(Code, Key);
             }
-            var licencia = datito.ChildNodes[3];
-            var Code = licencia["Code"].InnerText;
-            var Key = licencia["Key"].InnerText;
-            FechaCaduca = CalculoDeFechaLicencia(Code, Key);
+            catch (Exception)
+            {
+                DATASOURCE = "192.168.0.102";
+                BASEDEDATOS = "sige";
+            }
             bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
         }
         private DateTime CalculoDeFechaLicencia(string code, string key)
@@ -4435,10 +4443,10 @@ namespace HPResergerCapaDatos
             object[] valores = { valor, empresa, proyecto };
             return bd.DataTableFromProcedure("[usp_ListarProductosVender]", parametros, valores, null);
         }
-        public DataTable ListarNroOpBancaria(int banco, string nrocuenta, string ruc, string razon, string nroop, DateTime fecha1, DateTime fecha2, int checkestados, string empresa, string tipocomprobante)
+        public DataTable ListarNroOpBancaria(int banco, string nrocuenta, string ruc, string razon, string nroop, DateTime fecha1, DateTime fecha2, int checkestados, string empresa, string tipocomprobante, string cuo)
         {
-            string[] parametros = { "@Banco", "@Nrocuenta", "@Ruc", "@Razon", "@Nroop", "@Fecha1", "@Fecha2", "@checkEstados", "@Empresa", "@tipoComprobante" };
-            object[] valores = { banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2, checkestados, empresa, tipocomprobante };
+            string[] parametros = { "@Banco", "@Nrocuenta", "@Ruc", "@Razon", "@Nroop", "@Fecha1", "@Fecha2", "@checkEstados", "@Empresa", "@tipoComprobante", "@cuo" };
+            object[] valores = { banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2, checkestados, empresa, tipocomprobante, cuo };
             return bd.DataTableFromProcedure("usp_ListarNroOpBancaria", parametros, valores, null);
         }
         public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet, int fkempresa, string cuo)
@@ -4749,6 +4757,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial" };
             object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon };
             return bd.DataTableFromProcedure("usp_ReporteAnalitico2", parametros, valores, null);
+        }
+        public DataTable CierreMensualSaldos(int empresa, DateTime fechaini, DateTime fechafin, decimal tccomprasbs, decimal tcventasbs)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal", "@TCCompraSBS", "@TCVentaSBS" };
+            object[] valores = { empresa, fechaini, fechafin, tccomprasbs, tcventasbs };
+            return bd.DataTableFromProcedure("usp_CierreMensualSaldos", parametros, valores, null);
         }
         public DataTable ReporteSaldosContables(int empresa, DateTime fechaini, DateTime fechafin)
         {

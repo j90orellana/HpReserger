@@ -47,9 +47,9 @@
             this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
             this.lblmensaje.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensaje.ForeColor = System.Drawing.Color.White;
-            this.lblmensaje.Location = new System.Drawing.Point(0, 109);
+            this.lblmensaje.Location = new System.Drawing.Point(36, 109);
             this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(480, 79);
+            this.lblmensaje.Size = new System.Drawing.Size(408, 79);
             this.lblmensaje.TabIndex = 0;
             this.lblmensaje.Text = "Cabecera del Mensaje";
             this.lblmensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,9 +60,9 @@
             this.lbldetalle.BackColor = System.Drawing.Color.Transparent;
             this.lbldetalle.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldetalle.ForeColor = System.Drawing.Color.DimGray;
-            this.lbldetalle.Location = new System.Drawing.Point(0, 180);
+            this.lbldetalle.Location = new System.Drawing.Point(36, 180);
             this.lbldetalle.Name = "lbldetalle";
-            this.lbldetalle.Size = new System.Drawing.Size(480, 73);
+            this.lbldetalle.Size = new System.Drawing.Size(408, 73);
             this.lbldetalle.TabIndex = 0;
             this.lbldetalle.Text = "La Operación Finalizo Exitosamente";
             this.lbldetalle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
