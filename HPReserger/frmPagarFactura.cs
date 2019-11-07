@@ -828,29 +828,32 @@ namespace HPReserger
                     ///Cabecera
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, Abonado < 0 ? Math.Abs(Abonado) : 0, Abonado > 0 ? Math.Abs(Abonado) : 0, tc, proyecto
                         , 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
-                    foreach (DataGridViewRow item in Dtguias.Rows)
-                    {
-                        //Detalle del asiento
-                        if ((int)item.Cells[OK.Name].Value == 1)
-                        {
-                            decimal aPagar = (decimal)item.Cells[Pagox.Name].Value;
-                            decimal saldo = (decimal)item.Cells[Saldox.Name].Value;
-                            string moneda = item.Cells[monedax.Name].Value.ToString();
-                            int idMoneda = (moneda == "SOL" ? 1 : moneda == "USD" ? 2 : 0);
-                            string ruc = item.Cells[proveedor.Name].Value.ToString();
-                            string RazonSocial = item.Cells[razon.Name].Value.ToString();
-                            int idComprobante = (int)item.Cells[xidcomprobante.Name].Value;
-                            string[] valor = item.Cells[nrofactura.Name].Value.ToString().Split('-');
-                            //Calculo del Exceso 
-                            int Multiplicador = 1;
-                            if (ContenedorNotasCredito.Contains(item.Cells[xidcomprobante.Name].Value.ToString())) Multiplicador = -1;
-                            decimal ExcesoMN = (idMoneda == 1 ? aPagar : (aPagar) * tc) * Multiplicador;
-                            decimal ExcesoME = (idMoneda == 2 ? aPagar : (aPagar) / tc) * Multiplicador;
-                            //
-                            CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
-                            FechaPago, FechaContable, FechaContable, (Abonado < 0 ? -1 : 1) * ExcesoMN, (Abonado < 0 ? -1 : 1) * ExcesoME, tc, idMoneda, nroKuenta, "", glosa, FechaPago, idUsuario, "");
-                        }
-                    }
+                    //quitamos esto del detalle de pago de las 10
+                    //foreach (DataGridViewRow item in Dtguias.Rows)
+                    //{
+                    //    //Detalle del asiento
+                    //    if ((int)item.Cells[OK.Name].Value == 1)
+                    //    {
+                    //decimal aPagar = (decimal)item.Cells[Pagox.Name].Value;
+                    //decimal saldo = (decimal)item.Cells[Saldox.Name].Value;
+                    //string moneda = item.Cells[monedax.Name].Value.ToString();
+                    //int idMoneda = (moneda == "SOL" ? 1 : moneda == "USD" ? 2 : 0);
+                    //string ruc = item.Cells[proveedor.Name].Value.ToString();
+                    //string RazonSocial = item.Cells[razon.Name].Value.ToString();
+                    //int idComprobante = (int)item.Cells[xidcomprobante.Name].Value;
+                    //string[] valor = item.Cells[nrofactura.Name].Value.ToString().Split('-');
+                    ////Calculo del Exceso 
+                    //int Multiplicador = 1;
+                    //if (ContenedorNotasCredito.Contains(item.Cells[xidcomprobante.Name].Value.ToString())) Multiplicador = -1;
+                    //decimal ExcesoMN = (idMoneda == 1 ? aPagar : (aPagar) * tc) * Multiplicador;
+                    //decimal ExcesoME = (idMoneda == 2 ? aPagar : (aPagar) / tc) * Multiplicador;
+                    //
+                    //CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
+                    //FechaPago, FechaContable, FechaContable, (Abonado < 0 ? -1 : 1) * ExcesoMN, (Abonado < 0 ? -1 : 1) * ExcesoME, tc, idMoneda, nroKuenta, "", glosa, FechaPago, idUsuario, "");
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 0, "99999", "VARIOS", 0, "0", "0", 0,
+                   FechaPago, FechaContable, FechaContable, decimal.Parse(txttotalAbonadoMN.Text), decimal.Parse(txttotalAbonadoME.Text), tc, IdMonedaAsiento, nroKuenta, "", glosa, FechaPago, idUsuario, "");
+                    //    }
+                    //}
                 }
                 //ABONO EN EXCESO //    
                 ++ContadorFacturas;

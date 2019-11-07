@@ -2608,6 +2608,8 @@ namespace HPReserger
         {
             if (Mostrado)
             {
+                pbesquina.SuspendLayout();
+                //this.SuspendLayout();
                 foreach (var formularios in MdiChildren)
                 {
                     formularios.SuspendLayout();
@@ -2628,9 +2630,12 @@ namespace HPReserger
                 {
                     formularios.ResumeLayout();
                 }
+                pbesquina.ResumeLayout();                
             }
             else
             {
+                pbesquina.SuspendLayout();
+
                 foreach (var formularios in MdiChildren)
                 {
                     formularios.SuspendLayout();
@@ -2652,6 +2657,7 @@ namespace HPReserger
                 {
                     formularios.ResumeLayout();
                 }
+                pbesquina.ResumeLayout();
             }
         }
         frmPLanesEPS frplaneseps;

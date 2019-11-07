@@ -911,9 +911,6 @@ namespace HPReserger
         }
         int FilaPos = 0;
         frmproveedor frmprovee;
-        private void Dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
         private void Frmprovee_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (frmprovee != null)
@@ -967,15 +964,18 @@ namespace HPReserger
                     }
                     else
                     {
-                        if (frmlispersonas == null)
+                        if (y == Dtgconten.Columns[razonsocialx.Name].Index || y == Dtgconten.Columns[numdocx.Name].Index)
                         {
-                            Dtgconten.EndEdit();
-                            frmlispersonas = new frmListarSeleccionarPersonas((int)Dtgconten[tipodocx.Name, e.RowIndex].Value, Dtgconten[numdocx.Name, e.RowIndex].Value.ToString());
-                            IndexPos = e.RowIndex;
-                            frmlispersonas.FormClosed += Frmlispersonas_FormClosed;
-                            frmlispersonas.Show();
+                            if (frmlispersonas == null)
+                            {
+                                Dtgconten.EndEdit();
+                                frmlispersonas = new frmListarSeleccionarPersonas((int)Dtgconten[tipodocx.Name, e.RowIndex].Value, Dtgconten[numdocx.Name, e.RowIndex].Value.ToString());
+                                IndexPos = e.RowIndex;
+                                frmlispersonas.FormClosed += Frmlispersonas_FormClosed;
+                                frmlispersonas.Show();
+                            }
+                            else frmlispersonas.Activate();
                         }
-                        else frmlispersonas.Activate();
                     }
                 }
             }

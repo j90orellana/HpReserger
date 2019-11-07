@@ -956,7 +956,7 @@ namespace HPReserger
             this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -974,7 +974,7 @@ namespace HPReserger
             this.SolicitaDetallex});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
@@ -1025,7 +1025,7 @@ namespace HPReserger
             this.cuenta.MaxInputLength = 30;
             this.cuenta.Name = "cuenta";
             this.cuenta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cuenta.Width = 67;
+            this.cuenta.Width = 65;
             // 
             // descripcion
             // 
@@ -1110,7 +1110,7 @@ namespace HPReserger
             this.dtgbusca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
@@ -1136,7 +1136,7 @@ namespace HPReserger
             this.dtgbusca.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
@@ -1177,7 +1177,7 @@ namespace HPReserger
             this.Codidasiento.HeaderText = "Cuo";
             this.Codidasiento.Name = "Codidasiento";
             this.Codidasiento.ReadOnly = true;
-            this.Codidasiento.Width = 51;
+            this.Codidasiento.Width = 49;
             // 
             // Fechax
             // 
@@ -1186,7 +1186,7 @@ namespace HPReserger
             this.Fechax.HeaderText = "Fecha";
             this.Fechax.Name = "Fechax";
             this.Fechax.ReadOnly = true;
-            this.Fechax.Width = 60;
+            this.Fechax.Width = 59;
             // 
             // fechavalorx
             // 
@@ -1200,7 +1200,7 @@ namespace HPReserger
             this.fechavalorx.MinimumWidth = 70;
             this.fechavalorx.Name = "fechavalorx";
             this.fechavalorx.ReadOnly = true;
-            this.fechavalorx.Width = 76;
+            this.fechavalorx.Width = 75;
             // 
             // SubOperacionx
             // 
@@ -1210,7 +1210,6 @@ namespace HPReserger
             this.SubOperacionx.MinimumWidth = 100;
             this.SubOperacionx.Name = "SubOperacionx";
             this.SubOperacionx.ReadOnly = true;
-            this.SubOperacionx.Width = 104;
             // 
             // Iddinamica
             // 
@@ -1260,7 +1259,7 @@ namespace HPReserger
             this.nameestado.MinimumWidth = 50;
             this.nameestado.Name = "nameestado";
             this.nameestado.ReadOnly = true;
-            this.nameestado.Width = 65;
+            this.nameestado.Width = 63;
             // 
             // Fecha_Asientox
             // 

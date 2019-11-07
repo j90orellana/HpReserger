@@ -74,6 +74,7 @@ namespace HPReserger
                 {
                     DataRow FilaTC = DatosTC.Rows[0];
                     dtgconten.DataSource = CapaLogica.CierreMensualSaldos((int)cboempresa.SelectedValue, (DateTime)cboperiodo.SelectedValue, ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2]);
+                    lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
                 }
                 else msg("Ingrese el Tipo de Cambio para el Cierre de Este Periodo");
             }

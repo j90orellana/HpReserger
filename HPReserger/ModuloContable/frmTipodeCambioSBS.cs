@@ -37,6 +37,7 @@ namespace HPReserger
             tablita = CapaLogica.TipodeCambio(100, comboMesAño.GetFecha().Year, comboMesAño.GetFecha().Month, 1, 0, 0, ImgVenta);
             dtgconten.DataSource = tablita;
             CargarImagenes();
+            lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
         }
         public Boolean Carga = false;
         DataTable tablita = new DataTable();

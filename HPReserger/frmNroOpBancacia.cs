@@ -174,12 +174,15 @@ namespace HPReserger
                 }
                 if (e.ColumnIndex == dtgconten.Columns[xcuo.Name].Index)
                 {
-                    DataGridViewRow R = dtgconten.Rows[e.RowIndex];
-                    if (R.Cells[xcuo.Name].Value.ToString() != "")
+                    if (e.RowIndex >= 0)
                     {
-                        ModuloContable.frmListadoAsientosContables frmReportito = new ModuloContable.frmListadoAsientosContables((int)cboEmpresa.SelectedValue, R.Cells[xcuo.Name].Value.ToString());
-                        frmReportito.MdiParent = this.MdiParent;
-                        frmReportito.Show();
+                        DataGridViewRow R = dtgconten.Rows[e.RowIndex];
+                        if (R.Cells[xcuo.Name].Value.ToString() != "")
+                        {
+                            ModuloContable.frmListadoAsientosContables frmReportito = new ModuloContable.frmListadoAsientosContables((int)cboEmpresa.SelectedValue, R.Cells[xcuo.Name].Value.ToString());
+                            frmReportito.MdiParent = this.MdiParent;
+                            frmReportito.Show();
+                        }
                     }
                 }
             }

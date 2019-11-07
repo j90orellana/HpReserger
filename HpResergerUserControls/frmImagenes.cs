@@ -61,7 +61,6 @@ namespace HpResergerUserControls
         {
 
         }
-
         private void pbfoto_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
 
@@ -117,6 +116,41 @@ namespace HpResergerUserControls
         {
             if (pbfoto.Image != null)
                 btndescargar.Visible = true;
+        }
+        public void GirarDerecha()
+        {
+            Image img = pbfoto.Image;
+            img.RotateFlip(RotateFlipType.Rotate90FlipXY);
+            pbfoto.Image = img;
+
+        }
+        public void GirarIzquierda()
+        {
+            Image img = pbfoto.Image;
+            img.RotateFlip(RotateFlipType.Rotate270FlipXY);
+            pbfoto.Image = img;
+        }
+
+        private void frmImagenes_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)//derecha
+            {
+                GirarDerecha();
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                GirarIzquierda();
+            }
+        }
+
+        private void btnizquierda_Click(object sender, EventArgs e)
+        {
+            GirarIzquierda();
+        }
+
+        private void btnDerecha_Click(object sender, EventArgs e)
+        {
+            GirarDerecha();
         }
     }
 }
