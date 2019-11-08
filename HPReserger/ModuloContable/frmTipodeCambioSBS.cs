@@ -19,9 +19,7 @@ namespace HPReserger
             CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica;
-        DataTable TablaConsultadias;
         byte[] ImgVenta;
-        DateTime fechaactual;
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public bool BusquedaExterna { get; internal set; }
@@ -72,7 +70,6 @@ namespace HPReserger
             {
                 if (dtgconten.CurrentCell.Value != null)
                     DoDragDrop(dtgconten.CurrentCell.Value.ToString(), DragDropEffects.Copy);
-
             }
         }
         public void CargarImagenes()

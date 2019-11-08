@@ -396,6 +396,7 @@ namespace HPReserger
                     string CuentaDetracciones = txtcuentadetracciones.Text;
                     decimal TC = 0;
                     TC = CapaLogica.TipoCambioDia("Venta", FechaPago);
+                    if (TC == 0) { msg("El Tipo de Cambio no puede ser Cero"); return; }
                     ///FIN DECLARACION DE VARIABLES
                     string NroBoleta = "", Idcliente = "";
                     int idcomprobante = 0;
@@ -423,6 +424,7 @@ namespace HPReserger
                     CapaLogica.PagarDetracionesVentaCabecera(codigo, CuopPago, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones
                         , CuentaContableBanco, "9559501", FechaContable, glosa, IdEmpresa, FechaPago, idcomprobante, TC, (int)cboproyecto.SelectedValue);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
+                    int Detalle = 1;
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
                             if ((decimal)item.Cells[ImportePEN.Name].Value != 0)
@@ -434,11 +436,11 @@ namespace HPReserger
                                 Idcliente = item.Cells[Clientex.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xtipocomprobante.Name].Value;
                                 CapaLogica.PagarDetracionesVentaDetalle(codigo, (int)item.Cells[tipoidx.Name].Value, item.Cells[Clientex.Name].Value.ToString(), item.Cells[razonx.Name].Value.ToString()
-                                , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value
+                                , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[xredondeo.Name].Value, decimal.Parse(txtredondeo.Text)
                                 , (decimal)item.Cells[xdiferencia.Name].Value
                                 //item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value / (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value
                                 , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, FechaContable, decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103"
-                                , glosa, IdUsuario, IdEmpresa, TC, (int)cboproyecto.SelectedValue);
+                                , glosa, IdUsuario, IdEmpresa, TC, (int)cboproyecto.SelectedValue, Detalle++);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
                     //Cuadrar Asiento

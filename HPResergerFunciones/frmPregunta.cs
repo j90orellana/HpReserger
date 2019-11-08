@@ -59,6 +59,7 @@ namespace HPResergerFunciones
         Timer Time = new Timer();
         private void frmInformativo_Load(object sender, EventArgs e)
         {
+            DoubleBuffered = true;
             RedondearEsquinas(15, this, btnCancelar, btnNo, btnYes);
             Time.Interval = 25;
             Time.Tick += Time_Tick;
@@ -69,14 +70,16 @@ namespace HPResergerFunciones
         }
         public static void RedondearEsquinas(int radio, params Control[] botones)
         {
+            //radio = 20;
             foreach (Control boton in botones)
             {
                 Rectangle r = new Rectangle(0, 0, boton.Width, boton.Height);
-                System.Drawing.Drawing2D.GraphicsPath Buton = new System.Drawing.Drawing2D.GraphicsPath(System.Drawing.Drawing2D.FillMode.Alternate);
-                Buton.AddArc(r.X, r.Y, radio, radio, 180, 90);
-                Buton.AddArc(r.X + r.Width - radio, r.Y, radio, radio, 270, 90);
-                Buton.AddArc(r.X + r.Width - radio, r.Y + r.Height - radio, radio, radio, 0, 90);
-                Buton.AddArc(r.X, r.Y + r.Height - radio, radio, radio, 90, 90);
+                System.Drawing.Drawing2D.GraphicsPath Buton = new System.Drawing.Drawing2D.GraphicsPath();
+                Buton.AddArc(r.X, r.Y, radio, radio, 180, 90);//Arriba-Izquierda
+                Buton.AddArc(r.X + r.Width - radio, r.Y, radio, radio, 270, 90);//Arriba-Derecha
+                Buton.AddArc(r.X + r.Width - radio, r.Height - radio, radio, radio, 0, 90);//Abajo-Derecha
+                Buton.AddArc(r.X, r.Height - radio, radio, radio, 90, 90);//Abajo-Izquierda
+                Buton.CloseAllFigures();
                 boton.Region = new Region(Buton);
             }
         }

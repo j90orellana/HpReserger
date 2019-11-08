@@ -4389,10 +4389,11 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_PagarDetracionesDetalle", parametros, valores, null);
         }
         public DataTable PagarDetracionesVentaDetalle(int @Asiento, int @tipodoc, string @numdoc, string @nombreCliente, int @idcomprobante, string @Codfac, string @Numfac, string @nroBoleta,
-            decimal @MontoTotal, decimal @MontoRedondeo, decimal @MontoDiferencia, decimal @tc, string @CuentaContableNacion, string @CuentaContableBanco, int @cuentaBanco, string @CuentaRedondeo, DateTime @fechaContable, string @glosa, int @Usuario, int fkempresa, decimal tcpago, int pkproyecto)
+            decimal @MontoTotal, decimal @MontoRedondeo, decimal @MontoDiferencia, decimal @tc, string @CuentaContableNacion, string @CuentaContableBanco, int @cuentaBanco, string @CuentaRedondeo,
+            DateTime @fechaContable, string @glosa, int @Usuario, int fkempresa, decimal tcpago, int pkproyecto, int Detalle)
         {
-            string[] parametros = { "@Asiento", "@tipodoc", "@numdoc", "@nombreCliente", "@idcomprobante", "@Codfac", "@Numfac", "@nroBoleta", "@MontoTotal", "@MontoRedondeo", "@MontoDiferencia", "@tc", "@CuentaContableNacion", "@CuentaContableBanco", "@cuentaBanco", "@CuentaRedondeo", "@fechaContable", "@glosa", "@Usuario", "@empresa", "tcPago", "@pkProyecto" };
-            object[] valores = { @Asiento, @tipodoc, @numdoc, @nombreCliente, @idcomprobante, @Codfac, @Numfac, @nroBoleta, MontoTotal, MontoRedondeo, MontoDiferencia, @tc, @CuentaContableNacion, @CuentaContableBanco, @cuentaBanco, CuentaRedondeo, @fechaContable, @glosa, @Usuario, fkempresa, tcpago, pkproyecto };
+            string[] parametros = { "@Asiento", "@tipodoc", "@numdoc", "@nombreCliente", "@idcomprobante", "@Codfac", "@Numfac", "@nroBoleta", "@MontoTotal", "@MontoRedondeo", "@MontoDiferencia", "@tc", "@CuentaContableNacion", "@CuentaContableBanco", "@cuentaBanco", "@CuentaRedondeo", "@fechaContable", "@glosa", "@Usuario", "@empresa", "tcPago", "@pkProyecto", "@detalle" };
+            object[] valores = { @Asiento, @tipodoc, @numdoc, @nombreCliente, @idcomprobante, @Codfac, @Numfac, @nroBoleta, MontoTotal, MontoRedondeo, MontoDiferencia, @tc, @CuentaContableNacion, @CuentaContableBanco, @cuentaBanco, CuentaRedondeo, @fechaContable, @glosa, @Usuario, fkempresa, tcpago, pkproyecto, Detalle };
             return bd.DataTableFromProcedure("usp_PagarDetracionesVentaDetalle", parametros, valores, null);
         }
         public DataTable ReversarAsientos(int idasiento, int proyecto, int usuario, DateTime Fecha)
