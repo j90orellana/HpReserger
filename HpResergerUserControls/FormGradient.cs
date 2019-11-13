@@ -49,15 +49,15 @@ namespace HpResergerUserControls
             base.OnPaint(e);
             this.ResumeLayout();
         }
-        public Boolean CerrarAlPresionarESC { get; set; }
+        public Boolean CerrarAlPresionarESC { get; set; }        
         protected override void OnKeyDown(KeyEventArgs e)
         {
             base.OnKeyDown(e);
             if (CerrarAlPresionarESC)
             {
                 if (e.KeyCode == Keys.Escape) this.Close();
-            }
-        }
+            }            
+        }        
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             base.OnKeyPress(e);
@@ -68,6 +68,7 @@ namespace HpResergerUserControls
         }
         protected override void OnSizeChanged(EventArgs e)
         {
+            //if (this.WindowState == FormWindowState.Maximized) this.ShowIcon = false; else ShowIcon = true;
             ///Recarga el Fondo del control!.
             Invalidate();
             base.OnSizeChanged(e);

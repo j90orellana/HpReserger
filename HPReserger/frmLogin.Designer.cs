@@ -148,7 +148,7 @@
             // lblmsg
             // 
             this.lblmsg.ForeColor = System.Drawing.Color.White;
-            this.lblmsg.Location = new System.Drawing.Point(16, 197);
+            this.lblmsg.Location = new System.Drawing.Point(16, 195);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblmsg.Size = new System.Drawing.Size(309, 19);

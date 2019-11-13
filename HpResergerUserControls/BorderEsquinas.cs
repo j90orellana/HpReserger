@@ -68,7 +68,7 @@ namespace HpResergerUserControls
             Formulario.Region = new Region(Buton);
         }
         public Control _Control;
-        public Control Control { get { return _Control; } set { _Control = value; _Control.Paint += _Control_Paint; } }
+        public Control Control { get { return _Control; } set { _Control = value; _Control.Paint += _Control_Paint; RedondearEsquinas(radio,_Control); } }
         private void _Control_Paint(object sender, PaintEventArgs e)
         {
             RedondearEsquinas((Button)sender);

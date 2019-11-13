@@ -4765,6 +4765,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, fechaini, fechafin, tccomprasbs, tcventasbs };
             return bd.DataTableFromProcedure("usp_CierreMensualSaldos", parametros, valores, null);
         }
+        public DataTable CierreMensualDinamicaYaExiste(int dinamica, DateTime FechaPeriodo, int empresa)
+        {
+            string[] parametros = { "@dinamica", "@Periodo", "@empresa" };
+            object[] valores = { dinamica, FechaPeriodo, empresa };
+            return bd.DataTableFromProcedure("usp_CierreMensualDinamicaYaExiste", parametros, valores, null);
+        }
         public DataTable ReporteSaldosContables(int empresa, DateTime fechaini, DateTime fechafin)
         {
             string[] parametros = { "@empresa", "@FechaInicial", "@Fecha" };

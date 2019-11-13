@@ -2477,6 +2477,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.CierreMensualSaldos(empresa, fechaini, fechafin, tccomprasbs, tcventasbs);
         }
+        public DataTable CierreMensualDinamicaYaExiste(int dinamica, DateTime FechaPeriodo, int empresa)
+        {
+            return cdOrdenPedido.CierreMensualDinamicaYaExiste(dinamica, FechaPeriodo, empresa);
+        }
         public DataTable ReporteSaldosContables2(int empresa, DateTime FechaInicioAnio, DateTime FechaFinMes)
         {
             return cdOrdenPedido.ReporteSaldosContables2(empresa, FechaInicioAnio, FechaFinMes);
