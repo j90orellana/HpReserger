@@ -1796,6 +1796,7 @@ namespace HPReserger
         {
             PintardeCOlores();
         }
+        string cuoReversa = "";
         private void button1_Click(object sender, EventArgs e)
         {
             //No se Pueden reversar Asientos Reversados
@@ -1813,11 +1814,14 @@ namespace HPReserger
                 //Proceso de la Reversa
                 if (HPResergerFunciones.Utilitarios.msgp($"Seguro Desea Reversar Este Asiento Nro {txtcuo.Text}") == DialogResult.Yes)
                 {
+                    cuoReversa = txtcuo.Text;
                     //Proceso Reversa del Asiento               
                     DataRow Filita = CapaLogica.ReversarAsientos((int.Parse(txtcodigo.Text)), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, dtpfechavalor.Value).Rows[0];
                     if (Filita[0].ToString() == "")
                     {
                         msgOK($"Asiento {txtcuo} Reversado!");
+                        btnActualizar_Click(sender, e);
+                        SeleccionarCuo();
                     }
                     else
                     {
@@ -1825,10 +1829,10 @@ namespace HPReserger
                         return;
                     }
                 }
-                btnActualizar_Click(sender, e);
             }
             else
             {
+                cuoReversa = txtcuo.Text;
                 ModuloContable.frmRevesarAsientos frmReversita = new ModuloContable.frmRevesarAsientos();
                 //Paso de Variables
                 frmReversita.Glosa = txtglosa.Text;
@@ -1843,7 +1847,21 @@ namespace HPReserger
                 frmReversita.MdiParents = this.MdiParent;
                 //Fin de Paso de Variables
                 if (frmReversita.ShowDialog() == DialogResult.OK)
+                {
                     btnActualizar_Click(sender, e);
+                    SeleccionarCuo();
+                }
+            }
+        }
+        public void SeleccionarCuo()
+        {
+            foreach (DataGridViewRow item in dtgbusca.Rows)
+            {
+                if (item.Cells[Codidasiento.Name].Value.ToString().Trim() == cuoReversa)
+                {
+                    dtgbusca.CurrentCell = dtgbusca[Codidasiento.Name, item.Index];
+                    break;
+                }
             }
         }
         private void cboestado_TextChanged(object sender, EventArgs e)

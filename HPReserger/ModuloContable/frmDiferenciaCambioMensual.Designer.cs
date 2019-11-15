@@ -64,6 +64,8 @@
             this.lblmsg = new System.Windows.Forms.Label();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,13 +149,13 @@
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle10;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 101);
+            this.dtgconten.Location = new System.Drawing.Point(15, 113);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(760, 374);
+            this.dtgconten.Size = new System.Drawing.Size(757, 362);
             this.dtgconten.TabIndex = 4;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellContentClick);
             // 
@@ -265,10 +267,10 @@
             // 
             // btnPreliminar
             // 
-            this.btnPreliminar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnPreliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPreliminar.Enabled = false;
             this.btnPreliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnPreliminar.Image")));
-            this.btnPreliminar.Location = new System.Drawing.Point(484, 62);
+            this.btnPreliminar.Location = new System.Drawing.Point(688, 87);
             this.btnPreliminar.Name = "btnPreliminar";
             this.btnPreliminar.Size = new System.Drawing.Size(84, 23);
             this.btnPreliminar.TabIndex = 41;
@@ -319,7 +321,6 @@
             // 
             // chkSaldos
             // 
-            this.chkSaldos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chkSaldos.AutoSize = true;
             this.chkSaldos.BackColor = System.Drawing.Color.Transparent;
             this.chkSaldos.Checked = true;
@@ -327,7 +328,7 @@
             this.chkSaldos.ColorChecked = System.Drawing.Color.Empty;
             this.chkSaldos.ColorUnChecked = System.Drawing.Color.Empty;
             this.chkSaldos.Enabled = false;
-            this.chkSaldos.Location = new System.Drawing.Point(216, 65);
+            this.chkSaldos.Location = new System.Drawing.Point(65, 63);
             this.chkSaldos.Name = "chkSaldos";
             this.chkSaldos.Size = new System.Drawing.Size(137, 17);
             this.chkSaldos.TabIndex = 44;
@@ -336,13 +337,12 @@
             // 
             // chkDocumentos
             // 
-            this.chkDocumentos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chkDocumentos.AutoSize = true;
             this.chkDocumentos.BackColor = System.Drawing.Color.Transparent;
             this.chkDocumentos.ColorChecked = System.Drawing.Color.Empty;
             this.chkDocumentos.ColorUnChecked = System.Drawing.Color.Empty;
             this.chkDocumentos.Enabled = false;
-            this.chkDocumentos.Location = new System.Drawing.Point(353, 65);
+            this.chkDocumentos.Location = new System.Drawing.Point(65, 80);
             this.chkDocumentos.Name = "chkDocumentos";
             this.chkDocumentos.Size = new System.Drawing.Size(128, 17);
             this.chkDocumentos.TabIndex = 44;
@@ -367,7 +367,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 85);
+            this.label3.Location = new System.Drawing.Point(12, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(297, 13);
             this.label3.TabIndex = 45;
@@ -411,6 +411,28 @@
             this.label16.TabIndex = 74;
             this.label16.Text = "Proyecto:";
             // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.BackColor = System.Drawing.Color.Transparent;
+            this.lbl1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl1.Location = new System.Drawing.Point(204, 65);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(0, 13);
+            this.lbl1.TabIndex = 72;
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.BackColor = System.Drawing.Color.Transparent;
+            this.lbl2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl2.Location = new System.Drawing.Point(204, 82);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(0, 13);
+            this.lbl2.TabIndex = 72;
+            // 
             // frmDiferenciaCambioMensual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,6 +440,8 @@
             this.ClientSize = new System.Drawing.Size(784, 513);
             this.Controls.Add(this.cboproyecto);
             this.Controls.Add(this.label16);
+            this.Controls.Add(this.lbl2);
+            this.Controls.Add(this.lbl1);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.chkDocumentos);
@@ -470,5 +494,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkNaturaleza;
         private System.Windows.Forms.ComboBox cboproyecto;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl2;
     }
 }

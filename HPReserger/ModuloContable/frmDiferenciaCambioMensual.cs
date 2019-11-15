@@ -78,7 +78,8 @@ namespace HPReserger
                     DataRow FilaTC = DatosTC.Rows[0];
                     dtgconten.DataSource = CapaLogica.CierreMensualSaldos((int)cboempresa.SelectedValue, (DateTime)cboperiodo.SelectedValue, ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2]);
                     lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
-                    btnAplicar.Enabled = true;
+                    if (GenerarAsiento)
+                        btnAplicar.Enabled = true;
                 }
                 else msg("Ingrese el Tipo de Cambio para el Cierre de Este Periodo");
             }
@@ -125,39 +126,48 @@ namespace HPReserger
             //Primera Fase Activos = 'D' and Ganacias (+)
             numasiento = GetNumAsiento(FechaContable);
             string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable);
+            decimal SumatoriaMN = 0;
+            decimal TC = 0;
+            decimal ValorDifCambio = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "D" && (decimal)item.Cells[xDifCambio.Name].Value > 0)
                 {
                     var1 = true;
-                    decimal TC = (decimal)item.Cells[xtcvompra.Name].Value;
-                    decimal ValorDifCambio = (decimal)item.Cells[xDifCambio.Name].Value;
+                    TC = (decimal)item.Cells[xtcvompra.Name].Value;
+                    ValorDifCambio = (decimal)item.Cells[xDifCambio.Name].Value;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
+                    SumatoriaMN += ValorDifCambio;
                     //cabecera Debe
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, ValorDifCambio, 0,
                       TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
                         NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
-                    //cabecera Haber
-                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGanacia, 0, ValorDifCambio,
-                      TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
-                    //Detalle del asiento del Haber
-                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGanacia, fkProyecto, TipoIdProveedor, RucProveedor,
-                        NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
                 }
             }
-            if (var1) { mensaje += $" Cuo: {Cuo}"; }
+            if (var1)
+            {
+                //cabecera Haber
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGanacia, 0, SumatoriaMN,
+                  TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
+                //Detalle del asiento del Haber
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGanacia, fkProyecto, TipoIdProveedor, RucProveedor,
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
+                mensaje += $" Cuo: {Cuo}";
+            }
             //Primera Fase Pasivo = 'H' and Ganacias (+)
             numasiento = GetNumAsiento(FechaContable);
             Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable); PosFila = 0;
+            SumatoriaMN = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "H" && (decimal)item.Cells[xDifCambio.Name].Value > 0)
                 {
                     var2 = true;
-                    decimal TC = (decimal)item.Cells[xtcvompra.Name].Value;
-                    decimal ValorDifCambio = (decimal)item.Cells[xDifCambio.Name].Value;
+                    TC = (decimal)item.Cells[xtcvompra.Name].Value;
+                    ValorDifCambio = (decimal)item.Cells[xDifCambio.Name].Value;
+                    SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                     //cabecera Debe
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, ValorDifCambio, 0,
@@ -165,25 +175,30 @@ namespace HPReserger
                     //Detalle del asiento del Debe
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
                         NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
-                    //cabecera Haber
-                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaPerdida, 0, ValorDifCambio,
-                      TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
-                    //Detalle del asiento del Haber
-                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaPerdida, fkProyecto, TipoIdProveedor, RucProveedor,
-                        NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
                 }
             }
-            if (var2) { mensaje += $" Cuo: {Cuo}"; }
+            if (var2)
+            {
+                //cabecera Haber
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaPerdida, 0, SumatoriaMN,
+                  TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
+                //Detalle del asiento del Haber
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaPerdida, fkProyecto, TipoIdProveedor, RucProveedor,
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
+                mensaje += $" Cuo: {Cuo}";
+            }
             //Primera Fase Activos = 'D' and Perdidas (-)
             numasiento = GetNumAsiento(FechaContable);
             Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable); PosFila = 0;
+            SumatoriaMN = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "D" && (decimal)item.Cells[xDifCambio.Name].Value < 0)
                 {
                     var3 = true;
-                    decimal TC = (decimal)item.Cells[xtcvompra.Name].Value;
-                    decimal ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
+                    TC = (decimal)item.Cells[xtcvompra.Name].Value;
+                    ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
+                    SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                     //cabecera Debe
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, 0, ValorDifCambio,
@@ -191,25 +206,30 @@ namespace HPReserger
                     //Detalle del asiento del Debe
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
                         NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
-                    //cabecera Haber
-                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGanacia, ValorDifCambio, 0,
-                      TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
-                    //Detalle del asiento del Haber
-                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGanacia, fkProyecto, TipoIdProveedor, RucProveedor,
-                        NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
                 }
             }
-            if (var3) { mensaje += $" Cuo: {Cuo}"; }
+            if (var3)
+            {
+                //cabecera Haber
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGanacia, SumatoriaMN, 0,
+                  TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
+                //Detalle del asiento del Haber
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGanacia, fkProyecto, TipoIdProveedor, RucProveedor,
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
+                mensaje += $" Cuo: {Cuo}";
+            }
             //Primera Fase Pasivo = 'H' and Perdidas (-)
             numasiento = GetNumAsiento(FechaContable);
             Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable); PosFila = 0;
+            SumatoriaMN = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "H" && (decimal)item.Cells[xDifCambio.Name].Value < 0)
                 {
                     var4 = true;
-                    decimal TC = (decimal)item.Cells[xtcvompra.Name].Value;
-                    decimal ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
+                    TC = (decimal)item.Cells[xtcvompra.Name].Value;
+                    ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
+                    SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                     //cabecera Debe
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, 0, ValorDifCambio,
@@ -217,15 +237,18 @@ namespace HPReserger
                     //Detalle del asiento del Debe
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
                         NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
-                    //cabecera Haber
-                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaPerdida, ValorDifCambio, 0,
-                      TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
-                    //Detalle del asiento del Haber
-                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaPerdida, fkProyecto, TipoIdProveedor, RucProveedor,
-                        NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
                 }
             }
-            if (var4) { mensaje += $" Cuo: {Cuo}"; }
+            if (var4)
+            {
+                //cabecera Haber
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaPerdida, SumatoriaMN, 0,
+                  TC, fkProyecto, 0, Cuo, pkMoneda, glosa, FechaContable, Dinamica);
+                //Detalle del asiento del Haber
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaPerdida, fkProyecto, TipoIdProveedor, RucProveedor,
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMoneda, "", "", glosa, FechaContable, IdUsuario, "");
+                mensaje += $" Cuo: {Cuo}";
+            }
             ////////
             msgOK(mensaje);
             btnAplicar.Enabled = false;
@@ -250,19 +273,25 @@ namespace HPReserger
         {
             if (cboperiodo.SelectedValue != null && cboempresa.SelectedValue != null)
             {
+                btnAplicar.Enabled = false;
                 //Verificamos si ya existe el Asiento;
                 DataTable TDatos = CapaLogica.CierreMensualDinamicaYaExiste(Dinamica, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
                 if (TDatos.Rows.Count > 0)
-                {
-                    btnPreliminar.Enabled = false;
-                    DataRow Filita = TDatos.Rows[0];
-                    lblmsg.Text = $"Ya Existe un Asiento, Reverselo {Filita["Cod_Asiento_Contable"]}";
-                    VaciarGrilla();
+                {                   
+                    GenerarAsiento = false;
+                    lbl1.Text = "Procesado; con Cuo:";
+                    foreach (DataRow item in TDatos.Rows)
+                    {
+                        lbl1.Text += $"{item["cod_Asiento_Contable"].ToString()}; ";
+                    }
+                    lbl2.Text = "Sin Procesar;";
                 }
                 else
                 {
                     GenerarAsiento = true;
                     btnPreliminar.Enabled = true;
+                    lbl1.Text = "Sin Procesar;";
+                    lbl2.Text = "Sin Procesar;";
                 }
             }
             else

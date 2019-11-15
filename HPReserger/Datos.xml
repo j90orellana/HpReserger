@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Datos>
-  <BaseDeDatos>sige</BaseDeDatos> 
-  <DataSource>192.168.0.102</DataSource>  
+  <BaseDeDatos>sige</BaseDeDatos>
+  <DataSource>192.168.0.102</DataSource>
   <BasesdeDatos>
     <ListadoBases>Actual</ListadoBases>
     <ListadoBases>SIGE</ListadoBases>
     <ListadoBases>Actual_Beta</ListadoBases>
   </BasesdeDatos>
   <Licencia>
-    <Key>217723485123</Key>
-    <Code>6845</Code>
-  </Licencia> 
-  <!--Actual-->
-  <!--192.168.1.6\SQLEXPRESS   192.168.0.102-->
+    <Key>157739093324</Key>
+    <Code>3482</Code>
+  </Licencia>
 </Datos>
