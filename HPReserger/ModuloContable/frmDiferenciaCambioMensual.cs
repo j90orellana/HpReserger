@@ -76,9 +76,20 @@ namespace HPReserger
                 if (DatosTC.Rows.Count > 0)
                 {
                     DataRow FilaTC = DatosTC.Rows[0];
-                    dtgconten.DataSource = CapaLogica.CierreMensualSaldos((int)cboempresa.SelectedValue, (DateTime)cboperiodo.SelectedValue, ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2]);
+                    if (chkSaldos.Checked)
+                    {
+                        dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = false;
+                        dtgconten.DataSource = CapaLogica.CierreMensualSaldos((int)cboempresa.SelectedValue, (DateTime)cboperiodo.SelectedValue, ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2]);
+                    }
+                    if (chkDocumentos.Checked)
+                    {
+                        dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = true;
+                        dtgconten.DataSource = CapaLogica.CierreMensualDocumentos((int)cboempresa.SelectedValue, new DateTime(FEcha.Year, 1, 1), ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2]);
+                    }
                     lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
-                    if (GenerarAsiento)
+                    if (GenerarAsientoSaldos && chkSaldos.Checked)
+                        btnAplicar.Enabled = true;
+                    if (GenerarAsientoDocumentos && chkDocumentos.Checked)
                         btnAplicar.Enabled = true;
                 }
                 else msg("Ingrese el Tipo de Cambio para el Cierre de Este Periodo");
@@ -129,6 +140,18 @@ namespace HPReserger
             decimal SumatoriaMN = 0;
             decimal TC = 0;
             decimal ValorDifCambio = 0;
+            if (chkSaldos.Checked)
+            {
+                glosa = "CIERRE MENSUAL SALDOS AUTOMATIC.";
+                Dinamica = -30;
+            }
+            else if (chkDocumentos.Checked)
+            {
+                Dinamica = -31;
+                glosa = "CIERRE MENSUAL DOCUMENTOS AUTOMATIC.";
+                msg("Falta la dinamica del asiento");
+                return;
+            }
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "D" && (decimal)item.Cells[xDifCambio.Name].Value > 0)
@@ -252,10 +275,11 @@ namespace HPReserger
             ////////
             msgOK(mensaje);
             btnAplicar.Enabled = false;
-            GenerarAsiento = false;
+            GenerarAsientoDocumentos = GenerarAsientoSaldos = false;
             cboperiodo_SelectedIndexChanged(sender, e);
         }
-        Boolean GenerarAsiento;
+        private Boolean GenerarAsientoSaldos;
+        private Boolean GenerarAsientoDocumentos;
         public int GetNumAsiento(DateTime FechaContable)
         {
             int numasiento = 0;
@@ -274,25 +298,32 @@ namespace HPReserger
             if (cboperiodo.SelectedValue != null && cboempresa.SelectedValue != null)
             {
                 btnAplicar.Enabled = false;
+                btnPreliminar.Enabled = true;
+                GenerarAsientoSaldos = GenerarAsientoDocumentos = true;
+                lbl1.Text = "Sin Procesar;";
+                lbl2.Text = "Sin Procesar;";
                 //Verificamos si ya existe el Asiento;
-                DataTable TDatos = CapaLogica.CierreMensualDinamicaYaExiste(Dinamica, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
-                if (TDatos.Rows.Count > 0)
-                {                   
-                    GenerarAsiento = false;
+                DataTable TDatosSaldos = CapaLogica.CierreMensualDinamicaYaExiste(-30, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
+                DataTable TDatosDocumentos = CapaLogica.CierreMensualDinamicaYaExiste(-31, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
+                if (TDatosSaldos.Rows.Count > 0)
+                {
+                    GenerarAsientoSaldos = false;
                     lbl1.Text = "Procesado; con Cuo:";
-                    foreach (DataRow item in TDatos.Rows)
+                    foreach (DataRow item in TDatosSaldos.Rows)
                     {
                         lbl1.Text += $"{item["cod_Asiento_Contable"].ToString()}; ";
                     }
-                    lbl2.Text = "Sin Procesar;";
                 }
-                else
+                if (TDatosDocumentos.Rows.Count > 0)
                 {
-                    GenerarAsiento = true;
-                    btnPreliminar.Enabled = true;
-                    lbl1.Text = "Sin Procesar;";
-                    lbl2.Text = "Sin Procesar;";
+                    GenerarAsientoDocumentos = false;
+                    lbl2.Text = "Procesado; con Cuo:";
+                    foreach (DataRow item in TDatosDocumentos.Rows)
+                    {
+                        lbl2.Text += $"{item["cod_Asiento_Contable"].ToString()}; ";
+                    }
                 }
+
             }
             else
             {
@@ -311,7 +342,11 @@ namespace HPReserger
         public Boolean VerificarsiYaexisteAsiento()
         {
             //Verificamos si ya existe el Asiento;
-            DataTable TDatos = CapaLogica.CierreMensualDinamicaYaExiste(Dinamica, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
+            DataTable TDatos = new DataTable();
+            if (chkSaldos.Checked)
+                TDatos = CapaLogica.CierreMensualDinamicaYaExiste(-30, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
+            else if (chkDocumentos.Checked)
+                TDatos = CapaLogica.CierreMensualDinamicaYaExiste(-31, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
             if (TDatos.Rows.Count > 0)
             {
                 DataRow Filita = TDatos.Rows[0];
@@ -329,7 +364,19 @@ namespace HPReserger
             if (dtgconten.RowCount > 0)
             {
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
-                _NombreHoja = "Cierre Mensual"; _Cabecera = "Cierre Mensual por Saldos"; _Columnas = new int[] { 1, 2, 3, 4, 5, 6 }; _NColumna = "H";
+                if (chkSaldos.Checked)
+                {
+                    _NombreHoja = "Cierre Mensual Saldo";
+                    _Cabecera = "Cierre Mensual por Saldos";
+                    _NColumna = "H";
+                }
+                else if (chkDocumentos.Checked)
+                {
+                    _NombreHoja = "Cierre Mensual Documentos";
+                    _Cabecera = "Cierre Mensual por Documentos";
+                    _NColumna = "M";
+                }
+                _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
                 int[] _ColumnasAutoajustar = new int[] { 2, 3, 4, 5 };
 
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
@@ -344,6 +391,14 @@ namespace HPReserger
                 int PosInicialGrilla = 3;
                 DataTable TableResuk = new DataTable();
                 TableResuk = ((DataTable)dtgconten.DataSource).Copy();
+                if (chkSaldos.Checked)
+                {
+                    TableResuk.Columns.Remove(TableResuk.Columns[xIdComprobante.DataPropertyName]);
+                    TableResuk.Columns.Remove(TableResuk.Columns[xNameComprobante.DataPropertyName]);
+                    TableResuk.Columns.Remove(TableResuk.Columns[xNumDoc.DataPropertyName]);
+                    TableResuk.Columns.Remove(TableResuk.Columns[xProveedor.DataPropertyName]);
+                }
+
                 HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResuk, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, _ColumnasAutoajustar, "");
             }
             else msg("No hay Registros en la Grilla");
@@ -375,6 +430,15 @@ namespace HPReserger
         private void btnPreliminar_EnabledChanged(object sender, EventArgs e)
         {
 
+        }
+        private void chkSaldos_CheckedChanged(object sender, EventArgs e)
+        {
+            btnAplicar.Enabled = false;
+        }
+
+        private void chkDocumentos_CheckedChanged(object sender, EventArgs e)
+        {
+            btnAplicar.Enabled = false;
         }
     }
 }
