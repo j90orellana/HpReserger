@@ -92,6 +92,7 @@
             this.fechaemisionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaRecepcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaCanceladox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrodetraccionesx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
@@ -140,6 +141,7 @@
             this.fechaemisionx,
             this.FechaRecepcionx,
             this.FechaCanceladox,
+            this.xFechaContable,
             this.nrodetraccionesx,
             this.xtotal});
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -777,6 +779,13 @@
             this.FechaCanceladox.ReadOnly = true;
             this.FechaCanceladox.Width = 90;
             // 
+            // xFechaContable
+            // 
+            this.xFechaContable.DataPropertyName = "FechaContable";
+            this.xFechaContable.HeaderText = "FechaContable";
+            this.xFechaContable.Name = "xFechaContable";
+            this.xFechaContable.Visible = false;
+            // 
             // nrodetraccionesx
             // 
             this.nrodetraccionesx.DataPropertyName = "nro_cta_detracciones";
@@ -897,6 +906,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaemisionx;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaRecepcionx;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCanceladox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrodetraccionesx;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtotal;
     }

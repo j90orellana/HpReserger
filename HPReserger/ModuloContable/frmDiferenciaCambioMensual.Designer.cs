@@ -63,6 +63,8 @@
             this.xNameComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNumDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTipoidPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNameProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMontoDolares = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMontoSoles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFinMesSoles = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,6 +142,8 @@
             this.xNameComprobante,
             this.xNumDoc,
             this.xProveedor,
+            this.xTipoidPro,
+            this.xNameProveedor,
             this.xMontoDolares,
             this.xMontoSoles,
             this.xFinMesSoles,
@@ -390,6 +394,22 @@
             this.xProveedor.ReadOnly = true;
             this.xProveedor.Width = 50;
             // 
+            // xTipoidPro
+            // 
+            this.xTipoidPro.DataPropertyName = "TipoidPro";
+            this.xTipoidPro.HeaderText = "TipoidPro";
+            this.xTipoidPro.Name = "xTipoidPro";
+            this.xTipoidPro.ReadOnly = true;
+            this.xTipoidPro.Visible = false;
+            // 
+            // xNameProveedor
+            // 
+            this.xNameProveedor.DataPropertyName = "NombreProveedor";
+            this.xNameProveedor.HeaderText = "Proveedor";
+            this.xNameProveedor.Name = "xNameProveedor";
+            this.xNameProveedor.ReadOnly = true;
+            this.xNameProveedor.Visible = false;
+            // 
             // xMontoDolares
             // 
             this.xMontoDolares.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -536,6 +556,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xNameComprobante;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNumDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn xProveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoidPro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNameProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMontoDolares;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMontoSoles;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFinMesSoles;

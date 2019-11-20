@@ -125,6 +125,7 @@
             this.xFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCod_Detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -188,6 +189,7 @@
             this.xFechaEmision,
             this.xFechaVencimiento,
             this.xCod_Detraccion,
+            this.xFechaContable,
             this.xPorcentaje,
             this.xGlosa,
             this.xCuentaContable,
@@ -1268,6 +1270,13 @@
             this.xCod_Detraccion.Name = "xCod_Detraccion";
             this.xCod_Detraccion.Visible = false;
             // 
+            // xFechaContable
+            // 
+            this.xFechaContable.DataPropertyName = "FechaContable";
+            this.xFechaContable.HeaderText = "FechaContable";
+            this.xFechaContable.Name = "xFechaContable";
+            this.xFechaContable.Visible = false;
+            // 
             // xPorcentaje
             // 
             this.xPorcentaje.DataPropertyName = "Porcentaje";
@@ -1487,6 +1496,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaEmision;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaVencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCod_Detraccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xPorcentaje;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;

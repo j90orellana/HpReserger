@@ -481,7 +481,7 @@ namespace HPReserger
             {
                 if ((int)item.Cells[xopcion.Name].Value == 1)
                 {
-                    if (((DateTime)item.Cells[xFechaEmision.Name].Value).Date > dtpFechaPago.Value.Date || ((DateTime)item.Cells[xFechaEmision.Name].Value).Date > dtpFechaContable.Value.Date)
+                    if (((DateTime)item.Cells[xFechaContable.Name].Value).Date > dtpFechaPago.Value.Date || ((DateTime)item.Cells[xFechaContable.Name].Value).Date > dtpFechaContable.Value.Date)
                     {
                         HPResergerFunciones.frmInformativo.MostrarDialogError("No se Puede Abonar Documentos con fecha de Recepción superior a la Fecha de Pago", $"No se Proceso por: La Factura: {item.Cells[xNroComprobante.Name].Value.ToString()} \nRazonSocial: {item.Cells[xNombres.Name].Value}");
                         return;

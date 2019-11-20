@@ -132,6 +132,7 @@ namespace HPReserger
             this.FechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaRecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaCancelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrofic1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.centrocostox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVer = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -613,6 +614,7 @@ namespace HPReserger
             this.FechaEmision,
             this.fechaRecepcion,
             this.FechaCancelado,
+            this.xFechaContable,
             this.nrofic1,
             this.centrocostox,
             this.btnVer,
@@ -1304,6 +1306,13 @@ namespace HPReserger
             this.FechaCancelado.ReadOnly = true;
             this.FechaCancelado.Width = 70;
             // 
+            // xFechaContable
+            // 
+            this.xFechaContable.DataPropertyName = "FechaContable";
+            this.xFechaContable.HeaderText = "FechaContable";
+            this.xFechaContable.Name = "xFechaContable";
+            this.xFechaContable.Visible = false;
+            // 
             // nrofic1
             // 
             this.nrofic1.DataPropertyName = "nrofic";
@@ -1518,6 +1527,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaEmision;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaRecepcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCancelado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrofic1;
         private System.Windows.Forms.DataGridViewTextBoxColumn centrocostox;
         private System.Windows.Forms.DataGridViewButtonColumn btnVer;

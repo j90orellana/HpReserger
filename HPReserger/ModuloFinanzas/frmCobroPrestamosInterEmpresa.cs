@@ -585,7 +585,7 @@ namespace HPReserger.ModuloFinanzas
                 ///Inserto el Registro del Prestamo InterEmpresa
                 //Carga de Datos Actualizados
                 msgOK($"Se Grabó Exitosamente\nEn la Empresa Destino cuo: {CuoOri}\nEn la Empresa Origen  cuo: {CuoDes}");
-                EmpresaFind = 0; MonedaFind = 0;
+                //EmpresaFind = 0; MonedaFind = 0;
                 CargarDatos();
             }
             else
