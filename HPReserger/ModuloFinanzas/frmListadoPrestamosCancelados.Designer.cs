@@ -31,13 +31,27 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListadoPrestamosCancelados));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListadoPrestamosCancelados));
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.lblmensaje = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btncleanfind = new System.Windows.Forms.Button();
+            this.txtbusMoneda = new HpResergerUserControls.TextBoxPer();
+            this.txtbusempresadestino = new HpResergerUserControls.TextBoxPer();
+            this.txtbusempresaorigen = new HpResergerUserControls.TextBoxPer();
+            this.btnCambiar = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnexcel = new System.Windows.Forms.Button();
+            this.dtpfechabus2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpfechabus1 = new System.Windows.Forms.DateTimePicker();
+            this.label23 = new System.Windows.Forms.Label();
             this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfkEmpresaOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,26 +78,13 @@
             this.xidMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xmon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ximporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xsaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfechaprestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.lblmensaje = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btncleanfind = new System.Windows.Forms.Button();
-            this.txtbusMoneda = new HpResergerUserControls.TextBoxPer();
-            this.txtbusempresadestino = new HpResergerUserControls.TextBoxPer();
-            this.txtbusempresaorigen = new HpResergerUserControls.TextBoxPer();
-            this.btnCambiar = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnexcel = new System.Windows.Forms.Button();
-            this.dtpfechabus2 = new System.Windows.Forms.DateTimePicker();
-            this.dtpfechabus1 = new System.Windows.Forms.DateTimePicker();
-            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,6 +140,7 @@
             this.xidMoneda,
             this.xmon,
             this.ximporte,
+            this.xsaldo,
             this.xfechaprestamo,
             this.xFechaContable,
             this.xtc,
@@ -163,6 +165,208 @@
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(960, 374);
             this.dtgconten.TabIndex = 30;
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(887, 430);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(85, 23);
+            this.btncancelar.TabIndex = 357;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // lblmensaje
+            // 
+            this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmensaje.AutoSize = true;
+            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
+            this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmensaje.Location = new System.Drawing.Point(14, 436);
+            this.lblmensaje.Name = "lblmensaje";
+            this.lblmensaje.Size = new System.Drawing.Size(94, 13);
+            this.lblmensaje.TabIndex = 358;
+            this.lblmensaje.Text = "Total Registros: 0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(12, 10);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(183, 13);
+            this.label20.TabIndex = 359;
+            this.label20.Text = "Listado de Prestamos Cancelados:";
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.Location = new System.Drawing.Point(880, 25);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(92, 23);
+            this.btnActualizar.TabIndex = 406;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btncleanfind
+            // 
+            this.btncleanfind.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
+            this.btncleanfind.Location = new System.Drawing.Point(788, 25);
+            this.btncleanfind.Name = "btncleanfind";
+            this.btncleanfind.Size = new System.Drawing.Size(25, 23);
+            this.btncleanfind.TabIndex = 417;
+            this.btncleanfind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncleanfind.UseVisualStyleBackColor = true;
+            this.btncleanfind.Click += new System.EventHandler(this.btncleanfind_Click);
+            // 
+            // txtbusMoneda
+            // 
+            this.txtbusMoneda.BackColor = System.Drawing.Color.White;
+            this.txtbusMoneda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusMoneda.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusMoneda.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusMoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusMoneda.ForeColor = System.Drawing.Color.Black;
+            this.txtbusMoneda.Format = null;
+            this.txtbusMoneda.Location = new System.Drawing.Point(384, 26);
+            this.txtbusMoneda.MaxLength = 300;
+            this.txtbusMoneda.Name = "txtbusMoneda";
+            this.txtbusMoneda.NextControlOnEnter = null;
+            this.txtbusMoneda.Size = new System.Drawing.Size(113, 21);
+            this.txtbusMoneda.TabIndex = 416;
+            this.txtbusMoneda.Text = "Buscar Moneda";
+            this.txtbusMoneda.TextoDefecto = "Buscar Moneda";
+            this.txtbusMoneda.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusMoneda.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusMoneda.TextChanged += new System.EventHandler(this.txtbusMoneda_TextChanged);
+            // 
+            // txtbusempresadestino
+            // 
+            this.txtbusempresadestino.BackColor = System.Drawing.Color.White;
+            this.txtbusempresadestino.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusempresadestino.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusempresadestino.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusempresadestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusempresadestino.ForeColor = System.Drawing.Color.Black;
+            this.txtbusempresadestino.Format = null;
+            this.txtbusempresadestino.Location = new System.Drawing.Point(205, 26);
+            this.txtbusempresadestino.MaxLength = 300;
+            this.txtbusempresadestino.Name = "txtbusempresadestino";
+            this.txtbusempresadestino.NextControlOnEnter = null;
+            this.txtbusempresadestino.Size = new System.Drawing.Size(177, 21);
+            this.txtbusempresadestino.TabIndex = 414;
+            this.txtbusempresadestino.Text = "Buscar Empresa Destino";
+            this.txtbusempresadestino.TextoDefecto = "Buscar Empresa Destino";
+            this.txtbusempresadestino.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusempresadestino.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusempresadestino.TextChanged += new System.EventHandler(this.txtbusempresadestino_TextChanged);
+            // 
+            // txtbusempresaorigen
+            // 
+            this.txtbusempresaorigen.BackColor = System.Drawing.Color.White;
+            this.txtbusempresaorigen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusempresaorigen.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusempresaorigen.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusempresaorigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusempresaorigen.ForeColor = System.Drawing.Color.Black;
+            this.txtbusempresaorigen.Format = null;
+            this.txtbusempresaorigen.Location = new System.Drawing.Point(12, 26);
+            this.txtbusempresaorigen.MaxLength = 300;
+            this.txtbusempresaorigen.Name = "txtbusempresaorigen";
+            this.txtbusempresaorigen.NextControlOnEnter = null;
+            this.txtbusempresaorigen.Size = new System.Drawing.Size(177, 21);
+            this.txtbusempresaorigen.TabIndex = 413;
+            this.txtbusempresaorigen.Text = "Buscar Empresa Origen";
+            this.txtbusempresaorigen.TextoDefecto = "Buscar Empresa Origen";
+            this.txtbusempresaorigen.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusempresaorigen.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusempresaorigen.TextChanged += new System.EventHandler(this.txtbusempresaorigen_TextChanged);
+            // 
+            // btnCambiar
+            // 
+            this.btnCambiar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCambiar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCambiar.FlatAppearance.BorderSize = 0;
+            this.btnCambiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCambiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiar.Image = ((System.Drawing.Image)(resources.GetObject("btnCambiar.Image")));
+            this.btnCambiar.Location = new System.Drawing.Point(186, 26);
+            this.btnCambiar.Name = "btnCambiar";
+            this.btnCambiar.Size = new System.Drawing.Size(20, 20);
+            this.btnCambiar.TabIndex = 415;
+            this.btnCambiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCambiar.UseVisualStyleBackColor = false;
+            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // btnexcel
+            // 
+            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
+            this.btnexcel.Location = new System.Drawing.Point(451, 430);
+            this.btnexcel.Name = "btnexcel";
+            this.btnexcel.Size = new System.Drawing.Size(82, 23);
+            this.btnexcel.TabIndex = 418;
+            this.btnexcel.Text = "Excel";
+            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnexcel.UseVisualStyleBackColor = true;
+            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
+            // 
+            // dtpfechabus2
+            // 
+            this.dtpfechabus2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpfechabus2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpfechabus2.Location = new System.Drawing.Point(693, 25);
+            this.dtpfechabus2.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpfechabus2.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpfechabus2.Name = "dtpfechabus2";
+            this.dtpfechabus2.Size = new System.Drawing.Size(93, 22);
+            this.dtpfechabus2.TabIndex = 420;
+            this.dtpfechabus2.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            this.dtpfechabus2.ValueChanged += new System.EventHandler(this.dtpfechabus2_ValueChanged);
+            // 
+            // dtpfechabus1
+            // 
+            this.dtpfechabus1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpfechabus1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpfechabus1.Location = new System.Drawing.Point(597, 25);
+            this.dtpfechabus1.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpfechabus1.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpfechabus1.Name = "dtpfechabus1";
+            this.dtpfechabus1.Size = new System.Drawing.Size(93, 22);
+            this.dtpfechabus1.TabIndex = 419;
+            this.dtpfechabus1.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            this.dtpfechabus1.ValueChanged += new System.EventHandler(this.dtpfechabus1_ValueChanged);
+            // 
+            // label23
+            // 
+            this.label23.AutoEllipsis = true;
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label23.Location = new System.Drawing.Point(497, 29);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(100, 15);
+            this.label23.TabIndex = 421;
+            this.label23.Text = "Fecha Prestamo:";
             // 
             // xpkid
             // 
@@ -395,6 +599,14 @@
             this.ximporte.ReadOnly = true;
             this.ximporte.Width = 50;
             // 
+            // xsaldo
+            // 
+            this.xsaldo.DataPropertyName = "saldo";
+            this.xsaldo.HeaderText = "Saldo";
+            this.xsaldo.Name = "xsaldo";
+            this.xsaldo.ReadOnly = true;
+            this.xsaldo.Visible = false;
+            // 
             // xfechaprestamo
             // 
             this.xfechaprestamo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -452,208 +664,6 @@
             this.xNEstado.ReadOnly = true;
             this.xNEstado.Width = 50;
             // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(887, 430);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(85, 23);
-            this.btncancelar.TabIndex = 357;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // lblmensaje
-            // 
-            this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmensaje.AutoSize = true;
-            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
-            this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmensaje.Location = new System.Drawing.Point(14, 436);
-            this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(94, 13);
-            this.lblmensaje.TabIndex = 358;
-            this.lblmensaje.Text = "Total Registros: 0";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(12, 10);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(183, 13);
-            this.label20.TabIndex = 359;
-            this.label20.Text = "Listado de Prestamos Cancelados:";
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(880, 25);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(92, 23);
-            this.btnActualizar.TabIndex = 406;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // btncleanfind
-            // 
-            this.btncleanfind.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
-            this.btncleanfind.Location = new System.Drawing.Point(788, 25);
-            this.btncleanfind.Name = "btncleanfind";
-            this.btncleanfind.Size = new System.Drawing.Size(25, 23);
-            this.btncleanfind.TabIndex = 417;
-            this.btncleanfind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncleanfind.UseVisualStyleBackColor = true;
-            this.btncleanfind.Click += new System.EventHandler(this.btncleanfind_Click);
-            // 
-            // txtbusMoneda
-            // 
-            this.txtbusMoneda.BackColor = System.Drawing.Color.White;
-            this.txtbusMoneda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtbusMoneda.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtbusMoneda.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtbusMoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbusMoneda.ForeColor = System.Drawing.Color.Black;
-            this.txtbusMoneda.Format = null;
-            this.txtbusMoneda.Location = new System.Drawing.Point(384, 26);
-            this.txtbusMoneda.MaxLength = 300;
-            this.txtbusMoneda.Name = "txtbusMoneda";
-            this.txtbusMoneda.NextControlOnEnter = null;
-            this.txtbusMoneda.Size = new System.Drawing.Size(113, 21);
-            this.txtbusMoneda.TabIndex = 416;
-            this.txtbusMoneda.Text = "Buscar Moneda";
-            this.txtbusMoneda.TextoDefecto = "Buscar Moneda";
-            this.txtbusMoneda.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtbusMoneda.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            this.txtbusMoneda.TextChanged += new System.EventHandler(this.txtbusMoneda_TextChanged);
-            // 
-            // txtbusempresadestino
-            // 
-            this.txtbusempresadestino.BackColor = System.Drawing.Color.White;
-            this.txtbusempresadestino.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtbusempresadestino.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtbusempresadestino.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtbusempresadestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbusempresadestino.ForeColor = System.Drawing.Color.Black;
-            this.txtbusempresadestino.Format = null;
-            this.txtbusempresadestino.Location = new System.Drawing.Point(205, 26);
-            this.txtbusempresadestino.MaxLength = 300;
-            this.txtbusempresadestino.Name = "txtbusempresadestino";
-            this.txtbusempresadestino.NextControlOnEnter = null;
-            this.txtbusempresadestino.Size = new System.Drawing.Size(177, 21);
-            this.txtbusempresadestino.TabIndex = 414;
-            this.txtbusempresadestino.Text = "Buscar Empresa Destino";
-            this.txtbusempresadestino.TextoDefecto = "Buscar Empresa Destino";
-            this.txtbusempresadestino.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtbusempresadestino.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            this.txtbusempresadestino.TextChanged += new System.EventHandler(this.txtbusempresadestino_TextChanged);
-            // 
-            // txtbusempresaorigen
-            // 
-            this.txtbusempresaorigen.BackColor = System.Drawing.Color.White;
-            this.txtbusempresaorigen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtbusempresaorigen.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtbusempresaorigen.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtbusempresaorigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbusempresaorigen.ForeColor = System.Drawing.Color.Black;
-            this.txtbusempresaorigen.Format = null;
-            this.txtbusempresaorigen.Location = new System.Drawing.Point(12, 26);
-            this.txtbusempresaorigen.MaxLength = 300;
-            this.txtbusempresaorigen.Name = "txtbusempresaorigen";
-            this.txtbusempresaorigen.NextControlOnEnter = null;
-            this.txtbusempresaorigen.Size = new System.Drawing.Size(177, 21);
-            this.txtbusempresaorigen.TabIndex = 413;
-            this.txtbusempresaorigen.Text = "Buscar Empresa Origen";
-            this.txtbusempresaorigen.TextoDefecto = "Buscar Empresa Origen";
-            this.txtbusempresaorigen.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtbusempresaorigen.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            this.txtbusempresaorigen.TextChanged += new System.EventHandler(this.txtbusempresaorigen_TextChanged);
-            // 
-            // btnCambiar
-            // 
-            this.btnCambiar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCambiar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCambiar.FlatAppearance.BorderSize = 0;
-            this.btnCambiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCambiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiar.Image = ((System.Drawing.Image)(resources.GetObject("btnCambiar.Image")));
-            this.btnCambiar.Location = new System.Drawing.Point(186, 26);
-            this.btnCambiar.Name = "btnCambiar";
-            this.btnCambiar.Size = new System.Drawing.Size(20, 20);
-            this.btnCambiar.TabIndex = 415;
-            this.btnCambiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCambiar.UseVisualStyleBackColor = false;
-            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // btnexcel
-            // 
-            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
-            this.btnexcel.Location = new System.Drawing.Point(451, 430);
-            this.btnexcel.Name = "btnexcel";
-            this.btnexcel.Size = new System.Drawing.Size(82, 23);
-            this.btnexcel.TabIndex = 418;
-            this.btnexcel.Text = "Excel";
-            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnexcel.UseVisualStyleBackColor = true;
-            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
-            // 
-            // dtpfechabus2
-            // 
-            this.dtpfechabus2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpfechabus2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpfechabus2.Location = new System.Drawing.Point(693, 25);
-            this.dtpfechabus2.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtpfechabus2.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtpfechabus2.Name = "dtpfechabus2";
-            this.dtpfechabus2.Size = new System.Drawing.Size(93, 22);
-            this.dtpfechabus2.TabIndex = 420;
-            this.dtpfechabus2.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            this.dtpfechabus2.ValueChanged += new System.EventHandler(this.dtpfechabus2_ValueChanged);
-            // 
-            // dtpfechabus1
-            // 
-            this.dtpfechabus1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpfechabus1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpfechabus1.Location = new System.Drawing.Point(597, 25);
-            this.dtpfechabus1.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtpfechabus1.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtpfechabus1.Name = "dtpfechabus1";
-            this.dtpfechabus1.Size = new System.Drawing.Size(93, 22);
-            this.dtpfechabus1.TabIndex = 419;
-            this.dtpfechabus1.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            this.dtpfechabus1.ValueChanged += new System.EventHandler(this.dtpfechabus1_ValueChanged);
-            // 
-            // label23
-            // 
-            this.label23.AutoEllipsis = true;
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.label23.Location = new System.Drawing.Point(497, 29);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(100, 15);
-            this.label23.TabIndex = 421;
-            this.label23.Text = "Fecha Prestamo:";
-            // 
             // frmListadoPrestamosCancelados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -688,6 +698,20 @@
         #endregion
 
         private HpResergerUserControls.Dtgconten dtgconten;
+        private System.Windows.Forms.Button btncancelar;
+        private System.Windows.Forms.Label lblmensaje;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btncleanfind;
+        private HpResergerUserControls.TextBoxPer txtbusMoneda;
+        private HpResergerUserControls.TextBoxPer txtbusempresadestino;
+        private HpResergerUserControls.TextBoxPer txtbusempresaorigen;
+        private System.Windows.Forms.Button btnCambiar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnexcel;
+        private System.Windows.Forms.DateTimePicker dtpfechabus2;
+        private System.Windows.Forms.DateTimePicker dtpfechabus1;
+        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkEmpresaOri;
         private System.Windows.Forms.DataGridViewTextBoxColumn xempresa;
@@ -714,25 +738,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xidMoneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn xmon;
         private System.Windows.Forms.DataGridViewTextBoxColumn ximporte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xsaldo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfechaprestamo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtc;
         private System.Windows.Forms.DataGridViewTextBoxColumn xglosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNEstado;
-        private System.Windows.Forms.Button btncancelar;
-        private System.Windows.Forms.Label lblmensaje;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button btncleanfind;
-        private HpResergerUserControls.TextBoxPer txtbusMoneda;
-        private HpResergerUserControls.TextBoxPer txtbusempresadestino;
-        private HpResergerUserControls.TextBoxPer txtbusempresaorigen;
-        private System.Windows.Forms.Button btnCambiar;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button btnexcel;
-        private System.Windows.Forms.DateTimePicker dtpfechabus2;
-        private System.Windows.Forms.DateTimePicker dtpfechabus1;
-        private System.Windows.Forms.Label label23;
     }
 }

@@ -41,6 +41,14 @@ namespace HpResergerUserControls
         public static Color MostazaUI = Color.FromArgb(230, 126, 34);
         public static Color MostazaUISelect = Color.FromArgb(211, 84, 0);
         ///FIN COLORES CON UI
+        //FUENTES
+        public static Font FuenteReportesTahoma8 = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        //FIN FUENTES 
+        //VALORES PARA DOCUMENTOS
+        public static int TipoDocumento = 0;
+        public static string NumeroDocumento = "0000";
+        public static string NumProveedor = "9999";
+        //FIN VALORES PARA DOCUMENTOS
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
         public static string MayusculaCadaPalabra(string cadena)
         {

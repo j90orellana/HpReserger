@@ -2485,6 +2485,17 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.CierreMensualDinamicaYaExiste(dinamica, FechaPeriodo, empresa);
         }
+        public DataTable DiferenciadeCambioMensual(int @opcion, int @empresa, DateTime @periodo, int @tipo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @montodolares, decimal @montosoles, decimal @finmesoles, decimal @difcambio, decimal @tccompra, decimal @tcventa, string @naturaleza)
+        {
+            return cdOrdenPedido.DiferenciadeCambioMensual(@opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza);
+        }
+        public DataTable DiferenciadeCambioMensual(  int @empresa, DateTime @periodo, int @tipo)
+        {
+            int ValorCero = 0;
+            decimal ValorDecimal = 0m;
+            string CampoVacio = "";
+            return cdOrdenPedido.DiferenciadeCambioMensual(0, @empresa, @periodo, @tipo, CampoVacio, ValorCero, CampoVacio, ValorCero, CampoVacio, CampoVacio, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, CampoVacio);
+        }
         public DataTable ReporteSaldosContables2(int empresa, DateTime FechaInicioAnio, DateTime FechaFinMes)
         {
             return cdOrdenPedido.ReporteSaldosContables2(empresa, FechaInicioAnio, FechaFinMes);
