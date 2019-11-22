@@ -31,17 +31,39 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCobroPrestamosInterEmpresa));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCobroPrestamosInterEmpresa));
             this.cboOriProyecto = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cboOriEmpresa = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xfkEmpresaOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xRucOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEmpresaOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCtaContableOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTipoIdDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xfkEmpresaDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xRucDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEmpresaDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCtaContableDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNameCorto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xidmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaPrestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xcuoori = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xcuodes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xAbono = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblmsg = new System.Windows.Forms.Label();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -86,28 +108,6 @@
             this.cbomoneda = new System.Windows.Forms.ComboBox();
             this.btnAbonados = new System.Windows.Forms.Button();
             this.btnCancelados = new System.Windows.Forms.Button();
-            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xfkEmpresaOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xRucOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEmpresaOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xCtaContableOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTipoIdDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xfkEmpresaDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xRucDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEmpresaDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xCtaContableDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNameCorto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xidmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFechaPrestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xcuoori = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xcuodes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xAbono = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,7 +121,7 @@
             this.cboOriProyecto.Location = new System.Drawing.Point(396, 25);
             this.cboOriProyecto.Name = "cboOriProyecto";
             this.cboOriProyecto.Size = new System.Drawing.Size(253, 21);
-            this.cboOriProyecto.TabIndex = 357;
+            this.cboOriProyecto.TabIndex = 1;
             this.cboOriProyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
             // 
             // label11
@@ -143,7 +143,7 @@
             this.cboOriEmpresa.Location = new System.Drawing.Point(72, 25);
             this.cboOriEmpresa.Name = "cboOriEmpresa";
             this.cboOriEmpresa.Size = new System.Drawing.Size(270, 21);
-            this.cboOriEmpresa.TabIndex = 356;
+            this.cboOriEmpresa.TabIndex = 0;
             this.cboOriEmpresa.SelectedIndexChanged += new System.EventHandler(this.cboEmpresa_SelectedIndexChanged);
             this.cboOriEmpresa.Click += new System.EventHandler(this.cboEmpresa_Click);
             // 
@@ -223,563 +223,12 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(958, 204);
-            this.dtgconten.TabIndex = 360;
+            this.dtgconten.TabIndex = 22;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten_EditingControlShowing);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Location = new System.Drawing.Point(14, 437);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(113, 13);
-            this.lblmsg.TabIndex = 361;
-            this.lblmsg.Text = "Total de Registros : 0";
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(801, 432);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(85, 23);
-            this.btnaceptar.TabIndex = 362;
-            this.btnaceptar.Text = "Abonar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(887, 432);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(85, 23);
-            this.btncancelar.TabIndex = 363;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // separadorOre1
-            // 
-            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 70);
-            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
-            this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(991, 2);
-            this.separadorOre1.TabIndex = 368;
-            // 
-            // txtGlosa
-            // 
-            this.txtGlosa.BackColor = System.Drawing.Color.White;
-            this.txtGlosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtGlosa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtGlosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtGlosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtGlosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGlosa.ForeColor = System.Drawing.Color.Black;
-            this.txtGlosa.Format = null;
-            this.txtGlosa.Location = new System.Drawing.Point(72, 176);
-            this.txtGlosa.MaxLength = 300;
-            this.txtGlosa.Name = "txtGlosa";
-            this.txtGlosa.NextControlOnEnter = null;
-            this.txtGlosa.Size = new System.Drawing.Size(444, 21);
-            this.txtGlosa.TabIndex = 371;
-            this.txtGlosa.Text = "INGRESE LA GLOSA DEL ABONO";
-            this.txtGlosa.TextoDefecto = "INGRESE LA GLOSA DEL ABONO";
-            this.txtGlosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtGlosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // dtpFechaContable
-            // 
-            this.dtpFechaContable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaContable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaContable.Location = new System.Drawing.Point(823, 175);
-            this.dtpFechaContable.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaContable.Name = "dtpFechaContable";
-            this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaContable.TabIndex = 372;
-            this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(733, 180);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(90, 13);
-            this.label15.TabIndex = 376;
-            this.label15.Text = "Fecha Contable:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(33, 180);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 13);
-            this.label6.TabIndex = 375;
-            this.label6.Text = "Glosa:";
-            // 
-            // txtTipoCambio
-            // 
-            this.txtTipoCambio.BackColor = System.Drawing.Color.White;
-            this.txtTipoCambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTipoCambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtTipoCambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtTipoCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTipoCambio.ForeColor = System.Drawing.Color.Black;
-            this.txtTipoCambio.Format = "n3";
-            this.txtTipoCambio.Location = new System.Drawing.Point(852, 153);
-            this.txtTipoCambio.MaxLength = 10;
-            this.txtTipoCambio.Name = "txtTipoCambio";
-            this.txtTipoCambio.NextControlOnEnter = null;
-            this.txtTipoCambio.Size = new System.Drawing.Size(64, 21);
-            this.txtTipoCambio.TabIndex = 370;
-            this.txtTipoCambio.Text = "3.300";
-            this.txtTipoCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTipoCambio.TextoDefecto = "3.300";
-            this.txtTipoCambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtTipoCambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            // 
-            // dtpFechaPago
-            // 
-            this.dtpFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaPago.Location = new System.Drawing.Point(698, 152);
-            this.dtpFechaPago.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaPago.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaPago.Name = "dtpFechaPago";
-            this.dtpFechaPago.Size = new System.Drawing.Size(97, 22);
-            this.dtpFechaPago.TabIndex = 369;
-            this.dtpFechaPago.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            this.dtpFechaPago.ValueChanged += new System.EventHandler(this.dtpFechaPago_ValueChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(620, 157);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(78, 13);
-            this.label19.TabIndex = 373;
-            this.label19.Text = "Fecha Abono:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(795, 157);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
-            this.label14.TabIndex = 374;
-            this.label14.Text = "T.C.Venta:";
-            // 
-            // cboOriEtapa
-            // 
-            this.cboOriEtapa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboOriEtapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOriEtapa.FormattingEnabled = true;
-            this.cboOriEtapa.Location = new System.Drawing.Point(688, 25);
-            this.cboOriEtapa.Name = "cboOriEtapa";
-            this.cboOriEtapa.Size = new System.Drawing.Size(228, 21);
-            this.cboOriEtapa.TabIndex = 378;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(649, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 377;
-            this.label5.Text = "Etapa:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 379;
-            this.label3.Text = "Empresa Origen:";
-            // 
-            // cboDesProyecto
-            // 
-            this.cboDesProyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboDesProyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboDesProyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboDesProyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDesProyecto.FormattingEnabled = true;
-            this.cboDesProyecto.Location = new System.Drawing.Point(396, 87);
-            this.cboDesProyecto.Name = "cboDesProyecto";
-            this.cboDesProyecto.Size = new System.Drawing.Size(253, 21);
-            this.cboDesProyecto.TabIndex = 385;
-            this.cboDesProyecto.SelectedIndexChanged += new System.EventHandler(this.cboDesProyecto_SelectedIndexChanged);
-            // 
-            // cboDesEmpresa
-            // 
-            this.cboDesEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboDesEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDesEmpresa.FormattingEnabled = true;
-            this.cboDesEmpresa.Location = new System.Drawing.Point(72, 87);
-            this.cboDesEmpresa.Name = "cboDesEmpresa";
-            this.cboDesEmpresa.Size = new System.Drawing.Size(270, 21);
-            this.cboDesEmpresa.TabIndex = 384;
-            this.cboDesEmpresa.SelectedIndexChanged += new System.EventHandler(this.cboDesEmpresa_SelectedIndexChanged);
-            this.cboDesEmpresa.Click += new System.EventHandler(this.cboDesEmpresa_Click);
-            // 
-            // cboDesEtapa
-            // 
-            this.cboDesEtapa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboDesEtapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDesEtapa.FormattingEnabled = true;
-            this.cboDesEtapa.Location = new System.Drawing.Point(688, 87);
-            this.cboDesEtapa.Name = "cboDesEtapa";
-            this.cboDesEtapa.Size = new System.Drawing.Size(228, 21);
-            this.cboDesEtapa.TabIndex = 386;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 13);
-            this.label4.TabIndex = 380;
-            this.label4.Text = "Empresa Destino:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(649, 91);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 13);
-            this.label10.TabIndex = 381;
-            this.label10.Text = "Etapa:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(342, 91);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 13);
-            this.label9.TabIndex = 382;
-            this.label9.Text = "Proyecto:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(19, 91);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 13);
-            this.label8.TabIndex = 383;
-            this.label8.Text = "Empresa:";
-            // 
-            // separadorOre2
-            // 
-            this.separadorOre2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre2.Location = new System.Drawing.Point(-3, 133);
-            this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
-            this.separadorOre2.Name = "separadorOre2";
-            this.separadorOre2.Size = new System.Drawing.Size(991, 2);
-            this.separadorOre2.TabIndex = 387;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(11, 137);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(98, 13);
-            this.label13.TabIndex = 388;
-            this.label13.Text = "Datos del Abono:";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtTotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.ForeColor = System.Drawing.Color.Black;
-            this.txtTotal.Format = "n2";
-            this.txtTotal.Location = new System.Drawing.Point(708, 433);
-            this.txtTotal.MaxLength = 11;
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.NextControlOnEnter = null;
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(92, 21);
-            this.txtTotal.TabIndex = 390;
-            this.txtTotal.Text = "0.00";
-            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTotal.TextoDefecto = "0.00";
-            this.txtTotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtTotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(674, 437);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 389;
-            this.label7.Text = "Total:";
-            // 
-            // cboOriCuentaBanco
-            // 
-            this.cboOriCuentaBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboOriCuentaBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOriCuentaBanco.FormattingEnabled = true;
-            this.cboOriCuentaBanco.Location = new System.Drawing.Point(396, 48);
-            this.cboOriCuentaBanco.Name = "cboOriCuentaBanco";
-            this.cboOriCuentaBanco.Size = new System.Drawing.Size(373, 21);
-            this.cboOriCuentaBanco.TabIndex = 394;
-            // 
-            // cboOriBanco
-            // 
-            this.cboOriBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboOriBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOriBanco.FormattingEnabled = true;
-            this.cboOriBanco.Location = new System.Drawing.Point(72, 48);
-            this.cboOriBanco.Name = "cboOriBanco";
-            this.cboOriBanco.Size = new System.Drawing.Size(270, 21);
-            this.cboOriBanco.TabIndex = 393;
-            this.cboOriBanco.SelectedIndexChanged += new System.EventHandler(this.cboBanco_SelectedIndexChanged);
-            this.cboOriBanco.Click += new System.EventHandler(this.cboBanco_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(348, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 391;
-            this.label1.Text = "Nro Cta:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(30, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 392;
-            this.label2.Text = "Banco:";
-            // 
-            // cboDesCuentaBanco
-            // 
-            this.cboDesCuentaBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboDesCuentaBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDesCuentaBanco.FormattingEnabled = true;
-            this.cboDesCuentaBanco.Location = new System.Drawing.Point(396, 110);
-            this.cboDesCuentaBanco.Name = "cboDesCuentaBanco";
-            this.cboDesCuentaBanco.Size = new System.Drawing.Size(373, 21);
-            this.cboDesCuentaBanco.TabIndex = 398;
-            // 
-            // cboDesBanco
-            // 
-            this.cboDesBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboDesBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDesBanco.FormattingEnabled = true;
-            this.cboDesBanco.Location = new System.Drawing.Point(72, 110);
-            this.cboDesBanco.Name = "cboDesBanco";
-            this.cboDesBanco.Size = new System.Drawing.Size(270, 21);
-            this.cboDesBanco.TabIndex = 397;
-            this.cboDesBanco.SelectedIndexChanged += new System.EventHandler(this.cboDesBanco_SelectedIndexChanged);
-            this.cboDesBanco.Click += new System.EventHandler(this.cboDesBanco_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(348, 114);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(49, 13);
-            this.label16.TabIndex = 395;
-            this.label16.Text = "Nro Cta:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(30, 114);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(42, 13);
-            this.label17.TabIndex = 396;
-            this.label17.Text = "Banco:";
-            // 
-            // cbotipo
-            // 
-            this.cbotipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbotipo.FormattingEnabled = true;
-            this.cbotipo.Items.AddRange(new object[] {
-            "003 TRANSFERENCIA DE FONDOS.",
-            "007 CHEQUES .",
-            "009 EFECTIVO."});
-            this.cbotipo.Location = new System.Drawing.Point(72, 153);
-            this.cbotipo.Name = "cbotipo";
-            this.cbotipo.Size = new System.Drawing.Size(444, 21);
-            this.cbotipo.TabIndex = 399;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(11, 157);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(61, 13);
-            this.label18.TabIndex = 400;
-            this.label18.Text = "Tipo Pago:";
-            // 
-            // separadorOre3
-            // 
-            this.separadorOre3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre3.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre3.Location = new System.Drawing.Point(0, 200);
-            this.separadorOre3.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.separadorOre3.MinimumSize = new System.Drawing.Size(0, 2);
-            this.separadorOre3.Name = "separadorOre3";
-            this.separadorOre3.Size = new System.Drawing.Size(688, 2);
-            this.separadorOre3.TabIndex = 402;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(11, 210);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(121, 13);
-            this.label20.TabIndex = 401;
-            this.label20.Text = "Listado de Prestamos:";
-            // 
-            // txtnrooperacion
-            // 
-            this.txtnrooperacion.BackColor = System.Drawing.Color.White;
-            this.txtnrooperacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnrooperacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnrooperacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnrooperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnrooperacion.ForeColor = System.Drawing.Color.Black;
-            this.txtnrooperacion.Format = null;
-            this.txtnrooperacion.Location = new System.Drawing.Point(584, 176);
-            this.txtnrooperacion.MaxLength = 20;
-            this.txtnrooperacion.Name = "txtnrooperacion";
-            this.txtnrooperacion.NextControlOnEnter = null;
-            this.txtnrooperacion.Size = new System.Drawing.Size(149, 21);
-            this.txtnrooperacion.TabIndex = 403;
-            this.txtnrooperacion.Text = "Ingrese Nro.Op./Cheque";
-            this.txtnrooperacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnrooperacion.TextoDefecto = "Ingrese Nro.Op./Cheque";
-            this.txtnrooperacion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnrooperacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Location = new System.Drawing.Point(526, 180);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(58, 13);
-            this.label21.TabIndex = 404;
-            this.label21.Text = "Nro.Pago:";
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(880, 200);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(92, 23);
-            this.btnActualizar.TabIndex = 405;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // cbomoneda
-            // 
-            this.cbomoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbomoneda.FormattingEnabled = true;
-            this.cbomoneda.Location = new System.Drawing.Point(521, 153);
-            this.cbomoneda.Name = "cbomoneda";
-            this.cbomoneda.Size = new System.Drawing.Size(99, 21);
-            this.cbomoneda.TabIndex = 406;
-            this.cbomoneda.SelectedIndexChanged += new System.EventHandler(this.cbomoneda_SelectedIndexChanged);
-            // 
-            // btnAbonados
-            // 
-            this.btnAbonados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAbonados.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbonados.Image = ((System.Drawing.Image)(resources.GetObject("btnAbonados.Image")));
-            this.btnAbonados.Location = new System.Drawing.Point(786, 200);
-            this.btnAbonados.Name = "btnAbonados";
-            this.btnAbonados.Size = new System.Drawing.Size(92, 23);
-            this.btnAbonados.TabIndex = 405;
-            this.btnAbonados.Text = "Abonos";
-            this.btnAbonados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAbonados.UseVisualStyleBackColor = true;
-            this.btnAbonados.Click += new System.EventHandler(this.btnAbonados_Click);
-            // 
-            // btnCancelados
-            // 
-            this.btnCancelados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelados.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelados.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelados.Image")));
-            this.btnCancelados.Location = new System.Drawing.Point(692, 200);
-            this.btnCancelados.Name = "btnCancelados";
-            this.btnCancelados.Size = new System.Drawing.Size(92, 23);
-            this.btnCancelados.TabIndex = 405;
-            this.btnCancelados.Text = "Cancelados";
-            this.btnCancelados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelados.UseVisualStyleBackColor = true;
-            this.btnCancelados.Click += new System.EventHandler(this.btnCancelados_Click);
             // 
             // xok
             // 
@@ -976,6 +425,557 @@
             this.xAbono.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.xAbono.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.xAbono.Width = 66;
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Location = new System.Drawing.Point(14, 437);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(113, 13);
+            this.lblmsg.TabIndex = 361;
+            this.lblmsg.Text = "Total de Registros : 0";
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(801, 432);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(85, 23);
+            this.btnaceptar.TabIndex = 17;
+            this.btnaceptar.Text = "Abonar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(887, 432);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(85, 23);
+            this.btncancelar.TabIndex = 18;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // separadorOre1
+            // 
+            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre1.Location = new System.Drawing.Point(0, 70);
+            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre1.Name = "separadorOre1";
+            this.separadorOre1.Size = new System.Drawing.Size(991, 2);
+            this.separadorOre1.TabIndex = 368;
+            // 
+            // txtGlosa
+            // 
+            this.txtGlosa.BackColor = System.Drawing.Color.White;
+            this.txtGlosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtGlosa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtGlosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtGlosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtGlosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGlosa.ForeColor = System.Drawing.Color.Black;
+            this.txtGlosa.Format = null;
+            this.txtGlosa.Location = new System.Drawing.Point(72, 176);
+            this.txtGlosa.MaxLength = 300;
+            this.txtGlosa.Name = "txtGlosa";
+            this.txtGlosa.NextControlOnEnter = null;
+            this.txtGlosa.Size = new System.Drawing.Size(444, 21);
+            this.txtGlosa.TabIndex = 14;
+            this.txtGlosa.Text = "INGRESE LA GLOSA DEL ABONO";
+            this.txtGlosa.TextoDefecto = "INGRESE LA GLOSA DEL ABONO";
+            this.txtGlosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtGlosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // dtpFechaContable
+            // 
+            this.dtpFechaContable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaContable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaContable.Location = new System.Drawing.Point(823, 175);
+            this.dtpFechaContable.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaContable.Name = "dtpFechaContable";
+            this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
+            this.dtpFechaContable.TabIndex = 16;
+            this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(733, 180);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(90, 13);
+            this.label15.TabIndex = 376;
+            this.label15.Text = "Fecha Contable:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(33, 180);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.TabIndex = 375;
+            this.label6.Text = "Glosa:";
+            // 
+            // txtTipoCambio
+            // 
+            this.txtTipoCambio.BackColor = System.Drawing.Color.White;
+            this.txtTipoCambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTipoCambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtTipoCambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtTipoCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTipoCambio.ForeColor = System.Drawing.Color.Black;
+            this.txtTipoCambio.Format = "n3";
+            this.txtTipoCambio.Location = new System.Drawing.Point(852, 153);
+            this.txtTipoCambio.MaxLength = 10;
+            this.txtTipoCambio.Name = "txtTipoCambio";
+            this.txtTipoCambio.NextControlOnEnter = null;
+            this.txtTipoCambio.Size = new System.Drawing.Size(64, 21);
+            this.txtTipoCambio.TabIndex = 13;
+            this.txtTipoCambio.Text = "3.300";
+            this.txtTipoCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTipoCambio.TextoDefecto = "3.300";
+            this.txtTipoCambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtTipoCambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            // 
+            // dtpFechaPago
+            // 
+            this.dtpFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaPago.Location = new System.Drawing.Point(698, 152);
+            this.dtpFechaPago.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaPago.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaPago.Name = "dtpFechaPago";
+            this.dtpFechaPago.Size = new System.Drawing.Size(97, 22);
+            this.dtpFechaPago.TabIndex = 12;
+            this.dtpFechaPago.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            this.dtpFechaPago.ValueChanged += new System.EventHandler(this.dtpFechaPago_ValueChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(620, 157);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(78, 13);
+            this.label19.TabIndex = 373;
+            this.label19.Text = "Fecha Abono:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(795, 157);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 13);
+            this.label14.TabIndex = 374;
+            this.label14.Text = "T.C.Venta:";
+            // 
+            // cboOriEtapa
+            // 
+            this.cboOriEtapa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboOriEtapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOriEtapa.FormattingEnabled = true;
+            this.cboOriEtapa.Location = new System.Drawing.Point(688, 25);
+            this.cboOriEtapa.Name = "cboOriEtapa";
+            this.cboOriEtapa.Size = new System.Drawing.Size(228, 21);
+            this.cboOriEtapa.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(649, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 377;
+            this.label5.Text = "Etapa:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 379;
+            this.label3.Text = "Empresa Origen:";
+            // 
+            // cboDesProyecto
+            // 
+            this.cboDesProyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboDesProyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboDesProyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboDesProyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDesProyecto.FormattingEnabled = true;
+            this.cboDesProyecto.Location = new System.Drawing.Point(396, 87);
+            this.cboDesProyecto.Name = "cboDesProyecto";
+            this.cboDesProyecto.Size = new System.Drawing.Size(253, 21);
+            this.cboDesProyecto.TabIndex = 6;
+            this.cboDesProyecto.SelectedIndexChanged += new System.EventHandler(this.cboDesProyecto_SelectedIndexChanged);
+            // 
+            // cboDesEmpresa
+            // 
+            this.cboDesEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboDesEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDesEmpresa.FormattingEnabled = true;
+            this.cboDesEmpresa.Location = new System.Drawing.Point(72, 87);
+            this.cboDesEmpresa.Name = "cboDesEmpresa";
+            this.cboDesEmpresa.Size = new System.Drawing.Size(270, 21);
+            this.cboDesEmpresa.TabIndex = 5;
+            this.cboDesEmpresa.SelectedIndexChanged += new System.EventHandler(this.cboDesEmpresa_SelectedIndexChanged);
+            this.cboDesEmpresa.Click += new System.EventHandler(this.cboDesEmpresa_Click);
+            // 
+            // cboDesEtapa
+            // 
+            this.cboDesEtapa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboDesEtapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDesEtapa.FormattingEnabled = true;
+            this.cboDesEtapa.Location = new System.Drawing.Point(688, 87);
+            this.cboDesEtapa.Name = "cboDesEtapa";
+            this.cboDesEtapa.Size = new System.Drawing.Size(228, 21);
+            this.cboDesEtapa.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.TabIndex = 380;
+            this.label4.Text = "Empresa Destino:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(649, 91);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.TabIndex = 381;
+            this.label10.Text = "Etapa:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(342, 91);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.TabIndex = 382;
+            this.label9.Text = "Proyecto:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(19, 91);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 13);
+            this.label8.TabIndex = 383;
+            this.label8.Text = "Empresa:";
+            // 
+            // separadorOre2
+            // 
+            this.separadorOre2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre2.Location = new System.Drawing.Point(-3, 133);
+            this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre2.Name = "separadorOre2";
+            this.separadorOre2.Size = new System.Drawing.Size(991, 2);
+            this.separadorOre2.TabIndex = 387;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(11, 137);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(98, 13);
+            this.label13.TabIndex = 388;
+            this.label13.Text = "Datos del Abono:";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtTotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.ForeColor = System.Drawing.Color.Black;
+            this.txtTotal.Format = "n2";
+            this.txtTotal.Location = new System.Drawing.Point(708, 433);
+            this.txtTotal.MaxLength = 11;
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.NextControlOnEnter = null;
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(92, 21);
+            this.txtTotal.TabIndex = 23;
+            this.txtTotal.Text = "0.00";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotal.TextoDefecto = "0.00";
+            this.txtTotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtTotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(674, 437);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.TabIndex = 389;
+            this.label7.Text = "Total:";
+            // 
+            // cboOriCuentaBanco
+            // 
+            this.cboOriCuentaBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboOriCuentaBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOriCuentaBanco.FormattingEnabled = true;
+            this.cboOriCuentaBanco.Location = new System.Drawing.Point(396, 48);
+            this.cboOriCuentaBanco.Name = "cboOriCuentaBanco";
+            this.cboOriCuentaBanco.Size = new System.Drawing.Size(373, 21);
+            this.cboOriCuentaBanco.TabIndex = 4;
+            // 
+            // cboOriBanco
+            // 
+            this.cboOriBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboOriBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOriBanco.FormattingEnabled = true;
+            this.cboOriBanco.Location = new System.Drawing.Point(72, 48);
+            this.cboOriBanco.Name = "cboOriBanco";
+            this.cboOriBanco.Size = new System.Drawing.Size(270, 21);
+            this.cboOriBanco.TabIndex = 3;
+            this.cboOriBanco.SelectedIndexChanged += new System.EventHandler(this.cboBanco_SelectedIndexChanged);
+            this.cboOriBanco.Click += new System.EventHandler(this.cboBanco_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(348, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 391;
+            this.label1.Text = "Nro Cta:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(30, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 392;
+            this.label2.Text = "Banco:";
+            // 
+            // cboDesCuentaBanco
+            // 
+            this.cboDesCuentaBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboDesCuentaBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDesCuentaBanco.FormattingEnabled = true;
+            this.cboDesCuentaBanco.Location = new System.Drawing.Point(396, 110);
+            this.cboDesCuentaBanco.Name = "cboDesCuentaBanco";
+            this.cboDesCuentaBanco.Size = new System.Drawing.Size(373, 21);
+            this.cboDesCuentaBanco.TabIndex = 9;
+            // 
+            // cboDesBanco
+            // 
+            this.cboDesBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboDesBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDesBanco.FormattingEnabled = true;
+            this.cboDesBanco.Location = new System.Drawing.Point(72, 110);
+            this.cboDesBanco.Name = "cboDesBanco";
+            this.cboDesBanco.Size = new System.Drawing.Size(270, 21);
+            this.cboDesBanco.TabIndex = 8;
+            this.cboDesBanco.SelectedIndexChanged += new System.EventHandler(this.cboDesBanco_SelectedIndexChanged);
+            this.cboDesBanco.Click += new System.EventHandler(this.cboDesBanco_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(348, 114);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 13);
+            this.label16.TabIndex = 395;
+            this.label16.Text = "Nro Cta:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(30, 114);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 13);
+            this.label17.TabIndex = 396;
+            this.label17.Text = "Banco:";
+            // 
+            // cbotipo
+            // 
+            this.cbotipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipo.FormattingEnabled = true;
+            this.cbotipo.Items.AddRange(new object[] {
+            "003 TRANSFERENCIA DE FONDOS.",
+            "007 CHEQUES .",
+            "009 EFECTIVO."});
+            this.cbotipo.Location = new System.Drawing.Point(72, 153);
+            this.cbotipo.Name = "cbotipo";
+            this.cbotipo.Size = new System.Drawing.Size(444, 21);
+            this.cbotipo.TabIndex = 10;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(11, 157);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(61, 13);
+            this.label18.TabIndex = 400;
+            this.label18.Text = "Tipo Pago:";
+            // 
+            // separadorOre3
+            // 
+            this.separadorOre3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre3.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre3.Location = new System.Drawing.Point(0, 200);
+            this.separadorOre3.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre3.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre3.Name = "separadorOre3";
+            this.separadorOre3.Size = new System.Drawing.Size(688, 2);
+            this.separadorOre3.TabIndex = 402;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(11, 210);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(121, 13);
+            this.label20.TabIndex = 401;
+            this.label20.Text = "Listado de Prestamos:";
+            // 
+            // txtnrooperacion
+            // 
+            this.txtnrooperacion.BackColor = System.Drawing.Color.White;
+            this.txtnrooperacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnrooperacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnrooperacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnrooperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnrooperacion.ForeColor = System.Drawing.Color.Black;
+            this.txtnrooperacion.Format = null;
+            this.txtnrooperacion.Location = new System.Drawing.Point(584, 176);
+            this.txtnrooperacion.MaxLength = 20;
+            this.txtnrooperacion.Name = "txtnrooperacion";
+            this.txtnrooperacion.NextControlOnEnter = null;
+            this.txtnrooperacion.Size = new System.Drawing.Size(149, 21);
+            this.txtnrooperacion.TabIndex = 15;
+            this.txtnrooperacion.Text = "Ingrese Nro.Op./Cheque";
+            this.txtnrooperacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnrooperacion.TextoDefecto = "Ingrese Nro.Op./Cheque";
+            this.txtnrooperacion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnrooperacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Location = new System.Drawing.Point(526, 180);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(58, 13);
+            this.label21.TabIndex = 404;
+            this.label21.Text = "Nro.Pago:";
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.Location = new System.Drawing.Point(880, 200);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(92, 23);
+            this.btnActualizar.TabIndex = 21;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // cbomoneda
+            // 
+            this.cbomoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbomoneda.FormattingEnabled = true;
+            this.cbomoneda.Location = new System.Drawing.Point(521, 153);
+            this.cbomoneda.Name = "cbomoneda";
+            this.cbomoneda.Size = new System.Drawing.Size(99, 21);
+            this.cbomoneda.TabIndex = 11;
+            this.cbomoneda.SelectedIndexChanged += new System.EventHandler(this.cbomoneda_SelectedIndexChanged);
+            // 
+            // btnAbonados
+            // 
+            this.btnAbonados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbonados.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbonados.Image = ((System.Drawing.Image)(resources.GetObject("btnAbonados.Image")));
+            this.btnAbonados.Location = new System.Drawing.Point(786, 200);
+            this.btnAbonados.Name = "btnAbonados";
+            this.btnAbonados.Size = new System.Drawing.Size(92, 23);
+            this.btnAbonados.TabIndex = 20;
+            this.btnAbonados.Text = "Abonos";
+            this.btnAbonados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAbonados.UseVisualStyleBackColor = true;
+            this.btnAbonados.Click += new System.EventHandler(this.btnAbonados_Click);
+            // 
+            // btnCancelados
+            // 
+            this.btnCancelados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelados.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelados.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelados.Image")));
+            this.btnCancelados.Location = new System.Drawing.Point(692, 200);
+            this.btnCancelados.Name = "btnCancelados";
+            this.btnCancelados.Size = new System.Drawing.Size(92, 23);
+            this.btnCancelados.TabIndex = 19;
+            this.btnCancelados.Text = "Cancelados";
+            this.btnCancelados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelados.UseVisualStyleBackColor = true;
+            this.btnCancelados.Click += new System.EventHandler(this.btnCancelados_Click);
             // 
             // frmCobroPrestamosInterEmpresa
             // 
