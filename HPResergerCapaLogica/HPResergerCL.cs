@@ -2465,6 +2465,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ReporteAnalitico(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
         }
+        public DataTable BalanceComprobacion(int @Empresa, int @len, DateTime @periodo)
+        {
+            return cdOrdenPedido.BalanceComprobacion(Empresa, len, periodo);
+        }
         public DataTable ReporteAnalitico2(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {
             return cdOrdenPedido.ReporteAnalitico2(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
@@ -2489,7 +2493,7 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.DiferenciadeCambioMensual(@opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza);
         }
-        public DataTable DiferenciadeCambioMensual(  int @empresa, DateTime @periodo, int @tipo)
+        public DataTable DiferenciadeCambioMensual(int @empresa, DateTime @periodo, int @tipo)
         {
             int ValorCero = 0;
             decimal ValorDecimal = 0m;

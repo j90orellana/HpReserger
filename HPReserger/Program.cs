@@ -16,7 +16,7 @@ namespace HPReserger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ModuloCompensaciones.frmReembolsoGastosPago());
+            //Application.Run(new ModuloReportes.frmBalanceComprobacion());
             Application.Run(new frmLogin());
         }
     }

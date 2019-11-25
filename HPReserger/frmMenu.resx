@@ -148,7 +148,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADe
-        XAAAAk1TRnQBSQFMAwEBAAFAAQUBQAEFAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
+        XAAAAk1TRnQBSQFMAwEBAAFQAQUBUAEFAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
         AgABZAMAAQEBAAEgBgABcQEC/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wBqAAMpAT8DXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
         AcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
@@ -1248,6 +1248,23 @@
         2NSe+G9VfRLMbjz4/b/b/DdwOYIG9Jz48d98wsP/9lMf/8/Y/Om/87w3/xsPfSfegIiV7//nb//8v+/k
         z/+aRUf/G5YdR2gmZEDsrNv/jZsuwxXX73z/v27nO+INSJ53+3/i3NuoGtAxPgOIwjQxgDzAwAAA25z+
         6CTQkAIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="balanceDeComprobaciónToolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAKqSURBVDhPlZLbT9JxGMaZF/0B3tht6y5ramkqEg7RMAHPxEzzAGhoKpKiEESQbqkhCc5zYiAZ
+        5qlpGhpNXaWVc6lRtpzk1pWzTTebNUWf4BejrTZnn+29+L7f5332fA+kw5LWw6+htp/fEtmu+3lahyN7
+        QJjLNCVv8B4LEdESjcTutFnP1sEIhvLD2GbO6pUnxfv37PdhWnpAVHovby97+GqcR/YvYqvYN9WSMcHt
+        zdzVzTV6B5vetUFklaB5oR2srpQ1j/wPKqh8Mvp4rUxT6o/Kl9WQ2OQgt9BB72BBO6uHfq4JOYNCwixr
+        IA/pjwS1nlESiT+cl8gypawVjIhh+GBC+6IBgXoyTtWHEsU2X/QmcVdYcxQordHbxDDXkpNwtjESGf18
+        r6DtvQEBunCvAbMrlei3LnYgazAXLGPqumCo8BhhcFIeukBrjoNyqhJtLoE7hVvsPm9QQwQorpu/PaOB
+        cLgYFzqTUfisFAHKcDsx7IZSGyul6VhI6k5D03wbLvcLYFwye9PIJ1SuI3BQZCuFYlgKpaUMzDL6Tp2I
+        z3EXiaFl+J5RU5yZrmiKSbV3sO6tDglmLmIa2SibkkP+Ro2bI3JUSYpRUyFBTXnpvqZCpCVSnJCFfJNN
+        K0E3sBBrTEJ6Hw/J3ZcQb+Ai/2kJ0nt4oGoYCLxB3hxf3sL8tAUv7J8wurxTQhgEV1LHohvYEIwUgNxK
+        d30WPqLqmQipjFw/rabOnNPElMfXxxNfeMzhNC5N6vD888Y6AB/CgHKHkXM07zj8ZSHbQSryx+AqanNE
+        VUwwsfkXrx3wszqczrGVXZmnRSL5qzhHaNq4BM/yQKwrzi+Lr0wYX/6+N7SK30/5P1h6B/cdnTSMP6xG
+        r81+y9M+HHXFvGt3peKverXip14h3dQU8UZ/AWYwkxFaLsVoAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="reportesContablesToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

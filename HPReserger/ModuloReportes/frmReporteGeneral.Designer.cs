@@ -303,7 +303,7 @@
             this.lblfechasReporte.AutoSize = true;
             this.lblfechasReporte.BackColor = System.Drawing.Color.Transparent;
             this.lblfechasReporte.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblfechasReporte.Location = new System.Drawing.Point(296, 67);
+            this.lblfechasReporte.Location = new System.Drawing.Point(296, 62);
             this.lblfechasReporte.Name = "lblfechasReporte";
             this.lblfechasReporte.Size = new System.Drawing.Size(32, 13);
             this.lblfechasReporte.TabIndex = 73;
@@ -356,12 +356,12 @@
             this.comboMesAño.AutoSize = true;
             this.comboMesAño.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2019, 9, 12, 0, 0, 0, 0);
-            this.comboMesAño.FechaFinMes = new System.DateTime(2019, 9, 30, 0, 0, 0, 0);
-            this.comboMesAño.FechaInicioMes = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
-            this.comboMesAño.Location = new System.Drawing.Point(325, 63);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2019, 11, 25, 0, 0, 0, 0);
+            this.comboMesAño.FechaFinMes = new System.DateTime(2019, 11, 30, 0, 0, 0, 0);
+            this.comboMesAño.FechaInicioMes = new System.DateTime(2019, 11, 1, 0, 0, 0, 0);
+            this.comboMesAño.Location = new System.Drawing.Point(325, 58);
             this.comboMesAño.Name = "comboMesAño";
-            this.comboMesAño.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño.Size = new System.Drawing.Size(197, 27);
             this.comboMesAño.TabIndex = 88;
             this.comboMesAño.VerAño = true;
             this.comboMesAño.VerMes = true;
@@ -400,6 +400,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 774);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtdiferencia);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboMesAño);
@@ -413,7 +414,6 @@
             this.Controls.Add(this.btnexportarexcel);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.dtgconten);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblfechasReporte);
             this.Controls.Add(this.label1);
             this.MinimumSize = new System.Drawing.Size(835, 813);

@@ -68,6 +68,8 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            //System.Diagnostics.Stopwatch aloja = new System.Diagnostics.Stopwatch();
+            //aloja.Start();
             this.Cursor = Cursors.WaitCursor;
             btnAplicar.Enabled = false;
             if (cboempresa.SelectedValue != null && cboperiodo.SelectedValue != null)
@@ -99,7 +101,7 @@ namespace HPReserger
 
                     }
                     lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
-
+                    //Configuraciones.TiempoEjecucionMsg(aloja);
                 }
                 else msg("Ingrese el Tipo de Cambio para el Cierre de Este Periodo");
             }

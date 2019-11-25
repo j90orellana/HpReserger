@@ -4753,6 +4753,12 @@ namespace HPResergerCapaDatos
             object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon };
             return bd.DataTableFromProcedure("usp_ReporteAnalitico", parametros, valores, null);
         }
+        public DataTable BalanceComprobacion(int @Empresa, int @len, DateTime @periodo)
+        {
+            string[] parametros = { "@empresa", "@len", "@periodo" };
+            object[] valores = { Empresa, len, periodo };
+            return bd.DataTableFromProcedure("usp_BalanceComprobacion", parametros, valores, null);
+        }
         public DataTable ReporteAnalitico2(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {
             string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial" };

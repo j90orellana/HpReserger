@@ -366,6 +366,7 @@ namespace HPResergerFunciones
             public Boolean _Centrar = false;
             public Color? BackColor = null;
             public Color? ForeColor = null;
+            public Font Fuente = null;
             public RangoCelda() { }
             public RangoCelda(string _fila, string _columna, string _nombre)
             {
@@ -418,6 +419,18 @@ namespace HPResergerFunciones
                 _Centrar = Centrar;
                 _Negrita = Negrita;
                 _Centrar = Centrar;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Color? _BackColor, Color? _ForeColor, Font _fuente)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
+                Fuente = _fuente;
             }
         }
         public static void DescargarImagen(PictureBox Fotos)
@@ -840,6 +853,10 @@ namespace HPResergerFunciones
                 }
                 else
                     Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Merge = true;
+                if (Nombres.Fuente != null)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Name = Nombres.Fuente.Name;
+                }
                 //backcolor
                 //    if (Nombres.BackColor != null)
                 //                    Hoja_Trabajo.Cells[Nombres.fila + Nombres.columna].Style.Fill.BackgroundColor.SetColor(Color. Nombres.BackColor);

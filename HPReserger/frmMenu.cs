@@ -2630,7 +2630,7 @@ namespace HPReserger
                 {
                     formularios.ResumeLayout();
                 }
-                pbesquina.ResumeLayout();                
+                pbesquina.ResumeLayout();
             }
             else
             {
@@ -3876,6 +3876,29 @@ namespace HPReserger
         private void Diferenciacerrarcierremensusal(object sender, FormClosedEventArgs e)
         {
             frmcierremensual = null;
+        }
+        ModuloReportes.frmBalanceComprobacion frmComprobacion;
+        private void balanceDeComprobaciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (frmComprobacion == null)
+            {
+                frmComprobacion = new ModuloReportes.frmBalanceComprobacion();
+                frmComprobacion.MdiParent = this;
+                frmComprobacion.Icon = ICono;
+                frmComprobacion.FormClosed += new FormClosedEventHandler(cerrarbalancecomprobacion);
+                frmComprobacion.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmComprobacion.Activate();
+                ValidarVentanas(frmComprobacion);
+            }
+        }
+
+        private void cerrarbalancecomprobacion(object sender, FormClosedEventArgs e)
+        {
+            frmComprobacion = null;
         }
     }
 }

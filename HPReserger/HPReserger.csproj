@@ -256,6 +256,12 @@
     <Compile Include="ModuloFinanzas\frmPrestamosInterEmpresaListadoAbonados.Designer.cs">
       <DependentUpon>frmPrestamosInterEmpresaListadoAbonados.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\frmBalanceComprobacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\frmBalanceComprobacion.Designer.cs">
+      <DependentUpon>frmBalanceComprobacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\frmRegMayorxCuentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1752,6 +1758,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmPrestamosInterEmpresaListadoAbonados.resx">
       <DependentUpon>frmPrestamosInterEmpresaListadoAbonados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\frmBalanceComprobacion.resx">
+      <DependentUpon>frmBalanceComprobacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmRegMayorxCuentas.resx">
       <DependentUpon>frmRegMayorxCuentas.cs</DependentUpon>
