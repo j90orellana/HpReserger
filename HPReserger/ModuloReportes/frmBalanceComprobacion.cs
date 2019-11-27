@@ -43,12 +43,71 @@ namespace HPReserger.ModuloReportes
 
                 dtgconten.DataSource = CapaLogica.BalanceComprobacion((int)cboEmpresas.SelectedValue, Largo, comboMesAño.FechaFinMes);
                 lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
+                DataTable Tabla = (DataTable)dtgconten.DataSource;
+                FilaTotal = Tabla.Rows.Count;
+                Tabla.Rows.Add(Tabla.NewRow());
+                Tabla.Rows.Add(Tabla.NewRow());
+                Tabla.Rows.Add(Tabla.NewRow());
+                Tabla.Rows.Add(Tabla.NewRow());
+                SacarTotales();
             }
             else
             {
                 msg("Seleccione un Empresa");
             }
             Cursor = Cursors.Default;
+        }
+        public void SacarTotales()
+        {
+            if (FilaTotal > 0)
+            {
+                dtgconten[xDescripcion.Name, FilaTotal + 1].Value = "Saldo".ToUpper();
+                Font Fuente = dtgconten.DefaultCellStyle.Font;
+                dtgconten[xDescripcion.Name, FilaTotal + 1].Style.Font = new Font(Fuente, FontStyle.Bold);
+                //dtgconten.Rows[FilaTotal + 1].DefaultCellStyle.Font = new Font(Fuente, FontStyle.Bold);
+                dtgconten[xDescripcion.Name, FilaTotal + 2].Value = "Resultado".ToUpper();
+                dtgconten[xDescripcion.Name, FilaTotal + 2].Style.Font = new Font(Fuente, FontStyle.Bold);
+                //dtgconten.Rows[FilaTotal + 2].DefaultCellStyle.Font = new Font(Fuente, FontStyle.Bold);
+                dtgconten[xDescripcion.Name, FilaTotal + 3].Value = "Comprobación".ToUpper();
+                dtgconten[xDescripcion.Name, FilaTotal + 3].Style.Font = new Font(Fuente, FontStyle.Bold);
+                //dtgconten.Rows[FilaTotal + 3].DefaultCellStyle.Font = new Font(Fuente, FontStyle.Bold);
+
+                foreach (DataGridViewColumn item in dtgconten.Columns)
+                {
+                    if (item.Index > 1)
+                    {
+                        decimal Valor = 0;
+                        decimal valor1 = 0, valor2 = 0;
+                        foreach (DataGridViewRow items in dtgconten.Rows)
+                        {
+                            if (items.Index < FilaTotal)
+                            {
+                                decimal val = 0;
+                                decimal.TryParse(items.Cells[item.Name].Value.ToString(), out val);
+                                Valor += val;
+                                if (item.Index % 2 == 0 && item.Index > 1)
+                                {
+                                    decimal vale = 0;
+                                    decimal.TryParse(items.Cells[item.Index].Value.ToString(), out vale);
+                                    valor1 += vale;
+                                    decimal.TryParse(items.Cells[item.Index + 1].Value.ToString(), out vale);
+                                    valor2 += vale;
+                                }
+                            }
+                        }
+                        dtgconten[item.Name, FilaTotal + 1].Value = Valor;
+                        if (item.Index % 2 == 0 && item.Index > 1)
+                        {
+                            dtgconten[item.Index, FilaTotal + 2].Value = valor1 < valor2 ? Math.Abs(valor2 - valor1) : 0;
+                            dtgconten[item.Index + 1, FilaTotal + 2].Value = valor1 > valor2 ? Math.Abs(valor2 - valor1) : 0;
+                        }
+                        if (item.Index > 1)
+                        {
+                            dtgconten[item.Index, FilaTotal + 3].Value = (decimal)dtgconten[item.Index, FilaTotal + 1].Value + (decimal)dtgconten[item.Index, FilaTotal + 2].Value;
+                        }
+                    }
+                }
+            }
         }
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
@@ -75,6 +134,7 @@ namespace HPReserger.ModuloReportes
         }
         frmProcesando frmproce;
         private string NameFecha;
+        private int FilaTotal;
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -82,7 +142,7 @@ namespace HPReserger.ModuloReportes
             {
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
                 _NombreHoja = "Balance de Comprobación"; _Cabecera = "Balance de Comprobación";
-                _Columnas = new int[] { }; _NColumna = "f";
+                _Columnas = new int[] { }; _NColumna = "l";
                 //
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 Color Back = Color.FromArgb(78, 129, 189);
@@ -102,7 +162,7 @@ namespace HPReserger.ModuloReportes
                 //TablaExportar.Columns.RemoveAt(0);
                 //
                 //
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, _NombreHoja, _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 18 }, "");
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, _NombreHoja, _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }, "");
             }
             else msg("No hay datos que Exportar");
         }

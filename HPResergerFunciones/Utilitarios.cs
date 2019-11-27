@@ -833,6 +833,7 @@ namespace HPResergerFunciones
         public static void ExportarAExcelOrdenandoColumnas(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
             , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro)
         {
+            //Principal para generar exportacion a Excel
             ExcelPackage Excel = new ExcelPackage();
             Excel.Workbook.Worksheets.Add(nombrehoja);
             ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[1];
@@ -924,6 +925,7 @@ namespace HPResergerFunciones
             foreach (int i in AutoAjustarColumnas)
             {
                 Hoja_Trabajo.Column(i).AutoFit(7);
+
             }
             //Fin Ajuste de Texto
             if (!EstaArchivoAbierto(file.ToString()))
@@ -976,22 +978,22 @@ namespace HPResergerFunciones
             //    }
             //    numer++;
             //}
-            foreach (int fila in FilasNegritas)
-            {
-                //   Hoja_Trabajo.Rows[fila + PosInicialGrilla].Font.Bold = true;
-            }
-            foreach (int fila in AutoAjustarColumnas)
-            {
-                //    Hoja_Trabajo.Columns[fila].Font.Bold = true;
-            }
+            //foreach (int fila in FilasNegritas)
+            ////{
+            ////   Hoja_Trabajo.Rows[fila + PosInicialGrilla].Font.Bold = true;
+            //}
+            //foreach (int fila in AutoAjustarColumnas)
+            //{
+            ////    Hoja_Trabajo.Columns[fila].Font.Bold = true;
+            //}
             //if (aplicacion != null)
             //    aplicacion.Visible = true;
-            if (!string.IsNullOrWhiteSpace(NameFile))
-            {
-                //libros_trabajo.SaveAs(ruta, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
-                //libros_trabajo.Close(true);
-                //aplicacion.Quit();
-            }
+            //if (!string.IsNullOrWhiteSpace(NameFile))
+            //{
+            //    //libros_trabajo.SaveAs(ruta, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+            //    //libros_trabajo.Close(true);
+            //    //aplicacion.Quit();
+            //}
         }
         public static Boolean EstaArchivoAbierto(string filePath)
         {
