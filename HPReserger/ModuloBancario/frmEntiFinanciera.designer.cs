@@ -33,17 +33,15 @@ namespace HPReserger
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEntiFinanciera));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sufijox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -58,6 +56,12 @@ namespace HPReserger
             this.txtsufijo = new HpResergerUserControls.TextBoxPer();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtCodSunat = new HpResergerUserControls.TextBoxPer();
+            this.label5 = new System.Windows.Forms.Label();
+            this.codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sufijox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCodSunat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,16 +122,17 @@ namespace HPReserger
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigox,
             this.descripcionx,
-            this.sufijox});
+            this.sufijox,
+            this.xCodSunat});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -140,48 +145,18 @@ namespace HPReserger
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(415, 183);
-            this.dtgconten.TabIndex = 36;
+            this.dtgconten.Size = new System.Drawing.Size(460, 183);
+            this.dtgconten.TabIndex = 7;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // codigox
-            // 
-            this.codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.codigox.DataPropertyName = "CODIGO";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.codigox.DefaultCellStyle = dataGridViewCellStyle3;
-            this.codigox.HeaderText = "Código";
-            this.codigox.Name = "codigox";
-            this.codigox.ReadOnly = true;
-            this.codigox.Width = 69;
-            // 
-            // descripcionx
-            // 
-            this.descripcionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcionx.DataPropertyName = "DESCRIPCION";
-            this.descripcionx.HeaderText = "Descripción";
-            this.descripcionx.Name = "descripcionx";
-            this.descripcionx.ReadOnly = true;
-            // 
-            // sufijox
-            // 
-            this.sufijox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.sufijox.DataPropertyName = "SUFIJO";
-            this.sufijox.FillWeight = 50F;
-            this.sufijox.HeaderText = "Sufijo";
-            this.sufijox.MinimumWidth = 50;
-            this.sufijox.Name = "sufijox";
-            this.sufijox.ReadOnly = true;
-            this.sufijox.Width = 61;
             // 
             // btneliminar
             // 
             this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(345, 55);
+            this.btneliminar.Location = new System.Drawing.Point(390, 55);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 24);
-            this.btneliminar.TabIndex = 41;
+            this.btneliminar.TabIndex = 3;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btneliminar.UseVisualStyleBackColor = true;
@@ -191,10 +166,10 @@ namespace HPReserger
             // 
             this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(345, 32);
+            this.btnmodificar.Location = new System.Drawing.Point(390, 32);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 24);
-            this.btnmodificar.TabIndex = 42;
+            this.btnmodificar.TabIndex = 2;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
@@ -206,10 +181,10 @@ namespace HPReserger
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(220, 292);
+            this.btncancelar.Location = new System.Drawing.Point(243, 292);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 24);
-            this.btncancelar.TabIndex = 37;
+            this.btncancelar.TabIndex = 9;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -220,10 +195,10 @@ namespace HPReserger
             this.btnaceptar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(136, 292);
+            this.btnaceptar.Location = new System.Drawing.Point(159, 292);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 24);
-            this.btnaceptar.TabIndex = 38;
+            this.btnaceptar.TabIndex = 8;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -233,10 +208,10 @@ namespace HPReserger
             // 
             this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
-            this.btnnuevo.Location = new System.Drawing.Point(345, 9);
+            this.btnnuevo.Location = new System.Drawing.Point(390, 9);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 24);
-            this.btnnuevo.TabIndex = 39;
+            this.btnnuevo.TabIndex = 1;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -249,8 +224,8 @@ namespace HPReserger
             this.txtgerencia.Location = new System.Drawing.Point(81, 34);
             this.txtgerencia.MaxLength = 60;
             this.txtgerencia.Name = "txtgerencia";
-            this.txtgerencia.Size = new System.Drawing.Size(259, 21);
-            this.txtgerencia.TabIndex = 43;
+            this.txtgerencia.Size = new System.Drawing.Size(303, 21);
+            this.txtgerencia.TabIndex = 4;
             // 
             // txtcodigo
             // 
@@ -259,8 +234,8 @@ namespace HPReserger
             this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.Location = new System.Drawing.Point(81, 11);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(259, 21);
-            this.txtcodigo.TabIndex = 40;
+            this.txtcodigo.Size = new System.Drawing.Size(303, 21);
+            this.txtcodigo.TabIndex = 0;
             this.txtcodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
@@ -270,7 +245,7 @@ namespace HPReserger
             this.label2.Location = new System.Drawing.Point(11, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 34;
+            this.label2.TabIndex = 11;
             this.label2.Text = "Descripción:";
             // 
             // label1
@@ -280,7 +255,7 @@ namespace HPReserger
             this.label1.Location = new System.Drawing.Point(34, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
-            this.label1.TabIndex = 35;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Código:";
             // 
             // tipmsg
@@ -294,7 +269,7 @@ namespace HPReserger
             this.label3.Location = new System.Drawing.Point(41, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 45;
+            this.label3.TabIndex = 12;
             this.label3.Text = "Sufijo:";
             // 
             // txtsufijo
@@ -306,12 +281,13 @@ namespace HPReserger
             this.txtsufijo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtsufijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsufijo.ForeColor = System.Drawing.Color.Black;
+            this.txtsufijo.Format = null;
             this.txtsufijo.Location = new System.Drawing.Point(81, 57);
             this.txtsufijo.MaxLength = 20;
             this.txtsufijo.Name = "txtsufijo";
             this.txtsufijo.NextControlOnEnter = this.btnaceptar;
-            this.txtsufijo.Size = new System.Drawing.Size(258, 21);
-            this.txtsufijo.TabIndex = 46;
+            this.txtsufijo.Size = new System.Drawing.Size(202, 21);
+            this.txtsufijo.TabIndex = 5;
             this.txtsufijo.Text = "SUFIJO";
             this.txtsufijo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtsufijo.TextoDefecto = "Sufijo";
@@ -322,12 +298,13 @@ namespace HPReserger
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre1.Location = new System.Drawing.Point(0, 82);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(442, 2);
-            this.separadorOre1.TabIndex = 47;
+            this.separadorOre1.Size = new System.Drawing.Size(487, 2);
+            this.separadorOre1.TabIndex = 14;
             // 
             // label4
             // 
@@ -337,18 +314,94 @@ namespace HPReserger
             this.label4.Location = new System.Drawing.Point(11, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(176, 13);
-            this.label4.TabIndex = 45;
+            this.label4.TabIndex = 15;
             this.label4.Text = "Listado de Entidades Financieras";
+            // 
+            // txtCodSunat
+            // 
+            this.txtCodSunat.BackColor = System.Drawing.Color.White;
+            this.txtCodSunat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodSunat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtCodSunat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtCodSunat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodSunat.ForeColor = System.Drawing.Color.Black;
+            this.txtCodSunat.Format = "n0";
+            this.txtCodSunat.Location = new System.Drawing.Point(346, 57);
+            this.txtCodSunat.MaxLength = 20;
+            this.txtCodSunat.Name = "txtCodSunat";
+            this.txtCodSunat.NextControlOnEnter = null;
+            this.txtCodSunat.Size = new System.Drawing.Size(38, 21);
+            this.txtCodSunat.TabIndex = 6;
+            this.txtCodSunat.Text = "99";
+            this.txtCodSunat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCodSunat.TextoDefecto = "Sufijo";
+            this.txtCodSunat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtCodSunat.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Location = new System.Drawing.Point(285, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "CodSunat:";
+            // 
+            // codigox
+            // 
+            this.codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.codigox.DataPropertyName = "CODIGO";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.codigox.DefaultCellStyle = dataGridViewCellStyle3;
+            this.codigox.HeaderText = "Código";
+            this.codigox.MinimumWidth = 50;
+            this.codigox.Name = "codigox";
+            this.codigox.ReadOnly = true;
+            this.codigox.Width = 50;
+            // 
+            // descripcionx
+            // 
+            this.descripcionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcionx.DataPropertyName = "DESCRIPCION";
+            this.descripcionx.HeaderText = "Descripción";
+            this.descripcionx.Name = "descripcionx";
+            this.descripcionx.ReadOnly = true;
+            // 
+            // sufijox
+            // 
+            this.sufijox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.sufijox.DataPropertyName = "SUFIJO";
+            this.sufijox.FillWeight = 50F;
+            this.sufijox.HeaderText = "Sufijo";
+            this.sufijox.MinimumWidth = 50;
+            this.sufijox.Name = "sufijox";
+            this.sufijox.ReadOnly = true;
+            this.sufijox.Width = 50;
+            // 
+            // xCodSunat
+            // 
+            this.xCodSunat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xCodSunat.DataPropertyName = "codsunat";
+            dataGridViewCellStyle4.Format = "00";
+            this.xCodSunat.DefaultCellStyle = dataGridViewCellStyle4;
+            this.xCodSunat.HeaderText = "CodSunat";
+            this.xCodSunat.MinimumWidth = 60;
+            this.xCodSunat.Name = "xCodSunat";
+            this.xCodSunat.ReadOnly = true;
+            this.xCodSunat.Width = 60;
             // 
             // frmEntiFinanciera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btncancelar;
-            this.ClientSize = new System.Drawing.Size(439, 322);
+            this.ClientSize = new System.Drawing.Size(484, 322);
             this.Controls.Add(this.separadorOre1);
+            this.Controls.Add(this.txtCodSunat);
             this.Controls.Add(this.txtsufijo);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btneliminar);
@@ -361,7 +414,7 @@ namespace HPReserger
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(404, 361);
+            this.MinimumSize = new System.Drawing.Size(500, 361);
             this.Name = "frmEntiFinanciera";
             this.Nombre = "Instituciones Financieras";
             this.Text = "Instituciones Financieras";
@@ -391,10 +444,13 @@ namespace HPReserger
         private System.Windows.Forms.ToolTip tipmsg;
         private System.Windows.Forms.Label label3;
         private HpResergerUserControls.TextBoxPer txtsufijo;
+        private SeparadorOre separadorOre1;
+        private System.Windows.Forms.Label label4;
+        private TextBoxPer txtCodSunat;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigox;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionx;
         private System.Windows.Forms.DataGridViewTextBoxColumn sufijox;
-        private SeparadorOre separadorOre1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCodSunat;
     }
 }

@@ -352,6 +352,18 @@
     <Compile Include="ModuloReportes\frmReporteSaldosContables.Designer.cs">
       <DependentUpon>frmReporteSaldosContables.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroBancosCorriente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroBancosCorriente.Designer.cs">
+      <DependentUpon>frmLibroBancosCorriente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroBancosEfectivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroBancosEfectivo.Designer.cs">
+      <DependentUpon>frmLibroBancosEfectivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="rptFormato81Compras.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1806,6 +1818,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmReporteSaldosContables.resx">
       <DependentUpon>frmReporteSaldosContables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroBancosCorriente.resx">
+      <DependentUpon>frmLibroBancosCorriente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroBancosEfectivo.resx">
+      <DependentUpon>frmLibroBancosEfectivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptFormato81Compras.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

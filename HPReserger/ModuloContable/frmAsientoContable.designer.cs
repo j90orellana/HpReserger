@@ -144,11 +144,14 @@ namespace HPReserger
             this.txtbuscuenta = new HpResergerUserControls.TextBoxPer();
             this.btnpdf = new System.Windows.Forms.Button();
             this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cuadrarAsientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnreversa
@@ -160,7 +163,7 @@ namespace HPReserger
             this.btnreversa.Location = new System.Drawing.Point(250, 578);
             this.btnreversa.Name = "btnreversa";
             this.btnreversa.Size = new System.Drawing.Size(92, 23);
-            this.btnreversa.TabIndex = 183;
+            this.btnreversa.TabIndex = 30;
             this.btnreversa.Text = "Reversar";
             this.btnreversa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.btnreversa, "Reversa el Asiento ");
@@ -175,7 +178,7 @@ namespace HPReserger
             this.btneliminar.Location = new System.Drawing.Point(581, 64);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(92, 23);
-            this.btneliminar.TabIndex = 3;
+            this.btneliminar.TabIndex = 39;
             this.btneliminar.TabStop = false;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -198,7 +201,7 @@ namespace HPReserger
             this.txtbusGlosa.Name = "txtbusGlosa";
             this.txtbusGlosa.NextControlOnEnter = null;
             this.txtbusGlosa.Size = new System.Drawing.Size(212, 21);
-            this.txtbusGlosa.TabIndex = 412;
+            this.txtbusGlosa.TabIndex = 22;
             this.txtbusGlosa.Text = "Buscar Glosa";
             this.txtbusGlosa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtbusGlosa.TextoDefecto = "Buscar Glosa";
@@ -215,7 +218,7 @@ namespace HPReserger
             this.label17.Location = new System.Drawing.Point(525, 86);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 13);
-            this.label17.TabIndex = 213;
+            this.label17.TabIndex = 50;
             this.label17.Text = "T.Cambio:";
             // 
             // label26
@@ -226,7 +229,7 @@ namespace HPReserger
             this.label26.Location = new System.Drawing.Point(9, 132);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(89, 13);
-            this.label26.TabIndex = 210;
+            this.label26.TabIndex = 52;
             this.label26.Text = "Detalle Asiento:";
             // 
             // lbldetalle
@@ -237,7 +240,7 @@ namespace HPReserger
             this.lbldetalle.Location = new System.Drawing.Point(12, 320);
             this.lbldetalle.Name = "lbldetalle";
             this.lbldetalle.Size = new System.Drawing.Size(46, 13);
-            this.lbldetalle.TabIndex = 181;
+            this.lbldetalle.TabIndex = 55;
             this.lbldetalle.Text = "Detalle:";
             // 
             // labelAzul
@@ -249,7 +252,7 @@ namespace HPReserger
             this.labelAzul.Location = new System.Drawing.Point(273, 320);
             this.labelAzul.Name = "labelAzul";
             this.labelAzul.Size = new System.Drawing.Size(139, 13);
-            this.labelAzul.TabIndex = 180;
+            this.labelAzul.TabIndex = 60;
             this.labelAzul.Text = "Azul=Asiento Con Detalle";
             this.labelAzul.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -262,7 +265,7 @@ namespace HPReserger
             this.labelRojo.Location = new System.Drawing.Point(284, 307);
             this.labelRojo.Name = "labelRojo";
             this.labelRojo.Size = new System.Drawing.Size(117, 13);
-            this.labelRojo.TabIndex = 180;
+            this.labelRojo.TabIndex = 58;
             this.labelRojo.Text = "Rojo=Asiento Reflejo";
             this.labelRojo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelRojo.Click += new System.EventHandler(this.labelRojo_Click);
@@ -278,7 +281,7 @@ namespace HPReserger
             this.cboetapa.Location = new System.Drawing.Point(413, 65);
             this.cboetapa.Name = "cboetapa";
             this.cboetapa.Size = new System.Drawing.Size(165, 21);
-            this.cboetapa.TabIndex = 19;
+            this.cboetapa.TabIndex = 11;
             this.cboetapa.Enter += new System.EventHandler(this.cboetapa_Enter);
             // 
             // cboempresa
@@ -292,7 +295,7 @@ namespace HPReserger
             this.cboempresa.Location = new System.Drawing.Point(9, 65);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(215, 21);
-            this.cboempresa.TabIndex = 17;
+            this.cboempresa.TabIndex = 44;
             this.cboempresa.SelectedValueChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click_1);
             // 
@@ -307,7 +310,7 @@ namespace HPReserger
             this.cboproyecto.Location = new System.Drawing.Point(228, 65);
             this.cboproyecto.Name = "cboproyecto";
             this.cboproyecto.Size = new System.Drawing.Size(181, 21);
-            this.cboproyecto.TabIndex = 18;
+            this.cboproyecto.TabIndex = 10;
             this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
             this.cboproyecto.Enter += new System.EventHandler(this.cboproyecto_Enter);
             // 
@@ -321,7 +324,7 @@ namespace HPReserger
             this.dtpfechavalor.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpfechavalor.Name = "dtpfechavalor";
             this.dtpfechavalor.Size = new System.Drawing.Size(97, 22);
-            this.dtpfechavalor.TabIndex = 15;
+            this.dtpfechavalor.TabIndex = 7;
             this.dtpfechavalor.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpfechavalor.ValueChanged += new System.EventHandler(this.dtfechavalor_ValueChanged);
             // 
@@ -333,7 +336,7 @@ namespace HPReserger
             this.btnActualizar.Location = new System.Drawing.Point(581, 395);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(92, 23);
-            this.btnActualizar.TabIndex = 171;
+            this.btnActualizar.TabIndex = 29;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -349,7 +352,7 @@ namespace HPReserger
             this.cboestado.Location = new System.Drawing.Point(89, 6);
             this.cboestado.Name = "cboestado";
             this.cboestado.Size = new System.Drawing.Size(97, 21);
-            this.cboestado.TabIndex = 10;
+            this.cboestado.TabIndex = 2;
             this.cboestado.SelectedIndexChanged += new System.EventHandler(this.cboestado_SelectedIndexChanged);
             this.cboestado.TextChanged += new System.EventHandler(this.cboestado_TextChanged);
             // 
@@ -362,7 +365,7 @@ namespace HPReserger
             this.lblmsg.Location = new System.Drawing.Point(12, 307);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(101, 13);
-            this.lblmsg.TabIndex = 166;
+            this.lblmsg.TabIndex = 54;
             this.lblmsg.Text = "Total de Registros:";
             // 
             // label5
@@ -374,7 +377,7 @@ namespace HPReserger
             this.label5.Location = new System.Drawing.Point(506, 346);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 165;
+            this.label5.TabIndex = 64;
             this.label5.Text = "Diferencia";
             // 
             // txtdiferencia
@@ -387,7 +390,7 @@ namespace HPReserger
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
             this.txtdiferencia.Size = new System.Drawing.Size(102, 21);
-            this.txtdiferencia.TabIndex = 164;
+            this.txtdiferencia.TabIndex = 20;
             this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
@@ -399,7 +402,7 @@ namespace HPReserger
             this.label4.Location = new System.Drawing.Point(485, 307);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
-            this.label4.TabIndex = 163;
+            this.label4.TabIndex = 61;
             this.label4.Text = "Total Debe";
             // 
             // txttotaldebe
@@ -412,7 +415,7 @@ namespace HPReserger
             this.txttotaldebe.Name = "txttotaldebe";
             this.txttotaldebe.ReadOnly = true;
             this.txttotaldebe.Size = new System.Drawing.Size(102, 21);
-            this.txttotaldebe.TabIndex = 162;
+            this.txttotaldebe.TabIndex = 18;
             this.txttotaldebe.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
@@ -424,7 +427,7 @@ namespace HPReserger
             this.label3.Location = new System.Drawing.Point(590, 307);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 161;
+            this.label3.TabIndex = 62;
             this.label3.Text = "Total Haber";
             // 
             // txttotalhaber
@@ -437,7 +440,7 @@ namespace HPReserger
             this.txttotalhaber.Name = "txttotalhaber";
             this.txttotalhaber.ReadOnly = true;
             this.txttotalhaber.Size = new System.Drawing.Size(102, 21);
-            this.txttotalhaber.TabIndex = 160;
+            this.txttotalhaber.TabIndex = 19;
             this.txttotalhaber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btndina
@@ -448,7 +451,7 @@ namespace HPReserger
             this.btndina.Location = new System.Drawing.Point(447, 29);
             this.btndina.Name = "btndina";
             this.btndina.Size = new System.Drawing.Size(21, 20);
-            this.btndina.TabIndex = 1;
+            this.btndina.TabIndex = 40;
             this.btndina.UseVisualStyleBackColor = true;
             this.btndina.Click += new System.EventHandler(this.btndina_Click);
             // 
@@ -460,7 +463,7 @@ namespace HPReserger
             this.btnmas.Location = new System.Drawing.Point(581, 124);
             this.btnmas.Name = "btnmas";
             this.btnmas.Size = new System.Drawing.Size(92, 21);
-            this.btnmas.TabIndex = 24;
+            this.btnmas.TabIndex = 16;
             this.btnmas.Text = "&Cuentas";
             this.btnmas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmas.UseVisualStyleBackColor = true;
@@ -476,7 +479,7 @@ namespace HPReserger
             this.dtpfecha.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpfecha.Name = "dtpfecha";
             this.dtpfecha.Size = new System.Drawing.Size(97, 22);
-            this.dtpfecha.TabIndex = 13;
+            this.dtpfecha.TabIndex = 5;
             this.dtpfecha.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpfecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
             // 
@@ -488,7 +491,7 @@ namespace HPReserger
             this.lblmsg2.Location = new System.Drawing.Point(6, 583);
             this.lblmsg2.Name = "lblmsg2";
             this.lblmsg2.Size = new System.Drawing.Size(101, 13);
-            this.lblmsg2.TabIndex = 147;
+            this.lblmsg2.TabIndex = 35;
             this.lblmsg2.Text = "Total de Registros:";
             // 
             // btncancelar
@@ -499,7 +502,7 @@ namespace HPReserger
             this.btncancelar.Location = new System.Drawing.Point(581, 578);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(92, 23);
-            this.btncancelar.TabIndex = 51;
+            this.btncancelar.TabIndex = 33;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -513,7 +516,7 @@ namespace HPReserger
             this.btnaceptar.Location = new System.Drawing.Point(485, 578);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(92, 23);
-            this.btnaceptar.TabIndex = 50;
+            this.btnaceptar.TabIndex = 32;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -527,7 +530,7 @@ namespace HPReserger
             this.btnmodificar.Location = new System.Drawing.Point(581, 28);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(92, 23);
-            this.btnmodificar.TabIndex = 2;
+            this.btnmodificar.TabIndex = 1;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
@@ -540,7 +543,7 @@ namespace HPReserger
             this.btnnuevo.Location = new System.Drawing.Point(581, 5);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(92, 23);
-            this.btnnuevo.TabIndex = 1;
+            this.btnnuevo.TabIndex = 0;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -555,7 +558,7 @@ namespace HPReserger
             this.txtdinamica.MaxLength = 15;
             this.txtdinamica.Name = "txtdinamica";
             this.txtdinamica.Size = new System.Drawing.Size(107, 21);
-            this.txtdinamica.TabIndex = 16;
+            this.txtdinamica.TabIndex = 8;
             this.txtdinamica.Click += new System.EventHandler(this.txtdinamica_Click);
             this.txtdinamica.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             this.txtdinamica.DoubleClick += new System.EventHandler(this.txtdinamica_DoubleClick);
@@ -573,7 +576,7 @@ namespace HPReserger
             this.txtcuo.ReadOnly = true;
             this.txtcuo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtcuo.Size = new System.Drawing.Size(131, 21);
-            this.txtcuo.TabIndex = 12;
+            this.txtcuo.TabIndex = 4;
             this.txtcuo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             // 
             // txtcodigo
@@ -586,7 +589,7 @@ namespace HPReserger
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtcodigo.Size = new System.Drawing.Size(97, 21);
-            this.txtcodigo.TabIndex = 11;
+            this.txtcodigo.TabIndex = 3;
             this.txtcodigo.Visible = false;
             this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             // 
@@ -598,7 +601,7 @@ namespace HPReserger
             this.Dinamica.Location = new System.Drawing.Point(392, 33);
             this.Dinamica.Name = "Dinamica";
             this.Dinamica.Size = new System.Drawing.Size(57, 13);
-            this.Dinamica.TabIndex = 140;
+            this.Dinamica.TabIndex = 41;
             this.Dinamica.Text = "Dinámica:";
             // 
             // label14
@@ -609,7 +612,7 @@ namespace HPReserger
             this.label14.Location = new System.Drawing.Point(418, 10);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
-            this.label14.TabIndex = 140;
+            this.label14.TabIndex = 38;
             this.label14.Text = "Cuo:";
             // 
             // label13
@@ -620,7 +623,7 @@ namespace HPReserger
             this.label13.Location = new System.Drawing.Point(246, 10);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 13);
-            this.label13.TabIndex = 140;
+            this.label13.TabIndex = 37;
             this.label13.Text = "Código:";
             this.label13.Visible = false;
             // 
@@ -632,7 +635,7 @@ namespace HPReserger
             this.radioButton2.Location = new System.Drawing.Point(78, 399);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(68, 18);
-            this.radioButton2.TabIndex = 31;
+            this.radioButton2.TabIndex = 65;
             this.radioButton2.Text = "Cuenta";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
@@ -646,7 +649,7 @@ namespace HPReserger
             this.fechafin.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.fechafin.Name = "fechafin";
             this.fechafin.Size = new System.Drawing.Size(105, 22);
-            this.fechafin.TabIndex = 34;
+            this.fechafin.TabIndex = 69;
             this.fechafin.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.fechafin.ValueChanged += new System.EventHandler(this.fechafin_ValueChanged);
             // 
@@ -659,7 +662,7 @@ namespace HPReserger
             this.fechaini.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.fechaini.Name = "fechaini";
             this.fechaini.Size = new System.Drawing.Size(105, 22);
-            this.fechaini.TabIndex = 33;
+            this.fechaini.TabIndex = 68;
             this.fechaini.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.fechaini.ValueChanged += new System.EventHandler(this.fechaini_ValueChanged);
             // 
@@ -685,7 +688,7 @@ namespace HPReserger
             this.chkfecha.Location = new System.Drawing.Point(146, 400);
             this.chkfecha.Name = "chkfecha";
             this.chkfecha.Size = new System.Drawing.Size(56, 17);
-            this.chkfecha.TabIndex = 32;
+            this.chkfecha.TabIndex = 66;
             this.chkfecha.Text = "Fecha";
             this.chkfecha.UseVisualStyleBackColor = true;
             this.chkfecha.CheckedChanged += new System.EventHandler(this.chkfecha_CheckedChanged);
@@ -698,7 +701,7 @@ namespace HPReserger
             this.label10.Location = new System.Drawing.Point(412, 51);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(39, 13);
-            this.label10.TabIndex = 179;
+            this.label10.TabIndex = 47;
             this.label10.Text = "Etapa:";
             // 
             // label9
@@ -709,7 +712,7 @@ namespace HPReserger
             this.label9.Location = new System.Drawing.Point(225, 51);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(54, 13);
-            this.label9.TabIndex = 178;
+            this.label9.TabIndex = 46;
             this.label9.Text = "Proyecto:";
             // 
             // chkfechavalor
@@ -722,7 +725,7 @@ namespace HPReserger
             this.chkfechavalor.Location = new System.Drawing.Point(228, 127);
             this.chkfechavalor.Name = "chkfechavalor";
             this.chkfechavalor.Size = new System.Drawing.Size(106, 17);
-            this.chkfechavalor.TabIndex = 14;
+            this.chkfechavalor.TabIndex = 53;
             this.chkfechavalor.Text = "FechaContable:";
             this.chkfechavalor.UseVisualStyleBackColor = true;
             this.chkfechavalor.Visible = false;
@@ -794,7 +797,7 @@ namespace HPReserger
             this.label6.Location = new System.Drawing.Point(44, 10);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
-            this.label6.TabIndex = 169;
+            this.label6.TabIndex = 36;
             this.label6.Text = "Estado:";
             // 
             // label2
@@ -805,7 +808,7 @@ namespace HPReserger
             this.label2.Location = new System.Drawing.Point(9, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
-            this.label2.TabIndex = 140;
+            this.label2.TabIndex = 43;
             this.label2.Text = "FechaEmisión:";
             // 
             // label8
@@ -816,7 +819,7 @@ namespace HPReserger
             this.label8.Location = new System.Drawing.Point(9, 51);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 13);
-            this.label8.TabIndex = 177;
+            this.label8.TabIndex = 45;
             this.label8.Text = "Empresa:";
             // 
             // cbocambio
@@ -833,7 +836,7 @@ namespace HPReserger
             this.cbocambio.Name = "cbocambio";
             this.cbocambio.ReadOnly = false;
             this.cbocambio.Size = new System.Drawing.Size(92, 21);
-            this.cbocambio.TabIndex = 23;
+            this.cbocambio.TabIndex = 15;
             this.cbocambio.SelectedIndexChanged += new System.EventHandler(this.cbocambio_SelectedIndexChanged);
             this.cbocambio.Click += new System.EventHandler(this.cbomoneda_Click);
             // 
@@ -848,7 +851,7 @@ namespace HPReserger
             this.cbomoneda.Name = "cbomoneda";
             this.cbomoneda.ReadOnly = false;
             this.cbomoneda.Size = new System.Drawing.Size(109, 21);
-            this.cbomoneda.TabIndex = 21;
+            this.cbomoneda.TabIndex = 13;
             this.cbomoneda.Click += new System.EventHandler(this.cbomoneda_Click);
             // 
             // txttipocambio
@@ -866,7 +869,7 @@ namespace HPReserger
             this.txttipocambio.NextControlOnEnter = null;
             this.txttipocambio.ReadOnly = true;
             this.txttipocambio.Size = new System.Drawing.Size(50, 21);
-            this.txttipocambio.TabIndex = 22;
+            this.txttipocambio.TabIndex = 14;
             this.txttipocambio.Text = "3.3000";
             this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttipocambio.TextoDefecto = "3.3000";
@@ -889,7 +892,7 @@ namespace HPReserger
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.ReadOnly = true;
             this.txtglosa.Size = new System.Drawing.Size(400, 21);
-            this.txtglosa.TabIndex = 20;
+            this.txtglosa.TabIndex = 12;
             this.txtglosa.Text = "INGRESE GLOSA DEL ASIENTO";
             this.txtglosa.TextoDefecto = "Ingrese Glosa del Asiento";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -905,7 +908,7 @@ namespace HPReserger
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre2.Name = "separadorOre2";
             this.separadorOre2.Size = new System.Drawing.Size(711, 2);
-            this.separadorOre2.TabIndex = 185;
+            this.separadorOre2.TabIndex = 57;
             // 
             // separadorOre1
             // 
@@ -917,7 +920,7 @@ namespace HPReserger
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
             this.separadorOre1.Size = new System.Drawing.Size(711, 2);
-            this.separadorOre1.TabIndex = 184;
+            this.separadorOre1.TabIndex = 51;
             // 
             // Txtbusca
             // 
@@ -956,7 +959,7 @@ namespace HPReserger
             this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -974,7 +977,7 @@ namespace HPReserger
             this.SolicitaDetallex});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
@@ -993,7 +996,7 @@ namespace HPReserger
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
             this.Dtgconten.Size = new System.Drawing.Size(664, 158);
-            this.Dtgconten.TabIndex = 155;
+            this.Dtgconten.TabIndex = 17;
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.Dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellEndEdit);
             this.Dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellValueChanged);
@@ -1025,7 +1028,7 @@ namespace HPReserger
             this.cuenta.MaxInputLength = 30;
             this.cuenta.Name = "cuenta";
             this.cuenta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cuenta.Width = 65;
+            this.cuenta.Width = 67;
             // 
             // descripcion
             // 
@@ -1110,7 +1113,7 @@ namespace HPReserger
             this.dtgbusca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
@@ -1136,7 +1139,7 @@ namespace HPReserger
             this.dtgbusca.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
@@ -1154,7 +1157,7 @@ namespace HPReserger
             this.dtgbusca.RowTemplate.Height = 16;
             this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgbusca.Size = new System.Drawing.Size(664, 155);
-            this.dtgbusca.TabIndex = 148;
+            this.dtgbusca.TabIndex = 34;
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
             this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
             // 
@@ -1177,7 +1180,7 @@ namespace HPReserger
             this.Codidasiento.HeaderText = "Cuo";
             this.Codidasiento.Name = "Codidasiento";
             this.Codidasiento.ReadOnly = true;
-            this.Codidasiento.Width = 49;
+            this.Codidasiento.Width = 51;
             // 
             // Fechax
             // 
@@ -1186,7 +1189,7 @@ namespace HPReserger
             this.Fechax.HeaderText = "Fecha";
             this.Fechax.Name = "Fechax";
             this.Fechax.ReadOnly = true;
-            this.Fechax.Width = 59;
+            this.Fechax.Width = 60;
             // 
             // fechavalorx
             // 
@@ -1200,7 +1203,7 @@ namespace HPReserger
             this.fechavalorx.MinimumWidth = 70;
             this.fechavalorx.Name = "fechavalorx";
             this.fechavalorx.ReadOnly = true;
-            this.fechavalorx.Width = 75;
+            this.fechavalorx.Width = 76;
             // 
             // SubOperacionx
             // 
@@ -1210,6 +1213,7 @@ namespace HPReserger
             this.SubOperacionx.MinimumWidth = 100;
             this.SubOperacionx.Name = "SubOperacionx";
             this.SubOperacionx.ReadOnly = true;
+            this.SubOperacionx.Width = 104;
             // 
             // Iddinamica
             // 
@@ -1259,7 +1263,7 @@ namespace HPReserger
             this.nameestado.MinimumWidth = 50;
             this.nameestado.Name = "nameestado";
             this.nameestado.ReadOnly = true;
-            this.nameestado.Width = 63;
+            this.nameestado.Width = 65;
             // 
             // Fecha_Asientox
             // 
@@ -1302,7 +1306,7 @@ namespace HPReserger
             this.label1.Location = new System.Drawing.Point(9, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
-            this.label1.TabIndex = 177;
+            this.label1.TabIndex = 48;
             this.label1.Text = "Glosa del Asiento:";
             // 
             // label7
@@ -1313,7 +1317,7 @@ namespace HPReserger
             this.label7.Location = new System.Drawing.Point(413, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 13);
-            this.label7.TabIndex = 177;
+            this.label7.TabIndex = 49;
             this.label7.Text = "Moneda Asiento:";
             // 
             // labelAmarillo
@@ -1325,7 +1329,7 @@ namespace HPReserger
             this.labelAmarillo.Location = new System.Drawing.Point(240, 333);
             this.labelAmarillo.Name = "labelAmarillo";
             this.labelAmarillo.Size = new System.Drawing.Size(204, 13);
-            this.labelAmarillo.TabIndex = 215;
+            this.labelAmarillo.TabIndex = 59;
             this.labelAmarillo.Text = "Naranja=Error Monto Revise el Detalle";
             this.labelAmarillo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelAmarillo.Click += new System.EventHandler(this.labelAmarillo_Click);
@@ -1339,7 +1343,7 @@ namespace HPReserger
             this.labelCuadre.Location = new System.Drawing.Point(12, 346);
             this.labelCuadre.Name = "labelCuadre";
             this.labelCuadre.Size = new System.Drawing.Size(64, 13);
-            this.labelCuadre.TabIndex = 181;
+            this.labelCuadre.TabIndex = 63;
             this.labelCuadre.Text = "Descuadre:";
             // 
             // label11
@@ -1350,7 +1354,7 @@ namespace HPReserger
             this.label11.Location = new System.Drawing.Point(12, 333);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 13);
-            this.label11.TabIndex = 181;
+            this.label11.TabIndex = 56;
             // 
             // label12
             // 
@@ -1360,7 +1364,7 @@ namespace HPReserger
             this.label12.Location = new System.Drawing.Point(204, 33);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 13);
-            this.label12.TabIndex = 140;
+            this.label12.TabIndex = 42;
             this.label12.Text = "Fecha Contable:";
             // 
             // chkPulser
@@ -1374,7 +1378,7 @@ namespace HPReserger
             this.chkPulser.Location = new System.Drawing.Point(594, 373);
             this.chkPulser.Name = "chkPulser";
             this.chkPulser.Size = new System.Drawing.Size(77, 17);
-            this.chkPulser.TabIndex = 216;
+            this.chkPulser.TabIndex = 24;
             this.chkPulser.Text = "Busq.Adv.";
             this.chkPulser.UseVisualStyleBackColor = false;
             this.chkPulser.CheckedChanged += new System.EventHandler(this.chkPulser_CheckedChanged);
@@ -1394,7 +1398,7 @@ namespace HPReserger
             this.txtbusSuboperacion.Name = "txtbusSuboperacion";
             this.txtbusSuboperacion.NextControlOnEnter = null;
             this.txtbusSuboperacion.Size = new System.Drawing.Size(170, 21);
-            this.txtbusSuboperacion.TabIndex = 412;
+            this.txtbusSuboperacion.TabIndex = 23;
             this.txtbusSuboperacion.Text = "Buscar Suboperación";
             this.txtbusSuboperacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtbusSuboperacion.TextoDefecto = "Buscar Suboperación";
@@ -1418,7 +1422,7 @@ namespace HPReserger
             this.txtbuscuo.Name = "txtbuscuo";
             this.txtbuscuo.NextControlOnEnter = null;
             this.txtbuscuo.Size = new System.Drawing.Size(176, 21);
-            this.txtbuscuo.TabIndex = 412;
+            this.txtbuscuo.TabIndex = 21;
             this.txtbuscuo.Text = "Buscar Cuo";
             this.txtbuscuo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtbuscuo.TextoDefecto = "Buscar Cuo";
@@ -1439,7 +1443,7 @@ namespace HPReserger
             this.dtpfechafin.Location = new System.Drawing.Point(457, 395);
             this.dtpfechafin.Name = "dtpfechafin";
             this.dtpfechafin.Size = new System.Drawing.Size(93, 22);
-            this.dtpfechafin.TabIndex = 417;
+            this.dtpfechafin.TabIndex = 28;
             this.dtpfechafin.Visible = false;
             this.dtpfechafin.ValueChanged += new System.EventHandler(this.dtpfechafin_ValueChanged);
             // 
@@ -1455,7 +1459,7 @@ namespace HPReserger
             this.dtpfechaini.Location = new System.Drawing.Point(269, 395);
             this.dtpfechaini.Name = "dtpfechaini";
             this.dtpfechaini.Size = new System.Drawing.Size(93, 22);
-            this.dtpfechaini.TabIndex = 416;
+            this.dtpfechaini.TabIndex = 27;
             this.dtpfechaini.Visible = false;
             this.dtpfechaini.ValueChanged += new System.EventHandler(this.dtpfechaini_ValueChanged);
             // 
@@ -1469,7 +1473,7 @@ namespace HPReserger
             this.lbl1.Location = new System.Drawing.Point(186, 399);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(83, 15);
-            this.lbl1.TabIndex = 166;
+            this.lbl1.TabIndex = 67;
             this.lbl1.Text = "Fecha Desde:";
             this.lbl1.Visible = false;
             // 
@@ -1483,7 +1487,7 @@ namespace HPReserger
             this.lbl2.Location = new System.Drawing.Point(373, 399);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(79, 15);
-            this.lbl2.TabIndex = 166;
+            this.lbl2.TabIndex = 70;
             this.lbl2.Text = "Fecha Hasta:";
             this.lbl2.Visible = false;
             // 
@@ -1495,7 +1499,7 @@ namespace HPReserger
             this.btncleanfind.Location = new System.Drawing.Point(553, 395);
             this.btncleanfind.Name = "btncleanfind";
             this.btncleanfind.Size = new System.Drawing.Size(25, 23);
-            this.btncleanfind.TabIndex = 418;
+            this.btncleanfind.TabIndex = 71;
             this.btncleanfind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncleanfind.UseVisualStyleBackColor = true;
             this.btncleanfind.Visible = false;
@@ -1516,7 +1520,7 @@ namespace HPReserger
             this.txtbuscuenta.Name = "txtbuscuenta";
             this.txtbuscuenta.NextControlOnEnter = null;
             this.txtbuscuenta.Size = new System.Drawing.Size(176, 21);
-            this.txtbuscuenta.TabIndex = 412;
+            this.txtbuscuenta.TabIndex = 25;
             this.txtbuscuenta.Text = "Buscar Cuenta";
             this.txtbuscuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtbuscuenta.TextoDefecto = "Buscar Cuenta";
@@ -1536,7 +1540,7 @@ namespace HPReserger
             this.btnpdf.Location = new System.Drawing.Point(342, 577);
             this.btnpdf.Name = "btnpdf";
             this.btnpdf.Size = new System.Drawing.Size(92, 25);
-            this.btnpdf.TabIndex = 431;
+            this.btnpdf.TabIndex = 31;
             this.btnpdf.Text = "Exp. PDF";
             this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnpdf.UseVisualStyleBackColor = false;
@@ -1551,6 +1555,22 @@ namespace HPReserger
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
             this.fondoColorOre1.control = null;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cuadrarAsientoToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(198, 26);
+            // 
+            // cuadrarAsientoToolStripMenuItem
+            // 
+            this.cuadrarAsientoToolStripMenuItem.Name = "cuadrarAsientoToolStripMenuItem";
+            this.cuadrarAsientoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
+            this.cuadrarAsientoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.cuadrarAsientoToolStripMenuItem.Text = "CuadrarAsiento";
+            this.cuadrarAsientoToolStripMenuItem.Visible = false;
+            this.cuadrarAsientoToolStripMenuItem.Click += new System.EventHandler(this.cuadrarAsientoToolStripMenuItem_Click);
+            // 
             // frmAsientoContable
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1559,6 +1579,7 @@ namespace HPReserger
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.btnpdf);
             this.Controls.Add(this.txtbuscuenta);
             this.Controls.Add(this.btncleanfind);
@@ -1646,6 +1667,7 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1751,5 +1773,7 @@ namespace HPReserger
         private TextBoxPer txtbuscuenta;
         private System.Windows.Forms.Button btnpdf;
         private FondoColorOre fondoColorOre1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cuadrarAsientoToolStripMenuItem;
     }
 }

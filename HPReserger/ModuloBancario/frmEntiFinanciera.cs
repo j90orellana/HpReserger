@@ -22,7 +22,7 @@ namespace HPReserger
         private void frmEntiFinanciera_Load(object sender, EventArgs e)
         {
             estado = 0;
-            dtgconten.DataSource = cEntiFinanciera.EntidadFinanciera(0, 0, "", "");
+            dtgconten.DataSource = cEntiFinanciera.EntidadFinanciera(0, 0, "", "", 0);
             dtgconten.Focus();
             Activar();
         }
@@ -34,8 +34,8 @@ namespace HPReserger
             estado = 1;
             Desactivar();
             txtsufijo.Text = "";
+            txtCodSunat.CargarTextoporDefecto();
         }
-
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             tipmsg.Show("Ingrese Entidad Financiera", txtgerencia, 700);
@@ -58,6 +58,7 @@ namespace HPReserger
                     txtcodigo.Text = dtgconten[0, e.RowIndex].Value.ToString();
                     txtgerencia.Text = dtgconten[1, e.RowIndex].Value.ToString();
                     txtsufijo.Text = dtgconten[sufijox.Name, e.RowIndex].Value.ToString();
+                    txtCodSunat.Text = ((int)dtgconten[xCodSunat.Name, e.RowIndex].Value).ToString("n0");
                 }
             }
             catch { }
@@ -78,12 +79,12 @@ namespace HPReserger
         public void Desactivar()
         {
             btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
-            txtgerencia.ReadOnly = txtsufijo.ReadOnly = false;
+            txtCodSunat.ReadOnly = txtgerencia.ReadOnly = txtsufijo.ReadOnly = false;
         }
         public void Activar()
         {
             btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
-            txtcodigo.ReadOnly = txtgerencia.ReadOnly = txtsufijo.ReadOnly = true;
+            txtCodSunat.ReadOnly = txtcodigo.ReadOnly = txtgerencia.ReadOnly = txtsufijo.ReadOnly = true;
         }
         public Boolean ValidarDes(string valor)
         {
@@ -119,6 +120,9 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
+            int val = 99;
+            int.TryParse(txtCodSunat.Text, out val);
+            val = val == 0 ? 99 : val;
             if (!txtsufijo.EstaLLeno())
             {
                 txtsufijo.Focus();
@@ -128,14 +132,14 @@ namespace HPReserger
 
             if (estado == 1 && ValidarDes(txtgerencia.Text))
             {
-                cEntiFinanciera.EntidadFinanciera(1, 0, txtgerencia.Text, txtsufijo.TextValido());
+                cEntiFinanciera.EntidadFinanciera(1, 0, txtgerencia.Text, txtsufijo.TextValido(), val);
                 msgOK("Insertado Exitosamente");
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtgerencia.Text, (int)dtgconten[codigox.Name, dtgconten.CurrentRow.Index].Value))
                 {
-                    cEntiFinanciera.EntidadFinanciera(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, txtsufijo.TextValido());
+                    cEntiFinanciera.EntidadFinanciera(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, txtsufijo.TextValido(), val);
                     msgOK("Actualizado Exitosamente");
                 }
                 else

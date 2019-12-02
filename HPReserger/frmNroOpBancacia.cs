@@ -209,10 +209,10 @@ namespace HPReserger
                 TCuentas.Rows.InsertAt(filita, 0);
                 cbocuenta.DataSource = TCuentas;
                 //Extrae el codigo del banco
-                if (CapaLogica.EntidadFinanciera(10, 0, "", cbobanco.SelectedValue.ToString()).Rows.Count == 0)
+                if (CapaLogica.EntidadFinanciera(10, 0, "", cbobanco.SelectedValue.ToString(), 0).Rows.Count == 0)
                     CodigoBanco = 0;
                 else
-                    CodigoBanco = int.Parse((CapaLogica.EntidadFinanciera(10, 0, "", cbobanco.SelectedValue.ToString()).Rows[0])["id_entidad"].ToString());
+                    CodigoBanco = int.Parse((CapaLogica.EntidadFinanciera(10, 0, "", cbobanco.SelectedValue.ToString(), 0).Rows[0])["id_entidad"].ToString());
             }
             CargarGrilla();
         }
@@ -272,7 +272,7 @@ namespace HPReserger
                 msg("Ingrese Número de Operación");
                 return;
             }
-            if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel($"Seguro Desea Grabar el Nro de Operación: {txtnroid.TextValido()}","Una Vez modificado, se tendra que modificar uno a uno") == DialogResult.Yes)
+            if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel($"Seguro Desea Grabar el Nro de Operación: {txtnroid.TextValido()}", "Una Vez modificado, se tendra que modificar uno a uno") == DialogResult.Yes)
             {
                 Cursor = Cursors.WaitCursor;
                 foreach (Listado item in lista)

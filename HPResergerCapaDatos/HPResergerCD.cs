@@ -3887,10 +3887,10 @@ namespace HPResergerCapaDatos
             object[] valores = { opcion, codigo, valor, leng, codsunat };
             return bd.DataTableFromProcedure("usp_TiposiD", parametros, valores, null);
         }
-        public DataTable EntidadFinanciera(int opcion, int codigo, string valor, string leng)
+        public DataTable EntidadFinanciera(int opcion, int codigo, string valor, string leng, int codsunat)
         {
-            string[] parametros = { "@opcion", "@cod", "@valor", "@sufijo" };
-            object[] valores = { opcion, codigo, valor, leng };
+            string[] parametros = { "@opcion", "@cod", "@valor", "@sufijo", "@codsunat" };
+            object[] valores = { opcion, codigo, valor, leng, codsunat };
             return bd.DataTableFromProcedure("usp_EntidadFinanciera", parametros, valores, null);
         }
         public DataTable ListarDetalleDelReporteDeCentrodeCostoFLujos(int etapa, string ceco, string cuenta, int cabecera)
@@ -4728,6 +4728,18 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@Empresa", "@PeriodoMes", "@periodoAño" };
             object[] valores = { empresa, periodo, anio };
             return bd.DataTableFromProcedure("usp_FormatodeCompras8_1", parametros, valores, null);
+        }
+        public DataTable FormatoCajaBanco1_1(int empresa, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { empresa, FechaInicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_FormatoCajaBanco1_1", parametros, valores, null);
+        }
+        public DataTable FormatoCajaBanco1_2(int empresa, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { empresa, FechaInicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_FormatoCajaBanco1_2", parametros, valores, null);
         }
         public DataTable FormatodeVentas14_1(int empresa, int periodo, int anio)
         {

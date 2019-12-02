@@ -356,6 +356,10 @@ namespace HPResergerFunciones
                 Nombre = _nombre;
             }
         }
+        public enum Alineado
+        {
+            izquierda = 0, derecha, centro
+        }
         public class RangoCelda
         {
             public string fila { get; set; }
@@ -367,6 +371,7 @@ namespace HPResergerFunciones
             public Color? BackColor = null;
             public Color? ForeColor = null;
             public Font Fuente = null;
+            public Alineado? Alineado = null;
             public RangoCelda() { }
             public RangoCelda(string _fila, string _columna, string _nombre)
             {
@@ -431,6 +436,19 @@ namespace HPResergerFunciones
                 _Negrita = Negrita;
                 _Centrar = Centrar;
                 Fuente = _fuente;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Alineado _alineado, Color? _BackColor, Color? _ForeColor, Font _fuente)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
+                Fuente = _fuente;
+                Alineado = _alineado;
             }
         }
         public static void DescargarImagen(PictureBox Fotos)
@@ -857,6 +875,21 @@ namespace HPResergerFunciones
                 if (Nombres.Fuente != null)
                 {
                     Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Name = Nombres.Fuente.Name;
+                }
+                if (Nombres.Alineado != null)
+                {
+                    if (Alineado.izquierda == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    }
+                    if (Alineado.derecha == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                    }
+                    if (Alineado.centro == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    }
                 }
                 //backcolor
                 //    if (Nombres.BackColor != null)

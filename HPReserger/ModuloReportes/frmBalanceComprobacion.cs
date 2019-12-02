@@ -71,7 +71,6 @@ namespace HPReserger.ModuloReportes
                 dtgconten[xDescripcion.Name, FilaTotal + 3].Value = "Comprobación".ToUpper();
                 dtgconten[xDescripcion.Name, FilaTotal + 3].Style.Font = new Font(Fuente, FontStyle.Bold);
                 //dtgconten.Rows[FilaTotal + 3].DefaultCellStyle.Font = new Font(Fuente, FontStyle.Bold);
-
                 foreach (DataGridViewColumn item in dtgconten.Columns)
                 {
                     if (item.Index > 1)

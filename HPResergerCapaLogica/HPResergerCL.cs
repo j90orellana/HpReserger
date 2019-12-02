@@ -880,13 +880,13 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.TiposID(0, 0, "", 0, "");
         }
-        public DataTable EntidadFinanciera(int opcion, int codigo, string valor, string leng)
+        public DataTable EntidadFinanciera(int opcion, int codigo, string valor, string leng, int codsunat)
         {
-            return cdOrdenPedido.EntidadFinanciera(opcion, codigo, valor, leng);
+            return cdOrdenPedido.EntidadFinanciera(opcion, codigo, valor, leng, codsunat);
         }
         public DataTable EntidadFinanciera()
         {
-            return cdOrdenPedido.EntidadFinanciera(0, 0, "", "");
+            return cdOrdenPedido.EntidadFinanciera(0, 0, "", "", 0);
         }
         public DataRow CargarImagenSolicitudEmpleado(int Numero)
         {
@@ -2448,6 +2448,14 @@ namespace HPResergerCapaLogica
         public DataTable FormatodeCompras8_1(int empresa, int periodo, int anio)
         {
             return cdOrdenPedido.FormatodeCompras8_1(empresa, periodo, anio);
+        }
+        public DataTable FormatoCajaBanco1_1(int empresa, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            return cdOrdenPedido.FormatoCajaBanco1_1(empresa, FechaInicial, FechaFinal);
+        }
+        public DataTable FormatoCajaBanco1_2(int empresa, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            return cdOrdenPedido.FormatoCajaBanco1_2(empresa, FechaInicial, FechaFinal);
         }
         public DataTable FormatodeVentas14_1(int empresa, int periodo, int anio)
         {

@@ -3900,5 +3900,49 @@ namespace HPReserger
         {
             frmComprobacion = null;
         }
+        ModuloReportes.LibrosElectronicos.frmLibroBancosEfectivo frmbancosEfectivo;
+        private void lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmbancosEfectivo == null)
+            {
+                frmbancosEfectivo = new ModuloReportes.LibrosElectronicos.frmLibroBancosEfectivo();
+                frmbancosEfectivo.MdiParent = this;
+                frmbancosEfectivo.Icon = ICono;
+                frmbancosEfectivo.FormClosed += new FormClosedEventHandler(cerrarfrmbancosEfectivo);
+                frmbancosEfectivo.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmbancosEfectivo.Activate();
+                ValidarVentanas(frmbancosEfectivo);
+            }
+        }
+        private void cerrarfrmbancosEfectivo(object sender, FormClosedEventArgs e)
+        {
+            frmbancosEfectivo = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroBancosCorriente frmBancosCorriente;
+        private void libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmBancosCorriente == null)
+            {
+                frmBancosCorriente = new ModuloReportes.LibrosElectronicos.frmLibroBancosCorriente();
+                frmBancosCorriente.MdiParent = this;
+                frmBancosCorriente.Icon = ICono;
+                frmBancosCorriente.FormClosed += new FormClosedEventHandler(cerrarfrmBancosCorriente);
+                frmBancosCorriente.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmBancosCorriente.Activate();
+                ValidarVentanas(frmBancosCorriente);
+            }
+        }
+        private void cerrarfrmBancosCorriente(object sender, FormClosedEventArgs e)
+        {
+            frmBancosCorriente = null;
+        }
     }
 }

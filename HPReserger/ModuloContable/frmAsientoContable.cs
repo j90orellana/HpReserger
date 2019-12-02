@@ -929,6 +929,7 @@ namespace HPReserger
                                 DateTime Fechita = dtpfechavalor.Value;
                                 CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
                                 CuoSelec = txtcuo.Text;
+                                estado = 0;
                                 //btnActualizar_Click(new object { }, new EventArgs());
                                 RefrescarAsientoSeleccionado();
                             }
@@ -2009,6 +2010,16 @@ namespace HPReserger
             }
         }
 
+        private void cuadrarAsientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (estado == 0)
+            {
+                estado = -1;
+                RevisarSihayDescuadre();
+                //msgOK("Asiento Cuadrado");
+                estado = 0;
+            }
+        }
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();
