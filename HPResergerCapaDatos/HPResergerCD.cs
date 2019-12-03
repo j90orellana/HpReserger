@@ -1260,11 +1260,13 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_ListarCuentas", null, null, null);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
-           , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime FechaAsiento, int ctabancaria, string fkasi, string nroop)
+           , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime FechaAsiento, int ctabancaria,
+            string fkasi, string nroop, int tipopago)
         {
             string[] parametros = { "@opcion", "@idaux", "@idasiento", "@cuenta", "@tipodoc", "@numdoc", "@razon", "@idComprobante", "@codcomprobante", "@numcomprobante", "@centrocosto", "@glosa"
-                    , "@fechaemision","@fechavence", "@importemn", "@importeme", "@tipocambio", "@usuario","@fkproyecto","@fecharecepcion","@fkmoneda","@Fechaasiento","@Ctabancaria","@Fkasi","@nroop" };
-            object[] valor = { opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion, moneda, FechaAsiento, ctabancaria, fkasi, nroop };
+                    , "@fechaemision","@fechavence", "@importemn", "@importeme", "@tipocambio", "@usuario","@fkproyecto","@fecharecepcion","@fkmoneda","@Fechaasiento","@Ctabancaria","@Fkasi","@nroop","@tipopago" };
+            object[] valor = { opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio,
+                usuario, proyecto, fecharecepcion, moneda, FechaAsiento, ctabancaria, fkasi, nroop,tipopago };
             return bd.DataTableFromProcedure("usp_DetalleAsientos", parametros, valor, null);
         }
         public DataTable DuplicarDetalle(int idaux, int idasiento, int idproyecto, int duplicar, string cuenta, DateTime _FEchas)
@@ -4681,10 +4683,11 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, fecha1, fecha2, cliente, nroboleta };
             return bd.DataTableFromProcedure("usp_BusquedaVentasManualesAbonados", parametros, valores, null);
         }
-        public DataTable FacturaVentaManualPago(int @opcion, int @id, string @comprobante, string @nroopbanco, int @tipoid, string @cliente, int @empresa, decimal @importe, decimal @tc, string @banco, string @cuentabanco, DateTime @fechapago, string @cuo, int @usuario)
+        public DataTable FacturaVentaManualPago(int @opcion, int @id, string @comprobante, string @nroopbanco, int @tipoid, string @cliente, int @empresa, decimal @importe, decimal @tc, string @banco,
+            string @cuentabanco, DateTime @fechapago, string @cuo, int @usuario, int tipopago)
         {
-            string[] parametros = { "@opcion", "@id", "@comprobante", "@nroopbanco", "@tipoid", "@cliente", "@empresa", "@importe", "@tc", "@banco", "@cuentabanco", "@fechapago", "@cuo", "@usuario" };
-            object[] valores = { @opcion, @id, @comprobante, @nroopbanco, @tipoid, @cliente, @empresa, @importe, @tc, @banco, @cuentabanco, @fechapago, @cuo, @usuario };
+            string[] parametros = { "@opcion", "@id", "@comprobante", "@nroopbanco", "@tipoid", "@cliente", "@empresa", "@importe", "@tc", "@banco", "@cuentabanco", "@fechapago", "@cuo", "@usuario", "@tipopago" };
+            object[] valores = { @opcion, @id, @comprobante, @nroopbanco, @tipoid, @cliente, @empresa, @importe, @tc, @banco, @cuentabanco, @fechapago, @cuo, @usuario, tipopago };
             return bd.DataTableFromProcedure("usp_FacturaVentaManualPago", parametros, valores, null);
         }
         public DataTable InsertarAsientoFacturaCabecera(int @opcion, int @Id, int @Asiento, DateTime @fechaContable, string @Cuenta, decimal @Debe, decimal @Haber, decimal @tc, int @proyecto, int @etapa, string @cuo, int @Fkmoneda, string @glosa, DateTime FechaAbono, int dina)
@@ -4693,10 +4696,14 @@ namespace HPResergerCapaDatos
             object[] valores = { @opcion, @Id, @Asiento, @fechaContable, @Cuenta, @Debe, @Haber, @tc, @proyecto, @etapa, @cuo, Fkmoneda, glosa, FechaAbono, dina };
             return bd.DataTableFromProcedure("usp_InsertarAsientoFacturaCabecera", parametros, valores, null);
         }
-        public DataTable InsertarAsientoFacturaDetalle(int @opcion, int @Id, int @Asiento, DateTime @fechaContable, string @Cuenta, int @proyecto, int @tipodoc, string @numdoc, string @razon, int @idcomprobante, string @codcomprobante, string @numcomprobante, int @cc, DateTime @fechaemision, DateTime @fechavencimiento, DateTime @fecharecepcion, decimal @impormn, decimal @importeme, decimal @tc, int @Fkmoneda, string @cuentabanco, string @nroopbanco, string @glosa, DateTime @fechaasiento, int @usuario, string @fkasi)
+        public DataTable InsertarAsientoFacturaDetalle(int @opcion, int @Id, int @Asiento, DateTime @fechaContable, string @Cuenta, int @proyecto, int @tipodoc, string @numdoc, string @razon, int @idcomprobante,
+            string @codcomprobante, string @numcomprobante, int @cc, DateTime @fechaemision, DateTime @fechavencimiento, DateTime @fecharecepcion, decimal @impormn, decimal @importeme, decimal @tc, int @Fkmoneda,
+            string @cuentabanco, string @nroopbanco, string @glosa, DateTime @fechaasiento, int @usuario, string @fkasi, int Tipopago)
         {
-            string[] parametros = { "@opcion", "@Id", "@Asiento", "@fechaContable", "@Cuenta", "@proyecto", "@tipodoc", "@numdoc", "@razon", "@idcomprobante", "@codcomprobante", "@numcomprobante", "@cc", "@fechaemision", "@fechavencimiento", "@fecharecepcion", "@impormn", "@importeme", "@tc", "@Fkmoneda", "@cuentabanco", "@nroopbanco", "@glosa", "@fechaasiento", "@usuario", "@fkasi" };
-            object[] valores = { @opcion, @Id, @Asiento, @fechaContable, @Cuenta, @proyecto, @tipodoc, @numdoc, @razon, @idcomprobante, @codcomprobante, @numcomprobante, @cc, @fechaemision, @fechavencimiento, @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi };
+            string[] parametros = { "@opcion", "@Id", "@Asiento", "@fechaContable", "@Cuenta", "@proyecto", "@tipodoc", "@numdoc", "@razon", "@idcomprobante", "@codcomprobante", "@numcomprobante", "@cc", "@fechaemision",
+                "@fechavencimiento", "@fecharecepcion", "@impormn", "@importeme", "@tc", "@Fkmoneda", "@cuentabanco", "@nroopbanco", "@glosa", "@fechaasiento", "@usuario", "@fkasi","@Tipopago" };
+            object[] valores = { @opcion, @Id, @Asiento, @fechaContable, @Cuenta, @proyecto, @tipodoc, @numdoc, @razon, @idcomprobante, @codcomprobante, @numcomprobante, @cc, @fechaemision, @fechavencimiento,
+                @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi,Tipopago };
             return bd.DataTableFromProcedure("usp_InsertarAsientoFacturaDetalle", parametros, valores, null);
         }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
@@ -4710,6 +4717,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@cliente", "@id", "@NumComp" };
             object[] valores = { numdoc, tipoid, NumComprobante };
             return bd.DataTableFromProcedure("usp_BuscarVentasManualesToNcNd", parametros, valores, null);
+        }
+        public DataTable MedioPagos(int @opcion, int pkid, string mediopago, int codsunat)
+        {
+            string[] parametros = { "@opcion", "@pkid", "@mediopago", "@codsunat" };
+            object[] valores = { opcion, pkid, mediopago, codsunat };
+            return bd.DataTableFromProcedure("usp_MedioPagos", parametros, valores, null);
         }
         public DataTable BuscarFacturasManualesToNcNdDEtalle(int opcion, string ruc, string NumComprobante)
         {

@@ -95,6 +95,7 @@ namespace HPReserger
             this.fk_asisx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.glosax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCtaBancaria = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.xTipoPago = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.xNroOPBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -153,6 +154,7 @@ namespace HPReserger
             this.fk_asisx,
             this.glosax,
             this.xCtaBancaria,
+            this.xTipoPago,
             this.xNroOPBanco,
             this.usuariox,
             this.fechax,
@@ -770,6 +772,18 @@ namespace HPReserger
             this.xCtaBancaria.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.xCtaBancaria.Width = 82;
             // 
+            // xTipoPago
+            // 
+            this.xTipoPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.xTipoPago.DataPropertyName = "tipopago";
+            this.xTipoPago.HeaderText = "TipoPago";
+            this.xTipoPago.MinimumWidth = 200;
+            this.xTipoPago.Name = "xTipoPago";
+            this.xTipoPago.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.xTipoPago.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.xTipoPago.Visible = false;
+            this.xTipoPago.Width = 200;
+            // 
             // xNroOPBanco
             // 
             this.xNroOPBanco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -893,6 +907,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn fk_asisx;
         private System.Windows.Forms.DataGridViewTextBoxColumn glosax;
         private System.Windows.Forms.DataGridViewComboBoxColumn xCtaBancaria;
+        private System.Windows.Forms.DataGridViewComboBoxColumn xTipoPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNroOPBanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuariox;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechax;

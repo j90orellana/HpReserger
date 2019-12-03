@@ -874,7 +874,7 @@ namespace HPReserger
                         ////DETALLE ASIENTO                        
                         CapaLogica.DetalleAsientos(1, i, codigo, item.Cells[xCuentaContable.Name].Value.ToString(), 5, txtruc.Text, txtrazon.Text, (int)cbotipodoc.SelectedValue,/* OpcionBusqueda == 1 ?*/ txtcodfactura.Text/* : txtSerieRef.Text*/, /*OpcionBusqueda == 1 ?*/ txtnrofactura.Text /*: txtNumRef.Text*/,
                          item.Cells[xidcc.Name].Value.ToString() == "" ? 0 : (int)item.Cells[xidcc.Name].Value, item.Cells[xGlosa.Name].Value.ToString(), dtpfechaemision.Value, dtpfechavence.Value, (decimal)item.Cells[xImporteMN.Name].Value, (decimal)item.Cells[xImporteME.Name].Value,
-                        decimal.Parse(txttipocambio.Text), frmLogin.CodigoUsuario, (int)cboproyecto.SelectedValue, dtpfecharecep.Value, (int)cbomoneda.SelectedValue, dtpFechaContable.Value, 0, "", "");
+                        decimal.Parse(txttipocambio.Text), frmLogin.CodigoUsuario, (int)cboproyecto.SelectedValue, dtpfecharecep.Value, (int)cbomoneda.SelectedValue, dtpFechaContable.Value, 0, "", "", 0);
                         ////contador para next valor
                         i++;
                     }
@@ -928,7 +928,7 @@ namespace HPReserger
                         ////DETALLE ASIENTO                        
                         CapaLogica.DetalleAsientos(1, i, codigo, item.Cells[xCuentaContable.Name].Value.ToString(), 5, txtruc.Text, txtrazon.Text, (int)cbotipodoc.SelectedValue,/* OpcionBusqueda == 1 ? */txtcodfactura.Text/* : txtSerieRef.Text*/, /*OpcionBusqueda == 1 ? */txtnrofactura.Text /*: txtNumRef.Text*/,
                         item.Cells[xidcc.Name].Value.ToString() == "" ? 0 : (int)item.Cells[xidcc.Name].Value, item.Cells[xGlosa.Name].Value.ToString(), dtpfechaemision.Value, dtpfechavence.Value, (decimal)item.Cells[xImporteMN.Name].Value, (decimal)item.Cells[xImporteME.Name].Value,
-                        decimal.Parse(txttipocambio.Text), frmLogin.CodigoUsuario, (int)cboproyecto.SelectedValue, dtpfecharecep.Value, (int)cbomoneda.SelectedValue, dtpFechaContable.Value, 0, "", "");
+                        decimal.Parse(txttipocambio.Text), frmLogin.CodigoUsuario, (int)cboproyecto.SelectedValue, dtpfecharecep.Value, (int)cbomoneda.SelectedValue, dtpFechaContable.Value, 0, "", "", 0);
                         ////contador para next valor
                         i++;
                     }

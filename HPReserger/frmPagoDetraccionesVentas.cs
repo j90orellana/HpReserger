@@ -28,12 +28,19 @@ namespace HPReserger
             else txtnropago.Text = "1";
             // CargarTiposID("TBL_Tipo_ID");
             cargarempresas();
-            cbotipo.SelectedIndex = 0;
+            //cbotipo.SelectedIndex = 0;
             Detracion = new List<Detracciones>();
             CargarDAtos();
             dtpFechaPago.Value = dtpFechaContable.Value = DateTime.Now;
             txtglosa.CargarTextoporDefecto();
             txtcuentadetracciones.CargarTextoporDefecto();
+            CargarTipoPagos();
+        }
+        public void CargarTipoPagos()
+        {
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
         }
         public void cargarempresas()
         {

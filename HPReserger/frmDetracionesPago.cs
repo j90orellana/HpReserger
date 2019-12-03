@@ -28,13 +28,20 @@ namespace HPReserger
             else txtnropago.Text = "1";
             CargarTiposID("TBL_Tipo_ID");
             cargarempresas();
-            cbotipo.SelectedIndex = 0;
+            //cbotipo.SelectedIndex = 0;
             Detracion = new List<Detracciones>();
             CargarDAtos();
             dtpFechaPago.Value = dtpFechaContable.Value = DateTime.Now;
             txtcuentadetracciones_TextChanged(sender, e);
             txtglosa.CargarTextoporDefecto();
             txtcuentaredondeo.CargarTextoporDefecto();
+            CargarTipoPagos();
+        }
+        public void CargarTipoPagos()
+        {
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
         }
         public void cargarempresas()
         {
@@ -240,13 +247,13 @@ namespace HPReserger
                 {
                     if (cbobanco.Items.Count == 0)
                     {
-                       msg("No hay Bancos");
+                        msg("No hay Bancos");
                         cbobanco.Focus();
                         return;
                     }
                     if (cbocuentabanco.Items.Count == 0)
                     {
-                     msg("El Banco Seleccionado No tiene Cuenta");
+                        msg("El Banco Seleccionado No tiene Cuenta");
                         cbobanco.Focus();
                         return;
                     }
@@ -254,7 +261,7 @@ namespace HPReserger
                     {
                         if (decimal.Parse(txttotal.Text) == 0)
                         {
-                    msg("El total a pagar no puede ser Cero");
+                            msg("El total a pagar no puede ser Cero");
                             dtgconten.Focus();
                             return;
                         }
@@ -330,7 +337,7 @@ namespace HPReserger
                                    decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA                
-                   msgOK($"Detracciones Pagadas! con Asiento {CuoPago}");
+                    msgOK($"Detracciones Pagadas! con Asiento {CuoPago}");
                     btnActualizar_Click(sender, e);
                 }
                 else msg("Total de Detracciones en Cero");

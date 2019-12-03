@@ -98,7 +98,6 @@ namespace HPReserger
             if (Filita != null)
                 txtnropago.Text = (decimal.Parse(Filita["ultimo"].ToString()) + 1).ToString();
             else txtnropago.Text = "1";
-            cbotipo.SelectedIndex = 0;
             dtpFechaContable.Value = dtpFechaPago.Value = DateTime.Now;
             //dtpini.Value = dtinicio.Value = DateTime.Now.AddMonths(-1);
             txtglosa.CargarTextoporDefecto();
@@ -109,6 +108,10 @@ namespace HPReserger
             txtCuentaExceso.CargarTextoporDefecto();
             Busqueda = true;
             CargarProyecto();
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
+            cbotipo.SelectedIndex = 0;
             //if (decimal.Parse(txttipocambio.Text) == 0) SacarTipoCambio();
             //List<Persona> personas = new List<Persona>();
             //Persona person1 = new Persona(1, "jefferson", 27);
@@ -189,12 +192,13 @@ namespace HPReserger
             public int minutos;
             public int segundos;
         }
-        string CodigoPago;
+        int CodigoPago;
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CodigoPago = cbotipo.Text.Substring(0, 3);
-            string[] ValoresBancoCheques = { "003", "007" };///003 Banco  /// 007 cheque
-            if (ValoresBancoCheques.Contains(CodigoPago))
+            CodigoPago = (int)cbotipo.SelectedValue;
+            string[] ValoresBancoCheques = { "3", "7" };///003 Banco  /// 007 cheque
+            //if (ValoresBancoCheques.Contains(CodigoPago.ToString()))
+            if (CodigoPago != 7)
             {
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = true;
                 lblguia.Text = "Banco";
@@ -206,7 +210,7 @@ namespace HPReserger
             {
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = false;
             }
-            if (CodigoPago == "007") { txtnrocheque.Visible = true; lblcheque.Visible = true; } else { txtnrocheque.Visible = false; lblcheque.Visible = false; }
+            if (CodigoPago == 7) { txtnrocheque.Visible = true; lblcheque.Visible = true; } else { txtnrocheque.Visible = false; lblcheque.Visible = false; }
         }
         private void cbobanco_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -406,7 +410,7 @@ namespace HPReserger
             //if (ErrorTotales) { msg(Resultado2); return; }
 
             //  return;
-            if (CodigoPago == "007")
+            if (CodigoPago == 7)
             {
                 if (!txtnrocheque.EstaLLeno())
                 {
@@ -416,7 +420,7 @@ namespace HPReserger
                 if (Tdatos.Rows.Count > 0) { msg("Número de Cheque Ya Existe"); return; }
             }
             Boolean GenerarTxt = false;
-            DialogResult ResultadoDialogo = CodigoPago == "007" ? DialogResult.No : HPResergerFunciones.Utilitarios.msgync("Desea Generar TXT del pago?");
+            DialogResult ResultadoDialogo = CodigoPago == 7 ? DialogResult.No : HPResergerFunciones.Utilitarios.msgync("Desea Generar TXT del pago?");
             if (ResultadoDialogo == DialogResult.Yes)
             {
                 GenerarTxt = false;
@@ -651,7 +655,7 @@ namespace HPReserger
                     //Declaracion de las variables para la insercion de lso registros del detalle del pago
                     int banko = int.Parse((filita[0])["codigo"].ToString());
                     int TipoPago = int.Parse(cbotipo.Text.Substring(0, 3));
-                    string Nropago = CodigoPago == "007" ? txtnrocheque.Text : "";
+                    string Nropago = CodigoPago == 7 ? txtnrocheque.Text : "";
                     //Recorremos los comprobantes seleccionados RH / FT
                     //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
                     if (fac.tipo.Substring(0, 2) == "RH")

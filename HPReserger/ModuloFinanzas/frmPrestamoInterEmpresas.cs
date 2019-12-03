@@ -63,14 +63,21 @@ namespace HPReserger
             dtpfechabus2.Value = new DateTime(DateTime.Now.Year, 12, 31);
             ModoEdicion(false);
             CargaDatos();
+            CargarTipoPagos();
+        }
+        public void CargarTipoPagos()
+        {
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
         }
         public void ModoEdicion(Boolean a)
         {
             //Combos
             cboOriBanco.Enabled = cboOriCuentaBanco.Enabled = cboOriCuentaContable.Enabled = cboOriEmpresa.Enabled = cboOriProyecto.Enabled = cboOriEtapa.Enabled =
-            cboDesBanco.Enabled = cboDesCuentaBanco.Enabled = cboDesCuentaContable.Enabled = cboDesEmpresa.Enabled = cboDesEtapa.Enabled = cboDesProyecto.Enabled = cbomoneda.Enabled = a;
+            cbotipo.Enabled = cboDesBanco.Enabled = cboDesCuentaBanco.Enabled = cboDesCuentaContable.Enabled = cboDesEmpresa.Enabled = cboDesEtapa.Enabled = cboDesProyecto.Enabled = cbomoneda.Enabled = a;
             //textbox
-            txtMontoPrestamo.Enabled = txtTipoCambio.Enabled = txtGlosa.Enabled = dtpFechaPrestamo.Enabled = dtpFechaContable.Enabled = a;
+            txtnrooperacion.Enabled = txtMontoPrestamo.Enabled = txtTipoCambio.Enabled = txtGlosa.Enabled = dtpFechaPrestamo.Enabled = dtpFechaContable.Enabled = a;
             //Textbox Busquedas
             chkAnulado.Enabled = chkCancelado.Enabled = chkbusEstados.Enabled = txtbusempresadestino.Enabled = txtbusempresaorigen.Enabled = txtbusMoneda.Enabled = dtpfechabus1.Enabled = dtpfechabus2.Enabled = !a;
             //datagrid

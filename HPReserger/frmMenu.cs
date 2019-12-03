@@ -3944,5 +3944,27 @@ namespace HPReserger
         {
             frmBancosCorriente = null;
         }
+        ModuloFinanzas.frmMediosPagos frmMedioPagos;
+        private void mediosPagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmMedioPagos == null)
+            {
+                frmMedioPagos = new ModuloFinanzas.frmMediosPagos();
+                frmMedioPagos.MdiParent = this;
+                frmMedioPagos.Icon = ICono;
+                frmMedioPagos.FormClosed += new FormClosedEventHandler(cerrarfrmMedioPagos);
+                frmMedioPagos.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmMedioPagos.Activate();
+                ValidarVentanas(frmMedioPagos);
+            }
+        }
+        private void cerrarfrmMedioPagos(object sender, FormClosedEventArgs e)
+        {
+            frmMedioPagos = null;
+        }
     }
 }

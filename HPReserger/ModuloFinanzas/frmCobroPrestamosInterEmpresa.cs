@@ -40,6 +40,13 @@ namespace HPReserger.ModuloFinanzas
             ///Luego de haber cargado todos los datos de la grilla
             Cargado = true;
             CargarDatos();
+            CargarTipoPagos();
+        }
+        public void CargarTipoPagos()
+        {
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
         }
         private void cboEmpresa_Click(object sender, EventArgs e)
         {

@@ -44,6 +44,9 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
         {
+            int CabezaCuenta = 0;
+            int.TryParse(cuenta.Substring(0, 3), out CabezaCuenta);
+            if (CabezaCuenta > 103 && CabezaCuenta < 108) Dtgconten.Columns[xTipoPago.Name].Visible = true;
             ChkDuplicar.Enabled = true; ChkDuplicar.Checked = false;
             chkAutoConversion.Enabled = false;
             //Dtgconten.SuspendLayout();
@@ -82,6 +85,7 @@ namespace HPReserger
         DataTable Monedas;
         DataTable Centroc, CentroCosto;
         DataTable TcuentasBancarias;
+        DataTable TTipoPago;
         public void CargarDatos()
         {
             CargarTipodoc();
@@ -104,6 +108,7 @@ namespace HPReserger
             }
             ////CargarDatosdelas Cuentas
             TcuentasBancarias = CapaLogica.CuentaBancaria(_empresa, cuenta);
+            TTipoPago = CapaLogica.ListadoMedioPagos();
         }
         public void CargarComprobantes()
         {
@@ -394,10 +399,15 @@ namespace HPReserger
                         if (item.Cells[numdocx.Name].Value.ToString() == "") item.Cells[numdocx.Name].Value = "0";
                         if (item.Cells[numdocx.Name].Value.ToString() != "")
                         {
+                            int valpago;
+                            int.TryParse(item.Cells[xTipoPago.Name].Value.ToString(), out valpago);
                             CapaLogica.DetalleAsientos(1, _asiento, _idasiento, cuenta, (int)item.Cells[tipodocx.Name].Value,
-                                item.Cells[numdocx.Name].Value.ToString(), item.Cells[razonsocialx.Name].Value.ToString(), (int)item.Cells[idcomprobantex.Name].Value, item.Cells[codcomprobantex.Name].Value.ToString(), item.Cells[numcomprobantex.Name].Value.ToString(),
-                                int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(), (DateTime)item.Cells[fechaemisionx.Name].Value, (DateTime)item.Cells[FechaVencimientox.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
-                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, _proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, _fecha, (int)(item.Cells[xCtaBancaria.Name].Value.ToString() == "" ? 0 : item.Cells[xCtaBancaria.Name].Value), (item.Cells[fkAsix.Name].Value.ToString() == "" ? "0" : item.Cells[fkAsix.Name].Value.ToString()), item.Cells[xNroOPBanco.Name].Value.ToString());
+                                item.Cells[numdocx.Name].Value.ToString(), item.Cells[razonsocialx.Name].Value.ToString(), (int)item.Cells[idcomprobantex.Name].Value, item.Cells[codcomprobantex.Name].Value.ToString(),
+                                item.Cells[numcomprobantex.Name].Value.ToString(), int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(),
+                                (DateTime)item.Cells[fechaemisionx.Name].Value, (DateTime)item.Cells[FechaVencimientox.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
+                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, _proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, _fecha,
+                                 (int)(item.Cells[xCtaBancaria.Name].Value.ToString() == "" ? 0 : item.Cells[xCtaBancaria.Name].Value),
+                                 (item.Cells[fkAsix.Name].Value.ToString() == "" ? "0" : item.Cells[fkAsix.Name].Value.ToString()), item.Cells[xNroOPBanco.Name].Value.ToString(), valpago);
                         }
                     }
                 }
@@ -1030,6 +1040,12 @@ namespace HPReserger
                 Combo.DisplayMember = "descripcion";
                 Combo.AutoComplete = true;
                 Combo.DataSource = TcuentasBancarias;
+                //Tipo Pago
+                Combo = Dtgconten.Columns[xTipoPago.Name] as DataGridViewComboBoxColumn;
+                Combo.ValueMember = "codsunat";
+                Combo.DisplayMember = "mediopago";
+                Combo.AutoComplete = true;
+                Combo.DataSource = TTipoPago;
                 //if (estado == 2)
                 //{
                 //    if ((Dtgconten[tipodocx.Name, x].Value == null ? "" : Dtgconten[tipodocx.Name, x].Value.ToString()) == "")

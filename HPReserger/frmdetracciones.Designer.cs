@@ -247,6 +247,7 @@
             this.txtdescripcion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdescripcion.ForeColor = System.Drawing.Color.Black;
+            this.txtdescripcion.Format = null;
             this.txtdescripcion.Location = new System.Drawing.Point(83, 10);
             this.txtdescripcion.MaxLength = 100;
             this.txtdescripcion.Name = "txtdescripcion";
@@ -267,6 +268,7 @@
             this.txtporcentaje.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtporcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtporcentaje.ForeColor = System.Drawing.Color.Black;
+            this.txtporcentaje.Format = null;
             this.txtporcentaje.Location = new System.Drawing.Point(588, 10);
             this.txtporcentaje.MaxLength = 100;
             this.txtporcentaje.Name = "txtporcentaje";
@@ -430,6 +432,7 @@
             this.txtAnexo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtAnexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnexo.ForeColor = System.Drawing.Color.Black;
+            this.txtAnexo.Format = null;
             this.txtAnexo.Location = new System.Drawing.Point(83, 36);
             this.txtAnexo.MaxLength = 40;
             this.txtAnexo.Name = "txtAnexo";
@@ -460,6 +463,7 @@
             this.txtsunat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtsunat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsunat.ForeColor = System.Drawing.Color.Black;
+            this.txtsunat.Format = null;
             this.txtsunat.Location = new System.Drawing.Point(436, 36);
             this.txtsunat.MaxLength = 4;
             this.txtsunat.Name = "txtsunat";
@@ -477,6 +481,7 @@
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre1.Location = new System.Drawing.Point(0, 60);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
@@ -514,6 +519,7 @@
             this.txtbusanexo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtbusanexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusanexo.ForeColor = System.Drawing.Color.Black;
+            this.txtbusanexo.Format = null;
             this.txtbusanexo.Location = new System.Drawing.Point(83, 67);
             this.txtbusanexo.MaxLength = 40;
             this.txtbusanexo.Name = "txtbusanexo";
@@ -534,6 +540,7 @@
             this.txtbusdesc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtbusdesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusdesc.ForeColor = System.Drawing.Color.Black;
+            this.txtbusdesc.Format = null;
             this.txtbusdesc.Location = new System.Drawing.Point(228, 67);
             this.txtbusdesc.MaxLength = 40;
             this.txtbusdesc.Name = "txtbusdesc";
@@ -554,6 +561,7 @@
             this.txtbusid.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtbusid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusid.ForeColor = System.Drawing.Color.Black;
+            this.txtbusid.Format = null;
             this.txtbusid.Location = new System.Drawing.Point(12, 67);
             this.txtbusid.MaxLength = 40;
             this.txtbusid.Name = "txtbusid";

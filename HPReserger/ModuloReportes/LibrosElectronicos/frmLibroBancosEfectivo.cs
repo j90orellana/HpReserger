@@ -138,7 +138,6 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         private void btnGenerarTXT_Click(object sender, EventArgs e)
         {
             msg("en Desarrollo");
-
         }
     }
 }

@@ -131,6 +131,7 @@
             this.balanceDeComprobaciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.librosElectronicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -170,6 +171,7 @@
             this.parámetrosGeneralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.periocidadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.detraccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediosPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articuloServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artículosServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -265,7 +267,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1218,6 +1219,13 @@
             this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem.Text = "Libro Caja y Bancos - Detalle De Los Movimientos Del Efectivo";
             this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem.Click += new System.EventHandler(this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem_Click);
             // 
+            // libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem
+            // 
+            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Name = "libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem";
+            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Size = new System.Drawing.Size(424, 22);
+            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Text = "Libro Caja y Bancos - Detalle De Los Movimientos De La Cuenta Corriente";
+            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Click += new System.EventHandler(this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem_Click);
+            // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
@@ -1587,7 +1595,8 @@
             this.generalesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.parámetrosGeneralesToolStripMenuItem,
             this.periocidadToolStripMenuItem1,
-            this.detraccionesToolStripMenuItem});
+            this.detraccionesToolStripMenuItem,
+            this.mediosPagosToolStripMenuItem});
             this.generalesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generalesToolStripMenuItem.Image")));
             this.generalesToolStripMenuItem.Name = "generalesToolStripMenuItem";
             this.generalesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
@@ -1621,6 +1630,13 @@
             this.detraccionesToolStripMenuItem.Tag = "70104";
             this.detraccionesToolStripMenuItem.Text = "Detracciones";
             this.detraccionesToolStripMenuItem.Click += new System.EventHandler(this.detraccionesToolStripMenuItem_Click);
+            // 
+            // mediosPagosToolStripMenuItem
+            // 
+            this.mediosPagosToolStripMenuItem.Name = "mediosPagosToolStripMenuItem";
+            this.mediosPagosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mediosPagosToolStripMenuItem.Text = "Medios Pagos";
+            this.mediosPagosToolStripMenuItem.Click += new System.EventHandler(this.mediosPagosToolStripMenuItem_Click);
             // 
             // articuloServicioToolStripMenuItem
             // 
@@ -2393,8 +2409,8 @@
             this.verToolStripMenuItem,
             this.contabilidadToolStripMenuItem,
             this.planillaToolStripMenuItem,
-            this.seguridadToolStripMenuItem,
             this.mantenimientoToolStripMenuItem,
+            this.seguridadToolStripMenuItem,
             this.ventanasToolStripMenuItem,
             this.cerrarSesionToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
@@ -2489,13 +2505,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem
-            // 
-            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Name = "libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem";
-            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Size = new System.Drawing.Size(424, 22);
-            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Text = "Libro Caja y Bancos - Detalle De Los Movimientos De La Cuenta Corriente";
-            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Click += new System.EventHandler(this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -2773,5 +2782,6 @@
         private System.Windows.Forms.ToolStripMenuItem librosElectronicosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mediosPagosToolStripMenuItem;
     }
 }
