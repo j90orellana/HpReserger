@@ -21,12 +21,12 @@ namespace HPReserger.ModuloCompensaciones
         private void frmAnticipoProveedores_Load(object sender, EventArgs e)
         {
             txtglosa.CargarTextoporDefecto(); txtImporteTotal.CargarTextoporDefecto();
-            txtnrocheque.CargarTextoporDefecto();
+            txtnrooperacion.CargarTextoporDefecto();
             dtpFechaContable.Value = dtpFechaCompensa.Value = DateTime.Now;
             CargarMoneda();
             CargarEmpresa();
             CargarProveedores();
-            cbopago.SelectedIndex = 0;
+            CargarTipoPagos();
         }
         int _idempresa;
         private string _NameEmpresa;
@@ -41,6 +41,13 @@ namespace HPReserger.ModuloCompensaciones
                     _NameEmpresa = value;
             }
         }
+        public void CargarTipoPagos()
+        {
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
+            if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
+        }       
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         public void CargarEmpresa() { CapaLogica.TablaEmpresas(cboempresa); }
         public void CargarProveedores() { CapaLogica.TablaProveedores(cboproveedor, 0); }
@@ -187,16 +194,9 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Seleccione el Banco");
                 cbobanco.Focus(); return;
             }
-            if (cbopago.SelectedIndex < 0)
-            {
-                msg("Seleccione el Pago");
-                cbopago.Focus(); return;
-            }
-            if (!txtnrocheque.EstaLLeno())
-            {
-                msg("Ingrese Nro Operación-Cheque");
-                txtnrocheque.Focus(); return;
-            }
+            if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msg("Seleccione Tipo de Pago"); return; }
+            int TipoPago = (int)cbotipo.SelectedValue;
+            string NroOperacion = txtnrooperacion.TextValido();
             if (cbocuentabanco.SelectedValue == null)
             {
                 msg("Seleccione la cuenta del Abono");
@@ -273,9 +273,9 @@ namespace HPReserger.ModuloCompensaciones
                     proyecto, 0, cuo, moneda, glosa, dtpFechaCompensa.Value, -9);
                 //Detalle del asiento
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoIdProveedor, RucProveedor
-                    , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                    , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, NroOperacion, glosa, FechaCompensa, frmLogin.CodigoUsuario, "", TipoPago);
                 //Inserto compensaciones!
-                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 4, TipoIdProveedor, RucProveedor, MontoSoles, MontoDolares, cuo, cbopago.SelectedIndex == 0 ? 3 : 7, nroKuenta, txtnrocheque.TextValido(),
+                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 4, TipoIdProveedor, RucProveedor, MontoSoles, MontoDolares, cuo, TipoPago, nroKuenta, NroOperacion,
                     $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d")}", dtpFechaCompensa.Value, 2, CuentaAnticipo, "");
                 //
                 //Cuadre Asiento

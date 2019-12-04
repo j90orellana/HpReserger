@@ -111,7 +111,7 @@ namespace HPReserger
             cbotipo.DisplayMember = "mediopago";
             cbotipo.ValueMember = "codsunat";
             cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
-            cbotipo.SelectedIndex = 0;
+            if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
             //if (decimal.Parse(txttipocambio.Text) == 0) SacarTipoCambio();
             //List<Persona> personas = new List<Persona>();
             //Persona person1 = new Persona(1, "jefferson", 27);
@@ -318,6 +318,7 @@ namespace HPReserger
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }
+            if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msg("Seleccione Tipo de Pago"); return; }
             string TotalAux = txttotalMN.Text;
             chkprove.Checked = chkfecha.Checked = chkrecepcion.Checked = false;
             CalcularTotal();
@@ -647,6 +648,8 @@ namespace HPReserger
                 /////////////////
                 //PROCESO DE ACTUALIZACION DE FACTURAS
                 ////////////////
+                int MedioPago = (int)cbotipo.SelectedValue;
+                string NroOperacion = txtnrocheque.TextValido();
                 foreach (FACTURAS fac in ListaComprobantes)
                 {
                     DataTable TBanco = new DataTable();
@@ -654,7 +657,6 @@ namespace HPReserger
                     DataRow[] filita = TBanco.Select($"sufijo='{cbobanco.SelectedValue.ToString()}'");
                     //Declaracion de las variables para la insercion de lso registros del detalle del pago
                     int banko = int.Parse((filita[0])["codigo"].ToString());
-                    int TipoPago = int.Parse(cbotipo.Text.Substring(0, 3));
                     string Nropago = CodigoPago == 7 ? txtnrocheque.Text : "";
                     //Recorremos los comprobantes seleccionados RH / FT
                     //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
@@ -662,9 +664,9 @@ namespace HPReserger
                     {
                         ContadorPosicion++;
                         //actualizo que el recibo este pagado
-                        if (fac.Saldo == fac.aPagar) CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                        if (fac.Saldo == fac.aPagar) CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
                             , fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
-                        else CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                        else CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
                             , fac.subtotal, fac.igv, fac.total, IdUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
                         //cuenta de recibo por honorarios 4241101
 
@@ -686,7 +688,7 @@ namespace HPReserger
                         if (fac.tipo.Substring(fac.tipo.Length - 1, 1) != "x")
                         {
                             //registramos el ingreso del abono (5: Opcion pago)
-                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, 0, txtnrocheque.TextValido(), fac.aPagar, fac.subtotal, fac.igv, fac.aPagar, IdUsuario, 5, banko, nroKuenta, FechaPago, fac.IdComprobante
+                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, txtnrocheque.TextValido(), fac.aPagar, fac.subtotal, fac.igv, fac.aPagar, IdUsuario, 5, banko, nroKuenta, FechaPago, fac.IdComprobante
                                 , fkEmpresa, cuoPago);
                             if (fac.aPagar >= fac.Saldo)
                                 //Actualizacion de notas de credito 
@@ -712,10 +714,10 @@ namespace HPReserger
                         //{
                         //actualizo que la factura esta pagada
                         if (fac.Saldo <= fac.aPagar)
-                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
                                 , fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
                         else
-                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
                                 , fac.subtotal, fac.igv, fac.total, IdUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
                         ///facturas por pagar 4212101
                         ///
@@ -770,7 +772,8 @@ namespace HPReserger
                                 , AbonoCabecera < 0 ? Math.Abs(AbonoCabecera) : 0, tc, proyecto, 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
                             //Detalle de las facturas
                             CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContablesFacturas, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0]
-                                , valor[1], 0, FechaPago, FechaContable, FechaContable, (AbonoCabecera < 0 ? -1 : 1) * (ExcesoMN), (AbonoCabecera < 0 ? -1 : 1) * (ExcesoME), tcReg, idMoneda, "", "", glosa, FechaPago, idUsuario, "");
+                                , valor[1], 0, FechaPago, FechaContable, FechaContable, (AbonoCabecera < 0 ? -1 : 1) * (ExcesoMN), (AbonoCabecera < 0 ? -1 : 1) * (ExcesoME), tcReg, idMoneda, "", NroOperacion,
+                                glosa, FechaPago, idUsuario, "", MedioPago);
                         }
                     }
                 }
@@ -815,7 +818,7 @@ namespace HPReserger
                                 , AbonoCabecera < 0 ? Math.Abs(AbonoCabecera) : 0, tc, proyecto, 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
                             //DETALLE de las notas
                             CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContableNotas, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0
-                                , FechaPago, FechaContable, FechaContable, Math.Abs(ExcesoMN), Math.Abs(ExcesoME), tc, idMoneda, "", "", glosa, FechaPago, idUsuario, "");
+                                , FechaPago, FechaContable, FechaContable, Math.Abs(ExcesoMN), Math.Abs(ExcesoME), tc, idMoneda, "", NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
                         }
                     }
                 }
@@ -855,7 +858,7 @@ namespace HPReserger
                     //CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
                     //FechaPago, FechaContable, FechaContable, (Abonado < 0 ? -1 : 1) * ExcesoMN, (Abonado < 0 ? -1 : 1) * ExcesoME, tc, idMoneda, nroKuenta, "", glosa, FechaPago, idUsuario, "");
                     CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 0, "99999", "VARIOS", 0, "0", "0", 0,
-                   FechaPago, FechaContable, FechaContable, decimal.Parse(txttotalAbonadoMN.Text), decimal.Parse(txttotalAbonadoME.Text), tc, IdMonedaAsiento, nroKuenta, "", glosa, FechaPago, idUsuario, "");
+                   FechaPago, FechaContable, FechaContable, decimal.Parse(txttotalAbonadoMN.Text), decimal.Parse(txttotalAbonadoME.Text), tc, IdMonedaAsiento, nroKuenta, NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
                     //    }
                     //}
                 }
@@ -885,7 +888,7 @@ namespace HPReserger
                             totalExcesoME += ExcesoME;
                             //Detalle del asiento en exceso
                             CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
-                                FechaPago, FechaContable, FechaContable, ExcesoMN, ExcesoME, tc, idMoneda, "", "", glosa, FechaPago, idUsuario, "");
+                                FechaPago, FechaContable, FechaContable, ExcesoMN, ExcesoME, tc, idMoneda, "", NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
                         }
                     }
                 }

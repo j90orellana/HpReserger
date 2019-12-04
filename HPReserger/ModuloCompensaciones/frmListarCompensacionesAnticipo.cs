@@ -549,7 +549,7 @@ namespace HPReserger.ModuloCompensaciones
                                 {
                                     decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
                                     CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, MontoFacturita, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario
-                                        , IdComprobante, _idempresa, Cuo);
+                                        , IdComprobante, _idempresa, Cuo, TipoPago);
                                 }
                             }
                             else
@@ -581,7 +581,7 @@ namespace HPReserger.ModuloCompensaciones
                                 {
                                     decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
                                     CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, AcumuladoAnticipos, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario
-                                        , IdComprobante, _idempresa, Cuo);
+                                        , IdComprobante, _idempresa, Cuo, TipoPago);
                                 }
                             }
                             //Resto de las Facturas a los Anticipos
@@ -613,7 +613,7 @@ namespace HPReserger.ModuloCompensaciones
                             {
                                 decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
                                 CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, MontoSolesOri, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario
-                                    , IdComprobante, _idempresa, Cuo);
+                                    , IdComprobante, _idempresa, Cuo, TipoPago);
                             }
                         }
                     }
@@ -621,8 +621,8 @@ namespace HPReserger.ModuloCompensaciones
                 //Entrada Salida de Dinero(Bancos)
                 if (ImporteTotal != 0 && cbopago.Text != "000 Ninguno.")
                 {
-                    string CuentaContable = "";
-                    if (cbocuentabanco.SelectedValue == null) CuentaContable = ""; else CuentaContable = cbocuentabanco.SelectedValue.ToString();
+                    string CuentaContableBanco = "";
+                    if (cbocuentabanco.SelectedValue == null) CuentaContableBanco = ""; else CuentaContableBanco = cbocuentabanco.SelectedValue.ToString();
                     decimal MontoSoles = Configuraciones.Redondear(moneda == 1 ? ImporteTotal : ImporteTotal * tc);
                     decimal MontoDolares = Configuraciones.Redondear(moneda == 2 ? ImporteTotal : ImporteTotal / tc);
                     decimal TC = tc;
@@ -632,14 +632,14 @@ namespace HPReserger.ModuloCompensaciones
                     if (Math.Abs(ImporteTotal) - decimal.Parse(txtPorAbonar.Text) == 0)
                     {
                         //Asiento Cabecera
-                        CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable
+                        CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContableBanco
                                , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? MontoSoles : MontoDolares : 0)
                                , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? MontoSoles : MontoDolares : 0)
                                , decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -11);
                         //Detalle del asiento
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContableBanco, proyecto, TipoIdProveedor, RucProveedor
                             , NameProveedor, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), TC, moneda, nroKuenta
-                            , NroPago, glosa, FechaContable, frmLogin.CodigoUsuario, "");
+                            , NroPago, glosa, FechaContable, frmLogin.CodigoUsuario, "", TipoPago);
                     }
                     //si se Abona una Parte del Anticipo               
                     else
@@ -649,14 +649,14 @@ namespace HPReserger.ModuloCompensaciones
                         decimal AbonarSoles = Configuraciones.Redondear(moneda == 1 ? ImporteAbonar : ImporteAbonar * Factor);
                         decimal AbonarDolares = Configuraciones.Redondear(moneda == 2 ? ImporteAbonar : ImporteAbonar / Factor);
                         //Asiento Cabecera
-                        CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable
+                        CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContableBanco
                                , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                                , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                                , decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -11);
                         //Detalle del asiento
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContableBanco, proyecto, TipoIdProveedor, RucProveedor
                             , NameProveedor, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(AbonarSoles), Math.Abs(AbonarDolares), TC, moneda, nroKuenta
-                            , NroPago, glosa, FechaContable, frmLogin.CodigoUsuario, "");
+                            , NroPago, glosa, FechaContable, frmLogin.CodigoUsuario, "", TipoPago);
                         ////anticipos por partes
                         //decimal ImporteAbonar = decimal.Parse(txtPorAbonar.Text);
                         //decimal SumatoriaFacturas = (moneda == 1 ? FacturasSoles : FacturasDolares) + Math.Abs(ImporteTotal) + ImporteAbonar;

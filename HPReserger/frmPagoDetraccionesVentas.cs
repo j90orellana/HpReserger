@@ -33,7 +33,7 @@ namespace HPReserger
             CargarDAtos();
             dtpFechaPago.Value = dtpFechaContable.Value = DateTime.Now;
             txtglosa.CargarTextoporDefecto();
-            txtcuentadetracciones.CargarTextoporDefecto();
+            txtcuentadetracciones.CargarTextoporDefecto(); txtnrooperacion.CargarTextoporDefecto();
             CargarTipoPagos();
         }
         public void CargarTipoPagos()
@@ -41,6 +41,7 @@ namespace HPReserger
             cbotipo.DisplayMember = "mediopago";
             cbotipo.ValueMember = "codsunat";
             cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
+            if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
         }
         public void cargarempresas()
         {
@@ -195,13 +196,15 @@ namespace HPReserger
         }
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbotipo.SelectedIndex == 0 || cbotipo.SelectedIndex == 1)
+            if (cbotipo.SelectedValue != null)
             {
+                string banco = cbobanco.Text;
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = true;
                 lblguia.Text = "Banco";
                 cbobanco.ValueMember = "codigo";
                 cbobanco.DisplayMember = "descripcion";
                 cbobanco.DataSource = CapaLogica.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
+                cbobanco.Text = banco;
             }
             else
             {
@@ -345,6 +348,9 @@ namespace HPReserger
                             return;
                         }
                     }
+                    if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msg("Seleccione Tipo de Pago"); return; }
+                    int TipoPago = (int)cbotipo.SelectedValue;
+                    string NroOperacion = txtnrooperacion.TextValido();
                     //
                     if (cboproyecto.SelectedValue == null) { msg("Seleccione un Proyecto"); cboproyecto.Focus(); return; }
                     if (cboempresa.SelectedValue == null) { msg("Seleccione una Empresa"); cboempresa.Focus(); return; }
@@ -389,6 +395,7 @@ namespace HPReserger
                     }
                     //PROCESO DE PAGO
                     ///DECLARACION DE VARIABLES
+                    ///
                     DateTime FechaContable = dtpFechaContable.Value;
                     DateTime FechaPago = dtpFechaPago.Value;
                     int IdEmpresa = (int)cboempresa.SelectedValue;
@@ -422,8 +429,8 @@ namespace HPReserger
                                 Tipoid = (int)item.Cells[tipoidx.Name].Value;
                                 idcomprobante = (int)item.Cells[xtipocomprobante.Name].Value;
                                 CapaLogica.DetraccionesVenta(1, NroBoleta, Tipoid, Idcliente, (decimal)item.Cells[ImporteMOx.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value
-                                    , (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta
-                                    , FechaPago, IdUsuario, IdEmpresa, idcomprobante, CuopPago);
+                                    , (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value, NroOperacion,
+                                    cbobanco.SelectedValue.ToString(), NroCuenta, FechaPago, IdUsuario, IdEmpresa, idcomprobante, CuopPago, TipoPago);
                             }
                         }
                     }
@@ -447,7 +454,7 @@ namespace HPReserger
                                 , (decimal)item.Cells[xdiferencia.Name].Value
                                 //item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value / (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value
                                 , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, FechaContable, decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103"
-                                , glosa, IdUsuario, IdEmpresa, TC, (int)cboproyecto.SelectedValue, Detalle++);
+                                , glosa, IdUsuario, IdEmpresa, TC, (int)cboproyecto.SelectedValue, Detalle++, NroOperacion, TipoPago);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
                     //Cuadrar Asiento
@@ -497,6 +504,12 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txt, 10);
         }
+
+        private void cbotipo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void Txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);

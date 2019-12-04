@@ -108,7 +108,7 @@ namespace HPReserger
             }
             ////CargarDatosdelas Cuentas
             TcuentasBancarias = CapaLogica.CuentaBancaria(_empresa, cuenta);
-            TTipoPago = CapaLogica.ListadoMedioPagos();
+            TTipoPago = CapaLogica.ListadoMedioPagos();           
         }
         public void CargarComprobantes()
         {

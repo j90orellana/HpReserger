@@ -35,6 +35,7 @@ namespace HPReserger
             txtcuentadetracciones_TextChanged(sender, e);
             txtglosa.CargarTextoporDefecto();
             txtcuentaredondeo.CargarTextoporDefecto();
+            txtnrooperacion.CargarTextoporDefecto();
             CargarTipoPagos();
         }
         public void CargarTipoPagos()
@@ -42,6 +43,7 @@ namespace HPReserger
             cbotipo.DisplayMember = "mediopago";
             cbotipo.ValueMember = "codsunat";
             cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
+            if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
         }
         public void cargarempresas()
         {
@@ -266,6 +268,10 @@ namespace HPReserger
                             return;
                         }
                     }
+                    if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msg("Seleccione Tipo de Pago"); return; }
+                    int TipoPago = (int)cbotipo.SelectedValue;
+                    string NroOperacion = txtnrooperacion.TextValido();
+
                     if (decimal.Parse(txtdiferencia.Text) > 0)
                         if (!txtDescCuenta.EstaLLeno()) { txtcuentaredondeo.Focus(); msg("Ingresé Cuenta de Redondeo"); return; }
                     Boolean Verificar = false;
@@ -315,7 +321,7 @@ namespace HPReserger
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
                                 CapaLogica.Detracciones(1, item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[Detraccionx.Name].Value
                                     , (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
-                                    , "", cbobanco.SelectedValue.ToString(), NroCuenta, FechaPago, IdUsuario, (int)item.Cells[xidcomprobante.Name].Value, IdEmpresa, CuoPago);
+                                    , NroOperacion, cbobanco.SelectedValue.ToString(), NroCuenta, FechaPago, IdUsuario, (int)item.Cells[xidcomprobante.Name].Value, IdEmpresa, CuoPago, TipoPago);
                             }
                         }
                     }
@@ -334,7 +340,7 @@ namespace HPReserger
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
                                 CapaLogica.PagarDetracionesDetalle(codigo, CuoPago, IdEmpresa, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
                                     , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
-                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante);
+                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante,NroOperacion,TipoPago);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA                
                     msgOK($"Detracciones Pagadas! con Asiento {CuoPago}");
@@ -368,13 +374,15 @@ namespace HPReserger
         }
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbotipo.SelectedIndex == 0 || cbotipo.SelectedIndex == 1)
+            if (cbotipo.SelectedValue != null)
             {
+                string cadena = cbobanco.Text;
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = true;
                 lblguia.Text = "Banco";
                 cbobanco.ValueMember = "codigo";
                 cbobanco.DisplayMember = "descripcion";
                 cbobanco.DataSource = CapaLogica.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
+                cbobanco.Text = cadena;
             }
             else
             {

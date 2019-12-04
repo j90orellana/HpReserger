@@ -40,6 +40,7 @@ namespace HPReserger
             cbotipo.DisplayMember = "mediopago";
             cbotipo.ValueMember = "codsunat";
             cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
+            if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
         }
         private int IdEmpresa;
         public int _IdEmpresa

@@ -17,15 +17,23 @@ namespace HPReserger.ModuloCompensaciones
         {
             InitializeComponent();
             dtpFechaContable.Value = dtpFechaCompensa.Value = DateTime.Now;
+            CargarTipoPagos();
             CargarMoneda();
             CargarEmpresa();
-            txtglosa.CargarTextoporDefecto(); txtnrocheque.CargarTextoporDefecto();
+            txtglosa.CargarTextoporDefecto(); txtnrooperacion.CargarTextoporDefecto();
         }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
         private void frmEntregaRendirPago_Load(object sender, EventArgs e)
         {
-
+        }
+        public void CargarTipoPagos()
+        {
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            DTipoPagos = CapaLogica.ListadoMedioPagos();
+            cbotipo.DataSource = DTipoPagos;
+            if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         int _idempresa;
@@ -332,23 +340,36 @@ namespace HPReserger.ModuloCompensaciones
         int ContarEntregas, ContaFacturas;
         decimal EntregaSoles, EntregasDolares;
         decimal FacturasSoles, FacturasDolares;
+        private DataTable DTipoPagos;
 
         private void txtImporteTotal_TextChanged(object sender, EventArgs e)
         {
-            cbobanco.Enabled = cbocuentabanco.Enabled = cbopago.Enabled = txtnrocheque.Enabled = true;
+            cbobanco.Enabled = cbocuentabanco.Enabled = cbotipo.Enabled = txtnrooperacion.Enabled = true;
             lblcuentasxpagar.Visible = cbocuentaxpagar.Visible = false;
-            string cadena = cbopago.Text;
-            string valorCompensa = "000 Ninguno.";
+            string cadena = cbotipo.Text;
+            var valorCompensa = DTipoPagos.NewRow();
+            valorCompensa[0] = 0;
+            valorCompensa[1] = "0 - NINGUNO";
+            valorCompensa[2] = 0;
+            //string valorCompensa = "000 Ninguno.";
             if (ImporteTotal == 0)
             {
-                cbobanco.Enabled = cbocuentabanco.Enabled = cbopago.Enabled = txtnrocheque.Enabled = false;
+                cbobanco.Enabled = cbocuentabanco.Enabled = cbotipo.Enabled = txtnrooperacion.Enabled = false;
                 //cbopago.Items.Remove(valorCompensa);
             }
             else if (ImporteTotal > 0)
             {
                 lblcuentasxpagar.Visible = cbocuentaxpagar.Visible = true;
                 lblmsgsalida.Text = "Salida Dinero:";
-                cbopago.Items.Remove(valorCompensa);
+                //cbotipo.Items.Remove(valorCompensa);
+                for (int i = 0; i < DTipoPagos.Rows.Count; i++)
+                {
+                    if (DTipoPagos.Rows[0][0].ToString() == "0")
+                    {
+                        DTipoPagos.Rows.Remove(DTipoPagos.Rows[i]);
+                        i--;
+                    }
+                }
             }
             else
             {
@@ -356,40 +377,41 @@ namespace HPReserger.ModuloCompensaciones
                 if (ContaFacturas > 0)
                 {
                     //cbopago.Items.Remove(valorCompensa);
-                    cbopago.Items.Insert(0, valorCompensa);
+                    //cbotipo.Items.Insert(0, valorCompensa);
+                    DTipoPagos.Rows.InsertAt(valorCompensa, 0);
                 }
                 //else
                 //cbopago.Items.Remove(valorCompensa);
             }
-            cbopago.Text = cadena;
+            cbotipo.Text = cadena;
         }
 
         private void cbopago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbobanco.Enabled = cbocuentabanco.Enabled = txtnrocheque.Enabled = true;
+            cbobanco.Enabled = cbocuentabanco.Enabled = txtnrooperacion.Enabled = true;
             txtPorAbonar.Enabled = true;
             OcultarOpcionesPago(false);
             //Transferencia de Fondos
-            if (cbopago.Text == "003 Transferencias Fondos")
+            if ((int)cbotipo.SelectedValue == 3)
             {
-                if (!txtnrocheque.EstaLLeno())
+                if (!txtnrooperacion.EstaLLeno())
                 {
-                    txtnrocheque.Text = txtnrocheque.TextoDefecto = "Ingrese Nro Operación".ToUpper();
-                    txtnrocheque.CargarTextoporDefecto();
+                    txtnrooperacion.Text = txtnrooperacion.TextoDefecto = "Ingrese Nro Operación".ToUpper();
+                    txtnrooperacion.CargarTextoporDefecto();
                 }
             }
             //Cheques
-            else if (cbopago.Text == "007 Cheque.")
+            else if ((int)cbotipo.SelectedValue == 7)
             {
-                if (!txtnrocheque.EstaLLeno())
+                if (!txtnrooperacion.EstaLLeno())
                 {
-                    txtnrocheque.Text = txtnrocheque.TextoDefecto = "Ingrese Nro Cheque".ToUpper();
-                    txtnrocheque.CargarTextoporDefecto();
+                    txtnrooperacion.Text = txtnrooperacion.TextoDefecto = "Ingrese Nro Cheque".ToUpper();
+                    txtnrooperacion.CargarTextoporDefecto();
                 }
             }
-            else if (cbopago.Text == "000 Ninguno.")
+            else if ((int)cbotipo.SelectedValue == 0)
             {
-                cbobanco.Enabled = cbocuentabanco.Enabled = txtnrocheque.Enabled = false;
+                cbobanco.Enabled = cbocuentabanco.Enabled = txtnrooperacion.Enabled = false;
                 txtPorAbonar.Enabled = false;
                 OcultarOpcionesPago(true);
             }
@@ -457,10 +479,10 @@ namespace HPReserger.ModuloCompensaciones
                 txtImporteTotal.Text = value.ToString("n2");
                 txtPorAbonar.Text = Math.Abs(value).ToString("n2");
                 if (ImporteTotal < 0)
-                    if (cbopago.Text == "000 Ninguno.")
+                    if (cbotipo.Text == "000 Ninguno.")
                         txtPorAbonar.Enabled = false;
                     else txtPorAbonar.Enabled = true;
-                else if (cbopago.Text == "") cbopago.SelectedIndex = 0;
+                else if (cbotipo.Text == "") cbotipo.SelectedIndex = 0;
             }
         }
         public void CalcularTotales()
@@ -588,7 +610,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void OcultarOpcionesPago(Boolean a)
         {
-            label17.Visible = lblbanco.Visible = lblmsgsalida.Visible = cbobanco.Visible = cbocuentabanco.Visible = txtnrocheque.Visible = !a;
+            label17.Visible = lblbanco.Visible = lblmsgsalida.Visible = cbobanco.Visible = cbocuentabanco.Visible = txtnrooperacion.Visible = !a;
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -625,9 +647,12 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Seleccione la Moneda");
                 cbomoneda.Focus(); return;
             }
+            if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msg("Seleccione Tipo de Pago"); return; }
+            int TipoPago = (int)cbotipo.SelectedValue;
+            string NroOperacion = txtnrooperacion.TextValido();
             if (decimal.Parse(txtImporteTotal.Text) != 0)
             {
-                if (cbopago.Text != "000 Ninguno.")
+                if (cbotipo.Text != "000 Ninguno.")
                 {
                     if (cbobanco.SelectedValue == null)
                     {
@@ -639,15 +664,15 @@ namespace HPReserger.ModuloCompensaciones
                         msg("Seleccione la cuenta del Abono");
                         cbocuentabanco.Focus(); return;
                     }
-                    if (!txtnrocheque.EstaLLeno())
+                    if (!txtnrooperacion.EstaLLeno())
                     {
                         msg("Ingrese Valor De Nro Operacion - Cheque");
-                        txtnrocheque.Focus(); return;
+                        txtnrooperacion.Focus(); return;
                     }
-                    if (cbopago.Text == "")
+                    if (cbotipo.Text == "")
                     {
                         msg("Seleccione Tipo de Pago");
-                        cbopago.Focus(); return;
+                        cbotipo.Focus(); return;
                     }
                 }
             }
@@ -699,10 +724,6 @@ namespace HPReserger.ModuloCompensaciones
                 decimal tc = decimal.Parse(txttipocambio.Text);
                 string glosa = txtglosa.TextValido();
                 int idUsuario = frmLogin.CodigoUsuario;
-                int TipoPago = 0;
-                if (cbopago.Text == "003 Transferencias Fondos") TipoPago = 3;
-                else if (cbopago.Text == "007 Cheque.") TipoPago = 7;
-                string NroPago = txtnrocheque.Text;
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 ///
@@ -737,7 +758,7 @@ namespace HPReserger.ModuloCompensaciones
                             (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaCompensa, idUsuario, "");
                         //Actualizar su Estado y Fecha de Compensacion
                         if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
-                            CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, FechaCompensa, TipoPago, NroPago);
+                            CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, FechaCompensa, TipoPago, NroOperacion);
                     }
                 }
                 //Diferencial Ganacia Perdida
@@ -762,7 +783,7 @@ namespace HPReserger.ModuloCompensaciones
                 //decimal ImporteAbonarAnticipos = decimal.Parse(txtPorAbonar.Text);
                 ///Si son pagos Totales
                 //Anticipos al Haber     --yOk
-                if (cbopago.Text != "000 Ninguno.")
+                if (cbotipo.Text != "000 Ninguno.")
                 {
                     foreach (DataGridViewRow item in DtgcontenEntregas.Rows)
                     {
@@ -783,7 +804,7 @@ namespace HPReserger.ModuloCompensaciones
                                     , NameEmpleado, 0, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, TC, moneda, "", "", glosa, FechaCompensa, idUsuario, "");
                                 ///Actualizo el Estado del Anticipo(Compensacion)
                                 CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
-                                     TipoPago, decimal.Parse(txtImporteTotal.Text) == 0 ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), NroPago, Cuo);
+                                     TipoPago, decimal.Parse(txtImporteTotal.Text) == 0 ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), NroOperacion, Cuo);
                             }
                         }
                     }
@@ -837,21 +858,21 @@ namespace HPReserger.ModuloCompensaciones
                                 if (AcumuladoFacturas == 0)
                                 {
                                     CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
-                                         TipoPago, cbopago.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(), Cuo);
+                                         TipoPago, cbotipo.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrooperacion.TextValido(), Cuo);
                                     break;
                                 }
                                 else if (AcumuladoFacturas < 0)
                                 {
                                     //Parcial
                                     CapaLogica.InsertarCompensacionesDetalle((int)item.Cells[xpkid.Name].Value, (int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value,
-                                        ParcialSoles, ParcialDolares, TipoPago, cbopago.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(),
+                                        ParcialSoles, ParcialDolares, TipoPago, cbotipo.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrooperacion.TextValido(),
                                         $"{Configuraciones.MayusculaCadaPalabra(NameEmpleado)} {dtpFechaCompensa.Value.ToString("d")}", FechaCompensa, 1, Cuo);
                                     break;
                                 }
                                 else if (AcumuladoFacturas > 0)
                                 {
                                     CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
-                                         TipoPago, cbopago.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(), Cuo);
+                                         TipoPago, cbotipo.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrooperacion.TextValido(), Cuo);
                                     //Continua..
                                 }
                             }
@@ -860,7 +881,7 @@ namespace HPReserger.ModuloCompensaciones
                     //Fin de Pago Parcial 
                 }
                 //Entrada -+- Salida de Dinero(Bancos)
-                if (ImporteTotal != 0 && cbopago.Text != "000 Ninguno.")
+                if (ImporteTotal != 0 && cbotipo.Text != "000 Ninguno.")
                 {
                     string CuentaContable = ""; string nroKuenta = "";
                     if (cbocuentabanco.SelectedValue == null) CuentaContable = ""; else CuentaContable = cbocuentabanco.SelectedValue.ToString();
@@ -903,7 +924,7 @@ namespace HPReserger.ModuloCompensaciones
                         //Detalle del asiento
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaCtaBanco, proyecto, TipoIdProveedor, NumDocEmpleado
                             , NameEmpleado, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(AbonarSoles), Math.Abs(AbonarDolares), TC, moneda, nroKuenta
-                            , NroPago, glosa, FechaCompensa, idUsuario, "");
+                            , NroOperacion, glosa, FechaCompensa, idUsuario, "", TipoPago);
                     }
                 }
                 //Cuadre Asiento
@@ -960,14 +981,14 @@ namespace HPReserger.ModuloCompensaciones
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaCtaBanco, proyecto, TipoIdProveedor, NumDocEmpleado
                         , NameEmpleado, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(AbonarSoles), Math.Abs(AbonarDolares), TC, moneda, nroKuenta
-                        , NroPago, glosa, FechaCompensa, idUsuario, Cuo);
+                        , NroOperacion, glosa, FechaCompensa, idUsuario, Cuo, TipoPago);
                     //Cuadre Asiento
                     CapaLogica.CuadrarAsiento(CuoNext, proyecto, FechaContable, 2);
                     cadena = $"\nSe Aplico el Pago con Cuo{ CuoNext}";
                     //Fin Cuadre                 
                 }
                 msgOK($"Se Aplicó la Entrega a Rendir con Cuo {Cuo} {(cadena != "" ? cadena : "")}");
-                cbopago.Text = "003 Transferencias Fondos";
+                //cbotipo.Text = "003 Transferencias Fondos";
                 cboempleado_SelectedIndexChanged(sender, e);
             }
         }

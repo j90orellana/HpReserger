@@ -57,10 +57,10 @@ namespace HPReserger
                 cboproyecto.DisplayMember = "proyecto";
                 cboproyecto.ValueMember = "id_proyecto";
                 //
+                NameEmpresa = cboempresa.SelectedText;
                 cboperiodo.ValueMember = "fechax";
                 cboperiodo.DisplayMember = "mesaño";
                 cboperiodo.DataSource = CapaLogica.Periodos(10, (int)cboempresa.SelectedValue);
-                NameEmpresa = cboempresa.SelectedText;
             }
             if (cboperiodo.Items.Count == 0)
                 //btnPreliminar.Enabled = true;
