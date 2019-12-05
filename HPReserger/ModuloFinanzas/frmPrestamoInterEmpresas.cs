@@ -448,11 +448,11 @@ namespace HPReserger
                    IdMoneda, " ", NumComprobante, Glosa, FechaContable, IdUsuario, " ");
                 CapaLogica.InsertarAsientoFacturaDetalle(10, 2, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), IdProyectoOri, 5, RucDestrino
                    , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
-                   IdMoneda, NroKuentaOri, NumComprobante, Glosa, FechaContable, IdUsuario, " ",TipoPago);
+                   IdMoneda, NroKuentaOri, NroOperacion, Glosa, FechaContable, IdUsuario, " ",TipoPago);
                 ///Detalle en la Empresa Destino
                 CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
                    , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
-                   IdMoneda, NroKuentaDes, NumComprobante, Glosa, FechaContable, IdUsuario, " ",TipoPago);
+                   IdMoneda, NroKuentaDes, NroOperacion, Glosa, FechaContable, IdUsuario, " ",TipoPago);
                 CapaLogica.InsertarAsientoFacturaDetalle(10, 2, IdAsientoDes, FechaContable, cboDesCuentaContable.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
                    , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
                    IdMoneda, " ", NumComprobante, Glosa, FechaContable, IdUsuario, " ");

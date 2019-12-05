@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                 x = cboempresa.SelectedIndex;
                 DataRow Fila = ((DataTable)cboempresa.DataSource).Rows[x];
                 txtruc.Text = Fila["ruc"].ToString();
-                //txtRucDeudor.Text = txtruc.Text;// poner pal TXT
+                txtRucDeudor.Text = txtruc.Text;// poner pal TXT
             }
             else
             {
@@ -65,6 +66,12 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             dtgconten.DataSource = CapaLogica.FormatoCajaBanco1_2((int)cboempresa.SelectedValue, FechaInicial, FechaFinal);
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
+            //Cambiamos los valores de la columna M
+            int c = 0;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                item.Cells[xCorrelativo.Name].Value = $"M{++c}";
+            }
             Cursor = Cursors.Default;
         }
 
@@ -138,7 +145,71 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
 
         private void btnGenerarTXT_Click(object sender, EventArgs e)
         {
-            msg("en Desarrollo");
+            PanelTxt.BringToFront();
+            txtaño.Text = comboMesAño1.FechaConDiaActual.Year.ToString("0000");
+            txtmes.Text = comboMesAño1.FechaConDiaActual.Month.ToString("00");
+            txtinformacion.Text = (dtgconten.RowCount > 0 ? 1 : 0).ToString();
+            PanelTxt.Visible = true;
+        }
+        private void buttonPer1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
+        private StreamWriter st;
+        private void btnTxt_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.RowCount == 0)
+            {
+                var Result = msgp("No hay Datos en la Grilla, Igual Desea Generar?");
+                if (Result != DialogResult.Yes)
+                {
+                    msg("Cancelado por el Usuario");
+                    return;
+                }
+            }
+            //Avanza para Generar el TXT
+            string[] campo = new string[16];
+            string cadenatxt = "";            //int ValorPrueba = 0;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                //ValorPrueba = 0;
+                int c = 0;
+                //1
+                campo[c++] = item.Cells[xperiodo.Name].Value.ToString().Trim();
+                campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xcuo.Name].Value.ToString().Trim(), 40);
+                campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xCorrelativo.Name].Value.ToString().Trim(), 10);
+                campo[c++] = ((int)item.Cells[xCodigoEntidad.Name].Value).ToString("00");
+                campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xNroCuenta.Name].Value.ToString().Trim(), 30);
+                campo[c++] = item.Cells[xFechaOperacion.Name].Value.ToString().Trim();
+                campo[c++] = ((int)item.Cells[xTipoPago.Name].Value).ToString("000");
+                campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xGlosa.Name].Value.ToString().Trim(), 200);
+                campo[c++] = item.Cells[xTipoDoc.Name].Value.ToString();
+                //10
+                campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xNumDoc.Name].Value.ToString().Trim(), 15);
+                campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xBeneficiario.Name].Value.ToString(), 200);
+                campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xNroOpBanco.Name].Value.ToString(), 20);
+                //debe y haber
+                campo[c++] = ((decimal)item.Cells[xParteDeudora.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[xParteAcreedora.Name].Value).ToString("0.00");
+                //
+                campo[c++] = ((int)item.Cells[xEstado.Name].Value).ToString();
+                //
+                //Uniendo por pipes
+                cadenatxt += string.Join("|", campo) + $"{Environment.NewLine }";
+                //Limpiamos el Campo
+                //campo = null;
+            }
+            SaveFile.FileName = $"LE{txtRucDeudor.Text}{txtaño.Text}{txtmes.Text}00010200001{txtinformacion.Text}11";
+            if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
+            {
+                string path = SaveFile.FileName;
+                st = File.CreateText(path);
+                st.Write(cadenatxt);
+                st.Close();
+                msgOK("Generado TXT con Éxito");
+                PanelTxt.Visible = false;
+            }
         }
     }
 }

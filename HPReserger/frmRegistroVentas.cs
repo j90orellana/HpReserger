@@ -81,9 +81,7 @@ namespace HPReserger
             {
                 msg("No hay Datos que Exportar");
             }
-
         }
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             if (dtgconten.RowCount > 0)
@@ -144,7 +142,6 @@ namespace HPReserger
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             CerrarPanelTxt();
-
         }
 
         private void comboMesAño1_Click(object sender, EventArgs e)

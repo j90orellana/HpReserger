@@ -351,7 +351,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void OcultarOpcionesPago(Boolean a)
         {
-            lblbanco.Visible = lblmsgsalida.Visible = cbobanco.Visible = cbocuentabanco.Visible = txtnrooperacion.Visible = !a;
+            lblcheque.Visible = lblbanco.Visible = lblmsgsalida.Visible = cbobanco.Visible = cbocuentabanco.Visible = txtnrooperacion.Visible = !a;
         }
         private void cbopago_SelectedIndexChanged(object sender, EventArgs e)
         {

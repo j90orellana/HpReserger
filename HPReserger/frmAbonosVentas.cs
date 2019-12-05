@@ -795,7 +795,7 @@ namespace HPReserger
                 {
                     DateTime fecha = DateTime.Now;
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaBanco, proyecto, 0, "99999", "VARIOS", 0, "0", "0", 0,
-                        FechaPago, FechaContable, FechaContable, Math.Abs((TotalAbonado - MontoPenalidad)), Math.Abs((TotalAbonado - MontoPenalidad) / tc), tc, 1, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, CuoReg, (int)cbotipo.SelectedValue);
+                       FechaPago, FechaContable, FechaContable, Math.Abs((TotalAbonado) + MontoPenalidad), (Math.Abs((TotalAbonado) + MontoPenalidad) / tc), tc, 1, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, CuoReg, (int)cbotipo.SelectedValue);
                 }
                 //foreach (DataGridViewRow item in dtgconten.Rows)
                 //{

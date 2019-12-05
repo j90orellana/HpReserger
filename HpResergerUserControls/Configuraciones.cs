@@ -54,6 +54,10 @@ namespace HpResergerUserControls
         {
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cadena.ToLower());
         }
+        public static string CadenaDelimitada(string cadena, int len)
+        {
+            return cadena.Length > len ? cadena.Substring(0, len) : cadena.Trim();
+        }
         public static DateTime InicioDelMes(DateTime Fecha)
         {
             Fecha = new DateTime(Fecha.Year, Fecha.Month, 1);
