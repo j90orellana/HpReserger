@@ -30,15 +30,23 @@ namespace HPReserger.ModuloCompensaciones
         {
             Cargado = false;
             txtglosa.CargarTextoporDefecto();
-            txtnrocheque.CargarTextoporDefecto();
+            txtnrooperacion.CargarTextoporDefecto();
             dtpFechaContable.Value = dtpFechaCompensa.Value = DateTime.Now;
             Estado = 0;
+            CargarTipoPagos();
             //ModoEdicion(false);
             CargarMoneda();
             btnaceptar.Enabled = false;
             //cbopago.SelectedIndex = 0;
             CargarEmpresa();
             Cargado = true;
+        }
+        public void CargarTipoPagos()
+        {
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
+            if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
@@ -82,11 +90,9 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Seleccione el Banco");
                 cbobanco.Focus(); return;
             }
-            if (cbopago.SelectedIndex < 0)
-            {
-                msg("Seleccione el Pago");
-                cbopago.Focus(); return;
-            }
+            if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msg("Seleccione Tipo de Pago"); return; }
+            int TipoPago = (int)cbotipo.SelectedValue;
+            string NroOperacion = txtnrooperacion.TextValido();
             if (cbocuentabanco.SelectedValue == null)
             {
                 msg("Seleccione la cuenta del Abono");
@@ -148,13 +154,13 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaContable = dtpFechaContable.Value;
                 string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable);
                 //mensaje += $"Se ha Aplicado Reembolsado con cuo {Cuo}";
-                int TipoPago = 0;
+                //int TipoPago = 0;
                 string[] Empleado = cboempleado.SelectedValue.ToString().Split('-');
                 string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper();
-                if (cbopago.Text == "003 Transferencias Fondos") TipoPago = 3;
-                else if (cbopago.Text == "007 Cheque.") TipoPago = 7;
+                //if (cbotipo.Text == "003 Transferencias Fondos") TipoPago = 3;
+                //else if (cbotipo.Text == "007 Cheque.") TipoPago = 7;
                 //TipoPago = 1;
-                string NroPago = txtnrocheque.TextValido();
+                string NroPago = txtnrooperacion.TextValido();
                 decimal TCPago = decimal.Parse(txttipocambio.Text);
                 //string NroPago = "";
                 //string CuoReg = Cuo;
@@ -195,7 +201,8 @@ namespace HPReserger.ModuloCompensaciones
                 //detalle del pago del banco
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(UserCompensa[0]), UserCompensa[1]
                   , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"{FechaPago.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
-                  , 0, FechaPago, FechaPago, FechaPago, moneda == 1 ? TotalPagar : TotalPagar * TCPago, moneda == 2 ? TotalPagar : TotalPagar / TCPago, TCPago, moneda, nroKuenta, "", Glosa, FechaPago, IdLogin, Cuo);
+                  , 0, FechaPago, FechaPago, FechaPago, moneda == 1 ? TotalPagar : TotalPagar * TCPago, moneda == 2 ? TotalPagar : TotalPagar / TCPago, TCPago, moneda, nroKuenta, "", Glosa, FechaPago,
+                  IdLogin, Cuo, TipoPago);
                 //OTRASCUENTAS POR PAGAR
                 ///Otras Cuentas x Pagar Terceros
                 foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -218,7 +225,7 @@ namespace HPReserger.ModuloCompensaciones
                            , 0, FechaPagoFac, FechaPago, FechaPago, MontoMN, MontoME, TCPago, moneda, "", "", Glosa, FechaPago, IdLogin, Cuo);
                         //fin de pago de otras cuentas
                         //Inserto compensaciones!
-                        CapaLogica.InsertarCompensaciones(IdEmpresa, 2, int.Parse(UserCompensa[0]), UserCompensa[1], MontoMN, MontoME, CuoReg, cbopago.SelectedIndex == 0 ? 3 : 7, nroKuenta, NroPago,
+                        CapaLogica.InsertarCompensaciones(IdEmpresa, 2, int.Parse(UserCompensa[0]), UserCompensa[1], MontoMN, MontoME, CuoReg, TipoPago, nroKuenta, NroPago,
                             $"{FechaPago.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}",
                            FechaPago, 1, CuentaContable, Cuo);
                         //Pago del Reembolso

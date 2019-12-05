@@ -32,13 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,10 +39,36 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.lbltotalregistros = new System.Windows.Forms.Label();
             this.DtgcontenFacturas = new HpResergerUserControls.Dtgconten();
+            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xIdComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xnameComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNroComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xrazon_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.x = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNameEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xidMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xnamemoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTcReg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTCOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xIgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xcuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.cbomoneda = new System.Windows.Forms.ComboBox();
             this.cbocuentabanco = new System.Windows.Forms.ComboBox();
@@ -96,31 +115,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtImporteTotal = new HpResergerUserControls.TextBoxPer();
-            this.txtnrocheque = new HpResergerUserControls.TextBoxPer();
-            this.cbopago = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtPorAbonar = new HpResergerUserControls.TextBoxPer();
             this.btnbusproveedor = new HpResergerUserControls.ButtonPer();
-            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xIdComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xnameComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNroComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xrazon_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.x = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNameEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xidMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xnamemoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTcReg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTCOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xIgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xcuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtnrooperacion = new HpResergerUserControls.TextBoxPer();
+            this.lblcheque = new System.Windows.Forms.Label();
+            this.cbotipo = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DtgcontenFacturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgcontenAnticipos)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -222,7 +223,7 @@
             this.DtgcontenFacturas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgcontenFacturas.EnableHeadersVisualStyles = false;
             this.DtgcontenFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.DtgcontenFacturas.Location = new System.Drawing.Point(3, 183);
+            this.DtgcontenFacturas.Location = new System.Drawing.Point(3, 173);
             this.DtgcontenFacturas.Name = "DtgcontenFacturas";
             this.DtgcontenFacturas.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.DtgcontenFacturas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -230,696 +231,11 @@
             this.DtgcontenFacturas.RowTemplate.Height = 18;
             this.DtgcontenFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DtgcontenFacturas.ShowRowErrors = false;
-            this.DtgcontenFacturas.Size = new System.Drawing.Size(905, 144);
+            this.DtgcontenFacturas.Size = new System.Drawing.Size(905, 135);
             this.DtgcontenFacturas.TabIndex = 1;
             this.DtgcontenFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenFacturas_CellContentClick);
             this.DtgcontenFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenFacturas_CellDoubleClick);
             this.DtgcontenFacturas.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenFacturas_CellValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 167);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(176, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Listado de Facturas Presentadas:";
-            // 
-            // cbomoneda
-            // 
-            this.cbomoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbomoneda.FormattingEnabled = true;
-            this.cbomoneda.Location = new System.Drawing.Point(79, 76);
-            this.cbomoneda.Name = "cbomoneda";
-            this.cbomoneda.Size = new System.Drawing.Size(85, 21);
-            this.cbomoneda.TabIndex = 3;
-            this.cbomoneda.SelectedIndexChanged += new System.EventHandler(this.cbomoneda_SelectedIndexChanged);
-            // 
-            // cbocuentabanco
-            // 
-            this.cbocuentabanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbocuentabanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbocuentabanco.Enabled = false;
-            this.cbocuentabanco.FormattingEnabled = true;
-            this.cbocuentabanco.Location = new System.Drawing.Point(516, 100);
-            this.cbocuentabanco.Name = "cbocuentabanco";
-            this.cbocuentabanco.Size = new System.Drawing.Size(244, 21);
-            this.cbocuentabanco.TabIndex = 12;
-            // 
-            // lblmsgsalida
-            // 
-            this.lblmsgsalida.AutoEllipsis = true;
-            this.lblmsgsalida.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsgsalida.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmsgsalida.Location = new System.Drawing.Point(427, 104);
-            this.lblmsgsalida.Name = "lblmsgsalida";
-            this.lblmsgsalida.Size = new System.Drawing.Size(90, 13);
-            this.lblmsgsalida.TabIndex = 31;
-            this.lblmsgsalida.Text = "Salida del Pago:";
-            // 
-            // cbobanco
-            // 
-            this.cbobanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbobanco.Enabled = false;
-            this.cbobanco.FormattingEnabled = true;
-            this.cbobanco.Location = new System.Drawing.Point(283, 100);
-            this.cbobanco.Name = "cbobanco";
-            this.cbobanco.Size = new System.Drawing.Size(140, 21);
-            this.cbobanco.TabIndex = 11;
-            this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
-            this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
-            // 
-            // lblbanco
-            // 
-            this.lblbanco.AutoSize = true;
-            this.lblbanco.BackColor = System.Drawing.Color.Transparent;
-            this.lblbanco.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblbanco.Location = new System.Drawing.Point(242, 104);
-            this.lblbanco.Name = "lblbanco";
-            this.lblbanco.Size = new System.Drawing.Size(42, 13);
-            this.lblbanco.TabIndex = 26;
-            this.lblbanco.Text = "Banco:";
-            // 
-            // DtgcontenAnticipos
-            // 
-            this.DtgcontenAnticipos.AllowUserToAddRows = false;
-            this.DtgcontenAnticipos.AllowUserToResizeColumns = false;
-            this.DtgcontenAnticipos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.DtgcontenAnticipos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.DtgcontenAnticipos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DtgcontenAnticipos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DtgcontenAnticipos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.DtgcontenAnticipos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DtgcontenAnticipos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.DtgcontenAnticipos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DtgcontenAnticipos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.DtgcontenAnticipos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.DtgcontenAnticipos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.yOk,
-            this.xpkid,
-            this.xFkEmpresa,
-            this.xNameTipo,
-            this.xTipo,
-            this.xTipoID,
-            this.xtipodesc,
-            this.xNumDoc,
-            this.xcliente,
-            this.xMontoMN,
-            this.xMontoME,
-            this.xCuo,
-            this.xNumPago,
-            this.xFechaCompensa,
-            this.xNameEstado,
-            this.dataGridViewTextBoxColumn1,
-            this.xcuentacontable});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DtgcontenAnticipos.DefaultCellStyle = dataGridViewCellStyle17;
-            this.DtgcontenAnticipos.EnableHeadersVisualStyles = false;
-            this.DtgcontenAnticipos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.DtgcontenAnticipos.Location = new System.Drawing.Point(3, 18);
-            this.DtgcontenAnticipos.Name = "DtgcontenAnticipos";
-            this.DtgcontenAnticipos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.DtgcontenAnticipos.RowHeadersVisible = false;
-            this.DtgcontenAnticipos.RowTemplate.Height = 18;
-            this.DtgcontenAnticipos.Size = new System.Drawing.Size(905, 144);
-            this.DtgcontenAnticipos.TabIndex = 0;
-            this.DtgcontenAnticipos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellContentClick);
-            this.DtgcontenAnticipos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellDoubleClick);
-            this.DtgcontenAnticipos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellValueChanged);
-            // 
-            // yOk
-            // 
-            this.yOk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yOk.DataPropertyName = "ok";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.yOk.DefaultCellStyle = dataGridViewCellStyle13;
-            this.yOk.FalseValue = "0";
-            this.yOk.HeaderText = "Ok";
-            this.yOk.Name = "yOk";
-            this.yOk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.yOk.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.yOk.TrueValue = "1";
-            this.yOk.Width = 46;
-            // 
-            // xpkid
-            // 
-            this.xpkid.DataPropertyName = "PkId";
-            this.xpkid.HeaderText = "pkid";
-            this.xpkid.Name = "xpkid";
-            this.xpkid.Visible = false;
-            // 
-            // xFkEmpresa
-            // 
-            this.xFkEmpresa.DataPropertyName = "FkEmpresa";
-            this.xFkEmpresa.HeaderText = "[FkEmpresa]";
-            this.xFkEmpresa.Name = "xFkEmpresa";
-            this.xFkEmpresa.Visible = false;
-            // 
-            // xNameTipo
-            // 
-            this.xNameTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNameTipo.DataPropertyName = "NameTipo";
-            this.xNameTipo.HeaderText = "Tipo";
-            this.xNameTipo.Name = "xNameTipo";
-            this.xNameTipo.ReadOnly = true;
-            this.xNameTipo.Width = 53;
-            // 
-            // xTipo
-            // 
-            this.xTipo.DataPropertyName = "Tipo";
-            this.xTipo.HeaderText = "[Tipo]";
-            this.xTipo.Name = "xTipo";
-            this.xTipo.Visible = false;
-            // 
-            // xTipoID
-            // 
-            this.xTipoID.DataPropertyName = "TipoID";
-            this.xTipoID.HeaderText = "[TipoID]";
-            this.xTipoID.Name = "xTipoID";
-            this.xTipoID.Visible = false;
-            // 
-            // xtipodesc
-            // 
-            this.xtipodesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xtipodesc.DataPropertyName = "tipodesc";
-            this.xtipodesc.HeaderText = "TipoDoc";
-            this.xtipodesc.Name = "xtipodesc";
-            this.xtipodesc.ReadOnly = true;
-            this.xtipodesc.Width = 73;
-            // 
-            // xNumDoc
-            // 
-            this.xNumDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNumDoc.DataPropertyName = "NumDoc";
-            this.xNumDoc.HeaderText = "NumDoc";
-            this.xNumDoc.Name = "xNumDoc";
-            this.xNumDoc.ReadOnly = true;
-            this.xNumDoc.Width = 75;
-            // 
-            // xcliente
-            // 
-            this.xcliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xcliente.DataPropertyName = "cliente";
-            this.xcliente.HeaderText = "Nombres";
-            this.xcliente.MinimumWidth = 100;
-            this.xcliente.Name = "xcliente";
-            this.xcliente.ReadOnly = true;
-            // 
-            // xMontoMN
-            // 
-            this.xMontoMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xMontoMN.DataPropertyName = "MontoMN";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "n2";
-            this.xMontoMN.DefaultCellStyle = dataGridViewCellStyle14;
-            this.xMontoMN.HeaderText = "MontoMN";
-            this.xMontoMN.Name = "xMontoMN";
-            this.xMontoMN.ReadOnly = true;
-            this.xMontoMN.Width = 84;
-            // 
-            // xMontoME
-            // 
-            this.xMontoME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xMontoME.DataPropertyName = "MontoME";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "n2";
-            this.xMontoME.DefaultCellStyle = dataGridViewCellStyle15;
-            this.xMontoME.HeaderText = "MontoME";
-            this.xMontoME.Name = "xMontoME";
-            this.xMontoME.ReadOnly = true;
-            this.xMontoME.Width = 82;
-            // 
-            // xCuo
-            // 
-            this.xCuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xCuo.DataPropertyName = "Cuo";
-            this.xCuo.HeaderText = "Cuo";
-            this.xCuo.Name = "xCuo";
-            this.xCuo.ReadOnly = true;
-            this.xCuo.Width = 52;
-            // 
-            // xNumPago
-            // 
-            this.xNumPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNumPago.DataPropertyName = "NumPago";
-            this.xNumPago.HeaderText = "NumPago";
-            this.xNumPago.Name = "xNumPago";
-            this.xNumPago.Visible = false;
-            // 
-            // xFechaCompensa
-            // 
-            this.xFechaCompensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xFechaCompensa.DataPropertyName = "FechaCompensa";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xFechaCompensa.DefaultCellStyle = dataGridViewCellStyle16;
-            this.xFechaCompensa.HeaderText = "F.Cmpsa.";
-            this.xFechaCompensa.Name = "xFechaCompensa";
-            this.xFechaCompensa.ReadOnly = true;
-            this.xFechaCompensa.Width = 77;
-            // 
-            // xNameEstado
-            // 
-            this.xNameEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNameEstado.DataPropertyName = "NameEstado";
-            this.xNameEstado.HeaderText = "Estado";
-            this.xNameEstado.Name = "xNameEstado";
-            this.xNameEstado.ReadOnly = true;
-            this.xNameEstado.Width = 66;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Estado";
-            this.dataGridViewTextBoxColumn1.HeaderText = "[Estado]";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // xcuentacontable
-            // 
-            this.xcuentacontable.DataPropertyName = "cuentacontable";
-            this.xcuentacontable.HeaderText = "Cuentacontable";
-            this.xcuentacontable.Name = "xcuentacontable";
-            this.xcuentacontable.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 2);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Anticipos al Proveedor:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(27, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Moneda:";
-            // 
-            // txttipocambio
-            // 
-            this.txttipocambio.BackColor = System.Drawing.Color.White;
-            this.txttipocambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttipocambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txttipocambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttipocambio.ForeColor = System.Drawing.Color.Black;
-            this.txttipocambio.Format = "n3";
-            this.txttipocambio.Location = new System.Drawing.Point(478, 76);
-            this.txttipocambio.MaxLength = 10;
-            this.txttipocambio.Name = "txttipocambio";
-            this.txttipocambio.NextControlOnEnter = null;
-            this.txttipocambio.Size = new System.Drawing.Size(50, 21);
-            this.txttipocambio.TabIndex = 7;
-            this.txttipocambio.Text = "3.300";
-            this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txttipocambio.TextoDefecto = "3.300";
-            this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            // 
-            // dtpFechaContable
-            // 
-            this.dtpFechaContable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaContable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaContable.Location = new System.Drawing.Point(830, 75);
-            this.dtpFechaContable.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaContable.Name = "dtpFechaContable";
-            this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaContable.TabIndex = 9;
-            this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(742, 80);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(90, 13);
-            this.label15.TabIndex = 33;
-            this.label15.Text = "Fecha Contable:";
-            // 
-            // dtpFechaCompensa
-            // 
-            this.dtpFechaCompensa.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaCompensa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaCompensa.Location = new System.Drawing.Point(638, 75);
-            this.dtpFechaCompensa.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaCompensa.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaCompensa.Name = "dtpFechaCompensa";
-            this.dtpFechaCompensa.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaCompensa.TabIndex = 8;
-            this.dtpFechaCompensa.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            this.dtpFechaCompensa.ValueChanged += new System.EventHandler(this.dtpFechaCompensa_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(450, 80);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "T.C.:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(542, 80);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(96, 13);
-            this.label19.TabIndex = 32;
-            this.label19.Text = "Fecha Aplicación:";
-            // 
-            // txtglosa
-            // 
-            this.txtglosa.BackColor = System.Drawing.Color.White;
-            this.txtglosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtglosa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtglosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtglosa.ForeColor = System.Drawing.Color.Black;
-            this.txtglosa.Format = null;
-            this.txtglosa.Location = new System.Drawing.Point(478, 52);
-            this.txtglosa.MaxLength = 300;
-            this.txtglosa.Name = "txtglosa";
-            this.txtglosa.NextControlOnEnter = null;
-            this.txtglosa.Size = new System.Drawing.Size(445, 21);
-            this.txtglosa.TabIndex = 6;
-            this.txtglosa.Text = "INGRESE LA GLOSA DEL ANTICIPO";
-            this.txtglosa.TextoDefecto = "INGRESE LA GLOSA DEL ANTICIPO";
-            this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(437, 56);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 13);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "Glosa:";
-            // 
-            // cboproveedor
-            // 
-            this.cboproveedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboproveedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboproveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboproveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboproveedor.DropDownWidth = 250;
-            this.cboproveedor.FormattingEnabled = true;
-            this.cboproveedor.Location = new System.Drawing.Point(79, 52);
-            this.cboproveedor.Name = "cboproveedor";
-            this.cboproveedor.Size = new System.Drawing.Size(320, 21);
-            this.cboproveedor.TabIndex = 2;
-            this.cboproveedor.SelectedIndexChanged += new System.EventHandler(this.cboproveedor_SelectedIndexChanged);
-            this.cboproveedor.Click += new System.EventHandler(this.cboproveedor_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Proveedor:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(11, 36);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(209, 13);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Opciones para el Anticipo al Proveedor";
-            // 
-            // cboproyecto
-            // 
-            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboproyecto.FormattingEnabled = true;
-            this.cboproyecto.Location = new System.Drawing.Point(478, 9);
-            this.cboproyecto.Name = "cboproyecto";
-            this.cboproyecto.Size = new System.Drawing.Size(253, 21);
-            this.cboproyecto.TabIndex = 1;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(424, 13);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(54, 13);
-            this.label16.TabIndex = 28;
-            this.label16.Text = "Proyecto:";
-            // 
-            // separadorOre2
-            // 
-            this.separadorOre2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre2.Location = new System.Drawing.Point(0, 124);
-            this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
-            this.separadorOre2.Name = "separadorOre2";
-            this.separadorOre2.Size = new System.Drawing.Size(945, 2);
-            this.separadorOre2.TabIndex = 22;
-            // 
-            // separadorOre1
-            // 
-            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 31);
-            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
-            this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(945, 2);
-            this.separadorOre1.TabIndex = 18;
-            // 
-            // cboempresa
-            // 
-            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.DropDownWidth = 250;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(79, 9);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(344, 21);
-            this.cboempresa.TabIndex = 0;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(27, 12);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 13);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "Empresa:";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.DtgcontenAnticipos, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.DtgcontenFacturas, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 127);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(911, 330);
-            this.tableLayoutPanel1.TabIndex = 34;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(167, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Total:";
-            // 
-            // txtImporteTotal
-            // 
-            this.txtImporteTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtImporteTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtImporteTotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtImporteTotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtImporteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtImporteTotal.ForeColor = System.Drawing.Color.Black;
-            this.txtImporteTotal.Format = "n2";
-            this.txtImporteTotal.Location = new System.Drawing.Point(199, 76);
-            this.txtImporteTotal.MaxLength = 20;
-            this.txtImporteTotal.Name = "txtImporteTotal";
-            this.txtImporteTotal.NextControlOnEnter = null;
-            this.txtImporteTotal.ReadOnly = true;
-            this.txtImporteTotal.Size = new System.Drawing.Size(85, 21);
-            this.txtImporteTotal.TabIndex = 4;
-            this.txtImporteTotal.Text = "0.00";
-            this.txtImporteTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtImporteTotal.TextoDefecto = "0.00";
-            this.txtImporteTotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtImporteTotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            this.txtImporteTotal.TextChanged += new System.EventHandler(this.txtImporteTotal_TextChanged);
-            // 
-            // txtnrocheque
-            // 
-            this.txtnrocheque.BackColor = System.Drawing.Color.White;
-            this.txtnrocheque.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnrocheque.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtnrocheque.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnrocheque.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnrocheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnrocheque.ForeColor = System.Drawing.Color.Black;
-            this.txtnrocheque.Format = null;
-            this.txtnrocheque.Location = new System.Drawing.Point(763, 100);
-            this.txtnrocheque.MaxLength = 20;
-            this.txtnrocheque.Name = "txtnrocheque";
-            this.txtnrocheque.NextControlOnEnter = null;
-            this.txtnrocheque.Size = new System.Drawing.Size(160, 21);
-            this.txtnrocheque.TabIndex = 13;
-            this.txtnrocheque.Text = "INGRESE NRO OPERACIÓN";
-            this.txtnrocheque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnrocheque.TextoDefecto = "INGRESE NRO OPERACIÓN";
-            this.txtnrocheque.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnrocheque.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // cbopago
-            // 
-            this.cbopago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbopago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbopago.Enabled = false;
-            this.cbopago.FormattingEnabled = true;
-            this.cbopago.Items.AddRange(new object[] {
-            "000 Ninguno.",
-            "003 Transferencias Fondos",
-            "007 Cheque."});
-            this.cbopago.Location = new System.Drawing.Point(79, 100);
-            this.cbopago.Name = "cbopago";
-            this.cbopago.Size = new System.Drawing.Size(163, 21);
-            this.cbopago.TabIndex = 10;
-            this.cbopago.SelectedIndexChanged += new System.EventHandler(this.cbopago_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(19, 104);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Tipo Pago:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(292, 80);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 13);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Abonar:";
-            // 
-            // txtPorAbonar
-            // 
-            this.txtPorAbonar.BackColor = System.Drawing.Color.White;
-            this.txtPorAbonar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPorAbonar.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtPorAbonar.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtPorAbonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPorAbonar.ForeColor = System.Drawing.Color.Black;
-            this.txtPorAbonar.Format = "n2";
-            this.txtPorAbonar.Location = new System.Drawing.Point(338, 76);
-            this.txtPorAbonar.MaxLength = 20;
-            this.txtPorAbonar.Name = "txtPorAbonar";
-            this.txtPorAbonar.NextControlOnEnter = null;
-            this.txtPorAbonar.Size = new System.Drawing.Size(85, 21);
-            this.txtPorAbonar.TabIndex = 5;
-            this.txtPorAbonar.Text = "0.00";
-            this.txtPorAbonar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPorAbonar.TextoDefecto = "0.00";
-            this.txtPorAbonar.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtPorAbonar.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            this.txtPorAbonar.TextChanged += new System.EventHandler(this.txtPorAbonar_TextChanged);
-            // 
-            // btnbusproveedor
-            // 
-            this.btnbusproveedor.BackColor = System.Drawing.SystemColors.Control;
-            this.btnbusproveedor.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnbusproveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbusproveedor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbusproveedor.ForeColor = System.Drawing.Color.White;
-            this.btnbusproveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnbusproveedor.Image")));
-            this.btnbusproveedor.Location = new System.Drawing.Point(402, 52);
-            this.btnbusproveedor.Name = "btnbusproveedor";
-            this.btnbusproveedor.Size = new System.Drawing.Size(21, 21);
-            this.btnbusproveedor.TabIndex = 27;
-            this.btnbusproveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnbusproveedor.UseVisualStyleBackColor = false;
-            this.btnbusproveedor.Click += new System.EventHandler(this.btnbusproveedor_Click);
             // 
             // xok
             // 
@@ -1106,21 +422,715 @@
             this.xcuenta.Name = "xcuenta";
             this.xcuenta.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 157);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(176, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Listado de Facturas Presentadas:";
+            // 
+            // cbomoneda
+            // 
+            this.cbomoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbomoneda.FormattingEnabled = true;
+            this.cbomoneda.Location = new System.Drawing.Point(79, 75);
+            this.cbomoneda.Name = "cbomoneda";
+            this.cbomoneda.Size = new System.Drawing.Size(85, 21);
+            this.cbomoneda.TabIndex = 4;
+            this.cbomoneda.SelectedIndexChanged += new System.EventHandler(this.cbomoneda_SelectedIndexChanged);
+            // 
+            // cbocuentabanco
+            // 
+            this.cbocuentabanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbocuentabanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbocuentabanco.Enabled = false;
+            this.cbocuentabanco.FormattingEnabled = true;
+            this.cbocuentabanco.Location = new System.Drawing.Point(478, 121);
+            this.cbocuentabanco.Name = "cbocuentabanco";
+            this.cbocuentabanco.Size = new System.Drawing.Size(351, 21);
+            this.cbocuentabanco.TabIndex = 13;
+            // 
+            // lblmsgsalida
+            // 
+            this.lblmsgsalida.AutoEllipsis = true;
+            this.lblmsgsalida.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsgsalida.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsgsalida.Location = new System.Drawing.Point(388, 125);
+            this.lblmsgsalida.Name = "lblmsgsalida";
+            this.lblmsgsalida.Size = new System.Drawing.Size(90, 13);
+            this.lblmsgsalida.TabIndex = 31;
+            this.lblmsgsalida.Text = "Salida del Pago:";
+            // 
+            // cbobanco
+            // 
+            this.cbobanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbobanco.Enabled = false;
+            this.cbobanco.FormattingEnabled = true;
+            this.cbobanco.Location = new System.Drawing.Point(79, 121);
+            this.cbobanco.Name = "cbobanco";
+            this.cbobanco.Size = new System.Drawing.Size(304, 21);
+            this.cbobanco.TabIndex = 12;
+            this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
+            this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
+            // 
+            // lblbanco
+            // 
+            this.lblbanco.AutoSize = true;
+            this.lblbanco.BackColor = System.Drawing.Color.Transparent;
+            this.lblbanco.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblbanco.Location = new System.Drawing.Point(38, 125);
+            this.lblbanco.Name = "lblbanco";
+            this.lblbanco.Size = new System.Drawing.Size(42, 13);
+            this.lblbanco.TabIndex = 26;
+            this.lblbanco.Text = "Banco:";
+            // 
+            // DtgcontenAnticipos
+            // 
+            this.DtgcontenAnticipos.AllowUserToAddRows = false;
+            this.DtgcontenAnticipos.AllowUserToResizeColumns = false;
+            this.DtgcontenAnticipos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.DtgcontenAnticipos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.DtgcontenAnticipos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DtgcontenAnticipos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DtgcontenAnticipos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.DtgcontenAnticipos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DtgcontenAnticipos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.DtgcontenAnticipos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DtgcontenAnticipos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.DtgcontenAnticipos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DtgcontenAnticipos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.yOk,
+            this.xpkid,
+            this.xFkEmpresa,
+            this.xNameTipo,
+            this.xTipo,
+            this.xTipoID,
+            this.xtipodesc,
+            this.xNumDoc,
+            this.xcliente,
+            this.xMontoMN,
+            this.xMontoME,
+            this.xCuo,
+            this.xNumPago,
+            this.xFechaCompensa,
+            this.xNameEstado,
+            this.dataGridViewTextBoxColumn1,
+            this.xcuentacontable});
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DtgcontenAnticipos.DefaultCellStyle = dataGridViewCellStyle17;
+            this.DtgcontenAnticipos.EnableHeadersVisualStyles = false;
+            this.DtgcontenAnticipos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.DtgcontenAnticipos.Location = new System.Drawing.Point(3, 18);
+            this.DtgcontenAnticipos.Name = "DtgcontenAnticipos";
+            this.DtgcontenAnticipos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.DtgcontenAnticipos.RowHeadersVisible = false;
+            this.DtgcontenAnticipos.RowTemplate.Height = 18;
+            this.DtgcontenAnticipos.Size = new System.Drawing.Size(905, 134);
+            this.DtgcontenAnticipos.TabIndex = 0;
+            this.DtgcontenAnticipos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellContentClick);
+            this.DtgcontenAnticipos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellDoubleClick);
+            this.DtgcontenAnticipos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellValueChanged);
+            // 
+            // yOk
+            // 
+            this.yOk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yOk.DataPropertyName = "ok";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.yOk.DefaultCellStyle = dataGridViewCellStyle13;
+            this.yOk.FalseValue = "0";
+            this.yOk.HeaderText = "Ok";
+            this.yOk.Name = "yOk";
+            this.yOk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.yOk.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.yOk.TrueValue = "1";
+            this.yOk.Width = 46;
+            // 
+            // xpkid
+            // 
+            this.xpkid.DataPropertyName = "PkId";
+            this.xpkid.HeaderText = "pkid";
+            this.xpkid.Name = "xpkid";
+            this.xpkid.Visible = false;
+            // 
+            // xFkEmpresa
+            // 
+            this.xFkEmpresa.DataPropertyName = "FkEmpresa";
+            this.xFkEmpresa.HeaderText = "[FkEmpresa]";
+            this.xFkEmpresa.Name = "xFkEmpresa";
+            this.xFkEmpresa.Visible = false;
+            // 
+            // xNameTipo
+            // 
+            this.xNameTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNameTipo.DataPropertyName = "NameTipo";
+            this.xNameTipo.HeaderText = "Tipo";
+            this.xNameTipo.Name = "xNameTipo";
+            this.xNameTipo.ReadOnly = true;
+            this.xNameTipo.Width = 53;
+            // 
+            // xTipo
+            // 
+            this.xTipo.DataPropertyName = "Tipo";
+            this.xTipo.HeaderText = "[Tipo]";
+            this.xTipo.Name = "xTipo";
+            this.xTipo.Visible = false;
+            // 
+            // xTipoID
+            // 
+            this.xTipoID.DataPropertyName = "TipoID";
+            this.xTipoID.HeaderText = "[TipoID]";
+            this.xTipoID.Name = "xTipoID";
+            this.xTipoID.Visible = false;
+            // 
+            // xtipodesc
+            // 
+            this.xtipodesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xtipodesc.DataPropertyName = "tipodesc";
+            this.xtipodesc.HeaderText = "TipoDoc";
+            this.xtipodesc.Name = "xtipodesc";
+            this.xtipodesc.ReadOnly = true;
+            this.xtipodesc.Width = 73;
+            // 
+            // xNumDoc
+            // 
+            this.xNumDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNumDoc.DataPropertyName = "NumDoc";
+            this.xNumDoc.HeaderText = "NumDoc";
+            this.xNumDoc.Name = "xNumDoc";
+            this.xNumDoc.ReadOnly = true;
+            this.xNumDoc.Width = 75;
+            // 
+            // xcliente
+            // 
+            this.xcliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xcliente.DataPropertyName = "cliente";
+            this.xcliente.HeaderText = "Nombres";
+            this.xcliente.MinimumWidth = 100;
+            this.xcliente.Name = "xcliente";
+            this.xcliente.ReadOnly = true;
+            // 
+            // xMontoMN
+            // 
+            this.xMontoMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xMontoMN.DataPropertyName = "MontoMN";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "n2";
+            this.xMontoMN.DefaultCellStyle = dataGridViewCellStyle14;
+            this.xMontoMN.HeaderText = "MontoMN";
+            this.xMontoMN.Name = "xMontoMN";
+            this.xMontoMN.ReadOnly = true;
+            this.xMontoMN.Width = 84;
+            // 
+            // xMontoME
+            // 
+            this.xMontoME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xMontoME.DataPropertyName = "MontoME";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "n2";
+            this.xMontoME.DefaultCellStyle = dataGridViewCellStyle15;
+            this.xMontoME.HeaderText = "MontoME";
+            this.xMontoME.Name = "xMontoME";
+            this.xMontoME.ReadOnly = true;
+            this.xMontoME.Width = 82;
+            // 
+            // xCuo
+            // 
+            this.xCuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xCuo.DataPropertyName = "Cuo";
+            this.xCuo.HeaderText = "Cuo";
+            this.xCuo.Name = "xCuo";
+            this.xCuo.ReadOnly = true;
+            this.xCuo.Width = 52;
+            // 
+            // xNumPago
+            // 
+            this.xNumPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNumPago.DataPropertyName = "NumPago";
+            this.xNumPago.HeaderText = "NumPago";
+            this.xNumPago.Name = "xNumPago";
+            this.xNumPago.Visible = false;
+            // 
+            // xFechaCompensa
+            // 
+            this.xFechaCompensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xFechaCompensa.DataPropertyName = "FechaCompensa";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xFechaCompensa.DefaultCellStyle = dataGridViewCellStyle16;
+            this.xFechaCompensa.HeaderText = "F.Cmpsa.";
+            this.xFechaCompensa.Name = "xFechaCompensa";
+            this.xFechaCompensa.ReadOnly = true;
+            this.xFechaCompensa.Width = 77;
+            // 
+            // xNameEstado
+            // 
+            this.xNameEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNameEstado.DataPropertyName = "NameEstado";
+            this.xNameEstado.HeaderText = "Estado";
+            this.xNameEstado.Name = "xNameEstado";
+            this.xNameEstado.ReadOnly = true;
+            this.xNameEstado.Width = 66;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Estado";
+            this.dataGridViewTextBoxColumn1.HeaderText = "[Estado]";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // xcuentacontable
+            // 
+            this.xcuentacontable.DataPropertyName = "cuentacontable";
+            this.xcuentacontable.HeaderText = "Cuentacontable";
+            this.xcuentacontable.Name = "xcuentacontable";
+            this.xcuentacontable.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(128, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Anticipos al Proveedor:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(27, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Moneda:";
+            // 
+            // txttipocambio
+            // 
+            this.txttipocambio.BackColor = System.Drawing.Color.White;
+            this.txttipocambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttipocambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttipocambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttipocambio.ForeColor = System.Drawing.Color.Black;
+            this.txttipocambio.Format = "n3";
+            this.txttipocambio.Location = new System.Drawing.Point(478, 75);
+            this.txttipocambio.MaxLength = 10;
+            this.txttipocambio.Name = "txttipocambio";
+            this.txttipocambio.NextControlOnEnter = null;
+            this.txttipocambio.Size = new System.Drawing.Size(50, 21);
+            this.txttipocambio.TabIndex = 7;
+            this.txttipocambio.Text = "3.300";
+            this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttipocambio.TextoDefecto = "3.300";
+            this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            // 
+            // dtpFechaContable
+            // 
+            this.dtpFechaContable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaContable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaContable.Location = new System.Drawing.Point(830, 74);
+            this.dtpFechaContable.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaContable.Name = "dtpFechaContable";
+            this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
+            this.dtpFechaContable.TabIndex = 9;
+            this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(742, 79);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(90, 13);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Fecha Contable:";
+            // 
+            // dtpFechaCompensa
+            // 
+            this.dtpFechaCompensa.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaCompensa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaCompensa.Location = new System.Drawing.Point(638, 74);
+            this.dtpFechaCompensa.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaCompensa.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaCompensa.Name = "dtpFechaCompensa";
+            this.dtpFechaCompensa.Size = new System.Drawing.Size(93, 22);
+            this.dtpFechaCompensa.TabIndex = 8;
+            this.dtpFechaCompensa.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            this.dtpFechaCompensa.ValueChanged += new System.EventHandler(this.dtpFechaCompensa_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(450, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "T.C.:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(542, 79);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(96, 13);
+            this.label19.TabIndex = 32;
+            this.label19.Text = "Fecha Aplicación:";
+            // 
+            // txtglosa
+            // 
+            this.txtglosa.BackColor = System.Drawing.Color.White;
+            this.txtglosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtglosa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtglosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtglosa.ForeColor = System.Drawing.Color.Black;
+            this.txtglosa.Format = null;
+            this.txtglosa.Location = new System.Drawing.Point(478, 52);
+            this.txtglosa.MaxLength = 300;
+            this.txtglosa.Name = "txtglosa";
+            this.txtglosa.NextControlOnEnter = null;
+            this.txtglosa.Size = new System.Drawing.Size(445, 21);
+            this.txtglosa.TabIndex = 3;
+            this.txtglosa.Text = "INGRESE LA GLOSA DEL ANTICIPO";
+            this.txtglosa.TextoDefecto = "INGRESE LA GLOSA DEL ANTICIPO";
+            this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(439, 56);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Glosa:";
+            // 
+            // cboproveedor
+            // 
+            this.cboproveedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproveedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproveedor.DropDownWidth = 250;
+            this.cboproveedor.FormattingEnabled = true;
+            this.cboproveedor.Location = new System.Drawing.Point(79, 52);
+            this.cboproveedor.Name = "cboproveedor";
+            this.cboproveedor.Size = new System.Drawing.Size(320, 21);
+            this.cboproveedor.TabIndex = 2;
+            this.cboproveedor.SelectedIndexChanged += new System.EventHandler(this.cboproveedor_SelectedIndexChanged);
+            this.cboproveedor.Click += new System.EventHandler(this.cboproveedor_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(18, 56);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Proveedor:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(11, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(209, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Opciones para el Anticipo al Proveedor";
+            // 
+            // cboproyecto
+            // 
+            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.Location = new System.Drawing.Point(478, 9);
+            this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.Size = new System.Drawing.Size(351, 21);
+            this.cboproyecto.TabIndex = 1;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(424, 13);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 13);
+            this.label16.TabIndex = 28;
+            this.label16.Text = "Proyecto:";
+            // 
+            // separadorOre2
+            // 
+            this.separadorOre2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre2.Location = new System.Drawing.Point(0, 143);
+            this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre2.Name = "separadorOre2";
+            this.separadorOre2.Size = new System.Drawing.Size(945, 2);
+            this.separadorOre2.TabIndex = 22;
+            // 
+            // separadorOre1
+            // 
+            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre1.Location = new System.Drawing.Point(0, 31);
+            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre1.Name = "separadorOre1";
+            this.separadorOre1.Size = new System.Drawing.Size(945, 2);
+            this.separadorOre1.TabIndex = 18;
+            // 
+            // cboempresa
+            // 
+            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.DropDownWidth = 250;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(79, 9);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(344, 21);
+            this.cboempresa.TabIndex = 0;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(27, 12);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 13);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "Empresa:";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.DtgcontenAnticipos, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.DtgcontenFacturas, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 146);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(911, 311);
+            this.tableLayoutPanel1.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(167, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Total:";
+            // 
+            // txtImporteTotal
+            // 
+            this.txtImporteTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtImporteTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtImporteTotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtImporteTotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtImporteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImporteTotal.ForeColor = System.Drawing.Color.Black;
+            this.txtImporteTotal.Format = "n2";
+            this.txtImporteTotal.Location = new System.Drawing.Point(199, 75);
+            this.txtImporteTotal.MaxLength = 20;
+            this.txtImporteTotal.Name = "txtImporteTotal";
+            this.txtImporteTotal.NextControlOnEnter = null;
+            this.txtImporteTotal.ReadOnly = true;
+            this.txtImporteTotal.Size = new System.Drawing.Size(85, 21);
+            this.txtImporteTotal.TabIndex = 5;
+            this.txtImporteTotal.Text = "0.00";
+            this.txtImporteTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtImporteTotal.TextoDefecto = "0.00";
+            this.txtImporteTotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtImporteTotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            this.txtImporteTotal.TextChanged += new System.EventHandler(this.txtImporteTotal_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(292, 79);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Abonar:";
+            // 
+            // txtPorAbonar
+            // 
+            this.txtPorAbonar.BackColor = System.Drawing.Color.White;
+            this.txtPorAbonar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPorAbonar.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtPorAbonar.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtPorAbonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPorAbonar.ForeColor = System.Drawing.Color.Black;
+            this.txtPorAbonar.Format = "n2";
+            this.txtPorAbonar.Location = new System.Drawing.Point(338, 75);
+            this.txtPorAbonar.MaxLength = 20;
+            this.txtPorAbonar.Name = "txtPorAbonar";
+            this.txtPorAbonar.NextControlOnEnter = null;
+            this.txtPorAbonar.Size = new System.Drawing.Size(85, 21);
+            this.txtPorAbonar.TabIndex = 6;
+            this.txtPorAbonar.Text = "0.00";
+            this.txtPorAbonar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPorAbonar.TextoDefecto = "0.00";
+            this.txtPorAbonar.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtPorAbonar.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            this.txtPorAbonar.TextChanged += new System.EventHandler(this.txtPorAbonar_TextChanged);
+            // 
+            // btnbusproveedor
+            // 
+            this.btnbusproveedor.BackColor = System.Drawing.SystemColors.Control;
+            this.btnbusproveedor.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnbusproveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnbusproveedor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbusproveedor.ForeColor = System.Drawing.Color.White;
+            this.btnbusproveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnbusproveedor.Image")));
+            this.btnbusproveedor.Location = new System.Drawing.Point(402, 52);
+            this.btnbusproveedor.Name = "btnbusproveedor";
+            this.btnbusproveedor.Size = new System.Drawing.Size(21, 21);
+            this.btnbusproveedor.TabIndex = 27;
+            this.btnbusproveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbusproveedor.UseVisualStyleBackColor = false;
+            this.btnbusproveedor.Click += new System.EventHandler(this.btnbusproveedor_Click);
+            // 
+            // txtnrooperacion
+            // 
+            this.txtnrooperacion.BackColor = System.Drawing.Color.White;
+            this.txtnrooperacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnrooperacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtnrooperacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnrooperacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnrooperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnrooperacion.ForeColor = System.Drawing.Color.Black;
+            this.txtnrooperacion.Format = null;
+            this.txtnrooperacion.Location = new System.Drawing.Point(570, 98);
+            this.txtnrooperacion.MaxLength = 20;
+            this.txtnrooperacion.Name = "txtnrooperacion";
+            this.txtnrooperacion.NextControlOnEnter = null;
+            this.txtnrooperacion.Size = new System.Drawing.Size(161, 21);
+            this.txtnrooperacion.TabIndex = 11;
+            this.txtnrooperacion.Text = "INGRESE NRO PAGO";
+            this.txtnrooperacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnrooperacion.TextoDefecto = "INGRESE NRO PAGO";
+            this.txtnrooperacion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnrooperacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // lblcheque
+            // 
+            this.lblcheque.AutoSize = true;
+            this.lblcheque.BackColor = System.Drawing.Color.Transparent;
+            this.lblcheque.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcheque.Location = new System.Drawing.Point(515, 102);
+            this.lblcheque.Name = "lblcheque";
+            this.lblcheque.Size = new System.Drawing.Size(55, 13);
+            this.lblcheque.TabIndex = 346;
+            this.lblcheque.Text = "NroPago:";
+            // 
+            // cbotipo
+            // 
+            this.cbotipo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbotipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipo.DropDownWidth = 500;
+            this.cbotipo.FormattingEnabled = true;
+            this.cbotipo.Location = new System.Drawing.Point(79, 98);
+            this.cbotipo.Name = "cbotipo";
+            this.cbotipo.Size = new System.Drawing.Size(430, 21);
+            this.cbotipo.TabIndex = 10;
+            this.cbotipo.SelectedIndexChanged += new System.EventHandler(this.cbopago_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(19, 102);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.TabIndex = 345;
+            this.label9.Text = "Tipo Pago:";
+            // 
             // frmListarCompensacionesAnticipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 493);
+            this.Controls.Add(this.txtnrooperacion);
+            this.Controls.Add(this.lblcheque);
+            this.Controls.Add(this.cbotipo);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnbusproveedor);
-            this.Controls.Add(this.txtnrocheque);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.cbopago);
             this.Controls.Add(this.cbomoneda);
             this.Controls.Add(this.cbocuentabanco);
             this.Controls.Add(this.lblmsgsalida);
             this.Controls.Add(this.cbobanco);
             this.Controls.Add(this.lblbanco);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPorAbonar);
             this.Controls.Add(this.txtImporteTotal);
@@ -1196,9 +1206,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private HpResergerUserControls.TextBoxPer txtImporteTotal;
-        private HpResergerUserControls.TextBoxPer txtnrocheque;
-        private System.Windows.Forms.ComboBox cbopago;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private HpResergerUserControls.TextBoxPer txtPorAbonar;
         private HpResergerUserControls.ButtonPer btnbusproveedor;
@@ -1238,5 +1245,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuenta;
+        private HpResergerUserControls.TextBoxPer txtnrooperacion;
+        private System.Windows.Forms.Label lblcheque;
+        private System.Windows.Forms.ComboBox cbotipo;
+        private System.Windows.Forms.Label label9;
     }
 }

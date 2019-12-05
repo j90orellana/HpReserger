@@ -110,7 +110,7 @@
             this.txtImporteTotal.Name = "txtImporteTotal";
             this.txtImporteTotal.NextControlOnEnter = null;
             this.txtImporteTotal.Size = new System.Drawing.Size(90, 21);
-            this.txtImporteTotal.TabIndex = 6;
+            this.txtImporteTotal.TabIndex = 5;
             this.txtImporteTotal.Text = "0.00";
             this.txtImporteTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtImporteTotal.TextoDefecto = "0.00";
@@ -509,7 +509,7 @@
             this.cboempleado.Location = new System.Drawing.Point(81, 52);
             this.cboempleado.Name = "cboempleado";
             this.cboempleado.Size = new System.Drawing.Size(320, 21);
-            this.cboempleado.TabIndex = 3;
+            this.cboempleado.TabIndex = 2;
             this.cboempleado.Click += new System.EventHandler(this.cboempleado_Click);
             // 
             // txtglosa
@@ -527,7 +527,7 @@
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.Size = new System.Drawing.Size(355, 21);
-            this.txtglosa.TabIndex = 7;
+            this.txtglosa.TabIndex = 3;
             this.txtglosa.Text = "INGRESE GLOSA DE LA CREACIÓN";
             this.txtglosa.TextoDefecto = "INGRESE GLOSA DE LA CREACIÓN";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -580,7 +580,7 @@
             this.txttipocambio.Name = "txttipocambio";
             this.txttipocambio.NextControlOnEnter = null;
             this.txttipocambio.Size = new System.Drawing.Size(59, 21);
-            this.txttipocambio.TabIndex = 10;
+            this.txttipocambio.TabIndex = 8;
             this.txttipocambio.Text = "3.300";
             this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttipocambio.TextoDefecto = "3.300";
@@ -596,7 +596,7 @@
             this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaContable.Name = "dtpFechaContable";
             this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaContable.TabIndex = 8;
+            this.dtpFechaContable.TabIndex = 6;
             this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             // 
             // label15
@@ -619,7 +619,7 @@
             this.dtpFechaCompensa.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaCompensa.Name = "dtpFechaCompensa";
             this.dtpFechaCompensa.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaCompensa.TabIndex = 9;
+            this.dtpFechaCompensa.TabIndex = 7;
             this.dtpFechaCompensa.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpFechaCompensa.ValueChanged += new System.EventHandler(this.dtpFechaCompensa_ValueChanged);
             // 
@@ -656,7 +656,7 @@
             this.cbocuentaxpagar.Location = new System.Drawing.Point(81, 98);
             this.cbocuentaxpagar.Name = "cbocuentaxpagar";
             this.cbocuentaxpagar.Size = new System.Drawing.Size(530, 21);
-            this.cbocuentaxpagar.TabIndex = 5;
+            this.cbocuentaxpagar.TabIndex = 9;
             // 
             // label3
             // 
@@ -701,8 +701,8 @@
             this.cboproyecto.FormattingEnabled = true;
             this.cboproyecto.Location = new System.Drawing.Point(480, 8);
             this.cboproyecto.Name = "cboproyecto";
-            this.cboproyecto.Size = new System.Drawing.Size(253, 21);
-            this.cboproyecto.TabIndex = 2;
+            this.cboproyecto.Size = new System.Drawing.Size(351, 21);
+            this.cboproyecto.TabIndex = 1;
             // 
             // label16
             // 
@@ -738,7 +738,7 @@
             this.cboempresa.Location = new System.Drawing.Point(81, 8);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(344, 21);
-            this.cboempresa.TabIndex = 1;
+            this.cboempresa.TabIndex = 0;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
             // label18
@@ -758,7 +758,7 @@
             this.btnActualizar.Location = new System.Drawing.Point(838, 165);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(86, 23);
-            this.btnActualizar.TabIndex = 17;
+            this.btnActualizar.TabIndex = 14;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -789,7 +789,7 @@
             this.txtnrooperacion.Name = "txtnrooperacion";
             this.txtnrooperacion.NextControlOnEnter = null;
             this.txtnrooperacion.Size = new System.Drawing.Size(153, 21);
-            this.txtnrooperacion.TabIndex = 345;
+            this.txtnrooperacion.TabIndex = 11;
             this.txtnrooperacion.Text = "INGRESE NRO PAGO";
             this.txtnrooperacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrooperacion.TextoDefecto = "INGRESE NRO PAGO";
@@ -817,7 +817,7 @@
             this.cbotipo.Location = new System.Drawing.Point(81, 121);
             this.cbotipo.Name = "cbotipo";
             this.cbotipo.Size = new System.Drawing.Size(430, 21);
-            this.cbotipo.TabIndex = 344;
+            this.cbotipo.TabIndex = 10;
             // 
             // label5
             // 

@@ -46,7 +46,11 @@ namespace HPReserger
         {
             int CabezaCuenta = 0;
             int.TryParse(cuenta.Substring(0, 3), out CabezaCuenta);
-            if (CabezaCuenta > 103 && CabezaCuenta < 108) Dtgconten.Columns[xTipoPago.Name].Visible = true;
+            if (CabezaCuenta > 103 && CabezaCuenta < 108)
+            {
+                Dtgconten.Columns[xTipoPago.Name].Visible = true;
+                Dtgconten.Columns[xCtaBancaria.Name].Visible = true;
+            }
             ChkDuplicar.Enabled = true; ChkDuplicar.Checked = false;
             chkAutoConversion.Enabled = false;
             //Dtgconten.SuspendLayout();
@@ -108,7 +112,7 @@ namespace HPReserger
             }
             ////CargarDatosdelas Cuentas
             TcuentasBancarias = CapaLogica.CuentaBancaria(_empresa, cuenta);
-            TTipoPago = CapaLogica.ListadoMedioPagos();           
+            TTipoPago = CapaLogica.ListadoMedioPagos();
         }
         public void CargarComprobantes()
         {

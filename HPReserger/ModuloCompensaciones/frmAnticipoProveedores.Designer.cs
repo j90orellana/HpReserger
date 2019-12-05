@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAnticipoProveedores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
@@ -101,7 +101,7 @@
             this.cboproyecto.FormattingEnabled = true;
             this.cboproyecto.Location = new System.Drawing.Point(477, 11);
             this.cboproyecto.Name = "cboproyecto";
-            this.cboproyecto.Size = new System.Drawing.Size(253, 21);
+            this.cboproyecto.Size = new System.Drawing.Size(351, 21);
             this.cboproyecto.TabIndex = 1;
             // 
             // label16
@@ -180,7 +180,7 @@
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.Size = new System.Drawing.Size(445, 21);
-            this.txtglosa.TabIndex = 5;
+            this.txtglosa.TabIndex = 3;
             this.txtglosa.Text = "INGRESE LA GLOSA DEL ANTICIPO";
             this.txtglosa.TextoDefecto = "INGRESE LA GLOSA DEL ANTICIPO";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -231,7 +231,7 @@
             this.cbomoneda.Location = new System.Drawing.Point(78, 77);
             this.cbomoneda.Name = "cbomoneda";
             this.cbomoneda.Size = new System.Drawing.Size(163, 21);
-            this.cbomoneda.TabIndex = 3;
+            this.cbomoneda.TabIndex = 4;
             this.cbomoneda.SelectedIndexChanged += new System.EventHandler(this.cbomoneda_SelectedIndexChanged);
             // 
             // label4
@@ -332,7 +332,7 @@
             this.btnaceptar.Location = new System.Drawing.Point(765, 463);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(78, 24);
-            this.btnaceptar.TabIndex = 14;
+            this.btnaceptar.TabIndex = 15;
             this.btnaceptar.Text = "Registrar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -346,7 +346,7 @@
             this.btncancelar.Location = new System.Drawing.Point(844, 463);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(78, 24);
-            this.btncancelar.TabIndex = 15;
+            this.btncancelar.TabIndex = 16;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -381,9 +381,9 @@
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -392,14 +392,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xpkid,
@@ -418,14 +418,14 @@
             this.xNameEstado,
             this.dataGridViewTextBoxColumn1,
             this.xcuentacontable});
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle18;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(10, 189);
@@ -435,7 +435,7 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(912, 269);
-            this.dtgconten.TabIndex = 17;
+            this.dtgconten.TabIndex = 14;
             // 
             // xpkid
             // 
@@ -509,9 +509,9 @@
             // 
             this.xMontoMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xMontoMN.DataPropertyName = "MontoMN";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.Format = "n2";
-            this.xMontoMN.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "n2";
+            this.xMontoMN.DefaultCellStyle = dataGridViewCellStyle15;
             this.xMontoMN.HeaderText = "MontoMN";
             this.xMontoMN.Name = "xMontoMN";
             this.xMontoMN.ReadOnly = true;
@@ -521,9 +521,9 @@
             // 
             this.xMontoME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xMontoME.DataPropertyName = "MontoME";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle22.Format = "n2";
-            this.xMontoME.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "n2";
+            this.xMontoME.DefaultCellStyle = dataGridViewCellStyle16;
             this.xMontoME.HeaderText = "MontoME";
             this.xMontoME.Name = "xMontoME";
             this.xMontoME.ReadOnly = true;
@@ -551,10 +551,10 @@
             // 
             this.xFechaCompensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaCompensa.DataPropertyName = "FechaCompensa";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle23.Format = "dd/MM/yyyy HH:mm";
-            dataGridViewCellStyle23.NullValue = null;
-            this.xFechaCompensa.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "dd/MM/yyyy HH:mm";
+            dataGridViewCellStyle17.NullValue = null;
+            this.xFechaCompensa.DefaultCellStyle = dataGridViewCellStyle17;
             this.xFechaCompensa.HeaderText = "F.Cmpsa.";
             this.xFechaCompensa.Name = "xFechaCompensa";
             this.xFechaCompensa.ReadOnly = true;
@@ -593,7 +593,7 @@
             this.cbocuentabanco.Location = new System.Drawing.Point(477, 146);
             this.cbocuentabanco.Name = "cbocuentabanco";
             this.cbocuentabanco.Size = new System.Drawing.Size(351, 21);
-            this.cbocuentabanco.TabIndex = 12;
+            this.cbocuentabanco.TabIndex = 13;
             // 
             // cbobanco
             // 
@@ -632,7 +632,7 @@
             this.txtImporteTotal.Name = "txtImporteTotal";
             this.txtImporteTotal.NextControlOnEnter = null;
             this.txtImporteTotal.Size = new System.Drawing.Size(90, 21);
-            this.txtImporteTotal.TabIndex = 4;
+            this.txtImporteTotal.TabIndex = 5;
             this.txtImporteTotal.Text = "0.00";
             this.txtImporteTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtImporteTotal.TextoDefecto = "0.00";
@@ -655,7 +655,7 @@
             this.separadorOre2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre2.Location = new System.Drawing.Point(-5, 169);
+            this.separadorOre2.Location = new System.Drawing.Point(0, 169);
             this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre2.Name = "separadorOre2";
@@ -741,14 +741,14 @@
             this.txtnrooperacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtnrooperacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnrooperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnrooperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnrooperacion.ForeColor = System.Drawing.Color.Black;
             this.txtnrooperacion.Format = null;
             this.txtnrooperacion.Location = new System.Drawing.Point(569, 123);
             this.txtnrooperacion.MaxLength = 20;
             this.txtnrooperacion.Name = "txtnrooperacion";
             this.txtnrooperacion.NextControlOnEnter = null;
             this.txtnrooperacion.Size = new System.Drawing.Size(153, 21);
-            this.txtnrooperacion.TabIndex = 341;
+            this.txtnrooperacion.TabIndex = 12;
             this.txtnrooperacion.Text = "INGRESE NRO PAGO";
             this.txtnrooperacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrooperacion.TextoDefecto = "INGRESE NRO PAGO";
@@ -776,7 +776,7 @@
             this.cbotipo.Location = new System.Drawing.Point(78, 123);
             this.cbotipo.Name = "cbotipo";
             this.cbotipo.Size = new System.Drawing.Size(430, 21);
-            this.cbotipo.TabIndex = 340;
+            this.cbotipo.TabIndex = 10;
             // 
             // label5
             // 

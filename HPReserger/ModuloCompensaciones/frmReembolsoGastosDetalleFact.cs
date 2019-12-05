@@ -33,9 +33,10 @@ namespace HPReserger.ModuloCompensaciones
 
         private void frmReembolsoGastosDetalleFact_Load(object sender, EventArgs e)
         {
-            BtnCerrar.Focus();
+            this.CerrarAlPresionarESC = true;
             Dtgconten.DataSource = CapaLogica.ReembolsoGastos_Detalle(pkid, idempresa);
             lbltotalregistros.Text = $"Total de Registros: {Dtgconten.RowCount}";
+            BtnCerrar.Focus();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace HPReserger.ModuloCompensaciones
             cbotipo.ValueMember = "codsunat";
             cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
             if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
-        }       
+        }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         public void CargarEmpresa() { CapaLogica.TablaEmpresas(cboempresa); }
         public void CargarProveedores() { CapaLogica.TablaProveedores(cboproveedor, 0); }

@@ -770,6 +770,7 @@ namespace HPReserger
             this.xCtaBancaria.Name = "xCtaBancaria";
             this.xCtaBancaria.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.xCtaBancaria.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.xCtaBancaria.Visible = false;
             this.xCtaBancaria.Width = 82;
             // 
             // xTipoPago

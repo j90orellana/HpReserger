@@ -193,7 +193,7 @@
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
             this.Dtgconten.Size = new System.Drawing.Size(910, 324);
-            this.Dtgconten.TabIndex = 16;
+            this.Dtgconten.TabIndex = 10;
             this.Dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentClick);
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.Dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellValueChanged);
@@ -474,7 +474,7 @@
             this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaContable.Name = "dtpFechaContable";
             this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaContable.TabIndex = 4;
+            this.dtpFechaContable.TabIndex = 5;
             this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             // 
             // label15
@@ -531,7 +531,7 @@
             this.btnaceptar.Location = new System.Drawing.Point(766, 463);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 14;
+            this.btnaceptar.TabIndex = 11;
             this.btnaceptar.Text = "Pagar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -544,7 +544,7 @@
             this.btncancelar.Location = new System.Drawing.Point(847, 463);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 15;
+            this.btncancelar.TabIndex = 12;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -558,7 +558,7 @@
             this.cbomoneda.Location = new System.Drawing.Point(80, 70);
             this.cbomoneda.Name = "cbomoneda";
             this.cbomoneda.Size = new System.Drawing.Size(163, 21);
-            this.cbomoneda.TabIndex = 3;
+            this.cbomoneda.TabIndex = 4;
             this.cbomoneda.SelectedIndexChanged += new System.EventHandler(this.cbomoneda_SelectedIndexChanged);
             // 
             // label4
@@ -705,7 +705,7 @@
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.Size = new System.Drawing.Size(443, 21);
-            this.txtglosa.TabIndex = 5;
+            this.txtglosa.TabIndex = 3;
             this.txtglosa.Text = "INGRESE LA GLOSA DEL ABONO";
             this.txtglosa.TextoDefecto = "INGRESE LA GLOSA DEL ABONO";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -826,7 +826,7 @@
             this.btnVer.Location = new System.Drawing.Point(847, 93);
             this.btnVer.Name = "btnVer";
             this.btnVer.Size = new System.Drawing.Size(75, 23);
-            this.btnVer.TabIndex = 0;
+            this.btnVer.TabIndex = 9;
             this.btnVer.Text = "Ver";
             this.btnVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

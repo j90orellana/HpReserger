@@ -39,13 +39,20 @@ namespace HPReserger.ModuloCompensaciones
         private void frmFondoFijoPago_Load(object sender, EventArgs e)
         {
             txtglosa.CargarTextoporDefecto();
-            txtnrocheque.CargarTextoporDefecto();
+            txtnrooperacion.CargarTextoporDefecto();
             dtpFechaContable.Value = dtpFechaCompensa.Value = DateTime.Now;
             //ModoEdicion(false);
             CargarEmpresa();
             CargarMoneda();
             btnaceptar.Enabled = false;
-            cbopago.SelectedIndex = 0;
+            CargarTipoPagos();
+        }
+        public void CargarTipoPagos()
+        {
+            cbotipo.DisplayMember = "mediopago";
+            cbotipo.ValueMember = "codsunat";
+            cbotipo.DataSource = CapaLogica.ListadoMedioPagos();
+            if (cbotipo.Items.Count > 0) cbotipo.SelectedValue = 3;
         }
         public DataTable EmpleadosCompensaciones()
         {
@@ -409,17 +416,10 @@ namespace HPReserger.ModuloCompensaciones
                     msg("Seleccione la cuenta del Abono");
                     cbocuentabanco.Focus(); return;
                 }
-                if (!txtnrocheque.EstaLLeno())
-                {
-                    msg("Ingrese Valor De Nro Operacion - Cheque");
-                    txtnrocheque.Focus(); return;
-                }
-                if (cbopago.Text == "")
-                {
-                    msg("Seleccione Tipo de Pago");
-                    cbopago.Focus(); return;
-                }
             }
+            if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msg("Seleccione Tipo de Pago"); return; }
+            int TipoPago = (int)cbotipo.SelectedValue;
+            string NroOperacion = txtnrooperacion.TextValido();
             if (decimal.Parse(txttipocambio.Text) == 0)
             {
                 msg("El monto del Tipo de Cambio no debe ser Cero");
@@ -462,10 +462,7 @@ namespace HPReserger.ModuloCompensaciones
                 decimal tc = decimal.Parse(txttipocambio.Text);
                 string glosa = txtglosa.TextValido();
                 int IdUsuario = frmLogin.CodigoUsuario;
-                int TipoPago = 0;
-                if (cbopago.Text == "003 Transferencias Fondos") TipoPago = 3;
-                else if (cbopago.Text == "007 Cheque.") TipoPago = 7;
-                string NroPago = txtnrocheque.TextValido();
+                string NroPago = txtnrooperacion.TextValido();
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 int pkIdTipo = (int)((DataTable)cbocuentaxpagar.DataSource).Rows[cbocuentaxpagar.SelectedIndex]["pkid"];
@@ -597,11 +594,11 @@ namespace HPReserger.ModuloCompensaciones
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(Empleado[0]), Empleado[1]
                   , NameEmpleado, 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
                   , 0, FechaCompensa, FechaCompensa, FechaCompensa, moneda == 1 ? MontoPago : MontoPago * tc, moneda == 2 ? MontoPago : MontoPago / tc
-                  , tc, moneda, nroKuenta, NroPago, glosa, FechaCompensa, IdUsuario, Cuo);
+                  , tc, moneda, nroKuenta, NroPago, glosa, FechaCompensa, IdUsuario, Cuo,TipoPago);
                 //Inserto compensaciones!
                 CapaLogica.InsertarCompensacionesDetalle(pkIdTipo, (int)cboempresa.SelectedValue, 1,
                         decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text),
-                        TipoPago, cbopago.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), NroPago,
+                        TipoPago, TipoPago == 0 ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), NroPago,
                         $"{Configuraciones.MayusculaCadaPalabra(NameEmpleado)} {dtpFechaCompensa.Value.ToString("d")}", FechaCompensa, 2, Cuo);
                 //
                 //CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 2, int.Parse(Empleado[0]), Empleado[1], decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalME.Text), CuoReg,
