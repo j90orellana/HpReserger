@@ -858,7 +858,7 @@ namespace HPReserger
                     //CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
                     //FechaPago, FechaContable, FechaContable, (Abonado < 0 ? -1 : 1) * ExcesoMN, (Abonado < 0 ? -1 : 1) * ExcesoME, tc, idMoneda, nroKuenta, "", glosa, FechaPago, idUsuario, "");
                     CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 0, "99999", "VARIOS", 0, "0", "0", 0,
-                   FechaPago, FechaContable, FechaContable, decimal.Parse(txttotalAbonadoMN.Text), decimal.Parse(txttotalAbonadoME.Text), tc, IdMonedaAsiento, nroKuenta, NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
+                   FechaPago, FechaContable, FechaContable, Math.Abs(decimal.Parse(txttotalAbonadoMN.Text)), Math.Abs(decimal.Parse(txttotalAbonadoME.Text)), tc, IdMonedaAsiento, nroKuenta, NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
                     //    }
                     //}
                 }

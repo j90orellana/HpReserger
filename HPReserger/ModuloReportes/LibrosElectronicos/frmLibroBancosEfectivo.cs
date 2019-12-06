@@ -50,10 +50,20 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
             //Cambiamos los valores de la columna M
-            int c = 0;
+            int c = 1; string cuo = "";
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                item.Cells[xCorrelativo.Name].Value = $"M{++c}";
+                if (cuo == item.Cells[xcuo.Name].Value.ToString())
+                {
+                    item.Cells[xCorrelativo.Name].Value = $"M{++c}";
+                    cuo = item.Cells[xcuo.Name].Value.ToString();
+                }
+                else
+                {
+                    c = 1;
+                    item.Cells[xCorrelativo.Name].Value = $"M{1}";
+                    cuo = item.Cells[xcuo.Name].Value.ToString();
+                }
             }
             Cursor = Cursors.Default;
         }
@@ -184,7 +194,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                 campo[c++] = ((int)item.Cells[xTipoComprobante.Name].Value).ToString("00");
                 campo[c++] = item.Cells[xSerieComprobante.Name].Value.ToString().Trim();
                 //10
-                campo[c++] = item.Cells[xNumComprobante.Name].Value.ToString().Trim();
+                campo[c++] = Configuraciones.CadenaDelimitada(Configuraciones.AlfaNumericoSunat(item.Cells[xNumComprobante.Name].Value.ToString().Trim()), 20);
                 campo[c++] = item.Cells[xFechaContable.Name].Value.ToString();
                 campo[c++] = item.Cells[xFechaVence.Name].Value.ToString();
                 campo[c++] = item.Cells[xFechaEmision.Name].Value.ToString();

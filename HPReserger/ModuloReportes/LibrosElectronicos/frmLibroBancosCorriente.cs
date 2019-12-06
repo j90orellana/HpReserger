@@ -67,10 +67,20 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
             //Cambiamos los valores de la columna M
-            int c = 0;
+            int c = 1; string cuo = "";
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                item.Cells[xCorrelativo.Name].Value = $"M{++c}";
+                if (cuo == item.Cells[xcuo.Name].Value.ToString())
+                {
+                    item.Cells[xCorrelativo.Name].Value = $"M{++c}";
+                    cuo = item.Cells[xcuo.Name].Value.ToString();
+                }
+                else
+                {
+                    c = 1;
+                    item.Cells[xCorrelativo.Name].Value = $"M{1}";
+                    cuo = item.Cells[xcuo.Name].Value.ToString();
+                }
             }
             Cursor = Cursors.Default;
         }
@@ -188,7 +198,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                 //10
                 campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xNumDoc.Name].Value.ToString().Trim(), 15);
                 campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xBeneficiario.Name].Value.ToString(), 200);
-                campo[c++] = Configuraciones.CadenaDelimitada(item.Cells[xNroOpBanco.Name].Value.ToString(), 20);
+                campo[c++] = Configuraciones.CadenaDelimitada(Configuraciones.AlfaNumericoSunat(item.Cells[xNroOpBanco.Name].Value.ToString()), 20);
                 //debe y haber
                 campo[c++] = ((decimal)item.Cells[xParteDeudora.Name].Value).ToString("0.00");
                 campo[c++] = ((decimal)item.Cells[xParteAcreedora.Name].Value).ToString("0.00");

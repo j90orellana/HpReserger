@@ -148,7 +148,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADe
-        XAAAAk1TRnQBSQFMAwEBAAF4AQUBeAEFAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
+        XAAAAk1TRnQBSQFMAwEBAAGAAQUBgAEFAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
         AgABZAMAAQEBAAEgBgABcQEC/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wBqAAMpAT8DXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
         AcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
@@ -1267,16 +1267,6 @@
         4q96teKnXiHd1BTxRn8BZjCTEVouxWgAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="librosElectronicosToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAO1JREFUOE/N
-        kM2rAVEYxuefRpFiIYuhZhZTKEpohhrNVSiSbJCGfHZvsfaRLFhcbDyc00GYHLLxq6czved9fk1HOCPa
-        4ngWyZlqsVVryNJktLEMuYuKBmS32mTrj/AEu+0escAP+ZMeq9zCExB2/yeJaBwkV6rBald4gvuw2hUy
-        tCpb5amgmO5AC1VRMYYoaCbyqolydkBnJb3HF3TrUwQdSQxaCygeHRF/Dv3mHAF7Et3GjC8gkV0aPRNy
-        CZlIjX5LTvVy/5JgPFwj7DOgePX3BQWtjZG5RC3/R9/it7Ois5cFvHyx4J2w2qcIwhGhky8NQKmsowAA
-        AABJRU5ErkJggg==
-</value>
-  </data>
   <data name="reportesContablesToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAQVJREFUOE9j
@@ -1285,6 +1275,16 @@
         nKAKgHjbZ6ANf4Hsa7ZBOyQhKv4zOgZtszb33MYH4WOA/4xOQVvtbP23uwNt3QHU/MPab6MJVBIV7Lmy
         Goj/M+y9GgoVwQMgildDeRBAogH/wXj/RRmwht3XLLAbAJe4WgQVgQCYASDFEDbERRgGICsAGQbig2wl
         ywBkBRCxIWHAwAEGBgCtRwTq9z2EwAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="librosElectronicosToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAO1JREFUOE/N
+        kM2rAVEYxuefRpFiIYuhZhZTKEpohhrNVSiSbJCGfHZvsfaRLFhcbDyc00GYHLLxq6czved9fk1HOCPa
+        4ngWyZlqsVVryNJktLEMuYuKBmS32mTrj/AEu+0escAP+ZMeq9zCExB2/yeJaBwkV6rBald4gvuw2hUy
+        tCpb5amgmO5AC1VRMYYoaCbyqolydkBnJb3HF3TrUwQdSQxaCygeHRF/Dv3mHAF7Et3GjC8gkV0aPRNy
+        CZlIjX5LTvVy/5JgPFwj7DOgePX3BQWtjZG5RC3/R9/it7Ois5cFvHyx4J2w2qcIwhGhky8NQKmsowAA
+        AABJRU5ErkJggg==
 </value>
   </data>
   <data name="periodosToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
