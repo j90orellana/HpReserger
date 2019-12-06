@@ -208,10 +208,10 @@
     <Compile Include="ModuloFinanzas\frmPrestamoInterEmpresas.Designer.cs">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRegistroVentas.cs">
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroVentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRegistroVentas.Designer.cs">
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroVentas.Designer.cs">
       <DependentUpon>frmRegistroVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRegMayorPorEmpresas.cs">
@@ -400,10 +400,10 @@
     <Compile Include="frmPagoDetraccionesVentas.Designer.cs">
       <DependentUpon>frmPagoDetraccionesVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRegistroCompras.cs">
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroCompras.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRegistroCompras.Designer.cs">
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroCompras.Designer.cs">
       <DependentUpon>frmRegistroCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloReportes\EstadoGananciaPerdidas.cs">
@@ -1752,7 +1752,7 @@
     <EmbeddedResource Include="ModuloFinanzas\frmPrestamoInterEmpresas.resx">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRegistroVentas.resx">
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmRegistroVentas.resx">
       <DependentUpon>frmRegistroVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegMayorPorEmpresas.resx">
@@ -1850,7 +1850,7 @@
     <EmbeddedResource Include="frmPagoDetraccionesVentas.resx">
       <DependentUpon>frmPagoDetraccionesVentas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRegistroCompras.resx">
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmRegistroCompras.resx">
       <DependentUpon>frmRegistroCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\EstadoGananciaPerdidas.resx">
