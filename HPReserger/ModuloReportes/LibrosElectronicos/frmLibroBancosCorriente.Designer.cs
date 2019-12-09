@@ -247,7 +247,7 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 12, 6, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 12, 9, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(70, 29);

@@ -35,8 +35,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         }
         private void frmLibroBancosCorriente_Load(object sender, EventArgs e)
         {
-            cargarEmpresa();
-
+            cargarEmpresa();            
         }
 
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)

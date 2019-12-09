@@ -111,7 +111,7 @@ namespace HPReserger.ModuloFinanzas
             {
                 msg("No hay Datos que Exportar");
             }
-        }      
+        }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             if (dtgconten.RowCount > 0)
@@ -123,10 +123,10 @@ namespace HPReserger.ModuloFinanzas
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 Color Back = Color.FromArgb(78, 129, 189);
                 Color Fore = Color.FromArgb(255, 255, 255);
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("d1", "d1", _Cabecera.ToUpper(), 16, true, false, Back, Fore));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("d1", "d1", _Cabecera.ToUpper(), 10, true, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                 //
-                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
-                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
                 int PosInicialGrilla = 2;
                 DataTable TablaExportar = new DataTable();
                 TablaExportar = ((DataTable)dtgconten.DataSource).Copy();

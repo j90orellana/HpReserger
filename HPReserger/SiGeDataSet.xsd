@@ -35,8 +35,7 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        *
-FROM            TBL_Asiento_Contable</CommandText>
+                    <CommandText>SELECT id_Asiento, Id_Asiento_Contable, Fecha_Asiento, Fecha_Asiento_Valor, Saldo_Debe, Saldo_Haber, Id_Dinamica_Contable, id_proyecto, fk_id_Etapa, Nro_Documento, Estado, Cod_Asiento_Contable, Moneda, TC, Glosa FROM TBL_Asiento_Contable</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -77,7 +76,6 @@ FROM            TBL_Asiento_Contable</CommandText>
               <xs:element name="Id_Asiento_Contable" msprop:Generator_ColumnVarNameInTable="columnId_Asiento_Contable" msprop:Generator_ColumnPropNameInRow="Id_Asiento_Contable" msprop:Generator_ColumnPropNameInTable="Id_Asiento_ContableColumn" msprop:Generator_UserColumnName="Id_Asiento_Contable" type="xs:int" />
               <xs:element name="Fecha_Asiento" msprop:Generator_ColumnVarNameInTable="columnFecha_Asiento" msprop:Generator_ColumnPropNameInRow="Fecha_Asiento" msprop:Generator_ColumnPropNameInTable="Fecha_AsientoColumn" msprop:Generator_UserColumnName="Fecha_Asiento" type="xs:dateTime" />
               <xs:element name="Fecha_Asiento_Valor" msprop:Generator_ColumnVarNameInTable="columnFecha_Asiento_Valor" msprop:Generator_ColumnPropNameInRow="Fecha_Asiento_Valor" msprop:Generator_ColumnPropNameInTable="Fecha_Asiento_ValorColumn" msprop:Generator_UserColumnName="Fecha_Asiento_Valor" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Cuenta_Contable" msprop:Generator_ColumnVarNameInTable="columnCuenta_Contable" msprop:Generator_ColumnPropNameInRow="Cuenta_Contable" msprop:Generator_ColumnPropNameInTable="Cuenta_ContableColumn" msprop:Generator_UserColumnName="Cuenta_Contable" type="xs:int" />
               <xs:element name="Saldo_Debe" msprop:Generator_ColumnVarNameInTable="columnSaldo_Debe" msprop:Generator_ColumnPropNameInRow="Saldo_Debe" msprop:Generator_ColumnPropNameInTable="Saldo_DebeColumn" msprop:Generator_UserColumnName="Saldo_Debe" type="xs:decimal" />
               <xs:element name="Saldo_Haber" msprop:Generator_ColumnVarNameInTable="columnSaldo_Haber" msprop:Generator_ColumnPropNameInRow="Saldo_Haber" msprop:Generator_ColumnPropNameInTable="Saldo_HaberColumn" msprop:Generator_UserColumnName="Saldo_Haber" type="xs:decimal" />
               <xs:element name="Id_Dinamica_Contable" msprop:Generator_ColumnVarNameInTable="columnId_Dinamica_Contable" msprop:Generator_ColumnPropNameInRow="Id_Dinamica_Contable" msprop:Generator_ColumnPropNameInTable="Id_Dinamica_ContableColumn" msprop:Generator_UserColumnName="Id_Dinamica_Contable" type="xs:int" />

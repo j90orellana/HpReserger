@@ -2681,14 +2681,14 @@ namespace HPResergerCapaLogica
         }
         public DataTable PrestamosInterEmpresa(int @opcion, int @empresaori, int @proyectoori, int @etapaori, int @bancoori, int @ctaori, string @cuoori, string @ctaContableori, int @empresades, int @proyectodes
             , int @etapades, int @bancodes, int @ctades, string @cuodes, string @ctacontabledes, int @idmoneda, decimal @montoprestado, DateTime @fechacontable, DateTime @fechaprestado, decimal @tc,
-            string @glosa, int @estado, int tipopago)
+            string @glosa, int @estado, int tipopago, string nrooperacion)
         {
             return cdOrdenPedido.PrestamosInterEmpresa(@opcion, @empresaori, @proyectoori, @etapaori, @bancoori, @ctaori, @cuoori, @ctaContableori, @empresades, @proyectodes, @etapades, @bancodes, @ctades, @cuodes
-                , @ctacontabledes, @idmoneda, @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado, tipopago);
+                , @ctacontabledes, @idmoneda, @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado, tipopago, nrooperacion);
         }
         public DataTable PrestamosInterEmpresa(int @opcion, string empresaorigen, string empresadestino, string moneda, DateTime fec1, DateTime fec2, int Activo, int Cancelado, int Anulado)
         {
-            return cdOrdenPedido.PrestamosInterEmpresa(@opcion, Activo, Cancelado, Anulado, 0, 0, empresaorigen, empresadestino, 0, 0, 0, 0, 0, "", "", 0, 0, fec1, fec2, 0, moneda, 0, 0);
+            return cdOrdenPedido.PrestamosInterEmpresa(@opcion, Activo, Cancelado, Anulado, 0, 0, empresaorigen, empresadestino, 0, 0, 0, 0, 0, "", "", 0, 0, fec1, fec2, 0, moneda, 0, 0, "");
         }
         public DataTable PrestamosInterEmpresaDetalle(int @opcion, int @fkid, int @fkEmpresaOri, int @fkProyectoOri, int @fkEtapaOri, int @fkBancoOri, int @fkCtaBancoOri, int @fkEmpresaDes, int @fkProyectoDes,
            int @fkEtapaDes, int @fkBancoDes, int @fkCtaBancoDes, string @CuoAbonoOri, string @CuoAbonoDes, DateTime @FechaContable, DateTime @FechaAbono, int @FkMoneda, decimal @Monto, decimal @TC,

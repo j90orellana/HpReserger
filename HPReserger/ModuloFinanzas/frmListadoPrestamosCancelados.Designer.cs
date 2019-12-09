@@ -79,6 +79,8 @@
             this.xmon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ximporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xsaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNroOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfechaprestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -141,6 +143,8 @@
             this.xmon,
             this.ximporte,
             this.xsaldo,
+            this.xTipoPago,
+            this.xNroOperacion,
             this.xfechaprestamo,
             this.xFechaContable,
             this.xtc,
@@ -607,6 +611,22 @@
             this.xsaldo.ReadOnly = true;
             this.xsaldo.Visible = false;
             // 
+            // xTipoPago
+            // 
+            this.xTipoPago.DataPropertyName = "TipoPago";
+            this.xTipoPago.HeaderText = "TipoPago";
+            this.xTipoPago.Name = "xTipoPago";
+            this.xTipoPago.ReadOnly = true;
+            this.xTipoPago.Visible = false;
+            // 
+            // xNroOperacion
+            // 
+            this.xNroOperacion.DataPropertyName = "NroOperacion";
+            this.xNroOperacion.HeaderText = "NroOperacion";
+            this.xNroOperacion.Name = "xNroOperacion";
+            this.xNroOperacion.ReadOnly = true;
+            this.xNroOperacion.Visible = false;
+            // 
             // xfechaprestamo
             // 
             this.xfechaprestamo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -739,6 +759,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xmon;
         private System.Windows.Forms.DataGridViewTextBoxColumn ximporte;
         private System.Windows.Forms.DataGridViewTextBoxColumn xsaldo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNroOperacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfechaprestamo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtc;

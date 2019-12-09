@@ -466,14 +466,14 @@ namespace HPReserger
                     CapaLogica.PrestamosInterEmpresa(1, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
                         , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], CuoOri, cboOriCuentaContable.SelectedValue.ToString(), IdEmpresaDes, IdProyectoDes
                         , IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
-                        , CuoDes, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1, TipoPago);
+                        , CuoDes, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1, TipoPago,NroOperacion);
                 else if (Estado == 2)
                 {
                     CapaLogica.PrestamosInterEmpresa(2, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
                                         , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], _CuoOrigen, cboOriCuentaContable.SelectedValue.ToString(),
                                         IdEmpresaDes, IdProyectoDes, IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"],
                                         (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
-                                        , _CuoDestino, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, _FkId, TipoPago);
+                                        , _CuoDestino, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, _FkId, TipoPago,NroOperacion);
                 }
                 ///Proceso Finalizado;
                 msgOK($"Se Grabó Exitosamente\nEn la Empresa Origen  cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");
@@ -532,6 +532,8 @@ namespace HPReserger
                 cbomoneda.SelectedValue = (int)item.Cells[xidMoneda.Name].Value;
                 txtGlosa.Text = item.Cells[xglosa.Name].Value.ToString();
                 txtMontoPrestamo.Text = ((decimal)item.Cells[ximporte.Name].Value).ToString("n2");
+                cbotipo.SelectedValue = (int)item.Cells[xTipoPago.Name].Value;
+                txtnrooperacion.Text = item.Cells[xNroOperacion.Name].Value.ToString().Trim();
                 //
                 dtpFechaContable.Value = (DateTime)item.Cells[xFechaContable.Name].Value;
                 dtpFechaPrestamo.Value = (DateTime)item.Cells[xfechaprestamo.Name].Value;

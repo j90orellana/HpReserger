@@ -287,8 +287,6 @@ namespace HPReserger {
             
             private global::System.Data.DataColumn columnFecha_Asiento_Valor;
             
-            private global::System.Data.DataColumn columnCuenta_Contable;
-            
             private global::System.Data.DataColumn columnSaldo_Debe;
             
             private global::System.Data.DataColumn columnSaldo_Haber;
@@ -375,14 +373,6 @@ namespace HPReserger {
             public global::System.Data.DataColumn Fecha_Asiento_ValorColumn {
                 get {
                     return this.columnFecha_Asiento_Valor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Cuenta_ContableColumn {
-                get {
-                    return this.columnCuenta_Contable;
                 }
             }
             
@@ -524,7 +514,6 @@ namespace HPReserger {
                         int Id_Asiento_Contable, 
                         System.DateTime Fecha_Asiento, 
                         System.DateTime Fecha_Asiento_Valor, 
-                        int Cuenta_Contable, 
                         decimal Saldo_Debe, 
                         decimal Saldo_Haber, 
                         int Id_Dinamica_Contable, 
@@ -543,7 +532,6 @@ namespace HPReserger {
                         Id_Asiento_Contable,
                         Fecha_Asiento,
                         Fecha_Asiento_Valor,
-                        Cuenta_Contable,
                         Saldo_Debe,
                         Saldo_Haber,
                         Id_Dinamica_Contable,
@@ -582,7 +570,6 @@ namespace HPReserger {
                 this.columnId_Asiento_Contable = base.Columns["Id_Asiento_Contable"];
                 this.columnFecha_Asiento = base.Columns["Fecha_Asiento"];
                 this.columnFecha_Asiento_Valor = base.Columns["Fecha_Asiento_Valor"];
-                this.columnCuenta_Contable = base.Columns["Cuenta_Contable"];
                 this.columnSaldo_Debe = base.Columns["Saldo_Debe"];
                 this.columnSaldo_Haber = base.Columns["Saldo_Haber"];
                 this.columnId_Dinamica_Contable = base.Columns["Id_Dinamica_Contable"];
@@ -608,8 +595,6 @@ namespace HPReserger {
                 base.Columns.Add(this.columnFecha_Asiento);
                 this.columnFecha_Asiento_Valor = new global::System.Data.DataColumn("Fecha_Asiento_Valor", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha_Asiento_Valor);
-                this.columnCuenta_Contable = new global::System.Data.DataColumn("Cuenta_Contable", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCuenta_Contable);
                 this.columnSaldo_Debe = new global::System.Data.DataColumn("Saldo_Debe", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaldo_Debe);
                 this.columnSaldo_Haber = new global::System.Data.DataColumn("Saldo_Haber", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -637,7 +622,6 @@ namespace HPReserger {
                 this.columnid_Asiento.AllowDBNull = false;
                 this.columnId_Asiento_Contable.AllowDBNull = false;
                 this.columnFecha_Asiento.AllowDBNull = false;
-                this.columnCuenta_Contable.AllowDBNull = false;
                 this.columnSaldo_Debe.AllowDBNull = false;
                 this.columnSaldo_Haber.AllowDBNull = false;
                 this.columnId_Dinamica_Contable.AllowDBNull = false;
@@ -837,17 +821,6 @@ namespace HPReserger {
                 }
                 set {
                     this[this.tableTBL_Asiento_Contable.Fecha_Asiento_ValorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Cuenta_Contable {
-                get {
-                    return ((int)(this[this.tableTBL_Asiento_Contable.Cuenta_ContableColumn]));
-                }
-                set {
-                    this[this.tableTBL_Asiento_Contable.Cuenta_ContableColumn] = value;
                 }
             }
             
@@ -1294,7 +1267,9 @@ namespace HPReserger.SiGeDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        *\r\nFROM            TBL_Asiento_Contable";
+            this._commandCollection[0].CommandText = "SELECT id_Asiento, Id_Asiento_Contable, Fecha_Asiento, Fecha_Asiento_Valor, Saldo" +
+                "_Debe, Saldo_Haber, Id_Dinamica_Contable, id_proyecto, fk_id_Etapa, Nro_Document" +
+                "o, Estado, Cod_Asiento_Contable, Moneda, TC, Glosa FROM TBL_Asiento_Contable";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

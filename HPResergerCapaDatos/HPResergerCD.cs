@@ -4967,12 +4967,12 @@ namespace HPResergerCapaDatos
         }
         public DataTable PrestamosInterEmpresa(int @opcion, int @empresaori, int @proyectoori, int @etapaori, int @bancoori, int @ctaori, string @cuoori, string @ctaContableori, int @empresades, int @proyectodes
             , int @etapades, int @bancodes, int @ctades, string @cuodes, string @ctacontabledes, int @idmoneda, decimal @montoprestado, DateTime @fechacontable, DateTime @fechaprestado, decimal @tc, string @glosa,
-            int @estado, int @tipopago)
+            int @estado, int @tipopago, string nrooperacion)
         {
             string[] parametros = { "@opcion", "@empresaori", "@proyectoori", "@etapaori", "@bancoori", "@ctaori", "@cuoori", "@ctaContableori", "@empresades", "@proyectodes", "@etapades", "@bancodes", "@ctades",
-                    "@cuodes", "@ctacontabledes", "@idmoneda", "@montoprestado", "@fechacontable", "@fechaprestado", "@tc", "@glosa", "@estado","@tipopago" };
+                    "@cuodes", "@ctacontabledes", "@idmoneda", "@montoprestado", "@fechacontable", "@fechaprestado", "@tc", "@glosa", "@estado","@tipopago","@nrooperacion" };
             object[] valores = { @opcion, @empresaori, @proyectoori, @etapaori, @bancoori, @ctaori, @cuoori, @ctaContableori, @empresades, @proyectodes, @etapades, @bancodes, @ctades,@cuodes, @ctacontabledes,
-                @idmoneda, @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado,tipopago };
+                @idmoneda, @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado,tipopago,nrooperacion };
             return bd.DataTableFromProcedure("usp_PrestamosInterbancarios", parametros, valores, null);
         }
         public DataTable PrestamosInterEmpresaDetalle(int @opcion, int @fkid, int @fkEmpresaOri, int @fkProyectoOri, int @fkEtapaOri, int @fkBancoOri, int @fkCtaBancoOri, int @fkEmpresaDes, int @fkProyectoDes,
