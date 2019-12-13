@@ -129,7 +129,7 @@ namespace HPReserger
             ///datetimepicker
             dtpFechaContable.Enabled = dtpfechaemision.Enabled = dtpfecharecep.Enabled = dtpfechavence.Enabled = a;
             ///////////////////
-            btncleanfind.Enabled = !a;
+            btnActualizar.Enabled = btncleanfind.Enabled = !a;
             txtbusnrodoc.ReadOnly = txtbuscaempresa.ReadOnly = txtbusproveedor.ReadOnly = a;
             dtgBusqueda.Enabled = !a; Dtgconten.ReadOnly = !a;
             btnnuevo.Enabled = !a; btnmodificar.Enabled = !a;
@@ -1118,11 +1118,12 @@ namespace HPReserger
                 else if (dtgBusqueda[yEstado.Name, dtgBusqueda.CurrentRow.Index].Value.ToString() == "3")
                 {
                     Estado = 2;
-                    if (cbodetraccion.Text.ToUpper() == "SI") btnmasdetracion.Enabled = true;
-                    BloquearColumnas();
                     msg("Factura ya esta Compensada");
-                    ModoEdicion(true);
-                    compensada = true;
+                    return;
+                    //if (cbodetraccion.Text.ToUpper() == "SI") btnmasdetracion.Enabled = true;
+                    //BloquearColumnas();
+                    //ModoEdicion(true);
+                    //compensada = true;
                 }
                 else
                 {

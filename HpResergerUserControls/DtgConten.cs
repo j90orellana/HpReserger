@@ -66,5 +66,29 @@ namespace HpResergerUserControls
             DoubleBuffered = true;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
+        protected override void OnEditingControlShowing(DataGridViewEditingControlShowingEventArgs e)
+        {
+            base.OnEditingControlShowing(e);
+            e.Control.KeyDown += Control_KeyDown; ;
+        }
+
+        private void Control_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (this.CurrentCell != null)
+            {
+                if (this.CurrentCell.RowIndex >= 1)
+                {
+                    if (CurrentCell.IsInEditMode)
+
+                        if (e.KeyCode == Keys.F6)
+                        {                           
+                            this[CurrentCell.ColumnIndex, CurrentCell.RowIndex].Value = this[CurrentCell.ColumnIndex, CurrentCell.RowIndex - 1].Value;
+                            this.EndEdit();
+                            this.RefreshEdit();
+                        }
+                }
+            }
+            //base.OnKeyDown(e);
+        }
     }
 }

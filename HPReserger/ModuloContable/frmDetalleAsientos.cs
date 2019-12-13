@@ -409,7 +409,7 @@ namespace HPReserger
                                 item.Cells[numdocx.Name].Value.ToString(), item.Cells[razonsocialx.Name].Value.ToString(), (int)item.Cells[idcomprobantex.Name].Value, item.Cells[codcomprobantex.Name].Value.ToString(),
                                 item.Cells[numcomprobantex.Name].Value.ToString(), int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(),
                                 (DateTime)item.Cells[fechaemisionx.Name].Value, (DateTime)item.Cells[FechaVencimientox.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
-                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, _proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, _fecha,
+                                 (decimal)item.Cells[tipocambiox.Name].Value, ((int)item.Cells[usuariox.Name].Value != 1000 ? frmLogin.CodigoUsuario : (int)item.Cells[usuariox.Name].Value), _proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, _fecha,
                                  (int)(item.Cells[xCtaBancaria.Name].Value.ToString() == "" ? 0 : item.Cells[xCtaBancaria.Name].Value),
                                  (item.Cells[fkAsix.Name].Value.ToString() == "" ? "0" : item.Cells[fkAsix.Name].Value.ToString()), item.Cells[xNroOPBanco.Name].Value.ToString(), valpago);
                         }

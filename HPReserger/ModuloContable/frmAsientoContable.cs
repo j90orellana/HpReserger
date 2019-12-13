@@ -927,7 +927,7 @@ namespace HPReserger
                             if (estado == -1)
                             {
                                 DateTime Fechita = dtpfechavalor.Value;
-                                CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
+                                CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 2);
                                 CuoSelec = txtcuo.Text;
                                 estado = 0;
                                 //btnActualizar_Click(new object { }, new EventArgs());

@@ -191,6 +191,7 @@
             this.lblcompensa = new System.Windows.Forms.Label();
             this.btnbususuacompesa = new HpResergerUserControls.ButtonPer();
             this.txtNombreUsuarioCompensa = new HpResergerUserControls.TextBoxPer();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -2094,11 +2095,26 @@
             this.txtNombreUsuarioCompensa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtNombreUsuarioCompensa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.Location = new System.Drawing.Point(549, 473);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(92, 23);
+            this.btnActualizar.TabIndex = 258;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.textBoxPer2_TextChanged);
+            // 
             // FrmFacturaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnvistaPrevia);
             this.Controls.Add(this.btnFacturasIncompletas);
             this.Controls.Add(this.btnlimpiar);
@@ -2333,5 +2349,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xCodAsientoCtble;
         private System.Windows.Forms.DataGridViewTextBoxColumn xUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaModifica;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }
