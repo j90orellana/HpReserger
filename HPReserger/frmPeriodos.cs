@@ -22,16 +22,41 @@ namespace HPReserger
         }
         DataTable Estado;
         DataTable meses;
+        private bool Cargado;
+        public bool Cargado1
+        {
+            get { return Cargado; }
+            set
+            {
+                Cargado = value;
+                if (value)
+                {
+                    CargarDatos();
+                }
+            }
+        }
         private void frmPeriodos_Load(object sender, EventArgs e)
         {
             CargarEstado(cboestado);
             CargarMeses(cbomes);
             limpiarIngresos();
-            CargarDatos();
+            LimpiarValores();
+        }
+        public void LimpiarValores()
+        {
+            Cargado1 = false;
+            txtbusaño.CargarTextoporDefecto(); txtbusempresa.CargarTextoporDefecto(); txtbusmes.CargarTextoporDefecto();
+            Cargado1 = true;
         }
         public void CargarDatos()
         {
             dtgconten.DataSource = CapaLogica.Periodos(0);
+            lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
+        }
+        public void CargarDatosFiltrado()
+        {
+            dtgconten.DataSource = CapaLogica.Periodos(txtbusempresa.TextValido(), txtbusmes.TextValido(), txtbusaño.TextValido());
+            lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
         }
         public void CargarMeses(ComboBox combito)
         {
@@ -177,6 +202,23 @@ namespace HPReserger
                         dtgconten.CurrentCell = dtgconten[empresax.Name, x];
                     }
                 }
+        }
+
+        private void txtbusaño_TextChanged(object sender, EventArgs e)
+        {
+            CargarDatosFiltrado();
+        }
+        private void txtbusempresa_TextChanged(object sender, EventArgs e)
+        {
+            CargarDatosFiltrado();
+        }
+        private void txtbusmes_TextChanged(object sender, EventArgs e)
+        {
+            CargarDatosFiltrado();
+        }
+        private void btncleanfind_Click(object sender, EventArgs e)
+        {
+            LimpiarValores();
         }
     }
 }

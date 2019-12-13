@@ -2029,6 +2029,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Periodos(opcion, empresa, fechas);
         }
+        public DataTable Periodos(string @empresa, string mes, string año)
+        {
+            return cdOrdenPedido.Periodos(empresa, mes, año);
+        }
         public DataTable ListarAsientosAbiertos(int opcion, int empresa, DateTime fecha)
         {
             return cdOrdenPedido.ListarAsientosAbiertos(opcion, empresa, fecha);

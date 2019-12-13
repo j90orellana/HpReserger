@@ -4316,6 +4316,12 @@ namespace HPResergerCapaDatos
             object[] valores = { opcion, empresa, fechas };
             return bd.DataTableFromProcedure("usp_Periodos", parametros, valores, null);
         }
+        public DataTable Periodos(string @empresa, string mes, string año)
+        {
+            string[] parametros = { "@empresa", "@mes", "@año" };
+            object[] valores = { empresa, mes, año };
+            return bd.DataTableFromProcedure("usp_PeriodosBusqueda", parametros, valores, null);
+        }
         public DataTable ListarAsientosAbiertos(int opcion, int empresa, DateTime fecha)
         {
             string[] parametros = { "@Opcion", "@empresa", "@fecha" };

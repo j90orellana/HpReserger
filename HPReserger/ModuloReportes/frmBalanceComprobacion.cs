@@ -144,7 +144,7 @@ namespace HPReserger.ModuloReportes
             if (dtgconten.RowCount > 0)
             {
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
-                _NombreHoja = $"-{NameEmpresa}-{FechaGenerado} "; _Cabecera = "Balance de Comprobación";
+                _NombreHoja = $"-{NameEmpresa}-{FechaGenerado}".ToUpper(); _Cabecera = "Balance de Comprobación";
                 _Columnas = new int[] { }; _NColumna = "l";
                 //
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();

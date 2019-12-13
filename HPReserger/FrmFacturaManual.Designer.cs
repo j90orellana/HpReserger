@@ -235,11 +235,11 @@
             this.frmimagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.frmimagen.ContextMenuStrip = this.cmsImagen;
             this.frmimagen.Imagen = null;
-            this.frmimagen.Location = new System.Drawing.Point(772, 9);
+            this.frmimagen.Location = new System.Drawing.Point(770, 9);
             this.frmimagen.Name = "frmimagen";
             this.frmimagen.Nombre = "Factura Manual";
             this.frmimagen.Padre = null;
-            this.frmimagen.Size = new System.Drawing.Size(200, 218);
+            this.frmimagen.Size = new System.Drawing.Size(206, 218);
             this.frmimagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.frmimagen.TabIndex = 236;
             this.frmimagen.DragDrop += new System.Windows.Forms.DragEventHandler(this.frmimagen_DragDrop);
@@ -1089,9 +1089,9 @@
             this.cbograba.Items.AddRange(new object[] {
             "Grava",
             "No Grava"});
-            this.cbograba.Location = new System.Drawing.Point(977, 86);
+            this.cbograba.Location = new System.Drawing.Point(980, 86);
             this.cbograba.Name = "cbograba";
-            this.cbograba.Size = new System.Drawing.Size(70, 21);
+            this.cbograba.Size = new System.Drawing.Size(92, 21);
             this.cbograba.TabIndex = 17;
             this.cbograba.Visible = false;
             this.cbograba.SelectedIndexChanged += new System.EventHandler(this.cbodetraccion_SelectedIndexChanged);
@@ -1216,7 +1216,7 @@
             this.dtgBusqueda.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgBusqueda.EnableHeadersVisualStyles = false;
             this.dtgBusqueda.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgBusqueda.Location = new System.Drawing.Point(12, 498);
+            this.dtgBusqueda.Location = new System.Drawing.Point(15, 498);
             this.dtgBusqueda.Name = "dtgBusqueda";
             this.dtgBusqueda.ReadOnly = true;
             this.dtgBusqueda.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -1549,7 +1549,7 @@
             this.txtbusnrodoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusnrodoc.ForeColor = System.Drawing.Color.Black;
             this.txtbusnrodoc.Format = null;
-            this.txtbusnrodoc.Location = new System.Drawing.Point(12, 474);
+            this.txtbusnrodoc.Location = new System.Drawing.Point(15, 474);
             this.txtbusnrodoc.MaxLength = 300;
             this.txtbusnrodoc.Name = "txtbusnrodoc";
             this.txtbusnrodoc.NextControlOnEnter = null;
@@ -1567,7 +1567,7 @@
             this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btncleanfind.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
-            this.btncleanfind.Location = new System.Drawing.Point(523, 473);
+            this.btncleanfind.Location = new System.Drawing.Point(525, 473);
             this.btncleanfind.Name = "btncleanfind";
             this.btncleanfind.Size = new System.Drawing.Size(25, 23);
             this.btncleanfind.TabIndex = 23;
@@ -1587,7 +1587,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.Location = new System.Drawing.Point(896, 432);
+            this.btnAceptar.Location = new System.Drawing.Point(900, 432);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(85, 23);
             this.btnAceptar.TabIndex = 0;
@@ -1600,7 +1600,7 @@
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(984, 432);
+            this.btncancelar.Location = new System.Drawing.Point(987, 432);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(85, 23);
             this.btncancelar.TabIndex = 0;
@@ -1625,7 +1625,7 @@
             // 
             this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
-            this.btnnuevo.Location = new System.Drawing.Point(977, 9);
+            this.btnnuevo.Location = new System.Drawing.Point(980, 9);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(92, 25);
             this.btnnuevo.TabIndex = 0;
@@ -1639,7 +1639,7 @@
             this.btnmodificar.Enabled = false;
             this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(977, 34);
+            this.btnmodificar.Location = new System.Drawing.Point(980, 34);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(92, 25);
             this.btnmodificar.TabIndex = 0;
@@ -1674,7 +1674,7 @@
             this.txtbuscaempresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscaempresa.ForeColor = System.Drawing.Color.Black;
             this.txtbuscaempresa.Format = null;
-            this.txtbuscaempresa.Location = new System.Drawing.Point(165, 474);
+            this.txtbuscaempresa.Location = new System.Drawing.Point(167, 474);
             this.txtbuscaempresa.MaxLength = 300;
             this.txtbuscaempresa.Name = "txtbuscaempresa";
             this.txtbuscaempresa.NextControlOnEnter = null;
@@ -1696,7 +1696,7 @@
             this.txtbusproveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusproveedor.ForeColor = System.Drawing.Color.Black;
             this.txtbusproveedor.Format = null;
-            this.txtbusproveedor.Location = new System.Drawing.Point(365, 474);
+            this.txtbusproveedor.Location = new System.Drawing.Point(367, 474);
             this.txtbusproveedor.MaxLength = 300;
             this.txtbusproveedor.Name = "txtbusproveedor";
             this.txtbusproveedor.NextControlOnEnter = null;
@@ -1787,7 +1787,7 @@
             this.btneliminar.Enabled = false;
             this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(977, 60);
+            this.btneliminar.Location = new System.Drawing.Point(980, 60);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(92, 25);
             this.btneliminar.TabIndex = 0;
@@ -1973,11 +1973,11 @@
             // 
             // btnFacturasIncompletas
             // 
-            this.btnFacturasIncompletas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnFacturasIncompletas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFacturasIncompletas.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnFacturasIncompletas.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFacturasIncompletas.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturasIncompletas.Image")));
-            this.btnFacturasIncompletas.Location = new System.Drawing.Point(896, 473);
+            this.btnFacturasIncompletas.Location = new System.Drawing.Point(899, 473);
             this.btnFacturasIncompletas.Name = "btnFacturasIncompletas";
             this.btnFacturasIncompletas.Size = new System.Drawing.Size(173, 23);
             this.btnFacturasIncompletas.TabIndex = 253;
@@ -2100,7 +2100,7 @@
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(549, 473);
+            this.btnActualizar.Location = new System.Drawing.Point(551, 473);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(92, 23);
             this.btnActualizar.TabIndex = 258;
