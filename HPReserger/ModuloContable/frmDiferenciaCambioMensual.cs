@@ -27,7 +27,7 @@ namespace HPReserger
         private void frmcierremensual_Load(object sender, EventArgs e)
         {
             CargarEmpresa();
-            GenerarAsientoSaldos = GenerarAsientoDocumentos = false;
+            //GenerarAsientoSaldos = GenerarAsientoDocumentos = false;
         }
         public void CargarEmpresa()
         {
@@ -101,6 +101,10 @@ namespace HPReserger
 
                     }
                     lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
+                    if (dtgconten.RowCount == 0)
+                    {
+                        msg("No Se Encontraron Datos");
+                    }
                     //Configuraciones.TiempoEjecucionMsg(aloja);
                 }
                 else msg("Ingrese el Tipo de Cambio para el Cierre de Este Periodo");

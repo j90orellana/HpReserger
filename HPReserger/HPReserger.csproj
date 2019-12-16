@@ -442,10 +442,10 @@
     <Compile Include="ModuloVentas\frmAbonoClientes.Designer.cs">
       <DependentUpon>frmAbonoClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAbonoExternoEmpleado.cs">
+    <Compile Include="ModuloRRHH\frmAbonoExternoEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAbonoExternoEmpleado.Designer.cs">
+    <Compile Include="ModuloRRHH\frmAbonoExternoEmpleado.Designer.cs">
       <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAbonosVentas.cs">
@@ -496,10 +496,10 @@
     <Compile Include="ModuloBancario\frmBancoInterbank.Designer.cs">
       <DependentUpon>frmBancoInterbank.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmbonos.cs">
+    <Compile Include="ModuloRRHH\frmbonos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmbonos.Designer.cs">
+    <Compile Include="ModuloRRHH\frmbonos.Designer.cs">
       <DependentUpon>frmbonos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCargaDatosProveedor.cs">
@@ -514,10 +514,10 @@
     <Compile Include="frmCargadeDatosExcel.Designer.cs">
       <DependentUpon>frmCargadeDatosExcel.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCargarDatosEmpleados.cs">
+    <Compile Include="ModuloRRHH\frmCargarDatosEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCargarDatosEmpleados.Designer.cs">
+    <Compile Include="ModuloRRHH\frmCargarDatosEmpleados.Designer.cs">
       <DependentUpon>frmCargarDatosEmpleados.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCargasRegVentas.cs">
@@ -556,10 +556,10 @@
     <Compile Include="frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmComprobantePago.cs">
+    <Compile Include="ModuloRRHH\frmComprobantePago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmComprobantePago.Designer.cs">
+    <Compile Include="ModuloRRHH\frmComprobantePago.Designer.cs">
       <DependentUpon>frmComprobantePago.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConfiguracionBalanceGanacias.cs">
@@ -700,10 +700,10 @@
     <Compile Include="FrmGenerarRemuneracionRenta.Designer.cs">
       <DependentUpon>FrmGenerarRemuneracionRenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAmonestacionesPremio.cs">
+    <Compile Include="ModuloRRHH\frmAmonestacionesPremio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAmonestacionesPremio.Designer.cs">
+    <Compile Include="ModuloRRHH\frmAmonestacionesPremio.Designer.cs">
       <DependentUpon>frmAmonestacionesPremio.cs</DependentUpon>
     </Compile>
     <Compile Include="frmArea.cs">
@@ -766,10 +766,10 @@
     <Compile Include="ModuloBancario\frmEntiFinanciera.designer.cs">
       <DependentUpon>frmEntiFinanciera.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEntrevistaSalida.cs">
+    <Compile Include="ModuloRRHH\frmEntrevistaSalida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEntrevistaSalida.Designer.cs">
+    <Compile Include="ModuloRRHH\frmEntrevistaSalida.Designer.cs">
       <DependentUpon>frmEntrevistaSalida.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmFactura.cs">
@@ -778,10 +778,10 @@
     <Compile Include="FrmFactura.Designer.cs">
       <DependentUpon>FrmFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFaltas.cs">
+    <Compile Include="ModuloRRHH\frmFaltas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFaltas.Designer.cs">
+    <Compile Include="ModuloRRHH\frmFaltas.Designer.cs">
       <DependentUpon>frmFaltas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFicModificar.cs">
@@ -808,10 +808,10 @@
     <Compile Include="frmGerencia.designer.cs">
       <DependentUpon>frmGerencia.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGradoInstitucional.cs">
+    <Compile Include="ModuloRRHH\frmGradoInstitucional.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGradoInstitucional.Designer.cs">
+    <Compile Include="ModuloRRHH\frmGradoInstitucional.Designer.cs">
       <DependentUpon>frmGradoInstitucional.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInstitucionesEducativas.cs">
@@ -856,10 +856,10 @@
     <Compile Include="FrmListarCuentasParaConfigurar.Designer.cs">
       <DependentUpon>FrmListarCuentasParaConfigurar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListarEmpleadosDesvinculados.cs">
+    <Compile Include="ModuloRRHH\frmListarEmpleadosDesvinculados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListarEmpleadosDesvinculados.Designer.cs">
+    <Compile Include="ModuloRRHH\frmListarEmpleadosDesvinculados.Designer.cs">
       <DependentUpon>frmListarEmpleadosDesvinculados.cs</DependentUpon>
     </Compile>
     <Compile Include="frmListarOCFaltantes.cs">
@@ -904,16 +904,16 @@
     <Compile Include="frmmarcamodelo.designer.cs">
       <DependentUpon>frmmarcamodelo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMemoPremio.cs">
+    <Compile Include="ModuloRRHH\frmMemoPremio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMemoPremio.Designer.cs">
+    <Compile Include="ModuloRRHH\frmMemoPremio.Designer.cs">
       <DependentUpon>frmMemoPremio.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMemoPremioObservaciones.cs">
+    <Compile Include="ModuloRRHH\frmMemoPremioObservaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMemoPremioObservaciones.Designer.cs">
+    <Compile Include="ModuloRRHH\frmMemoPremioObservaciones.Designer.cs">
       <DependentUpon>frmMemoPremioObservaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMensajeCorreo.cs">
@@ -976,10 +976,10 @@
     <Compile Include="frmOtrosDescuentos.Designer.cs">
       <DependentUpon>frmOtrosDescuentos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPagarBoletas.cs">
+    <Compile Include="ModuloRRHH\frmPagarBoletas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPagarBoletas.Designer.cs">
+    <Compile Include="ModuloRRHH\frmPagarBoletas.Designer.cs">
       <DependentUpon>frmPagarBoletas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPagarFactura.cs">
@@ -1036,10 +1036,10 @@
     <Compile Include="frmPLanesEPS.Designer.cs">
       <DependentUpon>frmPLanesEPS.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPracticasPreProfesionales.cs">
+    <Compile Include="ModuloRRHH\FrmPracticasPreProfesionales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPracticasPreProfesionales.Designer.cs">
+    <Compile Include="ModuloRRHH\FrmPracticasPreProfesionales.Designer.cs">
       <DependentUpon>FrmPracticasPreProfesionales.cs</DependentUpon>
     </Compile>
     <Compile Include="frmpresupuesto.cs">
@@ -1312,10 +1312,10 @@
     <Compile Include="frmVerPdf.Designer.cs">
       <DependentUpon>frmVerPdf.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmvinculacionfamiliar.cs">
+    <Compile Include="ModuloRRHH\frmvinculacionfamiliar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmvinculacionfamiliar.Designer.cs">
+    <Compile Include="ModuloRRHH\frmvinculacionfamiliar.Designer.cs">
       <DependentUpon>frmvinculacionfamiliar.cs</DependentUpon>
     </Compile>
     <Compile Include="frmimpuestoRenta.cs">
@@ -1424,16 +1424,16 @@
       <DependentUpon>rptEntrevistaSalida.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frmConstanciaTrabajo.cs">
+    <Compile Include="ModuloRRHH\frmConstanciaTrabajo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmConstanciaTrabajo.Designer.cs">
+    <Compile Include="ModuloRRHH\frmConstanciaTrabajo.Designer.cs">
       <DependentUpon>frmConstanciaTrabajo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEvaludacionPracticas.cs">
+    <Compile Include="ModuloRRHH\frmEvaludacionPracticas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEvaludacionPracticas.Designer.cs">
+    <Compile Include="ModuloRRHH\frmEvaludacionPracticas.Designer.cs">
       <DependentUpon>frmEvaludacionPracticas.cs</DependentUpon>
     </Compile>
     <Compile Include="rptConstanciaTrabajo.cs">
@@ -1460,22 +1460,22 @@
     <Compile Include="ModuloAlmacen\frmAprobarCotizacion.Designer.cs">
       <DependentUpon>frmAprobarCotizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBoletaVacaciones.cs">
+    <Compile Include="ModuloRRHH\frmBoletaVacaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBoletaVacaciones.Designer.cs">
+    <Compile Include="ModuloRRHH\frmBoletaVacaciones.Designer.cs">
       <DependentUpon>frmBoletaVacaciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCompraVacaciones.cs">
+    <Compile Include="ModuloRRHH\frmCompraVacaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCompraVacaciones.Designer.cs">
+    <Compile Include="ModuloRRHH\frmCompraVacaciones.Designer.cs">
       <DependentUpon>frmCompraVacaciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmContrato.cs">
+    <Compile Include="ModuloRRHH\frmContrato.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmContrato.Designer.cs">
+    <Compile Include="ModuloRRHH\frmContrato.Designer.cs">
       <DependentUpon>frmContrato.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloAlmacen\frmCotizacionModificar.cs">
@@ -1484,10 +1484,10 @@
     <Compile Include="ModuloAlmacen\frmCotizacionModificar.Designer.cs">
       <DependentUpon>frmCotizacionModificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCTS.cs">
+    <Compile Include="ModuloRRHH\frmCTS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCTS.Designer.cs">
+    <Compile Include="ModuloRRHH\frmCTS.Designer.cs">
       <DependentUpon>frmCTS.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDesvinculacion.cs">
@@ -1496,46 +1496,46 @@
     <Compile Include="frmDesvinculacion.Designer.cs">
       <DependentUpon>frmDesvinculacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEmpleado.cs">
+    <Compile Include="ModuloRRHH\frmEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEmpleado.Designer.cs">
+    <Compile Include="ModuloRRHH\frmEmpleado.Designer.cs">
       <DependentUpon>frmEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEmpleadoCTS.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadoCTS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEmpleadoCTS.Designer.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadoCTS.Designer.cs">
       <DependentUpon>frmEmpleadoCTS.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEmpleadoPagoHaberes.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadoPagoHaberes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEmpleadoPagoHaberes.Designer.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadoPagoHaberes.Designer.cs">
       <DependentUpon>frmEmpleadoPagoHaberes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEmpleadoPensionSeguro.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadoPensionSeguro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEmpleadoPensionSeguro.Designer.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadoPensionSeguro.Designer.cs">
       <DependentUpon>frmEmpleadoPensionSeguro.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEmpleadoRequerimiento.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadoRequerimiento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEmpleadoRequerimiento.Designer.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadoRequerimiento.Designer.cs">
       <DependentUpon>frmEmpleadoRequerimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEmpleadosFamiliaresModificar.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadosFamiliaresModificar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEmpleadosFamiliaresModificar.Designer.cs">
+    <Compile Include="ModuloRRHH\frmEmpleadosFamiliaresModificar.Designer.cs">
       <DependentUpon>frmEmpleadosFamiliaresModificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFamiliares.cs">
+    <Compile Include="ModuloRRHH\frmFamiliares.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFamiliares.Designer.cs">
+    <Compile Include="ModuloRRHH\frmFamiliares.Designer.cs">
       <DependentUpon>frmFamiliares.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLiquidacion.cs">
@@ -1544,10 +1544,10 @@
     <Compile Include="frmLiquidacion.Designer.cs">
       <DependentUpon>frmLiquidacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListarEmpleados.cs">
+    <Compile Include="ModuloRRHH\frmListarEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListarEmpleados.Designer.cs">
+    <Compile Include="ModuloRRHH\frmListarEmpleados.Designer.cs">
       <DependentUpon>frmListarEmpleados.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
@@ -1598,16 +1598,16 @@
     <Compile Include="ModuloAlmacen\frmOrdenPedido.Designer.cs">
       <DependentUpon>frmOrdenPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPostulante.cs">
+    <Compile Include="ModuloRRHH\frmPostulante.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPostulante.Designer.cs">
+    <Compile Include="ModuloRRHH\frmPostulante.Designer.cs">
       <DependentUpon>frmPostulante.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPostulanteModificar.cs">
+    <Compile Include="ModuloRRHH\frmPostulanteModificar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPostulanteModificar.Designer.cs">
+    <Compile Include="ModuloRRHH\frmPostulanteModificar.Designer.cs">
       <DependentUpon>frmPostulanteModificar.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSectorEmpresarial.cs">
@@ -1616,22 +1616,22 @@
     <Compile Include="frmSectorEmpresarial.Designer.cs">
       <DependentUpon>frmSectorEmpresarial.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSolicitudEmpleado.cs">
+    <Compile Include="ModuloRRHH\frmSolicitudEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSolicitudEmpleado.Designer.cs">
+    <Compile Include="ModuloRRHH\frmSolicitudEmpleado.Designer.cs">
       <DependentUpon>frmSolicitudEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSolicitudEmpleadoModificar.cs">
+    <Compile Include="ModuloRRHH\frmSolicitudEmpleadoModificar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSolicitudEmpleadoModificar.Designer.cs">
+    <Compile Include="ModuloRRHH\frmSolicitudEmpleadoModificar.Designer.cs">
       <DependentUpon>frmSolicitudEmpleadoModificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVacaciones.cs">
+    <Compile Include="ModuloRRHH\frmVacaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVacaciones.Designer.cs">
+    <Compile Include="ModuloRRHH\frmVacaciones.Designer.cs">
       <DependentUpon>frmVacaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -1876,7 +1876,7 @@
     <EmbeddedResource Include="ModuloVentas\frmAbonoClientes.resx">
       <DependentUpon>frmAbonoClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAbonoExternoEmpleado.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmAbonoExternoEmpleado.resx">
       <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -1894,7 +1894,7 @@
       <DependentUpon>frmAfps.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAmonestacionesPremio.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmAmonestacionesPremio.resx">
       <DependentUpon>frmAmonestacionesPremio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmArea.resx">
@@ -1918,7 +1918,7 @@
     <EmbeddedResource Include="ModuloBancario\frmBancoInterbank.resx">
       <DependentUpon>frmBancoInterbank.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmbonos.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmbonos.resx">
       <DependentUpon>frmbonos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloSeguridad\FrmCambioContra.resx">
@@ -1930,7 +1930,7 @@
     <EmbeddedResource Include="frmCargadeDatosExcel.resx">
       <DependentUpon>frmCargadeDatosExcel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCargarDatosEmpleados.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmCargarDatosEmpleados.resx">
       <DependentUpon>frmCargarDatosEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCargasRegVentas.resx">
@@ -1954,7 +1954,7 @@
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmComprobantePago.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmComprobantePago.resx">
       <DependentUpon>frmComprobantePago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguracionBalanceGanacias.resx">
@@ -2014,7 +2014,7 @@
     <EmbeddedResource Include="ModuloBancario\frmEntiFinanciera.resx">
       <DependentUpon>frmEntiFinanciera.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEntrevistaSalida.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmEntrevistaSalida.resx">
       <DependentUpon>frmEntrevistaSalida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEstadoCivil.resx">
@@ -2029,7 +2029,7 @@
     <EmbeddedResource Include="frmFacturasPorPagar.resx">
       <DependentUpon>frmFacturasPorPagar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFaltas.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmFaltas.resx">
       <DependentUpon>frmFaltas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFicModificar.resx">
@@ -2062,7 +2062,7 @@
     <EmbeddedResource Include="frmGerencia.resx">
       <DependentUpon>frmGerencia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGradoInstitucional.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmGradoInstitucional.resx">
       <DependentUpon>frmGradoInstitucional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInstitucionesEducativas.resx">
@@ -2086,7 +2086,7 @@
     <EmbeddedResource Include="FrmListarCuentasParaConfigurar.resx">
       <DependentUpon>FrmListarCuentasParaConfigurar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListarEmpleadosDesvinculados.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmListarEmpleadosDesvinculados.resx">
       <DependentUpon>frmListarEmpleadosDesvinculados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListarOCFaltantes.resx">
@@ -2110,10 +2110,10 @@
     <EmbeddedResource Include="frmmarcamodelo.resx">
       <DependentUpon>frmmarcamodelo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMemoPremio.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmMemoPremio.resx">
       <DependentUpon>frmMemoPremio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMemoPremioObservaciones.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmMemoPremioObservaciones.resx">
       <DependentUpon>frmMemoPremioObservaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMensajeCorreo.resx">
@@ -2146,7 +2146,7 @@
     <EmbeddedResource Include="frmOtrosDescuentos.resx">
       <DependentUpon>frmOtrosDescuentos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPagarBoletas.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmPagarBoletas.resx">
       <DependentUpon>frmPagarBoletas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPagarFactura.resx">
@@ -2176,7 +2176,7 @@
     <EmbeddedResource Include="frmPLanesEPS.resx">
       <DependentUpon>frmPLanesEPS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPracticasPreProfesionales.resx">
+    <EmbeddedResource Include="ModuloRRHH\FrmPracticasPreProfesionales.resx">
       <DependentUpon>FrmPracticasPreProfesionales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmpresupuesto.resx">
@@ -2314,7 +2314,7 @@
     <EmbeddedResource Include="frmVerPdf.resx">
       <DependentUpon>frmVerPdf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmvinculacionfamiliar.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmvinculacionfamiliar.resx">
       <DependentUpon>frmvinculacionfamiliar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmimpuestoRenta.resx">
@@ -2380,10 +2380,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptEntrevistaSalida.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmConstanciaTrabajo.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmConstanciaTrabajo.resx">
       <DependentUpon>frmConstanciaTrabajo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEvaludacionPracticas.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmEvaludacionPracticas.resx">
       <DependentUpon>frmEvaludacionPracticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptConstanciaTrabajo.rpt">
@@ -2403,52 +2403,52 @@
     <EmbeddedResource Include="ModuloAlmacen\frmAprobarCotizacion.resx">
       <DependentUpon>frmAprobarCotizacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBoletaVacaciones.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmBoletaVacaciones.resx">
       <DependentUpon>frmBoletaVacaciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCompraVacaciones.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmCompraVacaciones.resx">
       <DependentUpon>frmCompraVacaciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmContrato.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmContrato.resx">
       <DependentUpon>frmContrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloAlmacen\frmCotizacionModificar.resx">
       <DependentUpon>frmCotizacionModificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCTS.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmCTS.resx">
       <DependentUpon>frmCTS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDesvinculacion.resx">
       <DependentUpon>frmDesvinculacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEmpleado.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmEmpleado.resx">
       <DependentUpon>frmEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEmpleadoCTS.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmEmpleadoCTS.resx">
       <DependentUpon>frmEmpleadoCTS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEmpleadoPagoHaberes.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmEmpleadoPagoHaberes.resx">
       <DependentUpon>frmEmpleadoPagoHaberes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEmpleadoPensionSeguro.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmEmpleadoPensionSeguro.resx">
       <DependentUpon>frmEmpleadoPensionSeguro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEmpleadoRequerimiento.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmEmpleadoRequerimiento.resx">
       <DependentUpon>frmEmpleadoRequerimiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEmpleadosFamiliaresModificar.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmEmpleadosFamiliaresModificar.resx">
       <DependentUpon>frmEmpleadosFamiliaresModificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFamiliares.aa.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmFamiliares.aa.resx">
       <DependentUpon>frmFamiliares.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFamiliares.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmFamiliares.resx">
       <DependentUpon>frmFamiliares.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLiquidacion.resx">
       <DependentUpon>frmLiquidacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListarEmpleados.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmListarEmpleados.resx">
       <DependentUpon>frmListarEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
@@ -2475,22 +2475,22 @@
     <EmbeddedResource Include="ModuloAlmacen\frmOrdenPedido.resx">
       <DependentUpon>frmOrdenPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPostulante.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmPostulante.resx">
       <DependentUpon>frmPostulante.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPostulanteModificar.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmPostulanteModificar.resx">
       <DependentUpon>frmPostulanteModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSectorEmpresarial.resx">
       <DependentUpon>frmSectorEmpresarial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSolicitudEmpleado.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmSolicitudEmpleado.resx">
       <DependentUpon>frmSolicitudEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSolicitudEmpleadoModificar.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmSolicitudEmpleadoModificar.resx">
       <DependentUpon>frmSolicitudEmpleadoModificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVacaciones.resx">
+    <EmbeddedResource Include="ModuloRRHH\frmVacaciones.resx">
       <DependentUpon>frmVacaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
