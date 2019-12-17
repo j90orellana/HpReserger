@@ -391,9 +391,9 @@ namespace HPReserger
                     string valor = Carpeta + @"\";
                     if (chkCarpetas.Checked)
                     {
-                        valor = Carpeta + @"\" + EmpresaValor.Replace('.', ' ') + @"\";
+                        valor = Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor) + @"\";
                         if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
-                            Directory.CreateDirectory(Carpeta + @"\" + EmpresaValor.Replace('.', ' '));
+                            Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                     }
                     if (item.ToString() != "TODAS")
                     {
@@ -448,7 +448,8 @@ namespace HPReserger
                                     //5          
                                     campo[c++] = fila["Cod_Asiento_Contable"].ToString();//cod operacion istitucional
                                     campo[c++] = "";//centro costo
-                                    campo[c++] = fila["moneda"].ToString() == "SOL" ? "PEN" : fila["moneda"].ToString();
+                                                    // campo[c++] = fila["moneda"].ToString() == "SOL" ? "PEN" : fila["moneda"].ToString();
+                                    campo[c++] = "PEN";
                                     campo[c++] = "";//tipo de documento de identidad del emisor
                                     campo[c++] = fila["Num_Doc"].ToString();
                                     //10

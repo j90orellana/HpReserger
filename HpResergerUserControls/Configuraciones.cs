@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,6 +58,16 @@ namespace HpResergerUserControls
         public static string DefectoSunatString(string cadena)
         {
             return cadena == "" ? "-" : cadena;
+        }
+        public static string ValidarRutaValida(string cadena)
+        {
+            string result = "";
+            foreach (var item in cadena)
+            {
+                if (!Path.GetInvalidPathChars().Contains(item))
+                    result += item;
+            }
+            return result;
         }
         public static string AlfaNumericoSunat(string cadena)
         {
