@@ -2139,6 +2139,12 @@ namespace HPResergerCapaDatos
             object[] valores = { RUC };
             return bd.DatarowFromProcedure("usp_Get_Proveedor", parametros, valores, null);
         }
+        public DataRow BuscarRucEmpresa(string @empresa)
+        {
+            string[] parametros = { "@empresa" };
+            object[] valores = { empresa};
+            return bd.DatarowFromProcedure("usp_BuscarRucEmpresa", parametros, valores, null);
+        }
         public DataTable BusquedaProveedorClienteEmpleado(int tipoid, string numdoc)
         {
             string[] parametros = { "@tipoid", "@numdoc" };

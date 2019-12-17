@@ -119,10 +119,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.flujoDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mayorPorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mayorPorCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteAnalíticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -272,6 +269,12 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
+            this.mayorPorCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1091,10 +1094,7 @@
             this.toolStripMenuItem1,
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1,
             this.flujoDeCajaToolStripMenuItem,
-            this.reToolStripMenuItem,
-            this.formato141RegistroDeVentasToolStripMenuItem,
             this.mayorPorToolStripMenuItem,
-            this.mayorPorCuentasToolStripMenuItem,
             this.toolStripSeparator15,
             this.toolStripMenuItem6,
             this.reporteAnalíticoToolStripMenuItem,
@@ -1112,7 +1112,7 @@
             // 
             this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(241, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(225, 22);
             this.toolStripMenuItem1.Tag = "20601";
             this.toolStripMenuItem1.Text = "Estado de Situación Financiera";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.balanceGeneralToolStripMenuItem_Click);
@@ -1121,7 +1121,7 @@
             // 
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("estadoDeGanaciasYPerdidasToolStripMenuItem1.Image")));
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Name = "estadoDeGanaciasYPerdidasToolStripMenuItem1";
-            this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Size = new System.Drawing.Size(241, 22);
+            this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Size = new System.Drawing.Size(225, 22);
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Tag = "20602";
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Text = "Estado De Resultado Integral";
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Click += new System.EventHandler(this.estadoDeGanaciasYPerdidasToolStripMenuItem_Click);
@@ -1130,51 +1130,29 @@
             // 
             this.flujoDeCajaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("flujoDeCajaToolStripMenuItem.Image")));
             this.flujoDeCajaToolStripMenuItem.Name = "flujoDeCajaToolStripMenuItem";
-            this.flujoDeCajaToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.flujoDeCajaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.flujoDeCajaToolStripMenuItem.Tag = "20603";
             this.flujoDeCajaToolStripMenuItem.Text = "Flujo de Caja";
             this.flujoDeCajaToolStripMenuItem.Click += new System.EventHandler(this.flujoDeCajaToolStripMenuItem_Click);
             // 
-            // reToolStripMenuItem
-            // 
-            this.reToolStripMenuItem.Name = "reToolStripMenuItem";
-            this.reToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.reToolStripMenuItem.Text = "Formato 8.1: Registro De Compras";
-            this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
-            // 
-            // formato141RegistroDeVentasToolStripMenuItem
-            // 
-            this.formato141RegistroDeVentasToolStripMenuItem.Name = "formato141RegistroDeVentasToolStripMenuItem";
-            this.formato141RegistroDeVentasToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.formato141RegistroDeVentasToolStripMenuItem.Text = "Formato 14.1: Registro de Ventas";
-            this.formato141RegistroDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formato141RegistroDeVentasToolStripMenuItem_Click);
-            // 
             // mayorPorToolStripMenuItem
             // 
             this.mayorPorToolStripMenuItem.Name = "mayorPorToolStripMenuItem";
-            this.mayorPorToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.mayorPorToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.mayorPorToolStripMenuItem.Text = "Mayor de Cuentas por Empresa";
             this.mayorPorToolStripMenuItem.Visible = false;
             this.mayorPorToolStripMenuItem.Click += new System.EventHandler(this.mayorPorToolStripMenuItem_Click);
             // 
-            // mayorPorCuentasToolStripMenuItem
-            // 
-            this.mayorPorCuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mayorPorCuentasToolStripMenuItem.Image")));
-            this.mayorPorCuentasToolStripMenuItem.Name = "mayorPorCuentasToolStripMenuItem";
-            this.mayorPorCuentasToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.mayorPorCuentasToolStripMenuItem.Text = "Mayor por Cuentas";
-            this.mayorPorCuentasToolStripMenuItem.Click += new System.EventHandler(this.mayorPorCuentasToolStripMenuItem_Click);
-            // 
             // toolStripSeparator15
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new System.Drawing.Size(238, 6);
+            this.toolStripSeparator15.Size = new System.Drawing.Size(222, 6);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem6.Image")));
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(241, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(225, 22);
             this.toolStripMenuItem6.Text = "Reporte Analítico 1";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.reporteAnalíticoToolStripMenuItem_Click);
             // 
@@ -1182,7 +1160,7 @@
             // 
             this.reporteAnalíticoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteAnalíticoToolStripMenuItem.Image")));
             this.reporteAnalíticoToolStripMenuItem.Name = "reporteAnalíticoToolStripMenuItem";
-            this.reporteAnalíticoToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.reporteAnalíticoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.reporteAnalíticoToolStripMenuItem.Text = "Reporte Analítico 2";
             this.reporteAnalíticoToolStripMenuItem.Click += new System.EventHandler(this.reporteAnalíticoToolStripMenuItem_Click_1);
             // 
@@ -1190,20 +1168,20 @@
             // 
             this.reporteSaldosContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteSaldosContablesToolStripMenuItem.Image")));
             this.reporteSaldosContablesToolStripMenuItem.Name = "reporteSaldosContablesToolStripMenuItem";
-            this.reporteSaldosContablesToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.reporteSaldosContablesToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.reporteSaldosContablesToolStripMenuItem.Text = "Reporte Saldos Contables";
             this.reporteSaldosContablesToolStripMenuItem.Click += new System.EventHandler(this.reporteSaldosContablesToolStripMenuItem_Click);
             // 
             // toolStripSeparator18
             // 
             this.toolStripSeparator18.Name = "toolStripSeparator18";
-            this.toolStripSeparator18.Size = new System.Drawing.Size(238, 6);
+            this.toolStripSeparator18.Size = new System.Drawing.Size(222, 6);
             // 
             // balanceDeComprobaciónToolStripMenuItem1
             // 
             this.balanceDeComprobaciónToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("balanceDeComprobaciónToolStripMenuItem1.Image")));
             this.balanceDeComprobaciónToolStripMenuItem1.Name = "balanceDeComprobaciónToolStripMenuItem1";
-            this.balanceDeComprobaciónToolStripMenuItem1.Size = new System.Drawing.Size(241, 22);
+            this.balanceDeComprobaciónToolStripMenuItem1.Size = new System.Drawing.Size(225, 22);
             this.balanceDeComprobaciónToolStripMenuItem1.Text = "Balance de Comprobación";
             this.balanceDeComprobaciónToolStripMenuItem1.Click += new System.EventHandler(this.balanceDeComprobaciónToolStripMenuItem1_Click);
             // 
@@ -1216,7 +1194,13 @@
             this.libroDiarioToolStripMenuItem1,
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem,
             this.libroDiarioToolStripMenuItem2,
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem});
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem,
+            this.toolStripSeparator20,
+            this.mayorPorCuentasToolStripMenuItem,
+            this.toolStripSeparator22,
+            this.reToolStripMenuItem,
+            this.toolStripSeparator21,
+            this.formato141RegistroDeVentasToolStripMenuItem});
             this.librosElectronicosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("librosElectronicosToolStripMenuItem.Image")));
             this.librosElectronicosToolStripMenuItem.Name = "librosElectronicosToolStripMenuItem";
             this.librosElectronicosToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
@@ -1224,6 +1208,7 @@
             // 
             // lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem
             // 
+            this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem.Image")));
             this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem.Name = "lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem";
             this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
             this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem.Text = "1.1 Libro Caja y Bancos - Detalle De Los Movimientos Del Efectivo";
@@ -1231,6 +1216,8 @@
             // 
             // libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem
             // 
+            this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Image" +
+        "")));
             this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Name = "libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem";
             this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
             this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem.Text = "1.2 Libro Caja y Bancos - Detalle De Los Movimientos De La Cuenta Corriente";
@@ -1240,30 +1227,40 @@
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
             this.toolStripSeparator19.Size = new System.Drawing.Size(440, 6);
+            this.toolStripSeparator19.Visible = false;
             // 
             // libroDiarioToolStripMenuItem1
             // 
+            this.libroDiarioToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioToolStripMenuItem1.Image")));
             this.libroDiarioToolStripMenuItem1.Name = "libroDiarioToolStripMenuItem1";
             this.libroDiarioToolStripMenuItem1.Size = new System.Drawing.Size(443, 22);
             this.libroDiarioToolStripMenuItem1.Text = "5.1 Libro Diario";
+            this.libroDiarioToolStripMenuItem1.Visible = false;
             // 
             // libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem
             // 
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Image")));
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Name = "libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem";
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.3 Libro Diario - Detalle Del Plan Contable Utilizado";
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Visible = false;
             // 
             // libroDiarioToolStripMenuItem2
             // 
+            this.libroDiarioToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioToolStripMenuItem2.Image")));
             this.libroDiarioToolStripMenuItem2.Name = "libroDiarioToolStripMenuItem2";
             this.libroDiarioToolStripMenuItem2.Size = new System.Drawing.Size(443, 22);
             this.libroDiarioToolStripMenuItem2.Text = "5.2 Libro Diario De Formato Simplificado";
+            this.libroDiarioToolStripMenuItem2.Visible = false;
             // 
             // libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem
             // 
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem." +
+        "Image")));
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Name = "libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem";
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.4 Libro Diario De Formato Simplificado - Detalle Del Plan Contable Utilizado";
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Visible = false;
             // 
             // toolStripSeparator14
             // 
@@ -2545,6 +2542,45 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // reToolStripMenuItem
+            // 
+            this.reToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reToolStripMenuItem.Image")));
+            this.reToolStripMenuItem.Name = "reToolStripMenuItem";
+            this.reToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
+            this.reToolStripMenuItem.Text = "8.1 Registro De Compras";
+            this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            this.toolStripSeparator20.Size = new System.Drawing.Size(440, 6);
+            // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(440, 6);
+            // 
+            // formato141RegistroDeVentasToolStripMenuItem
+            // 
+            this.formato141RegistroDeVentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("formato141RegistroDeVentasToolStripMenuItem.Image")));
+            this.formato141RegistroDeVentasToolStripMenuItem.Name = "formato141RegistroDeVentasToolStripMenuItem";
+            this.formato141RegistroDeVentasToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
+            this.formato141RegistroDeVentasToolStripMenuItem.Text = "14.1 Registro De Ventas E Ingresos";
+            this.formato141RegistroDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formato141RegistroDeVentasToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            this.toolStripSeparator22.Size = new System.Drawing.Size(440, 6);
+            // 
+            // mayorPorCuentasToolStripMenuItem
+            // 
+            this.mayorPorCuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mayorPorCuentasToolStripMenuItem.Image")));
+            this.mayorPorCuentasToolStripMenuItem.Name = "mayorPorCuentasToolStripMenuItem";
+            this.mayorPorCuentasToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
+            this.mayorPorCuentasToolStripMenuItem.Text = "6.1 Libro Mayor";
+            this.mayorPorCuentasToolStripMenuItem.Click += new System.EventHandler(this.mayorPorCuentasToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2784,10 +2820,7 @@
         private System.Windows.Forms.ToolStripMenuItem detraccionesVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
-        private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem formato141RegistroDeVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mayorPorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mayorPorCuentasToolStripMenuItem;
         private System.Windows.Forms.Label lblpuntero;
         private HpResergerUserControls.FondoColorOre fondoColorOre2;
         private System.Windows.Forms.ToolStripMenuItem compensacionesToolStripMenuItem;
@@ -2827,5 +2860,11 @@
         private System.Windows.Forms.ToolStripMenuItem libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroDiarioToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
+        private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripMenuItem formato141RegistroDeVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+        private System.Windows.Forms.ToolStripMenuItem mayorPorCuentasToolStripMenuItem;
     }
 }

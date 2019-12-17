@@ -798,6 +798,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.RUCProveedor(RUC);
         }
+        public DataRow BuscarRucEmpresa(string @empresa)
+        {
+            return cdOrdenPedido.BuscarRucEmpresa(empresa);
+        }
         public DataTable BusquedaProveedorClienteEmpleado(int tipoid, string numdoc)
         {
             return cdOrdenPedido.BusquedaProveedorClienteEmpleado(tipoid, numdoc);

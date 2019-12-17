@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -131,7 +132,6 @@ namespace HPReserger
             BuscarEmpresa = "(";
             foreach (object item in chklist.CheckedItems)
             {
-
                 if (item.ToString() != "TODAS")
                 {
                     DataView dv = TablaEmpresa.DefaultView;
@@ -152,19 +152,26 @@ namespace HPReserger
             /////ASIGNACION DE LOS DATOS
             //Stopwatch stopwatch = new Stopwatch();
             //stopwatch.Start();
-            dtgconten.DataSource = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+            TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+            dtgconten.DataSource = TDatos;
             //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();
             //dtgconten.AutoGenerateColumns = true;            
             //dtgconten.DataMember = "cuenta_contable";
             Cursor = Cursors.Default;
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
+            Ordenado = false;
         }
+        DataTable TDatos;
         private void btncancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
         frmProcesando frmproce;
+        public void CerrarPanelTxt()
+        {
+            PanelTxt.Visible = false;
+        }
         private void btnexcel_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
@@ -268,6 +275,11 @@ namespace HPReserger
         }
         frmlistarcuentas frmlistacuenta;
         int opcionCuentas = 0;
+        public bool IgualAÑo { get; private set; }
+        public bool IgualMes { get; private set; }
+        public bool IgualEmpresa { get; private set; }
+        public string nameEmpresa { get; private set; }
+        public bool Ordenado = true;
         private void btnbusCuenta_Click(object sender, EventArgs e)
         {
             if (frmlistacuenta == null)
@@ -294,6 +306,195 @@ namespace HPReserger
                 opcionCuentas = frmlistacuenta.tipobusca;
             }
             frmlistacuenta = null;
+        }
+        private void btnGenerarTXT_Click(object sender, EventArgs e)
+        {
+            PanelTxt.BringToFront();
+            IgualAÑo = false;
+            IgualMes = false;
+            IgualEmpresa = false;
+            txtRucDeudor.Text = "RUC EMPRESA";
+            if (dtpfechaini.Value.Year == dtpfechafin.Value.Year)
+            {
+                txtaño.Text = dtpfechaini.Value.Year.ToString("0000");
+                IgualAÑo = true;
+            }
+            else txtaño.Text = "AÑO";
+            if (dtpfechaini.Value.Month == dtpfechafin.Value.Month)
+            {
+                txtmes.Text = dtpfechafin.Value.Month.ToString("00");
+                IgualMes = true;
+            }
+            else
+                txtmes.Text = "MES";
+            int ContadorEmpresas = 0;
+            foreach (object item in chklist.CheckedItems)
+            {
+                if (item.ToString() != "TODAS")
+                {
+                    ContadorEmpresas++;
+                    nameEmpresa = item.ToString();
+                    if (ContadorEmpresas > 1) { nameEmpresa = ""; break; }
+                }
+            }
+            if (ContadorEmpresas == 1)
+            {
+                IgualEmpresa = true;
+                txtRucDeudor.Text = CapaLogica.BuscarRucEmpresa(nameEmpresa)[0].ToString();
+            }
+            txtinformacion.Text = (dtgconten.RowCount > 0 ? 1 : 0).ToString();
+            PanelTxt.Visible = true;
+            PanelTxt.Focus();
+        }
+        private void PanelTxt_Leave(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
+        }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
+        }
+        private StreamWriter st;
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
+        private void btnTxt_Click(object sender, EventArgs e)
+        {
+            //Generamos el TXT
+            Cursor = Cursors.WaitCursor;
+            if (Ordenado)
+                btngenerar_Click(sender, e);
+            List<string> ListadoFecha = new List<string>();
+            if (dtgconten.RowCount == 0)
+            {
+                var Result = msgp("No hay Datos en la Grilla, Igual Desea Generar?");
+                if (Result != DialogResult.Yes)
+                {
+                    msg("Cancelado por el Usuario");
+                    return;
+                }
+            }
+            DateTime FechaInicial = dtpfechaini.Value;
+            while (FechaInicial < dtpfechafin.Value)
+            {
+                ListadoFecha.Add(FechaInicial.ToString("yyyyMM"));
+                FechaInicial = FechaInicial.AddMonths(1);
+            }
+            //Recorremos las empresas
+            //Avanza para Generar el TXT           
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                foreach (var item in chklist.CheckedItems)
+                {
+                    //EMPRESAS
+                    string Carpeta = folderBrowserDialog1.SelectedPath;
+                    string EmpresaValor = item.ToString().ToUpper();
+                    string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
+                    string valor = Carpeta + @"\";
+                    if (chkCarpetas.Checked)
+                    {
+                        valor = Carpeta + @"\" + EmpresaValor.Replace('.', ' ') + @"\";
+                        if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
+                            Directory.CreateDirectory(Carpeta + @"\" + EmpresaValor.Replace('.', ' '));
+                    }
+                    if (item.ToString() != "TODAS")
+                    {
+                        DataView dv = TDatos.DefaultView;
+                        dv.RowFilter = $"empresa like '{EmpresaValor}'";
+                        //POR PERIODOS
+                        foreach (string fechas in ListadoFecha)
+                        {
+                            DataView dvf = new DataView(dv.ToTable());
+                            dvf.RowFilter = $"periodo like '{fechas}'";
+                            DataTable TablaResult = dvf.ToTable();
+                            string añio = fechas.Substring(0, 4);
+                            string mes = fechas.Substring(4, 2);
+                            //Sí no hay datos
+                            if (TablaResult.Rows.Count == 0)
+                            {
+
+                                SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00060100001{0}11.txt";
+                                //grabamos
+                                string path = SaveFile.FileName;
+                                st = File.CreateText(path);
+                                st.Write("");
+                                st.Close();
+                            }
+                            //si hay datos
+                            else
+                            {
+                                string[] campo = new string[22];
+                                string cadenatxt = "";
+                                //int ValorPrueba = 0;
+                                int contador = 1;
+                                foreach (DataRow fila in TablaResult.Rows)
+                                {
+                                    int index = TablaResult.Rows.IndexOf(fila);
+                                    string cuentaAux = fila["Cuenta_Contable"].ToString();
+                                    string CuoAux = fila["Cod_Asiento_Contable"].ToString();
+                                    if (index > 0)
+                                    {
+                                        if (TablaResult.Rows[index - 1]["Cod_Asiento_Contable"].ToString() != CuoAux)
+                                        {
+                                            contador = 1;
+                                        }
+                                        else contador++;
+                                    }
+                                    //ValorPrueba = 0;
+                                    int c = 0;
+                                    //1
+                                    campo[c++] = $"{añio}{mes}00";
+                                    campo[c++] = fila["Cod_Asiento_Contable"].ToString();
+                                    campo[c++] = $"M{contador}";
+                                    campo[c++] = fila["Cuenta_Contable"].ToString();
+                                    //5          
+                                    campo[c++] = fila["Cod_Asiento_Contable"].ToString();//cod operacion istitucional
+                                    campo[c++] = "";//centro costo
+                                    campo[c++] = fila["moneda"].ToString() == "SOL" ? "PEN" : fila["moneda"].ToString();
+                                    campo[c++] = "";//tipo de documento de identidad del emisor
+                                    campo[c++] = fila["Num_Doc"].ToString();
+                                    //10
+                                    campo[c++] = ((int)fila["Id_Comprobante"]).ToString("00");
+                                    int[] tipos = { 1, 2, 3, 4, 6, 7, 8, 10, 22, 34, 35, 36, 46, 48, 56, 89 };
+                                    string SerieDoc = fila["Cod_Comprobante"].ToString();
+                                    if (tipos.Contains((int)fila["Id_Comprobante"]) && SerieDoc.Length != 4)
+                                    {
+                                        SerieDoc = "0000".Substring(SerieDoc.Length) + SerieDoc;
+                                    }
+                                    campo[c++] = Configuraciones.DefectoSunatString(SerieDoc);
+                                    campo[c++] = Configuraciones.DefectoSunatString(Configuraciones.AlfaNumericoSunat(fila["Num_Comprobante"].ToString()));
+                                    campo[c++] = ((DateTime)fila["FechaContable"]).ToString("dd/MM/yyyy");
+                                    campo[c++] = "";// ((DateTime)fila["FechaRegistro"]).ToString("dd/MM/yyyy");
+                                    //15
+                                    campo[c++] = ((DateTime)(fila["FechaEmision"].ToString() == "" ? fila["fechacontable"] : fila["fechaemision"])).ToString("dd/MM/yyyy");
+                                    campo[c++] = Configuraciones.DefectoSunatString(fila["glosa"].ToString());
+                                    campo[c++] = Configuraciones.DefectoSunatString(fila["glosa"].ToString());
+                                    campo[c++] = ((decimal)fila["Pen"]) >= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
+                                    campo[c++] = ((decimal)fila["Pen"]) <= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
+                                    //20
+                                    campo[c++] = "";
+                                    campo[c++] = "1";
+                                    //Uniendo por pipes
+                                    cadenatxt += string.Join("|", campo) + $"{Environment.NewLine}";
+                                    //Limpiamos el Campo
+                                    //campo = null;
+                                }
+                                //Formato 6.1
+                                SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00060100001{1}11.txt";
+                                string path = SaveFile.FileName;
+                                st = File.CreateText(path);
+                                st.Write(cadenatxt);
+                                st.Close();
+                            }
+                        }
+                    }
+                }
+            SaveFile.FileName = "";
+            PanelTxt.Visible = false;
+            msgOK("Generado TXT con Éxito");
+            Cursor = Cursors.Default;
+        }
+        private void dtgconten_Sorted(object sender, EventArgs e)
+        {
+            Ordenado = true;
         }
     }
 }

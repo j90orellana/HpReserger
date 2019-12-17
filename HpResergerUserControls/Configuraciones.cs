@@ -54,6 +54,10 @@ namespace HpResergerUserControls
         {
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cadena.ToLower());
         }
+        public static string DefectoSunatString(string cadena)
+        {
+            return cadena == "" ? "-" : cadena;
+        }
         public static string AlfaNumericoSunat(string cadena)
         {
             string resul = "";
