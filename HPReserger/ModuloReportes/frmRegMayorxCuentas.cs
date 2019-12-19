@@ -39,7 +39,6 @@ namespace HPReserger
             {
                 chklist.Items.Add(item["descripcion"].ToString(), true);
             }
-
         }
         DateTime FechaIni;
         DateTime FechaFin;
@@ -363,7 +362,6 @@ namespace HPReserger
             Cursor = Cursors.WaitCursor;
             if (Ordenado)
                 btngenerar_Click(sender, e);
-            List<string> ListadoFecha = new List<string>();
             if (dtgconten.RowCount == 0)
             {
                 var Result = msgp("No hay Datos en la Grilla, Igual Desea Generar?");
@@ -374,6 +372,7 @@ namespace HPReserger
                 }
             }
             DateTime FechaInicial = dtpfechaini.Value;
+            List<string> ListadoFecha = new List<string>();
             while (FechaInicial < dtpfechafin.Value)
             {
                 ListadoFecha.Add(FechaInicial.ToString("yyyyMM"));
@@ -385,109 +384,114 @@ namespace HPReserger
                 foreach (var item in chklist.CheckedItems)
                 {
                     //EMPRESAS
-                    string Carpeta = folderBrowserDialog1.SelectedPath;
-                    string EmpresaValor = item.ToString().ToUpper();
-                    string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
-                    string valor = Carpeta + @"\";
-                    if (chkCarpetas.Checked)
-                    {
-                        valor = Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor) + @"\";
-                        if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
-                            Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
-                    }
                     if (item.ToString() != "TODAS")
                     {
-                        DataView dv = TDatos.DefaultView;
-                        dv.RowFilter = $"empresa like '{EmpresaValor}'";
-                        //POR PERIODOS
-                        foreach (string fechas in ListadoFecha)
+                        string Carpeta = folderBrowserDialog1.SelectedPath;
+                        string EmpresaValor = item.ToString().ToUpper();
+                        string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
+                        string valor = Carpeta + @"\";
+                        if (chkCarpetas.Checked)
                         {
-                            DataView dvf = new DataView(dv.ToTable());
-                            dvf.RowFilter = $"periodo like '{fechas}'";
-                            DataTable TablaResult = dvf.ToTable();
-                            string añio = fechas.Substring(0, 4);
-                            string mes = fechas.Substring(4, 2);
-                            //Sí no hay datos
-                            if (TablaResult.Rows.Count == 0)
+                            valor = Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor) + @"\";
+                            if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
+                                Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
+                        }
+                        if (item.ToString() != "TODAS")
+                        {
+                            DataView dv = TDatos.Copy().AsDataView();
+                            dv.RowFilter = $"empresa like '{EmpresaValor}'";
+                            //POR PERIODOS
+                            foreach (string fechas in ListadoFecha)
                             {
-
-                                SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00060100001{0}11.txt";
-                                //grabamos
-                                string path = SaveFile.FileName;
-                                st = File.CreateText(path);
-                                st.Write("");
-                                st.Close();
-                            }
-                            //si hay datos
-                            else
-                            {
-                                string[] campo = new string[22];
-                                string cadenatxt = "";
-                                //int ValorPrueba = 0;
-                                int contador = 1;
-                                foreach (DataRow fila in TablaResult.Rows)
+                                DataView dvf = new DataView(dv.ToTable());
+                                dvf.RowFilter = $"periodo like '{fechas}'";
+                                DataTable TablaResult = dvf.ToTable();
+                                string añio = fechas.Substring(0, 4);
+                                string mes = fechas.Substring(4, 2);
+                                //Sí no hay datos
+                                if (TablaResult.Rows.Count == 0)
                                 {
-                                    int index = TablaResult.Rows.IndexOf(fila);
-                                    string cuentaAux = fila["Cuenta_Contable"].ToString();
-                                    string CuoAux = fila["Cod_Asiento_Contable"].ToString();
-                                    if (index > 0)
-                                    {
-                                        if (TablaResult.Rows[index - 1]["Cod_Asiento_Contable"].ToString() != CuoAux)
-                                        {
-                                            contador = 1;
-                                        }
-                                        else contador++;
-                                    }
-                                    //ValorPrueba = 0;
-                                    int c = 0;
-                                    //1
-                                    campo[c++] = $"{añio}{mes}00";
-                                    campo[c++] = fila["Cod_Asiento_Contable"].ToString();
-                                    campo[c++] = $"M{contador}";
-                                    campo[c++] = fila["Cuenta_Contable"].ToString();
-                                    //5          
-                                    campo[c++] = fila["Cod_Asiento_Contable"].ToString();//cod operacion istitucional
-                                    campo[c++] = "";//centro costo
-                                                    // campo[c++] = fila["moneda"].ToString() == "SOL" ? "PEN" : fila["moneda"].ToString();
-                                    campo[c++] = "PEN";
-                                    campo[c++] = "";//tipo de documento de identidad del emisor
-                                    campo[c++] = fila["Num_Doc"].ToString();
-                                    //10
-                                    campo[c++] = ((int)fila["Id_Comprobante"]).ToString("00");
-                                    int[] tipos = { 1, 2, 3, 4, 6, 7, 8, 10, 22, 34, 35, 36, 46, 48, 56, 89 };
-                                    string SerieDoc = fila["Cod_Comprobante"].ToString();
-                                    if (tipos.Contains((int)fila["Id_Comprobante"]) && SerieDoc.Length != 4)
-                                    {
-                                        SerieDoc = "0000".Substring(SerieDoc.Length) + SerieDoc;
-                                    }
-                                    campo[c++] = Configuraciones.DefectoSunatString(SerieDoc);
-                                    campo[c++] = Configuraciones.DefectoSunatString(Configuraciones.AlfaNumericoSunat(fila["Num_Comprobante"].ToString()));
-                                    campo[c++] = ((DateTime)fila["FechaContable"]).ToString("dd/MM/yyyy");
-                                    campo[c++] = "";// ((DateTime)fila["FechaRegistro"]).ToString("dd/MM/yyyy");
-                                    //15
-                                    campo[c++] = ((DateTime)(fila["FechaEmision"].ToString() == "" ? fila["fechacontable"] : fila["fechaemision"])).ToString("dd/MM/yyyy");
-                                    campo[c++] = Configuraciones.DefectoSunatString(fila["glosa"].ToString());
-                                    campo[c++] = Configuraciones.DefectoSunatString(fila["glosa"].ToString());
-                                    campo[c++] = ((decimal)fila["Pen"]) >= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
-                                    campo[c++] = ((decimal)fila["Pen"]) <= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
-                                    //20
-                                    campo[c++] = "";
-                                    campo[c++] = "1";
-                                    //Uniendo por pipes
-                                    cadenatxt += string.Join("|", campo) + $"{Environment.NewLine}";
-                                    //Limpiamos el Campo
-                                    //campo = null;
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00060100001{0}11.txt";
+                                    //grabamos
+                                    string path = SaveFile.FileName;
+                                    st = File.CreateText(path);
+                                    st.Write("");
+                                    st.Close();
                                 }
-                                //Formato 6.1
-                                SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00060100001{1}11.txt";
-                                string path = SaveFile.FileName;
-                                st = File.CreateText(path);
-                                st.Write(cadenatxt);
-                                st.Close();
+                                //si hay datos
+                                else
+                                {
+                                    string[] campo = new string[22];
+                                    string cadenatxt = "";
+                                    //int ValorPrueba = 0;
+                                    int contador = 1;
+                                    foreach (DataRow fila in TablaResult.Rows)
+                                    {
+                                        int index = TablaResult.Rows.IndexOf(fila);
+                                        string cuentaAux = fila["Cuenta_Contable"].ToString();
+                                        string CuoAux = fila["Cod_Asiento_Contable"].ToString();
+                                        if (index > 0)
+                                        {
+                                            if (TablaResult.Rows[index - 1]["Cod_Asiento_Contable"].ToString() != CuoAux)
+                                            {
+                                                contador = 1;
+                                            }
+                                            else contador++;
+                                        }
+                                        //ValorPrueba = 0;
+                                        int c = 0;
+                                        //1
+                                        campo[c++] = $"{añio}{mes}00";
+                                        campo[c++] = fila["Cod_Asiento_Contable"].ToString();
+                                        campo[c++] = $"M{contador}";
+                                        campo[c++] = fila["Cuenta_Contable"].ToString();
+                                        //5          
+                                        campo[c++] = fila["Cod_Asiento_Contable"].ToString();//cod operacion istitucional
+                                        campo[c++] = "";//centro costo
+                                                        // campo[c++] = fila["moneda"].ToString() == "SOL" ? "PEN" : fila["moneda"].ToString();
+                                        campo[c++] = "PEN";
+                                        campo[c++] = "";//tipo de documento de identidad del emisor
+                                        campo[c++] = fila["Num_Doc"].ToString();
+                                        //10
+                                        campo[c++] = ((int)fila["Id_Comprobante"]).ToString("00");
+                                        int[] tipos = { 1, 2, 3, 4, 6, 7, 8, 10, 22, 34, 35, 36, 46, 48, 56, 89 };
+                                        string SerieDoc = fila["Cod_Comprobante"].ToString();
+                                        if (tipos.Contains((int)fila["Id_Comprobante"]) && SerieDoc.Length != 4)
+                                        {
+                                            if (SerieDoc.Length > 4)
+                                                SerieDoc = SerieDoc.Substring(0, 4);
+                                            SerieDoc = "0000".Substring(SerieDoc.Length) + SerieDoc;
+                                        }
+                                        campo[c++] = Configuraciones.DefectoSunatString(SerieDoc);
+                                        campo[c++] = Configuraciones.DefectoSunatString(Configuraciones.AlfaNumericoSunat(fila["Num_Comprobante"].ToString()));
+                                        campo[c++] = ((DateTime)fila["FechaContable"]).ToString("dd/MM/yyyy");
+                                        campo[c++] = "";// ((DateTime)fila["FechaRegistro"]).ToString("dd/MM/yyyy");
+                                                        //15
+                                        campo[c++] = ((DateTime)(fila["FechaEmision"].ToString() == "" ? fila["fechacontable"] : fila["fechaemision"])).ToString("dd/MM/yyyy");
+                                        campo[c++] = Configuraciones.DefectoSunatString(fila["glosa"].ToString());
+                                        campo[c++] = Configuraciones.DefectoSunatString(fila["glosa"].ToString());
+                                        campo[c++] = ((decimal)fila["Pen"]) >= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
+                                        campo[c++] = ((decimal)fila["Pen"]) <= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
+                                        //20
+                                        campo[c++] = "";
+                                        campo[c++] = "1";
+                                        //Uniendo por pipes
+                                        cadenatxt += string.Join("|", campo) + $"{Environment.NewLine}";
+                                        //Limpiamos el Campo
+                                        //campo = null;
+                                    }
+                                    //Formato 6.1
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00060100001{1}11.txt";
+                                    string path = SaveFile.FileName;
+                                    st = File.CreateText(path);
+                                    st.Write(cadenatxt);
+                                    st.Close();
+                                }
                             }
                         }
                     }
                 }
+            //dtgconten.DataSource = TDatos;
             SaveFile.FileName = "";
             PanelTxt.Visible = false;
             msgOK("Generado TXT con Éxito");

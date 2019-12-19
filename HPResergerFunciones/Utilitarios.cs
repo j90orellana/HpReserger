@@ -847,7 +847,7 @@ namespace HPResergerFunciones
         /// <param name="OrdendelasColumnas">No se Usa</param>
         /// <param name="FilasNegritas">No se Usa</param>
         /// <param name="AutoAjustarColumnas">No se Usa</param>
-        /// <param name="ScriptMacro">Codigo para ejecutar al momento de abrir el programa</param>
+        /// <param name="ScriptMacro">Codigo para ejecutar al momento de abrir el programa</param>      
         public static void ExportarAExcelOrdenandoColumnas(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
             , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro)
         {
@@ -1028,6 +1028,186 @@ namespace HPResergerFunciones
             //    //aplicacion.Quit();
             //}
         }
+        public static void ExportarAExcelOrdenandoColumnasCreado(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile, string nombrehoja, int index, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
+                   , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro)
+        {
+            //Principal para generar exportacion a Excel
+            FileInfo FileName = new FileInfo(NameFile);
+            ExcelPackage Excel = new ExcelPackage(FileName);
+            Excel.Workbook.Worksheets.Add(nombrehoja);
+            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index];
+            //Hoja_Trabajo.Name = nombrehoja; 
+            ///Ponemos Nombre a las Celdas      
+            foreach (RangoCelda Nombres in NombresCeldas)
+            {
+                Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.Nombre;
+                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
+                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.Font.Bold = Nombres._Negrita;
+                if (Nombres.TamañoFuente != 0)
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Size = Nombres.TamañoFuente;
+                if (!Nombres._Centrar)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila /*+ ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
+                }
+                else
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Merge = true;
+                if (Nombres.Fuente != null)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Name = Nombres.Fuente.Name;
+                }
+                if (Nombres.Alineado != null)
+                {
+                    if (Alineado.izquierda == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    }
+                    if (Alineado.derecha == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                    }
+                    if (Alineado.centro == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    }
+                }
+                //backcolor
+                //    if (Nombres.BackColor != null)
+                //                    Hoja_Trabajo.Cells[Nombres.fila + Nombres.columna].Style.Fill.BackgroundColor.SetColor(Color. Nombres.BackColor);
+                // if (Nombres.ForeColor != null)
+                // Hoja_Trabajo.Cells[Nombres.fila + Nombres.columna].Font.Color = Nombres.ForeColor;
+            }
+            //Recorremos el DataGridView rellenando la hoja de trabajo
+            int Conta = grd.Rows.Count;
+            //int i = 0;
+            Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);
+            string Extesion = "x";
+            if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
+            //Hoja_Trabajo
+            FileInfo file = new FileInfo(NameFile);//Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{""}" + $".xls{Extesion}");
+            int ConCol = grd.Columns.Count;
+            for (int i = 0; i < grd.Rows.Count + 1; i++)
+            {
+                if (i == 0)
+                {
+                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaCabecera.ColorRelleno);
+                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.Color.SetColor(CeldaCabecera.ColorFuente);
+                    if (CeldaCabecera.FuenteRelleno != null)
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
+                }
+                else if ((i % 2) == 0)
+                {
+                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
+                    if (CeldaDefecto.FuenteRelleno != null)
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                }
+                else
+                {
+                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(Color.White);
+                    if (CeldaDefecto.FuenteRelleno != null)
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                }
+            }
+            int CountRows = grd.Rows.Count + PosInicialGrilla;
+            foreach (DataColumn item in grd.Columns)
+            {
+                if (item.DataType == typeof(decimal))
+                    Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = "_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * \" - \"??_ ;_ @_ ";//Formato Contabilidad
+                if (item.DataType == typeof(DateTime))
+                    Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            }
+            if (!string.IsNullOrWhiteSpace(ScriptMacro))
+            {
+                Excel.Workbook.CreateVBAProject();
+                var worksheet = Excel.Workbook.Worksheets.Add("HojaDeMacros");
+                worksheet.CodeModule.Code = ScriptMacro.ToString();
+                worksheet.CodeModule.Name = "HojaDeMacros";
+                Hoja_Trabajo.Workbook.CodeModule.Code = ScriptMacro;
+                Hoja_Trabajo.Workbook.Worksheets["HojaDeMacros"].Hidden = eWorkSheetHidden.Hidden;
+            }
+            ///Ajustamos al Texto
+            ///_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * "-"??_ ;_ @_ 
+            string Pos = $"{PosInicialGrilla}:{PosInicialGrilla}";
+            Hoja_Trabajo.Cells[Pos].Style.WrapText = true;
+            Hoja_Trabajo.Cells[Pos].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+            Hoja_Trabajo.Cells[Pos].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+            //AutoAjustarColumnas
+            foreach (int i in AutoAjustarColumnas)
+            {
+                Hoja_Trabajo.Column(i).AutoFit(7);
+
+            }
+            //Fin Ajuste de Texto
+            //if (!EstaArchivoAbierto(FileName.ToString()))
+            //{
+            //    Excel.SaveAs(FileName);
+            //    if (Type.GetTypeFromProgID("Excel.Application") != null ? true : false)
+            //    {
+            //        Process.Start(FileName.ToString());
+            //    }
+            //    else msg("Excel No Instalado");
+            //}
+            //foreach (DataGridViewRow item in grd.Rows)
+            //{
+            //    nume = 0;
+            //    foreach (int j in OrdendelasColumnas)
+            //    {
+            //        if (j != 0)
+            //        {
+            //            hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Value2 = item.Cells[j - 1].Value;
+            //            hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(item.Cells[j - 1].InheritedStyle.BackColor.ToArgb());
+            //            hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j - 1].Style.ForeColor;
+            //        }
+            //        else
+            //        {
+            //            hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(item.Cells[0].InheritedStyle.BackColor.ToArgb());
+            //            hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[0].Style.ForeColor;
+            //        }
+            //        nume++;
+            //    }
+            //    i++;
+            //}
+            //numer = 0;
+            //foreach (int contador in OrdendelasColumnas)
+            //{
+            //    if (contador != 0)
+            //    {
+            //        hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
+            //        hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
+            //        hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
+            //        hoja_trabajo.Columns[numer + 1].AutoFit();
+            //        if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(decimal))
+            //            hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
+            //        if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(DateTime))
+            //            hoja_trabajo.Columns[numer + 1].NumberFormat = "dd/mm/aaaa";
+            //    }
+            //    else
+            //    {
+            //        hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
+            //        hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
+            //    }
+            //    numer++;
+            //}
+            //foreach (int fila in FilasNegritas)
+            ////{
+            ////   Hoja_Trabajo.Rows[fila + PosInicialGrilla].Font.Bold = true;
+            //}
+            //foreach (int fila in AutoAjustarColumnas)
+            //{
+            ////    Hoja_Trabajo.Columns[fila].Font.Bold = true;
+            //}
+            //if (aplicacion != null)
+            //    aplicacion.Visible = true;
+            if (!string.IsNullOrWhiteSpace(NameFile))
+            {
+                Excel.SaveAs(FileName);
+            }
+        }
+
         public static Boolean EstaArchivoAbierto(string filePath)
         {
             Boolean rtnvalue = false;

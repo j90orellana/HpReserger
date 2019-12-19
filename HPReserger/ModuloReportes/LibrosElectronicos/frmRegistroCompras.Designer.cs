@@ -53,6 +53,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.xcuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,12 +86,7 @@
             this.xNumDocRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
-            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
-            this.txtruc = new HpResergerUserControls.TextBoxPer();
-            this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.cboperiodode = new HpResergerUserControls.ComboMesAño();
             this.btngenerar = new System.Windows.Forms.Button();
             this.lblmensaje = new System.Windows.Forms.Label();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -132,8 +129,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnTxt = new HpResergerUserControls.ButtonPer();
             this.BtnCerrar = new HpResergerUserControls.ButtonPer();
+            this.chkCarpetas = new System.Windows.Forms.CheckBox();
             this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.cboperiodohasta = new HpResergerUserControls.ComboMesAño();
+            this.label20 = new System.Windows.Forms.Label();
+            this.chklist = new System.Windows.Forms.CheckedListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
@@ -158,7 +162,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -167,6 +171,8 @@
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xcuo,
+            this.xEmpresa,
+            this.xFechaContable,
             this.xix,
             this.xFechaEmision,
             this.xFechaVencimiento,
@@ -198,7 +204,7 @@
             this.xNumDocRef});
             dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
@@ -207,13 +213,14 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(15, 76);
+            this.dtgconten.Location = new System.Drawing.Point(15, 101);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1198, 446);
-            this.dtgconten.TabIndex = 0;
+            this.dtgconten.Size = new System.Drawing.Size(1198, 421);
+            this.dtgconten.TabIndex = 10;
+            this.dtgconten.Sorted += new System.EventHandler(this.dtgconten_Sorted);
             this.dtgconten.Click += new System.EventHandler(this.dtgconten_Click);
             // 
             // xcuo
@@ -222,7 +229,23 @@
             this.xcuo.DataPropertyName = "cuo";
             this.xcuo.HeaderText = "CUO";
             this.xcuo.Name = "xcuo";
-            this.xcuo.Width = 53;
+            this.xcuo.Width = 55;
+            // 
+            // xEmpresa
+            // 
+            this.xEmpresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xEmpresa.DataPropertyName = "Empresa";
+            this.xEmpresa.HeaderText = "Empresa";
+            this.xEmpresa.MinimumWidth = 100;
+            this.xEmpresa.Name = "xEmpresa";
+            // 
+            // xFechaContable
+            // 
+            this.xFechaContable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xFechaContable.DataPropertyName = "FechaContable";
+            this.xFechaContable.HeaderText = "FechaContable";
+            this.xFechaContable.Name = "xFechaContable";
+            this.xFechaContable.Width = 108;
             // 
             // xix
             // 
@@ -420,7 +443,7 @@
             this.xisc.DefaultCellStyle = dataGridViewCellStyle16;
             this.xisc.HeaderText = "ISC";
             this.xisc.Name = "xisc";
-            this.xisc.Width = 48;
+            this.xisc.Width = 47;
             // 
             // xOtrosTributos
             // 
@@ -442,7 +465,7 @@
             this.xImporteTotal.DefaultCellStyle = dataGridViewCellStyle18;
             this.xImporteTotal.HeaderText = "Importe Total";
             this.xImporteTotal.Name = "xImporteTotal";
-            this.xImporteTotal.Width = 88;
+            this.xImporteTotal.Width = 90;
             // 
             // xDocNoDomiciliado
             // 
@@ -477,7 +500,7 @@
             this.xMoneda.DataPropertyName = "Moneda";
             this.xMoneda.HeaderText = "Moneda";
             this.xMoneda.Name = "xMoneda";
-            this.xMoneda.Width = 69;
+            this.xMoneda.Width = 74;
             // 
             // xTC
             // 
@@ -488,7 +511,7 @@
             this.xTC.DefaultCellStyle = dataGridViewCellStyle20;
             this.xTC.HeaderText = "Tipo De Cambio";
             this.xTC.Name = "xTC";
-            this.xTC.Width = 96;
+            this.xTC.Width = 103;
             // 
             // xFechaDocRef
             // 
@@ -539,104 +562,38 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.label2.Location = new System.Drawing.Point(12, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "PERIODO:\r\n";
+            this.label2.Text = "PERIODO:";
             // 
-            // label3
+            // cboperiodode
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(756, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "RUC:\r\n";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(12, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(313, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:\r\n";
-            // 
-            // separadorOre1
-            // 
-            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 76);
-            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
-            this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(1241, 2);
-            this.separadorOre1.TabIndex = 2;
-            // 
-            // comboMesAño1
-            // 
-            this.comboMesAño1.AutoSize = true;
-            this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 10, 16, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 10, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 10, 1, 0, 0, 0, 0);
-            this.comboMesAño1.Location = new System.Drawing.Point(70, 29);
-            this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(218, 27);
-            this.comboMesAño1.TabIndex = 3;
-            this.comboMesAño1.VerAño = true;
-            this.comboMesAño1.VerMes = true;
-            this.comboMesAño1.Load += new System.EventHandler(this.comboMesAño1_Load);
-            this.comboMesAño1.Click += new System.EventHandler(this.comboMesAño1_Click);
-            this.comboMesAño1.Enter += new System.EventHandler(this.comboMesAño1_Enter);
-            // 
-            // txtruc
-            // 
-            this.txtruc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtruc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtruc.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtruc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtruc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtruc.ForeColor = System.Drawing.Color.Black;
-            this.txtruc.Format = null;
-            this.txtruc.Location = new System.Drawing.Point(788, 52);
-            this.txtruc.MaxLength = 12;
-            this.txtruc.Name = "txtruc";
-            this.txtruc.NextControlOnEnter = null;
-            this.txtruc.ReadOnly = true;
-            this.txtruc.Size = new System.Drawing.Size(114, 21);
-            this.txtruc.TabIndex = 4;
-            this.txtruc.Text = "00000000000";
-            this.txtruc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtruc.TextoDefecto = "00000000000";
-            this.txtruc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtruc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
-            // 
-            // cboempresa
-            // 
-            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(326, 52);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(425, 21);
-            this.cboempresa.TabIndex = 104;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
+            this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
+            this.cboperiodode.FechaConDiaActual = new System.DateTime(2019, 12, 19, 0, 0, 0, 0);
+            this.cboperiodode.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
+            this.cboperiodode.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
+            this.cboperiodode.Location = new System.Drawing.Point(95, 31);
+            this.cboperiodode.Name = "cboperiodode";
+            this.cboperiodode.Size = new System.Drawing.Size(218, 22);
+            this.cboperiodode.TabIndex = 0;
+            this.cboperiodode.VerAño = true;
+            this.cboperiodode.VerMes = true;
+            this.cboperiodode.Load += new System.EventHandler(this.comboMesAño1_Load);
+            this.cboperiodode.Click += new System.EventHandler(this.comboMesAño1_Click);
+            this.cboperiodode.Enter += new System.EventHandler(this.comboMesAño1_Enter);
             // 
             // btngenerar
             // 
             this.btngenerar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btngenerar.Image = ((System.Drawing.Image)(resources.GetObject("btngenerar.Image")));
-            this.btngenerar.Location = new System.Drawing.Point(907, 51);
+            this.btngenerar.Location = new System.Drawing.Point(791, 31);
             this.btngenerar.Name = "btngenerar";
             this.btngenerar.Size = new System.Drawing.Size(85, 23);
-            this.btngenerar.TabIndex = 105;
+            this.btngenerar.TabIndex = 3;
             this.btngenerar.Text = "Generar";
             this.btngenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btngenerar.UseVisualStyleBackColor = true;
@@ -662,7 +619,7 @@
             this.btncancelar.Location = new System.Drawing.Point(1126, 528);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(85, 23);
-            this.btncancelar.TabIndex = 237;
+            this.btncancelar.TabIndex = 9;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -670,6 +627,7 @@
             // 
             // backgroundWorker1
             // 
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
@@ -682,7 +640,7 @@
             this.btnexcel.Location = new System.Drawing.Point(615, 528);
             this.btnexcel.Name = "btnexcel";
             this.btnexcel.Size = new System.Drawing.Size(82, 23);
-            this.btnexcel.TabIndex = 343;
+            this.btnexcel.TabIndex = 6;
             this.btnexcel.Text = "Excel";
             this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexcel.UseVisualStyleBackColor = true;
@@ -697,7 +655,7 @@
             this.button1.Location = new System.Drawing.Point(527, 528);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(82, 23);
-            this.button1.TabIndex = 344;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Pdf";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
@@ -712,7 +670,7 @@
             this.btnGenerarTXT.Location = new System.Drawing.Point(703, 528);
             this.btnGenerarTXT.Name = "btnGenerarTXT";
             this.btnGenerarTXT.Size = new System.Drawing.Size(82, 23);
-            this.btnGenerarTXT.TabIndex = 343;
+            this.btnGenerarTXT.TabIndex = 8;
             this.btnGenerarTXT.Text = "PLE Txt";
             this.btnGenerarTXT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerarTXT.UseVisualStyleBackColor = true;
@@ -756,12 +714,13 @@
             this.PanelTxt.Controls.Add(this.label5);
             this.PanelTxt.Controls.Add(this.btnTxt);
             this.PanelTxt.Controls.Add(this.BtnCerrar);
-            this.PanelTxt.Location = new System.Drawing.Point(386, 29);
+            this.PanelTxt.Location = new System.Drawing.Point(386, 34);
             this.PanelTxt.Movible = false;
             this.PanelTxt.Name = "PanelTxt";
             this.PanelTxt.Size = new System.Drawing.Size(453, 493);
             this.PanelTxt.TabIndex = 345;
             this.PanelTxt.Visible = false;
+            this.PanelTxt.Leave += new System.EventHandler(this.PanelTxt_Leave);
             // 
             // PanelAbajo
             // 
@@ -1274,6 +1233,17 @@
             this.BtnCerrar.UseVisualStyleBackColor = false;
             this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
+            // chkCarpetas
+            // 
+            this.chkCarpetas.AutoSize = true;
+            this.chkCarpetas.BackColor = System.Drawing.Color.Transparent;
+            this.chkCarpetas.Location = new System.Drawing.Point(791, 531);
+            this.chkCarpetas.Name = "chkCarpetas";
+            this.chkCarpetas.Size = new System.Drawing.Size(104, 17);
+            this.chkCarpetas.TabIndex = 9;
+            this.chkCarpetas.Text = "Exp. a Carpetas";
+            this.chkCarpetas.UseVisualStyleBackColor = false;
+            // 
             // fondoColorOre1
             // 
             this.fondoColorOre1.Angulo = 135;
@@ -1287,23 +1257,83 @@
             // 
             this.SaveFile.Filter = "Archivos de Texto|*.txt";
             // 
+            // cboperiodohasta
+            // 
+            this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
+            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2019, 12, 19, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
+            this.cboperiodohasta.Location = new System.Drawing.Point(95, 59);
+            this.cboperiodohasta.Name = "cboperiodohasta";
+            this.cboperiodohasta.Size = new System.Drawing.Size(218, 22);
+            this.cboperiodohasta.TabIndex = 1;
+            this.cboperiodohasta.VerAño = true;
+            this.cboperiodohasta.VerMes = true;
+            this.cboperiodohasta.Load += new System.EventHandler(this.comboMesAño1_Load);
+            this.cboperiodohasta.Click += new System.EventHandler(this.comboMesAño1_Click);
+            this.cboperiodohasta.Enter += new System.EventHandler(this.comboMesAño1_Enter);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Location = new System.Drawing.Point(56, 64);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(39, 13);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Hasta:";
+            // 
+            // chklist
+            // 
+            this.chklist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chklist.ColumnWidth = 200;
+            this.chklist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chklist.Location = new System.Drawing.Point(380, 31);
+            this.chklist.Name = "chklist";
+            this.chklist.Size = new System.Drawing.Size(405, 66);
+            this.chklist.TabIndex = 2;
+            this.chklist.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklist_ItemCheck);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(71, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "De:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label3.Location = new System.Drawing.Point(319, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "EMPRESA:";
+            // 
             // frmRegistroCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1225, 561);
             this.Controls.Add(this.PanelTxt);
+            this.Controls.Add(this.chkCarpetas);
+            this.Controls.Add(this.chklist);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnGenerarTXT);
             this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.lblmensaje);
             this.Controls.Add(this.btngenerar);
-            this.Controls.Add(this.cboempresa);
-            this.Controls.Add(this.txtruc);
-            this.Controls.Add(this.comboMesAño1);
-            this.Controls.Add(this.separadorOre1);
+            this.Controls.Add(this.cboperiodohasta);
+            this.Controls.Add(this.cboperiodode);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -1327,12 +1357,7 @@
         private HpResergerUserControls.Dtgconten dtgconten;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private HpResergerUserControls.SeparadorOre separadorOre1;
-        private HpResergerUserControls.ComboMesAño comboMesAño1;
-        private HpResergerUserControls.TextBoxPer txtruc;
-        private System.Windows.Forms.ComboBox cboempresa;
+        private HpResergerUserControls.ComboMesAño cboperiodode;
         private System.Windows.Forms.Button btngenerar;
         private System.Windows.Forms.Label lblmensaje;
         private System.Windows.Forms.Button btncancelar;
@@ -1374,7 +1399,17 @@
         private HpResergerUserControls.TextBoxPer txtmes;
         private HpResergerUserControls.TextBoxPer txtaño;
         private System.Windows.Forms.SaveFileDialog SaveFile;
+        private HpResergerUserControls.PanelOre PanelAbajo;
+        private HpResergerUserControls.PanelOre panelDerecho;
+        private HpResergerUserControls.PanelOre panelzquierdo;
+        private HpResergerUserControls.ComboMesAño cboperiodohasta;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckedListBox chklist;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xix;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaEmision;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaVencimiento;
@@ -1404,8 +1439,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xTipoDocRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn xSerieDocRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNumDocRef;
-        private HpResergerUserControls.PanelOre PanelAbajo;
-        private HpResergerUserControls.PanelOre panelDerecho;
-        private HpResergerUserControls.PanelOre panelzquierdo;
+        private System.Windows.Forms.CheckBox chkCarpetas;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

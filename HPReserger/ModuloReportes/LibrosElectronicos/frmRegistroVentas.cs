@@ -25,39 +25,61 @@ namespace HPReserger
         {
             cargarEmpresa();
         }
+        DataTable TablaEmpresa;
         public void cargarEmpresa()
         {
-            string name = cboempresa.Text;
-            cboempresa.DataSource = CapaLogica.ListarEmpresas();
-            cboempresa.ValueMember = "id_empresa";
-            cboempresa.DisplayMember = "empresa";
-            cboempresa.Text = name;
-        }
-        private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int x = 0;
-            if (cboempresa.Items.Count > 0)
+            chklist.Items.Clear();
+            TablaEmpresa = CapaLogica.Empresa();
+            chklist.Items.Add("TODAS", true);
+            foreach (DataRow item in TablaEmpresa.Rows)
             {
-                x = cboempresa.SelectedIndex;
-                DataRow Fila = ((DataTable)cboempresa.DataSource).Rows[x];
-                txtRucDeudor.Text = txtruc.Text = Fila["ruc"].ToString();
-            }
-            else
-            {
-                txtruc.CargarTextoporDefecto();
+                chklist.Items.Add(item["descripcion"].ToString(), true);
             }
         }
+        //private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    int x = 0;
+        //    if (cboempresa.Items.Count > 0)
+        //    {
+        //        x = cboempresa.SelectedIndex;
+        //        DataRow Fila = ((DataTable)cboempresa.DataSource).Rows[x];
+        //        txtRucDeudor.Text = txtruc.Text = Fila["ruc"].ToString();
+        //    }
+        //    else
+        //    {
+        //        txtruc.CargarTextoporDefecto();
+        //    }
+        //}
         private void btngenerar_Click(object sender, EventArgs e)
         {
             CerrarPanelTxt();
-            FechaPeriodo = comboMesAño1.GetFechaPRimerDia();
-            NombreEmpresa = cboempresa.Text;
-            if (cboempresa.Items.Count == 0) { msg("No hay Empresas"); return; }
-            if (cboempresa.SelectedValue == null) { msg("Seleccion una Empresa"); cboempresa.Focus(); return; }
-            dtgconten.DataSource = CapaLogica.FormatodeVentas14_1((int)cboempresa.SelectedValue, comboMesAño1.getMesNumero(), comboMesAño1.GetFecha().Year);
+            Cursor = Cursors.WaitCursor;
+            if (chklist.SelectedItems.Count == 0) msg("Seleccione una Empresa");
+            DateTime FechaAuxiliar;
+            string ListadoEmpresas = "";
+            if (cboperiodode.FechaInicioMes > cboperiodohasta.FechaInicioMes)
+            {
+                FechaAuxiliar = cboperiodode.FechaInicioMes;
+                cboperiodode.Fecha(cboperiodohasta.FechaInicioMes);
+                cboperiodohasta.Fecha(FechaAuxiliar);
+            }
+            FechaInicio = cboperiodode.GetFechaPRimerDia();
+            FechaFin = cboperiodohasta.FechaFinMes;
+            foreach (string item in chklist.CheckedItems)
+            {
+                if (item.ToString() != "TODAS")
+                    ListadoEmpresas += CapaLogica.BuscarRucEmpresa(item)[1].ToString() + ",";
+            }
+            ListadoEmpresas = ListadoEmpresas.Substring(0, ListadoEmpresas.Length - 1);
+            TDatos = CapaLogica.FormatodeVentas14_1(ListadoEmpresas, FechaInicio, FechaFin);
+            dtgconten.DataSource = TDatos;
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
+            Ordenado = false;
+            Cursor = Cursors.Default;
         }
+        private bool Ordenado = true;
+        DataTable TDatos;
         private void btncancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -98,7 +120,7 @@ namespace HPReserger
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 10, false, false, Back, Fore));
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{FechaPeriodo.Year} {FechaPeriodo.Month.ToString("00")}", 10, false, true, Back, Fore));
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 10, false, false, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{txtruc.Text}", 10, false, false, Back, Fore));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{""}", 10, false, false, Back, Fore));
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:", 10, false, false, Back, Fore));
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("h4", "h4", $"{NombreEmpresa}", 10, false, false, Back, Fore));
                 //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "Nombre Vendedor:", 11));
@@ -130,10 +152,35 @@ namespace HPReserger
         private void btnGenerarTXT_Click(object sender, EventArgs e)
         {
             PanelTxt.BringToFront();
-            txtaño.Text = comboMesAño1.FechaConDiaActual.Year.ToString("0000");
-            txtmes.Text = comboMesAño1.FechaConDiaActual.Month.ToString("00");
+            if (cboperiodode.FechaInicioMes.Year == cboperiodohasta.FechaInicioMes.Year)
+            {
+                txtaño.Text = cboperiodode.FechaInicioMes.Year.ToString("0000");
+            }
+            else txtaño.Text = "AÑO";
+            if (cboperiodode.FechaInicioMes.Month == cboperiodohasta.FechaInicioMes.Month)
+            {
+                txtmes.Text = cboperiodode.FechaInicioMes.Month.ToString("00");
+            }
+            else
+                txtmes.Text = "MES";
+            int ContadorEmpresas = 0;
+            foreach (object item in chklist.CheckedItems)
+            {
+                if (item.ToString() != "TODAS")
+                {
+                    ContadorEmpresas++;
+                    nameEmpresa = item.ToString();
+                    if (ContadorEmpresas > 1) { nameEmpresa = ""; break; }
+                }
+            }
+            if (ContadorEmpresas == 1)
+            {
+                txtRucDeudor.Text = CapaLogica.BuscarRucEmpresa(nameEmpresa)[0].ToString();
+            }
+            else txtRucDeudor.Text = "RUC EMPRESAS";
             txtinformacion.Text = (dtgconten.RowCount > 0 ? 1 : 0).ToString();
             PanelTxt.Visible = true;
+            PanelTxt.Focus();
         }
         public void CerrarPanelTxt()
         {
@@ -159,6 +206,10 @@ namespace HPReserger
             CerrarPanelTxt();
         }
         private StreamWriter st;
+        private DateTime FechaInicio;
+        private DateTime FechaFin;
+        private string nameEmpresa;
+
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnTxt_Click(object sender, EventArgs e)
         {
@@ -245,7 +296,7 @@ namespace HPReserger
                 //CampoFinal
                 //Validacion del Identificador de Estado!
                 int Estado = 0;
-                DateTime FechaDeclara = comboMesAño1.GetFechaPRimerDia();
+                DateTime FechaDeclara = cboperiodode.GetFechaPRimerDia();
                 DateTime FechaEmision = (DateTime)item.Cells[xFechaEmision.Name].Value;
                 //Mismo Mes de Declaración
                 if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
@@ -281,6 +332,24 @@ namespace HPReserger
                 msgOK("Generado TXT con Éxito");
                 PanelTxt.Visible = false;
             }
+        }
+
+        private void chklist_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.Index == 0)
+            {
+                if (chklist.GetItemChecked(0))
+                {
+                    for (int i = 1; i < chklist.Items.Count; i++)
+                        chklist.SetItemChecked(i, false);
+                }
+                else
+                {
+                    for (int i = 1; i < chklist.Items.Count; i++)
+                        chklist.SetItemChecked(i, true);
+                }
+            }
+
         }
     }
 }
