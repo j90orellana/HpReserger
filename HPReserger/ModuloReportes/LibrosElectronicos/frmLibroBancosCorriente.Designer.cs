@@ -104,6 +104,8 @@
             this.btnTxt = new HpResergerUserControls.ButtonPer();
             this.buttonPer1 = new HpResergerUserControls.ButtonPer();
             this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtbuscuentas = new HpResergerUserControls.TextBoxPer();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
@@ -134,7 +136,7 @@
             this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(989, 50);
+            this.btnProcesar.Location = new System.Drawing.Point(989, 49);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(83, 24);
             this.btnProcesar.TabIndex = 373;
@@ -247,7 +249,7 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 12, 9, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 12, 20, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(70, 29);
@@ -262,7 +264,7 @@
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 76);
+            this.separadorOre1.Location = new System.Drawing.Point(0, 75);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
@@ -344,12 +346,12 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(15, 82);
+            this.dtgconten.Location = new System.Drawing.Point(15, 79);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1057, 443);
+            this.dtgconten.Size = new System.Drawing.Size(1057, 448);
             this.dtgconten.TabIndex = 361;
             // 
             // xperiodo
@@ -1071,12 +1073,44 @@
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
             this.fondoColorOre1.control = this.PanelTxt;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(778, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.TabIndex = 362;
+            this.label3.Text = "Filtrar Cuenta:";
+            this.label3.Visible = false;
+            // 
+            // txtbuscuentas
+            // 
+            this.txtbuscuentas.BackColor = System.Drawing.Color.White;
+            this.txtbuscuentas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbuscuentas.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbuscuentas.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbuscuentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbuscuentas.ForeColor = System.Drawing.Color.Black;
+            this.txtbuscuentas.Format = null;
+            this.txtbuscuentas.Location = new System.Drawing.Point(864, 12);
+            this.txtbuscuentas.MaxLength = 12;
+            this.txtbuscuentas.Name = "txtbuscuentas";
+            this.txtbuscuentas.NextControlOnEnter = null;
+            this.txtbuscuentas.Size = new System.Drawing.Size(217, 21);
+            this.txtbuscuentas.TabIndex = 367;
+            this.txtbuscuentas.Text = "Ingrese Cuentas Separada de Comas";
+            this.txtbuscuentas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtbuscuentas.TextoDefecto = "Ingrese Cuentas Separada de Comas";
+            this.txtbuscuentas.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbuscuentas.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtbuscuentas.Visible = false;
+            // 
             // frmLibroBancosCorriente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
-            this.Controls.Add(this.PanelTxt);
             this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.btnProcesar);
             this.Controls.Add(this.button1);
@@ -1084,13 +1118,16 @@
             this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.lblmensaje);
             this.Controls.Add(this.cboempresa);
+            this.Controls.Add(this.txtbuscuentas);
             this.Controls.Add(this.txtruc);
             this.Controls.Add(this.comboMesAño1);
             this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgconten);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.PanelTxt);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.MinimumSize = new System.Drawing.Size(1100, 600);
             this.Name = "frmLibroBancosCorriente";
@@ -1173,5 +1210,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xParteDeudora;
         private System.Windows.Forms.DataGridViewTextBoxColumn xParteAcreedora;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
+        private System.Windows.Forms.Label label3;
+        private HpResergerUserControls.TextBoxPer txtbuscuentas;
     }
 }

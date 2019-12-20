@@ -45,7 +45,7 @@ namespace HPReserger
         {
             CerrarPanelTxt();
             Cursor = Cursors.WaitCursor;
-            if (chklist.SelectedItems.Count == 0) msg("Seleccione una Empresa");
+            if (chklist.CheckedItems.Count == 0) msg("Seleccione una Empresa");
             DateTime FechaAuxiliar;
             string ListadoEmpresas = "";
             if (cboperiodode.FechaInicioMes > cboperiodohasta.FechaInicioMes)
@@ -81,7 +81,6 @@ namespace HPReserger
         private void btnexcel_Click(object sender, EventArgs e)
         {
             CerrarPanelTxt();
-
             if (dtgconten.RowCount > 0)
             {
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
@@ -363,7 +362,7 @@ namespace HPReserger
                                         ValorPrueba = 0;
                                         int c = 0;
                                         //1
-                                        campo[c++] = $"{txtaño.Text}{txtmes.Text}00";
+                                        campo[c++] = $"{añio}{mes}00";
                                         campo[c++] = ((fila[xcuo.DataPropertyName].ToString())).ToString();
                                         campo[c++] = "M2";
                                         campo[c++] = ((DateTime)fila[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");
@@ -412,7 +411,7 @@ namespace HPReserger
                                         campo[c++] = ValorPrueba.ToString("00");
                                         //Datos del Documento que Modifica
                                         campo[c++] = fila[xSerieDocRef.DataPropertyName].ToString() == "" ? "-" : fila[xSerieDocRef.DataPropertyName].ToString().Trim();
-                                        campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "-" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
+                                        campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
                                         //Número del comprobante de pago emitido por sujeto no domiciliado
                                         //30
                                         campo[c++] = "-";

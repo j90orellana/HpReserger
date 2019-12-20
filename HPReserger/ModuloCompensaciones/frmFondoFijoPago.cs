@@ -548,6 +548,9 @@ namespace HPReserger.ModuloCompensaciones
                             FechaCompensa, IdUsuario, "");
                     }
                 }
+                //Cuadre Asiento
+                CapaLogica.CuadrarAsiento(CuoReg, proyecto, FechaContable, 2);
+                //Fin Cuadre
                 ///////////
                 ///////Nuevo Asiento SALIDA DEL BANCO
                 ///////////
@@ -594,7 +597,7 @@ namespace HPReserger.ModuloCompensaciones
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(Empleado[0]), Empleado[1]
                   , NameEmpleado, 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
                   , 0, FechaCompensa, FechaCompensa, FechaCompensa, moneda == 1 ? MontoPago : MontoPago * tc, moneda == 2 ? MontoPago : MontoPago / tc
-                  , tc, moneda, nroKuenta, NroPago, glosa, FechaCompensa, IdUsuario, Cuo,TipoPago);
+                  , tc, moneda, nroKuenta, NroPago, glosa, FechaCompensa, IdUsuario, Cuo, TipoPago);
                 //Inserto compensaciones!
                 CapaLogica.InsertarCompensacionesDetalle(pkIdTipo, (int)cboempresa.SelectedValue, 1,
                         decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text),

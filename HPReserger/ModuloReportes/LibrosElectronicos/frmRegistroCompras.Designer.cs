@@ -573,7 +573,7 @@
             // 
             this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodode.FechaConDiaActual = new System.DateTime(2019, 12, 19, 0, 0, 0, 0);
+            this.cboperiodode.FechaConDiaActual = new System.DateTime(2019, 12, 20, 0, 0, 0, 0);
             this.cboperiodode.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
             this.cboperiodode.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
             this.cboperiodode.Location = new System.Drawing.Point(95, 31);
@@ -1235,6 +1235,7 @@
             // 
             // chkCarpetas
             // 
+            this.chkCarpetas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkCarpetas.AutoSize = true;
             this.chkCarpetas.BackColor = System.Drawing.Color.Transparent;
             this.chkCarpetas.Location = new System.Drawing.Point(791, 531);
@@ -1261,7 +1262,7 @@
             // 
             this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2019, 12, 19, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2019, 12, 20, 0, 0, 0, 0);
             this.cboperiodohasta.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
             this.cboperiodohasta.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
             this.cboperiodohasta.Location = new System.Drawing.Point(95, 59);

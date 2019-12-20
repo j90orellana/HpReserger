@@ -35,6 +35,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         }
         private void frmLibroBancosCorriente_Load(object sender, EventArgs e)
         {
+            txtbuscuentas.CargarTextoporDefecto();
             cargarEmpresa();            
         }
 
@@ -117,7 +118,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             if (dtgconten.RowCount > 0)
             {
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _OrdenarColumnas; string _NColumna = "";
-                _NombreHoja = "Libro Caja Banco - Efectivo"; _Cabecera = "1.1 LIBRO CAJA Y BANCOS - DETALLE DE LOS MOVIMIENTOS DEL EFECTIVO";
+                _NombreHoja = "Libro Caja Banco - Cuentas Corrientes"; _Cabecera = "1.1 LIBRO CAJA Y BANCOS - DETALLE DE LOS MOVIMIENTOS DE CUENTAS CORRIENTES";
                 _OrdenarColumnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
                 _NColumna = "m";
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
