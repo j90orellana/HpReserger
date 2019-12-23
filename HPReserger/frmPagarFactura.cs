@@ -196,9 +196,9 @@ namespace HPReserger
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             CodigoPago = (int)cbotipo.SelectedValue;
-            string[] ValoresBancoCheques = { "3", "7" };///003 Banco  /// 007 cheque
+            string[] ValoresBancoCheques = { "3" };///003 Banco  /// 007 cheque
             //if (ValoresBancoCheques.Contains(CodigoPago.ToString()))
-            if (CodigoPago != 7)
+            if (CodigoPago != 0)
             {
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = true;
                 lblguia.Text = "Banco";
