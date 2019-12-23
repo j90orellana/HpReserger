@@ -2142,7 +2142,7 @@ namespace HPResergerCapaDatos
         public DataRow BuscarRucEmpresa(string @empresa)
         {
             string[] parametros = { "@empresa" };
-            object[] valores = { empresa};
+            object[] valores = { empresa };
             return bd.DatarowFromProcedure("usp_BuscarRucEmpresa", parametros, valores, null);
         }
         public DataTable BusquedaProveedorClienteEmpleado(int tipoid, string numdoc)
@@ -4761,16 +4761,16 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, periodo, anio };
             return bd.DataTableFromProcedure("usp_FormatodeCompras8_1", parametros, valores, null);
         }
-        public DataTable FormatodeCompras8_1_Masivo(string empresa, DateTime PeriodoInicio , DateTime PeriodoFin)
+        public DataTable FormatodeCompras8_1_Masivo(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
         {
             string[] parametros = { "@Empresa", "@PeriodoInicio", "@PeriodoFin" };
-            object[] valores = { empresa, PeriodoInicio,PeriodoFin };
+            object[] valores = { empresa, PeriodoInicio, PeriodoFin };
             return bd.DataTableFromProcedure("[usp_FormatodeCompras8_1_Masivo]", parametros, valores, null);
         }
-        public DataTable FormatodeVentas14_1(string empresa, DateTime PeriodoInicio , DateTime PeriodoFin)
+        public DataTable FormatodeVentas14_1(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
         {
             string[] parametros = { "@Empresa", "@PeriodoInicio", "@PeriodoFin" };
-            object[] valores = { empresa, PeriodoInicio,PeriodoFin };
+            object[] valores = { empresa, PeriodoInicio, PeriodoFin };
             return bd.DataTableFromProcedure("[usp_FormatodeVentas14_1_Masivo]", parametros, valores, null);
         }
         public DataTable FormatoCajaBanco1_1(int empresa, DateTime FechaInicial, DateTime FechaFinal)
@@ -4779,11 +4779,23 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, FechaInicial, FechaFinal };
             return bd.DataTableFromProcedure("usp_FormatoCajaBanco1_1", parametros, valores, null);
         }
+        public DataTable FormatoCajaBanco1_1Masivo(int empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal", "@cuentas" };
+            object[] valores = { empresa, FechaInicial, FechaFinal, cuentas };
+            return bd.DataTableFromProcedure("usp_FormatoCajaBanco1_1_Masivo", parametros, valores, null);
+        }
         public DataTable FormatoCajaBanco1_2(int empresa, DateTime FechaInicial, DateTime FechaFinal)
         {
             string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
             object[] valores = { empresa, FechaInicial, FechaFinal };
             return bd.DataTableFromProcedure("usp_FormatoCajaBanco1_2", parametros, valores, null);
+        }
+        public DataTable FormatoCajaBanco1_2Masivo(int empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal", "@Cuentas" };
+            object[] valores = { empresa, FechaInicial, FechaFinal, cuentas };
+            return bd.DataTableFromProcedure("usp_FormatoCajaBanco1_2_Masivo", parametros, valores, null);
         }
         public DataTable FormatodeVentas14_1(int empresa, int periodo, int anio)
         {

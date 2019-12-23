@@ -2486,15 +2486,23 @@ namespace HPResergerCapaLogica
         }
         public DataTable FormatodeCompras8_1_Masivo(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
         {
-            return cdOrdenPedido.FormatodeCompras8_1_Masivo(empresa,PeriodoInicio,PeriodoFin);
+            return cdOrdenPedido.FormatodeCompras8_1_Masivo(empresa, PeriodoInicio, PeriodoFin);
         }
         public DataTable FormatodeVentas14_1(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
         {
-            return cdOrdenPedido.FormatodeVentas14_1(empresa,PeriodoInicio,PeriodoFin);
+            return cdOrdenPedido.FormatodeVentas14_1(empresa, PeriodoInicio, PeriodoFin);
         }
         public DataTable FormatoCajaBanco1_1(int empresa, DateTime FechaInicial, DateTime FechaFinal)
         {
             return cdOrdenPedido.FormatoCajaBanco1_1(empresa, FechaInicial, FechaFinal);
+        }
+        public DataTable FormatoCajaBanco1_1Masivo(int empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
+        {
+            return cdOrdenPedido.FormatoCajaBanco1_1Masivo(empresa, FechaInicial, FechaFinal, cuentas);
+        }
+        public DataTable FormatoCajaBanco1_2Masivo(int empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
+        {
+            return cdOrdenPedido.FormatoCajaBanco1_2Masivo(empresa, FechaInicial, FechaFinal, cuentas);
         }
         public DataTable FormatoCajaBanco1_2(int empresa, DateTime FechaInicial, DateTime FechaFinal)
         {

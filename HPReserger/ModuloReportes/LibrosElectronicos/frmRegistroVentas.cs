@@ -135,7 +135,7 @@ namespace HPReserger
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
                         //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"REGISTRO DE COMPRAS {EmpresaValor}.xlsx";
+                        string NameFile = valor + $"REGISTRO DE VENTAS {EmpresaValor}.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")

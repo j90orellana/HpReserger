@@ -35,6 +35,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         }
         private void LibroBancosEfectivo_Load(object sender, EventArgs e)
         {
+            txtbuscuentas.CargarTextoporDefecto();
             cargarEmpresa();
         }
 
@@ -46,7 +47,10 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             NombreEmpresa = cboempresa.Text;
             if (cboempresa.Items.Count == 0) { msg("No hay Empresas"); return; }
             if (cboempresa.SelectedValue == null) { msg("Seleccion una Empresa"); cboempresa.Focus(); return; }
-            dtgconten.DataSource = CapaLogica.FormatoCajaBanco1_1((int)cboempresa.SelectedValue, FechaInicial, FechaFinal);
+            if (txtbuscuentas.TextValido() == "")
+                dtgconten.DataSource = CapaLogica.FormatoCajaBanco1_1((int)cboempresa.SelectedValue, FechaInicial, FechaFinal);
+            else
+                dtgconten.DataSource = CapaLogica.FormatoCajaBanco1_1Masivo((int)cboempresa.SelectedValue, FechaInicial, FechaFinal, txtbuscuentas.TextValido());
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
             //Cambiamos los valores de la columna M

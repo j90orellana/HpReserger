@@ -249,7 +249,7 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 12, 20, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 12, 23, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(70, 29);
@@ -264,7 +264,7 @@
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 75);
+            this.separadorOre1.Location = new System.Drawing.Point(0, 96);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
@@ -346,12 +346,12 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(15, 79);
+            this.dtgconten.Location = new System.Drawing.Point(15, 100);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1057, 448);
+            this.dtgconten.Size = new System.Drawing.Size(1057, 427);
             this.dtgconten.TabIndex = 361;
             // 
             // xperiodo
@@ -1077,12 +1077,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(778, 16);
+            this.label3.Location = new System.Drawing.Point(13, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 362;
             this.label3.Text = "Filtrar Cuenta:";
-            this.label3.Visible = false;
             // 
             // txtbuscuentas
             // 
@@ -1093,18 +1092,17 @@
             this.txtbuscuentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscuentas.ForeColor = System.Drawing.Color.Black;
             this.txtbuscuentas.Format = null;
-            this.txtbuscuentas.Location = new System.Drawing.Point(864, 12);
-            this.txtbuscuentas.MaxLength = 12;
+            this.txtbuscuentas.Location = new System.Drawing.Point(99, 74);
+            this.txtbuscuentas.MaxLength = 200;
             this.txtbuscuentas.Name = "txtbuscuentas";
             this.txtbuscuentas.NextControlOnEnter = null;
-            this.txtbuscuentas.Size = new System.Drawing.Size(217, 21);
+            this.txtbuscuentas.Size = new System.Drawing.Size(316, 21);
             this.txtbuscuentas.TabIndex = 367;
-            this.txtbuscuentas.Text = "Ingrese Cuentas Separada de Comas";
+            this.txtbuscuentas.Text = "Ingrese Cuentas Contables Separadas por Comas";
             this.txtbuscuentas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtbuscuentas.TextoDefecto = "Ingrese Cuentas Separada de Comas";
+            this.txtbuscuentas.TextoDefecto = "Ingrese Cuentas Contables Separadas por Comas";
             this.txtbuscuentas.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbuscuentas.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            this.txtbuscuentas.Visible = false;
             // 
             // frmLibroBancosCorriente
             // 

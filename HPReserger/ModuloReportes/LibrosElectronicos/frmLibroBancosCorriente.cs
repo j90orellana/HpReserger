@@ -36,7 +36,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         private void frmLibroBancosCorriente_Load(object sender, EventArgs e)
         {
             txtbuscuentas.CargarTextoporDefecto();
-            cargarEmpresa();            
+            cargarEmpresa();
         }
 
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,13 +57,17 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
+            if (Configuraciones.ValidarSQLInyect(txtbuscuentas)) { msg("Codigo Malicioso Detectado"); return; }
             Cursor = Cursors.WaitCursor;
             FechaInicial = comboMesAño1.GetFechaPRimerDia();
             FechaFinal = comboMesAño1.FechaFinMes;
             NombreEmpresa = cboempresa.Text;
             if (cboempresa.Items.Count == 0) { msg("No hay Empresas"); return; }
             if (cboempresa.SelectedValue == null) { msg("Seleccion una Empresa"); cboempresa.Focus(); return; }
-            dtgconten.DataSource = CapaLogica.FormatoCajaBanco1_2((int)cboempresa.SelectedValue, FechaInicial, FechaFinal);
+            if (txtbuscuentas.TextValido() == "")
+                dtgconten.DataSource = CapaLogica.FormatoCajaBanco1_2((int)cboempresa.SelectedValue, FechaInicial, FechaFinal);
+            else
+                dtgconten.DataSource = CapaLogica.FormatoCajaBanco1_2Masivo((int)cboempresa.SelectedValue, FechaInicial, FechaFinal, txtbuscuentas.TextValido());
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
             //Cambiamos los valores de la columna M
