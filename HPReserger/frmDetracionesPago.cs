@@ -231,6 +231,8 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            if (cboproyecto.SelectedValue == null) { msg("Seleccione un Proyecto"); cboproyecto.Focus(); return; }
+            if (cboempresa.SelectedValue == null) { msg("Seleccione una Empresa"); cboempresa.Focus(); return; }
             //Validacion de la Fecha de Recepción sea meno a la de pago
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
@@ -295,6 +297,7 @@ namespace HPReserger
                     DateTime FechaPago = dtpFechaPago.Value;
                     DateTime FechaContable = dtpFechaContable.Value;
                     int IdEmpresa = (int)cboempresa.SelectedValue;
+                    int IdProyecto = (int)cboproyecto.SelectedValue;
                     DataRow FilaDato = (CapaLogica.UltimoAsiento(IdEmpresa, FechaContable)).Rows[0];
                     int codigo = (int)FilaDato["codigo"];
                     string CuoPago = FilaDato["cuo"].ToString();
@@ -326,7 +329,7 @@ namespace HPReserger
                         }
                     }
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesCabecera(codigo, CuoPago, IdEmpresa, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac
+                    CapaLogica.PagarDetracionesCabecera(codigo, CuoPago, IdEmpresa, IdProyecto, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac
                         , cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante, TC);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
@@ -338,11 +341,14 @@ namespace HPReserger
                                 string codfac = fac[0]; string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
-                                CapaLogica.PagarDetracionesDetalle(codigo, CuoPago, IdEmpresa, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
+                                CapaLogica.PagarDetracionesDetalle(codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
                                     , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
-                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante,NroOperacion,TipoPago);
+                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante, NroOperacion, TipoPago);
                             }
-                    ////FIN DE LA DINAMICA DE LA CABECERA                
+                    ////FIN DE LA DINAMICA DE LA CABECERA
+                    //Cuadramos El Asiento
+                    CapaLogica.CuadrarAsiento(CuoPago, IdProyecto, FechaContable, 1);
+                    //Fin Cuadre del Asiento
                     msgOK($"Detracciones Pagadas! con Asiento {CuoPago}");
                     btnActualizar_Click(sender, e);
                 }
@@ -407,6 +413,8 @@ namespace HPReserger
             }
         }
         private string _NameEmpresa;
+        private string NameProyecto;
+
         public string NameEmpresa
         {
             get { return _NameEmpresa; }
@@ -420,6 +428,7 @@ namespace HPReserger
         private void cboempresa_Click(object sender, EventArgs e)
         {
             string cadena = cboempresa.Text;
+            NameProyecto = cboproyecto.Text;
             if (cboempresa.Items.Count != CapaLogica.TablaEmpresa().Rows.Count)
             {
                 CapaLogica.TablaEmpresa(cboempresa);
@@ -428,12 +437,24 @@ namespace HPReserger
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            NameProyecto = cboproyecto.Text;
             if (cbobanco.SelectedValue != null)
             {
                 CargarCuentasBancos();
                 NameEmpresa = cboempresa.Text;
                 CargarDAtos();
             }
+            CargarProyecto();
+        }
+        public void CargarProyecto()
+        {
+            if (cboempresa.SelectedValue != null)
+            {
+                cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
+                cboproyecto.DisplayMember = "proyecto";
+                cboproyecto.ValueMember = "id_proyecto";
+            }
+            cboproyecto.Text = NameProyecto;
         }
         public void BuscarCuentaDetracicones()
         {

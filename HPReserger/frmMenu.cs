@@ -3966,10 +3966,27 @@ namespace HPReserger
         {
             frmMedioPagos = null;
         }
-
-        private void libroDiarioToolStripMenuItem2_Click(object sender, EventArgs e)
+        ModuloReportes.LibrosElectronicos.frmLibroDiario frmLibrosdiarios;
+        private void libroDiarioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            if (frmLibrosdiarios == null)
+            {
+                frmLibrosdiarios = new ModuloReportes.LibrosElectronicos.frmLibroDiario();
+                frmLibrosdiarios.MdiParent = this;
+                frmLibrosdiarios.Icon = ICono;
+                frmLibrosdiarios.FormClosed += new FormClosedEventHandler(cerrarlibrodiario);
+                frmLibrosdiarios.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmLibrosdiarios.Activate();
+                ValidarVentanas(frmLibrosdiarios);
+            }
+        }
+        private void cerrarlibrodiario(object sender, FormClosedEventArgs e)
+        {
+            frmLibrosdiarios = null;
         }
     }
 }

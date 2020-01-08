@@ -573,9 +573,9 @@
             // 
             this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodode.FechaConDiaActual = new System.DateTime(2019, 12, 23, 0, 0, 0, 0);
-            this.cboperiodode.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
-            this.cboperiodode.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
+            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 1, 7, 0, 0, 0, 0);
+            this.cboperiodode.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
+            this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             this.cboperiodode.Location = new System.Drawing.Point(95, 31);
             this.cboperiodode.Name = "cboperiodode";
             this.cboperiodode.Size = new System.Drawing.Size(218, 22);
@@ -1262,9 +1262,9 @@
             // 
             this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2019, 12, 23, 0, 0, 0, 0);
-            this.cboperiodohasta.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
-            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 1, 7, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             this.cboperiodohasta.Location = new System.Drawing.Point(95, 59);
             this.cboperiodohasta.Name = "cboperiodohasta";
             this.cboperiodohasta.Size = new System.Drawing.Size(218, 22);

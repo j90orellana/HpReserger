@@ -500,17 +500,18 @@ namespace HPReserger
         {
             CalcularTotal();
             //Validacion de la Fecha de Recepción sea meno a la de pago
-            foreach (DataGridViewRow item in dtgconten.Rows)
-            {
-                if ((int)item.Cells[xopcion.Name].Value == 1)
-                {
-                    if (((DateTime)item.Cells[xFechaContable.Name].Value).Date > dtpFechaPago.Value.Date || ((DateTime)item.Cells[xFechaContable.Name].Value).Date > dtpFechaContable.Value.Date)
-                    {
-                        HPResergerFunciones.frmInformativo.MostrarDialogError("No se Puede Abonar Documentos con fecha de Recepción superior a la Fecha de Pago", $"No se Proceso por: La Factura: {item.Cells[xNroComprobante.Name].Value.ToString()} \nRazonSocial: {item.Cells[xNombres.Name].Value}");
-                        return;
-                    }
-                }
-            }
+            //foreach (DataGridViewRow item in dtgconten.Rows)
+            //{
+            //    if ((int)item.Cells[xopcion.Name].Value == 1)
+            //    {
+            //        if (((DateTime)item.Cells[xFechaContable.Name].Value).Date > dtpFechaPago.Value.Date || ((DateTime)item.Cells[xFechaContable.Name].Value).Date > dtpFechaContable.Value.Date)
+            //        {
+            //            HPResergerFunciones.frmInformativo.MostrarDialogError("No se Puede Abonar Documentos con fecha de Recepción superior a la Fecha de Pago", $"No se Proceso por: La Factura: {item.Cells[xNroComprobante.Name].Value.ToString()} \nRazonSocial: {item.Cells[xNombres.Name].Value}");
+            //            return;
+            //        }
+            //    }
+            //}
+            //FIN Validacion de la Fecha de Recepción sea meno a la de pago
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;

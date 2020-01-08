@@ -134,6 +134,12 @@
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.libroDiarioToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
+            this.mayorPorCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
+            this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -269,12 +275,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
-            this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
-            this.mayorPorCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1227,7 +1227,6 @@
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
             this.toolStripSeparator19.Size = new System.Drawing.Size(440, 6);
-            this.toolStripSeparator19.Visible = false;
             // 
             // libroDiarioToolStripMenuItem1
             // 
@@ -1235,7 +1234,7 @@
             this.libroDiarioToolStripMenuItem1.Name = "libroDiarioToolStripMenuItem1";
             this.libroDiarioToolStripMenuItem1.Size = new System.Drawing.Size(443, 22);
             this.libroDiarioToolStripMenuItem1.Text = "5.1 Libro Diario";
-            this.libroDiarioToolStripMenuItem1.Visible = false;
+            this.libroDiarioToolStripMenuItem1.Click += new System.EventHandler(this.libroDiarioToolStripMenuItem1_Click);
             // 
             // libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem
             // 
@@ -1261,6 +1260,45 @@
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.4 Libro Diario De Formato Simplificado - Detalle Del Plan Contable Utilizado";
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Visible = false;
+            // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            this.toolStripSeparator20.Size = new System.Drawing.Size(440, 6);
+            // 
+            // mayorPorCuentasToolStripMenuItem
+            // 
+            this.mayorPorCuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mayorPorCuentasToolStripMenuItem.Image")));
+            this.mayorPorCuentasToolStripMenuItem.Name = "mayorPorCuentasToolStripMenuItem";
+            this.mayorPorCuentasToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
+            this.mayorPorCuentasToolStripMenuItem.Text = "6.1 Libro Mayor";
+            this.mayorPorCuentasToolStripMenuItem.Click += new System.EventHandler(this.mayorPorCuentasToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            this.toolStripSeparator22.Size = new System.Drawing.Size(440, 6);
+            // 
+            // reToolStripMenuItem
+            // 
+            this.reToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reToolStripMenuItem.Image")));
+            this.reToolStripMenuItem.Name = "reToolStripMenuItem";
+            this.reToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
+            this.reToolStripMenuItem.Text = "8.1 Registro De Compras";
+            this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(440, 6);
+            // 
+            // formato141RegistroDeVentasToolStripMenuItem
+            // 
+            this.formato141RegistroDeVentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("formato141RegistroDeVentasToolStripMenuItem.Image")));
+            this.formato141RegistroDeVentasToolStripMenuItem.Name = "formato141RegistroDeVentasToolStripMenuItem";
+            this.formato141RegistroDeVentasToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
+            this.formato141RegistroDeVentasToolStripMenuItem.Text = "14.1 Registro De Ventas E Ingresos";
+            this.formato141RegistroDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formato141RegistroDeVentasToolStripMenuItem_Click);
             // 
             // toolStripSeparator14
             // 
@@ -2541,45 +2579,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // reToolStripMenuItem
-            // 
-            this.reToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reToolStripMenuItem.Image")));
-            this.reToolStripMenuItem.Name = "reToolStripMenuItem";
-            this.reToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
-            this.reToolStripMenuItem.Text = "8.1 Registro De Compras";
-            this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator20
-            // 
-            this.toolStripSeparator20.Name = "toolStripSeparator20";
-            this.toolStripSeparator20.Size = new System.Drawing.Size(440, 6);
-            // 
-            // toolStripSeparator21
-            // 
-            this.toolStripSeparator21.Name = "toolStripSeparator21";
-            this.toolStripSeparator21.Size = new System.Drawing.Size(440, 6);
-            // 
-            // formato141RegistroDeVentasToolStripMenuItem
-            // 
-            this.formato141RegistroDeVentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("formato141RegistroDeVentasToolStripMenuItem.Image")));
-            this.formato141RegistroDeVentasToolStripMenuItem.Name = "formato141RegistroDeVentasToolStripMenuItem";
-            this.formato141RegistroDeVentasToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
-            this.formato141RegistroDeVentasToolStripMenuItem.Text = "14.1 Registro De Ventas E Ingresos";
-            this.formato141RegistroDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formato141RegistroDeVentasToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator22
-            // 
-            this.toolStripSeparator22.Name = "toolStripSeparator22";
-            this.toolStripSeparator22.Size = new System.Drawing.Size(440, 6);
-            // 
-            // mayorPorCuentasToolStripMenuItem
-            // 
-            this.mayorPorCuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mayorPorCuentasToolStripMenuItem.Image")));
-            this.mayorPorCuentasToolStripMenuItem.Name = "mayorPorCuentasToolStripMenuItem";
-            this.mayorPorCuentasToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
-            this.mayorPorCuentasToolStripMenuItem.Text = "6.1 Libro Mayor";
-            this.mayorPorCuentasToolStripMenuItem.Click += new System.EventHandler(this.mayorPorCuentasToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

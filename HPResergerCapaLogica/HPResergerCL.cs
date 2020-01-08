@@ -2078,10 +2078,10 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.DetraccionesPorPAgarVentas(empresa);
         }
         public DataTable Detracciones(int @Opcion, string @Nrofac, string @Proveedor, decimal @ImporteMo, decimal @ImportePEN, decimal @tc, decimal importepagar, decimal diferencia, string @nroopbanco, string @banco
-            , string @ctabanco, DateTime @fechapago, int @Usuario, int @idComprobante, int idempresa, string cuopago, int @tipopago)
+            , string @ctabanco, DateTime @fechapago, int @Usuario, int @idComprobante, int idempresa,  string cuopago, int @tipopago)
         {
-            return cdOrdenPedido.Detracciones(@Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, importepagar, diferencia, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario, @idComprobante, idempresa,
-                cuopago, @tipopago);
+            return cdOrdenPedido.Detracciones(@Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, importepagar, diferencia, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario,
+                @idComprobante, idempresa,  cuopago, @tipopago);
         }
         public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, decimal importepagado, decimal diferencia, string nropago
             , string banco, string nrocuenta, DateTime fechapago, int usuario, int fkempresa, int idcomprobante, string cuo, int tipopago)
@@ -2089,18 +2089,18 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.DetraccionesVenta(opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario, fkempresa, idcomprobante,
                 cuo, tipopago);
         }
-        public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string cuentaredondeo, DateTime fechapago, DateTime fechacontablem, string glosa, int idcomprobante, decimal tc)
+        public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa,int proyecto, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string cuentaredondeo, DateTime fechapago, DateTime fechacontablem, string glosa, int idcomprobante, decimal tc)
         {
-            return cdOrdenPedido.PagarDetracionesCabecera(asiento, cuo, empresa, montoTotal, montoredondeo, montodiferencia, ruc, nrofac, cuenta, cuentaredondeo, fechapago, fechacontablem, glosa, idcomprobante, tc);
+            return cdOrdenPedido.PagarDetracionesCabecera(asiento, cuo, empresa,proyecto, montoTotal, montoredondeo, montodiferencia, ruc, nrofac, cuenta, cuentaredondeo, fechapago, fechacontablem, glosa, idcomprobante, tc);
         }
         public DataTable PagarDetracionesVentaCabecera(int asiento, string cuo, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string nroboleta, string cuentaContableNacion, string cuentacontablebanco, string cuentaredondeo, DateTime fechacontable, string glosa, int fkempresa, DateTime fechapago, int idcomprobante, decimal tc, int pkproyecto)
         {
             return cdOrdenPedido.PagarDetracionesVentaCabecera(asiento, cuo, montoTotal, montoredondeo, montodiferencia, nroboleta, cuentaContableNacion, cuentacontablebanco, cuentaredondeo, fechacontable, glosa, fkempresa, fechapago, idcomprobante, tc, pkproyecto);
         }
-        public DataTable PagarDetracionesDetalle(int @Asiento, string @Cuo, int @Empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string @Ruc, string @Codfac, string @Numfac,
+        public DataTable PagarDetracionesDetalle(int @Asiento, string @Cuo, int @Empresa, int proyecto, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string @Ruc, string @Codfac, string @Numfac,
             decimal @Total, decimal @tc, int @Idcuenta, string @Cuentacontablebanco, string cuentaredondeo, DateTime @fechaContable, string @glosa, int @Usuario, int @idcomprobante, string nrooperacion, int tipopago)
         {
-            return cdOrdenPedido.PagarDetracionesDetalle(@Asiento, @Cuo, @Empresa, montoTotal, montoredondeo, montodiferencia, @Ruc, @Codfac, @Numfac, @Total, @tc, @Idcuenta, @Cuentacontablebanco,
+            return cdOrdenPedido.PagarDetracionesDetalle(@Asiento, @Cuo, @Empresa, proyecto, montoTotal, montoredondeo, montodiferencia, @Ruc, @Codfac, @Numfac, @Total, @tc, @Idcuenta, @Cuentacontablebanco,
                 @cuentaredondeo, @fechaContable, @glosa, @Usuario, @idcomprobante, nrooperacion, tipopago);
         }
         public DataTable PagarDetracionesVentaDetalle(int @Asiento, int @tipodoc, string @numdoc, string @nombreCliente, int @idcomprobante, string @Codfac, string @Numfac, string @nroBoleta, decimal montototal,
@@ -2492,19 +2492,19 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FormatodeVentas14_1(empresa, PeriodoInicio, PeriodoFin);
         }
-        public DataTable FormatoCajaBanco1_1(int empresa, DateTime FechaInicial, DateTime FechaFinal)
+        public DataTable FormatoCajaBanco1_1(string empresa, DateTime FechaInicial, DateTime FechaFinal)
         {
             return cdOrdenPedido.FormatoCajaBanco1_1(empresa, FechaInicial, FechaFinal);
         }
-        public DataTable FormatoCajaBanco1_1Masivo(int empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
+        public DataTable FormatoCajaBanco1_1Masivo(string empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
         {
             return cdOrdenPedido.FormatoCajaBanco1_1Masivo(empresa, FechaInicial, FechaFinal, cuentas);
         }
-        public DataTable FormatoCajaBanco1_2Masivo(int empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
+        public DataTable FormatoCajaBanco1_2Masivo(string empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
         {
             return cdOrdenPedido.FormatoCajaBanco1_2Masivo(empresa, FechaInicial, FechaFinal, cuentas);
         }
-        public DataTable FormatoCajaBanco1_2(int empresa, DateTime FechaInicial, DateTime FechaFinal)
+        public DataTable FormatoCajaBanco1_2(string empresa, DateTime FechaInicial, DateTime FechaFinal)
         {
             return cdOrdenPedido.FormatoCajaBanco1_2(empresa, FechaInicial, FechaFinal);
         }

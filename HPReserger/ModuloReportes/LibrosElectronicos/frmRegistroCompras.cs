@@ -100,9 +100,7 @@ namespace HPReserger
             {
                 msg("No hay Datos que Exportar");
             }
-
         }
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             if (dtgconten.RowCount > 0)

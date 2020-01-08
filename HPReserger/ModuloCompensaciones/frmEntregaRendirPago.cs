@@ -81,7 +81,7 @@ namespace HPReserger.ModuloCompensaciones
                     _idempresa = (int)cboempresa.SelectedValue;
                     cbobanco_SelectedIndexChanged(sender, e);
                 }
-            } 
+            }
             //btnaceptar.Enabled = true;
             cboempleado.DisplayMember = "empleado";
             cboempleado.ValueMember = "UsuarioCompensacion";
@@ -695,8 +695,8 @@ namespace HPReserger.ModuloCompensaciones
             }
             if (ContaFacturas <= 0)
             {
-                msg("No se ha Seleccionado Facturas");
-                return;
+                if (msgp("No se ha Seleccionado Facturas, Desea Continuar?") != DialogResult.Yes)
+                    return;
             }
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
             {
@@ -786,7 +786,7 @@ namespace HPReserger.ModuloCompensaciones
                 ///Si son pagos Totales
                 //Anticipos al Haber     --yOk
                 //if (cbotipo.Text != "000 Ninguno.")
-                if (TipoPago == 0)
+                if (TipoPago == 0 || ContaFacturas == 0)
                 {
                     foreach (DataGridViewRow item in DtgcontenEntregas.Rows)
                     {

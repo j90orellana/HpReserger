@@ -30,27 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLibroBancosEfectivo));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.btnGenerarTXT = new System.Windows.Forms.Button();
             this.btnexcel = new System.Windows.Forms.Button();
             this.lblmensaje = new System.Windows.Forms.Label();
-            this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.txtruc = new HpResergerUserControls.TextBoxPer();
-            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
-            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.xperiodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xcuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCorrelativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCodigoCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,6 +107,14 @@
             this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
             this.txtbuscuentas = new HpResergerUserControls.TextBoxPer();
             this.label3 = new System.Windows.Forms.Label();
+            this.cboperiodohasta = new HpResergerUserControls.ComboMesAño();
+            this.cboperiodode = new HpResergerUserControls.ComboMesAño();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.chklist = new System.Windows.Forms.CheckedListBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.chkCarpetas = new System.Windows.Forms.CheckBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
@@ -171,75 +176,17 @@
             this.lblmensaje.TabIndex = 354;
             this.lblmensaje.Text = "Total de Registros: 0";
             // 
-            // cboempresa
-            // 
-            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(326, 51);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(425, 21);
-            this.cboempresa.TabIndex = 352;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            // 
-            // txtruc
-            // 
-            this.txtruc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtruc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtruc.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtruc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtruc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtruc.ForeColor = System.Drawing.Color.Black;
-            this.txtruc.Format = null;
-            this.txtruc.Location = new System.Drawing.Point(757, 51);
-            this.txtruc.MaxLength = 12;
-            this.txtruc.Name = "txtruc";
-            this.txtruc.NextControlOnEnter = null;
-            this.txtruc.ReadOnly = true;
-            this.txtruc.Size = new System.Drawing.Size(114, 21);
-            this.txtruc.TabIndex = 351;
-            this.txtruc.Text = "00000000000";
-            this.txtruc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtruc.TextoDefecto = "00000000000";
-            this.txtruc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtruc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
-            // 
-            // comboMesAño1
-            // 
-            this.comboMesAño1.AutoSize = true;
-            this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 12, 23, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
-            this.comboMesAño1.Location = new System.Drawing.Point(70, 28);
-            this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(218, 27);
-            this.comboMesAño1.TabIndex = 350;
-            this.comboMesAño1.VerAño = true;
-            this.comboMesAño1.VerMes = true;
-            // 
             // separadorOre1
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 97);
+            this.separadorOre1.Location = new System.Drawing.Point(0, 113);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
             this.separadorOre1.Size = new System.Drawing.Size(1092, 2);
             this.separadorOre1.TabIndex = 349;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(12, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(313, 13);
-            this.label4.TabIndex = 346;
-            this.label4.Text = "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:\r\n";
             // 
             // label2
             // 
@@ -268,10 +215,10 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -280,17 +227,18 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xperiodo,
+            this.xEmpresa,
             this.xcuo,
             this.xCorrelativo,
             this.xCodigoCuenta,
@@ -308,24 +256,25 @@
             this.xHaber,
             this.xDatoEstructurado,
             this.xEstado});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle24;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(15, 103);
+            this.dtgconten.Location = new System.Drawing.Point(15, 119);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1057, 421);
+            this.dtgconten.Size = new System.Drawing.Size(1057, 404);
             this.dtgconten.TabIndex = 345;
+            this.dtgconten.Sorted += new System.EventHandler(this.dtgconten_Sorted);
             // 
             // xperiodo
             // 
@@ -335,6 +284,14 @@
             this.xperiodo.MinimumWidth = 50;
             this.xperiodo.Name = "xperiodo";
             this.xperiodo.Width = 50;
+            // 
+            // xEmpresa
+            // 
+            this.xEmpresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.xEmpresa.DataPropertyName = "empresa";
+            this.xEmpresa.HeaderText = "Empresa";
+            this.xEmpresa.MinimumWidth = 100;
+            this.xEmpresa.Name = "xEmpresa";
             // 
             // xcuo
             // 
@@ -394,8 +351,8 @@
             // 
             this.xTipoComprobante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xTipoComprobante.DataPropertyName = "TipoComprobante";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xTipoComprobante.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xTipoComprobante.DefaultCellStyle = dataGridViewCellStyle19;
             this.xTipoComprobante.HeaderText = "Tp. Comp.";
             this.xTipoComprobante.MinimumWidth = 50;
             this.xTipoComprobante.Name = "xTipoComprobante";
@@ -405,8 +362,8 @@
             // 
             this.xSerieComprobante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xSerieComprobante.DataPropertyName = "SerieComprobante";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xSerieComprobante.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xSerieComprobante.DefaultCellStyle = dataGridViewCellStyle20;
             this.xSerieComprobante.HeaderText = "S. Comp.";
             this.xSerieComprobante.MinimumWidth = 50;
             this.xSerieComprobante.Name = "xSerieComprobante";
@@ -460,9 +417,9 @@
             // 
             this.xDebe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xDebe.DataPropertyName = "Debe";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.xDebe.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Format = "n2";
+            this.xDebe.DefaultCellStyle = dataGridViewCellStyle21;
             this.xDebe.HeaderText = "Debe";
             this.xDebe.MinimumWidth = 50;
             this.xDebe.Name = "xDebe";
@@ -472,10 +429,10 @@
             // 
             this.xHaber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xHaber.DataPropertyName = "Haber";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.xHaber.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "N2";
+            dataGridViewCellStyle22.NullValue = null;
+            this.xHaber.DefaultCellStyle = dataGridViewCellStyle22;
             this.xHaber.HeaderText = "Haber";
             this.xHaber.MinimumWidth = 50;
             this.xHaber.Name = "xHaber";
@@ -494,8 +451,8 @@
             // 
             this.xEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xEstado.DataPropertyName = "Estado";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xEstado.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xEstado.DefaultCellStyle = dataGridViewCellStyle23;
             this.xEstado.HeaderText = "Estado";
             this.xEstado.MinimumWidth = 50;
             this.xEstado.Name = "xEstado";
@@ -521,13 +478,12 @@
             // 
             // btnProcesar
             // 
-            this.btnProcesar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
             this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
             this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(989, 49);
+            this.btnProcesar.Location = new System.Drawing.Point(791, 30);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(83, 24);
             this.btnProcesar.TabIndex = 359;
@@ -1119,11 +1075,11 @@
             this.txtbuscuentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscuentas.ForeColor = System.Drawing.Color.Black;
             this.txtbuscuentas.Format = null;
-            this.txtbuscuentas.Location = new System.Drawing.Point(99, 75);
+            this.txtbuscuentas.Location = new System.Drawing.Point(99, 91);
             this.txtbuscuentas.MaxLength = 200;
             this.txtbuscuentas.Name = "txtbuscuentas";
             this.txtbuscuentas.NextControlOnEnter = null;
-            this.txtbuscuentas.Size = new System.Drawing.Size(316, 21);
+            this.txtbuscuentas.Size = new System.Drawing.Size(278, 21);
             this.txtbuscuentas.TabIndex = 369;
             this.txtbuscuentas.Text = "Ingrese Cuentas Contables Separadas por Comas";
             this.txtbuscuentas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1135,17 +1091,107 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(13, 79);
+            this.label3.Location = new System.Drawing.Point(13, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 368;
             this.label3.Text = "Filtrar Cuenta:";
+            // 
+            // cboperiodohasta
+            // 
+            this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
+            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 1, 8, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.cboperiodohasta.Location = new System.Drawing.Point(97, 63);
+            this.cboperiodohasta.Name = "cboperiodohasta";
+            this.cboperiodohasta.Size = new System.Drawing.Size(218, 22);
+            this.cboperiodohasta.TabIndex = 371;
+            this.cboperiodohasta.VerAño = true;
+            this.cboperiodohasta.VerMes = true;
+            // 
+            // cboperiodode
+            // 
+            this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
+            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 1, 8, 0, 0, 0, 0);
+            this.cboperiodode.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
+            this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.cboperiodode.Location = new System.Drawing.Point(97, 30);
+            this.cboperiodode.Name = "cboperiodode";
+            this.cboperiodode.Size = new System.Drawing.Size(218, 22);
+            this.cboperiodode.TabIndex = 370;
+            this.cboperiodode.VerAño = true;
+            this.cboperiodode.VerMes = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(73, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 372;
+            this.label4.Text = "De:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Location = new System.Drawing.Point(58, 68);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(39, 13);
+            this.label20.TabIndex = 373;
+            this.label20.Text = "Hasta:";
+            // 
+            // chklist
+            // 
+            this.chklist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chklist.ColumnWidth = 200;
+            this.chklist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chklist.Location = new System.Drawing.Point(380, 30);
+            this.chklist.Name = "chklist";
+            this.chklist.Size = new System.Drawing.Size(405, 82);
+            this.chklist.TabIndex = 375;
+            this.chklist.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklist_ItemCheck);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label21.Location = new System.Drawing.Point(319, 35);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(58, 13);
+            this.label21.TabIndex = 374;
+            this.label21.Text = "EMPRESA:";
+            // 
+            // chkCarpetas
+            // 
+            this.chkCarpetas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkCarpetas.AutoSize = true;
+            this.chkCarpetas.BackColor = System.Drawing.Color.Transparent;
+            this.chkCarpetas.Location = new System.Drawing.Point(674, 533);
+            this.chkCarpetas.Name = "chkCarpetas";
+            this.chkCarpetas.Size = new System.Drawing.Size(104, 17);
+            this.chkCarpetas.TabIndex = 376;
+            this.chkCarpetas.Text = "Exp. a Carpetas";
+            this.chkCarpetas.UseVisualStyleBackColor = false;
             // 
             // frmLibroBancosEfectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.PanelTxt);
+            this.Controls.Add(this.chkCarpetas);
+            this.Controls.Add(this.chklist);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.cboperiodohasta);
+            this.Controls.Add(this.cboperiodode);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.txtbuscuentas);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.BtnCerrar);
@@ -1154,15 +1200,10 @@
             this.Controls.Add(this.btnGenerarTXT);
             this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.lblmensaje);
-            this.Controls.Add(this.cboempresa);
-            this.Controls.Add(this.txtruc);
-            this.Controls.Add(this.comboMesAño1);
             this.Controls.Add(this.separadorOre1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgconten);
-            this.Controls.Add(this.PanelTxt);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(1100, 600);
             this.Name = "frmLibroBancosEfectivo";
@@ -1183,11 +1224,7 @@
         private System.Windows.Forms.Button btnGenerarTXT;
         private System.Windows.Forms.Button btnexcel;
         private System.Windows.Forms.Label lblmensaje;
-        private System.Windows.Forms.ComboBox cboempresa;
-        private HpResergerUserControls.TextBoxPer txtruc;
-        private HpResergerUserControls.ComboMesAño comboMesAño1;
         private HpResergerUserControls.SeparadorOre separadorOre1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private HpResergerUserControls.Dtgconten dtgconten;
@@ -1231,7 +1268,16 @@
         private HpResergerUserControls.ButtonPer btnTxt;
         private HpResergerUserControls.ButtonPer buttonPer1;
         private HpResergerUserControls.FondoColorOre fondoColorOre1;
+        private HpResergerUserControls.TextBoxPer txtbuscuentas;
+        private System.Windows.Forms.Label label3;
+        private HpResergerUserControls.ComboMesAño cboperiodohasta;
+        private HpResergerUserControls.ComboMesAño cboperiodode;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckedListBox chklist;
+        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DataGridViewTextBoxColumn xperiodo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCorrelativo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCodigoCuenta;
@@ -1249,7 +1295,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xHaber;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDatoEstructurado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
-        private HpResergerUserControls.TextBoxPer txtbuscuentas;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkCarpetas;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

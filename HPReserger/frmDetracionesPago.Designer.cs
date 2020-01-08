@@ -97,6 +97,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblguia1 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboproyecto = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +109,7 @@
             this.txtnrooperacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtnrooperacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnrooperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnrooperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnrooperacion.ForeColor = System.Drawing.Color.Black;
             this.txtnrooperacion.Format = null;
             this.txtnrooperacion.Location = new System.Drawing.Point(564, 31);
             this.txtnrooperacion.MaxLength = 20;
@@ -838,6 +840,28 @@
             this.label19.TabIndex = 325;
             this.label19.Text = "Fecha Contable:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(348, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.TabIndex = 80;
+            this.label7.Text = "Proyecto:";
+            // 
+            // cboproyecto
+            // 
+            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyecto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.Location = new System.Drawing.Point(402, 8);
+            this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.Size = new System.Drawing.Size(315, 21);
+            this.cboproyecto.TabIndex = 81;
+            // 
             // frmDetracionesPago
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -854,6 +878,8 @@
             this.Controls.Add(this.dtpFechaPago);
             this.Controls.Add(this.dtpFechaContable);
             this.Controls.Add(this.separadorOre1);
+            this.Controls.Add(this.cboproyecto);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button1);
@@ -946,5 +972,7 @@
         private System.Windows.Forms.Label lblcheque;
         private System.Windows.Forms.ComboBox cbotipo;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cboproyecto;
     }
 }

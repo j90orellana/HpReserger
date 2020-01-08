@@ -157,12 +157,14 @@ namespace HPReserger
         private void cboempresa_Click(object sender, EventArgs e)
         {
             string cadena = cboempresa.Text;
+            Nameproyecto = cboproyecto.Text;
             DataTable TAble = CapaLogica.TablaEmpresa();
             if (NameEmpresa != cadena)
             {
                 cboempresa.DataSource = TAble;
                 cboempresa.Text = cadena;
             }
+            CargarProyecto();
         }
         public void CargarProyecto()
         {
@@ -172,9 +174,11 @@ namespace HPReserger
                 cboproyecto.DisplayMember = "proyecto";
                 cboproyecto.ValueMember = "id_proyecto";
             }
+            cboproyecto.Text = Nameproyecto;
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Nameproyecto = cboproyecto.Text;
             if (cbobanco.SelectedValue != null && NameEmpresa != cboempresa.Text)
             {
                 Cursor = Cursors.WaitCursor;
@@ -484,6 +488,8 @@ namespace HPReserger
             BuscarCuentaDetracicones();
         }
         TextBox txt;
+        private string Nameproyecto;
+
         private void dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             int x = dtgconten.CurrentRow.Index, y = dtgconten.CurrentCell.ColumnIndex;
