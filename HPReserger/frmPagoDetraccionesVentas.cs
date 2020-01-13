@@ -360,6 +360,15 @@ namespace HPReserger
                     if (cboempresa.SelectedValue == null) { msg("Seleccione una Empresa"); cboempresa.Focus(); return; }
                     //
                     if (!txtDescCuenta.EstaLLeno()) { msg("Seleccione Cuenta Contable de Detracciones"); txtcuentadetracciones.Focus(); return; }
+                    //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+                    int IdEmpresa = (int)cboempresa.SelectedValue;
+                    DateTime FechaCoontable = dtpFechaContable.Value;
+                    if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+                    {
+                        if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                            return;
+                    }
+                    //Verificamos si el periodo esta Abierto
                     DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                     if (TPrueba2.Rows.Count == 0) { msg("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
                     Boolean Verificar = false;
@@ -402,7 +411,6 @@ namespace HPReserger
                     ///
                     DateTime FechaContable = dtpFechaContable.Value;
                     DateTime FechaPago = dtpFechaPago.Value;
-                    int IdEmpresa = (int)cboempresa.SelectedValue;
                     int IdUsuario = frmLogin.CodigoUsuario;
                     string glosa = txtglosa.TextValido();
                     //

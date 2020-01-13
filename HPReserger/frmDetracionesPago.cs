@@ -233,6 +233,19 @@ namespace HPReserger
         {
             if (cboproyecto.SelectedValue == null) { msg("Seleccione un Proyecto"); cboproyecto.Focus(); return; }
             if (cboempresa.SelectedValue == null) { msg("Seleccione una Empresa"); cboempresa.Focus(); return; }
+            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+            int IdEmpresa = (int)cboempresa.SelectedValue;
+            DateTime FechaCoontable = dtpFechaContable.Value;
+            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            {
+                if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                    return;
+            }
+            //Verificamos si el periodo esta Abierto
+            if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaCoontable))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             //Validacion de la Fecha de Recepción sea meno a la de pago
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
@@ -296,7 +309,6 @@ namespace HPReserger
                     ///DECLARACION DE LAS VARIABLES
                     DateTime FechaPago = dtpFechaPago.Value;
                     DateTime FechaContable = dtpFechaContable.Value;
-                    int IdEmpresa = (int)cboempresa.SelectedValue;
                     int IdProyecto = (int)cboproyecto.SelectedValue;
                     DataRow FilaDato = (CapaLogica.UltimoAsiento(IdEmpresa, FechaContable)).Rows[0];
                     int codigo = (int)FilaDato["codigo"];

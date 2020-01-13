@@ -738,6 +738,15 @@ namespace HPReserger
                         BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { msg("El Documento de Referencia no se ha Encontrado"); return; }
                     }
                 }//BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { Msg("El Documento de Referencia no se ha Encontrado"); return; } }
+                 //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+                int IdEmpresa = (int)cboempresa.SelectedValue;
+                DateTime FechaCoontable = dtpFechaContable.Value;
+                if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+                {
+                    if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                        return;
+                }
+                //Validamos el Periodo Abierto
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                 if (TPrueba2.Rows.Count == 0) { msg("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
                 if (cboempresa.Items.Count == 0) { msg("No hay Empresa"); cboempresa.Focus(); return; }
