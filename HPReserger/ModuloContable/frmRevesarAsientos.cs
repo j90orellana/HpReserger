@@ -51,6 +51,12 @@ namespace HPReserger.ModuloContable
         {
             if (rbReversar.Checked)
             {
+                //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados           
+                if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaValor))
+                {
+                    if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaValor.ToString("MMMM")}-{FechaValor.Year}?") != DialogResult.Yes)
+                        return;
+                }
                 //Verifico si el Periodo esta Abierto para Proceder con la Anulacion - REversa
                 if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))
                 {
@@ -84,6 +90,20 @@ namespace HPReserger.ModuloContable
                 {
                     msg("Cambie de Periodo");
                     return;
+                }
+                //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados              
+                DateTime FechaCoontable = FechaValor;
+                if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+                {
+                    if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                        return;
+                }
+                //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados              
+                FechaCoontable = FechaContableDes;
+                if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+                {
+                    if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                        return;
                 }
                 //Verificio si el Periodo esta Abierto para Proceder con la Anulacion - REversa
                 if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))

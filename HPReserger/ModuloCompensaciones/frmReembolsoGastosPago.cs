@@ -133,6 +133,14 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Ingrese Glosa");
                 txtglosa.Focus(); return;
             }
+            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+            int IdEmpresa = (int)cboempresa.SelectedValue;
+            DateTime FechaCoontable = dtpFechaContable.Value;
+            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            {
+                if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                    return;
+            }
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
@@ -172,7 +180,7 @@ namespace HPReserger.ModuloCompensaciones
                 //SiguientePkId++;
                 string[] UserCompensa = cboempleado.SelectedValue.ToString().Split('-');
                 int IdLogin = frmLogin.CodigoUsuario;
-                int IdEmpresa = (int)cboempresa.SelectedValue;
+                //int IdEmpresa = (int)cboempresa.SelectedValue;
                 decimal TotalPagar = decimal.Parse(txtTotalPagar.Text);
                 string Glosa = txtglosa.TextValido();
                 ///////Asiento de la SAlida de la plata del banco

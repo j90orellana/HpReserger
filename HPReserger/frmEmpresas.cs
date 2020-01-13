@@ -65,6 +65,7 @@ namespace HPReserger
         {
             dtgconten.DataSource = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0);
             dtgconten.Focus();
+            lbltotalregistros.Text = $"Total Registros: {dtgconten.RowCount}";
         }
         private void frmEmpresas_Load(object sender, EventArgs e)
         {

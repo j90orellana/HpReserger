@@ -356,6 +356,21 @@ namespace HPReserger
             ///Validacion de PEriodo Contable Cerrado
             if (cboOriEmpresa.SelectedValue == null) { cboOriEmpresa.Focus(); msg("Seleccione Empresa Origen"); return; }
             if (cboDesEmpresa.SelectedValue == null) { cboDesEmpresa.Focus(); msg("Seleccione Empresa Destino"); return; }
+            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+            int IdEmpresa = (int)cboOriEmpresa.SelectedValue;
+            DateTime FechaCoontable = FechaContable;
+            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            {
+                if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                    return;
+            }
+            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+            IdEmpresa = (int)cboDesEmpresa.SelectedValue;
+            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            {
+                if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                    return;
+            }
             ///validaciones de Logica
             if ((int)cboOriEmpresa.SelectedValue == (int)cboDesEmpresa.SelectedValue) { cboDesEmpresa.Focus(); msg("Seleccione Diferentes Empresas"); return; }
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboOriEmpresa.SelectedValue, FechaContable))
@@ -448,11 +463,11 @@ namespace HPReserger
                    IdMoneda, " ", NumComprobante, Glosa, FechaContable, IdUsuario, " ");
                 CapaLogica.InsertarAsientoFacturaDetalle(10, 2, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), IdProyectoOri, 5, RucDestrino
                    , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
-                   IdMoneda, NroKuentaOri, NroOperacion, Glosa, FechaContable, IdUsuario, " ",TipoPago);
+                   IdMoneda, NroKuentaOri, NroOperacion, Glosa, FechaContable, IdUsuario, " ", TipoPago);
                 ///Detalle en la Empresa Destino
                 CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
                    , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
-                   IdMoneda, NroKuentaDes, NroOperacion, Glosa, FechaContable, IdUsuario, " ",TipoPago);
+                   IdMoneda, NroKuentaDes, NroOperacion, Glosa, FechaContable, IdUsuario, " ", TipoPago);
                 CapaLogica.InsertarAsientoFacturaDetalle(10, 2, IdAsientoDes, FechaContable, cboDesCuentaContable.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
                    , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
                    IdMoneda, " ", NumComprobante, Glosa, FechaContable, IdUsuario, " ");
@@ -466,14 +481,14 @@ namespace HPReserger
                     CapaLogica.PrestamosInterEmpresa(1, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
                         , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], CuoOri, cboOriCuentaContable.SelectedValue.ToString(), IdEmpresaDes, IdProyectoDes
                         , IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
-                        , CuoDes, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1, TipoPago,NroOperacion);
+                        , CuoDes, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1, TipoPago, NroOperacion);
                 else if (Estado == 2)
                 {
                     CapaLogica.PrestamosInterEmpresa(2, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
                                         , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], _CuoOrigen, cboOriCuentaContable.SelectedValue.ToString(),
                                         IdEmpresaDes, IdProyectoDes, IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"],
                                         (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
-                                        , _CuoDestino, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, _FkId, TipoPago,NroOperacion);
+                                        , _CuoDestino, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, _FkId, TipoPago, NroOperacion);
                 }
                 ///Proceso Finalizado;
                 msgOK($"Se Grabó Exitosamente\nEn la Empresa Origen  cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");

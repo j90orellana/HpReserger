@@ -1342,6 +1342,14 @@ namespace HPReserger
                 cbocambio.Focus();
                 return;
             }
+            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+            int IdEmpresa = (int)cboempresa.SelectedValue;
+            DateTime FechaCoontable = dtpfechavalor.Value;
+            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            {
+                if (msgp("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                    return;
+            }
             //validamos la glosa
             if (!txtglosa.EstaLLeno())
             {
@@ -1403,11 +1411,16 @@ namespace HPReserger
                     ///PROCESO DE MODIFICACION!
                     if (estado == 2 && Dtgconten.RowCount > 1)
                     {
+                        MismoPeriodo = false;
                         DateTime FechaAsiento;
                         //if (chkfechavalor.Checked) 
                         FechaAsiento = dtpfechavalor.Value;
                         //else FechaAsiento = dtpfecha.Value;
-                        if (!ValidarMismoPeriodo(_FechaAModificar, FechaAsiento)) { msgOK("No se Puede Mover a Otro Periodo"); return; }
+                        //Validamos el mismo periodo
+                        if (ValidarMismoPeriodo(_FechaAModificar, FechaAsiento))
+                        {
+                            MismoPeriodo = true;
+                        }
                         ////codigo para reversar solo estado del asiento
                         //CapaLogica.ReversarAsientosSoloEstado(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, _FechaAModificar);
                         //string cadena = "";
@@ -1415,13 +1428,20 @@ namespace HPReserger
                         CArgarValoresIngreso();
                         //MostrarValores(cadena + Detalle(), codigo);
                         ////ELIMINA EL ASIENTO ANTERIOR
-                        CapaLogica.AsientoContableEliminar(_CodigoModificar, _ProyectoModificar, _FechaAModificar);
+                        if (MismoPeriodo)
+                            CapaLogica.AsientoContableEliminar(_CodigoModificar, _ProyectoModificar, _FechaAModificar);
+                        else
+                        {
+                            CapaLogica.ReversarAsientos(_CodigoModificar, _ProyectoModificar, frmLogin.CodigoUsuario, _FechaAModificar);
+                            ultimoasiento();
+                        }
                         //Mensajes("Codigo:" + codigo + " Filas;" + Dtgconten.RowCount);
                         foreach (DataGridViewRow item in Dtgconten.Rows)
                         {
                             if (item.Cells[EstadoCuen.Name].Value.ToString() != "3")
                                 item.Cells[EstadoCuen.Name].Value = cboestado.SelectedValue.ToString();
                         }
+
                         ////Actualizar el cambio de id -proyecto - fechas                       
                         CapaLogica.ActualizarDetalleAsiento(_CodigoModificar, _ProyectoModificar, _FechaAModificar, codigo, (int)cboproyecto.SelectedValue, FechaAsiento);
                         ////CapaLogica.ActualizarDetalleAsientoCambioPeriodo(_CodigoModificar, _ProyectoModificar, _FechaAModificar, codigo, (int)cboproyecto.SelectedValue, FechaAsiento);
@@ -1511,6 +1531,7 @@ namespace HPReserger
             chkfecha_CheckedChanged(new object { }, new EventArgs());
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
+        public DialogResult msgp(string cadena, string detalle) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena, detalle); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             aceptar = false;
@@ -1805,6 +1826,14 @@ namespace HPReserger
             {
                 HPResergerFunciones.Utilitarios.msgCancel($"Asiento No se Puede Reversar!"); return;
             }
+            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+            int IdEmpresa = (int)cboempresa.SelectedValue;
+            DateTime FechaCoontable = dtpfechavalor.Value;
+            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            {
+                if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                    return;
+            }
             //Verificio si el Periodo esta Abierto para Proceder con la Anulacion - REversa
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpfechavalor.Value))
             {
@@ -1888,6 +1917,7 @@ namespace HPReserger
         private string CuoSelec;
         frmTipodeCambio frmtipo;
         private bool Busqueda;
+        private bool MismoPeriodo;
 
         public void SacarTipoCambio()
         {

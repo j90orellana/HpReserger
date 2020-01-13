@@ -39,6 +39,27 @@ namespace HPReserger
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.btnexportarExcel = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipodni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nroid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.representante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sector = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idsector = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coddep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codpro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coddis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ciaseguro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eps = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -68,27 +89,7 @@ namespace HPReserger
             this.btnsector = new System.Windows.Forms.Button();
             this.btnciaseguro = new System.Windows.Forms.Button();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
-            this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipodni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nroid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.representante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sector = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idsector = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coddep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codpro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coddis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ciaseguro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eps = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbltotalregistros = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,6 +213,185 @@ namespace HPReserger
             this.dtgconten.TabIndex = 124;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // ruc
+            // 
+            this.ruc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ruc.DataPropertyName = "ruc";
+            this.ruc.HeaderText = "Ruc";
+            this.ruc.Name = "ruc";
+            this.ruc.ReadOnly = true;
+            this.ruc.Width = 51;
+            // 
+            // empresa
+            // 
+            this.empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.empresa.DataPropertyName = "empresa";
+            this.empresa.HeaderText = "Empresa";
+            this.empresa.Name = "empresa";
+            this.empresa.ReadOnly = true;
+            this.empresa.Width = 76;
+            // 
+            // direccion
+            // 
+            this.direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.direccion.DataPropertyName = "direccion";
+            this.direccion.HeaderText = "Dirección";
+            this.direccion.MinimumWidth = 100;
+            this.direccion.Name = "direccion";
+            this.direccion.ReadOnly = true;
+            // 
+            // tipodni
+            // 
+            this.tipodni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.tipodni.DataPropertyName = "tipoid";
+            this.tipodni.HeaderText = "Tipo";
+            this.tipodni.Name = "tipodni";
+            this.tipodni.ReadOnly = true;
+            this.tipodni.Width = 55;
+            // 
+            // nroid
+            // 
+            this.nroid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nroid.DataPropertyName = "nroid_representado";
+            this.nroid.HeaderText = "Nro Doc";
+            this.nroid.Name = "nroid";
+            this.nroid.ReadOnly = true;
+            this.nroid.Width = 75;
+            // 
+            // representante
+            // 
+            this.representante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.representante.DataPropertyName = "empleado";
+            this.representante.HeaderText = "Representante";
+            this.representante.MinimumWidth = 100;
+            this.representante.Name = "representante";
+            this.representante.ReadOnly = true;
+            // 
+            // sector
+            // 
+            this.sector.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sector.DataPropertyName = "desc_sector_empresarial";
+            this.sector.HeaderText = "Sector Empresarial";
+            this.sector.MinimumWidth = 200;
+            this.sector.Name = "sector";
+            this.sector.ReadOnly = true;
+            this.sector.Width = 200;
+            // 
+            // dep
+            // 
+            this.dep.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dep.DataPropertyName = "departamento";
+            this.dep.HeaderText = "Departamento";
+            this.dep.Name = "dep";
+            this.dep.ReadOnly = true;
+            this.dep.Width = 107;
+            // 
+            // pro
+            // 
+            this.pro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pro.DataPropertyName = "provincia";
+            this.pro.HeaderText = "Provincia";
+            this.pro.Name = "pro";
+            this.pro.ReadOnly = true;
+            this.pro.Width = 80;
+            // 
+            // dis
+            // 
+            this.dis.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dis.DataPropertyName = "distrito";
+            this.dis.HeaderText = "Distrito";
+            this.dis.Name = "dis";
+            this.dis.ReadOnly = true;
+            this.dis.Width = 69;
+            // 
+            // cia
+            // 
+            this.cia.DataPropertyName = "cia";
+            this.cia.HeaderText = "cia";
+            this.cia.Name = "cia";
+            this.cia.ReadOnly = true;
+            this.cia.Visible = false;
+            // 
+            // idempresa
+            // 
+            this.idempresa.DataPropertyName = "id_empresa";
+            this.idempresa.HeaderText = "idempresa";
+            this.idempresa.Name = "idempresa";
+            this.idempresa.ReadOnly = true;
+            this.idempresa.Visible = false;
+            // 
+            // idsector
+            // 
+            this.idsector.DataPropertyName = "Sector_empresarial";
+            this.idsector.HeaderText = "SectorSector";
+            this.idsector.Name = "idsector";
+            this.idsector.ReadOnly = true;
+            this.idsector.Visible = false;
+            // 
+            // coddep
+            // 
+            this.coddep.DataPropertyName = "cod_dep";
+            this.coddep.HeaderText = "coddep";
+            this.coddep.Name = "coddep";
+            this.coddep.ReadOnly = true;
+            this.coddep.Visible = false;
+            // 
+            // codpro
+            // 
+            this.codpro.DataPropertyName = "cod_prov";
+            this.codpro.HeaderText = "codpro";
+            this.codpro.Name = "codpro";
+            this.codpro.ReadOnly = true;
+            this.codpro.Visible = false;
+            // 
+            // coddis
+            // 
+            this.coddis.DataPropertyName = "cod_dist";
+            this.coddis.HeaderText = "coddis";
+            this.coddis.Name = "coddis";
+            this.coddis.ReadOnly = true;
+            this.coddis.Visible = false;
+            // 
+            // tipoid
+            // 
+            this.tipoid.DataPropertyName = "tipoid_representado";
+            this.tipoid.HeaderText = "tipoid";
+            this.tipoid.Name = "tipoid";
+            this.tipoid.ReadOnly = true;
+            this.tipoid.Visible = false;
+            // 
+            // ciaseguro
+            // 
+            this.ciaseguro.DataPropertyName = "cia_seguro";
+            this.ciaseguro.HeaderText = "ciaseguro";
+            this.ciaseguro.Name = "ciaseguro";
+            this.ciaseguro.ReadOnly = true;
+            this.ciaseguro.Visible = false;
+            // 
+            // usuario
+            // 
+            this.usuario.DataPropertyName = "usuario";
+            this.usuario.HeaderText = "usuario";
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            this.usuario.Visible = false;
+            // 
+            // fecha
+            // 
+            this.fecha.DataPropertyName = "fecha";
+            this.fecha.HeaderText = "fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            this.fecha.Visible = false;
+            // 
+            // eps
+            // 
+            this.eps.DataPropertyName = "eps";
+            this.eps.HeaderText = "Seguro";
+            this.eps.Name = "eps";
+            this.eps.ReadOnly = true;
+            this.eps.Visible = false;
             // 
             // btneliminar
             // 
@@ -543,6 +723,7 @@ namespace HPReserger
             // 
             // separadorOre1
             // 
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre1.Location = new System.Drawing.Point(0, 106);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
@@ -550,190 +731,25 @@ namespace HPReserger
             this.separadorOre1.Size = new System.Drawing.Size(1088, 2);
             this.separadorOre1.TabIndex = 155;
             // 
-            // ruc
+            // lbltotalregistros
             // 
-            this.ruc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ruc.DataPropertyName = "ruc";
-            this.ruc.HeaderText = "Ruc";
-            this.ruc.Name = "ruc";
-            this.ruc.ReadOnly = true;
-            this.ruc.Width = 51;
-            // 
-            // empresa
-            // 
-            this.empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.empresa.DataPropertyName = "empresa";
-            this.empresa.HeaderText = "Empresa";
-            this.empresa.Name = "empresa";
-            this.empresa.ReadOnly = true;
-            this.empresa.Width = 76;
-            // 
-            // direccion
-            // 
-            this.direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.direccion.DataPropertyName = "direccion";
-            this.direccion.HeaderText = "Dirección";
-            this.direccion.MinimumWidth = 100;
-            this.direccion.Name = "direccion";
-            this.direccion.ReadOnly = true;
-            // 
-            // tipodni
-            // 
-            this.tipodni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.tipodni.DataPropertyName = "tipoid";
-            this.tipodni.HeaderText = "Tipo";
-            this.tipodni.Name = "tipodni";
-            this.tipodni.ReadOnly = true;
-            this.tipodni.Width = 55;
-            // 
-            // nroid
-            // 
-            this.nroid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nroid.DataPropertyName = "nroid_representado";
-            this.nroid.HeaderText = "Nro Doc";
-            this.nroid.Name = "nroid";
-            this.nroid.ReadOnly = true;
-            this.nroid.Width = 75;
-            // 
-            // representante
-            // 
-            this.representante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.representante.DataPropertyName = "empleado";
-            this.representante.HeaderText = "Representante";
-            this.representante.MinimumWidth = 100;
-            this.representante.Name = "representante";
-            this.representante.ReadOnly = true;
-            // 
-            // sector
-            // 
-            this.sector.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sector.DataPropertyName = "desc_sector_empresarial";
-            this.sector.HeaderText = "Sector Empresarial";
-            this.sector.MinimumWidth = 200;
-            this.sector.Name = "sector";
-            this.sector.ReadOnly = true;
-            this.sector.Width = 200;
-            // 
-            // dep
-            // 
-            this.dep.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dep.DataPropertyName = "departamento";
-            this.dep.HeaderText = "Departamento";
-            this.dep.Name = "dep";
-            this.dep.ReadOnly = true;
-            this.dep.Width = 107;
-            // 
-            // pro
-            // 
-            this.pro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.pro.DataPropertyName = "provincia";
-            this.pro.HeaderText = "Provincia";
-            this.pro.Name = "pro";
-            this.pro.ReadOnly = true;
-            this.pro.Width = 80;
-            // 
-            // dis
-            // 
-            this.dis.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dis.DataPropertyName = "distrito";
-            this.dis.HeaderText = "Distrito";
-            this.dis.Name = "dis";
-            this.dis.ReadOnly = true;
-            this.dis.Width = 69;
-            // 
-            // cia
-            // 
-            this.cia.DataPropertyName = "cia";
-            this.cia.HeaderText = "cia";
-            this.cia.Name = "cia";
-            this.cia.ReadOnly = true;
-            this.cia.Visible = false;
-            // 
-            // idempresa
-            // 
-            this.idempresa.DataPropertyName = "id_empresa";
-            this.idempresa.HeaderText = "idempresa";
-            this.idempresa.Name = "idempresa";
-            this.idempresa.ReadOnly = true;
-            this.idempresa.Visible = false;
-            // 
-            // idsector
-            // 
-            this.idsector.DataPropertyName = "Sector_empresarial";
-            this.idsector.HeaderText = "SectorSector";
-            this.idsector.Name = "idsector";
-            this.idsector.ReadOnly = true;
-            this.idsector.Visible = false;
-            // 
-            // coddep
-            // 
-            this.coddep.DataPropertyName = "cod_dep";
-            this.coddep.HeaderText = "coddep";
-            this.coddep.Name = "coddep";
-            this.coddep.ReadOnly = true;
-            this.coddep.Visible = false;
-            // 
-            // codpro
-            // 
-            this.codpro.DataPropertyName = "cod_prov";
-            this.codpro.HeaderText = "codpro";
-            this.codpro.Name = "codpro";
-            this.codpro.ReadOnly = true;
-            this.codpro.Visible = false;
-            // 
-            // coddis
-            // 
-            this.coddis.DataPropertyName = "cod_dist";
-            this.coddis.HeaderText = "coddis";
-            this.coddis.Name = "coddis";
-            this.coddis.ReadOnly = true;
-            this.coddis.Visible = false;
-            // 
-            // tipoid
-            // 
-            this.tipoid.DataPropertyName = "tipoid_representado";
-            this.tipoid.HeaderText = "tipoid";
-            this.tipoid.Name = "tipoid";
-            this.tipoid.ReadOnly = true;
-            this.tipoid.Visible = false;
-            // 
-            // ciaseguro
-            // 
-            this.ciaseguro.DataPropertyName = "cia_seguro";
-            this.ciaseguro.HeaderText = "ciaseguro";
-            this.ciaseguro.Name = "ciaseguro";
-            this.ciaseguro.ReadOnly = true;
-            this.ciaseguro.Visible = false;
-            // 
-            // usuario
-            // 
-            this.usuario.DataPropertyName = "usuario";
-            this.usuario.HeaderText = "usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            this.usuario.Visible = false;
-            // 
-            // fecha
-            // 
-            this.fecha.DataPropertyName = "fecha";
-            this.fecha.HeaderText = "fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.ReadOnly = true;
-            this.fecha.Visible = false;
-            // 
-            // eps
-            // 
-            this.eps.DataPropertyName = "eps";
-            this.eps.HeaderText = "Seguro";
-            this.eps.Name = "eps";
-            this.eps.ReadOnly = true;
-            this.eps.Visible = false;
+            this.lbltotalregistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbltotalregistros.AutoEllipsis = true;
+            this.lbltotalregistros.AutoSize = true;
+            this.lbltotalregistros.BackColor = System.Drawing.Color.Transparent;
+            this.lbltotalregistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalregistros.Location = new System.Drawing.Point(12, 369);
+            this.lbltotalregistros.Name = "lbltotalregistros";
+            this.lbltotalregistros.Size = new System.Drawing.Size(104, 13);
+            this.lbltotalregistros.TabIndex = 156;
+            this.lbltotalregistros.Text = "Total de Registros: ";
             // 
             // frmEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1083, 394);
+            this.Controls.Add(this.lbltotalregistros);
             this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.btnciaseguro);
             this.Controls.Add(this.btnsector);
@@ -835,5 +851,6 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn eps;
+        private System.Windows.Forms.Label lbltotalregistros;
     }
 }

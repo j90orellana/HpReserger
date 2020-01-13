@@ -2037,6 +2037,17 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Periodos(empresa, mes, año);
         }
+        public Boolean ValidarCrearPeriodo(int @empresa, DateTime fechacontable)
+        {
+            DateTime FechaIniciomes = new DateTime(fechacontable.Year, fechacontable.Month, 1);
+            DataTable tDatos = cdOrdenPedido.ValidarCrearPeriodo(empresa, FechaIniciomes);
+            if (tDatos.Rows.Count > 0)
+            {
+                int var = (int)tDatos.Rows[0]["valor"];
+                return var == 0 ? false : true;
+            }
+            else return false;
+        }
         public DataTable ListarAsientosAbiertos(int opcion, int empresa, DateTime fecha)
         {
             return cdOrdenPedido.ListarAsientosAbiertos(opcion, empresa, fecha);
@@ -2078,10 +2089,10 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.DetraccionesPorPAgarVentas(empresa);
         }
         public DataTable Detracciones(int @Opcion, string @Nrofac, string @Proveedor, decimal @ImporteMo, decimal @ImportePEN, decimal @tc, decimal importepagar, decimal diferencia, string @nroopbanco, string @banco
-            , string @ctabanco, DateTime @fechapago, int @Usuario, int @idComprobante, int idempresa,  string cuopago, int @tipopago)
+            , string @ctabanco, DateTime @fechapago, int @Usuario, int @idComprobante, int idempresa, string cuopago, int @tipopago)
         {
             return cdOrdenPedido.Detracciones(@Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, importepagar, diferencia, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario,
-                @idComprobante, idempresa,  cuopago, @tipopago);
+                @idComprobante, idempresa, cuopago, @tipopago);
         }
         public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, decimal importepagado, decimal diferencia, string nropago
             , string banco, string nrocuenta, DateTime fechapago, int usuario, int fkempresa, int idcomprobante, string cuo, int tipopago)
@@ -2089,9 +2100,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.DetraccionesVenta(opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario, fkempresa, idcomprobante,
                 cuo, tipopago);
         }
-        public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa,int proyecto, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string cuentaredondeo, DateTime fechapago, DateTime fechacontablem, string glosa, int idcomprobante, decimal tc)
+        public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, int proyecto, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string cuentaredondeo, DateTime fechapago, DateTime fechacontablem, string glosa, int idcomprobante, decimal tc)
         {
-            return cdOrdenPedido.PagarDetracionesCabecera(asiento, cuo, empresa,proyecto, montoTotal, montoredondeo, montodiferencia, ruc, nrofac, cuenta, cuentaredondeo, fechapago, fechacontablem, glosa, idcomprobante, tc);
+            return cdOrdenPedido.PagarDetracionesCabecera(asiento, cuo, empresa, proyecto, montoTotal, montoredondeo, montodiferencia, ruc, nrofac, cuenta, cuentaredondeo, fechapago, fechacontablem, glosa, idcomprobante, tc);
         }
         public DataTable PagarDetracionesVentaCabecera(int asiento, string cuo, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string nroboleta, string cuentaContableNacion, string cuentacontablebanco, string cuentaredondeo, DateTime fechacontable, string glosa, int fkempresa, DateTime fechapago, int idcomprobante, decimal tc, int pkproyecto)
         {

@@ -248,6 +248,15 @@ namespace HPReserger.ModuloCompensaciones
             {
                 cbocuentabanco.Text = "";
                 CargarCuentasBancos();
+
+            }
+            if (cbotipo.SelectedValue != null)
+            {
+                cbobanco.Visible = cbocuentabanco.Visible = lblbanco.Visible = lblmsgsalida.Visible = true;
+                if ((int)cbotipo.SelectedValue == 0)
+                {
+                    cbobanco.Visible = cbocuentabanco.Visible = lblbanco.Visible = lblmsgsalida.Visible = false;
+                }
             }
         }
 
@@ -650,6 +659,7 @@ namespace HPReserger.ModuloCompensaciones
             }
             if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msg("Seleccione Tipo de Pago"); return; }
             int TipoPago = (int)cbotipo.SelectedValue;
+            if (ImporteTotal == 0) TipoPago = 0;
             string NroOperacion = txtnrooperacion.TextValido();
             if (decimal.Parse(txtImporteTotal.Text) != 0)
             {
@@ -696,6 +706,14 @@ namespace HPReserger.ModuloCompensaciones
             if (ContaFacturas <= 0)
             {
                 if (msgp("No se ha Seleccionado Facturas, Desea Continuar?") != DialogResult.Yes)
+                    return;
+            }
+            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+            int IdEmpresa = (int)cboempresa.SelectedValue;
+            DateTime FechaCoontable = dtpFechaContable.Value;
+            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            {
+                if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
                     return;
             }
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
@@ -786,7 +804,7 @@ namespace HPReserger.ModuloCompensaciones
                 ///Si son pagos Totales
                 //Anticipos al Haber     --yOk
                 //if (cbotipo.Text != "000 Ninguno.")
-                if (TipoPago == 0 || ContaFacturas == 0)
+                if (TipoPago != 0 || ContaFacturas == 0)
                 {
                     foreach (DataGridViewRow item in DtgcontenEntregas.Rows)
                     {
