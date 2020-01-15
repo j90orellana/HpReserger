@@ -2439,6 +2439,18 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerPeriodoAbierto(empresa, Fecha);
         }
+        public DataTable TipoPlanCuentas(int opcion, int id, string plan, int codsunat)
+        {
+            return cdOrdenPedido.TipoPlanCuentas(opcion, id, plan, codsunat);
+        }
+        public DataTable TipoPlanCuentas()
+        {
+            return cdOrdenPedido.TipoPlanCuentas(0, 0, "", 0);
+        }
+        public DataTable FormatoDiario5_3(DateTime Periodo, int plan)
+        {
+            return cdOrdenPedido.FormatoDiario5_3(Periodo, plan);
+        }
         public DataTable CreaciondeCuentasReflejo(string cuenta)
         {
             return cdOrdenPedido.CreaciondeCuentasReflejo(cuenta);

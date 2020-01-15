@@ -215,6 +215,7 @@
             this.proveedoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sectorEmpresarialToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposPlanContableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centroDeCostosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.operacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subOperacionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -1242,7 +1243,7 @@
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Name = "libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem";
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(443, 22);
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.3 Libro Diario - Detalle Del Plan Contable Utilizado";
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Visible = false;
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Click += new System.EventHandler(this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem_Click);
             // 
             // libroDiarioToolStripMenuItem2
             // 
@@ -2040,6 +2041,7 @@
             // contableToolStripMenuItem
             // 
             this.contableToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tiposPlanContableToolStripMenuItem,
             this.centroDeCostosToolStripMenuItem1,
             this.operacionesToolStripMenuItem,
             this.subOperacionesToolStripMenuItem1,
@@ -2054,6 +2056,14 @@
             this.contableToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.contableToolStripMenuItem.Tag = "708";
             this.contableToolStripMenuItem.Text = "Contable";
+            // 
+            // tiposPlanContableToolStripMenuItem
+            // 
+            this.tiposPlanContableToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tiposPlanContableToolStripMenuItem.Image")));
+            this.tiposPlanContableToolStripMenuItem.Name = "tiposPlanContableToolStripMenuItem";
+            this.tiposPlanContableToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.tiposPlanContableToolStripMenuItem.Text = "Tipos Plan Contable";
+            this.tiposPlanContableToolStripMenuItem.Click += new System.EventHandler(this.tiposPlanContableToolStripMenuItem_Click);
             // 
             // centroDeCostosToolStripMenuItem1
             // 
@@ -2865,5 +2875,6 @@
         private System.Windows.Forms.ToolStripMenuItem formato141RegistroDeVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
         private System.Windows.Forms.ToolStripMenuItem mayorPorCuentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tiposPlanContableToolStripMenuItem;
     }
 }

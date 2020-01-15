@@ -196,6 +196,12 @@
     <Compile Include="ModuloContable\frmTipodeCambioSBS.Designer.cs">
       <DependentUpon>frmTipodeCambioSBS.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloContable\frmTipoPlanCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmTipoPlanCuenta.Designer.cs">
+      <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloFinanzas\frmMediosPagos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,12 @@
     </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroDiario.Designer.cs">
       <DependentUpon>frmLibroDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroDiario5_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroDiario5_3.Designer.cs">
+      <DependentUpon>frmLibroDiario5_3.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroVentas.cs">
       <SubType>Form</SubType>
@@ -1755,6 +1767,9 @@
       <DependentUpon>frmTipodeCambioSBS.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmTipoPlanCuenta.resx">
+      <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmMediosPagos.resx">
       <DependentUpon>frmMediosPagos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1763,6 +1778,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroDiario.resx">
       <DependentUpon>frmLibroDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroDiario5_3.resx">
+      <DependentUpon>frmLibroDiario5_3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmRegistroVentas.resx">
       <DependentUpon>frmRegistroVentas.cs</DependentUpon>

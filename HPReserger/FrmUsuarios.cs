@@ -318,9 +318,12 @@ namespace HPReserger
                 btnnuevo.Enabled = true; txtid_TextChanged(sender, e); estado = 0;
                 btnnuevo.Enabled = true; btnnuevoTemporal.Enabled = true;
             }
-            CargarUsuarios(); ModoEdicion(true); btnlimpiar.Enabled = true;
-            estado = 0;
-            txtid.Enabled = false;
+            if ((new int[] { 1, 2, 5 }).Contains(estado))
+            {
+                CargarUsuarios(); ModoEdicion(true); btnlimpiar.Enabled = true;
+                estado = 0;
+                txtid.Enabled = false;
+            }
         }
         public int tipoid;
         public string nroid;

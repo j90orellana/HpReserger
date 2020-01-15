@@ -1,6 +1,6 @@
 ﻿namespace HPReserger.ModuloReportes.LibrosElectronicos
 {
-    partial class frmLibroBancosCorriente
+    partial class frmLibroDiario5_3
     {
         /// <summary>
         /// Required designer variable.
@@ -29,42 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLibroBancosCorriente));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLibroDiario5_3));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkCarpetas = new System.Windows.Forms.CheckBox();
             this.BtnCerrar = new HpResergerUserControls.ButtonPer();
-            this.btnProcesar = new HpResergerUserControls.ButtonPer();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnGenerarTXT = new System.Windows.Forms.Button();
             this.btnexcel = new System.Windows.Forms.Button();
             this.lblmensaje = new System.Windows.Forms.Label();
-            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.xperiodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xcuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xCorrelativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xCodigoEntidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNroCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFechaOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTipoDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNumDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xBeneficiario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNroOpBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xParteDeudora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xParteAcreedora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCodigoPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xDescripcionPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCodigoCuentaCorp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xDescripcionCuentaCorp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chklist = new System.Windows.Forms.CheckedListBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cboperiodode = new HpResergerUserControls.ComboMesAño();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnProcesar = new HpResergerUserControls.ButtonPer();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboplancuenta = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.PanelTxt = new HpResergerUserControls.PanelOre();
             this.PanelAbajo = new HpResergerUserControls.PanelOre();
             this.panelDerecho = new HpResergerUserControls.PanelOre();
@@ -100,20 +97,32 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnTxt = new HpResergerUserControls.ButtonPer();
             this.buttonPer1 = new HpResergerUserControls.ButtonPer();
-            this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtbuscuentas = new HpResergerUserControls.TextBoxPer();
-            this.chklist = new System.Windows.Forms.CheckedListBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cboperiodohasta = new HpResergerUserControls.ComboMesAño();
-            this.cboperiodode = new HpResergerUserControls.ComboMesAño();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.chkCarpetas = new System.Windows.Forms.CheckBox();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(398, 19);
+            this.label1.TabIndex = 365;
+            this.label1.Text = "5.3 LIBRO DIARIO - DETALLE DEL PLAN CONTABLE UTILIZADO";
+            // 
+            // chkCarpetas
+            // 
+            this.chkCarpetas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkCarpetas.AutoSize = true;
+            this.chkCarpetas.BackColor = System.Drawing.Color.Transparent;
+            this.chkCarpetas.Location = new System.Drawing.Point(553, 524);
+            this.chkCarpetas.Name = "chkCarpetas";
+            this.chkCarpetas.Size = new System.Drawing.Size(104, 17);
+            this.chkCarpetas.TabIndex = 388;
+            this.chkCarpetas.Text = "Exp. a Carpetas";
+            this.chkCarpetas.UseVisualStyleBackColor = false;
             // 
             // BtnCerrar
             // 
@@ -124,54 +133,14 @@
             this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(989, 530);
+            this.BtnCerrar.Location = new System.Drawing.Point(941, 520);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
-            this.BtnCerrar.TabIndex = 374;
+            this.BtnCerrar.TabIndex = 387;
             this.BtnCerrar.Text = "&Cancelar";
             this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrar.UseVisualStyleBackColor = false;
             this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
-            // 
-            // btnProcesar
-            // 
-            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(793, 36);
-            this.btnProcesar.Name = "btnProcesar";
-            this.btnProcesar.Size = new System.Drawing.Size(83, 24);
-            this.btnProcesar.TabIndex = 373;
-            this.btnProcesar.Text = "&Procesar";
-            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProcesar.UseVisualStyleBackColor = false;
-            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // SaveFile
-            // 
-            this.SaveFile.Filter = "Archivos de Texto|*.txt";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(413, 531);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 23);
-            this.button1.TabIndex = 372;
-            this.button1.Text = "Pdf";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             // 
             // btnGenerarTXT
             // 
@@ -179,10 +148,10 @@
             this.btnGenerarTXT.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnGenerarTXT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarTXT.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarTXT.Image")));
-            this.btnGenerarTXT.Location = new System.Drawing.Point(589, 531);
+            this.btnGenerarTXT.Location = new System.Drawing.Point(467, 521);
             this.btnGenerarTXT.Name = "btnGenerarTXT";
             this.btnGenerarTXT.Size = new System.Drawing.Size(82, 23);
-            this.btnGenerarTXT.TabIndex = 370;
+            this.btnGenerarTXT.TabIndex = 384;
             this.btnGenerarTXT.Text = "PLE Txt";
             this.btnGenerarTXT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerarTXT.UseVisualStyleBackColor = true;
@@ -194,10 +163,10 @@
             this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
-            this.btnexcel.Location = new System.Drawing.Point(501, 531);
+            this.btnexcel.Location = new System.Drawing.Point(383, 521);
             this.btnexcel.Name = "btnexcel";
             this.btnexcel.Size = new System.Drawing.Size(82, 23);
-            this.btnexcel.TabIndex = 371;
+            this.btnexcel.TabIndex = 385;
             this.btnexcel.Text = "Excel";
             this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexcel.UseVisualStyleBackColor = true;
@@ -209,44 +178,11 @@
             this.lblmensaje.AutoSize = true;
             this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
             this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmensaje.Location = new System.Drawing.Point(13, 536);
+            this.lblmensaje.Location = new System.Drawing.Point(12, 526);
             this.lblmensaje.Name = "lblmensaje";
             this.lblmensaje.Size = new System.Drawing.Size(110, 13);
-            this.lblmensaje.TabIndex = 369;
+            this.lblmensaje.TabIndex = 383;
             this.lblmensaje.Text = "Total de Registros: 0";
-            // 
-            // separadorOre1
-            // 
-            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 120);
-            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
-            this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(1092, 2);
-            this.separadorOre1.TabIndex = 365;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(12, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 363;
-            this.label2.Text = "PERIODO:\r\n";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(564, 19);
-            this.label1.TabIndex = 364;
-            this.label1.Text = "1.2 LIBRO CAJA Y BANCOS - DETALLE DE LOS MOVIMIENTOS DE LA CUENTA CORRIENTE";
             // 
             // dtgconten
             // 
@@ -254,10 +190,10 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -266,194 +202,121 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.xperiodo,
-            this.xEmpresa,
-            this.xcuo,
-            this.xCorrelativo,
-            this.xCodigoEntidad,
-            this.xNroCuenta,
-            this.xFechaOperacion,
-            this.xTipoPago,
-            this.xGlosa,
-            this.xTipoDoc,
-            this.xNumDoc,
-            this.xBeneficiario,
-            this.xNroOpBanco,
-            this.xParteDeudora,
-            this.xParteAcreedora,
+            this.xPeriodo,
+            this.xCuentaContable,
+            this.xDescripcion,
+            this.xCodigoPlan,
+            this.xDescripcionPlan,
+            this.xCodigoCuentaCorp,
+            this.xDescripcionCuentaCorp,
             this.xEstado});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(15, 124);
+            this.dtgconten.Location = new System.Drawing.Point(12, 119);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1057, 401);
-            this.dtgconten.TabIndex = 361;
+            this.dtgconten.Size = new System.Drawing.Size(1012, 396);
+            this.dtgconten.TabIndex = 389;
+            this.dtgconten.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dtgconten_CellValidating);
             this.dtgconten.Sorted += new System.EventHandler(this.dtgconten_Sorted);
             // 
-            // xperiodo
+            // xPeriodo
             // 
-            this.xperiodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xperiodo.DataPropertyName = "Periodo";
-            this.xperiodo.HeaderText = "Periodo";
-            this.xperiodo.MinimumWidth = 50;
-            this.xperiodo.Name = "xperiodo";
-            this.xperiodo.Width = 50;
+            this.xPeriodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xPeriodo.DataPropertyName = "Periodo";
+            this.xPeriodo.HeaderText = "Periodo";
+            this.xPeriodo.MinimumWidth = 55;
+            this.xPeriodo.Name = "xPeriodo";
+            this.xPeriodo.ReadOnly = true;
+            this.xPeriodo.Width = 55;
             // 
-            // xEmpresa
+            // xCuentaContable
             // 
-            this.xEmpresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.xEmpresa.DataPropertyName = "Empresa";
-            this.xEmpresa.HeaderText = "Empresa";
-            this.xEmpresa.MinimumWidth = 100;
-            this.xEmpresa.Name = "xEmpresa";
+            this.xCuentaContable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xCuentaContable.DataPropertyName = "CuentaContable";
+            this.xCuentaContable.HeaderText = "Cuenta Contable";
+            this.xCuentaContable.MinimumWidth = 65;
+            this.xCuentaContable.Name = "xCuentaContable";
+            this.xCuentaContable.ReadOnly = true;
+            this.xCuentaContable.Width = 65;
             // 
-            // xcuo
+            // xDescripcion
             // 
-            this.xcuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xcuo.DataPropertyName = "CUO";
-            this.xcuo.HeaderText = "CUO";
-            this.xcuo.MinimumWidth = 50;
-            this.xcuo.Name = "xcuo";
-            this.xcuo.Width = 50;
+            this.xDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xDescripcion.DataPropertyName = "Descripcion";
+            this.xDescripcion.HeaderText = "Descripcion";
+            this.xDescripcion.MinimumWidth = 120;
+            this.xDescripcion.Name = "xDescripcion";
+            this.xDescripcion.ReadOnly = true;
             // 
-            // xCorrelativo
+            // xCodigoPlan
             // 
-            this.xCorrelativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xCorrelativo.DataPropertyName = "Correlativo";
-            this.xCorrelativo.HeaderText = "Correlativo";
-            this.xCorrelativo.MinimumWidth = 70;
-            this.xCorrelativo.Name = "xCorrelativo";
-            this.xCorrelativo.Width = 70;
+            this.xCodigoPlan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xCodigoPlan.DataPropertyName = "CodigoPlan";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xCodigoPlan.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xCodigoPlan.HeaderText = "Codigo Plan";
+            this.xCodigoPlan.MinimumWidth = 50;
+            this.xCodigoPlan.Name = "xCodigoPlan";
+            this.xCodigoPlan.ReadOnly = true;
+            this.xCodigoPlan.Width = 50;
             // 
-            // xCodigoEntidad
+            // xDescripcionPlan
             // 
-            this.xCodigoEntidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xCodigoEntidad.DataPropertyName = "CodigoEntidad";
-            dataGridViewCellStyle10.Format = "00";
-            this.xCodigoEntidad.DefaultCellStyle = dataGridViewCellStyle10;
-            this.xCodigoEntidad.HeaderText = "Codigo Entidad";
-            this.xCodigoEntidad.MinimumWidth = 60;
-            this.xCodigoEntidad.Name = "xCodigoEntidad";
-            this.xCodigoEntidad.Width = 60;
+            this.xDescripcionPlan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xDescripcionPlan.DataPropertyName = "DescripcionPlan";
+            this.xDescripcionPlan.HeaderText = "Descripcion Plan";
+            this.xDescripcionPlan.MinimumWidth = 120;
+            this.xDescripcionPlan.Name = "xDescripcionPlan";
+            this.xDescripcionPlan.ReadOnly = true;
             // 
-            // xNroCuenta
+            // xCodigoCuentaCorp
             // 
-            this.xNroCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xNroCuenta.DataPropertyName = "NroCuenta";
-            this.xNroCuenta.HeaderText = "Nro Cuenta";
-            this.xNroCuenta.MinimumWidth = 70;
-            this.xNroCuenta.Name = "xNroCuenta";
-            this.xNroCuenta.Width = 70;
+            this.xCodigoCuentaCorp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xCodigoCuentaCorp.DataPropertyName = "CodigoCuentaCorp";
+            this.xCodigoCuentaCorp.HeaderText = "Codigo CuentaCorp";
+            this.xCodigoCuentaCorp.MinimumWidth = 75;
+            this.xCodigoCuentaCorp.Name = "xCodigoCuentaCorp";
+            this.xCodigoCuentaCorp.ReadOnly = true;
+            this.xCodigoCuentaCorp.Width = 75;
             // 
-            // xFechaOperacion
+            // xDescripcionCuentaCorp
             // 
-            this.xFechaOperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xFechaOperacion.DataPropertyName = "FechaOperacion";
-            this.xFechaOperacion.HeaderText = "Fecha Operacion";
-            this.xFechaOperacion.MinimumWidth = 60;
-            this.xFechaOperacion.Name = "xFechaOperacion";
-            this.xFechaOperacion.Width = 60;
-            // 
-            // xTipoPago
-            // 
-            this.xTipoPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xTipoPago.DataPropertyName = "TipoPago";
-            dataGridViewCellStyle11.Format = "000";
-            this.xTipoPago.DefaultCellStyle = dataGridViewCellStyle11;
-            this.xTipoPago.HeaderText = "Tipo Pago";
-            this.xTipoPago.MinimumWidth = 40;
-            this.xTipoPago.Name = "xTipoPago";
-            this.xTipoPago.Width = 40;
-            // 
-            // xGlosa
-            // 
-            this.xGlosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xGlosa.DataPropertyName = "Glosa";
-            this.xGlosa.HeaderText = "Glosa";
-            this.xGlosa.MinimumWidth = 80;
-            this.xGlosa.Name = "xGlosa";
-            // 
-            // xTipoDoc
-            // 
-            this.xTipoDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xTipoDoc.DataPropertyName = "TipoDoc";
-            this.xTipoDoc.HeaderText = "Tipo Doc";
-            this.xTipoDoc.MinimumWidth = 50;
-            this.xTipoDoc.Name = "xTipoDoc";
-            this.xTipoDoc.Width = 50;
-            // 
-            // xNumDoc
-            // 
-            this.xNumDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xNumDoc.DataPropertyName = "NumDoc";
-            this.xNumDoc.HeaderText = "Num Doc";
-            this.xNumDoc.MinimumWidth = 50;
-            this.xNumDoc.Name = "xNumDoc";
-            this.xNumDoc.Width = 50;
-            // 
-            // xBeneficiario
-            // 
-            this.xBeneficiario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xBeneficiario.DataPropertyName = "Beneficiario";
-            this.xBeneficiario.HeaderText = "Beneficiario";
-            this.xBeneficiario.MinimumWidth = 80;
-            this.xBeneficiario.Name = "xBeneficiario";
-            // 
-            // xNroOpBanco
-            // 
-            this.xNroOpBanco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xNroOpBanco.DataPropertyName = "NroOpBanco";
-            this.xNroOpBanco.HeaderText = "NroOp Banco";
-            this.xNroOpBanco.MinimumWidth = 60;
-            this.xNroOpBanco.Name = "xNroOpBanco";
-            this.xNroOpBanco.Width = 60;
-            // 
-            // xParteDeudora
-            // 
-            this.xParteDeudora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xParteDeudora.DataPropertyName = "ParteDeudora";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "n2";
-            this.xParteDeudora.DefaultCellStyle = dataGridViewCellStyle12;
-            this.xParteDeudora.HeaderText = "Parte Deudora";
-            this.xParteDeudora.MinimumWidth = 70;
-            this.xParteDeudora.Name = "xParteDeudora";
-            this.xParteDeudora.Width = 70;
-            // 
-            // xParteAcreedora
-            // 
-            this.xParteAcreedora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xParteAcreedora.DataPropertyName = "ParteAcreedora";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.NullValue = null;
-            this.xParteAcreedora.DefaultCellStyle = dataGridViewCellStyle13;
-            this.xParteAcreedora.HeaderText = "Parte Acreedora";
-            this.xParteAcreedora.MinimumWidth = 70;
-            this.xParteAcreedora.Name = "xParteAcreedora";
-            this.xParteAcreedora.Width = 70;
+            this.xDescripcionCuentaCorp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xDescripcionCuentaCorp.DataPropertyName = "DescripcionCuentaCorp";
+            this.xDescripcionCuentaCorp.HeaderText = "Descripcion CuentaCorp";
+            this.xDescripcionCuentaCorp.MinimumWidth = 120;
+            this.xDescripcionCuentaCorp.Name = "xDescripcionCuentaCorp";
+            this.xDescripcionCuentaCorp.ReadOnly = true;
             // 
             // xEstado
             // 
@@ -463,6 +326,119 @@
             this.xEstado.MinimumWidth = 50;
             this.xEstado.Name = "xEstado";
             this.xEstado.Width = 50;
+            // 
+            // chklist
+            // 
+            this.chklist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chklist.ColumnWidth = 200;
+            this.chklist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chklist.Location = new System.Drawing.Point(383, 31);
+            this.chklist.Name = "chklist";
+            this.chklist.Size = new System.Drawing.Size(405, 82);
+            this.chklist.TabIndex = 395;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label21.Location = new System.Drawing.Point(322, 31);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(58, 13);
+            this.label21.TabIndex = 394;
+            this.label21.Text = "EMPRESA:";
+            // 
+            // cboperiodode
+            // 
+            this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
+            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 1, 15, 0, 0, 0, 0);
+            this.cboperiodode.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
+            this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.cboperiodode.Location = new System.Drawing.Point(100, 26);
+            this.cboperiodode.Name = "cboperiodode";
+            this.cboperiodode.Size = new System.Drawing.Size(218, 22);
+            this.cboperiodode.TabIndex = 392;
+            this.cboperiodode.VerAño = true;
+            this.cboperiodode.VerMes = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(76, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 393;
+            this.label4.Text = "De:";
+            // 
+            // btnProcesar
+            // 
+            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
+            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcesar.ForeColor = System.Drawing.Color.White;
+            this.btnProcesar.Location = new System.Drawing.Point(794, 31);
+            this.btnProcesar.Name = "btnProcesar";
+            this.btnProcesar.Size = new System.Drawing.Size(83, 24);
+            this.btnProcesar.TabIndex = 391;
+            this.btnProcesar.Text = "&Procesar";
+            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label2.Location = new System.Drawing.Point(12, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 390;
+            this.label2.Text = "PERIODO:\r\n";
+            // 
+            // cboplancuenta
+            // 
+            this.cboplancuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboplancuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboplancuenta.FormattingEnabled = true;
+            this.cboplancuenta.IndexText = null;
+            this.cboplancuenta.Location = new System.Drawing.Point(12, 67);
+            this.cboplancuenta.Name = "cboplancuenta";
+            this.cboplancuenta.ReadOnly = false;
+            this.cboplancuenta.Size = new System.Drawing.Size(368, 21);
+            this.cboplancuenta.TabIndex = 396;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label3.Location = new System.Drawing.Point(12, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(134, 13);
+            this.label3.TabIndex = 390;
+            this.label3.Text = "Tipo de Plan de Cuentas:";
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Archivos de Texto|*.txt";
+            // 
+            // fondoColorOre1
+            // 
+            this.fondoColorOre1.Angulo = 135;
+            this.fondoColorOre1.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
+            this.fondoColorOre1.control = this.PanelTxt;
             // 
             // PanelTxt
             // 
@@ -502,11 +478,11 @@
             this.PanelTxt.Controls.Add(this.label5);
             this.PanelTxt.Controls.Add(this.btnTxt);
             this.PanelTxt.Controls.Add(this.buttonPer1);
-            this.PanelTxt.Location = new System.Drawing.Point(316, 34);
+            this.PanelTxt.Location = new System.Drawing.Point(292, 28);
             this.PanelTxt.Movible = false;
             this.PanelTxt.Name = "PanelTxt";
             this.PanelTxt.Size = new System.Drawing.Size(453, 493);
-            this.PanelTxt.TabIndex = 375;
+            this.PanelTxt.TabIndex = 397;
             this.PanelTxt.Visible = false;
             // 
             // PanelAbajo
@@ -687,7 +663,7 @@
             this.textBoxPer5.ReadOnly = true;
             this.textBoxPer5.Size = new System.Drawing.Size(90, 22);
             this.textBoxPer5.TabIndex = 4;
-            this.textBoxPer5.Text = "02";
+            this.textBoxPer5.Text = "03";
             this.textBoxPer5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPer5.TextoDefecto = "Ingrese Cadena";
             this.textBoxPer5.TextoDefectoColor = System.Drawing.Color.White;
@@ -710,7 +686,7 @@
             this.textBoxPer4.Size = new System.Drawing.Size(90, 22);
             this.textBoxPer4.TabIndex = 4;
             this.textBoxPer4.Tag = "";
-            this.textBoxPer4.Text = "01";
+            this.textBoxPer4.Text = "05";
             this.textBoxPer4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPer4.TextoDefecto = "Ingrese Cadena";
             this.textBoxPer4.TextoDefectoColor = System.Drawing.Color.White;
@@ -970,11 +946,11 @@
             // 
             this.separadorOre2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre2.Location = new System.Drawing.Point(100, 32);
+            this.separadorOre2.Location = new System.Drawing.Point(76, 29);
             this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre2.Name = "separadorOre2";
-            this.separadorOre2.Size = new System.Drawing.Size(253, 2);
+            this.separadorOre2.Size = new System.Drawing.Size(301, 2);
             this.separadorOre2.TabIndex = 2;
             // 
             // label5
@@ -982,11 +958,11 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(127, 12);
+            this.label5.Location = new System.Drawing.Point(90, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(199, 17);
+            this.label5.Size = new System.Drawing.Size(273, 17);
             this.label5.TabIndex = 1;
-            this.label5.Text = "1.2 LIBRO CAJA Y BANCOS";
+            this.label5.Text = "5.3 LIBRO DIARIO - PLAN CONTABLE";
             // 
             // btnTxt
             // 
@@ -1020,159 +996,33 @@
             this.buttonPer1.UseVisualStyleBackColor = false;
             this.buttonPer1.Click += new System.EventHandler(this.buttonPer1_Click);
             // 
-            // fondoColorOre1
-            // 
-            this.fondoColorOre1.Angulo = 135;
-            this.fondoColorOre1.Colores = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
-            this.fondoColorOre1.control = this.PanelTxt;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(13, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 13);
-            this.label3.TabIndex = 362;
-            this.label3.Text = "Filtrar Cuenta:";
-            // 
-            // txtbuscuentas
-            // 
-            this.txtbuscuentas.BackColor = System.Drawing.Color.White;
-            this.txtbuscuentas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtbuscuentas.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtbuscuentas.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtbuscuentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbuscuentas.ForeColor = System.Drawing.Color.Black;
-            this.txtbuscuentas.Format = null;
-            this.txtbuscuentas.Location = new System.Drawing.Point(99, 97);
-            this.txtbuscuentas.MaxLength = 200;
-            this.txtbuscuentas.Name = "txtbuscuentas";
-            this.txtbuscuentas.NextControlOnEnter = null;
-            this.txtbuscuentas.Size = new System.Drawing.Size(280, 21);
-            this.txtbuscuentas.TabIndex = 367;
-            this.txtbuscuentas.Text = "Ingrese Cuentas Contables Separadas por Comas";
-            this.txtbuscuentas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtbuscuentas.TextoDefecto = "Ingrese Cuentas Contables Separadas por Comas";
-            this.txtbuscuentas.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtbuscuentas.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // chklist
-            // 
-            this.chklist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chklist.ColumnWidth = 200;
-            this.chklist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chklist.Location = new System.Drawing.Point(382, 36);
-            this.chklist.Name = "chklist";
-            this.chklist.Size = new System.Drawing.Size(405, 82);
-            this.chklist.TabIndex = 381;
-            this.chklist.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklist_ItemCheck);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.label21.Location = new System.Drawing.Point(321, 36);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(58, 13);
-            this.label21.TabIndex = 380;
-            this.label21.Text = "EMPRESA:";
-            // 
-            // cboperiodohasta
-            // 
-            this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 1, 15, 0, 0, 0, 0);
-            this.cboperiodohasta.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
-            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
-            this.cboperiodohasta.Location = new System.Drawing.Point(99, 65);
-            this.cboperiodohasta.Name = "cboperiodohasta";
-            this.cboperiodohasta.Size = new System.Drawing.Size(218, 22);
-            this.cboperiodohasta.TabIndex = 377;
-            this.cboperiodohasta.VerAño = true;
-            this.cboperiodohasta.VerMes = true;
-            // 
-            // cboperiodode
-            // 
-            this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 1, 15, 0, 0, 0, 0);
-            this.cboperiodode.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
-            this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
-            this.cboperiodode.Location = new System.Drawing.Point(99, 31);
-            this.cboperiodode.Name = "cboperiodode";
-            this.cboperiodode.Size = new System.Drawing.Size(218, 22);
-            this.cboperiodode.TabIndex = 376;
-            this.cboperiodode.VerAño = true;
-            this.cboperiodode.VerMes = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(75, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 13);
-            this.label4.TabIndex = 378;
-            this.label4.Text = "De:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Location = new System.Drawing.Point(60, 70);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(39, 13);
-            this.label20.TabIndex = 379;
-            this.label20.Text = "Hasta:";
-            // 
-            // chkCarpetas
-            // 
-            this.chkCarpetas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkCarpetas.AutoSize = true;
-            this.chkCarpetas.BackColor = System.Drawing.Color.Transparent;
-            this.chkCarpetas.Location = new System.Drawing.Point(678, 534);
-            this.chkCarpetas.Name = "chkCarpetas";
-            this.chkCarpetas.Size = new System.Drawing.Size(104, 17);
-            this.chkCarpetas.TabIndex = 382;
-            this.chkCarpetas.Text = "Exp. a Carpetas";
-            this.chkCarpetas.UseVisualStyleBackColor = false;
-            // 
-            // frmLibroBancosCorriente
+            // frmLibroDiario5_3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.ClientSize = new System.Drawing.Size(1036, 548);
             this.Controls.Add(this.PanelTxt);
-            this.Controls.Add(this.chkCarpetas);
+            this.Controls.Add(this.cboplancuenta);
             this.Controls.Add(this.chklist);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.cboperiodohasta);
             this.Controls.Add(this.cboperiodode);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.btnProcesar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtgconten);
+            this.Controls.Add(this.chkCarpetas);
+            this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.btnGenerarTXT);
             this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.lblmensaje);
-            this.Controls.Add(this.txtbuscuentas);
-            this.Controls.Add(this.separadorOre1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtgconten);
-            this.Controls.Add(this.label3);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.MinimumSize = new System.Drawing.Size(1100, 600);
-            this.Name = "frmLibroBancosCorriente";
-            this.Nombre = "1.2 Libro Caja y Bancos - Detalle De Los Movimientos De la Cuenta Corriente";
-            this.Text = "1.2 Libro Caja y Bancos - Detalle De Los Movimientos De la Cuenta Corriente";
-            this.Load += new System.EventHandler(this.frmLibroBancosCorriente_Load);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(1052, 587);
+            this.Name = "frmLibroDiario5_3";
+            this.Nombre = "5.3 Libro Diario - Detalle Del Plan Contable Utilizado";
+            this.Text = "5.3 Libro Diario - Detalle Del Plan Contable Utilizado";
+            this.Load += new System.EventHandler(this.frmLibroDiario5_3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.PanelTxt.ResumeLayout(false);
             this.PanelTxt.PerformLayout();
@@ -1182,18 +1032,34 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkCarpetas;
         private HpResergerUserControls.ButtonPer BtnCerrar;
-        private HpResergerUserControls.ButtonPer btnProcesar;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.SaveFileDialog SaveFile;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnGenerarTXT;
         private System.Windows.Forms.Button btnexcel;
         private System.Windows.Forms.Label lblmensaje;
-        private HpResergerUserControls.SeparadorOre separadorOre1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private HpResergerUserControls.Dtgconten dtgconten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xPeriodo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCodigoPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xDescripcionPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCodigoCuentaCorp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xDescripcionCuentaCorp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
+        private System.Windows.Forms.CheckedListBox chklist;
+        private System.Windows.Forms.Label label21;
+        private HpResergerUserControls.ComboMesAño cboperiodode;
+        private System.Windows.Forms.Label label4;
+        private HpResergerUserControls.ButtonPer btnProcesar;
+        private System.Windows.Forms.Label label2;
+        private HpResergerUserControls.ComboBoxPer cboplancuenta;
+        private System.Windows.Forms.Label label3;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
+        private HpResergerUserControls.FondoColorOre fondoColorOre1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private HpResergerUserControls.PanelOre PanelTxt;
         private HpResergerUserControls.PanelOre PanelAbajo;
         private HpResergerUserControls.PanelOre panelDerecho;
@@ -1229,32 +1095,5 @@
         private System.Windows.Forms.Label label5;
         private HpResergerUserControls.ButtonPer btnTxt;
         private HpResergerUserControls.ButtonPer buttonPer1;
-        private HpResergerUserControls.FondoColorOre fondoColorOre1;
-        private System.Windows.Forms.Label label3;
-        private HpResergerUserControls.TextBoxPer txtbuscuentas;
-        private System.Windows.Forms.CheckedListBox chklist;
-        private System.Windows.Forms.Label label21;
-        private HpResergerUserControls.ComboMesAño cboperiodohasta;
-        private HpResergerUserControls.ComboMesAño cboperiodode;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.CheckBox chkCarpetas;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xperiodo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xcuo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xCorrelativo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xCodigoEntidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNroCuenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaOperacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNumDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xBeneficiario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNroOpBanco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xParteDeudora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xParteAcreedora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
     }
 }

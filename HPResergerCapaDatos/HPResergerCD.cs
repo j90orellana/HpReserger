@@ -4334,6 +4334,18 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, fechacontable };
             return bd.DataTableFromProcedure("usp_ValidarCrearPeriodo", parametros, valores, null);
         }
+        public DataTable TipoPlanCuentas(int opcion, int id, string plan, int codsunat)
+        {
+            string[] parametros = { "@Opcion", "@id", "@plan", "@codSunat" };
+            object[] valores = { opcion, id, plan, codsunat };
+            return bd.DataTableFromProcedure("usp_TipoPLanCuenta", parametros, valores, null);
+        }
+        public DataTable FormatoDiario5_3(DateTime Periodo, int plan)
+        {
+            string[] parametros = { "@Periodo", "@plan" };
+            object[] valores = { Periodo, plan };
+            return bd.DataTableFromProcedure("usp_FormatoDiario5_3", parametros, valores, null);
+        }
         public DataTable ListarAsientosAbiertos(int opcion, int empresa, DateTime fecha)
         {
             string[] parametros = { "@Opcion", "@empresa", "@fecha" };

@@ -3988,5 +3988,50 @@ namespace HPReserger
         {
             frmLibrosdiarios = null;
         }
+        ModuloContable.frmTipoPlanCuenta frmtipoplancuenta;
+        private void tiposPlanContableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmtipoplancuenta == null)
+            {
+                frmtipoplancuenta = new ModuloContable.frmTipoPlanCuenta();
+                frmtipoplancuenta.MdiParent = this;
+                frmtipoplancuenta.Icon = ICono;
+                frmtipoplancuenta.FormClosed += new FormClosedEventHandler(cerrartipoplancontable);
+                frmtipoplancuenta.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmtipoplancuenta.Activate();
+                ValidarVentanas(frmtipoplancuenta);
+            }
+        }
+
+        private void cerrartipoplancontable(object sender, FormClosedEventArgs e)
+        {
+            frmtipoplancuenta = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroDiario5_3 frmreportelibro5_3;
+        private void libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmreportelibro5_3 == null)
+            {
+                frmreportelibro5_3 = new ModuloReportes.LibrosElectronicos.frmLibroDiario5_3();
+                frmreportelibro5_3.MdiParent = this;
+                frmreportelibro5_3.Icon = ICono;
+                frmreportelibro5_3.FormClosed += new FormClosedEventHandler(cerrarformato5_3);
+                frmreportelibro5_3.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreportelibro5_3.Activate();
+                ValidarVentanas(frmreportelibro5_3);
+            }
+        }
+        private void cerrarformato5_3(object sender, FormClosedEventArgs e)
+        {
+            frmreportelibro5_3 = null;
+        }
     }
 }
