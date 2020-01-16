@@ -2535,6 +2535,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FormatodeVentas14_1(empresa, periodo, anio);
         }
+        public DataTable FormatoLibroInventario3_2(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
+        {
+            return cdOrdenPedido.FormatoLibroInventario3_2(Empresa, Fechainicial, FechaFinal);
+        }
         public DataTable MayorCuentasxEmpresas(int empresa, int periodo, int anio)
         {
             return cdOrdenPedido.MayorCuentasxEmpresas(empresa, periodo, anio);

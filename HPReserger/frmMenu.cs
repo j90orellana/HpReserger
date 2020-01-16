@@ -4033,5 +4033,28 @@ namespace HPReserger
         {
             frmreportelibro5_3 = null;
         }
+        ModuloReportes.LibrosElectronicos.frmLibroInventario3_2 frmLibroInventario5_3;
+        private void libroDeInventariosYBalancesDetalleDelSaldoDeLaCuenta10EfectivoYEquivalentesDeEfectivoPCGEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmLibroInventario5_3 == null)
+            {
+                frmLibroInventario5_3 = new ModuloReportes.LibrosElectronicos.frmLibroInventario3_2();
+                frmLibroInventario5_3.MdiParent = this;
+                frmLibroInventario5_3.Icon = ICono;
+                frmLibroInventario5_3.FormClosed += new FormClosedEventHandler(cerrarformato3_2);
+                frmLibroInventario5_3.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmLibroInventario5_3.Activate();
+                ValidarVentanas(frmLibroInventario5_3);
+            }
+        }
+
+        private void cerrarformato3_2(object sender, FormClosedEventArgs e)
+        {
+            frmLibroInventario5_3 = null;
+        }
     }
 }
