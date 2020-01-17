@@ -48,7 +48,7 @@ namespace HPResergerFunciones
         public static string Cuo(int Asiento, DateTime Fecha)
         {
             string cuo = $"{Fecha.Year.ToString().Substring(2, 2) + Fecha.Month.ToString("00")}-{Asiento.ToString("00000")}";
-            return cuo;            
+            return cuo;
         }
         public static string ValidarCorreo(string correo)
         {
@@ -963,12 +963,22 @@ namespace HPResergerFunciones
             //Fin Ajuste de Texto
             if (!EstaArchivoAbierto(file.ToString()))
             {
+                Boolean Prueba = true;
                 Excel.SaveAs(file);
                 if (Type.GetTypeFromProgID("Excel.Application") != null ? true : false)
                 {
+                    Prueba = false;
                     Process.Start(file.ToString());
                 }
-                else msg("Excel No Instalado");
+                else
+                {
+                    Prueba = false;
+                    ProcessStartInfo startInfo = new ProcessStartInfo();
+                    startInfo.FileName = "EXCEL.EXE";
+                    startInfo.Arguments = file.ToString();
+                    Process.Start(startInfo);
+                }
+                if (Prueba) msg("Excel No Instalado");
             }
             //foreach (DataGridViewRow item in grd.Rows)
             //{

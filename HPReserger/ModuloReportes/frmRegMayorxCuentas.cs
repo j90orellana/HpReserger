@@ -175,6 +175,13 @@ namespace HPReserger
         {
             if (dtgconten.RowCount > 0)
             {
+                if (chkCarpeta.Checked)
+                {
+                    if (folderBrowserDialog1.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+                    }
+                }
                 dtgconten.SuspendLayout();
                 Cursor = Cursors.WaitCursor;
                 frmproce = new HPReserger.frmProcesando();
@@ -196,7 +203,7 @@ namespace HPReserger
             {
 
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
-                _NombreHoja = "Mayor x Cuentas"; _Cabecera = "MAYOR POR CUENTAS CONTABLES";
+                _NombreHoja = "Mayor_x_Cuentas"; _Cabecera = "MAYOR POR CUENTAS CONTABLES";
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
 
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
@@ -224,7 +231,20 @@ namespace HPReserger
                     $"Range(Cells({PosInicialGrilla}, 1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})).Select  {Environment.NewLine}" +
                     $"Selection.Subtotal GroupBy:= 3, Function:= xlSum, TotalList:= Array(19, 20), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} End Sub";
                 ///
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
+                if (chkCarpeta.Checked)
+                {
+                    string Carpeta = folderBrowserDialog1.SelectedPath;
+                    string valor = Carpeta + @"\";                   
+                    //ELiminamos el Excel Antiguo
+                    string NameFile = valor + $"6.2 LIBRO MAYOR.xlsx";
+                    File.Delete(NameFile);
+                    File.Exists(NameFile);
+                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TableResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, 1, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
+                    msgOK($"Archivo Grabado en \n{folderBrowserDialog1.SelectedPath}");
+
+                }
+                else
+                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
             }
             else msg("No hay Registros en la Grilla");

@@ -31,19 +31,20 @@ namespace HPReserger
             cboperfiles.ValueMember = "CODIGO";
             cboperfiles.DisplayMember = "DESCRIPCION";
             cboperfiles.DataSource = cperfil.getCargoTipoContratacion("Codgo_perfil_User", "desc_perfil_user", "TBL_PERFIL_USER");
-            //CargarDAtosalTRee(0, 0, 0);
+            if (treePerfiles.Nodes.Count == 0)
+                CargarDAtosalTRee(0, 0, 0);
             //cboperfiles.SelectedIndex = 0;
         }
-        TreeNode pap, ramita, ramon;
+        TreeNode pap, ramita, ramon,ramons;
         public void CargarDAtosalTRee(int Perfile, int opcion, int codigo)
         {
             DataTable Tablita = new DataTable();
             Tablita = cperfil.ListarPerfiles(Perfile, opcion, codigo, frmLogin.CodigoUsuario, DateTime.Now);
             treePerfiles.Nodes.Clear();
-            pap = ramita = ramon = null;
+            pap = ramita = ramon = ramons = null;
             foreach (DataRow filita in Tablita.Rows)
             {
-                if (filita["titulo"].ToString().Length == 1)
+                if (filita["titulo"].ToString().Length == 2)
                 {
                     pap = new TreeNode((filita["modulo_opcion"].ToString()));
                     if ((int)filita["Checked"] == 1)
@@ -54,7 +55,7 @@ namespace HPReserger
                     pap.Tag = filita["titulo"];
                     treePerfiles.Nodes.Add(pap);
                 }
-                if (filita["titulo"].ToString().Length == 3)
+                if (filita["titulo"].ToString().Length == 4)
                 {
                     ramita = new TreeNode(filita["modulo_opcion"].ToString());
                     if ((int)filita["Checked"] == 1)
@@ -65,7 +66,7 @@ namespace HPReserger
                     ramita.Tag = filita["titulo"];
                     pap.Nodes.Add(ramita);
                 }
-                if (filita["titulo"].ToString().Length == 5)
+                if (filita["titulo"].ToString().Length == 7)
                 {
                     ramon = new TreeNode(filita["modulo_opcion"].ToString());
                     if ((int)filita["Checked"] == 1)
@@ -75,6 +76,17 @@ namespace HPReserger
                     else ramon.Checked = false;
                     ramon.Tag = filita["titulo"];
                     ramita.Nodes.Add(ramon);
+                }
+                if (filita["titulo"].ToString().Length == 9)
+                {
+                    ramons = new TreeNode(filita["modulo_opcion"].ToString());
+                    if ((int)filita["Checked"] == 1)
+                    {
+                        ramons.Checked = true; ramon.Expand();
+                    }
+                    else ramons.Checked = false;
+                    ramons.Tag = filita["titulo"];
+                    ramon.Nodes.Add(ramons);
                 }
             }
         }

@@ -130,6 +130,7 @@
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.btnGenerarTXT = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.chkCarpeta = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
@@ -1367,11 +1368,24 @@
             this.btnGenerarTXT.UseVisualStyleBackColor = true;
             this.btnGenerarTXT.Click += new System.EventHandler(this.btnGenerarTXT_Click);
             // 
+            // chkCarpeta
+            // 
+            this.chkCarpeta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkCarpeta.AutoSize = true;
+            this.chkCarpeta.BackColor = System.Drawing.Color.Transparent;
+            this.chkCarpeta.Location = new System.Drawing.Point(745, 533);
+            this.chkCarpeta.Name = "chkCarpeta";
+            this.chkCarpeta.Size = new System.Drawing.Size(110, 17);
+            this.chkCarpeta.TabIndex = 394;
+            this.chkCarpeta.Text = "Mayor a Carpeta";
+            this.chkCarpeta.UseVisualStyleBackColor = false;
+            // 
             // frmRegMayorxCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1225, 561);
+            this.Controls.Add(this.chkCarpeta);
             this.Controls.Add(this.PanelTxt);
             this.Controls.Add(this.btnGenerarTXT);
             this.Controls.Add(this.chksubtotales);
@@ -1508,5 +1522,6 @@
         private System.Windows.Forms.Button btnGenerarTXT;
         private System.Windows.Forms.CheckBox chkCarpetas;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.CheckBox chkCarpeta;
     }
 }
