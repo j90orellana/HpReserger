@@ -139,7 +139,7 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-        public void InsertarActualizarUsuario(int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, int usuario, out int respuesta)
+        public void InsertarActualizarUsuario(int codigoid, int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, int usuario, out int respuesta)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
@@ -150,6 +150,7 @@ namespace HPResergerCapaDatos
                     cmd.CommandText = "usp_inserta_actualizar_usuario";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@codigoid", SqlDbType.Int).Value = codigoid;
                     cmd.Parameters.Add("@tipoid", SqlDbType.Int).Value = tipoid;
                     cmd.Parameters.Add("@nroid", SqlDbType.VarChar, 14).Value = nroid;
                     cmd.Parameters.Add("@login", SqlDbType.VarChar, 10).Value = login;

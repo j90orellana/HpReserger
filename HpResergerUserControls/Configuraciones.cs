@@ -90,6 +90,27 @@ namespace HpResergerUserControls
             }
             return resul;
         }
+        public static string AlfaNumericoBBVA(string cadena)
+        {
+            string resul = "";
+            string Contenido = " ";
+            foreach (char item in cadena)
+            {
+                if (char.IsNumber(item))
+                {
+                    resul += item;
+                }
+                else if (char.IsLetter(item))
+                {
+                    resul += item;
+                }
+                else if (Contenido.Contains(item))
+                {
+                    resul += item;
+                }
+            }
+            return resul;
+        }
         public static string CadenaDelimitada(string cadena, int len)
         {
             return cadena.Length > len ? cadena.Substring(0, len) : cadena.Trim();

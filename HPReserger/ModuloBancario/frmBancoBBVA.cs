@@ -96,7 +96,7 @@ namespace HPReserger.ModuloBancario
                 cadena = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(cadena, '-');
                 if (cadena.Length == 18)
 
-                    txtcuentapago.Text = cadena.Insert(7, "00");
+                    txtcuentapago.Text = cadena.Insert(8, "00");
                 else
                     txtcuentapago.Text = cadena;
             }
@@ -296,7 +296,7 @@ namespace HPReserger.ModuloBancario
                         campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xDoiNumero.Name].Value.ToString().Trim().ToUpper(), ' ', 12, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                         campo[3] = item.Cells[xTipoAbono.Name].Value.ToString().Trim().ToUpper();
                         campo[4] = item.Cells[xCuentaAbonar.Name].Value.ToString().Trim().ToUpper();
-                        campo[5] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xNombreBeneficiario.Name].Value.ToString().Trim().ToUpper(), ' ', 40, HPResergerFunciones.Utilitarios.Direccion.izquierda);
+                        campo[5] = HPResergerFunciones.Utilitarios.AddCaracter(Configuraciones.AlfaNumericoBBVA(item.Cells[xNombreBeneficiario.Name].Value.ToString()).Trim().ToUpper(), ' ', 40, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                         campo[6] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100(item.Cells[xImporteAbonar.Name].Value.ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                         campo[7] = item.Cells[xTipoRecibo.Name].Value.ToString().Trim().ToUpper();
                         campo[8] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xNroDocumento.Name].Value.ToString().Trim().ToUpper(), ' ', 12, HPResergerFunciones.Utilitarios.Direccion.izquierda);
@@ -312,7 +312,7 @@ namespace HPReserger.ModuloBancario
                         cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                     }
                     //msg(cadenatxt);
-                    SaveFile.FileName = $"Proveedores BBVA {txtTotal.Text} " + DateTime.Now.ToLongDateString();                   
+                    SaveFile.FileName = $"Proveedores BBVA {txtTotal.Text} " + DateTime.Now.ToLongDateString();
                     if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
                     {
                         string path = SaveFile.FileName;

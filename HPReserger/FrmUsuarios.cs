@@ -82,7 +82,8 @@ namespace HPReserger
             txtid.Focus();
             bloqueado(true);
             btnmodificar.Enabled = btneliminar.Enabled = false;
-            cbotipoid.Enabled = true;
+            cbotipoid.Enabled = false;
+            txtid.Enabled = false;
             txtlogin.Enabled = txtcontra.Enabled = false; cboperfil.Enabled = cboestado.Enabled = false;
             CargarUsuarios();
             btnnuevoTemporal.Enabled = true;
@@ -109,17 +110,21 @@ namespace HPReserger
         }
         public void Cargar()
         {
-            CargarCombos();
+            if (estado == 0)
+            {
+                CargarCombos();
+                cboarea.SelectedValue = dtgconten[5, 0].Value;
+                cboperfil.SelectedValue = dtgconten[7, 0].Value;
+                txtlogin.Text = dtgconten[9, 0].Value.ToString();
+                txtcontra.Text = dtgconten[10, 0].Value.ToString();
+                cboestado.SelectedValue = dtgconten[11, 0].Value;
+            }
             ////////////////
             cbotipoid.SelectedValue = dtgconten[0, 0].Value;
             txtnombre.Text = dtgconten[2, 0].Value.ToString();
             txtapepat.Text = dtgconten[3, 0].Value.ToString();
             txtapetmat.Text = dtgconten[4, 0].Value.ToString();
-            cboarea.SelectedValue = dtgconten[5, 0].Value;
-            cboperfil.SelectedValue = dtgconten[7, 0].Value;
-            txtlogin.Text = dtgconten[9, 0].Value.ToString();
-            txtcontra.Text = dtgconten[10, 0].Value.ToString();
-            cboestado.SelectedValue = dtgconten[11, 0].Value;
+
         }
         private void txtid_TextChanged(object sender, EventArgs e)
         {
@@ -167,7 +172,8 @@ namespace HPReserger
                         else
                         {
                             //bloqueado(true);
-                            limpiar(); checkBox1.Enabled = false; btnnuevo.Enabled = false;
+                            limpiar(); checkBox1.Enabled = false;
+                            //btnnuevo.Enabled = false;
                             cboperfil.Enabled = cboestado.Enabled = false;
                             txtlogin.Enabled = false; txtcontra.Enabled = false; txtid.Enabled = true;
                             cbotipoid.Enabled = true;
@@ -177,23 +183,21 @@ namespace HPReserger
                     if (estado == 2)
                     {
                         dtgconten.DataSource = Cusuario.usuarios(txtid.Text, cadena, 1);
-
                         if (dtgconten.RowCount > 0)
                         {
-                            checkBox1.Enabled = true; btnnuevo.Enabled = true;
-                            btnmodificar.Enabled = btneliminar.Enabled = true;
-                            estado = 0;
+                            //checkBox1.Enabled = true; btnnuevo.Enabled = true;
+                            //btnmodificar.Enabled = btneliminar.Enabled = true;
+                            //estado = 0;
                             Cargar();
                         }
-                        else
-                        {
-                            bloqueado(true);
-                            limpiar();
-                            btnmodificar.Enabled = btneliminar.Enabled = false;
-                            txtlogin.Enabled = true; txtcontra.Enabled = false;
-                            checkBox1.Enabled = false; estado = 0;
-
-                        }
+                        //else
+                        //{
+                        //    bloqueado(true);
+                        //    limpiar();
+                        //    btnmodificar.Enabled = btneliminar.Enabled = false;
+                        //    txtlogin.Enabled = true; txtcontra.Enabled = false;
+                        //    checkBox1.Enabled = false; estado = 0;
+                        //}
                     }
                 }
             }
@@ -254,8 +258,8 @@ namespace HPReserger
             estado = 2;
             bloqueado(true);
             Activar(false);
-            cbotipoid.Enabled = false;
-            txtid.Enabled = false;
+            cbotipoid.Enabled = true;
+            txtid.Enabled = true;
             checkBox1.Enabled = true;
             cboperfil.Enabled = true;
             txtlogin.Enabled = true;
@@ -263,16 +267,16 @@ namespace HPReserger
             cboestado.Enabled = true;
             GridUser.Enabled = false;
             btnnuevo.Enabled = false;
-            if ((int)cboestado.SelectedValue == 3)
-            {
-                cboestado.Enabled = false;
-                txtid.Enabled = cbotipoid.Enabled = true;
-            }
-            if (txtnombre.Text.Length == 0)
-            {
-                cboestado.SelectedIndex = 2;
-                cboestado.Enabled = false;
-            }
+            //if ((int)cboestado.SelectedValue == 3)
+            //{
+            //    //cboestado.Enabled = false;
+            //    txtid.Enabled = cbotipoid.Enabled = true;
+            //}
+            //if (txtnombre.Text.Length == 0)
+            //{
+            //    cboestado.SelectedIndex = 2;
+            //    cboestado.Enabled = false;
+            //}
             ModoEdicion(false);
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
@@ -292,16 +296,17 @@ namespace HPReserger
             {
                 this.Close();
             }
-            else if (estado == 1 || estado == 5)
-            {
-                btnnuevo.Enabled = true; cboperfil.Enabled = false;
-                txtlogin.Enabled = false; limpiar();
-                txtcontra.Enabled = false; txtid.Enabled = cbotipoid.Enabled = true; txtid.Text = "";
-                cboestado.Enabled = false; estado = 0;
-                txtid_TextChanged(sender, e); GridUser.Enabled = true;
-                btnnuevoTemporal.Enabled = true;
-            }
-            else if (estado == 2)
+            //else if (estado == 1 || estado == 5)
+            //{
+            //    btnnuevo.Enabled = true; cboperfil.Enabled = false;
+            //    txtlogin.Enabled = false; limpiar();
+            //    txtcontra.Enabled = false; txtid.Enabled = cbotipoid.Enabled = true; txtid.Text = "";
+            //    cboestado.Enabled = false; estado = 0;
+            //    //txtid_TextChanged(sender, e);
+            //    GridUser.Enabled = true;
+            //    btnnuevoTemporal.Enabled = true;
+            //}
+            else if (estado == 2 || estado == 1 || estado == 5)
             {
                 cbotipoid.Enabled = true;
                 txtid.Enabled = true;
@@ -309,8 +314,10 @@ namespace HPReserger
                 cboperfil.Enabled = false;
                 txtlogin.Enabled = false;
                 txtcontra.Enabled = false;
-                cboestado.Enabled = false; btnnuevo.Enabled = true;
-                txtid_TextChanged(sender, e); GridUser.Enabled = true; btnnuevoTemporal.Enabled = true;
+                cboestado.Enabled = false;
+                btnnuevo.Enabled = true;
+                //txtid_TextChanged(sender, e);
+                GridUser.Enabled = true; btnnuevoTemporal.Enabled = true;
             }
             else if (estado == 3)
             {
@@ -318,7 +325,7 @@ namespace HPReserger
                 btnnuevo.Enabled = true; txtid_TextChanged(sender, e); estado = 0;
                 btnnuevo.Enabled = true; btnnuevoTemporal.Enabled = true;
             }
-            if ((new int[] { 1, 2, 5 }).Contains(estado))
+            if ((new int[] { 1, 2, 3, 5 }).Contains(estado))
             {
                 CargarUsuarios(); ModoEdicion(true); btnlimpiar.Enabled = true;
                 estado = 0;
@@ -332,8 +339,10 @@ namespace HPReserger
         public int perfil;
         public int estadito;
         public int Codigo;
+        private int CodigoUser;
         public void CargarValores()
         {
+            CodigoUser = (int)GridUser[Codigox.Name, GridUser.CurrentCell.RowIndex].Value;
             if (cbotipoid.SelectedValue != null)
                 tipoid = (int)cbotipoid.SelectedValue;
             else tipoid = 1;
@@ -413,7 +422,7 @@ namespace HPReserger
                         else
                         {
                             CargarValores(); int respuesta = 0;
-                            Cusuario.InsertarActualizarUsuario(tipoid, nroid, login, contra, perfil, estadito, estado, frmLogin.CodigoUsuario, out respuesta);
+                            Cusuario.InsertarActualizarUsuario(CodigoUser, tipoid, nroid, login, contra, perfil, estadito, estado, frmLogin.CodigoUsuario, out respuesta);
                             if (respuesta == 1)
                             {
                                 msg("Ese Login ya Existe");
@@ -452,7 +461,7 @@ namespace HPReserger
                         else
                         {
                             CargarValores(); int respuesta = 0;
-                            Cusuario.InsertarActualizarUsuario(tipoid, nroid, login, contra, perfil, estadito, 2, frmLogin.CodigoUsuario, out respuesta);
+                            Cusuario.InsertarActualizarUsuario(CodigoUser, tipoid, nroid, login, contra, perfil, estadito, 2, frmLogin.CodigoUsuario, out respuesta);
                             if (respuesta == 1)
                             {
                                 msg("Ese Login ya Existe"); return;
@@ -461,7 +470,7 @@ namespace HPReserger
                             else
                             {
                                 msgOK("Usuario Actualizado Exitosamente"); Activar(false);
-                                bloqueado(true); checkBox1.Checked = true; estado = 0; txtid.Enabled = cbotipoid.Enabled = true;
+                                bloqueado(true); checkBox1.Checked = true; txtid.Enabled = cbotipoid.Enabled = true;
                                 txtid_TextChanged(sender, e); GridUser.Enabled = true;
 
                             }
@@ -473,12 +482,25 @@ namespace HPReserger
             if (estado == 3)
             {
                 CargarValores(); int respuesta = 0;
-                Cusuario.InsertarActualizarUsuario(Codigo, nroid, login, contra, perfil, 0, 3, frmLogin.CodigoUsuario, out respuesta);
+                Cusuario.InsertarActualizarUsuario(CodigoUser, tipoid, nroid, login, contra, perfil, 0, 3, frmLogin.CodigoUsuario, out respuesta);
                 msgOK("Usuario Eliminado Exitosamente");
                 bloqueado(true); checkBox1.Checked = true; btnnuevo.Enabled = true;
                 txtid_TextChanged(sender, e); GridUser.Enabled = true;
             }
-            CargarUsuarios(); ModoEdicion(true);
+            CargarUsuarios();
+            if (estado == 2 || estado == 3)
+            {
+                estado = 0;
+                foreach (DataGridViewRow item in GridUser.Rows)
+                {
+                    if ((int)item.Cells[Codigox.Name].Value == CodigoUser)
+                    {
+                        GridUser.CurrentCell = GridUser[tipox.Name, item.Index];
+                        break;
+                    }
+                }
+            }
+            ModoEdicion(true);
             txtid.Enabled = false; btnlimpiar.Enabled = true;
         }
         private void txtid_Click(object sender, EventArgs e)
@@ -626,6 +648,7 @@ namespace HPReserger
         }
         int PosicionFila = 0;
         int PosicionColumna = 0;
+
         private void btndesconectar_Click(object sender, EventArgs e)
         {
             //desconectado al usuario

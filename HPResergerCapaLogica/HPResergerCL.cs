@@ -85,9 +85,9 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.EliminarPerfil(codigo);
         }
-        public void InsertarActualizarUsuario(int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, int usuario, out int respuesta)
+        public void InsertarActualizarUsuario(int codigoid, int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, int usuario, out int respuesta)
         {
-            cdOrdenPedido.InsertarActualizarUsuario(tipoid, nroid, login, contra, perfil, estado, opcion, usuario, out respuesta);
+            cdOrdenPedido.InsertarActualizarUsuario(codigoid, tipoid, nroid, login, contra, perfil, estado, opcion, usuario, out respuesta);
         }
 
         public void CambioContraseña(out int resultado, string usuario, string contrasena, string nueva)
