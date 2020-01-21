@@ -35,7 +35,7 @@ namespace HPReserger
                 CargarDAtosalTRee(0, 0, 0);
             //cboperfiles.SelectedIndex = 0;
         }
-        TreeNode pap, ramita, ramon,ramons;
+        TreeNode pap, ramita, ramon, ramons;
         public void CargarDAtosalTRee(int Perfile, int opcion, int codigo)
         {
             DataTable Tablita = new DataTable();
@@ -221,15 +221,11 @@ namespace HPReserger
         }
         private void treePerfiles_AfterCheck(object sender, TreeViewEventArgs e)
         {
-
             foreach (TreeNode x in e.Node.Nodes)
             {
                 x.Checked = e.Node.Checked;
-
             }
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             foreach (TreeNode x in treePerfiles.Nodes)
@@ -256,11 +252,8 @@ namespace HPReserger
 
         private void treePerfiles_BeforeCheck(object sender, TreeViewCancelEventArgs e)
         {
-            //    if (e.Node.Checked)
-            //    {
-            //        if (e.Node.Parent != null)
-            //            e.Node.Parent.Checked = true;
-            //    }
+            if (estado == 0)
+                e.Cancel = true;
         }
 
         private void button1_Click_2(object sender, EventArgs e)

@@ -131,6 +131,7 @@ namespace HPReserger
             //int numasiento = GetNumAsiento(FechaContable);
             int PosFila = 0;
             int pkMoneda = 1;
+            int pkMOnedaDetalle = 2;
             //string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable);
             //int proyecto = (int)cboproyecto.SelectedValue;
             string[] Proveedor = "0-9999".Split('-');
@@ -206,7 +207,7 @@ namespace HPReserger
                     //Detalle del asiento del Debe
                     if (chkSaldos.Checked)
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -217,7 +218,7 @@ namespace HPReserger
                         string SerieDocumento = NumDoc[0];
                         string NumDocumento = NumDoc[1];
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     }
                 }
             }
@@ -229,7 +230,7 @@ namespace HPReserger
                     TC, fkProyecto, 0, Cuo, pkMoneda, $"{Glosa}", FechaContable, Dinamica);
                 //Detalle del asiento del Haber
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGanacia, fkProyecto, TipoIdProveedor, RucProveedor,
-                NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMoneda, "", "", $"{CuentaGanacia}-{glosa}", FechaContable, IdUsuario, "");
+                NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaGanacia}-{glosa}", FechaContable, IdUsuario, "");
                 mensaje += $" Cuo: {Cuo}";
             }
             //Primera Fase Pasivo = 'H' and Ganacias (+)
@@ -251,7 +252,7 @@ namespace HPReserger
                     //Detalle del asiento del Debe
                     if (chkSaldos.Checked)
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -262,7 +263,7 @@ namespace HPReserger
                         string SerieDocumento = NumDoc[0];
                         string NumDocumento = NumDoc[1];
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     }
                 }
             }
@@ -274,7 +275,7 @@ namespace HPReserger
                   TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                 //Detalle del asiento del Haber
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaPerdida, fkProyecto, TipoIdProveedor, RucProveedor,
-                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMoneda, "", "", $"{CuentaPerdida}-{glosa}", FechaContable, IdUsuario, "");
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaPerdida}-{glosa}", FechaContable, IdUsuario, "");
                 mensaje += $" Cuo: {Cuo}";
             }
             //Primera Fase Activos = 'D' and Perdidas (-)
@@ -296,7 +297,7 @@ namespace HPReserger
                     //Detalle del asiento del Debe
                     if (chkSaldos.Checked)
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -307,7 +308,7 @@ namespace HPReserger
                         string SerieDocumento = NumDoc[0];
                         string NumDocumento = NumDoc[1];
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     }
                 }
             }
@@ -319,7 +320,7 @@ namespace HPReserger
                   TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                 //Detalle del asiento del Haber
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaPerdida, fkProyecto, TipoIdProveedor, RucProveedor,
-                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMoneda, "", "", $"{CuentaPerdida}-{glosa}", FechaContable, IdUsuario, "");
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaPerdida}-{glosa}", FechaContable, IdUsuario, "");
                 mensaje += $" Cuo: {Cuo}";
             }
             //Primera Fase Pasivo = 'H' and Perdidas (-)
@@ -341,7 +342,7 @@ namespace HPReserger
                     //Detalle del asiento del Debe
                     if (chkSaldos.Checked)
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", Glosa, FechaContable, IdUsuario, "");
+                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", Glosa, FechaContable, IdUsuario, "");
                     if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -352,7 +353,7 @@ namespace HPReserger
                         string SerieDocumento = NumDoc[0];
                         string NumDocumento = NumDoc[1];
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMoneda, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     }
                 }
             }
@@ -364,7 +365,7 @@ namespace HPReserger
                   TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                 //Detalle del asiento del Haber
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGanacia, fkProyecto, TipoIdProveedor, RucProveedor,
-                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMoneda, "", "", $"{CuentaGanacia}-{glosa}", FechaContable, IdUsuario, "");
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaGanacia}-{glosa}", FechaContable, IdUsuario, "");
                 mensaje += $" Cuo: {Cuo}";
             }
             ////////

@@ -97,20 +97,32 @@ namespace HPReserger
                 filita = datos.Rows[0];
                 //Saco los menus de los perfiles
                 datos = CapaLogica.ListarPerfiles((int)filita["CODIGOPERFIL"], 99, 0, 1, DateTime.Now);
-                //Paso todo a Invisibles!
+                //Paso todo a Invisibles!              
                 foreach (ToolStripMenuItem x in menuStrip2.Items)
                 {
-                    foreach (ToolStripItem xx in x.DropDownItems)
-                    {
-                        if (xx.Tag != null && xx.Tag.ToString() != "8")
-                        {
-                            xx.Visible = false;
-                        }
-                    }
-                    if (x.Tag != null && x.Tag.ToString() != "8")
-                    {
-                        x.Visible = false;
-                    }
+                    OcultarMenus(x);
+                    //foreach (ToolStripMenuItem xx in x.DropDownItems)
+                    //{
+                    //    if (xx.Tag != null && xx.Tag.ToString() != "8")
+                    //    {
+                    //        xx.Visible = false;
+                    //    }
+                    //    foreach (ToolStripMenuItem xxx in xx.DropDownItems)
+                    //    {
+                    //        if (xxx.Tag != null && xxx.Tag.ToString() != "8")
+                    //        {
+                    //            xxx.Visible = false;
+                    //        }
+                    //    }
+                    //    if (xx.Tag != null && xx.Tag.ToString() != "8")
+                    //    {
+                    //        xx.Visible = false;
+                    //    }
+                    //}
+                    //if (x.Tag != null && x.Tag.ToString() != "8")
+                    //{
+                    //    x.Visible = false;
+                    //}
                 }
                 //Creo una lista con los Menus que voy a Mostrar
                 List<string> Lista = new List<string>();
@@ -121,24 +133,64 @@ namespace HPReserger
                 //Muestro los Menus de la lista que le Pertecen al perfil!
                 foreach (ToolStripMenuItem x in menuStrip2.Items)
                 {
-                    Boolean prueba = false;
-                    foreach (ToolStripItem xx in x.DropDownItems)
-                    {
-                        if (Lista.Contains(xx.Tag))
-                        {
-                            xx.Visible = true; prueba = true;
-                        }
-                    }
-                    //Sí se Muestra un SubMenu, se Muestra El Menu!
-                    if (prueba)
-                    {
+                    if (RecorrerMenus(Lista, x))
                         x.Visible = true;
+                }
+                menuStrip2.ResumeLayout();
+                //menuStrip2.PerformLayout();
+                //Prioridad por Usuario!
+                ControlPerfilPrioritario();
+            }
+        }
+        private void OcultarMenus(ToolStripMenuItem x)
+        {
+            for (int i = 0; i < x.DropDownItems.Count; i++)
+            {
+                if (x.DropDownItems[i].GetType() == typeof(ToolStripMenuItem))
+                {
+                    var xx = (ToolStripMenuItem)x.DropDownItems[i];
+                    if (xx.Tag != null && xx.Tag.ToString() != "8")
+                    {
+                        xx.Visible = false;
                     }
+                    OcultarMenus(xx);
+                }
+                if (x.DropDownItems[i].GetType() == typeof(ToolStripSeparator))
+                {
+                    x.DropDownItems[i].Visible = false;
                 }
             }
-            menuStrip2.ResumeLayout();
-            //Prioridad por Usuario!
-            ControlPerfilPrioritario();
+            if (x.Tag != null && x.Tag.ToString() != "8")
+                x.Visible = false;
+        }
+        private Boolean RecorrerMenus(List<string> lista, ToolStripMenuItem x)
+        {
+            Boolean prueba = false;
+            for (int i = 0; i < x.DropDownItems.Count; i++)
+            {
+                if (x.DropDownItems[i].GetType() == typeof(ToolStripMenuItem))
+                {
+                    var xx = (ToolStripMenuItem)x.DropDownItems[i];
+                    if (RecorrerMenus(lista, xx))
+                        x.Visible = true;
+                    if (lista.Contains(xx.Tag))
+                    {
+                        xx.Visible = true; prueba = true;
+                    }
+                }
+                if (x.DropDownItems[i].GetType() == typeof(ToolStripSeparator))
+                {
+                    if (lista.Contains(x.DropDownItems[i].Tag))
+                        x.DropDownItems[i].Visible = true;
+                }
+                if (prueba)
+                {
+                    x.Visible = true;
+                }
+            }
+            return prueba;
+            //Sí se Muestra un SubMenu, se Muestra El Menu!
+
         }
         private void frmMenu_Load(object sender, EventArgs e)
         {
@@ -3647,33 +3699,37 @@ namespace HPReserger
         }
         private void arToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RecargarMenu();
+            //RecargarMenu();
         }
         private void proyectosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            RecargarMenu();
+            //RecargarMenu();
         }
         private void ventasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            RecargarMenu();
+            //RecargarMenu();
         }
         private void verToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RecargarMenu();
+            //RecargarMenu();
         }
         private void contabilidadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RecargarMenu();
+            //RecargarMenu();
         }
         private void planillaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RecargarMenu();
+            //RecargarMenu();
         }
         private void seguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RecargarMenu();
+            //RecargarMenu();
         }
         private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //RecargarMenu();
+        }
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RecargarMenu();
         }
@@ -4056,5 +4112,6 @@ namespace HPReserger
         {
             frmLibroInventario5_3 = null;
         }
+
     }
 }

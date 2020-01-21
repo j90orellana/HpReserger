@@ -1342,14 +1342,7 @@ namespace HPReserger
                 cbocambio.Focus();
                 return;
             }
-            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
-            int IdEmpresa = (int)cboempresa.SelectedValue;
-            DateTime FechaCoontable = dtpfechavalor.Value;
-            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
-            {
-                if (msgp("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
-                    return;
-            }
+            
             //validamos la glosa
             if (!txtglosa.EstaLLeno())
             {
@@ -1358,6 +1351,14 @@ namespace HPReserger
                 return;
             }
             if (decimal.Parse(txttipocambio.TextValido()) == 0) { msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
+            //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
+            int IdEmpresa = (int)cboempresa.SelectedValue;
+            DateTime FechaCoontable = dtpfechavalor.Value;
+            if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            {
+                if (msgp("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                    return;
+            }
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpfechavalor.Value))
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpfechavalor.Focus(); return;
