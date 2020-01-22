@@ -1262,11 +1262,11 @@
             this.txtnrooperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnrooperacion.ForeColor = System.Drawing.Color.Black;
             this.txtnrooperacion.Format = null;
-            this.txtnrooperacion.Location = new System.Drawing.Point(564, 98);
+            this.txtnrooperacion.Location = new System.Drawing.Point(531, 98);
             this.txtnrooperacion.MaxLength = 20;
             this.txtnrooperacion.Name = "txtnrooperacion";
             this.txtnrooperacion.NextControlOnEnter = null;
-            this.txtnrooperacion.Size = new System.Drawing.Size(167, 21);
+            this.txtnrooperacion.Size = new System.Drawing.Size(200, 21);
             this.txtnrooperacion.TabIndex = 10;
             this.txtnrooperacion.Text = "INGRESE NRO PAGO";
             this.txtnrooperacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1279,7 +1279,7 @@
             this.lblcheque.AutoSize = true;
             this.lblcheque.BackColor = System.Drawing.Color.Transparent;
             this.lblcheque.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcheque.Location = new System.Drawing.Point(509, 102);
+            this.lblcheque.Location = new System.Drawing.Point(478, 102);
             this.lblcheque.Name = "lblcheque";
             this.lblcheque.Size = new System.Drawing.Size(55, 13);
             this.lblcheque.TabIndex = 346;
@@ -1294,7 +1294,7 @@
             this.cbotipo.FormattingEnabled = true;
             this.cbotipo.Location = new System.Drawing.Point(79, 98);
             this.cbotipo.Name = "cbotipo";
-            this.cbotipo.Size = new System.Drawing.Size(430, 21);
+            this.cbotipo.Size = new System.Drawing.Size(397, 21);
             this.cbotipo.TabIndex = 9;
             this.cbotipo.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
             // 

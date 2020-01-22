@@ -479,6 +479,77 @@ namespace HPReserger
             }
             txtDescCuenta.Text = cadena;
         }
+        frmProcesando frmproce;
+        private string NombreEmpresa;
+        private void btnexcel_Click(object sender, EventArgs e)
+        {
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            if (dtgconten.RowCount > 0)
+            {
+                dtgconten.SuspendLayout();
+                Cursor = Cursors.WaitCursor;
+                frmproce = new HPReserger.frmProcesando();
+                frmproce.Show();
+                NombreEmpresa = cboempresa.Text;
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                msg("No hay Datos que Exportar");
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //Sí no hay datos
+            if (dtgconten.RowCount > 0)
+            {
+                string _NombreHoja = ""; string _Cabecera = ""; int[] _OrdenarColumnas; string _NColumna = "";
+                _NombreHoja = $"Detracciones Compras"; _Cabecera = "PAGO DETRACCIONES - COMPRAS";
+                _OrdenarColumnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+                _NColumna = "q";
+                List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+                //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
+                Color Back = Color.FromArgb(78, 129, 189);
+                Color Fore = Color.FromArgb(255, 255, 255);
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "q1", _Cabecera.ToUpper(), 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{FechaInicial.Year} {FechaInicial.Month.ToString("00")}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{Ruc}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "B2", "NOMBRE EMPRESA:", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("C2", "E2", $"{NombreEmpresa}", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                ///////estilos de la celdas
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                /////fin estilo de las celdas
+                //Tabla Datos
+                DataTable TablaExportar = new DataTable();
+                TablaExportar = ((DataTable)dtgconten.DataSource).Copy();
+                TablaExportar.Columns.RemoveAt(18);
+                TablaExportar.Columns.RemoveAt(17);
+                TablaExportar.Columns.RemoveAt(0);
+                /////
+                ////Anterior               
+                //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, 4, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "");
+                // HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "");
+
+                if (backgroundWorker1.IsBusy) backgroundWorker1.CancelAsync();
+            }
+            else msg("No hay Registros en la Grilla");
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
+            dtgconten.ResumeLayout();
+        }
+
         private void txtcuentadetracciones_TextChanged(object sender, EventArgs e)
         {
             BuscarCuentaDetracicones();

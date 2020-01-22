@@ -348,5 +348,22 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         {
             Ordenado = true;
         }
+
+        private void chklist_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.Index == 0)
+            {
+                if (chklist.GetItemChecked(0))
+                {
+                    for (int i = 1; i < chklist.Items.Count; i++)
+                        chklist.SetItemChecked(i, false);
+                }
+                else
+                {
+                    for (int i = 1; i < chklist.Items.Count; i++)
+                        chklist.SetItemChecked(i, true);
+                }
+            }
+        }
     }
 }

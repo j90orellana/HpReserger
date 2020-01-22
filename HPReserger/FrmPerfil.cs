@@ -185,10 +185,19 @@ namespace HPReserger
                     {
                         if (msgp("Seguró Desea Eliminar " + txtdes.Text) == DialogResult.Yes)
                         {
-                            cperfil.EliminarPerfil(Convert.ToInt32(txtcodigo.Text));
+                            try
+                            {
+                                cperfil.EliminarPerfil(Convert.ToInt32(txtcodigo.Text));
+                            }
+                            catch (Exception)
+                            {
+                                msg("No se Pudo Eliminar, Ya tiene Usuarios Asignados.");
+                                return;
+                            }
                             cperfil.ListarPerfiles((int)cboperfiles.SelectedValue, 10, 0, frmLogin.CodigoUsuario, DateTime.Now);
                             Activar(cboperfiles);
                             Desactivar(txtdes);
+
                         }
                     }
                 }

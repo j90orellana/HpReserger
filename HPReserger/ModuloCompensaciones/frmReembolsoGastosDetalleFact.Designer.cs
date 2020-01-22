@@ -36,9 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtgconten = new HpResergerUserControls.Dtgconten();
-            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
-            this.lbltotalregistros = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.xIdComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xrazon_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +45,9 @@
             this.xTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMontoME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
+            this.lbltotalregistros = new System.Windows.Forms.Label();
+            this.lblcabecera = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,48 +108,6 @@
             this.Dtgconten.ShowRowErrors = false;
             this.Dtgconten.Size = new System.Drawing.Size(795, 237);
             this.Dtgconten.TabIndex = 17;
-            // 
-            // BtnCerrar
-            // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
-            this.BtnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(724, 268);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(83, 23);
-            this.BtnCerrar.TabIndex = 18;
-            this.BtnCerrar.Text = "Cancelar";
-            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnCerrar.UseVisualStyleBackColor = false;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
-            // 
-            // lbltotalregistros
-            // 
-            this.lbltotalregistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbltotalregistros.AutoEllipsis = true;
-            this.lbltotalregistros.AutoSize = true;
-            this.lbltotalregistros.BackColor = System.Drawing.Color.Transparent;
-            this.lbltotalregistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotalregistros.Location = new System.Drawing.Point(12, 273);
-            this.lbltotalregistros.Name = "lbltotalregistros";
-            this.lbltotalregistros.Size = new System.Drawing.Size(104, 13);
-            this.lbltotalregistros.TabIndex = 26;
-            this.lbltotalregistros.Text = "Total de Registros: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(269, 13);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Detalle de las Facturas Relacionadas al Reembolso:";
             // 
             // xIdComprobante
             // 
@@ -248,12 +206,54 @@
             this.xGlosa.Name = "xGlosa";
             this.xGlosa.ReadOnly = true;
             // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
+            this.BtnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
+            this.BtnCerrar.Location = new System.Drawing.Point(724, 268);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(83, 23);
+            this.BtnCerrar.TabIndex = 18;
+            this.BtnCerrar.Text = "Cancelar";
+            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            // 
+            // lbltotalregistros
+            // 
+            this.lbltotalregistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbltotalregistros.AutoEllipsis = true;
+            this.lbltotalregistros.AutoSize = true;
+            this.lbltotalregistros.BackColor = System.Drawing.Color.Transparent;
+            this.lbltotalregistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalregistros.Location = new System.Drawing.Point(12, 273);
+            this.lbltotalregistros.Name = "lbltotalregistros";
+            this.lbltotalregistros.Size = new System.Drawing.Size(104, 13);
+            this.lbltotalregistros.TabIndex = 26;
+            this.lbltotalregistros.Text = "Total de Registros: ";
+            // 
+            // lblcabecera
+            // 
+            this.lblcabecera.AutoSize = true;
+            this.lblcabecera.BackColor = System.Drawing.Color.Transparent;
+            this.lblcabecera.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcabecera.Location = new System.Drawing.Point(12, 9);
+            this.lblcabecera.Name = "lblcabecera";
+            this.lblcabecera.Size = new System.Drawing.Size(269, 13);
+            this.lblcabecera.TabIndex = 35;
+            this.lblcabecera.Text = "Detalle de las Facturas Relacionadas al Reembolso:";
+            // 
             // frmReembolsoGastosDetalleFact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 298);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblcabecera);
             this.Controls.Add(this.lbltotalregistros);
             this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.Dtgconten);
@@ -272,7 +272,7 @@
         private HpResergerUserControls.Dtgconten Dtgconten;
         private HpResergerUserControls.ButtonPer BtnCerrar;
         private System.Windows.Forms.Label lbltotalregistros;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblcabecera;
         private System.Windows.Forms.DataGridViewTextBoxColumn xIdComprobante;
         private System.Windows.Forms.DataGridViewTextBoxColumn xProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn xrazon_social;

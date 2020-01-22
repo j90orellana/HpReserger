@@ -21,11 +21,9 @@ namespace HPReserger.ModuloCompensaciones
         public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private int _idempresa;
-
         public int Estado { get; private set; }
         public string NameEmpresa { get; private set; }
         public bool Cargado { get; private set; }
-
         private void frmReembolsoGastosPago_Load(object sender, EventArgs e)
         {
             Cargado = false;

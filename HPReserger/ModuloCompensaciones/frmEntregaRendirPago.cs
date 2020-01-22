@@ -252,10 +252,10 @@ namespace HPReserger.ModuloCompensaciones
             }
             if (cbotipo.SelectedValue != null)
             {
-                cbobanco.Visible = cbocuentabanco.Visible = lblbanco.Visible = lblmsgsalida.Visible = true;
+                lblcheque.Visible = txtnrooperacion.Visible = cbobanco.Visible = cbocuentabanco.Visible = lblbanco.Visible = lblmsgsalida.Visible = true;
                 if ((int)cbotipo.SelectedValue == 0)
                 {
-                    cbobanco.Visible = cbocuentabanco.Visible = lblbanco.Visible = lblmsgsalida.Visible = false;
+                    lblcheque.Visible = txtnrooperacion.Visible = cbobanco.Visible = cbocuentabanco.Visible = lblbanco.Visible = lblmsgsalida.Visible = false;
                 }
             }
         }
@@ -354,13 +354,23 @@ namespace HPReserger.ModuloCompensaciones
         private void txtImporteTotal_TextChanged(object sender, EventArgs e)
         {
             cbobanco.Enabled = cbocuentabanco.Enabled = cbotipo.Enabled = txtnrooperacion.Enabled = true;
-            lblcuentasxpagar.Visible = cbocuentaxpagar.Visible = false;
+            lblcheque.Visible = txtnrooperacion.Visible = lblcuentasxpagar.Visible = cbocuentaxpagar.Visible = false;
             string cadena = cbotipo.Text;
             var valorCompensa = DTipoPagos.NewRow();
             valorCompensa[0] = 0;
             valorCompensa[1] = "0 - NINGUNO";
             valorCompensa[2] = 0;
             //string valorCompensa = "000 Ninguno.";
+            //Quitamos el Valor de Ninguno
+            cbotipo.Items.Remove(valorCompensa);
+            for (int i = 0; i < DTipoPagos.Rows.Count; i++)
+            {
+                if (DTipoPagos.Rows[0][0].ToString() == "0")
+                {
+                    DTipoPagos.Rows.Remove(DTipoPagos.Rows[i]);
+                    i--;
+                }
+            }
             if (ImporteTotal == 0)
             {
                 cbobanco.Enabled = cbocuentabanco.Enabled = cbotipo.Enabled = txtnrooperacion.Enabled = false;
@@ -368,20 +378,14 @@ namespace HPReserger.ModuloCompensaciones
             }
             else if (ImporteTotal > 0)
             {
-                lblcuentasxpagar.Visible = cbocuentaxpagar.Visible = true;
+                lblcheque.Visible = txtnrooperacion.Visible = lblcuentasxpagar.Visible = cbocuentaxpagar.Visible = true;
                 lblmsgsalida.Text = "Salida Dinero:";
-                //cbotipo.Items.Remove(valorCompensa);
-                for (int i = 0; i < DTipoPagos.Rows.Count; i++)
-                {
-                    if (DTipoPagos.Rows[0][0].ToString() == "0")
-                    {
-                        DTipoPagos.Rows.Remove(DTipoPagos.Rows[i]);
-                        i--;
-                    }
-                }
+                DTipoPagos.Rows.InsertAt(valorCompensa, 0);
+
             }
             else
             {
+                lblcheque.Visible = txtnrooperacion.Visible = true;
                 lblmsgsalida.Text = "Entrada Dinero:";
                 if (ContaFacturas > 0)
                 {
@@ -748,6 +752,14 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 ///
                 string CuentaCtaBanco = (cbocuentabanco.SelectedValue ?? "").ToString();
+                ///
+                DataRow Fila = CapaLogica.VerUltimoIdentificador("Tbl_EntregasRendir_Det", "pkid");
+                int SiguientePkId = 0;
+                int.TryParse(Fila["ultimo"].ToString(), out SiguientePkId);
+                SiguientePkId++;
+                string[] UserCompensa = cboempleado.SelectedValue.ToString().Split('-');
+                int IdLogin = frmLogin.CodigoUsuario;
+                DateTime FechaPago = dtpFechaCompensa.Value;
                 //Facturas al Debe      -- xok
                 foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
                 {
@@ -779,6 +791,27 @@ namespace HPReserger.ModuloCompensaciones
                         //Actualizar su Estado y Fecha de Compensacion
                         if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
                             CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, FechaCompensa, TipoPago, NroOperacion);
+                        if (TipoPago == 0 && ImporteTotal > 0)
+                        {
+                            if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
+                            {
+                                CapaLogica.EntregasRendir_Detalle(1, SiguientePkId, _idempresa, (int)item.Cells[xIdComprobante.Name].Value, 5, item.Cells[xProveedor.Name].Value.ToString(),
+                                    item.Cells[xrazon_social.Name].Value.ToString(), string.Join("-", valor), (DateTime)item.Cells[xFechaEmision.Name].Value, string.Join("-", UserCompensa),
+                                    (int)item.Cells[xidMoneda.Name].Value, (decimal)item.Cells[xTcReg.Name].Value,
+                                    (int)item.Cells[xidMoneda.Name].Value == 1 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
+                                    (int)item.Cells[xidMoneda.Name].Value == 2 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
+                                    Cuo, "", 1, "", "", "", FechaCompensa, cbocuentaxpagar.SelectedValue.ToString(), txtglosa.Text, item.Cells[xGlosa.Name].Value.ToString(), 1, IdLogin);
+                            }
+                            else
+                            {
+                                CapaLogica.ReembolsoGastos_Detalle(1, SiguientePkId, _idempresa, -1, 5, item.Cells[xProveedor.Name].Value.ToString(),
+                                    item.Cells[xrazon_social.Name].Value.ToString(), string.Join("-", valor), (DateTime)item.Cells[xFechaEmision.Name].Value, string.Join("-", UserCompensa),
+                                    (int)item.Cells[xidMoneda.Name].Value, (decimal)item.Cells[xTcReg.Name].Value,
+                                    (int)item.Cells[xidMoneda.Name].Value == 1 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
+                                    (int)item.Cells[xidMoneda.Name].Value == 2 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
+                                    Cuo, "", 1, "", "", "", FechaCompensa, cbocuentaxpagar.SelectedValue.ToString(), txtglosa.Text, item.Cells[xGlosa.Name].Value.ToString(), 1, IdLogin);
+                            }
+                        }
                     }
                 }
                 //Diferencial Ganacia Perdida
@@ -804,7 +837,7 @@ namespace HPReserger.ModuloCompensaciones
                 ///Si son pagos Totales
                 //Anticipos al Haber     --yOk
                 //if (cbotipo.Text != "000 Ninguno.")
-                if (TipoPago != 0 || ContaFacturas == 0)
+                if (TipoPago != 0 || ContaFacturas == 0 || (TipoPago == 0 && ImporteTotal > 0))
                 {
                     foreach (DataGridViewRow item in DtgcontenEntregas.Rows)
                     {
@@ -826,6 +859,8 @@ namespace HPReserger.ModuloCompensaciones
                                 ///Actualizo el Estado del Anticipo(Compensacion)
                                 CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
                                      TipoPago, decimal.Parse(txtImporteTotal.Text) == 0 ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), NroOperacion, Cuo);
+                                //REGISTRO DEL ABONO EN LA TABLA ENTREGAS A RENDIR DETALLES
+                                //si las Cuentas son seleccionadas
                             }
                         }
                     }
@@ -953,7 +988,8 @@ namespace HPReserger.ModuloCompensaciones
                 CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
                 //Fin Cuadre
                 string cadena = "";
-                if (ImporteTotal > 0)
+                //SIGUIENTE ASIENTO DE LA SALIDA DE DINERO
+                if (ImporteTotal > 0 && TipoPago != 0)
                 {
                     numasiento = 0;
                     if (numasiento == 0)
@@ -1008,6 +1044,50 @@ namespace HPReserger.ModuloCompensaciones
                     CapaLogica.CuadrarAsiento(CuoNext, proyecto, FechaContable, 2);
                     cadena = $"\nSe Aplico el Pago con Cuo{ CuoNext}";
                     //Fin Cuadre                 
+                }
+                else if (ImporteTotal > 0 && TipoPago == 0)
+                {
+                    string CuentaContable = ""; string nroKuenta = "";
+                    if (cbocuentabanco.SelectedValue == null) CuentaContable = ""; else CuentaContable = cbocuentabanco.SelectedValue.ToString();
+                    if (cbocuentabanco.SelectedValue != null)
+                        nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
+                    decimal MontoSoles = Configuraciones.Redondear(moneda == 1 ? ImporteTotal : ImporteTotal * tc);
+                    decimal MontoDolares = Configuraciones.Redondear(moneda == 2 ? ImporteTotal : ImporteTotal / tc);
+                    decimal TC = tc;
+                    string[] NumFac = $"0-Ent.{ FechaCompensa.ToString("d")}".Split('-');
+                    int idfac = 0;
+                    //Salida o Entrada de Dinero
+                    //Salido = positiva = Otras cuentas x Pagar
+                    //Entrada= Negativa= Banco en Positivo
+                    decimal ImporteAbonar = decimal.Parse(txtPorAbonar.Text);
+                    decimal Factor = MontoSoles / MontoDolares;
+                    decimal AbonarSoles = Configuraciones.Redondear(moneda == 1 ? ImporteAbonar : ImporteAbonar * Factor);
+                    decimal AbonarDolares = Configuraciones.Redondear(moneda == 2 ? ImporteAbonar : ImporteAbonar / Factor);
+                    string OtrasCuentas = cbocuentaxpagar.SelectedValue.ToString();
+                    //DEBE
+                    //Asiento Cabecera 
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, OtrasCuentas
+                           , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
+                           , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
+                           , tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -15);
+                    //Detalle del asiento
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, OtrasCuentas, proyecto, TipoIdProveedor, NumDocEmpleado
+                        , NameEmpleado, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(AbonarSoles), Math.Abs(AbonarDolares), TC, moneda, ""
+                        , "", glosa, FechaCompensa, idUsuario, Cuo);
+                    ////HABER
+                    ////Asiento Cabecera
+                    //CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaCtaBanco
+                    //       , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
+                    //       , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
+                    //       , tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -15);
+                    ////Detalle del asiento
+                    //CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaCtaBanco, proyecto, TipoIdProveedor, NumDocEmpleado
+                    //    , NameEmpleado, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(AbonarSoles), Math.Abs(AbonarDolares), TC, moneda, nroKuenta
+                    //    , NroOperacion, glosa, FechaCompensa, idUsuario, Cuo, TipoPago);
+                    ////Cuadre Asiento
+                    CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
+                    //cadena = $"\nSe Aplico el Pago con Cuo{ CuoNext}";
+                    //Fin Cuadre   
                 }
                 msgOK($"Se Aplicó la Entrega a Rendir con Cuo {Cuo} {(cadena != "" ? cadena : "")}");
                 cbotipo.SelectedValue = 3;

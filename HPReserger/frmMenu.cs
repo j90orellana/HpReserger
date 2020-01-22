@@ -4112,6 +4112,28 @@ namespace HPReserger
         {
             frmLibroInventario5_3 = null;
         }
+        ModuloCompensaciones.frmEntregaRendirDinero frmentregarendirdinero;
+        private void devoluciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmentregarendirdinero == null)
+            {
+                frmentregarendirdinero = new ModuloCompensaciones.frmEntregaRendirDinero();
+                frmentregarendirdinero.MdiParent = this;
+                frmentregarendirdinero.Icon = ICono;
+                frmentregarendirdinero.FormClosed += new FormClosedEventHandler(cerrarentregadinero);
+                frmentregarendirdinero.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmentregarendirdinero.Activate();
+                ValidarVentanas(frmentregarendirdinero);
+            }
+        }
 
+        private void cerrarentregadinero(object sender, FormClosedEventArgs e)
+        {
+            frmentregarendirdinero = null;
+        }
     }
 }

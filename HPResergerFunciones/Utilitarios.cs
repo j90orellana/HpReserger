@@ -1494,19 +1494,23 @@ namespace HPResergerFunciones
         public static string ExtraerCuenta(string cuenta)
         {
             int posI = -1, posF = 0, con = 0;
-            foreach (var c in cuenta)
+            if (cuenta != "")
             {
-                if (char.IsDigit(c))
+                foreach (var c in cuenta)
                 {
-                    if (posI < 0)
+                    if (char.IsDigit(c))
                     {
-                        posI = con;
+                        if (posI < 0)
+                        {
+                            posI = con;
+                        }
+                        posF = con;
                     }
-                    posF = con;
+                    con++;
                 }
-                con++;
+                return cuenta.Substring(posI, posF + 1);
             }
-            return cuenta.Substring(posI, posF + 1);
+            else return "";
         }
         //public static string ExtraerCuenta(string cuenta)
         //{

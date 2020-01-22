@@ -107,6 +107,7 @@
             this.entregasARendirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.devoluciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reembolsoGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aplicaciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1028,19 +1029,20 @@
             // 
             this.entregasARendirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem5,
-            this.toolStripMenuItem7});
+            this.toolStripMenuItem7,
+            this.devoluciónToolStripMenuItem});
             this.entregasARendirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("entregasARendirToolStripMenuItem.Image")));
             this.entregasARendirToolStripMenuItem.Name = "entregasARendirToolStripMenuItem";
             this.entregasARendirToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.entregasARendirToolStripMenuItem.Tag = "1005002";
+            this.entregasARendirToolStripMenuItem.Tag = "1405002";
             this.entregasARendirToolStripMenuItem.Text = "Entregas a Rendir";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(128, 22);
-            this.toolStripMenuItem5.Tag = "100500201";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem5.Tag = "140500201";
             this.toolStripMenuItem5.Text = "Apertura";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
@@ -1048,10 +1050,19 @@
             // 
             this.toolStripMenuItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem7.Image")));
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(128, 22);
-            this.toolStripMenuItem7.Tag = "100500202";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem7.Tag = "140500202";
             this.toolStripMenuItem7.Text = "Compensar";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            // 
+            // devoluciónToolStripMenuItem
+            // 
+            this.devoluciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("devoluciónToolStripMenuItem.Image")));
+            this.devoluciónToolStripMenuItem.Name = "devoluciónToolStripMenuItem";
+            this.devoluciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.devoluciónToolStripMenuItem.Tag = "140500203";
+            this.devoluciónToolStripMenuItem.Text = "Devolución";
+            this.devoluciónToolStripMenuItem.Click += new System.EventHandler(this.devoluciónToolStripMenuItem_Click);
             // 
             // reembolsoGastosToolStripMenuItem
             // 
@@ -1061,7 +1072,7 @@
             this.reembolsoGastosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reembolsoGastosToolStripMenuItem.Image")));
             this.reembolsoGastosToolStripMenuItem.Name = "reembolsoGastosToolStripMenuItem";
             this.reembolsoGastosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.reembolsoGastosToolStripMenuItem.Tag = "1005003";
+            this.reembolsoGastosToolStripMenuItem.Tag = "1405003";
             this.reembolsoGastosToolStripMenuItem.Text = "Reembolso Gastos";
             this.reembolsoGastosToolStripMenuItem.Click += new System.EventHandler(this.reembolsoGastosToolStripMenuItem_Click);
             // 
@@ -1070,7 +1081,7 @@
             this.aplicaciónToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem1.Image")));
             this.aplicaciónToolStripMenuItem1.Name = "aplicaciónToolStripMenuItem1";
             this.aplicaciónToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
-            this.aplicaciónToolStripMenuItem1.Tag = "100500301";
+            this.aplicaciónToolStripMenuItem1.Tag = "140500301";
             this.aplicaciónToolStripMenuItem1.Text = "Aplicación";
             this.aplicaciónToolStripMenuItem1.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem1_Click);
             // 
@@ -1079,7 +1090,7 @@
             this.pagoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagoToolStripMenuItem.Image")));
             this.pagoToolStripMenuItem.Name = "pagoToolStripMenuItem";
             this.pagoToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.pagoToolStripMenuItem.Tag = "100500302";
+            this.pagoToolStripMenuItem.Tag = "140500302";
             this.pagoToolStripMenuItem.Text = "Pago";
             this.pagoToolStripMenuItem.Click += new System.EventHandler(this.pagoToolStripMenuItem_Click);
             // 
@@ -1091,7 +1102,7 @@
             this.anticipoProveedoresToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("anticipoProveedoresToolStripMenuItem.Image")));
             this.anticipoProveedoresToolStripMenuItem.Name = "anticipoProveedoresToolStripMenuItem";
             this.anticipoProveedoresToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.anticipoProveedoresToolStripMenuItem.Tag = "1005004";
+            this.anticipoProveedoresToolStripMenuItem.Tag = "1405004";
             this.anticipoProveedoresToolStripMenuItem.Text = "Anticipo Proveedores";
             this.anticipoProveedoresToolStripMenuItem.Click += new System.EventHandler(this.anticipoProveedoresToolStripMenuItem_Click);
             // 
@@ -1100,7 +1111,7 @@
             this.registroToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registroToolStripMenuItem.Image")));
             this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
             this.registroToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.registroToolStripMenuItem.Tag = "100500401";
+            this.registroToolStripMenuItem.Tag = "140500401";
             this.registroToolStripMenuItem.Text = "Registro";
             this.registroToolStripMenuItem.Click += new System.EventHandler(this.registroToolStripMenuItem_Click);
             // 
@@ -1109,7 +1120,7 @@
             this.aplicaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem.Image")));
             this.aplicaciónToolStripMenuItem.Name = "aplicaciónToolStripMenuItem";
             this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.aplicaciónToolStripMenuItem.Tag = "100500402";
+            this.aplicaciónToolStripMenuItem.Tag = "140500402";
             this.aplicaciónToolStripMenuItem.Text = "Aplicación";
             this.aplicaciónToolStripMenuItem.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem_Click);
             // 
@@ -1118,7 +1129,7 @@
             this.listadoCompensacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("listadoCompensacionesToolStripMenuItem.Image")));
             this.listadoCompensacionesToolStripMenuItem.Name = "listadoCompensacionesToolStripMenuItem";
             this.listadoCompensacionesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.listadoCompensacionesToolStripMenuItem.Tag = "1005005";
+            this.listadoCompensacionesToolStripMenuItem.Tag = "1405005";
             this.listadoCompensacionesToolStripMenuItem.Text = "Listado Compensaciones";
             this.listadoCompensacionesToolStripMenuItem.Click += new System.EventHandler(this.listadoCompensacionesToolStripMenuItem_Click);
             // 
@@ -2549,7 +2560,7 @@
             this.cerrarSesionToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("cerrarSesionToolStripMenuItem1.Image")));
             this.cerrarSesionToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.White;
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
-            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.cerrarSesionToolStripMenuItem1.Text = "&Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem1_Click);
             // 
@@ -2558,14 +2569,14 @@
             this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
             this.salirToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // cargarPdfToolStripMenuItem
             // 
             this.cargarPdfToolStripMenuItem.Name = "cargarPdfToolStripMenuItem";
-            this.cargarPdfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cargarPdfToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.cargarPdfToolStripMenuItem.Tag = "803";
             this.cargarPdfToolStripMenuItem.Text = "Cargar Pdf";
             this.cargarPdfToolStripMenuItem.Click += new System.EventHandler(this.cargarPdfToolStripMenuItem_Click);
@@ -2969,5 +2980,6 @@
         private System.Windows.Forms.ToolStripMenuItem tiposPlanContableToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
         private System.Windows.Forms.ToolStripMenuItem libroDeInventariosYBalancesDetalleDelSaldoDeLaCuenta10EfectivoYEquivalentesDeEfectivoPCGEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem devoluciónToolStripMenuItem;
     }
 }
