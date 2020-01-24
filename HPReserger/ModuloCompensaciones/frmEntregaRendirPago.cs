@@ -804,7 +804,7 @@ namespace HPReserger.ModuloCompensaciones
                             }
                             else
                             {
-                                CapaLogica.ReembolsoGastos_Detalle(1, SiguientePkId, _idempresa, -1, 5, item.Cells[xProveedor.Name].Value.ToString(),
+                                CapaLogica.EntregasRendir_Detalle(1, SiguientePkId, _idempresa, -1, 5, item.Cells[xProveedor.Name].Value.ToString(),
                                     item.Cells[xrazon_social.Name].Value.ToString(), string.Join("-", valor), (DateTime)item.Cells[xFechaEmision.Name].Value, string.Join("-", UserCompensa),
                                     (int)item.Cells[xidMoneda.Name].Value, (decimal)item.Cells[xTcReg.Name].Value,
                                     (int)item.Cells[xidMoneda.Name].Value == 1 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
