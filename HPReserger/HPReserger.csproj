@@ -238,6 +238,24 @@
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventario3_2.Designer.cs">
       <DependentUpon>frmLibroInventario3_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_5.Designer.cs">
+      <DependentUpon>frmLibroInventarios3_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_4.Designer.cs">
+      <DependentUpon>frmLibroInventarios3_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_3.Designer.cs">
+      <DependentUpon>frmLibroInventarios3_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1799,6 +1817,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventario3_2.resx">
       <DependentUpon>frmLibroInventario3_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_5.resx">
+      <DependentUpon>frmLibroInventarios3_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_4.resx">
+      <DependentUpon>frmLibroInventarios3_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_3.resx">
+      <DependentUpon>frmLibroInventarios3_3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmRegistroVentas.resx">
       <DependentUpon>frmRegistroVentas.cs</DependentUpon>

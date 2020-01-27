@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace HPReserger.ModuloReportes.LibrosElectronicos
 {
-    public partial class frmLibroInventario3_2 : FormGradient
+    public partial class frmLibroInventarios3_5 : FormGradient
     {
-        public frmLibroInventario3_2()
+        public frmLibroInventarios3_5()
         {
             InitializeComponent();
         }
@@ -36,33 +36,9 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                 chklist.Items.Add(item["descripcion"].ToString(), true);
             }
         }
-        private void frmLibroInventario3_2_Load(object sender, EventArgs e)
+        private void frmLibroInventarios3_3_Load(object sender, EventArgs e)
         {
             cargarEmpresa();
-        }
-        private void BtnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void chklist_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (e.Index == 0)
-            {
-                if (chklist.GetItemChecked(0))
-                {
-                    for (int i = 1; i < chklist.Items.Count; i++)
-                        chklist.SetItemChecked(i, false);
-                }
-                else
-                {
-                    for (int i = 1; i < chklist.Items.Count; i++)
-                        chklist.SetItemChecked(i, true);
-                }
-            }
-        }
-        private void dtgconten_Sorted(object sender, EventArgs e)
-        {
-            Ordenado = true;
         }
         private void btnProcesar_Click(object sender, EventArgs e)
         {
@@ -86,7 +62,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             }
             ListadoEmpresas = ListadoEmpresas.Substring(0, ListadoEmpresas.Length - 1);
             //
-            TDatos = CapaLogica.FormatoLibroInventario3_2(ListadoEmpresas, FechaInicial, FechaFinal);
+            TDatos = CapaLogica.FormatoLibroInventario3_5(ListadoEmpresas, FechaInicial, FechaFinal);
             dtgconten.DataSource = TDatos;
             //
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
@@ -102,20 +78,30 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             PanelTxt.Visible = false;
         }
 
-        private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
+            this.Close();
+        }
+        private void chklist_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.Index == 0)
             {
-                if (e.ColumnIndex == dtgconten.Columns[xNroCuenta.Name].Index)
+                if (chklist.GetItemChecked(0))
                 {
-                    if (dtgconten[xNroCuenta.Name, e.RowIndex].Value.ToString() == "Sin Nro Cuenta")
-                    {
-                        HPResergerFunciones.Utilitarios.ColorCeldaError(dtgconten[e.ColumnIndex, e.RowIndex]);
-                    }
-                    else
-                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(dtgconten[e.ColumnIndex, e.RowIndex]);
+                    for (int i = 1; i < chklist.Items.Count; i++)
+                        chklist.SetItemChecked(i, false);
+                }
+                else
+                {
+                    for (int i = 1; i < chklist.Items.Count; i++)
+                        chklist.SetItemChecked(i, true);
                 }
             }
+        }
+
+        private void dtgconten_Sorted(object sender, EventArgs e)
+        {
+            Ordenado = true;
         }
 
         private void btnexcel_Click(object sender, EventArgs e)
@@ -169,7 +155,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
                         //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"3.2 LIBRO DE INVENTARIOS Y BALANCES {EmpresaValor}.xlsx";
+                        string NameFile = valor + $"3.5 LIBRO DE INVENTARIOS Y BALANCES {EmpresaValor}.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")
@@ -189,7 +175,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 if (dtgconten.RowCount > 0)
                                 {
                                     string _NombreHoja = ""; string _Cabecera = ""; int[] _OrdenarColumnas; string _NColumna = "";
-                                    _NombreHoja = $"{fechas}"; _Cabecera = "3.2 LIBRO DE INVENTARIOS Y BALANCES - DETALLE DEL SALDO DE LA CUENTA 10 EFECTIVO Y EQUIVALENTES DE EFECTIVO (PCGE)";
+                                    _NombreHoja = $"{fechas}"; _Cabecera = "3.5 LIBRO DE INVENTARIOS Y BALANCES - DETALLE DEL SALDO DE LA CUENTA 16 CUENTAS POR COBRAR DIVERSAS - TERCEROS O CUENTA 17 - CUENTAS POR COBRAR DIVERSAS – RELACIONADAS";
                                     _OrdenarColumnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
                                     _NColumna = "m";
                                     List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
@@ -225,6 +211,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             }
             else msg("No hay Registros en la Grilla");
         }
+
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Cursor = Cursors.Default;
@@ -272,6 +259,23 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private StreamWriter st;
+        int[] Valores = { 1, 8, 9 };
+        private void dtgconten_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            int x = e.RowIndex;
+            int y = e.ColumnIndex;
+            if (x >= 0 && y == dtgconten.Columns[xEstado.Name].Index)
+            {
+                int Valor = 0;
+                int.TryParse(e.FormattedValue.ToString(), out Valor);
+                if (!Valores.Contains(Valor))
+                {
+                    e.Cancel = true;
+                    msg("Ingresó un valor Invalido, Solo Ingrese: 1, 8, 9");
+                }
+            }
+        }
+
         private void btnTxt_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
@@ -326,7 +330,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 //Sí no hay datos 8.1 Vacio
                                 if (TablaResult.Rows.Count == 0)
                                 {
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}0103020071{0}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}0103050071{0}11.txt";
                                     //grabamos
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
@@ -344,15 +348,16 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         //ValorPrueba = 0;
                                         int c = 0;
                                         //1
-                                        campo[c++] = item[xperiodo.DataPropertyName].ToString().Trim();
-                                        campo[c++] = Configuraciones.CadenaDelimitada(item[xCuentaContable.DataPropertyName].ToString().Trim(), 24);
-                                        int Valor; int.TryParse(item[xCodigoEntidad.DataPropertyName].ToString(), out Valor);
-                                        campo[c++] = Valor.ToString("00");
-                                        campo[c++] = Valor == 99 ? "-" : Configuraciones.CadenaDelimitada(item[xNroCuenta.DataPropertyName].ToString().Trim(), 30);
-                                        campo[c++] = item[xMoneda.DataPropertyName].ToString().Trim();
-                                        //debe y haber
-                                        campo[c++] = ((decimal)item[xParteDeudora.DataPropertyName]).ToString("0.00");
-                                        campo[c++] = ((decimal)item[xParteAcreedora.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = item[xperiodo.DataPropertyName].ToString().Trim();//8len
+                                        campo[c++] = Configuraciones.CadenaDelimitada(item[xCuo.DataPropertyName].ToString().Trim(), 40);
+                                        campo[c++] = Configuraciones.CadenaDelimitada(item[xCorrelativo.DataPropertyName].ToString().Trim(), 10);//2-10
+                                        campo[c++] = Configuraciones.CadenaDelimitada(item[xTipoDoc.DataPropertyName].ToString().Trim(), 1);//1
+                                        campo[c++] = Configuraciones.CadenaDelimitada(item[xNumDoc.DataPropertyName].ToString().Trim(), 15);//15
+                                        campo[c++] = Configuraciones.CadenaDelimitada(item[xRazonSocial.DataPropertyName].ToString().Trim(), 100);//100
+                                        //
+                                        campo[c++] = ((DateTime)item[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");//10                                        
+                                        //Montos
+                                        campo[c++] = ((decimal)item[xMonto.DataPropertyName]).ToString("0.00");
                                         //
                                         campo[c++] = ((int)item[xEstado.DataPropertyName]).ToString();
                                         //
@@ -362,7 +367,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         //campo = null;
                                     }
                                     //Formato 1.1
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030200071{1}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}0103050071{1}11.txt";
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);
@@ -381,22 +386,6 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             {
                 Cursor = Cursors.Default;
                 msgOK("Cancelado por el Usuario");
-            }
-        }
-        int[] Valores = { 1, 8, 9 };
-        private void dtgconten_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            int x = e.RowIndex;
-            int y = e.ColumnIndex;
-            if (x >= 0 && y == dtgconten.Columns[xEstado.Name].Index)
-            {
-                int Valor = 0;
-                int.TryParse(e.FormattedValue.ToString(), out Valor);
-                if (!Valores.Contains(Valor))
-                {
-                    e.Cancel = true;
-                    msg("Ingresó un valor Invalido, Solo Ingrese: 1, 8, 9");
-                }
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace HPReserger.ModuloReportes.LibrosElectronicos
 {
-    partial class frmLibroInventario3_2
+    partial class frmLibroInventarios3_4
     {
         /// <summary>
         /// Required designer variable.
@@ -29,21 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLibroInventario3_2));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkCarpetas = new System.Windows.Forms.CheckBox();
-            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
-            this.btnGenerarTXT = new System.Windows.Forms.Button();
-            this.btnexcel = new System.Windows.Forms.Button();
-            this.lblmensaje = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLibroInventarios3_4));
+            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
+            this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.xperiodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCorrelativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTipoDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNumDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chklist = new System.Windows.Forms.CheckedListBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cboperiodohasta = new HpResergerUserControls.ComboMesAño();
@@ -52,17 +57,15 @@
             this.label20 = new System.Windows.Forms.Label();
             this.btnProcesar = new HpResergerUserControls.ButtonPer();
             this.label2 = new System.Windows.Forms.Label();
-            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
-            this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.xperiodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xCodigoEntidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNroCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xParteDeudora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xParteAcreedora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkCarpetas = new System.Windows.Forms.CheckBox();
+            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
+            this.btnGenerarTXT = new System.Windows.Forms.Button();
+            this.btnexcel = new System.Windows.Forms.Button();
+            this.lblmensaje = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
             this.PanelTxt = new HpResergerUserControls.PanelOre();
             this.PanelAbajo = new HpResergerUserControls.PanelOre();
             this.panelDerecho = new HpResergerUserControls.PanelOre();
@@ -98,208 +101,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnTxt = new HpResergerUserControls.ButtonPer();
             this.buttonPer1 = new HpResergerUserControls.ButtonPer();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(828, 19);
-            this.label1.TabIndex = 365;
-            this.label1.Text = "3.2 LIBRO DE INVENTARIOS Y BALANCES - DETALLE DEL SALDO DE LA CUENTA 10 EFECTIVO " +
-    "Y EQUIVALENTES DE EFECTIVO (PCGE)";
-            // 
-            // chkCarpetas
-            // 
-            this.chkCarpetas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkCarpetas.AutoSize = true;
-            this.chkCarpetas.BackColor = System.Drawing.Color.Transparent;
-            this.chkCarpetas.Location = new System.Drawing.Point(580, 534);
-            this.chkCarpetas.Name = "chkCarpetas";
-            this.chkCarpetas.Size = new System.Drawing.Size(104, 17);
-            this.chkCarpetas.TabIndex = 388;
-            this.chkCarpetas.Text = "Exp. a Carpetas";
-            this.chkCarpetas.UseVisualStyleBackColor = false;
-            // 
-            // BtnCerrar
-            // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
-            this.BtnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(989, 530);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
-            this.BtnCerrar.TabIndex = 387;
-            this.BtnCerrar.Text = "&Cancelar";
-            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnCerrar.UseVisualStyleBackColor = false;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
-            // 
-            // btnGenerarTXT
-            // 
-            this.btnGenerarTXT.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnGenerarTXT.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnGenerarTXT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarTXT.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarTXT.Image")));
-            this.btnGenerarTXT.Location = new System.Drawing.Point(491, 531);
-            this.btnGenerarTXT.Name = "btnGenerarTXT";
-            this.btnGenerarTXT.Size = new System.Drawing.Size(82, 23);
-            this.btnGenerarTXT.TabIndex = 384;
-            this.btnGenerarTXT.Text = "PLE Txt";
-            this.btnGenerarTXT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGenerarTXT.UseVisualStyleBackColor = true;
-            this.btnGenerarTXT.Click += new System.EventHandler(this.btnGenerarTXT_Click);
-            // 
-            // btnexcel
-            // 
-            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
-            this.btnexcel.Location = new System.Drawing.Point(403, 531);
-            this.btnexcel.Name = "btnexcel";
-            this.btnexcel.Size = new System.Drawing.Size(82, 23);
-            this.btnexcel.TabIndex = 385;
-            this.btnexcel.Text = "Excel";
-            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnexcel.UseVisualStyleBackColor = true;
-            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
-            // 
-            // lblmensaje
-            // 
-            this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmensaje.AutoSize = true;
-            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
-            this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmensaje.Location = new System.Drawing.Point(12, 536);
-            this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(110, 13);
-            this.lblmensaje.TabIndex = 383;
-            this.lblmensaje.Text = "Total de Registros: 0";
-            // 
-            // chklist
-            // 
-            this.chklist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chklist.ColumnWidth = 200;
-            this.chklist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chklist.Location = new System.Drawing.Point(384, 36);
-            this.chklist.Name = "chklist";
-            this.chklist.Size = new System.Drawing.Size(405, 82);
-            this.chklist.TabIndex = 396;
-            this.chklist.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklist_ItemCheck);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.label21.Location = new System.Drawing.Point(323, 36);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(58, 13);
-            this.label21.TabIndex = 395;
-            this.label21.Text = "EMPRESA:";
-            // 
-            // cboperiodohasta
-            // 
-            this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 1, 27, 0, 0, 0, 0);
-            this.cboperiodohasta.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
-            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
-            this.cboperiodohasta.Location = new System.Drawing.Point(101, 56);
-            this.cboperiodohasta.Name = "cboperiodohasta";
-            this.cboperiodohasta.Size = new System.Drawing.Size(218, 22);
-            this.cboperiodohasta.TabIndex = 392;
-            this.cboperiodohasta.VerAño = true;
-            this.cboperiodohasta.VerMes = true;
-            // 
-            // cboperiodode
-            // 
-            this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 1, 27, 0, 0, 0, 0);
-            this.cboperiodode.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
-            this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
-            this.cboperiodode.Location = new System.Drawing.Point(101, 31);
-            this.cboperiodode.Name = "cboperiodode";
-            this.cboperiodode.Size = new System.Drawing.Size(218, 22);
-            this.cboperiodode.TabIndex = 391;
-            this.cboperiodode.VerAño = true;
-            this.cboperiodode.VerMes = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.label4.Location = new System.Drawing.Point(77, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 13);
-            this.label4.TabIndex = 393;
-            this.label4.Text = "De:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.label20.Location = new System.Drawing.Point(62, 61);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(39, 13);
-            this.label20.TabIndex = 394;
-            this.label20.Text = "Hasta:";
-            // 
-            // btnProcesar
-            // 
-            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(792, 36);
-            this.btnProcesar.Name = "btnProcesar";
-            this.btnProcesar.Size = new System.Drawing.Size(83, 24);
-            this.btnProcesar.TabIndex = 390;
-            this.btnProcesar.Text = "&Procesar";
-            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProcesar.UseVisualStyleBackColor = false;
-            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.label2.Location = new System.Drawing.Point(12, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 389;
-            this.label2.Text = "PERIODO:\r\n";
             // 
             // separadorOre1
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(-3, 119);
+            this.separadorOre1.Location = new System.Drawing.Point(-4, 133);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
             this.separadorOre1.Size = new System.Drawing.Size(1092, 2);
-            this.separadorOre1.TabIndex = 398;
+            this.separadorOre1.TabIndex = 413;
             // 
             // dtgconten
             // 
@@ -321,7 +138,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -331,32 +148,32 @@
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xperiodo,
             this.xEmpresa,
-            this.xCuentaContable,
-            this.xCodigoEntidad,
-            this.xNroCuenta,
-            this.xMoneda,
-            this.xParteDeudora,
-            this.xParteAcreedora,
+            this.xCuo,
+            this.xCorrelativo,
+            this.xTipoDoc,
+            this.xNumDoc,
+            this.xRazonSocial,
+            this.xFechaEmision,
+            this.xMonto,
             this.xEstado});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 123);
+            this.dtgconten.Location = new System.Drawing.Point(13, 138);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1060, 401);
-            this.dtgconten.TabIndex = 397;
-            this.dtgconten.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgconten_CellFormatting);
+            this.dtgconten.Size = new System.Drawing.Size(1059, 384);
+            this.dtgconten.TabIndex = 412;
             this.dtgconten.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dtgconten_CellValidating);
             this.dtgconten.Sorted += new System.EventHandler(this.dtgconten_Sorted);
             // 
@@ -379,86 +196,292 @@
             this.xEmpresa.Name = "xEmpresa";
             this.xEmpresa.ReadOnly = true;
             // 
-            // xCuentaContable
+            // xCuo
             // 
-            this.xCuentaContable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xCuentaContable.DataPropertyName = "CuentaContable";
-            this.xCuentaContable.HeaderText = "Cuenta Contable";
-            this.xCuentaContable.MinimumWidth = 100;
-            this.xCuentaContable.Name = "xCuentaContable";
-            this.xCuentaContable.ReadOnly = true;
+            this.xCuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xCuo.DataPropertyName = "cuo";
+            this.xCuo.HeaderText = "Cuo";
+            this.xCuo.Name = "xCuo";
+            this.xCuo.ReadOnly = true;
+            this.xCuo.Width = 52;
             // 
-            // xCodigoEntidad
+            // xCorrelativo
             // 
-            this.xCodigoEntidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xCodigoEntidad.DataPropertyName = "CodigoEntidad";
+            this.xCorrelativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xCorrelativo.DataPropertyName = "Correlativo";
+            this.xCorrelativo.HeaderText = "Correlativo";
+            this.xCorrelativo.MinimumWidth = 80;
+            this.xCorrelativo.Name = "xCorrelativo";
+            this.xCorrelativo.ReadOnly = true;
+            this.xCorrelativo.Width = 80;
+            // 
+            // xTipoDoc
+            // 
+            this.xTipoDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xTipoDoc.DataPropertyName = "TipoDoc";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.Format = "00";
-            this.xCodigoEntidad.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xCodigoEntidad.HeaderText = "Codigo Entidad";
-            this.xCodigoEntidad.MinimumWidth = 70;
-            this.xCodigoEntidad.Name = "xCodigoEntidad";
-            this.xCodigoEntidad.ReadOnly = true;
-            this.xCodigoEntidad.Width = 70;
+            this.xTipoDoc.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xTipoDoc.HeaderText = "Tipo Doc";
+            this.xTipoDoc.MinimumWidth = 50;
+            this.xTipoDoc.Name = "xTipoDoc";
+            this.xTipoDoc.ReadOnly = true;
+            this.xTipoDoc.Width = 50;
             // 
-            // xNroCuenta
+            // xNumDoc
             // 
-            this.xNroCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xNroCuenta.DataPropertyName = "NroCuenta";
-            this.xNroCuenta.HeaderText = "Nro Cuenta";
-            this.xNroCuenta.MinimumWidth = 100;
-            this.xNroCuenta.Name = "xNroCuenta";
-            this.xNroCuenta.ReadOnly = true;
+            this.xNumDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xNumDoc.DataPropertyName = "NumDoc";
+            this.xNumDoc.HeaderText = "NumDoc";
+            this.xNumDoc.MinimumWidth = 100;
+            this.xNumDoc.Name = "xNumDoc";
+            this.xNumDoc.ReadOnly = true;
             // 
-            // xMoneda
+            // xRazonSocial
             // 
-            this.xMoneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xMoneda.DataPropertyName = "moneda";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xMoneda.DefaultCellStyle = dataGridViewCellStyle4;
-            this.xMoneda.HeaderText = "Moneda";
-            this.xMoneda.MinimumWidth = 60;
-            this.xMoneda.Name = "xMoneda";
-            this.xMoneda.ReadOnly = true;
-            this.xMoneda.Width = 60;
+            this.xRazonSocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xRazonSocial.DataPropertyName = "RazonSocial";
+            this.xRazonSocial.HeaderText = "RazonSocial";
+            this.xRazonSocial.MinimumWidth = 200;
+            this.xRazonSocial.Name = "xRazonSocial";
+            this.xRazonSocial.ReadOnly = true;
+            this.xRazonSocial.Width = 200;
             // 
-            // xParteDeudora
+            // xFechaEmision
             // 
-            this.xParteDeudora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xParteDeudora.DataPropertyName = "ParteDeudora";
+            this.xFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xFechaEmision.DataPropertyName = "FechaEmision";
+            dataGridViewCellStyle4.Format = "d";
+            this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle4;
+            this.xFechaEmision.HeaderText = "Fecha Emision";
+            this.xFechaEmision.MinimumWidth = 70;
+            this.xFechaEmision.Name = "xFechaEmision";
+            this.xFechaEmision.ReadOnly = true;
+            this.xFechaEmision.Width = 70;
+            // 
+            // xMonto
+            // 
+            this.xMonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xMonto.DataPropertyName = "Monto";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle5.Format = "n2";
-            this.xParteDeudora.DefaultCellStyle = dataGridViewCellStyle5;
-            this.xParteDeudora.HeaderText = "Parte Deudora";
-            this.xParteDeudora.MinimumWidth = 80;
-            this.xParteDeudora.Name = "xParteDeudora";
-            this.xParteDeudora.ReadOnly = true;
-            this.xParteDeudora.Width = 80;
-            // 
-            // xParteAcreedora
-            // 
-            this.xParteAcreedora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xParteAcreedora.DataPropertyName = "ParteAcreedora";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.xParteAcreedora.DefaultCellStyle = dataGridViewCellStyle6;
-            this.xParteAcreedora.HeaderText = "Parte Acreedora";
-            this.xParteAcreedora.MinimumWidth = 80;
-            this.xParteAcreedora.Name = "xParteAcreedora";
-            this.xParteAcreedora.ReadOnly = true;
-            this.xParteAcreedora.Width = 80;
+            this.xMonto.DefaultCellStyle = dataGridViewCellStyle5;
+            this.xMonto.HeaderText = "Monto";
+            this.xMonto.MinimumWidth = 80;
+            this.xMonto.Name = "xMonto";
+            this.xMonto.ReadOnly = true;
+            this.xMonto.Width = 80;
             // 
             // xEstado
             // 
             this.xEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xEstado.DataPropertyName = "Estado";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xEstado.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xEstado.DefaultCellStyle = dataGridViewCellStyle6;
             this.xEstado.HeaderText = "Estado";
             this.xEstado.MinimumWidth = 50;
             this.xEstado.Name = "xEstado";
             this.xEstado.Width = 50;
+            // 
+            // chklist
+            // 
+            this.chklist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chklist.ColumnWidth = 200;
+            this.chklist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chklist.Location = new System.Drawing.Point(383, 50);
+            this.chklist.Name = "chklist";
+            this.chklist.Size = new System.Drawing.Size(405, 82);
+            this.chklist.TabIndex = 411;
+            this.chklist.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklist_ItemCheck);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label21.Location = new System.Drawing.Point(322, 50);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(58, 13);
+            this.label21.TabIndex = 410;
+            this.label21.Text = "EMPRESA:";
+            // 
+            // cboperiodohasta
+            // 
+            this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
+            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 1, 27, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.cboperiodohasta.Location = new System.Drawing.Point(100, 70);
+            this.cboperiodohasta.Name = "cboperiodohasta";
+            this.cboperiodohasta.Size = new System.Drawing.Size(218, 22);
+            this.cboperiodohasta.TabIndex = 407;
+            this.cboperiodohasta.VerAño = true;
+            this.cboperiodohasta.VerMes = true;
+            // 
+            // cboperiodode
+            // 
+            this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
+            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 1, 27, 0, 0, 0, 0);
+            this.cboperiodode.FechaFinMes = new System.DateTime(2020, 1, 31, 0, 0, 0, 0);
+            this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.cboperiodode.Location = new System.Drawing.Point(100, 45);
+            this.cboperiodode.Name = "cboperiodode";
+            this.cboperiodode.Size = new System.Drawing.Size(218, 22);
+            this.cboperiodode.TabIndex = 406;
+            this.cboperiodode.VerAño = true;
+            this.cboperiodode.VerMes = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label4.Location = new System.Drawing.Point(76, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 408;
+            this.label4.Text = "De:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label20.Location = new System.Drawing.Point(61, 75);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(39, 13);
+            this.label20.TabIndex = 409;
+            this.label20.Text = "Hasta:";
+            // 
+            // btnProcesar
+            // 
+            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
+            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcesar.ForeColor = System.Drawing.Color.White;
+            this.btnProcesar.Location = new System.Drawing.Point(791, 50);
+            this.btnProcesar.Name = "btnProcesar";
+            this.btnProcesar.Size = new System.Drawing.Size(83, 24);
+            this.btnProcesar.TabIndex = 405;
+            this.btnProcesar.Text = "&Procesar";
+            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.label2.Location = new System.Drawing.Point(13, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 404;
+            this.label2.Text = "PERIODO:\r\n";
+            // 
+            // chkCarpetas
+            // 
+            this.chkCarpetas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkCarpetas.AutoSize = true;
+            this.chkCarpetas.BackColor = System.Drawing.Color.Transparent;
+            this.chkCarpetas.Location = new System.Drawing.Point(579, 532);
+            this.chkCarpetas.Name = "chkCarpetas";
+            this.chkCarpetas.Size = new System.Drawing.Size(104, 17);
+            this.chkCarpetas.TabIndex = 403;
+            this.chkCarpetas.Text = "Exp. a Carpetas";
+            this.chkCarpetas.UseVisualStyleBackColor = false;
+            // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
+            this.BtnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
+            this.BtnCerrar.Location = new System.Drawing.Point(988, 528);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
+            this.BtnCerrar.TabIndex = 402;
+            this.BtnCerrar.Text = "&Cancelar";
+            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            // 
+            // btnGenerarTXT
+            // 
+            this.btnGenerarTXT.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGenerarTXT.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnGenerarTXT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarTXT.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarTXT.Image")));
+            this.btnGenerarTXT.Location = new System.Drawing.Point(490, 529);
+            this.btnGenerarTXT.Name = "btnGenerarTXT";
+            this.btnGenerarTXT.Size = new System.Drawing.Size(82, 23);
+            this.btnGenerarTXT.TabIndex = 400;
+            this.btnGenerarTXT.Text = "PLE Txt";
+            this.btnGenerarTXT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarTXT.UseVisualStyleBackColor = true;
+            this.btnGenerarTXT.Click += new System.EventHandler(this.btnGenerarTXT_Click);
+            // 
+            // btnexcel
+            // 
+            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
+            this.btnexcel.Location = new System.Drawing.Point(402, 529);
+            this.btnexcel.Name = "btnexcel";
+            this.btnexcel.Size = new System.Drawing.Size(82, 23);
+            this.btnexcel.TabIndex = 401;
+            this.btnexcel.Text = "Excel";
+            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnexcel.UseVisualStyleBackColor = true;
+            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
+            // 
+            // lblmensaje
+            // 
+            this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmensaje.AutoSize = true;
+            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
+            this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmensaje.Location = new System.Drawing.Point(13, 534);
+            this.lblmensaje.Name = "lblmensaje";
+            this.lblmensaje.Size = new System.Drawing.Size(110, 13);
+            this.lblmensaje.TabIndex = 399;
+            this.lblmensaje.Text = "Total de Registros: 0";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1058, 39);
+            this.label1.TabIndex = 414;
+            this.label1.Text = "3.4 LIBRO DE INVENTARIOS Y BALANCES - DETALLE DEL SALDO DE LA CUENTA 14 CUENTAS P" +
+    "OR COBRAR AL PERSONAL, A LOS ACCIONISTAS (SOCIOS), DIRECTORES Y GERENTES(PCGE)";
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Archivos de Texto|*.txt";
+            // 
+            // fondoColorOre1
+            // 
+            this.fondoColorOre1.Angulo = 135;
+            this.fondoColorOre1.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
+            this.fondoColorOre1.control = this.PanelTxt;
             // 
             // PanelTxt
             // 
@@ -502,7 +525,7 @@
             this.PanelTxt.Movible = false;
             this.PanelTxt.Name = "PanelTxt";
             this.PanelTxt.Size = new System.Drawing.Size(453, 493);
-            this.PanelTxt.TabIndex = 399;
+            this.PanelTxt.TabIndex = 415;
             this.PanelTxt.Visible = false;
             // 
             // PanelAbajo
@@ -683,7 +706,7 @@
             this.textBoxPer5.ReadOnly = true;
             this.textBoxPer5.Size = new System.Drawing.Size(90, 22);
             this.textBoxPer5.TabIndex = 4;
-            this.textBoxPer5.Text = "02";
+            this.textBoxPer5.Text = "04";
             this.textBoxPer5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPer5.TextoDefecto = "Ingrese Cadena";
             this.textBoxPer5.TextoDefectoColor = System.Drawing.Color.White;
@@ -982,7 +1005,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(282, 17);
             this.label5.TabIndex = 1;
-            this.label5.Text = "3.2 LIBRO INVENTARIOS Y BALANCES";
+            this.label5.Text = "3.4 LIBRO INVENTARIOS Y BALANCES";
             // 
             // btnTxt
             // 
@@ -1016,30 +1039,13 @@
             this.buttonPer1.UseVisualStyleBackColor = false;
             this.buttonPer1.Click += new System.EventHandler(this.buttonPer1_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // SaveFile
-            // 
-            this.SaveFile.Filter = "Archivos de Texto|*.txt";
-            // 
-            // fondoColorOre1
-            // 
-            this.fondoColorOre1.Angulo = 135;
-            this.fondoColorOre1.Colores = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
-            this.fondoColorOre1.control = this.PanelTxt;
-            // 
-            // frmLibroInventario3_2
+            // frmLibroInventarios3_4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
             this.Controls.Add(this.PanelTxt);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.chklist);
@@ -1055,15 +1061,14 @@
             this.Controls.Add(this.btnGenerarTXT);
             this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.lblmensaje);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.MinimumSize = new System.Drawing.Size(1100, 600);
-            this.Name = "frmLibroInventario3_2";
-            this.Nombre = "3.2 Libro De Inventarios Y Balances - Detalle Del Saldo De La Cuenta 10 Efectivo " +
-    "Y Equivalentes De Efectivo (PCGE)";
-            this.Text = "3.2 Libro De Inventarios Y Balances - Detalle Del Saldo De La Cuenta 10 Efectivo " +
-    "Y Equivalentes De Efectivo (PCGE)";
-            this.Load += new System.EventHandler(this.frmLibroInventario3_2_Load);
+            this.Name = "frmLibroInventarios3_4";
+            this.Nombre = "3.4 Libro De Inventarios Y Balances - Detalle Del Saldo De La Cuenta 14 Cuentas P" +
+    "or Cobrar Al Personal, A Los Accionistas (Socios), Directores Y Gerentes";
+            this.Text = "3.4 Libro De Inventarios Y Balances - Detalle Del Saldo De La Cuenta 14 Cuentas P" +
+    "or Cobrar Al Personal, A Los Accionistas (Socios), Directores Y Gerentes";
+            this.Load += new System.EventHandler(this.frmLibroInventarios3_3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.PanelTxt.ResumeLayout(false);
             this.PanelTxt.PerformLayout();
@@ -1074,12 +1079,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkCarpetas;
-        private HpResergerUserControls.ButtonPer BtnCerrar;
-        private System.Windows.Forms.Button btnGenerarTXT;
-        private System.Windows.Forms.Button btnexcel;
-        private System.Windows.Forms.Label lblmensaje;
+        private HpResergerUserControls.SeparadorOre separadorOre1;
+        private HpResergerUserControls.Dtgconten dtgconten;
         private System.Windows.Forms.CheckedListBox chklist;
         private System.Windows.Forms.Label label21;
         private HpResergerUserControls.ComboMesAño cboperiodohasta;
@@ -1088,17 +1089,16 @@
         private System.Windows.Forms.Label label20;
         private HpResergerUserControls.ButtonPer btnProcesar;
         private System.Windows.Forms.Label label2;
-        private HpResergerUserControls.SeparadorOre separadorOre1;
-        private HpResergerUserControls.Dtgconten dtgconten;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xperiodo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xCodigoEntidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNroCuenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xMoneda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xParteDeudora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xParteAcreedora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
+        private System.Windows.Forms.CheckBox chkCarpetas;
+        private HpResergerUserControls.ButtonPer BtnCerrar;
+        private System.Windows.Forms.Button btnGenerarTXT;
+        private System.Windows.Forms.Button btnexcel;
+        private System.Windows.Forms.Label lblmensaje;
+        private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
+        private HpResergerUserControls.FondoColorOre fondoColorOre1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private HpResergerUserControls.PanelOre PanelTxt;
         private HpResergerUserControls.PanelOre PanelAbajo;
         private HpResergerUserControls.PanelOre panelDerecho;
@@ -1134,9 +1134,15 @@
         private System.Windows.Forms.Label label5;
         private HpResergerUserControls.ButtonPer btnTxt;
         private HpResergerUserControls.ButtonPer buttonPer1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.SaveFileDialog SaveFile;
-        private HpResergerUserControls.FondoColorOre fondoColorOre1;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xperiodo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCuo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCorrelativo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNumDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xRazonSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaEmision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xMonto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
     }
 }

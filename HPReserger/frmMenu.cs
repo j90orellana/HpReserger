@@ -4092,20 +4092,7 @@ namespace HPReserger
         ModuloReportes.LibrosElectronicos.frmLibroInventario3_2 frmLibroInventario5_3;
         private void libroDeInventariosYBalancesDetalleDelSaldoDeLaCuenta10EfectivoYEquivalentesDeEfectivoPCGEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmLibroInventario5_3 == null)
-            {
-                frmLibroInventario5_3 = new ModuloReportes.LibrosElectronicos.frmLibroInventario3_2();
-                frmLibroInventario5_3.MdiParent = this;
-                frmLibroInventario5_3.Icon = ICono;
-                frmLibroInventario5_3.FormClosed += new FormClosedEventHandler(cerrarformato3_2);
-                frmLibroInventario5_3.Show();
-                frmMenu_SizeChanged(sender, new EventArgs());
-            }
-            else
-            {
-                frmLibroInventario5_3.Activate();
-                ValidarVentanas(frmLibroInventario5_3);
-            }
+
         }
 
         private void cerrarformato3_2(object sender, FormClosedEventArgs e)
@@ -4134,6 +4121,101 @@ namespace HPReserger
         private void cerrarentregadinero(object sender, FormClosedEventArgs e)
         {
             frmentregarendirdinero = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroInventarios3_3 frmLibroInventario3_3;
+        private void cerrarformulario3_3(object sender, FormClosedEventArgs e)
+        {
+            frmLibroInventario3_3 = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroInventario3_2 LibroInventario3_2;
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            if (LibroInventario3_2 == null)
+            {
+                LibroInventario3_2 = new ModuloReportes.LibrosElectronicos.frmLibroInventario3_2();
+                LibroInventario3_2.MdiParent = this;
+                LibroInventario3_2.Icon = ICono;
+                LibroInventario3_2.FormClosed += new FormClosedEventHandler(cerrarInventario3_2);
+                LibroInventario3_2.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                LibroInventario3_2.Activate();
+                ValidarVentanas(LibroInventario3_2);
+            }
+        }
+        private void cerrarInventario3_2(object sender, FormClosedEventArgs e)
+        {
+            LibroInventario3_2 = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroInventarios3_3 LibroInventario3_3;
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            if (LibroInventario3_3 == null)
+            {
+                LibroInventario3_3 = new ModuloReportes.LibrosElectronicos.frmLibroInventarios3_3();
+                LibroInventario3_3.MdiParent = this;
+                LibroInventario3_3.Icon = ICono;
+                LibroInventario3_3.FormClosed += new FormClosedEventHandler(cerrarInventario3_3);
+                LibroInventario3_3.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                LibroInventario3_3.Activate();
+                ValidarVentanas(LibroInventario3_3);
+            }
+        }
+
+        private void cerrarInventario3_3(object sender, FormClosedEventArgs e)
+        {
+            LibroInventario3_3 = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroInventarios3_4 LibroInventario3_4;
+        private void libroDeInventariosYBalancesDetalleDelSaldoDeLaCuenta10EfectivoYEquivalentesDeEfectivoPCGEToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (LibroInventario3_4 == null)
+            {
+                LibroInventario3_4 = new ModuloReportes.LibrosElectronicos.frmLibroInventarios3_4();
+                LibroInventario3_4.MdiParent = this;
+                LibroInventario3_4.Icon = ICono;
+                LibroInventario3_4.FormClosed += new FormClosedEventHandler(cerrarInventario3_4);
+                LibroInventario3_4.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                LibroInventario3_4.Activate();
+                ValidarVentanas(LibroInventario3_4);
+            }
+        }
+        private void cerrarInventario3_4(object sender, FormClosedEventArgs e)
+        {
+            LibroInventario3_4 = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroInventarios3_5 LibroInventarios3_5;
+        private void LibroInventario3_5_Click(object sender, EventArgs e)
+        {
+            if (LibroInventarios3_5 == null)
+            {
+                LibroInventarios3_5 = new ModuloReportes.LibrosElectronicos.frmLibroInventarios3_5();
+                LibroInventarios3_5.MdiParent = this;
+                LibroInventarios3_5.Icon = ICono;
+                LibroInventarios3_5.FormClosed += new FormClosedEventHandler(CerrarLibroInventarios3_5);
+                LibroInventarios3_5.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                LibroInventarios3_5.Activate();
+                ValidarVentanas(LibroInventarios3_5);
+            }
+        }
+
+        private void CerrarLibroInventarios3_5(object sender, FormClosedEventArgs e)
+        {
+            LibroInventarios3_5 = null;
         }
     }
 }
