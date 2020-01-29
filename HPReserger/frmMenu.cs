@@ -4217,5 +4217,73 @@ namespace HPReserger
         {
             LibroInventarios3_5 = null;
         }
+        ModuloReportes.LibrosElectronicos.frmLibroInventarios3_6 LibroInventarios3_6;
+        private void tpLibroInventario3_6_Click(object sender, EventArgs e)
+        {
+            if (LibroInventarios3_6 == null)
+            {
+                LibroInventarios3_6 = new ModuloReportes.LibrosElectronicos.frmLibroInventarios3_6();
+                LibroInventarios3_6.MdiParent = this;
+                LibroInventarios3_6.Icon = ICono;
+                LibroInventarios3_6.FormClosed += new FormClosedEventHandler(CerrarLibroInventarios3_6);
+                LibroInventarios3_6.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                LibroInventarios3_6.Activate();
+                ValidarVentanas(LibroInventarios3_6);
+            }
+        }
+
+        private void CerrarLibroInventarios3_6(object sender, FormClosedEventArgs e)
+        {
+            LibroInventarios3_6 = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroInventarios3_11 LibroInventarios3_11;
+        private void tpLibroInventario311_Click(object sender, EventArgs e)
+        {
+            if (LibroInventarios3_11 == null)
+            {
+                LibroInventarios3_11 = new ModuloReportes.LibrosElectronicos.frmLibroInventarios3_11();
+                LibroInventarios3_11.MdiParent = this;
+                LibroInventarios3_11.Icon = ICono;
+                LibroInventarios3_11.FormClosed += new FormClosedEventHandler(CerrarLibroInventarios3_11);
+                LibroInventarios3_11.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                LibroInventarios3_11.Activate();
+                ValidarVentanas(LibroInventarios3_11);
+            }
+        }
+        private void CerrarLibroInventarios3_11(object sender, FormClosedEventArgs e)
+        {
+            LibroInventarios3_11 = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroInventarios3_12 LibroInventarios3_12;
+        private void tpLibroInventario3_12_Click(object sender, EventArgs e)
+        {
+            if (LibroInventarios3_12 == null)
+            {
+                LibroInventarios3_12 = new ModuloReportes.LibrosElectronicos.frmLibroInventarios3_12();
+                LibroInventarios3_12.MdiParent = this;
+                LibroInventarios3_12.Icon = ICono;
+                LibroInventarios3_12.FormClosed += new FormClosedEventHandler(CerrarLibroInventarios3_12);
+                LibroInventarios3_12.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                LibroInventarios3_12.Activate();
+                ValidarVentanas(LibroInventarios3_12);
+            }
+        }
+
+        private void CerrarLibroInventarios3_12(object sender, FormClosedEventArgs e)
+        {
+            LibroInventarios3_12 = null;
+        }
     }
 }

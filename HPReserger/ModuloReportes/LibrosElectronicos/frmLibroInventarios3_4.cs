@@ -161,7 +161,8 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                         if (item.ToString() != "TODAS")
                         {
                             DataView dv = TDatos.Copy().AsDataView();
-                            dv.RowFilter = $"empresa like '{EmpresaValor}'";
+                            dv.RowFilter = $"empresa like '{EmpresaValor.Substring(0, 6)}%'";
+
                             //POR PERIODOS
                             int contador = 1; //posicion de la hoja no  es index
                             foreach (string fechas in ListadoFecha)
@@ -318,7 +319,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                         if (items.ToString() != "TODAS")
                         {
                             DataView dv = TDatos.Copy().AsDataView();
-                            dv.RowFilter = $"empresa like '{EmpresaValor}'";
+                            dv.RowFilter = $"empresa like '{EmpresaValor.Substring(0, 6)}%'";
                             //POR PERIODOS
                             foreach (string fechas in ListadoFecha)
                             {
@@ -330,7 +331,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 //Sí no hay datos 8.1 Vacio
                                 if (TablaResult.Rows.Count == 0)
                                 {
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}0103040071{0}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030400071{0}11.txt";
                                     //grabamos
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
@@ -341,7 +342,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 else
                                 {
                                     //Avanza para Generar el TXT
-                                    string[] campo = new string[9];
+                                    string[] campo = new string[10];
                                     string cadenatxt = "";            //int ValorPrueba = 0;
                                     foreach (DataRow item in TablaResult.Rows)
                                     {
@@ -367,7 +368,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         //campo = null;
                                     }
                                     //Formato 1.1
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}0103040071{1}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030400071{1}11.txt";
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);

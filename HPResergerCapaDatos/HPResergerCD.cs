@@ -4847,6 +4847,24 @@ namespace HPResergerCapaDatos
             object[] valores = { Empresa, Fechainicial, FechaFinal };
             return bd.DataTableFromProcedure("usp_FormatoLibroInventario3_5", parametros, valores, null);
         }
+        public DataTable FormatoLibroInventario3_6(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { Empresa, Fechainicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_FormatoLibroInventario3_6", parametros, valores, null);
+        }
+        public DataTable FormatoLibroInventario3_11(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { Empresa, Fechainicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_FormatoLibroInventario3_11", parametros, valores, null);
+        }
+        public DataTable FormatoLibroInventario3_12(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { Empresa, Fechainicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_FormatoLibroInventario3_12", parametros, valores, null);
+        }
         public DataTable MayorCuentasxEmpresas(int empresa, int periodo, int anio)
         {
             string[] parametros = { "@Empresa", "@PeriodoMes", "@periodoAño" };

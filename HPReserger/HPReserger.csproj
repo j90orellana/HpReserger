@@ -238,6 +238,24 @@
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventario3_2.Designer.cs">
       <DependentUpon>frmLibroInventario3_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_11.Designer.cs">
+      <DependentUpon>frmLibroInventarios3_11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_12.Designer.cs">
+      <DependentUpon>frmLibroInventarios3_12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_6.Designer.cs">
+      <DependentUpon>frmLibroInventarios3_6.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_5.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1817,6 +1835,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventario3_2.resx">
       <DependentUpon>frmLibroInventario3_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_11.resx">
+      <DependentUpon>frmLibroInventarios3_11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_12.resx">
+      <DependentUpon>frmLibroInventarios3_12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_6.resx">
+      <DependentUpon>frmLibroInventarios3_6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_5.resx">
       <DependentUpon>frmLibroInventarios3_5.cs</DependentUpon>

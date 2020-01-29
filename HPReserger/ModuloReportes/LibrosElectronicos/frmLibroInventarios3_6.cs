@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace HPReserger.ModuloReportes.LibrosElectronicos
 {
-    public partial class frmLibroInventarios3_3 : FormGradient
+    public partial class frmLibroInventarios3_6 : FormGradient
     {
-        public frmLibroInventarios3_3()
+        public frmLibroInventarios3_6()
         {
             InitializeComponent();
         }
@@ -62,7 +62,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             }
             ListadoEmpresas = ListadoEmpresas.Substring(0, ListadoEmpresas.Length - 1);
             //
-            TDatos = CapaLogica.FormatoLibroInventario3_3(ListadoEmpresas, FechaInicial, FechaFinal);
+            TDatos = CapaLogica.FormatoLibroInventario3_6(ListadoEmpresas, FechaInicial, FechaFinal);
             dtgconten.DataSource = TDatos;
             //
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
@@ -155,7 +155,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
                         //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"3.3 LIBRO DE INVENTARIOS Y BALANCES {EmpresaValor}.xlsx";
+                        string NameFile = valor + $"3.6 LIBRO DE INVENTARIOS Y BALANCES {EmpresaValor}.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")
@@ -175,14 +175,14 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 if (dtgconten.RowCount > 0)
                                 {
                                     string _NombreHoja = ""; string _Cabecera = ""; int[] _OrdenarColumnas; string _NColumna = "";
-                                    _NombreHoja = $"{fechas}"; _Cabecera = "3.3 LIBRO DE INVENTARIOS Y BALANCES - DETALLE DEL SALDO DE LA CUENTA 12 CUENTAS POR COBRAR COMERCIALES – TERCEROS Y 13 CUENTAS POR COBRAR COMERCIALES – RELACIONADAS";
+                                    _NombreHoja = $"{fechas}"; _Cabecera = "3.6 LIBRO DE INVENTARIOS Y BALANCES - DETALLE DEL SALDO DE LA CUENTA 19 ESTIMACIÓN DE CUENTAS DE COBRANZA DUDOSA";
                                     _OrdenarColumnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
                                     _NColumna = "m";
                                     List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                                     //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
                                     Color Back = Color.FromArgb(78, 129, 189);
                                     Color Fore = Color.FromArgb(255, 255, 255);
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "i1", _Cabecera.ToUpper(), 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "m1", _Cabecera.ToUpper(), 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
@@ -330,7 +330,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 //Sí no hay datos 8.1 Vacio
                                 if (TablaResult.Rows.Count == 0)
                                 {
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030300071{0}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030600071{0}11.txt";
                                     //grabamos
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
@@ -341,7 +341,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 else
                                 {
                                     //Avanza para Generar el TXT
-                                    string[] campo = new string[10];
+                                    string[] campo = new string[13];
                                     string cadenatxt = "";            //int ValorPrueba = 0;
                                     foreach (DataRow item in TablaResult.Rows)
                                     {
@@ -355,6 +355,12 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         campo[c++] = Configuraciones.CadenaDelimitada(item[xNumDoc.DataPropertyName].ToString().Trim(), 15);//15
                                         campo[c++] = Configuraciones.CadenaDelimitada(item[xRazonSocial.DataPropertyName].ToString().Trim(), 100);//100
                                         //
+                                        int conta = 0;
+                                        int.TryParse(item[xTComp.DataPropertyName].ToString(), out conta);
+                                        campo[c++] = conta.ToString("00");
+                                        campo[c++] = Configuraciones.CadenaDelimitada(item[xSerioComp.DataPropertyName].ToString().Trim(), 24);//24
+                                        campo[c++] = Configuraciones.CadenaDelimitada(item[xNumComp.DataPropertyName].ToString().Trim(), 20);//20
+                                        //
                                         campo[c++] = ((DateTime)item[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");//10                                        
                                         //Montos
                                         campo[c++] = ((decimal)item[xMonto.DataPropertyName]).ToString("0.00");
@@ -367,7 +373,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         //campo = null;
                                     }
                                     //Formato 1.1
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030300071{1}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030600071{1}11.txt";
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);

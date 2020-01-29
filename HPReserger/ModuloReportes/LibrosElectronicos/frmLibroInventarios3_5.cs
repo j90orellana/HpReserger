@@ -167,7 +167,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                             foreach (string fechas in ListadoFecha)
                             {
                                 DataView dvf = new DataView(dv.ToTable());
-                                dvf.RowFilter = $"periodo like '{fechas}'";
+                                dvf.RowFilter = $"periodo like '{fechas.Substring(0, 6)}%'";
                                 DataTable TablaResult = dvf.ToTable();
                                 string añio = fechas.Substring(0, 4);
                                 string mes = fechas.Substring(4, 2);
@@ -323,14 +323,14 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                             foreach (string fechas in ListadoFecha)
                             {
                                 DataView dvf = new DataView(dv.ToTable());
-                                dvf.RowFilter = $"periodo like '{fechas}'";
+                                dvf.RowFilter = $"periodo like '{fechas.Substring(0, 6)}%'";
                                 DataTable TablaResult = dvf.ToTable();
                                 string añio = fechas.Substring(0, 4);
                                 string mes = fechas.Substring(4, 2);
                                 //Sí no hay datos 8.1 Vacio
                                 if (TablaResult.Rows.Count == 0)
                                 {
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}0103050071{0}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030500071{0}11.txt";
                                     //grabamos
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
@@ -341,7 +341,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 else
                                 {
                                     //Avanza para Generar el TXT
-                                    string[] campo = new string[9];
+                                    string[] campo = new string[10];
                                     string cadenatxt = "";            //int ValorPrueba = 0;
                                     foreach (DataRow item in TablaResult.Rows)
                                     {
@@ -355,7 +355,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         campo[c++] = Configuraciones.CadenaDelimitada(item[xNumDoc.DataPropertyName].ToString().Trim(), 15);//15
                                         campo[c++] = Configuraciones.CadenaDelimitada(item[xRazonSocial.DataPropertyName].ToString().Trim(), 100);//100
                                         //
-                                        campo[c++] = ((DateTime)item[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");//10                                        
+                                        campo[c++] = ((DateTime)(item[xFechaEmision.DataPropertyName].ToString() == "" ? new DateTime(1001, 1, 1) : item[xFechaEmision.DataPropertyName])).ToString("dd/MM/yyyy");//10                                        
                                         //Montos
                                         campo[c++] = ((decimal)item[xMonto.DataPropertyName]).ToString("0.00");
                                         //
@@ -367,7 +367,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         //campo = null;
                                     }
                                     //Formato 1.1
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}0103050071{1}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}01030500071{1}11.txt";
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);
