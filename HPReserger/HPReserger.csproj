@@ -244,6 +244,12 @@
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_11.Designer.cs">
       <DependentUpon>frmLibroInventarios3_11.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_13.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_13.Designer.cs">
+      <DependentUpon>frmLibroInventarios3_13.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_12.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1838,6 +1844,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_11.resx">
       <DependentUpon>frmLibroInventarios3_11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_13.resx">
+      <DependentUpon>frmLibroInventarios3_13.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_12.resx">
       <DependentUpon>frmLibroInventarios3_12.cs</DependentUpon>
