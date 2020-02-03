@@ -2575,6 +2575,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.MayorPorCuentas(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
         }
+        public DataTable LibroDiario5_1(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
+        {
+            return cdOrdenPedido.LibroDiario5_1(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
+        }
         public DataTable ReporteAnalitico(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {
             return cdOrdenPedido.ReporteAnalitico(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);

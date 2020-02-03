@@ -98,7 +98,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             /////ASIGNACION DE LOS DATOS
             //Stopwatch stopwatch = new Stopwatch();
             //stopwatch.Start();
-            TDatos = CapaLogica.MayorPorCuentas(FechaInicio, FechaFin, "0=0", "0=0", "0=0", "0=0", BuscarEmpresa, "0=0");
+            TDatos = CapaLogica.LibroDiario5_1(FechaInicio, FechaFin, "0=0", "0=0", "0=0", "0=0", BuscarEmpresa, "0=0");
             dtgconten.DataSource = TDatos;
             //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();
             //dtgconten.AutoGenerateColumns = true;            
@@ -283,8 +283,8 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         campo[c++] = ((DateTime)(fila["FechaEmision"].ToString() == "" ? fila["fechacontable"] : fila["fechaemision"])).ToString("dd/MM/yyyy");
                                         campo[c++] = Configuraciones.DefectoSunatString(fila["glosa"].ToString());
                                         campo[c++] = Configuraciones.DefectoSunatString(fila["glosa"].ToString());
-                                        campo[c++] = ((decimal)fila["Pen"]) >= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
-                                        campo[c++] = ((decimal)fila["Pen"]) <= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
+                                        campo[c++] = ((decimal)fila["debe"]).ToString("0.00"); //((decimal)fila["Pen"]) >= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
+                                        campo[c++] = ((decimal)fila["haber"]).ToString("0.00");  //((decimal)fila["Pen"]) <= 0 ? (Math.Abs((decimal)fila["pen"])).ToString("0.00") : "0.00";
                                         //20
                                         campo[c++] = "";
                                         campo[c++] = "1";
@@ -311,11 +311,14 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             Cursor = Cursors.Default;
         }
         frmProcesando frmproce;
+        private bool Auditoria;
+
         private void btnexcel_Click(object sender, EventArgs e)
         {
             CerrarPanelTxt();
             if (dtgconten.RowCount > 0)
             {
+                Auditoria = false;
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 {
                     dtgconten.SuspendLayout();
@@ -390,25 +393,95 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
                                     Color Back = Color.FromArgb(78, 129, 189);
                                     Color Fore = Color.FromArgb(255, 255, 255);
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a1", _Cabecera.ToUpper(), 14, true, false, Back, Fore));
+                                    if (Auditoria)
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a1", "LIBRO DIARIO", 14, true, false, Back, Fore));
+                                    else
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a1", _Cabecera.ToUpper(), 14, true, false, Back, Fore));
+                                    //
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 10, false, false, Back, Fore));
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas}", 10, false, false, Back, Fore));
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 10, false, false, Back, Fore));
                                     ////ACTIVAR CODIGO RUC
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{Ruc}", 10, false, false, Back, Fore));
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:", 10, false, false, Back, Fore));
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("h4", "h4", $"{EmpresaValor}", 10, false, false, Back, Fore));
+                                    if (Auditoria)
+                                    {
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", "RAZÓN SOCIAL:", 10, false, false, Back, Fore));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("c4", "c4", $"{EmpresaValor}", 10, false, false, Back, Fore));
+
+                                    }
+                                    else
+                                    {
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:", 10, false, false, Back, Fore));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("g4", "i4", $"{EmpresaValor}", 10, false, false, Back, Fore));
+                                    }
                                     ///////estilos de la celdas
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
                                     /////fin estilo de las celdas
                                     //DataTable TableResult = new DataTable(); DataView dt = ((DataTable)dtgconten.DataSource).AsDataView(); TableResult = dt.ToTable();
                                     ///Tabla
-                                    foreach (DataColumn items in TablaResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
+                                    decimal SumDebe = 0, SumHaber = 0;
+                                    if (Auditoria)
+                                    {
+                                        TablaResult.Columns["Cod_Asiento_Contable"].ColumnName = "Nº CORRELATIVO";
+                                        TablaResult.Columns["FechaContable"].ColumnName = "FECHA DE OPERACIÓN";
+                                        TablaResult.Columns["Glosa"].ColumnName = "DESCRIPCIÓN O GLOSA DE LA OPERACIÓN";
+                                        TablaResult.Columns["Id_Comprobante"].ColumnName = "COD.DOC.";
+                                        TablaResult.Columns["Num_Comprobante"].ColumnName = "NUMERO DE DOCUMENTO";
+                                        TablaResult.Columns["Cuenta_Contable"].ColumnName = "CUENTA CONTABLE";
+                                        TablaResult.Columns["DESCRIPCION"].ColumnName = "DENOMINACIÓN CUENTA CONTABLE";
+                                        TablaResult.Columns["DEBE"].ColumnName = "MOV. DEBE";
+                                        TablaResult.Columns["HABER"].ColumnName = "MOV. HABER";
+                                        TablaResult.Columns.RemoveAt(22);
+                                        TablaResult.Columns.RemoveAt(21);
+                                        TablaResult.Columns.RemoveAt(20);
+                                        TablaResult.Columns.RemoveAt(17);
+                                        TablaResult.Columns.RemoveAt(16);
+                                        TablaResult.Columns.RemoveAt(13);
+                                        TablaResult.Columns.RemoveAt(12);
+                                        TablaResult.Columns.RemoveAt(9);
+                                        TablaResult.Columns.RemoveAt(6);
+                                        TablaResult.Columns.RemoveAt(5);
+                                        TablaResult.Columns.RemoveAt(3);
+                                        TablaResult.Columns.RemoveAt(1);
+                                        TablaResult.Columns.RemoveAt(0);
+                                        //
+                                        string cuo = "";
+                                        SumDebe = 0; SumHaber = 0;
+                                        for (int i = 0; i < TablaResult.Rows.Count; i++)
+                                        {
+                                            DataRow fila = TablaResult.Rows[i];
+                                            SumDebe += (decimal)fila["MOV. DEBE"];
+                                            SumHaber += (decimal)fila["MOV. HABER"];
+                                            fila["NUMERO DE DOCUMENTO"] = $"{fila["Cod_Comprobante"]}-{fila["NUMERO DE DOCUMENTO"]}";
+                                            //
+                                            if (fila["Nº CORRELATIVO"].ToString() != cuo)
+                                            {
+                                                DataRow nueva = TablaResult.NewRow();
+                                                TablaResult.Rows.InsertAt(nueva, i);
+                                                i++;
+                                            }
+                                            cuo = fila["Nº CORRELATIVO"].ToString();
+                                        }
+                                        TablaResult.Columns.RemoveAt(4);
+                                    }
+                                    else
+                                        foreach (DataColumn items in TablaResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
+
+                                    if (Auditoria)
+                                    {
+                                        DataRow nueva = TablaResult.NewRow();
+                                        TablaResult.Rows.Add(nueva);
+                                        DataRow nueva1 = TablaResult.NewRow();
+                                        nueva1["DENOMINACIÓN CUENTA CONTABLE"] = "Total General";
+                                        nueva1["MOV. DEBE"] = SumDebe;
+                                        nueva1["MOV. HABER"] = SumHaber;
+                                        TablaResult.Rows.Add(nueva1);
+                                    }
                                     /////
                                     ////Anterior               
                                     //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { }, "");
+                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { 2, 5, 3, 6, 7, 8, 9 }, "");
                                 }
                             }
                         }
@@ -425,6 +498,30 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             Cursor = Cursors.Default;
             frmproce.Close();
             dtgconten.ResumeLayout();
+        }
+        private void btnAuditoria_Click(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
+            if (dtgconten.RowCount > 0)
+            {
+                Auditoria = true;
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    dtgconten.SuspendLayout();
+                    Cursor = Cursors.WaitCursor;
+                    frmproce = new HPReserger.frmProcesando();
+                    frmproce.Show();
+                    if (!backgroundWorker1.IsBusy)
+                    {
+                        backgroundWorker1.RunWorkerAsync();
+                    }
+                }
+                else msg("Cancelado por el Usuario");
+            }
+            else
+            {
+                msg("No hay Datos que Exportar");
+            }
         }
     }
 }

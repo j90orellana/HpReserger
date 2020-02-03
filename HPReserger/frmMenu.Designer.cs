@@ -138,6 +138,7 @@
             this.tpLibroInventario3_6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tpLibroInventario311 = new System.Windows.Forms.ToolStripMenuItem();
             this.tpLibroInventario3_12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tpLibroInventario3_13 = new System.Windows.Forms.ToolStripMenuItem();
             this.LibroInventario3_6 = new System.Windows.Forms.ToolStripSeparator();
             this.libroDiarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -280,7 +281,6 @@
             this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.haceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tpLibroInventario3_13 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelOre1 = new HpResergerUserControls.PanelOre();
             this.lblpuntero = new System.Windows.Forms.Label();
             this.lblwelcome = new System.Windows.Forms.Label();
@@ -1369,6 +1369,15 @@
             this.tpLibroInventario3_12.Tag = "1407312";
             this.tpLibroInventario3_12.Text = "3.12 Libro De Inventarios Y Balances - Detalle Del Saldo De La Cuenta 42 Y 43";
             this.tpLibroInventario3_12.Click += new System.EventHandler(this.tpLibroInventario3_12_Click);
+            // 
+            // tpLibroInventario3_13
+            // 
+            this.tpLibroInventario3_13.Image = ((System.Drawing.Image)(resources.GetObject("tpLibroInventario3_13.Image")));
+            this.tpLibroInventario3_13.Name = "tpLibroInventario3_13";
+            this.tpLibroInventario3_13.Size = new System.Drawing.Size(447, 22);
+            this.tpLibroInventario3_13.Tag = "1407313";
+            this.tpLibroInventario3_13.Text = "3.13 Libro De Inventarios Y Balances - Detalle Del Saldo De La Cuenta 46 Y 47";
+            this.tpLibroInventario3_13.Click += new System.EventHandler(this.tpLibroInventario3_13_Click);
             // 
             // LibroInventario3_6
             // 
@@ -2688,15 +2697,6 @@
             // 
             this.haceToolStripMenuItem.Name = "haceToolStripMenuItem";
             this.haceToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // tpLibroInventario3_13
-            // 
-            this.tpLibroInventario3_13.Image = ((System.Drawing.Image)(resources.GetObject("tpLibroInventario3_13.Image")));
-            this.tpLibroInventario3_13.Name = "tpLibroInventario3_13";
-            this.tpLibroInventario3_13.Size = new System.Drawing.Size(447, 22);
-            this.tpLibroInventario3_13.Tag = "1407313";
-            this.tpLibroInventario3_13.Text = "3.13 Libro De Inventarios Y Balances - Detalle Del Saldo De La Cuenta 46 Y 47";
-            this.tpLibroInventario3_13.Click += new System.EventHandler(this.tpLibroInventario3_13_Click);
             // 
             // panelOre1
             // 

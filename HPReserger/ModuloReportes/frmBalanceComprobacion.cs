@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -115,10 +116,18 @@ namespace HPReserger.ModuloReportes
 
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
-            if (dtgconten.Rows.Count > 0)
+            if (dtgconten.RowCount > 0)
             {
+                if (chkCarpeta.Checked)
+                {
+                    if (folderBrowserDialog1.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+                    }
+                }
+                dtgconten.SuspendLayout();
                 Cursor = Cursors.WaitCursor;
-                frmproce = new HPReserger.frmProcesando();
+                frmproce = new frmProcesando();
                 frmproce.Show();
                 NameFecha = $"MES DE {comboMesAño.FechaFinMes.ToString("MMMM")} DE {comboMesAño.FechaFinMes.ToString("yyyy")}".ToUpper();
                 NameEmpresa = cboEmpresas.Text.ToUpper();
@@ -166,10 +175,26 @@ namespace HPReserger.ModuloReportes
                 //TablaExportar.Columns.RemoveAt(0);
                 //
                 //
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, _NombreHoja, _Cabecera, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }, "");
+                if (chkCarpeta.Checked)
+                {
+                    string Carpeta = folderBrowserDialog1.SelectedPath;
+                    string valor = Carpeta + @"\";
+                    //ELiminamos el Excel Antiguo
+                    string num = rb2digitos.Checked ? "2" : "7";
+                    string NameFile = valor + $"BC {num} {NameEmpresa } {FechaGenerado}.xlsx";
+                    File.Delete(NameFile);
+                    File.Exists(NameFile);
+                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaExportar, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, 1, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }, "");
+                    msgOK($"Archivo Grabado en \n{folderBrowserDialog1.SelectedPath}");
+
+                }
+                else
+                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, _NombreHoja, _Cabecera, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }, "");
             }
             else msg("No hay datos que Exportar");
         }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Cursor = Cursors.Default;
