@@ -61,7 +61,7 @@ namespace HPReserger
             string BuscarRazon = "";
             string BuscarGlosa = "";
             string BuscarDocumento = "";
-
+            FechaInicio = FechaIni;
             if (txtbuscuenta.EstaLLeno())
             {
                 Buscarcuenta = "(";
@@ -182,6 +182,7 @@ namespace HPReserger
                         return;
                     }
                 }
+                Auditoria = false;
                 dtgconten.SuspendLayout();
                 Cursor = Cursors.WaitCursor;
                 frmproce = new HPReserger.frmProcesando();
@@ -201,51 +202,232 @@ namespace HPReserger
         {
             if (dtgconten.RowCount > 0)
             {
-
-                string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
-                _NombreHoja = "Mayor_x_Cuentas"; _Cabecera = "MAYOR POR CUENTAS CONTABLES";
-                _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
-
-                List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
-                //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
-                Color Back = Color.FromArgb(78, 129, 189);
-                Color Fore = Color.FromArgb(255, 255, 255);
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a1", _Cabecera.ToUpper(), 14, true, false, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 10, false, false, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"De: {dtpfechaini.Value.ToShortDateString() } A: {dtpfechafin.Value.ToShortDateString()}", 10, false, false, Back, Fore));
-                // Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 12, false, true, Back, Fore));
-                // Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{txtruc.Text}", 12, false, true, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", txtbuscuenta.EstaLLeno() ? "CUENTA CONTABLE:" : "", 10, false, false, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("d4", "d4", $"{(txtbuscuenta.EstaLLeno() ? txtbuscuenta.Text : "")}", 10, false, false, Back, Fore));
-                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "Nombre Vendedor:", 11));
-                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
-                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
-                /////fin estilo de las celdas
-                DataTable TableResult = new DataTable();
-                DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
-                TableResult = dt.ToTable();
-                foreach (DataColumn item in TableResult.Columns) item.ColumnName = dtgconten.Columns["x" + item.ColumnName].HeaderText;
-                //MACRO
-                int PosInicialGrilla = 4;
-                string Macro = $"Private Sub Workbook_Open()  {Environment.NewLine} " +
-                    $"Range(Cells({PosInicialGrilla}, 1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})).Select  {Environment.NewLine}" +
-                    $"Selection.Subtotal GroupBy:= 3, Function:= xlSum, TotalList:= Array(19, 20), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} End Sub";
-                ///
-                if (chkCarpeta.Checked)
+                if (Auditoria)
                 {
-                    string Carpeta = folderBrowserDialog1.SelectedPath;
-                    string valor = Carpeta + @"\";                   
-                    //ELiminamos el Excel Antiguo
-                    string NameFile = valor + $"6.2 LIBRO MAYOR.xlsx";
-                    File.Delete(NameFile);
-                    File.Exists(NameFile);
-                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TableResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, 1, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
-                    msgOK($"Archivo Grabado en \n{folderBrowserDialog1.SelectedPath}");
+                    //PROCESO DE AUDITORIA
+                    DateTime FechaInicial = FechaInicio;
+                    List<string> ListadoFecha = new List<string>();
+                    while (FechaInicial < FechaFin)
+                    {
+                        ListadoFecha.Add(FechaInicial.ToString("yyyyMM"));
+                        FechaInicial = FechaInicial.AddMonths(1);
+                    }
+                    foreach (var item in chklist.CheckedItems)
+                    {
+                        //EMPRESAS
+                        if (item.ToString() != "TODAS")
+                        {
+                            string Carpeta = folderBrowserDialog1.SelectedPath;
+                            string EmpresaValor = item.ToString().ToUpper();
+                            string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
+                            string valor = Carpeta + @"\";
+                            if (chkCarpetas.Checked)
+                            {
+                                valor = Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor) + @"\";
+                                if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
+                                    Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
+                            }
+                            //ELiminamos el Excel Antiguo
+                            string NameFile = valor + $"LIBRO MAYOR {EmpresaValor}.xlsx";
+                            File.Delete(NameFile);
+                            File.Exists(NameFile);
+                            if (item.ToString() != "TODAS")
+                            {
+                                DataView dv = TDatos.Copy().AsDataView();
+                                dv.RowFilter = $"empresa like '{EmpresaValor}'";
+                                //POR PERIODOS
+                                int contador = 1; //posicion de la hoja no  es index
+                                foreach (string fechas in ListadoFecha)
+                                {
+                                    DataView dvf = new DataView(dv.ToTable());
+                                    dvf.RowFilter = $"periodo like '{fechas}'";
+                                    dvf.Sort = "cuenta_contable asc, cod_asiento_Contable asc";
+                                    DataTable TablaResult = dvf.ToTable();
+                                    string añio = fechas.Substring(0, 4);
+                                    string mes = fechas.Substring(4, 2);
+                                    //Sí no hay datos
+                                    if (TablaResult.Rows.Count > 0)
+                                    {
+                                        //Modificamos el Excel
+                                        string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
+                                        _NombreHoja = $"{fechas}"; _Cabecera = "LIBRO MAYOR";
+                                        _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 }; _NColumna = "m";
 
+                                        List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+                                        //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
+                                        Color Back = Color.FromArgb(78, 129, 189);
+                                        Color Fore = Color.FromArgb(255, 255, 255);
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "i1", "LIBRO MAYOR", 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{Ruc}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "b4", "RAZÓN SOCIAL:", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("c4", "i4", $"{EmpresaValor}", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        ///////estilos de la celdas
+                                        HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                                        HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                                        /////fin estilo de las celdas
+                                        //DataTable TableResult = new DataTable(); DataView dt = ((DataTable)dtgconten.DataSource).AsDataView(); TableResult = dt.ToTable();
+                                        ///Tabla 
+                                        TablaResult.Columns.RemoveAt(22);
+                                        TablaResult.Columns.RemoveAt(21);
+                                        TablaResult.Columns.RemoveAt(20);
+                                        TablaResult.Columns.RemoveAt(17);
+                                        TablaResult.Columns.RemoveAt(16);
+                                        //TablaResult.Columns.RemoveAt(14);
+                                        TablaResult.Columns.RemoveAt(11);
+                                        TablaResult.Columns.RemoveAt(10);
+                                        TablaResult.Columns.RemoveAt(9);
+                                        TablaResult.Columns.RemoveAt(7);
+                                        TablaResult.Columns.RemoveAt(6);
+                                        TablaResult.Columns.RemoveAt(5);
+                                        TablaResult.Columns.RemoveAt(3);
+                                        TablaResult.Columns.RemoveAt(1);
+                                        TablaResult.Columns.RemoveAt(0);
+                                        //muevo la Columna 1 a 0
+                                        TablaResult.Columns[1].SetOrdinal(0);
+                                        //decimal SumDebe = 0, SumHaber = 0;
+                                        TablaResult.Columns["Cod_Asiento_Contable"].ColumnName = "Nº CORRELATIVO";
+                                        TablaResult.Columns["FechaContable"].ColumnName = "FECHA DE OPERACIÓN";
+                                        TablaResult.Columns["Glosa"].ColumnName = "DESCRIPCIÓN O GLOSA DE LA OPERACIÓN";
+                                        TablaResult.Columns["TipoComprobante"].ColumnName = "MEDIO PAGO";
+                                        TablaResult.Columns["Razon_Social"].ColumnName = "NOMBRE O RAZON SOCIAL";
+                                        TablaResult.Columns["PEN"].ColumnName = "MOV. DEUDOR";
+                                        TablaResult.Columns["USD"].ColumnName = "MOV. ACREEDOR";
+                                        //
+                                        string cuo = "", Cuenta = "";
+                                        SumDebe = 0; SumHaber = 0;
+                                        decimal valdebe = 0, valhaber = 0;
+                                        decimal Sumvaldebe = 0, Sumvalhaber = 0;
+                                        for (int i = 0; i < TablaResult.Rows.Count; i++)
+                                        {
+                                            DataRow fila = TablaResult.Rows[i];
+                                            valdebe = (decimal)fila["mov. deudor"] > 0 ? (decimal)fila["mov. deudor"] : 0;
+                                            valhaber = (decimal)fila["mov. deudor"] < 0 ? Math.Abs((decimal)fila["mov. deudor"]) : 0;
+                                            fila["mov. deudor"] = valdebe;
+                                            fila["mov. acreedor"] = valhaber;
+                                            SumDebe += valdebe;
+                                            SumHaber += valhaber;
+                                            //fila["NUMERO DE DOCUMENTO"] = $"{fila["Cod_Comprobante"]}-{fila["NUMERO DE DOCUMENTO"]}";
+                                            //Para Todas la filas
+                                            if (fila["descripcion"].ToString() != Cuenta && i > 0)
+                                            {
+                                                DataRow nueva11 = TablaResult.NewRow();
+                                                nueva11["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"TOTAL CUENTA: {fila["Cuenta_Contable"].ToString()}";
+                                                nueva11["mov. deudor"] = Sumvaldebe;
+                                                nueva11["mov. acreedor"] = Sumvalhaber;
+                                                DataRow nueva12 = TablaResult.NewRow();
+                                                nueva12["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"SALDO CUENTA: {fila["Cuenta_Contable"].ToString()}";
+                                                nueva12["mov. deudor"] = Sumvaldebe - Sumvalhaber > 0 ? Sumvaldebe - Sumvalhaber : 0;
+                                                nueva12["mov. acreedor"] = Sumvaldebe - Sumvalhaber < 0 ? -Sumvaldebe + Sumvalhaber : 0;
+                                                TablaResult.Rows.InsertAt(nueva12, i);
+                                                TablaResult.Rows.InsertAt(nueva11, i);
+                                                i++;
+                                                i++;
+                                                Sumvaldebe = Sumvalhaber = 0;
+                                            }
+                                            //Para la Ultima Fila
+                                            if (i == TablaResult.Rows.Count - 1)
+                                            {
+                                                Sumvaldebe += valdebe;
+                                                Sumvalhaber += valhaber;
+                                                DataRow nueva11 = TablaResult.NewRow();
+                                                nueva11["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"TOTAL CUENTA: {fila["Cuenta_Contable"].ToString()}";
+                                                nueva11["mov. deudor"] = Sumvaldebe;
+                                                nueva11["mov. acreedor"] = Sumvalhaber;
+                                                DataRow nueva12 = TablaResult.NewRow();
+                                                nueva12["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"SALDO CUENTA: {fila["Cuenta_Contable"].ToString()}";
+                                                nueva12["mov. deudor"] = Sumvaldebe - Sumvalhaber > 0 ? Sumvaldebe - Sumvalhaber : 0;
+                                                nueva12["mov. acreedor"] = Sumvaldebe - Sumvalhaber < 0 ? -Sumvaldebe + Sumvalhaber : 0;
+                                                TablaResult.Rows.InsertAt(nueva12, i + 1);
+                                                TablaResult.Rows.InsertAt(nueva11, i + 1);
+                                                i++;
+                                                i++;
+                                                Sumvaldebe = Sumvalhaber = 0;
+                                            }
+                                            //Cabecera de las Cuentas
+                                            if (fila["descripcion"].ToString() != Cuenta)
+                                            {
+                                                DataRow nueva = TablaResult.NewRow();
+                                                nueva["Nº CORRELATIVO"] = fila["descripcion"].ToString();
+                                                TablaResult.Rows.InsertAt(nueva, i);
+                                                i++;
+                                                Sumvaldebe = Sumvalhaber = 0;
+                                            }
+                                            Sumvaldebe += valdebe;
+                                            Sumvalhaber += valhaber;
+                                            Cuenta = fila["descripcion"].ToString();
+                                        }
+                                        //Muestra del Total General!
+                                        TablaResult.Columns.RemoveAt(6);
+                                        TablaResult.Columns.RemoveAt(5);
+                                        DataRow nueva1 = TablaResult.NewRow();
+                                        TablaResult.Rows.Add(nueva1);
+                                        DataRow nueva2 = TablaResult.NewRow();
+                                        nueva1["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = "TOTAL GENERAL";
+                                        nueva1["MOV. DEUDOR"] = SumDebe;
+                                        nueva1["MOV. acreedor"] = SumHaber;
+                                        TablaResult.Rows.Add(nueva2);
+                                        ///
+                                        ////Anterior               
+                                        //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
+                                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { 1, 4, 5, 6, 7 }, "");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    msgOK($"Archivo Grabados en \n{folderBrowserDialog1.SelectedPath}");
+                    if (backgroundWorker1.IsBusy) backgroundWorker1.CancelAsync();
                 }
                 else
-                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
-                //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
+                {
+                    string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
+                    _NombreHoja = "Mayor_x_Cuentas"; _Cabecera = "MAYOR POR CUENTAS CONTABLES";
+                    _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
+
+                    List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+                    //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
+                    Color Back = Color.FromArgb(78, 129, 189);
+                    Color Fore = Color.FromArgb(255, 255, 255);
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a1", _Cabecera.ToUpper(), 14, true, false, Back, Fore));
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 10, false, false, Back, Fore));
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"De: {dtpfechaini.Value.ToShortDateString() } A: {dtpfechafin.Value.ToShortDateString()}", 10, false, false, Back, Fore));
+                    // Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 12, false, true, Back, Fore));
+                    // Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{txtruc.Text}", 12, false, true, Back, Fore));
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", txtbuscuenta.EstaLLeno() ? "CUENTA CONTABLE:" : "", 10, false, false, Back, Fore));
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("d4", "d4", $"{(txtbuscuenta.EstaLLeno() ? txtbuscuenta.Text : "")}", 10, false, false, Back, Fore));
+                    //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "Nombre Vendedor:", 11));
+                    HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                    HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                    /////fin estilo de las celdas
+                    DataTable TableResult = new DataTable();
+                    DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
+                    TableResult = dt.ToTable();
+                    foreach (DataColumn item in TableResult.Columns) item.ColumnName = dtgconten.Columns["x" + item.ColumnName].HeaderText;
+                    //MACRO
+                    int PosInicialGrilla = 4;
+                    string Macro = $"Private Sub Workbook_Open()  {Environment.NewLine} " +
+                        $"Range(Cells({PosInicialGrilla}, 1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})).Select  {Environment.NewLine}" +
+                        $"Selection.Subtotal GroupBy:= 3, Function:= xlSum, TotalList:= Array(19, 20), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} End Sub";
+                    ///
+                    if (chkCarpeta.Checked)
+                    {
+                        string Carpeta = folderBrowserDialog1.SelectedPath;
+                        string valor = Carpeta + @"\";
+                        //ELiminamos el Excel Antiguo
+                        string NameFile = valor + $"6.2 LIBRO MAYOR.xlsx";
+                        File.Delete(NameFile);
+                        File.Exists(NameFile);
+                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TableResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, 1, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
+                        msgOK($"Archivo Grabado en \n{folderBrowserDialog1.SelectedPath}");
+                    }
+                    else
+                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
+                    if (backgroundWorker1.IsBusy) backgroundWorker1.CancelAsync();
+                    //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
+                }
             }
             else msg("No hay Registros en la Grilla");
         }
@@ -375,6 +557,10 @@ namespace HPReserger
             CerrarPanelTxt();
         }
         private StreamWriter st;
+        private bool Auditoria;
+        private DateTime FechaInicio;
+        private decimal SumDebe;
+        private decimal SumHaber;
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btnTxt_Click(object sender, EventArgs e)
         {
@@ -520,6 +706,31 @@ namespace HPReserger
         private void dtgconten_Sorted(object sender, EventArgs e)
         {
             Ordenado = true;
+        }
+
+        private void btnAuditoria_Click(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
+            if (dtgconten.RowCount > 0)
+            {
+                Auditoria = true;
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    dtgconten.SuspendLayout();
+                    Cursor = Cursors.WaitCursor;
+                    frmproce = new HPReserger.frmProcesando();
+                    frmproce.Show();
+                    if (!backgroundWorker1.IsBusy)
+                    {
+                        backgroundWorker1.RunWorkerAsync();
+                    }
+                }
+                else msg("Cancelado por el Usuario");
+            }
+            else
+            {
+                msg("No hay Datos que Exportar");
+            }
         }
     }
 }
