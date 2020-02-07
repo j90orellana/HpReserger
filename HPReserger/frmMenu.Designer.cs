@@ -286,6 +286,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1152,6 +1153,7 @@
             this.toolStripMenuItem1,
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1,
             this.flujoDeCajaToolStripMenuItem,
+            this.toolStripMenuItem10,
             this.mayorPorToolStripMenuItem,
             this.toolStripSeparator15,
             this.toolStripMenuItem6,
@@ -2768,6 +2770,15 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem10.Image")));
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(225, 22);
+            this.toolStripMenuItem10.Tag = "1406008";
+            this.toolStripMenuItem10.Text = "Flujo de Caja (Gastos)";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3064,5 +3075,6 @@
         private System.Windows.Forms.ToolStripMenuItem tpLibroInventario311;
         private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_12;
         private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_13;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
     }
 }

@@ -220,6 +220,12 @@
     <Compile Include="ModuloFinanzas\frmPrestamoInterEmpresas.Designer.cs">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\frmFlujodeGastosDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\frmFlujodeGastosDoc.Designer.cs">
+      <DependentUpon>frmFlujodeGastosDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroDiario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1832,6 +1838,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmPrestamoInterEmpresas.resx">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\frmFlujodeGastosDoc.resx">
+      <DependentUpon>frmFlujodeGastosDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroDiario.resx">
       <DependentUpon>frmLibroDiario.cs</DependentUpon>

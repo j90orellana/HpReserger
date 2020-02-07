@@ -28,7 +28,6 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         DataTable TablaEmpresa;
         private DateTime FechaInicio;
         private DateTime FechaFin;
-
         public void cargarEmpresa()
         {
             chklist.Items.Clear();
