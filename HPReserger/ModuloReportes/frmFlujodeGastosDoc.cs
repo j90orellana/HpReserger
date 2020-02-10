@@ -40,7 +40,7 @@ namespace HPReserger.ModuloReportes
 
         private void frmFlujodeGastosDoc_Load(object sender, EventArgs e)
         {
-            btnexcel.Enabled = false;
+            Generado = false;
             cargarEmpresa();
             cboperiodode.CambioFechas += cboperiodode_CambioFechas;
             cboperiodohasta.CambioFechas += cboperiodohasta_CambioFechas;
@@ -61,7 +61,7 @@ namespace HPReserger.ModuloReportes
                         chklist.SetItemChecked(i, true);
                 }
             }
-            btnexcel.Enabled = false;
+            Generado = false;
         }
         private void cboperiodohasta_CambioFechas(object sender, EventArgs e)
         {
@@ -84,7 +84,6 @@ namespace HPReserger.ModuloReportes
 
         private void btnTxt_Click(object sender, EventArgs e)
         {
-            btnexcel.Enabled = false;
             Cursor = Cursors.WaitCursor;
             if (chklist.CheckedItems.Count == 0) msg("Seleccione una Empresa");
             DateTime FechaAuxiliar;
@@ -103,39 +102,42 @@ namespace HPReserger.ModuloReportes
                     ListadoEmpresas += CapaLogica.BuscarRucEmpresa(item)[1].ToString() + ",";
             }
             ListadoEmpresas = ListadoEmpresas.Substring(0, ListadoEmpresas.Length - 1);
-            TDatos = CapaLogica.GenerarFlujodeCajaGastos(ListadoEmpresas, FechaInicio, FechaFin);
+            if (!Generado)
+                TDatos = CapaLogica.GenerarFlujodeCajaGastos(ListadoEmpresas, FechaInicio, FechaFin);
             //dtgconten.DataSource = TDatos;
             ////lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (TDatos.Rows.Count == 0) { msg("No Hay Registros"); }
             else
             {
-                msgOK("Listo Para Exportar al Excel");
-                btnexcel.Enabled = true;
+                backgroundWorker1.WorkerSupportsCancellation = true;
+                if (TDatos.Rows.Count > 0)
+                {
+                    if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        frmproce = new HPReserger.frmProcesando();
+                        frmproce.Show();
+                        if (!backgroundWorker1.IsBusy)
+                        {
+                            backgroundWorker1.RunWorkerAsync();
+                        }
+                    }
+                }
+                else
+                {
+                    msg("No hay Datos que Exportar");
+                }
+                Generado = true;
             }
             //Ordenado = false;
             Cursor = Cursors.Default;
         }
         frmProcesando frmproce;
+        private bool Generado;
+
         private void btnexcel_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.WorkerSupportsCancellation = true;
-            if (TDatos.Rows.Count > 0)
-            {
-                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    Cursor = Cursors.WaitCursor;
-                    frmproce = new HPReserger.frmProcesando();
-                    frmproce.Show();
-                    if (!backgroundWorker1.IsBusy)
-                    {
-                        backgroundWorker1.RunWorkerAsync();
-                    }
-                }
-            }
-            else
-            {
-                msg("No hay Datos que Exportar");
-            }
+
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -151,7 +153,7 @@ namespace HPReserger.ModuloReportes
                         string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
                         string valor = Carpeta + @"\";
                         //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"FLUJO DE CAJA(GASTOS) {EmpresaValor} - PERIODO{cboperiodode.FechaInicioMes.ToString("yyyyMM")}-{cboperiodohasta.FechaFinMes.ToString("yyyyMM")} .xlsm";
+                        string NameFile = valor + $"FLUJO DE CAJA(GASTOS) {EmpresaValor} - PERIODO {cboperiodode.FechaInicioMes.ToString("yyyyMM")}-{cboperiodohasta.FechaFinMes.ToString("yyyyMM")} .xlsm";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")
@@ -167,6 +169,7 @@ namespace HPReserger.ModuloReportes
                             //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
                             Color Back = Color.FromArgb(78, 129, 189);
                             Color Fore = Color.FromArgb(255, 255, 255);
+                            string cadena = $"PERIODO {cboperiodode.FechaInicioMes.ToString("yyyyMM")} - {cboperiodohasta.FechaFinMes.ToString("yyyyMM")}";
                             //MACRO
                             string Macro = $"Private Sub Workbook_Open() { Environment.NewLine}" +
                             //
@@ -207,11 +210,18 @@ namespace HPReserger.ModuloReportes
                             $"End With{ Environment.NewLine}" +
                             $"Range(\"A9\").Select{ Environment.NewLine}" +
                             $"ActiveSheet.PivotTables(\"TablaDinámica1\").PivotFields(\"CuentaContable\").ShowDetail = False{ Environment.NewLine}" +
-                            $"ActiveWorkbook.ShowPivotTableFieldList = False{ Environment.NewLine}" +                             
+                            $"ActiveWorkbook.ShowPivotTableFieldList = False{ Environment.NewLine}" +
+                            $"ActiveSheet.PivotTables(\"TablaDinámica1\").TableStyle2 = \"PivotStyleMedium9\"{ Environment.NewLine}" +
+                            $"Range(\"A6\").Select{ Environment.NewLine}" +
+                            $"ActiveWindow.FreezePanes = True{ Environment.NewLine}" +
+                            $" Range(\"A1\").Select{ Environment.NewLine}" +
+                            $"ActiveCell.FormulaR1C1 =\"{EmpresaValor} \" { Environment.NewLine}" +
+                            $"Range(\"A2\").Select{ Environment.NewLine}" +
+                            $"ActiveCell.FormulaR1C1 = \"{cadena} \"{ Environment.NewLine}" +
                             $"Sheets(\"Hoja1\").Select{ Environment.NewLine}" +
                             $"Sheets(\"Hoja1\").Name = \"Tabla\"{ Environment.NewLine}" +
                             $" Range(\"A3\").Select{ Environment.NewLine}" +
-                            $" ActiveWorkbook.Save { Environment.NewLine}" +                             
+                            $" ActiveWorkbook.Save { Environment.NewLine}" +
                             $" Oops:{ Environment.NewLine}" +
                             $" 'handle error here { Environment.NewLine} End Sub";
                             ///
@@ -249,11 +259,11 @@ namespace HPReserger.ModuloReportes
         }
         private void cboperiodode_CambioFechas_1(object sender, EventArgs e)
         {
-            btnexcel.Enabled = false;
+            Generado = false;
         }
         private void cboperiodohasta_CambioFechas_1(object sender, EventArgs e)
         {
-            btnexcel.Enabled = false;
+            Generado = false;
         }
     }
 }
