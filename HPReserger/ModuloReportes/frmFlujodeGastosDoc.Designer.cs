@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFlujodeGastosDoc));
             this.label4 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.chklist = new System.Windows.Forms.CheckedListBox();
@@ -36,6 +37,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGenerar = new HpResergerUserControls.ButtonPer();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnexcel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label4
@@ -75,7 +79,7 @@
             // 
             this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 2, 7, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 2, 10, 0, 0, 0, 0);
             this.cboperiodohasta.FechaFinMes = new System.DateTime(2020, 2, 29, 0, 0, 0, 0);
             this.cboperiodohasta.FechaInicioMes = new System.DateTime(2020, 2, 1, 0, 0, 0, 0);
             this.cboperiodohasta.Location = new System.Drawing.Point(158, 138);
@@ -84,12 +88,13 @@
             this.cboperiodohasta.TabIndex = 402;
             this.cboperiodohasta.VerAño = true;
             this.cboperiodohasta.VerMes = true;
+            this.cboperiodohasta.CambioFechas += new System.EventHandler(this.cboperiodohasta_CambioFechas_1);
             // 
             // cboperiodode
             // 
             this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 2, 7, 0, 0, 0, 0);
+            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 2, 10, 0, 0, 0, 0);
             this.cboperiodode.FechaFinMes = new System.DateTime(2020, 2, 29, 0, 0, 0, 0);
             this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 2, 1, 0, 0, 0, 0);
             this.cboperiodode.Location = new System.Drawing.Point(158, 113);
@@ -98,6 +103,7 @@
             this.cboperiodode.TabIndex = 401;
             this.cboperiodode.VerAño = true;
             this.cboperiodode.VerMes = true;
+            this.cboperiodode.CambioFechas += new System.EventHandler(this.cboperiodode_CambioFechas_1);
             // 
             // label3
             // 
@@ -128,7 +134,7 @@
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerar.ForeColor = System.Drawing.Color.White;
-            this.btnGenerar.Location = new System.Drawing.Point(207, 172);
+            this.btnGenerar.Location = new System.Drawing.Point(164, 172);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(83, 23);
             this.btnGenerar.TabIndex = 408;
@@ -137,11 +143,32 @@
             this.btnGenerar.UseVisualStyleBackColor = false;
             this.btnGenerar.Click += new System.EventHandler(this.btnTxt_Click);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // btnexcel
+            // 
+            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
+            this.btnexcel.Location = new System.Drawing.Point(251, 172);
+            this.btnexcel.Name = "btnexcel";
+            this.btnexcel.Size = new System.Drawing.Size(82, 23);
+            this.btnexcel.TabIndex = 409;
+            this.btnexcel.Text = "Excel";
+            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnexcel.UseVisualStyleBackColor = true;
+            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
+            // 
             // frmFlujodeGastosDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 216);
+            this.ClientSize = new System.Drawing.Size(496, 204);
+            this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
@@ -152,8 +179,8 @@
             this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmFlujodeGastosDoc";
-            this.Nombre = "Flujo de Caja( Gastos)";
-            this.Text = "Flujo de Caja( Gastos)";
+            this.Nombre = "Flujo de Caja (Gastos)";
+            this.Text = "Flujo de Caja (Gastos)";
             this.Load += new System.EventHandler(this.frmFlujodeGastosDoc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -170,5 +197,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private HpResergerUserControls.ButtonPer btnGenerar;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnexcel;
     }
 }
