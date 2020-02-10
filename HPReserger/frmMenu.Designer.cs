@@ -286,7 +286,9 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.gestiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1153,14 +1155,14 @@
             this.toolStripMenuItem1,
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1,
             this.flujoDeCajaToolStripMenuItem,
-            this.toolStripMenuItem10,
             this.mayorPorToolStripMenuItem,
             this.toolStripSeparator15,
             this.toolStripMenuItem6,
             this.reporteAnalíticoToolStripMenuItem,
             this.reporteSaldosContablesToolStripMenuItem,
             this.toolStripSeparator18,
-            this.balanceDeComprobaciónToolStripMenuItem1});
+            this.balanceDeComprobaciónToolStripMenuItem1,
+            this.gestiónToolStripMenuItem});
             this.reportesContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportesContablesToolStripMenuItem.Image")));
             this.reportesContablesToolStripMenuItem.Name = "reportesContablesToolStripMenuItem";
             this.reportesContablesToolStripMenuItem.ShowShortcutKeys = false;
@@ -2770,14 +2772,34 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // gestiónToolStripMenuItem
+            // 
+            this.gestiónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem10,
+            this.toolStripMenuItem11});
+            this.gestiónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("gestiónToolStripMenuItem.Image")));
+            this.gestiónToolStripMenuItem.Name = "gestiónToolStripMenuItem";
+            this.gestiónToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.gestiónToolStripMenuItem.Tag = "1406008";
+            this.gestiónToolStripMenuItem.Text = "Gestión";
+            // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem10.Image")));
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(225, 22);
-            this.toolStripMenuItem10.Tag = "1406008";
-            this.toolStripMenuItem10.Text = "Flujo de Caja (Gastos)";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItem10.Tag = "140600801";
+            this.toolStripMenuItem10.Text = "Flujo de Caja - Pagos";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem11.Image")));
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItem11.Tag = "140600802";
+            this.toolStripMenuItem11.Text = "Flujo de Caja - Registro";
+            this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
             // 
             // frmMenu
             // 
@@ -3075,6 +3097,8 @@
         private System.Windows.Forms.ToolStripMenuItem tpLibroInventario311;
         private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_12;
         private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_13;
+        private System.Windows.Forms.ToolStripMenuItem gestiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
     }
 }

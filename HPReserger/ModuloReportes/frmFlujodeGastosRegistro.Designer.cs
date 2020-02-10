@@ -1,6 +1,6 @@
 ﻿namespace HPReserger.ModuloReportes
 {
-    partial class frmFlujodeGastosDoc
+    partial class frmFlujodeGastosRegistro
     {
         /// <summary>
         /// Required designer variable.
@@ -146,7 +146,7 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // frmFlujodeGastosDoc
+            // frmFlujodeGastosRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -162,9 +162,9 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximumSize = new System.Drawing.Size(512, 243);
             this.MinimumSize = new System.Drawing.Size(512, 243);
-            this.Name = "frmFlujodeGastosDoc";
-            this.Nombre = "Flujo de Caja - Pagos";
-            this.Text = "Flujo de Caja - Pagos";
+            this.Name = "frmFlujodeGastosRegistro";
+            this.Nombre = "Flujo de Caja - Registro";
+            this.Text = "Flujo de Caja - Registro";
             this.Load += new System.EventHandler(this.frmFlujodeGastosDoc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

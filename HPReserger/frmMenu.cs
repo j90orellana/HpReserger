@@ -4332,5 +4332,28 @@ namespace HPReserger
         {
             frmFlujodeCajaGastos = null;
         }
+        ModuloReportes.frmFlujodeGastosRegistro frmFlujodeCajaRegistro;
+        private void toolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+            if (frmFlujodeCajaRegistro == null)
+            {
+                frmFlujodeCajaRegistro = new ModuloReportes.frmFlujodeGastosRegistro();
+                frmFlujodeCajaRegistro.MdiParent = this;
+                frmFlujodeCajaRegistro.Icon = ICono;
+                frmFlujodeCajaRegistro.FormClosed += new FormClosedEventHandler(CerrarfrmFlujodeCajaRegistro);
+                frmFlujodeCajaRegistro.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmFlujodeCajaRegistro.Activate();
+                ValidarVentanas(frmFlujodeCajaRegistro);
+            }
+        }
+
+        private void CerrarfrmFlujodeCajaRegistro(object sender, FormClosedEventArgs e)
+        {
+            frmFlujodeCajaRegistro = null;
+        }
     }
 }

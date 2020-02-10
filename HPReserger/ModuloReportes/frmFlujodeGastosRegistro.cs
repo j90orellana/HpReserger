@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace HPReserger.ModuloReportes
 {
-    public partial class frmFlujodeGastosDoc : FormGradient
+    public partial class frmFlujodeGastosRegistro : FormGradient
     {
-        public frmFlujodeGastosDoc()
+        public frmFlujodeGastosRegistro()
         {
             InitializeComponent();
         }
@@ -103,7 +103,7 @@ namespace HPReserger.ModuloReportes
             }
             ListadoEmpresas = ListadoEmpresas.Substring(0, ListadoEmpresas.Length - 1);
             if (!Generado)
-                TDatos = CapaLogica.GenerarFlujodeCajaGastos(ListadoEmpresas, FechaInicio, FechaFin);
+                TDatos = CapaLogica.GenerarFlujodeCajaRegistro(ListadoEmpresas, FechaInicio, FechaFin);
             //dtgconten.DataSource = TDatos;
             ////lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (TDatos.Rows.Count == 0) { msg("No Hay Registros"); }
@@ -153,7 +153,7 @@ namespace HPReserger.ModuloReportes
                         string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
                         string valor = Carpeta + @"\";
                         //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"FLUJO DE CAJA -PAGOS {EmpresaValor} - PERIODO {cboperiodode.FechaInicioMes.ToString("yyyyMM")}-{cboperiodohasta.FechaFinMes.ToString("yyyyMM")} .xlsm";
+                        string NameFile = valor + $"FLUJO DE CAJA - REGISTRO {EmpresaValor} - PERIODO {cboperiodode.FechaInicioMes.ToString("yyyyMM")}-{cboperiodohasta.FechaFinMes.ToString("yyyyMM")} .xlsm";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")
@@ -162,7 +162,7 @@ namespace HPReserger.ModuloReportes
                             dv.RowFilter = $"empresa like '{EmpresaValor}'";
                             DataTable TablaResult = dv.ToTable();
                             string _NombreHoja = ""; string _Cabecera = ""; int[] _OrdenarColumnas; string _NColumna = "";
-                            _NombreHoja = $"Hoja1"; _Cabecera = "Flujo de Caja -Pagos";
+                            _NombreHoja = $"Hoja1"; _Cabecera = "Flujo de Caja -Registro";
                             _OrdenarColumnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
                             _NColumna = "m";
                             List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();

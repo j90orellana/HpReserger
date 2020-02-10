@@ -2519,6 +2519,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.GenerarFlujodeCajaGastos(empresa, PeriodoInicio, PeriodoFin);
         }
+        public DataTable GenerarFlujodeCajaRegistro(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
+        {
+            return cdOrdenPedido.GenerarFlujodeCajaRegistro(empresa, PeriodoInicio, PeriodoFin);
+        }
         public DataTable FormatoCajaBanco1_1(string empresa, DateTime FechaInicial, DateTime FechaFinal)
         {
             return cdOrdenPedido.FormatoCajaBanco1_1(empresa, FechaInicial, FechaFinal);
