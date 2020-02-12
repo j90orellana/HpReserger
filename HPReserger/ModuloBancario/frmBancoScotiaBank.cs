@@ -23,6 +23,8 @@ namespace HPReserger.ModuloBancario
         public DataTable TablaComprobantes { get; private set; }
         public DataTable TablaConsulta { get; private set; }
         DataTable TFormasPago;
+        public DateTime FechaPago;
+        public string Concepto;
         public void CargarDatosTablas()
         {
             TFormasPago = new DataTable();
@@ -119,8 +121,18 @@ namespace HPReserger.ModuloBancario
                 }
                 TablaConsulta.Rows.Add(x.proveedor, x.razonsocial.ToString().Substring(0, x.razonsocial.ToString().Length > 60 ? 60 : x.razonsocial.ToString().Length), x.nro, x.fechaFactura, x.total, FormadePago, CodigoOficinas, CodigoCuenta, "", x.email, CodigoCuentaCCI, "", null, "");
             }
-            dtgconten.DataSource = TablaConsulta;
+            DataView dvf1 = TablaConsulta.AsDataView();
+            dvf1.RowFilter = "ruc not like '10%'";
+            dtgProveedor.DataSource = dvf1.ToTable();
 
+            DataView dvf2 = TablaConsulta.AsDataView();
+            dvf2.RowFilter = "ruc like '10%'";
+            foreach (DataRowView item in dvf2)
+            {
+                item[xFechaFactura1.DataPropertyName] = FechaPago;
+                item[xConcepto.DataPropertyName] = Configuraciones.CadenaDelimitada(Concepto.Trim(), 20);
+            }
+            dtgVarios.DataSource = dvf2.ToTable();
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -133,7 +145,7 @@ namespace HPReserger.ModuloBancario
             int y = e.ColumnIndex;
             if (e.RowIndex >= 0)
             {
-                combo = dtgconten.Columns[xFormaPago.Name] as DataGridViewComboBoxColumn;
+                combo = dtgProveedor.Columns[xFormaPago.Name] as DataGridViewComboBoxColumn;
                 combo.ValueMember = "codigo";
                 combo.DisplayMember = "descripcion";
                 combo.DataSource = TFormasPago;
@@ -150,23 +162,23 @@ namespace HPReserger.ModuloBancario
             int x = e.RowIndex, y = e.ColumnIndex;
             if (x >= 0)
             {
-                if (dtgconten.Columns[xFactoring.Name].Index == y)
+                if (dtgProveedor.Columns[xFactoring.Name].Index == y)
                 {
-                    string cadena = dtgconten[y, x].Value.ToString();
+                    string cadena = dtgProveedor[y, x].Value.ToString();
                     if (cadena.Length > 0 && cadena != "F")
-                        dtgconten[y, x].Value = "F";
+                        dtgProveedor[y, x].Value = "F";
                 }
-                if (dtgconten.Columns[xTransExterior.Name].Index == y)
+                if (dtgProveedor.Columns[xTransExterior.Name].Index == y)
                 {
-                    string cadena = dtgconten[y, x].Value.ToString();
+                    string cadena = dtgProveedor[y, x].Value.ToString();
                     if (cadena.Length > 0 && cadena != "*")
-                        dtgconten[y, x].Value = "*";
+                        dtgProveedor[y, x].Value = "*";
                 }
-                if (dtgconten.Columns[xSimplePay.Name].Index == y)
+                if (dtgProveedor.Columns[xSimplePay.Name].Index == y)
                 {
-                    string cadena = dtgconten[y, x].Value.ToString();
+                    string cadena = dtgProveedor[y, x].Value.ToString();
                     if (cadena.Length > 0 && cadena != "*")
-                        dtgconten[y, x].Value = "*";
+                        dtgProveedor[y, x].Value = "*";
                 }
             }
         }
@@ -177,7 +189,7 @@ namespace HPReserger.ModuloBancario
             decimal PRuebaDecimal;
             int PruebaInt;
             string cadena = "";
-            foreach (DataGridViewRow item in dtgconten.Rows)
+            foreach (DataGridViewRow item in dtgProveedor.Rows)
             {
                 //validamos el Ruc
                 if (item.Cells[xRuc.Name].Value.ToString().Length > 11)
@@ -302,12 +314,17 @@ namespace HPReserger.ModuloBancario
             if (ValidarDatosLlenados())
             {
                 PAgoFactura = false;
-                int con = dtgconten.RowCount;
+                int con = dtgProveedor.RowCount;
+                if (dtgProveedor.RowCount == 0 && dtgVarios.RowCount == 0)
+                {
+                    msg("No hay Filas");
+                    return;
+                }
                 if (con > 0)
                 {
                     cadenatxt = "";
                     string[] campo = new string[14];
-                    foreach (DataGridViewRow item in dtgconten.Rows)
+                    foreach (DataGridViewRow item in dtgProveedor.Rows)
                     {
                         campo[0] = item.Cells[xRuc.Name].Value.ToString().Trim();//11
                         campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xRazonSocial.Name].Value.ToString().Trim(), ' ', 60, HPResergerFunciones.Utilitarios.Direccion.izquierda);//60
@@ -334,6 +351,48 @@ namespace HPReserger.ModuloBancario
                         st = File.CreateText(path);
                         st.Write(cadenatxt);
                         st.Close();
+                        if (dtgVarios.RowCount == 0)
+                            if (msgp("Generado TXT con Éxito, Desea Continuar.") == DialogResult.Yes)//Cambiamos a Yes Cuando ya este!
+                            {
+                                PAgoFactura = true;
+                                DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                    }
+                    else msg("Cancelado por el Usuario");
+                }
+                if (dtgVarios.RowCount > 0)
+                {
+                    PAgoFactura = false;
+                    cadenatxt = "";
+                    string[] campo = new string[10];
+                    foreach (DataGridViewRow item in dtgVarios.Rows)
+                    {
+                        campo[0] = item.Cells[xdni.Name].Value.ToString().Trim().Substring(2, 8);//8
+                        campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xNameEmpleado.Name].Value.ToString().Trim(), ' ', 60, HPResergerFunciones.Utilitarios.Direccion.izquierda);//60
+                        campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xConcepto.Name].Value.ToString().Trim(), ' ', 20, HPResergerFunciones.Utilitarios.Direccion.izquierda);//20
+                        campo[3] = ((DateTime)item.Cells[xFechaFactura1.Name].Value).ToString("yyyyMMdd");//8
+                        campo[4] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100(item.Cells[xMontoPagar1.Name].Value.ToString(), '0', 11, HPResergerFunciones.Utilitarios.Direccion.derecha);//11
+                        campo[5] = item.Cells[xFormaPago1.Name].Value.ToString();//1
+                        campo[6] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xCodigoOficina1.Name].Value.ToString().Trim(), ' ', 3, HPResergerFunciones.Utilitarios.Direccion.izquierda);//3
+                        campo[7] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xCodigoCuenta1.Name].Value.ToString().Trim(), ' ', 7, HPResergerFunciones.Utilitarios.Direccion.izquierda);//7
+                        //                                                                                                                                                                                                   
+                        campo[8] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xReferencia.Name].Value.ToString().Trim(), ' ', 16, HPResergerFunciones.Utilitarios.Direccion.izquierda);//16
+                        campo[9] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xCCI1.Name].Value.ToString().Trim(), ' ', 20, HPResergerFunciones.Utilitarios.Direccion.izquierda);//20
+                        //campo[10] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xcci.Name].Value.ToString().Trim(), ' ', 20, HPResergerFunciones.Utilitarios.Direccion.izquierda);//20                        
+                        //campo[11] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xFactoring.Name].Value.ToString().Trim(), ' ', 1, HPResergerFunciones.Utilitarios.Direccion.izquierda);//1
+                        //campo[12] = item.Cells[xFechaVencimiento.Name].Value.ToString() == "" ? "        " : ((DateTime)item.Cells[xFechaVencimiento.Name].Value).ToString("yyyyMMdd");//8
+                        //campo[13] = item.Cells[xTransExterior.Name].Value.ToString().Trim();//1
+                        cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
+                    }
+                    //msg(cadenatxt);
+                    SaveFile.FileName = "Pagos Varios ScotiaBank " + DateTime.Now.ToLongDateString();
+                    if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
+                    {
+                        string path = SaveFile.FileName;
+                        st = File.CreateText(path);
+                        st.Write(cadenatxt);
+                        st.Close();
                         if (msgp("Generado TXT con Éxito, Desea Continuar.") == DialogResult.Yes)//Cambiamos a Yes Cuando ya este!
                         {
                             PAgoFactura = true;
@@ -343,8 +402,6 @@ namespace HPReserger.ModuloBancario
                     }
                     else msg("Cancelado por el Usuario");
                 }
-                else
-                    msg("No hay Filas en la Grilla");
             }
             else
             {
@@ -354,5 +411,16 @@ namespace HPReserger.ModuloBancario
         }
         public Boolean PAgoFactura = false;
 
+        private void dtgVarios_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int y = e.ColumnIndex;
+            if (e.RowIndex >= 0)
+            {
+                combo = dtgVarios.Columns[xFormaPago1.Name] as DataGridViewComboBoxColumn;
+                combo.ValueMember = "codigo";
+                combo.DisplayMember = "descripcion";
+                combo.DataSource = TFormasPago;
+            }
+        }
     }
 }

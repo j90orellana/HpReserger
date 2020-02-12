@@ -127,6 +127,8 @@
             this.reporteSaldosContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.balanceDeComprobaciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.librosElectronicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -286,9 +288,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.gestiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1252,6 +1251,25 @@
             this.balanceDeComprobaciónToolStripMenuItem1.Tag = "1406007";
             this.balanceDeComprobaciónToolStripMenuItem1.Text = "Balance de Comprobación";
             this.balanceDeComprobaciónToolStripMenuItem1.Click += new System.EventHandler(this.balanceDeComprobaciónToolStripMenuItem1_Click);
+            // 
+            // gestiónToolStripMenuItem
+            // 
+            this.gestiónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem10});
+            this.gestiónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("gestiónToolStripMenuItem.Image")));
+            this.gestiónToolStripMenuItem.Name = "gestiónToolStripMenuItem";
+            this.gestiónToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.gestiónToolStripMenuItem.Tag = "1406008";
+            this.gestiónToolStripMenuItem.Text = "Gestión";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem10.Image")));
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem10.Tag = "140600801";
+            this.toolStripMenuItem10.Text = "Flujo de Caja";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
             // librosElectronicosToolStripMenuItem
             // 
@@ -2772,35 +2790,6 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
-            // gestiónToolStripMenuItem
-            // 
-            this.gestiónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem10,
-            this.toolStripMenuItem11});
-            this.gestiónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("gestiónToolStripMenuItem.Image")));
-            this.gestiónToolStripMenuItem.Name = "gestiónToolStripMenuItem";
-            this.gestiónToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.gestiónToolStripMenuItem.Tag = "1406008";
-            this.gestiónToolStripMenuItem.Text = "Gestión";
-            // 
-            // toolStripMenuItem10
-            // 
-            this.toolStripMenuItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem10.Image")));
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(187, 22);
-            this.toolStripMenuItem10.Tag = "140600801";
-            this.toolStripMenuItem10.Text = "Flujo de Caja - Pagos";
-            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
-            // 
-            // toolStripMenuItem11
-            // 
-            this.toolStripMenuItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem11.Image")));
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(187, 22);
-            this.toolStripMenuItem11.Tag = "140600802";
-            this.toolStripMenuItem11.Text = "Flujo de Caja - Registro";
-            this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3099,6 +3088,5 @@
         private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_13;
         private System.Windows.Forms.ToolStripMenuItem gestiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
     }
 }

@@ -103,7 +103,12 @@ namespace HPReserger.ModuloReportes
             }
             ListadoEmpresas = ListadoEmpresas.Substring(0, ListadoEmpresas.Length - 1);
             if (!Generado)
-                TDatos = CapaLogica.GenerarFlujodeCajaGastos(ListadoEmpresas, FechaInicio, FechaFin);
+            {
+                if (rbPagos.Checked)
+                    TDatos = CapaLogica.GenerarFlujodeCajaGastos(ListadoEmpresas, FechaInicio, FechaFin);
+                if (rbRegistro.Checked)
+                    TDatos = CapaLogica.GenerarFlujodeCajaRegistro(ListadoEmpresas, FechaInicio, FechaFin);
+            }
             //dtgconten.DataSource = TDatos;
             ////lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (TDatos.Rows.Count == 0) { msg("No Hay Registros"); }
@@ -153,7 +158,12 @@ namespace HPReserger.ModuloReportes
                         string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
                         string valor = Carpeta + @"\";
                         //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"FLUJO DE CAJA -PAGOS {EmpresaValor} - PERIODO {cboperiodode.FechaInicioMes.ToString("yyyyMM")}-{cboperiodohasta.FechaFinMes.ToString("yyyyMM")} .xlsm";
+                        string NameFile = "";
+                        if (rbPagos.Checked)
+                            NameFile = valor + $"FLUJO DE CAJA -PAGOS {EmpresaValor} - PERIODO {cboperiodode.FechaInicioMes.ToString("yyyyMM")}-{cboperiodohasta.FechaFinMes.ToString("yyyyMM")} .xlsm";
+                        if (rbRegistro.Checked)
+                            NameFile = valor + $"FLUJO DE CAJA - REGISTRO {EmpresaValor} - PERIODO {cboperiodode.FechaInicioMes.ToString("yyyyMM")}-{cboperiodohasta.FechaFinMes.ToString("yyyyMM")} .xlsm";
+                        //
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")
@@ -262,6 +272,16 @@ namespace HPReserger.ModuloReportes
             Generado = false;
         }
         private void cboperiodohasta_CambioFechas_1(object sender, EventArgs e)
+        {
+            Generado = false;
+        }
+
+        private void rbPagos_CheckedChanged(object sender, EventArgs e)
+        {
+            Generado = false;
+        }
+
+        private void rbRegistro_CheckedChanged(object sender, EventArgs e)
         {
             Generado = false;
         }

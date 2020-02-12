@@ -570,6 +570,8 @@ namespace HPReserger
                     BancoScotiaBank.txtcuentapago.Text = frmcargardatosproveedor.txtcuenta.Text;
                     BancoScotiaBank.Icon = Icon;
                     BancoScotiaBank.Comprobantes = ComprobantesCopia;
+                    BancoScotiaBank.FechaPago = dtpFechaPago.Value;
+                    BancoScotiaBank.Concepto = txtglosa.Text;
                     BancoScotiaBank.ShowDialog();
                     PAsoBanco = BancoScotiaBank.DialogResult;
                 }
