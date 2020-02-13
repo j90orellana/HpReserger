@@ -288,6 +288,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1266,7 +1267,7 @@
             // 
             this.toolStripMenuItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem10.Image")));
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(137, 22);
             this.toolStripMenuItem10.Tag = "140600801";
             this.toolStripMenuItem10.Text = "Flujo de Caja";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
@@ -1294,6 +1295,7 @@
             this.mayorPorCuentasToolStripMenuItem,
             this.toolStripSeparator22,
             this.reToolStripMenuItem,
+            this.toolStripMenuItem11,
             this.toolStripSeparator21,
             this.formato141RegistroDeVentasToolStripMenuItem});
             this.librosElectronicosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("librosElectronicosToolStripMenuItem.Image")));
@@ -1432,7 +1434,7 @@
             this.libroDiarioToolStripMenuItem2.Size = new System.Drawing.Size(447, 22);
             this.libroDiarioToolStripMenuItem2.Tag = "1407052";
             this.libroDiarioToolStripMenuItem2.Text = "5.2 Libro Diario De Formato Simplificado";
-            this.libroDiarioToolStripMenuItem2.Visible = false;
+            this.libroDiarioToolStripMenuItem2.Click += new System.EventHandler(this.libroDiarioToolStripMenuItem2_Click);
             // 
             // libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem
             // 
@@ -1442,7 +1444,7 @@
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(447, 22);
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Tag = "1407054";
             this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.4 Libro Diario De Formato Simplificado - Detalle Del Plan Contable Utilizado";
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Visible = false;
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Click += new System.EventHandler(this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem_Click);
             // 
             // toolStripSeparator20
             // 
@@ -2790,6 +2792,14 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem11.Image")));
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(447, 22);
+            this.toolStripMenuItem11.Tag = "1407083";
+            this.toolStripMenuItem11.Text = "8.3 Registro De Compras Simplificado";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3088,5 +3098,6 @@
         private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_13;
         private System.Windows.Forms.ToolStripMenuItem gestiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
     }
 }

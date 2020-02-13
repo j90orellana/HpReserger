@@ -4355,5 +4355,51 @@ namespace HPReserger
         {
             frmFlujodeCajaRegistro = null;
         }
+        ModuloReportes.LibrosElectronicos.frmLibroDiario5_2 frmLibroDiario5_2;
+        private void libroDiarioToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (frmLibroDiario5_2 == null)
+            {
+                frmLibroDiario5_2 = new ModuloReportes.LibrosElectronicos.frmLibroDiario5_2();
+                frmLibroDiario5_2.MdiParent = this;
+                frmLibroDiario5_2.Icon = ICono;
+                frmLibroDiario5_2.FormClosed += new FormClosedEventHandler(CerrarfrmLibroDiario5_2);
+                frmLibroDiario5_2.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmLibroDiario5_2.Activate();
+                ValidarVentanas(frmLibroDiario5_2);
+            }
+        }
+        private void CerrarfrmLibroDiario5_2(object sender, FormClosedEventArgs e)
+        {
+            frmLibroDiario5_2 = null;
+        }
+        ModuloReportes.LibrosElectronicos.frmLibroDiario5_4 frmLibroDiario5_4;
+        private void libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmLibroDiario5_4 == null)
+            {
+                frmLibroDiario5_4 = new ModuloReportes.LibrosElectronicos.frmLibroDiario5_4();
+                frmLibroDiario5_4.MdiParent = this;
+                frmLibroDiario5_4.Icon = ICono;
+                frmLibroDiario5_4.FormClosed += new FormClosedEventHandler(CerrarfrmLibroDiario5_4);
+                frmLibroDiario5_4.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmLibroDiario5_4.Activate();
+                ValidarVentanas(frmLibroDiario5_4);
+            }
+
+        }
+
+        private void CerrarfrmLibroDiario5_4(object sender, FormClosedEventArgs e)
+        {
+            frmLibroDiario5_4 = null;
+        }
     }
 }
