@@ -4394,12 +4394,32 @@ namespace HPReserger
                 frmLibroDiario5_4.Activate();
                 ValidarVentanas(frmLibroDiario5_4);
             }
-
         }
-
         private void CerrarfrmLibroDiario5_4(object sender, FormClosedEventArgs e)
         {
             frmLibroDiario5_4 = null;
+        }
+        frmRegistroCompras8_3 frmRegistroCompra8_3;
+        private void toolStripMenuItem11_Click_1(object sender, EventArgs e)
+        {
+            if (frmRegistroCompra8_3 == null)
+            {
+                frmRegistroCompra8_3 = new frmRegistroCompras8_3();
+                frmRegistroCompra8_3.MdiParent = this;
+                frmRegistroCompra8_3.Icon = ICono;
+                frmRegistroCompra8_3.FormClosed += new FormClosedEventHandler(CerrarfrmRegistroCompra8_3);
+                frmRegistroCompra8_3.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmRegistroCompra8_3.Activate();
+                ValidarVentanas(frmRegistroCompra8_3);
+            }
+        }
+        private void CerrarfrmRegistroCompra8_3(object sender, FormClosedEventArgs e)
+        {
+            frmRegistroCompra8_3 = null;
         }
     }
 }
