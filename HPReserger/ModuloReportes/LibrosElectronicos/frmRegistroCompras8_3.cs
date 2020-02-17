@@ -138,7 +138,7 @@ namespace HPReserger
                             foreach (string fechas in ListadoFecha)
                             {
                                 DataView dvf = new DataView(dv.ToTable());
-                                dvf.RowFilter = $"fechacontable like '{fechas}'";
+                                dvf.RowFilter = $"Periodo like '{fechas}'";
                                 DataTable TablaResult = dvf.ToTable();
                                 string añio = fechas.Substring(0, 4);
                                 string mes = fechas.Substring(4, 2);
@@ -154,25 +154,26 @@ namespace HPReserger
                                     //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
                                     Color Back = Color.FromArgb(78, 129, 189);
                                     Color Fore = Color.FromArgb(255, 255, 255);
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a1", _Cabecera.ToUpper(), 14, true, false, Back, Fore));
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 10, false, false, Back, Fore));
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas}", 10, false, false, Back, Fore));
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 10, false, false, Back, Fore));
+                                    //
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "m1", _Cabecera.ToUpper(), 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas}", 8, true, true, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", $"Ruc:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     ////ACTIVAR CODIGO RUC
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{Ruc}", 10, false, false, Back, Fore));
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:", 10, false, false, Back, Fore));
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("h4", "h4", $"{EmpresaValor}", 10, false, false, Back, Fore));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "g3", $"{Ruc}", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "g4", $"APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("h4", "m4", $"{EmpresaValor}", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     ///////estilos de la celdas
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
                                     /////fin estilo de las celdas
                                     //DataTable TableResult = new DataTable(); DataView dt = ((DataTable)dtgconten.DataSource).AsDataView(); TableResult = dt.ToTable();
                                     ///Tabla
-                                    foreach (DataColumn items in TablaResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
+                                    //foreach (DataColumn items in TablaResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
                                     /////
                                     ////Anterior               
                                     //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { }, "");
+                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }, "");
                                 }
                             }
                         }
@@ -323,7 +324,7 @@ namespace HPReserger
                             foreach (string fechas in ListadoFecha)
                             {
                                 DataView dvf = new DataView(dv.ToTable());
-                                dvf.RowFilter = $"fechacontable like '{fechas}'";
+                                dvf.RowFilter = $"periodo like '{fechas}'";
                                 DataTable TablaResult = dvf.ToTable();
                                 string añio = fechas.Substring(0, 4);
                                 string mes = fechas.Substring(4, 2);
@@ -350,7 +351,7 @@ namespace HPReserger
                                 ////si hay datos
                                 else
                                 {
-                                    string[] campo = new string[42];
+                                    string[] campo = new string[32];
                                     string cadenatxt = "";
                                     int ValorPrueba = 0;
                                     foreach (DataRow fila in TablaResult.Rows)
@@ -360,36 +361,25 @@ namespace HPReserger
                                         //1
                                         campo[c++] = $"{añio}{mes}00";
                                         campo[c++] = ((fila[xcuo.DataPropertyName].ToString())).ToString();
-                                        campo[c++] = "M2";
+                                        campo[c++] = $"M{fila[xCorrelativo.DataPropertyName].ToString()}";
                                         campo[c++] = ((DateTime)fila[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");
+                                        campo[c++] = (int)fila[xTipoComprobante.DataPropertyName] != 14 ? "" : ((DateTime)fila[xFechaVencimiento.DataPropertyName]).ToString("dd/MM/yyyy");
                                         //5
-                                        campo[c++] = (int)fila[xidC.DataPropertyName] != 14 ? "" : ((DateTime)fila[xFechaVencimiento.DataPropertyName]).ToString("dd/MM/yyyy");
-                                        campo[c++] = ((int)fila[xidC.DataPropertyName]).ToString("00");
-                                        campo[c++] = fila[xSerieCom.DataPropertyName].ToString();
-                                        //int.TryParse(fila[xAñoDua.DataPropertyName].ToString(), out ValorPrueba);
-                                        campo[c++] = ValorPrueba.ToString();
-                                        campo[c++] = fila[xNumCom.DataPropertyName].ToString().Trim();
+                                        campo[c++] = ((int)fila[xTipoComprobante.DataPropertyName]).ToString("00");
+                                        campo[c++] = fila[xSerieComprobante.DataPropertyName].ToString();
+                                        campo[c++] = fila[xNumComprobante.DataPropertyName].ToString().Trim();
+                                        campo[c++] = "";//Credito Fiscal
                                         //En caso de optar por anotar el importe total de las operaciones diarias que no otorguen derecho a crédito fiscal en forma consolidada, registrar el número inicial
                                         //10
-                                        campo[c++] = "";
-                                        campo[c++] = (int.Parse(fila[xTipoIdPro.DataPropertyName].ToString())).ToString();
-                                        campo[c++] = fila[xNumpro.DataPropertyName].ToString().Trim();
-                                        string Cadena = fila[xNombrePro.DataPropertyName].ToString().ToUpper().Trim();
-                                        campo[c++] = Cadena.Substring(0, Cadena.Length > 60 ? 60 : Cadena.Length);
+                                        campo[c++] = (int.Parse(fila[xTipoIdProveedor.DataPropertyName].ToString())).ToString();
+                                        campo[c++] = fila[xNumRucProveedor.DataPropertyName].ToString().Trim();
+                                        string Cadena = fila[xRazonSocialProveedor.DataPropertyName].ToString().ToUpper().Trim();
+                                        campo[c++] = Cadena.Substring(0, Cadena.Length > 100 ? 100 : Cadena.Length);
                                         //Parte de los IGV
-                                        campo[c++] = ((decimal)fila[ximporteIGV.DataPropertyName]).ToString("0.00");
-                                        campo[c++] = ((decimal)fila[xigvIGV.DataPropertyName]).ToString("0.00");
-                                        //Partes de los GNG
-                                        //campo[c++] = ((decimal)fila[ximporteGNG.DataPropertyName]).ToString("0.00");
-                                        //campo[c++] = ((decimal)fila[xigvGNG.DataPropertyName]).ToString("0.00");
-                                        ////Partes de los ONG
-                                        //campo[c++] = ((decimal)fila[ximporteONG.DataPropertyName]).ToString("0.00");
-                                        //campo[c++] = ((decimal)fila[xigvONG.DataPropertyName]).ToString("0.00");
-                                        ////Partes de NGR
-                                        ////20
-                                        //campo[c++] = ((decimal)fila[ximporteNGR.DataPropertyName]).ToString("0.00");
-                                        //campo[c++] = ((decimal)fila[xisc.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = ((decimal)fila[xImporteTotal.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = ((decimal)fila[xMontoIgv.DataPropertyName]).ToString("0.00");
                                         campo[c++] = ((decimal)fila[xOtrosTributos.DataPropertyName]).ToString("0.00");
+                                        //15
                                         //Validar Moneda
                                         campo[c++] = ((decimal)fila[xImporteTotal.DataPropertyName]).ToString("0.00");
                                         if (fila[xMoneda.DataPropertyName].ToString() == "USD")
@@ -410,7 +400,6 @@ namespace HPReserger
                                         campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
                                         //Número del comprobante de pago emitido por sujeto no domiciliado
                                         //30
-                                        campo[c++] = "-";
                                         //Fecha de emisión de la Constancia de Depósito de Detracción 
                                         campo[c++] = fila[xFechaDet.DataPropertyName].ToString() == "" ? "01/01/0001" : ((DateTime)fila[xFechaDet.DataPropertyName]).ToString("dd/MM/yyyy");
                                         //Número de la Constancia de Depósito de Detracción               
@@ -418,6 +407,8 @@ namespace HPReserger
                                         //Marca del comprobante de pago sujeto a retención
                                         //1. Obligatorio 
                                         //2.Si identifica el comprobante sujeto a retención consignar '1', caso contrario '0'
+                                        int.TryParse(fila[xMarcaRetencion.DataPropertyName].ToString(), out ValorPrueba);
+                                        campo[c++] = ValorPrueba == 1 ? "1" : "";
                                         campo[c++] = "";
                                         //Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
                                         //1. Obligatorio
@@ -425,11 +416,8 @@ namespace HPReserger
                                         //3.Registrar '6' cuando la fecha de emisión del Comprobante de Pago o de pago del impuesto es anterior al periodo de anotación y esta se produce dentro de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
                                         //4.Registrar '7' cuando la fecha de emisión del Comprobante de Pago o pago del impuesto es anterior al periodo de anotación y esta se produce luego de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
                                         //5.Registrar '9' cuando se realice un ajuste en la anotación de la información de una operación registrada en un periodo anterior.
-                                        campo[c++] = "1";
+                                        campo[c++] = "";
                                         //7 Extras
-                                        campo[c++] = "";
-                                        campo[c++] = "";
-                                        campo[c++] = "";
                                         campo[c++] = "";
                                         campo[c++] = "";
                                         campo[c++] = "";
@@ -550,6 +538,31 @@ namespace HPReserger
         private void dtgconten_Sorted(object sender, EventArgs e)
         {
             Ordenado = true;
+        }
+        private int[] Valores = { 0, 1 };
+        private void dtgconten_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            int x = e.RowIndex;
+            int y = e.ColumnIndex;
+            if (x >= 0 && y == dtgconten.Columns[xMarcaRetencion.Name].Index)
+            {
+                int Valor = 0;
+                int.TryParse(e.FormattedValue.ToString(), out Valor);
+                if (!Valores.Contains(Valor))
+                {
+                    e.Cancel = true;
+                    msg("Ingresó un valor Invalido, Solo Ingrese: 1, 0");
+                }
+            }
+        }
+
+        private void dtgconten_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dtgconten.Columns[xMarcaRetencion.Name].Index)
+            {
+                msg("Valor de la Celda Invalido");
+                e.Cancel = true;
+            }
         }
     }
 }
