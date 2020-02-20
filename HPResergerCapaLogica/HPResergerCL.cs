@@ -2551,6 +2551,14 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FormatoLibroInventario3_2(Empresa, Fechainicial, FechaFinal);
         }
+        public DataTable ReporteDocumentosRegistradoSinPago(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
+        {
+            return cdOrdenPedido.ReporteDocumentosRegistradoSinPago(Empresa, Fechainicial, FechaFinal);
+        }
+        public DataTable ReporteDocumentosPagadosEXcluidosRegistrados(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
+        {
+            return cdOrdenPedido.ReporteDocumentosPagadosEXcluidosRegistrados(Empresa, Fechainicial, FechaFinal);
+        }
         public DataTable FormatoLibroInventario3_3(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
         {
             return cdOrdenPedido.FormatoLibroInventario3_3(Empresa, Fechainicial, FechaFinal);

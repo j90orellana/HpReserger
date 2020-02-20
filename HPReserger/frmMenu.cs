@@ -4421,5 +4421,27 @@ namespace HPReserger
         {
             frmRegistroCompra8_3 = null;
         }
+        ModuloReportes.frmReporteDocumentosImpagos frmDcoumentosImpagos;
+        private void consultaDeDocumentosDeProveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmDcoumentosImpagos == null)
+            {
+                frmDcoumentosImpagos = new ModuloReportes.frmReporteDocumentosImpagos();
+                frmDcoumentosImpagos.MdiParent = this;
+                frmDcoumentosImpagos.Icon = ICono;
+                frmDcoumentosImpagos.FormClosed += new FormClosedEventHandler(CerrarfrmDcoumentosImpagos);
+                frmDcoumentosImpagos.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmDcoumentosImpagos.Activate();
+                ValidarVentanas(frmDcoumentosImpagos);
+            }
+        }
+        private void CerrarfrmDcoumentosImpagos(object sender, FormClosedEventArgs e)
+        {
+            frmDcoumentosImpagos = null;
+        }
     }
 }

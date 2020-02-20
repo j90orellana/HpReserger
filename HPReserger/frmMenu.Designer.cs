@@ -289,6 +289,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.consultaDeDocumentosDeProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -926,7 +927,8 @@
             this.facturasToolStripMenuItem,
             this.reciboPorHonorariosToolStripMenuItem,
             this.notaCréditoToolStripMenuItem,
-            this.notaDébitoToolStripMenuItem});
+            this.notaDébitoToolStripMenuItem,
+            this.consultaDeDocumentosDeProveedorToolStripMenuItem});
             this.facturaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturaToolStripMenuItem.Image")));
             this.facturaToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
@@ -1267,7 +1269,7 @@
             // 
             this.toolStripMenuItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem10.Image")));
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(137, 22);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem10.Tag = "140600801";
             this.toolStripMenuItem10.Text = "Flujo de Caja";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
@@ -2801,6 +2803,14 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // consultaDeDocumentosDeProveedorToolStripMenuItem
+            // 
+            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("consultaDeDocumentosDeProveedorToolStripMenuItem.Image")));
+            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Name = "consultaDeDocumentosDeProveedorToolStripMenuItem";
+            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Text = "Consulta de Documentos de Proveedor";
+            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Click += new System.EventHandler(this.consultaDeDocumentosDeProveedorToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3100,5 +3110,6 @@
         private System.Windows.Forms.ToolStripMenuItem gestiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripMenuItem consultaDeDocumentosDeProveedorToolStripMenuItem;
     }
 }

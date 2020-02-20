@@ -4847,6 +4847,18 @@ namespace HPResergerCapaDatos
             object[] valores = { Empresa, Fechainicial, FechaFinal };
             return bd.DataTableFromProcedure("usp_FormatoLibroInventario3_2", parametros, valores, null);
         }
+        public DataTable ReporteDocumentosRegistradoSinPago(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { Empresa, Fechainicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_ReporteDocumentosRegistradoSinPago", parametros, valores, null);
+        }
+        public DataTable ReporteDocumentosPagadosEXcluidosRegistrados(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { Empresa, Fechainicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_ReporteDocumentosPagadosEXcluidosRegistrados", parametros, valores, null);
+        }
         public DataTable FormatoLibroInventario3_3(string Empresa, DateTime Fechainicial, DateTime FechaFinal)
         {
             string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
