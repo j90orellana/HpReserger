@@ -39,12 +39,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnbusCuenta = new System.Windows.Forms.Button();
             this.dtpfechafin = new System.Windows.Forms.DateTimePicker();
             this.chklist = new System.Windows.Forms.CheckedListBox();
@@ -65,12 +69,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgPorPagar = new HpResergerUserControls.Dtgconten();
-            this.rbPorPagar = new System.Windows.Forms.RadioButton();
-            this.rbPagados = new System.Windows.Forms.RadioButton();
-            this.lblmensaje = new System.Windows.Forms.Label();
-            this.btnProcesar = new HpResergerUserControls.ButtonPer();
-            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
-            this.btnexcel = new System.Windows.Forms.Button();
             this.xRUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,6 +88,12 @@
             this.xtotalme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xusuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rbPorPagar = new System.Windows.Forms.RadioButton();
+            this.rbPagados = new System.Windows.Forms.RadioButton();
+            this.lblmensaje = new System.Windows.Forms.Label();
+            this.btnProcesar = new HpResergerUserControls.ButtonPer();
+            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
+            this.btnexcel = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.dtgPagados = new HpResergerUserControls.Dtgconten();
@@ -108,8 +112,12 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xRegistroMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xRegistroME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xAbonoMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xAbonoME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -452,93 +460,6 @@
             this.dtgPorPagar.Size = new System.Drawing.Size(1201, 396);
             this.dtgPorPagar.TabIndex = 426;
             // 
-            // rbPorPagar
-            // 
-            this.rbPorPagar.AutoSize = true;
-            this.rbPorPagar.BackColor = System.Drawing.Color.Transparent;
-            this.rbPorPagar.Checked = true;
-            this.rbPorPagar.Location = new System.Drawing.Point(861, 35);
-            this.rbPorPagar.Name = "rbPorPagar";
-            this.rbPorPagar.Size = new System.Drawing.Size(74, 17);
-            this.rbPorPagar.TabIndex = 438;
-            this.rbPorPagar.TabStop = true;
-            this.rbPorPagar.Text = "Por Pagar";
-            this.rbPorPagar.UseVisualStyleBackColor = false;
-            this.rbPorPagar.CheckedChanged += new System.EventHandler(this.rbPorPagar_CheckedChanged);
-            // 
-            // rbPagados
-            // 
-            this.rbPagados.AutoSize = true;
-            this.rbPagados.BackColor = System.Drawing.Color.Transparent;
-            this.rbPagados.Location = new System.Drawing.Point(946, 35);
-            this.rbPagados.Name = "rbPagados";
-            this.rbPagados.Size = new System.Drawing.Size(69, 17);
-            this.rbPagados.TabIndex = 438;
-            this.rbPagados.Text = "Pagados";
-            this.rbPagados.UseVisualStyleBackColor = false;
-            this.rbPagados.CheckedChanged += new System.EventHandler(this.rbPagados_CheckedChanged);
-            // 
-            // lblmensaje
-            // 
-            this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmensaje.AutoSize = true;
-            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
-            this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmensaje.Location = new System.Drawing.Point(13, 536);
-            this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(110, 13);
-            this.lblmensaje.TabIndex = 439;
-            this.lblmensaje.Text = "Total de Registros: 0";
-            // 
-            // btnProcesar
-            // 
-            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(1038, 31);
-            this.btnProcesar.Name = "btnProcesar";
-            this.btnProcesar.Size = new System.Drawing.Size(83, 24);
-            this.btnProcesar.TabIndex = 441;
-            this.btnProcesar.Text = "&Procesar";
-            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProcesar.UseVisualStyleBackColor = false;
-            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
-            // 
-            // BtnCerrar
-            // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
-            this.BtnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(1131, 530);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
-            this.BtnCerrar.TabIndex = 440;
-            this.BtnCerrar.Text = "&Cancelar";
-            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnCerrar.UseVisualStyleBackColor = false;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
-            // 
-            // btnexcel
-            // 
-            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
-            this.btnexcel.Location = new System.Drawing.Point(571, 531);
-            this.btnexcel.Name = "btnexcel";
-            this.btnexcel.Size = new System.Drawing.Size(82, 23);
-            this.btnexcel.TabIndex = 442;
-            this.btnexcel.Text = "Excel";
-            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnexcel.UseVisualStyleBackColor = true;
-            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
-            // 
             // xRUC
             // 
             this.xRUC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -730,6 +651,93 @@
             this.xusuario.ReadOnly = true;
             this.xusuario.Width = 71;
             // 
+            // rbPorPagar
+            // 
+            this.rbPorPagar.AutoSize = true;
+            this.rbPorPagar.BackColor = System.Drawing.Color.Transparent;
+            this.rbPorPagar.Checked = true;
+            this.rbPorPagar.Location = new System.Drawing.Point(144, 59);
+            this.rbPorPagar.Name = "rbPorPagar";
+            this.rbPorPagar.Size = new System.Drawing.Size(74, 17);
+            this.rbPorPagar.TabIndex = 438;
+            this.rbPorPagar.TabStop = true;
+            this.rbPorPagar.Text = "Por Pagar";
+            this.rbPorPagar.UseVisualStyleBackColor = false;
+            this.rbPorPagar.CheckedChanged += new System.EventHandler(this.rbPorPagar_CheckedChanged);
+            // 
+            // rbPagados
+            // 
+            this.rbPagados.AutoSize = true;
+            this.rbPagados.BackColor = System.Drawing.Color.Transparent;
+            this.rbPagados.Location = new System.Drawing.Point(229, 59);
+            this.rbPagados.Name = "rbPagados";
+            this.rbPagados.Size = new System.Drawing.Size(69, 17);
+            this.rbPagados.TabIndex = 438;
+            this.rbPagados.Text = "Pagados";
+            this.rbPagados.UseVisualStyleBackColor = false;
+            this.rbPagados.CheckedChanged += new System.EventHandler(this.rbPagados_CheckedChanged);
+            // 
+            // lblmensaje
+            // 
+            this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmensaje.AutoSize = true;
+            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
+            this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmensaje.Location = new System.Drawing.Point(13, 536);
+            this.lblmensaje.Name = "lblmensaje";
+            this.lblmensaje.Size = new System.Drawing.Size(110, 13);
+            this.lblmensaje.TabIndex = 439;
+            this.lblmensaje.Text = "Total de Registros: 0";
+            // 
+            // btnProcesar
+            // 
+            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
+            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcesar.ForeColor = System.Drawing.Color.White;
+            this.btnProcesar.Location = new System.Drawing.Point(789, 31);
+            this.btnProcesar.Name = "btnProcesar";
+            this.btnProcesar.Size = new System.Drawing.Size(83, 24);
+            this.btnProcesar.TabIndex = 441;
+            this.btnProcesar.Text = "&Procesar";
+            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
+            // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
+            this.BtnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
+            this.BtnCerrar.Location = new System.Drawing.Point(1131, 530);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
+            this.BtnCerrar.TabIndex = 440;
+            this.BtnCerrar.Text = "&Cancelar";
+            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            // 
+            // btnexcel
+            // 
+            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
+            this.btnexcel.Location = new System.Drawing.Point(571, 531);
+            this.btnexcel.Name = "btnexcel";
+            this.btnexcel.Size = new System.Drawing.Size(82, 23);
+            this.btnexcel.TabIndex = 442;
+            this.btnexcel.Text = "Excel";
+            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnexcel.UseVisualStyleBackColor = true;
+            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
+            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
@@ -778,21 +786,25 @@
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
+            this.xRegistroMN,
+            this.xRegistroME,
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
+            this.xAbonoMN,
+            this.xAbonoME,
             this.dataGridViewTextBoxColumn18,
             this.xBanco,
             this.xTipoPago,
             this.xNroCta,
             this.xNroOpBanco});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgPagados.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgPagados.DefaultCellStyle = dataGridViewCellStyle20;
             this.dtgPagados.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgPagados.EnableHeadersVisualStyles = false;
             this.dtgPagados.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -951,37 +963,85 @@
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             this.dataGridViewTextBoxColumn15.Width = 74;
             // 
+            // xRegistroMN
+            // 
+            this.xRegistroMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xRegistroMN.DataPropertyName = "RegistroMN";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "n2";
+            this.xRegistroMN.DefaultCellStyle = dataGridViewCellStyle13;
+            this.xRegistroMN.HeaderText = "RegistroMN";
+            this.xRegistroMN.Name = "xRegistroMN";
+            this.xRegistroMN.ReadOnly = true;
+            this.xRegistroMN.Width = 92;
+            // 
+            // xRegistroME
+            // 
+            this.xRegistroME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xRegistroME.DataPropertyName = "RegistroME";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "n2";
+            this.xRegistroME.DefaultCellStyle = dataGridViewCellStyle14;
+            this.xRegistroME.HeaderText = "RegistroME";
+            this.xRegistroME.Name = "xRegistroME";
+            this.xRegistroME.ReadOnly = true;
+            this.xRegistroME.Width = 90;
+            // 
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "MontoMN";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "n2";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dataGridViewTextBoxColumn16.HeaderText = "PEN";
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "SaldoMN";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "n2";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewTextBoxColumn16.HeaderText = "SaldoMN";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 51;
+            this.dataGridViewTextBoxColumn16.Width = 78;
             // 
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "MontoME";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "n2";
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewTextBoxColumn17.HeaderText = "USD";
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "SaldoME";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "n2";
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewTextBoxColumn17.HeaderText = "SaldoME";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Width = 53;
+            this.dataGridViewTextBoxColumn17.Width = 76;
+            // 
+            // xAbonoMN
+            // 
+            this.xAbonoMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xAbonoMN.DataPropertyName = "AbonoMN";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "n2";
+            this.xAbonoMN.DefaultCellStyle = dataGridViewCellStyle17;
+            this.xAbonoMN.HeaderText = "AbonoMN";
+            this.xAbonoMN.Name = "xAbonoMN";
+            this.xAbonoMN.ReadOnly = true;
+            this.xAbonoMN.Width = 84;
+            // 
+            // xAbonoME
+            // 
+            this.xAbonoME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xAbonoME.DataPropertyName = "AbonoME";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "n2";
+            this.xAbonoME.DefaultCellStyle = dataGridViewCellStyle18;
+            this.xAbonoME.HeaderText = "AbonoME";
+            this.xAbonoME.Name = "xAbonoME";
+            this.xAbonoME.ReadOnly = true;
+            this.xAbonoME.Width = 82;
             // 
             // dataGridViewTextBoxColumn18
             // 
             this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn18.DataPropertyName = "TC";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "n3";
-            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "n3";
+            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn18.HeaderText = "T.C.";
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
@@ -1132,8 +1192,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xRegistroMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xRegistroME;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xAbonoMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xAbonoME;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn xBanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTipoPago;

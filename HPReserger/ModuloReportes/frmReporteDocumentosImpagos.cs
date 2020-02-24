@@ -135,7 +135,7 @@ namespace HPReserger.ModuloReportes
             }
             else if (rbPagados.Checked)
             {
-                if (dtgPorPagar.RowCount > 0)
+                if (dtgPagados.RowCount > 0)
                 {
                     if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                     {

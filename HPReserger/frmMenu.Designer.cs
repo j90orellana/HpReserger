@@ -60,6 +60,8 @@
             this.cobroInterEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargaRegistroVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -153,6 +155,7 @@
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formato142REgistroVentasSimplificado = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -289,7 +292,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.consultaDeDocumentosDeProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -568,7 +570,8 @@
             // proyectosToolStripMenuItem1
             // 
             this.proyectosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.proyectosToolStripMenuItem});
+            this.proyectosToolStripMenuItem,
+            this.reportesToolStripMenuItem});
             this.proyectosToolStripMenuItem1.Name = "proyectosToolStripMenuItem1";
             this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
             this.proyectosToolStripMenuItem1.Tag = "11";
@@ -584,6 +587,25 @@
             this.proyectosToolStripMenuItem.Tag = "1101";
             this.proyectosToolStripMenuItem.Text = "&Proyectos";
             this.proyectosToolStripMenuItem.Click += new System.EventHandler(this.proyectosToolStripMenuItem_Click);
+            // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem12});
+            this.reportesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportesToolStripMenuItem.Image")));
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.reportesToolStripMenuItem.Tag = "1102";
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // toolStripMenuItem12
+            // 
+            this.toolStripMenuItem12.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem12.Image")));
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(261, 22);
+            this.toolStripMenuItem12.Tag = "1102001";
+            this.toolStripMenuItem12.Text = "Consulta de Documentos de Proveedor";
+            this.toolStripMenuItem12.Click += new System.EventHandler(this.consultaDeDocumentosDeProveedorToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem
             // 
@@ -927,8 +949,7 @@
             this.facturasToolStripMenuItem,
             this.reciboPorHonorariosToolStripMenuItem,
             this.notaCréditoToolStripMenuItem,
-            this.notaDébitoToolStripMenuItem,
-            this.consultaDeDocumentosDeProveedorToolStripMenuItem});
+            this.notaDébitoToolStripMenuItem});
             this.facturaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturaToolStripMenuItem.Image")));
             this.facturaToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
@@ -1269,7 +1290,7 @@
             // 
             this.toolStripMenuItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem10.Image")));
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(137, 22);
             this.toolStripMenuItem10.Tag = "140600801";
             this.toolStripMenuItem10.Text = "Flujo de Caja";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
@@ -1299,7 +1320,8 @@
             this.reToolStripMenuItem,
             this.toolStripMenuItem11,
             this.toolStripSeparator21,
-            this.formato141RegistroDeVentasToolStripMenuItem});
+            this.formato141RegistroDeVentasToolStripMenuItem,
+            this.formato142REgistroVentasSimplificado});
             this.librosElectronicosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("librosElectronicosToolStripMenuItem.Image")));
             this.librosElectronicosToolStripMenuItem.Name = "librosElectronicosToolStripMenuItem";
             this.librosElectronicosToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
@@ -1501,6 +1523,15 @@
             this.formato141RegistroDeVentasToolStripMenuItem.Tag = "1407141";
             this.formato141RegistroDeVentasToolStripMenuItem.Text = "14.1 Registro De Ventas E Ingresos";
             this.formato141RegistroDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formato141RegistroDeVentasToolStripMenuItem_Click);
+            // 
+            // formato142REgistroVentasSimplificado
+            // 
+            this.formato142REgistroVentasSimplificado.Image = ((System.Drawing.Image)(resources.GetObject("formato142REgistroVentasSimplificado.Image")));
+            this.formato142REgistroVentasSimplificado.Name = "formato142REgistroVentasSimplificado";
+            this.formato142REgistroVentasSimplificado.Size = new System.Drawing.Size(447, 22);
+            this.formato142REgistroVentasSimplificado.Tag = "1407142";
+            this.formato142REgistroVentasSimplificado.Text = "14.2 Registro De Ventas E Ingresos Simplificado";
+            this.formato142REgistroVentasSimplificado.Click += new System.EventHandler(this.formato142REgistroVentasSimplificado_Click);
             // 
             // toolStripSeparator14
             // 
@@ -2803,14 +2834,6 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
-            // consultaDeDocumentosDeProveedorToolStripMenuItem
-            // 
-            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("consultaDeDocumentosDeProveedorToolStripMenuItem.Image")));
-            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Name = "consultaDeDocumentosDeProveedorToolStripMenuItem";
-            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Text = "Consulta de Documentos de Proveedor";
-            this.consultaDeDocumentosDeProveedorToolStripMenuItem.Click += new System.EventHandler(this.consultaDeDocumentosDeProveedorToolStripMenuItem_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3110,6 +3133,8 @@
         private System.Windows.Forms.ToolStripMenuItem gestiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
-        private System.Windows.Forms.ToolStripMenuItem consultaDeDocumentosDeProveedorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
+        private System.Windows.Forms.ToolStripMenuItem formato142REgistroVentasSimplificado;
     }
 }

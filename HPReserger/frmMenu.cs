@@ -4443,5 +4443,29 @@ namespace HPReserger
         {
             frmDcoumentosImpagos = null;
         }
+        frmRegistroVentas14_2 frmRegistroVentasSimplificado;
+        private void formato142REgistroVentasSimplificado_Click(object sender, EventArgs e)
+        {
+            if (frmRegistroVentasSimplificado == null)
+            {
+                frmRegistroVentasSimplificado = new frmRegistroVentas14_2();
+                frmRegistroVentasSimplificado.MdiParent = this;
+                frmRegistroVentasSimplificado.Icon = ICono;
+                frmRegistroVentasSimplificado.FormClosed += new FormClosedEventHandler(CerrarfrmRegistroVentasSimplificado);
+                frmRegistroVentasSimplificado.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmRegistroVentasSimplificado.Activate();
+                ValidarVentanas(frmRegistroVentasSimplificado);
+            }
+        }
+
+        private void CerrarfrmRegistroVentasSimplificado(object sender, FormClosedEventArgs e)
+        {
+            frmRegistroVentasSimplificado = null;
+        }
+
     }
 }
