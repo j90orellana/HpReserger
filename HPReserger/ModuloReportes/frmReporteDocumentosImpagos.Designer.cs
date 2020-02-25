@@ -114,10 +114,10 @@
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xRegistroMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xRegistroME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAbonoMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAbonoME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -788,10 +788,10 @@
             this.dataGridViewTextBoxColumn15,
             this.xRegistroMN,
             this.xRegistroME,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
             this.xAbonoMN,
             this.xAbonoME,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
             this.xBanco,
             this.xTipoPago,
@@ -987,37 +987,13 @@
             this.xRegistroME.ReadOnly = true;
             this.xRegistroME.Width = 90;
             // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "SaldoMN";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "n2";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dataGridViewTextBoxColumn16.HeaderText = "SaldoMN";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 78;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "SaldoME";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "n2";
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridViewTextBoxColumn17.HeaderText = "SaldoME";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Width = 76;
-            // 
             // xAbonoMN
             // 
             this.xAbonoMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xAbonoMN.DataPropertyName = "AbonoMN";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "n2";
-            this.xAbonoMN.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "n2";
+            this.xAbonoMN.DefaultCellStyle = dataGridViewCellStyle15;
             this.xAbonoMN.HeaderText = "AbonoMN";
             this.xAbonoMN.Name = "xAbonoMN";
             this.xAbonoMN.ReadOnly = true;
@@ -1027,13 +1003,37 @@
             // 
             this.xAbonoME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xAbonoME.DataPropertyName = "AbonoME";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "n2";
-            this.xAbonoME.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "n2";
+            this.xAbonoME.DefaultCellStyle = dataGridViewCellStyle16;
             this.xAbonoME.HeaderText = "AbonoME";
             this.xAbonoME.Name = "xAbonoME";
             this.xAbonoME.ReadOnly = true;
             this.xAbonoME.Width = 82;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "SaldoMN";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "n2";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewTextBoxColumn16.HeaderText = "SaldoMN";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Width = 78;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "SaldoME";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "n2";
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridViewTextBoxColumn17.HeaderText = "SaldoME";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.Width = 76;
             // 
             // dataGridViewTextBoxColumn18
             // 
@@ -1194,10 +1194,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn xRegistroMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn xRegistroME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAbonoMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAbonoME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn xBanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTipoPago;

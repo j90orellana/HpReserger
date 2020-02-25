@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmPresupuestodetalle : Form
+    public partial class frmPresupuestodetalle : FormGradient
     {
         public frmPresupuestodetalle()
         {
@@ -29,7 +30,7 @@ namespace HPReserger
             cboproyecto.DataSource = CLDetalle.ListarProyectosEmpresa(empresa.ToString());
             DatosMaximo = CLDetalle.VerMaximoPresupuesto(cabecera);
             if (DatosMaximo != null)
-                txtmontomax.Text = DatosMaximo["diferencia"].ToString();
+                txtmontomax.Text = ((decimal)DatosMaximo["diferencia"]).ToString("n2");
             txtmontomax.Enabled = false;
             if (cboproyecto.Items.Count < 1)
                 msg("No hay Proyectos");
@@ -123,7 +124,7 @@ namespace HPReserger
             {
                 if (decimal.Parse(dtgconten["importe", i].Value.ToString()) > 0)
                 {
-                    CLDetalle.ProyectoCentrodecostodetalle(0, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), int.Parse(dtgconten["id_etapas", i].Value.ToString()), decimal.Parse(txtimporte.Text), dtgconten["CodCentroC", i].Value.ToString(), decimal.Parse(dtgconten["importe", i].Value.ToString()), decimal.Parse(dtgconten["flujos", i].Value.ToString()), frmLogin.CodigoUsuario);
+                    CLDetalle.ProyectoCentrodecostodetalle(0, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), int.Parse(dtgconten["id_etapas", i].Value.ToString()), decimal.Parse(txtimporte.Text), dtgconten["CodCentroC", i].Value.ToString(), decimal.Parse(dtgconten["importe", i].Value.ToString()), decimal.Parse(dtgconten[xtotalflujo.Name, i].Value.ToString()), frmLogin.CodigoUsuario);
                 }
             }
             msgOK("Modificación Exitosa");
@@ -131,7 +132,7 @@ namespace HPReserger
             iniciar(false);
             DatosMaximo = CLDetalle.VerMaximoPresupuesto(cabecera);
             if (DatosMaximo != null)
-                txtmontomax.Text = DatosMaximo["diferencia"].ToString();
+                txtmontomax.Text = ((decimal)DatosMaximo["diferencia"]).ToString("n2");
             txtmontomax.Enabled = false;
         }
 
@@ -149,7 +150,7 @@ namespace HPReserger
             for (int i = 0; i < dtgconten.RowCount; i++)
             {
                 total += decimal.Parse(dtgconten["importe", i].Value.ToString());
-                flujos += decimal.Parse(dtgconten["flujos", i].Value.ToString());
+                flujos += decimal.Parse(dtgconten[xtotalflujo.Name, i].Value.ToString());
             }
             txttotal.Text = total.ToString("n2");
             txtflujos.Text = flujos.ToString("n2");
@@ -213,7 +214,7 @@ namespace HPReserger
                 if (etapitas.ok)
                 {
                     dtgconten["importe", dtgconten.CurrentCell.RowIndex].Value = etapitas.valor;
-                    dtgconten["FLujos", dtgconten.CurrentCell.RowIndex].Value = etapitas.valorflujo;
+                    dtgconten[xtotalflujo.Name, dtgconten.CurrentCell.RowIndex].Value = etapitas.valorflujo;
                     calcularsumatoria();
                 }
             etapitas = null;
