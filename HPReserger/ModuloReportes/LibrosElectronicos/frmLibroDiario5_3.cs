@@ -74,6 +74,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
+            if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
             this.Cursor = Cursors.WaitCursor;
             Generar();
             Cursor = Cursors.Default;

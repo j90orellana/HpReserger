@@ -216,6 +216,7 @@ namespace HPReserger
         }
         private void btngenerar_Click(object sender, EventArgs e)
         {
+            if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
             if (Configuraciones.ValidarSQLInyect(txtbuscuenta, txtbusGlosa, txtbusnrodoc, txtbusrazon, txtbusruc)) { msg("Se Encontro Codigo Malisioso en las Cajas de Textos"); return; }
             Cursor = Cursors.WaitCursor;
             FechaIni = dtpfechaini.Value;

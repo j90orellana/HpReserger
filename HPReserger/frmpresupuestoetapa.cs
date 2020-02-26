@@ -28,6 +28,18 @@ namespace HPReserger
         public int cabecera;
         private void frmpresupuestoetapa_Load(object sender, EventArgs e)
         {
+            if (Estado)
+            {
+                dtgconten.ReadOnly = true;
+                dtgconten1.ReadOnly = true;
+                btnguardar.Enabled = false;
+            }
+            else
+            {
+                dtgconten.ReadOnly = false;
+                dtgconten1.ReadOnly = false;
+                btnguardar.Enabled = true;
+            }
             ok = false;
             //Application.CurrentCulture = new System.Globalization.CultureInfo("EN-US");
             dtgconten.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
@@ -46,7 +58,7 @@ namespace HPReserger
                 dtgconten1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 if (dtgconten.ColumnCount - i < 3)
                 {
-                    dtgconten.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);                                     
+                    dtgconten.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);
                     dtgconten1.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);
                     dtgconten.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
                     dtgconten1.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
@@ -106,6 +118,9 @@ namespace HPReserger
         {
         }
         decimal numero = 0.00m;
+
+        public bool Estado { get; internal set; }
+
         private void dtgconten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex, y = e.RowIndex;

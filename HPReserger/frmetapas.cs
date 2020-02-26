@@ -123,25 +123,25 @@ namespace HPReserger
             if (estados == 1)
             {
                 CLEtapas.ListarEtapasdelProyecto(1, proyecto, 1, txtdescripcion.Text, int.Parse(cboestado.SelectedValue.ToString()), dtpfechainicio.Value, dtpfechafin.Value, int.Parse(txtmeses.Text), txtobserva.Text, frmLogin.CodigoUsuario);
-                HPResergerFunciones.frmInformativo.MostrarDialog("Etapa Ingresada con exito");
+
                 Iniciar(false);
                 estados = 0;
                 int dias = dtpfechafin.Value.Year - dtpfechainicio.Value.Year;
                 int meses = ((dtpfechafin.Value.Month + (dias * 12)) - dtpfechainicio.Value.Month) + 1;
+                DateTime FechaAux = dtpfechainicio.Value;
                 cargarlista();
                 CLEtapas.MesEtapa(10, 0, (int)Dtgconten["id_etapa", Dtgconten.RowCount - 1].Value, 0, 0, 0);
                 for (int i = 0; i < meses + 2; i++)
                 {
-                    int mes = dtpfechainicio.Value.Month + i;
+                    int mes = FechaAux.Month + i;
                     if (mes > 12) mes = mes - 12;
-                    CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.RowCount - 1].Value, (int)(dtpfechainicio.Value.Year + (dtpfechainicio.Value.Month + i - 1) / 12), mes, frmLogin.CodigoUsuario);
+                    CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.RowCount - 1].Value, (int)(FechaAux.Year + (FechaAux.Month + i - 1) / 12), mes, frmLogin.CodigoUsuario);
                 }
-
+                HPResergerFunciones.frmInformativo.MostrarDialog("Etapa Ingresada con exito");
             }
             if (estados == 2)
             {
                 CLEtapas.ListarEtapasdelProyecto(2, proyecto, int.Parse(Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value.ToString()), txtdescripcion.Text, int.Parse(cboestado.SelectedValue.ToString()), dtpfechainicio.Value, dtpfechafin.Value, int.Parse(txtmeses.Text), txtobserva.Text, frmLogin.CodigoUsuario);
-                HPResergerFunciones.frmInformativo.MostrarDialog("Etapa Modificada con exito");
                 Iniciar(false);
                 int dias = dtpfechafin.Value.Year - dtpfechainicio.Value.Year;
                 int meses = ((dtpfechafin.Value.Month + (dias * 12)) - dtpfechainicio.Value.Month) + 1;
@@ -152,7 +152,9 @@ namespace HPReserger
                     if (mes > 12) mes = mes - 12;
                     CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value, (int)(dtpfechainicio.Value.Year + (dtpfechainicio.Value.Month + i - 1) / 12), mes, frmLogin.CodigoUsuario);
                 }
-                estados = 0; cargarlista();
+                estados = 0;
+                HPResergerFunciones.frmInformativo.MostrarDialog("Etapa Modificada con exito");
+                cargarlista();
             }
 
 

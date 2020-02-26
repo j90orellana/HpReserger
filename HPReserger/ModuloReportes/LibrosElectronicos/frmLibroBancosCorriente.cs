@@ -45,7 +45,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             CerrarPanelTxt();
             if (Configuraciones.ValidarSQLInyect(txtbuscuentas)) { msg("Codigo Malicioso Detectado"); return; }
             Cursor = Cursors.WaitCursor;
-            if (chklist.CheckedItems.Count == 0) msg("Seleccione una Empresa");
+            if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
             DateTime FechaAuxiliar;
             string ListadoEmpresas = "";
             if (cboperiodode.FechaInicioMes > cboperiodohasta.FechaInicioMes)

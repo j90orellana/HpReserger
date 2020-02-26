@@ -44,6 +44,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         DataTable TDatos;
         public void Generar()
         {
+            if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
             TDatos = CapaLogica.FormatoDiario5_3(cboperiodode.FechaInicioMes, (int)cboplancuenta.SelectedValue);
             dtgconten.DataSource = TDatos;
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";

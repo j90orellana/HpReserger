@@ -76,9 +76,9 @@ namespace HPReserger
         {
             btneditar.Enabled = !a;
             btnaceptar.Enabled = a;
-            gp1.Enabled = !a;
+            cboproyecto.Enabled = !a;
             txtimporte.Enabled = a;
-            dtgconten.Enabled = a;
+            dtgconten.ReadOnly = !a;
         }
         private void btneditar_Click(object sender, EventArgs e)
         {
@@ -180,6 +180,7 @@ namespace HPReserger
                     {
                         etapitas = new frmpresupuestoetapa();
                         etapitas.MdiParent = this.MdiParent;
+                        etapitas.Estado = dtgconten.ReadOnly;
                         //presudetale.MdiParent = this;
                         //presus.StartPosition = FormStartPosition.CenterParent;
                         // pbfotoempleado.Visible = false;

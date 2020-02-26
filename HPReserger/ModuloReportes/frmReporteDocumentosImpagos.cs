@@ -73,7 +73,7 @@ namespace HPReserger.ModuloReportes
         private void btnProcesar_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            if (chklist.CheckedItems.Count == 0) msg("Seleccione una Empresa");
+            if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
             DateTime FechaAuxiliar;
             string ListadoEmpresas = "";
             if (dtpfechaini.Value > dtpfechafin.Value)

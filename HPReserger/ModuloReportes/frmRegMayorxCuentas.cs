@@ -44,8 +44,8 @@ namespace HPReserger
         DateTime FechaFin;
         private void btngenerar_Click(object sender, EventArgs e)
         {
-            if (Configuraciones.ValidarSQLInyect(txtbuscuenta, txtbusGlosa, txtbusnrodoc, txtbusrazon, txtbusruc)) { msg("Se Encontro Codigo Malisioso en las Cajas de Textos"); return; }
-            Cursor = Cursors.WaitCursor;
+            if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
+            Cursor = Cursors.WaitCursor; if (Configuraciones.ValidarSQLInyect(txtbuscuenta, txtbusGlosa, txtbusnrodoc, txtbusrazon, txtbusruc)) { msg("Se Encontro Codigo Malisioso en las Cajas de Textos"); return; }
             FechaIni = dtpfechaini.Value;
             FechaFin = dtpfechafin.Value;
             DateTime FechaAux;

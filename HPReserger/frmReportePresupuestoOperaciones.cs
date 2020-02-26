@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using HpResergerUserControls;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmReportePresupuestoOperaciones : Form
+    public partial class frmReportePresupuestoOperaciones : FormGradient
     {
         public frmReportePresupuestoOperaciones()
         {
