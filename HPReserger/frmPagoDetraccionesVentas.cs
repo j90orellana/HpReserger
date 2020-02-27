@@ -395,6 +395,7 @@ namespace HPReserger
                     {
                         frmDetraccionVentaPagoBancoNacion frmpagoventa = new frmDetraccionVentaPagoBancoNacion();
                         frmpagoventa.IdEmpresa = (int)cboempresa.SelectedValue;
+                        frmpagoventa.NroCuentaBanco = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), '-');
                         ////datos de la tabla
                         //frmpagoventa.TDetracciones = new DataTable();
                         dtgconten.EndEdit();
@@ -580,11 +581,11 @@ namespace HPReserger
                 TablaExportar.Columns.RemoveAt(19);
                 TablaExportar.Columns.RemoveAt(18);
                 TablaExportar.Columns.RemoveAt(0);
-                
+
                 /////
                 ////Anterior               
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault,"", _NombreHoja, Celdas, 4, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "");
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, 4, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "");
                 // HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "");
 
                 if (backgroundWorker1.IsBusy) backgroundWorker1.CancelAsync();

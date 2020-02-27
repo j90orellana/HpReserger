@@ -210,7 +210,8 @@ namespace HPReserger
                 // pbfotoempleado.Visible = false;
                 presudetale.cabecera = int.Parse(dtgconten["idppto", dtgconten.CurrentCell.RowIndex].Value.ToString());
                 presudetale.empresa = int.Parse(dtgconten["id_empresa", dtgconten.CurrentCell.RowIndex].Value.ToString());
-                //                presudetale.ShowDialog();
+                presudetale.Text = $"Detalle del Presupuesto - {dtgconten[EMPRESA.Name, dtgconten.CurrentCell.RowIndex].Value.ToString()}";
+                //presudetale.ShowDialog();
                 presudetale.Icon = Icon;
                 presudetale.FormClosed += new FormClosedEventHandler(cerrarpresusdetalle);
                 presudetale.Show();

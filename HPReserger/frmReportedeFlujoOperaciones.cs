@@ -249,16 +249,19 @@ namespace HPReserger
         }
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            //MSG(int.Parse(cboproyecto.SelectedValue.ToString()) + " " + (int)cbopresupuestos.SelectedValue + "");
-            dtgconten.DataSource = CapaLogica.ListarFLujosCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()), (int)cbopresupuestos.SelectedValue);
-            System.Data.DataTable tablita = (System.Data.DataTable)dtgconten.DataSource;
-            dtgconten.DataSource = tablita;
-            dataGridView1.DataSource = tablita;
-            dtgconten.AutoGenerateColumns = false;
-            contando(dtgconten);
-            Sumatoria();
-            if (dtgconten.RowCount <= 0)
-                msg("No hay Etapas en el Proyecto");
+            if (cboproyecto.SelectedValue != null)
+            {
+                //MSG(int.Parse(cboproyecto.SelectedValue.ToString()) + " " + (int)cbopresupuestos.SelectedValue + "");
+                dtgconten.DataSource = CapaLogica.ListarFLujosCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()), (int)cbopresupuestos.SelectedValue);
+                System.Data.DataTable tablita = (System.Data.DataTable)dtgconten.DataSource;
+                dtgconten.DataSource = tablita;
+                dataGridView1.DataSource = tablita;
+                dtgconten.AutoGenerateColumns = false;
+                contando(dtgconten);
+                Sumatoria();
+                if (dtgconten.RowCount <= 0)
+                    msg("No hay Etapas en el Proyecto");
+            }
         }
     }
 }
