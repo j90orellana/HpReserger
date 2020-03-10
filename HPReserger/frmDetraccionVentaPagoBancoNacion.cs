@@ -187,19 +187,20 @@ namespace HPReserger
             Cabecera[2] = HPResergerFunciones.Utilitarios.AddCaracter(txtnombreempresa.Text, ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda);//35
             Cabecera[3] = txtlote.Text;//6
             Cabecera[4] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100(txttotalpago.Text, '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);//15
-            cabecera = string.Join("", Cabecera) + "\n";
+            cabecera = string.Join("", Cabecera) + $"{Environment.NewLine}";//aGREGAMOS EL SALTO DE LINEA QUE VARIA EL SISTEMA OPERATIVO
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 campo[0] = item.Cells[xtipoid.Name].Value.ToString();//1
                 campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xruc.Name].Value.ToString(), ' ', 11, HPResergerFunciones.Utilitarios.Direccion.izquierda);//11
                 //if ((int)item.Cells[xtipoid.Name].Value == 1)
-                campo[2] = (HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xrazon.Name].Value.ToString(), ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda)).ToUpper();//35
+                //AGREGAMOS LA VALIDACION QUITANDO LA Ñ QUE DABA PROBEMAS AL SUBIR EL TXT PARA VALIDAR
+                campo[2] = (HPResergerFunciones.Utilitarios.AddCaracter(HPResergerFunciones.Utilitarios.QuitarÑ(item.Cells[xrazon.Name].Value.ToString()), ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda)).ToUpper();//35
                 //else
                 //    campo[2] = HPResergerFunciones.Utilitarios.AddCaracter("", ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda);//35
                 campo[3] = "000000000";//9
                 campo[4] = txtcodbienserv.Text;
                 campo[5] = txtcodctacte.Text;
-                campo[6] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100((decimal.Parse(item.Cells[xdetraccion.Name].Value.ToString()) / 100).ToString(), '0', 16, HPResergerFunciones.Utilitarios.Direccion.derecha);
+                campo[6] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100((decimal.Parse(item.Cells[xdetraccion.Name].Value.ToString())).ToString(), '0', 16, HPResergerFunciones.Utilitarios.Direccion.derecha);
                 campo[7] = "1";
                 campo[8] = txtaño.Text;
                 campo[9] = txtmes.Text;

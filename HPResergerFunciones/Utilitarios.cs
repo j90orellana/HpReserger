@@ -33,6 +33,23 @@ namespace HPResergerFunciones
             cadena = Encoding.Unicode.GetString(Convert.FromBase64String(cadena), 0, Convert.FromBase64String(cadena).Length);
             return cadena;
         }
+        public static string QuitarÑ(string cadena)
+        {
+            string Regla = "ñÑ";
+            string Result = "";
+            foreach (char item in cadena)
+            {
+                if (Regla.Contains(item))
+                {
+                    Result += "n";
+                }
+                else
+                {
+                    Result += item;
+                }
+            }
+            return Result;
+        }
         public static void SacarPosicionActualFilaColumna(DataGridView dtg, out int fila, out int columna)
         {
             fila = dtg.CurrentRow.Index;
