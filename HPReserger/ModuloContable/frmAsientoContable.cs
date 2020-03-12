@@ -501,7 +501,8 @@ namespace HPReserger
         }
         public void msg2(DataGridView conteo)
         {
-            lblmsg2.Text = "Total Registros: " + conteo.RowCount;
+            string Contador = CapaLogica.ContarCantidadAsientos(_idempresa)["Total"].ToString();
+            lblmsg2.Text = $"Total Registros: {conteo.RowCount}/{Contador}";
         }
         private void Dtgconten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -821,6 +822,9 @@ namespace HPReserger
 
         private void dtgbusca_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            //System.Diagnostics.Stopwatch PruebaTime = new System.Diagnostics.Stopwatch();
+            //PruebaTime.Start();
+            //
             btnreversa.Enabled = false;
             _EsModificable = false;
             if (e.RowIndex >= 0)
@@ -909,6 +913,7 @@ namespace HPReserger
                     }
                 }
             }
+            //HpResergerUserControls.Configuraciones.TiempoEjecucionMsg(PruebaTime);
         }
         public void RevisarSihayDescuadre()
         {
@@ -1663,6 +1668,8 @@ namespace HPReserger
             int pos = 0;
             //if (dtgbusca.RowCount > 0) pos = dtgbusca.CurrentRow.Index;
             //Txtbusca.Text = "";
+            //System.Diagnostics.Stopwatch yquedice = new System.Diagnostics.Stopwatch();
+            //yquedice.Start();
             Txtbusca_TextChanged(sender, e);
             /////
             foreach (DataGridViewRow item in dtgbusca.Rows)
@@ -1671,6 +1678,8 @@ namespace HPReserger
             }
             if (dtgbusca.RowCount > pos)
                 dtgbusca.CurrentCell = dtgbusca[Codidasiento.Name, pos];
+            //HpResergerUserControls.Configuraciones.TiempoEjecucionMsg(yquedice);
+
         }
         private void dtgayuda3_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

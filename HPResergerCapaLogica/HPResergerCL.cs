@@ -418,6 +418,11 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarAsientosContables(busca, opcion, fechaini, fechafin, fecha, empresa);
         }
+        public DataRow ContarCantidadAsientos(int empresa)
+        {
+            //Columnas: Total
+            return cdOrdenPedido.ContarCantidadAsientos(empresa).Rows[0];
+        }
         public DataTable ListarAsientosFiltrados(int empresa, DateTime Fechaini, DateTime Fechafin, string cuo, string cuenta, string glosa, string suboperacion)
         {
             return cdOrdenPedido.ListarAsientosFiltrados(empresa, Fechaini, Fechafin, cuo, cuenta, glosa, suboperacion);

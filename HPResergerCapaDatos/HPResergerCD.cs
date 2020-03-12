@@ -1220,6 +1220,12 @@ namespace HPResergerCapaDatos
             object[] valor = { busca, opcion, fechaini, fechafin, fecha, empresa };
             return bd.DataTableFromProcedure("usp_listar_asientos", parametros, valor, null);
         }
+        public DataTable ContarCantidadAsientos(int empresa)
+        {
+            string[] parametros = { "@empresa" };
+            object[] valor = { empresa };
+            return bd.DataTableFromProcedure("usp_ContarCantidadAsientos", parametros, valor, null);
+        }
         public DataTable ListarAsientosFiltrados(int empresa, DateTime Fechaini, DateTime Fechafin, string cuo, string cuenta, string glosa, string suboperacion)
         {
             string[] parametros = { "@empresa", "@fechaini", "@fechafin", "@cuo", "@cuenta", "@glosa", "@SubOperacion" };
