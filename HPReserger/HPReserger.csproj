@@ -184,6 +184,12 @@
     <Compile Include="ModuloContable\frmAsientosRelacionados.Designer.cs">
       <DependentUpon>frmAsientosRelacionados.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloContable\frmAsientosApertura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmAsientosApertura.Designer.cs">
+      <DependentUpon>frmAsientosApertura.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmDiferenciaCambioMensual.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1855,6 +1861,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmAsientosRelacionados.resx">
       <DependentUpon>frmAsientosRelacionados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmAsientosApertura.resx">
+      <DependentUpon>frmAsientosApertura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmDiferenciaCambioMensual.resx">
       <DependentUpon>frmDiferenciaCambioMensual.cs</DependentUpon>

@@ -4466,6 +4466,28 @@ namespace HPReserger
         {
             frmRegistroVentasSimplificado = null;
         }
+        frmAsientosApertura frmASientosAperura;
+        private void asientosAperturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmASientosAperura == null)
+            {
+                frmASientosAperura = new frmAsientosApertura();
+                frmASientosAperura.MdiParent = this;
+                frmASientosAperura.Icon = ICono;
+                frmASientosAperura.FormClosed += new FormClosedEventHandler(CerrarfrmASientosAperura);
+                frmASientosAperura.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmASientosAperura.Activate();
+                ValidarVentanas(frmASientosAperura);
+            }
+        }
 
+        private void CerrarfrmASientosAperura(object sender, FormClosedEventArgs e)
+        {
+            frmASientosAperura = null;
+        }
     }
 }
