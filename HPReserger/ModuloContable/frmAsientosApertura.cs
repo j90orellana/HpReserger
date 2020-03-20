@@ -58,13 +58,7 @@ namespace HPReserger
                 cboproyecto.ValueMember = "id_proyecto";
                 //
                 NameEmpresa = cboempresa.SelectedText;
-                cboperiodo.ValueMember = "fechax";
-                cboperiodo.DisplayMember = "mesaño";
-                cboperiodo.DataSource = CapaLogica.Periodos(10, (int)cboempresa.SelectedValue);
             }
-            if (cboperiodo.Items.Count == 0)
-                //btnPreliminar.Enabled = true;
-                btnPreliminar.Enabled = false;
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -72,33 +66,28 @@ namespace HPReserger
             //aloja.Start();
             this.Cursor = Cursors.WaitCursor;
             btnAplicar.Enabled = false;
-            if (cboempresa.SelectedValue != null && cboperiodo.SelectedValue != null)
+            if (cboempresa.SelectedValue != null)
             {
-                DateTime FEcha = (DateTime)cboperiodo.SelectedValue;
-                DataTable DatosTC = CapaLogica.TipodeCambio(101, FEcha.Year, FEcha.Month, 1, 0, 0, null);
+                DateTime FechaAñoPasado = new DateTime(comboMesAño.FechaFinMes.Year - 1, 12, 31);
+                DateTime FechaAñoActual = new DateTime(comboMesAño.FechaFinMes.Year, 12, 31);
+                DataTable DatosTC = CapaLogica.TipodeCambio(101, FechaAñoPasado.Year, FechaAñoPasado.Month, 31, 0, 0, null);
                 if (DatosTC.Rows.Count > 0)
                 {
                     DataRow FilaTC = DatosTC.Rows[0];
-                    //if (GenerarAsientoSaldos && chkSaldos.Checked)
-                    btnAplicar.Enabled = true;
-                    //if (GenerarAsientoDocumentos && chkDocumentos.Checked)
-                    btnAplicar.Enabled = true;
                     //if (chkSaldos.Checked)
                     {
-                        dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = false;
-                        if (GenerarAsientoSaldos)
-                            dtgconten.DataSource = CapaLogica.CierreMensualSaldos((int)cboempresa.SelectedValue, new DateTime(FEcha.Year, 1, 1), ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2]);
+                        //dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = false;
+                        dtgconten.DataSource = CapaLogica.AperturaEjercicio((int)cboempresa.SelectedValue, FechaAñoActual);
+                        btnAplicar.Enabled = false;
+                        if (dtgconten.Rows.Count == 0)
+                        {
+                            dtgconten.DataSource = CapaLogica.AsientoApertura_CierrePeriodo((int)cboempresa.SelectedValue, FechaAñoPasado);
+                            btnAplicar.Enabled = true;
+                        }
                         else
-                            dtgconten.DataSource = CapaLogica.DiferenciadeCambioMensual((int)cboempresa.SelectedValue, FEcha, -30);
-                    }
-                    //if (chkDocumentos.Checked)
-                    {
-                        dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = true;
-                        if (GenerarAsientoDocumentos)
-                            dtgconten.DataSource = CapaLogica.CierreMensualDocumentos((int)cboempresa.SelectedValue, new DateTime(FEcha.Year, 1, 1), ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2], btnAplicar.Enabled);
-                        else
-                            dtgconten.DataSource = CapaLogica.DiferenciadeCambioMensual((int)cboempresa.SelectedValue, FEcha, -31);
-
+                        {
+                            VerificarsiYaexisteAsiento();
+                        }
                     }
                     lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
                     if (dtgconten.RowCount == 0)
@@ -120,15 +109,13 @@ namespace HPReserger
         private void btncerrar_Click(object sender, EventArgs e)
         {
             if (cboempresa.SelectedValue == null) { msg("Selecione una Empresa"); cboempresa.Focus(); return; }
-            if (cboperiodo.SelectedValue == null) { msg("Selecione un Periodo"); cboperiodo.Focus(); return; }
             if (cboproyecto.SelectedValue == null) { msg("Selecciones un Proyecto"); cboproyecto.Focus(); return; }
             if (dtgconten.RowCount == 0) { msg("No Hay filas para Generar el Asiento"); return; }
-            if (VerificarsiYaexisteAsiento()) { msg("Ya Existe un Asiento de Cierre en este Mes"); return; }
+            if (VerificarsiYaexisteAsiento()) { msg("Ya Existe un Asiento de Apertura para este Año"); return; }
             //Dinamica para el Cierre Mensual
-            DateTime FechaContable = Configuraciones.FinDelMes((DateTime)cboperiodo.SelectedValue);
+            DateTime FechaContable = new DateTime(comboMesAño.FechaFinMes.Year, 1, 1);
             ///////
             int numasiento = 0;
-            //int numasiento = GetNumAsiento(FechaContable);
             int PosFila = 0;
             int pkMoneda = 1;
             int pkMOnedaDetalle = 2;
@@ -138,15 +125,15 @@ namespace HPReserger
             int TipoIdProveedor = int.Parse(Proveedor[0]);
             string RucProveedor = Proveedor[1];
             string NameProveedor = "VARIOS";
-            string glosa = "CIERRE MENSUAL SALDOS AUTOMATIC.";
+            string glosa = $"APERTURA {comboMesAño.FechaFinMes.Year}";
             int IdUsuario = frmLogin.CodigoUsuario;
             int fkProyecto = (int)cboproyecto.SelectedValue;
             int TipoPago = 0;
             string NroPago = "";
             DateTime FechaCompensa = FechaContable;
             //Cuentas de Ganacia y perdida
-            string CuentaGanacia = CapaLogica.BuscarCuentas("%ganancia%cambio%", 5).Rows[0]["idcuenta"].ToString();
-            string CuentaPerdida = CapaLogica.BuscarCuentas("9%perdida%cambio%", 5).Rows[0]["idcuenta"].ToString();
+            ////string CuentaGanacia = CapaLogica.BuscarCuentas("%ganancia%cambio%", 5).Rows[0]["idcuenta"].ToString();
+            ////string CuentaPerdida = CapaLogica.BuscarCuentas("9%perdida%cambio%", 5).Rows[0]["idcuenta"].ToString();
             string mensaje = "Se Agrego los Asientos: ";
             bool var1, var2, var3, var4;
             var1 = var2 = var3 = var4 = false;
@@ -156,10 +143,7 @@ namespace HPReserger
             decimal SumatoriaMN = 0;
             decimal TC = 0;
             decimal ValorDifCambio = 0;
-
-            Dinamica = -31;
-            glosa = "DC DEVENG. DOCUM. AUTOM.";
-            Glosa = $"{FechaContable.ToString("yyyy/MM")}-DC DEVENG. DOCUM AUTOM.";
+            Dinamica = -50;
             //msg("Falta la dinamica del asiento");
             //return;
 
@@ -167,31 +151,44 @@ namespace HPReserger
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
-                int idComprobante = (int)item.Cells[xIdComprobante.Name].Value;
-                string NumDoc = item.Cells[xNumDoc.Name].Value.ToString();
-                int TipoIdProv = (int)item.Cells[xTipoidPro.Name].Value;
-                string Proveedores = item.Cells[xProveedor.Name].Value.ToString();
-                string NameProveedores = item.Cells[xNameProveedor.Name].Value.ToString();
+                int idComprobante = 0;// (int)item.Cells[xIdComprobante.Name].Value;
+                string NumDoc = "0";// item.Cells[xNumDoc.Name].Value.ToString();
+                int TipoIdProv = 0;// (int)item.Cells[xTipoidPro.Name].Value;
+                string Proveedores = "99999";// item.Cells[xProveedor.Name].Value.ToString();
+                string NameProveedores = "VARIOS";// item.Cells[xNameProveedor.Name].Value.ToString();
 
-                decimal MontoDolares = (decimal)item.Cells[xMontoDolares.Name].Value;
-                decimal MontoSoles = (decimal)item.Cells[xMontoSoles.Name].Value;
-                decimal FinMes = (decimal)item.Cells[xFinMesSoles.Name].Value;
-                decimal difcambio = (decimal)item.Cells[xDifCambio.Name].Value;
+                decimal SumaDebe = (decimal)item.Cells[xSumaDebe.Name].Value;
+                decimal SumaHaber = (decimal)item.Cells[xSumaHaber.Name].Value;
+                decimal SaldoDeudor = (decimal)item.Cells[xSaldoDeudor.Name].Value;
+                decimal SaldoAcreedor = (decimal)item.Cells[xSaldoAcreedor.Name].Value;
                 decimal tccompra = (decimal)item.Cells[xtcvompra.Name].Value;
                 decimal tcventa = (decimal)item.Cells[xtcVenta.Name].Value;
-
+                int idMoneda = (int)item.Cells[xMon.Name].Value;
                 string naturaleza = item.Cells[xfkNaturaleza.Name].Value.ToString();
-                CapaLogica.DiferenciadeCambioMensual(1, (int)cboempresa.SelectedValue, FechaContable, Dinamica, CuentaContable, idComprobante, NumDoc, TipoIdProv, Proveedores, NameProveedores, MontoDolares, MontoSoles, FinMes,
-                    difcambio, tccompra, tcventa, naturaleza);
+                //Inserto en la Tabla Los valores delos SAldos Contables para la apertura del año siguiente
+                CapaLogica.AperturaEjercicio(1, (int)cboempresa.SelectedValue, FechaContable, CuentaContable, idComprobante, NumDoc, TipoIdProv, Proveedores, NameProveedores, SumaDebe, SumaHaber, SaldoDeudor,
+                    SaldoAcreedor, tccompra, tcventa, idMoneda, naturaleza);
             }
+            //Listado de DataViews
+            DataView DataDebeSoles = ((DataTable)dtgconten.DataSource).Copy().AsDataView();
+            DataDebeSoles.RowFilter = "moneda = 1 and naturaleza  = 'D'";
+            DataView DataDebeDolares = ((DataTable)dtgconten.DataSource).Copy().AsDataView();
+            DataDebeDolares.RowFilter = "moneda = 2 and naturaleza  = 'D'";
+            DataView DataAcreedorSoles = ((DataTable)dtgconten.DataSource).Copy().AsDataView();
+            DataAcreedorSoles.RowFilter = "moneda = 1 and naturaleza  = 'H'";
+            DataView DataAcreedorDolares = ((DataTable)dtgconten.DataSource).Copy().AsDataView();
+            DataAcreedorDolares.RowFilter = "moneda = 2 and naturaleza  = 'H'";
+            //fin de los filtros para avanzar a los asientos
             //fin grabacion
+            //return;
+            string CuentaGenerica = "";
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "D" && (decimal)item.Cells[xDifCambio.Name].Value > 0)
+                if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "D" && (decimal)item.Cells[xSaldoDeudor.Name].Value > 0)
                 {
                     var1 = true;
                     TC = (decimal)item.Cells[xtcvompra.Name].Value;
-                    ValorDifCambio = (decimal)item.Cells[xDifCambio.Name].Value;
+                    ValorDifCambio = (decimal)item.Cells[xSaldoDeudor.Name].Value;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                     SumatoriaMN += ValorDifCambio;
                     //cabecera Debe
@@ -199,8 +196,8 @@ namespace HPReserger
                       TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     //if (chkSaldos.Checked)
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                        NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     //if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -219,11 +216,11 @@ namespace HPReserger
             {
                 Proveedor = "0-9999".Split('-'); TipoIdProveedor = int.Parse(Proveedor[0]); RucProveedor = Proveedor[1]; NameProveedor = "VARIOS";
                 //cabecera Haber
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGanacia, 0, SumatoriaMN,
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGenerica, 0, SumatoriaMN,
                     TC, fkProyecto, 0, Cuo, pkMoneda, $"{Glosa}", FechaContable, Dinamica);
                 //Detalle del asiento del Haber
-                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGanacia, fkProyecto, TipoIdProveedor, RucProveedor,
-                NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaGanacia}-{glosa}", FechaContable, IdUsuario, "");
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGenerica, fkProyecto, TipoIdProveedor, RucProveedor,
+                NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaGenerica}-{glosa}", FechaContable, IdUsuario, "");
                 mensaje += $" Cuo: {Cuo}";
             }
             //Primera Fase Pasivo = 'H' and Ganacias (+)
@@ -232,11 +229,11 @@ namespace HPReserger
             SumatoriaMN = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "H" && (decimal)item.Cells[xDifCambio.Name].Value < 0)
+                if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "H" && (decimal)item.Cells[xSumaDebe.Name].Value < 0)
                 {
                     var2 = true;
                     TC = (decimal)item.Cells[xtcVenta.Name].Value;
-                    ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
+                    ValorDifCambio = Math.Abs((decimal)item.Cells[xSumaDebe.Name].Value);
                     SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                     //cabecera Debe
@@ -244,8 +241,8 @@ namespace HPReserger
                       TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     //if (chkSaldos.Checked)
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                        NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     //if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -264,11 +261,11 @@ namespace HPReserger
             {
                 Proveedor = "0-9999".Split('-'); TipoIdProveedor = int.Parse(Proveedor[0]); RucProveedor = Proveedor[1]; NameProveedor = "VARIOS";
                 //cabecera Haber
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaPerdida, SumatoriaMN, 0,
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGenerica, SumatoriaMN, 0,
                   TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                 //Detalle del asiento del Haber
-                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaPerdida, fkProyecto, TipoIdProveedor, RucProveedor,
-                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaPerdida}-{glosa}", FechaContable, IdUsuario, "");
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGenerica, fkProyecto, TipoIdProveedor, RucProveedor,
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaGenerica}-{glosa}", FechaContable, IdUsuario, "");
                 mensaje += $" Cuo: {Cuo}";
             }
             //Primera Fase Activos = 'D' and Perdidas (-)
@@ -277,11 +274,11 @@ namespace HPReserger
             SumatoriaMN = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "D" && (decimal)item.Cells[xDifCambio.Name].Value < 0)
+                if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "D" && (decimal)item.Cells[xSumaDebe.Name].Value < 0)
                 {
                     var3 = true;
                     TC = (decimal)item.Cells[xtcvompra.Name].Value;
-                    ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
+                    ValorDifCambio = Math.Abs((decimal)item.Cells[xSumaDebe.Name].Value);
                     SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                     //cabecera Debe
@@ -289,8 +286,8 @@ namespace HPReserger
                       TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     //if (chkSaldos.Checked)
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                        NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     //if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -309,11 +306,11 @@ namespace HPReserger
             {
                 Proveedor = "0-9999".Split('-'); TipoIdProveedor = int.Parse(Proveedor[0]); RucProveedor = Proveedor[1]; NameProveedor = "VARIOS";
                 //cabecera Haber
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaPerdida, SumatoriaMN, 0,
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGenerica, SumatoriaMN, 0,
                   TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                 //Detalle del asiento del Haber
-                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaPerdida, fkProyecto, TipoIdProveedor, RucProveedor,
-                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaPerdida}-{glosa}", FechaContable, IdUsuario, "");
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGenerica, fkProyecto, TipoIdProveedor, RucProveedor,
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaGenerica}-{glosa}", FechaContable, IdUsuario, "");
                 mensaje += $" Cuo: {Cuo}";
             }
             //Primera Fase Pasivo = 'H' and Perdidas (-)
@@ -322,11 +319,11 @@ namespace HPReserger
             SumatoriaMN = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "H" && (decimal)item.Cells[xDifCambio.Name].Value > 0)
+                if (item.Cells[xfkNaturaleza.Name].Value.ToString() == "H" && (decimal)item.Cells[xSumaDebe.Name].Value > 0)
                 {
                     var4 = true;
                     TC = (decimal)item.Cells[xtcVenta.Name].Value;
-                    ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
+                    ValorDifCambio = Math.Abs((decimal)item.Cells[xSumaDebe.Name].Value);
                     SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                     //cabecera Debe
@@ -334,8 +331,8 @@ namespace HPReserger
                       TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     //if (chkSaldos.Checked)
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", Glosa, FechaContable, IdUsuario, "");
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                        NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", Glosa, FechaContable, IdUsuario, "");
                     //if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -354,20 +351,20 @@ namespace HPReserger
             {
                 Proveedor = "0-9999".Split('-'); TipoIdProveedor = int.Parse(Proveedor[0]); RucProveedor = Proveedor[1]; NameProveedor = "VARIOS";
                 //cabecera Haber
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGanacia, 0, SumatoriaMN,
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaGenerica, 0, SumatoriaMN,
                   TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                 //Detalle del asiento del Haber
-                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGanacia, fkProyecto, TipoIdProveedor, RucProveedor,
-                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaGanacia}-{glosa}", FechaContable, IdUsuario, "");
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaGenerica, fkProyecto, TipoIdProveedor, RucProveedor,
+                    NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, SumatoriaMN, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaGenerica}-{glosa}", FechaContable, IdUsuario, "");
                 mensaje += $" Cuo: {Cuo}";
             }
             ////////
             msgOK(mensaje);
             btnAplicar.Enabled = false;
-            GenerarAsientoDocumentos = GenerarAsientoSaldos = false;
+            GenerarAsientoDocumentos = GenerarAsientoAPertura = false;
             cboperiodo_SelectedIndexChanged(sender, e);
         }
-        private Boolean GenerarAsientoSaldos;
+        private Boolean GenerarAsientoAPertura;
         private Boolean GenerarAsientoDocumentos;
         public int GetNumAsiento(DateTime FechaContable)
         {
@@ -384,37 +381,26 @@ namespace HPReserger
         }
         private void cboperiodo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboperiodo.SelectedValue != null && cboempresa.SelectedValue != null)
+            if (cboempresa.SelectedValue != null)
             {
                 btnAplicar.Enabled = false;
+                DateTime Fecha = new DateTime(comboMesAño.FechaFinMes.Year, 1, 31);
                 btnPreliminar.Enabled = true;
-                GenerarAsientoSaldos = GenerarAsientoDocumentos = false;
+                GenerarAsientoAPertura = false;
                 //lbl1.Text = "Sin Procesar;";
                 //lbl2.Text = "Sin Procesar;";
                 //Verificamos si ya existe el Asiento;
-                DataTable TDatosSaldos = CapaLogica.CierreMensualDinamicaYaExiste(-30, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
-                DataTable TDatosDocumentos = CapaLogica.CierreMensualDinamicaYaExiste(-31, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
-                if (TDatosSaldos.Rows.Count > 0)
+                DataTable TDatos = CapaLogica.CierreMensualDinamicaYaExiste(-50, Fecha, (int)cboempresa.SelectedValue);
+                // -50 ASient0 de APertura
+                if (TDatos.Rows.Count > 0)
                 {
-                    GenerarAsientoSaldos = false;
-                    //lbl1.Text = "Procesado; con Cuo:";
-                    foreach (DataRow item in TDatosSaldos.Rows)
+                    GenerarAsientoAPertura = false;
+                    lbl1.Text = "Procesado; con Cuo:";
+                    foreach (DataRow item in TDatos.Rows)
                     {
-                        //lbl1.Text += $"{item["cod_Asiento_Contable"].ToString()}; ";
+                        lbl1.Text += $"{item["cod_Asiento_Contable"].ToString()}; ";
                     }
                 }
-                else GenerarAsientoSaldos = true;
-                if (TDatosDocumentos.Rows.Count > 0)
-                {
-                    GenerarAsientoDocumentos = false;
-                    //lbl2.Text = "Procesado; con Cuo:";
-                    foreach (DataRow item in TDatosDocumentos.Rows)
-                    {
-                        //lbl2.Text += $"{item["cod_Asiento_Contable"].ToString()}; ";
-                    }
-                }
-                else GenerarAsientoDocumentos = true;
-
             }
             else
             {
@@ -433,11 +419,10 @@ namespace HPReserger
         public Boolean VerificarsiYaexisteAsiento()
         {
             //Verificamos si ya existe el Asiento;
+            DateTime Fecha = new DateTime(comboMesAño.FechaFinMes.Year, 12, 31);
             DataTable TDatos = new DataTable();
             //if (chkSaldos.Checked)
-                TDatos = CapaLogica.CierreMensualDinamicaYaExiste(-30, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
-            //else if (chkDocumentos.Checked)
-                TDatos = CapaLogica.CierreMensualDinamicaYaExiste(-31, (DateTime)cboperiodo.SelectedValue, (int)cboempresa.SelectedValue);
+            TDatos = CapaLogica.CierreMensualDinamicaYaExiste(-50, new DateTime(Fecha.Year, 1, 1), (int)cboempresa.SelectedValue);
             if (TDatos.Rows.Count > 0)
             {
                 DataRow Filita = TDatos.Rows[0];
@@ -458,18 +443,18 @@ namespace HPReserger
                 int[] _ColumnasAutoajustar = new int[] { 2, 3, 4, 5 };
                 //if (chkSaldos.Checked)
                 {
-                    _NombreHoja = $"Cierre Mensual Saldo {NameEmpresa}".ToUpper();
-                    _Cabecera = "Cierre Mensual por Saldos";
+                    _NombreHoja = $"Asiento  Apertura {NameEmpresa}".ToUpper();
+                    _Cabecera = "Asiento Apertura";
                     _NColumna = "H";
                     _ColumnasAutoajustar = new int[] { 2, 3, 4, 5 };
                 }
                 //else if (chkDocumentos.Checked)
-                {
-                    _NombreHoja = $"Cierre Mensual Documentos {NameEmpresa}".ToUpper();
-                    _Cabecera = "Cierre Mensual por Documentos";
-                    _NColumna = "N";
-                    _ColumnasAutoajustar = new int[] { 2, 3, 4, 5, 7, 6 };
-                }
+                //{
+                //    _NombreHoja = $"Cierre Mensual Documentos {NameEmpresa}".ToUpper();
+                //    _Cabecera = "Cierre Mensual por Documentos";
+                //    _NColumna = "N";
+                //    _ColumnasAutoajustar = new int[] { 2, 3, 4, 5, 7, 6 };
+                //}
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
@@ -484,14 +469,14 @@ namespace HPReserger
                 DataTable TableResuk = new DataTable();
                 TableResuk = ((DataTable)dtgconten.DataSource).Copy();
                 //if (chkSaldos.Checked)
-                {
-                    TableResuk.Columns.Remove(TableResuk.Columns[xIdComprobante.DataPropertyName]);
-                    TableResuk.Columns.Remove(TableResuk.Columns[xNameComprobante.DataPropertyName]);
-                    TableResuk.Columns.Remove(TableResuk.Columns[xNumDoc.DataPropertyName]);
-                    TableResuk.Columns.Remove(TableResuk.Columns[xProveedor.DataPropertyName]);
-                    TableResuk.Columns.Remove(TableResuk.Columns[xNameProveedor.DataPropertyName]);
-                    TableResuk.Columns.Remove(TableResuk.Columns[xTipoidPro.DataPropertyName]);
-                }
+                //{
+                //    TableResuk.Columns.Remove(TableResuk.Columns[xIdComprobante.DataPropertyName]);
+                //    TableResuk.Columns.Remove(TableResuk.Columns[xNameComprobante.DataPropertyName]);
+                //    TableResuk.Columns.Remove(TableResuk.Columns[xNumDoc.DataPropertyName]);
+                //    TableResuk.Columns.Remove(TableResuk.Columns[xProveedor.DataPropertyName]);
+                //    TableResuk.Columns.Remove(TableResuk.Columns[xNameProveedor.DataPropertyName]);
+                //    TableResuk.Columns.Remove(TableResuk.Columns[xTipoidPro.DataPropertyName]);
+                //}
                 HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResuk, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, _ColumnasAutoajustar, "");
             }
             else msg("No hay Registros en la Grilla");
@@ -513,7 +498,7 @@ namespace HPReserger
                 dtgconten.SuspendLayout();
                 frmpro = new frmProcesando();
                 frmpro.Show(); Cursor = Cursors.WaitCursor;
-                NameEmpresa = $"{cboempresa.Text} {cboperiodo.Text}";
+                NameEmpresa = $"{cboempresa.Text} {comboMesAño.FechaInicioMes.Year}";
                 if (!backgroundWorker1.IsBusy)
                 {
                     backgroundWorker1.RunWorkerAsync();
@@ -534,6 +519,11 @@ namespace HPReserger
         private void chkDocumentos_CheckedChanged(object sender, EventArgs e)
         {
             btnAplicar.Enabled = false;
+        }
+
+        private void comboMesAño_CambioFechas(object sender, EventArgs e)
+        {
+            btnPreliminar.Enabled = true;
         }
     }
 }

@@ -2636,9 +2636,24 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.CierreMensualDinamicaYaExiste(dinamica, FechaPeriodo, empresa);
         }
+        public DataTable AsientoApertura_CierrePeriodo(int empresa, DateTime Fecha)
+        {
+            return cdOrdenPedido.AsientoApertura_CierrePeriodo(empresa, 7, Fecha);
+        }
         public DataTable DiferenciadeCambioMensual(int @opcion, int @empresa, DateTime @periodo, int @tipo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @montodolares, decimal @montosoles, decimal @finmesoles, decimal @difcambio, decimal @tccompra, decimal @tcventa, string @naturaleza)
         {
             return cdOrdenPedido.DiferenciadeCambioMensual(@opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza);
+        }
+        public DataTable AperturaEjercicio(int @opcion, int @empresa, DateTime @periodo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @SumaDebe, decimal @SumaHaber, decimal @SaldoDeudor, decimal @SAldoAcreedor, decimal @tccompra, decimal @tcventa, int @moneda, string @naturaleza)
+        {
+            return cdOrdenPedido.AperturaEjercicio(@opcion, @empresa, @periodo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, SumaDebe, SumaHaber, SaldoDeudor, SAldoAcreedor, @tccompra, @tcventa, moneda, @naturaleza);
+        }
+        public DataTable AperturaEjercicio(int @empresa, DateTime @periodo)
+        {
+            int ValorCero = 0;
+            decimal ValorDecimal = 0m;
+            string CampoVacio = "";
+            return cdOrdenPedido.AperturaEjercicio(0, @empresa, @periodo, CampoVacio, ValorCero, CampoVacio, ValorCero, CampoVacio, CampoVacio, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, 1, CampoVacio);
         }
         public DataTable DiferenciadeCambioMensual(int @empresa, DateTime @periodo, int @tipo)
         {
