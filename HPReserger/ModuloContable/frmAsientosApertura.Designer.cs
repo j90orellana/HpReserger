@@ -267,7 +267,7 @@
             // 
             // comboMesAño
             // 
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 3, 19, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 3, 23, 0, 0, 0, 0);
             this.comboMesAño.FechaFinMes = new System.DateTime(2020, 3, 31, 0, 0, 0, 0);
             this.comboMesAño.FechaInicioMes = new System.DateTime(2020, 3, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(19, 38);
@@ -306,6 +306,7 @@
             this.xdescripcioncuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.xdescripcioncuenta.DataPropertyName = "descripcion";
             this.xdescripcioncuenta.HeaderText = "Descripción Cuenta";
+            this.xdescripcioncuenta.MinimumWidth = 70;
             this.xdescripcioncuenta.Name = "xdescripcioncuenta";
             this.xdescripcioncuenta.ReadOnly = true;
             // 
@@ -313,6 +314,7 @@
             // 
             this.xIdComprobante.DataPropertyName = "IdComprobante";
             this.xIdComprobante.HeaderText = "Compro";
+            this.xIdComprobante.MinimumWidth = 50;
             this.xIdComprobante.Name = "xIdComprobante";
             this.xIdComprobante.ReadOnly = true;
             this.xIdComprobante.Visible = false;
@@ -326,7 +328,6 @@
             this.xNameComprobante.Name = "xNameComprobante";
             this.xNameComprobante.ReadOnly = true;
             this.xNameComprobante.ToolTipText = "Tipo Documento";
-            this.xNameComprobante.Visible = false;
             this.xNameComprobante.Width = 40;
             // 
             // xNumDoc
@@ -337,7 +338,6 @@
             this.xNumDoc.Name = "xNumDoc";
             this.xNumDoc.ReadOnly = true;
             this.xNumDoc.ToolTipText = "Número Comprobante";
-            this.xNumDoc.Visible = false;
             this.xNumDoc.Width = 75;
             // 
             // xProveedor
@@ -347,7 +347,6 @@
             this.xProveedor.HeaderText = "Ruc";
             this.xProveedor.Name = "xProveedor";
             this.xProveedor.ReadOnly = true;
-            this.xProveedor.Visible = false;
             this.xProveedor.Width = 50;
             // 
             // xTipoidPro
@@ -362,9 +361,9 @@
             // 
             this.xNameProveedor.DataPropertyName = "NombreProveedor";
             this.xNameProveedor.HeaderText = "Proveedor";
+            this.xNameProveedor.MinimumWidth = 60;
             this.xNameProveedor.Name = "xNameProveedor";
             this.xNameProveedor.ReadOnly = true;
-            this.xNameProveedor.Visible = false;
             // 
             // xSumaDebe
             // 
