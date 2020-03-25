@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsientosApertura));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,20 +38,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsientosApertura));
             this.label1 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.btnPreliminar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.btnAplicar = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.cboproyecto = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.comboMesAño = new HpResergerUserControls.ComboMesAño();
-            this.lbl1 = new System.Windows.Forms.Label();
             this.xcuentacontable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xdescripcioncuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xIdComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +58,18 @@
             this.xMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfkNaturaleza = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPreliminar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.btnAplicar = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.cboproyecto = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.comboMesAño = new HpResergerUserControls.ComboMesAño();
+            this.lbl1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,146 +148,6 @@
             this.dtgconten.Size = new System.Drawing.Size(857, 394);
             this.dtgconten.TabIndex = 4;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellContentClick);
-            // 
-            // btnPreliminar
-            // 
-            this.btnPreliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPreliminar.Enabled = false;
-            this.btnPreliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnPreliminar.Image")));
-            this.btnPreliminar.Location = new System.Drawing.Point(788, 55);
-            this.btnPreliminar.Name = "btnPreliminar";
-            this.btnPreliminar.Size = new System.Drawing.Size(84, 23);
-            this.btnPreliminar.TabIndex = 41;
-            this.btnPreliminar.Text = "Preliminar";
-            this.btnPreliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPreliminar.UseVisualStyleBackColor = true;
-            this.btnPreliminar.EnabledChanged += new System.EventHandler(this.btnPreliminar_EnabledChanged);
-            this.btnPreliminar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(797, 481);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 40;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // cboempresa
-            // 
-            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(65, 17);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(394, 21);
-            this.cboempresa.TabIndex = 42;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            // 
-            // btnAplicar
-            // 
-            this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAplicar.Image = ((System.Drawing.Image)(resources.GetObject("btnAplicar.Image")));
-            this.btnAplicar.Location = new System.Drawing.Point(681, 481);
-            this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(110, 23);
-            this.btnAplicar.TabIndex = 43;
-            this.btnAplicar.Text = "Aplicar Asiento";
-            this.btnAplicar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAplicar.UseVisualStyleBackColor = true;
-            this.btnAplicar.Click += new System.EventHandler(this.btncerrar_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(405, 481);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(75, 23);
-            this.btnExcel.TabIndex = 43;
-            this.btnExcel.Text = "Excel";
-            this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(248, 13);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "Resultado del Calculo de Asientos de Apertura";
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Location = new System.Drawing.Point(15, 486);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(110, 13);
-            this.lblmsg.TabIndex = 72;
-            this.lblmsg.Text = "Total de Registros: 0";
-            // 
-            // cboproyecto
-            // 
-            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboproyecto.FormattingEnabled = true;
-            this.cboproyecto.Location = new System.Drawing.Point(519, 18);
-            this.cboproyecto.Name = "cboproyecto";
-            this.cboproyecto.Size = new System.Drawing.Size(253, 21);
-            this.cboproyecto.TabIndex = 73;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(465, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(54, 13);
-            this.label16.TabIndex = 74;
-            this.label16.Text = "Proyecto:";
-            // 
-            // comboMesAño
-            // 
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 3, 23, 0, 0, 0, 0);
-            this.comboMesAño.FechaFinMes = new System.DateTime(2020, 3, 31, 0, 0, 0, 0);
-            this.comboMesAño.FechaInicioMes = new System.DateTime(2020, 3, 1, 0, 0, 0, 0);
-            this.comboMesAño.Location = new System.Drawing.Point(19, 38);
-            this.comboMesAño.Name = "comboMesAño";
-            this.comboMesAño.Size = new System.Drawing.Size(100, 26);
-            this.comboMesAño.TabIndex = 75;
-            this.comboMesAño.VerAño = true;
-            this.comboMesAño.VerMes = false;
-            this.comboMesAño.CambioFechas += new System.EventHandler(this.comboMesAño_CambioFechas);
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.BackColor = System.Drawing.Color.Transparent;
-            this.lbl1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl1.Location = new System.Drawing.Point(119, 45);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(0, 13);
-            this.lbl1.TabIndex = 76;
             // 
             // xcuentacontable
             // 
@@ -470,6 +330,147 @@
             this.xfkNaturaleza.Name = "xfkNaturaleza";
             this.xfkNaturaleza.ReadOnly = true;
             this.xfkNaturaleza.Width = 50;
+            // 
+            // btnPreliminar
+            // 
+            this.btnPreliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPreliminar.Enabled = false;
+            this.btnPreliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnPreliminar.Image")));
+            this.btnPreliminar.Location = new System.Drawing.Point(788, 55);
+            this.btnPreliminar.Name = "btnPreliminar";
+            this.btnPreliminar.Size = new System.Drawing.Size(84, 23);
+            this.btnPreliminar.TabIndex = 41;
+            this.btnPreliminar.Text = "Preliminar";
+            this.btnPreliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPreliminar.UseVisualStyleBackColor = true;
+            this.btnPreliminar.EnabledChanged += new System.EventHandler(this.btnPreliminar_EnabledChanged);
+            this.btnPreliminar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(797, 481);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 40;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // cboempresa
+            // 
+            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(65, 17);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(394, 21);
+            this.cboempresa.TabIndex = 42;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            // 
+            // btnAplicar
+            // 
+            this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAplicar.Image = ((System.Drawing.Image)(resources.GetObject("btnAplicar.Image")));
+            this.btnAplicar.Location = new System.Drawing.Point(681, 481);
+            this.btnAplicar.Name = "btnAplicar";
+            this.btnAplicar.Size = new System.Drawing.Size(110, 23);
+            this.btnAplicar.TabIndex = 43;
+            this.btnAplicar.Text = "Aplicar Asiento";
+            this.btnAplicar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAplicar.UseVisualStyleBackColor = true;
+            this.btnAplicar.Click += new System.EventHandler(this.btncerrar_Click);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
+            this.btnExcel.Location = new System.Drawing.Point(405, 481);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnExcel.TabIndex = 43;
+            this.btnExcel.Text = "Excel";
+            this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(248, 13);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "Resultado del Calculo de Asientos de Apertura";
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Location = new System.Drawing.Point(15, 486);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(110, 13);
+            this.lblmsg.TabIndex = 72;
+            this.lblmsg.Text = "Total de Registros: 0";
+            // 
+            // cboproyecto
+            // 
+            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.Location = new System.Drawing.Point(519, 18);
+            this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.Size = new System.Drawing.Size(253, 21);
+            this.cboproyecto.TabIndex = 73;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(465, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 13);
+            this.label16.TabIndex = 74;
+            this.label16.Text = "Proyecto:";
+            // 
+            // comboMesAño
+            // 
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 3, 25, 0, 0, 0, 0);
+            this.comboMesAño.FechaFinMes = new System.DateTime(2020, 3, 31, 0, 0, 0, 0);
+            this.comboMesAño.FechaInicioMes = new System.DateTime(2020, 3, 1, 0, 0, 0, 0);
+            this.comboMesAño.Location = new System.Drawing.Point(19, 38);
+            this.comboMesAño.Name = "comboMesAño";
+            this.comboMesAño.Size = new System.Drawing.Size(100, 26);
+            this.comboMesAño.TabIndex = 75;
+            this.comboMesAño.VerAño = true;
+            this.comboMesAño.VerMes = false;
+            this.comboMesAño.CambioFechas += new System.EventHandler(this.comboMesAño_CambioFechas);
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.BackColor = System.Drawing.Color.Transparent;
+            this.lbl1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl1.Location = new System.Drawing.Point(119, 45);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(0, 13);
+            this.lbl1.TabIndex = 76;
             // 
             // frmAsientosApertura
             // 
