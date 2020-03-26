@@ -79,6 +79,7 @@ namespace HPReserger
                         //dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = false;
                         DataTable Tdatos = CapaLogica.AperturaEjercicio((int)cboempresa.SelectedValue, FechaAñoActual);
                         btnAplicar.Enabled = false;
+                        lbl1.Text = "";
                         if (Tdatos.Rows.Count == 0)
                         {
                             dtgconten.DataSource = CapaLogica.AsientoApertura_CierrePeriodo((int)cboempresa.SelectedValue, FechaAñoPasado);
@@ -187,7 +188,7 @@ namespace HPReserger
             //definiciones
             //debe = Tipo Cambio Compra
             //Haber = TIpo de Cambio Venta
-            string CuentaGenerica = "4971101";
+            string CuentaGenerica = "4971101";// costo diferido
             //DEBE SOLES
             DataTable TTable = DataDebeSoles.ToTable();
             foreach (DataRow item in TTable.Rows)

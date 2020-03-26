@@ -163,6 +163,7 @@
             this.diferenciaDeCambioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.tipoDeCambioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asientosAperturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitudEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postulanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -292,7 +293,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.asientosAperturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1594,6 +1594,14 @@
             this.tipoDeCambioToolStripMenuItem.Text = "Tipo de Cambio";
             this.tipoDeCambioToolStripMenuItem.Click += new System.EventHandler(this.tipoDeCambioToolStripMenuItem_Click);
             // 
+            // asientosAperturaToolStripMenuItem
+            // 
+            this.asientosAperturaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("asientosAperturaToolStripMenuItem.Image")));
+            this.asientosAperturaToolStripMenuItem.Name = "asientosAperturaToolStripMenuItem";
+            this.asientosAperturaToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.asientosAperturaToolStripMenuItem.Text = "Asiento Apertura";
+            this.asientosAperturaToolStripMenuItem.Click += new System.EventHandler(this.asientosAperturaToolStripMenuItem_Click);
+            // 
             // planillaToolStripMenuItem
             // 
             this.planillaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2835,13 +2843,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // asientosAperturaToolStripMenuItem
-            // 
-            this.asientosAperturaToolStripMenuItem.Name = "asientosAperturaToolStripMenuItem";
-            this.asientosAperturaToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.asientosAperturaToolStripMenuItem.Text = "Asientos Apertura";
-            this.asientosAperturaToolStripMenuItem.Click += new System.EventHandler(this.asientosAperturaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
