@@ -41,7 +41,7 @@ namespace HPReserger
             labelAmarillo.ForeColor = Color.Chocolate;
             //labelAmarillo.ForeColor = Color.FromArgb(247, 125, 0);
             labelCuadre.ForeColor = Configuraciones.ColorBien;
-            Cargarmoneda();
+            Cargarmoneda();    
             estado = 100; fechacheck = 0;
             tipobusca = 1;
             RellenarEstado(cboestado);
