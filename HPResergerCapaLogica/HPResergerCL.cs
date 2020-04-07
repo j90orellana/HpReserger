@@ -2640,6 +2640,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.AsientoApertura_CierrePeriodo(empresa, 7, Fecha);
         }
+        public DataTable ResultadoCierre(int empresa, DateTime Fecha)
+        {
+            return cdOrdenPedido.ResultadoCierre(empresa, Fecha);
+        }
         public DataTable DiferenciadeCambioMensual(int @opcion, int @empresa, DateTime @periodo, int @tipo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @montodolares, decimal @montosoles, decimal @finmesoles, decimal @difcambio, decimal @tccompra, decimal @tcventa, string @naturaleza)
         {
             return cdOrdenPedido.DiferenciadeCambioMensual(@opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza);

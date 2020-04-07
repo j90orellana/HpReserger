@@ -20,7 +20,7 @@ namespace HPReserger
             InitializeComponent();
             ICono = this.Icon;
         }
-        public static int Users = 18;
+        public static int Users = 16;
         //public static DateTime DateLicense = new DateTime(2018, 11, 16);//2 Noviembre del 2019
         public static int DaysCaducatesLicence = 30;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();

@@ -1128,11 +1128,11 @@ namespace HPReserger
                 {
                     Estado = 2;
                     msg("Factura ya esta Compensada");
-                    return;
+                    //return;
                     //if (cbodetraccion.Text.ToUpper() == "SI") btnmasdetracion.Enabled = true;
-                    //BloquearColumnas();
-                    //ModoEdicion(true);
-                    //compensada = true;
+                    BloquearColumnas();
+                    ModoEdicion(true);
+                    compensada = true;
                 }
                 else
                 {
