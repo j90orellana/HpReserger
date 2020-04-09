@@ -103,47 +103,460 @@ namespace HPReserger
             }
             this.Cursor = Cursors.Default;
         }
-
+        static decimal SumaSoles = 0, SumaDolares = 0;
         private void GenerarVistaPreliminar(DataTable tdatos, Dtgconten dtgconten)
         {
+
             if (tdatos.Rows.Count > 0)
             {
+                //Tablas
                 DataTable TResult = new DataTable();
+                DataTable TTemporal = tdatos.Clone();
                 DataView dv = new DataView(tdatos);
+                DataView dvt = new DataView(TTemporal);
+                //
                 TResult.Columns.Add("CuentaContable");
                 TResult.Columns.Add("SolesDebe", typeof(decimal));
                 TResult.Columns.Add("SolesHaber", typeof(decimal));
                 TResult.Columns.Add("DolaresDebe", typeof(decimal));
                 TResult.Columns.Add("DolaresHaber", typeof(decimal));
+                //DataTemporal
                 //Asiento 1
-                TResult.Rows.Add("ASIENTO 1");
+                int c = 1;
                 dv.RowFilter = "cuenta_contable like '79*'";
-                InsertarFilasFiltradas(TResult, dv.ToTable());
-                //dv.Table = tdatos;
-                dv.RowFilter = "cuenta_contable like '95*'";
-                InsertarFilasFiltradas(TResult, dv.ToTable());
-                //dv.Table = tdatos;
-                dv.RowFilter = "cuenta_contable like '96*'";
-                InsertarFilasFiltradas(TResult, dv.ToTable());
-                //dv.Table = tdatos;
-                dv.RowFilter = "cuenta_contable like '97*'";
-                InsertarFilasFiltradas(TResult, dv.ToTable());
-                TResult.Rows.Add("Glosa :Por la cancelacion de cuentas de destino al cierre del ejercicio");
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradas(TResult, dv.ToTable());
+                    //dv.Table = tdatos;
+                    dv.RowFilter = "cuenta_contable like '95*'";
+                    InsertarFilasFiltradas(TResult, dv.ToTable());
+                    //dv.Table = tdatos;
+                    dv.RowFilter = "cuenta_contable like '96*'";
+                    InsertarFilasFiltradas(TResult, dv.ToTable());
+                    //dv.Table = tdatos;
+                    dv.RowFilter = "cuenta_contable like '97*'";
+                    InsertarFilasFiltradas(TResult, dv.ToTable());
+                    TResult.Rows.Add("Glosa :Por la cancelacion de cuentas de destino al cierre del ejercicio");
+                }
                 //
-                TResult.Rows.Add();
                 //Asiento 2
-                TResult.Rows.Add("ASIENTO 2");
                 dv.RowFilter = "cuenta_contable like '71*'";
-                InsertarFilasFiltradas(TResult, dv.ToTable());
-                //dv.Table = tdatos;
-                dv.RowFilter = "cuenta_contable like '90*'";
-                InsertarFilasFiltradas(TResult, dv.ToTable());
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradas(TResult, dv.ToTable());
+                    //dv.Table = tdatos;
+                    dv.RowFilter = "cuenta_contable like '90*'";
+                    InsertarFilasFiltradas(TResult, dv.ToTable());
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por la cancelacion del Costo de producción de inmuebles en Proceso");
+                }
+                //
+                //Asiento 3
+                SumaSoles = SumaDolares = 0;
+                dv.RowFilter = "cuenta_contable like '70*'";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    //dv.Table = tdatos;
+                    dv.RowFilter = "cuenta_contable like '69*'";
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    dtgconten.DataSource = TResult;
+                    TTemporal.Rows.Add("", "", "8111101", "8111101 - PRODUCCIÓN DE BIENES", SumaSoles, SumaDolares);
+                    dvt.RowFilter = "cuenta_contable like '81*'";
+                    InsertarFilasFiltradas(TResult, dvt.ToTable());
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por la cancelacion del Costo de producción de inmuebles en Proceso");
+                }
+                //Asiento 4
+                SumaDolares = SumaSoles = 0;
+                dvt.RowFilter = "cuenta_contable like '81*'";
+                if (dvt.ToTable().Rows.Count > 0)
+                {
+                    VoltearValores(TTemporal, "81");
+                    dvt.RowFilter = "cuenta_contable like '81*'";
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dvt.ToTable());
+                    TrasladarSaldo("81", "8211101", "8211101 - VALOR AGREGADO", TTemporal);
+                    //
+                    dvt.RowFilter = "cuenta_contable like '82*'";
+                    InsertarFilasFiltradas(TResult, dvt.ToTable());
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre del saldo acreedor de la cuenta de Producción al cierre del ejercicio");
+                }
+                //Asiento 5
+                SumaDolares = SumaSoles = 0;
+                dv.RowFilter = "cuenta_contable like '63*'";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    //InsertarFilasFiltradasContra(TResult, dv.ToTable(), "8211101", "8211101 - VALOR AGREGADO", TTemporal);
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    TrasladarSaldo("8211101", "8211101 - VALOR AGREGADO", TTemporal);
+                    InsertarFilasFiltradasMonto("8211101 - VALOR AGREGADO", TResult, TTemporal);
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de la cuenta de gastos de servicios prestados por terceros al cierre de ejercicio");
+                }
+                //Asiento 6
+                SumaDolares = SumaSoles = 0;               
+                dvt.RowFilter = "cuenta_contable like '82*'";
+                if (dvt.ToTable().Rows.Count > 0)
+                {
+                    VoltearValores(TTemporal, "82");
+                    dvt.RowFilter = "cuenta_contable like '82*'";
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dvt.ToTable());
+                    //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    TrasladarSaldo("82", "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    dvt.RowFilter = "cuenta_contable like '83*'";
+                    InsertarFilasFiltradas(TResult, dvt.ToTable());
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por la cancelación del valor agregado");
+                }
+                //Asiento 7
+                SumaDolares = SumaSoles = 0;
+                int contador = 0;
+                dv.RowFilter = "cuenta_contable like '64*'";
+                contador += dv.ToTable().Rows.Count;
+                dv.RowFilter = "cuenta_contable like '62*'";
+                contador += dv.ToTable().Rows.Count;
+                if (contador > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    dv.RowFilter = "cuenta_contable like '64*'";
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    TrasladarSaldo("8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    InsertarFilasFiltradasMonto("8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TResult, TTemporal);
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de las cuentas de gasto del personal al cierre del ejercicio");
+                }
+                //Asiento 8
+                SumaDolares = SumaSoles = 0;
+                dvt.RowFilter = "cuenta_contable like '83*'";
+                if (dvt.ToTable().Rows.Count > 0)
+                {
+
+                    VoltearValores(TTemporal, "83");
+                    dvt.RowFilter = "cuenta_contable like '83*'";
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dvt.ToTable());
+                    TrasladarSaldo("83", "8411101", "8411101 - RESULTADO DE EXPLOTACION", TTemporal);
+                    dvt.RowFilter = "cuenta_contable like '84*'";
+                    InsertarFilasFiltradas(TResult, dvt.ToTable());
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por la cancelación del excedente de Revaluación");
+                }
+                //Asiento 9
+                SumaDolares = SumaSoles = 0;
+                contador = 0;
+                dv.RowFilter = "cuenta_contable like '68*'";
+                contador += dv.ToTable().Rows.Count;
+                dv.RowFilter = "cuenta_contable like '65*'";
+                contador += dv.ToTable().Rows.Count;
+                if (contador > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    dv.RowFilter = "cuenta_contable like '68*'";
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    TrasladarSaldo("8411101", "8411101 - RESULTADO DE EXPLOTACION", TTemporal);
+                    InsertarFilasFiltradasMonto("8411101 - RESULTADO DE EXPLOTACION", TResult, TTemporal);
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de las cargas diversas y provisiones del ejercicio");
+                }
+                //Asiento 10
+                SumaDolares = SumaSoles = 0;
+                dv.RowFilter = "cuenta_contable like '75*'";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    TrasladarSaldo("8411101", "8411101 - RESULTADO DE EXPLOTACION", TTemporal);
+                    InsertarFilasFiltradasMonto("8411101 - RESULTADO DE EXPLOTACION", TResult, TTemporal);
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de la cuenta de otros ingresos");
+                }
+                //Asiento 11
+                SumaDolares = SumaSoles = 0;
+                dvt.RowFilter = "cuenta_contable like '84*'";
+                if (dvt.ToTable().Rows.Count > 0)
+                {
+                    VoltearValores(TTemporal, "84");
+                    dvt.RowFilter = "cuenta_contable like '84*'";
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dvt.ToTable());
+                    //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    TrasladarSaldo("84", "8511101", "8511101 - RESULTADO ANTES DE PARTICIPACIONES E IMPUESTOS", TTemporal);
+                    dvt.RowFilter = "cuenta_contable like '85*'";
+                    InsertarFilasFiltradas(TResult, dvt.ToTable());
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de la cuenta resultados de explotación");
+                }
+                //Asiento 12
+                SumaDolares = SumaSoles = 0;
+                dv.RowFilter = "cuenta_contable like '67*'";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    TrasladarSaldo("8511101", "8511101 - RESULTADO ANTES DE PARTICIPACIONES E IMPUESTOS", TTemporal);
+                    InsertarFilasFiltradasMonto("8511101 - RESULTADO ANTES DE PARTICIPACIONES E IMPUESTOS", TResult, TTemporal);
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de la cuenta de gastos financieros");
+                }
+                //Asiento 13
+                SumaDolares = SumaSoles = 0;
+                dv.RowFilter = "cuenta_contable like '77*'";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    TrasladarSaldo("8511101", "8511101 - RESULTADO ANTES DE PARTICIPACIONES E IMPUESTOS", TTemporal);
+                    InsertarFilasFiltradasMonto("8511101 - RESULTADO ANTES DE PARTICIPACIONES E IMPUESTOS", TResult, TTemporal);
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de la cuenta de gastos financieros");
+                }
+                //8921101 - PÉRDIDA
+                //8911101 - UTILIDAD
+                //Asiento 14
+                TResult.Rows.Add();
+                SumaDolares = SumaSoles = 0;
+                TResult.Rows.Add($"ASIENTO {c++}");
+                string CuentaResultado = "";
+                string CuentaResul = "";
+                dvt.RowFilter = "cuenta_contable like '85*'";
+                if ((decimal)dvt[0]["pen"] > 0)
+                {
+                    CuentaResultado = "8911101 - UTILIDAD";
+                    CuentaResul = "8911101";
+                }
+                else
+                {
+                    CuentaResultado = "8921101 - PÉRDIDA";
+                    CuentaResul = "8921101";
+                }
+                VoltearValores(TTemporal, "85");
+                dvt.RowFilter = "cuenta_contable like '85*'";
+                InsertarFilasFiltradasADD(TResult, dvt.ToTable());
+                //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                TrasladarSaldo("85", CuentaResul, CuentaResultado, TTemporal);
+                dvt.RowFilter = "cuenta_contable like '89*'";
+                InsertarFilasFiltradas(TResult, dvt.ToTable());
                 dtgconten.DataSource = TResult;
-                TResult.Rows.Add("Glosa : Por la cancelacion del Costo de producción de inmuebles en Proceso");
-
-
+                TResult.Rows.Add("Glosa : Por la cancelación del resultado antes de participación e impuestos");
+                //Asiento 15
+                SumaDolares = SumaSoles = 0;
+                dv.RowFilter = "cuenta_contable like '882*'";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    TrasladarSaldo(CuentaResul, CuentaResultado, TTemporal);
+                    InsertarFilasFiltradasMonto(CuentaResultado, TResult, TTemporal);
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de la cuenta Impuesto a la renta Diferido");
+                }
+                //Asiento 16
+                SumaDolares = SumaSoles = 0;
+                dv.RowFilter = "cuenta_contable like '881*'";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    TResult.Rows.Add();
+                    TResult.Rows.Add($"ASIENTO {c++}");
+                    InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                    //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                    TrasladarSaldo(CuentaResul, CuentaResultado, TTemporal);
+                    InsertarFilasFiltradasMonto(CuentaResultado, TResult, TTemporal);
+                    dtgconten.DataSource = TResult;
+                    TResult.Rows.Add("Glosa : Por el cierre de la cuenta Impuesto a la renta Corriente");
+                }
+                //Asiento 17
+                TResult.Rows.Add();
+                SumaDolares = SumaSoles = 0;
+                TResult.Rows.Add($"ASIENTO {c++}");
+                VoltearValores(TTemporal, CuentaResul.Substring(0, 2));
+                dvt.RowFilter = $"cuenta_contable like '{CuentaResul.Substring(0, 2)}*'";
+                string CuentaResultadoX = "";
+                string CuentaResulX = "";
+                if ((decimal)dvt[0]["pen"] < 0)
+                {
+                    CuentaResultadoX = "5911101 - UTILIDADES ACUMULADAS";
+                    CuentaResulX = "5911101";
+                }
+                else
+                {
+                    CuentaResultadoX = "5921101 - PERDIDAS ACUMULADAS";
+                    CuentaResulX = "5921101";
+                }
+                InsertarFilasFiltradasADD(TResult, dvt.ToTable());
+                //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
+                TrasladarSaldo(CuentaResul.Substring(0, 2), CuentaResulX, CuentaResultadoX, TTemporal);
+                dvt.RowFilter = $"cuenta_contable like '{CuentaResultadoX.Substring(0, 2)}*'";
+                InsertarFilasFiltradas(TResult, dvt.ToTable());
+                dtgconten.DataSource = TResult;
+                TResult.Rows.Add($"Glosa : Resultado del ejercicio {comboMesAño.GetFecha().Year - 1}");
             }
             else { msg("No Hay Datos"); }
+        }
+        private void InsertarFilasFiltradasMonto(string NameCuentaCompleto, DataTable tResultado, DataTable tTemporal)
+        {
+            DataRow dt = tResultado.NewRow();
+            dt[0] = NameCuentaCompleto;
+            //dt[1] = (decimal)item["pen"] > 0 ? item["DESCRIPCION"] : "";
+            dt[1] = SumaSoles < 0 ? Math.Abs(SumaSoles) : 0;
+            dt[2] = SumaSoles > 0 ? SumaSoles : 0;
+            dt[3] = SumaDolares < 0 ? Math.Abs(SumaDolares) : 0;
+            dt[4] = SumaDolares > 0 ? SumaDolares : 0;
+            //
+            tResultado.Rows.Add(dt);
+
+        }
+
+        private void TrasladarSaldo(string v1, string v2, string v3, DataTable temporal)
+        {
+            Boolean Encontrado = false;
+            foreach (DataRow item in temporal.Rows)
+            {
+                if (item["Cuenta_contable"].ToString().Substring(0, 2) == v1)
+                {
+                    SumaSoles = (decimal)item["pen"];
+                    SumaDolares = (decimal)item["usd"];
+                    item["pen"] = 0;
+                    item["usd"] = 0;
+                }
+                if (item["cuenta_contable"].ToString() == v2)
+                {
+                    Encontrado = true;
+                    item["pen"] = (decimal)item["pen"] + SumaSoles;
+                    item["usd"] = (decimal)item["usd"] + SumaDolares;
+                }
+            }
+            if (!Encontrado)
+            {
+                temporal.Rows.Add("", "", v2, v3, -SumaSoles, -SumaDolares);
+            }
+        }
+        private void TrasladarSaldo(string v2, string v3, DataTable temporal)
+        {
+            Boolean Encontrado = false;
+            foreach (DataRow item in temporal.Rows)
+            {
+                if (item["cuenta_contable"].ToString() == v2)
+                {
+                    Encontrado = true;
+                    item["pen"] = (decimal)item["pen"] + SumaSoles;
+                    item["usd"] = (decimal)item["usd"] + SumaDolares;
+                }
+            }
+            if (!Encontrado)
+            {
+                temporal.Rows.Add("", "", v2, v3, -SumaSoles, -SumaDolares);
+            }
+        }
+        private void InsertarFilasFiltradasContra(DataTable tResultado, DataTable dView, string v1, string v2, DataTable tTemporal)
+        {
+            foreach (DataRow item in dView.Rows)
+            {
+                if ((decimal)item["pen"] + (decimal)item["usd"] != 0)
+                {
+                    //Sumatorias
+                    SumaSoles -= (decimal)item["pen"];
+                    SumaDolares -= (decimal)item["usd"];
+                    //FinSumas
+                    DataRow dt = tResultado.NewRow();
+                    dt[0] = (decimal)item["pen"] < 0 ? item["DESCRIPCION"] : "\t" + item["DESCRIPCION"];
+                    //dt[1] = (decimal)item["pen"] > 0 ? item["DESCRIPCION"] : "";
+                    dt[1] = (decimal)item["pen"] < 0 ? Math.Abs((decimal)item["pen"]) : 0;
+                    dt[2] = (decimal)item["pen"] > 0 ? (decimal)item["pen"] : 0;
+                    dt[3] = (decimal)item["usd"] < 0 ? Math.Abs((decimal)item["usd"]) : 0;
+                    dt[4] = (decimal)item["usd"] > 0 ? (decimal)item["usd"] : 0;
+                    //
+                    tResultado.Rows.Add(dt);
+                }
+            }
+            //Agregamos la Contra
+            DataRow dt1 = tResultado.NewRow();
+            dt1[0] = v2;
+            //dt[1] = (decimal)item["pen"] > 0 ? item["DESCRIPCION"] : "";
+            dt1[1] = SumaSoles < 0 ? Math.Abs(SumaSoles) : 0;
+            dt1[2] = SumaSoles > 0 ? SumaSoles : 0;
+            dt1[3] = SumaDolares < 0 ? Math.Abs(SumaDolares) : 0;
+            dt1[4] = SumaDolares > 0 ? SumaDolares : 0;
+            //
+            tResultado.Rows.Add(dt1);
+            //Agregamos al Temporal        
+            Boolean Encontrado = false;
+            foreach (DataRow item in tTemporal.Rows)
+            {
+                if (item["cuenta_contable"].ToString() == v1)
+                {
+                    item["pen"] = (decimal)item["pen"] + SumaSoles;
+                    item["usd"] = (decimal)item["usd"] + SumaDolares;
+                    Encontrado = true;
+                    break;
+                }
+            }
+            if (!Encontrado)
+            {
+                tTemporal.Rows.Add("", "", v1, v2, -SumaSoles, -SumaDolares);
+            }
+
+        }
+
+        private void VoltearValores(DataTable temporal, string v)
+        {
+            foreach (DataRow item in temporal.Rows)
+            {
+                if (item["cuenta_contable"].ToString().Substring(0, 2) == v)
+                {
+                    item["pen"] = (decimal)item["pen"] * -1;
+                    item["usd"] = (decimal)item["usd"] * -1;
+                }
+            }
+        }
+
+        private void InsertarFilasFiltradasADD(DataTable tResultado, DataTable dView)
+        {
+            foreach (DataRow item in dView.Rows)
+            {
+                if ((decimal)item["pen"] + (decimal)item["usd"] != 0)
+                {
+                    //Sumatorias
+                    SumaSoles -= (decimal)item["pen"];
+                    SumaDolares -= (decimal)item["usd"];
+                    //FinSumas
+                    DataRow dt = tResultado.NewRow();
+                    dt[0] = (decimal)item["pen"] < 0 ? item["DESCRIPCION"] : "\t" + item["DESCRIPCION"];
+                    //dt[1] = (decimal)item["pen"] > 0 ? item["DESCRIPCION"] : "";
+                    dt[1] = (decimal)item["pen"] < 0 ? Math.Abs((decimal)item["pen"]) : 0;
+                    dt[2] = (decimal)item["pen"] > 0 ? (decimal)item["pen"] : 0;
+                    dt[3] = (decimal)item["usd"] < 0 ? Math.Abs((decimal)item["usd"]) : 0;
+                    dt[4] = (decimal)item["usd"] > 0 ? (decimal)item["usd"] : 0;
+                    //
+                    tResultado.Rows.Add(dt);
+                }
+            }
         }
 
         private void InsertarFilasFiltradas(DataTable tResultado, DataTable dView)
@@ -540,7 +953,7 @@ namespace HPReserger
                     _NombreHoja = $"Asiento Cierre {NameEmpresa}".ToUpper();
                     _Cabecera = "Asiento Cierre";
                     _NColumna = "E";
-                    _ColumnasAutoajustar = new int[] {1,2,3,4,5 };
+                    _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5 };
                 }
                 //else if (chkDocumentos.Checked)
                 //{
@@ -592,7 +1005,7 @@ namespace HPReserger
                 dtgconten.SuspendLayout();
                 frmpro = new frmProcesando();
                 frmpro.Show(); Cursor = Cursors.WaitCursor;
-                NameEmpresa = $"{cboempresa.Text} {comboMesAño.FechaInicioMes.Year}";
+                NameEmpresa = $"{cboempresa.Text} {comboMesAño.FechaInicioMes.Year - 1}";
                 if (!backgroundWorker1.IsBusy)
                 {
                     backgroundWorker1.RunWorkerAsync();
