@@ -165,7 +165,6 @@ namespace HPReserger
                     //dv.Table = tdatos;
                     dv.RowFilter = "cuenta_contable like '69*'";
                     InsertarFilasFiltradasADD(TResult, dv.ToTable());
-                    dtgconten.DataSource = TResult;
                     TTemporal.Rows.Add("", "", "8111101", "8111101 - PRODUCCIÓN DE BIENES", SumaSoles, SumaDolares);
                     dvt.RowFilter = "cuenta_contable like '81*'";
                     InsertarFilasFiltradas(TResult, dvt.ToTable());
@@ -204,7 +203,7 @@ namespace HPReserger
                     TResult.Rows.Add("Glosa : Por el cierre de la cuenta de gastos de servicios prestados por terceros al cierre de ejercicio");
                 }
                 //Asiento 6
-                SumaDolares = SumaSoles = 0;               
+                SumaDolares = SumaSoles = 0;
                 dvt.RowFilter = "cuenta_contable like '82*'";
                 if (dvt.ToTable().Rows.Count > 0)
                 {
@@ -430,9 +429,7 @@ namespace HPReserger
             dt[4] = SumaDolares > 0 ? SumaDolares : 0;
             //
             tResultado.Rows.Add(dt);
-
         }
-
         private void TrasladarSaldo(string v1, string v2, string v3, DataTable temporal)
         {
             Boolean Encontrado = false;
@@ -448,8 +445,8 @@ namespace HPReserger
                 if (item["cuenta_contable"].ToString() == v2)
                 {
                     Encontrado = true;
-                    item["pen"] = (decimal)item["pen"] + SumaSoles;
-                    item["usd"] = (decimal)item["usd"] + SumaDolares;
+                    item["pen"] = -(decimal)item["pen"] + SumaSoles;
+                    item["usd"] = -(decimal)item["usd"] + SumaDolares;
                 }
             }
             if (!Encontrado)
@@ -471,7 +468,7 @@ namespace HPReserger
             }
             if (!Encontrado)
             {
-                temporal.Rows.Add("", "", v2, v3, -SumaSoles, -SumaDolares);
+                temporal.Rows.Add("", "", v2, v3, SumaSoles, SumaDolares);
             }
         }
         private void InsertarFilasFiltradasContra(DataTable tResultado, DataTable dView, string v1, string v2, DataTable tTemporal)

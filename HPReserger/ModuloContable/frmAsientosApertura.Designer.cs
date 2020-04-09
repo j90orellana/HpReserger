@@ -31,13 +31,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsientosApertura));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsientosApertura));
             this.label1 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.xCuentaDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xSolesDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xSolesHaber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xDolaresDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xDolaresHaber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPreliminar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.cboempresa = new System.Windows.Forms.ComboBox();
@@ -50,11 +55,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.comboMesAño = new HpResergerUserControls.ComboMesAño();
             this.lbl1 = new System.Windows.Forms.Label();
-            this.xCuentaDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xSolesDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xSolesHaber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xDolaresDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xDolaresHaber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,6 +121,67 @@
             this.dtgconten.Size = new System.Drawing.Size(879, 394);
             this.dtgconten.TabIndex = 4;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellContentClick);
+            // 
+            // xCuentaDebe
+            // 
+            this.xCuentaDebe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xCuentaDebe.DataPropertyName = "CuentaContable";
+            this.xCuentaDebe.HeaderText = "Cuenta";
+            this.xCuentaDebe.MinimumWidth = 200;
+            this.xCuentaDebe.Name = "xCuentaDebe";
+            this.xCuentaDebe.ReadOnly = true;
+            // 
+            // xSolesDebe
+            // 
+            this.xSolesDebe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xSolesDebe.DataPropertyName = "SolesDebe";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "n2";
+            this.xSolesDebe.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xSolesDebe.HeaderText = "Soles Debe";
+            this.xSolesDebe.MinimumWidth = 60;
+            this.xSolesDebe.Name = "xSolesDebe";
+            this.xSolesDebe.ReadOnly = true;
+            this.xSolesDebe.Width = 60;
+            // 
+            // xSolesHaber
+            // 
+            this.xSolesHaber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xSolesHaber.DataPropertyName = "SolesHaber";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.xSolesHaber.DefaultCellStyle = dataGridViewCellStyle4;
+            this.xSolesHaber.HeaderText = "Soles Haber";
+            this.xSolesHaber.MinimumWidth = 60;
+            this.xSolesHaber.Name = "xSolesHaber";
+            this.xSolesHaber.ReadOnly = true;
+            this.xSolesHaber.Width = 60;
+            // 
+            // xDolaresDebe
+            // 
+            this.xDolaresDebe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xDolaresDebe.DataPropertyName = "DolaresDebe";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.xDolaresDebe.DefaultCellStyle = dataGridViewCellStyle5;
+            this.xDolaresDebe.HeaderText = "Dolares Debe";
+            this.xDolaresDebe.MinimumWidth = 60;
+            this.xDolaresDebe.Name = "xDolaresDebe";
+            this.xDolaresDebe.ReadOnly = true;
+            this.xDolaresDebe.Width = 60;
+            // 
+            // xDolaresHaber
+            // 
+            this.xDolaresHaber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xDolaresHaber.DataPropertyName = "DolaresHaber";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.xDolaresHaber.DefaultCellStyle = dataGridViewCellStyle6;
+            this.xDolaresHaber.HeaderText = "Dolares Haber";
+            this.xDolaresHaber.MinimumWidth = 60;
+            this.xDolaresHaber.Name = "xDolaresHaber";
+            this.xDolaresHaber.ReadOnly = true;
+            this.xDolaresHaber.Width = 60;
             // 
             // btnPreliminar
             // 
@@ -196,9 +257,9 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(15, 65);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(248, 13);
+            this.label3.Size = new System.Drawing.Size(232, 13);
             this.label3.TabIndex = 45;
-            this.label3.Text = "Resultado del Calculo de Asientos de Apertura";
+            this.label3.Text = "Resultado del Calculo de Asientos de Cierre";
             // 
             // backgroundWorker1
             // 
@@ -241,7 +302,7 @@
             // 
             // comboMesAño
             // 
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 4, 7, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 4, 9, 0, 0, 0, 0);
             this.comboMesAño.FechaFinMes = new System.DateTime(2020, 4, 30, 0, 0, 0, 0);
             this.comboMesAño.FechaInicioMes = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(19, 38);
@@ -262,67 +323,6 @@
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(0, 13);
             this.lbl1.TabIndex = 76;
-            // 
-            // xCuentaDebe
-            // 
-            this.xCuentaDebe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xCuentaDebe.DataPropertyName = "CuentaContable";
-            this.xCuentaDebe.HeaderText = "Cuenta";
-            this.xCuentaDebe.MinimumWidth = 200;
-            this.xCuentaDebe.Name = "xCuentaDebe";
-            this.xCuentaDebe.ReadOnly = true;
-            // 
-            // xSolesDebe
-            // 
-            this.xSolesDebe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xSolesDebe.DataPropertyName = "SolesDebe";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            this.xSolesDebe.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xSolesDebe.HeaderText = "Soles Debe";
-            this.xSolesDebe.MinimumWidth = 60;
-            this.xSolesDebe.Name = "xSolesDebe";
-            this.xSolesDebe.ReadOnly = true;
-            this.xSolesDebe.Width = 60;
-            // 
-            // xSolesHaber
-            // 
-            this.xSolesHaber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xSolesHaber.DataPropertyName = "SolesHaber";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.xSolesHaber.DefaultCellStyle = dataGridViewCellStyle4;
-            this.xSolesHaber.HeaderText = "Soles Haber";
-            this.xSolesHaber.MinimumWidth = 60;
-            this.xSolesHaber.Name = "xSolesHaber";
-            this.xSolesHaber.ReadOnly = true;
-            this.xSolesHaber.Width = 60;
-            // 
-            // xDolaresDebe
-            // 
-            this.xDolaresDebe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xDolaresDebe.DataPropertyName = "DolaresDebe";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.xDolaresDebe.DefaultCellStyle = dataGridViewCellStyle5;
-            this.xDolaresDebe.HeaderText = "Dolares Debe";
-            this.xDolaresDebe.MinimumWidth = 60;
-            this.xDolaresDebe.Name = "xDolaresDebe";
-            this.xDolaresDebe.ReadOnly = true;
-            this.xDolaresDebe.Width = 60;
-            // 
-            // xDolaresHaber
-            // 
-            this.xDolaresHaber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xDolaresHaber.DataPropertyName = "DolaresHaber";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n2";
-            this.xDolaresHaber.DefaultCellStyle = dataGridViewCellStyle6;
-            this.xDolaresHaber.HeaderText = "Dolares Haber";
-            this.xDolaresHaber.MinimumWidth = 60;
-            this.xDolaresHaber.Name = "xDolaresHaber";
-            this.xDolaresHaber.ReadOnly = true;
-            this.xDolaresHaber.Width = 60;
             // 
             // frmAsientosApertura
             // 
@@ -345,8 +345,8 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(900, 552);
             this.Name = "frmAsientosApertura";
-            this.Nombre = "Proceso de Asientos de Apertura";
-            this.Text = "Proceso de Asientos de Apertura";
+            this.Nombre = "Proceso de Asientos de Cierre";
+            this.Text = "Proceso de Asientos de Cierre";
             this.Load += new System.EventHandler(this.frmcierremensual_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);
