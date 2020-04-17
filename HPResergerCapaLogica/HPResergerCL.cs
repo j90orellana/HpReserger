@@ -2648,16 +2648,15 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.DiferenciadeCambioMensual(@opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza);
         }
-        public DataTable AperturaEjercicio(int @opcion, int @empresa, DateTime @periodo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @SumaDebe, decimal @SumaHaber, decimal @SaldoDeudor, decimal @SAldoAcreedor, decimal @tccompra, decimal @tcventa, int @moneda, string @naturaleza)
+        public DataTable AperturaEjercicio(int @opcion, string ruc, int @empresa, DateTime @periodo, string @CuentaContable, string descripcion, decimal pen, decimal usd)
         {
-            return cdOrdenPedido.AperturaEjercicio(@opcion, @empresa, @periodo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, SumaDebe, SumaHaber, SaldoDeudor, SAldoAcreedor, @tccompra, @tcventa, moneda, @naturaleza);
+            return cdOrdenPedido.AperturaEjercicio(@opcion, ruc, @empresa, @periodo, @CuentaContable, descripcion, pen, usd);
         }
         public DataTable AperturaEjercicio(int @empresa, DateTime @periodo)
         {
-            int ValorCero = 0;
             decimal ValorDecimal = 0m;
             string CampoVacio = "";
-            return cdOrdenPedido.AperturaEjercicio(0, @empresa, @periodo, CampoVacio, ValorCero, CampoVacio, ValorCero, CampoVacio, CampoVacio, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, 1, CampoVacio);
+            return cdOrdenPedido.AperturaEjercicio(0, CampoVacio, @empresa, @periodo, CampoVacio, CampoVacio, ValorDecimal, ValorDecimal);
         }
         public DataTable DiferenciadeCambioMensual(int @empresa, DateTime @periodo, int @tipo)
         {

@@ -4985,12 +4985,13 @@ namespace HPResergerCapaDatos
             object[] valores = { @opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza };
             return bd.DataTableFromProcedure("usp_DiferenciadeCambioMensual", parametros, valores, null);
         }
-        public DataTable AperturaEjercicio(int @opcion, int @empresa, DateTime @periodo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @SumaDebe, decimal @SumaHaber, decimal @SaldoDeudor, decimal @SAldoAcreedor, decimal @tccompra, decimal @tcventa, int @moneda, string @naturaleza)
+        public DataTable AperturaEjercicio(int @opcion, string ruc, int @empresa, DateTime @periodo, string @CuentaContable, string descripcion, decimal pen, decimal usd)
         {
-            string[] parametros = { "@opcion", "@empresa", "@periodo", "@CuentaContable", "@idcomprobante", "@numdoc", "@tipoidpro", "@proveedor", "@nombreproveedor", "@sumadebe", "@sumahaber", "@saldodeudor", "@saldoacreedor", "@tccompra", "@tcventa", "@Moneda", "@naturaleza" };
-            object[] valores = { @opcion, @empresa, @periodo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, SumaDebe, SumaHaber, SaldoDeudor, SAldoAcreedor, @tccompra, @tcventa, moneda, @naturaleza };
+            string[] parametros = { "@opcion", "@ruc", "@empresa", "@periodo", "@CuentaContable", "@descripcion", "@pen", "@usd" };
+            object[] valores = { @opcion, ruc, @empresa, @periodo, @CuentaContable, descripcion, pen, usd };
             return bd.DataTableFromProcedure("[usp_AperturaEjercicio]", parametros, valores, null);
         }
+
         public DataTable ReporteSaldosContables(int empresa, DateTime fechaini, DateTime fechafin)
         {
             string[] parametros = { "@empresa", "@FechaInicial", "@Fecha" };
