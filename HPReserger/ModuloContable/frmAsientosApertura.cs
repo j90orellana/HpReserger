@@ -670,13 +670,13 @@ namespace HPReserger
                 GrabarAsientos(TDatos, c, new DateTime(comboMesAño.GetFecha().Year, 1, 1), PosI, PosF, DinamicaApertura, (int)cboProyectoApertura.SelectedValue, !Debe, TC);
 
             } while (Largo - 1 > PosF + 1);
-            ////Grabamos los Datos a la Tablas!
-            //foreach (DataRow item in Tdatos.Rows)
-            //{
-            //    //Inserto en la Tabla Los valores delos SAldos Contables para la apertura del año siguiente
-            //    CapaLogica.AperturaEjercicio(1, item["ruc"].ToString(), (int)cboempresa.SelectedValue, FechaContable.AddYears(-1),
-            //        item["cuenta_contable"].ToString(), item["descripcion"].ToString(), (decimal)item["pen"], (decimal)item["usd"]);
-            //}
+            //Grabamos los Datos a la Tablas!
+            foreach (DataRow item in Tdatos.Rows)
+            {
+                //Inserto en la Tabla Los valores delos SAldos Contables para la apertura del año siguiente
+                CapaLogica.AperturaEjercicio(1, item["ruc"].ToString(), (int)cboempresa.SelectedValue, FechaContable.AddYears(-1),
+                    item["cuenta_contable"].ToString(), item["descripcion"].ToString(), (decimal)item["pen"], (decimal)item["usd"]);
+            }
             msgOK(mensaje);
             btnAplicar.Enabled = false;
             GenerarAsientoAPertura = false;
