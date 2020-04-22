@@ -4751,6 +4751,12 @@ namespace HPResergerCapaDatos
                 @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi,Tipopago };
             return bd.DataTableFromProcedure("usp_InsertarAsientoFacturaDetalle", parametros, valores, null);
         }
+        public DataTable ActivarDesactivarReflejos(int Activar) //1 activa ,cualquiera desactiva
+        {
+            string[] parametros = { "@Desactivar" };
+            object[] valores = { Activar };
+            return bd.DataTableFromProcedure("usp_ActivarDesactivarReflejos", parametros, valores, null);
+        }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
         {
             string[] parametros = { "@ruc", "@NumComp" };

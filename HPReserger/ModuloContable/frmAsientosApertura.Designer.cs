@@ -51,10 +51,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lblmsg = new System.Windows.Forms.Label();
-            this.cboproyecto = new System.Windows.Forms.ComboBox();
+            this.cboproyectoCierre = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.comboMesAño = new HpResergerUserControls.ComboMesAño();
             this.lbl1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboProyectoApertura = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,7 +120,7 @@
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(879, 394);
+            this.dtgconten.Size = new System.Drawing.Size(895, 394);
             this.dtgconten.TabIndex = 4;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellContentClick);
             // 
@@ -188,7 +190,7 @@
             this.btnPreliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPreliminar.Enabled = false;
             this.btnPreliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnPreliminar.Image")));
-            this.btnPreliminar.Location = new System.Drawing.Point(810, 55);
+            this.btnPreliminar.Location = new System.Drawing.Point(826, 55);
             this.btnPreliminar.Name = "btnPreliminar";
             this.btnPreliminar.Size = new System.Drawing.Size(84, 23);
             this.btnPreliminar.TabIndex = 41;
@@ -202,7 +204,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(819, 481);
+            this.btncancelar.Location = new System.Drawing.Point(835, 481);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 40;
@@ -228,7 +230,7 @@
             // 
             this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAplicar.Image = ((System.Drawing.Image)(resources.GetObject("btnAplicar.Image")));
-            this.btnAplicar.Location = new System.Drawing.Point(703, 481);
+            this.btnAplicar.Location = new System.Drawing.Point(719, 481);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(110, 23);
             this.btnAplicar.TabIndex = 43;
@@ -241,7 +243,7 @@
             // 
             this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(416, 481);
+            this.btnExcel.Location = new System.Drawing.Point(424, 481);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(75, 23);
             this.btnExcel.TabIndex = 43;
@@ -277,17 +279,18 @@
             this.lblmsg.TabIndex = 72;
             this.lblmsg.Text = "Total de Registros: 0";
             // 
-            // cboproyecto
+            // cboproyectoCierre
             // 
-            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboproyecto.FormattingEnabled = true;
-            this.cboproyecto.Location = new System.Drawing.Point(519, 17);
-            this.cboproyecto.Name = "cboproyecto";
-            this.cboproyecto.Size = new System.Drawing.Size(253, 21);
-            this.cboproyecto.TabIndex = 73;
+            this.cboproyectoCierre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproyectoCierre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyectoCierre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproyectoCierre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyectoCierre.FormattingEnabled = true;
+            this.cboproyectoCierre.Location = new System.Drawing.Point(564, 17);
+            this.cboproyectoCierre.Name = "cboproyectoCierre";
+            this.cboproyectoCierre.Size = new System.Drawing.Size(253, 21);
+            this.cboproyectoCierre.TabIndex = 73;
+            this.cboproyectoCierre.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -296,13 +299,13 @@
             this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(465, 21);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(54, 13);
+            this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 74;
-            this.label16.Text = "Proyecto:";
+            this.label16.Text = "ProyectoCierre:";
             // 
             // comboMesAño
             // 
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 4, 9, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 4, 21, 0, 0, 0, 0);
             this.comboMesAño.FechaFinMes = new System.DateTime(2020, 4, 30, 0, 0, 0, 0);
             this.comboMesAño.FechaInicioMes = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(19, 38);
@@ -324,13 +327,40 @@
             this.lbl1.Size = new System.Drawing.Size(0, 13);
             this.lbl1.TabIndex = 76;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(465, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 74;
+            this.label2.Text = "ProyectoApertura:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // cboProyectoApertura
+            // 
+            this.cboProyectoApertura.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboProyectoApertura.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboProyectoApertura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboProyectoApertura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProyectoApertura.FormattingEnabled = true;
+            this.cboProyectoApertura.Location = new System.Drawing.Point(564, 41);
+            this.cboProyectoApertura.Name = "cboProyectoApertura";
+            this.cboProyectoApertura.Size = new System.Drawing.Size(253, 21);
+            this.cboProyectoApertura.TabIndex = 73;
+            this.cboProyectoApertura.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // frmAsientosApertura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 513);
+            this.ClientSize = new System.Drawing.Size(922, 513);
             this.Controls.Add(this.lbl1);
-            this.Controls.Add(this.cboproyecto);
+            this.Controls.Add(this.cboProyectoApertura);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cboproyectoCierre);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.label3);
@@ -343,7 +373,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboMesAño);
             this.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(900, 552);
+            this.MinimumSize = new System.Drawing.Size(938, 552);
             this.Name = "frmAsientosApertura";
             this.Nombre = "Proceso de Asientos de Cierre";
             this.Text = "Proceso de Asientos de Cierre";
@@ -366,7 +396,7 @@
         private System.Windows.Forms.Label label3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label lblmsg;
-        private System.Windows.Forms.ComboBox cboproyecto;
+        private System.Windows.Forms.ComboBox cboproyectoCierre;
         private System.Windows.Forms.Label label16;
         private HpResergerUserControls.ComboMesAño comboMesAño;
         private System.Windows.Forms.Label lbl1;
@@ -375,5 +405,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xSolesHaber;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDolaresDebe;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDolaresHaber;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cboProyectoApertura;
     }
 }
