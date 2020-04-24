@@ -267,12 +267,12 @@
         private System.Windows.Forms.DateTimePicker dtpFechaEmisionReversa;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.RadioButton rbReversarPeriodo;
         private System.Windows.Forms.RadioButton rbReversar;
         private HpResergerUserControls.SeparadorOre separadorOre3;
         private System.Windows.Forms.Label label31;
         private HpResergerUserControls.ButtonPer btnTxt;
         private HpResergerUserControls.ButtonPer BtnCerrar;
         private HpResergerUserControls.ButtonPer btnAsientosRelacionados;
+        public System.Windows.Forms.RadioButton rbReversarPeriodo;
     }
 }

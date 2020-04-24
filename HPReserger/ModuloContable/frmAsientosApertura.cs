@@ -26,6 +26,7 @@ namespace HPReserger
 
         private void frmcierremensual_Load(object sender, EventArgs e)
         {
+            lbl1.Text = "No Existe Asiento.";
             CargarEmpresa();
             //GenerarAsientoSaldos = GenerarAsientoDocumentos = false;
         }
@@ -61,6 +62,7 @@ namespace HPReserger
                 cboProyectoApertura.ValueMember = "id_proyecto";
                 //
                 NameEmpresa = cboempresa.SelectedText;
+                VerificarsiYaexisteAsiento();
             }
         }
         DataTable Tdatos;
@@ -83,13 +85,13 @@ namespace HPReserger
                         //dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = false;
                         Tdatos = CapaLogica.AperturaEjercicio((int)cboempresa.SelectedValue, FechaAñoActual.AddYears(-1));
                         btnAplicar.Enabled = false;
-                        lbl1.Text = "";
+                        //lbl1.Text = "";
                         if (Tdatos.Rows.Count == 0)
                         {
                             Tdatos = CapaLogica.ResultadoCierre((int)cboempresa.SelectedValue, FechaAñoPasado);
                             btnAplicar.Enabled = true;
                             GenerarVistaPreliminar(Tdatos, dtgconten);
-
+                            lbl1.Text = "No Existe Asiento.";
                         }
                         else
 
@@ -110,6 +112,7 @@ namespace HPReserger
                 else msg("Ingrese el Tipo de Cambio para el Cierre de Este Periodo");
             }
             this.Cursor = Cursors.Default;
+            btnExcel.Enabled = true;
         }
         static decimal SumaSoles = 0, SumaDolares = 0;
         private void GenerarVistaPreliminar(DataTable tdatos, Dtgconten dtgconten)
@@ -631,7 +634,7 @@ namespace HPReserger
             if (cboProyectoApertura.SelectedValue == null) { msg("Selecciones un Proyecto"); cboProyectoApertura.Focus(); return; }
             if (cboProyectoApertura.SelectedIndex == cboproyectoCierre.SelectedIndex) { msg("Selecciones Diferentes Proyectos"); cboProyectoApertura.Focus(); return; }
             if (dtgconten.RowCount == 0) { msg("No Hay filas para Generar el Asiento"); return; }
-            if (VerificarsiYaexisteAsiento()) { msg("Ya Existe un Asiento de Apertura para este Año"); return; }
+            //if (VerificarsiYaexisteAsiento()) { msg("Ya Existe un Asiento de Apertura para este Año"); return; }
             //Dinamica para el Cierre Mensual
             DateTime FechaContable = new DateTime(comboMesAño.FechaFinMes.Year, 1, 1);
             ///////                   
@@ -670,6 +673,8 @@ namespace HPReserger
                 GrabarAsientos(TDatos, c, new DateTime(comboMesAño.GetFecha().Year, 1, 1), PosI, PosF, DinamicaApertura, (int)cboProyectoApertura.SelectedValue, !Debe, TC);
 
             } while (Largo - 1 > PosF + 1);
+            //Eliminamos los REflejos
+            CapaLogica.ELiminarReflejosdeCierreApertura(comboMesAño.GetFecha(), (int)(cboempresa.SelectedValue));
             //Grabamos los Datos a la Tablas!
             foreach (DataRow item in Tdatos.Rows)
             {
@@ -681,6 +686,7 @@ namespace HPReserger
             btnAplicar.Enabled = false;
             GenerarAsientoAPertura = false;
             cboperiodo_SelectedIndexChanged(sender, e);
+            lbl1.Text = "Asientos Generados.";
             Cursor = Cursors.Default;
         }
         private void GrabarAsientos(DataTable datos, int NumAsiento, DateTime fechaContable, int posI, int posF, int dinamica, int pkproyecto, bool debe, decimal TC)
@@ -720,13 +726,14 @@ namespace HPReserger
                     ValorDolares = (debe ? 1 : -1) * (ValorDebeME + ValorHaberME * -1);
                 }
                 //cabecera Debe                  
-                CapaLogica.ActivarDesactivarReflejos(0);//Desactivamos
+                //CapaLogica.ActivarDesactivarReflejos(0);//Desactivamos
                 CapaLogica.InsertarAsientoFacturaCabecera(1, pase, NumAsiento, fechaContable, CuentaContable, ValorDebeMN, ValorHaberMN, TC, fkProyecto, 0, cuo, IdSoles, Glosa, fechaContable, dinamica);
                 //Detalle del asiento del Debe             
                 CapaLogica.InsertarAsientoFacturaDetalle(99, pase, NumAsiento, fechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                    NameProveedor, idcomprobante, SerieDocumento, NumDocumento, 0, fechaContable, fechaContable, fechaContable, ValorDebeMN + ValorHaberMN,
+                    NameProveedor, idcomprobante, SerieDocumento, NumDocumento, dinamica, fechaContable, fechaContable, fechaContable, ValorDebeMN + ValorHaberMN,
                     ValorDolares, TC, IdSoles, "", "", $"{CuentaContable}-{Glosa}", fechaContable, IdUsuario, "");
-                CapaLogica.ActivarDesactivarReflejos(1);//Activamos
+                //CapaLogica.ActivarDesactivarReflejos(1);//Activamos
+                //Eliminamos los Reflejos
             }
         }
         private Boolean GenerarAsientoAPertura;
@@ -785,8 +792,11 @@ namespace HPReserger
             //Verificamos si ya existe el Asiento;
             DateTime Fecha = new DateTime(comboMesAño.FechaFinMes.Year, 12, 31);
             DataTable TDatos = new DataTable();
+            btnExcel.Enabled = false;
+            if (dtgconten.DataSource != null)
+                dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
             //if (chkSaldos.Checked)
-            TDatos = CapaLogica.CierreMensualDinamicaYaExiste(-50, new DateTime(Fecha.Year - 1, 1, 1), (int)cboempresa.SelectedValue);
+            TDatos = CapaLogica.CierreAnualDinamicaYaExiste(-50, new DateTime(Fecha.Year - 1, 1, 1), (int)cboempresa.SelectedValue);
             if (TDatos.Rows.Count > 0)
             {
                 lbl1.Text = $"Ya Existe un Asiento, Reverselo ";
@@ -798,9 +808,9 @@ namespace HPReserger
             }
             else
             {
+                lbl1.Text = "No Existe Asiento.";
                 return false;
             }
-
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -906,6 +916,8 @@ namespace HPReserger
         private void comboMesAño_CambioFechas(object sender, EventArgs e)
         {
             btnPreliminar.Enabled = true;
+            if (cboempresa.SelectedValue != null)
+                VerificarsiYaexisteAsiento();
         }
     }
 }

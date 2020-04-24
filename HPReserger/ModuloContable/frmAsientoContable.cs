@@ -41,7 +41,7 @@ namespace HPReserger
             labelAmarillo.ForeColor = Color.Chocolate;
             //labelAmarillo.ForeColor = Color.FromArgb(247, 125, 0);
             labelCuadre.ForeColor = Configuraciones.ColorBien;
-            Cargarmoneda();    
+            Cargarmoneda();
             estado = 100; fechacheck = 0;
             tipobusca = 1;
             RellenarEstado(cboestado);
@@ -1347,7 +1347,7 @@ namespace HPReserger
                 cbocambio.Focus();
                 return;
             }
-            
+
             //validamos la glosa
             if (!txtglosa.EstaLLeno())
             {
@@ -1875,6 +1875,8 @@ namespace HPReserger
                 cuoReversa = txtcuo.Text;
                 ModuloContable.frmRevesarAsientos frmReversita = new ModuloContable.frmRevesarAsientos();
                 //Paso de Variables
+                if (dinamica == -50 || dinamica == -51)
+                    frmReversita.rbReversarPeriodo.Enabled = false;
                 frmReversita.Glosa = txtglosa.Text;
                 frmReversita.Cuo = txtcuo.Text;
                 frmReversita.FechaValor = dtpfechavalor.Value;

@@ -823,6 +823,11 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.NotaCredito(opcion, codnc, nronc, nrofac, tipo, Proveedor, subtotaln, igv, total, glosa, usuario);
         }
+
+        public DataTable ELiminarReflejosdeCierreApertura(DateTime FechaContable, int fkEmpresa)
+        {
+            return cdOrdenPedido.ELiminarReflejosdeCierreApertura(FechaContable, fkEmpresa);
+        }
         public DataTable NotaCreditoDetalle(int opcion, string codnc, string nronc, string Proveedor, int tipo, int tipocompra, int cantidad, int articulo, int marca, int modelo, decimal precioreg, decimal preciomod, decimal total, int eliminado, int usuario)
         {
             return cdOrdenPedido.NotaCreditoDetalle(opcion, codnc, nronc, Proveedor, tipo, tipocompra, cantidad, articulo, marca, modelo, precioreg, preciomod, total, eliminado, usuario);
@@ -2639,6 +2644,10 @@ namespace HPResergerCapaLogica
         public DataTable CierreMensualDinamicaYaExiste(int dinamica, DateTime FechaPeriodo, int empresa)
         {
             return cdOrdenPedido.CierreMensualDinamicaYaExiste(dinamica, FechaPeriodo, empresa);
+        }
+        public DataTable CierreAnualDinamicaYaExiste(int dinamica, DateTime FechaPeriodo, int empresa)
+        {
+            return cdOrdenPedido.CierreAnualDinamicaYaExiste(dinamica, FechaPeriodo, empresa);
         }
         public DataTable AsientoApertura_CierrePeriodo(int empresa, DateTime Fecha)
         {

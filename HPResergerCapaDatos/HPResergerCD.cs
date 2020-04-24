@@ -823,6 +823,14 @@ namespace HPResergerCapaDatos
             object[] valor = { buscar };
             return bd.DataTableFromProcedure("usp_Listar_Departamento", parametros, valor, null);
         }
+
+        public DataTable ELiminarReflejosdeCierreApertura(DateTime fechaContable, int fkEmpresa)
+        {
+            string[] parametros = { "@FechaContable", "@pkEmpresa" };
+            object[] valor = { fechaContable, fkEmpresa };
+            return bd.DataTableFromProcedure("usp_ELiminarReflejosdeCierreApertura", parametros, valor, null);
+        }
+
         public DataTable listar_Provincias(int codigo, string buscar)
         {
             string[] parametros = { "@coddep", "@Buscar" };
@@ -4972,6 +4980,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@dinamica", "@Periodo", "@empresa" };
             object[] valores = { dinamica, FechaPeriodo, empresa };
             return bd.DataTableFromProcedure("usp_CierreMensualDinamicaYaExiste", parametros, valores, null);
+        }
+        public DataTable CierreAnualDinamicaYaExiste(int dinamica, DateTime FechaPeriodo, int empresa)
+        {
+            string[] parametros = { "@dinamica", "@Periodo", "@empresa" };
+            object[] valores = { dinamica, FechaPeriodo, empresa };
+            return bd.DataTableFromProcedure("usp_CierreAnualDinamicaYaExiste", parametros, valores, null);
         }
         public DataTable AsientoApertura_CierrePeriodo(int empresa, int len, DateTime Fecha)
         {
