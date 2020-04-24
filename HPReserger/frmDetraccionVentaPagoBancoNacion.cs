@@ -202,8 +202,8 @@ namespace HPReserger
                 campo[5] = txtcodctacte.Text;
                 campo[6] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100((decimal.Parse(item.Cells[xdetraccion.Name].Value.ToString())).ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                 campo[7] = "01";
-                campo[8] = txtaño.Text;
-                campo[9] = txtmes.Text;
+                campo[8] = ((DateTime)item.Cells[xFechaEmision.Name].Value).Year.ToString();
+                campo[9] = ((DateTime)item.Cells[xFechaEmision.Name].Value).Month.ToString("00");
                 campo[10] = ((int)item.Cells[xtipodoc.Name].Value).ToString("00");
                 campo[11] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xserie.Name].Value.ToString(), '0', 4, HPResergerFunciones.Utilitarios.Direccion.derecha);
                 campo[12] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xnumero.Name].Value.ToString(), '0', 8, HPResergerFunciones.Utilitarios.Direccion.derecha);

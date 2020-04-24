@@ -1599,6 +1599,7 @@
             this.asientosAperturaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("asientosAperturaToolStripMenuItem.Image")));
             this.asientosAperturaToolStripMenuItem.Name = "asientosAperturaToolStripMenuItem";
             this.asientosAperturaToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.asientosAperturaToolStripMenuItem.Tag = "1413";
             this.asientosAperturaToolStripMenuItem.Text = "Asiento Cierre Anual";
             this.asientosAperturaToolStripMenuItem.Click += new System.EventHandler(this.asientosAperturaToolStripMenuItem_Click);
             // 
