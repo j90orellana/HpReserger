@@ -2657,6 +2657,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ResultadoCierre(empresa, Fecha);
         }
+        public DataTable ResultadoCierreBalance(int empresa, DateTime fechaini, DateTime fechafin)
+        {
+            return cdOrdenPedido.ResultadoCierreBalance(empresa, fechaini, fechafin);
+        }
         public DataTable DiferenciadeCambioMensual(int @opcion, int @empresa, DateTime @periodo, int @tipo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @montodolares, decimal @montosoles, decimal @finmesoles, decimal @difcambio, decimal @tccompra, decimal @tcventa, string @naturaleza)
         {
             return cdOrdenPedido.DiferenciadeCambioMensual(@opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza);
@@ -2670,6 +2674,18 @@ namespace HPResergerCapaLogica
             decimal ValorDecimal = 0m;
             string CampoVacio = "";
             return cdOrdenPedido.AperturaEjercicio(0, CampoVacio, @empresa, @periodo, CampoVacio, CampoVacio, ValorDecimal, ValorDecimal);
+        }
+        public DataTable AperturaEjercicioBalance(int @pkEmpresa, DateTime @FechaContable)
+        {
+            decimal cerod = 0m;
+            string vacio = "";
+            int Cero = 0;
+            DateTime FechaActual = DateTime.Now;
+            return cdOrdenPedido.AperturaEjercicioBalance(0, pkEmpresa, vacio, FechaContable, FechaActual, FechaActual, Cero, vacio, vacio, vacio, vacio, vacio, vacio, vacio, vacio, vacio, cerod, cerod, cerod);
+        }
+        public DataTable AperturaEjercicioBalance(int @opcion, int @pkEmpresa, string @Cod_Asiento_Contable, DateTime @FechaContable, DateTime @FechaRegistro, DateTime @FechaEmision, int @Id_Comprobante, string @Cod_Comprobante, string @Num_Comprobante, string @Num_Doc, string @Razon_Social, string @Glosa, string @Cuenta_Contable, string @descripcion, string @CuentaBanco, string @moneda, decimal @pen, decimal @usd, decimal @tipocambio)
+        {
+            return cdOrdenPedido.AperturaEjercicioBalance(@opcion, @pkEmpresa, @Cod_Asiento_Contable, @FechaContable, @FechaRegistro, @FechaEmision, @Id_Comprobante, @Cod_Comprobante, @Num_Comprobante, @Num_Doc, @Razon_Social, @Glosa, @Cuenta_Contable, @descripcion, @CuentaBanco, @moneda, @pen, @usd, @tipocambio);
         }
         public DataTable DiferenciadeCambioMensual(int @empresa, DateTime @periodo, int @tipo)
         {

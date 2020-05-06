@@ -412,7 +412,7 @@ namespace HPReserger
             HPResergerFunciones.Utilitarios.RangoCelda celda2 = new HPResergerFunciones.Utilitarios.RangoCelda("a2", "c2", $"Correspondiente a {Fechas.ToString("MMMM") } del {Fechas.Year}", 12);
             RangosCeldas.Add(celda2);
 
-            HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "TIPO DE CAMBIO", RangosCeldas, 3, new int[] { 1, 2, 3 }, new int[] { }, new int[] { });
+            HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "TIPO_DE_CAMBIO", RangosCeldas, 3, new int[] { 1, 2, 3 }, new int[] { }, new int[] { });
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

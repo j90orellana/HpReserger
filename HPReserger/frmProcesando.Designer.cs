@@ -81,8 +81,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblProceso;
         private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.Label lblProceso;
     }
 }

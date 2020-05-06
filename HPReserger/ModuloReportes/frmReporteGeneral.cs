@@ -142,7 +142,7 @@ namespace HPReserger
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            string _NombreHoja = "ESTADO SITUACÍON FINANCIERA";
+            string _NombreHoja = "ESTADO_SITUACÍON_FINANCIERA";
             List<HPResergerFunciones.Utilitarios.RangoCelda> ListaCeldas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
             HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "d1", EMPRESA, 14);
             ListaCeldas.Add(Celda1);

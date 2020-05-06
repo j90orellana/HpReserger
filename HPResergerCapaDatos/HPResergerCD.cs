@@ -4999,6 +4999,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, Fecha };
             return bd.DataTableFromProcedure("usp_ResultadoCierre", parametros, valores, null);
         }
+        public DataTable ResultadoCierreBalance(int empresa, DateTime fechaini, DateTime fechafin)
+        {
+            string[] parametros = { "@Fechaini", "@FechaFin", "@empresa" };
+            object[] valores = { fechaini, fechafin, empresa };
+            return bd.DataTableFromProcedure("usp_ResultadoCierreCuentaBalance", parametros, valores, null);
+        }
         public DataTable DiferenciadeCambioMensual(int @opcion, int @empresa, DateTime @periodo, int @tipo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @montodolares, decimal @montosoles, decimal @finmesoles, decimal @difcambio, decimal @tccompra, decimal @tcventa, string @naturaleza)
         {
             string[] parametros = { "@opcion", "@empresa", "@periodo", "@tipo", "@CuentaContable", "@idcomprobante", "@numdoc", "@tipoidpro", "@proveedor", "@nombreproveedor", "@montodolares", "@montosoles", "@finmesoles", "@difcambio", "@tccompra", "@tcventa", "@naturaleza" };
@@ -5011,7 +5017,12 @@ namespace HPResergerCapaDatos
             object[] valores = { @opcion, ruc, @empresa, @periodo, @CuentaContable, descripcion, pen, usd };
             return bd.DataTableFromProcedure("[usp_AperturaEjercicio]", parametros, valores, null);
         }
-
+        public DataTable AperturaEjercicioBalance(int @opcion, int @pkEmpresa, string @Cod_Asiento_Contable, DateTime @FechaContable, DateTime @FechaRegistro, DateTime @FechaEmision, int @Id_Comprobante, string @Cod_Comprobante, string @Num_Comprobante, string @Num_Doc, string @Razon_Social, string @Glosa, string @Cuenta_Contable, string @descripcion, string @CuentaBanco, string @moneda, decimal @pen, decimal @usd, decimal @tipocambio)
+        {
+            string[] parametros = { "@opcion", "@pkEmpresa", "@Cod_Asiento_Contable", "@FechaContable", "@FechaRegistro", "@FechaEmision", "@Id_Comprobante", "@Cod_Comprobante", "@Num_Comprobante", "@Num_Doc", "@Razon_Social", "@Glosa", "@Cuenta_Contable", "@descripcion", "@CuentaBanco", "@moneda", "@pen", "@usd", "@tipocambio" };
+            object[] valores = { @opcion, @pkEmpresa, @Cod_Asiento_Contable, @FechaContable, @FechaRegistro, @FechaEmision, @Id_Comprobante, @Cod_Comprobante, @Num_Comprobante, @Num_Doc, @Razon_Social, @Glosa, @Cuenta_Contable, @descripcion, @CuentaBanco, @moneda, @pen, @usd, @tipocambio };
+            return bd.DataTableFromProcedure("[usp_AperturaEjercicioBalance]", parametros, valores, null);
+        }
         public DataTable ReporteSaldosContables(int empresa, DateTime fechaini, DateTime fechafin)
         {
             string[] parametros = { "@empresa", "@FechaInicial", "@Fecha" };
