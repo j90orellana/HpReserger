@@ -2683,7 +2683,7 @@ namespace HPResergerCapaLogica
             DateTime FechaActual = DateTime.Now;
             return cdOrdenPedido.AperturaEjercicioBalance(0, pkEmpresa, vacio, FechaContable, FechaActual, FechaActual, Cero, vacio, vacio, vacio, vacio, vacio, vacio, vacio, vacio, vacio, cerod, cerod, cerod);
         }
-        public DataTable AperturaEjercicioBalance(int @opcion, int @pkEmpresa, string @Cod_Asiento_Contable, DateTime @FechaContable, DateTime @FechaRegistro, DateTime @FechaEmision, int @Id_Comprobante, string @Cod_Comprobante, string @Num_Comprobante, string @Num_Doc, string @Razon_Social, string @Glosa, string @Cuenta_Contable, string @descripcion, string @CuentaBanco, string @moneda, decimal @pen, decimal @usd, decimal @tipocambio)
+        public DataTable AperturaEjercicioBalance(int @opcion, int @pkEmpresa, string @Cod_Asiento_Contable, DateTime @FechaContable, DateTime @FechaRegistro, DateTime? @FechaEmision, int @Id_Comprobante, string @Cod_Comprobante, string @Num_Comprobante, string @Num_Doc, string @Razon_Social, string @Glosa, string @Cuenta_Contable, string @descripcion, string @CuentaBanco, string @moneda, decimal @pen, decimal @usd, decimal @tipocambio)
         {
             return cdOrdenPedido.AperturaEjercicioBalance(@opcion, @pkEmpresa, @Cod_Asiento_Contable, @FechaContable, @FechaRegistro, @FechaEmision, @Id_Comprobante, @Cod_Comprobante, @Num_Comprobante, @Num_Doc, @Razon_Social, @Glosa, @Cuenta_Contable, @descripcion, @CuentaBanco, @moneda, @pen, @usd, @tipocambio);
         }

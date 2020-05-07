@@ -1370,7 +1370,7 @@ namespace HPReserger
             // 
             this.label53.Location = new System.Drawing.Point(9, 47);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(104, 41);
+            this.label53.Size = new System.Drawing.Size(104, 61);
             this.label53.TabIndex = 17;
             this.label53.Text = "Costo de las fianzas que garantizan la independización:";
             // 
