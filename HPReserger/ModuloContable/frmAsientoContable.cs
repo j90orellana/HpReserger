@@ -917,7 +917,7 @@ namespace HPReserger
         }
         public void RevisarSihayDescuadre()
         {
-            if (estado == -1)
+            if (estado == -1 && !(new int[] { -50, -51 }).Contains(dinamica))
             {
                 DataTable Tdatos = CapaLogica.VerificarCuadredeAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue);
                 labelCuadre.Click -= LabelCuadre_Click;

@@ -58,7 +58,7 @@ namespace HPReserger
                 cboproyectoCierre.ValueMember = "id_proyecto";
                 //
                 NameEmpresa = cboempresa.SelectedText;
-                VerificarsiYaexisteAsiento();
+                VerificarsiYaexisteAsiento(true);
             }
         }
         DataTable Tdatos;
@@ -74,6 +74,7 @@ namespace HPReserger
                 DateTime FechaAñoPasado = new DateTime(comboMesAño.FechaFinMes.Year - 1, 12, 31);
                 DateTime FechaAñoActual = new DateTime(comboMesAño.FechaFinMes.Year, 12, 31);
                 DataTable DatosTC = CapaLogica.TipodeCambio(101, FechaAñoPasado.Year, FechaAñoPasado.Month, 31, 0, 0, null);
+                VerificarsiYaexisteAsiento(true);
                 if (DatosTC.Rows.Count > 0)
                 {
                     DataRow FilaTC = DatosTC.Rows[0];
@@ -83,14 +84,11 @@ namespace HPReserger
                         Tdatos = CapaLogica.AperturaEjercicio((int)cboempresa.SelectedValue, FechaAñoActual.AddYears(-1));
                         TDBalance = CapaLogica.AperturaEjercicioBalance((int)cboempresa.SelectedValue, FechaAñoActual.AddYears(-1));
                         btnAplicar.Enabled = true;
-                        rbCierre.Enabled = rbApertura.Enabled = true;
                         //lbl1.Text = "";
                         if (Tdatos.Rows.Count == 0)
                         {
                             Tdatos = CapaLogica.ResultadoCierre((int)cboempresa.SelectedValue, FechaAñoPasado);
                             TDBalance = CapaLogica.ResultadoCierreBalance((int)cboempresa.SelectedValue, new DateTime(FechaAñoPasado.Year, 1, 1), new DateTime(FechaAñoPasado.Year, 12, 31));
-                            rbCierre.Checked = rbCierre.Enabled = true;
-                            rbApertura.Enabled = rbApertura.Checked = false;
                             dtgcontenBalance.DataSource = TDBalance;
                             GenerarVistaPreliminar(Tdatos, dtgconten);
                             lbl1.Text = "No Existe Asiento.";
@@ -98,10 +96,8 @@ namespace HPReserger
                         }
                         else
                         {
-                            rbCierre.Checked = rbCierre.Enabled = false;
-                            rbApertura.Enabled = rbApertura.Checked = true;
+
                             //dtgconten.DataSource = Tdatos;
-                            //VerificarsiYaexisteAsiento();
                             GenerarVistaPreliminar(Tdatos, dtgconten);
                             dtgcontenBalance.DataSource = TDBalance;
                             GenerarLineaBalance(TDBalance);
@@ -684,9 +680,11 @@ namespace HPReserger
             if (cboempresa.SelectedValue == null) { msg("Selecione una Empresa"); cboempresa.Focus(); return; }
             if (cboproyectoCierre.SelectedValue == null) { msg("Selecciones un Proyecto"); cboproyectoCierre.Focus(); return; }
             if (dtgconten.RowCount == 0) { msg("No Hay filas para Generar el Asiento"); return; }
+            if (rbCierre.Checked && !rbCierre.Enabled) { msg("No se Puede Aplicar Asiento de Cierre"); return; }
+            if (rbApertura.Checked && !rbApertura.Enabled) { msg("No se Puede Aplicar Asiento de Apertura"); return; }
             //validamos que este todos los periodos Cerrados
             Boolean Validar = false;
-            for (int i = 1; i < 13; i++)
+            for (int i = 1; i < 12; i++)
             {
                 DateTime FechaPrueba = new DateTime(comboMesAño.GetFecha().Year - 1, i, 1);
                 if (CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, FechaPrueba))
@@ -703,40 +701,9 @@ namespace HPReserger
             DateTime FechaContable = new DateTime(comboMesAño.FechaFinMes.Year, 1, 1);
             ///////                   
             Cursor = Cursors.WaitCursor;
-            string mensaje = "Se Agregaron los Asientos de Cierre y Apertura";
-            DinamicaApertura = -51;
-            DinamicaCierre = -50;
-            int PosI = 0, PosF = 0;
-            DataTable TDatos = ((DataTable)dtgconten.DataSource).Copy();
-            int Largo = TDatos.Rows.Count;
-            int c = 0;
-            int contador = 0;
-            do
-            {
-                for (int i = contador; i < Largo; i++)
-                {
-                    //Buscamos el Valor Inicial
-                    if (TDatos.Rows[i]["cuentacontable"].ToString().Contains("ASIENTO"))
-                    {
-                        PosI = i;
-                        c++;
-                    }
-                    if (TDatos.Rows[i]["cuentacontable"].ToString().Contains("Glosa"))
-                    {
-                        PosF = i - 1;
-                        contador = i + 1;
-                        break;
-                    }
-                }
-                //Cierre
-                Boolean Debe = true;
-                decimal TC = CapaLogica.TipoCambioDia("venta", new DateTime(comboMesAño.GetFecha().Year - 1, 12, 31));
-                GrabarAsientos(TDatos, c, new DateTime(comboMesAño.GetFecha().Year - 1, 12, 31), PosI, PosF, DinamicaCierre, (int)cboproyectoCierre.SelectedValue, Debe, TC);
-            } while (Largo - 1 > PosF + 1);
-            //Eliminamos los REflejos
-            CapaLogica.ELiminarReflejosdeCierreApertura(comboMesAño.GetFecha(), (int)(cboempresa.SelectedValue));
+            decimal TC = CapaLogica.TipoCambioDia("venta", new DateTime(comboMesAño.GetFecha().Year - 1, 12, 31));
             //Grabamos los Datos a la Tablas!
-            if (rbCierre.Checked)
+            if (rbCierre.Checked && rbCierre.Enabled)
             {
                 foreach (DataRow item in Tdatos.Rows)
                 {
@@ -761,12 +728,135 @@ namespace HPReserger
                     }
                 }
             }
-            msgOK(mensaje);
-            btnAplicar.Enabled = false;
-            GenerarAsientoAPertura = false;
-            cboperiodo_SelectedIndexChanged(sender, e);
-            lbl1.Text = "Asientos Generados.";
+            if (rbCierre.Checked && rbCierre.Enabled)
+            {
+                FechaContable = new DateTime(comboMesAño.FechaFinMes.Year - 1, 12, 31);
+                string mensaje = "Se Agregaron los Asientos de Cierre";
+                DinamicaApertura = -51;
+                DinamicaCierre = -50;
+                int PosI = 0, PosF = 0;
+                DataTable TDatos = ((DataTable)dtgconten.DataSource).Copy();
+                int Largo = TDatos.Rows.Count;
+                int c = 0;
+                int contador = 0;
+                do
+                {
+                    for (int i = contador; i < Largo; i++)
+                    {
+                        //Buscamos el Valor Inicial
+                        if (TDatos.Rows[i]["cuentacontable"].ToString().Contains("ASIENTO"))
+                        {
+                            PosI = i;
+                            c++;
+                        }
+                        if (TDatos.Rows[i]["cuentacontable"].ToString().Contains("Glosa"))
+                        {
+                            PosF = i - 1;
+                            contador = i + 1;
+                            break;
+                        }
+                    }
+                    //Cierre
+                    Boolean Debe = true;
+                    GrabarAsientos(TDatos, c, FechaContable, PosI, PosF, DinamicaCierre, (int)cboproyectoCierre.SelectedValue, Debe, TC);
+                } while (Largo - 1 > PosF + 1);
+                //Grabar el Detalle y Cabecera de la dinamica de Cierre Balances; Sentido = los pasa del debe al haber
+                GrabarAsientosApertura(TDBalance, ++c, FechaContable, TC, -50, false);
+                //Fin del Grabado.
+                //Eliminamos los REflejos
+                CapaLogica.ELiminarReflejosdeCierreApertura(comboMesAño.GetFecha(), (int)(cboempresa.SelectedValue));
+                msgOK(mensaje);
+                //btnAplicar.Enabled = false;
+                GenerarAsientoAPertura = false;
+                lbl1.Text = "Asientos Generados.";
+                rbCierre.Enabled = false;
+            }
+            else if (rbApertura.Checked && rbApertura.Enabled)
+            {
+                DateTime FechitaContable = new DateTime(comboMesAño.GetFecha().Year, 1, 1);
+                //DataTable TablaReflejo = TDBalance.Copy();
+                //TablaReflejo.Rows.RemoveAt(TablaReflejo.Rows.Count - 1);
+                GrabarAsientosApertura(TDBalance, 1, FechaContable, TC, -51, true);
+                btnAplicar.Enabled = false;
+                GenerarAsientoAPertura = false;
+                msgOK("Se Agregaron los Asientos de Apertura");
+                lbl1.Text = "Asientos Generados.";
+                rbApertura.Enabled = false;
+            }
             Cursor = Cursors.Default;
+            VerificarsiYaexisteAsiento(false);
+        }
+        private void GrabarAsientosApertura(DataTable TablaDatos, int NumAsiento, DateTime FechaContable, decimal TC, int iddinamica, Boolean Sentido)
+        {
+            DataView DViewAux = TablaDatos.AsDataView();
+            string CuentaContable = "";
+            string CuentaAux = "";
+            int PosFila = 1;
+            foreach (DataRow item in TablaDatos.Rows)
+            {
+                CuentaAux = item[xCuenta_Contable.DataPropertyName].ToString();
+                if (CuentaContable != CuentaAux)
+                {
+                    CuentaContable = CuentaAux;
+                    DViewAux.RowFilter = $"cuenta_contable like '{CuentaContable}'";
+                    //en el DataView Esta el Filtro de todo los datos ue se deben grabar
+                    //Sacamos el Total que va a ir a la cabecera;
+                    decimal SumatoriaPEN = 0, SumatoriaUSD = 0;
+                    foreach (DataRow DVFila in DViewAux.ToTable().Rows)
+                    {
+                        SumatoriaPEN += (decimal)DVFila[xpen.DataPropertyName];
+                        SumatoriaUSD += (decimal)DVFila[xusd.DataPropertyName];
+                    }
+                    SumatoriaPEN = SumatoriaPEN * (Sentido ? 1 : -1);
+                    SumatoriaUSD = SumatoriaUSD * (Sentido ? 1 : -1);
+                    //Ya tenemos el Total de la Cabecera,
+                    //Sì es Diferente de Cero es que si tiene Saldo
+                    if (SumatoriaPEN != 0 && SumatoriaUSD != 0)
+                    {
+                        //Declaraciones y definiciones
+                        int fkProyecto = (int)cboproyectoCierre.SelectedValue;
+                        int IdSoles = 1;
+                        string CaracterFueraMes = Sentido ? "00" : "13";
+                        string cuo = $"{FechaContable.Year.ToString().Substring(2, 2) }{CaracterFueraMes}-{NumAsiento.ToString("00000")}";
+                        //fin dec y def
+                        decimal ValorDebeMN = 0;
+                        decimal ValorHaberMN = 0;
+                        //Calculos
+                        //positivo = haber ; negativo = debe
+                        if (SumatoriaPEN < 0)
+                        {
+                            ValorDebeMN = Math.Abs(SumatoriaPEN); ValorHaberMN = 0;
+                        }
+                        else
+                        {
+                            ValorDebeMN = 0; ValorHaberMN = Math.Abs(SumatoriaPEN);
+                        }
+                        //fin Calculos
+                        //string GLOSA = $"RESULTADO DEL EJERCICIO {comboMesAño.GetFecha().Year - 1}";
+                        string GLOSA = $"CANCELACION DE CUENTAS DE BALANCE";
+                        CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila++, NumAsiento, FechaContable, CuentaContable, ValorDebeMN, ValorHaberMN, TC,
+                            fkProyecto, 0, cuo, IdSoles, GLOSA, FechaContable, iddinamica);
+                        //Detalle del asiento del Debe      
+                        foreach (DataRow DVFila in DViewAux.ToTable().Rows)
+                        {
+                            int TipoIdProveedor = (int)DVFila[xTipo_Doc.DataPropertyName];
+                            string RucProveedor = DVFila[xNum_Doc.DataPropertyName].ToString();
+                            string NameProveedor = DVFila[xRazon_Social.DataPropertyName].ToString();
+                            int IdUsuario = frmLogin.CodigoUsuario;
+                            int idcomprobante = (int)DVFila[xId_Comprobante.DataPropertyName];
+                            string SerieDocumento = DVFila[xCod_Comprobante.DataPropertyName].ToString();
+                            string NumDocumento = DVFila[xNum_Comprobante.DataPropertyName].ToString();
+                            decimal ValorDolares = (decimal)DVFila[xusd.DataPropertyName] * (Sentido ? 1 : -1) * (ValorDebeMN < ValorHaberMN ? 1 : -1);
+                            decimal ValorSoles = (decimal)DVFila[xpen.DataPropertyName] * (Sentido ? 1 : -1) * (ValorDebeMN < ValorHaberMN ? 1 : -1);
+                            GLOSA = DVFila[xGlosa.DataPropertyName].ToString();
+                            //
+                            CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila - 1, NumAsiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, iddinamica, FechaContable, FechaContable, FechaContable,
+                            ValorSoles, ValorDolares, TC, IdSoles, "", "", GLOSA, FechaContable, IdUsuario, "");
+                        }
+                    }
+                }
+            }
         }
         private void GrabarAsientos(DataTable datos, int NumAsiento, DateTime fechaContable, int posI, int posF, int dinamica, int pkproyecto, bool debe, decimal TC)
         {
@@ -866,32 +956,46 @@ namespace HPReserger
             else
                 dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
         }
-        public Boolean VerificarsiYaexisteAsiento()
+        public Boolean VerificarsiYaexisteAsiento(Boolean Limpiar)
         {
+            Boolean Resultado = true;
             //Verificamos si ya existe el Asiento;
             DateTime Fecha = new DateTime(comboMesAño.FechaFinMes.Year, 12, 31);
-            DataTable TDatos = new DataTable();
+            DataTable TdatosC = new DataTable();
+            DataTable TdatosA = new DataTable();
             btnExcel.Enabled = false;
-            if (dtgconten.DataSource != null)
-                dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
-            //if (chkSaldos.Checked)
-            TDatos = CapaLogica.CierreAnualDinamicaYaExiste(-50, new DateTime(Fecha.Year - 1, 1, 1), (int)cboempresa.SelectedValue);
-            //rbApertura.Enabled = false;
-            if (TDatos.Rows.Count > 0)
+            rbCierre.Enabled = true;
+            rbApertura.Enabled = false;
+            if (Limpiar)
             {
-                //rbApertura.Enabled = true;
+                if (dtgconten.DataSource != null)
+                    dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
+                if (dtgcontenBalance.DataSource != null)
+                    dtgcontenBalance.DataSource = ((DataTable)dtgcontenBalance.DataSource).Clone();
+            }
+            //if (chkSaldos.Checked)
+            TdatosC = CapaLogica.CierreAnualDinamicaYaExiste(-50, new DateTime(Fecha.Year - 1, 1, 1), (int)cboempresa.SelectedValue);
+            TdatosA = CapaLogica.CierreAnualDinamicaYaExiste(-51, new DateTime(Fecha.Year, 1, 1), (int)cboempresa.SelectedValue);
+            //rbApertura.Enabled = false;
+            if (TdatosC.Rows.Count > 0)
+            {
+                rbCierre.Enabled = false;
+                rbApertura.Enabled = true;
+                rbApertura.Checked = true;
                 lbl1.Text = $"Ya Existe un Asiento, Reverselo ";
-                foreach (DataRow item in TDatos.Rows)
+                foreach (DataRow item in TdatosC.Rows)
                 {
                     lbl1.Text += $" {item["Cod_Asiento_Contable"]}";
                 }
-                return true;
+                Resultado = true;
             }
-            else
+            if (TdatosA.Rows.Count > 0)
             {
-                lbl1.Text = "No Existe Asiento.";
-                return false;
+                rbApertura.Enabled = false;
+                rbCierre.Enabled = false;
             }
+
+            return Resultado;
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -1009,7 +1113,7 @@ namespace HPReserger
         {
             btnPreliminar.Enabled = true;
             if (cboempresa.SelectedValue != null)
-                VerificarsiYaexisteAsiento();
+                VerificarsiYaexisteAsiento(true);
         }
     }
 }
