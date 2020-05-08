@@ -72,6 +72,8 @@
             this.xtcvompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtcVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfkNaturaleza = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCtaBancaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNroCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,7 +117,7 @@
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -128,7 +130,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -150,10 +152,12 @@
             this.xDifCambio,
             this.xtcvompra,
             this.xtcVenta,
-            this.xfkNaturaleza});
+            this.xfkNaturaleza,
+            this.xCtaBancaria,
+            this.xNroCuenta});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
@@ -385,7 +389,7 @@
             this.xNumDoc.Name = "xNumDoc";
             this.xNumDoc.ReadOnly = true;
             this.xNumDoc.ToolTipText = "Número Comprobante";
-            this.xNumDoc.Width = 70;
+            this.xNumDoc.Width = 75;
             // 
             // xProveedor
             // 
@@ -394,7 +398,7 @@
             this.xProveedor.HeaderText = "Ruc";
             this.xProveedor.Name = "xProveedor";
             this.xProveedor.ReadOnly = true;
-            this.xProveedor.Width = 49;
+            this.xProveedor.Width = 50;
             // 
             // xTipoidPro
             // 
@@ -500,6 +504,24 @@
             this.xfkNaturaleza.ReadOnly = true;
             this.xfkNaturaleza.Width = 50;
             // 
+            // xCtaBancaria
+            // 
+            this.xCtaBancaria.DataPropertyName = "CtaBancaria";
+            this.xCtaBancaria.HeaderText = "CtaBancaria";
+            this.xCtaBancaria.Name = "xCtaBancaria";
+            this.xCtaBancaria.ReadOnly = true;
+            this.xCtaBancaria.Visible = false;
+            // 
+            // xNroCuenta
+            // 
+            this.xNroCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNroCuenta.DataPropertyName = "NroCuenta";
+            this.xNroCuenta.HeaderText = "NroCuenta";
+            this.xNroCuenta.MinimumWidth = 80;
+            this.xNroCuenta.Name = "xNroCuenta";
+            this.xNroCuenta.ReadOnly = true;
+            this.xNroCuenta.Width = 87;
+            // 
             // frmDiferenciaCambioMensual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,5 +591,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xtcvompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtcVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkNaturaleza;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCtaBancaria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNroCuenta;
     }
 }

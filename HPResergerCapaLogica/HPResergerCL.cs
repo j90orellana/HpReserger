@@ -2490,6 +2490,15 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarAsientoFacturaDetalle(@opcion, @Id, @Asiento, @fechaContable, @Cuenta, @proyecto, @tipodoc, @numdoc, @razon, @idcomprobante, @codcomprobante, @numcomprobante, @cc, @fechaemision, @fechavencimiento, @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi, 0);
         }
+        public DataTable InsertarAsientoDetalle(int @opcion, int @Id, int @Asiento, DateTime @fechaContable, string @Cuenta, int @proyecto, int @tipodoc,
+            string @numdoc, string @razon, int @idcomprobante, string @codcomprobante, string @numcomprobante, int @cc, DateTime @fechaemision,
+            DateTime @fechavencimiento, DateTime @fecharecepcion, decimal @impormn, decimal @importeme, decimal @tc, int @Fkmoneda, int @CtaBancaria,
+            string @nroopbanco, string @glosa, DateTime @fechaasiento, int @usuario, string @fkasi)
+        {
+            return cdOrdenPedido.InsertarAsientoDetalle(@opcion, @Id, @Asiento, @fechaContable, @Cuenta, @proyecto, @tipodoc, @numdoc, @razon, @idcomprobante,
+                @codcomprobante, @numcomprobante, @cc, @fechaemision, @fechavencimiento, @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda,
+                @CtaBancaria, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi, 0);
+        }
         public DataTable ActivarDesactivarReflejos(int Activar) //1 activa ,cualquiera desactiva
         {
             return cdOrdenPedido.ActivarDesactivarReflejos(Activar);
@@ -2661,9 +2670,12 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ResultadoCierreBalance(empresa, fechaini, fechafin);
         }
-        public DataTable DiferenciadeCambioMensual(int @opcion, int @empresa, DateTime @periodo, int @tipo, string @CuentaContable, int @idcomprobante, string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @montodolares, decimal @montosoles, decimal @finmesoles, decimal @difcambio, decimal @tccompra, decimal @tcventa, string @naturaleza)
+        public DataTable DiferenciadeCambioMensual(int @opcion, int @empresa, DateTime @periodo, int @tipo, string @CuentaContable, int @idcomprobante,
+            string @numdoc, int @tipoidpro, string @proveedor, string @nombreproveedor, decimal @montodolares, decimal @montosoles, decimal @finmesoles,
+            decimal @difcambio, decimal @tccompra, decimal @tcventa, string @naturaleza, int @CtaBancaria)
         {
-            return cdOrdenPedido.DiferenciadeCambioMensual(@opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor, @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza);
+            return cdOrdenPedido.DiferenciadeCambioMensual(@opcion, @empresa, @periodo, @tipo, @CuentaContable, @idcomprobante, @numdoc, @tipoidpro, @proveedor,
+                @nombreproveedor, @montodolares, @montosoles, @finmesoles, @difcambio, @tccompra, @tcventa, @naturaleza, @CtaBancaria);
         }
         public DataTable AperturaEjercicio(int @opcion, string ruc, int @empresa, DateTime @periodo, string @CuentaContable, string descripcion, decimal pen, decimal usd)
         {
@@ -2692,7 +2704,7 @@ namespace HPResergerCapaLogica
             int ValorCero = 0;
             decimal ValorDecimal = 0m;
             string CampoVacio = "";
-            return cdOrdenPedido.DiferenciadeCambioMensual(0, @empresa, @periodo, @tipo, CampoVacio, ValorCero, CampoVacio, ValorCero, CampoVacio, CampoVacio, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, CampoVacio);
+            return cdOrdenPedido.DiferenciadeCambioMensual(0, @empresa, @periodo, @tipo, CampoVacio, ValorCero, CampoVacio, ValorCero, CampoVacio, CampoVacio, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, ValorDecimal, CampoVacio, ValorCero);
         }
         public DataTable ReporteSaldosContables2(int empresa, DateTime FechaInicioAnio, DateTime FechaFinMes)
         {

@@ -179,17 +179,19 @@ namespace HPReserger
                 int TipoIdProv = (int)item.Cells[xTipoidPro.Name].Value;
                 string Proveedores = item.Cells[xProveedor.Name].Value.ToString();
                 string NameProveedores = item.Cells[xNameProveedor.Name].Value.ToString();
-
+                //
                 decimal MontoDolares = (decimal)item.Cells[xMontoDolares.Name].Value;
                 decimal MontoSoles = (decimal)item.Cells[xMontoSoles.Name].Value;
                 decimal FinMes = (decimal)item.Cells[xFinMesSoles.Name].Value;
                 decimal difcambio = (decimal)item.Cells[xDifCambio.Name].Value;
                 decimal tccompra = (decimal)item.Cells[xtcvompra.Name].Value;
                 decimal tcventa = (decimal)item.Cells[xtcVenta.Name].Value;
-
+                //
+                int CtaBancaria = (int)item.Cells[xCtaBancaria.Name].Value;
+                //
                 string naturaleza = item.Cells[xfkNaturaleza.Name].Value.ToString();
-                CapaLogica.DiferenciadeCambioMensual(1, (int)cboempresa.SelectedValue, FechaContable, Dinamica, CuentaContable, idComprobante, NumDoc, TipoIdProv, Proveedores, NameProveedores, MontoDolares, MontoSoles, FinMes,
-                    difcambio, tccompra, tcventa, naturaleza);
+                CapaLogica.DiferenciadeCambioMensual(1, (int)cboempresa.SelectedValue, FechaContable, Dinamica, CuentaContable, idComprobante, NumDoc, TipoIdProv,
+                    Proveedores, NameProveedores, MontoDolares, MontoSoles, FinMes, difcambio, tccompra, tcventa, naturaleza, CtaBancaria);
             }
             //fin grabacion
             foreach (DataGridViewRow item in dtgconten.Rows)
@@ -201,13 +203,14 @@ namespace HPReserger
                     ValorDifCambio = (decimal)item.Cells[xDifCambio.Name].Value;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                     SumatoriaMN += ValorDifCambio;
+                    int CtaBancario = (int)item.Cells[xCtaBancaria.Name].Value;
                     //cabecera Debe
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, ValorDifCambio, 0,
                       TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     if (chkSaldos.Checked)
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                        CapaLogica.InsertarAsientoDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, CtaBancario, "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -246,13 +249,14 @@ namespace HPReserger
                     ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
                     SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
+                    int CtaBancario = (int)item.Cells[xCtaBancaria.Name].Value;
                     //cabecera Debe
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, 0, ValorDifCambio,
                       TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     if (chkSaldos.Checked)
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                        CapaLogica.InsertarAsientoDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, CtaBancario, "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -291,13 +295,14 @@ namespace HPReserger
                     ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
                     SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
+                    int CtaBancario = (int)item.Cells[xCtaBancaria.Name].Value;
                     //cabecera Debe
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, 0, ValorDifCambio,
                       TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     if (chkSaldos.Checked)
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
+                        CapaLogica.InsertarAsientoDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, CtaBancario, "", $"{CuentaContable}-{glosa}", FechaContable, IdUsuario, "");
                     if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -336,13 +341,14 @@ namespace HPReserger
                     ValorDifCambio = Math.Abs((decimal)item.Cells[xDifCambio.Name].Value);
                     SumatoriaMN += ValorDifCambio;
                     string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
+                    int CtaBancario = (int)item.Cells[xCtaBancaria.Name].Value;
                     //cabecera Debe
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, ValorDifCambio, 0,
                       TC, fkProyecto, 0, Cuo, pkMoneda, Glosa, FechaContable, Dinamica);
                     //Detalle del asiento del Debe
                     if (chkSaldos.Checked)
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, "", "", Glosa, FechaContable, IdUsuario, "");
+                        CapaLogica.InsertarAsientoDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                            NameProveedor, 0, "0", "0", 0, FechaContable, FechaContable, FechaContable, ValorDifCambio, 0, TC, pkMOnedaDetalle, CtaBancario, "", Glosa, FechaContable, IdUsuario, "");
                     if (chkDocumentos.Checked)
                     {
                         TipoIdProveedor = (int)item.Cells[xTipoidPro.Name].Value;
@@ -467,8 +473,8 @@ namespace HPReserger
                 {
                     _NombreHoja = $"Cierre Mensual Saldo {NameEmpresa}".ToUpper();
                     _Cabecera = "Cierre Mensual por Saldos";
-                    _NColumna = "H";
-                    _ColumnasAutoajustar = new int[] { 2, 3, 4, 5 };
+                    _NColumna = "K";
+                    _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
                 }
                 else if (chkDocumentos.Checked)
                 {
