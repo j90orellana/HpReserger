@@ -4489,5 +4489,28 @@ namespace HPReserger
         {
             frmASientosAperura = null;
         }
+        ModuloFinanzas.FrmConciliarBanco frmConciliacion;
+        private void conciliaciónBancariaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmConciliacion == null)
+            {
+                frmConciliacion = new ModuloFinanzas.FrmConciliarBanco();
+                frmConciliacion.MdiParent = this;
+                frmConciliacion.Icon = ICono;
+                frmConciliacion.FormClosed += new FormClosedEventHandler(CerrarfrmConciliacion);
+                frmConciliacion.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmConciliacion.Activate();
+                ValidarVentanas(frmConciliacion);
+            }
+        }
+
+        private void CerrarfrmConciliacion(object sender, FormClosedEventArgs e)
+        {
+            frmConciliacion = null;
+        }
     }
 }

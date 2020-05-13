@@ -293,6 +293,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.conciliaciónBancariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -417,7 +418,8 @@
             this.toolStripMenuItem4,
             this.toolStripSeparator16,
             this.prestamoInterEmpresasToolStripMenuItem,
-            this.cobroInterEmpresasToolStripMenuItem});
+            this.cobroInterEmpresasToolStripMenuItem,
+            this.conciliaciónBancariaToolStripMenuItem});
             this.arToolStripMenuItem.Image = global::HPReserger.Properties.Resources.Orden_Pedido;
             this.arToolStripMenuItem.Name = "arToolStripMenuItem";
             this.arToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
@@ -2845,6 +2847,13 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // conciliaciónBancariaToolStripMenuItem
+            // 
+            this.conciliaciónBancariaToolStripMenuItem.Name = "conciliaciónBancariaToolStripMenuItem";
+            this.conciliaciónBancariaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.conciliaciónBancariaToolStripMenuItem.Text = "Conciliación Bancaria";
+            this.conciliaciónBancariaToolStripMenuItem.Click += new System.EventHandler(this.conciliaciónBancariaToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3148,5 +3157,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
         private System.Windows.Forms.ToolStripMenuItem formato142REgistroVentasSimplificado;
         private System.Windows.Forms.ToolStripMenuItem asientosAperturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem conciliaciónBancariaToolStripMenuItem;
     }
 }

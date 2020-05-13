@@ -2510,6 +2510,10 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.InsertarAsientoFacturaDetalle(@opcion, @Id, @Asiento, @fechaContable, @Cuenta, @proyecto, @tipodoc, @numdoc, @razon, @idcomprobante, @codcomprobante, @numcomprobante, @cc, @fechaemision,
                 @fechavencimiento, @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi, tipopago);
         }
+        public DataTable BuscarCuentasBancariasxEmpresas(int empresa) //1 activa ,cualquiera desactiva
+        {
+            return cdOrdenPedido.BuscarCuentasBancariasxEmpresas(empresa);
+        }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
         {
             return cdOrdenPedido.BuscarFacturasManualesToNcNd(ruc, NumComprobante);

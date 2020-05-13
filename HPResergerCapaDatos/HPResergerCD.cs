@@ -4775,6 +4775,12 @@ namespace HPResergerCapaDatos
             object[] valores = { Activar };
             return bd.DataTableFromProcedure("usp_ActivarDesactivarReflejos", parametros, valores, null);
         }
+        public DataTable BuscarCuentasBancariasxEmpresas(int empresa) //1 activa ,cualquiera desactiva
+        {
+            string[] parametros = { "@empresa" };
+            object[] valores = { empresa };
+            return bd.DataTableFromProcedure("usp_BuscarCuentasBancariasxEmpresas", parametros, valores, null);
+        }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
         {
             string[] parametros = { "@ruc", "@NumComp" };
