@@ -72,6 +72,30 @@ namespace HPReserger.ModuloFinanzas
         {
             Estado = 1;
             PasarAPaso1(true);
+            if (File.Exists(txtRutaExcel.Text)) btnPaso2.Enabled = true;
+        }
+        private void btnPaso2_Click(object sender, EventArgs e)
+        {
+            Estado = 2;
+            PasarAPaso2(true);
+            CargarDatosDelExcel(txtRutaExcel.Text);
+        }
+        private void CargarDatosDelExcel(string Ruta)
+        {
+            dtgconten.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(txtRutaExcel.Text, 1, 6, 11);
+            //List<string> Listado = new List<string>();
+            //foreach (string item in HPResergerFunciones.Utilitarios.ListarHojasDeunExcel(Ruta))
+            //{
+            //    Listado.Add(item);
+            //}
+            //dtgconten.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, Listado[0].ToString());
+        }
+        private void PasarAPaso2(bool v)
+        {
+            v = !v;
+            btnCargar.Enabled = v;
+            dtgconten.Enabled = !v;
+            btnPaso2.Enabled = v;
         }
         private void PasarAPaso1(bool v)
         {
@@ -92,6 +116,15 @@ namespace HPReserger.ModuloFinanzas
             {
                 PasarAPaso1(false);
                 Estado--;
+            }
+            else if (Estado == 2)
+            {
+                PasarAPaso1(false);
+                Estado--;
+                if (dtgconten.DataSource != null)
+                {
+                    dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
+                }
             }
         }
         public void msg(string cadena)
@@ -114,6 +147,7 @@ namespace HPReserger.ModuloFinanzas
             {
                 if (File.Exists(openFileDialog1.FileName))
                 {
+                    btnPaso2.Enabled = true;
                     txtRutaExcel.Text = openFileDialog1.FileName;
                 }
             }
@@ -122,5 +156,6 @@ namespace HPReserger.ModuloFinanzas
         {
             SeleccionarArchivoExcel();
         }
+
     }
 }

@@ -16,8 +16,9 @@ using System.Data;
 using System.Net.Mail;
 using HPResergerFunciones;
 using System.Drawing;
-using System.Data.OleDb;
 using OfficeOpenXml;
+using System.Data.OleDb;
+using ExcelDataReader;
 
 namespace HPResergerFunciones
 {
@@ -1430,9 +1431,52 @@ namespace HPResergerFunciones
             //End Try
 
         }
+        public static DataTable CargarDatosDeExcelAGrilla(string ruta, int iHoja, int PosCuenta, int ColCuenta)
+        {
+            try
+            {
+                FileStream fs = File.Open(ruta, FileMode.Open, FileAccess.Read);
+                IExcelDataReader reader = ExcelReaderFactory.CreateBinaryReader(fs);
+                DataSet result = reader.AsDataSet();
+                reader.Close();
+                return result.Tables[0];
+                //Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+                //Microsoft.Office.Interop.Excel.Workbook Libro;
+                //Microsoft.Office.Interop.Excel.Worksheet Hoja;
+                //Libro = ExcelApp.Workbooks.Open(ruta);
+                //Hoja = (Microsoft.Office.Interop.Excel.Worksheet)Libro.Worksheets.get_Item(iHoja);
+                //int contador = 0;
+                //string cadena = "";
+                //do
+                //{
+                //    contador++;
+                //    cadena = (((Microsoft.Office.Interop.Excel.Range)Hoja.Cells[contador, 1]).Value2??"").ToString();
+                //    //Array[] Listado = new Array[ColCuenta];
+                //    //for (int i = 0; i < ColCuenta; i++)
+                //    //{
+                //    //    Listado[i] = (((Microsoft.Office.Interop.Excel.Range)Hoja.Cells[contador, 1]).Value2);
+                //    //}
+                //    //Data.Rows.Add(Listado);
+                //} while (PosCuenta > contador || cadena != "");
+                //object Hola = new object();
+                //Hoja.Range["a1", $"k{contador}"].Copy();
+                //Data = Clipboard.;
+                ////foreach (var item in Valor.Rows)
+                ////{
+                ////    Data.Rows.Add(item);
+                ////}
+                //contador++;
+            }
+            catch (Exception e)
+            {
+                msg(e.Message);
+                return new DataTable();
+            };
+        }
         public static DataTable CargarDatosDeExcelAGrilla(string ruta, string Tabla)
         {
-            string strConnnectionOle = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ruta + ";Extended Properties=" + '"' + "Excel 12.0 Xml;HDR=YES" + '"';
+            string strConnnectionOle = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ruta + ";Extended Properties=" + '"' + " Excel 12.0 Xml;HDR=YES" + '"';
+            //string strConnnectionOle = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + ruta + ";Extended Properties=" + '"' + "Excel 8.0 Xml;HDR=YES" + '"';
             string sqlExcel = "Select * From [" + Tabla + "$]";
             DataTable DS = new DataTable();
             OleDbConnection oledbConn = new OleDbConnection(strConnnectionOle);
