@@ -76,13 +76,98 @@ namespace HPReserger.ModuloFinanzas
         }
         private void btnPaso2_Click(object sender, EventArgs e)
         {
-            Estado = 2;
-            PasarAPaso2(true);
-            CargarDatosDelExcel(txtRutaExcel.Text);
+            if (CargarDatosDelExcel(txtRutaExcel.Text))
+            {
+                PasarAPaso2(true);
+                Estado = 2;
+                if (ProcesodeAnalisis(pkBanco, NroCuenta))
+                    if (FormatearlaTabla(pkBanco))
+                    {
+                        dtgconten.DataSource = Tdatos;
+                        ContarRegistros();
+                    }
+            }
         }
-        private void CargarDatosDelExcel(string Ruta)
+        private Boolean FormatearlaTabla(int Banco)
         {
-            dtgconten.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(txtRutaExcel.Text, 1, 6, 11);
+            if (Banco == 1) //Banco BCP
+            {
+                foreach (DataRow item in Tdatos.Rows)
+                {
+                    DateTime Fecha;
+                    if (!DateTime.TryParse(item[0].ToString(), out Fecha))
+                    {
+                        item.Delete();
+                    }
+                }
+                int[] IndexColumnasEliminar = new int[] { 10, 9, 8, 7, 5, 4, 1 };
+
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    Tdatos.Columns.RemoveAt(item);
+                }
+                //Damos Nombres a las Columnas
+                Tdatos.Columns[0].ColumnName = "Fecha";
+                Tdatos.Columns[2].ColumnName = "Monto";
+                Tdatos.Columns[3].ColumnName = "Operacion";
+                Tdatos.Columns[1].ColumnName = "Glosa";
+                return true;
+            }
+            return false;
+        }
+
+        private void ContarRegistros()
+        {
+            lblREgistros.Text = $"Total Registros: {dtgconten.RowCount}";
+        }
+
+        private Boolean ProcesodeAnalisis(int pkBanco, string nroCuenta)
+        {
+            if (pkBanco == 1) //Banco BCP
+            {
+                //validamos Que pertenezca ala misma cuenta
+                if (Tdatos.Columns.Count != 11)
+                {
+                    msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
+                    return false;
+                }
+                string ValCuenta = Tdatos.Rows[0][1].ToString();
+                if (!ValCuenta.Contains(nroCuenta))
+                {
+                    msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
+                    return false;
+                }
+                int pos = 6; int c = 1;
+                DateTime FechaMin = new DateTime(2200, 1, 1);
+                DateTime FechaMax = new DateTime(1900, 1, 1);
+                foreach (DataRow item in Tdatos.Rows)
+                {
+                    if (c++ >= pos)
+                    {
+                        DateTime Fecha = DateTime.Parse(item[0].ToString());
+                        if (Fecha < FechaMin) FechaMin = Fecha;
+                        if (Fecha > FechaMax) FechaMax = Fecha;
+                    }
+                }
+                DateTime FechaCombo = comboMesAño1.GetFecha();
+                if (!(FechaMin <= FechaCombo && FechaCombo <= FechaMax))
+                {
+                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+        DataTable Tdatos;
+        private Boolean CargarDatosDelExcel(string Ruta)
+        {
+            Tdatos = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(txtRutaExcel.Text, 1, 6, 11);
+            if (Tdatos.Rows.Count == 0)
+            {
+                return false;
+            }
+            return true;
             //List<string> Listado = new List<string>();
             //foreach (string item in HPResergerFunciones.Utilitarios.ListarHojasDeunExcel(Ruta))
             //{
@@ -116,6 +201,7 @@ namespace HPReserger.ModuloFinanzas
             {
                 PasarAPaso1(false);
                 Estado--;
+                btnPaso2.Enabled = false;
             }
             else if (Estado == 2)
             {
@@ -130,6 +216,10 @@ namespace HPReserger.ModuloFinanzas
         public void msg(string cadena)
         {
             HPResergerFunciones.frmInformativo.MostrarDialog(cadena);
+        }
+        public void msgError(string cadena)
+        {
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         private void textBoxPer1_TextChanged(object sender, EventArgs e)
         {
@@ -156,6 +246,15 @@ namespace HPReserger.ModuloFinanzas
         {
             SeleccionarArchivoExcel();
         }
-
+        int pkBanco = 0;
+        string NroCuenta = "";
+        private void cboCuentasBancarias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCuentasBancarias.SelectedValue != null)
+            {
+                pkBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["banco"];
+                NroCuenta = ((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Nro_Cta"].ToString();
+            }
+        }
     }
 }
