@@ -83,7 +83,10 @@ namespace HPReserger.ModuloFinanzas
                 if (ProcesodeAnalisis(pkBanco, NroCuenta))
                     if (FormatearlaTabla(pkBanco))
                     {
-                        dtgconten.DataSource = Tdatos;
+                        //Datos del Excel
+                        dtgContenExcel.DataSource = Tdatos;
+                        //Datos del Sistema
+                        dtgContenSistema.DataSource = Tdatos;
                         ContarRegistros();
                     }
             }
@@ -100,7 +103,7 @@ namespace HPReserger.ModuloFinanzas
                         item.Delete();
                     }
                 }
-                int[] IndexColumnasEliminar = new int[] { 10, 9, 8, 7, 5, 4, 1 };
+                int[] IndexColumnasEliminar = new int[] { 9, 8, 7, 5, 4, 1 };
 
                 foreach (int item in IndexColumnasEliminar)
                 {
@@ -111,6 +114,7 @@ namespace HPReserger.ModuloFinanzas
                 Tdatos.Columns[2].ColumnName = "Monto";
                 Tdatos.Columns[3].ColumnName = "Operacion";
                 Tdatos.Columns[1].ColumnName = "Glosa";
+                Tdatos.Columns[4].ColumnName = "Glosa2";
                 return true;
             }
             return false;
@@ -118,9 +122,8 @@ namespace HPReserger.ModuloFinanzas
 
         private void ContarRegistros()
         {
-            lblREgistros.Text = $"Total Registros: {dtgconten.RowCount}";
+            lblREgistros.Text = $"Total Registros Excel: {dtgContenExcel.RowCount}; Movimiento Sistema {dtgContenSistema.RowCount}";
         }
-
         private Boolean ProcesodeAnalisis(int pkBanco, string nroCuenta)
         {
             if (pkBanco == 1) //Banco BCP
@@ -137,7 +140,7 @@ namespace HPReserger.ModuloFinanzas
                     msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
                     return false;
                 }
-                int pos = 6; int c = 1;
+                int pos = 7; int c = 1;
                 DateTime FechaMin = new DateTime(2200, 1, 1);
                 DateTime FechaMax = new DateTime(1900, 1, 1);
                 foreach (DataRow item in Tdatos.Rows)
@@ -179,7 +182,7 @@ namespace HPReserger.ModuloFinanzas
         {
             v = !v;
             btnCargar.Enabled = v;
-            dtgconten.Enabled = !v;
+            dtgContenExcel.Enabled = !v;
             btnPaso2.Enabled = v;
         }
         private void PasarAPaso1(bool v)
@@ -207,9 +210,13 @@ namespace HPReserger.ModuloFinanzas
             {
                 PasarAPaso1(false);
                 Estado--;
-                if (dtgconten.DataSource != null)
+                if (dtgContenExcel.DataSource != null)
                 {
-                    dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
+                    dtgContenExcel.DataSource = ((DataTable)dtgContenExcel.DataSource).Clone();
+                }
+                if (dtgContenSistema.DataSource != null)
+                {
+                    dtgContenSistema.DataSource = ((DataTable)dtgContenSistema.DataSource).Clone();
                 }
             }
         }
@@ -255,6 +262,11 @@ namespace HPReserger.ModuloFinanzas
                 pkBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["banco"];
                 NroCuenta = ((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Nro_Cta"].ToString();
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

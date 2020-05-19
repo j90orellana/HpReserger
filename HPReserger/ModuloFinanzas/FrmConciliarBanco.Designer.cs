@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,13 +54,25 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnCargar = new HpResergerUserControls.ButtonPer();
             this.btnPaso2 = new HpResergerUserControls.ButtonPer();
-            this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.lblREgistros = new System.Windows.Forms.Label();
+            this.dtgContenExcel = new HpResergerUserControls.Dtgconten();
             this.xCtaBancaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNroCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
+            this.xGlosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblREgistros = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dtgContenSistema = new HpResergerUserControls.Dtgconten();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgContenExcel)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgContenSistema)).BeginInit();
             this.SuspendLayout();
             // 
             // cboempresa
@@ -110,7 +127,7 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 5, 15, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 5, 18, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 5, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(614, 44);
@@ -156,7 +173,7 @@
             this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(809, 557);
+            this.BtnCerrar.Location = new System.Drawing.Point(809, 546);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(83, 23);
             this.BtnCerrar.TabIndex = 183;
@@ -173,7 +190,7 @@
             this.btnTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTxt.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTxt.ForeColor = System.Drawing.Color.White;
-            this.btnTxt.Location = new System.Drawing.Point(719, 557);
+            this.btnTxt.Location = new System.Drawing.Point(719, 546);
             this.btnTxt.Name = "btnTxt";
             this.btnTxt.Size = new System.Drawing.Size(83, 23);
             this.btnTxt.TabIndex = 184;
@@ -275,76 +292,63 @@
             this.btnPaso2.UseVisualStyleBackColor = false;
             this.btnPaso2.Click += new System.EventHandler(this.btnPaso2_Click);
             // 
-            // dtgconten
+            // dtgContenExcel
             // 
-            this.dtgconten.AllowUserToAddRows = false;
-            this.dtgconten.AllowUserToOrderColumns = true;
-            this.dtgconten.AllowUserToResizeColumns = false;
-            this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgContenExcel.AllowUserToAddRows = false;
+            this.dtgContenExcel.AllowUserToOrderColumns = true;
+            this.dtgContenExcel.AllowUserToResizeColumns = false;
+            this.dtgContenExcel.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgContenExcel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgContenExcel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgContenExcel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgContenExcel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgContenExcel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgContenExcel.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgContenExcel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgContenExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgContenExcel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xCtaBancaria,
             this.xSaldo,
             this.xNroCuenta,
-            this.xGlosa});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dtgconten.Enabled = false;
-            this.dtgconten.EnableHeadersVisualStyles = false;
-            this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(13, 116);
-            this.dtgconten.Name = "dtgconten";
-            this.dtgconten.ReadOnly = true;
-            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dtgconten.RowHeadersVisible = false;
-            this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(427, 435);
-            this.dtgconten.TabIndex = 188;
-            // 
-            // lblREgistros
-            // 
-            this.lblREgistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblREgistros.AutoSize = true;
-            this.lblREgistros.BackColor = System.Drawing.Color.Transparent;
-            this.lblREgistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblREgistros.Location = new System.Drawing.Point(13, 562);
-            this.lblREgistros.Name = "lblREgistros";
-            this.lblREgistros.Size = new System.Drawing.Size(94, 13);
-            this.lblREgistros.TabIndex = 189;
-            this.lblREgistros.Text = "Total Registros: 0";
+            this.xGlosa,
+            this.xGlosa2});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgContenExcel.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgContenExcel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgContenExcel.Enabled = false;
+            this.dtgContenExcel.EnableHeadersVisualStyles = false;
+            this.dtgContenExcel.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.dtgContenExcel.Location = new System.Drawing.Point(3, 23);
+            this.dtgContenExcel.Name = "dtgContenExcel";
+            this.dtgContenExcel.ReadOnly = true;
+            this.dtgContenExcel.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dtgContenExcel.RowHeadersVisible = false;
+            this.dtgContenExcel.RowTemplate.Height = 18;
+            this.dtgContenExcel.Size = new System.Drawing.Size(433, 404);
+            this.dtgContenExcel.TabIndex = 188;
             // 
             // xCtaBancaria
             // 
             this.xCtaBancaria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xCtaBancaria.DataPropertyName = "Fecha";
-            dataGridViewCellStyle8.Format = "d";
-            this.xCtaBancaria.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Format = "d";
+            this.xCtaBancaria.DefaultCellStyle = dataGridViewCellStyle3;
             this.xCtaBancaria.HeaderText = "Fecha";
             this.xCtaBancaria.Name = "xCtaBancaria";
             this.xCtaBancaria.ReadOnly = true;
@@ -354,9 +358,9 @@
             // 
             this.xSaldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xSaldo.DataPropertyName = "Monto";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "n2";
-            this.xSaldo.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.xSaldo.DefaultCellStyle = dataGridViewCellStyle4;
             this.xSaldo.HeaderText = "Monto";
             this.xSaldo.Name = "xSaldo";
             this.xSaldo.ReadOnly = true;
@@ -381,13 +385,177 @@
             this.xGlosa.Name = "xGlosa";
             this.xGlosa.ReadOnly = true;
             // 
+            // xGlosa2
+            // 
+            this.xGlosa2.DataPropertyName = "glosa2";
+            this.xGlosa2.HeaderText = "Glosa";
+            this.xGlosa2.Name = "xGlosa2";
+            this.xGlosa2.ReadOnly = true;
+            // 
+            // lblREgistros
+            // 
+            this.lblREgistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblREgistros.AutoSize = true;
+            this.lblREgistros.BackColor = System.Drawing.Color.Transparent;
+            this.lblREgistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblREgistros.Location = new System.Drawing.Point(13, 551);
+            this.lblREgistros.Name = "lblREgistros";
+            this.lblREgistros.Size = new System.Drawing.Size(94, 13);
+            this.lblREgistros.TabIndex = 189;
+            this.lblREgistros.Text = "Total Registros: 0";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dtgContenExcel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dtgContenSistema, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 121);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 419);
+            this.tableLayoutPanel1.TabIndex = 190;
+            // 
+            // dtgContenSistema
+            // 
+            this.dtgContenSistema.AllowUserToAddRows = false;
+            this.dtgContenSistema.AllowUserToOrderColumns = true;
+            this.dtgContenSistema.AllowUserToResizeColumns = false;
+            this.dtgContenSistema.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgContenSistema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dtgContenSistema.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgContenSistema.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgContenSistema.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgContenSistema.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgContenSistema.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgContenSistema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dtgContenSistema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgContenSistema.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgContenSistema.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dtgContenSistema.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgContenSistema.Enabled = false;
+            this.dtgContenSistema.EnableHeadersVisualStyles = false;
+            this.dtgContenSistema.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.dtgContenSistema.Location = new System.Drawing.Point(442, 23);
+            this.dtgContenSistema.Name = "dtgContenSistema";
+            this.dtgContenSistema.ReadOnly = true;
+            this.dtgContenSistema.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dtgContenSistema.RowHeadersVisible = false;
+            this.dtgContenSistema.RowTemplate.Height = 18;
+            this.dtgContenSistema.Size = new System.Drawing.Size(434, 404);
+            this.dtgContenSistema.TabIndex = 188;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Fecha";
+            dataGridViewCellStyle8.Format = "d";
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Monto";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "n2";
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Monto";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 66;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Operacion";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Operacion";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 80;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Glosa";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Glosa";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 80;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "glosa2";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Glosa";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(263, 13);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "Datos de Movimiento Bancario del Excel Cargado";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(442, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(242, 13);
+            this.label8.TabIndex = 43;
+            this.label8.Text = "Datos de Movimiento Bancario en el Sistema.";
+            this.label8.Click += new System.EventHandler(this.label7_Click);
+            // 
             // FrmConciliarBanco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 586);
+            this.ClientSize = new System.Drawing.Size(902, 575);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lblREgistros);
-            this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.txtRutaExcel);
             this.Controls.Add(this.label5);
@@ -404,11 +572,15 @@
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(918, 614);
             this.Name = "FrmConciliarBanco";
             this.Nombre = "Conciliación Bancaria";
             this.Text = "Conciliación Bancaria";
             this.Load += new System.EventHandler(this.FrmConciliarBanco_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgContenExcel)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgContenSistema)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,11 +604,21 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private HpResergerUserControls.ButtonPer btnCargar;
         private HpResergerUserControls.ButtonPer btnPaso2;
-        private HpResergerUserControls.Dtgconten dtgconten;
+        private HpResergerUserControls.Dtgconten dtgContenExcel;
         private System.Windows.Forms.Label lblREgistros;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCtaBancaria;
         private System.Windows.Forms.DataGridViewTextBoxColumn xSaldo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNroCuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private HpResergerUserControls.Dtgconten dtgContenSistema;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
