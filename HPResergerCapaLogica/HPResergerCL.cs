@@ -2515,8 +2515,20 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.BuscarCuentasBancariasxEmpresas(empresa);
         }
         public DataTable MovimientoBancariosxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda) //1 activa ,cualquiera desactiva
-                    {
+        {
             return cdOrdenPedido.MovimientoBancariosxEmpresa(empresa, FechaIni, FechaFin, NroCuenta, Moneda);
+        }
+        public DataTable SaldoContableCuentaBancariaxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda) //1 activa ,cualquiera desactiva
+        {
+            return cdOrdenPedido.SaldoContableCuentaBancariaxEmpresa(empresa, FechaIni, FechaFin, NroCuenta, Moneda);
+        }
+        public DataTable ConciliacionCabecera(int opcion, int pkid, int pkempresa, int pkidCtaBancaria, string cuentacontable, DateTime Fecha, decimal SAldoContable, decimal EstadoCuenta)
+        {
+            return cdOrdenPedido.ConciliacionCabecera(opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta);
+        }
+        public DataTable ConciliacionCabeceraSiguienteNumero()
+        {
+            return cdOrdenPedido.ConciliacionCabecera(0, 0, 0, 0, "", DateTime.Now, 0, 0);
         }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
         {

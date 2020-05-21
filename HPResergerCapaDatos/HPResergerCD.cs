@@ -4787,6 +4787,18 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, FechaIni, FechaFin, NroCuenta, Moneda };
             return bd.DataTableFromProcedure("usp_MovimientoBancariosxEmpresa", parametros, valores, null);
         }
+        public DataTable SaldoContableCuentaBancariaxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda) //1 activa ,cualquiera desactiva
+        {
+            string[] parametros = { "@empresa", "@Fechaini", "@FechaFin", "@NroCuenta", "@moneda" };
+            object[] valores = { empresa, FechaIni, FechaFin, NroCuenta, Moneda };
+            return bd.DataTableFromProcedure("usp_SaldoContableCuentaBancariaxEmpresa", parametros, valores, null);
+        }
+        public DataTable ConciliacionCabecera(int opcion, int pkid, int pkempresa, int pkidCtaBancaria, string cuentacontable, DateTime Fecha, decimal SAldoContable, decimal EstadoCuenta)
+        {
+            string[] parametros = { "@opcion", "@pkid", "@pkempresa", "@pkidCtaBancaria", "@cuentacontable", "@Fecha", "@SaldoContable", "@EstadoCuentas" };
+            object[] valores = { opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta };
+            return bd.DataTableFromProcedure("usp_ConciliacionCabecera", parametros, valores, null);
+        }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
         {
             string[] parametros = { "@ruc", "@NumComp" };

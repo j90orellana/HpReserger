@@ -94,10 +94,24 @@ namespace HPReserger.ModuloFinanzas
                         Cfilas = 0;
                         ConciliarMovimientos(Conciliaciones.FechaMonto);
                         Grilla = 0;
+                        MostrarDatosdeEtiquetasGrillas(true);
                     }
             }
         }
 
+        private void MostrarDatosdeEtiquetasGrillas(bool v)
+        {
+            if (v)
+            {
+                lblexcel.Text = $"Datos de Movimiento Bancario del Excel Cargado.  EstadoCuenta: { EstadoCuenta.ToString("n2")}";
+                lblSistema.Text = $"Datos de Movimiento Bancario en el Sistema.  SaldoContable: {SaldoContable.ToString("n2")}";
+            }
+            else
+            {
+                lblexcel.Text = $"Datos de Movimiento Bancario del Excel Cargado.";
+                lblSistema.Text = $"Datos de Movimiento Bancario en el Sistema.";
+            }
+        }
         private void ActivarFunciones(bool v)
         {
             //Activo los Botones para las Operaciones
@@ -120,14 +134,14 @@ namespace HPReserger.ModuloFinanzas
             if (Tdatos.Rows.Count != 0)
             {
                 DataView dv = new DataView(Tdatos);
-                dv.Sort = "index desc, monto desc";
+                dv.Sort = "index desc, monto asc";
                 dtgContenExcel.DataSource = Tdatos = dv.ToTable();
             }
             //Ordenar TAbla del Sistema
             if (TdatosSist.Rows.Count != 0)
             {
                 DataView dv = new DataView(TdatosSist);
-                dv.Sort = "index desc, monto desc";
+                dv.Sort = "index desc, monto asc";
                 dtgContenSistema.DataSource = TdatosSist = dv.ToTable();
             }
             dtgContenExcel.FirstDisplayedCell = dtgContenExcel[xGrupo.Name, x];
@@ -150,8 +164,10 @@ namespace HPReserger.ModuloFinanzas
                 dtgContenSistema.DataSource = TdatosSist = dv.ToTable();
             }
         }
+        decimal SaldoContable = 0;
         private void BuscanEnSistemMovimientos()
         {
+            SaldoContable = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(comboMesAño1.FechaInicioMes.Year, 1, 1), comboMesAño1.FechaFinMes, NroCuenta, pkMoneda).Rows[0]["monto"];
             TdatosSist = CapaLogica.MovimientoBancariosxEmpresa(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda);
         }
         private Boolean FormatearlaTabla(int Banco)
@@ -195,6 +211,12 @@ namespace HPReserger.ModuloFinanzas
         {
             lblREgistros.Text = $"Total Registros Excel: {dtgContenExcel.RowCount}; Movimiento Sistema {dtgContenSistema.RowCount}";
         }
+        private void ContarRegistros(int x1, int x2, int y1, int y2)
+        {
+            lblREgistros.Text = $"Total Registros Excel: {x1}:{x2}/{dtgContenExcel.RowCount} ; Movimiento Sistema  {y1}:{y2}/{dtgContenSistema.RowCount}";
+
+        }
+        decimal EstadoCuenta = 0;
         private Boolean ProcesodeAnalisis(int pkBanco, string nroCuenta)
         {
             if (pkBanco == 1) //Banco BCP
@@ -205,6 +227,7 @@ namespace HPReserger.ModuloFinanzas
                     msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
                     return false;
                 }
+                EstadoCuenta = decimal.Parse(Tdatos.Rows[6][4].ToString());
                 string ValCuenta = Tdatos.Rows[0][1].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
                 {
@@ -297,11 +320,16 @@ namespace HPReserger.ModuloFinanzas
                     dtgContenSistema.DataSource = ((DataTable)dtgContenSistema.DataSource).Clone();
                 }
                 ActivarFunciones(false);
+                MostrarDatosdeEtiquetasGrillas(false);
             }
         }
         public void msg(string cadena)
         {
             HPResergerFunciones.frmInformativo.MostrarDialog(cadena);
+        }
+        public DialogResult mspYesCancel(string cadena)
+        {
+            return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena);
         }
         public void msgError(string cadena)
         {
@@ -330,7 +358,9 @@ namespace HPReserger.ModuloFinanzas
         }
         int pkBanco = 0;
         int pkMoneda = 0;
+        int pkidCtaBanco = 0;
         string NroCuenta = "";
+        string CuentaContable = "";
         private void cboCuentasBancarias_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboCuentasBancarias.SelectedValue != null)
@@ -338,9 +368,10 @@ namespace HPReserger.ModuloFinanzas
                 pkBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["banco"];
                 NroCuenta = ((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Nro_Cta"].ToString();
                 pkMoneda = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Moneda"];
+                pkidCtaBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Id_Tipo_Cta"];
+                CuentaContable = ((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["idCuentacontable"].ToString();
             }
         }
-
         private void btnOperacionMonto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ConciliarMovimientos(Conciliaciones.OperacionMonto);
@@ -384,6 +415,7 @@ namespace HPReserger.ModuloFinanzas
                                     Cfilas++;
                                     item1[xGrupo.DataPropertyName] = Cfilas;
                                     item2[ygrupo.DataPropertyName] = Cfilas;
+                                    break;
                                 }
                         }
                 }
@@ -404,12 +436,10 @@ namespace HPReserger.ModuloFinanzas
                 HPResergerFunciones.Utilitarios.ColorCeldaErrorLetras(dtgContenExcel[e.ColumnIndex, e.RowIndex]);
             }
         }
-
         private void btnFechaMonto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ConciliarMovimientos(Conciliaciones.FechaMonto);
         }
-
         private void btnDesAgrupar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (Grilla == 1)
@@ -464,7 +494,6 @@ namespace HPReserger.ModuloFinanzas
         {
             Grilla = 2;
         }
-
         private void dtgContenSistema_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int val = 0;
@@ -478,25 +507,26 @@ namespace HPReserger.ModuloFinanzas
                 HPResergerFunciones.Utilitarios.ColorCeldaErrorLetras(dtgContenSistema[e.ColumnIndex, e.RowIndex]);
             }
         }
-
         private void dtgContenExcel_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dtgContenExcel.Columns[xok.Name].Index)
-            {
-                if (dtgContenExcel[xGrupo.Name, e.RowIndex].Value.ToString() != "")
-                    dtgContenExcel.CancelEdit();
-                dtgContenExcel.EndEdit();
-            }
+            if (e.RowIndex >= 0)
+                if (e.ColumnIndex == dtgContenExcel.Columns[xok.Name].Index)
+                {
+                    if (dtgContenExcel[xGrupo.Name, e.RowIndex].Value.ToString() != "")
+                        dtgContenExcel.CancelEdit();
+                    dtgContenExcel.EndEdit(); dtgContenExcel.RefreshEdit();
+                }
         }
 
         private void dtgContenSistema_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dtgContenSistema.Columns[yok.Name].Index)
-            {
-                if (dtgContenSistema[ygrupo.Name, e.RowIndex].Value.ToString() != "")
-                    dtgContenSistema.CancelEdit();
-                dtgContenSistema.EndEdit();
-            }
+            if (e.RowIndex >= 0)
+                if (e.ColumnIndex == dtgContenSistema.Columns[yok.Name].Index)
+                {
+                    if (dtgContenSistema[ygrupo.Name, e.RowIndex].Value.ToString() != "")
+                        dtgContenSistema.CancelEdit();
+                    dtgContenSistema.EndEdit(); dtgContenSistema.RefreshEdit();
+                }
         }
         decimal SumaExcel = 0, SumaSistema = 0;
         private void dtgContenSistema_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -523,22 +553,111 @@ namespace HPReserger.ModuloFinanzas
                     MostrarTotales();
                 }
         }
+
+        private void btnAgrupar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (SumaExcel == SumaSistema)
+            {
+                Cfilas++;
+                //Asignamos los Montos de Sumatoria
+                foreach (DataRow item in Tdatos.Rows)
+                    if ((int)item[xok.DataPropertyName] == 1)
+                        item[xGrupo.DataPropertyName] = Cfilas;
+                foreach (DataRow item in TdatosSist.Rows)
+                    if ((int)item[yok.DataPropertyName] == 1)
+                        item[ygrupo.DataPropertyName] = Cfilas;
+                //Regresamos los Ok a Deseleccionados
+                foreach (DataRow item in Tdatos.Rows)
+                    item[xok.DataPropertyName] = 0;
+                foreach (DataRow item in TdatosSist.Rows)
+                    item[yok.DataPropertyName] = 0;
+                //Ordenamos
+                OrdenarDataGridViews(dtgContenExcel.FirstDisplayedCell.RowIndex, dtgContenSistema.FirstDisplayedCell.RowIndex);
+                //Sacamos los Totales
+                MostrarTotales();
+            }
+            else { msgError("Hay Diferencias en los Montos"); }
+        }
+        private void dtgContenExcel_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Cuando Doy Doble Click en la Cabecera
+            if (e.RowIndex == -1)
+            {
+                if (e.ColumnIndex == dtgContenExcel.Columns[xok.Name].Index)
+                    foreach (DataRow item in Tdatos.Rows)
+                        item[xok.DataPropertyName] = 0;
+            }
+            dtgContenExcel.EndEdit(); dtgContenExcel.RefreshEdit();
+            MostrarTotales();
+        }
+        private void dtgContenSistema_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Cuando Doy Doble Click en la Cabecera
+            if (e.RowIndex == -1)
+            {
+                if (e.ColumnIndex == dtgContenSistema.Columns[yok.Name].Index)
+                    foreach (DataRow item in TdatosSist.Rows)
+                        item[yok.DataPropertyName] = 0;
+            }
+            dtgContenSistema.EndEdit(); dtgContenSistema.RefreshEdit();
+            MostrarTotales();
+        }
+        private void btnTxt_Click(object sender, EventArgs e)
+        {
+            DialogResult Pregunta = DialogResult.No;
+            if (CuentaContable == "") { msg("El Banco No tiene Cuenta Contable"); return; }
+            if (mspYesCancel("Desea Grabar la Conciliación en el Sistema?") == DialogResult.Yes)
+            {
+                if (chkOperacion.Checked)
+                {
+                    Pregunta = mspYesCancel("Se van a Actualizar los Nro. de Operaciones del Sistema con los datos del Excel");
+                    if (Pregunta == DialogResult.Cancel)
+                    {
+                        msgError("Cancelado por el Usuario");
+                        return;
+                    }
+                }
+                //Proceso de Grabado en la Base de Datos
+                //Grabamos la Cabecera de la Conciliacion
+                int pkid = (int)CapaLogica.ConciliacionCabeceraSiguienteNumero().Rows[0]["ultimo"];
+                CapaLogica.ConciliacionCabecera(1, pkid, pkEmpresa, pkidCtaBanco, CuentaContable, comboMesAño1.FechaFinMes, SaldoContable, EstadoCuenta);
+                //Fin de Grabados en la Base de Datos
+
+                //Finalizamos
+                msg("La Conciliación se Grabo con Exito.");
+                BtnCerrar_Click(sender, e);
+            }
+            else msgError("Cancelado por el Usuario");
+        }
         private void MostrarTotales()
         {
+            int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
             SumaExcel = SumaSistema = 0;
             foreach (DataRow item in Tdatos.Rows)
+            {
                 if ((int)item[xok.DataPropertyName] == 1)
+                {
                     SumaExcel += decimal.Parse(item[xMonto.DataPropertyName].ToString());
-
+                }
+                if (item[xGrupo.DataPropertyName].ToString() == "")
+                    x2++;
+                else x1++;
+            }
             foreach (DataRow item in TdatosSist.Rows)
+            {
                 if ((int)item[yok.DataPropertyName] == 1)
                     SumaSistema += (decimal)item[ymonto.DataPropertyName];
+                if (item[ygrupo.DataPropertyName].ToString() == "")
+                    y2++;
+                else y1++;
+            }
             if (SumaExcel + SumaSistema == 0)
                 lblTotales.Text = "Seleccione Filas en las 2 Tablas";
             else
             {
-                lblTotales.Text = $"Sumas; Excel: {SumaExcel.ToString("n2")}, Sistema:{SumaSistema.ToString("n2")} ";
+                lblTotales.Text = $"Excel: {SumaExcel.ToString("n2")}, Sistema:{SumaSistema.ToString("n2")}, Dif:{(SumaExcel - SumaSistema).ToString("n2")}";
             }
+            ContarRegistros(x1, x2, y1, y2);
         }
     }
 }
