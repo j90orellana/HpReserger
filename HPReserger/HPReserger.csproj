@@ -130,6 +130,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmConciliacionReportepdf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConciliacionReportepdf.Designer.cs">
+      <DependentUpon>frmConciliacionReportepdf.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCuadreAsientos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,12 @@
     </Compile>
     <Compile Include="ModuloFinanzas\frmPrestamoInterEmpresas.Designer.cs">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmReporteConciliaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmReporteConciliaciones.Designer.cs">
+      <DependentUpon>frmReporteConciliaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloReportes\frmFlujodeGastosRegistro.cs">
       <SubType>Form</SubType>
@@ -495,6 +507,12 @@
     </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroBancosEfectivo.Designer.cs">
       <DependentUpon>frmLibroBancosEfectivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConciliacionesReporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptConciliacionesReporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="rptFormato81Compras.cs">
       <AutoGen>True</AutoGen>
@@ -1841,6 +1859,9 @@
     <Compile Include="ModuloContable\frmTipodeCambio.Designer.cs">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmConciliacionReportepdf.resx">
+      <DependentUpon>frmConciliacionReportepdf.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCuadreAsientos.resx">
       <DependentUpon>frmCuadreAsientos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1892,6 +1913,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmPrestamoInterEmpresas.resx">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmReporteConciliaciones.resx">
+      <DependentUpon>frmReporteConciliaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmFlujodeGastosDoc.resx">
       <DependentUpon>frmFlujodeGastosDoc.cs</DependentUpon>
@@ -2025,6 +2049,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroBancosEfectivo.resx">
       <DependentUpon>frmLibroBancosEfectivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConciliacionesReporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptConciliacionesReporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptFormato81Compras.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

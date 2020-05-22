@@ -69,6 +69,15 @@ namespace HPReserger.ModuloFinanzas
         }
         private void buttonPer1_Click(object sender, EventArgs e)
         {
+            if (CapaLogica.ConciliacionCabeceraExiste(pkEmpresa, comboMesAño1.FechaFinMes).Rows.Count > 0)
+            {
+                if (msgYesCancel("Este Periodo Ya esta Conciliado, Desea Volver a Cargarlo? Esto Reversará la Conciliacion Anterior") == DialogResult.Yes)
+                {
+                    CapaLogica.ConciliacionCabeceraEliminar(pkEmpresa, comboMesAño1.FechaFinMes);
+                    msg("Se Elimino la Conciliación Anterior");
+                }
+                else return;
+            }
             Estado = 1;
             PasarAPaso1(true);
             if (File.Exists(txtRutaExcel.Text)) btnPaso2.Enabled = true;
@@ -153,14 +162,14 @@ namespace HPReserger.ModuloFinanzas
             if (Tdatos.Rows.Count != 0)
             {
                 DataView dv = new DataView(Tdatos);
-                dv.Sort = "index desc, monto desc";
+                dv.Sort = "index desc, monto asc";
                 dtgContenExcel.DataSource = Tdatos = dv.ToTable();
             }
             //Ordenar TAbla del Sistema
             if (TdatosSist.Rows.Count != 0)
             {
                 DataView dv = new DataView(TdatosSist);
-                dv.Sort = "index desc, monto desc";
+                dv.Sort = "index desc, monto asc";
                 dtgContenSistema.DataSource = TdatosSist = dv.ToTable();
             }
         }
@@ -321,13 +330,14 @@ namespace HPReserger.ModuloFinanzas
                 }
                 ActivarFunciones(false);
                 MostrarDatosdeEtiquetasGrillas(false);
+                ContarRegistros();
             }
         }
         public void msg(string cadena)
         {
             HPResergerFunciones.frmInformativo.MostrarDialog(cadena);
         }
-        public DialogResult mspYesCancel(string cadena)
+        public DialogResult msgYesCancel(string cadena)
         {
             return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena);
         }
@@ -606,11 +616,11 @@ namespace HPReserger.ModuloFinanzas
         {
             DialogResult Pregunta = DialogResult.No;
             if (CuentaContable == "") { msg("El Banco No tiene Cuenta Contable"); return; }
-            if (mspYesCancel("Desea Grabar la Conciliación en el Sistema?") == DialogResult.Yes)
+            if (msgYesCancel("Desea Grabar la Conciliación en el Sistema?") == DialogResult.Yes)
             {
                 if (chkOperacion.Checked)
                 {
-                    Pregunta = mspYesCancel("Se van a Actualizar los Nro. de Operaciones del Sistema con los datos del Excel");
+                    Pregunta = msgYesCancel("Se van a Actualizar los Nro. de Operaciones del Sistema con los datos del Excel");
                     if (Pregunta == DialogResult.Cancel)
                     {
                         msgError("Cancelado por el Usuario");
@@ -619,8 +629,55 @@ namespace HPReserger.ModuloFinanzas
                 }
                 //Proceso de Grabado en la Base de Datos
                 //Grabamos la Cabecera de la Conciliacion
+                DateTime FechaEjecucion = comboMesAño1.FechaFinMes;
                 int pkid = (int)CapaLogica.ConciliacionCabeceraSiguienteNumero().Rows[0]["ultimo"];
-                CapaLogica.ConciliacionCabecera(1, pkid, pkEmpresa, pkidCtaBanco, CuentaContable, comboMesAño1.FechaFinMes, SaldoContable, EstadoCuenta);
+                int pkUsuario = frmLogin.CodigoUsuario;
+                CapaLogica.ConciliacionCabecera(1, pkid, pkEmpresa, pkidCtaBanco, CuentaContable, FechaEjecucion, SaldoContable, EstadoCuenta, pkUsuario);
+                //GRabamos el Detalle de la Cabecera
+                foreach (DataRow item in Tdatos.Rows)
+                {
+                    //Las Filas que no tiene grupo
+                    if (item[xGrupo.DataPropertyName].ToString() == "")
+                    {
+                        //Tipo  1 para los Cargados por Excel
+                        CapaLogica.ConciliacionDetalle(1, pkid, 0, 1, "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()), FechaEjecucion,
+                            decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
+                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 1);
+                    }
+                }
+                foreach (DataRow item in TdatosSist.Rows)
+                {
+                    //Las Filas que no tiene grupo y no Estan en el Sistema Grabado
+                    if (item[xGrupo.DataPropertyName].ToString() == "")
+                    {
+                        if ((int)item[xEstado.DataPropertyName] == 0)
+                        {
+                            //va 1 en el estado para insertar la primera vez en la base
+                            //Tipo 2 para los Cargados del Sistema
+                            CapaLogica.ConciliacionDetalle(1, pkid, 0, 2, item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()),
+                                FechaEjecucion, decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
+                                item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 1);
+                        }
+                        //Esto es cuando ya existe en la base le pasamos cero en el estado para que no altere el contador
+                        if ((int)item[xEstado.DataPropertyName] == 1)
+                        {
+                            CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], (int)item[xtipo.DataPropertyName],
+                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
+                               decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
+                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0);
+                        }
+                    }
+                    else
+                    {
+                        if ((int)item[xEstado.DataPropertyName] == 1)
+                            CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], (int)item[xtipo.DataPropertyName],
+                               item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
+                              decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
+                              item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1);
+                    }
+                }
+                //fin Cabecera
+                //Fin del Detalle
                 //Fin de Grabados en la Base de Datos
 
                 //Finalizamos

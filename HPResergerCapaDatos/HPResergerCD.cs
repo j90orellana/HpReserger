@@ -4793,11 +4793,24 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, FechaIni, FechaFin, NroCuenta, Moneda };
             return bd.DataTableFromProcedure("usp_SaldoContableCuentaBancariaxEmpresa", parametros, valores, null);
         }
-        public DataTable ConciliacionCabecera(int opcion, int pkid, int pkempresa, int pkidCtaBancaria, string cuentacontable, DateTime Fecha, decimal SAldoContable, decimal EstadoCuenta)
+        public DataTable ConciliacionCabecera(int opcion, int pkid, int pkempresa, int pkidCtaBancaria, string cuentacontable, DateTime Fecha,
+            decimal SAldoContable, decimal EstadoCuenta, int idusuario)
         {
-            string[] parametros = { "@opcion", "@pkid", "@pkempresa", "@pkidCtaBancaria", "@cuentacontable", "@Fecha", "@SaldoContable", "@EstadoCuentas" };
-            object[] valores = { opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta };
+            string[] parametros = { "@opcion", "@pkid", "@pkempresa", "@pkidCtaBancaria", "@cuentacontable", "@Fecha", "@SaldoContable", "@EstadoCuentas", "@idUsuario" };
+            object[] valores = { opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario };
             return bd.DataTableFromProcedure("usp_ConciliacionCabecera", parametros, valores, null);
+        }
+        public DataTable ConciliacionDetalle(int @opcion, int @fkid, int @pkid, int @tipo, string @cuo, DateTime @Fecha, DateTime @FechaEjecuta, decimal @monto, string @operacion, string @glosa, string @glosa2, int @idasiento, int @estado)
+        {
+            string[] parametros = { "@opcion", "@fkid", "@pkid", "@tipo", "@cuo", "@Fecha", "@FechaEjecuta", "@monto", "@operacion", "@glosa", "@glosa2", "@idasiento", "@estado" };
+            object[] valores = { @opcion, @fkid, @pkid, @tipo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2, @idasiento, @estado };
+            return bd.DataTableFromProcedure("usp_ConciliacionDetalle", parametros, valores, null);
+        }
+        public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
+        {
+            string[] parametros = { "@empresa", "@banco", "@NroCuenta", "@Fechaini", "@FechaFin" };
+            object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin };
+            return bd.DataTableFromProcedure("usp_Conciliacion_Busqueda", parametros, valores, null);
         }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
         {

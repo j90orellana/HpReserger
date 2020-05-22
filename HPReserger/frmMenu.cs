@@ -4492,6 +4492,16 @@ namespace HPReserger
         ModuloFinanzas.FrmConciliarBanco frmConciliacion;
         private void conciliaciónBancariaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void CerrarfrmConciliacion(object sender, FormClosedEventArgs e)
+        {
+            frmConciliacion = null;
+        }
+
+        private void conciliarBancosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             if (frmConciliacion == null)
             {
                 frmConciliacion = new ModuloFinanzas.FrmConciliarBanco();
@@ -4507,10 +4517,28 @@ namespace HPReserger
                 ValidarVentanas(frmConciliacion);
             }
         }
-
-        private void CerrarfrmConciliacion(object sender, FormClosedEventArgs e)
+        ModuloFinanzas.frmReporteConciliaciones frmReporteConciliaones;
+        private void reporteConciliacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmConciliacion = null;
+            if (frmReporteConciliaones == null)
+            {
+                frmReporteConciliaones = new ModuloFinanzas.frmReporteConciliaciones();
+                frmReporteConciliaones.MdiParent = this;
+                frmReporteConciliaones.Icon = ICono;
+                frmReporteConciliaones.FormClosed += new FormClosedEventHandler(CerrarfrmReporteConciliaones);
+                frmReporteConciliaones.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmReporteConciliaones.Activate();
+                ValidarVentanas(frmReporteConciliaones);
+            }
+        }
+
+        private void CerrarfrmReporteConciliaones(object sender, FormClosedEventArgs e)
+        {
+            frmReporteConciliaones = null;
         }
     }
 }
