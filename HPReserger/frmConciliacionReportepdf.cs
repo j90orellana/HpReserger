@@ -59,6 +59,8 @@ namespace HPReserger
                 myTableLogonInfo.ConnectionInfo = iConnectionInfo;
                 mytable.ApplyLogOnInfo(myTableLogonInfo);
             }
+            //reporte.FileName = $"Conciliacion Bancaria {empresa} del " + fechaini.ToString("MMMM/yyyy") + " al " + fechafin.ToString("MMMM/yyyy");
+            crvReporte.AllowedExportFormats = (int)(ExportFormatType.PortableDocFormat | ExportFormatType.Excel | ExportFormatType.ExcelWorkbook);
             crvReporte.ReportSource = reporte;
         }
     }
