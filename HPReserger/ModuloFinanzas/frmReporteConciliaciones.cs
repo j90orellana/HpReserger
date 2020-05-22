@@ -80,6 +80,7 @@ namespace HPReserger.ModuloFinanzas
         {
             HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
+        frmConciliacionReportepdf Frmreporte;
         private void btnexportarpdf_Click(object sender, EventArgs e)
         {
             if (dtgconten.Rows.Count == 0)
@@ -87,6 +88,26 @@ namespace HPReserger.ModuloFinanzas
                 msgError("No hay Datos para Generar"); return;
             }
             //Mostrar Formulario del Reporte PDF
+            if (Frmreporte == null)
+            {
+                Frmreporte = new frmConciliacionReportepdf();
+                Frmreporte.empresa = txtbusEmpresa.TextValido();
+                Frmreporte.nrocuenta = txtbusnrocuenta.TextValido();
+                Frmreporte.banco = txtbusbanco.TextValido();
+                Frmreporte.fechaini = FechaInicial;
+                Frmreporte.fechafin = FechaFinal;
+                Frmreporte.MdiParent = this.MdiParent;
+                Frmreporte.FormClosed += Frmreporte_FormClosed;
+                Frmreporte.Show();
+            }
+            else
+            {
+                Frmreporte.Activate();
+            }
+        }
+        private void Frmreporte_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Frmreporte = null;
         }
     }
 }

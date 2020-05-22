@@ -256,7 +256,7 @@ namespace HPReserger.ModuloFinanzas
                     }
                 }
                 DateTime FechaCombo = comboMesAño1.GetFecha();
-                if (!(FechaMin <= FechaCombo && FechaCombo <= FechaMax))
+                if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
                 {
                     msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
                     return false;
@@ -661,9 +661,10 @@ namespace HPReserger.ModuloFinanzas
                         //Esto es cuando ya existe en la base le pasamos cero en el estado para que no altere el contador
                         if ((int)item[xEstado.DataPropertyName] == 1)
                         {
-                            CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], (int)item[xtipo.DataPropertyName],
+                            int tipo = (int)item[xtipo.DataPropertyName];
+                            CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], tipo,
                                 item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
-                               decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
+                                (tipo == 1 ? -1 : 1) * decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                                item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0);
                         }
                     }
