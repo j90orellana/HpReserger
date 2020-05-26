@@ -386,8 +386,8 @@ namespace HPResergerFunciones
             public int TamañoFuente = 0;
             public Boolean _Negrita = false;
             public Boolean _Centrar = false;
-            public Color? BackColor = null;
-            public Color? ForeColor = null;
+            public Color BackColor = Color.Empty;
+            public Color ForeColor = Color.Empty;
             public Font Fuente = null;
             public Alineado? Alineado = null;
             public RangoCelda() { }
@@ -413,7 +413,7 @@ namespace HPResergerFunciones
                 TamañoFuente = tamaño;
                 _Negrita = Negrita;
             }
-            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Color? _BackColor, Color? _ForeColor)
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Color _BackColor, Color _ForeColor)
             {
                 fila = _fila;
                 columna = _columna;
@@ -443,7 +443,7 @@ namespace HPResergerFunciones
                 _Negrita = Negrita;
                 _Centrar = Centrar;
             }
-            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Color? _BackColor, Color? _ForeColor, Font _fuente)
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Color _BackColor, Color _ForeColor, Font _fuente)
             {
                 fila = _fila;
                 columna = _columna;
@@ -455,7 +455,7 @@ namespace HPResergerFunciones
                 _Centrar = Centrar;
                 Fuente = _fuente;
             }
-            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Alineado _alineado, Color? _BackColor, Color? _ForeColor, Font _fuente)
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Alineado _alineado, Color _BackColor, Color _ForeColor, Font _fuente)
             {
                 fila = _fila;
                 columna = _columna;
@@ -463,7 +463,20 @@ namespace HPResergerFunciones
                 TamañoFuente = tamaño;
                 _Negrita = Negrita;
                 _Centrar = Centrar;
+                _Centrar = Centrar;
+                Fuente = _fuente;
+                Alineado = _alineado;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Alineado _alineado, Color _BackColor, Color _ForeColor, Font _fuente, Boolean AplicarColores)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
                 _Negrita = Negrita;
+                ForeColor = _ForeColor;
+                BackColor = _BackColor;
+                _Centrar = Centrar;
                 _Centrar = Centrar;
                 Fuente = _fuente;
                 Alineado = _alineado;
@@ -1056,14 +1069,17 @@ namespace HPResergerFunciones
             //    //aplicacion.Quit();
             //}
         }
-        public static void ExportarAExcelOrdenandoColumnasCreado(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile, string nombrehoja, int index, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
+        public static void ExportarAExcelOrdenandoColumnasCreado(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile,
+            string nombrehoja, int index, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
                    , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro)
         {
+            Boolean ForzarAutoAjustado = false;
+            //if (NombresCeldas[0].BackColor != Color.Empty) ForzarAutoAjustado = true;
             //Principal para generar exportacion a Excel
             FileInfo FileName = new FileInfo(NameFile);
             ExcelPackage Excel = new ExcelPackage(FileName);
             Excel.Workbook.Worksheets.Add(nombrehoja);
-            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index];
+            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index];         
             //Hoja_Trabajo.Name = nombrehoja; 
             ///Ponemos Nombre a las Celdas      
             foreach (RangoCelda Nombres in NombresCeldas)
@@ -1101,61 +1117,73 @@ namespace HPResergerFunciones
                     }
                 }
                 //backcolor
-                //    if (Nombres.BackColor != null)
-                //                    Hoja_Trabajo.Cells[Nombres.fila + Nombres.columna].Style.Fill.BackgroundColor.SetColor(Color. Nombres.BackColor);
-                // if (Nombres.ForeColor != null)
-                // Hoja_Trabajo.Cells[Nombres.fila + Nombres.columna].Font.Color = Nombres.ForeColor;
+                if (Nombres.BackColor != Color.Empty)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Fill.BackgroundColor.SetColor(Nombres.BackColor);
+                    ForzarAutoAjustado = true;
+                }
+                //la linea de abajo si vale solo que hay que corregir por la letra blancas
+                if (Nombres.ForeColor != Color.Empty)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Color.SetColor(Nombres.ForeColor);
+                    ForzarAutoAjustado = true;
+                }
             }
             //Recorremos el DataGridView rellenando la hoja de trabajo
-            int Conta = grd.Rows.Count;
-            //int i = 0;
-            Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);
-            string Extesion = "x";
-            if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
-            //Hoja_Trabajo
-            FileInfo file = new FileInfo(NameFile);//Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{""}" + $".xls{Extesion}");
-            int ConCol = grd.Columns.Count;
-            for (int i = 0; i < grd.Rows.Count + 1; i++)
+            if (grd != null)
             {
-                if (i == 0)
+                int Conta = grd.Rows.Count;
+                //int i = 0;
+                Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);
+                string Extesion = "x";
+                if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
+                //Hoja_Trabajo
+                FileInfo file = new FileInfo(NameFile);//Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{""}" + $".xls{Extesion}");
+                int ConCol = grd.Columns.Count;
+
+                for (int i = 0; i < grd.Rows.Count + 1; i++)
                 {
-                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaCabecera.ColorRelleno);
-                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.Color.SetColor(CeldaCabecera.ColorFuente);
-                    if (CeldaCabecera.FuenteRelleno != null)
-                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
+                    if (i == 0)
+                    {
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaCabecera.ColorRelleno);
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.Color.SetColor(CeldaCabecera.ColorFuente);
+                        if (CeldaCabecera.FuenteRelleno != null)
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
+                    }
+                    else if ((i % 2) == 0)
+                    {
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
+                        if (CeldaDefecto.FuenteRelleno != null)
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                    }
+                    else
+                    {
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(Color.White);
+                        if (CeldaDefecto.FuenteRelleno != null)
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                    }
                 }
-                else if ((i % 2) == 0)
+                int CountRows = grd.Rows.Count + PosInicialGrilla;
+                foreach (DataColumn item in grd.Columns)
                 {
-                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
-                    if (CeldaDefecto.FuenteRelleno != null)
-                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                    if (item.DataType == typeof(decimal))
+                        Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = "_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * \" - \"??_ ;_ @_ ";//Formato Contabilidad
+                    if (item.DataType == typeof(DateTime))
+                        Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
                 }
-                else
+                if (!string.IsNullOrWhiteSpace(ScriptMacro))
                 {
-                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(Color.White);
-                    if (CeldaDefecto.FuenteRelleno != null)
-                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                    Excel.Workbook.CreateVBAProject();
+                    var worksheet = Excel.Workbook.Worksheets.Add("HojaDeMacros");
+                    worksheet.CodeModule.Code = ScriptMacro.ToString();
+                    worksheet.CodeModule.Name = "HojaDeMacros";
+                    Hoja_Trabajo.Workbook.CodeModule.Code = ScriptMacro;
+                    Hoja_Trabajo.Workbook.Worksheets["HojaDeMacros"].Hidden = eWorkSheetHidden.Hidden;
                 }
-            }
-            int CountRows = grd.Rows.Count + PosInicialGrilla;
-            foreach (DataColumn item in grd.Columns)
-            {
-                if (item.DataType == typeof(decimal))
-                    Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = "_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * \" - \"??_ ;_ @_ ";//Formato Contabilidad
-                if (item.DataType == typeof(DateTime))
-                    Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-            }
-            if (!string.IsNullOrWhiteSpace(ScriptMacro))
-            {
-                Excel.Workbook.CreateVBAProject();
-                var worksheet = Excel.Workbook.Worksheets.Add("HojaDeMacros");
-                worksheet.CodeModule.Code = ScriptMacro.ToString();
-                worksheet.CodeModule.Name = "HojaDeMacros";
-                Hoja_Trabajo.Workbook.CodeModule.Code = ScriptMacro;
-                Hoja_Trabajo.Workbook.Worksheets["HojaDeMacros"].Hidden = eWorkSheetHidden.Hidden;
             }
             ///Ajustamos al Texto
             ///_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * "-"??_ ;_ @_ 
@@ -1167,8 +1195,15 @@ namespace HPResergerFunciones
             foreach (int i in AutoAjustarColumnas)
             {
                 Hoja_Trabajo.Column(i).AutoFit(7);
-
             }
+            if (ForzarAutoAjustado)
+                foreach (int i in AutoAjustarColumnas)
+                {
+                    Hoja_Trabajo.Column(i).BestFit = true;
+                    //Hoja_Trabajo.Column(i).AutoFit(1000);
+                    Hoja_Trabajo.Column(i).AutoFit();
+                    Hoja_Trabajo.Cells[$"{i}:{i}"].AutoFitColumns();
+                }
             //Fin Ajuste de Texto
             //if (!EstaArchivoAbierto(FileName.ToString()))
             //{

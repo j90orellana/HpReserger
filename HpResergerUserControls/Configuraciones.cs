@@ -44,6 +44,7 @@ namespace HpResergerUserControls
         ///FIN COLORES CON UI
         //FUENTES
         public static Font FuenteReportesTahoma8 = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        public static Font FuenteReportesTahoma10 = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         //FIN FUENTES 
         //VALORES PARA DOCUMENTOS
         public static int TipoDocumento = 0;

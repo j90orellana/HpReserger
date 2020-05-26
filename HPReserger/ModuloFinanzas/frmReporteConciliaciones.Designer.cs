@@ -58,6 +58,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnexportarpdf = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +97,7 @@
             // cbofechaini
             // 
             this.cbofechaini.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 5, 22, 0, 0, 0, 0);
+            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 5, 25, 0, 0, 0, 0);
             this.cbofechaini.FechaFinMes = new System.DateTime(2020, 5, 31, 0, 0, 0, 0);
             this.cbofechaini.FechaInicioMes = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
             this.cbofechaini.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -109,7 +112,7 @@
             // cbofechafin
             // 
             this.cbofechafin.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 5, 22, 0, 0, 0, 0);
+            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 5, 25, 0, 0, 0, 0);
             this.cbofechafin.FechaFinMes = new System.DateTime(2020, 5, 31, 0, 0, 0, 0);
             this.cbofechafin.FechaInicioMes = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
             this.cbofechafin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -400,7 +403,7 @@
             this.btnexportarpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnexportarpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexportarpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarpdf.Image")));
-            this.btnexportarpdf.Location = new System.Drawing.Point(410, 545);
+            this.btnexportarpdf.Location = new System.Drawing.Point(453, 545);
             this.btnexportarpdf.Name = "btnexportarpdf";
             this.btnexportarpdf.Size = new System.Drawing.Size(83, 24);
             this.btnexportarpdf.TabIndex = 196;
@@ -409,10 +412,30 @@
             this.btnexportarpdf.UseVisualStyleBackColor = true;
             this.btnexportarpdf.Click += new System.EventHandler(this.btnexportarpdf_Click);
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
+            this.btnExcel.Location = new System.Drawing.Point(367, 545);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(83, 24);
+            this.btnExcel.TabIndex = 196;
+            this.btnExcel.Text = "EXCEL";
+            this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // frmReporteConciliaciones
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(902, 575);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnexportarpdf);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label3);
@@ -462,5 +485,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaCierre;
         private System.Windows.Forms.DataGridViewTextBoxColumn xUsuario;
         private System.Windows.Forms.Button btnexportarpdf;
+        private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

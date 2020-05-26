@@ -2547,6 +2547,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Conciliacion_Busqueda(empresa, banco, nrocuenta, FechaIni, FechaFin);
         }
+        public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
+        {
+            return cdOrdenPedido.Conciliacion_Busqueda_ConDetalle(empresa, banco, nrocuenta, FechaIni, FechaFin);
+        }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
         {
             return cdOrdenPedido.BuscarFacturasManualesToNcNd(ruc, NumComprobante);

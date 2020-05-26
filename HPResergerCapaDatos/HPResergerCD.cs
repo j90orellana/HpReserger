@@ -4812,6 +4812,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin };
             return bd.DataTableFromProcedure("usp_Conciliacion_Busqueda", parametros, valores, null);
         }
+        public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
+        {
+            string[] parametros = { "@empresa", "@banco", "@NroCuenta", "@Fechaini", "@FechaFin" };
+            object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin };
+            return bd.DataTableFromProcedure("[usp_Conciliacion_Busqueda_ConDetalle]", parametros, valores, null);
+        }
         public DataTable BuscarFacturasManualesToNcNd(string ruc, string NumComprobante)
         {
             string[] parametros = { "@ruc", "@NumComp" };
