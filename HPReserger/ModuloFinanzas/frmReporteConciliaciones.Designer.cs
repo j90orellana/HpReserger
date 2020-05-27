@@ -61,6 +61,7 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +82,7 @@
             this.BtnCerrar.Text = "Cancelar";
             this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // lblRegistros
             // 
@@ -97,7 +99,7 @@
             // cbofechaini
             // 
             this.cbofechaini.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 5, 25, 0, 0, 0, 0);
+            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 5, 26, 0, 0, 0, 0);
             this.cbofechaini.FechaFinMes = new System.DateTime(2020, 5, 31, 0, 0, 0, 0);
             this.cbofechaini.FechaInicioMes = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
             this.cbofechaini.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,7 +114,7 @@
             // cbofechafin
             // 
             this.cbofechafin.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 5, 25, 0, 0, 0, 0);
+            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 5, 26, 0, 0, 0, 0);
             this.cbofechafin.FechaFinMes = new System.DateTime(2020, 5, 31, 0, 0, 0, 0);
             this.cbofechafin.FechaInicioMes = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
             this.cbofechafin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -431,6 +433,20 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnActualizar.Location = new System.Drawing.Point(807, 25);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(82, 24);
+            this.btnActualizar.TabIndex = 194;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // frmReporteConciliaciones
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -441,6 +457,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.txtbusnrocuenta);
             this.Controls.Add(this.txtbusbanco);
@@ -488,5 +505,6 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }

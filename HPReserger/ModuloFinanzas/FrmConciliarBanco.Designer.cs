@@ -67,7 +67,7 @@
             this.xNroOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xGlosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblREgistros = new System.Windows.Forms.Label();
+            this.lblRegistroExcel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dtgContenSistema = new HpResergerUserControls.Dtgconten();
             this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -93,6 +93,9 @@
             this.btnDesAgrupar = new System.Windows.Forms.LinkLabel();
             this.chkOperacion = new HpResergerUserControls.checkboxOre();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblRegistroExcel2 = new System.Windows.Forms.Label();
+            this.lblRegistroSistema = new System.Windows.Forms.Label();
+            this.lblRegistroSistema2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenExcel)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenSistema)).BeginInit();
@@ -152,7 +155,7 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 5, 21, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 5, 26, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 5, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -235,6 +238,7 @@
             this.label4.Size = new System.Drawing.Size(277, 13);
             this.label4.TabIndex = 185;
             this.label4.Text = "1.- Seleccione Cuenta Bancaria y Periodo a Conciliar:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -465,17 +469,18 @@
             this.xGlosa2.ReadOnly = true;
             this.xGlosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // lblREgistros
+            // lblRegistroExcel
             // 
-            this.lblREgistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblREgistros.AutoSize = true;
-            this.lblREgistros.BackColor = System.Drawing.Color.Transparent;
-            this.lblREgistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblREgistros.Location = new System.Drawing.Point(13, 551);
-            this.lblREgistros.Name = "lblREgistros";
-            this.lblREgistros.Size = new System.Drawing.Size(94, 13);
-            this.lblREgistros.TabIndex = 189;
-            this.lblREgistros.Text = "Total Registros: 0";
+            this.lblRegistroExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegistroExcel.AutoSize = true;
+            this.lblRegistroExcel.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroExcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroExcel.Location = new System.Drawing.Point(13, 543);
+            this.lblRegistroExcel.Name = "lblRegistroExcel";
+            this.lblRegistroExcel.Size = new System.Drawing.Size(141, 13);
+            this.lblRegistroExcel.TabIndex = 189;
+            this.lblRegistroExcel.Text = "Total Registros del Excel: 0";
+            this.lblRegistroExcel.Click += new System.EventHandler(this.lblRegistroExcel_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -722,6 +727,7 @@
             this.lblFunciones.TabIndex = 189;
             this.lblFunciones.Text = "Agrupar Por:";
             this.lblFunciones.Visible = false;
+            this.lblFunciones.Click += new System.EventHandler(this.lblFunciones_Click);
             // 
             // btnFechaMonto
             // 
@@ -778,6 +784,7 @@
             this.lblmanual.Size = new System.Drawing.Size(49, 13);
             this.lblmanual.TabIndex = 192;
             this.lblmanual.Text = "Manual:";
+            this.lblmanual.Click += new System.EventHandler(this.lblmanual_Click);
             // 
             // btnAgrupar
             // 
@@ -809,7 +816,6 @@
             // 
             // chkOperacion
             // 
-            this.chkOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkOperacion.AutoSize = true;
             this.chkOperacion.BackColor = System.Drawing.Color.Transparent;
             this.chkOperacion.Checked = true;
@@ -817,7 +823,7 @@
             this.chkOperacion.ColorChecked = System.Drawing.Color.Empty;
             this.chkOperacion.ColorUnChecked = System.Drawing.Color.Empty;
             this.chkOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkOperacion.Location = new System.Drawing.Point(600, 552);
+            this.chkOperacion.Location = new System.Drawing.Point(595, 88);
             this.chkOperacion.Name = "chkOperacion";
             this.chkOperacion.Size = new System.Drawing.Size(123, 17);
             this.chkOperacion.TabIndex = 193;
@@ -826,11 +832,49 @@
             this.chkOperacion.UseVisualStyleBackColor = false;
             this.chkOperacion.Visible = false;
             // 
+            // lblRegistroExcel2
+            // 
+            this.lblRegistroExcel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegistroExcel2.AutoSize = true;
+            this.lblRegistroExcel2.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroExcel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 556);
+            this.lblRegistroExcel2.Name = "lblRegistroExcel2";
+            this.lblRegistroExcel2.Size = new System.Drawing.Size(184, 13);
+            this.lblRegistroExcel2.TabIndex = 189;
+            this.lblRegistroExcel2.Text = "Total Consolidado: 0 Pendientes: 0";
+            this.lblRegistroExcel2.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // lblRegistroSistema
+            // 
+            this.lblRegistroSistema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegistroSistema.AutoSize = true;
+            this.lblRegistroSistema.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroSistema.Location = new System.Drawing.Point(452, 546);
+            this.lblRegistroSistema.Name = "lblRegistroSistema";
+            this.lblRegistroSistema.Size = new System.Drawing.Size(155, 13);
+            this.lblRegistroSistema.TabIndex = 189;
+            this.lblRegistroSistema.Text = "Total Registros del Sistema: 0";
+            this.lblRegistroSistema.Click += new System.EventHandler(this.lblRegistroExcel_Click);
+            // 
+            // lblRegistroSistema2
+            // 
+            this.lblRegistroSistema2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegistroSistema2.AutoSize = true;
+            this.lblRegistroSistema2.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroSistema2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroSistema2.Location = new System.Drawing.Point(452, 559);
+            this.lblRegistroSistema2.Name = "lblRegistroSistema2";
+            this.lblRegistroSistema2.Size = new System.Drawing.Size(184, 13);
+            this.lblRegistroSistema2.TabIndex = 189;
+            this.lblRegistroSistema2.Text = "Total Consolidado: 0 Pendientes: 0";
+            this.lblRegistroSistema2.Click += new System.EventHandler(this.label7_Click);
+            // 
             // FrmConciliarBanco
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(902, 575);
-            this.Controls.Add(this.chkOperacion);
             this.Controls.Add(this.lblmanual);
             this.Controls.Add(this.btnOperacion);
             this.Controls.Add(this.btnOperacionMonto);
@@ -840,7 +884,10 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lblTotales);
             this.Controls.Add(this.lblFunciones);
-            this.Controls.Add(this.lblREgistros);
+            this.Controls.Add(this.lblRegistroSistema2);
+            this.Controls.Add(this.lblRegistroExcel2);
+            this.Controls.Add(this.lblRegistroSistema);
+            this.Controls.Add(this.lblRegistroExcel);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.txtRutaExcel);
             this.Controls.Add(this.label5);
@@ -856,6 +903,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.chkOperacion);
             this.MinimumSize = new System.Drawing.Size(918, 614);
             this.Name = "FrmConciliarBanco";
             this.Nombre = "Conciliación Bancaria";
@@ -889,7 +937,7 @@
         private HpResergerUserControls.ButtonPer btnCargar;
         private HpResergerUserControls.ButtonPer btnPaso2;
         private HpResergerUserControls.Dtgconten dtgContenExcel;
-        private System.Windows.Forms.Label lblREgistros;
+        private System.Windows.Forms.Label lblRegistroExcel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblexcel;
         private System.Windows.Forms.Label lblSistema;
@@ -922,5 +970,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yidasiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
+        private System.Windows.Forms.Label lblRegistroExcel2;
+        private System.Windows.Forms.Label lblRegistroSistema;
+        private System.Windows.Forms.Label lblRegistroSistema2;
     }
 }

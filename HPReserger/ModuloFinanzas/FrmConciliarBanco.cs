@@ -94,7 +94,7 @@ namespace HPReserger.ModuloFinanzas
                     if (FormatearlaTabla(pkBanco))
                     {
                         //Datos del Excel
-                        dtgContenExcel.DataSource = Tdatos;
+                        dtgContenExcel.DataSource = TdatosExcel;
                         //Datos del Sistema
                         dtgContenSistema.DataSource = TdatosSist;
                         ContarRegistros();
@@ -102,8 +102,8 @@ namespace HPReserger.ModuloFinanzas
                         ActivarFunciones(true);
                         Cfilas = 0;
                         ConciliarMovimientos(Conciliaciones.FechaMonto);
-                        Grilla = 0;
                         MostrarDatosdeEtiquetasGrillas(true);
+                        MostrarTotales();
                     }
             }
         }
@@ -136,15 +136,20 @@ namespace HPReserger.ModuloFinanzas
             //
             chkOperacion.Visible = v;
             btnTxt.Visible = v;
+            //
+            lblRegistroExcel.Visible = v;
+            lblRegistroExcel2.Visible = v;
+            lblRegistroSistema.Visible = v;
+            lblRegistroSistema2.Visible = v;
         }
         private void OrdenarDataGridViews(int x, int y)
         {
             //Ordenar TAbla del Excel
-            if (Tdatos.Rows.Count != 0)
+            if (TdatosExcel.Rows.Count != 0)
             {
-                DataView dv = new DataView(Tdatos);
+                DataView dv = new DataView(TdatosExcel);
                 dv.Sort = "index desc, monto asc";
-                dtgContenExcel.DataSource = Tdatos = dv.ToTable();
+                dtgContenExcel.DataSource = TdatosExcel = dv.ToTable();
             }
             //Ordenar TAbla del Sistema
             if (TdatosSist.Rows.Count != 0)
@@ -159,11 +164,11 @@ namespace HPReserger.ModuloFinanzas
         private void OrdenarDataGridViews()
         {
             //Ordenar TAbla del Excel
-            if (Tdatos.Rows.Count != 0)
+            if (TdatosExcel.Rows.Count != 0)
             {
-                DataView dv = new DataView(Tdatos);
+                DataView dv = new DataView(TdatosExcel);
                 dv.Sort = "index desc, monto asc";
-                dtgContenExcel.DataSource = Tdatos = dv.ToTable();
+                dtgContenExcel.DataSource = TdatosExcel = dv.ToTable();
             }
             //Ordenar TAbla del Sistema
             if (TdatosSist.Rows.Count != 0)
@@ -183,7 +188,7 @@ namespace HPReserger.ModuloFinanzas
         {
             if (Banco == 1) //Banco BCP
             {
-                foreach (DataRow item in Tdatos.Rows)
+                foreach (DataRow item in TdatosExcel.Rows)
                 {
                     DateTime Fecha;
                     if (!DateTime.TryParse(item[0].ToString(), out Fecha))
@@ -195,22 +200,22 @@ namespace HPReserger.ModuloFinanzas
 
                 foreach (int item in IndexColumnasEliminar)
                 {
-                    Tdatos.Columns.RemoveAt(item);
+                    TdatosExcel.Columns.RemoveAt(item);
                 }
                 //Damos Nombres a las Columnas
-                Tdatos.Columns[0].ColumnName = "Fecha";
-                Tdatos.Columns[2].ColumnName = "Monto";
-                Tdatos.Columns[3].ColumnName = "Operacion";
-                Tdatos.Columns[1].ColumnName = "Glosa";
-                Tdatos.Columns[4].ColumnName = "Glosa2";
-                Tdatos.Columns[1].SetOrdinal(3);
+                TdatosExcel.Columns[0].ColumnName = "Fecha";
+                TdatosExcel.Columns[2].ColumnName = "Monto";
+                TdatosExcel.Columns[3].ColumnName = "Operacion";
+                TdatosExcel.Columns[1].ColumnName = "Glosa";
+                TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[1].SetOrdinal(3);
                 //Agregamos la Columnas
                 DataColumn ColOk = new DataColumn("ok", typeof(int));
                 ColOk.DefaultValue = 0;
-                Tdatos.Columns.Add(ColOk);
+                TdatosExcel.Columns.Add(ColOk);
                 DataColumn ColIndex = new DataColumn("Index", typeof(int));
                 ColOk.DefaultValue = 0;
-                Tdatos.Columns.Add(ColIndex);
+                TdatosExcel.Columns.Add(ColIndex);
                 return true;
             }
             return false;
@@ -218,12 +223,17 @@ namespace HPReserger.ModuloFinanzas
 
         private void ContarRegistros()
         {
-            lblREgistros.Text = $"Total Registros Excel: {dtgContenExcel.RowCount}; Movimiento Sistema {dtgContenSistema.RowCount}";
+            lblRegistroExcel.Text = $"Total Registros del Excel: {dtgContenExcel.RowCount}";
+            lblRegistroExcel2.Text = $"Total Consolidado: 0 Pendientes: 0";
+            lblRegistroSistema.Text = $"Total Registros del Sistema: {dtgContenSistema.RowCount}";
+            lblRegistroSistema2.Text = $"Total Consolidado: 0 Pendientes: 0";
         }
         private void ContarRegistros(int x1, int x2, int y1, int y2)
         {
-            lblREgistros.Text = $"Total Registros Excel: {x1}:{x2}/{dtgContenExcel.RowCount} ; Movimiento Sistema  {y1}:{y2}/{dtgContenSistema.RowCount}";
-
+            lblRegistroExcel.Text = $"Total Registros del Excel: {dtgContenExcel.RowCount}";
+            lblRegistroExcel2.Text = $"Total Consolidado: {x1} Pendientes: {x2}";
+            lblRegistroSistema.Text = $"Total Registros del Sistema: {dtgContenSistema.RowCount}";
+            lblRegistroSistema2.Text = $"Total Consolidado: {y1} Pendientes: {y2}";
         }
         decimal EstadoCuenta = 0;
         private Boolean ProcesodeAnalisis(int pkBanco, string nroCuenta)
@@ -231,22 +241,22 @@ namespace HPReserger.ModuloFinanzas
             if (pkBanco == 1) //Banco BCP
             {
                 //validamos Que pertenezca ala misma cuenta
-                if (Tdatos.Columns.Count != 11)
+                if (TdatosExcel.Columns.Count != 11)
                 {
                     msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
                     return false;
                 }
-                EstadoCuenta = decimal.Parse(Tdatos.Rows[6][4].ToString());
-                string ValCuenta = Tdatos.Rows[0][1].ToString();
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[5][4].ToString());
+                string ValCuenta = TdatosExcel.Rows[0][1].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
                 {
                     msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
                     return false;
                 }
-                int pos = 7; int c = 1;
+                int pos = 6; int c = 1;
                 DateTime FechaMin = new DateTime(2200, 1, 1);
                 DateTime FechaMax = new DateTime(1900, 1, 1);
-                foreach (DataRow item in Tdatos.Rows)
+                foreach (DataRow item in TdatosExcel.Rows)
                 {
                     if (c++ >= pos)
                     {
@@ -270,12 +280,12 @@ namespace HPReserger.ModuloFinanzas
             }
             return false;
         }
-        DataTable Tdatos;
+        DataTable TdatosExcel;
         DataTable TdatosSist;
         private Boolean CargarDatosDelExcel(string Ruta)
         {
-            Tdatos = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(txtRutaExcel.Text, 1, 6, 11);
-            if (Tdatos.Rows.Count == 0)
+            TdatosExcel = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(txtRutaExcel.Text, 1, 6, 11);
+            if (TdatosExcel.Rows.Count == 0)
             {
                 return false;
             }
@@ -394,7 +404,7 @@ namespace HPReserger.ModuloFinanzas
         {
             if (opcion == Conciliaciones.OperacionMonto)
             {
-                foreach (DataRow item1 in Tdatos.Rows)
+                foreach (DataRow item1 in TdatosExcel.Rows)
                 {
                     if ((int)(item1[xGrupo.DataPropertyName].ToString() == "" ? 0 : item1[xGrupo.DataPropertyName]) == 0)
                         foreach (DataRow item2 in TdatosSist.Rows)
@@ -413,7 +423,7 @@ namespace HPReserger.ModuloFinanzas
             }
             else if (opcion == Conciliaciones.FechaMonto)
             {
-                foreach (DataRow item1 in Tdatos.Rows)
+                foreach (DataRow item1 in TdatosExcel.Rows)
                 {
                     if ((int)(item1[xGrupo.DataPropertyName].ToString() == "" ? 0 : item1[xGrupo.DataPropertyName]) == 0)
                         foreach (DataRow item2 in TdatosSist.Rows)
@@ -452,57 +462,79 @@ namespace HPReserger.ModuloFinanzas
         }
         private void btnDesAgrupar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (Grilla == 1)
+            //validaciones para DesAgrupar
+            //Recorremos el Grid del EXcel para ver que no este seleccionada un fila sin grupo
+            string cadena = "";
+            foreach (DataRow item in TdatosExcel.Rows)
             {
-                if (dtgContenExcel.CurrentCell != null)
-                {
-                    if (dtgContenExcel[xGrupo.Name, dtgContenExcel.CurrentCell.RowIndex].Value.ToString() == "") return;
-                    int Valor = (int)dtgContenExcel[xGrupo.Name, dtgContenExcel.CurrentCell.RowIndex].Value;
-                    foreach (DataRow item in Tdatos.Rows)
+                if ((int)item[xok.DataPropertyName] == 1)
+                    if (item[xGrupo.DataPropertyName].ToString() == "")
                     {
-                        if (item[xGrupo.DataPropertyName].ToString() != "")
-                            if ((int)item[xGrupo.DataPropertyName] == Valor)
-                                item[xGrupo.DataPropertyName] = DBNull.Value;
+                        cadena += "Fila no Agrupada en la grilla de Excel\n";
+                        break;
                     }
-                    foreach (DataRow item in TdatosSist.Rows)
-                    {
-                        if (item[ygrupo.DataPropertyName].ToString() != "")
-                            if ((int)item[ygrupo.DataPropertyName] == Valor)
-                                item[ygrupo.DataPropertyName] = DBNull.Value;
-                    }
-                }
             }
-            else if (Grilla == 2)
+            foreach (DataRow item in TdatosSist.Rows)
             {
-                if (dtgContenSistema.CurrentCell != null)
-                {
-                    if (dtgContenSistema[ygrupo.Name, dtgContenSistema.CurrentCell.RowIndex].Value.ToString() == "") return;
-                    int Valor = (int)dtgContenSistema[ygrupo.Name, dtgContenSistema.CurrentCell.RowIndex].Value;
-                    foreach (DataRow item in Tdatos.Rows)
+                if ((int)item[yok.DataPropertyName] == 1)
+                    if (item[xGrupo.DataPropertyName].ToString() == "")
                     {
-                        if (item[xGrupo.DataPropertyName].ToString() != "")
-                            if ((int)item[xGrupo.DataPropertyName] == Valor)
-                                item[xGrupo.DataPropertyName] = DBNull.Value;
+                        cadena += "Fila no Agrupada en la grilla de Sistema";
+                        break;
                     }
-                    foreach (DataRow item in TdatosSist.Rows)
-                    {
-                        if (item[ygrupo.DataPropertyName].ToString() != "")
-                            if ((int)item[ygrupo.DataPropertyName] == Valor)
-                                item[ygrupo.DataPropertyName] = DBNull.Value;
-                    }
-                }
             }
-            else msgError("Seleccione una Celda");
+            //Mensaje de ERror
+            if (cadena != "") { msgError(cadena); return; }
+            //Codigo de DEsagrupacion
+            int Valor = 0;
+            dtgContenExcel.SuspendLayout();
+            dtgContenSistema.SuspendLayout();
+            foreach (DataRow item in TdatosExcel.Rows)
+                if ((int)item[xok.DataPropertyName] == 1)
+                    if (item[xGrupo.DataPropertyName].ToString() != "")
+                    {
+                        Valor = (int)item[xGrupo.DataPropertyName];
+                        foreach (DataRow Fila in TdatosExcel.Rows)
+                            if (Fila[xGrupo.DataPropertyName].ToString() != "")
+                                if ((int)Fila[xGrupo.DataPropertyName] == Valor)
+                                    Fila[xGrupo.DataPropertyName] = DBNull.Value;
+                        foreach (DataRow Fila in TdatosSist.Rows)
+                            if (Fila[ygrupo.DataPropertyName].ToString() != "")
+                                if ((int)Fila[ygrupo.DataPropertyName] == Valor)
+                                    Fila[ygrupo.DataPropertyName] = DBNull.Value;
+                    }
+
+            foreach (DataRow item in TdatosSist.Rows)
+                if ((int)item[yok.DataPropertyName] == 1)
+                    if (item[ygrupo.DataPropertyName].ToString() != "")
+                    {
+                        Valor = (int)item[ygrupo.DataPropertyName];
+                        foreach (DataRow Fila in TdatosExcel.Rows)
+                            if (Fila[xGrupo.DataPropertyName].ToString() != "")
+                                if ((int)Fila[xGrupo.DataPropertyName] == Valor)
+                                    Fila[xGrupo.DataPropertyName] = DBNull.Value;
+                        foreach (DataRow Fila in TdatosSist.Rows)
+                            if (Fila[ygrupo.DataPropertyName].ToString() != "")
+                                if ((int)Fila[ygrupo.DataPropertyName] == Valor)
+                                    Fila[ygrupo.DataPropertyName] = DBNull.Value;
+                    }
+            //Quitamos los check
+            foreach (DataRow item in TdatosExcel.Rows)
+                item[xok.DataPropertyName] = 0;
+            foreach (DataRow item in TdatosSist.Rows)
+                item[yok.DataPropertyName] = 0;
+            //
+            dtgContenExcel.ResumeLayout();
+            dtgContenSistema.ResumeLayout();
             OrdenarDataGridViews(dtgContenExcel.FirstDisplayedCell.RowIndex, dtgContenSistema.FirstDisplayedCell.RowIndex);
         }
-        int Grilla = 0;
         private void dtgContenExcel_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            Grilla = 1;
+
         }
         private void dtgContenSistema_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            Grilla = 2;
+
         }
         private void dtgContenSistema_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -522,19 +554,18 @@ namespace HPReserger.ModuloFinanzas
             if (e.RowIndex >= 0)
                 if (e.ColumnIndex == dtgContenExcel.Columns[xok.Name].Index)
                 {
-                    if (dtgContenExcel[xGrupo.Name, e.RowIndex].Value.ToString() != "")
-                        dtgContenExcel.CancelEdit();
+                    //if (dtgContenExcel[xGrupo.Name, e.RowIndex].Value.ToString() != "")
+                    //dtgContenExcel.CancelEdit();
                     dtgContenExcel.EndEdit(); dtgContenExcel.RefreshEdit();
                 }
         }
-
         private void dtgContenSistema_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
                 if (e.ColumnIndex == dtgContenSistema.Columns[yok.Name].Index)
                 {
-                    if (dtgContenSistema[ygrupo.Name, e.RowIndex].Value.ToString() != "")
-                        dtgContenSistema.CancelEdit();
+                    //if (dtgContenSistema[ygrupo.Name, e.RowIndex].Value.ToString() != "")
+                    //    dtgContenSistema.CancelEdit();
                     dtgContenSistema.EndEdit(); dtgContenSistema.RefreshEdit();
                 }
         }
@@ -544,10 +575,10 @@ namespace HPReserger.ModuloFinanzas
             if (e.RowIndex >= 0)
                 if (e.ColumnIndex == dtgContenSistema.Columns[yok.Name].Index)
                 {
-                    if (dtgContenSistema[ygrupo.Name, e.RowIndex].Value.ToString() != "")
-                    {
-                        dtgContenSistema[yok.Name, e.RowIndex].Value = 0;
-                    }
+                    //if (dtgContenSistema[ygrupo.Name, e.RowIndex].Value.ToString() != "")
+                    //{
+                    //    dtgContenSistema[yok.Name, e.RowIndex].Value = 0;
+                    //}
                     MostrarTotales();
                 }
         }
@@ -556,10 +587,10 @@ namespace HPReserger.ModuloFinanzas
             if (e.RowIndex >= 0)
                 if (e.ColumnIndex == dtgContenExcel.Columns[xok.Name].Index)
                 {
-                    if (dtgContenExcel[xGrupo.Name, e.RowIndex].Value.ToString() != "")
-                    {
-                        dtgContenExcel[xok.Name, e.RowIndex].Value = 0;
-                    }
+                    //if (dtgContenExcel[xGrupo.Name, e.RowIndex].Value.ToString() != "")
+                    //{
+                    //    dtgContenExcel[xok.Name, e.RowIndex].Value = 0;
+                    //}
                     MostrarTotales();
                 }
         }
@@ -567,17 +598,35 @@ namespace HPReserger.ModuloFinanzas
         private void btnAgrupar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (SumaExcel == SumaSistema)
-            {
+            {  //Validamos que no este Seleccionado uno ya Agrupado
+                string cadena = "";
+                foreach (DataRow item in TdatosExcel.Rows)
+                    if ((int)item[xok.DataPropertyName] == 1)
+                        if (item[xGrupo.DataPropertyName].ToString() != "")
+                        {
+                            cadena += "Fila Agrupada en el Excel\n";
+                            break;
+                        }
+                foreach (DataRow item in TdatosSist.Rows)
+                    if ((int)item[yok.DataPropertyName] == 1)
+                        if (item[ygrupo.DataPropertyName].ToString() != "")
+                        {
+                            cadena += "Fila Agrupada en el Sistema\n";
+                            break;
+                        }
+                if (cadena != "") { msgError("No se Puede Agrupar una Fila Ya Agrupada"); return; }
+                //Codigo de Agrupacion
+
                 Cfilas++;
                 //Asignamos los Montos de Sumatoria
-                foreach (DataRow item in Tdatos.Rows)
+                foreach (DataRow item in TdatosExcel.Rows)
                     if ((int)item[xok.DataPropertyName] == 1)
                         item[xGrupo.DataPropertyName] = Cfilas;
                 foreach (DataRow item in TdatosSist.Rows)
                     if ((int)item[yok.DataPropertyName] == 1)
                         item[ygrupo.DataPropertyName] = Cfilas;
                 //Regresamos los Ok a Deseleccionados
-                foreach (DataRow item in Tdatos.Rows)
+                foreach (DataRow item in TdatosExcel.Rows)
                     item[xok.DataPropertyName] = 0;
                 foreach (DataRow item in TdatosSist.Rows)
                     item[yok.DataPropertyName] = 0;
@@ -594,7 +643,7 @@ namespace HPReserger.ModuloFinanzas
             if (e.RowIndex == -1)
             {
                 if (e.ColumnIndex == dtgContenExcel.Columns[xok.Name].Index)
-                    foreach (DataRow item in Tdatos.Rows)
+                    foreach (DataRow item in TdatosExcel.Rows)
                         item[xok.DataPropertyName] = 0;
             }
             dtgContenExcel.EndEdit(); dtgContenExcel.RefreshEdit();
@@ -618,7 +667,7 @@ namespace HPReserger.ModuloFinanzas
             if (CuentaContable == "") { msg("El Banco No tiene Cuenta Contable"); return; }
             if (msgYesCancel("Desea Grabar la Conciliación en el Sistema?") == DialogResult.Yes)
             {
-                if (chkOperacion.Checked)
+                if (!chkOperacion.Checked)
                 {
                     Pregunta = msgYesCancel("Se van a Actualizar los Nro. de Operaciones del Sistema con los datos del Excel");
                     if (Pregunta == DialogResult.Cancel)
@@ -634,7 +683,7 @@ namespace HPReserger.ModuloFinanzas
                 int pkUsuario = frmLogin.CodigoUsuario;
                 CapaLogica.ConciliacionCabecera(1, pkid, pkEmpresa, pkidCtaBanco, CuentaContable, FechaEjecucion, SaldoContable, EstadoCuenta, pkUsuario);
                 //GRabamos el Detalle de la Cabecera
-                foreach (DataRow item in Tdatos.Rows)
+                foreach (DataRow item in TdatosExcel.Rows)
                 {
                     //Las Filas que no tiene grupo
                     if (item[xGrupo.DataPropertyName].ToString() == "")
@@ -671,10 +720,13 @@ namespace HPReserger.ModuloFinanzas
                     else
                     {
                         if ((int)item[xEstado.DataPropertyName] == 1)
+                        {
+                            int tipo = (int)item[xtipo.DataPropertyName];
                             CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], (int)item[xtipo.DataPropertyName],
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
-                              decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
+                                (tipo == 1 ? 1 : -1) * decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1);
+                        }
                     }
                 }
                 //fin Cabecera
@@ -687,11 +739,37 @@ namespace HPReserger.ModuloFinanzas
             }
             else msgError("Cancelado por el Usuario");
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRegistroExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFunciones_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblmanual_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void MostrarTotales()
         {
             int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
             SumaExcel = SumaSistema = 0;
-            foreach (DataRow item in Tdatos.Rows)
+            foreach (DataRow item in TdatosExcel.Rows)
             {
                 if ((int)item[xok.DataPropertyName] == 1)
                 {
