@@ -2531,6 +2531,16 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ConciliacionCabecera(9, 0, pkempresa, 0, "", Fecha, 0, 0, 0);
         }
+        public DataTable ConciliacionCabeceraExcel(int pkempresa, DateTime Fecha)
+        {
+            //Mandamos el Tipo 1 =  Excel por el del Usuario para no declarar otra Variable
+            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, 0, "", Fecha, 0, 0, 1);
+        }
+        public DataTable ConciliacionCabeceraSistema(int pkempresa, DateTime Fecha)
+        {
+            //Mandamos el Tipo 2 =  Sistema por el del Usuario para no declarar otra Variable
+            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, 0, "", Fecha, 0, 0, 2);
+        }
         public DataTable ConciliacionCabeceraEliminar(int pkempresa, DateTime Fecha)
         {
             return cdOrdenPedido.ConciliacionCabecera(10, 0, pkempresa, 0, "", Fecha, 0, 0, 0);
@@ -2539,9 +2549,13 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ConciliacionCabecera(0, 0, 0, 0, "", DateTime.Now, 0, 0, 0);
         }
-        public DataTable ConciliacionDetalle(int @opcion, int @fkid, int @pkid, int @tipo, string @cuo, DateTime @Fecha, DateTime @FechaEjecuta, decimal @monto, string @operacion, string @glosa, string @glosa2, int @idasiento, int @estado)
+        public DataTable ActualizarNumeroOperacion(int empresa, string cuo, string nroop, int idctabancaria) //1 activa ,cualquiera desactiva
         {
-            return cdOrdenPedido.ConciliacionDetalle(@opcion, @fkid, @pkid, @tipo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2, @idasiento, @estado);
+            return cdOrdenPedido.ActualizarNumeroOperacion(empresa, cuo, nroop, idctabancaria);
+        }
+        public DataTable ConciliacionDetalle(int @opcion, int @fkid, int @pkid, int @tipo, int? grupo, string @cuo, DateTime @Fecha, DateTime @FechaEjecuta, decimal @monto, string @operacion, string @glosa, string @glosa2, int @idasiento, int @estado)
+        {
+            return cdOrdenPedido.ConciliacionDetalle(@opcion, @fkid, @pkid, @tipo, grupo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2, @idasiento, @estado);
         }
         public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
         {

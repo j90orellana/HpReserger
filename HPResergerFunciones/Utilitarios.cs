@@ -383,6 +383,8 @@ namespace HPResergerFunciones
             public string fila { get; set; }
             public string columna { get; set; }
             public string Nombre { get; set; }
+            public string Formato = "#,##0.00";
+            public decimal ValorDecimal;
             public int TamañoFuente = 0;
             public Boolean _Negrita = false;
             public Boolean _Centrar = false;
@@ -466,6 +468,37 @@ namespace HPResergerFunciones
                 _Centrar = Centrar;
                 Fuente = _fuente;
                 Alineado = _alineado;
+            }
+            public RangoCelda(string _fila, string _columna, decimal Valor, int tamaño, Boolean Negrita, Boolean Centrar, Alineado _alineado, Color _BackColor, Color _ForeColor, Font _fuente, Boolean AplicarColores)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = null;
+                ValorDecimal = Valor;
+                TamañoFuente = tamaño;
+                ForeColor = _ForeColor;
+                BackColor = _BackColor;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
+                _Centrar = Centrar;
+                Fuente = _fuente;
+                Alineado = _alineado;
+            }
+            public RangoCelda(string _fila, string _columna, decimal Valor, string _Formato, int tamaño, Boolean Negrita, Boolean Centrar, Alineado _alineado, Color _BackColor, Color _ForeColor, Font _fuente, Boolean AplicarColores)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = null;
+                ValorDecimal = Valor;
+                TamañoFuente = tamaño;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
+                _Centrar = Centrar;
+                ForeColor = _ForeColor;
+                BackColor = _BackColor;
+                Fuente = _fuente;
+                Alineado = _alineado;
+                Formato = _Formato;
             }
             public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Alineado _alineado, Color _BackColor, Color _ForeColor, Font _fuente, Boolean AplicarColores)
             {
@@ -1079,12 +1112,19 @@ namespace HPResergerFunciones
             FileInfo FileName = new FileInfo(NameFile);
             ExcelPackage Excel = new ExcelPackage(FileName);
             Excel.Workbook.Worksheets.Add(nombrehoja);
-            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index];         
+            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index];
             //Hoja_Trabajo.Name = nombrehoja; 
             ///Ponemos Nombre a las Celdas      
             foreach (RangoCelda Nombres in NombresCeldas)
             {
-                Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.Nombre;
+                if (Nombres.Nombre == null)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.ValorDecimal;
+                    Hoja_Trabajo.Cells[Nombres.fila].Style.Numberformat.Format = Nombres.Formato;//Formato Contabilidad
+                }
+                else
+                    Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.Nombre;
+                //
                 Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                 Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
                 Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.Font.Bold = Nombres._Negrita;

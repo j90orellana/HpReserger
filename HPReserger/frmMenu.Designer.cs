@@ -59,6 +59,8 @@
             this.prestamoInterEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cobroInterEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conciliaciónBancariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.conciliarBancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteConciliacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -294,8 +296,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.conciliarBancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteConciliacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -577,11 +577,30 @@
             this.conciliaciónBancariaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.conciliarBancosToolStripMenuItem,
             this.reporteConciliacionesToolStripMenuItem});
+            this.conciliaciónBancariaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("conciliaciónBancariaToolStripMenuItem.Image")));
             this.conciliaciónBancariaToolStripMenuItem.Name = "conciliaciónBancariaToolStripMenuItem";
             this.conciliaciónBancariaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.conciliaciónBancariaToolStripMenuItem.Tag = "1009";
             this.conciliaciónBancariaToolStripMenuItem.Text = "Conciliaciones Bancarias";
             this.conciliaciónBancariaToolStripMenuItem.Click += new System.EventHandler(this.conciliaciónBancariaToolStripMenuItem_Click);
+            // 
+            // conciliarBancosToolStripMenuItem
+            // 
+            this.conciliarBancosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("conciliarBancosToolStripMenuItem.Image")));
+            this.conciliarBancosToolStripMenuItem.Name = "conciliarBancosToolStripMenuItem";
+            this.conciliarBancosToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.conciliarBancosToolStripMenuItem.Tag = "1009001";
+            this.conciliarBancosToolStripMenuItem.Text = "Conciliar Bancos";
+            this.conciliarBancosToolStripMenuItem.Click += new System.EventHandler(this.conciliarBancosToolStripMenuItem_Click);
+            // 
+            // reporteConciliacionesToolStripMenuItem
+            // 
+            this.reporteConciliacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteConciliacionesToolStripMenuItem.Image")));
+            this.reporteConciliacionesToolStripMenuItem.Name = "reporteConciliacionesToolStripMenuItem";
+            this.reporteConciliacionesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.reporteConciliacionesToolStripMenuItem.Tag = "1009002";
+            this.reporteConciliacionesToolStripMenuItem.Text = "Reporte Conciliaciones";
+            this.reporteConciliacionesToolStripMenuItem.Click += new System.EventHandler(this.reporteConciliacionesToolStripMenuItem_Click);
             // 
             // proyectosToolStripMenuItem1
             // 
@@ -2859,22 +2878,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // conciliarBancosToolStripMenuItem
-            // 
-            this.conciliarBancosToolStripMenuItem.Name = "conciliarBancosToolStripMenuItem";
-            this.conciliarBancosToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.conciliarBancosToolStripMenuItem.Tag = "1009001";
-            this.conciliarBancosToolStripMenuItem.Text = "Conciliar Bancos";
-            this.conciliarBancosToolStripMenuItem.Click += new System.EventHandler(this.conciliarBancosToolStripMenuItem_Click);
-            // 
-            // reporteConciliacionesToolStripMenuItem
-            // 
-            this.reporteConciliacionesToolStripMenuItem.Name = "reporteConciliacionesToolStripMenuItem";
-            this.reporteConciliacionesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.reporteConciliacionesToolStripMenuItem.Tag = "1009002";
-            this.reporteConciliacionesToolStripMenuItem.Text = "Reporte Conciliaciones";
-            this.reporteConciliacionesToolStripMenuItem.Click += new System.EventHandler(this.reporteConciliacionesToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

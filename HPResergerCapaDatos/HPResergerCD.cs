@@ -4800,10 +4800,16 @@ namespace HPResergerCapaDatos
             object[] valores = { opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario };
             return bd.DataTableFromProcedure("usp_ConciliacionCabecera", parametros, valores, null);
         }
-        public DataTable ConciliacionDetalle(int @opcion, int @fkid, int @pkid, int @tipo, string @cuo, DateTime @Fecha, DateTime @FechaEjecuta, decimal @monto, string @operacion, string @glosa, string @glosa2, int @idasiento, int @estado)
+        public DataTable ActualizarNumeroOperacion(int empresa, string cuo, string nroop, int idctabancaria) //1 activa ,cualquiera desactiva
         {
-            string[] parametros = { "@opcion", "@fkid", "@pkid", "@tipo", "@cuo", "@Fecha", "@FechaEjecuta", "@monto", "@operacion", "@glosa", "@glosa2", "@idasiento", "@estado" };
-            object[] valores = { @opcion, @fkid, @pkid, @tipo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2, @idasiento, @estado };
+            string[] parametros = { "@EMPRESA", "@CUO", "@NROOP", "@IDCTBANCO" };
+            object[] valores = { empresa,cuo, nroop, idctabancaria };
+            return bd.DataTableFromProcedure("usp_ActualizarNumeroOperacion", parametros, valores, null);
+        }
+        public DataTable ConciliacionDetalle(int @opcion, int @fkid, int @pkid, int @tipo, int? grupo, string @cuo, DateTime @Fecha, DateTime @FechaEjecuta, decimal @monto, string @operacion, string @glosa, string @glosa2, int @idasiento, int @estado)
+        {
+            string[] parametros = { "@opcion", "@fkid", "@pkid", "@tipo", "@grupo", "@cuo", "@Fecha", "@FechaEjecuta", "@monto", "@operacion", "@glosa", "@glosa2", "@idasiento", "@estado" };
+            object[] valores = { @opcion, @fkid, @pkid, @tipo, grupo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2, @idasiento, @estado };
             return bd.DataTableFromProcedure("usp_ConciliacionDetalle", parametros, valores, null);
         }
         public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
