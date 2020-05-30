@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,17 +70,6 @@
             this.lblRegistroExcel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dtgContenSistema = new HpResergerUserControls.Dtgconten();
-            this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ygrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ycuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ymonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yoperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yglosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblexcel = new System.Windows.Forms.Label();
             this.lblSistema = new System.Windows.Forms.Label();
             this.lblTotales = new System.Windows.Forms.Label();
@@ -97,6 +86,18 @@
             this.lblRegistroSistema = new System.Windows.Forms.Label();
             this.lblRegistroSistema2 = new System.Windows.Forms.Label();
             this.btnReversar = new HpResergerUserControls.ButtonPer();
+            this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xUpdate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ygrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ycuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ymonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yoperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yglosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenExcel)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenSistema)).BeginInit();
@@ -156,7 +157,7 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 5, 27, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 5, 29, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 5, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -329,23 +330,23 @@
             this.dtgContenExcel.AllowUserToOrderColumns = true;
             this.dtgContenExcel.AllowUserToResizeColumns = false;
             this.dtgContenExcel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgContenExcel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgContenExcel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgContenExcel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgContenExcel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgContenExcel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgContenExcel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgContenExcel.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgContenExcel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgContenExcel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgContenExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgContenExcel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xok,
@@ -355,14 +356,14 @@
             this.xNroOperacion,
             this.xGlosa,
             this.xGlosa2});
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgContenExcel.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgContenExcel.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgContenExcel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgContenExcel.Enabled = false;
             this.dtgContenExcel.EnableHeadersVisualStyles = false;
@@ -370,14 +371,14 @@
             this.dtgContenExcel.Location = new System.Drawing.Point(3, 18);
             this.dtgContenExcel.Name = "dtgContenExcel";
             this.dtgContenExcel.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgContenExcel.RowHeadersDefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgContenExcel.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgContenExcel.RowHeadersVisible = false;
             this.dtgContenExcel.RowTemplate.Height = 18;
             this.dtgContenExcel.Size = new System.Drawing.Size(433, 385);
@@ -405,8 +406,8 @@
             // 
             this.xGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xGrupo.DataPropertyName = "index";
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xGrupo.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xGrupo.DefaultCellStyle = dataGridViewCellStyle3;
             this.xGrupo.HeaderText = "Grupo";
             this.xGrupo.MinimumWidth = 40;
             this.xGrupo.Name = "xGrupo";
@@ -418,8 +419,8 @@
             // 
             this.xFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xFecha.DataPropertyName = "Fecha";
-            dataGridViewCellStyle46.Format = "d";
-            this.xFecha.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle4.Format = "d";
+            this.xFecha.DefaultCellStyle = dataGridViewCellStyle4;
             this.xFecha.HeaderText = "Fecha";
             this.xFecha.MinimumWidth = 50;
             this.xFecha.Name = "xFecha";
@@ -431,9 +432,9 @@
             // 
             this.xMonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xMonto.DataPropertyName = "Monto";
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle47.Format = "n2";
-            this.xMonto.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.xMonto.DefaultCellStyle = dataGridViewCellStyle5;
             this.xMonto.HeaderText = "Monto";
             this.xMonto.MinimumWidth = 50;
             this.xMonto.Name = "xMonto";
@@ -476,7 +477,7 @@
             this.lblRegistroExcel.AutoSize = true;
             this.lblRegistroExcel.BackColor = System.Drawing.Color.Transparent;
             this.lblRegistroExcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroExcel.Location = new System.Drawing.Point(13, 543);
+            this.lblRegistroExcel.Location = new System.Drawing.Point(13, 530);
             this.lblRegistroExcel.Name = "lblRegistroExcel";
             this.lblRegistroExcel.Size = new System.Drawing.Size(141, 13);
             this.lblRegistroExcel.TabIndex = 189;
@@ -510,26 +511,27 @@
             this.dtgContenSistema.AllowUserToOrderColumns = true;
             this.dtgContenSistema.AllowUserToResizeColumns = false;
             this.dtgContenSistema.AllowUserToResizeRows = false;
-            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle50.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgContenSistema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgContenSistema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgContenSistema.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgContenSistema.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgContenSistema.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgContenSistema.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgContenSistema.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle51.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle51.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgContenSistema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgContenSistema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dtgContenSistema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgContenSistema.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.yok,
+            this.xUpdate,
             this.ygrupo,
             this.ycuo,
             this.yFecha,
@@ -540,14 +542,14 @@
             this.yidasiento,
             this.xtipo,
             this.xEstado});
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle55.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle55.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgContenSistema.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgContenSistema.DefaultCellStyle = dataGridViewCellStyle13;
             this.dtgContenSistema.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgContenSistema.Enabled = false;
             this.dtgContenSistema.EnableHeadersVisualStyles = false;
@@ -555,14 +557,14 @@
             this.dtgContenSistema.Location = new System.Drawing.Point(442, 18);
             this.dtgContenSistema.Name = "dtgContenSistema";
             this.dtgContenSistema.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle56.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgContenSistema.RowHeadersDefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgContenSistema.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dtgContenSistema.RowHeadersVisible = false;
             this.dtgContenSistema.RowTemplate.Height = 18;
             this.dtgContenSistema.Size = new System.Drawing.Size(434, 385);
@@ -572,6 +574,216 @@
             this.dtgContenSistema.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgContenSistema_CellFormatting);
             this.dtgContenSistema.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellValueChanged);
             this.dtgContenSistema.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_RowEnter);
+            // 
+            // lblexcel
+            // 
+            this.lblexcel.AutoSize = true;
+            this.lblexcel.BackColor = System.Drawing.Color.Transparent;
+            this.lblexcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblexcel.Location = new System.Drawing.Point(3, 0);
+            this.lblexcel.Name = "lblexcel";
+            this.lblexcel.Size = new System.Drawing.Size(266, 13);
+            this.lblexcel.TabIndex = 43;
+            this.lblexcel.Text = "Datos de Movimiento Bancario del Excel Cargado.";
+            // 
+            // lblSistema
+            // 
+            this.lblSistema.AutoSize = true;
+            this.lblSistema.BackColor = System.Drawing.Color.Transparent;
+            this.lblSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblSistema.Location = new System.Drawing.Point(442, 0);
+            this.lblSistema.Name = "lblSistema";
+            this.lblSistema.Size = new System.Drawing.Size(242, 13);
+            this.lblSistema.TabIndex = 43;
+            this.lblSistema.Text = "Datos de Movimiento Bancario en el Sistema.";
+            // 
+            // lblTotales
+            // 
+            this.lblTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotales.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotales.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotales.Location = new System.Drawing.Point(624, 530);
+            this.lblTotales.Name = "lblTotales";
+            this.lblTotales.Size = new System.Drawing.Size(271, 13);
+            this.lblTotales.TabIndex = 189;
+            this.lblTotales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTotales.Click += new System.EventHandler(this.lblTotales_Click);
+            // 
+            // lblFunciones
+            // 
+            this.lblFunciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFunciones.AutoSize = true;
+            this.lblFunciones.BackColor = System.Drawing.Color.Transparent;
+            this.lblFunciones.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFunciones.Location = new System.Drawing.Point(468, 27);
+            this.lblFunciones.Name = "lblFunciones";
+            this.lblFunciones.Size = new System.Drawing.Size(72, 13);
+            this.lblFunciones.TabIndex = 189;
+            this.lblFunciones.Text = "Agrupar Por:";
+            this.lblFunciones.Visible = false;
+            this.lblFunciones.Click += new System.EventHandler(this.lblFunciones_Click);
+            // 
+            // btnFechaMonto
+            // 
+            this.btnFechaMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFechaMonto.AutoSize = true;
+            this.btnFechaMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnFechaMonto.Location = new System.Drawing.Point(540, 27);
+            this.btnFechaMonto.Name = "btnFechaMonto";
+            this.btnFechaMonto.Size = new System.Drawing.Size(83, 13);
+            this.btnFechaMonto.TabIndex = 191;
+            this.btnFechaMonto.TabStop = true;
+            this.btnFechaMonto.Text = "Fecha y Monto";
+            this.toolTip1.SetToolTip(this.btnFechaMonto, "Agrupa los Movimientos por Fecha y Monto");
+            this.btnFechaMonto.Visible = false;
+            this.btnFechaMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnFechaMonto_LinkClicked);
+            // 
+            // btnOperacionMonto
+            // 
+            this.btnOperacionMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOperacionMonto.AutoSize = true;
+            this.btnOperacionMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnOperacionMonto.Location = new System.Drawing.Point(623, 27);
+            this.btnOperacionMonto.Name = "btnOperacionMonto";
+            this.btnOperacionMonto.Size = new System.Drawing.Size(107, 13);
+            this.btnOperacionMonto.TabIndex = 191;
+            this.btnOperacionMonto.TabStop = true;
+            this.btnOperacionMonto.Text = "Operación y Monto";
+            this.toolTip1.SetToolTip(this.btnOperacionMonto, "Agrupa los Movimientos por Operación y Monto");
+            this.btnOperacionMonto.Visible = false;
+            this.btnOperacionMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOperacionMonto_LinkClicked);
+            // 
+            // btnOperacion
+            // 
+            this.btnOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOperacion.AutoSize = true;
+            this.btnOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnOperacion.Location = new System.Drawing.Point(730, 27);
+            this.btnOperacion.Name = "btnOperacion";
+            this.btnOperacion.Size = new System.Drawing.Size(61, 13);
+            this.btnOperacion.TabIndex = 191;
+            this.btnOperacion.TabStop = true;
+            this.btnOperacion.Text = "Operación";
+            this.toolTip1.SetToolTip(this.btnOperacion, "Agrupa los Movimientos por Nùmero de Operación");
+            this.btnOperacion.Visible = false;
+            // 
+            // lblmanual
+            // 
+            this.lblmanual.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblmanual.AutoSize = true;
+            this.lblmanual.BackColor = System.Drawing.Color.Transparent;
+            this.lblmanual.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmanual.Location = new System.Drawing.Point(280, 557);
+            this.lblmanual.Name = "lblmanual";
+            this.lblmanual.Size = new System.Drawing.Size(49, 13);
+            this.lblmanual.TabIndex = 192;
+            this.lblmanual.Text = "Manual:";
+            this.lblmanual.Click += new System.EventHandler(this.lblmanual_Click);
+            // 
+            // btnAgrupar
+            // 
+            this.btnAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAgrupar.AutoSize = true;
+            this.btnAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnAgrupar.Location = new System.Drawing.Point(329, 557);
+            this.btnAgrupar.Name = "btnAgrupar";
+            this.btnAgrupar.Size = new System.Drawing.Size(49, 13);
+            this.btnAgrupar.TabIndex = 191;
+            this.btnAgrupar.TabStop = true;
+            this.btnAgrupar.Text = "Agrupar";
+            this.toolTip1.SetToolTip(this.btnAgrupar, "Agrupa los Movimientos Seleccionadas");
+            this.btnAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnAgrupar_LinkClicked);
+            // 
+            // btnDesAgrupar
+            // 
+            this.btnDesAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDesAgrupar.AutoSize = true;
+            this.btnDesAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnDesAgrupar.Location = new System.Drawing.Point(378, 557);
+            this.btnDesAgrupar.Name = "btnDesAgrupar";
+            this.btnDesAgrupar.Size = new System.Drawing.Size(68, 13);
+            this.btnDesAgrupar.TabIndex = 191;
+            this.btnDesAgrupar.TabStop = true;
+            this.btnDesAgrupar.Text = "DesAgrupar";
+            this.toolTip1.SetToolTip(this.btnDesAgrupar, "DesAgrupa los Momivientos Seleccionados");
+            this.btnDesAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnDesAgrupar_LinkClicked);
+            // 
+            // chkOperacion
+            // 
+            this.chkOperacion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkOperacion.AutoSize = true;
+            this.chkOperacion.BackColor = System.Drawing.Color.Transparent;
+            this.chkOperacion.Checked = true;
+            this.chkOperacion.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkOperacion.ColorChecked = System.Drawing.Color.Empty;
+            this.chkOperacion.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkOperacion.Location = new System.Drawing.Point(452, 556);
+            this.chkOperacion.Name = "chkOperacion";
+            this.chkOperacion.Size = new System.Drawing.Size(117, 17);
+            this.chkOperacion.TabIndex = 193;
+            this.chkOperacion.Text = "Actualizar NroOp.";
+            this.toolTip1.SetToolTip(this.chkOperacion, "Actualiza el Nùmero de Operación en el Sistema con los Datos del Excel");
+            this.chkOperacion.UseVisualStyleBackColor = false;
+            this.chkOperacion.CheckedChanged += new System.EventHandler(this.chkOperacion_CheckedChanged);
+            // 
+            // lblRegistroExcel2
+            // 
+            this.lblRegistroExcel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegistroExcel2.AutoSize = true;
+            this.lblRegistroExcel2.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroExcel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 546);
+            this.lblRegistroExcel2.Name = "lblRegistroExcel2";
+            this.lblRegistroExcel2.Size = new System.Drawing.Size(184, 13);
+            this.lblRegistroExcel2.TabIndex = 189;
+            this.lblRegistroExcel2.Text = "Total Consolidado: 0 Pendientes: 0";
+            this.lblRegistroExcel2.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // lblRegistroSistema
+            // 
+            this.lblRegistroSistema.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblRegistroSistema.AutoSize = true;
+            this.lblRegistroSistema.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroSistema.Location = new System.Drawing.Point(452, 530);
+            this.lblRegistroSistema.Name = "lblRegistroSistema";
+            this.lblRegistroSistema.Size = new System.Drawing.Size(155, 13);
+            this.lblRegistroSistema.TabIndex = 189;
+            this.lblRegistroSistema.Text = "Total Registros del Sistema: 0";
+            this.lblRegistroSistema.Click += new System.EventHandler(this.lblRegistroExcel_Click);
+            // 
+            // lblRegistroSistema2
+            // 
+            this.lblRegistroSistema2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblRegistroSistema2.AutoSize = true;
+            this.lblRegistroSistema2.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroSistema2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroSistema2.Location = new System.Drawing.Point(452, 543);
+            this.lblRegistroSistema2.Name = "lblRegistroSistema2";
+            this.lblRegistroSistema2.Size = new System.Drawing.Size(184, 13);
+            this.lblRegistroSistema2.TabIndex = 189;
+            this.lblRegistroSistema2.Text = "Total Consolidado: 0 Pendientes: 0";
+            this.lblRegistroSistema2.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // btnReversar
+            // 
+            this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnReversar.BackColor = System.Drawing.Color.Crimson;
+            this.btnReversar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnReversar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnReversar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReversar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReversar.ForeColor = System.Drawing.Color.White;
+            this.btnReversar.Location = new System.Drawing.Point(365, 531);
+            this.btnReversar.Name = "btnReversar";
+            this.btnReversar.Size = new System.Drawing.Size(83, 23);
+            this.btnReversar.TabIndex = 183;
+            this.btnReversar.Text = "Reversar";
+            this.btnReversar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReversar.UseVisualStyleBackColor = false;
+            this.btnReversar.Visible = false;
+            this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
             // 
             // yok
             // 
@@ -586,12 +798,24 @@
             this.yok.TrueValue = "1";
             this.yok.Width = 25;
             // 
+            // xUpdate
+            // 
+            this.xUpdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xUpdate.DataPropertyName = "updates";
+            this.xUpdate.FalseValue = "0";
+            this.xUpdate.HeaderText = "Act";
+            this.xUpdate.MinimumWidth = 25;
+            this.xUpdate.Name = "xUpdate";
+            this.xUpdate.ToolTipText = "Actualizar Nro de Operación";
+            this.xUpdate.TrueValue = "1";
+            this.xUpdate.Width = 25;
+            // 
             // ygrupo
             // 
             this.ygrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.ygrupo.DataPropertyName = "index";
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ygrupo.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ygrupo.DefaultCellStyle = dataGridViewCellStyle10;
             this.ygrupo.HeaderText = "Grupo";
             this.ygrupo.MinimumWidth = 40;
             this.ygrupo.Name = "ygrupo";
@@ -610,8 +834,8 @@
             // 
             this.yFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.yFecha.DataPropertyName = "Fecha";
-            dataGridViewCellStyle53.Format = "d";
-            this.yFecha.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle11.Format = "d";
+            this.yFecha.DefaultCellStyle = dataGridViewCellStyle11;
             this.yFecha.HeaderText = "Fecha";
             this.yFecha.MinimumWidth = 50;
             this.yFecha.Name = "yFecha";
@@ -623,9 +847,9 @@
             // 
             this.ymonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.ymonto.DataPropertyName = "Monto";
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle54.Format = "n2";
-            this.ymonto.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "n2";
+            this.ymonto.DefaultCellStyle = dataGridViewCellStyle12;
             this.ymonto.HeaderText = "Monto";
             this.ymonto.MinimumWidth = 50;
             this.ymonto.Name = "ymonto";
@@ -682,215 +906,6 @@
             this.xEstado.HeaderText = "Estado";
             this.xEstado.Name = "xEstado";
             this.xEstado.Visible = false;
-            // 
-            // lblexcel
-            // 
-            this.lblexcel.AutoSize = true;
-            this.lblexcel.BackColor = System.Drawing.Color.Transparent;
-            this.lblexcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblexcel.Location = new System.Drawing.Point(3, 0);
-            this.lblexcel.Name = "lblexcel";
-            this.lblexcel.Size = new System.Drawing.Size(266, 13);
-            this.lblexcel.TabIndex = 43;
-            this.lblexcel.Text = "Datos de Movimiento Bancario del Excel Cargado.";
-            // 
-            // lblSistema
-            // 
-            this.lblSistema.AutoSize = true;
-            this.lblSistema.BackColor = System.Drawing.Color.Transparent;
-            this.lblSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblSistema.Location = new System.Drawing.Point(442, 0);
-            this.lblSistema.Name = "lblSistema";
-            this.lblSistema.Size = new System.Drawing.Size(242, 13);
-            this.lblSistema.TabIndex = 43;
-            this.lblSistema.Text = "Datos de Movimiento Bancario en el Sistema.";
-            // 
-            // lblTotales
-            // 
-            this.lblTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotales.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotales.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotales.Location = new System.Drawing.Point(624, 530);
-            this.lblTotales.Name = "lblTotales";
-            this.lblTotales.Size = new System.Drawing.Size(271, 13);
-            this.lblTotales.TabIndex = 189;
-            this.lblTotales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblFunciones
-            // 
-            this.lblFunciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblFunciones.AutoSize = true;
-            this.lblFunciones.BackColor = System.Drawing.Color.Transparent;
-            this.lblFunciones.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFunciones.Location = new System.Drawing.Point(13, 530);
-            this.lblFunciones.Name = "lblFunciones";
-            this.lblFunciones.Size = new System.Drawing.Size(72, 13);
-            this.lblFunciones.TabIndex = 189;
-            this.lblFunciones.Text = "Agrupar Por:";
-            this.lblFunciones.Visible = false;
-            this.lblFunciones.Click += new System.EventHandler(this.lblFunciones_Click);
-            // 
-            // btnFechaMonto
-            // 
-            this.btnFechaMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFechaMonto.AutoSize = true;
-            this.btnFechaMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnFechaMonto.Location = new System.Drawing.Point(85, 530);
-            this.btnFechaMonto.Name = "btnFechaMonto";
-            this.btnFechaMonto.Size = new System.Drawing.Size(83, 13);
-            this.btnFechaMonto.TabIndex = 191;
-            this.btnFechaMonto.TabStop = true;
-            this.btnFechaMonto.Text = "Fecha y Monto";
-            this.toolTip1.SetToolTip(this.btnFechaMonto, "Agrupa los Movimientos por Fecha y Monto");
-            this.btnFechaMonto.Visible = false;
-            this.btnFechaMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnFechaMonto_LinkClicked);
-            // 
-            // btnOperacionMonto
-            // 
-            this.btnOperacionMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOperacionMonto.AutoSize = true;
-            this.btnOperacionMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnOperacionMonto.Location = new System.Drawing.Point(168, 530);
-            this.btnOperacionMonto.Name = "btnOperacionMonto";
-            this.btnOperacionMonto.Size = new System.Drawing.Size(107, 13);
-            this.btnOperacionMonto.TabIndex = 191;
-            this.btnOperacionMonto.TabStop = true;
-            this.btnOperacionMonto.Text = "Operación y Monto";
-            this.toolTip1.SetToolTip(this.btnOperacionMonto, "Agrupa los Movimientos por Operación y Monto");
-            this.btnOperacionMonto.Visible = false;
-            this.btnOperacionMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOperacionMonto_LinkClicked);
-            // 
-            // btnOperacion
-            // 
-            this.btnOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOperacion.AutoSize = true;
-            this.btnOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnOperacion.Location = new System.Drawing.Point(275, 530);
-            this.btnOperacion.Name = "btnOperacion";
-            this.btnOperacion.Size = new System.Drawing.Size(61, 13);
-            this.btnOperacion.TabIndex = 191;
-            this.btnOperacion.TabStop = true;
-            this.btnOperacion.Text = "Operación";
-            this.toolTip1.SetToolTip(this.btnOperacion, "Agrupa los Movimientos por Nùmero de Operación");
-            this.btnOperacion.Visible = false;
-            // 
-            // lblmanual
-            // 
-            this.lblmanual.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblmanual.AutoSize = true;
-            this.lblmanual.BackColor = System.Drawing.Color.Transparent;
-            this.lblmanual.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmanual.Location = new System.Drawing.Point(452, 530);
-            this.lblmanual.Name = "lblmanual";
-            this.lblmanual.Size = new System.Drawing.Size(49, 13);
-            this.lblmanual.TabIndex = 192;
-            this.lblmanual.Text = "Manual:";
-            this.lblmanual.Click += new System.EventHandler(this.lblmanual_Click);
-            // 
-            // btnAgrupar
-            // 
-            this.btnAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAgrupar.AutoSize = true;
-            this.btnAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnAgrupar.Location = new System.Drawing.Point(501, 530);
-            this.btnAgrupar.Name = "btnAgrupar";
-            this.btnAgrupar.Size = new System.Drawing.Size(49, 13);
-            this.btnAgrupar.TabIndex = 191;
-            this.btnAgrupar.TabStop = true;
-            this.btnAgrupar.Text = "Agrupar";
-            this.toolTip1.SetToolTip(this.btnAgrupar, "Agrupa los Movimientos Seleccionadas");
-            this.btnAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnAgrupar_LinkClicked);
-            // 
-            // btnDesAgrupar
-            // 
-            this.btnDesAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDesAgrupar.AutoSize = true;
-            this.btnDesAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnDesAgrupar.Location = new System.Drawing.Point(550, 530);
-            this.btnDesAgrupar.Name = "btnDesAgrupar";
-            this.btnDesAgrupar.Size = new System.Drawing.Size(68, 13);
-            this.btnDesAgrupar.TabIndex = 191;
-            this.btnDesAgrupar.TabStop = true;
-            this.btnDesAgrupar.Text = "DesAgrupar";
-            this.toolTip1.SetToolTip(this.btnDesAgrupar, "DesAgrupa los Momivientos Seleccionados");
-            this.btnDesAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnDesAgrupar_LinkClicked);
-            // 
-            // chkOperacion
-            // 
-            this.chkOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkOperacion.AutoSize = true;
-            this.chkOperacion.BackColor = System.Drawing.Color.Transparent;
-            this.chkOperacion.Checked = true;
-            this.chkOperacion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkOperacion.ColorChecked = System.Drawing.Color.Empty;
-            this.chkOperacion.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkOperacion.Location = new System.Drawing.Point(613, 544);
-            this.chkOperacion.Name = "chkOperacion";
-            this.chkOperacion.Size = new System.Drawing.Size(117, 17);
-            this.chkOperacion.TabIndex = 193;
-            this.chkOperacion.Text = "Actualizar NroOp.";
-            this.toolTip1.SetToolTip(this.chkOperacion, "Actualiza el Nùmero de Operación en el Sistema con los Datos del Excel");
-            this.chkOperacion.UseVisualStyleBackColor = false;
-            this.chkOperacion.CheckedChanged += new System.EventHandler(this.chkOperacion_CheckedChanged);
-            // 
-            // lblRegistroExcel2
-            // 
-            this.lblRegistroExcel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblRegistroExcel2.AutoSize = true;
-            this.lblRegistroExcel2.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroExcel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 556);
-            this.lblRegistroExcel2.Name = "lblRegistroExcel2";
-            this.lblRegistroExcel2.Size = new System.Drawing.Size(184, 13);
-            this.lblRegistroExcel2.TabIndex = 189;
-            this.lblRegistroExcel2.Text = "Total Consolidado: 0 Pendientes: 0";
-            this.lblRegistroExcel2.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // lblRegistroSistema
-            // 
-            this.lblRegistroSistema.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblRegistroSistema.AutoSize = true;
-            this.lblRegistroSistema.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroSistema.Location = new System.Drawing.Point(452, 546);
-            this.lblRegistroSistema.Name = "lblRegistroSistema";
-            this.lblRegistroSistema.Size = new System.Drawing.Size(155, 13);
-            this.lblRegistroSistema.TabIndex = 189;
-            this.lblRegistroSistema.Text = "Total Registros del Sistema: 0";
-            this.lblRegistroSistema.Click += new System.EventHandler(this.lblRegistroExcel_Click);
-            // 
-            // lblRegistroSistema2
-            // 
-            this.lblRegistroSistema2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblRegistroSistema2.AutoSize = true;
-            this.lblRegistroSistema2.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroSistema2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroSistema2.Location = new System.Drawing.Point(452, 559);
-            this.lblRegistroSistema2.Name = "lblRegistroSistema2";
-            this.lblRegistroSistema2.Size = new System.Drawing.Size(184, 13);
-            this.lblRegistroSistema2.TabIndex = 189;
-            this.lblRegistroSistema2.Text = "Total Consolidado: 0 Pendientes: 0";
-            this.lblRegistroSistema2.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // btnReversar
-            // 
-            this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReversar.BackColor = System.Drawing.Color.Crimson;
-            this.btnReversar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnReversar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btnReversar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReversar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReversar.ForeColor = System.Drawing.Color.White;
-            this.btnReversar.Location = new System.Drawing.Point(365, 546);
-            this.btnReversar.Name = "btnReversar";
-            this.btnReversar.Size = new System.Drawing.Size(83, 23);
-            this.btnReversar.TabIndex = 183;
-            this.btnReversar.Text = "Reversar";
-            this.btnReversar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReversar.UseVisualStyleBackColor = false;
-            this.btnReversar.Visible = false;
-            this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
             // 
             // FrmConciliarBanco
             // 
@@ -981,7 +996,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xNroOperacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa2;
+        private System.Windows.Forms.Label lblRegistroExcel2;
+        private System.Windows.Forms.Label lblRegistroSistema;
+        private System.Windows.Forms.Label lblRegistroSistema2;
+        private HpResergerUserControls.ButtonPer btnReversar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn yok;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn xUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ygrupo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ycuo;
         private System.Windows.Forms.DataGridViewTextBoxColumn yFecha;
@@ -992,9 +1012,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yidasiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
-        private System.Windows.Forms.Label lblRegistroExcel2;
-        private System.Windows.Forms.Label lblRegistroSistema;
-        private System.Windows.Forms.Label lblRegistroSistema2;
-        private HpResergerUserControls.ButtonPer btnReversar;
     }
 }

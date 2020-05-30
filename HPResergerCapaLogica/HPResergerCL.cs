@@ -2514,9 +2514,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.BuscarCuentasBancariasxEmpresas(empresa);
         }
-        public DataTable MovimientoBancariosxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda) //1 activa ,cualquiera desactiva
+        public DataTable MovimientoBancariosxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda, int @idCtaBancaria) //1 activa ,cualquiera desactiva
         {
-            return cdOrdenPedido.MovimientoBancariosxEmpresa(empresa, FechaIni, FechaFin, NroCuenta, Moneda);
+            return cdOrdenPedido.MovimientoBancariosxEmpresa(empresa, FechaIni, FechaFin, NroCuenta, Moneda, @idCtaBancaria);
         }
         public DataTable SaldoContableCuentaBancariaxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda) //1 activa ,cualquiera desactiva
         {
@@ -2527,23 +2527,23 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ConciliacionCabecera(opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario);
         }
-        public DataTable ConciliacionCabeceraExiste(int pkempresa, DateTime Fecha)
+        public DataTable ConciliacionCabeceraExiste(int pkempresa, DateTime Fecha, int IdCtaBancaria)
         {
-            return cdOrdenPedido.ConciliacionCabecera(9, 0, pkempresa, 0, "", Fecha, 0, 0, 0);
+            return cdOrdenPedido.ConciliacionCabecera(9, 0, pkempresa, IdCtaBancaria, "", Fecha, 0, 0, 0);
         }
-        public DataTable ConciliacionCabeceraExcel(int pkempresa, DateTime Fecha)
+        public DataTable ConciliacionCabeceraExcel(int pkempresa, DateTime Fecha, int ctaBancaria)
         {
             //Mandamos el Tipo 1 =  Excel por el del Usuario para no declarar otra Variable
-            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, 0, "", Fecha, 0, 0, 1);
+            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, ctaBancaria, "", Fecha, 0, 0, 1);
         }
-        public DataTable ConciliacionCabeceraSistema(int pkempresa, DateTime Fecha)
+        public DataTable ConciliacionCabeceraSistema(int pkempresa, DateTime Fecha, int idCtaBancaria)
         {
             //Mandamos el Tipo 2 =  Sistema por el del Usuario para no declarar otra Variable
-            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, 0, "", Fecha, 0, 0, 2);
+            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, idCtaBancaria, "", Fecha, 0, 0, 2);
         }
-        public DataTable ConciliacionCabeceraEliminar(int pkempresa, DateTime Fecha)
+        public DataTable ConciliacionCabeceraEliminar(int pkempresa, DateTime Fecha, int idctabancaria)
         {
-            return cdOrdenPedido.ConciliacionCabecera(10, 0, pkempresa, 0, "", Fecha, 0, 0, 0);
+            return cdOrdenPedido.ConciliacionCabecera(10, 0, pkempresa, idctabancaria, "", Fecha, 0, 0, 0);
         }
         public DataTable ConciliacionCabeceraSiguienteNumero()
         {
@@ -2676,6 +2676,10 @@ namespace HPResergerCapaLogica
         public DataTable MayorPorCuentas(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {
             return cdOrdenPedido.MayorPorCuentas(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
+        }
+        public DataTable MayorPorCuentasPerfil(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
+        {
+            return cdOrdenPedido.MayorPorCuentasPerfil(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
         }
         public DataTable LibroDiario5_1(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {

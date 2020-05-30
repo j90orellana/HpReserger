@@ -161,6 +161,9 @@ namespace HPReserger
             Fila[xNum_Comprobante.DataPropertyName] = $"{FechaContable.ToString("ddMMyy")}";
             Fila[xNum_Doc.DataPropertyName] = "9999";
             Fila[xRazon_Social.DataPropertyName] = "VARIOS";
+            DataView dv = new DataView(TDatosAux);
+            dv.Sort = "cuenta_contable asc, Cod_Asiento_Contable asc";
+            dtgcontenBalance.DataSource = TDBalance = dv.ToTable();
         }
         static decimal SumaSoles = 0, SumaDolares = 0;
         private void GenerarVistaPreliminar(DataTable tdatos, Dtgconten dtgconten)

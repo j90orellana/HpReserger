@@ -168,7 +168,7 @@ namespace HPReserger.ModuloFinanzas
                 foreach (DataRow item in DataExcel.Rows)
                 {
                     EmpresaFecha xEmpresaFechita = new EmpresaFecha(item["empresa"].ToString(), item["Nro_cta"].ToString(), (DateTime)item["FechaCierre"]);
-                    EmpresaFecha xEmpresaFecha = ListadoEmpresaFechas.Find(cust => cust.Empresa == xEmpresaFechita.Empresa && cust.Fecha == xEmpresaFechita.Fecha);
+                    EmpresaFecha xEmpresaFecha = ListadoEmpresaFechas.Find(cust => cust.Empresa == xEmpresaFechita.Empresa && cust.Fecha == xEmpresaFechita.Fecha && cust.NroCuenta == xEmpresaFechita.NroCuenta);
                     if (xEmpresaFecha == null)
                         ListadoEmpresaFechas.Add(xEmpresaFechita);
                     if (!ListadoEmpresas.Contains(xEmpresaFechita.Empresa))
@@ -208,13 +208,13 @@ namespace HPReserger.ModuloFinanzas
                     File.Exists(NameFile);
                     //POR PERIODOS
                     int i = 0; //posicion de la hoja no  es index
-                    List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma10, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma10, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
 
                     int Hoja = 0;
                     foreach (string NroCuentas in ListadoNroCuenta)
                     {
+                        List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                         Hoja++;
                         i = 0;
                         string _NombreHoja = $"Conciliación {NroCuentas}";

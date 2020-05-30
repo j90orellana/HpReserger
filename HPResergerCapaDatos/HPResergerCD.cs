@@ -4781,10 +4781,10 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa };
             return bd.DataTableFromProcedure("usp_BuscarCuentasBancariasxEmpresas", parametros, valores, null);
         }
-        public DataTable MovimientoBancariosxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda) //1 activa ,cualquiera desactiva
+        public DataTable MovimientoBancariosxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda, int @idCtaBancaria) //1 activa ,cualquiera desactiva
         {
-            string[] parametros = { "@empresa", "@Fechaini", "@FechaFin", "@NroCuenta", "@moneda" };
-            object[] valores = { empresa, FechaIni, FechaFin, NroCuenta, Moneda };
+            string[] parametros = { "@empresa", "@Fechaini", "@FechaFin", "@NroCuenta", "@moneda", "@idCtaBancaria" };
+            object[] valores = { empresa, FechaIni, FechaFin, NroCuenta, Moneda, @idCtaBancaria };
             return bd.DataTableFromProcedure("usp_MovimientoBancariosxEmpresa", parametros, valores, null);
         }
         public DataTable SaldoContableCuentaBancariaxEmpresa(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda) //1 activa ,cualquiera desactiva
@@ -4803,7 +4803,7 @@ namespace HPResergerCapaDatos
         public DataTable ActualizarNumeroOperacion(int empresa, string cuo, string nroop, int idctabancaria) //1 activa ,cualquiera desactiva
         {
             string[] parametros = { "@EMPRESA", "@CUO", "@NROOP", "@IDCTBANCO" };
-            object[] valores = { empresa,cuo, nroop, idctabancaria };
+            object[] valores = { empresa, cuo, nroop, idctabancaria };
             return bd.DataTableFromProcedure("usp_ActualizarNumeroOperacion", parametros, valores, null);
         }
         public DataTable ConciliacionDetalle(int @opcion, int @fkid, int @pkid, int @tipo, int? grupo, string @cuo, DateTime @Fecha, DateTime @FechaEjecuta, decimal @monto, string @operacion, string @glosa, string @glosa2, int @idasiento, int @estado)
@@ -4997,6 +4997,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial" };
             object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon };
             return bd.DataTableFromProcedure("usp_MayorPorCuentas", parametros, valores, null);
+        }
+        public DataTable MayorPorCuentasPerfil(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
+        {
+            string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial" };
+            object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon };
+            return bd.DataTableFromProcedure("usp_MayorPorCuentasPerfil", parametros, valores, null);
         }
         public DataTable LibroDiario5_1(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {

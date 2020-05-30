@@ -4535,10 +4535,31 @@ namespace HPReserger
                 ValidarVentanas(frmReporteConciliaones);
             }
         }
-
         private void CerrarfrmReporteConciliaones(object sender, FormClosedEventArgs e)
         {
             frmReporteConciliaones = null;
+        }
+        frmRegMayorxCuentasPerfil frmMayorcuentasPerfil;
+        private void libroMayorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (frmMayorcuentasPerfil == null)
+            {
+                frmMayorcuentasPerfil = new frmRegMayorxCuentasPerfil();
+                frmMayorcuentasPerfil.MdiParent = this;
+                frmMayorcuentasPerfil.Icon = ICono;
+                frmMayorcuentasPerfil.FormClosed += new FormClosedEventHandler(CerrarfrmMayorcuentasPerfil);
+                frmMayorcuentasPerfil.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmMayorcuentasPerfil.Activate();
+                ValidarVentanas(frmMayorcuentasPerfil);
+            }
+        }
+        private void CerrarfrmMayorcuentasPerfil(object sender, FormClosedEventArgs e)
+        {
+            frmMayorcuentasPerfil = null;
         }
     }
 }
