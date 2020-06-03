@@ -112,13 +112,14 @@ namespace HPReserger.ModuloFinanzas
             }
         }
         int Cfilas = 0;
-        private void btnPaso2_Click(object sender, EventArgs e)
+        private void btnPaso2_Click(object sender, EventArgs e) 
         {
             if (CargarDatosDelExcel(txtRutaExcel.Text))
             {
                 PasarAPaso2(true);
                 Estado = 2;
                 BuscanEnSistemMovimientos();
+                chkOperacion.Checked = false;
                 if (ProcesodeAnalisis(pkBanco, NroCuenta))
                 {
                     if (FormatearlaTabla(pkBanco))
@@ -908,9 +909,11 @@ namespace HPReserger.ModuloFinanzas
         }
         private void chkOperacion_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (chkOperacion.Checked)
+                foreach (DataRow item in TdatosSist.Rows)
+                    if (item[xGrupo.DataPropertyName].ToString() != "")
+                        item[xUpdate.DataPropertyName] = 1;
         }
-
         private void lblTotales_Click(object sender, EventArgs e)
         {
 

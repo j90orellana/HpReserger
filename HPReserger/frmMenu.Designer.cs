@@ -130,6 +130,7 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteAnalíticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteSaldosContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.libroMayorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.balanceDeComprobaciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -296,7 +297,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.libroMayorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1298,6 +1298,15 @@
             this.reporteSaldosContablesToolStripMenuItem.Tag = "1406006";
             this.reporteSaldosContablesToolStripMenuItem.Text = "Reporte Saldos Contables";
             this.reporteSaldosContablesToolStripMenuItem.Click += new System.EventHandler(this.reporteSaldosContablesToolStripMenuItem_Click);
+            // 
+            // libroMayorToolStripMenuItem1
+            // 
+            this.libroMayorToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("libroMayorToolStripMenuItem1.Image")));
+            this.libroMayorToolStripMenuItem1.Name = "libroMayorToolStripMenuItem1";
+            this.libroMayorToolStripMenuItem1.Size = new System.Drawing.Size(225, 22);
+            this.libroMayorToolStripMenuItem1.Tag = "1406008";
+            this.libroMayorToolStripMenuItem1.Text = "Libro Mayor - Perfil";
+            this.libroMayorToolStripMenuItem1.Click += new System.EventHandler(this.libroMayorToolStripMenuItem1_Click);
             // 
             // toolStripSeparator18
             // 
@@ -2880,14 +2889,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // libroMayorToolStripMenuItem1
-            // 
-            this.libroMayorToolStripMenuItem1.Name = "libroMayorToolStripMenuItem1";
-            this.libroMayorToolStripMenuItem1.Size = new System.Drawing.Size(225, 22);
-            this.libroMayorToolStripMenuItem1.Tag = "1406008";
-            this.libroMayorToolStripMenuItem1.Text = "Libro Mayor - Perfil";
-            this.libroMayorToolStripMenuItem1.Click += new System.EventHandler(this.libroMayorToolStripMenuItem1_Click);
             // 
             // frmMenu
             // 

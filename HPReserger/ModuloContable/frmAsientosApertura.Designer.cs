@@ -83,6 +83,7 @@
             this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuenta_Contable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xdescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCtaBancaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuentaBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xpen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -328,9 +329,9 @@
             // comboMesAño
             // 
             this.comboMesAño.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 5, 7, 0, 0, 0, 0);
-            this.comboMesAño.FechaFinMes = new System.DateTime(2020, 5, 31, 0, 0, 0, 0);
-            this.comboMesAño.FechaInicioMes = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 6, 2, 0, 0, 0, 0);
+            this.comboMesAño.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
+            this.comboMesAño.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(277, 39);
             this.comboMesAño.Name = "comboMesAño";
             this.comboMesAño.Size = new System.Drawing.Size(90, 26);
@@ -452,6 +453,7 @@
             this.xGlosa,
             this.xCuenta_Contable,
             this.xdescripcion,
+            this.xCtaBancaria,
             this.xCuentaBanco,
             this.xmoneda,
             this.xpen,
@@ -633,6 +635,14 @@
             this.xdescripcion.ReadOnly = true;
             this.xdescripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
+            // xCtaBancaria
+            // 
+            this.xCtaBancaria.DataPropertyName = "CtaBancaria";
+            this.xCtaBancaria.HeaderText = "CtaBancaria";
+            this.xCtaBancaria.Name = "xCtaBancaria";
+            this.xCtaBancaria.ReadOnly = true;
+            this.xCtaBancaria.Visible = false;
+            // 
             // xCuentaBanco
             // 
             this.xCuentaBanco.DataPropertyName = "CuentaBanco";
@@ -770,6 +780,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuenta_Contable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xdescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCtaBancaria;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaBanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn xmoneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpen;

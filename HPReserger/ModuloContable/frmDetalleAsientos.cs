@@ -80,8 +80,8 @@ namespace HPReserger
         DataTable Datos = new DataTable();
         public void SacarDatos()
         {
-            Dtgconten.DataSource = CapaLogica.DetalleAsientos(0, _asiento, _idasiento, _proyecto, _fecha, cuenta);
-            Datos = (DataTable)Dtgconten.DataSource;
+            Datos = CapaLogica.DetalleAsientos(0, _asiento, _idasiento, _proyecto, _fecha, cuenta);
+            Dtgconten.DataSource = Datos;
             msj("");
         }
         DataTable tipoDoc;
@@ -1014,59 +1014,63 @@ namespace HPReserger
         frmListarSeleccionarPersonas frmlispersonas;
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (Dtgconten.RowCount > 0)
+            try
             {
-                int x = e.RowIndex, y = e.ColumnIndex;
-                //tipodoc
-                Combo = Dtgconten.Columns[tipodocx.Name] as DataGridViewComboBoxColumn;
-                //Combo.DataSource = tipoDoc;
-                Combo.ValueMember = "codigo";
-                Combo.DisplayMember = "descripcion";
-                Combo.DataSource = tipoDoc;
-                //moneda
-                Combo = Dtgconten.Columns[fk_Monedax.Name] as DataGridViewComboBoxColumn;
-                Combo.ValueMember = "codigo";
-                Combo.DisplayMember = "descripcion";
-                Combo.DataSource = Monedas;
-                //tipocomprobante
-                Combo = Dtgconten.Columns[idcomprobantex.Name] as DataGridViewComboBoxColumn;
-                Combo.ValueMember = "codigo";
-                Combo.DisplayMember = "descripcion";
-                Combo.DataSource = tipoComprobante;
-                //centrocosto
-                Combo = Dtgconten.Columns[centrocostox.Name] as DataGridViewComboBoxColumn;
-                Combo.ValueMember = "codigo";
-                Combo.DisplayMember = "descripcion";
-                Combo.AutoComplete = true;
-                Combo.DataSource = CentroCosto;
-                ///cuentas bancarias
-                Combo = Dtgconten.Columns[xCtaBancaria.Name] as DataGridViewComboBoxColumn;
-                Combo.ValueMember = "codigo";
-                Combo.DisplayMember = "descripcion";
-                Combo.AutoComplete = true;
-                Combo.DataSource = TcuentasBancarias;
-                //Tipo Pago
-                Combo = Dtgconten.Columns[xTipoPago.Name] as DataGridViewComboBoxColumn;
-                Combo.ValueMember = "codsunat";
-                Combo.DisplayMember = "mediopago";
-                Combo.AutoComplete = true;
-                Combo.DataSource = TTipoPago;
-                //if (estado == 2)
-                //{
-                //    if ((Dtgconten[tipodocx.Name, x].Value == null ? "" : Dtgconten[tipodocx.Name, x].Value.ToString()) == "")
-                //        Dtgconten[tipodocx.Name, x].Value = 0;
-                //    if ((Dtgconten[idcomprobantex.Name, x].Value == null ? "" : Dtgconten[idcomprobantex.Name, x].Value.ToString()) == "")
-                //        Dtgconten[idcomprobantex.Name, x].Value = 0;
-                //}
-                int index = int.Parse((tipoDoc.Select("descripcion='ruc'"))[0].ItemArray[0].ToString());
-                if (Dtgconten[tipodocx.Name, x].Value != null)
-                    if ((Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? "0" : Dtgconten[tipodocx.Name, x].Value.ToString()) == "0" || int.Parse((Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? "0" : Dtgconten[tipodocx.Name, x].Value.ToString())) == index)
-                    {
-                        Dtgconten[razonsocialx.Name, x].ReadOnly = true;
-                    }
-                    else
-                        Dtgconten[razonsocialx.Name, x].ReadOnly = false;
+                if (Dtgconten.RowCount > 0)
+                {
+                    int x = e.RowIndex, y = e.ColumnIndex;
+                    //tipodoc
+                    Combo = Dtgconten.Columns[tipodocx.Name] as DataGridViewComboBoxColumn;
+                    //Combo.DataSource = tipoDoc;
+                    Combo.ValueMember = "codigo";
+                    Combo.DisplayMember = "descripcion";
+                    Combo.DataSource = tipoDoc;
+                    //moneda
+                    Combo = Dtgconten.Columns[fk_Monedax.Name] as DataGridViewComboBoxColumn;
+                    Combo.ValueMember = "codigo";
+                    Combo.DisplayMember = "descripcion";
+                    Combo.DataSource = Monedas;
+                    //tipocomprobante
+                    Combo = Dtgconten.Columns[idcomprobantex.Name] as DataGridViewComboBoxColumn;
+                    Combo.ValueMember = "codigo";
+                    Combo.DisplayMember = "descripcion";
+                    Combo.DataSource = tipoComprobante;
+                    //centrocosto
+                    Combo = Dtgconten.Columns[centrocostox.Name] as DataGridViewComboBoxColumn;
+                    Combo.ValueMember = "codigo";
+                    Combo.DisplayMember = "descripcion";
+                    Combo.AutoComplete = true;
+                    Combo.DataSource = CentroCosto;
+                    ///cuentas bancarias
+                    Combo = Dtgconten.Columns[xCtaBancaria.Name] as DataGridViewComboBoxColumn;
+                    Combo.ValueMember = "codigo";
+                    Combo.DisplayMember = "descripcion";
+                    Combo.AutoComplete = true;
+                    Combo.DataSource = TcuentasBancarias;
+                    //Tipo Pago
+                    Combo = Dtgconten.Columns[xTipoPago.Name] as DataGridViewComboBoxColumn;
+                    Combo.ValueMember = "codsunat";
+                    Combo.DisplayMember = "mediopago";
+                    Combo.AutoComplete = true;
+                    Combo.DataSource = TTipoPago;
+                    //if (estado == 2)
+                    //{
+                    //    if ((Dtgconten[tipodocx.Name, x].Value == null ? "" : Dtgconten[tipodocx.Name, x].Value.ToString()) == "")
+                    //        Dtgconten[tipodocx.Name, x].Value = 0;
+                    //    if ((Dtgconten[idcomprobantex.Name, x].Value == null ? "" : Dtgconten[idcomprobantex.Name, x].Value.ToString()) == "")
+                    //        Dtgconten[idcomprobantex.Name, x].Value = 0;
+                    //}
+                    int index = int.Parse((tipoDoc.Select("descripcion='ruc'"))[0].ItemArray[0].ToString());
+                    if (Dtgconten[tipodocx.Name, x].Value != null)
+                        if ((Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? "0" : Dtgconten[tipodocx.Name, x].Value.ToString()) == "0" || int.Parse((Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? "0" : Dtgconten[tipodocx.Name, x].Value.ToString())) == index)
+                        {
+                            Dtgconten[razonsocialx.Name, x].ReadOnly = true;
+                        }
+                        else
+                            Dtgconten[razonsocialx.Name, x].ReadOnly = false;
+                }
             }
+            catch (Exception) { }
         }
     }
 }

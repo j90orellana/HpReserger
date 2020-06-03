@@ -725,7 +725,7 @@ namespace HPReserger
                           (DateTime?)(item[xFechaEmision.DataPropertyName].ToString() == "" ? null : (DateTime?)item[xFechaEmision.DataPropertyName]), (int)item[xId_Comprobante.DataPropertyName],
                           item[xCod_Comprobante.DataPropertyName].ToString(), item[xNum_Comprobante.DataPropertyName].ToString(), item[xNum_Doc.DataPropertyName].ToString(),
                           item[xRazon_Social.DataPropertyName].ToString(), item[xGlosa.DataPropertyName].ToString(), item[xCuenta_Contable.DataPropertyName].ToString(),
-                          item[xdescripcion.DataPropertyName].ToString(), item[xCuentaBanco.DataPropertyName].ToString(), item[xmoneda.DataPropertyName].ToString(),
+                          item[xdescripcion.DataPropertyName].ToString(), (int)item[xCtaBancaria.DataPropertyName], item[xCuentaBanco.DataPropertyName].ToString(), item[xmoneda.DataPropertyName].ToString(),
                           (decimal)item[xpen.DataPropertyName], (decimal)item[xusd.DataPropertyName], (decimal)item[xtipocambio.DataPropertyName]);
                         x++;
                     }
@@ -764,7 +764,7 @@ namespace HPReserger
                     GrabarAsientos(TDatos, c, FechaContable, PosI, PosF, DinamicaCierre, (int)cboproyectoCierre.SelectedValue, Debe, TC);
                 } while (Largo - 1 > PosF + 1);
                 //Grabar el Detalle y Cabecera de la dinamica de Cierre Balances; Sentido = los pasa del debe al haber
-                GrabarAsientosApertura(TDBalance, ++c, FechaContable, TC, -50, false);
+                GrabarAsientosApertura(TDBalance, ++c, FechaContable, TC, -50, true);
                 //Fin del Grabado.
                 //Eliminamos los REflejos
                 CapaLogica.ELiminarReflejosdeCierreApertura(comboMesAño.GetFecha(), (int)(cboempresa.SelectedValue));
@@ -779,7 +779,7 @@ namespace HPReserger
                 DateTime FechitaContable = new DateTime(comboMesAño.GetFecha().Year, 1, 1);
                 //DataTable TablaReflejo = TDBalance.Copy();
                 //TablaReflejo.Rows.RemoveAt(TablaReflejo.Rows.Count - 1);
-                GrabarAsientosApertura(TDBalance, 1, FechaContable, TC, -51, true);
+                GrabarAsientosApertura(TDBalance, 1, FechaContable, TC, -51, false);
                 btnAplicar.Enabled = false;
                 GenerarAsientoAPertura = false;
                 msgOK("Se Agregaron los Asientos de Apertura");
@@ -819,7 +819,7 @@ namespace HPReserger
                         //Declaraciones y definiciones
                         int fkProyecto = (int)cboproyectoCierre.SelectedValue;
                         int IdSoles = 1;
-                        string CaracterFueraMes = Sentido ? "00" : "13";
+                        string CaracterFueraMes = Sentido ? "13" : "00";
                         string cuo = $"{FechaContable.Year.ToString().Substring(2, 2) }{CaracterFueraMes}-{NumAsiento.ToString("00000")}";
                         //fin dec y def
                         decimal ValorDebeMN = 0;
@@ -852,10 +852,11 @@ namespace HPReserger
                             decimal ValorDolares = (decimal)DVFila[xusd.DataPropertyName] * (Sentido ? 1 : -1) * (ValorDebeMN < ValorHaberMN ? 1 : -1);
                             decimal ValorSoles = (decimal)DVFila[xpen.DataPropertyName] * (Sentido ? 1 : -1) * (ValorDebeMN < ValorHaberMN ? 1 : -1);
                             GLOSA = DVFila[xGlosa.DataPropertyName].ToString();
+                            string NroCuentaBancaria = DVFila[xCuentaBanco.DataPropertyName].ToString();
                             //
                             CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila - 1, NumAsiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
                             NameProveedor, idcomprobante, SerieDocumento, NumDocumento, iddinamica, FechaContable, FechaContable, FechaContable,
-                            ValorSoles, ValorDolares, TC, IdSoles, "", "", GLOSA, FechaContable, IdUsuario, "");
+                            ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "", GLOSA, FechaContable, IdUsuario, "");
                         }
                     }
                 }
@@ -885,6 +886,7 @@ namespace HPReserger
                 string CuentaContable = DFila["Cuentacontable"].ToString().Substring(0, DFila["Cuentacontable"].ToString().IndexOf(' '));
                 string CaracterFueraMes = debe ? "13" : "00";
                 string cuo = $"{fechaContable.Year.ToString().Substring(2, 2) }{CaracterFueraMes}-{NumAsiento.ToString("00000")}";
+                string NroCuentaBancaria = "";
                 ////Sacando los Valores
                 decimal ValorDebeMN = 0, ValorHaberMN = 0, ValorDebeME = 0, ValorHaberME = 0, ValorDolares = 0;
                 //solesdebe soleshaber dolaresdebe dolareshaber
@@ -903,7 +905,7 @@ namespace HPReserger
                 //Detalle del asiento del Debe             
                 CapaLogica.InsertarAsientoFacturaDetalle(99, pase, NumAsiento, fechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
                     NameProveedor, idcomprobante, SerieDocumento, NumDocumento, dinamica, fechaContable, fechaContable, fechaContable, ValorDebeMN + ValorHaberMN,
-                    ValorDolares, TC, IdSoles, "", "", $"{CuentaContable}-{Glosa}", fechaContable, IdUsuario, "");
+                    ValorDolares, TC, IdSoles, NroCuentaBancaria, "", $"{CuentaContable}-{Glosa}", fechaContable, IdUsuario, "");
                 //CapaLogica.ActivarDesactivarReflejos(1);//Activamos
                 //Eliminamos los Reflejos
             }
