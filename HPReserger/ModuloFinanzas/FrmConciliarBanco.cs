@@ -255,6 +255,9 @@ namespace HPReserger.ModuloFinanzas
                 DataColumn ColIndex = new DataColumn("Index", typeof(int));
                 ColOk.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
                 return true;
             }
             else if (Banco == 10) //Banco Pichincha{
@@ -285,6 +288,9 @@ namespace HPReserger.ModuloFinanzas
                 DataColumn ColIndex = new DataColumn("Index", typeof(int));
                 ColOk.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
                 TdatosExcel.AcceptChanges();
                 //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
                 foreach (DataRow item in TdatosExcel.Rows)
@@ -320,6 +326,9 @@ namespace HPReserger.ModuloFinanzas
                 DataColumn ColIndex = new DataColumn("Index", typeof(int));
                 ColOk.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
                 TdatosExcel.Columns.Add("Glosa2");
                 TdatosExcel.AcceptChanges();
                 //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
@@ -363,15 +372,18 @@ namespace HPReserger.ModuloFinanzas
                 DataColumn ColIndex = new DataColumn("Index", typeof(int));
                 ColOk.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
                 TdatosExcel.Columns.Add("Glosa2");
                 TdatosExcel.AcceptChanges();
                 //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
                 //foreach (DataRow item in TdatosExcel.Rows)
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
-                }
-                return false;
             }
+            return false;
+        }
 
         private void ContarRegistros()
         {
@@ -1052,13 +1064,13 @@ namespace HPReserger.ModuloFinanzas
                     if (item[xGrupo.DataPropertyName].ToString() == "")
                     {
                         //Tipo  1 para los Cargados por Excel
-                        CapaLogica.ConciliacionDetalle(1, PkId, 0, 1, null, "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()), FechaEjecucion,
+                        CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xpkid.DataPropertyName], 1, null, "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()), FechaEjecucion,
                          decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
                             item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 1);
 
                     }
                     else
-                        CapaLogica.ConciliacionDetalle(1, PkId, 0, 1, (int)item[xGrupo.DataPropertyName], "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()),
+                        CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xpkid.DataPropertyName], 1, (int)item[xGrupo.DataPropertyName], "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()),
                             FechaEjecucion, decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
                             item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 0);
                 }
@@ -1071,7 +1083,7 @@ namespace HPReserger.ModuloFinanzas
                         {
                             //va 1 en el estado para insertar la primera vez en la base
                             //Tipo 2 para los Cargados del Sistema
-                            CapaLogica.ConciliacionDetalle(1, PkId, 0, 2, null, item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()),
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], 2, null, item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()),
                                 FechaEjecucion, decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                                 item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0);
                         }
@@ -1079,7 +1091,7 @@ namespace HPReserger.ModuloFinanzas
                         if ((int)item[xEstado.DataPropertyName] == 1)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
-                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xEstado.DataPropertyName], tipo, null,
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], tipo, null,
                                 item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? -1 : 1) *
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
@@ -1091,7 +1103,7 @@ namespace HPReserger.ModuloFinanzas
                         if ((int)item[xEstado.DataPropertyName] == 1)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
-                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? 1 : -1) *
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
@@ -1100,7 +1112,7 @@ namespace HPReserger.ModuloFinanzas
                         if ((int)item[xEstado.DataPropertyName] == -1)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
-                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? 1 : -1) * 
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
@@ -1109,7 +1121,7 @@ namespace HPReserger.ModuloFinanzas
                         if ((int)item[xEstado.DataPropertyName] == 0)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
-                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1);
