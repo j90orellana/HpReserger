@@ -112,17 +112,24 @@ namespace HPReserger.ModuloBancario
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            int x = e.RowIndex, y = e.ColumnIndex;
-            if (x >= 0)
+            try
             {
-                DataGridViewRow item = dtgconten.Rows[x];
-                cboempresa.SelectedValue = item.Cells[xideempresa.Name].Value;
-                cbomoneda.SelectedValue = item.Cells[xidmoneda.Name].Value;
-                cbotipocuenta.SelectedValue = item.Cells[xtipo.Name].Value;
-                cbobanco.SelectedValue = item.Cells[xidbanco.Name].Value;
-                txtnrocuenta.Text = item.Cells[xNro_Cta.Name].Value.ToString();
-                txtnrocci.Text = item.Cells[xNro_Cta_Cci.Name].Value.ToString();
+                int x = e.RowIndex, y = e.ColumnIndex;
+                if (x >= 0)
+                {
+                    if (cboempresa.DataSource != null)
+                    {
+                        DataGridViewRow item = dtgconten.Rows[x];
+                        cboempresa.SelectedValue = (int)item.Cells[xideempresa.Name].Value;
+                        cbomoneda.SelectedValue = item.Cells[xidmoneda.Name].Value;
+                        cbotipocuenta.SelectedValue = item.Cells[xtipo.Name].Value;
+                        cbobanco.SelectedValue = item.Cells[xidbanco.Name].Value;
+                        txtnrocuenta.Text = item.Cells[xNro_Cta.Name].Value.ToString();
+                        txtnrocci.Text = item.Cells[xNro_Cta_Cci.Name].Value.ToString();
+                    }
+                }
             }
+            catch (Exception) { }
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
@@ -168,7 +175,7 @@ namespace HPReserger.ModuloBancario
             if (estado == 1)
             {
                 /////validar si ya existe
-                DataTable Tdatos = CapaLogica.CuentaBancaria(5, 0,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
+                DataTable Tdatos = CapaLogica.CuentaBancaria(5, 0, fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
                 if (Tdatos.Rows.Count > 0)
                 {
                     txtnrocuenta.Focus();
@@ -176,20 +183,20 @@ namespace HPReserger.ModuloBancario
                     return;
                 }
                 /////insertando el registro
-                CapaLogica.CuentaBancaria(1, 0,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
+                CapaLogica.CuentaBancaria(1, 0, fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
                 msgOK("Número de Cuenta Agregado");
             }
             if (estado == 2)
             {
                 ///validar si no se duplicar
-                DataTable Tdatos = CapaLogica.CuentaBancaria(6, _idcuenta,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
+                DataTable Tdatos = CapaLogica.CuentaBancaria(6, _idcuenta, fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
                 if (Tdatos.Rows.Count > 0)
                 {
                     txtnrocuenta.Focus();
                     msg("Número de Cuenta YA Existe");
                     return;
                 }
-                CapaLogica.CuentaBancaria(2, _idcuenta,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
+                CapaLogica.CuentaBancaria(2, _idcuenta, fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
                 msgOK("Número de Cuenta Actualizado");
             }
             Estado = 0;

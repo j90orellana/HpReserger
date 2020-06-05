@@ -19,6 +19,7 @@ namespace HPReserger.ModuloFinanzas
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public int PkId = 0;
         public void CargarEmpresa()
         {
             cboempresa.ValueMember = "codigo";
@@ -71,10 +72,12 @@ namespace HPReserger.ModuloFinanzas
         private void buttonPer1_Click(object sender, EventArgs e)
         {
             Continuar = false;
+            PkId = 0;
             DataTable TDatosAux = CapaLogica.ConciliacionCabeceraExiste(pkEmpresa, comboMesAño1.FechaFinMes, pkidCtaBanco);
             if (TDatosAux.Rows.Count > 0)
             {
                 Continuar = true;
+                PkId = (int)TDatosAux.Rows[0]["pkid"];
                 EstadoCuenta = (decimal)TDatosAux.Rows[0]["estadocuenta"];
                 btnReversar.Visible = true;
                 CargamosDatosParaContinuar();
@@ -112,7 +115,7 @@ namespace HPReserger.ModuloFinanzas
             }
         }
         int Cfilas = 0;
-        private void btnPaso2_Click(object sender, EventArgs e) 
+        private void btnPaso2_Click(object sender, EventArgs e)
         {
             if (CargarDatosDelExcel(txtRutaExcel.Text))
             {
@@ -234,7 +237,6 @@ namespace HPReserger.ModuloFinanzas
                     }
                 }
                 int[] IndexColumnasEliminar = new int[] { 9, 8, 7, 5, 4, 1 };
-
                 foreach (int item in IndexColumnasEliminar)
                 {
                     TdatosExcel.Columns.RemoveAt(item);
@@ -255,8 +257,121 @@ namespace HPReserger.ModuloFinanzas
                 TdatosExcel.Columns.Add(ColIndex);
                 return true;
             }
-            return false;
-        }
+            else if (Banco == 10) //Banco Pichincha{
+            {
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    DateTime Fecha;
+                    if (!DateTime.TryParse(item[1].ToString(), out Fecha))
+                    {
+                        item.Delete();
+                    }
+                }
+                int[] IndexColumnasEliminar = new int[] { 17, 16, 15, 14, 13, 9, 8, 7, 6, 4, 3, 2, 0 };
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    TdatosExcel.Columns.RemoveAt(item);
+                }
+                TdatosExcel.Columns[0].ColumnName = "Fecha";
+                TdatosExcel.Columns[2].ColumnName = "Monto";
+                TdatosExcel.Columns[3].ColumnName = "Operacion";
+                TdatosExcel.Columns[1].ColumnName = "Glosa";
+                TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[1].SetOrdinal(3);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                TdatosExcel.AcceptChanges();
+                //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
+                foreach (DataRow item in TdatosExcel.Rows)
+                    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
+                return true;
+            }
+            else if (pkBanco == 3) // para el banco continental
+            {
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    DateTime Fecha;
+                    if (!DateTime.TryParse(item[0].ToString(), out Fecha))
+                    {
+                        item.Delete();
+                    }
+                }
+                //TdatosExcel.AcceptChanges();
+                int[] IndexColumnasEliminar = new int[] { 6, 2, 1 };
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    TdatosExcel.Columns.RemoveAt(item);
+                }
+                TdatosExcel.Columns[0].ColumnName = "Fecha";
+                TdatosExcel.Columns[3].ColumnName = "Monto";
+                TdatosExcel.Columns[1].ColumnName = "Operacion";
+                TdatosExcel.Columns[2].ColumnName = "Glosa";
+                //TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[2].SetOrdinal(3);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.AcceptChanges();
+                //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
+                //foreach (DataRow item in TdatosExcel.Rows)
+                //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
+                return true;
+            }
+            else if (pkBanco == 2) // Banco ScotiaBank
+            {
+                try
+                {
+                    foreach (DataRow item in TdatosExcel.Rows)
+                    {
+                        DateTime Fecha;
+                        if (!DateTime.TryParse(item[7].ToString(), out Fecha))
+                        {
+                            item.Delete();
+                        }
+                    }
+                }
+                catch (Exception) { }
+                TdatosExcel.AcceptChanges();
+                int[] IndexColumnasEliminar = new int[] { 16, 15, 14, 12, 11, 10, 9, 8, 6, 4, 3, 1, 0 };
+
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    TdatosExcel.Columns.RemoveAt(item);
+                }
+                TdatosExcel.Columns[2].ColumnName = "Fecha";
+                TdatosExcel.Columns[1].ColumnName = "Monto";
+                TdatosExcel.Columns[3].ColumnName = "Operacion";
+                TdatosExcel.Columns[0].ColumnName = "Glosa";
+                //TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[0].SetOrdinal(3);
+                TdatosExcel.Columns[1].SetOrdinal(0);
+                TdatosExcel.Columns[1].SetOrdinal(2);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.AcceptChanges();
+                //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
+                //foreach (DataRow item in TdatosExcel.Rows)
+                //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
+                return true;
+                }
+                return false;
+            }
 
         private void ContarRegistros()
         {
@@ -310,9 +425,146 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
+            else if (pkBanco == 10) //Pichincha
+            {
+                if (TdatosExcel.Columns.Count != 18)
+                {
+                    msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
+                    return false;
+                }
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[13][14].ToString());
+                EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
+                string ValCuenta = TdatosExcel.Rows[7][4].ToString();
+                if (!ValCuenta.Contains(HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(nroCuenta.Substring(3), '-', ' ')))
+                {
+                    msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
+                    return false;
+                }
+                int pos = 14; int c = 1;
+                DateTime FechaMin = new DateTime(2200, 1, 1);
+                DateTime FechaMax = new DateTime(1900, 1, 1);
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    if (c++ >= pos)
+                    {
+                        DateTime Fecha = DateTime.Parse(item[1].ToString());
+                        if (Fecha < FechaMin) FechaMin = Fecha;
+                        if (Fecha > FechaMax) FechaMax = Fecha;
+                    }
+                }
+                DateTime FechaCombo = comboMesAño1.GetFecha();
+                if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
+                {
+                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
+                    return false;
+                }
+                return true;
+            }
+            else if (pkBanco == 3) //BBVA continental
+            {
+                if (TdatosExcel.Columns.Count != 7)
+                {
+                    msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
+                    return false;
+                }
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][5].ToString());
+                //EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
+                string ValCuenta = TdatosExcel.Rows[6][0].ToString();
+                ValCuenta = HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros(ValCuenta);
+                ValCuenta = ValCuenta.Substring(0, 8) + ValCuenta.Substring(10);
+                if (!ValCuenta.Contains(HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros(nroCuenta)))
+                {
+                    msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
+                    return false;
+                }
+                int pos = 10; int i = 0;
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    if (i++ > pos)
+                    {
+                        if (item[4].ToString().Contains("Saldo Inicial: ") || item[4].ToString().Contains("Saldo Final: "))
+                        {
+                            item.Delete();
+                        }
+                    }
+                }
+                TdatosExcel.AcceptChanges();
+                //
+                pos = 11; int c = 0;
+                DateTime FechaMin = new DateTime(2200, 1, 1);
+                DateTime FechaMax = new DateTime(1900, 1, 1);
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    if (c++ >= pos)
+                    {
+                        DateTime Fecha = DateTime.Parse(item[0].ToString());
+                        if (Fecha < FechaMin) FechaMin = Fecha;
+                        if (Fecha > FechaMax) FechaMax = Fecha;
+                    }
+                }
+                DateTime FechaCombo = comboMesAño1.GetFecha();
+                if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
+                {
+                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
+                    return false;
+                }
+                return true;
+            }
+            else if (pkBanco == 2)//ScotiaBank
+            {
+                if (TdatosExcel.Columns.Count != 17)
+                {
+                    msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
+                    return false;
+                }
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
+                //EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
+                string ValCuenta = TdatosExcel.Rows[4][2].ToString();
+                if (!ValCuenta.Contains(nroCuenta))
+                {
+                    msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
+                    return false;
+                }
+                int pos = 12; int i = 0;
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    if (i++ > pos)
+                    {
+                        decimal ValPrueba = 0;
+                        if (decimal.TryParse(item[5].ToString(), out ValPrueba))
+                            item[5] = (decimal.Parse(item[5].ToString()) + decimal.Parse(item[6].ToString())) * (ValPrueba == 0 ? 1 : -1);
+                    }
+                }
+                TdatosExcel.AcceptChanges();
+                //
+                pos = 13; int c = 0;
+                DateTime FechaMin = new DateTime(2200, 1, 1);
+                DateTime FechaMax = new DateTime(1900, 1, 1);
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    if (c++ >= pos)
+                    {
+                        DateTime Fecha;
+                        if (DateTime.TryParse(item[7].ToString(), out Fecha))
+                        {
+                            Fecha = DateTime.Parse(item[7].ToString());
+                            if (Fecha < FechaMin) FechaMin = Fecha;
+                            if (Fecha > FechaMax) FechaMax = Fecha;
+                        }
+                        else item.Delete();
+                    }
+                }
+                DateTime FechaCombo = comboMesAño1.GetFecha();
+                if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
+                {
+                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
+                    return false;
+                }
+                return true;
+            }
             else
             {
-                msgError("Por el Momento se puede Conciliar el Banco BCP");
+                msgError("Por el Momento se puede Conciliar el Banco BCP - Pichincha - BBVA - ScotiaBank");
                 return false;
             }
             return false;
@@ -483,15 +735,18 @@ namespace HPReserger.ModuloFinanzas
         }
         private void dtgContenExcel_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            int val = 0;
-            int.TryParse(dtgContenExcel[xGrupo.Name, e.RowIndex].Value.ToString(), out val);
-            if (val > 0)
+            if (e.RowIndex >= 0)
             {
-                HPResergerFunciones.Utilitarios.ColorCeldaNormal(dtgContenExcel[e.ColumnIndex, e.RowIndex]);
-            }
-            else
-            {
-                HPResergerFunciones.Utilitarios.ColorCeldaErrorLetras(dtgContenExcel[e.ColumnIndex, e.RowIndex]);
+                int val = 0;
+                int.TryParse(dtgContenExcel[xGrupo.Name, e.RowIndex].Value.ToString(), out val);
+                if (val > 0)
+                {
+                    HPResergerFunciones.Utilitarios.ColorCeldaNormal(dtgContenExcel[e.ColumnIndex, e.RowIndex]);
+                }
+                else
+                {
+                    HPResergerFunciones.Utilitarios.ColorCeldaErrorLetras(dtgContenExcel[e.ColumnIndex, e.RowIndex]);
+                }
             }
         }
         private void btnFechaMonto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -786,10 +1041,10 @@ namespace HPReserger.ModuloFinanzas
                 //Reversamos lo Anterior para Cargar la continuación.
                 if (Continuar)
                     CapaLogica.ConciliacionCabeceraEliminar(pkEmpresa, comboMesAño1.FechaFinMes, pkidCtaBanco);
-                //
-                int pkid = (int)CapaLogica.ConciliacionCabeceraSiguienteNumero().Rows[0]["ultimo"];
+                else
+                    PkId = (int)CapaLogica.ConciliacionCabeceraSiguienteNumero().Rows[0]["ultimo"];
                 int pkUsuario = frmLogin.CodigoUsuario;
-                CapaLogica.ConciliacionCabecera(1, pkid, pkEmpresa, pkidCtaBanco, CuentaContable, FechaEjecucion, SaldoContable, EstadoCuenta, pkUsuario);
+                CapaLogica.ConciliacionCabecera(1, PkId, pkEmpresa, pkidCtaBanco, CuentaContable, FechaEjecucion, SaldoContable, EstadoCuenta, pkUsuario);
                 //GRabamos el Detalle de la Cabecera
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -797,13 +1052,13 @@ namespace HPReserger.ModuloFinanzas
                     if (item[xGrupo.DataPropertyName].ToString() == "")
                     {
                         //Tipo  1 para los Cargados por Excel
-                        CapaLogica.ConciliacionDetalle(1, pkid, 0, 1, null, "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()), FechaEjecucion,
+                        CapaLogica.ConciliacionDetalle(1, PkId, 0, 1, null, "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()), FechaEjecucion,
                          decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
                             item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 1);
 
                     }
                     else
-                        CapaLogica.ConciliacionDetalle(1, pkid, 0, 1, (int)item[xGrupo.DataPropertyName], "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()),
+                        CapaLogica.ConciliacionDetalle(1, PkId, 0, 1, (int)item[xGrupo.DataPropertyName], "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()),
                             FechaEjecucion, decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
                             item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 0);
                 }
@@ -816,7 +1071,7 @@ namespace HPReserger.ModuloFinanzas
                         {
                             //va 1 en el estado para insertar la primera vez en la base
                             //Tipo 2 para los Cargados del Sistema
-                            CapaLogica.ConciliacionDetalle(1, pkid, 0, 2, null, item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()),
+                            CapaLogica.ConciliacionDetalle(1, PkId, 0, 2, null, item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()),
                                 FechaEjecucion, decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                                 item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0);
                         }
@@ -824,7 +1079,7 @@ namespace HPReserger.ModuloFinanzas
                         if ((int)item[xEstado.DataPropertyName] == 1)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
-                            CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], tipo, null,
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xEstado.DataPropertyName], tipo, null,
                                 item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? -1 : 1) *
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
@@ -836,7 +1091,7 @@ namespace HPReserger.ModuloFinanzas
                         if ((int)item[xEstado.DataPropertyName] == 1)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
-                            CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? 1 : -1) *
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
@@ -845,7 +1100,7 @@ namespace HPReserger.ModuloFinanzas
                         if ((int)item[xEstado.DataPropertyName] == -1)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
-                            CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? 1 : -1) * 
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
@@ -854,7 +1109,7 @@ namespace HPReserger.ModuloFinanzas
                         if ((int)item[xEstado.DataPropertyName] == 0)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
-                            CapaLogica.ConciliacionDetalle(1, pkid, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xEstado.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1);

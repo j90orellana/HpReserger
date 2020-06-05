@@ -1511,7 +1511,8 @@ namespace HPResergerFunciones
             try
             {
                 FileStream fs = File.Open(ruta, FileMode.Open, FileAccess.Read);
-                IExcelDataReader reader = ExcelReaderFactory.CreateBinaryReader(fs);
+                //IExcelDataReader reader = ExcelReaderFactory.CreateBinaryReader(fs);
+                IExcelDataReader reader = ExcelReaderFactory.CreateReader(fs);
                 DataSet result = reader.AsDataSet();
                 reader.Close();
                 return result.Tables[0];
@@ -1627,6 +1628,22 @@ namespace HPResergerFunciones
                 cadena = cadena + cade;
             return cadena.Substring(0, tamaño);
         }
+        public static string ExtraerCuentaSoloEnteros(string cuenta)
+        {
+            string cadena = "";
+            if (cuenta != "")
+            {
+                foreach (var c in cuenta)
+                {
+                    if (char.IsDigit(c))
+                    {
+                        cadena += c;
+                    }
+                }
+
+            }
+            return cadena; 
+        }
         public static string ExtraerCuenta(string cuenta)
         {
             int posI = -1, posF = 0, con = 0;
@@ -1669,6 +1686,16 @@ namespace HPResergerFunciones
             foreach (char cas in cuenta)
             {
                 if (cas != caracter)
+                    caden += cas;
+            }
+            return caden;
+        }
+        public static string QuitarCaracterCuenta(string cuenta, params char[] caracter)
+        {
+            string caden = "";
+            foreach (char cas in cuenta)
+            {
+                if (!caracter.Contains(cas))
                     caden += cas;
             }
             return caden;
