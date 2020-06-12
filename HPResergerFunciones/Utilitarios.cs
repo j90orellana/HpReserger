@@ -1545,7 +1545,7 @@ namespace HPResergerFunciones
             }
             catch (Exception e)
             {
-                msg(e.Message);
+                msgCancel(e.Message, "No se Pudo Abrir el Archivo Excel");
                 return new DataTable();
             };
         }
@@ -1642,7 +1642,7 @@ namespace HPResergerFunciones
                 }
 
             }
-            return cadena; 
+            return cadena;
         }
         public static string ExtraerCuenta(string cuenta)
         {

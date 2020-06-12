@@ -1101,7 +1101,10 @@ namespace HPReserger
         {
             HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
-
+        public void msgOk(string cadena)
+        {
+            HPResergerFunciones.frmInformativo.MostrarDialog(cadena);
+        }
         private void pbfotoempleado_Click(object sender, EventArgs e)
         {
 
@@ -1394,7 +1397,7 @@ namespace HPReserger
                     Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32((cboDistrito.SelectedValue ?? 0).ToString()), Convert.ToInt32((cboProvincia.SelectedValue ?? 0).ToString()),
                     Convert.ToInt32((cboDepartamento.SelectedValue ?? 0).ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32((cboProfesion.SelectedValue ?? 0).ToString()),
                     Convert.ToInt32((cboGradoInstruccion.SelectedValue ?? 0).ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, frmLogin.CodigoUsuario, Foto, NombreFoto, FotoFirma, txtfirma.Text);
-                msg("El Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se registró con éxito");
+                msgOk("El Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se registró con éxito");
                 DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);
             }
             else
@@ -1405,7 +1408,7 @@ namespace HPReserger
                     Convert.ToInt32((cboEstadoCivil.SelectedValue ?? 0).ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32((cboDistrito.SelectedValue ?? 0).ToString()),
                     Convert.ToInt32((cboProvincia.SelectedValue ?? 0).ToString()), Convert.ToInt32((cboDepartamento.SelectedValue ?? 0).ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text,
                     Convert.ToInt32((cboProfesion.SelectedValue ?? 0).ToString()), Convert.ToInt32((cboGradoInstruccion.SelectedValue ?? 0).ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, Foto, NombreFoto, FotoFirma, txtfirma.Text);
-                msg("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito");
+                msgOk("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito");
                 NewEmpleado = true;
 
                 DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);

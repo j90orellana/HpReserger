@@ -33,13 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -60,9 +60,32 @@
             this.btnCargar = new HpResergerUserControls.ButtonPer();
             this.btnPaso2 = new HpResergerUserControls.ButtonPer();
             this.dtgContenExcel = new HpResergerUserControls.Dtgconten();
+            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNroOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xGlosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRegistroExcel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dtgContenSistema = new HpResergerUserControls.Dtgconten();
+            this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xUpdate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ygrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ycuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ymonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yoperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yglosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ypkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblexcel = new System.Windows.Forms.Label();
             this.lblSistema = new System.Windows.Forms.Label();
             this.lblTotales = new System.Windows.Forms.Label();
@@ -79,27 +102,6 @@
             this.lblRegistroSistema = new System.Windows.Forms.Label();
             this.lblRegistroSistema2 = new System.Windows.Forms.Label();
             this.btnReversar = new HpResergerUserControls.ButtonPer();
-            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNroOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xUpdate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ygrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ycuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ymonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yoperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yglosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ypkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenExcel)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenSistema)).BeginInit();
@@ -151,7 +153,7 @@
             this.cboCuentasBancarias.FormattingEnabled = true;
             this.cboCuentasBancarias.Location = new System.Drawing.Point(64, 47);
             this.cboCuentasBancarias.Name = "cboCuentasBancarias";
-            this.cboCuentasBancarias.Size = new System.Drawing.Size(500, 21);
+            this.cboCuentasBancarias.Size = new System.Drawing.Size(656, 21);
             this.cboCuentasBancarias.TabIndex = 44;
             this.cboCuentasBancarias.SelectedIndexChanged += new System.EventHandler(this.cboCuentasBancarias_SelectedIndexChanged);
             this.cboCuentasBancarias.Click += new System.EventHandler(this.cboCuentasBancarias_Click);
@@ -159,11 +161,11 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 6, 5, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 6, 11, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.comboMesAño1.Location = new System.Drawing.Point(614, 44);
+            this.comboMesAño1.Location = new System.Drawing.Point(776, 43);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(197, 26);
             this.comboMesAño1.TabIndex = 45;
@@ -175,7 +177,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(564, 51);
+            this.label3.Location = new System.Drawing.Point(726, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 43;
@@ -188,7 +190,7 @@
             this.btnPaso1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaso1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaso1.ForeColor = System.Drawing.Color.White;
-            this.btnPaso1.Location = new System.Drawing.Point(817, 46);
+            this.btnPaso1.Location = new System.Drawing.Point(979, 45);
             this.btnPaso1.Name = "btnPaso1";
             this.btnPaso1.Size = new System.Drawing.Size(75, 23);
             this.btnPaso1.TabIndex = 46;
@@ -206,7 +208,7 @@
             this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(809, 546);
+            this.BtnCerrar.Location = new System.Drawing.Point(971, 546);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(83, 23);
             this.BtnCerrar.TabIndex = 183;
@@ -223,7 +225,7 @@
             this.btnTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTxt.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTxt.ForeColor = System.Drawing.Color.White;
-            this.btnTxt.Location = new System.Drawing.Point(723, 546);
+            this.btnTxt.Location = new System.Drawing.Point(885, 546);
             this.btnTxt.Name = "btnTxt";
             this.btnTxt.Size = new System.Drawing.Size(83, 23);
             this.btnTxt.TabIndex = 184;
@@ -280,7 +282,7 @@
             this.txtRutaExcel.Name = "txtRutaExcel";
             this.txtRutaExcel.NextControlOnEnter = null;
             this.txtRutaExcel.ReadOnly = true;
-            this.txtRutaExcel.Size = new System.Drawing.Size(668, 22);
+            this.txtRutaExcel.Size = new System.Drawing.Size(830, 22);
             this.txtRutaExcel.TabIndex = 186;
             this.txtRutaExcel.TextoDefecto = "";
             this.txtRutaExcel.TextoDefectoColor = System.Drawing.Color.White;
@@ -300,7 +302,7 @@
             this.btnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargar.ForeColor = System.Drawing.Color.White;
-            this.btnCargar.Location = new System.Drawing.Point(738, 87);
+            this.btnCargar.Location = new System.Drawing.Point(900, 87);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(75, 23);
             this.btnCargar.TabIndex = 187;
@@ -317,7 +319,7 @@
             this.btnPaso2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaso2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaso2.ForeColor = System.Drawing.Color.White;
-            this.btnPaso2.Location = new System.Drawing.Point(817, 87);
+            this.btnPaso2.Location = new System.Drawing.Point(979, 87);
             this.btnPaso2.Name = "btnPaso2";
             this.btnPaso2.Size = new System.Drawing.Size(75, 23);
             this.btnPaso2.TabIndex = 46;
@@ -358,7 +360,8 @@
             this.xNroOperacion,
             this.xGlosa,
             this.xGlosa2,
-            this.xpkid});
+            this.xpkid,
+            this.xComentario});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -384,326 +387,13 @@
             this.dtgContenExcel.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgContenExcel.RowHeadersVisible = false;
             this.dtgContenExcel.RowTemplate.Height = 18;
-            this.dtgContenExcel.Size = new System.Drawing.Size(433, 385);
+            this.dtgContenExcel.Size = new System.Drawing.Size(514, 385);
             this.dtgContenExcel.TabIndex = 188;
             this.dtgContenExcel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_CellClick);
             this.dtgContenExcel.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_CellContentDoubleClick);
             this.dtgContenExcel.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgContenExcel_CellFormatting);
             this.dtgContenExcel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_CellValueChanged);
             this.dtgContenExcel.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_RowEnter);
-            // 
-            // lblRegistroExcel
-            // 
-            this.lblRegistroExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblRegistroExcel.AutoSize = true;
-            this.lblRegistroExcel.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroExcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroExcel.Location = new System.Drawing.Point(13, 530);
-            this.lblRegistroExcel.Name = "lblRegistroExcel";
-            this.lblRegistroExcel.Size = new System.Drawing.Size(141, 13);
-            this.lblRegistroExcel.TabIndex = 189;
-            this.lblRegistroExcel.Text = "Total Registros del Excel: 0";
-            this.lblRegistroExcel.Click += new System.EventHandler(this.lblRegistroExcel_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dtgContenSistema, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dtgContenExcel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblexcel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblSistema, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 121);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 406);
-            this.tableLayoutPanel1.TabIndex = 190;
-            // 
-            // dtgContenSistema
-            // 
-            this.dtgContenSistema.AllowUserToAddRows = false;
-            this.dtgContenSistema.AllowUserToOrderColumns = true;
-            this.dtgContenSistema.AllowUserToResizeColumns = false;
-            this.dtgContenSistema.AllowUserToResizeRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgContenSistema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dtgContenSistema.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgContenSistema.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.dtgContenSistema.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgContenSistema.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.dtgContenSistema.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgContenSistema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dtgContenSistema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgContenSistema.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.yok,
-            this.xUpdate,
-            this.ygrupo,
-            this.ycuo,
-            this.yFecha,
-            this.ymonto,
-            this.yoperacion,
-            this.yglosa,
-            this.yglosa2,
-            this.yidasiento,
-            this.xtipo,
-            this.xEstado,
-            this.ypkid});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgContenSistema.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dtgContenSistema.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgContenSistema.Enabled = false;
-            this.dtgContenSistema.EnableHeadersVisualStyles = false;
-            this.dtgContenSistema.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgContenSistema.Location = new System.Drawing.Point(442, 18);
-            this.dtgContenSistema.Name = "dtgContenSistema";
-            this.dtgContenSistema.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgContenSistema.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.dtgContenSistema.RowHeadersVisible = false;
-            this.dtgContenSistema.RowTemplate.Height = 18;
-            this.dtgContenSistema.Size = new System.Drawing.Size(434, 385);
-            this.dtgContenSistema.TabIndex = 189;
-            this.dtgContenSistema.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellClick);
-            this.dtgContenSistema.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellContentDoubleClick);
-            this.dtgContenSistema.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgContenSistema_CellFormatting);
-            this.dtgContenSistema.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellValueChanged);
-            this.dtgContenSistema.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_RowEnter);
-            // 
-            // lblexcel
-            // 
-            this.lblexcel.AutoSize = true;
-            this.lblexcel.BackColor = System.Drawing.Color.Transparent;
-            this.lblexcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblexcel.Location = new System.Drawing.Point(3, 0);
-            this.lblexcel.Name = "lblexcel";
-            this.lblexcel.Size = new System.Drawing.Size(266, 13);
-            this.lblexcel.TabIndex = 43;
-            this.lblexcel.Text = "Datos de Movimiento Bancario del Excel Cargado.";
-            // 
-            // lblSistema
-            // 
-            this.lblSistema.AutoSize = true;
-            this.lblSistema.BackColor = System.Drawing.Color.Transparent;
-            this.lblSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblSistema.Location = new System.Drawing.Point(442, 0);
-            this.lblSistema.Name = "lblSistema";
-            this.lblSistema.Size = new System.Drawing.Size(242, 13);
-            this.lblSistema.TabIndex = 43;
-            this.lblSistema.Text = "Datos de Movimiento Bancario en el Sistema.";
-            // 
-            // lblTotales
-            // 
-            this.lblTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotales.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotales.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotales.Location = new System.Drawing.Point(624, 530);
-            this.lblTotales.Name = "lblTotales";
-            this.lblTotales.Size = new System.Drawing.Size(271, 13);
-            this.lblTotales.TabIndex = 189;
-            this.lblTotales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblTotales.Click += new System.EventHandler(this.lblTotales_Click);
-            // 
-            // lblFunciones
-            // 
-            this.lblFunciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblFunciones.AutoSize = true;
-            this.lblFunciones.BackColor = System.Drawing.Color.Transparent;
-            this.lblFunciones.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFunciones.Location = new System.Drawing.Point(468, 27);
-            this.lblFunciones.Name = "lblFunciones";
-            this.lblFunciones.Size = new System.Drawing.Size(72, 13);
-            this.lblFunciones.TabIndex = 189;
-            this.lblFunciones.Text = "Agrupar Por:";
-            this.lblFunciones.Visible = false;
-            this.lblFunciones.Click += new System.EventHandler(this.lblFunciones_Click);
-            // 
-            // btnFechaMonto
-            // 
-            this.btnFechaMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFechaMonto.AutoSize = true;
-            this.btnFechaMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnFechaMonto.Location = new System.Drawing.Point(540, 27);
-            this.btnFechaMonto.Name = "btnFechaMonto";
-            this.btnFechaMonto.Size = new System.Drawing.Size(83, 13);
-            this.btnFechaMonto.TabIndex = 191;
-            this.btnFechaMonto.TabStop = true;
-            this.btnFechaMonto.Text = "Fecha y Monto";
-            this.toolTip1.SetToolTip(this.btnFechaMonto, "Agrupa los Movimientos por Fecha y Monto");
-            this.btnFechaMonto.Visible = false;
-            this.btnFechaMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnFechaMonto_LinkClicked);
-            // 
-            // btnOperacionMonto
-            // 
-            this.btnOperacionMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOperacionMonto.AutoSize = true;
-            this.btnOperacionMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnOperacionMonto.Location = new System.Drawing.Point(623, 27);
-            this.btnOperacionMonto.Name = "btnOperacionMonto";
-            this.btnOperacionMonto.Size = new System.Drawing.Size(107, 13);
-            this.btnOperacionMonto.TabIndex = 191;
-            this.btnOperacionMonto.TabStop = true;
-            this.btnOperacionMonto.Text = "Operación y Monto";
-            this.toolTip1.SetToolTip(this.btnOperacionMonto, "Agrupa los Movimientos por Operación y Monto");
-            this.btnOperacionMonto.Visible = false;
-            this.btnOperacionMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOperacionMonto_LinkClicked);
-            // 
-            // btnOperacion
-            // 
-            this.btnOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOperacion.AutoSize = true;
-            this.btnOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnOperacion.Location = new System.Drawing.Point(730, 27);
-            this.btnOperacion.Name = "btnOperacion";
-            this.btnOperacion.Size = new System.Drawing.Size(61, 13);
-            this.btnOperacion.TabIndex = 191;
-            this.btnOperacion.TabStop = true;
-            this.btnOperacion.Text = "Operación";
-            this.toolTip1.SetToolTip(this.btnOperacion, "Agrupa los Movimientos por Nùmero de Operación");
-            this.btnOperacion.Visible = false;
-            // 
-            // lblmanual
-            // 
-            this.lblmanual.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblmanual.AutoSize = true;
-            this.lblmanual.BackColor = System.Drawing.Color.Transparent;
-            this.lblmanual.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmanual.Location = new System.Drawing.Point(280, 557);
-            this.lblmanual.Name = "lblmanual";
-            this.lblmanual.Size = new System.Drawing.Size(49, 13);
-            this.lblmanual.TabIndex = 192;
-            this.lblmanual.Text = "Manual:";
-            this.lblmanual.Click += new System.EventHandler(this.lblmanual_Click);
-            // 
-            // btnAgrupar
-            // 
-            this.btnAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAgrupar.AutoSize = true;
-            this.btnAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnAgrupar.Location = new System.Drawing.Point(329, 557);
-            this.btnAgrupar.Name = "btnAgrupar";
-            this.btnAgrupar.Size = new System.Drawing.Size(49, 13);
-            this.btnAgrupar.TabIndex = 191;
-            this.btnAgrupar.TabStop = true;
-            this.btnAgrupar.Text = "Agrupar";
-            this.toolTip1.SetToolTip(this.btnAgrupar, "Agrupa los Movimientos Seleccionadas");
-            this.btnAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnAgrupar_LinkClicked);
-            // 
-            // btnDesAgrupar
-            // 
-            this.btnDesAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDesAgrupar.AutoSize = true;
-            this.btnDesAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnDesAgrupar.Location = new System.Drawing.Point(378, 557);
-            this.btnDesAgrupar.Name = "btnDesAgrupar";
-            this.btnDesAgrupar.Size = new System.Drawing.Size(68, 13);
-            this.btnDesAgrupar.TabIndex = 191;
-            this.btnDesAgrupar.TabStop = true;
-            this.btnDesAgrupar.Text = "DesAgrupar";
-            this.toolTip1.SetToolTip(this.btnDesAgrupar, "DesAgrupa los Momivientos Seleccionados");
-            this.btnDesAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnDesAgrupar_LinkClicked);
-            // 
-            // chkOperacion
-            // 
-            this.chkOperacion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkOperacion.AutoSize = true;
-            this.chkOperacion.BackColor = System.Drawing.Color.Transparent;
-            this.chkOperacion.ColorChecked = System.Drawing.Color.Empty;
-            this.chkOperacion.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkOperacion.Location = new System.Drawing.Point(452, 556);
-            this.chkOperacion.Name = "chkOperacion";
-            this.chkOperacion.Size = new System.Drawing.Size(168, 17);
-            this.chkOperacion.TabIndex = 193;
-            this.chkOperacion.Text = "Actualizar Todos los NroOp.";
-            this.toolTip1.SetToolTip(this.chkOperacion, "Actualiza el Nùmero de Operación en el Sistema con los Datos del Excel");
-            this.chkOperacion.UseVisualStyleBackColor = false;
-            this.chkOperacion.CheckedChanged += new System.EventHandler(this.chkOperacion_CheckedChanged);
-            // 
-            // lblRegistroExcel2
-            // 
-            this.lblRegistroExcel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblRegistroExcel2.AutoSize = true;
-            this.lblRegistroExcel2.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroExcel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 546);
-            this.lblRegistroExcel2.Name = "lblRegistroExcel2";
-            this.lblRegistroExcel2.Size = new System.Drawing.Size(184, 13);
-            this.lblRegistroExcel2.TabIndex = 189;
-            this.lblRegistroExcel2.Text = "Total Consolidado: 0 Pendientes: 0";
-            this.lblRegistroExcel2.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // lblRegistroSistema
-            // 
-            this.lblRegistroSistema.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblRegistroSistema.AutoSize = true;
-            this.lblRegistroSistema.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroSistema.Location = new System.Drawing.Point(452, 530);
-            this.lblRegistroSistema.Name = "lblRegistroSistema";
-            this.lblRegistroSistema.Size = new System.Drawing.Size(155, 13);
-            this.lblRegistroSistema.TabIndex = 189;
-            this.lblRegistroSistema.Text = "Total Registros del Sistema: 0";
-            this.lblRegistroSistema.Click += new System.EventHandler(this.lblRegistroExcel_Click);
-            // 
-            // lblRegistroSistema2
-            // 
-            this.lblRegistroSistema2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblRegistroSistema2.AutoSize = true;
-            this.lblRegistroSistema2.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroSistema2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroSistema2.Location = new System.Drawing.Point(452, 543);
-            this.lblRegistroSistema2.Name = "lblRegistroSistema2";
-            this.lblRegistroSistema2.Size = new System.Drawing.Size(184, 13);
-            this.lblRegistroSistema2.TabIndex = 189;
-            this.lblRegistroSistema2.Text = "Total Consolidado: 0 Pendientes: 0";
-            this.lblRegistroSistema2.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // btnReversar
-            // 
-            this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReversar.BackColor = System.Drawing.Color.Crimson;
-            this.btnReversar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnReversar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btnReversar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReversar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReversar.ForeColor = System.Drawing.Color.White;
-            this.btnReversar.Location = new System.Drawing.Point(365, 531);
-            this.btnReversar.Name = "btnReversar";
-            this.btnReversar.Size = new System.Drawing.Size(83, 23);
-            this.btnReversar.TabIndex = 183;
-            this.btnReversar.Text = "Reversar";
-            this.btnReversar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReversar.UseVisualStyleBackColor = false;
-            this.btnReversar.Visible = false;
-            this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
             // 
             // xok
             // 
@@ -783,6 +473,7 @@
             // 
             this.xGlosa2.DataPropertyName = "glosa2";
             this.xGlosa2.HeaderText = "Glosa";
+            this.xGlosa2.MinimumWidth = 50;
             this.xGlosa2.Name = "xGlosa2";
             this.xGlosa2.ReadOnly = true;
             this.xGlosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
@@ -793,6 +484,121 @@
             this.xpkid.HeaderText = "pkid";
             this.xpkid.Name = "xpkid";
             this.xpkid.Visible = false;
+            // 
+            // xComentario
+            // 
+            this.xComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xComentario.DataPropertyName = "comentario";
+            this.xComentario.HeaderText = "Comentario";
+            this.xComentario.Name = "xComentario";
+            this.xComentario.ReadOnly = true;
+            this.xComentario.Width = 81;
+            // 
+            // lblRegistroExcel
+            // 
+            this.lblRegistroExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegistroExcel.AutoSize = true;
+            this.lblRegistroExcel.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroExcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroExcel.Location = new System.Drawing.Point(13, 530);
+            this.lblRegistroExcel.Name = "lblRegistroExcel";
+            this.lblRegistroExcel.Size = new System.Drawing.Size(141, 13);
+            this.lblRegistroExcel.TabIndex = 189;
+            this.lblRegistroExcel.Text = "Total Registros del Excel: 0";
+            this.lblRegistroExcel.Click += new System.EventHandler(this.lblRegistroExcel_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dtgContenSistema, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dtgContenExcel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblexcel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblSistema, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 121);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1041, 406);
+            this.tableLayoutPanel1.TabIndex = 190;
+            // 
+            // dtgContenSistema
+            // 
+            this.dtgContenSistema.AllowUserToAddRows = false;
+            this.dtgContenSistema.AllowUserToOrderColumns = true;
+            this.dtgContenSistema.AllowUserToResizeColumns = false;
+            this.dtgContenSistema.AllowUserToResizeRows = false;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgContenSistema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dtgContenSistema.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgContenSistema.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgContenSistema.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgContenSistema.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgContenSistema.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgContenSistema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dtgContenSistema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgContenSistema.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.yok,
+            this.xUpdate,
+            this.ygrupo,
+            this.ycuo,
+            this.yFecha,
+            this.ymonto,
+            this.yoperacion,
+            this.yglosa,
+            this.yglosa2,
+            this.yidasiento,
+            this.xtipo,
+            this.xEstado,
+            this.ypkid,
+            this.yComentario});
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgContenSistema.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dtgContenSistema.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgContenSistema.Enabled = false;
+            this.dtgContenSistema.EnableHeadersVisualStyles = false;
+            this.dtgContenSistema.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.dtgContenSistema.Location = new System.Drawing.Point(523, 18);
+            this.dtgContenSistema.Name = "dtgContenSistema";
+            this.dtgContenSistema.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgContenSistema.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dtgContenSistema.RowHeadersVisible = false;
+            this.dtgContenSistema.RowTemplate.Height = 18;
+            this.dtgContenSistema.Size = new System.Drawing.Size(515, 385);
+            this.dtgContenSistema.TabIndex = 189;
+            this.dtgContenSistema.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellClick);
+            this.dtgContenSistema.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellContentDoubleClick);
+            this.dtgContenSistema.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgContenSistema_CellFormatting);
+            this.dtgContenSistema.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellValueChanged);
+            this.dtgContenSistema.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_RowEnter);
             // 
             // yok
             // 
@@ -891,6 +697,7 @@
             // 
             this.yglosa2.DataPropertyName = "glosa2";
             this.yglosa2.HeaderText = "Glosa";
+            this.yglosa2.MinimumWidth = 60;
             this.yglosa2.Name = "yglosa2";
             this.yglosa2.ReadOnly = true;
             this.yglosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
@@ -923,10 +730,227 @@
             this.ypkid.Name = "ypkid";
             this.ypkid.Visible = false;
             // 
+            // yComentario
+            // 
+            this.yComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yComentario.DataPropertyName = "comentario";
+            this.yComentario.HeaderText = "Comentario";
+            this.yComentario.Name = "yComentario";
+            this.yComentario.ReadOnly = true;
+            this.yComentario.Width = 81;
+            // 
+            // lblexcel
+            // 
+            this.lblexcel.AutoSize = true;
+            this.lblexcel.BackColor = System.Drawing.Color.Transparent;
+            this.lblexcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblexcel.Location = new System.Drawing.Point(3, 0);
+            this.lblexcel.Name = "lblexcel";
+            this.lblexcel.Size = new System.Drawing.Size(266, 13);
+            this.lblexcel.TabIndex = 43;
+            this.lblexcel.Text = "Datos de Movimiento Bancario del Excel Cargado.";
+            // 
+            // lblSistema
+            // 
+            this.lblSistema.AutoSize = true;
+            this.lblSistema.BackColor = System.Drawing.Color.Transparent;
+            this.lblSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblSistema.Location = new System.Drawing.Point(523, 0);
+            this.lblSistema.Name = "lblSistema";
+            this.lblSistema.Size = new System.Drawing.Size(242, 13);
+            this.lblSistema.TabIndex = 43;
+            this.lblSistema.Text = "Datos de Movimiento Bancario en el Sistema.";
+            // 
+            // lblTotales
+            // 
+            this.lblTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotales.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotales.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotales.Location = new System.Drawing.Point(786, 530);
+            this.lblTotales.Name = "lblTotales";
+            this.lblTotales.Size = new System.Drawing.Size(271, 13);
+            this.lblTotales.TabIndex = 189;
+            this.lblTotales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTotales.Click += new System.EventHandler(this.lblTotales_Click);
+            // 
+            // lblFunciones
+            // 
+            this.lblFunciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFunciones.AutoSize = true;
+            this.lblFunciones.BackColor = System.Drawing.Color.Transparent;
+            this.lblFunciones.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFunciones.Location = new System.Drawing.Point(468, 27);
+            this.lblFunciones.Name = "lblFunciones";
+            this.lblFunciones.Size = new System.Drawing.Size(72, 13);
+            this.lblFunciones.TabIndex = 189;
+            this.lblFunciones.Text = "Agrupar Por:";
+            this.lblFunciones.Visible = false;
+            this.lblFunciones.Click += new System.EventHandler(this.lblFunciones_Click);
+            // 
+            // btnFechaMonto
+            // 
+            this.btnFechaMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFechaMonto.AutoSize = true;
+            this.btnFechaMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnFechaMonto.Location = new System.Drawing.Point(540, 27);
+            this.btnFechaMonto.Name = "btnFechaMonto";
+            this.btnFechaMonto.Size = new System.Drawing.Size(83, 13);
+            this.btnFechaMonto.TabIndex = 191;
+            this.btnFechaMonto.TabStop = true;
+            this.btnFechaMonto.Text = "Fecha y Monto";
+            this.toolTip1.SetToolTip(this.btnFechaMonto, "Agrupa los Movimientos por Fecha y Monto");
+            this.btnFechaMonto.Visible = false;
+            this.btnFechaMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnFechaMonto_LinkClicked);
+            // 
+            // btnOperacionMonto
+            // 
+            this.btnOperacionMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOperacionMonto.AutoSize = true;
+            this.btnOperacionMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnOperacionMonto.Location = new System.Drawing.Point(623, 27);
+            this.btnOperacionMonto.Name = "btnOperacionMonto";
+            this.btnOperacionMonto.Size = new System.Drawing.Size(107, 13);
+            this.btnOperacionMonto.TabIndex = 191;
+            this.btnOperacionMonto.TabStop = true;
+            this.btnOperacionMonto.Text = "Operación y Monto";
+            this.toolTip1.SetToolTip(this.btnOperacionMonto, "Agrupa los Movimientos por Operación y Monto");
+            this.btnOperacionMonto.Visible = false;
+            this.btnOperacionMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOperacionMonto_LinkClicked);
+            // 
+            // btnOperacion
+            // 
+            this.btnOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOperacion.AutoSize = true;
+            this.btnOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnOperacion.Location = new System.Drawing.Point(730, 27);
+            this.btnOperacion.Name = "btnOperacion";
+            this.btnOperacion.Size = new System.Drawing.Size(61, 13);
+            this.btnOperacion.TabIndex = 191;
+            this.btnOperacion.TabStop = true;
+            this.btnOperacion.Text = "Operación";
+            this.toolTip1.SetToolTip(this.btnOperacion, "Agrupa los Movimientos por Nùmero de Operación");
+            this.btnOperacion.Visible = false;
+            // 
+            // lblmanual
+            // 
+            this.lblmanual.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblmanual.AutoSize = true;
+            this.lblmanual.BackColor = System.Drawing.Color.Transparent;
+            this.lblmanual.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmanual.Location = new System.Drawing.Point(361, 557);
+            this.lblmanual.Name = "lblmanual";
+            this.lblmanual.Size = new System.Drawing.Size(49, 13);
+            this.lblmanual.TabIndex = 192;
+            this.lblmanual.Text = "Manual:";
+            this.lblmanual.Click += new System.EventHandler(this.lblmanual_Click);
+            // 
+            // btnAgrupar
+            // 
+            this.btnAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAgrupar.AutoSize = true;
+            this.btnAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnAgrupar.Location = new System.Drawing.Point(410, 557);
+            this.btnAgrupar.Name = "btnAgrupar";
+            this.btnAgrupar.Size = new System.Drawing.Size(49, 13);
+            this.btnAgrupar.TabIndex = 191;
+            this.btnAgrupar.TabStop = true;
+            this.btnAgrupar.Text = "Agrupar";
+            this.toolTip1.SetToolTip(this.btnAgrupar, "Agrupa los Movimientos Seleccionadas");
+            this.btnAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnAgrupar_LinkClicked);
+            // 
+            // btnDesAgrupar
+            // 
+            this.btnDesAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDesAgrupar.AutoSize = true;
+            this.btnDesAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnDesAgrupar.Location = new System.Drawing.Point(459, 557);
+            this.btnDesAgrupar.Name = "btnDesAgrupar";
+            this.btnDesAgrupar.Size = new System.Drawing.Size(68, 13);
+            this.btnDesAgrupar.TabIndex = 191;
+            this.btnDesAgrupar.TabStop = true;
+            this.btnDesAgrupar.Text = "DesAgrupar";
+            this.toolTip1.SetToolTip(this.btnDesAgrupar, "DesAgrupa los Momivientos Seleccionados");
+            this.btnDesAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnDesAgrupar_LinkClicked);
+            // 
+            // chkOperacion
+            // 
+            this.chkOperacion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkOperacion.AutoSize = true;
+            this.chkOperacion.BackColor = System.Drawing.Color.Transparent;
+            this.chkOperacion.ColorChecked = System.Drawing.Color.Empty;
+            this.chkOperacion.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkOperacion.Location = new System.Drawing.Point(533, 556);
+            this.chkOperacion.Name = "chkOperacion";
+            this.chkOperacion.Size = new System.Drawing.Size(168, 17);
+            this.chkOperacion.TabIndex = 193;
+            this.chkOperacion.Text = "Actualizar Todos los NroOp.";
+            this.toolTip1.SetToolTip(this.chkOperacion, "Actualiza el Nùmero de Operación en el Sistema con los Datos del Excel");
+            this.chkOperacion.UseVisualStyleBackColor = false;
+            this.chkOperacion.CheckedChanged += new System.EventHandler(this.chkOperacion_CheckedChanged);
+            // 
+            // lblRegistroExcel2
+            // 
+            this.lblRegistroExcel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegistroExcel2.AutoSize = true;
+            this.lblRegistroExcel2.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroExcel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 546);
+            this.lblRegistroExcel2.Name = "lblRegistroExcel2";
+            this.lblRegistroExcel2.Size = new System.Drawing.Size(184, 13);
+            this.lblRegistroExcel2.TabIndex = 189;
+            this.lblRegistroExcel2.Text = "Total Consolidado: 0 Pendientes: 0";
+            this.lblRegistroExcel2.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // lblRegistroSistema
+            // 
+            this.lblRegistroSistema.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblRegistroSistema.AutoSize = true;
+            this.lblRegistroSistema.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroSistema.Location = new System.Drawing.Point(533, 530);
+            this.lblRegistroSistema.Name = "lblRegistroSistema";
+            this.lblRegistroSistema.Size = new System.Drawing.Size(155, 13);
+            this.lblRegistroSistema.TabIndex = 189;
+            this.lblRegistroSistema.Text = "Total Registros del Sistema: 0";
+            this.lblRegistroSistema.Click += new System.EventHandler(this.lblRegistroExcel_Click);
+            // 
+            // lblRegistroSistema2
+            // 
+            this.lblRegistroSistema2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblRegistroSistema2.AutoSize = true;
+            this.lblRegistroSistema2.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroSistema2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroSistema2.Location = new System.Drawing.Point(533, 543);
+            this.lblRegistroSistema2.Name = "lblRegistroSistema2";
+            this.lblRegistroSistema2.Size = new System.Drawing.Size(184, 13);
+            this.lblRegistroSistema2.TabIndex = 189;
+            this.lblRegistroSistema2.Text = "Total Consolidado: 0 Pendientes: 0";
+            this.lblRegistroSistema2.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // btnReversar
+            // 
+            this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnReversar.BackColor = System.Drawing.Color.Crimson;
+            this.btnReversar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnReversar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnReversar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReversar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReversar.ForeColor = System.Drawing.Color.White;
+            this.btnReversar.Location = new System.Drawing.Point(446, 531);
+            this.btnReversar.Name = "btnReversar";
+            this.btnReversar.Size = new System.Drawing.Size(83, 23);
+            this.btnReversar.TabIndex = 183;
+            this.btnReversar.Text = "Reversar";
+            this.btnReversar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReversar.UseVisualStyleBackColor = false;
+            this.btnReversar.Visible = false;
+            this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
+            // 
             // FrmConciliarBanco
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(902, 575);
+            this.ClientSize = new System.Drawing.Size(1064, 575);
             this.Controls.Add(this.btnTxt);
             this.Controls.Add(this.chkOperacion);
             this.Controls.Add(this.lblmanual);
@@ -957,7 +981,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.label1);
-            this.MinimumSize = new System.Drawing.Size(918, 614);
+            this.MinimumSize = new System.Drawing.Size(1080, 614);
             this.Name = "FrmConciliarBanco";
             this.Nombre = "Conciliación Bancaria";
             this.Text = "Conciliación Bancaria";
@@ -1017,6 +1041,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa2;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xComentario;
         private System.Windows.Forms.DataGridViewCheckBoxColumn yok;
         private System.Windows.Forms.DataGridViewCheckBoxColumn xUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ygrupo;
@@ -1030,5 +1055,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xtipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn ypkid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yComentario;
     }
 }

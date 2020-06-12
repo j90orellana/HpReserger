@@ -181,6 +181,9 @@ namespace HPReserger.ModuloFinanzas
             lblRegistroExcel2.Visible = v;
             lblRegistroSistema.Visible = v;
             lblRegistroSistema2.Visible = v;
+
+            dtgContenExcel.Columns[xComentario.Name].ReadOnly = !v;
+            dtgContenSistema.Columns[yComentario.Name].ReadOnly = !v;
         }
         private void OrdenarDataGridViews(int x, int y)
         {
@@ -198,8 +201,8 @@ namespace HPReserger.ModuloFinanzas
                 dv.Sort = "index desc, monto asc";
                 dtgContenSistema.DataSource = TdatosSist = dv.ToTable();
             }
-            dtgContenExcel.FirstDisplayedCell = dtgContenExcel[xGrupo.Name, x];
-            dtgContenSistema.FirstDisplayedCell = dtgContenSistema[ygrupo.Name, y];
+            dtgContenExcel.FirstDisplayedCell = dtgContenExcel[xok.Name, x];
+            dtgContenSistema.FirstDisplayedCell = dtgContenSistema[yok.Name, y];
         }
         private void OrdenarDataGridViews()
         {
@@ -258,6 +261,9 @@ namespace HPReserger.ModuloFinanzas
                 DataColumn ColPkid = new DataColumn("pkid", typeof(int));
                 ColPkid.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Comentario");
+
+                TdatosExcel.AcceptChanges();
                 return true;
             }
             else if (Banco == 10) //Banco Pichincha{
@@ -291,6 +297,8 @@ namespace HPReserger.ModuloFinanzas
                 DataColumn ColPkid = new DataColumn("pkid", typeof(int));
                 ColPkid.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Comentario");
+
                 TdatosExcel.AcceptChanges();
                 //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
                 foreach (DataRow item in TdatosExcel.Rows)
@@ -330,6 +338,7 @@ namespace HPReserger.ModuloFinanzas
                 ColPkid.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColPkid);
                 TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.Columns.Add("Comentario");
                 TdatosExcel.AcceptChanges();
                 //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
                 //foreach (DataRow item in TdatosExcel.Rows)
@@ -376,6 +385,7 @@ namespace HPReserger.ModuloFinanzas
                 ColPkid.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColPkid);
                 TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.Columns.Add("Comentario");
                 TdatosExcel.AcceptChanges();
                 //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
                 //foreach (DataRow item in TdatosExcel.Rows)
@@ -966,6 +976,16 @@ namespace HPReserger.ModuloFinanzas
             dtgContenSistema.EndEdit(); dtgContenSistema.RefreshEdit();
             MostrarTotales();
         }
+        public class GrupoVarios
+        {
+            public int Grupo;
+            public int Contador;
+            public GrupoVarios(int _grupo, int _contador)
+            {
+                Grupo = _grupo;
+                Contador = _contador;
+            }
+        }
         public class GrupoNroOp
         {
             public int Grupo;
@@ -1004,6 +1024,7 @@ namespace HPReserger.ModuloFinanzas
                         }
                     }
                     List<GrupoNroOp> ListadoGrupos = new List<GrupoNroOp>();
+                    List<GrupoVarios> ListadoVarios = new List<GrupoVarios>();
                     int last = 0;
                     foreach (DataRow item in TdatosExcel.Rows)
                     {
@@ -1015,12 +1036,23 @@ namespace HPReserger.ModuloFinanzas
                             {
                                 ListadoGrupos.Remove(ListadoGrupos.Find(cust => cust.Grupo == value));
                                 last = value;
+                                GrupoVarios GPV = ListadoVarios.Find(cust => cust.Grupo == value);
+                                GPV.Contador += 1;
                             }
                             else
                             {
                                 last = value;
                                 ListadoGrupos.Add(new GrupoNroOp(last, nroop));
+                                ListadoVarios.Add(new GrupoVarios(last, 1));
                             }
+                        }
+                    }
+                    for (int i = 0; i < ListadoVarios.Count; i++)
+                    {
+                        if (ListadoVarios[i].Contador == 1)
+                        {
+                            ListadoVarios.RemoveAt(i);
+                            i--;
                         }
                     }
                     Result = @" Y Se Han Actualizado Nro de Operaciones.";
@@ -1046,6 +1078,21 @@ namespace HPReserger.ModuloFinanzas
                             }
                         }
                     }
+                    //Actualizamos los Nro de Operacion de Varios a VARIOS
+                    foreach (var item in ListadoVarios)
+                    {
+                        foreach (DataRow tFila in TdatosSist.Rows)
+                        {
+                            if (tFila[xGrupo.DataPropertyName].ToString() != "")
+                                if (item.Grupo == (int)tFila[xGrupo.DataPropertyName])
+                                    if ("VARIOS" != tFila[yoperacion.DataPropertyName].ToString())
+                                        if ((int)tFila[xUpdate.DataPropertyName] == 1 || chkOperacion.Checked)
+                                        {
+                                            tFila[yoperacion.DataPropertyName] = "VARIOS";
+                                            CapaLogica.ActualizarNumeroOperacion(pkEmpresa, tFila[ycuo.DataPropertyName].ToString(), "VARIOS", pkidCtaBanco);
+                                        }
+                        }
+                    }
                 }
                 //Proceso de Grabado en la Base de Datos
                 //Grabamos la Cabecera de la Conciliacion
@@ -1066,36 +1113,39 @@ namespace HPReserger.ModuloFinanzas
                         //Tipo  1 para los Cargados por Excel
                         CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xpkid.DataPropertyName], 1, null, "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()), FechaEjecucion,
                          decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
-                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 1);
+                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 1, item[xComentario.DataPropertyName].ToString());
 
                     }
                     else
                         CapaLogica.ConciliacionDetalle(1, PkId, (int)item[xpkid.DataPropertyName], 1, (int)item[xGrupo.DataPropertyName], "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()),
                             FechaEjecucion, decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
-                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 0);
+                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 0, item[xComentario.DataPropertyName].ToString());
                 }
                 foreach (DataRow item in TdatosSist.Rows)
                 {
                     //Las Filas que no tiene grupo y no Estan en el Sistema Grabado
                     if (item[xGrupo.DataPropertyName].ToString() == "")
                     {
-                        if ((int)item[xEstado.DataPropertyName] == 0 || (int)item[xEstado.DataPropertyName] == -1)
+                        if ((int)item[xEstado.DataPropertyName] == -1)
                         {
                             //va 1 en el estado para insertar la primera vez en la base
                             //Tipo 2 para los Cargados del Sistema
-                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], 2, null, item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()),
-                                FechaEjecucion, decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
-                                item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0);
+                            CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], 2, null,
+                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
+                                decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
+                                item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0
+                                , item[yComentario.DataPropertyName].ToString());
                         }
                         //Esto es cuando ya existe en la base le pasamos cero en el estado para que no altere el contador
-                        if ((int)item[xEstado.DataPropertyName] == 1)
+                        if ((int)item[xEstado.DataPropertyName] == 0 || (int)item[xEstado.DataPropertyName] == 1)
                         {
                             int tipo = (int)item[xtipo.DataPropertyName];
                             CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], tipo, null,
                                 item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? -1 : 1) *
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
-                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 1);
+                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 1
+                               , item[yComentario.DataPropertyName].ToString());
                         }
                     }
                     else
@@ -1107,7 +1157,8 @@ namespace HPReserger.ModuloFinanzas
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? 1 : -1) *
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
-                              item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 1);
+                              item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0
+                              , item[yComentario.DataPropertyName].ToString());
                         }
                         if ((int)item[xEstado.DataPropertyName] == -1)
                         {
@@ -1116,7 +1167,8 @@ namespace HPReserger.ModuloFinanzas
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 //(tipo == 1 ? 1 : -1) * 
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
-                              item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1);
+                              item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1
+                              , item[yComentario.DataPropertyName].ToString());
                         }
                         if ((int)item[xEstado.DataPropertyName] == 0)
                         {
@@ -1124,7 +1176,8 @@ namespace HPReserger.ModuloFinanzas
                             CapaLogica.ConciliacionDetalle(1, PkId, (int)item[ypkid.DataPropertyName], tipo, (int)item[ygrupo.DataPropertyName],
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
-                              item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1);
+                              item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1
+                              , item[yComentario.DataPropertyName].ToString());
                         }
                     }
                 }
