@@ -4793,6 +4793,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, FechaIni, FechaFin, NroCuenta, Moneda };
             return bd.DataTableFromProcedure("usp_SaldoContableCuentaBancariaxEmpresa", parametros, valores, null);
         }
+        public DataTable MovimientoBancariosxEmpresaExcel(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda, int @idCtaBancaria) //1 activa ,cualquiera desactiva
+        {
+            string[] parametros = { "@empresa", "@Fechaini", "@FechaFin", "@NroCuenta", "@moneda", "@idCtaBancaria" };
+            object[] valores = { empresa, FechaIni, FechaFin, NroCuenta, Moneda, @idCtaBancaria };
+            return bd.DataTableFromProcedure("usp_MovimientoBancariosxEmpresaExcel", parametros, valores, null);
+        }
         public DataTable ConciliacionCabecera(int opcion, int pkid, int pkempresa, int pkidCtaBancaria, string cuentacontable, DateTime Fecha,
             decimal SAldoContable, decimal EstadoCuenta, int idusuario)
         {

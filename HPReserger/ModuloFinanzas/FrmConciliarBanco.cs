@@ -128,6 +128,7 @@ namespace HPReserger.ModuloFinanzas
                     if (FormatearlaTabla(pkBanco))
                     {
                         //Datos del Excel
+                        BuscanEnSistemMovimientosExcel();
                         dtgContenExcel.DataSource = TdatosExcel;
                         //Datos del Sistema
                         dtgContenSistema.DataSource = TdatosSist;
@@ -226,6 +227,24 @@ namespace HPReserger.ModuloFinanzas
         {
             SaldoContable = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(comboMesAño1.FechaInicioMes.Year, 1, 1), comboMesAño1.FechaFinMes, NroCuenta, pkMoneda).Rows[0]["monto"];
             TdatosSist = CapaLogica.MovimientoBancariosxEmpresa(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
+        }
+        private void BuscanEnSistemMovimientosExcel()
+        {
+            DataTable TablaAux = CapaLogica.MovimientoBancariosxEmpresaExcel(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
+            foreach (DataRow item in TablaAux.Rows)
+            {
+                DataRow Filax = TdatosExcel.NewRow();
+                Filax[xok.DataPropertyName] = item[xok.DataPropertyName];
+                Filax[xGrupo.DataPropertyName] = item[xGrupo.DataPropertyName];
+                Filax[xFecha.DataPropertyName] = ((DateTime)item[xFecha.DataPropertyName]).ToShortDateString();
+                Filax[xMonto.DataPropertyName] = item[xMonto.DataPropertyName];
+                Filax[xNroOperacion.DataPropertyName] = item[xNroOperacion.DataPropertyName];
+                Filax[xGlosa.DataPropertyName] = item[xGlosa.DataPropertyName];
+                Filax[xGlosa2.DataPropertyName] = item[xGlosa2.DataPropertyName];
+                Filax[xComentario.DataPropertyName] = item[xComentario.DataPropertyName];
+                Filax[xpkid.DataPropertyName] = item[xpkid.DataPropertyName];
+                TdatosExcel.Rows.Add(Filax);
+            }
         }
         private Boolean FormatearlaTabla(int Banco)
         {

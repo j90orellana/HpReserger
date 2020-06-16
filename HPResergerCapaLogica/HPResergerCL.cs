@@ -2522,6 +2522,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.SaldoContableCuentaBancariaxEmpresa(empresa, FechaIni, FechaFin, NroCuenta, Moneda);
         }
+        public DataTable MovimientoBancariosxEmpresaExcel(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda, int @idCtaBancaria) //1 activa ,cualquiera desactiva
+        {
+            return cdOrdenPedido.MovimientoBancariosxEmpresaExcel(empresa, FechaIni, FechaFin, NroCuenta, Moneda, @idCtaBancaria);
+        }
         public DataTable ConciliacionCabecera(int opcion, int pkid, int pkempresa, int pkidCtaBancaria, string cuentacontable, DateTime Fecha,
             decimal SAldoContable, decimal EstadoCuenta, int idusuario)
         {
