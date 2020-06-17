@@ -27,6 +27,7 @@ namespace HPReserger
             Text = Nombre;
             if (fotito != null)
             {
+                pbfoto.Image = fotito;
                 //  pbfoto.Image = fotito;
                 this.Size = pbfoto.Image.Size;
                 this.Size = new Size(pbfoto.Image.Size.Width + 25, pbfoto.Image.Size.Height + 50);

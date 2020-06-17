@@ -28,11 +28,7 @@ namespace HPReserger
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void frmreporteboletasfin_Load(object sender, EventArgs e)
         {
-            //DataBoletas DataBoleta = new DataBoletas();
-            //DataBoleta.
-
             rptboletas reporte = new rptboletas();
-            reporte.Refresh();
             reporte.SetParameterValue(0, empresa);
             reporte.SetParameterValue(1, tipo);
             reporte.SetParameterValue(2, numero);
@@ -41,16 +37,16 @@ namespace HPReserger
             reporte.SetParameterValue(5, Fechafin);
 
             ConnectionInfo iConnectionInfo = new ConnectionInfo();
-            // ' *****************************************************************************************************************
+            // ' ***************************************************************
             // ' configuro el acceso a la base de datos
-            //   ' *****************************************************************************************************************
+            // ' ***************************************************************
             //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
             iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
             iConnectionInfo.UserID = datos.USERID;
             iConnectionInfo.Password = datos.USERPASS;
             iConnectionInfo.ServerName = datos.DATASOURCE;
 
-            iConnectionInfo.Type = ConnectionInfoType.SQL;
+            iConnectionInfo.Type = ConnectionInfoType.CRQE;
             CrystalDecisions.CrystalReports.Engine.Tables myTables;
 
             myTables = reporte.Database.Tables;
@@ -58,66 +54,25 @@ namespace HPReserger
             foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
             {
                 TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
-                //Dim myTableLogonInfo As TableLogOnInfo = myTable.LogOnInfo
                 myTableLogonInfo.ConnectionInfo = iConnectionInfo;
-                //  myTableLogonInfo.ConnectionInfo = myConnectionInfo
                 mytable.ApplyLogOnInfo(myTableLogonInfo);
-                //myTable.ApplyLogOnInfo(myTableLogonInfo)
             }
-            //crvboletas.ReportSource = reporte;
-            // Private Sub SetDBLogonForReport(ByVal myConnectionInfo As ConnectionInfo, ByVal myReportDocument As ReportDocument)            
-
-            //reporte.SetParameterValue(6, frmLogin.CodigoUsuario);
-            //reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);//, "hplaptop", "HPReserger");
-            //reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS,datos.DATASOURCE, "sige");
-            //CrystalDecisions.Shared.PdfFormatOptions options = new CrystalDecisions.Shared.PdfFormatOptions();
-            //options.CreateBookmarksFromGroupTree = true;
-
-            crvboletas.ReportSource = reporte;
-            foreach (Control x in crvboletas.Controls)
-            {
-                if (x.GetType().Name.ToUpper() == "REPORTGROUPTREE")
-                {
-                    ReportGroupTree xx = x as ReportGroupTree;
-                    //xx.BackColor = Color.Red;
-                    // xx.ForeColor = Color.Blue;
-                    //xx.BorderStyle = BorderStyle.Fixed3D;
-                    //xx.Font = new Font("Franklin Gothic Book", 12,FontStyle.Bold);
-                    //  xx.Paint += new PaintEventHandler(CrearPintura);
-
-                }
-            }
-            crvboletas.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
-            //string cadena = "";
-            //foreach (Control ctl in crvboletas.Controls)
+            //reporte.FileName = $"Conciliacion Bancaria {empresa} del " + fechaini.ToString("MMMM/yyyy") + " al " + fechafin.ToString("MMMM/yyyy");
+            crvboletas.AllowedExportFormats = (int)(ExportFormatType.PortableDocFormat | ExportFormatType.Excel | ExportFormatType.ExcelWorkbook);
+            crvboletas.ReportSource = reporte;            
+            //foreach (Control x in crvboletas.Controls)
             //{
-            //    if (ctl is ToolStrip)
+            //    if (x.GetType().Name.ToUpper() == "REPORTGROUPTREE")
             //    {
-            //        ToolStrip ts = (ToolStrip)ctl;
-            //        cadena = "";
-            //        foreach (ToolStripItem clt in ts.Items)
-            //        {
-            //            if (clt.ToolTipText.ToUpper() == "EXPORTAR INFORME")
-            //                cadena += clt.ToolTipText;
-            //            ToolStripButton tsb = new ToolStripButton();
-            //            tsb.Size = clt.Size;
-            //            tsb.Padding = clt.Padding;
-            //            tsb.Margin = clt.Margin;
-            //            tsb.TextImageRelation = clt.TextImageRelation;
-            //            tsb.Text = clt.Text;
-            //            tsb.ToolTipText = clt.ToolTipText;
-            //            tsb.ImageScaling = clt.ImageScaling;
-            //            tsb.ImageAlign = clt.ImageAlign;
-            //            tsb.ImageIndex = clt.ImageIndex;
-            //            tsb.Click += new EventHandler(CLicktime);
-            //            ts.Items.Insert(3, tsb);
-            //            break;
-            //        }
+            //        ReportGroupTree xx = x as ReportGroupTree;
+            //        //xx.BackColor = Color.Red;
+            //        // xx.ForeColor = Color.Blue;
+            //        //xx.BorderStyle = BorderStyle.Fixed3D;
+            //        //xx.Font = new Font("Franklin Gothic Book", 12,FontStyle.Bold);
+            //        //  xx.Paint += new PaintEventHandler(CrearPintura);
             //    }
-            //}
-            //msg(cadena);            
+            //}                 
         }
-
         private void CrearPintura(object sender, PaintEventArgs e)
         {
             msg(this.Name);

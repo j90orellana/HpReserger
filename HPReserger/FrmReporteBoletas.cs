@@ -160,7 +160,7 @@ namespace HPReserger
         {
             Cursor = Cursors.Default;
             frmproce.Close();
-            msg("Exportado con Exito");
+            msgOK("Exportado con Exito");
         }
     }
 }

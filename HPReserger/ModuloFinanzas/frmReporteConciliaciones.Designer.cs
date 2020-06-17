@@ -78,7 +78,7 @@
             this.BtnCerrar.Location = new System.Drawing.Point(807, 545);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
-            this.BtnCerrar.TabIndex = 190;
+            this.BtnCerrar.TabIndex = 7;
             this.BtnCerrar.Text = "Cancelar";
             this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrar.UseVisualStyleBackColor = false;
@@ -99,14 +99,14 @@
             // cbofechaini
             // 
             this.cbofechaini.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 11, 0, 0, 0, 0);
+            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 16, 0, 0, 0, 0);
             this.cbofechaini.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cbofechaini.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cbofechaini.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbofechaini.Location = new System.Drawing.Point(390, 51);
             this.cbofechaini.Name = "cbofechaini";
             this.cbofechaini.Size = new System.Drawing.Size(197, 26);
-            this.cbofechaini.TabIndex = 192;
+            this.cbofechaini.TabIndex = 3;
             this.cbofechaini.VerAño = true;
             this.cbofechaini.VerMes = true;
             this.cbofechaini.CambioFechas += new System.EventHandler(this.cbofechaini_CambioFechas);
@@ -114,14 +114,14 @@
             // cbofechafin
             // 
             this.cbofechafin.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 11, 0, 0, 0, 0);
+            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 16, 0, 0, 0, 0);
             this.cbofechafin.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cbofechafin.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cbofechafin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbofechafin.Location = new System.Drawing.Point(604, 51);
             this.cbofechafin.Name = "cbofechafin";
             this.cbofechafin.Size = new System.Drawing.Size(197, 26);
-            this.cbofechafin.TabIndex = 192;
+            this.cbofechafin.TabIndex = 4;
             this.cbofechafin.VerAño = true;
             this.cbofechafin.VerMes = true;
             this.cbofechafin.CambioFechas += new System.EventHandler(this.cbofechaini_CambioFechas);
@@ -140,7 +140,7 @@
             this.txtbusEmpresa.Name = "txtbusEmpresa";
             this.txtbusEmpresa.NextControlOnEnter = null;
             this.txtbusEmpresa.Size = new System.Drawing.Size(348, 21);
-            this.txtbusEmpresa.TabIndex = 193;
+            this.txtbusEmpresa.TabIndex = 0;
             this.txtbusEmpresa.Text = "Buscar Empresa";
             this.txtbusEmpresa.TextoDefecto = "Buscar Empresa";
             this.txtbusEmpresa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -155,7 +155,7 @@
             this.btnlimpiar.Location = new System.Drawing.Point(807, 52);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(82, 24);
-            this.btnlimpiar.TabIndex = 194;
+            this.btnlimpiar.TabIndex = 9;
             this.btnlimpiar.Text = "Limpiar";
             this.btnlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnlimpiar.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             this.txtbusbanco.Name = "txtbusbanco";
             this.txtbusbanco.NextControlOnEnter = null;
             this.txtbusbanco.Size = new System.Drawing.Size(351, 21);
-            this.txtbusbanco.TabIndex = 193;
+            this.txtbusbanco.TabIndex = 1;
             this.txtbusbanco.Text = "Buscar Banco";
             this.txtbusbanco.TextoDefecto = "Buscar Banco";
             this.txtbusbanco.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -196,7 +196,7 @@
             this.txtbusnrocuenta.Name = "txtbusnrocuenta";
             this.txtbusnrocuenta.NextControlOnEnter = null;
             this.txtbusnrocuenta.Size = new System.Drawing.Size(348, 21);
-            this.txtbusnrocuenta.TabIndex = 193;
+            this.txtbusnrocuenta.TabIndex = 2;
             this.txtbusnrocuenta.Text = "Buscar Nro Cuenta";
             this.txtbusnrocuenta.TextoDefecto = "Buscar Nro Cuenta";
             this.txtbusnrocuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -280,7 +280,7 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(872, 436);
-            this.dtgconten.TabIndex = 188;
+            this.dtgconten.TabIndex = 0;
             // 
             // xEmpresa
             // 
@@ -408,7 +408,7 @@
             this.btnexportarpdf.Location = new System.Drawing.Point(453, 545);
             this.btnexportarpdf.Name = "btnexportarpdf";
             this.btnexportarpdf.Size = new System.Drawing.Size(83, 24);
-            this.btnexportarpdf.TabIndex = 196;
+            this.btnexportarpdf.TabIndex = 6;
             this.btnexportarpdf.Text = "PDF";
             this.btnexportarpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexportarpdf.UseVisualStyleBackColor = true;
@@ -422,7 +422,7 @@
             this.btnExcel.Location = new System.Drawing.Point(367, 545);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(83, 24);
-            this.btnExcel.TabIndex = 196;
+            this.btnExcel.TabIndex = 5;
             this.btnExcel.Text = "EXCEL";
             this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcel.UseVisualStyleBackColor = true;
@@ -441,7 +441,7 @@
             this.btnActualizar.Location = new System.Drawing.Point(807, 25);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(82, 24);
-            this.btnActualizar.TabIndex = 194;
+            this.btnActualizar.TabIndex = 8;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;

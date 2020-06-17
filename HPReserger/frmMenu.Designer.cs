@@ -190,6 +190,7 @@
             this.eliminarCTSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certificadoDeRetencionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abonosExternosEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambioDeClaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1662,7 +1663,8 @@
             this.seguimientoToolStripMenuItem1,
             this.boletasToolStripMenuItem,
             this.certificadoDeRetencionesToolStripMenuItem,
-            this.abonosExternosEmpleadosToolStripMenuItem});
+            this.abonosExternosEmpleadosToolStripMenuItem,
+            this.bonosToolStripMenuItem});
             this.planillaToolStripMenuItem.Name = "planillaToolStripMenuItem";
             this.planillaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.planillaToolStripMenuItem.Tag = "15";
@@ -1887,6 +1889,14 @@
             this.abonosExternosEmpleadosToolStripMenuItem.Tag = "1511";
             this.abonosExternosEmpleadosToolStripMenuItem.Text = "Planilla Externa De Empleado";
             this.abonosExternosEmpleadosToolStripMenuItem.Click += new System.EventHandler(this.abonosExternosEmpleadosToolStripMenuItem_Click);
+            // 
+            // bonosToolStripMenuItem
+            // 
+            this.bonosToolStripMenuItem.Name = "bonosToolStripMenuItem";
+            this.bonosToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.bonosToolStripMenuItem.Tag = "1512";
+            this.bonosToolStripMenuItem.Text = "Comisiones";
+            this.bonosToolStripMenuItem.Click += new System.EventHandler(this.bonosToolStripMenuItem_Click);
             // 
             // seguridadToolStripMenuItem
             // 
@@ -3197,5 +3207,6 @@
         private System.Windows.Forms.ToolStripMenuItem conciliarBancosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteConciliacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroMayorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bonosToolStripMenuItem;
     }
 }

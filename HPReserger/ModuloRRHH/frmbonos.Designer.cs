@@ -146,11 +146,11 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(581, 473);
+            this.btncancelar.Location = new System.Drawing.Point(581, 372);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(89, 23);
             this.btncancelar.TabIndex = 57;
@@ -161,11 +161,11 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Enabled = false;
             this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(485, 473);
+            this.btnaceptar.Location = new System.Drawing.Point(485, 372);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(89, 23);
             this.btnaceptar.TabIndex = 56;
@@ -392,7 +392,7 @@
             this.groupBox1.Controls.Add(this.dtgmovilidad);
             this.groupBox1.Controls.Add(this.cbomovilidad);
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(12, 363);
+            this.groupBox1.Location = new System.Drawing.Point(12, 259);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(660, 108);
             this.groupBox1.TabIndex = 71;
@@ -403,6 +403,7 @@
             // txtmovilidad
             // 
             this.txtmovilidad.AutoSize = true;
+            this.txtmovilidad.BackColor = System.Drawing.Color.Transparent;
             this.txtmovilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtmovilidad.Location = new System.Drawing.Point(309, 12);
             this.txtmovilidad.Name = "txtmovilidad";
@@ -419,7 +420,7 @@
             this.groupBox2.Controls.Add(this.cboregular);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(12, 328);
+            this.groupBox2.Location = new System.Drawing.Point(12, 224);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(660, 37);
             this.groupBox2.TabIndex = 72;
@@ -428,6 +429,7 @@
             // txtregular
             // 
             this.txtregular.AutoSize = true;
+            this.txtregular.BackColor = System.Drawing.Color.Transparent;
             this.txtregular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtregular.Location = new System.Drawing.Point(309, 9);
             this.txtregular.Name = "txtregular";
@@ -450,16 +452,18 @@
             this.groupBox3.Controls.Add(this.numproduccion);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(12, 222);
+            this.groupBox3.Location = new System.Drawing.Point(680, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(660, 108);
             this.groupBox3.TabIndex = 73;
             this.groupBox3.TabStop = false;
             this.toolTip1.SetToolTip(this.groupBox3, resources.GetString("groupBox3.ToolTip"));
+            this.groupBox3.Visible = false;
             // 
             // txtproduccion
             // 
             this.txtproduccion.AutoSize = true;
+            this.txtproduccion.BackColor = System.Drawing.Color.Transparent;
             this.txtproduccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtproduccion.Location = new System.Drawing.Point(309, 11);
             this.txtproduccion.Name = "txtproduccion";
@@ -526,6 +530,7 @@
             // txtdestaque
             // 
             this.txtdestaque.AutoSize = true;
+            this.txtdestaque.BackColor = System.Drawing.Color.Transparent;
             this.txtdestaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdestaque.Location = new System.Drawing.Point(309, 13);
             this.txtdestaque.Name = "txtdestaque";
@@ -639,10 +644,10 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnmodificar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(298, 473);
+            this.btnmodificar.Location = new System.Drawing.Point(298, 372);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(89, 23);
             this.btnmodificar.TabIndex = 76;
@@ -659,7 +664,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 501);
+            this.ClientSize = new System.Drawing.Size(684, 403);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -668,7 +673,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
-            this.MinimumSize = new System.Drawing.Size(700, 540);
+            this.MinimumSize = new System.Drawing.Size(700, 442);
             this.Name = "frmbonos";
             this.Nombre = "Formulario de Bonos";
             this.Text = "Formulario de Bonos";

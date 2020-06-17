@@ -4561,5 +4561,27 @@ namespace HPReserger
         {
             frmMayorcuentasPerfil = null;
         }
+        ModuloRRHH.frmBonosEmpleados frmbonoempleados;
+        private void bonosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmbonoempleados == null)
+            {
+                frmbonoempleados = new ModuloRRHH.frmBonosEmpleados();
+                frmbonoempleados.MdiParent = this;
+                frmbonoempleados.Icon = ICono;
+                frmbonoempleados.FormClosed += new FormClosedEventHandler(Cerrarfrmbonoempleados);
+                frmbonoempleados.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmbonoempleados.Activate();
+                ValidarVentanas(frmbonoempleados);
+            }
+        }
+        private void Cerrarfrmbonoempleados(object sender, FormClosedEventArgs e)
+        {
+            frmbonoempleados = null;
+        }
     }
 }

@@ -370,13 +370,13 @@
     <Compile Include="ModuloContable\frmListadoAsientosContables.Designer.cs">
       <DependentUpon>frmListadoAsientosContables.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModuloCrystalReport\frmReporteListadoAsientos.cs">
+    <Compile Include="ModuloFinanzas\ModuloCrystalReport\frmReporteListadoAsientos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModuloCrystalReport\frmReporteListadoAsientos.Designer.cs">
+    <Compile Include="ModuloFinanzas\ModuloCrystalReport\frmReporteListadoAsientos.Designer.cs">
       <DependentUpon>frmReporteListadoAsientos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModuloCrystalReport\rptListadodeAsientos.cs">
+    <Compile Include="ModuloFinanzas\ModuloCrystalReport\rptListadodeAsientos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptListadodeAsientos.rpt</DependentUpon>
@@ -513,6 +513,12 @@
     </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroBancosEfectivo.Designer.cs">
       <DependentUpon>frmLibroBancosEfectivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmBonosEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmBonosEmpleados.Designer.cs">
+      <DependentUpon>frmBonosEmpleados.cs</DependentUpon>
     </Compile>
     <Compile Include="rptConciliacionesReporte.cs">
       <AutoGen>True</AutoGen>
@@ -1986,10 +1992,10 @@
     <EmbeddedResource Include="ModuloContable\frmListadoAsientosContables.resx">
       <DependentUpon>frmListadoAsientosContables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModuloCrystalReport\frmReporteListadoAsientos.resx">
+    <EmbeddedResource Include="ModuloFinanzas\ModuloCrystalReport\frmReporteListadoAsientos.resx">
       <DependentUpon>frmReporteListadoAsientos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModuloCrystalReport\rptListadodeAsientos.rpt">
+    <EmbeddedResource Include="ModuloFinanzas\ModuloCrystalReport\rptListadodeAsientos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptListadodeAsientos.cs</LastGenOutput>
     </EmbeddedResource>
@@ -2058,6 +2064,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroBancosEfectivo.resx">
       <DependentUpon>frmLibroBancosEfectivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloRRHH\frmBonosEmpleados.resx">
+      <DependentUpon>frmBonosEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptConciliacionesReporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
