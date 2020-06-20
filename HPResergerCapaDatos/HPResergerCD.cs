@@ -4295,10 +4295,10 @@ namespace HPResergerCapaDatos
             object[] valores = { codigo, tipoid, numero, tipo, observacion };
             return bd.DataTableFromProcedure("usp_ActualizarMemoPremio", parametros, valores, null); ;
         }
-        public DataTable ReporteBoletas(int empresa, int tipo, string numero, int fecha, DateTime fecinicio, DateTime fecfin)
+        public DataTable ReporteBoletas(string empresa, string numero, DateTime fecinicio, DateTime fecfin)
         {
-            string[] parametros = { "@empresa", "@tipo", "@numero", "@fecha", "@fecInicio", "@fecFin" };
-            object[] valores = { empresa, tipo, numero, fecha, fecinicio, fecfin };
+            string[] parametros = { "@empresa", "@numero", "@fecInicio", "@fecFin" };
+            object[] valores = { empresa, numero, fecinicio, fecfin };
             return bd.DataTableFromProcedure("usp_ReporteBoletas", parametros, valores, null); ;
         }
         public DataTable BuscarBoletasPOrPAgar(int empresa, int tipo, string numero, int fecha, DateTime fecinicio, DateTime fecfin)
@@ -4832,10 +4832,10 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin };
             return bd.DataTableFromProcedure("[usp_Conciliacion_Busqueda_ConDetalle]", parametros, valores, null);
         }
-        public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento) //1 activa ,cualquiera desactiva
+        public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento, int @idusuario) //1 activa ,cualquiera desactiva
         {
-            string[] parametros = { "@opcion", "@pkid", "@tipodoc", "@nrodoc", "@periodo", "@importe", "@sustento" };
-            object[] valores = { opcion, pkid, tipodoc, nrodoc, periodo, importe, sustento };
+            string[] parametros = { "@opcion", "@pkid", "@tipodoc", "@nrodoc", "@periodo", "@importe", "@sustento", "@idusuario" };
+            object[] valores = { opcion, pkid, tipodoc, nrodoc, periodo, importe, sustento, @idusuario };
             return bd.DataTableFromProcedure("usp_ComisionesEmpleados", parametros, valores, null);
         }
         public DataTable ComisionesEmpleadosBusqueda(string empleado, DateTime fechaini, DateTime fechafin, decimal importemin, decimal importemax) //1 activa ,cualquiera desactiva

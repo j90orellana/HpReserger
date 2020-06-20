@@ -2007,9 +2007,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ActualizarMemoPremio(codigo, tipoid, numero, tipo, observacion);
         }
-        public DataTable ReporteBoletas(int empresa, int tipo, string numero, int fecha, DateTime fecinicio, DateTime fecfin)
+        public DataTable ReporteBoletas(string empresa, string numero, DateTime fecinicio, DateTime fecfin)
         {
-            return cdOrdenPedido.ReporteBoletas(empresa, tipo, numero, fecha, fecinicio, fecfin);
+            return cdOrdenPedido.ReporteBoletas(empresa, numero, fecinicio, fecfin);
         }
         public DataTable BuscarBoletasPOrPAgar(int empresa, int tipo, string numero, int fecha, DateTime fecinicio, DateTime fecfin)
         {
@@ -2563,19 +2563,23 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ConciliacionDetalle(@opcion, @fkid, @pkid, @tipo, grupo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2,
                 @idasiento, @estado, @seguimiento);
         }
-        public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
+        public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin)
         {
             return cdOrdenPedido.Conciliacion_Busqueda(empresa, banco, nrocuenta, FechaIni, FechaFin);
         }
-        public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
+        public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin)
         {
             return cdOrdenPedido.Conciliacion_Busqueda_ConDetalle(empresa, banco, nrocuenta, FechaIni, FechaFin);
         }
-        public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento) //1 activa ,cualquiera desactiva
+        public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento, int idlogin)
         {
-            return cdOrdenPedido.ComisionesEmpleados(opcion, pkid, tipodoc, nrodoc, periodo, importe, sustento);
+            return cdOrdenPedido.ComisionesEmpleados(opcion, pkid, tipodoc, nrodoc, periodo, importe, sustento, idlogin);
         }
-        public DataTable ComisionesEmpleadosBusqueda(string empleado, DateTime fechaini, DateTime fechafin, decimal importemin, decimal importemax) //1 activa ,cualquiera desactiva
+        public DataTable ComisionesEmpleadosEliminar(int pkid)//solo lo pasa a estado = 0
+        {
+            return cdOrdenPedido.ComisionesEmpleados(10, pkid, 0, "", DateTime.Now, 0, null, 0);
+        }
+        public DataTable ComisionesEmpleadosBusqueda(string empleado, DateTime fechaini, DateTime fechafin, decimal importemin, decimal importemax)
         {
             return cdOrdenPedido.ComisionesEmpleadosBusqueda(empleado, fechaini, fechafin, importemin, importemax);
         }

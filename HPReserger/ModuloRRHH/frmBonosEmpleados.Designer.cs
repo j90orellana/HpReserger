@@ -32,10 +32,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBonosEmpleados));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBonosEmpleados));
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xnrodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xempleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xperiodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ximpornte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ximagen = new System.Windows.Forms.DataGridViewImageColumn();
+            this.xusuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblexcel = new System.Windows.Forms.Label();
             this.BtnCerrar = new HpResergerUserControls.ButtonPer();
             this.lblRegistros = new System.Windows.Forms.Label();
@@ -71,13 +79,7 @@
             this.cbofechaini = new HpResergerUserControls.ComboMesAño();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
             this.separadorOre2 = new HpResergerUserControls.SeparadorOre();
-            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xtipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xnrodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xempleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xperiodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ximpornte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ximagen = new System.Windows.Forms.DataGridViewImageColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboFoto)).BeginInit();
             this.SuspendLayout();
@@ -116,7 +118,8 @@
             this.xempleado,
             this.xperiodo,
             this.ximpornte,
-            this.ximagen});
+            this.ximagen,
+            this.xusuario});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,6 +139,81 @@
             this.dtgconten.Size = new System.Drawing.Size(750, 342);
             this.dtgconten.TabIndex = 17;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // xpkid
+            // 
+            this.xpkid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xpkid.DataPropertyName = "pkid";
+            this.xpkid.HeaderText = "Id";
+            this.xpkid.MinimumWidth = 30;
+            this.xpkid.Name = "xpkid";
+            this.xpkid.Width = 30;
+            // 
+            // xtipodoc
+            // 
+            this.xtipodoc.DataPropertyName = "tipodoc";
+            this.xtipodoc.HeaderText = "tipodoc";
+            this.xtipodoc.Name = "xtipodoc";
+            this.xtipodoc.Visible = false;
+            // 
+            // xnrodoc
+            // 
+            this.xnrodoc.DataPropertyName = "nrodoc";
+            this.xnrodoc.HeaderText = "nrodoc";
+            this.xnrodoc.Name = "xnrodoc";
+            this.xnrodoc.Visible = false;
+            // 
+            // xempleado
+            // 
+            this.xempleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xempleado.DataPropertyName = "empleado";
+            this.xempleado.HeaderText = "Empleado";
+            this.xempleado.MinimumWidth = 150;
+            this.xempleado.Name = "xempleado";
+            // 
+            // xperiodo
+            // 
+            this.xperiodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xperiodo.DataPropertyName = "periodo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "MMMM/yyyy";
+            this.xperiodo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xperiodo.HeaderText = "Periodo";
+            this.xperiodo.MinimumWidth = 80;
+            this.xperiodo.Name = "xperiodo";
+            this.xperiodo.Width = 80;
+            // 
+            // ximpornte
+            // 
+            this.ximpornte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.ximpornte.DataPropertyName = "importe";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.ximpornte.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ximpornte.HeaderText = "Importe";
+            this.ximpornte.MinimumWidth = 70;
+            this.ximpornte.Name = "ximpornte";
+            this.ximpornte.Width = 70;
+            // 
+            // ximagen
+            // 
+            this.ximagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ximagen.DataPropertyName = "imgsustento";
+            this.ximagen.HeaderText = "Sustento";
+            this.ximagen.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.ximagen.MinimumWidth = 250;
+            this.ximagen.Name = "ximagen";
+            this.ximagen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ximagen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ximagen.Visible = false;
+            // 
+            // xusuario
+            // 
+            this.xusuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xusuario.DataPropertyName = "usuario";
+            this.xusuario.HeaderText = "Usuario";
+            this.xusuario.Name = "xusuario";
+            this.xusuario.Width = 71;
             // 
             // lblexcel
             // 
@@ -192,7 +270,7 @@
             // cboFecha
             // 
             this.cboFecha.BackColor = System.Drawing.Color.Transparent;
-            this.cboFecha.FechaConDiaActual = new System.DateTime(2020, 6, 17, 0, 0, 0, 0);
+            this.cboFecha.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
             this.cboFecha.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cboFecha.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cboFecha.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -288,7 +366,7 @@
             this.txtImagen.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtImagen.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtImagen.Enabled = false;
-            this.txtImagen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImagen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImagen.ForeColor = System.Drawing.Color.Black;
             this.txtImagen.Format = null;
             this.txtImagen.Location = new System.Drawing.Point(76, 75);
@@ -329,6 +407,7 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -343,6 +422,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblVerImagen
             // 
@@ -430,6 +510,7 @@
             this.btnExcel.Text = "EXCEL";
             this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // label6
             // 
@@ -536,6 +617,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.label9.Location = new System.Drawing.Point(233, 146);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(17, 15);
@@ -585,7 +667,7 @@
             // cbofechafin
             // 
             this.cbofechafin.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 17, 0, 0, 0, 0);
+            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
             this.cbofechafin.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cbofechafin.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cbofechafin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -600,7 +682,7 @@
             // cbofechaini
             // 
             this.cbofechaini.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 17, 0, 0, 0, 0);
+            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
             this.cbofechaini.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cbofechaini.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cbofechaini.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -634,71 +716,11 @@
             this.separadorOre2.Size = new System.Drawing.Size(749, 2);
             this.separadorOre2.TabIndex = 208;
             // 
-            // xpkid
+            // backgroundWorker1
             // 
-            this.xpkid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xpkid.DataPropertyName = "pkid";
-            this.xpkid.HeaderText = "Id";
-            this.xpkid.MinimumWidth = 30;
-            this.xpkid.Name = "xpkid";
-            this.xpkid.Width = 30;
-            // 
-            // xtipodoc
-            // 
-            this.xtipodoc.DataPropertyName = "tipodoc";
-            this.xtipodoc.HeaderText = "tipodoc";
-            this.xtipodoc.Name = "xtipodoc";
-            this.xtipodoc.Visible = false;
-            // 
-            // xnrodoc
-            // 
-            this.xnrodoc.DataPropertyName = "nrodoc";
-            this.xnrodoc.HeaderText = "nrodoc";
-            this.xnrodoc.Name = "xnrodoc";
-            this.xnrodoc.Visible = false;
-            // 
-            // xempleado
-            // 
-            this.xempleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xempleado.DataPropertyName = "empleado";
-            this.xempleado.HeaderText = "Empleado";
-            this.xempleado.MinimumWidth = 150;
-            this.xempleado.Name = "xempleado";
-            // 
-            // xperiodo
-            // 
-            this.xperiodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xperiodo.DataPropertyName = "periodo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "MMMM/yyyy";
-            this.xperiodo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xperiodo.HeaderText = "Periodo";
-            this.xperiodo.MinimumWidth = 80;
-            this.xperiodo.Name = "xperiodo";
-            this.xperiodo.Width = 80;
-            // 
-            // ximpornte
-            // 
-            this.ximpornte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.ximpornte.DataPropertyName = "importe";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.ximpornte.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ximpornte.HeaderText = "Importe";
-            this.ximpornte.MinimumWidth = 70;
-            this.ximpornte.Name = "ximpornte";
-            this.ximpornte.Width = 70;
-            // 
-            // ximagen
-            // 
-            this.ximagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ximagen.DataPropertyName = "imgsustento";
-            this.ximagen.HeaderText = "Sustento";
-            this.ximagen.MinimumWidth = 250;
-            this.ximagen.Name = "ximagen";
-            this.ximagen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ximagen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ximagen.Width = 250;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // frmBonosEmpleados
             // 
@@ -799,5 +821,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xperiodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ximpornte;
         private System.Windows.Forms.DataGridViewImageColumn ximagen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xusuario;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

@@ -99,13 +99,13 @@
             // cbofechaini
             // 
             this.cbofechaini.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 16, 0, 0, 0, 0);
+            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
             this.cbofechaini.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cbofechaini.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cbofechaini.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbofechaini.Location = new System.Drawing.Point(390, 51);
+            this.cbofechaini.Location = new System.Drawing.Point(390, 53);
             this.cbofechaini.Name = "cbofechaini";
-            this.cbofechaini.Size = new System.Drawing.Size(197, 26);
+            this.cbofechaini.Size = new System.Drawing.Size(197, 23);
             this.cbofechaini.TabIndex = 3;
             this.cbofechaini.VerAño = true;
             this.cbofechaini.VerMes = true;
@@ -114,13 +114,13 @@
             // cbofechafin
             // 
             this.cbofechafin.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 16, 0, 0, 0, 0);
+            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
             this.cbofechafin.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cbofechafin.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cbofechafin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbofechafin.Location = new System.Drawing.Point(604, 51);
+            this.cbofechafin.Location = new System.Drawing.Point(604, 53);
             this.cbofechafin.Name = "cbofechafin";
-            this.cbofechafin.Size = new System.Drawing.Size(197, 26);
+            this.cbofechafin.Size = new System.Drawing.Size(197, 23);
             this.cbofechafin.TabIndex = 4;
             this.cbofechafin.VerAño = true;
             this.cbofechafin.VerMes = true;

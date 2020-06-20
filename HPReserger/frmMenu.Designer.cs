@@ -1659,12 +1659,12 @@
             this.desvinculaciónToolStripMenuItem,
             this.faltasToolStripMenuItem,
             this.amonestacionesPremiosToolStripMenuItem,
+            this.bonosToolStripMenuItem,
             this.toolStripSeparator3,
             this.seguimientoToolStripMenuItem1,
             this.boletasToolStripMenuItem,
             this.certificadoDeRetencionesToolStripMenuItem,
-            this.abonosExternosEmpleadosToolStripMenuItem,
-            this.bonosToolStripMenuItem});
+            this.abonosExternosEmpleadosToolStripMenuItem});
             this.planillaToolStripMenuItem.Name = "planillaToolStripMenuItem";
             this.planillaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.planillaToolStripMenuItem.Tag = "15";
@@ -1892,6 +1892,7 @@
             // 
             // bonosToolStripMenuItem
             // 
+            this.bonosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("bonosToolStripMenuItem.Image")));
             this.bonosToolStripMenuItem.Name = "bonosToolStripMenuItem";
             this.bonosToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
             this.bonosToolStripMenuItem.Tag = "1512";
