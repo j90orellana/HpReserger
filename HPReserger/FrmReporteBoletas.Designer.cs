@@ -30,6 +30,7 @@ namespace HPReserger
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -62,7 +63,7 @@ namespace HPReserger
             this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.empres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iniciomes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidosynombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,7 +116,17 @@ namespace HPReserger
             this.btnActualizar = new System.Windows.Forms.Button();
             this.chkFechaxHoja = new HpResergerUserControls.checkboxOre();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.PanelMostrar = new HpResergerUserControls.PanelOre();
+            this.PanelAbajo = new HpResergerUserControls.PanelOre();
+            this.panelDerecho = new HpResergerUserControls.PanelOre();
+            this.btnok = new HpResergerUserControls.ButtonPer();
+            this.btncancelar = new HpResergerUserControls.ButtonPer();
+            this.chkListaColumnas = new System.Windows.Forms.CheckedListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnColumnas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
+            this.PanelMostrar.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtgconten
@@ -148,7 +159,7 @@ namespace HPReserger
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.empres,
             this.ruc,
-            this.iniciomes,
+            this.periodo,
             this.tipodoc,
             this.doc,
             this.apellidosynombres,
@@ -196,7 +207,7 @@ namespace HPReserger
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 90);
+            this.dtgconten.Location = new System.Drawing.Point(12, 98);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -212,8 +223,9 @@ namespace HPReserger
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dtgconten.Size = new System.Drawing.Size(930, 434);
-            this.dtgconten.TabIndex = 58;
+            this.dtgconten.Size = new System.Drawing.Size(930, 426);
+            this.dtgconten.TabIndex = 4;
+            this.dtgconten.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dtgconten_RowsRemoved);
             // 
             // empres
             // 
@@ -233,18 +245,18 @@ namespace HPReserger
             this.ruc.ReadOnly = true;
             this.ruc.Visible = false;
             // 
-            // iniciomes
+            // periodo
             // 
-            this.iniciomes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.iniciomes.DataPropertyName = "Periodo";
+            this.periodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.periodo.DataPropertyName = "Periodo";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.Format = "MMMM/yyyy";
-            this.iniciomes.DefaultCellStyle = dataGridViewCellStyle3;
-            this.iniciomes.HeaderText = "Periodo";
-            this.iniciomes.MinimumWidth = 57;
-            this.iniciomes.Name = "iniciomes";
-            this.iniciomes.ReadOnly = true;
-            this.iniciomes.Width = 57;
+            this.periodo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.periodo.HeaderText = "Periodo";
+            this.periodo.MinimumWidth = 57;
+            this.periodo.Name = "periodo";
+            this.periodo.ReadOnly = true;
+            this.periodo.Width = 57;
             // 
             // tipodoc
             // 
@@ -271,7 +283,7 @@ namespace HPReserger
             this.apellidosynombres.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.apellidosynombres.DataPropertyName = "NombreEmpleado";
             this.apellidosynombres.HeaderText = "Nombre Empleado";
-            this.apellidosynombres.MinimumWidth = 80;
+            this.apellidosynombres.MinimumWidth = 150;
             this.apellidosynombres.Name = "apellidosynombres";
             this.apellidosynombres.ReadOnly = true;
             // 
@@ -687,7 +699,7 @@ namespace HPReserger
             this.btnExcel.Location = new System.Drawing.Point(436, 531);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(83, 24);
-            this.btnExcel.TabIndex = 78;
+            this.btnExcel.TabIndex = 5;
             this.btnExcel.Text = "EXCEL";
             this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcel.UseVisualStyleBackColor = true;
@@ -705,7 +717,7 @@ namespace HPReserger
             this.BtnCerrar.Location = new System.Drawing.Point(859, 531);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
-            this.BtnCerrar.TabIndex = 79;
+            this.BtnCerrar.TabIndex = 7;
             this.BtnCerrar.Text = "Cancelar";
             this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrar.UseVisualStyleBackColor = false;
@@ -739,7 +751,7 @@ namespace HPReserger
             this.lblexcel.AutoSize = true;
             this.lblexcel.BackColor = System.Drawing.Color.Transparent;
             this.lblexcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblexcel.Location = new System.Drawing.Point(12, 74);
+            this.lblexcel.Location = new System.Drawing.Point(12, 83);
             this.lblexcel.Name = "lblexcel";
             this.lblexcel.Size = new System.Drawing.Size(152, 13);
             this.lblexcel.TabIndex = 194;
@@ -754,7 +766,7 @@ namespace HPReserger
             this.btnlimpiar.Location = new System.Drawing.Point(859, 48);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(82, 24);
-            this.btnlimpiar.TabIndex = 196;
+            this.btnlimpiar.TabIndex = 9;
             this.btnlimpiar.Text = "Limpiar";
             this.btnlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnlimpiar.UseVisualStyleBackColor = true;
@@ -772,11 +784,11 @@ namespace HPReserger
             this.txtbusEmpleado.ForeColor = System.Drawing.Color.Black;
             this.txtbusEmpleado.Format = null;
             this.txtbusEmpleado.Location = new System.Drawing.Point(12, 50);
-            this.txtbusEmpleado.MaxLength = 30;
+            this.txtbusEmpleado.MaxLength = 600;
             this.txtbusEmpleado.Name = "txtbusEmpleado";
             this.txtbusEmpleado.NextControlOnEnter = null;
             this.txtbusEmpleado.Size = new System.Drawing.Size(400, 21);
-            this.txtbusEmpleado.TabIndex = 195;
+            this.txtbusEmpleado.TabIndex = 1;
             this.txtbusEmpleado.Text = "Buscar Por Nombre Empleado O N.Documento";
             this.txtbusEmpleado.TextoDefecto = "Buscar Por Nombre Empleado O N.Documento";
             this.txtbusEmpleado.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -795,11 +807,11 @@ namespace HPReserger
             this.txtbusEmpresa.ForeColor = System.Drawing.Color.Black;
             this.txtbusEmpresa.Format = null;
             this.txtbusEmpresa.Location = new System.Drawing.Point(12, 24);
-            this.txtbusEmpresa.MaxLength = 30;
+            this.txtbusEmpresa.MaxLength = 600;
             this.txtbusEmpresa.Name = "txtbusEmpresa";
             this.txtbusEmpresa.NextControlOnEnter = null;
             this.txtbusEmpresa.Size = new System.Drawing.Size(400, 21);
-            this.txtbusEmpresa.TabIndex = 195;
+            this.txtbusEmpresa.TabIndex = 0;
             this.txtbusEmpresa.Text = "Buscar Por Empresa";
             this.txtbusEmpresa.TextoDefecto = "Buscar Por Empresa";
             this.txtbusEmpresa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -834,14 +846,14 @@ namespace HPReserger
             // 
             this.cbofechafin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbofechafin.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
+            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 23, 0, 0, 0, 0);
             this.cbofechafin.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cbofechafin.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cbofechafin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbofechafin.Location = new System.Drawing.Point(651, 49);
             this.cbofechafin.Name = "cbofechafin";
             this.cbofechafin.Size = new System.Drawing.Size(197, 23);
-            this.cbofechafin.TabIndex = 198;
+            this.cbofechafin.TabIndex = 3;
             this.cbofechafin.VerAño = true;
             this.cbofechafin.VerMes = true;
             this.cbofechafin.CambioFechas += new System.EventHandler(this.cbofechaini_CambioFechas);
@@ -850,14 +862,14 @@ namespace HPReserger
             // 
             this.cbofechaini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbofechaini.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
+            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 23, 0, 0, 0, 0);
             this.cbofechaini.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.cbofechaini.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             this.cbofechaini.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbofechaini.Location = new System.Drawing.Point(436, 49);
             this.cbofechaini.Name = "cbofechaini";
             this.cbofechaini.Size = new System.Drawing.Size(197, 23);
-            this.cbofechaini.TabIndex = 197;
+            this.cbofechaini.TabIndex = 2;
             this.cbofechaini.VerAño = true;
             this.cbofechaini.VerMes = true;
             this.cbofechaini.CambioFechas += new System.EventHandler(this.cbofechaini_CambioFechas);
@@ -871,7 +883,7 @@ namespace HPReserger
             this.btnActualizar.Location = new System.Drawing.Point(859, 22);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(82, 24);
-            this.btnActualizar.TabIndex = 201;
+            this.btnActualizar.TabIndex = 8;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -888,20 +900,140 @@ namespace HPReserger
             this.chkFechaxHoja.Location = new System.Drawing.Point(525, 534);
             this.chkFechaxHoja.Name = "chkFechaxHoja";
             this.chkFechaxHoja.Size = new System.Drawing.Size(87, 19);
-            this.chkFechaxHoja.TabIndex = 202;
+            this.chkFechaxHoja.TabIndex = 6;
             this.chkFechaxHoja.Text = "FechaxHoja";
             this.chkFechaxHoja.UseVisualStyleBackColor = false;
+            // 
+            // fondoColorOre1
+            // 
+            this.fondoColorOre1.Angulo = 45;
+            this.fondoColorOre1.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
+            this.fondoColorOre1.control = this.PanelMostrar;
+            // 
+            // PanelMostrar
+            // 
+            this.PanelMostrar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PanelMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))), ((int)(((byte)(71)))));
+            this.PanelMostrar.Controls.Add(this.PanelAbajo);
+            this.PanelMostrar.Controls.Add(this.panelDerecho);
+            this.PanelMostrar.Controls.Add(this.btnok);
+            this.PanelMostrar.Controls.Add(this.btncancelar);
+            this.PanelMostrar.Controls.Add(this.chkListaColumnas);
+            this.PanelMostrar.Controls.Add(this.label2);
+            this.PanelMostrar.Location = new System.Drawing.Point(285, 84);
+            this.PanelMostrar.Movible = false;
+            this.PanelMostrar.Name = "PanelMostrar";
+            this.PanelMostrar.Size = new System.Drawing.Size(385, 392);
+            this.PanelMostrar.TabIndex = 203;
+            this.PanelMostrar.Visible = false;
+            // 
+            // PanelAbajo
+            // 
+            this.PanelAbajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.PanelAbajo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PanelAbajo.Location = new System.Drawing.Point(0, 389);
+            this.PanelAbajo.Movible = false;
+            this.PanelAbajo.Name = "PanelAbajo";
+            this.PanelAbajo.Size = new System.Drawing.Size(382, 3);
+            this.PanelAbajo.TabIndex = 207;
+            // 
+            // panelDerecho
+            // 
+            this.panelDerecho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.panelDerecho.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelDerecho.Location = new System.Drawing.Point(382, 0);
+            this.panelDerecho.Movible = false;
+            this.panelDerecho.Name = "panelDerecho";
+            this.panelDerecho.Size = new System.Drawing.Size(3, 392);
+            this.panelDerecho.TabIndex = 206;
+            // 
+            // btnok
+            // 
+            this.btnok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnok.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnok.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnok.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnok.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnok.ForeColor = System.Drawing.Color.White;
+            this.btnok.Location = new System.Drawing.Point(194, 361);
+            this.btnok.Name = "btnok";
+            this.btnok.Size = new System.Drawing.Size(83, 24);
+            this.btnok.TabIndex = 204;
+            this.btnok.Text = "Aceptar";
+            this.btnok.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnok.UseVisualStyleBackColor = false;
+            this.btnok.Click += new System.EventHandler(this.btnok_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.BackColor = System.Drawing.Color.Crimson;
+            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.ForeColor = System.Drawing.Color.White;
+            this.btncancelar.Location = new System.Drawing.Point(283, 361);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(83, 24);
+            this.btncancelar.TabIndex = 204;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = false;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click_1);
+            // 
+            // chkListaColumnas
+            // 
+            this.chkListaColumnas.CheckOnClick = true;
+            this.chkListaColumnas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkListaColumnas.FormattingEnabled = true;
+            this.chkListaColumnas.Location = new System.Drawing.Point(13, 28);
+            this.chkListaColumnas.Name = "chkListaColumnas";
+            this.chkListaColumnas.Size = new System.Drawing.Size(353, 328);
+            this.chkListaColumnas.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(10, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(239, 13);
+            this.label2.TabIndex = 204;
+            this.label2.Text = "Seleccione las Columnas que quiere Mostrar:";
+            // 
+            // btnColumnas
+            // 
+            this.btnColumnas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnColumnas.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnColumnas.Image = ((System.Drawing.Image)(resources.GetObject("btnColumnas.Image")));
+            this.btnColumnas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnColumnas.Location = new System.Drawing.Point(859, 72);
+            this.btnColumnas.Name = "btnColumnas";
+            this.btnColumnas.Size = new System.Drawing.Size(82, 24);
+            this.btnColumnas.TabIndex = 10;
+            this.btnColumnas.Text = "Columnas";
+            this.btnColumnas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnColumnas.UseVisualStyleBackColor = true;
+            this.btnColumnas.Click += new System.EventHandler(this.btnlimpiar_Click21);
             // 
             // FrmReporteBoletas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(954, 561);
+            this.Controls.Add(this.PanelMostrar);
             this.Controls.Add(this.chkFechaxHoja);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbofechafin);
             this.Controls.Add(this.cbofechaini);
+            this.Controls.Add(this.btnColumnas);
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.txtbusEmpresa);
             this.Controls.Add(this.txtbusEmpleado);
@@ -918,6 +1050,8 @@ namespace HPReserger
             this.Text = "Reportes de Boletas";
             this.Load += new System.EventHandler(this.FrmReporteBoletas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
+            this.PanelMostrar.ResumeLayout(false);
+            this.PanelMostrar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -941,9 +1075,18 @@ namespace HPReserger
         private ComboMesAño cbofechafin;
         private ComboMesAño cbofechaini;
         private System.Windows.Forms.Button btnActualizar;
+        private checkboxOre chkFechaxHoja;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private FondoColorOre fondoColorOre1;
+        private System.Windows.Forms.Button btnColumnas;
+        private PanelOre PanelMostrar;
+        private ButtonPer btnok;
+        private ButtonPer btncancelar;
+        private System.Windows.Forms.CheckedListBox chkListaColumnas;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn empres;
         private System.Windows.Forms.DataGridViewTextBoxColumn ruc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iniciomes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn periodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipodoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn doc;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidosynombres;
@@ -979,7 +1122,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn SeguroVida;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalAportaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalNeto;
-        private checkboxOre chkFechaxHoja;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private PanelOre PanelAbajo;
+        private PanelOre panelDerecho;
     }
 }

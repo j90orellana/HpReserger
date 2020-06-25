@@ -123,7 +123,7 @@
   <metadata name="ruc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="iniciomes.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="periodo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="tipodoc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -269,4 +269,21 @@
   <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>186, 17</value>
   </metadata>
+  <metadata name="fondoColorOre1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>355, 17</value>
+  </metadata>
+  <data name="btnColumnas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAeNJREFUOE/d
+        kM9OE1EYxW+ChrDSTRNDIkQT4sLoRhOewCfwBVy4MakJIYaVS9zSTqEmEJuadqbgOJ2pNNpS0MpINWjb
+        KaB16p0hwb9Am97pX1pa+bgzDAtjeAF+yZfcfOecm3suOqW4uPBlhpXG3KzkZVhxyhUUR5kAP2DLJ+Ph
+        eYebFYMMJx1Mzkb2fWLMeCLGDfNM93/pftrll87b9n+ZCAg3qaH0+Fl0L6V8xvJuuXsvi8GpYFgtGh05
+        s/HNOzffop7fEyHhqh07wh2IDHtCUs3/IkHqe61q+GcResIyIGHZmrOiDPHtMlQbjbJPilVoPeIOCdet
+        8BQXHjQXwehSqdPttoEyFP8IiI0Dco4Cuv8A0GwCbrzOmBK09zuNp5EE8XDSjtfPX0AMJwwtpNJvjFo9
+        bxoO6PRJ7wB5OUB37h7NDA+O6HtTtigSYy228unlZGD+kvWKLMaOtYK+3Gy1VdNwS14H9DwJaNwF6BFD
+        a7yF2x++WGFacT1X0JfSun7OCh9jX7JIKvWMVm/ClQVaw/6Da4tp+NFsQcmorFLPq//Cx2CMexVVG89v
+        fpd/kWpuZZc0U0XS+EMq6by+JedU7WEymTxj209mQ9MuKqo+ohQ0f1bFvtxXzZlV1X5bPl0gdAhgNU7l
+        AwxaqwAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

@@ -45,6 +45,7 @@ namespace HPReserger
         string CadenaFecha;
         private void btnexportar_Click(object sender, EventArgs e)
         {
+            dtgconten.Refresh();
             if (dtgconten.RowCount > 0)
             {
                 if (chkFechaxHoja.Checked)
@@ -114,12 +115,12 @@ namespace HPReserger
                         if (!chkFechaxHoja.Checked)
                         {
                             string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
-                            int[] _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36 };
+                            int[] _ColumnasAutoajustar = new int[] { };
                             //
                             _NombreHoja = $"RB - {item}".ToUpper();
                             _Cabecera = "Reporte de Boletas de Pagos";
                             _NColumna = "d";
-                            _ColumnasAutoajustar = new int[] { 2, 3, 4, 5, 7, 6 };
+                            _ColumnasAutoajustar = new int[] { };
                             _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
                             //
                             List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
@@ -140,6 +141,11 @@ namespace HPReserger
                             TableResuk = (TablaAuxiliar).Copy();
                             TableResuk.Columns.RemoveAt(0);
                             TableResuk.Columns.RemoveAt(0);
+                            foreach (DataGridViewColumn ColumnasVisibles in dtgconten.Columns)
+                                if (!ColumnasVisibles.Visible && ColumnasVisibles.Index > 1)
+                                    TableResuk.Columns.Remove(ColumnasVisibles.DataPropertyName);
+                            //else                            
+
                             PosInicialGrilla++;
                             HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResuk, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, _ColumnasAutoajustar, "");
 
@@ -149,7 +155,7 @@ namespace HPReserger
                         {
                             foreach (DateTime Fecha in ListadoFechas)
                             {
-                                DataView dvf = TablaAuxiliar.AsDataView();
+                                DataView dvf = TablaAuxiliar.Copy().AsDataView();
                                 dvf.RowFilter = $"fecha  = {Fecha.ToString("yyyyMM00")}";
 
                                 DataTable TablaAuxFechas = dvf.ToTable();
@@ -185,15 +191,20 @@ namespace HPReserger
                                     TableResuk.Columns.RemoveAt(0);
                                     TableResuk.Columns.RemoveAt(0);
                                     TableResuk.Columns.Remove("Fecha");
+                                    foreach (DataGridViewColumn ColumnasVisibles in dtgconten.Columns)
+                                        if (!ColumnasVisibles.Visible && ColumnasVisibles.Index > 2)
+                                            TableResuk.Columns.Remove(ColumnasVisibles.DataPropertyName);
                                     PosInicialGrilla++;
                                     //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResuk, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, _ColumnasAutoajustar, "");
                                     HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TableResuk, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, ContadorHojas, Celdas, PosInicialGrilla++, new int[] { }, new int[] { },
                                         new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36 }, "");
                                 }
                             }
+
                         } //FechaxHoja
                     } //si hay datos de esta empresa
-                }
+                }              
+                msgOK("Exportado con Exito");
             }
             else msg("No hay Registros en la Grilla");
             //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(null, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, Hoja, Celdas, ContadorHojas, new int[] { }, new int[] { }, new int[] { 1, 2, 3, 4, 5 }, "");
@@ -202,16 +213,37 @@ namespace HPReserger
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (chkFechaxHoja.Checked)
+            {
+                TDatos.Columns.Remove("fecha");
+                dtgconten.DataSource = TDatos.Clone();
+                dtgconten.DataSource = TDatos;
+            }
+            dtgconten.Refresh();
             Cursor = Cursors.Default;
             frmproce.Close();
-            msgOK("Exportado con Exito");
+            //msgOK("Exportado con Exito");
+
         }
-        private void btnlimpiar_Click(object sender, EventArgs e)
+        private void btnlimpiar_Click21(object sender, EventArgs e)
         {
-            Cargado = false;
-            CargarTextosPorDefecto();
-            Cargado = true;
-            MostrarDatosFiltrados();
+            PanelMostrar.Visible = true;
+            PanelMostrar.BringToFront();
+            PanelMostrar.Focus();
+            CargardatosLista();
+        }
+        public void CargardatosLista()
+        {
+            chkListaColumnas.Items.Clear();
+            foreach (DataGridViewColumn item in dtgconten.Columns)
+            {
+                if (item.Name != empres.Name && item.Name != periodo.Name && item.Name != ruc.Name)
+                    chkListaColumnas.Items.Add(item.HeaderText, item.Visible);
+            }
+        }
+        private void PanelMostrar_LostFocus(object sender, EventArgs e)
+        {
+            PanelMostrar.Visible = false;
         }
 
         private void txtbusEmpresa_TextChanged(object sender, EventArgs e)
@@ -248,6 +280,43 @@ namespace HPReserger
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             MostrarDatosFiltrados();
+        }
+        private void btncancelar_Click_1(object sender, EventArgs e)
+        {
+            PanelMostrar.Visible = false;
+        }
+        private void btnok_Click(object sender, EventArgs e)
+        {
+            dtgconten.SuspendLayout();
+            foreach (DataGridViewColumn item in dtgconten.Columns)
+            {
+                if (item.Name != empres.Name && item.Name != periodo.Name && item.Name != ruc.Name)
+                    item.Visible = false;
+            }
+            foreach (string item in chkListaColumnas.CheckedItems)
+            {
+                foreach (DataGridViewColumn itemc in dtgconten.Columns)
+                {
+                    if (itemc.HeaderText == item) itemc.Visible = true;
+                }
+            }
+            PanelMostrar.Visible = false;
+            //
+            dtgconten.ResumeLayout();
+            dtgconten.PerformLayout();
+        }
+
+        private void btnlimpiar_Click(object sender, EventArgs e)
+        {
+            Cargado = false;
+            CargarTextosPorDefecto();
+            Cargado = true;
+            MostrarDatosFiltrados();
+        }
+
+        private void dtgconten_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+
         }
     }
 }

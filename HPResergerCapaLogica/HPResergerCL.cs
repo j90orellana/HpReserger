@@ -2409,7 +2409,7 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FacturaManualVentaDetalle(opcion, idcomprobante, 0, @nrofa, 1, tiponroidcliente, "", "", 0, 0, 0, "", "", 0, fkempresa);
         }
-        public DataTable FacturaManualBusqueda(string proveedor, string nrodoc, string empresa, int idcomprobante)
+        public DataTable FacturaManualBusqueda(string proveedor, string nrodoc, string empresa, string idcomprobante)
         {
             return cdOrdenPedido.FacturaManualBusqueda(proveedor, nrodoc, empresa, idcomprobante);
         }

@@ -184,6 +184,12 @@
     <Compile Include="ModuloCompensaciones\frmReembolsoGastosPago.Designer.cs">
       <DependentUpon>frmReembolsoGastosPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloContable\frmAddFormato82.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmAddFormato82.Designer.cs">
+      <DependentUpon>frmAddFormato82.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmAsientosRelacionados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1897,6 +1903,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmReembolsoGastosPago.resx">
       <DependentUpon>frmReembolsoGastosPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmAddFormato82.resx">
+      <DependentUpon>frmAddFormato82.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmAsientosRelacionados.resx">
       <DependentUpon>frmAsientosRelacionados.cs</DependentUpon>

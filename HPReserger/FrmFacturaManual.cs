@@ -79,7 +79,7 @@ namespace HPReserger
         }
         public void CargarDatos()
         {
-            dtgBusqueda.DataSource = CapaLogica.FacturaManualBusqueda(txtbusproveedor.TextValido(), txtbusnrodoc.TextValido(), txtbuscaempresa.TextValido(), (int)cbotipodoc.SelectedValue);
+            dtgBusqueda.DataSource = CapaLogica.FacturaManualBusqueda(txtbusproveedor.TextValido(), txtbusnrodoc.TextValido(), txtbuscaempresa.TextValido(), txtBusTipoDoc.TextValido());
             btnmodificar.Enabled = false;
             if (dtgBusqueda.RowCount > 0) btnmodificar.Enabled = true;
             else
@@ -130,7 +130,7 @@ namespace HPReserger
             dtpFechaContable.Enabled = dtpfechaemision.Enabled = dtpfecharecep.Enabled = dtpfechavence.Enabled = a;
             ///////////////////
             btnActualizar.Enabled = btncleanfind.Enabled = !a;
-            txtbusnrodoc.ReadOnly = txtbuscaempresa.ReadOnly = txtbusproveedor.ReadOnly = a;
+            txtBusTipoDoc.ReadOnly = txtbusnrodoc.ReadOnly = txtbuscaempresa.ReadOnly = txtbusproveedor.ReadOnly = a;
             dtgBusqueda.Enabled = !a; Dtgconten.ReadOnly = !a;
             btnnuevo.Enabled = !a; btnmodificar.Enabled = !a;
             btnmasdetracion.Enabled = !a;
@@ -1060,6 +1060,8 @@ namespace HPReserger
             BloquearColumnas();
             cbomoneda_SelectedValueChanged(sender, e);
             cbotipodoc_SelectedIndexChanged(sender, e);
+            MostrarFormato82(false);
+                
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
@@ -1154,6 +1156,7 @@ namespace HPReserger
             cbomoneda_SelectedValueChanged(sender, e);
             btnAceptar.Enabled = true;
             cbotipodoc_SelectedIndexChanged(sender, e);
+            MostrarFormato82(false);
         }
         private void dtgBusqueda_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -1258,7 +1261,14 @@ namespace HPReserger
                     OldIdComprobante = (int)cbotipodoc.SelectedValue;
                 }
                 else OldCuo = null;
+                //Muestra de Boton de Formato 8.2
+                MostrarFormato82(false);
+                if ((int)cbotipodoc.SelectedValue == 45) MostrarFormato82(true);
             }
+        }
+        public void MostrarFormato82(Boolean v)
+        {
+            btnFormato82.Enabled = btnFormato82.Visible = v;
         }
         private void textBoxPer1_TextChanged(object sender, EventArgs e)
         {
@@ -1277,6 +1287,7 @@ namespace HPReserger
         }
         public void LimpiarBusquedas()
         {
+            txtBusTipoDoc.CargarTextoporDefecto();
             txtbuscaempresa.CargarTextoporDefecto();
             txtbusnrodoc.CargarTextoporDefecto();
             txtbusproveedor.CargarTextoporDefecto();
@@ -1875,6 +1886,11 @@ namespace HPReserger
         private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(txttotalfac.Text);
+        }
+
+        private void btnFormato82_Click(object sender, EventArgs e)
+        {
+
         }
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {

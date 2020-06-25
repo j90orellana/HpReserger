@@ -4656,7 +4656,7 @@ namespace HPResergerCapaDatos
             object[] valores = { @opcion, @idfac, @id, @nro, @tipoid, @nroid, @debehaber, @cuenta, @tipoigv, @importemn, @importeme, @glosa, @cuo, @usuario, fkempresa };
             return bd.DataTableFromProcedure("usp_FacturaManualVentaDetalle", parametros, valores, null);
         }
-        public DataTable FacturaManualBusqueda(string proveedor, string nrodoc, string empresa, int idcomprobante)
+        public DataTable FacturaManualBusqueda(string proveedor, string nrodoc, string empresa, string idcomprobante)
         {
             string[] parametros = { "@proveedor", "@nrodoc", "@empresa", "@idcomprobante" };
             object[] valores = { proveedor, nrodoc, empresa, idcomprobante };
