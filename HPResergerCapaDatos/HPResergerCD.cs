@@ -4886,6 +4886,37 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, PeriodoInicio, PeriodoFin };
             return bd.DataTableFromProcedure("[usp_FormatodeCompras8_1_Masivo]", parametros, valores, null);
         }
+        public DataTable FormatodeCompras8_2(int @opcion, int @pkEmpresa, DateTime @Periodo, string @NumeroCorrelativo, string @Secuencia, DateTime @FechaEmision, int @TipoComprobante,
+            string @SerieComprobante, string @NumeroComprobante, decimal @ValorAdquisiciones, decimal @OtrosComprobantes, decimal @ImporteTotal, int @TipoComprobantePago,
+            string @SerieComprobantePago, int @AñoDua, string @NumeroComprobantePago, decimal @MontoRetencion, string @CodigoMoneda, decimal @TipoCambio, string @PaisSujeto,
+            string @RazonSocialSujeto, string @DomicilioSujeto, string @DocumentoSujeto, string @DocumentoBeneficiario, string @RazonSocialBeneficiario,
+            string @PaisBeneficiario, string @Vinculo, decimal @RentaBruta, decimal @Deducciones, decimal @RentaNeta, decimal @TasaRetencion, decimal @ImpuestoRetenido,
+            string @Convenios, string @Exoneracion, string @TipoRenta, string @Modalidad, string @Aplicación, int @Estado)
+        {
+            string[] parametros = { "@opcion", "@pkEmpresa", "@Periodo", "@NumeroCorrelativo", "@Secuencia", "@FechaEmision", "@TipoComprobante", "@SerieComprobante",
+                "@NumeroComprobante", "@ValorAdquisiciones", "@OtrosComprobantes", "@ImporteTotal", "@TipoComprobantePago", "@SerieComprobantePago", "@AñoDua", "@NumeroComprobantePago",
+                "@MontoRetencion", "@CodigoMoneda", "@TipoCambio", "@PaisSujeto", "@RazonSocialSujeto", "@DomicilioSujeto", "@DocumentoSujeto", "@DocumentoBeneficiario",
+                "@RazonSocialBeneficiario", "@PaisBeneficiario", "@Vinculo", "@RentaBruta", "@Deducciones", "@RentaNeta", "@TasaRetencion", "@ImpuestoRetenido", "@Convenios",
+                "@Exoneracion", "@TipoRenta", "@Modalidad", "@Aplicación", "@Estado" };
+            object[] valores = { @opcion, @pkEmpresa, @Periodo, @NumeroCorrelativo, @Secuencia, @FechaEmision, @TipoComprobante, @SerieComprobante, @NumeroComprobante, @ValorAdquisiciones,
+                @OtrosComprobantes, @ImporteTotal, @TipoComprobantePago, @SerieComprobantePago, @AñoDua, @NumeroComprobantePago, @MontoRetencion, @CodigoMoneda, @TipoCambio, @PaisSujeto,
+                @RazonSocialSujeto, @DomicilioSujeto, @DocumentoSujeto, @DocumentoBeneficiario, @RazonSocialBeneficiario, @PaisBeneficiario, @Vinculo, @RentaBruta, @Deducciones,
+                @RentaNeta, @TasaRetencion, @ImpuestoRetenido, @Convenios, @Exoneracion, @TipoRenta, @Modalidad, @Aplicación, @Estado };
+            return bd.DataTableFromProcedure("[usp_Formato82]", parametros, valores, null);
+        }
+        public DataTable FormatodeCompras8_2(int @pkEmpresa, DateTime Periodo, int TipoComprobantePago, string SerieComprobantePago, int AñoDua, string NumeroComprobantePago, string DocumentoBeneficiario, string RazonSocialBeneficiario)
+        {
+            string[] parametros = { "@opcion", "@pkEmpresa", "@Periodo", "@TipoComprobantePago", "@SerieComprobantePago", "@AñoDua", "@NumeroComprobantePago", "@DocumentoBeneficiario",
+                "@RazonSocialBeneficiario" };
+            object[] valores = { 0, @pkEmpresa, @Periodo, @TipoComprobantePago, @SerieComprobantePago, @AñoDua, @NumeroComprobantePago, @DocumentoBeneficiario, @RazonSocialBeneficiario };
+            return bd.DataTableFromProcedure("[usp_Formato82]", parametros, valores, null);
+        }
+        public DataTable ConsultaCuoFormato82(int @pkEmpresa, string cuo)
+        {
+            string[] parametros = { "@pkEmpresa", "@cuo" };
+            object[] valores = { @pkEmpresa, cuo };
+            return bd.DataTableFromProcedure("[usp_ConsutarCuoFormato82]", parametros, valores, null);
+        }
         public DataTable FormatodeCompras8_3_Masivo(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
         {
             string[] parametros = { "@Empresa", "@PeriodoInicio", "@PeriodoFin" };

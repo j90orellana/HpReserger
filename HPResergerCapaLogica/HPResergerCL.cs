@@ -2607,6 +2607,28 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FormatodeCompras8_1_Masivo(empresa, PeriodoInicio, PeriodoFin);
         }
+        public DataTable FormatodeCompras8_2(int @opcion, int @pkEmpresa, DateTime @Periodo, string @NumeroCorrelativo, string @Secuencia, DateTime @FechaEmision, int @TipoComprobante,
+           string @SerieComprobante, string @NumeroComprobante, decimal @ValorAdquisiciones, decimal @OtrosComprobantes, decimal @ImporteTotal, int @TipoComprobantePago,
+           string @SerieComprobantePago, int @AñoDua, string @NumeroComprobantePago, decimal @MontoRetencion, string @CodigoMoneda, decimal @TipoCambio, string @PaisSujeto,
+           string @RazonSocialSujeto, string @DomicilioSujeto, string @DocumentoSujeto, string @DocumentoBeneficiario, string @RazonSocialBeneficiario,
+           string @PaisBeneficiario, string @Vinculo, decimal @RentaBruta, decimal @Deducciones, decimal @RentaNeta, decimal @TasaRetencion, decimal @ImpuestoRetenido,
+           string @Convenios, string @Exoneracion, string @TipoRenta, string @Modalidad, string @Aplicación, int @Estado)
+        {
+            return cdOrdenPedido.FormatodeCompras8_2(@opcion, @pkEmpresa, @Periodo, @NumeroCorrelativo, @Secuencia, @FechaEmision, @TipoComprobante, @SerieComprobante, @NumeroComprobante, @ValorAdquisiciones,
+                @OtrosComprobantes, @ImporteTotal, @TipoComprobantePago, @SerieComprobantePago, @AñoDua, @NumeroComprobantePago, @MontoRetencion, @CodigoMoneda, @TipoCambio, @PaisSujeto,
+                @RazonSocialSujeto, @DomicilioSujeto, @DocumentoSujeto, @DocumentoBeneficiario, @RazonSocialBeneficiario, @PaisBeneficiario, @Vinculo, @RentaBruta, @Deducciones,
+                @RentaNeta, @TasaRetencion, @ImpuestoRetenido, @Convenios, @Exoneracion, @TipoRenta, @Modalidad, @Aplicación, @Estado);
+        }
+        public DataTable FormatodeCompras8_2(int @pkEmpresa, DateTime Periodo, int TipoComprobantePago, string SerieComprobantePago, int AñoDua, string NumeroComprobantePago, string DocumentoBeneficiario, string RazonSocialBeneficiario)
+        {
+            decimal v = 0;
+            return cdOrdenPedido.FormatodeCompras8_2(pkEmpresa, Periodo, TipoComprobantePago, SerieComprobantePago, AñoDua, NumeroComprobantePago, DocumentoBeneficiario,
+                RazonSocialBeneficiario);
+        }
+        public DataTable ConsultaCuoFormato82(int @pkEmpresa, string cuo)
+        {
+            return cdOrdenPedido.ConsultaCuoFormato82(@pkEmpresa, cuo);
+        }
         public DataTable FormatodeCompras8_3_Masivo(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
         {
             return cdOrdenPedido.FormatodeCompras8_3_Masivo(empresa, PeriodoInicio, PeriodoFin);

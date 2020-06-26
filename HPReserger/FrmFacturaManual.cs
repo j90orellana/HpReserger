@@ -1061,7 +1061,7 @@ namespace HPReserger
             cbomoneda_SelectedValueChanged(sender, e);
             cbotipodoc_SelectedIndexChanged(sender, e);
             MostrarFormato82(false);
-                
+
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
@@ -1887,10 +1887,36 @@ namespace HPReserger
         {
             Clipboard.SetText(txttotalfac.Text);
         }
-
+        ModuloContable.frmAddFormato82 FormLlenadoFormato82;
         private void btnFormato82_Click(object sender, EventArgs e)
         {
+            if (FormLlenadoFormato82 == null)
+            {
+                //bloqueo de botonoes
+                dtgBusqueda.Enabled = false;
+                //
+                FormLlenadoFormato82 = new ModuloContable.frmAddFormato82();
+                FormLlenadoFormato82.Empresa = (int)cboempresa.SelectedValue;
+                FormLlenadoFormato82.SerieFac = txtcodfactura.Text;
+                FormLlenadoFormato82.NumFac = txtnrofactura.Text;
+                FormLlenadoFormato82.Periodo = dtpFechaContable.Value;
+                FormLlenadoFormato82.AnioDua = dtpfecharecep.Value.Year;
 
+                FormLlenadoFormato82.idComprobante = (int)cbotipodoc.SelectedValue;
+                FormLlenadoFormato82.Ruc = txtruc.Text;
+                //
+                FormLlenadoFormato82.RazonSocial = txtrazon.Text;
+                FormLlenadoFormato82.NameDocumento = cbotipodoc.Text;
+                FormLlenadoFormato82.FormClosed += FormLlenadoFormato82_FormClosed;
+                FormLlenadoFormato82.MdiParent = this.MdiParent;
+                FormLlenadoFormato82.Show();
+            }
+            else FormLlenadoFormato82.Activate();
+        }
+        private void FormLlenadoFormato82_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormLlenadoFormato82 = null;
+            dtgBusqueda.Enabled = true;
         }
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {
