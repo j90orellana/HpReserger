@@ -2607,6 +2607,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FormatodeCompras8_1_Masivo(empresa, PeriodoInicio, PeriodoFin);
         }
+        public DataTable FormatodeCompras8_2_Masivo(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
+        {
+            return cdOrdenPedido.FormatodeCompras8_2_Masivo(empresa, PeriodoInicio, PeriodoFin);
+        }
         public DataTable FormatodeCompras8_2(int @opcion, int @pkEmpresa, DateTime @Periodo, string @NumeroCorrelativo, string @Secuencia, DateTime @FechaEmision, int @TipoComprobante,
            string @SerieComprobante, string @NumeroComprobante, decimal @ValorAdquisiciones, decimal @OtrosComprobantes, decimal @ImporteTotal, int @TipoComprobantePago,
            string @SerieComprobantePago, int @AñoDua, string @NumeroComprobantePago, decimal @MontoRetencion, string @CodigoMoneda, decimal @TipoCambio, string @PaisSujeto,

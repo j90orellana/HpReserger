@@ -4886,6 +4886,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, PeriodoInicio, PeriodoFin };
             return bd.DataTableFromProcedure("[usp_FormatodeCompras8_1_Masivo]", parametros, valores, null);
         }
+        public DataTable FormatodeCompras8_2_Masivo(string empresa, DateTime PeriodoInicio, DateTime PeriodoFin)
+        {
+            string[] parametros = { "@Empresa", "@PeriodoInicio", "@PeriodoFin" };
+            object[] valores = { empresa, PeriodoInicio, PeriodoFin };
+            return bd.DataTableFromProcedure("usp_FormatodeCompras8_2_Masivo", parametros, valores, null);
+        }
         public DataTable FormatodeCompras8_2(int @opcion, int @pkEmpresa, DateTime @Periodo, string @NumeroCorrelativo, string @Secuencia, DateTime @FechaEmision, int @TipoComprobante,
             string @SerieComprobante, string @NumeroComprobante, decimal @ValorAdquisiciones, decimal @OtrosComprobantes, decimal @ImporteTotal, int @TipoComprobantePago,
             string @SerieComprobantePago, int @AñoDua, string @NumeroComprobantePago, decimal @MontoRetencion, string @CodigoMoneda, decimal @TipoCambio, string @PaisSujeto,

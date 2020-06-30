@@ -346,6 +346,12 @@
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_3.Designer.cs">
       <DependentUpon>frmLibroInventarios3_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroCompras8_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroCompras8_2.Designer.cs">
+      <DependentUpon>frmRegistroCompras8_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmRegistroCompras8_3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1985,6 +1991,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmLibroInventarios3_3.resx">
       <DependentUpon>frmLibroInventarios3_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmRegistroCompras8_2.resx">
+      <DependentUpon>frmRegistroCompras8_2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\LibrosElectronicos\frmRegistroCompras8_3.resx">
       <DependentUpon>frmRegistroCompras8_3.cs</DependentUpon>

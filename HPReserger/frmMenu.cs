@@ -4583,5 +4583,28 @@ namespace HPReserger
         {
             frmbonoempleados = null;
         }
+        frmRegistroCompras8_2 fmrRegistroCompra82;
+        private void toolStripMenuItem13_Click(object sender, EventArgs e)
+        {
+            if (fmrRegistroCompra82 == null)
+            {
+                fmrRegistroCompra82 = new frmRegistroCompras8_2();
+                fmrRegistroCompra82.MdiParent = this;
+                fmrRegistroCompra82.Icon = ICono;
+                fmrRegistroCompra82.FormClosed += new FormClosedEventHandler(CerrarfmrRegistroCompra82);
+                fmrRegistroCompra82.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                fmrRegistroCompra82.Activate();
+                ValidarVentanas(fmrRegistroCompra82);
+            }
+        }
+
+        private void CerrarfmrRegistroCompra82(object sender, FormClosedEventArgs e)
+        {
+            fmrRegistroCompra82 = null;
+        }
     }
 }
