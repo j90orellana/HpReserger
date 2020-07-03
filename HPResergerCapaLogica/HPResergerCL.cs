@@ -904,6 +904,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.MedioPagos(opcion, pkid, mediopago, codsunat);
         }
+        public DataTable TiposFaltas(int @opcion, DateTime FechaActual, string nombre, string observacion, int min, int max, Boolean descuento, int id)
+        {
+            return cdOrdenPedido.TiposFaltas(opcion, FechaActual, nombre, observacion, min, max, descuento, id);
+        }
         public DataTable MedioPagos()
         {
             return cdOrdenPedido.MedioPagos(0, 0, "", 0);

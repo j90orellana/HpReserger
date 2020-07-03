@@ -88,12 +88,15 @@ namespace HPReserger
                     ///Ver si hay datos
                     inicial = comboMesAño1.GetFechaPRimerDia();
                     final = comboMesAño2.GetFecha();
+                    //
+                    //if (inicial.Day == 1) final.AddDays(1);
+                    //if (final.Day == 1) final.AddDays(10);
                     if (inicial > final)
                     {
                         inicial = comboMesAño2.GetFechaPRimerDia();
                         final = comboMesAño1.GetFecha();
                     }
-                    DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+                    DBoleta = CReporteboleta.SeleccionarBoletas(0, tipo, numero, 1, inicial, final);
                     int aux = (12 * (final.Year - inicial.Year) + final.Month) - inicial.Month + 1;
                     // msg("meses " + aux + "inicial " + inicial + "final " + final);
                     List<string> listita = new List<string>();
@@ -104,7 +107,7 @@ namespace HPReserger
                     if (DBoleta.Rows.Count == 0)
                     {
                         //cuando no hay boletas 
-                        CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                        CReporteboleta.GenerarBoletasMensuales(0, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                         //Generar Asiento de Boletas Generadas
                         if (chkGAsientos.Checked)
                         {

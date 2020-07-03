@@ -154,6 +154,12 @@
     <Compile Include="frmListarFacturasPagadas.Designer.cs">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTipoFaltas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoFaltas.Designer.cs">
+      <DependentUpon>frmTipoFaltas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloBancario\frmBancoBBVA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1894,6 +1900,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListarFacturasPagadas.resx">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoFaltas.resx">
+      <DependentUpon>frmTipoFaltas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoBBVA.resx">
       <DependentUpon>frmBancoBBVA.cs</DependentUpon>

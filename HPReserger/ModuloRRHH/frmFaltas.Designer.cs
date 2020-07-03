@@ -322,7 +322,6 @@ namespace HPReserger
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.pbFaltas);
             this.groupBox1.Controls.Add(this.chkfaltas);
             this.groupBox1.Controls.Add(this.txtObservaciones);
             this.groupBox1.Controls.Add(this.label12);
@@ -332,6 +331,7 @@ namespace HPReserger
             this.groupBox1.Controls.Add(this.dtpFin);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.dtpInicio);
+            this.groupBox1.Controls.Add(this.pbFaltas);
             this.groupBox1.Location = new System.Drawing.Point(16, 188);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(373, 236);

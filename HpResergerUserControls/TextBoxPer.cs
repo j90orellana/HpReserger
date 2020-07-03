@@ -137,6 +137,12 @@ namespace HpResergerUserControls
             decimal.TryParse(this.Text, out valor);
             return valor;
         }
+        public int EnteroValido()
+        {
+            int valor = 0;
+            int.TryParse(this.Text, out valor);
+            return valor;
+        }
         public string TextValidoNumeros()
         {
             string cadena = "";

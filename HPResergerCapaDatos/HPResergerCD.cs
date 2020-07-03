@@ -4862,6 +4862,12 @@ namespace HPResergerCapaDatos
             object[] valores = { opcion, pkid, mediopago, codsunat };
             return bd.DataTableFromProcedure("usp_MedioPagos", parametros, valores, null);
         }
+        public DataTable TiposFaltas(int @opcion, DateTime FechaActual, string nombre, string observacion, int min, int max, Boolean descuento, int id)
+        {
+            string[] parametros = { "@opcion", "@FechaActual", "@Nombre", "@Observacion", "@min", "@max", "@descuento", "@id" };
+            object[] valores = { opcion, FechaActual, nombre, observacion, min, max, descuento, id };
+            return bd.DataTableFromProcedure("usp_TiposFaltas", parametros, valores, null);
+        }
         public DataTable BuscarFacturasManualesToNcNdDEtalle(int opcion, string ruc, string NumComprobante)
         {
             string[] parametros = { "@opcion", "@ruc", "@NumComp" };

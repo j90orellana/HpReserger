@@ -4606,5 +4606,28 @@ namespace HPReserger
         {
             fmrRegistroCompra82 = null;
         }
+        frmTipoFaltas frmtipofaltitas;
+        private void tiposFaltasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmtipofaltitas == null)
+            {
+                frmtipofaltitas = new frmTipoFaltas();
+                frmtipofaltitas.MdiParent = this;
+                frmtipofaltitas.Icon = ICono;
+                frmtipofaltitas.FormClosed += new FormClosedEventHandler(Cerrarfrmtipofaltitas);
+                frmtipofaltitas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmtipofaltitas.Activate();
+                ValidarVentanas(frmtipofaltitas);
+            }
+        }
+
+        private void Cerrarfrmtipofaltitas(object sender, FormClosedEventArgs e)
+        {
+            frmtipofaltitas = null;
+        }
     }
 }

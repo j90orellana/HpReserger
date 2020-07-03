@@ -156,6 +156,7 @@
             this.mayorPorCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -202,6 +203,7 @@
             this.periocidadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.detraccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mediosPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposFaltasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articuloServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artículosServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -298,7 +300,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1547,8 +1548,17 @@
             this.reToolStripMenuItem.Name = "reToolStripMenuItem";
             this.reToolStripMenuItem.Size = new System.Drawing.Size(475, 22);
             this.reToolStripMenuItem.Tag = "1407082";
-            this.reToolStripMenuItem.Text = "8.2 Registro de Compras ";
+            this.reToolStripMenuItem.Text = "8.1 Registro de Compras ";
             this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem13
+            // 
+            this.toolStripMenuItem13.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem13.Image")));
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(475, 22);
+            this.toolStripMenuItem13.Tag = "1407081";
+            this.toolStripMenuItem13.Text = "8.2 Registro de Compras - Información de Operaciones Con Sujetos No Domiciliados";
+            this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
             // 
             // toolStripMenuItem11
             // 
@@ -1977,7 +1987,8 @@
             this.parámetrosGeneralesToolStripMenuItem,
             this.periocidadToolStripMenuItem1,
             this.detraccionesToolStripMenuItem,
-            this.mediosPagosToolStripMenuItem});
+            this.mediosPagosToolStripMenuItem,
+            this.tiposFaltasToolStripMenuItem});
             this.generalesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generalesToolStripMenuItem.Image")));
             this.generalesToolStripMenuItem.Name = "generalesToolStripMenuItem";
             this.generalesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
@@ -2019,6 +2030,14 @@
             this.mediosPagosToolStripMenuItem.Tag = "1601004";
             this.mediosPagosToolStripMenuItem.Text = "Medios Pagos";
             this.mediosPagosToolStripMenuItem.Click += new System.EventHandler(this.mediosPagosToolStripMenuItem_Click);
+            // 
+            // tiposFaltasToolStripMenuItem
+            // 
+            this.tiposFaltasToolStripMenuItem.Name = "tiposFaltasToolStripMenuItem";
+            this.tiposFaltasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tiposFaltasToolStripMenuItem.Tag = "1601005";
+            this.tiposFaltasToolStripMenuItem.Text = "Tipos Faltas";
+            this.tiposFaltasToolStripMenuItem.Click += new System.EventHandler(this.tiposFaltasToolStripMenuItem_Click);
             // 
             // articuloServicioToolStripMenuItem
             // 
@@ -2903,15 +2922,6 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
-            // toolStripMenuItem13
-            // 
-            this.toolStripMenuItem13.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem13.Image")));
-            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(475, 22);
-            this.toolStripMenuItem13.Tag = "1407081";
-            this.toolStripMenuItem13.Text = "8.2 Registro de Compras - Información de Operaciones Con Sujetos No Domiciliados";
-            this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3221,5 +3231,6 @@
         private System.Windows.Forms.ToolStripMenuItem libroMayorToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bonosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
+        private System.Windows.Forms.ToolStripMenuItem tiposFaltasToolStripMenuItem;
     }
 }
