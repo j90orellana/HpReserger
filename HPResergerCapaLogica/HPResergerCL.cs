@@ -20,6 +20,7 @@ namespace HPResergerCapaLogica
         ///<example> y que dice</example>
         ///<param name="numero" >Numero De contrato</param>
         ///<param name="tipo">Tipo de Contrato</param>
+        DateTime _Fecha = DateTime.Now;
         public DataTable ListarEmpleadoContrato(int tipo, string numero)
         {
             return cdOrdenPedido.ListarContratoEmpleado(tipo, numero);
@@ -867,7 +868,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.getCargoTipoContratacion(Campo1, Campo2, Tabla);
         }
-
+        public DataTable GetTabla(string Tabla, string CampoOrdenar)
+        {
+            return cdOrdenPedido.GetTabla(Tabla, CampoOrdenar);
+        }
         public void SolicitudEmpleadoInsertar(int Numero, int Cargo, int TipoContratacion, string Busqueda, string AplicaTerna, int Area, int gerencia, int CantPuestos, int NroOrdenCompra, byte[] Foto, string NombreFoto, int Usuario)
         {
             cdOrdenPedido.SolicitudEmpleadoInsertar(Numero, Cargo, TipoContratacion, Busqueda, AplicaTerna, Area, gerencia, CantPuestos, NroOrdenCompra, Foto, NombreFoto, Usuario);
@@ -907,6 +911,10 @@ namespace HPResergerCapaLogica
         public DataTable TiposFaltas(int @opcion, DateTime FechaActual, string nombre, string observacion, int min, int max, Boolean descuento, int id)
         {
             return cdOrdenPedido.TiposFaltas(opcion, FechaActual, nombre, observacion, min, max, descuento, id);
+        }
+        public DataTable TiposFaltas()
+        {
+            return cdOrdenPedido.TiposFaltas(10, _Fecha, "", "", 0, 0, false, 0);
         }
         public DataTable MedioPagos()
         {

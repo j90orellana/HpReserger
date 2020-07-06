@@ -15,7 +15,7 @@ namespace HPReserger
 {
     public partial class frmFaltas : FormGradient
     {
-        HPResergerCapaLogica.HPResergerCL clEmpleadoFaltas = new HPResergerCapaLogica.HPResergerCL();
+        HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         DataRow DiasFalta;
         public byte[] Foto { get; set; }
         MemoryStream _memoryStream = new MemoryStream();
@@ -32,6 +32,7 @@ namespace HPReserger
             groupBox1.Visible = false;
             LimpiarGrillas();
             txtNumeroDocumento.Text = "";
+            CargarTipoFaltas();
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
             dtpInicio.Value = DateTime.Today.Date;
             dtpFin.Value = DateTime.Today.Date;
@@ -41,7 +42,7 @@ namespace HPReserger
         {
             cbo.ValueMember = "codigo";
             cbo.DisplayMember = "descripcion";
-            cbo.DataSource = clEmpleadoFaltas.getCargoTipoContratacion(codigo, descripcion, tabla);
+            cbo.DataSource = CapaLogica.getCargoTipoContratacion(codigo, descripcion, tabla);
         }
 
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
@@ -58,19 +59,19 @@ namespace HPReserger
 
         private void MostrarGrid(int CodigoTipo, string NumeroDocumento)
         {
-            Grid.DataSource = clEmpleadoFaltas.ListarFaltas(CodigoTipo, NumeroDocumento);
+            Grid.DataSource = CapaLogica.ListarFaltas(CodigoTipo, NumeroDocumento);
         }
 
         private void DiasInicio(int TipoDocumento, string NumeroDocumento, string sStoredProcedureName)
         {
-            DataRow EmpleadoVacaciones = clEmpleadoFaltas.ExisteBeneficioEmpleado(TipoDocumento, NumeroDocumento, sStoredProcedureName);
+            DataRow EmpleadoVacaciones = CapaLogica.ExisteBeneficioEmpleado(TipoDocumento, NumeroDocumento, sStoredProcedureName);
             if (EmpleadoVacaciones != null)
             {
                 txtApellidoPaterno.Text = EmpleadoVacaciones["APELLIDOPATERNO"].ToString();
                 txtApellidoMaterno.Text = EmpleadoVacaciones["APELLIDOMATERNO"].ToString();
                 txtNombres.Text = EmpleadoVacaciones["NOMBRES"].ToString();
                 MostrarGrid(TipoDocumento, NumeroDocumento);
-                DataRow Contratoactivo = clEmpleadoFaltas.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
+                DataRow Contratoactivo = CapaLogica.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
                 if (Contratoactivo != null)
                 {
                     groupBox1.Visible = true;
@@ -103,7 +104,7 @@ namespace HPReserger
 
         private void Dias(DateTime Inicio, DateTime Fin, int TipoDocumento, string NumeroDocumento)
         {
-            DiasFalta = clEmpleadoFaltas.DiasVacaciones(Inicio, Fin);
+            DiasFalta = CapaLogica.DiasVacaciones(Inicio, Fin);
             if (!DiasFalta.IsNull("DIAS"))
             {
                 txtDias.Text = DiasFalta["DIAS"].ToString();
@@ -228,7 +229,7 @@ namespace HPReserger
             else
                 ruta = txtRuta.Text;
             DateTime FechaMaximaFalta;
-            DataRow MaximaFecha = clEmpleadoFaltas.MaximaFechaATomarFalta(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
+            DataRow MaximaFecha = CapaLogica.MaximaFechaATomarFalta(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
             if (!MaximaFecha.IsNull("FECHA"))
             {
                 FechaMaximaFalta = Convert.ToDateTime(MaximaFecha["FECHA"].ToString());
@@ -240,7 +241,7 @@ namespace HPReserger
                     return;
                 }
             }
-            clEmpleadoFaltas.EmpleadoFaltas(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, dtpFin.Value, Convert.ToInt32(txtDias.Text), txtObservaciones.Text, Foto, ruta, estado);
+            CapaLogica.EmpleadoFaltas(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, dtpFin.Value, Convert.ToInt32(txtDias.Text), txtObservaciones.Text, Foto, ruta, estado);
             MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
             HPResergerFunciones.frmInformativo.MostrarDialog("Falta registrada con éxito");
             dtpInicio.Value = DateTime.Today.Date;
@@ -258,7 +259,7 @@ namespace HPReserger
             dialogoAbrirArchivo.ShowDialog(this);
 
             NombreFoto = dialogoAbrirArchivo.FileName.ToString();
-            DataRow ExisteBoleta = clEmpleadoFaltas.ExisteImagen("NombreFoto", NombreFoto, "TBL_Empleado_Faltas");
+            DataRow ExisteBoleta = CapaLogica.ExisteImagen("NombreFoto", NombreFoto, "TBL_Empleado_Faltas");
             if (ExisteBoleta == null)
             {
                 if (NombreFoto != string.Empty)
@@ -295,7 +296,7 @@ namespace HPReserger
 
         private void CargarFoto(int Registro, int TipoDocumento, string NumeroDocumento)
         {
-            DataRow drFoto = clEmpleadoFaltas.ImagenFalta(Registro, TipoDocumento, NumeroDocumento);
+            DataRow drFoto = CapaLogica.ImagenFalta(Registro, TipoDocumento, NumeroDocumento);
             if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
             {
                 byte[] Fotito = new byte[0];
@@ -367,6 +368,24 @@ namespace HPReserger
         private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtNumeroDocumento_TextChanged(sender, e);
+        }
+
+        private void cboTipoFalta_Click(object sender, EventArgs e)
+        {
+            CargarTipoFaltas();
+        }
+
+        private void CargarTipoFaltas()
+        {
+            DataTable TablaAux = CapaLogica.TiposFaltas();
+            string cadena = cboTipoFalta.Text;
+            if (TablaAux.Rows.Count != cboTipoFalta.Items.Count)
+            {
+                cboTipoFalta.ValueMember = "nombre";
+                cboTipoFalta.DisplayMember = "nombre";
+                cboTipoFalta.DataSource = TablaAux;
+                if (cboTipoFalta.DataSource != null) cboTipoFalta.Text = cadena;
+            }
         }
     }
 }

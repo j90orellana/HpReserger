@@ -2282,6 +2282,12 @@ namespace HPResergerCapaDatos
             object[] valores = { Campo1, Campo2, Tabla };
             return bd.DataTableFromProcedure("usp_get_CargoTipoContratacion", parametros, valores, null);
         }
+        public DataTable GetTabla(string Tabla, string CampoOrdenar)
+        {
+            string[] parametros = { "@Tabla", "@CampoOrdenar" };
+            object[] valores = { Tabla, CampoOrdenar };
+            return bd.DataTableFromProcedure("usp_GetTabla", parametros, valores, null);
+        }
         public DataTable ConsultaRCumples()
         {
             return bd.DataTableFromProcedure("uspConsultarCumpleanos", null, null, null);

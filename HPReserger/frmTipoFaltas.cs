@@ -136,11 +136,11 @@ namespace HPReserger
             int min = txtdiamin.EnteroValido();
             int max = txtdiamax.EnteroValido();
             //
-            int aux = 0;
-            if (min > max)
-            {
-                aux = min; min = max; max = aux;
-            }
+            //int aux = 0;
+            //if (min > max)
+            //{
+            //    aux = min; min = max; max = aux;
+            //}
             //
             DateTime Fecha = dtpFecha.Value;
             Boolean Descuento = chkDescuento.Checked;

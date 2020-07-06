@@ -30,9 +30,11 @@ namespace HPReserger
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaltas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,7 +42,6 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaltas));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,9 +63,17 @@ namespace HPReserger
             this.label12 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pbFaltas = new System.Windows.Forms.PictureBox();
             this.chkfaltas = new System.Windows.Forms.CheckBox();
+            this.pbFaltas = new System.Windows.Forms.PictureBox();
             this.Grid = new HpResergerUserControls.Dtgconten();
+            this.btnRegistrarFalta = new System.Windows.Forms.Button();
+            this.btnAdjuntarSustento = new System.Windows.Forms.Button();
+            this.txtRuta = new System.Windows.Forms.TextBox();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btndescargar = new System.Windows.Forms.Button();
+            this.cachedrptConvenioPracticasPreprofesional1 = new HPReserger.CachedrptConvenioPracticasPreprofesional();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboTipoFalta = new HpResergerUserControls.ComboBoxPer(this.components);
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,12 +82,6 @@ namespace HPReserger
             this.FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DIASFALTAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OBSERVACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRegistrarFalta = new System.Windows.Forms.Button();
-            this.btnAdjuntarSustento = new System.Windows.Forms.Button();
-            this.txtRuta = new System.Windows.Forms.TextBox();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
-            this.btndescargar = new System.Windows.Forms.Button();
-            this.cachedrptConvenioPracticasPreprofesional1 = new HPReserger.CachedrptConvenioPracticasPreprofesional();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFaltas)).BeginInit();
@@ -301,7 +304,7 @@ namespace HPReserger
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(10, 64);
+            this.label12.Location = new System.Drawing.Point(10, 85);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 102;
@@ -311,21 +314,23 @@ namespace HPReserger
             // 
             this.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservaciones.Location = new System.Drawing.Point(94, 61);
+            this.txtObservaciones.Location = new System.Drawing.Point(94, 85);
             this.txtObservaciones.MaxLength = 0;
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtObservaciones.Size = new System.Drawing.Size(262, 169);
+            this.txtObservaciones.Size = new System.Drawing.Size(262, 145);
             this.txtObservaciones.TabIndex = 4;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cboTipoFalta);
             this.groupBox1.Controls.Add(this.chkfaltas);
             this.groupBox1.Controls.Add(this.txtObservaciones);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtDias);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.dtpFin);
@@ -337,18 +342,6 @@ namespace HPReserger
             this.groupBox1.Size = new System.Drawing.Size(373, 236);
             this.groupBox1.TabIndex = 74;
             this.groupBox1.TabStop = false;
-            // 
-            // pbFaltas
-            // 
-            this.pbFaltas.BackColor = System.Drawing.Color.Transparent;
-            this.pbFaltas.Image = global::HPReserger.Properties.Resources.NoRegistrarFaltas;
-            this.pbFaltas.Location = new System.Drawing.Point(0, 0);
-            this.pbFaltas.Name = "pbFaltas";
-            this.pbFaltas.Size = new System.Drawing.Size(373, 236);
-            this.pbFaltas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbFaltas.TabIndex = 104;
-            this.pbFaltas.TabStop = false;
-            this.pbFaltas.Visible = false;
             // 
             // chkfaltas
             // 
@@ -362,6 +355,18 @@ namespace HPReserger
             this.chkfaltas.Text = "Aplicar Descuento";
             this.chkfaltas.UseVisualStyleBackColor = false;
             this.chkfaltas.CheckedChanged += new System.EventHandler(this.chkfaltas_CheckedChanged);
+            // 
+            // pbFaltas
+            // 
+            this.pbFaltas.BackColor = System.Drawing.Color.Transparent;
+            this.pbFaltas.Image = global::HPReserger.Properties.Resources.NoRegistrarFaltas;
+            this.pbFaltas.Location = new System.Drawing.Point(0, 0);
+            this.pbFaltas.Name = "pbFaltas";
+            this.pbFaltas.Size = new System.Drawing.Size(373, 236);
+            this.pbFaltas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFaltas.TabIndex = 104;
+            this.pbFaltas.TabStop = false;
+            this.pbFaltas.Visible = false;
             // 
             // Grid
             // 
@@ -419,6 +424,95 @@ namespace HPReserger
             this.Grid.Size = new System.Drawing.Size(746, 412);
             this.Grid.TabIndex = 75;
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
+            // 
+            // btnRegistrarFalta
+            // 
+            this.btnRegistrarFalta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRegistrarFalta.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarFalta.Image")));
+            this.btnRegistrarFalta.Location = new System.Drawing.Point(401, 433);
+            this.btnRegistrarFalta.Name = "btnRegistrarFalta";
+            this.btnRegistrarFalta.Size = new System.Drawing.Size(119, 24);
+            this.btnRegistrarFalta.TabIndex = 5;
+            this.btnRegistrarFalta.Text = "Registrar Falta";
+            this.btnRegistrarFalta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRegistrarFalta.UseVisualStyleBackColor = true;
+            this.btnRegistrarFalta.Click += new System.EventHandler(this.btnRegistrarFalta_Click);
+            // 
+            // btnAdjuntarSustento
+            // 
+            this.btnAdjuntarSustento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdjuntarSustento.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarSustento.Image")));
+            this.btnAdjuntarSustento.Location = new System.Drawing.Point(1159, 433);
+            this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
+            this.btnAdjuntarSustento.Size = new System.Drawing.Size(119, 24);
+            this.btnAdjuntarSustento.TabIndex = 6;
+            this.btnAdjuntarSustento.Text = "Adjuntar Sustento";
+            this.btnAdjuntarSustento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
+            this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
+            // 
+            // txtRuta
+            // 
+            this.txtRuta.Location = new System.Drawing.Point(1417, 436);
+            this.txtRuta.MaxLength = 14;
+            this.txtRuta.Name = "txtRuta";
+            this.txtRuta.Size = new System.Drawing.Size(118, 20);
+            this.txtRuta.TabIndex = 79;
+            this.txtRuta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtRuta.Visible = false;
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
+            this.pbFoto.Location = new System.Drawing.Point(1159, 12);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(376, 412);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFoto.TabIndex = 103;
+            this.pbFoto.TabStop = false;
+            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
+            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(1320, 395);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 111;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(32, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.TabIndex = 99;
+            this.label6.Text = "Tipo Falta:";
+            // 
+            // cboTipoFalta
+            // 
+            this.cboTipoFalta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboTipoFalta.FormattingEnabled = true;
+            this.cboTipoFalta.IndexText = null;
+            this.cboTipoFalta.Location = new System.Drawing.Point(94, 60);
+            this.cboTipoFalta.Name = "cboTipoFalta";
+            this.cboTipoFalta.ReadOnly = false;
+            this.cboTipoFalta.Size = new System.Drawing.Size(262, 21);
+            this.cboTipoFalta.TabIndex = 105;
+            this.cboTipoFalta.Click += new System.EventHandler(this.cboTipoFalta_Click);
             // 
             // Registro
             // 
@@ -520,6 +614,7 @@ namespace HPReserger
             this.OBSERVACIONES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.OBSERVACIONES.DataPropertyName = "OBSERVACIONES";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.OBSERVACIONES.DefaultCellStyle = dataGridViewCellStyle9;
             this.OBSERVACIONES.FillWeight = 89.54314F;
             this.OBSERVACIONES.HeaderText = "OBSERVACIONES";
@@ -528,72 +623,6 @@ namespace HPReserger
             this.OBSERVACIONES.ReadOnly = true;
             this.OBSERVACIONES.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.OBSERVACIONES.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // btnRegistrarFalta
-            // 
-            this.btnRegistrarFalta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRegistrarFalta.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarFalta.Image")));
-            this.btnRegistrarFalta.Location = new System.Drawing.Point(401, 433);
-            this.btnRegistrarFalta.Name = "btnRegistrarFalta";
-            this.btnRegistrarFalta.Size = new System.Drawing.Size(119, 24);
-            this.btnRegistrarFalta.TabIndex = 5;
-            this.btnRegistrarFalta.Text = "Registrar Falta";
-            this.btnRegistrarFalta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRegistrarFalta.UseVisualStyleBackColor = true;
-            this.btnRegistrarFalta.Click += new System.EventHandler(this.btnRegistrarFalta_Click);
-            // 
-            // btnAdjuntarSustento
-            // 
-            this.btnAdjuntarSustento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdjuntarSustento.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarSustento.Image")));
-            this.btnAdjuntarSustento.Location = new System.Drawing.Point(1159, 433);
-            this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
-            this.btnAdjuntarSustento.Size = new System.Drawing.Size(119, 24);
-            this.btnAdjuntarSustento.TabIndex = 6;
-            this.btnAdjuntarSustento.Text = "Adjuntar Sustento";
-            this.btnAdjuntarSustento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
-            this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
-            // 
-            // txtRuta
-            // 
-            this.txtRuta.Location = new System.Drawing.Point(1417, 436);
-            this.txtRuta.MaxLength = 14;
-            this.txtRuta.Name = "txtRuta";
-            this.txtRuta.Size = new System.Drawing.Size(118, 20);
-            this.txtRuta.TabIndex = 79;
-            this.txtRuta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtRuta.Visible = false;
-            // 
-            // pbFoto
-            // 
-            this.pbFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
-            this.pbFoto.Location = new System.Drawing.Point(1159, 12);
-            this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(376, 412);
-            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFoto.TabIndex = 103;
-            this.pbFoto.TabStop = false;
-            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
-            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
-            // 
-            // btndescargar
-            // 
-            this.btndescargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btndescargar.AutoEllipsis = true;
-            this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(1320, 395);
-            this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
-            this.btndescargar.TabIndex = 111;
-            this.btndescargar.Text = "Descargar";
-            this.btndescargar.UseVisualStyleBackColor = false;
-            this.btndescargar.Visible = false;
-            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
-            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
             // frmFaltas
             // 
@@ -658,6 +687,9 @@ namespace HPReserger
         private System.Windows.Forms.CheckBox chkfaltas;
         private System.Windows.Forms.PictureBox pbFaltas;
         private System.Windows.Forms.Button btndescargar;
+        private CachedrptConvenioPracticasPreprofesional cachedrptConvenioPracticasPreprofesional1;
+        private ComboBoxPer cboTipoFalta;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOTIPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPOID;
@@ -666,6 +698,5 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAFIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DIASFALTAS;
         private System.Windows.Forms.DataGridViewTextBoxColumn OBSERVACIONES;
-        private CachedrptConvenioPracticasPreprofesional cachedrptConvenioPracticasPreprofesional1;
     }
 }
