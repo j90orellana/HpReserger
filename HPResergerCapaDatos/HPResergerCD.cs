@@ -3177,13 +3177,18 @@ namespace HPResergerCapaDatos
             return bd.DatarowFromProcedure("usp_MaximaFechaTomada", parametros, valores, null);
         }
 
-        public DataRow MaximaFechaATomarFalta(int Tipo_ID_Emp, string Nro_ID_Emp)
+        public DataRow MaximaFechaATomarFalta(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fecha, string TipoFalta)
         {
-            string[] parametros = { "@Tipo_ID_Emp", "@Nro_ID_Emp" };
-            object[] valores = { Tipo_ID_Emp, Nro_ID_Emp };
+            string[] parametros = { "@Tipo_ID_Emp", "@Nro_ID_Emp", "@Fecha", "@tipofalta" };
+            object[] valores = { Tipo_ID_Emp, Nro_ID_Emp, Fecha, TipoFalta };
             return bd.DatarowFromProcedure("usp_MaximaFechaTomadaFalta", parametros, valores, null);
         }
-
+        public DataRow TipoFalta_Busqueda(string falta, DateTime fecha)
+        {
+            string[] parametros = { "@falta", "@fecha" };
+            object[] valores = { falta, fecha };
+            return bd.DatarowFromProcedure("usp_TipoFalta_Busqueda", parametros, valores, null);
+        }
         public DataRow DiasGenerado(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime FechaInicio)
         {
             string[] parametros = { "@Tipo_ID_Emp", "@Nro_ID_Emp", "@Fec_Inicio" };
@@ -3227,7 +3232,7 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, string Observaciones, byte[] Foto, string NombreFoto, int estado)
+        public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, int TipoFalta, string Observaciones, byte[] Foto, string NombreFoto, int estado)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -3243,6 +3248,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@Fec_Inicio", SqlDbType.DateTime).Value = Fec_Inicio;
                     cmd.Parameters.Add("@Fec_Fin", SqlDbType.DateTime).Value = Fec_Fin;
                     cmd.Parameters.Add("@Dias", SqlDbType.Int).Value = Dias;
+                    cmd.Parameters.Add("@tipofalta", SqlDbType.Int).Value = TipoFalta;
                     cmd.Parameters.Add("@Observaciones", SqlDbType.VarChar, 256).Value = Observaciones;
                     cmd.Parameters.Add("@Foto", SqlDbType.Image).Value = Foto;
                     cmd.Parameters.Add("@NombreFoto", SqlDbType.VarChar, 256).Value = NombreFoto;

@@ -912,9 +912,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.TiposFaltas(opcion, FechaActual, nombre, observacion, min, max, descuento, id);
         }
-        public DataTable TiposFaltas()
+        public DataTable TiposFaltas(DateTime Fecha)
         {
-            return cdOrdenPedido.TiposFaltas(10, _Fecha, "", "", 0, 0, false, 0);
+            return cdOrdenPedido.TiposFaltas(10, Fecha, "", "", 0, 0, false, 0);
         }
         public DataTable MedioPagos()
         {
@@ -1204,9 +1204,9 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.ComprarVacaciones(Tipo_ID_Emp, Nro_ID_Emp, Desde, Hasta, Dias_Pendiente, Monto_Propuesto, Monto_Pactado, usuario, pago, observacion);
         }
 
-        public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, string Observaciones, byte[] Foto, string NombreFoto, int estado)
+        public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, int tipofalta, string Observaciones, byte[] Foto, string NombreFoto, int estado)
         {
-            cdOrdenPedido.EmpleadoFaltas(Tipo_ID_Emp, Nro_ID_Emp, Fec_Inicio, Fec_Fin, Dias, Observaciones, Foto, NombreFoto, estado);
+            cdOrdenPedido.EmpleadoFaltas(Tipo_ID_Emp, Nro_ID_Emp, Fec_Inicio, Fec_Fin, Dias, tipofalta, Observaciones, Foto, NombreFoto, estado);
         }
 
         public DataTable ListarFaltas(int Tipo_ID_Emp, string Nro_ID_Emp)
@@ -1214,11 +1214,14 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarFaltas(Tipo_ID_Emp, Nro_ID_Emp);
         }
 
-        public DataRow MaximaFechaATomarFalta(int Tipo_ID_Emp, string Nro_ID_Emp)
+        public DataRow MaximaFechaATomarFalta(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fecha, string tipofalta)
         {
-            return cdOrdenPedido.MaximaFechaATomarFalta(Tipo_ID_Emp, Nro_ID_Emp);
+            return cdOrdenPedido.MaximaFechaATomarFalta(Tipo_ID_Emp, Nro_ID_Emp, Fecha, tipofalta);
         }
-
+        public DataRow TipoFalta_Busqueda(string falta, DateTime fecha)
+        {
+            return cdOrdenPedido.TipoFalta_Busqueda(falta, fecha);
+        }
         public void EmpleadoMemoPremio(out int Numero, int Tipo_ID_Emp, string Nro_ID_Emp, int Tipo, string Observaciones)
         {
             cdOrdenPedido.EmpleadoMemoPremio(out Numero, Tipo_ID_Emp, Nro_ID_Emp, Tipo, Observaciones);

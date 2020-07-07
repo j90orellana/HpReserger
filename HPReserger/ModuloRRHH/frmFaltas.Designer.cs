@@ -63,7 +63,9 @@ namespace HPReserger
             this.label12 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboTipoFalta = new HpResergerUserControls.ComboBoxPer(this.components);
             this.chkfaltas = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.pbFaltas = new System.Windows.Forms.PictureBox();
             this.Grid = new HpResergerUserControls.Dtgconten();
             this.btnRegistrarFalta = new System.Windows.Forms.Button();
@@ -72,8 +74,6 @@ namespace HPReserger
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btndescargar = new System.Windows.Forms.Button();
             this.cachedrptConvenioPracticasPreprofesional1 = new HPReserger.CachedrptConvenioPracticasPreprofesional();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboTipoFalta = new HpResergerUserControls.ComboBoxPer(this.components);
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +81,7 @@ namespace HPReserger
             this.FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DIASFALTAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTipoFalta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OBSERVACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -343,6 +344,20 @@ namespace HPReserger
             this.groupBox1.TabIndex = 74;
             this.groupBox1.TabStop = false;
             // 
+            // cboTipoFalta
+            // 
+            this.cboTipoFalta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboTipoFalta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoFalta.FormattingEnabled = true;
+            this.cboTipoFalta.IndexText = null;
+            this.cboTipoFalta.Location = new System.Drawing.Point(94, 60);
+            this.cboTipoFalta.Name = "cboTipoFalta";
+            this.cboTipoFalta.ReadOnly = false;
+            this.cboTipoFalta.Size = new System.Drawing.Size(262, 21);
+            this.cboTipoFalta.TabIndex = 105;
+            this.cboTipoFalta.SelectedIndexChanged += new System.EventHandler(this.cboTipoFalta_SelectedIndexChanged);
+            this.cboTipoFalta.Click += new System.EventHandler(this.cboTipoFalta_Click);
+            // 
             // chkfaltas
             // 
             this.chkfaltas.AutoSize = true;
@@ -355,6 +370,17 @@ namespace HPReserger
             this.chkfaltas.Text = "Aplicar Descuento";
             this.chkfaltas.UseVisualStyleBackColor = false;
             this.chkfaltas.CheckedChanged += new System.EventHandler(this.chkfaltas_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(32, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.TabIndex = 99;
+            this.label6.Text = "Tipo Falta:";
             // 
             // pbFaltas
             // 
@@ -381,19 +407,20 @@ namespace HPReserger
             this.Grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.Grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Registro,
             this.CODIGOTIPO,
@@ -402,14 +429,15 @@ namespace HPReserger
             this.FECHAINICIO,
             this.FECHAFIN,
             this.DIASFALTAS,
+            this.xTipoFalta,
             this.OBSERVACIONES});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Grid.DefaultCellStyle = dataGridViewCellStyle10;
             this.Grid.EnableHeadersVisualStyles = false;
             this.Grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -491,29 +519,6 @@ namespace HPReserger
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
             this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(32, 64);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 13);
-            this.label6.TabIndex = 99;
-            this.label6.Text = "Tipo Falta:";
-            // 
-            // cboTipoFalta
-            // 
-            this.cboTipoFalta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboTipoFalta.FormattingEnabled = true;
-            this.cboTipoFalta.IndexText = null;
-            this.cboTipoFalta.Location = new System.Drawing.Point(94, 60);
-            this.cboTipoFalta.Name = "cboTipoFalta";
-            this.cboTipoFalta.ReadOnly = false;
-            this.cboTipoFalta.Size = new System.Drawing.Size(262, 21);
-            this.cboTipoFalta.TabIndex = 105;
-            this.cboTipoFalta.Click += new System.EventHandler(this.cboTipoFalta_Click);
-            // 
             // Registro
             // 
             this.Registro.DataPropertyName = "REGISTRO";
@@ -546,28 +551,29 @@ namespace HPReserger
             this.TIPOID.ReadOnly = true;
             this.TIPOID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.TIPOID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TIPOID.Width = 52;
+            this.TIPOID.Width = 50;
             // 
             // NDI
             // 
-            this.NDI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NDI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.NDI.DataPropertyName = "NID";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.NDI.DefaultCellStyle = dataGridViewCellStyle5;
             this.NDI.FillWeight = 89.54314F;
             this.NDI.HeaderText = "Nº ID";
-            this.NDI.MinimumWidth = 80;
+            this.NDI.MinimumWidth = 50;
             this.NDI.Name = "NDI";
             this.NDI.ReadOnly = true;
             this.NDI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.NDI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NDI.Width = 80;
+            this.NDI.Width = 50;
             // 
             // FECHAINICIO
             // 
             this.FECHAINICIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FECHAINICIO.DataPropertyName = "FECHAINICIO";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "d";
             this.FECHAINICIO.DefaultCellStyle = dataGridViewCellStyle6;
             this.FECHAINICIO.FillWeight = 89.54314F;
             this.FECHAINICIO.HeaderText = "FECHA INI";
@@ -576,7 +582,7 @@ namespace HPReserger
             this.FECHAINICIO.ReadOnly = true;
             this.FECHAINICIO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.FECHAINICIO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.FECHAINICIO.Width = 67;
+            this.FECHAINICIO.Width = 65;
             // 
             // FECHAFIN
             // 
@@ -584,6 +590,7 @@ namespace HPReserger
             this.FECHAFIN.DataPropertyName = "FECHAFIN";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Format = "d";
             this.FECHAFIN.DefaultCellStyle = dataGridViewCellStyle7;
             this.FECHAFIN.FillWeight = 89.54314F;
             this.FECHAFIN.HeaderText = "FECHA FIN";
@@ -592,7 +599,7 @@ namespace HPReserger
             this.FECHAFIN.ReadOnly = true;
             this.FECHAFIN.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.FECHAFIN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.FECHAFIN.Width = 70;
+            this.FECHAFIN.Width = 65;
             // 
             // DIASFALTAS
             // 
@@ -609,6 +616,16 @@ namespace HPReserger
             this.DIASFALTAS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.DIASFALTAS.Width = 70;
             // 
+            // xTipoFalta
+            // 
+            this.xTipoFalta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xTipoFalta.DataPropertyName = "TIPOFALTA";
+            this.xTipoFalta.HeaderText = "FALTA";
+            this.xTipoFalta.MinimumWidth = 50;
+            this.xTipoFalta.Name = "xTipoFalta";
+            this.xTipoFalta.ReadOnly = true;
+            this.xTipoFalta.Width = 50;
+            // 
             // OBSERVACIONES
             // 
             this.OBSERVACIONES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -618,7 +635,7 @@ namespace HPReserger
             this.OBSERVACIONES.DefaultCellStyle = dataGridViewCellStyle9;
             this.OBSERVACIONES.FillWeight = 89.54314F;
             this.OBSERVACIONES.HeaderText = "OBSERVACIONES";
-            this.OBSERVACIONES.MinimumWidth = 50;
+            this.OBSERVACIONES.MinimumWidth = 100;
             this.OBSERVACIONES.Name = "OBSERVACIONES";
             this.OBSERVACIONES.ReadOnly = true;
             this.OBSERVACIONES.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -697,6 +714,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAINICIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAFIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DIASFALTAS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoFalta;
         private System.Windows.Forms.DataGridViewTextBoxColumn OBSERVACIONES;
     }
 }

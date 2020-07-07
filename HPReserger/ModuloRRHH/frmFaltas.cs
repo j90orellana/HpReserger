@@ -30,7 +30,7 @@ namespace HPReserger
         {
             estado = 1; txtRuta.Text = "";
             groupBox1.Visible = false;
-            LimpiarGrillas();
+            //LimpiarGrillas();
             txtNumeroDocumento.Text = "";
             CargarTipoFaltas();
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
@@ -44,14 +44,11 @@ namespace HPReserger
             cbo.DisplayMember = "descripcion";
             cbo.DataSource = CapaLogica.getCargoTipoContratacion(codigo, descripcion, tabla);
         }
-
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
             DiasInicio(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_DatosEmpleado");
             Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
-
         }
-
         private void txtNumeroDocumento_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
@@ -96,8 +93,13 @@ namespace HPReserger
                 txtNombres.Text = "";
                 txtDias.Text = "";
                 txtObservaciones.Text = "";
-                LimpiarGrillas();
-                TitulosGrillas(); lblmensajito.Text = "";
+                //LimpiarGrillas();
+                //TitulosGrillas();
+                if (Grid.DataSource != null)
+                {
+                    Grid.DataSource = ((DataTable)Grid.DataSource).Clone();
+                }
+                lblmensajito.Text = "";
                 pbFoto.Image = null;
             }
         }
@@ -109,8 +111,8 @@ namespace HPReserger
             {
                 txtDias.Text = DiasFalta["DIAS"].ToString();
             }
+            CargarTipoFaltas();
         }
-
         private void LimpiarGrillas()
         {
             Grid.DataSource = null;
@@ -118,7 +120,6 @@ namespace HPReserger
             Grid.Columns.Clear();
             Grid.Refresh();
         }
-
         private void TitulosGrillas()
         {
             if (Grid.Columns.Count == 0)
@@ -183,12 +184,10 @@ namespace HPReserger
             Grid.Columns[7].DataPropertyName = "OBSERVACIONES";
             Grid.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
-
         private void dtpInicio_ValueChanged(object sender, EventArgs e)
         {
             Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
         }
-
         private void dtpFin_ValueChanged(object sender, EventArgs e)
         {
             Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
@@ -197,6 +196,7 @@ namespace HPReserger
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         private void btnRegistrarFalta_Click(object sender, EventArgs e)
         {
+            int pkidFalta = 0;
             if (txtNumeroDocumento.Text.Length == 0)
             {
                 msg("Ingrese Nº Documento");
@@ -229,9 +229,11 @@ namespace HPReserger
             else
                 ruta = txtRuta.Text;
             DateTime FechaMaximaFalta;
-            DataRow MaximaFecha = CapaLogica.MaximaFechaATomarFalta(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
+            int DiasTomados = 0;
+            DataRow MaximaFecha = CapaLogica.MaximaFechaATomarFalta(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value,cboTipoDocumento.Text);
             if (!MaximaFecha.IsNull("FECHA"))
             {
+                DiasTomados = (int)MaximaFecha["dias"];
                 FechaMaximaFalta = Convert.ToDateTime(MaximaFecha["FECHA"].ToString());
 
                 int Resultado = DateTime.Compare(dtpInicio.Value.Date, FechaMaximaFalta.Date);
@@ -241,21 +243,35 @@ namespace HPReserger
                     return;
                 }
             }
-            CapaLogica.EmpleadoFaltas(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, dtpFin.Value, Convert.ToInt32(txtDias.Text), txtObservaciones.Text, Foto, ruta, estado);
+            //Validamos los dias Tomados
+            DataRow Fila = CapaLogica.TipoFalta_Busqueda(cboTipoFalta.Text, dtpInicio.Value);
+            int CantDia = Convert.ToInt32(txtDias.Text);
+            if (Fila == null) { msg("No se Encontro Datos de la Falta para esta Fecha"); return; }
+            else
+            {
+                int min = (int)Fila["diasminimos"];
+                int max = (int)Fila["diasmaximos"];
+                if (min >= CantDia) { msg($"Dias Minimos: {min}"); return; }
+                if (DiasTomados + CantDia > max) { msg($"No se Puede Tomar más días:\nDías Tomados:{DiasTomados + CantDia}, Máximo:{max}"); return; }
+                pkidFalta = (int)Fila["pkid"];
+            }
+            //return;
+            //fin vali dias tomados            
+            CapaLogica.EmpleadoFaltas(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, dtpFin.Value, CantDia, pkidFalta, txtObservaciones.Text, Foto, ruta, estado);
             MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
-            HPResergerFunciones.frmInformativo.MostrarDialog("Falta registrada con éxito");
-            dtpInicio.Value = DateTime.Today.Date;
-            dtpFin.Value = DateTime.Today.Date;
+            HPResergerFunciones.frmInformativo.MostrarDialog("Falta Registrada con Éxito");
+            //dtpInicio.Value = DateTime.Today.Date;
+            //dtpFin.Value = DateTime.Today.Date;
             txtObservaciones.Text = "";
-            chkfaltas.Checked = false;
+            //chkfaltas.Checked = false;
             Foto = null;
         }
 
         private void btnAdjuntarSustento_Click(object sender, EventArgs e)
         {
             var dialogoAbrirArchivo = new OpenFileDialog();
-            dialogoAbrirArchivo.Filter = "Jpg Files|*.jpg";
-            dialogoAbrirArchivo.DefaultExt = ".jpg";
+            dialogoAbrirArchivo.Filter = Configuraciones.FilterImagenes();
+            //dialogoAbrirArchivo.DefaultExt = ".jpg";
             dialogoAbrirArchivo.ShowDialog(this);
 
             NombreFoto = dialogoAbrirArchivo.FileName.ToString();
@@ -377,7 +393,7 @@ namespace HPReserger
 
         private void CargarTipoFaltas()
         {
-            DataTable TablaAux = CapaLogica.TiposFaltas();
+            DataTable TablaAux = CapaLogica.TiposFaltas(dtpInicio.Value);
             string cadena = cboTipoFalta.Text;
             if (TablaAux.Rows.Count != cboTipoFalta.Items.Count)
             {
@@ -385,6 +401,16 @@ namespace HPReserger
                 cboTipoFalta.DisplayMember = "nombre";
                 cboTipoFalta.DataSource = TablaAux;
                 if (cboTipoFalta.DataSource != null) cboTipoFalta.Text = cadena;
+            }
+        }
+
+        private void cboTipoFalta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTipoFalta.SelectedValue != null)
+            {
+                DataRow Fila = CapaLogica.TipoFalta_Busqueda(cboTipoFalta.Text, dtpInicio.Value);
+                if (Fila != null)
+                    chkfaltas.Checked = (Boolean)Fila["descuento"];
             }
         }
     }
