@@ -194,6 +194,7 @@ namespace HPReserger
         }
         int estado = 0; string ruta;
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public DialogResult msgYesCancel(string cadena, string detalle) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena, detalle); }
         private void btnRegistrarFalta_Click(object sender, EventArgs e)
         {
             int pkidFalta = 0;
@@ -230,7 +231,7 @@ namespace HPReserger
                 ruta = txtRuta.Text;
             DateTime FechaMaximaFalta;
             int DiasTomados = 0;
-            DataRow MaximaFecha = CapaLogica.MaximaFechaATomarFalta(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value,cboTipoDocumento.Text);
+            DataRow MaximaFecha = CapaLogica.MaximaFechaATomarFalta(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, cboTipoFalta.Text);
             if (!MaximaFecha.IsNull("FECHA"))
             {
                 DiasTomados = (int)MaximaFecha["dias"];
@@ -252,7 +253,12 @@ namespace HPReserger
                 int min = (int)Fila["diasminimos"];
                 int max = (int)Fila["diasmaximos"];
                 if (min >= CantDia) { msg($"Dias Minimos: {min}"); return; }
-                if (DiasTomados + CantDia > max) { msg($"No se Puede Tomar más días:\nDías Tomados:{DiasTomados + CantDia}, Máximo:{max}"); return; }
+                if (DiasTomados + CantDia > max && max != 0)
+                {
+
+                    if (msgYesCancel($"No se Puede Tomar más días:\nDías Tomados:{DiasTomados + CantDia}, Máximo:{max}", "¿Desea Continuar?") == DialogResult.Cancel)
+                        return;
+                }
                 pkidFalta = (int)Fila["pkid"];
             }
             //return;
@@ -313,19 +319,20 @@ namespace HPReserger
         private void CargarFoto(int Registro, int TipoDocumento, string NumeroDocumento)
         {
             DataRow drFoto = CapaLogica.ImagenFalta(Registro, TipoDocumento, NumeroDocumento);
-            if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
-            {
-                byte[] Fotito = new byte[0];
-                Fotito = (byte[])drFoto["Foto"];
-                MemoryStream ms = new MemoryStream(Fotito);
-                pbFoto.Image = Bitmap.FromStream(ms);
-                txtRuta.Text = drFoto["NOMBREFOTO"].ToString();
-            }
-            else
-            {
-                pbFoto.Image = null;
-                txtRuta.Text = "";
-            }
+            if (drFoto != null)
+                if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
+                {
+                    byte[] Fotito = new byte[0];
+                    Fotito = (byte[])drFoto["Foto"];
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbFoto.Image = Bitmap.FromStream(ms);
+                    txtRuta.Text = drFoto["NOMBREFOTO"].ToString();
+                }
+                else
+                {
+                    pbFoto.Image = null;
+                    txtRuta.Text = "";
+                }
         }
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)

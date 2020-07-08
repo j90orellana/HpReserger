@@ -853,6 +853,7 @@ namespace HPReserger
                             decimal ValorSoles = (decimal)DVFila[xpen.DataPropertyName] * (Sentido ? 1 : -1) * (ValorDebeMN < ValorHaberMN ? 1 : -1);
                             GLOSA = DVFila[xGlosa.DataPropertyName].ToString();
                             string NroCuentaBancaria = DVFila[xCuentaBanco.DataPropertyName].ToString();
+                            IdSoles = DVFila[xmoneda.DataPropertyName].ToString() == "PEN" ? 1 : 2;
                             //
                             CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila - 1, NumAsiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
                             NameProveedor, idcomprobante, SerieDocumento, NumDocumento, iddinamica, FechaContable, FechaContable, FechaContable,
