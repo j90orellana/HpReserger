@@ -240,8 +240,7 @@ namespace HPReserger
                 int Resultado = DateTime.Compare(dtpInicio.Value.Date, FechaMaximaFalta.Date);
                 if (Resultado <= 0)
                 {
-                    msg("Fecha de Inicio debe ser posterior a la última Fecha Fin de Falta");
-                    return;
+                    if (msgYesCancel("Fecha de Inicio debe ser posterior a la última Fecha Fin de Falta","¿Desea Continuar?") == DialogResult.Cancel) return;
                 }
             }
             //Validamos los dias Tomados
