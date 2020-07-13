@@ -136,6 +136,12 @@
     <Compile Include="frmConciliacionReportepdf.Designer.cs">
       <DependentUpon>frmConciliacionReportepdf.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConfigurarAsientosBoletas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfigurarAsientosBoletas.Designer.cs">
+      <DependentUpon>frmConfigurarAsientosBoletas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCuadreAsientos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1891,6 +1897,9 @@
     </Compile>
     <EmbeddedResource Include="frmConciliacionReportepdf.resx">
       <DependentUpon>frmConciliacionReportepdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfigurarAsientosBoletas.resx">
+      <DependentUpon>frmConfigurarAsientosBoletas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCuadreAsientos.resx">
       <DependentUpon>frmCuadreAsientos.cs</DependentUpon>

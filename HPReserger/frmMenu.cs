@@ -4629,5 +4629,28 @@ namespace HPReserger
         {
             frmtipofaltitas = null;
         }
+        frmConfigurarAsientosBoletas frmConfigurarasientoBoletas;
+        private void asientosBoletasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmConfigurarasientoBoletas == null)
+            {
+                frmConfigurarasientoBoletas = new frmConfigurarAsientosBoletas();
+                frmConfigurarasientoBoletas.MdiParent = this;
+                frmConfigurarasientoBoletas.Icon = ICono;
+                frmConfigurarasientoBoletas.FormClosed += new FormClosedEventHandler(CerrarfrmConfigurarasientoBoletas);
+                frmConfigurarasientoBoletas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmConfigurarasientoBoletas.Activate();
+                ValidarVentanas(frmConfigurarasientoBoletas);
+            }
+        }
+
+        private void CerrarfrmConfigurarasientoBoletas(object sender, FormClosedEventArgs e)
+        {
+            frmConfigurarasientoBoletas = null;
+        }
     }
 }

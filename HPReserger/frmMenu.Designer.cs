@@ -246,6 +246,7 @@
             this.monedaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.comprobantesPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.impuestoALaRentaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.asientosBoletasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.configurarDinamicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -2374,6 +2375,7 @@
             this.monedaToolStripMenuItem1,
             this.comprobantesPToolStripMenuItem,
             this.impuestoALaRentaToolStripMenuItem1,
+            this.asientosBoletasToolStripMenuItem,
             this.toolStripSeparator10,
             this.configurarDinamicasToolStripMenuItem,
             this.configuraciónReporteToolStripMenuItem});
@@ -2445,6 +2447,13 @@
             this.impuestoALaRentaToolStripMenuItem1.Tag = "1608006";
             this.impuestoALaRentaToolStripMenuItem1.Text = "Impuesto a la Renta";
             this.impuestoALaRentaToolStripMenuItem1.Click += new System.EventHandler(this.impuestoALaRentaToolStripMenuItem_Click);
+            // 
+            // asientosBoletasToolStripMenuItem
+            // 
+            this.asientosBoletasToolStripMenuItem.Name = "asientosBoletasToolStripMenuItem";
+            this.asientosBoletasToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.asientosBoletasToolStripMenuItem.Text = "Asientos Boletas";
+            this.asientosBoletasToolStripMenuItem.Click += new System.EventHandler(this.asientosBoletasToolStripMenuItem_Click);
             // 
             // toolStripSeparator10
             // 
@@ -3232,5 +3241,6 @@
         private System.Windows.Forms.ToolStripMenuItem bonosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem tiposFaltasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asientosBoletasToolStripMenuItem;
     }
 }

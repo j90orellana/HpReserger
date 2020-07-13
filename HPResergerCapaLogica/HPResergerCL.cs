@@ -1218,6 +1218,14 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.MaximaFechaATomarFalta(Tipo_ID_Emp, Nro_ID_Emp, Fecha, tipofalta);
         }
+        public DataTable ConfigurarAsientoBoletas()
+        {
+            return cdOrdenPedido.ConfigurarAsientoBoletas(0, 0, "", "", true, "");
+        }
+        public DataTable ConfigurarAsientoBoletas(int opcion, int pkid, string cuenta, string debe, Boolean incluir, string glosa)
+        {
+            return cdOrdenPedido.ConfigurarAsientoBoletas(opcion, pkid, cuenta, debe, incluir, glosa);
+        }
         public DataRow TipoFalta_Busqueda(string falta, DateTime fecha)
         {
             return cdOrdenPedido.TipoFalta_Busqueda(falta, fecha);

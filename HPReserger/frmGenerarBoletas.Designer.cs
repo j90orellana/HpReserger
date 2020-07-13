@@ -96,6 +96,7 @@
             this.rbTodasEmpresa.TabIndex = 16;
             this.rbTodasEmpresa.Text = "Todas Las Empresas";
             this.rbTodasEmpresa.UseVisualStyleBackColor = true;
+            this.rbTodasEmpresa.Visible = false;
             this.rbTodasEmpresa.CheckedChanged += new System.EventHandler(this.rbTodasEmpresa_CheckedChanged);
             // 
             // label2
@@ -119,9 +120,9 @@
             // comboMesAño2
             // 
             this.comboMesAño2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2019, 9, 20, 0, 0, 0, 0);
-            this.comboMesAño2.FechaFinMes = new System.DateTime(2019, 9, 30, 0, 0, 0, 0);
-            this.comboMesAño2.FechaInicioMes = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
+            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2020, 7, 10, 0, 0, 0, 0);
+            this.comboMesAño2.FechaFinMes = new System.DateTime(2020, 7, 31, 0, 0, 0, 0);
+            this.comboMesAño2.FechaInicioMes = new System.DateTime(2020, 7, 1, 0, 0, 0, 0);
             this.comboMesAño2.Location = new System.Drawing.Point(114, 135);
             this.comboMesAño2.Name = "comboMesAño2";
             this.comboMesAño2.Size = new System.Drawing.Size(209, 26);
@@ -132,9 +133,9 @@
             // comboMesAño1
             // 
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 9, 20, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 9, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 7, 10, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 7, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 7, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(110, 111);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(209, 26);
