@@ -1220,11 +1220,11 @@ namespace HPResergerCapaLogica
         }
         public DataTable ConfigurarAsientoBoletas()
         {
-            return cdOrdenPedido.ConfigurarAsientoBoletas(0, 0, "", "", true, "");
+            return cdOrdenPedido.ConfigurarAsientoBoletas(0, 0, "", "", true, "", 0, "");
         }
-        public DataTable ConfigurarAsientoBoletas(int opcion, int pkid, string cuenta, string debe, Boolean incluir, string glosa)
+        public DataTable ConfigurarAsientoBoletas(int opcion, int pkid, string cuenta, string debe, Boolean incluir, string glosa, int tipo, string columna)
         {
-            return cdOrdenPedido.ConfigurarAsientoBoletas(opcion, pkid, cuenta, debe, incluir, glosa);
+            return cdOrdenPedido.ConfigurarAsientoBoletas(opcion, pkid, cuenta, debe, incluir, glosa, tipo, columna);
         }
         public DataRow TipoFalta_Busqueda(string falta, DateTime fecha)
         {

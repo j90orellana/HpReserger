@@ -17,24 +17,33 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        HPResergerCapaLogica.HPResergerCL CReporteboleta = new HPResergerCapaLogica.HPResergerCL();
-        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmGenerarBoletas_Load(object sender, EventArgs e)
         {
+            txtGlosa1.CargarTextoporDefecto(); txtglosa2.CargarTextoporDefecto();
+            ValidarCheck();
+            cboetapa.Enabled = cboproyecto.Enabled = true;
             cargarempresas();
             cargartipoid();
             empresa = 1;
         }
         public void cargarempresas()
         {
-            cboempresa.DataSource = CReporteboleta.getCargoTipoContratacion("Id_empresa", "empresa", "tbl_empresa");
-            cboempresa.ValueMember = "codigo";
-            cboempresa.DisplayMember = "descripcion";
+            string cadena = cboempresa.Text;
+            DataTable Tdatos = CapaLogica.getCargoTipoContratacion("Id_empresa", "empresa", "tbl_empresa");
+            if (Tdatos.Rows.Count != cboempresa.Items.Count)
+            {
+                cboempresa.ValueMember = "codigo";
+                cboempresa.DisplayMember = "descripcion";
+                cboempresa.DataSource = CapaLogica.getCargoTipoContratacion("Id_empresa", "empresa", "tbl_empresa");
+                if (cboempresa.DataSource != null) cboempresa.Text = cadena;
+            }
         }
         public void cargartipoid()
         {
-            cbotipoid.DataSource = CReporteboleta.getCargoTipoContratacion("Codigo_Tipo_ID", "desc_tipo_id", "tbl_tipo_id");
+            cbotipoid.DataSource = CapaLogica.getCargoTipoContratacion("Codigo_Tipo_ID", "desc_tipo_id", "tbl_tipo_id");
             cbotipoid.ValueMember = "codigo";
             cbotipoid.DisplayMember = "descripcion";
         }
@@ -56,16 +65,40 @@ namespace HPReserger
         private void btngenerar_Click(object sender, EventArgs e)
         {
 
+            //Validaciones para el proceso de generar el asiento
+            if (chkGAsientos.Checked)
+            {
+                if (cboempresa.Items.Count == 0) { msgError("No hay Empresas"); cboempresa.Focus(); return; }
+                if (cboempresa.SelectedValue == null) { msgError("Seleccione una Empresa"); cboempresa.Focus(); return; }
+                if (cboproyecto.Items.Count == 0) { msgError("No hay Proyectos"); cboproyecto.Focus(); return; }
+                if (cboproyecto.SelectedValue == null) { msgError("Seleccione una Proyecto"); cboproyecto.Focus(); return; }
+                if (cboetapa.Items.Count == 0) { msgError("No hay Etapas"); cboetapa.Focus(); return; }
+                if (cboetapa.SelectedValue == null) { msgError("Seleccione una Etapa"); cboetapa.Focus(); return; }
+                if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
+                if (!txtglosa2.EstaLLeno()) { msgError("Ingrese la Glosa del asiento de Provisión"); txtglosa2.Focus(); return; }
+                //Validamos que el asiento Exista
+
+                //Validamos que el periodo Exista
+
+                //validamos que el periodo este abierto
+
+
+
+
+
+
+
+            }
             empresa = 0; tipo = 0;
-            if (radioButton1.Checked)
+            if (rbEmpresa.Checked)
                 if (cboempresa.Items.Count > 0)
                     empresa = int.Parse(cboempresa.SelectedValue.ToString());
                 else
                 {
-                    msg("No hay Empresas");
+                    msgError("No hay Empresas");
                     return;
                 }
-            if (radioButton2.Checked)
+            if (rbPersona.Checked)
             {
                 if (cbotipoid.Items.Count > 0)
                 {
@@ -74,7 +107,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    msg("No Hay Tipos de ID"); return;
+                    msgError("No Hay Tipos de ID"); return;
                 }
             }
             if (rbTodasEmpresa.Checked)
@@ -96,7 +129,7 @@ namespace HPReserger
                         inicial = comboMesAño2.GetFechaPRimerDia();
                         final = comboMesAño1.GetFecha();
                     }
-                    DBoleta = CReporteboleta.SeleccionarBoletas(0, tipo, numero, 1, inicial, final);
+                    DBoleta = CapaLogica.SeleccionarBoletas(0, tipo, numero, 1, inicial, final);
                     int aux = (12 * (final.Year - inicial.Year) + final.Month) - inicial.Month + 1;
                     // msg("meses " + aux + "inicial " + inicial + "final " + final);
                     List<string> listita = new List<string>();
@@ -107,24 +140,24 @@ namespace HPReserger
                     if (DBoleta.Rows.Count == 0)
                     {
                         //cuando no hay boletas 
-                        CReporteboleta.GenerarBoletasMensuales(0, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                        CapaLogica.GenerarBoletasMensuales(0, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                         //Generar Asiento de Boletas Generadas
                         if (chkGAsientos.Checked)
                         {
                             DataTable Tablita = new DataTable();
                             //filtrar por lo que ya esta generado
-                            Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                            Tablita = CapaLogica.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                             if (Tablita.Rows.Count > 0)
                             {
-                                DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                                DataRow Ultimo = CapaLogica.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
                                 int ultimo = 1 + (int)Ultimo["ultimo"];
                                 DataRow Filita = Tablita.Rows[0];
-                                DataTable Ultimox = CReporteboleta.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
+                                DataTable Ultimox = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
                                 Ultimo = Ultimox.Rows[0];
                                 ultimo = ((int)Ultimo["codigo"]);
                                 foreach (DataColumn col in Tablita.Columns)
                                 {
-                                    CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, decimal.Parse(Filita[col.ColumnName].ToString() == "" ? "0" : Filita[col.ColumnName].ToString()));
+                                    CapaLogica.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, decimal.Parse(Filita[col.ColumnName].ToString() == "" ? "0" : Filita[col.ColumnName].ToString()));
                                 }
                                 //cuentas de Reflejo
                                 //DataTable Cuentas = new DataTable();
@@ -139,7 +172,7 @@ namespace HPReserger
                         }
                         //fin de Asientos DE boletas Generadas
                     }
-                    DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+                    DBoleta = CapaLogica.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
                     if (DBoleta.Rows.Count == 0)
                     {
                         // msg($"No hay Boletas que Mostrar del :{inicial.ToLongDateString()} \nHasta: {final.ToLongDateString()}");
@@ -172,7 +205,7 @@ namespace HPReserger
                     inicial = comboMesAño2.GetFechaPRimerDia();
                     final = comboMesAño1.GetFecha();
                 }
-                DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+                DBoleta = CapaLogica.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
                 int aux = (12 * (final.Year - inicial.Year) + final.Month) - inicial.Month + 1;
                 // msg("meses " + aux + "inicial " + inicial + "final " + final);
                 List<string> listita = new List<string>();
@@ -183,24 +216,24 @@ namespace HPReserger
                 if (DBoleta.Rows.Count == 0)
                 {
                     //cuando no hay boletas 
-                    CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                    CapaLogica.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                     //Generar Asiento de Boletas Generadas
                     DataTable Tablita = new DataTable();
-                    Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                    Tablita = CapaLogica.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                     if (Tablita.Rows.Count > 0)
                         if (chkGAsientos.Checked)
                         {
                             if ((Tablita.Rows[0])[0].ToString().ToUpper() != "")
                             {
-                                DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                                DataRow Ultimo = CapaLogica.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
                                 int ultimo = 1 + (int)Ultimo["ultimo"];
                                 DataRow Filita = Tablita.Rows[0];
-                                DataTable Ultimox = CReporteboleta.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
+                                DataTable Ultimox = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
                                 Ultimo = Ultimox.Rows[0];
                                 ultimo = ((int)Ultimo["codigo"]);
                                 foreach (DataColumn col in Tablita.Columns)
                                 {
-                                    CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
+                                    CapaLogica.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
                                 }
                                 //cuentas de Reflejo
                                 //DataTable Cuentas = new DataTable();
@@ -215,10 +248,10 @@ namespace HPReserger
                         }
                     //fin de Asientos DE boletas Generadas
                 }
-                DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+                DBoleta = CapaLogica.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
                 if (DBoleta.Rows.Count == 0)
                 {
-                    msg($"No hay Boletas que Mostrar del :{inicial.ToLongDateString()} \nHasta: {final.ToLongDateString()}");
+                    msgError($"No hay Boletas que Mostrar del :{inicial.ToLongDateString()} \nHasta: {final.ToLongDateString()}");
                     return;
                 }
                 frmreporteboletasfin boletas = new frmreporteboletasfin();
@@ -234,29 +267,25 @@ namespace HPReserger
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            if (rbEmpresa.Checked)
             {
                 empresa = int.Parse(cboempresa.SelectedValue.ToString());
                 cbotipoid.Enabled = false;
                 txtnumero.Enabled = false;
-                btnrectipo.Enabled = false;
                 btnlimpiar.Enabled = false;
                 cboempresa.Enabled = true;
-                btnrecempresa.Enabled = true;
             }
             else empresa = 0;
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked)
+            if (rbPersona.Checked)
             {
                 tipo = int.Parse(cbotipoid.SelectedValue.ToString());
                 numero = txtnumero.Text;
                 cboempresa.Enabled = false;
-                btnrecempresa.Enabled = false;
                 cbotipoid.Enabled = true;
                 txtnumero.Enabled = true;
-                btnrectipo.Enabled = true;
                 btnlimpiar.Enabled = true;
             }
             else
@@ -264,29 +293,67 @@ namespace HPReserger
                 tipo = 0; numero = "0";
             }
         }
-
-        private void cbotipoid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void rbTodasEmpresa_CheckedChanged(object sender, EventArgs e)
         {
             if (rbTodasEmpresa.Checked)
             {
                 cbotipoid.Enabled = false;
                 txtnumero.Enabled = false;
-                btnrectipo.Enabled = false;
                 btnlimpiar.Enabled = false;
                 cboempresa.Enabled = false;
-                btnrecempresa.Enabled = false;
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void cboempresa_Click(object sender, EventArgs e)
         {
+            cargarempresas();
+        }
+        private void cbotipoid_Click(object sender, EventArgs e)
+        {
+            cargartipoid();
+        }
+        private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string cadena = (cboempresa.SelectedValue ?? "").ToString();
+            cboproyecto.DisplayMember = "proyecto";
+            cboproyecto.ValueMember = "id_proyecto";
+            cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cadena);
         }
 
+        private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataRowView itemsito = (DataRowView)cboproyecto.Items[cboproyecto.SelectedIndex];
+            cboetapa.DataSource = CapaLogica.ListarEtapasProyecto((itemsito["id_proyecto"].ToString()));
+            cboetapa.ValueMember = "id_etapa";
+            cboetapa.DisplayMember = "descripcion";
+        }
 
+        private void chkGAsientos_CheckedChanged(object sender, EventArgs e)
+        {
+            ValidarCheck();
+        }
+        private void ValidarCheck()
+        {
+            if (chkGAsientos.Checked)
+            {
+                rbTodasEmpresa.Visible = comboMesAño2.Visible = label2.Visible = false;
+                txtglosa2.Visible = txtGlosa1.Visible = cboproyecto.Visible = cboetapa.Visible = true;
+                //Cambiamos el size del formulario
+                this.MinimumSize = new Size(517, 322);
+                this.MaximumSize = new Size(517, 322);
+                if (rbTodasEmpresa.Checked)
+                {
+                    rbTodasEmpresa.Checked = false;
+                    rbEmpresa.Checked = true;
+                }
+            }
+            else
+            {
+                rbTodasEmpresa.Visible = comboMesAño2.Visible = label2.Visible = true;
+                txtglosa2.Visible = txtGlosa1.Visible = cboproyecto.Visible = cboetapa.Visible = false;
+                this.MinimumSize = new Size(517, 272);
+                this.MaximumSize = new Size(517, 272);
+            }
+        }
     }
 }

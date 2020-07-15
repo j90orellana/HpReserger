@@ -2062,6 +2062,12 @@ namespace HPReserger
                 estado = 0;
             }
         }
+
+        private void cboempresa_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();

@@ -31,11 +31,12 @@ namespace HPReserger
 
         private void ModoEdicion(bool v)
         {
-            txtcuenta.ReadOnly = txtglosa.ReadOnly = !v;
+            txtnamecolumna.ReadOnly = txtcuenta.ReadOnly = txtglosa.ReadOnly = !v;
             dtgconten.Enabled = !v;
-            btnbuscar.Enabled = chkFecha.Enabled = v;
+            rbasiento.Enabled = rbprovision.Enabled = btnbuscar.Enabled = chkFecha.Enabled = v;
             cbodebe.ReadOnly = !v;
-            btnmodificar.Enabled = !v;
+            btnactualizar.Enabled = btnmodificar.Enabled = !v;
+            btnAceptar.Enabled = v;
         }
 
         private void CargarValorexDefecto()
@@ -51,6 +52,7 @@ namespace HPReserger
 
         public void CargarDAtos()
         {
+            btnmodificar.Enabled = false;
             if (Cargado)
             {
                 Tdatos = CapaLogica.ConfigurarAsientoBoletas();
@@ -74,6 +76,8 @@ namespace HPReserger
                     cbodebe.Text = Fila.Cells[xDebeHaber.Name].Value.ToString();
                     txtdescripcion.Text = Fila.Cells[xDescripcion.Name].Value.ToString();
                     chkFecha.Checked = (Boolean)Fila.Cells[xIncluirFechas.Name].Value;
+                    txtnamecolumna.Text = Fila.Cells[xcolumnatabla.Name].Value.ToString();
+                    if ((int)Fila.Cells[xtipo.Name].Value == 1) rbasiento.Checked = true; else rbprovision.Checked = true;
                 }
             }
         }
@@ -104,10 +108,12 @@ namespace HPReserger
             if (!(cbodebe.Text == "D" || cbodebe.Text == "H")) { msgError("Valor Admitido solo: D o H"); return; }
             if (!txtdescripcion.EstaLLeno()) { msgError("Debe Ingresar una Cuenta contable Valida"); return; }
             if (!txtcuenta.EstaLLeno()) { msgError("Ingrese una Cuenta Contable"); return; }
+            if (!rbasiento.Checked && !rbprovision.Checked) { msgError("Seleccione un Tipo de Asiento"); return; }
+            if (txtnamecolumna.EstaLLeno()) { msgError("Ingrese el Nombre de la Columna del Procedimiento:[usp_ReporteBoletas_Asiento]"); return; }
             //Proceso de modificacion
             if (Estado == 2)
             {
-                CapaLogica.ConfigurarAsientoBoletas(2, pkid, txtcuenta.TextValido(), cbodebe.Text, chkFecha.Checked, txtglosa.TextValido());
+                CapaLogica.ConfigurarAsientoBoletas(2, pkid, txtcuenta.TextValido(), cbodebe.Text, chkFecha.Checked, txtglosa.TextValido(), rbasiento.Checked ? 1 : 0, txtnamecolumna.TextValido());
                 msgOk("Modificado con Exito");
                 ModoEdicion(false);
                 Estado = 0;
@@ -150,6 +156,11 @@ namespace HPReserger
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             BuscarCuenta();
+        }
+
+        private void btnactualizar_Click(object sender, EventArgs e)
+        {
+            CargarDAtos();
         }
     }
 }

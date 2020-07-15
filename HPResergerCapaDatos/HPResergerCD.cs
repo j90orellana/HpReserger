@@ -3176,10 +3176,10 @@ namespace HPResergerCapaDatos
             object[] valores = { Tipo_ID_Emp, Nro_ID_Emp };
             return bd.DatarowFromProcedure("usp_MaximaFechaTomada", parametros, valores, null);
         }
-        public DataTable ConfigurarAsientoBoletas(int opcion, int pkid, string cuenta, string debe, Boolean incluir, string glosa)
+        public DataTable ConfigurarAsientoBoletas(int opcion, int pkid, string cuenta, string debe, Boolean incluir, string glosa, int tipo, string columna)
         {
-            string[] parametros = { "@opcion", "@pkid", "@cuenta", "@debe", "@incluir", "@glosa" };
-            object[] valores = { opcion, pkid, cuenta, debe, incluir, glosa };
+            string[] parametros = { "@opcion", "@pkid", "@cuenta", "@debe", "@incluir", "@glosa", "@tipo", "@columna" };
+            object[] valores = { opcion, pkid, cuenta, debe, incluir, glosa, tipo, columna };
             return bd.DataTableFromProcedure("usp_ConfigurarAsientoBoletas", parametros, valores, null);
         }
         public DataRow MaximaFechaATomarFalta(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fecha, string TipoFalta)
