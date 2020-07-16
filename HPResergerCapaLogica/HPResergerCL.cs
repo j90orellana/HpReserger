@@ -2034,6 +2034,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ReporteBoletas(empresa, numero, fecinicio, fecfin);
         }
+        public DataTable ReporteBoletasAsiento(string empresa, string numero, DateTime fecinicio, DateTime fecfin)
+        {
+            return cdOrdenPedido.ReporteBoletasAsientos(empresa, numero, fecinicio, fecfin);
+        }
         public DataTable BuscarBoletasPOrPAgar(int empresa, int tipo, string numero, int fecha, DateTime fecinicio, DateTime fecfin)
         {
             return cdOrdenPedido.BuscarBoletasPOrPAgar(empresa, tipo, numero, fecha, fecinicio, fecfin);

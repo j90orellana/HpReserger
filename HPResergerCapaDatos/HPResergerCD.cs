@@ -4318,6 +4318,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, numero, fecinicio, fecfin };
             return bd.DataTableFromProcedure("usp_ReporteBoletas", parametros, valores, null); ;
         }
+        public DataTable ReporteBoletasAsientos(string empresa, string numero, DateTime fecinicio, DateTime fecfin)
+        {
+            string[] parametros = { "@empresa", "@numero", "@fecInicio", "@fecFin" };
+            object[] valores = { empresa, numero, fecinicio, fecfin };
+            return bd.DataTableFromProcedure("usp_ReporteBoletas_Asiento", parametros, valores, null); ;
+        }
         public DataTable BuscarBoletasPOrPAgar(int empresa, int tipo, string numero, int fecha, DateTime fecinicio, DateTime fecfin)
         {
             string[] parametros = { "@empresa", "@tipo", "@numero", "@fecha", "@fecInicio", "@fecFin" };

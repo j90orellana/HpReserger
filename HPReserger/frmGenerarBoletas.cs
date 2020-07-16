@@ -20,6 +20,7 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+        public DialogResult msgYesCancel(string cadena, string detalle) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena, detalle); }
         private void frmGenerarBoletas_Load(object sender, EventArgs e)
         {
             txtGlosa1.CargarTextoporDefecto(); txtglosa2.CargarTextoporDefecto();
@@ -62,6 +63,10 @@ namespace HPReserger
             cargartipoid();
         }
         DataTable DBoleta;
+        int IdEmpresa;
+        DateTime FechaContable;
+        private int DinamicaAsiento = -60;
+        private int DinamicaProvision = -61;
         private void btngenerar_Click(object sender, EventArgs e)
         {
 
@@ -76,18 +81,24 @@ namespace HPReserger
                 if (cboetapa.SelectedValue == null) { msgError("Seleccione una Etapa"); cboetapa.Focus(); return; }
                 if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
                 if (!txtglosa2.EstaLLeno()) { msgError("Ingrese la Glosa del asiento de Provisión"); txtglosa2.Focus(); return; }
+                //
+                int IdEmpresa = (int)cboempresa.SelectedValue;
+                FechaContable = comboMesAño1.GetFecha();
                 //Validamos que el asiento Exista
-
+                //Dinamica --60 Asiento -61 Provision
+                if (ValidarAsientoExiste(DinamicaAsiento, FechaContable, IdEmpresa)) { msgError("Ya Existe Asiento de la Boleta"); return; }
+                if (ValidarAsientoExiste(DinamicaProvision, FechaContable, IdEmpresa)) { msgError("Ya Existe Provisión de la Boleta"); return; }
                 //Validamos que el periodo Exista
-
+                if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaContable))
+                {
+                    if (msgYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaContable.ToString("MMMM")}-{FechaContable.Year}?") != DialogResult.Yes)
+                        return;
+                }
                 //validamos que el periodo este abierto
-
-
-
-
-
-
-
+                if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContable))
+                {
+                    msgError("El Periodo Esta Cerrado, Cambie Fecha Contable"); comboMesAño1.Focus(); return;
+                }
             }
             empresa = 0; tipo = 0;
             if (rbEmpresa.Checked)
@@ -142,34 +153,34 @@ namespace HPReserger
                         //cuando no hay boletas 
                         CapaLogica.GenerarBoletasMensuales(0, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                         //Generar Asiento de Boletas Generadas
-                        if (chkGAsientos.Checked)
-                        {
-                            DataTable Tablita = new DataTable();
-                            //filtrar por lo que ya esta generado
-                            Tablita = CapaLogica.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
-                            if (Tablita.Rows.Count > 0)
-                            {
-                                DataRow Ultimo = CapaLogica.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
-                                int ultimo = 1 + (int)Ultimo["ultimo"];
-                                DataRow Filita = Tablita.Rows[0];
-                                DataTable Ultimox = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
-                                Ultimo = Ultimox.Rows[0];
-                                ultimo = ((int)Ultimo["codigo"]);
-                                foreach (DataColumn col in Tablita.Columns)
-                                {
-                                    CapaLogica.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, decimal.Parse(Filita[col.ColumnName].ToString() == "" ? "0" : Filita[col.ColumnName].ToString()));
-                                }
-                                //cuentas de Reflejo
-                                //DataTable Cuentas = new DataTable();
-                                //Cuentas = CReporteboleta.CuentasReflejo(ultimo, (int)cboempresa.SelectedValue, DateTime.Now.Date);
-                                //if (Cuentas.Rows.Count > 0)
-                                //{
-                                //    DataRow Fila0 = Cuentas.Rows[0];
-                                //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
-                                //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
-                                //}
-                            }
-                        }
+                        //if (chkGAsientos.Checked)
+                        //{
+                        //    DataTable Tablita = new DataTable();
+                        //    //filtrar por lo que ya esta generado
+                        //    Tablita = CapaLogica.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                        //    if (Tablita.Rows.Count > 0)
+                        //    {
+                        //        DataRow Ultimo = CapaLogica.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                        //        int ultimo = 1 + (int)Ultimo["ultimo"];
+                        //        DataRow Filita = Tablita.Rows[0];
+                        //        DataTable Ultimox = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
+                        //        Ultimo = Ultimox.Rows[0];
+                        //        ultimo = ((int)Ultimo["codigo"]);
+                        //        foreach (DataColumn col in Tablita.Columns)
+                        //        {
+                        //            CapaLogica.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, decimal.Parse(Filita[col.ColumnName].ToString() == "" ? "0" : Filita[col.ColumnName].ToString()));
+                        //        }
+                        //        //cuentas de Reflejo
+                        //        //DataTable Cuentas = new DataTable();
+                        //        //Cuentas = CReporteboleta.CuentasReflejo(ultimo, (int)cboempresa.SelectedValue, DateTime.Now.Date);
+                        //        //if (Cuentas.Rows.Count > 0)
+                        //        //{
+                        //        //    DataRow Fila0 = Cuentas.Rows[0];
+                        //        //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
+                        //        //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
+                        //        //}
+                        //    }
+                        //}
                         //fin de Asientos DE boletas Generadas
                     }
                     DBoleta = CapaLogica.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
@@ -220,32 +231,32 @@ namespace HPReserger
                     //Generar Asiento de Boletas Generadas
                     DataTable Tablita = new DataTable();
                     Tablita = CapaLogica.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
-                    if (Tablita.Rows.Count > 0)
-                        if (chkGAsientos.Checked)
-                        {
-                            if ((Tablita.Rows[0])[0].ToString().ToUpper() != "")
-                            {
-                                DataRow Ultimo = CapaLogica.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
-                                int ultimo = 1 + (int)Ultimo["ultimo"];
-                                DataRow Filita = Tablita.Rows[0];
-                                DataTable Ultimox = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
-                                Ultimo = Ultimox.Rows[0];
-                                ultimo = ((int)Ultimo["codigo"]);
-                                foreach (DataColumn col in Tablita.Columns)
-                                {
-                                    CapaLogica.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
-                                }
-                                //cuentas de Reflejo
-                                //DataTable Cuentas = new DataTable();
-                                //Cuentas = CReporteboleta.CuentasReflejo(ultimo, (int)cboempresa.SelectedValue, DateTime.Now.Date);
-                                //if (Cuentas.Rows.Count > 0)
-                                //{
-                                //    DataRow Fila0 = Cuentas.Rows[0];
-                                //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
-                                //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
-                                //}
-                            }
-                        }
+                    //if (Tablita.Rows.Count > 0)
+                    //if (chkGAsientos.Checked)
+                    //{                           
+                    //    if ((Tablita.Rows[0])[0].ToString().ToUpper() != "")
+                    //    {
+                    //        DataRow Ultimo = CapaLogica.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                    //        int ultimo = 1 + (int)Ultimo["ultimo"];
+                    //        DataRow Filita = Tablita.Rows[0];
+                    //        DataTable Ultimox = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
+                    //        Ultimo = Ultimox.Rows[0];
+                    //        ultimo = ((int)Ultimo["codigo"]);
+                    //        foreach (DataColumn col in Tablita.Columns)
+                    //        {
+                    //            CapaLogica.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
+                    //        }
+                    //        //cuentas de Reflejo
+                    //        //DataTable Cuentas = new DataTable();
+                    //        //Cuentas = CReporteboleta.CuentasReflejo(ultimo, (int)cboempresa.SelectedValue, DateTime.Now.Date);
+                    //        //if (Cuentas.Rows.Count > 0)
+                    //        //{
+                    //        //    DataRow Fila0 = Cuentas.Rows[0];
+                    //        //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
+                    //        //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
+                    //        //}
+                    //    }
+                    //}
                     //fin de Asientos DE boletas Generadas
                 }
                 DBoleta = CapaLogica.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
@@ -264,7 +275,81 @@ namespace HPReserger
                 boletas.Fechafin = final;
                 boletas.Show();
             }
+            //Proceso de los Asientos
+            if (chkGAsientos.Checked)
+            {
+                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas();
+                if (TConfi.Rows.Count == 0) { msgError("No se Encontró la Configuracion para los asientos de las boletas"); return; }
+                DataTable TDatos = CapaLogica.ReporteBoletasAsiento(cboempresa.Text, txtnumero.Text, comboMesAño1.GetFechaPRimerDia(), comboMesAño1.GetFechaPRimerDia());
+                if (TDatos.Rows.Count == 0) { msgError("No hay Boletas Encontradas"); return; }
+                //Proceso para el Insert de los Registros
+                //Asientos de las Boletas 1=Asiento 2= provision
+                //DateTime FechaContable = comboMesAño1.GetFecha();
+                GenerarAsientoBoletas(TConfi, TDatos, 1, FechaContable, DinamicaAsiento, txtGlosa1);
+                GenerarAsientoBoletas(TConfi, TDatos, 2, FechaContable, DinamicaProvision, txtglosa2);
+            }
         }
+
+        private void GenerarAsientoBoletas(DataTable confi, DataTable datos, int Tipo, DateTime FechaContable, int idDinamica, TextBox txt)
+        {
+            decimal TC = CapaLogica.TipoCambioDia("Venta", FechaContable);
+            int NumAsiento = 0;
+            int IdProyecto = (int)cboproyecto.SelectedValue;
+            int IdEtapa = (int)cboetapa.SelectedValue;
+            int IdSoles = 1;
+            string glosa = txt.Text;
+            int IdUsuario = frmLogin.CodigoUsuario;
+            if (NumAsiento == 0)
+            {
+                DataTable asientito = CapaLogica.UltimoAsiento(IdEmpresa, FechaContable);
+                DataRow asiento = asientito.Rows[0];
+                if (asiento == null) NumAsiento = 1;
+                else NumAsiento = ((int)asiento["codigo"]);
+            }
+            string Cuo = HPResergerFunciones.Utilitarios.Cuo(NumAsiento, FechaContable);
+            int PosFila = 0;
+            foreach (DataRow item in confi.Rows)
+            {
+                if ((int)item["tipo"] == Tipo)
+                {
+                    if (BuscarSihayValores(datos, item["columnatabla"].ToString()))
+                    {
+                        //Cabecera                        
+                        CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila++, NumAsiento, FechaContable, CuentaContable, ValorDebeMN, ValorHaberMN, TC, IdProyecto, IdEtapa, Cuo,
+                            IdSoles, glosa, FechaContable, idDinamica);
+                        ////Detalle
+                        //CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila - 1, NumAsiento, FechaContable, CuentaContable, IdProyecto, TipoIdProveedor, RucProveedor, NameProveedor,
+                        //    idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "", 
+                        //    GLOSA, FechaContable, IdUsuario, "");
+                    }
+
+                }
+
+            }
+        }
+        decimal Sumatoria = 0;
+        private bool BuscarSihayValores(DataTable datos, string v)
+        {
+            Sumatoria = 0;
+            foreach (DataRow item in datos.Rows) Sumatoria += decimal.Parse(item[v].ToString());
+            if (Sumatoria > 0) return true; else return false;
+        }
+
+        private bool ValidarAsientoExiste(int v, DateTime dateTime, int selectedValue)
+        {
+            DataTable TAuxiliar;
+            TAuxiliar = CapaLogica.CierreMensualDinamicaYaExiste(v, dateTime, selectedValue);
+            if (TAuxiliar.Rows.Count > 0)
+            {
+                DataRow Filita = TAuxiliar.Rows[0];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (rbEmpresa.Checked)

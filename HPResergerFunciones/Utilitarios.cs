@@ -1107,6 +1107,9 @@ namespace HPResergerFunciones
                    , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro)
         {
             Boolean ForzarAutoAjustado = false;
+            string Extesion = "x";
+            if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
+            NameFile = NameFile.Substring(0, NameFile.Length - 1) + Extesion;
             //if (NombresCeldas[0].BackColor != Color.Empty) ForzarAutoAjustado = true;
             //Principal para generar exportacion a Excel
             FileInfo FileName = new FileInfo(NameFile);
@@ -1175,9 +1178,7 @@ namespace HPResergerFunciones
             {
                 int Conta = grd.Rows.Count;
                 //int i = 0;
-                Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);
-                string Extesion = "x";
-                if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
+                Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);               
                 //Hoja_Trabajo
                 FileInfo file = new FileInfo(NameFile);//Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{""}" + $".xls{Extesion}");
                 int ConCol = grd.Columns.Count;

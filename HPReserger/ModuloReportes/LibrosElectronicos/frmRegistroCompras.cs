@@ -127,10 +127,16 @@ namespace HPReserger
                             if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
-                        //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"REGISTRO DE COMPRAS {EmpresaValor}.xlsx";
+                        string NameFile;
+                        //ELiminamos el Excel Antiguo 
+                        if (!chksubtotales.Checked)
+                            NameFile = valor + $"REGISTRO DE COMPRAS {EmpresaValor}.xlsx";
+                        else
+                            NameFile = valor + $"REGISTRO DE COMPRAS {EmpresaValor} - Totales.xlsx";
+
                         File.Delete(NameFile);
                         File.Exists(NameFile);
+
                         if (item.ToString() != "TODAS")
                         {
                             DataView dv = TDatos.Copy().AsDataView();
@@ -170,11 +176,87 @@ namespace HPReserger
                                     /////fin estilo de las celdas
                                     //DataTable TableResult = new DataTable(); DataView dt = ((DataTable)dtgconten.DataSource).AsDataView(); TableResult = dt.ToTable();
                                     ///Tabla
+                                    /////Proceso de ordenamiento y agrupacion                                    
+                                    int PosInicialGrilla = 6;
+                                    int[] ColumnasSubtotal = { 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 };
+                                    if (chksubtotales.Checked)
+                                    {
+                                        //Ordenamos los datos
+                                        DataView dvo = new DataView(TablaResult);
+                                        dvo.Sort = "idc asc ";
+                                        TablaResult = dvo.ToTable();
+                                        string val1 = TablaResult.Rows[0]["idc"].ToString();
+                                        decimal SumatoriaTotal = 0;
+                                        decimal SumaParcial = 0;
+                                        //
+                                        int fila = 6;
+                                        int filaT = 7;
+                                        Boolean PrimeraCarga = false;
+                                        foreach (int Columna in ColumnasSubtotal)
+                                        {
+                                            SumaParcial = SumatoriaTotal = 0;
+                                            for (int i = 0; i < TablaResult.Rows.Count; i++)
+                                            {
+                                                DataRow Fila = TablaResult.Rows[i];
+                                                if (!PrimeraCarga)
+                                                {
+                                                    if (Fila[fila].ToString() != val1)
+                                                    {
+                                                        DataRow Nueva = TablaResult.NewRow();
+                                                        Nueva[filaT] = $"Total {val1}";
+                                                        Nueva[Columna] = SumaParcial;
+                                                        TablaResult.Rows.InsertAt(Nueva, i);
+                                                        //
+                                                        val1 = Fila[fila].ToString();
+                                                        SumaParcial = (decimal)Fila[Columna];
+                                                        SumatoriaTotal += SumaParcial;
+                                                        i++;
+
+                                                    }
+                                                    else
+                                                    {
+                                                        SumatoriaTotal += (decimal)Fila[Columna];
+                                                        SumaParcial += (decimal)Fila[Columna];
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if (i < TablaResult.Rows.Count - 2)
+                                                        if (Fila[Columna].ToString() == "")
+                                                        {
+                                                            Fila[Columna] = SumaParcial;
+                                                            SumaParcial = 0;
+                                                        }
+                                                        else
+                                                        {
+                                                            SumaParcial += (decimal)Fila[Columna];
+                                                            SumatoriaTotal += (decimal)Fila[Columna];
+                                                        }
+                                                }
+                                            }
+                                            //UltimaFila
+                                            if (!PrimeraCarga)
+                                            {
+                                                DataRow Nuevaf = TablaResult.NewRow();
+                                                Nuevaf[filaT] = $"TOTAL {val1}";
+                                                Nuevaf[Columna] = SumaParcial;
+                                                TablaResult.Rows.InsertAt(Nuevaf, TablaResult.Rows.Count);
+                                                //TotalGeneral
+                                                DataRow Nuevax = TablaResult.NewRow();
+                                                Nuevax[filaT] = $"TOTAL GENERAL";
+                                                Nuevax[Columna] = SumatoriaTotal;
+                                                TablaResult.Rows.InsertAt(Nuevax, TablaResult.Rows.Count);
+                                                PrimeraCarga = true;
+                                            }
+                                            else
+                                            {
+                                                TablaResult.Rows[TablaResult.Rows.Count - 2][Columna] = SumaParcial;
+                                                TablaResult.Rows[TablaResult.Rows.Count - 1][Columna] = SumatoriaTotal;
+                                            }
+                                        }
+                                    }
                                     foreach (DataColumn items in TablaResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
-                                    /////
-                                    ////Anterior               
-                                    //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { }, "");
+                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 6, _Columnas, new int[] { }, new int[] { }, "");
                                 }
                             }
                         }
