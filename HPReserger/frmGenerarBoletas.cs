@@ -287,6 +287,7 @@ namespace HPReserger
                 //DateTime FechaContable = comboMesAño1.GetFecha();
                 GenerarAsientoBoletas(TConfi, TDatos, 1, FechaContable, DinamicaAsiento, txtGlosa1);
                 GenerarAsientoBoletas(TConfi, TDatos, 2, FechaContable, DinamicaProvision, txtglosa2);
+                msgOK("Asiento Generado");
             }
         }
 
@@ -294,6 +295,7 @@ namespace HPReserger
         {
             decimal TC = CapaLogica.TipoCambioDia("Venta", FechaContable);
             int NumAsiento = 0;
+            IdEmpresa = (int)cboempresa.SelectedValue;
             int IdProyecto = (int)cboproyecto.SelectedValue;
             int IdEtapa = (int)cboetapa.SelectedValue;
             int IdSoles = 1;
@@ -307,32 +309,63 @@ namespace HPReserger
                 else NumAsiento = ((int)asiento["codigo"]);
             }
             string Cuo = HPResergerFunciones.Utilitarios.Cuo(NumAsiento, FechaContable);
+            // return;
             int PosFila = 0;
             foreach (DataRow item in confi.Rows)
             {
                 if ((int)item["tipo"] == Tipo)
                 {
-                    if (BuscarSihayValores(datos, item["columnatabla"].ToString()))
+                    decimal Suma = 0;
+                    Suma = BuscarSihayValores(datos, item["columnatabla"].ToString());
+                    if (Suma > 0)
                     {
-                        //Cabecera                        
-                        CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila++, NumAsiento, FechaContable, CuentaContable, ValorDebeMN, ValorHaberMN, TC, IdProyecto, IdEtapa, Cuo,
+                        Boolean Debe = item["debehaber"].ToString() == "D" ? true : false;
+                        Boolean IncluirFecha = (Boolean)item["incluirfechaglosa"];
+                        string CuentaContable = item["cuenta"].ToString();
+                        string ColumnaTabla = item["columnatabla"].ToString();
+                        decimal ValorDebeMN = Debe ? Suma : 0;
+                        decimal ValorHaberMN = Debe ? 0 : Suma;
+                        string GlosaDetalle = item["glosa"].ToString() + $" {FechaContable.ToString("MMMM/yyyy")}";
+                        GlosaDetalle = IncluirFecha ? GlosaDetalle : item["glosa"].ToString();
+                        GlosaDetalle = GlosaDetalle.ToUpper();
+                        //Cabecera
+                        PosFila++;
+                        CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, NumAsiento, FechaContable, CuentaContable, ValorDebeMN, ValorHaberMN, TC, IdProyecto, IdEtapa, Cuo,
                             IdSoles, glosa, FechaContable, idDinamica);
-                        ////Detalle
-                        //CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila - 1, NumAsiento, FechaContable, CuentaContable, IdProyecto, TipoIdProveedor, RucProveedor, NameProveedor,
-                        //    idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "", 
-                        //    GLOSA, FechaContable, IdUsuario, "");
+                        //Detalle
+                        foreach (DataRow filas in datos.Rows)
+                        {
+                            if ((decimal)filas[item["columnatabla"].ToString()] > 0)
+                            {
+                                int TipoIdProveedor = (int)filas["tipoid"];
+                                string RucProveedor = filas["nrodoc"].ToString();
+                                string NameProveedor = filas["nombreempleado"].ToString();
+                                int idcomprobante = 0;
+                                string SerieDocumento = Tipo == 1 ? "BOL" : "PROV";
+                                string NumDocumento = FechaContable.ToString("MMyyyy");
+                                decimal ValorSoles = (decimal)filas[item["ColumnaTabla"].ToString()];
+                                decimal ValorDolares = ValorSoles / TC;
+                                string NroCuentaBancaria = "";
+                                ///
+                                CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila, NumAsiento, FechaContable, CuentaContable, IdProyecto, TipoIdProveedor, RucProveedor, NameProveedor,
+                                    idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "",
+                                    GlosaDetalle, FechaContable, IdUsuario, "");
+                            }
+                        }
                     }
 
                 }
 
             }
+            CapaLogica.CuadrarAsiento(Cuo, IdProyecto, FechaContable, 2);
         }
         decimal Sumatoria = 0;
-        private bool BuscarSihayValores(DataTable datos, string v)
+        private decimal BuscarSihayValores(DataTable datos, string v)
         {
             Sumatoria = 0;
             foreach (DataRow item in datos.Rows) Sumatoria += decimal.Parse(item[v].ToString());
-            if (Sumatoria > 0) return true; else return false;
+            //if (Sumatoria > 0) return Sumatoria; else
+            return Sumatoria;
         }
 
         private bool ValidarAsientoExiste(int v, DateTime dateTime, int selectedValue)

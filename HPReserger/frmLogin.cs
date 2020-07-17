@@ -104,7 +104,7 @@ namespace HPReserger
             HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         private void btnLogueo_Click(object sender, EventArgs e)
-        {
+        {            
             //VERIFICAR LA LICENCIA
             if (HPResergerCapaDatos.HPResergerCD.FechaCaduca < DateTime.Now)
             {
