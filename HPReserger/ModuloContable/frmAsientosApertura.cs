@@ -154,7 +154,7 @@ namespace HPReserger
             Fila[xusd.DataPropertyName] = SumaUsd * -1;
             Fila[xcuo.DataPropertyName] = $"{FechaContable.Year.ToString().Substring(2)}13-00001";
             Fila[xFechaContable.DataPropertyName] = FechaContable;
-            Fila[xFechaEmision.DataPropertyName] = FechaContable;
+            Fila[xFechaEmision.DataPropertyName] = FechaContable;//  Tprueba.Rows[0]["fechaemision"].ToString();
             Fila[xFechaRegistro.DataPropertyName] = FechaContable;
             Fila[xtipoComprobante.DataPropertyName] = "OTROS";
             Fila[xCod_Comprobante.DataPropertyName] = 0;
@@ -854,9 +854,10 @@ namespace HPReserger
                             GLOSA = DVFila[xGlosa.DataPropertyName].ToString();
                             string NroCuentaBancaria = DVFila[xCuentaBanco.DataPropertyName].ToString();
                             IdSoles = DVFila[xmoneda.DataPropertyName].ToString() == "PEN" ? 1 : 2;
+                            DateTime FechaEmision = DVFila[xFechaEmision.DataPropertyName].ToString() == "" ? FechaContable : (DateTime)DVFila[xFechaEmision.DataPropertyName];
                             //
                             CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila - 1, NumAsiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, iddinamica, FechaContable, FechaContable, FechaContable,
+                            NameProveedor, idcomprobante, SerieDocumento, NumDocumento, iddinamica, FechaEmision, FechaContable, FechaContable,
                             ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "", GLOSA, FechaContable, IdUsuario, "");
                         }
                     }
