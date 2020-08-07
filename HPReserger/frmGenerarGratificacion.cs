@@ -29,7 +29,7 @@ namespace HPReserger
         }
         public void cargartipoid()
         {
-            cbotipoid.DataSource = CapaLogica.getCargoTipoContratacion("Codigo_Tipo_ID", "desc_tipo_id", "tbl_tipo_id");
+            cbotipoid.DataSource = CapaLogica.ListadodeTablaORdenadoxCodigo("Codigo_Tipo_ID", "desc_tipo_id", "tbl_tipo_id");
             cbotipoid.ValueMember = "codigo";
             cbotipoid.DisplayMember = "descripcion";
         }

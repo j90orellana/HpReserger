@@ -111,7 +111,7 @@ namespace HPReserger
         {
             cbo.ValueMember = "codigo";
             cbo.DisplayMember = "descripcion";
-            cbo.DataSource = clAmonestacionesPremio.getCargoTipoContratacion(codigo, descripcion, tabla);
+            cbo.DataSource = clAmonestacionesPremio.ListadodeTablaORdenadoxCodigo(codigo, descripcion, tabla);
         }
 
         private void txtNumeroDocumento_KeyPress(object sender, KeyPressEventArgs e)

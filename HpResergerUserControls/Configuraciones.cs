@@ -55,7 +55,7 @@ namespace HpResergerUserControls
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
         public static string FilterImagenes()
         {
-            return "Archivos de Imagenes|*.Bmp;*.Emf;*.Exif;*.Gif;*.Guid;*.Icon;*.Jpeg;*.MemoryBmp;*.Png;*.Tiff;*.Wmf";
+            return "Archivos de Imagenes|*.Bmp;*.Emf;*.Exif;*.Gif;*.Guid;*.Icon;*.Jpeg;*.jpg;*.MemoryBmp;*.Png;*.Tiff;*.Wmf";
         }
         public static string MayusculaCadaPalabra(string cadena)
         {

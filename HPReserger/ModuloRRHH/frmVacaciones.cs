@@ -31,8 +31,10 @@ namespace HPReserger
         private void DiasInicio(int TipoDocumento, string NumeroDocumento, string sStoredProcedureName)
         {
             DataRow EmpleadoVacaciones = clEmpleadoVacaciones.ExisteBeneficioEmpleado(TipoDocumento, NumeroDocumento, sStoredProcedureName);
+            Cargado = false;
             if (EmpleadoVacaciones != null)
             {
+                Cargado = true;
                 txtFecha.Text = EmpleadoVacaciones["FECHAINICIO"].ToString();
                 MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                 Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
@@ -173,7 +175,8 @@ namespace HPReserger
         {
             dtpInicio.Value = DateTime.Now;
             DiasInicio(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_GetDiasVacaciones");
-            Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
+            if (Cargado)
+                Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
         }
         private void frmVacaciones_Load(object sender, EventArgs e)
         {
@@ -197,15 +200,18 @@ namespace HPReserger
             dtpFin.Value = DateTime.Today.Date;
 
             groupBox1.Visible = false;
+            if (cboTipoDocumento.DataSource != null) cboTipoDocumento.SelectedValue = 1;
         }
 
         private void CargaCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
         {
             cbo.ValueMember = "codigo";
             cbo.DisplayMember = "descripcion";
-            cbo.DataSource = clEmpleadoVacaciones.getCargoTipoContratacion(codigo, descripcion, tabla);
+            cbo.DataSource = clEmpleadoVacaciones.ListadodeTablaORdenadoxCodigo(codigo, descripcion, tabla);
         }
         int Habiles = 0;
+        private bool Cargado;
+
         private void Dias(DateTime Inicio, DateTime Fin, int TipoDocumento, string NumeroDocumento)
         {
             DiasVaca = clEmpleadoVacaciones.DiasVacaciones(Inicio, Fin);
@@ -237,9 +243,9 @@ namespace HPReserger
             DataRow DiasGenerado = clEmpleadoVacaciones.DiasGenerado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value);
             if (DiasGenerado != null)
             {
-                if (DiasGenerado["DIAS"].ToString().Length > 0)
+                if (DiasGenerado["DiasPendientes"].ToString().Length > 0)
                 {
-                    txtVacaciones.Text = ((decimal)DiasGenerado["DIAS"]).ToString("n2");
+                    txtVacaciones.Text = ((decimal)DiasGenerado["DiasPendientes"]).ToString("n2");
                 }
             }
         }
@@ -421,8 +427,8 @@ namespace HPReserger
             if (Grid.Rows.Count > 0 && Grid.CurrentRow.Cells[0].Value != null && Grid.CurrentRow.Cells[8].Value.ToString() == "PENDIENTE")
             {
                 var dialogoAbrirArchivo = new OpenFileDialog();
-                dialogoAbrirArchivo.Filter = "Jpg Files|*.jpg";
-                dialogoAbrirArchivo.DefaultExt = ".jpg";
+                dialogoAbrirArchivo.Filter = Configuraciones.FilterImagenes();
+                //dialogoAbrirArchivo.DefaultExt = ".jpg";
                 dialogoAbrirArchivo.ShowDialog(this);
 
                 NombreFoto = dialogoAbrirArchivo.FileName.ToString();

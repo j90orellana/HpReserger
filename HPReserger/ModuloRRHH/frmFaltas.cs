@@ -36,13 +36,14 @@ namespace HPReserger
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
             dtpInicio.Value = DateTime.Today.Date;
             dtpFin.Value = DateTime.Today.Date;
+            if (cboTipoDocumento.DataSource != null) cboTipoDocumento.SelectedValue = 1;
         }
 
         private void CargaCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
         {
             cbo.ValueMember = "codigo";
             cbo.DisplayMember = "descripcion";
-            cbo.DataSource = CapaLogica.getCargoTipoContratacion(codigo, descripcion, tabla);
+            cbo.DataSource = CapaLogica.ListadodeTablaORdenadoxCodigo(codigo, descripcion, tabla);
         }
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
@@ -240,7 +241,7 @@ namespace HPReserger
                 int Resultado = DateTime.Compare(dtpInicio.Value.Date, FechaMaximaFalta.Date);
                 if (Resultado <= 0)
                 {
-                    if (msgYesCancel("Fecha de Inicio debe ser posterior a la última Fecha Fin de Falta","¿Desea Continuar?") == DialogResult.Cancel) return;
+                    if (msgYesCancel("Fecha de Inicio debe ser posterior a la última Fecha Fin de Falta", "¿Desea Continuar?") == DialogResult.Cancel) return;
                 }
             }
             //Validamos los dias Tomados

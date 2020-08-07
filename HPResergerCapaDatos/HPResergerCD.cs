@@ -2282,6 +2282,12 @@ namespace HPResergerCapaDatos
             object[] valores = { Campo1, Campo2, Tabla };
             return bd.DataTableFromProcedure("usp_get_CargoTipoContratacion", parametros, valores, null);
         }
+        public DataTable ListarTablaConPrimerCampoOrdenado(string Campo1, string Campo2, string Tabla)
+        {
+            string[] parametros = { "@Campo1", "@Campo2", "@Tabla" };
+            object[] valores = { Campo1, Campo2, Tabla };
+            return bd.DataTableFromProcedure("usp_get_CargoTipoContratacion10", parametros, valores, null);
+        }
         public DataTable GetTabla(string Tabla, string CampoOrdenar)
         {
             string[] parametros = { "@Tabla", "@CampoOrdenar" };
@@ -3196,7 +3202,7 @@ namespace HPResergerCapaDatos
         }
         public DataRow DiasGenerado(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime FechaInicio)
         {
-            string[] parametros = { "@Tipo_ID_Emp", "@Nro_ID_Emp", "@Fec_Inicio" };
+            string[] parametros = { "@tipodoc", "@nrodoc", "@fecha" };
             object[] valores = { Tipo_ID_Emp, Nro_ID_Emp, FechaInicio };
             return bd.DatarowFromProcedure("usp_DiasGenerado", parametros, valores, null);
         }

@@ -73,7 +73,7 @@
             this.rbTodasEmpresa.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.rbTodasEmpresa.Location = new System.Drawing.Point(12, 32);
             this.rbTodasEmpresa.Name = "rbTodasEmpresa";
-            this.rbTodasEmpresa.Size = new System.Drawing.Size(124, 17);
+            this.rbTodasEmpresa.Size = new System.Drawing.Size(125, 17);
             this.rbTodasEmpresa.TabIndex = 16;
             this.rbTodasEmpresa.Text = "Todas Las Empresas";
             this.rbTodasEmpresa.UseVisualStyleBackColor = false;
@@ -105,9 +105,9 @@
             // 
             this.comboMesAño2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño2.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2020, 7, 15, 0, 0, 0, 0);
-            this.comboMesAño2.FechaFinMes = new System.DateTime(2020, 7, 31, 0, 0, 0, 0);
-            this.comboMesAño2.FechaInicioMes = new System.DateTime(2020, 7, 1, 0, 0, 0, 0);
+            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2020, 8, 5, 0, 0, 0, 0);
+            this.comboMesAño2.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
+            this.comboMesAño2.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
             this.comboMesAño2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.comboMesAño2.Location = new System.Drawing.Point(163, 173);
             this.comboMesAño2.Name = "comboMesAño2";
@@ -120,9 +120,9 @@
             // 
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 7, 15, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 7, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 7, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 8, 5, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.comboMesAño1.Location = new System.Drawing.Point(163, 150);
             this.comboMesAño1.Name = "comboMesAño1";
@@ -249,6 +249,7 @@
             this.BtnCerrar.Text = "&Cancelar";
             this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // label3
             // 

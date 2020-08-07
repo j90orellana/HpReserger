@@ -872,6 +872,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.GetTabla(Tabla, CampoOrdenar);
         }
+        public DataTable ListadodeTablaORdenadoxCodigo(string Campo1, string Campo2, string Tabla)
+        {
+            return cdOrdenPedido.ListarTablaConPrimerCampoOrdenado(Campo1, Campo2, Tabla);
+        }
         public void SolicitudEmpleadoInsertar(int Numero, int Cargo, int TipoContratacion, string Busqueda, string AplicaTerna, int Area, int gerencia, int CantPuestos, int NroOrdenCompra, byte[] Foto, string NombreFoto, int Usuario)
         {
             cdOrdenPedido.SolicitudEmpleadoInsertar(Numero, Cargo, TipoContratacion, Busqueda, AplicaTerna, Area, gerencia, CantPuestos, NroOrdenCompra, Foto, NombreFoto, Usuario);

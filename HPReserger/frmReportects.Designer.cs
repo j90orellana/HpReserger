@@ -42,12 +42,10 @@
             this.crvReporte.Location = new System.Drawing.Point(0, 0);
             this.crvReporte.Name = "crvReporte";
             this.crvReporte.ShowCloseButton = false;
-            this.crvReporte.ShowGroupTreeButton = false;
             this.crvReporte.ShowLogo = false;
             this.crvReporte.ShowParameterPanelButton = false;
             this.crvReporte.Size = new System.Drawing.Size(969, 582);
             this.crvReporte.TabIndex = 1;
-            this.crvReporte.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crvReporte.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvReporte_ReportRefresh);
             // 
             // frmReportects
@@ -57,7 +55,7 @@
             this.ClientSize = new System.Drawing.Size(969, 582);
             this.Controls.Add(this.crvReporte);
             this.Name = "frmReportects";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Reporte Pago CTS";
             this.Text = "Reporte Pago CTS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportects_Load);

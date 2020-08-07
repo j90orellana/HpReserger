@@ -44,7 +44,7 @@ namespace HPReserger
         }
         public void cargartipoid()
         {
-            cbotipoid.DataSource = CapaLogica.getCargoTipoContratacion("Codigo_Tipo_ID", "desc_tipo_id", "tbl_tipo_id");
+            cbotipoid.DataSource = CapaLogica.ListadodeTablaORdenadoxCodigo("Codigo_Tipo_ID", "desc_tipo_id", "tbl_tipo_id");
             cbotipoid.ValueMember = "codigo";
             cbotipoid.DisplayMember = "descripcion";
         }
@@ -216,6 +216,10 @@ namespace HPReserger
                     inicial = comboMesAño2.GetFechaPRimerDia();
                     final = comboMesAño1.GetFecha();
                 }
+                if (chkGAsientos.Checked)
+                {
+                    inicial = final = comboMesAño1.GetFechaPRimerDia();
+                }
                 DBoleta = CapaLogica.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
                 int aux = (12 * (final.Year - inicial.Year) + final.Month) - inicial.Month + 1;
                 // msg("meses " + aux + "inicial " + inicial + "final " + final);
@@ -288,6 +292,8 @@ namespace HPReserger
                 GenerarAsientoBoletas(TConfi, TDatos, 1, FechaContable, DinamicaAsiento, txtGlosa1);
                 GenerarAsientoBoletas(TConfi, TDatos, 2, FechaContable, DinamicaProvision, txtglosa2);
                 msgOK("Asiento Generado");
+                txtGlosa1.CargarTextoporDefecto();
+                txtglosa2.CargarTextoporDefecto();
             }
         }
 
@@ -450,11 +456,19 @@ namespace HPReserger
         {
             ValidarCheck();
         }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void ValidarCheck()
         {
             if (chkGAsientos.Checked)
             {
                 rbTodasEmpresa.Visible = comboMesAño2.Visible = label2.Visible = false;
+                rbPersona.Checked = rbPersona.Enabled = false;
+                rbEmpresa.Checked = true;
                 txtglosa2.Visible = txtGlosa1.Visible = cboproyecto.Visible = cboetapa.Visible = true;
                 //Cambiamos el size del formulario
                 this.MinimumSize = new Size(517, 322);
@@ -468,6 +482,7 @@ namespace HPReserger
             else
             {
                 rbTodasEmpresa.Visible = comboMesAño2.Visible = label2.Visible = true;
+                rbPersona.Enabled = true;
                 txtglosa2.Visible = txtGlosa1.Visible = cboproyecto.Visible = cboetapa.Visible = false;
                 this.MinimumSize = new Size(517, 272);
                 this.MaximumSize = new Size(517, 272);
