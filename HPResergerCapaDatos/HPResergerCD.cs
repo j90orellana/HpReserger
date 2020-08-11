@@ -3206,6 +3206,12 @@ namespace HPResergerCapaDatos
             object[] valores = { Tipo_ID_Emp, Nro_ID_Emp, FechaInicio };
             return bd.DatarowFromProcedure("usp_DiasGenerado", parametros, valores, null);
         }
+        public DataTable DiasGeneradoResumen(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime FechaInicio)
+        {
+            string[] parametros = { "@tipodoc", "@nrodoc", "@fecha" };
+            object[] valores = { Tipo_ID_Emp, Nro_ID_Emp, FechaInicio };
+            return bd.DataTableFromProcedure("usp_DiasGenerado", parametros, valores, null);
+        }
 
         public DataRow Sueldo(int Tipo_ID_Emp, string Nro_ID_Emp)
         {

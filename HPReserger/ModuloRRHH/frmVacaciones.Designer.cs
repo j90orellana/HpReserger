@@ -57,6 +57,7 @@ namespace HPReserger
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbVacaciones = new System.Windows.Forms.PictureBox();
             this.txtDiasPendientes = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDiasUtilizados = new System.Windows.Forms.TextBox();
@@ -74,15 +75,8 @@ namespace HPReserger
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtVacaciones = new System.Windows.Forms.TextBox();
-            this.pbVacaciones = new System.Windows.Forms.PictureBox();
             this.btnBoletaVacaciones = new System.Windows.Forms.Button();
             this.Grid = new HpResergerUserControls.Dtgconten();
-            this.btnAprobarVacaciones = new System.Windows.Forms.Button();
-            this.btnSeleccionarImagen = new System.Windows.Forms.Button();
-            this.txtRuta = new System.Windows.Forms.TextBox();
-            this.btnCompraVacaciones = new System.Windows.Forms.Button();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
-            this.btndescargar = new System.Windows.Forms.Button();
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +87,12 @@ namespace HPReserger
             this.DIASVACACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OBSERVACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAprobarVacaciones = new System.Windows.Forms.Button();
+            this.btnSeleccionarImagen = new System.Windows.Forms.Button();
+            this.txtRuta = new System.Windows.Forms.TextBox();
+            this.btnCompraVacaciones = new System.Windows.Forms.Button();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btndescargar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbVacaciones)).BeginInit();
@@ -293,6 +293,18 @@ namespace HPReserger
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             // 
+            // pbVacaciones
+            // 
+            this.pbVacaciones.Image = global::HPReserger.Properties.Resources.NoRegistrarVacaciones2;
+            this.pbVacaciones.InitialImage = null;
+            this.pbVacaciones.Location = new System.Drawing.Point(0, 0);
+            this.pbVacaciones.Name = "pbVacaciones";
+            this.pbVacaciones.Size = new System.Drawing.Size(383, 305);
+            this.pbVacaciones.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbVacaciones.TabIndex = 107;
+            this.pbVacaciones.TabStop = false;
+            this.pbVacaciones.Visible = false;
+            // 
             // txtDiasPendientes
             // 
             this.txtDiasPendientes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -462,18 +474,6 @@ namespace HPReserger
             this.txtVacaciones.TabIndex = 90;
             this.txtVacaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // pbVacaciones
-            // 
-            this.pbVacaciones.Image = global::HPReserger.Properties.Resources.NoRegistrarVacaciones2;
-            this.pbVacaciones.InitialImage = null;
-            this.pbVacaciones.Location = new System.Drawing.Point(0, 0);
-            this.pbVacaciones.Name = "pbVacaciones";
-            this.pbVacaciones.Size = new System.Drawing.Size(383, 305);
-            this.pbVacaciones.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbVacaciones.TabIndex = 107;
-            this.pbVacaciones.TabStop = false;
-            this.pbVacaciones.Visible = false;
-            // 
             // btnBoletaVacaciones
             // 
             this.btnBoletaVacaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -547,86 +547,6 @@ namespace HPReserger
             this.Grid.Size = new System.Drawing.Size(662, 512);
             this.Grid.TabIndex = 72;
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
-            // 
-            // btnAprobarVacaciones
-            // 
-            this.btnAprobarVacaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAprobarVacaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnAprobarVacaciones.Image")));
-            this.btnAprobarVacaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAprobarVacaciones.Location = new System.Drawing.Point(742, 528);
-            this.btnAprobarVacaciones.Name = "btnAprobarVacaciones";
-            this.btnAprobarVacaciones.Size = new System.Drawing.Size(172, 24);
-            this.btnAprobarVacaciones.TabIndex = 102;
-            this.btnAprobarVacaciones.Text = "Aprobar Vacaciones";
-            this.btnAprobarVacaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAprobarVacaciones.UseVisualStyleBackColor = true;
-            this.btnAprobarVacaciones.Click += new System.EventHandler(this.btnAprobarVacaciones_Click);
-            // 
-            // btnSeleccionarImagen
-            // 
-            this.btnSeleccionarImagen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSeleccionarImagen.Image = ((System.Drawing.Image)(resources.GetObject("btnSeleccionarImagen.Image")));
-            this.btnSeleccionarImagen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSeleccionarImagen.Location = new System.Drawing.Point(1078, 528);
-            this.btnSeleccionarImagen.Name = "btnSeleccionarImagen";
-            this.btnSeleccionarImagen.Size = new System.Drawing.Size(267, 24);
-            this.btnSeleccionarImagen.TabIndex = 103;
-            this.btnSeleccionarImagen.Text = "Seleccionar Imagen de Boleta deVacaciones";
-            this.btnSeleccionarImagen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSeleccionarImagen.UseVisualStyleBackColor = true;
-            this.btnSeleccionarImagen.Click += new System.EventHandler(this.btnSeleccionarImagen_Click);
-            // 
-            // txtRuta
-            // 
-            this.txtRuta.Location = new System.Drawing.Point(1367, 530);
-            this.txtRuta.Name = "txtRuta";
-            this.txtRuta.Size = new System.Drawing.Size(177, 20);
-            this.txtRuta.TabIndex = 105;
-            this.txtRuta.Visible = false;
-            // 
-            // btnCompraVacaciones
-            // 
-            this.btnCompraVacaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCompraVacaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnCompraVacaciones.Image")));
-            this.btnCompraVacaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCompraVacaciones.Location = new System.Drawing.Point(12, 528);
-            this.btnCompraVacaciones.Name = "btnCompraVacaciones";
-            this.btnCompraVacaciones.Size = new System.Drawing.Size(173, 24);
-            this.btnCompraVacaciones.TabIndex = 106;
-            this.btnCompraVacaciones.Text = "Compra de Vacaciones";
-            this.btnCompraVacaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCompraVacaciones.UseVisualStyleBackColor = true;
-            this.btnCompraVacaciones.Click += new System.EventHandler(this.btnCompraVacaciones_Click);
-            // 
-            // pbFoto
-            // 
-            this.pbFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
-            this.pbFoto.Location = new System.Drawing.Point(1078, 8);
-            this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(466, 512);
-            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbFoto.TabIndex = 104;
-            this.pbFoto.TabStop = false;
-            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
-            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
-            // 
-            // btndescargar
-            // 
-            this.btndescargar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btndescargar.AutoEllipsis = true;
-            this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(1290, 491);
-            this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
-            this.btndescargar.TabIndex = 107;
-            this.btndescargar.Text = "Descargar";
-            this.btndescargar.UseVisualStyleBackColor = false;
-            this.btndescargar.Visible = false;
-            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
-            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
             // Registro
             // 
@@ -751,6 +671,86 @@ namespace HPReserger
             this.OBSERVACION.HeaderText = "OBSERVACION";
             this.OBSERVACION.Name = "OBSERVACION";
             this.OBSERVACION.ReadOnly = true;
+            // 
+            // btnAprobarVacaciones
+            // 
+            this.btnAprobarVacaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAprobarVacaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnAprobarVacaciones.Image")));
+            this.btnAprobarVacaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAprobarVacaciones.Location = new System.Drawing.Point(742, 528);
+            this.btnAprobarVacaciones.Name = "btnAprobarVacaciones";
+            this.btnAprobarVacaciones.Size = new System.Drawing.Size(172, 24);
+            this.btnAprobarVacaciones.TabIndex = 102;
+            this.btnAprobarVacaciones.Text = "Aprobar Vacaciones";
+            this.btnAprobarVacaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAprobarVacaciones.UseVisualStyleBackColor = true;
+            this.btnAprobarVacaciones.Click += new System.EventHandler(this.btnAprobarVacaciones_Click);
+            // 
+            // btnSeleccionarImagen
+            // 
+            this.btnSeleccionarImagen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSeleccionarImagen.Image = ((System.Drawing.Image)(resources.GetObject("btnSeleccionarImagen.Image")));
+            this.btnSeleccionarImagen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSeleccionarImagen.Location = new System.Drawing.Point(1078, 528);
+            this.btnSeleccionarImagen.Name = "btnSeleccionarImagen";
+            this.btnSeleccionarImagen.Size = new System.Drawing.Size(267, 24);
+            this.btnSeleccionarImagen.TabIndex = 103;
+            this.btnSeleccionarImagen.Text = "Seleccionar Imagen de Boleta deVacaciones";
+            this.btnSeleccionarImagen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSeleccionarImagen.UseVisualStyleBackColor = true;
+            this.btnSeleccionarImagen.Click += new System.EventHandler(this.btnSeleccionarImagen_Click);
+            // 
+            // txtRuta
+            // 
+            this.txtRuta.Location = new System.Drawing.Point(1367, 530);
+            this.txtRuta.Name = "txtRuta";
+            this.txtRuta.Size = new System.Drawing.Size(177, 20);
+            this.txtRuta.TabIndex = 105;
+            this.txtRuta.Visible = false;
+            // 
+            // btnCompraVacaciones
+            // 
+            this.btnCompraVacaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCompraVacaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnCompraVacaciones.Image")));
+            this.btnCompraVacaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCompraVacaciones.Location = new System.Drawing.Point(12, 528);
+            this.btnCompraVacaciones.Name = "btnCompraVacaciones";
+            this.btnCompraVacaciones.Size = new System.Drawing.Size(173, 24);
+            this.btnCompraVacaciones.TabIndex = 106;
+            this.btnCompraVacaciones.Text = "Compra de Vacaciones";
+            this.btnCompraVacaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCompraVacaciones.UseVisualStyleBackColor = true;
+            this.btnCompraVacaciones.Click += new System.EventHandler(this.btnCompraVacaciones_Click);
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
+            this.pbFoto.Location = new System.Drawing.Point(1078, 8);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(466, 512);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFoto.TabIndex = 104;
+            this.pbFoto.TabStop = false;
+            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
+            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(1290, 491);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 107;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
             // frmVacaciones
             // 

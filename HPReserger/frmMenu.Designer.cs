@@ -301,6 +301,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.vacacionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -320,48 +321,48 @@
             this.maximizarTodasToolStripMenuItem});
             this.cmenuclick.Name = "cmenuclick";
             this.cmenuclick.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.cmenuclick.Size = new System.Drawing.Size(162, 136);
+            this.cmenuclick.Size = new System.Drawing.Size(161, 136);
             this.cmenuclick.Text = "Organizar Ventanas";
             // 
             // cascadaToolStripMenuItem
             // 
             this.cascadaToolStripMenuItem.Name = "cascadaToolStripMenuItem";
-            this.cascadaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.cascadaToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.cascadaToolStripMenuItem.Text = "Cascada";
             this.cascadaToolStripMenuItem.Click += new System.EventHandler(this.cascadaToolStripMenuItem_Click);
             // 
             // horizontalToolStripMenuItem
             // 
             this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.horizontalToolStripMenuItem.Text = "Horizontal";
             this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
             // 
             // verticalToolStripMenuItem
             // 
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.verticalToolStripMenuItem.Text = "Vertical";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
             // cerrarTodasToolStripMenuItem
             // 
             this.cerrarTodasToolStripMenuItem.Name = "cerrarTodasToolStripMenuItem";
-            this.cerrarTodasToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.cerrarTodasToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.cerrarTodasToolStripMenuItem.Text = "Cerrar Todas";
             this.cerrarTodasToolStripMenuItem.Click += new System.EventHandler(this.cerrarTodasToolStripMenuItem_Click);
             // 
             // minimizarTodasToolStripMenuItem
             // 
             this.minimizarTodasToolStripMenuItem.Name = "minimizarTodasToolStripMenuItem";
-            this.minimizarTodasToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.minimizarTodasToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.minimizarTodasToolStripMenuItem.Text = "Minimizar Todas";
             this.minimizarTodasToolStripMenuItem.Click += new System.EventHandler(this.minimizarTodasToolStripMenuItem_Click);
             // 
             // maximizarTodasToolStripMenuItem
             // 
             this.maximizarTodasToolStripMenuItem.Name = "maximizarTodasToolStripMenuItem";
-            this.maximizarTodasToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.maximizarTodasToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.maximizarTodasToolStripMenuItem.Text = "Todas Normal";
             this.maximizarTodasToolStripMenuItem.Click += new System.EventHandler(this.maximizarTodasToolStripMenuItem_Click);
             // 
@@ -1784,7 +1785,8 @@
             // 
             this.seguimientoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.empleadoToolStripMenuItem1,
-            this.boletasToolStripMenuItem1});
+            this.boletasToolStripMenuItem1,
+            this.vacacionesToolStripMenuItem1});
             this.seguimientoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("seguimientoToolStripMenuItem1.Image")));
             this.seguimientoToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.White;
             this.seguimientoToolStripMenuItem1.Name = "seguimientoToolStripMenuItem1";
@@ -1797,7 +1799,7 @@
             // 
             this.empleadoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("empleadoToolStripMenuItem1.Image")));
             this.empleadoToolStripMenuItem1.Name = "empleadoToolStripMenuItem1";
-            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.empleadoToolStripMenuItem1.Tag = "1508001";
             this.empleadoToolStripMenuItem1.Text = "Empleado";
             this.empleadoToolStripMenuItem1.Click += new System.EventHandler(this.empleadoToolStripMenuItem1_Click);
@@ -1806,7 +1808,7 @@
             // 
             this.boletasToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("boletasToolStripMenuItem1.Image")));
             this.boletasToolStripMenuItem1.Name = "boletasToolStripMenuItem1";
-            this.boletasToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.boletasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.boletasToolStripMenuItem1.Tag = "1508002";
             this.boletasToolStripMenuItem1.Text = "Boletas";
             this.boletasToolStripMenuItem1.Click += new System.EventHandler(this.boletasToolStripMenuItem1_Click);
@@ -2931,6 +2933,13 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // vacacionesToolStripMenuItem1
+            // 
+            this.vacacionesToolStripMenuItem1.Name = "vacacionesToolStripMenuItem1";
+            this.vacacionesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.vacacionesToolStripMenuItem1.Text = "Vacaciones";
+            this.vacacionesToolStripMenuItem1.Click += new System.EventHandler(this.vacacionesToolStripMenuItem1_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3242,5 +3251,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem tiposFaltasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asientosBoletasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vacacionesToolStripMenuItem1;
     }
 }

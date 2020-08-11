@@ -4652,5 +4652,28 @@ namespace HPReserger
         {
             frmConfigurarasientoBoletas = null;
         }
+        ModuloRRHH.frmVacacionesResumen frmVacacionesREsumen;
+        private void vacacionesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (frmVacacionesREsumen == null)
+            {
+                frmVacacionesREsumen = new ModuloRRHH.frmVacacionesResumen();
+                frmVacacionesREsumen.MdiParent = this;
+                frmVacacionesREsumen.Icon = ICono;
+                frmVacacionesREsumen.FormClosed += new FormClosedEventHandler(CerrarfrmVacacionesREsumen);
+                frmVacacionesREsumen.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmVacacionesREsumen.Activate();
+                ValidarVentanas(frmVacacionesREsumen);
+            }
+        }
+
+        private void CerrarfrmVacacionesREsumen(object sender, FormClosedEventArgs e)
+        {
+            frmVacacionesREsumen = null;
+        }
     }
 }

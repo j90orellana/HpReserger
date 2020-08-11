@@ -544,6 +544,12 @@
     <Compile Include="ModuloRRHH\frmBonosEmpleados.Designer.cs">
       <DependentUpon>frmBonosEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloRRHH\frmVacacionesResumen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmVacacionesResumen.Designer.cs">
+      <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
+    </Compile>
     <Compile Include="rptConciliacionesReporte.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2103,6 +2109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmBonosEmpleados.resx">
       <DependentUpon>frmBonosEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloRRHH\frmVacacionesResumen.resx">
+      <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptConciliacionesReporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
