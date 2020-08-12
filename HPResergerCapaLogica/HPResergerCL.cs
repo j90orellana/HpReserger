@@ -1197,9 +1197,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.DiasGenerado(Tipo_ID_Emp, Nro_ID_Emp, FechaInicio);
         }
-        public DataTable DiasGeneradoResumen(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime FechaInicio)
+        public DataTable DiasGeneradoResumen(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime FechaInicio, string empresa)
         {
-            return cdOrdenPedido.DiasGeneradoResumen(Tipo_ID_Emp, Nro_ID_Emp, FechaInicio);
+            return cdOrdenPedido.DiasGeneradoResumen(Tipo_ID_Emp, Nro_ID_Emp, FechaInicio, empresa);
         }
 
         public DataRow Sueldo(int Tipo_ID_Emp, string Nro_ID_Emp)

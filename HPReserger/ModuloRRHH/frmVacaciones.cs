@@ -128,7 +128,7 @@ namespace HPReserger
                     {
                         btnBoletaVacaciones.Enabled = true;
                         btnCompraVacaciones.Enabled = true;
-                        groupBox1.Visible = true;
+                        groupBox1.Visible = true; 
                         btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
                         pbVacaciones.Visible = false;
                     }
@@ -577,6 +577,18 @@ namespace HPReserger
         private void btndescargar_Click(object sender, EventArgs e)
         {
             HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
+        }
+
+        private void txtNumeroDocumento_DoubleClick(object sender, EventArgs e)
+        {
+            frmListarEmpleados frmlisempleados = new frmListarEmpleados();
+            frmlisempleados.NumeroDocumento = txtNumeroDocumento.Text;
+            if (frmlisempleados.ShowDialog() == DialogResult.OK)
+            {
+                txtNumeroDocumento.Text = frmlisempleados.NumeroDocumento;
+                if (cboTipoDocumento.DataSource != null)
+                    cboTipoDocumento.SelectedValue = frmlisempleados.TipoDocumento;
+            }
         }
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)

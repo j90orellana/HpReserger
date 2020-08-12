@@ -3073,6 +3073,7 @@
     <None Include="Resources\Cuadros.ico" />
     <None Include="Resources\Icono.ico" />
     <None Include="Resources\Logo_HP.png" />
+    <None Include="ImgFiles\icons8_Traveler_25px.png" />
     <Content Include="LogoHP.ico" />
     <None Include="Resources\LoadFile.ico" />
     <Content Include="Resources\xCloseBlue.ico" />

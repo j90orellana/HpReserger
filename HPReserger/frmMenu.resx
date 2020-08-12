@@ -148,7 +148,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADe
-        XAAAAk1TRnQBSQFMAwEBAAF4AQcBeAEHAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
+        XAAAAk1TRnQBSQFMAwEBAAHIAQcByAEHAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
         AgABZAMAAQEBAAEgBgABcQEC/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wBqAAMpAT8DXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
         AcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
@@ -1772,6 +1772,20 @@
         oBqYcPJn6IRTP/9jwzPP//o/8fTPaqhS7ACfAatv/v5//Pmf/5PO/OqBKscEhAx4+PUf2JApp3/1Q7Wg
         AnwGLLzy6/+xZ3/AeNWN3//7T//whGpDAHwGYGCgWqg2BKCqAdFLX/x3mHQfA5NtAIgP10yMAaU7PvzP
         WPcGA9PPAIq9QBAPTgPIAwwMALQ6/b6WcD94AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="vacacionesToolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAd9JREFUOE9j
+        IBbMqHbznV3n/nIWEM+scveGChMPZte6vbm3s/T/XSCeVefxGipMPJhZ6/7u3u6y/3d3lf0HGQYVJh6A
+        vDALaAgQvyXLCxQB74otgv5VW576Vm/77l+5rQ4qTBxoaGhg8qvaegCI/0Pwlje+lZs1oNKEAVBDj2/l
+        tn8IA7Z+AOJtUGn8ILJiYylIk3/V1hMwA4BeKAHSf/yqtm30bNjGB1UKAds8PdlPuLj4n3BwkMkoXRMM
+        1PgvuGLzXKCGq1ADfrqV7OT2rdoaBmS/AuKVUK0MDP+Bfj3p5nbgQmDgx5Oubl/mpjS+TKhcvyg0dBWz
+        X+XWx2ADqreegSpn8KzcJhpQs00ZymVgAGpuuBQc/OlbX9//y1HRf3cFxd0EiYc27BDyr976FeqCX35l
+        G6XAGpDBMVdX+1MeHl8/d3T8f1xQ8PegT+CP9QEJAiA5oDeioLY/B9G+VdtawJqQwQk3t9WPcnP/v6uv
+        /3/cw+vf2rB0O5A4NAoPgmwOrN7qD6SBgbf1lUPDfg6wRhgAusB5VlbPnzlZ3f82Rmb3QIWBUbgVHAsg
+        GsLfMg3E963cGgtWgAz6iuaenZQ/7T6UywBMdRZAxb+BIT4DKgROkcAAfQkUOwkRYWAAAJ9b/zI8+LA7
+        AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="seguimientoToolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -49,15 +49,15 @@ namespace HpResergerUserControls
             base.OnPaint(e);
             this.ResumeLayout();
         }
-        public Boolean CerrarAlPresionarESC { get; set; }        
+        public Boolean CerrarAlPresionarESC { get; set; }
         protected override void OnKeyDown(KeyEventArgs e)
         {
             base.OnKeyDown(e);
             if (CerrarAlPresionarESC)
             {
                 if (e.KeyCode == Keys.Escape) this.Close();
-            }            
-        }        
+            }
+        }
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             base.OnKeyPress(e);
@@ -103,6 +103,6 @@ namespace HpResergerUserControls
                 Opacity += 0.1;
             }
             else time.Stop();
-        }
+        }       
     }
 }
