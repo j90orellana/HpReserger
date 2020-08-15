@@ -40,6 +40,7 @@ namespace HPReserger
         public bool _EsManual { get; internal set; }
         public int Estado { get; internal set; }
         public string Glosa { get; internal set; }
+        public int TipoBusqueda { get; private set; }
 
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
@@ -695,7 +696,35 @@ namespace HPReserger
                     DataTable filo = CapaLogica.BusquedaProveedorClienteEmpleado((int)(Dtgconten[tipodocx.Name, x].Value ?? 0), (Dtgconten[numdocx.Name, x].Value ?? "").ToString());
                     if (filo.Rows.Count > 0)
                     {
-                        DataRow filita = filo.Rows[0];
+                        int ind = 0;
+                        if (TipoBusqueda != 0)
+                        {
+                            for (int i = 0; i < filo.Rows.Count; i++)
+                            {
+                                if ((int)filo.Rows[i]["tipo"] == TipoBusqueda)
+                                { ind = i; break; }
+                            }  
+                        }
+                        else if (filo.Rows.Count > 1)
+                        {
+                            int[] filas = new int[3];
+                            int i = 0;
+                            foreach (DataRow item in filo.Rows)
+                            {
+                                filas[i++] = (int)item["tipo"];
+                            }
+                            frmlispersonas = new frmListarSeleccionarPersonas(filas);
+                            DialogResult Result = frmlispersonas.ShowDialog();
+                            ind = Result == DialogResult.Yes ? 1 : Result == DialogResult.No ? 2 : Result == DialogResult.Retry ? 3 : 0;
+                            for (int ii = 0; ii < filo.Rows.Count; ii++)
+                            {
+                                if ((int)filo.Rows[ii]["tipo"] == ind)
+                                { ind = ii; break; }
+                            }
+                            frmlispersonas = null;                          
+                        }
+                        DataRow filita = filo.Rows[ind];
+                        TipoBusqueda = 0;
                         if (filita != null)
                         {
                             FilaPos = x;
@@ -941,6 +970,8 @@ namespace HPReserger
                         {
                             Dtgconten_CellValueChanged(sender, new DataGridViewCellEventArgs(Dtgconten.Columns[numdocx.Name].Index, FilaPos));
                         }
+                        TipoBusqueda = 1;
+                        
                         Dtgconten[numdocx.Name, FilaPos].Value = frmprovee.rucito;
                         Dtgconten[tipodocx.Name, FilaPos].Value = frmprovee.tipoid;
                     }
@@ -1004,6 +1035,7 @@ namespace HPReserger
                     Datos.Rows.Add();
                 else if (Dtgconten[numdocx.Name, FilaPos].Value == null) Datos.Rows.Add();
                 ////
+                TipoBusqueda = frmlispersonas.Menu;
                 Dtgconten[tipodocx.Name, IndexPos].Value = frmlispersonas.TipoId;
                 Dtgconten[numdocx.Name, IndexPos].Value = frmlispersonas.NroDoc;
                 Dtgconten.EndEdit();

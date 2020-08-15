@@ -19,6 +19,19 @@ namespace HPReserger
             NroDoc = _nrodoc;
             InitializeComponent();
         }
+        public frmListarSeleccionarPersonas(int[] tipos)
+        {
+            Cerrar = true;
+            InitializeComponent();
+            btnCliente.Visible = btnEmpleado.Visible = btnProveedor.Visible = false;
+            foreach (int item in tipos)
+            {
+                if (item == 1) btnProveedor.Visible = true;
+                if (item == 2) btnCliente.Visible = true;
+                if (item == 3) btnEmpleado.Visible = true;
+            }
+        }
+        public int Menu = 0;
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public frmListarSeleccionarPersonas()
@@ -33,10 +46,15 @@ namespace HPReserger
 
         }
         frmproveedor frmprovee;
+
+        public bool Cerrar { get; private set; }
+
         private void btnProveedor_Click(object sender, EventArgs e)
         {
+            if (Cerrar) { DialogResult = DialogResult.Yes; return; }
             if (frmprovee == null)
             {
+                Menu = 1;
                 frmprovee = new frmproveedor();
                 frmprovee.Txtbusca.Text = NroDoc;
                 frmprovee.llamada = 1;
@@ -64,7 +82,10 @@ namespace HPReserger
         }
         private void btnCliente_Click(object sender, EventArgs e)
         {
+            if (Cerrar) { DialogResult = DialogResult.No; return; }
+
             frmClientes frmclien = new frmClientes();
+            Menu = 2;
             //frmclien.rdnrodoc.Checked = true;
             frmclien.codigoid = TipoId;
             frmclien.CodigoDocBuscar = NroDoc;
@@ -81,8 +102,11 @@ namespace HPReserger
         }
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
+            if (Cerrar) { DialogResult = DialogResult.Retry; return; }
+
             frmListarEmpleados frmLE = new frmListarEmpleados();
             this.Hide();
+            Menu = 3;
             if (frmLE.ShowDialog() == DialogResult.OK)
             {
                 TipoId = frmLE.TipoDocumento;
