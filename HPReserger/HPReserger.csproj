@@ -544,6 +544,18 @@
     <Compile Include="ModuloRRHH\frmBonosEmpleados.Designer.cs">
       <DependentUpon>frmBonosEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloRRHH\frmReporteCTS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmReporteCTS.Designer.cs">
+      <DependentUpon>frmReporteCTS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmReporteGratificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmReporteGratificaciones.Designer.cs">
+      <DependentUpon>frmReporteGratificaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloRRHH\frmVacacionesResumen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2109,6 +2121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmBonosEmpleados.resx">
       <DependentUpon>frmBonosEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloRRHH\frmReporteCTS.resx">
+      <DependentUpon>frmReporteCTS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloRRHH\frmReporteGratificaciones.resx">
+      <DependentUpon>frmReporteGratificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmVacacionesResumen.resx">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>

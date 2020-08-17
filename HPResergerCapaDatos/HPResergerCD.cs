@@ -3212,7 +3212,18 @@ namespace HPResergerCapaDatos
             object[] valores = { Tipo_ID_Emp, Nro_ID_Emp, FechaInicio, Empresa };
             return bd.DataTableFromProcedure("usp_DiasGenerado", parametros, valores, null);
         }
-
+        public DataTable GratificacionesReporte(string empresa, string empleado, DateTime FechaIni, DateTime FechaFin)
+        {
+            string[] parametros = { "@empresa", "@empleado", "@FechaIni", "@FechaFin" };
+            object[] valores = { empresa, empleado, FechaIni, FechaFin };
+            return bd.DataTableFromProcedure("CalculoGratificacionesReporte", parametros, valores, null);
+        }
+        public DataTable CTSReporte(string empresa, string empleado, DateTime FechaIni, DateTime FechaFin)
+        {
+            string[] parametros = { "@empresa", "@empleado", "@FechaIni", "@FechaFin" };
+            object[] valores = { empresa, empleado, FechaIni, FechaFin };
+            return bd.DataTableFromProcedure("CalculoCTSReporte", parametros, valores, null);
+        }
         public DataRow Sueldo(int Tipo_ID_Emp, string Nro_ID_Emp)
         {
             string[] parametros = { "@Tipo_ID_Emp", "@Nro_ID_Emp" };

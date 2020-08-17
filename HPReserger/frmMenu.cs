@@ -4675,5 +4675,51 @@ namespace HPReserger
         {
             frmVacacionesREsumen = null;
         }
+        ModuloRRHH.frmReporteGratificaciones frmReporteGRatis;
+        private void gratificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmReporteGRatis == null)
+            {
+                frmReporteGRatis = new ModuloRRHH.frmReporteGratificaciones();
+                frmReporteGRatis.MdiParent = this;
+                frmReporteGRatis.Icon = ICono;
+                frmReporteGRatis.FormClosed += new FormClosedEventHandler(CerrarfrmReporteGRatis);
+                frmReporteGRatis.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmReporteGRatis.Activate();
+                ValidarVentanas(frmReporteGRatis);
+            }
+        }
+
+        private void CerrarfrmReporteGRatis(object sender, FormClosedEventArgs e)
+        {
+            frmReporteGRatis = null;
+        }
+        ModuloRRHH.frmReporteCTS frmreporteCTS;
+        private void cTSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmreporteCTS == null)
+            {
+                frmreporteCTS = new ModuloRRHH.frmReporteCTS();
+                frmreporteCTS.MdiParent = this;
+                frmreporteCTS.Icon = ICono;
+                frmreporteCTS.FormClosed += new FormClosedEventHandler(CerrarfrmreporteCTS);
+                frmreporteCTS.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreporteCTS.Activate();
+                ValidarVentanas(frmreporteCTS);
+            }
+        }
+
+        private void CerrarfrmreporteCTS(object sender, FormClosedEventArgs e)
+        {
+            frmreporteCTS = null;
+        }
     }
 }

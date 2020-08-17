@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace HPReserger.ModuloRRHH
 {
-    public partial class frmVacacionesResumen : FormGradient
+    public partial class frmReporteGratificaciones : FormGradient
     {
-        public frmVacacionesResumen()
+        public frmReporteGratificaciones()
         {
             InitializeComponent();
         }
@@ -23,31 +23,31 @@ namespace HPReserger.ModuloRRHH
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgE(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
-        private void frmVacacionesResumen_Load(object sender, EventArgs e)
-        {
-            CargarTextosPorDefecto();
-            Cargado = true;
-            MostrarDatosFiltrados();
-        }
         private void CargarTextosPorDefecto()
         {
             txtbusEmpleado.CargarTextoporDefecto();
             txtbusEmpresa.CargarTextoporDefecto();
-            dtpFecha.Value = DateTime.Now;
+            cbofechade.Fecha(new DateTime(DateTime.Now.Year, 1, 1));
+            cbofechahasta.Fecha(new DateTime(DateTime.Now.Year, 12, 31));
         }
+        DateTime FechaInicial, FechaFinal;
         private void MostrarDatosFiltrados()
         {
             if (Cargado)
             {
-                TDatos = CapaLogica.DiasGeneradoResumen(0, txtbusEmpleado.TextValido(), dtpFecha.Value, txtbusEmpresa.TextValido());
+                FechaInicial = cbofechade.FechaInicioMes;
+                FechaFinal = cbofechahasta.FechaFinMes;
+                if (cbofechade.GetFechaPRimerDia() > cbofechahasta.GetFechaPRimerDia())
+                {
+                    FechaInicial = cbofechahasta.FechaInicioMes;
+                    FechaFinal = cbofechade.FechaFinMes;
+                }
+                TDatos = CapaLogica.GratificacionesReporte(txtbusEmpresa.TextValido(), txtbusEmpleado.TextValido(), FechaInicial, FechaFinal);
                 dtgconten.DataSource = TDatos;
                 lblRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
             }
         }
-        private void buttonPer1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
             Cargado = false;
@@ -55,41 +55,39 @@ namespace HPReserger.ModuloRRHH
             Cargado = true;
             MostrarDatosFiltrados();
         }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
+        private void buttonPer1_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+        private void frmReporteGratificaciones_Load(object sender, EventArgs e)
+        {
+            CargarTextosPorDefecto();
+            Cargado = true;
             MostrarDatosFiltrados();
         }
 
         private void txtbusEmpleado_TextChanged(object sender, EventArgs e)
         {
             MostrarDatosFiltrados();
+
         }
-        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
             MostrarDatosFiltrados();
 
+        }
+        private void txtbusEmpresa_TextChanged(object sender, EventArgs e)
+        {
+            MostrarDatosFiltrados();
+        }
+        private void cbofechade_CambioFechas(object sender, EventArgs e)
+        {
+            MostrarDatosFiltrados();
         }
         frmProcesando frmpro;
         private string Empresa;
         private string cadenaFecha;
         public string NombreEmpleado;
-        private void btnExcel_Click(object sender, EventArgs e)
-        {
-            if (dtgconten.RowCount > 0)
-            {
-                frmpro = new frmProcesando();
-                frmpro.Show(); Cursor = Cursors.WaitCursor;
-                cadenaFecha = $"Fecha de Corte : {dtpFecha.Value.ToLongDateString() }";                
-                Empresa = txtbusEmpresa.TextValido();
-                NombreEmpleado = txtbusEmpleado.TextValido();
-                if (!backgroundWorker1.IsBusy)
-                {
-                    backgroundWorker1.RunWorkerAsync();
-                }
-            }
-            else { msgE("No hay Datos que Mostrar"); }
-        }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -98,10 +96,10 @@ namespace HPReserger.ModuloRRHH
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
                 int[] _ColumnasAutoajustar = new int[] { 2, 3, 4, 5 };
                 //
-                _NombreHoja = $"Resumen Vacaciones {dtpFecha.Value.ToString("dd-MM-yyyy")}".ToUpper();
-                _Cabecera = "Resumen de las Vacaciones";
+                _NombreHoja = $"Resumen de Gratificaciones {FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
+                _Cabecera = "Resumen de las Gratificaciones";
                 _NColumna = "H";
-                _ColumnasAutoajustar = new int[] { 2, 3, 4, 5, 7, 6 };
+                _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 7, 6 };
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
                 //
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
@@ -132,9 +130,9 @@ namespace HPReserger.ModuloRRHH
                     TableResuk.Columns[item.DataPropertyName].ColumnName = item.HeaderText;
                 }
                 //Removemos las Columnas que no Necesitamos        
-                TableResuk.Columns.RemoveAt(7);
-                TableResuk.Columns.RemoveAt(6);
-                TableResuk.Columns.RemoveAt(5);
+                //TableResuk.Columns.RemoveAt(7);
+                //TableResuk.Columns.RemoveAt(6);
+                //TableResuk.Columns.RemoveAt(5);
 
                 HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResuk, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, _ColumnasAutoajustar, "");
                 PosInicialGrilla++;
@@ -146,6 +144,22 @@ namespace HPReserger.ModuloRRHH
         {
             Cursor = Cursors.Default;
             frmpro.Close();
+        }
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.RowCount > 0)
+            {
+                frmpro = new frmProcesando();
+                frmpro.Show(); Cursor = Cursors.WaitCursor;
+                cadenaFecha = $"Fecha de : {FechaInicial.ToShortDateString() } Hasta: {FechaFinal.ToShortDateString()}";
+                Empresa = txtbusEmpresa.TextValido();
+                NombreEmpleado = txtbusEmpleado.TextValido();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else { msgE("No hay Datos que Mostrar"); }
         }
     }
 }
