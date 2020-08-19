@@ -23,6 +23,7 @@ namespace HPReserger
         rptConciliacionesReporte reporte;
         public string empresa, banco, nrocuenta;
         public DateTime fechaini, fechafin;
+        public int Fecha;
         private void crvReporte_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {
             e.Handled = true;
@@ -36,6 +37,7 @@ namespace HPReserger
             reporte.SetParameterValue("@NroCuenta", nrocuenta);
             reporte.SetParameterValue("@FechaIni", fechaini);
             reporte.SetParameterValue("@FechaFin", fechafin);
+            reporte.SetParameterValue("@Fecha", Fecha);
             reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
 
             ConnectionInfo iConnectionInfo = new ConnectionInfo();

@@ -3224,6 +3224,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, empleado, FechaIni, FechaFin };
             return bd.DataTableFromProcedure("CalculoCTSReporte", parametros, valores, null);
         }
+        public DataTable AfpReporte(string empresa, string empleado, DateTime FechaIni, DateTime FechaFin)
+        {
+            string[] parametros = { "@empresa", "@empleado", "@FechaIni", "@FechaFin" };
+            object[] valores = { empresa, empleado, FechaIni, FechaFin };
+            return bd.DataTableFromProcedure("usp_AfpReporte", parametros, valores, null);
+        }
         public DataRow Sueldo(int Tipo_ID_Emp, string Nro_ID_Emp)
         {
             string[] parametros = { "@Tipo_ID_Emp", "@Nro_ID_Emp" };
@@ -4846,10 +4852,11 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_MovimientoBancariosxEmpresaExcel", parametros, valores, null);
         }
         public DataTable ConciliacionCabecera(int opcion, int pkid, int pkempresa, int pkidCtaBancaria, string cuentacontable, DateTime Fecha,
-            decimal SAldoContable, decimal EstadoCuenta, int idusuario)
+            decimal SAldoContable, decimal EstadoCuenta, int idusuario, decimal SaldoContableInicia, decimal EstadoCuentaInicial)
         {
-            string[] parametros = { "@opcion", "@pkid", "@pkempresa", "@pkidCtaBancaria", "@cuentacontable", "@Fecha", "@SaldoContable", "@EstadoCuentas", "@idUsuario" };
-            object[] valores = { opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario };
+            string[] parametros = { "@opcion", "@pkid", "@pkempresa", "@pkidCtaBancaria", "@cuentacontable", "@Fecha", "@SaldoContable", "@EstadoCuentas", "@idUsuario","@SaldoContableInicial"
+                    , "@EstadoCuentasInicial" };
+            object[] valores = { opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario,SaldoContableInicia,EstadoCuentaInicial };
             return bd.DataTableFromProcedure("usp_ConciliacionCabecera", parametros, valores, null);
         }
         public DataTable ActualizarNumeroOperacion(int empresa, string cuo, string nroop, int idctabancaria) //1 activa ,cualquiera desactiva
@@ -4866,10 +4873,10 @@ namespace HPResergerCapaDatos
             object[] valores = { @opcion, @fkid, @pkid, @tipo, grupo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2, @idasiento, @estado, @seguimiento };
             return bd.DataTableFromProcedure("usp_ConciliacionDetalle", parametros, valores, null);
         }
-        public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
+        public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha) //1 activa ,cualquiera desactiva
         {
-            string[] parametros = { "@empresa", "@banco", "@NroCuenta", "@Fechaini", "@FechaFin" };
-            object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin };
+            string[] parametros = { "@empresa", "@banco", "@NroCuenta", "@Fechaini", "@FechaFin", "@fecha" };
+            object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin, fecha };
             return bd.DataTableFromProcedure("usp_Conciliacion_Busqueda", parametros, valores, null);
         }
         public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva

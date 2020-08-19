@@ -4721,5 +4721,28 @@ namespace HPReserger
         {
             frmreporteCTS = null;
         }
+        ModuloRRHH.frmReporteAFP frmreporteafps;
+        private void toolStripMenuItem14_Click(object sender, EventArgs e)
+        {
+            if (frmreporteafps == null)
+            {
+                frmreporteafps = new ModuloRRHH.frmReporteAFP();
+                frmreporteafps.MdiParent = this;
+                frmreporteafps.Icon = ICono;
+                frmreporteafps.FormClosed += new FormClosedEventHandler(Cerrarfrmreporteafps);
+                frmreporteafps.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreporteafps.Activate();
+                ValidarVentanas(frmreporteafps);
+            }
+        }
+
+        private void Cerrarfrmreporteafps(object sender, FormClosedEventArgs e)
+        {
+            frmreporteafps = null;
+        }
     }
 }

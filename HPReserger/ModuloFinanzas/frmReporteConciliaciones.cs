@@ -42,6 +42,12 @@ namespace HPReserger.ModuloFinanzas
         DateTime FechaFinal;
         private void FiltrarDatosConciliaciones()
         {
+            if (!txtbusbanco.EstaLLeno() && !txtbusEmpresa.EstaLLeno() && !txtbusnrocuenta.EstaLLeno() && !chkFecha.Checked)
+            {
+                if (dtgconten.DataSource != null) dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
+                lblRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
+                return;
+            }
             if (Cargado)
             {
                 FechaInicial = cbofechaini.FechaFinMes;
@@ -54,7 +60,7 @@ namespace HPReserger.ModuloFinanzas
                     FechaInicial = Fechaaux;
                 }
                 dtgconten.DataSource = CapaLogica.Conciliacion_Busqueda(txtbusEmpresa.TextValido(), txtbusbanco.TextValido(), txtbusnrocuenta.TextValido(),
-                    FechaInicial, FechaFinal);
+                    FechaInicial, FechaFinal, chkFecha.Checked ? 1 : 0);
                 lblRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
             }
         }
@@ -97,6 +103,7 @@ namespace HPReserger.ModuloFinanzas
                 Frmreporte.banco = txtbusbanco.TextValido();
                 Frmreporte.fechaini = FechaInicial;
                 Frmreporte.fechafin = FechaFinal;
+                Frmreporte.Fecha = chkFecha.Checked ? 1 : 0;
                 Frmreporte.MdiParent = this.MdiParent;
                 Frmreporte.FormClosed += Frmreporte_FormClosed;
                 Frmreporte.Show();
@@ -344,6 +351,20 @@ namespace HPReserger.ModuloFinanzas
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void chkFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkFecha.Checked)
+            {
+                cbofechaini.Enabled = cbofechafin.Enabled = true;
+            }
+            else
+            {
+                cbofechaini.Enabled = cbofechafin.Enabled = false;
+            }
+            FiltrarDatosConciliaciones();
+
         }
     }
 }

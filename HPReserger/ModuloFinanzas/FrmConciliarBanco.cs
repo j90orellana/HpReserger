@@ -79,6 +79,7 @@ namespace HPReserger.ModuloFinanzas
                 Continuar = true;
                 PkId = (int)TDatosAux.Rows[0]["pkid"];
                 EstadoCuenta = (decimal)TDatosAux.Rows[0]["estadocuenta"];
+                EstadoCuentaInicial = (decimal)TDatosAux.Rows[0]["estadocuentaInicial"];
                 btnReversar.Visible = true;
                 CargamosDatosParaContinuar();
                 PasarAPaso1(true);
@@ -153,13 +154,17 @@ namespace HPReserger.ModuloFinanzas
         {
             if (v)
             {
-                lblexcel.Text = $"Datos de Movimiento Bancario del Excel Cargado.  EstadoCuenta: { EstadoCuenta.ToString("n2")}";
-                lblSistema.Text = $"Datos de Movimiento Bancario en el Sistema.  SaldoContable: {SaldoContable.ToString("n2")}";
+                lblexcel.Text = $"Datos de Movimiento Bancario del Excel Cargado.  EstadoCuenta Inicial: { EstadoCuentaInicial.ToString("n2")}"; /////////////////////////////////////////
+                lblSistema.Text = $"Datos de Movimiento Bancario en el Sistema.  SaldoContable Inicial: {SaldoContableInicial.ToString("n2")}";
+                lblsaldoFinal.Text = $"SaldoContable Final: {SaldoContable.ToString("n2")}";
+                lblEstadoCuenta.Text = $"EstadoCuenta Final: {EstadoCuenta.ToString("n2")}";
             }
             else
             {
                 lblexcel.Text = $"Datos de Movimiento Bancario del Excel Cargado.";
                 lblSistema.Text = $"Datos de Movimiento Bancario en el Sistema.";
+                lblsaldoFinal.Text = "";
+                lblEstadoCuenta.Text = "";
             }
         }
         private void ActivarFunciones(bool v)
@@ -225,7 +230,12 @@ namespace HPReserger.ModuloFinanzas
         decimal SaldoContable = 0;
         private void BuscanEnSistemMovimientos()
         {
+            DateTime FechaAux;
+            FechaAux = (comboMesAño1.FechaInicioMes).AddDays(-1);
             SaldoContable = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(comboMesAño1.FechaInicioMes.Year, 1, 1), comboMesAño1.FechaFinMes, NroCuenta, pkMoneda).Rows[0]["monto"];
+            SaldoContableInicial = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(FechaAux.Year, 1, 1), FechaAux, NroCuenta, pkMoneda).Rows[0]["monto"];
+
+            if (SaldoContable == 0) msgError("No hay Movimientos Contables");
             TdatosSist = CapaLogica.MovimientoBancariosxEmpresa(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
         }
         private void BuscanEnSistemMovimientosExcel()
@@ -440,6 +450,7 @@ namespace HPReserger.ModuloFinanzas
                     return false;
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[5][4].ToString());
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString()); ///////////////////////////////////////
                 string ValCuenta = TdatosExcel.Rows[0][1].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
                 {
@@ -475,6 +486,8 @@ namespace HPReserger.ModuloFinanzas
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[13][14].ToString());
                 EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][14].ToString());////////////////////////////////////////////
+                EstadoCuentaInicial = EstadoCuentaInicial * (TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][13].ToString() == "(-)" ? -1 : 1);////////////////////////////
                 string ValCuenta = TdatosExcel.Rows[7][4].ToString();
                 if (!ValCuenta.Contains(HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(nroCuenta.Substring(3), '-', ' ')))
                 {
@@ -509,6 +522,7 @@ namespace HPReserger.ModuloFinanzas
                     return false;
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][5].ToString());
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[11][5].ToString());/////////////////////
                 //EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
                 string ValCuenta = TdatosExcel.Rows[6][0].ToString();
                 ValCuenta = HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros(ValCuenta);
@@ -559,6 +573,7 @@ namespace HPReserger.ModuloFinanzas
                     return false;
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][2].ToString());///////////////////////
                 //EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
                 string ValCuenta = TdatosExcel.Rows[4][2].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
@@ -904,6 +919,8 @@ namespace HPReserger.ModuloFinanzas
                 }
         }
         decimal SumaExcel = 0, SumaSistema = 0;
+        private decimal EstadoCuentaInicial;
+        private decimal SaldoContableInicial;
         private void dtgContenSistema_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -1122,7 +1139,7 @@ namespace HPReserger.ModuloFinanzas
                 else
                     PkId = (int)CapaLogica.ConciliacionCabeceraSiguienteNumero().Rows[0]["ultimo"];
                 int pkUsuario = frmLogin.CodigoUsuario;
-                CapaLogica.ConciliacionCabecera(1, PkId, pkEmpresa, pkidCtaBanco, CuentaContable, FechaEjecucion, SaldoContable, EstadoCuenta, pkUsuario);
+                CapaLogica.ConciliacionCabecera(1, PkId, pkEmpresa, pkidCtaBanco, CuentaContable, FechaEjecucion, SaldoContable, EstadoCuenta, pkUsuario, SaldoContableInicial, EstadoCuentaInicial);
                 //GRabamos el Detalle de la Cabecera
                 foreach (DataRow item in TdatosExcel.Rows)
                 {

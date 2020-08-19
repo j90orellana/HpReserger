@@ -1209,6 +1209,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.CTSReporte(empresa, empleado, FechaIni, FechaFin);
         }
+        public DataTable AfpReporte(string empresa, string empleado, DateTime FechaIni, DateTime FechaFin)
+        {
+            return cdOrdenPedido.AfpReporte(empresa, empleado, FechaIni, FechaFin);
+        }
         public DataRow Sueldo(int Tipo_ID_Emp, string Nro_ID_Emp)
         {
             return cdOrdenPedido.Sueldo(Tipo_ID_Emp, Nro_ID_Emp);
@@ -2569,31 +2573,32 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.MovimientoBancariosxEmpresaExcel(empresa, FechaIni, FechaFin, NroCuenta, Moneda, @idCtaBancaria);
         }
         public DataTable ConciliacionCabecera(int opcion, int pkid, int pkempresa, int pkidCtaBancaria, string cuentacontable, DateTime Fecha,
-            decimal SAldoContable, decimal EstadoCuenta, int idusuario)
+            decimal SAldoContable, decimal EstadoCuenta, int idusuario, decimal saldoContableInicial, decimal EstadocuentaInicial)
         {
-            return cdOrdenPedido.ConciliacionCabecera(opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario);
+            return cdOrdenPedido.ConciliacionCabecera(opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario, saldoContableInicial,
+                EstadocuentaInicial);
         }
         public DataTable ConciliacionCabeceraExiste(int pkempresa, DateTime Fecha, int IdCtaBancaria)
         {
-            return cdOrdenPedido.ConciliacionCabecera(9, 0, pkempresa, IdCtaBancaria, "", Fecha, 0, 0, 0);
+            return cdOrdenPedido.ConciliacionCabecera(9, 0, pkempresa, IdCtaBancaria, "", Fecha, 0, 0, 0, 0, 0);
         }
         public DataTable ConciliacionCabeceraExcel(int pkempresa, DateTime Fecha, int ctaBancaria)
         {
             //Mandamos el Tipo 1 =  Excel por el del Usuario para no declarar otra Variable
-            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, ctaBancaria, "", Fecha, 0, 0, 1);
+            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, ctaBancaria, "", Fecha, 0, 0, 1, 0, 0);
         }
         public DataTable ConciliacionCabeceraSistema(int pkempresa, DateTime Fecha, int idCtaBancaria)
         {
             //Mandamos el Tipo 2 =  Sistema por el del Usuario para no declarar otra Variable
-            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, idCtaBancaria, "", Fecha, 0, 0, 2);
+            return cdOrdenPedido.ConciliacionCabecera(99, 0, pkempresa, idCtaBancaria, "", Fecha, 0, 0, 2, 0, 0);
         }
         public DataTable ConciliacionCabeceraEliminar(int pkempresa, DateTime Fecha, int idctabancaria)
         {
-            return cdOrdenPedido.ConciliacionCabecera(10, 0, pkempresa, idctabancaria, "", Fecha, 0, 0, 0);
+            return cdOrdenPedido.ConciliacionCabecera(10, 0, pkempresa, idctabancaria, "", Fecha, 0, 0, 0, 0, 0);
         }
         public DataTable ConciliacionCabeceraSiguienteNumero()
         {
-            return cdOrdenPedido.ConciliacionCabecera(0, 0, 0, 0, "", DateTime.Now, 0, 0, 0);
+            return cdOrdenPedido.ConciliacionCabecera(0, 0, 0, 0, "", DateTime.Now, 0, 0, 0, 0, 0);
         }
         public DataTable ActualizarNumeroOperacion(int empresa, string cuo, string nroop, int idctabancaria) //1 activa ,cualquiera desactiva
         {
@@ -2605,9 +2610,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ConciliacionDetalle(@opcion, @fkid, @pkid, @tipo, grupo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2,
                 @idasiento, @estado, @seguimiento);
         }
-        public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin)
+        public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha)
         {
-            return cdOrdenPedido.Conciliacion_Busqueda(empresa, banco, nrocuenta, FechaIni, FechaFin);
+            return cdOrdenPedido.Conciliacion_Busqueda(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
         }
         public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin)
         {

@@ -62,6 +62,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.chkFecha = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -92,16 +93,17 @@
             this.lblRegistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegistros.Location = new System.Drawing.Point(12, 550);
             this.lblRegistros.Name = "lblRegistros";
-            this.lblRegistros.Size = new System.Drawing.Size(94, 13);
+            this.lblRegistros.Size = new System.Drawing.Size(95, 13);
             this.lblRegistros.TabIndex = 191;
             this.lblRegistros.Text = "Total Registros: 0";
             // 
             // cbofechaini
             // 
             this.cbofechaini.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
-            this.cbofechaini.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
-            this.cbofechaini.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
+            this.cbofechaini.Enabled = false;
+            this.cbofechaini.FechaConDiaActual = new System.DateTime(2020, 8, 19, 0, 0, 0, 0);
+            this.cbofechaini.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
+            this.cbofechaini.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
             this.cbofechaini.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbofechaini.Location = new System.Drawing.Point(390, 53);
             this.cbofechaini.Name = "cbofechaini";
@@ -114,9 +116,10 @@
             // cbofechafin
             // 
             this.cbofechafin.BackColor = System.Drawing.Color.Transparent;
-            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 6, 19, 0, 0, 0, 0);
-            this.cbofechafin.FechaFinMes = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
-            this.cbofechafin.FechaInicioMes = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
+            this.cbofechafin.Enabled = false;
+            this.cbofechafin.FechaConDiaActual = new System.DateTime(2020, 8, 19, 0, 0, 0, 0);
+            this.cbofechafin.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
+            this.cbofechafin.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
             this.cbofechafin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbofechafin.Location = new System.Drawing.Point(604, 53);
             this.cbofechafin.Name = "cbofechafin";
@@ -195,7 +198,7 @@
             this.txtbusnrocuenta.MaxLength = 30;
             this.txtbusnrocuenta.Name = "txtbusnrocuenta";
             this.txtbusnrocuenta.NextControlOnEnter = null;
-            this.txtbusnrocuenta.Size = new System.Drawing.Size(348, 21);
+            this.txtbusnrocuenta.Size = new System.Drawing.Size(297, 21);
             this.txtbusnrocuenta.TabIndex = 2;
             this.txtbusnrocuenta.Text = "Buscar Nro Cuenta";
             this.txtbusnrocuenta.TextoDefecto = "Buscar Nro Cuenta";
@@ -447,6 +450,19 @@
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
+            // chkFecha
+            // 
+            this.chkFecha.AutoSize = true;
+            this.chkFecha.BackColor = System.Drawing.Color.Transparent;
+            this.chkFecha.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.chkFecha.Location = new System.Drawing.Point(315, 57);
+            this.chkFecha.Name = "chkFecha";
+            this.chkFecha.Size = new System.Drawing.Size(56, 17);
+            this.chkFecha.TabIndex = 196;
+            this.chkFecha.Text = "Fecha";
+            this.chkFecha.UseVisualStyleBackColor = false;
+            this.chkFecha.CheckedChanged += new System.EventHandler(this.chkFecha_CheckedChanged);
+            // 
             // frmReporteConciliaciones
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -466,6 +482,7 @@
             this.Controls.Add(this.cbofechaini);
             this.Controls.Add(this.lblRegistros);
             this.Controls.Add(this.BtnCerrar);
+            this.Controls.Add(this.chkFecha);
             this.MinimumSize = new System.Drawing.Size(918, 614);
             this.Name = "frmReporteConciliaciones";
             this.Nombre = "Listado de Conciliaciones";
@@ -506,5 +523,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.CheckBox chkFecha;
     }
 }
