@@ -4856,7 +4856,7 @@ namespace HPResergerCapaDatos
         {
             string[] parametros = { "@opcion", "@pkid", "@pkempresa", "@pkidCtaBancaria", "@cuentacontable", "@Fecha", "@SaldoContable", "@EstadoCuentas", "@idUsuario","@SaldoContableInicial"
                     , "@EstadoCuentasInicial" };
-            object[] valores = { opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario,SaldoContableInicia,EstadoCuentaInicial };
+            object[] valores = { opcion, pkid, pkempresa, pkidCtaBancaria, cuentacontable, Fecha, SAldoContable, EstadoCuenta, idusuario, SaldoContableInicia, EstadoCuentaInicial };
             return bd.DataTableFromProcedure("usp_ConciliacionCabecera", parametros, valores, null);
         }
         public DataTable ActualizarNumeroOperacion(int empresa, string cuo, string nroop, int idctabancaria) //1 activa ,cualquiera desactiva
@@ -4879,10 +4879,10 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin, fecha };
             return bd.DataTableFromProcedure("usp_Conciliacion_Busqueda", parametros, valores, null);
         }
-        public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin) //1 activa ,cualquiera desactiva
+        public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha) //1 activa ,cualquiera desactiva
         {
-            string[] parametros = { "@empresa", "@banco", "@NroCuenta", "@Fechaini", "@FechaFin" };
-            object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin };
+            string[] parametros = { "@empresa", "@banco", "@NroCuenta", "@Fechaini", "@FechaFin", "@fecha" };
+            object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin, fecha };
             return bd.DataTableFromProcedure("[usp_Conciliacion_Busqueda_ConDetalle]", parametros, valores, null);
         }
         public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento, int @idusuario) //1 activa ,cualquiera desactiva
