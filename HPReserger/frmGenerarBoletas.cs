@@ -282,7 +282,7 @@ namespace HPReserger
             //Proceso de los Asientos
             if (chkGAsientos.Checked)
             {
-                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas();
+                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas();//PARTE PARA SELECCIONAR LOS TIPOS
                 if (TConfi.Rows.Count == 0) { msgError("No se Encontró la Configuracion para los asientos de las boletas"); return; }
                 DataTable TDatos = CapaLogica.ReporteBoletasAsiento(cboempresa.Text, txtnumero.Text, comboMesAño1.GetFechaPRimerDia(), comboMesAño1.GetFechaPRimerDia());
                 if (TDatos.Rows.Count == 0) { msgError("No hay Boletas Encontradas"); return; }
@@ -296,7 +296,6 @@ namespace HPReserger
                 txtglosa2.CargarTextoporDefecto();
             }
         }
-
         private void GenerarAsientoBoletas(DataTable confi, DataTable datos, int Tipo, DateTime FechaContable, int idDinamica, TextBox txt)
         {
             decimal TC = CapaLogica.TipoCambioDia("Venta", FechaContable);
@@ -359,9 +358,7 @@ namespace HPReserger
                             }
                         }
                     }
-
                 }
-
             }
             CapaLogica.CuadrarAsiento(Cuo, IdProyecto, FechaContable, 2);
         }
@@ -373,7 +370,6 @@ namespace HPReserger
             //if (Sumatoria > 0) return Sumatoria; else
             return Sumatoria;
         }
-
         private bool ValidarAsientoExiste(int v, DateTime dateTime, int selectedValue)
         {
             DataTable TAuxiliar;
@@ -388,7 +384,6 @@ namespace HPReserger
                 return false;
             }
         }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (rbEmpresa.Checked)

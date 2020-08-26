@@ -2568,6 +2568,20 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.SaldoContableCuentaBancariaxEmpresa(empresa, FechaIni, FechaFin, NroCuenta, Moneda);
         }
+        public bool ValidarAsientoExiste(int v, DateTime dateTime, int selectedValue)
+        {
+            DataTable TAuxiliar;
+            TAuxiliar = cdOrdenPedido.CierreMensualDinamicaYaExiste(v, dateTime, selectedValue);
+            if (TAuxiliar.Rows.Count > 0)
+            {
+                DataRow Filita = TAuxiliar.Rows[0];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public DataTable MovimientoBancariosxEmpresaExcel(int empresa, DateTime FechaIni, DateTime FechaFin, string NroCuenta, int Moneda, int @idCtaBancaria) //1 activa ,cualquiera desactiva
         {
             return cdOrdenPedido.MovimientoBancariosxEmpresaExcel(empresa, FechaIni, FechaFin, NroCuenta, Moneda, @idCtaBancaria);
@@ -2614,9 +2628,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Conciliacion_Busqueda(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
         }
-        public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin,int fecha)
+        public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha)
         {
-            return cdOrdenPedido.Conciliacion_Busqueda_ConDetalle(empresa, banco, nrocuenta, FechaIni, FechaFin,fecha);
+            return cdOrdenPedido.Conciliacion_Busqueda_ConDetalle(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
         }
         public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento, int idlogin)
         {

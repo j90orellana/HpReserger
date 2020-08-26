@@ -33,6 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,9 +43,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,9 +60,32 @@
             this.btnCargar = new HpResergerUserControls.ButtonPer();
             this.btnPaso2 = new HpResergerUserControls.ButtonPer();
             this.dtgContenExcel = new HpResergerUserControls.Dtgconten();
+            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNroOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xGlosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRegistroExcel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dtgContenSistema = new HpResergerUserControls.Dtgconten();
+            this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xUpdate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ygrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ycuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ymonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yoperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yglosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ypkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblexcel = new System.Windows.Forms.Label();
             this.lblSistema = new System.Windows.Forms.Label();
             this.lblTotales = new System.Windows.Forms.Label();
@@ -81,29 +104,6 @@
             this.btnReversar = new HpResergerUserControls.ButtonPer();
             this.lblEstadoCuenta = new System.Windows.Forms.Label();
             this.lblsaldoFinal = new System.Windows.Forms.Label();
-            this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xUpdate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ygrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ycuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ymonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yoperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yglosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ypkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNroOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenExcel)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenSistema)).BeginInit();
@@ -163,7 +163,7 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 8, 20, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 8, 21, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -397,6 +397,105 @@
             this.dtgContenExcel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_CellValueChanged);
             this.dtgContenExcel.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_RowEnter);
             // 
+            // xok
+            // 
+            this.xok.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xok.DataPropertyName = "ok";
+            this.xok.FalseValue = "0";
+            this.xok.HeaderText = "Ok";
+            this.xok.MinimumWidth = 25;
+            this.xok.Name = "xok";
+            this.xok.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.xok.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xok.TrueValue = "1";
+            this.xok.Width = 25;
+            // 
+            // xGrupo
+            // 
+            this.xGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xGrupo.DataPropertyName = "index";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xGrupo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xGrupo.HeaderText = "Grupo";
+            this.xGrupo.MinimumWidth = 40;
+            this.xGrupo.Name = "xGrupo";
+            this.xGrupo.ReadOnly = true;
+            this.xGrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xGrupo.Width = 40;
+            // 
+            // xFecha
+            // 
+            this.xFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xFecha.DataPropertyName = "Fecha";
+            dataGridViewCellStyle4.Format = "d";
+            this.xFecha.DefaultCellStyle = dataGridViewCellStyle4;
+            this.xFecha.HeaderText = "Fecha";
+            this.xFecha.MinimumWidth = 50;
+            this.xFecha.Name = "xFecha";
+            this.xFecha.ReadOnly = true;
+            this.xFecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xFecha.Width = 50;
+            // 
+            // xMonto
+            // 
+            this.xMonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xMonto.DataPropertyName = "Monto";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.xMonto.DefaultCellStyle = dataGridViewCellStyle5;
+            this.xMonto.HeaderText = "Monto";
+            this.xMonto.MinimumWidth = 50;
+            this.xMonto.Name = "xMonto";
+            this.xMonto.ReadOnly = true;
+            this.xMonto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xMonto.Width = 50;
+            // 
+            // xNroOperacion
+            // 
+            this.xNroOperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xNroOperacion.DataPropertyName = "Operacion";
+            this.xNroOperacion.HeaderText = "Operacion";
+            this.xNroOperacion.MinimumWidth = 60;
+            this.xNroOperacion.Name = "xNroOperacion";
+            this.xNroOperacion.ReadOnly = true;
+            this.xNroOperacion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xNroOperacion.Width = 60;
+            // 
+            // xGlosa
+            // 
+            this.xGlosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xGlosa.DataPropertyName = "Glosa";
+            this.xGlosa.HeaderText = "Glosa 1";
+            this.xGlosa.MinimumWidth = 80;
+            this.xGlosa.Name = "xGlosa";
+            this.xGlosa.ReadOnly = true;
+            this.xGlosa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // xGlosa2
+            // 
+            this.xGlosa2.DataPropertyName = "glosa2";
+            this.xGlosa2.HeaderText = "Glosa 2";
+            this.xGlosa2.MinimumWidth = 50;
+            this.xGlosa2.Name = "xGlosa2";
+            this.xGlosa2.ReadOnly = true;
+            this.xGlosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // xpkid
+            // 
+            this.xpkid.DataPropertyName = "pkid";
+            this.xpkid.HeaderText = "pkid";
+            this.xpkid.Name = "xpkid";
+            this.xpkid.Visible = false;
+            // 
+            // xComentario
+            // 
+            this.xComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xComentario.DataPropertyName = "comentario";
+            this.xComentario.HeaderText = "Comentario";
+            this.xComentario.Name = "xComentario";
+            this.xComentario.ReadOnly = true;
+            this.xComentario.Width = 81;
+            // 
             // lblRegistroExcel
             // 
             this.lblRegistroExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -503,6 +602,147 @@
             this.dtgContenSistema.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgContenSistema_CellFormatting);
             this.dtgContenSistema.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellValueChanged);
             this.dtgContenSistema.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_RowEnter);
+            // 
+            // yok
+            // 
+            this.yok.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.yok.DataPropertyName = "ok";
+            this.yok.FalseValue = "0";
+            this.yok.HeaderText = "Ok";
+            this.yok.MinimumWidth = 25;
+            this.yok.Name = "yok";
+            this.yok.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.yok.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.yok.TrueValue = "1";
+            this.yok.Width = 25;
+            // 
+            // xUpdate
+            // 
+            this.xUpdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xUpdate.DataPropertyName = "updates";
+            this.xUpdate.FalseValue = "0";
+            this.xUpdate.HeaderText = "Act";
+            this.xUpdate.MinimumWidth = 25;
+            this.xUpdate.Name = "xUpdate";
+            this.xUpdate.ToolTipText = "Actualizar Nro de Operación";
+            this.xUpdate.TrueValue = "1";
+            this.xUpdate.Width = 25;
+            // 
+            // ygrupo
+            // 
+            this.ygrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.ygrupo.DataPropertyName = "index";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ygrupo.DefaultCellStyle = dataGridViewCellStyle10;
+            this.ygrupo.HeaderText = "Grupo";
+            this.ygrupo.MinimumWidth = 40;
+            this.ygrupo.Name = "ygrupo";
+            this.ygrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ygrupo.Width = 40;
+            // 
+            // ycuo
+            // 
+            this.ycuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.ycuo.DataPropertyName = "cuo";
+            this.ycuo.HeaderText = "Cuo";
+            this.ycuo.MinimumWidth = 40;
+            this.ycuo.Name = "ycuo";
+            this.ycuo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ycuo.Width = 40;
+            // 
+            // yFecha
+            // 
+            this.yFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.yFecha.DataPropertyName = "Fecha";
+            dataGridViewCellStyle11.Format = "d";
+            this.yFecha.DefaultCellStyle = dataGridViewCellStyle11;
+            this.yFecha.HeaderText = "Fecha";
+            this.yFecha.MinimumWidth = 45;
+            this.yFecha.Name = "yFecha";
+            this.yFecha.ReadOnly = true;
+            this.yFecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.yFecha.Width = 45;
+            // 
+            // ymonto
+            // 
+            this.ymonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.ymonto.DataPropertyName = "Monto";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "n2";
+            this.ymonto.DefaultCellStyle = dataGridViewCellStyle12;
+            this.ymonto.HeaderText = "Monto";
+            this.ymonto.MinimumWidth = 50;
+            this.ymonto.Name = "ymonto";
+            this.ymonto.ReadOnly = true;
+            this.ymonto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ymonto.Width = 50;
+            // 
+            // yoperacion
+            // 
+            this.yoperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.yoperacion.DataPropertyName = "Operacion";
+            this.yoperacion.HeaderText = "Operacion";
+            this.yoperacion.MinimumWidth = 60;
+            this.yoperacion.Name = "yoperacion";
+            this.yoperacion.ReadOnly = true;
+            this.yoperacion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.yoperacion.Width = 60;
+            // 
+            // yglosa
+            // 
+            this.yglosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.yglosa.DataPropertyName = "Glosa";
+            this.yglosa.HeaderText = "Glosa Cab.";
+            this.yglosa.MinimumWidth = 80;
+            this.yglosa.Name = "yglosa";
+            this.yglosa.ReadOnly = true;
+            this.yglosa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // yglosa2
+            // 
+            this.yglosa2.DataPropertyName = "glosa2";
+            this.yglosa2.HeaderText = "Glosa Det.";
+            this.yglosa2.MinimumWidth = 80;
+            this.yglosa2.Name = "yglosa2";
+            this.yglosa2.ReadOnly = true;
+            this.yglosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // yidasiento
+            // 
+            this.yidasiento.DataPropertyName = "idasiento";
+            this.yidasiento.HeaderText = "idAsiento";
+            this.yidasiento.Name = "yidasiento";
+            this.yidasiento.Visible = false;
+            // 
+            // xtipo
+            // 
+            this.xtipo.DataPropertyName = "tipo";
+            this.xtipo.HeaderText = "Tipo";
+            this.xtipo.Name = "xtipo";
+            this.xtipo.Visible = false;
+            // 
+            // xEstado
+            // 
+            this.xEstado.DataPropertyName = "estado";
+            this.xEstado.HeaderText = "Estado";
+            this.xEstado.Name = "xEstado";
+            this.xEstado.Visible = false;
+            // 
+            // ypkid
+            // 
+            this.ypkid.DataPropertyName = "pkid";
+            this.ypkid.HeaderText = "pkid";
+            this.ypkid.Name = "ypkid";
+            this.ypkid.Visible = false;
+            // 
+            // yComentario
+            // 
+            this.yComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yComentario.DataPropertyName = "comentario";
+            this.yComentario.HeaderText = "Comentario";
+            this.yComentario.Name = "yComentario";
+            this.yComentario.ReadOnly = true;
+            this.yComentario.Width = 81;
             // 
             // lblexcel
             // 
@@ -714,7 +954,7 @@
             // 
             // lblEstadoCuenta
             // 
-            this.lblEstadoCuenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEstadoCuenta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblEstadoCuenta.AutoSize = true;
             this.lblEstadoCuenta.BackColor = System.Drawing.Color.Transparent;
             this.lblEstadoCuenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
@@ -733,246 +973,6 @@
             this.lblsaldoFinal.Name = "lblsaldoFinal";
             this.lblsaldoFinal.Size = new System.Drawing.Size(0, 13);
             this.lblsaldoFinal.TabIndex = 190;
-            // 
-            // yok
-            // 
-            this.yok.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.yok.DataPropertyName = "ok";
-            this.yok.FalseValue = "0";
-            this.yok.HeaderText = "Ok";
-            this.yok.MinimumWidth = 25;
-            this.yok.Name = "yok";
-            this.yok.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.yok.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.yok.TrueValue = "1";
-            this.yok.Width = 25;
-            // 
-            // xUpdate
-            // 
-            this.xUpdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.xUpdate.DataPropertyName = "updates";
-            this.xUpdate.FalseValue = "0";
-            this.xUpdate.HeaderText = "Act";
-            this.xUpdate.MinimumWidth = 25;
-            this.xUpdate.Name = "xUpdate";
-            this.xUpdate.ToolTipText = "Actualizar Nro de Operación";
-            this.xUpdate.TrueValue = "1";
-            this.xUpdate.Width = 25;
-            // 
-            // ygrupo
-            // 
-            this.ygrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.ygrupo.DataPropertyName = "index";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ygrupo.DefaultCellStyle = dataGridViewCellStyle10;
-            this.ygrupo.HeaderText = "Grupo";
-            this.ygrupo.MinimumWidth = 40;
-            this.ygrupo.Name = "ygrupo";
-            this.ygrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ygrupo.Width = 40;
-            // 
-            // ycuo
-            // 
-            this.ycuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.ycuo.DataPropertyName = "cuo";
-            this.ycuo.HeaderText = "Cuo";
-            this.ycuo.MinimumWidth = 40;
-            this.ycuo.Name = "ycuo";
-            this.ycuo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ycuo.Width = 40;
-            // 
-            // yFecha
-            // 
-            this.yFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.yFecha.DataPropertyName = "Fecha";
-            dataGridViewCellStyle11.Format = "d";
-            this.yFecha.DefaultCellStyle = dataGridViewCellStyle11;
-            this.yFecha.HeaderText = "Fecha";
-            this.yFecha.MinimumWidth = 45;
-            this.yFecha.Name = "yFecha";
-            this.yFecha.ReadOnly = true;
-            this.yFecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.yFecha.Width = 45;
-            // 
-            // ymonto
-            // 
-            this.ymonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.ymonto.DataPropertyName = "Monto";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "n2";
-            this.ymonto.DefaultCellStyle = dataGridViewCellStyle12;
-            this.ymonto.HeaderText = "Monto";
-            this.ymonto.MinimumWidth = 50;
-            this.ymonto.Name = "ymonto";
-            this.ymonto.ReadOnly = true;
-            this.ymonto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ymonto.Width = 50;
-            // 
-            // yoperacion
-            // 
-            this.yoperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.yoperacion.DataPropertyName = "Operacion";
-            this.yoperacion.HeaderText = "Operacion";
-            this.yoperacion.MinimumWidth = 60;
-            this.yoperacion.Name = "yoperacion";
-            this.yoperacion.ReadOnly = true;
-            this.yoperacion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.yoperacion.Width = 60;
-            // 
-            // yglosa
-            // 
-            this.yglosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.yglosa.DataPropertyName = "Glosa";
-            this.yglosa.HeaderText = "Glosa Cab.";
-            this.yglosa.MinimumWidth = 80;
-            this.yglosa.Name = "yglosa";
-            this.yglosa.ReadOnly = true;
-            this.yglosa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // yglosa2
-            // 
-            this.yglosa2.DataPropertyName = "glosa2";
-            this.yglosa2.HeaderText = "Glosa Det.";
-            this.yglosa2.MinimumWidth = 80;
-            this.yglosa2.Name = "yglosa2";
-            this.yglosa2.ReadOnly = true;
-            this.yglosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // yidasiento
-            // 
-            this.yidasiento.DataPropertyName = "idasiento";
-            this.yidasiento.HeaderText = "idAsiento";
-            this.yidasiento.Name = "yidasiento";
-            this.yidasiento.Visible = false;
-            // 
-            // xtipo
-            // 
-            this.xtipo.DataPropertyName = "tipo";
-            this.xtipo.HeaderText = "Tipo";
-            this.xtipo.Name = "xtipo";
-            this.xtipo.Visible = false;
-            // 
-            // xEstado
-            // 
-            this.xEstado.DataPropertyName = "estado";
-            this.xEstado.HeaderText = "Estado";
-            this.xEstado.Name = "xEstado";
-            this.xEstado.Visible = false;
-            // 
-            // ypkid
-            // 
-            this.ypkid.DataPropertyName = "pkid";
-            this.ypkid.HeaderText = "pkid";
-            this.ypkid.Name = "ypkid";
-            this.ypkid.Visible = false;
-            // 
-            // yComentario
-            // 
-            this.yComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yComentario.DataPropertyName = "comentario";
-            this.yComentario.HeaderText = "Comentario";
-            this.yComentario.Name = "yComentario";
-            this.yComentario.ReadOnly = true;
-            this.yComentario.Width = 81;
-            // 
-            // xok
-            // 
-            this.xok.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xok.DataPropertyName = "ok";
-            this.xok.FalseValue = "0";
-            this.xok.HeaderText = "Ok";
-            this.xok.MinimumWidth = 25;
-            this.xok.Name = "xok";
-            this.xok.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.xok.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xok.TrueValue = "1";
-            this.xok.Width = 25;
-            // 
-            // xGrupo
-            // 
-            this.xGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xGrupo.DataPropertyName = "index";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xGrupo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xGrupo.HeaderText = "Grupo";
-            this.xGrupo.MinimumWidth = 40;
-            this.xGrupo.Name = "xGrupo";
-            this.xGrupo.ReadOnly = true;
-            this.xGrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xGrupo.Width = 40;
-            // 
-            // xFecha
-            // 
-            this.xFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xFecha.DataPropertyName = "Fecha";
-            dataGridViewCellStyle4.Format = "d";
-            this.xFecha.DefaultCellStyle = dataGridViewCellStyle4;
-            this.xFecha.HeaderText = "Fecha";
-            this.xFecha.MinimumWidth = 50;
-            this.xFecha.Name = "xFecha";
-            this.xFecha.ReadOnly = true;
-            this.xFecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xFecha.Width = 50;
-            // 
-            // xMonto
-            // 
-            this.xMonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xMonto.DataPropertyName = "Monto";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.xMonto.DefaultCellStyle = dataGridViewCellStyle5;
-            this.xMonto.HeaderText = "Monto";
-            this.xMonto.MinimumWidth = 50;
-            this.xMonto.Name = "xMonto";
-            this.xMonto.ReadOnly = true;
-            this.xMonto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xMonto.Width = 50;
-            // 
-            // xNroOperacion
-            // 
-            this.xNroOperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xNroOperacion.DataPropertyName = "Operacion";
-            this.xNroOperacion.HeaderText = "Operacion";
-            this.xNroOperacion.MinimumWidth = 60;
-            this.xNroOperacion.Name = "xNroOperacion";
-            this.xNroOperacion.ReadOnly = true;
-            this.xNroOperacion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xNroOperacion.Width = 60;
-            // 
-            // xGlosa
-            // 
-            this.xGlosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xGlosa.DataPropertyName = "Glosa";
-            this.xGlosa.HeaderText = "Glosa 1";
-            this.xGlosa.MinimumWidth = 80;
-            this.xGlosa.Name = "xGlosa";
-            this.xGlosa.ReadOnly = true;
-            this.xGlosa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // xGlosa2
-            // 
-            this.xGlosa2.DataPropertyName = "glosa2";
-            this.xGlosa2.HeaderText = "Glosa 2";
-            this.xGlosa2.MinimumWidth = 50;
-            this.xGlosa2.Name = "xGlosa2";
-            this.xGlosa2.ReadOnly = true;
-            this.xGlosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // xpkid
-            // 
-            this.xpkid.DataPropertyName = "pkid";
-            this.xpkid.HeaderText = "pkid";
-            this.xpkid.Name = "xpkid";
-            this.xpkid.Visible = false;
-            // 
-            // xComentario
-            // 
-            this.xComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xComentario.DataPropertyName = "comentario";
-            this.xComentario.HeaderText = "Comentario";
-            this.xComentario.Name = "xComentario";
-            this.xComentario.ReadOnly = true;
-            this.xComentario.Width = 81;
             // 
             // FrmConciliarBanco
             // 

@@ -78,13 +78,15 @@ namespace HPReserger.ModuloFinanzas
             {
                 Continuar = true;
                 PkId = (int)TDatosAux.Rows[0]["pkid"];
-                EstadoCuenta = (decimal)TDatosAux.Rows[0]["estadocuenta"];
-                EstadoCuentaInicial = (decimal)TDatosAux.Rows[0]["estadocuentaInicial"];
                 btnReversar.Visible = true;
                 CargamosDatosParaContinuar();
                 PasarAPaso1(true);
                 PasarAPaso2(true);
                 Estado = 2;
+                EstadoCuenta = (decimal)TDatosAux.Rows[0]["estadocuenta"];
+                EstadoCuentaInicial = (decimal)TDatosAux.Rows[0]["estadocuentaInicial"];
+                SaldoContable = (decimal)TDatosAux.Rows[0]["saldocontable"];
+                SaldoContableInicial = (decimal)TDatosAux.Rows[0]["saldocontableinicial"];
                 MostrarDatosdeEtiquetasGrillas(true);
                 ActivarFunciones(true);
                 MostrarTotales();
@@ -450,7 +452,7 @@ namespace HPReserger.ModuloFinanzas
                     return false;
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[5][4].ToString());
-                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString()); ///////////////////////////////////////
+                EstadoCuentaInicial = (-1 * decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][3].ToString())) + decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString()); ///////////////////////////////////////
                 string ValCuenta = TdatosExcel.Rows[0][1].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
                 {
@@ -527,7 +529,11 @@ namespace HPReserger.ModuloFinanzas
                 string ValCuenta = TdatosExcel.Rows[6][0].ToString();
                 ValCuenta = HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros(ValCuenta);
                 ValCuenta = ValCuenta.Substring(0, 8) + ValCuenta.Substring(10);
-                if (!ValCuenta.Contains(HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros(nroCuenta)))
+                string Cuentax = HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros(nroCuenta);
+                if (Cuentax.Length == 20)
+                    Cuentax = Cuentax.Substring(0, 8) + Cuentax.Substring(10);
+
+                if (!ValCuenta.Contains(Cuentax))
                 {
                     msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
                     return false;
