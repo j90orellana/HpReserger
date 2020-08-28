@@ -595,6 +595,14 @@ namespace HPResergerFunciones
                 aplicacion.Quit();
             }
         }
+
+        public static string QuitarEspacios(string v)
+        {
+            string valor = "";
+            foreach (char item in v) if (item != ' ') valor += item;
+            return valor;
+        }
+
         public static void ExportarAExcel(DataGridView grd, string ruta, string nombrehoja, List<NombreCelda> NombresCeldas, int PosInicialGrilla, int[] FilasNoMostrar, int[] FilasNegritas, int[] ColumnaNegritas, int NumFilas)
         {
             int nume, numer;
@@ -1178,7 +1186,7 @@ namespace HPResergerFunciones
             {
                 int Conta = grd.Rows.Count;
                 //int i = 0;
-                Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);               
+                Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);
                 //Hoja_Trabajo
                 FileInfo file = new FileInfo(NameFile);//Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{""}" + $".xls{Extesion}");
                 int ConCol = grd.Columns.Count;
