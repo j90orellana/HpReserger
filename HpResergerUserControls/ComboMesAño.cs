@@ -189,7 +189,7 @@ namespace HpResergerUserControls
                 timexx = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
                 timexx = (timexx.AddMonths(1)).AddDays(-1);
                 FechaFinMes = timexx;
-                timexx = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, DateTime.Now.Day);
+                timexx =( new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1)).AddMonths(1).AddDays(-1);
                 FechaConDiaActual = timexx;
                 timexx = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
                 FechaInicioMes = timexx;

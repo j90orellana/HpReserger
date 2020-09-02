@@ -354,12 +354,12 @@ namespace HPReserger
         private void frmGenerarCTS_Load(object sender, EventArgs e)
         {
             txtGlosa1.CargarTextoporDefecto();// txtglosa2.CargarTextoporDefecto();
-            ValidarCheck();
             cboetapa.Enabled = cboproyecto.Enabled = true;
             cargarempresas();
             cargartipoid();
             empresa = 1;
             comboMesAño1.MostrarMeses(5, 11);
+            ValidarCheck();            
             //cargarempresas();
             //cargartipoid();
             //empresa = 1;

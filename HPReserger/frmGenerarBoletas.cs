@@ -296,7 +296,7 @@ namespace HPReserger
                 txtglosa2.CargarTextoporDefecto();
             }
         }
-        private void GenerarAsientoBoletas(DataTable confi, DataTable datos, int Tipo, DateTime FechaContable, int idDinamica, TextBox txt)
+        public void GenerarAsientoBoletas(DataTable confi, DataTable datos, int Tipo, DateTime FechaContable, int idDinamica, TextBox txt)
         {
             decimal TC = CapaLogica.TipoCambioDia("Venta", FechaContable);
             int NumAsiento = 0;

@@ -61,7 +61,9 @@ namespace HPReserger
         {
             try
             {
-                webBrowser1.Navigate("http://www.sunat.gob.pe/cl-at-ittipcam/tcS01Alias");
+                //webBrowser1.Navigate("http://www.sunat.gob.pe/cl-at-ittipcam/tcS01Alias");
+                webBrowser1.Navigate(Configuraciones.PaginaTCSunat);
+
             }
             catch { msg("No Se pudo Conectar con la Sunat"); }
         }
@@ -91,7 +93,7 @@ namespace HPReserger
                     return;
                 }
             }
-            catch (Exception) { msg("No hay Conexion a Sunat"); return; }
+            catch (Exception ex) { msg("No hay Conexion a Sunat"); return; }
             if (Carga == true)
             {
                 tablita.Clear();
@@ -330,7 +332,7 @@ namespace HPReserger
                 try
                 {
                     Carga = false;
-                    webBrowser1.Navigate("http://www.sunat.gob.pe/cl-at-ittipcam/tcS01Alias");
+                    webBrowser1.Navigate(Configuraciones.PaginaTCSunat);
                     //webBrowser1.Document.GetElementById("mes").SetAttribute("value", comboMesAño1.getMesNumero().ToString("00"));
                     //webBrowser1.Document.GetElementById("anho").SetAttribute("value", comboMesAño1.GetAño().ToString());
                     //webBrowser1.Document.GetElementById("B1").InvokeMember("click");
@@ -379,7 +381,7 @@ namespace HPReserger
                 }
                 i++;
             }
-        }       
+        }
         frmProcesando frmpro;
         DateTime Fechas;
         //TimeSpan Stop;

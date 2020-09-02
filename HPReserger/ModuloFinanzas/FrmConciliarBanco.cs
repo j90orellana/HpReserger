@@ -293,7 +293,7 @@ namespace HPReserger.ModuloFinanzas
                 DataColumn ColPkid = new DataColumn("pkid", typeof(int));
                 ColPkid.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColPkid);
-                TdatosExcel.Columns.Add("Comentario");
+                TdatosExcel.Columns.Add("Comentario"); 
 
                 TdatosExcel.AcceptChanges();
                 return true;

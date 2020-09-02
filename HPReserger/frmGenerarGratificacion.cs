@@ -102,7 +102,7 @@ namespace HPReserger
                 if (cboproyecto.SelectedValue == null) { msgError("Seleccione una Proyecto"); cboproyecto.Focus(); return; }
                 if (cboetapa.Items.Count == 0) { msgError("No hay Etapas"); cboetapa.Focus(); return; }
                 if (cboetapa.SelectedValue == null) { msgError("Seleccione una Etapa"); cboetapa.Focus(); return; }
-                if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
+                //if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
                 //
                 int IdEmpresa = (int)cboempresa.SelectedValue;
                 FechaContable = comboMesAño1.GetFecha();
@@ -162,18 +162,17 @@ namespace HPReserger
             msgOK("Gratificaciones Generadas con Éxito");
             frmgratis.Fechafin = inicial;
             frmgratis.Show();
-            //Proceso de los Asientos
-            return;
+            //Proceso de los Asientos            
             if (chkGAsientos.Checked)
             {
                 DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas();//PARTE PARA SELECCIONAR LOS TIPOS
-                if (TConfi.Rows.Count == 0) { msgError("No se Encontró la Configuracion para los asientos de las boletas"); return; }
+                if (TConfi.Rows.Count == 0) { msgError("No se Encontró la Configuracion para el Asiento de la Gratificación"); return; }
                 DataTable TDatos = CapaLogica.ReporteBoletasAsiento(cboempresa.Text, txtnumero.Text, comboMesAño1.GetFechaPRimerDia(), comboMesAño1.GetFechaPRimerDia());
-                if (TDatos.Rows.Count == 0) { msgError("No hay Boletas Encontradas"); return; }
+                if (TDatos.Rows.Count == 0) { msgError("No hay Gratificacion Generadas"); return; }
                 //Proceso para el Insert de los Registros
-                //Asientos de las Boletas 1=Asiento 2= provision
+                //Asientos de las Boletas 1=Asiento 2= provision 3 = gratificacion
                 //DateTime FechaContable = comboMesAño1.GetFecha();
-                GenerarAsientoBoletas(TConfi, TDatos, 1, FechaContable, DinamicaAsiento, txtGlosa1);
+                GenerarAsientoBoletas(TConfi, TDatos, 3, FechaContable, DinamicaAsiento, txtGlosa1);
                 msgOK("Asiento Generado");
                 txtGlosa1.CargarTextoporDefecto();
             }
@@ -235,7 +234,7 @@ namespace HPReserger
                                 string RucProveedor = filas["nrodoc"].ToString();
                                 string NameProveedor = filas["nombreempleado"].ToString();
                                 int idcomprobante = 0;
-                                string SerieDocumento = Tipo == 1 ? "BOL" : "PROV";
+                                string SerieDocumento = Tipo == 1 ? "BOL" : tipo == 2 ? "PROV" : tipo == 3 ? "GRA" : "CTS";
                                 string NumDocumento = FechaContable.ToString("MMyyyy");
                                 decimal ValorSoles = (decimal)filas[item["ColumnaTabla"].ToString()];
                                 decimal ValorDolares = ValorSoles / TC;
@@ -243,7 +242,7 @@ namespace HPReserger
                                 ///
                                 CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila, NumAsiento, FechaContable, CuentaContable, IdProyecto, TipoIdProveedor, RucProveedor, NameProveedor,
                                     idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "",
-                                    GlosaDetalle, FechaContable, IdUsuario, "");
+                                    GlosaDetalle, FechaContable, IdUsuario, "", 3);
                             }
                         }
                     }
@@ -317,9 +316,20 @@ namespace HPReserger
             cboetapa.ValueMember = "id_etapa";
             cboetapa.DisplayMember = "descripcion";
         }
-
+        public void CambiarTextoxDefectoGlosas()
+        {
+            bool prueba = false;
+            if (!txtGlosa1.EstaLLeno()) prueba = true;
+            txtGlosa1.TextoDefecto = $"PAGO GRATIFICACIONES {comboMesAño1.FechaInicioMes.ToString("MMMM yyyy").ToUpper() }";
+            if (prueba) txtGlosa1.CargarTextoporDefecto();
+        }
+        private void comboMesAño1_CambioFechas(object sender, EventArgs e)
+        {
+            CambiarTextoxDefectoGlosas();
+        }
         private void frmGenerarGratificacion_Load(object sender, EventArgs e)
         {
+            CambiarTextoxDefectoGlosas();
             // Gratificaciones 7=julio 12=diciembre
             //if (DateTime.Now.Month == 7 || DateTime.Now.Month == 11 || DateTime.Now.Month == 12)
             //{
@@ -336,11 +346,12 @@ namespace HPReserger
             //    msg($"Las Gratificaciones se Pagan solo en Julio y Diciembre ");
             //    this.Close();
             //}
+            txtGlosa1.CargarTextoporDefecto();
             comboMesAño1.MostrarMeses(7, 12);
             cargarempresas();
             cargartipoid();
             empresa = 1;
-
+            ValidarCheck();
         }
     }
 }

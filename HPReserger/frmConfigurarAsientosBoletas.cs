@@ -33,7 +33,7 @@ namespace HPReserger
         {
             txtnamecolumna.ReadOnly = txtcuenta.ReadOnly = txtglosa.ReadOnly = !v;
             dtgconten.Enabled = !v;
-            rbasiento.Enabled = rbprovision.Enabled = btnbuscar.Enabled = chkFecha.Enabled = v;
+            chktipo.Enabled = btnbuscar.Enabled = chkFecha.Enabled = v;
             cbodebe.ReadOnly = !v;
             btnactualizar.Enabled = btnmodificar.Enabled = !v;
             btnAceptar.Enabled = v;
@@ -77,7 +77,7 @@ namespace HPReserger
                     txtdescripcion.Text = Fila.Cells[xDescripcion.Name].Value.ToString();
                     chkFecha.Checked = (Boolean)Fila.Cells[xIncluirFechas.Name].Value;
                     txtnamecolumna.Text = Fila.Cells[xcolumnatabla.Name].Value.ToString();
-                    if ((int)Fila.Cells[xtipo.Name].Value == 1) rbasiento.Checked = true; else rbprovision.Checked = true;
+                    chktipo.SelectedIndex = (int)Fila.Cells[xtipo.Name].Value - 1;
                 }
             }
         }
@@ -108,12 +108,12 @@ namespace HPReserger
             if (!(cbodebe.Text == "D" || cbodebe.Text == "H")) { msgError("Valor Admitido solo: D o H"); return; }
             if (!txtdescripcion.EstaLLeno()) { msgError("Debe Ingresar una Cuenta contable Valida"); return; }
             if (!txtcuenta.EstaLLeno()) { msgError("Ingrese una Cuenta Contable"); return; }
-            if (!rbasiento.Checked && !rbprovision.Checked) { msgError("Seleccione un Tipo de Asiento"); return; }
+            if (chktipo.SelectedIndex < 0) { msgError("Seleccione un Tipo de Asiento"); return; }
             if (txtnamecolumna.EstaLLeno()) { msgError("Ingrese el Nombre de la Columna del Procedimiento:[usp_ReporteBoletas_Asiento]"); return; }
             //Proceso de modificacion
             if (Estado == 2)
             {
-                CapaLogica.ConfigurarAsientoBoletas(2, pkid, txtcuenta.TextValido(), cbodebe.Text, chkFecha.Checked, txtglosa.TextValido(), rbasiento.Checked ? 1 : 0, txtnamecolumna.TextValido());
+                CapaLogica.ConfigurarAsientoBoletas(2, pkid, txtcuenta.TextValido(), cbodebe.Text, chkFecha.Checked, txtglosa.TextValido(), chktipo.SelectedIndex + 1, txtnamecolumna.TextValido());
                 msgOk("Modificado con Exito");
                 ModoEdicion(false);
                 Estado = 0;
