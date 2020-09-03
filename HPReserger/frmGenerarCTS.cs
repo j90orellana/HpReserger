@@ -99,7 +99,7 @@ namespace HPReserger
                 if (cboproyecto.SelectedValue == null) { msgError("Seleccione una Proyecto"); cboproyecto.Focus(); return; }
                 if (cboetapa.Items.Count == 0) { msgError("No hay Etapas"); cboetapa.Focus(); return; }
                 if (cboetapa.SelectedValue == null) { msgError("Seleccione una Etapa"); cboetapa.Focus(); return; }
-                if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
+                //if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
                 //
                 int IdEmpresa = (int)cboempresa.SelectedValue;
                 FechaContable = comboMesAño1.GetFecha();
@@ -194,21 +194,42 @@ namespace HPReserger
                 st.Write(cadenatxt);
                 st.Close();
             }
-            //Proceso de los Asientos
-            return;
+            //Proceso de los Asientos            
             if (chkGAsientos.Checked)
             {
-                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas();//PARTE PARA SELECCIONAR LOS TIPOS
-                if (TConfi.Rows.Count == 0) { msgError("No se Encontró la Configuracion para los asientos de las boletas"); return; }
-                DataTable TDatos = CapaLogica.ReporteBoletasAsiento(cboempresa.Text, txtnumero.Text, comboMesAño1.GetFechaPRimerDia(), comboMesAño1.GetFechaPRimerDia());
-                if (TDatos.Rows.Count == 0) { msgError("No hay Boletas Encontradas"); return; }
+                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas(4);//PARTE PARA SELECCIONAR LOS TIPOS
+                if (TConfi.Rows.Count == 0) { msgError("No se Encontró la Configuracion para el Asiento de la CTS"); return; }
+                DataTable TDatos = DBoleta;//= CapaLogica.ReporteBoletasAsiento(cboempresa.Text, txtnumero.Text, comboMesAño1.GetFechaPRimerDia(), comboMesAño1.GetFechaPRimerDia());
+                if (TDatos.Rows.Count == 0) { msgError("No hay CTS Encontradas"); return; }
+                //Validamos que todos los empleados tengan cuenta en banco
+                if (ValidarCuentasBancariasCTSEmpleados(TDatos)) { msgError("Hay Empleados que no tienen Cuenta para deposito CTS"); return; }
                 //Proceso para el Insert de los Registros
-                //Asientos de las Boletas 1=Asiento 2= provision
+                //Asientos de las Boletas 1=Asiento 2= provision 3 = gratificacion 4 ==cts
                 //DateTime FechaContable = comboMesAño1.GetFecha();
-                GenerarAsientoBoletas(TConfi, TDatos, 1, FechaContable, DinamicaAsiento, txtGlosa1);
+                //Hacemos un Asiento por cada banco
+                foreach (string item in ListadoBancos)
+                {
+                    DataView dv = new DataView(TDatos);
+                    dv.RowFilter = $"sufijobanco = '{item}'";
+                    if (dv.Count > 0)
+                        GenerarAsientoBoletas(TConfi, dv.ToTable(), 4, FechaContable, DinamicaAsiento, $"{txtGlosa1.Text}-{item}");
+                }
                 msgOK("Asiento Generado");
                 txtGlosa1.CargarTextoporDefecto();
             }
+        }
+        List<string> ListadoBancos;
+        private Boolean ValidarCuentasBancariasCTSEmpleados(DataTable datos)
+        {
+            Boolean val = false;
+            ListadoBancos = new List<string>();
+            foreach (DataRow item in datos.Rows)
+            {
+                string cadena = item["sufijoBANCO"].ToString();
+                if (cadena == "") val = true;
+                if (!ListadoBancos.Contains(cadena)) ListadoBancos.Add(cadena);
+            }
+            return val;
         }
         decimal Sumatoria = 0;
         private decimal BuscarSihayValores(DataTable datos, string v)
@@ -218,7 +239,7 @@ namespace HPReserger
             //if (Sumatoria > 0) return Sumatoria; else
             return Sumatoria;
         }
-        private void GenerarAsientoBoletas(DataTable confi, DataTable datos, int Tipo, DateTime FechaContable, int idDinamica, TextBox txt)
+        private void GenerarAsientoBoletas(DataTable confi, DataTable datos, int Tipo, DateTime FechaContable, int idDinamica, string txt)
         {
             decimal TC = CapaLogica.TipoCambioDia("Venta", FechaContable);
             int NumAsiento = 0;
@@ -226,7 +247,7 @@ namespace HPReserger
             int IdProyecto = (int)cboproyecto.SelectedValue;
             int IdEtapa = (int)cboetapa.SelectedValue;
             int IdSoles = 1;
-            string glosa = txt.Text;
+            string glosa = txt;
             int IdUsuario = frmLogin.CodigoUsuario;
             if (NumAsiento == 0)
             {
@@ -265,8 +286,8 @@ namespace HPReserger
                             if ((decimal)filas[item["columnatabla"].ToString()] > 0)
                             {
                                 int TipoIdProveedor = (int)filas["tipoid"];
-                                string RucProveedor = filas["nrodoc"].ToString();
-                                string NameProveedor = filas["nombreempleado"].ToString();
+                                string RucProveedor = filas["doc"].ToString();
+                                string NameProveedor = filas["nombres_emp"].ToString();
                                 int idcomprobante = 0;
                                 string SerieDocumento = Tipo == 1 ? "BOL" : "PROV";
                                 string NumDocumento = FechaContable.ToString("MMyyyy");
@@ -351,15 +372,27 @@ namespace HPReserger
             cboetapa.DisplayMember = "descripcion";
         }
 
+        private void comboMesAño1_CambioFechas(object sender, EventArgs e)
+        {
+            CambiarTextoxDefectoGlosas();
+        }
+        public void CambiarTextoxDefectoGlosas()
+        {
+            bool prueba = false;
+            if (!txtGlosa1.EstaLLeno()) prueba = true;
+            txtGlosa1.TextoDefecto = $"DEPOSITO CTS SEM-{comboMesAño1.FechaInicioMes.ToString("MMMM yyyy").ToUpper() }";
+            if (prueba) txtGlosa1.CargarTextoporDefecto();
+        }
         private void frmGenerarCTS_Load(object sender, EventArgs e)
         {
+            CambiarTextoxDefectoGlosas();
             txtGlosa1.CargarTextoporDefecto();// txtglosa2.CargarTextoporDefecto();
             cboetapa.Enabled = cboproyecto.Enabled = true;
             cargarempresas();
             cargartipoid();
             empresa = 1;
             comboMesAño1.MostrarMeses(5, 11);
-            ValidarCheck();            
+            ValidarCheck();
             //cargarempresas();
             //cargartipoid();
             //empresa = 1;

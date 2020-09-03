@@ -165,7 +165,7 @@ namespace HPReserger
             //Proceso de los Asientos            
             if (chkGAsientos.Checked)
             {
-                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas();//PARTE PARA SELECCIONAR LOS TIPOS
+                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas(3);//PARTE PARA SELECCIONAR LOS TIPOS
                 if (TConfi.Rows.Count == 0) { msgError("No se Encontró la Configuracion para el Asiento de la Gratificación"); return; }
                 DataTable TDatos = CapaLogica.ReporteBoletasAsiento(cboempresa.Text, txtnumero.Text, comboMesAño1.GetFechaPRimerDia(), comboMesAño1.GetFechaPRimerDia());
                 if (TDatos.Rows.Count == 0) { msgError("No hay Gratificacion Generadas"); return; }

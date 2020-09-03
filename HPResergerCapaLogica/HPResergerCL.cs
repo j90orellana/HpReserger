@@ -1241,6 +1241,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ConfigurarAsientoBoletas(0, 0, "", "", true, "", 0, "");
         }
+        public DataTable ConfigurarAsientoBoletas(int tipo)
+        {
+            return cdOrdenPedido.ConfigurarAsientoBoletas(10, 0, "", "", true, "", tipo, "");
+        }
         public DataTable ConfigurarAsientoBoletas(int opcion, int pkid, string cuenta, string debe, Boolean incluir, string glosa, int tipo, string columna)
         {
             return cdOrdenPedido.ConfigurarAsientoBoletas(opcion, pkid, cuenta, debe, incluir, glosa, tipo, columna);

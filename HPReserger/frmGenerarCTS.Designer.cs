@@ -51,9 +51,9 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 8, 26, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 9, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboMesAño1.Location = new System.Drawing.Point(137, 136);
             this.comboMesAño1.Name = "comboMesAño1";
@@ -61,6 +61,7 @@
             this.comboMesAño1.TabIndex = 13;
             this.comboMesAño1.VerAño = true;
             this.comboMesAño1.VerMes = true;
+            this.comboMesAño1.CambioFechas += new System.EventHandler(this.comboMesAño1_CambioFechas);
             // 
             // rbPersona
             // 
