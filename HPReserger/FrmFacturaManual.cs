@@ -1048,6 +1048,7 @@ namespace HPReserger
             //_IndicadorColumna = dtgBusqueda.CurrentCell == null ? 6 : dtgBusqueda.CurrentCell.ColumnIndex;
             _IndicadorFila = dtgBusqueda.CurrentCell.RowIndex;
             _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
+            compensada = false;
             Estado = 1;
             ModoEdicion(true);
             Limpiar();
