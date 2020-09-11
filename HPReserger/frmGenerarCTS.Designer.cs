@@ -44,6 +44,8 @@
             this.txtGlosa1 = new HpResergerUserControls.TextBoxPer();
             this.cboetapa = new System.Windows.Forms.ComboBox();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboCuentaBancaria = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboMesAño1
@@ -171,7 +173,7 @@
             this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(252, 215);
+            this.BtnCerrar.Location = new System.Drawing.Point(252, 241);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
             this.BtnCerrar.TabIndex = 39;
@@ -188,7 +190,7 @@
             this.buttonPer1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPer1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPer1.ForeColor = System.Drawing.Color.White;
-            this.buttonPer1.Location = new System.Drawing.Point(164, 215);
+            this.buttonPer1.Location = new System.Drawing.Point(164, 241);
             this.buttonPer1.Name = "buttonPer1";
             this.buttonPer1.Size = new System.Drawing.Size(83, 24);
             this.buttonPer1.TabIndex = 38;
@@ -257,11 +259,34 @@
             this.cboproyecto.Visible = false;
             this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 219);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Cuenta Bancaria:";
+            // 
+            // cboCuentaBancaria
+            // 
+            this.cboCuentaBancaria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCuentaBancaria.FormattingEnabled = true;
+            this.cboCuentaBancaria.Location = new System.Drawing.Point(110, 215);
+            this.cboCuentaBancaria.Name = "cboCuentaBancaria";
+            this.cboCuentaBancaria.Size = new System.Drawing.Size(377, 21);
+            this.cboCuentaBancaria.TabIndex = 55;
+            this.cboCuentaBancaria.Click += new System.EventHandler(this.cboCuentaBancaria_Click);
+            // 
             // frmGenerarCTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 245);
+            this.ClientSize = new System.Drawing.Size(499, 271);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cboCuentaBancaria);
             this.Controls.Add(this.txtGlosa1);
             this.Controls.Add(this.cboetapa);
             this.Controls.Add(this.cboproyecto);
@@ -302,5 +327,7 @@
         private HpResergerUserControls.TextBoxPer txtGlosa1;
         private System.Windows.Forms.ComboBox cboetapa;
         private System.Windows.Forms.ComboBox cboproyecto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboCuentaBancaria;
     }
 }

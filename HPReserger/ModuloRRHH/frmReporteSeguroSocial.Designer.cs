@@ -1,6 +1,6 @@
 ﻿namespace HPReserger.ModuloRRHH
 {
-    partial class frmReporteAFP
+    partial class frmReporteSeguroSocial
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteAFP));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteSeguroSocial));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -54,7 +54,6 @@
             this.buttonPer1 = new HpResergerUserControls.ButtonPer();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.btnExcel = new System.Windows.Forms.Button();
-            this.txtEntidad = new HpResergerUserControls.TextBoxPer();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,7 +98,7 @@
             this.cbofechahasta.Location = new System.Drawing.Point(303, 48);
             this.cbofechahasta.Name = "cbofechahasta";
             this.cbofechahasta.Size = new System.Drawing.Size(230, 26);
-            this.cbofechahasta.TabIndex = 4;
+            this.cbofechahasta.TabIndex = 233;
             this.cbofechahasta.VerAño = true;
             this.cbofechahasta.VerMes = true;
             this.cbofechahasta.CambioFechas += new System.EventHandler(this.cbofechade_CambioFechas);
@@ -113,7 +112,7 @@
             this.cbofechade.Location = new System.Drawing.Point(34, 48);
             this.cbofechade.Name = "cbofechade";
             this.cbofechade.Size = new System.Drawing.Size(230, 26);
-            this.cbofechade.TabIndex = 3;
+            this.cbofechade.TabIndex = 232;
             this.cbofechade.VerAño = true;
             this.cbofechade.VerMes = true;
             this.cbofechade.CambioFechas += new System.EventHandler(this.cbofechade_CambioFechas);
@@ -138,7 +137,7 @@
             this.btnlimpiar.Location = new System.Drawing.Point(891, 24);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(82, 24);
-            this.btnlimpiar.TabIndex = 5;
+            this.btnlimpiar.TabIndex = 236;
             this.btnlimpiar.Text = "Limpiar";
             this.btnlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnlimpiar.UseVisualStyleBackColor = true;
@@ -153,7 +152,7 @@
             this.btnActualizar.Location = new System.Drawing.Point(891, 49);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(82, 24);
-            this.btnActualizar.TabIndex = 6;
+            this.btnActualizar.TabIndex = 237;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -190,12 +189,12 @@
             this.txtbusEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusEmpresa.ForeColor = System.Drawing.Color.Black;
             this.txtbusEmpresa.Format = null;
-            this.txtbusEmpresa.Location = new System.Drawing.Point(268, 26);
+            this.txtbusEmpresa.Location = new System.Drawing.Point(378, 26);
             this.txtbusEmpresa.MaxLength = 600;
             this.txtbusEmpresa.Name = "txtbusEmpresa";
             this.txtbusEmpresa.NextControlOnEnter = null;
-            this.txtbusEmpresa.Size = new System.Drawing.Size(269, 21);
-            this.txtbusEmpresa.TabIndex = 1;
+            this.txtbusEmpresa.Size = new System.Drawing.Size(376, 21);
+            this.txtbusEmpresa.TabIndex = 231;
             this.txtbusEmpresa.Text = "Buscar Por Empresa O RUC";
             this.txtbusEmpresa.TextoDefecto = "Buscar Por Empresa O RUC";
             this.txtbusEmpresa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -215,8 +214,8 @@
             this.txtbusEmpleado.MaxLength = 600;
             this.txtbusEmpleado.Name = "txtbusEmpleado";
             this.txtbusEmpleado.NextControlOnEnter = null;
-            this.txtbusEmpleado.Size = new System.Drawing.Size(254, 21);
-            this.txtbusEmpleado.TabIndex = 0;
+            this.txtbusEmpleado.Size = new System.Drawing.Size(361, 21);
+            this.txtbusEmpleado.TabIndex = 230;
             this.txtbusEmpleado.Text = "Documento O Nombre Empleado";
             this.txtbusEmpleado.TextoDefecto = "Documento O Nombre Empleado";
             this.txtbusEmpleado.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -247,7 +246,7 @@
             this.buttonPer1.Location = new System.Drawing.Point(887, 492);
             this.buttonPer1.Name = "buttonPer1";
             this.buttonPer1.Size = new System.Drawing.Size(83, 24);
-            this.buttonPer1.TabIndex = 9;
+            this.buttonPer1.TabIndex = 238;
             this.buttonPer1.Text = "Cancelar";
             this.buttonPer1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonPer1.UseVisualStyleBackColor = false;
@@ -317,42 +316,21 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(960, 395);
-            this.dtgconten.TabIndex = 7;
+            this.dtgconten.TabIndex = 234;
             // 
             // btnExcel
             // 
             this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(405, 492);
+            this.btnExcel.Location = new System.Drawing.Point(406, 492);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(83, 24);
-            this.btnExcel.TabIndex = 8;
+            this.btnExcel.TabIndex = 235;
             this.btnExcel.Text = "EXCEL";
             this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // txtEntidad
-            // 
-            this.txtEntidad.BackColor = System.Drawing.Color.White;
-            this.txtEntidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEntidad.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtEntidad.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtEntidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEntidad.ForeColor = System.Drawing.Color.Black;
-            this.txtEntidad.Format = null;
-            this.txtEntidad.Location = new System.Drawing.Point(542, 26);
-            this.txtEntidad.MaxLength = 600;
-            this.txtEntidad.Name = "txtEntidad";
-            this.txtEntidad.NextControlOnEnter = null;
-            this.txtEntidad.Size = new System.Drawing.Size(269, 21);
-            this.txtEntidad.TabIndex = 2;
-            this.txtEntidad.Text = "Buscar Por Empresa AFP";
-            this.txtEntidad.TextoDefecto = "Buscar Por Empresa AFP";
-            this.txtEntidad.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtEntidad.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            this.txtEntidad.TextChanged += new System.EventHandler(this.txtbusEmpleado_TextChanged);
             // 
             // xEmpresa
             // 
@@ -512,20 +490,20 @@
             this.btnTXT.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnTXT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTXT.Image = ((System.Drawing.Image)(resources.GetObject("btnTXT.Image")));
-            this.btnTXT.Location = new System.Drawing.Point(496, 492);
+            this.btnTXT.Location = new System.Drawing.Point(495, 492);
             this.btnTXT.Name = "btnTXT";
             this.btnTXT.Size = new System.Drawing.Size(83, 24);
-            this.btnTXT.TabIndex = 245;
+            this.btnTXT.TabIndex = 235;
             this.btnTXT.Text = "TXT";
             this.btnTXT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTXT.UseVisualStyleBackColor = true;
+            this.btnTXT.Click += new System.EventHandler(this.btnExcel_Click);
             // 
-            // frmReporteAFP
+            // frmReporteSeguroSocial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 525);
-            this.Controls.Add(this.btnTXT);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbofechahasta);
             this.Controls.Add(this.cbofechade);
@@ -534,17 +512,17 @@
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtEntidad);
             this.Controls.Add(this.txtbusEmpresa);
             this.Controls.Add(this.txtbusEmpleado);
             this.Controls.Add(this.lblRegistros);
             this.Controls.Add(this.buttonPer1);
             this.Controls.Add(this.dtgconten);
+            this.Controls.Add(this.btnTXT);
             this.Controls.Add(this.btnExcel);
             this.MinimumSize = new System.Drawing.Size(1000, 564);
-            this.Name = "frmReporteAFP";
-            this.Nombre = "Reporte AFP";
-            this.Text = "Reporte AFP";
+            this.Name = "frmReporteSeguroSocial";
+            this.Nombre = "Reporte Seguro Social";
+            this.Text = "Reporte Seguro Social";
             this.Load += new System.EventHandler(this.frmReporteAFP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);
@@ -569,7 +547,6 @@
         private HpResergerUserControls.ButtonPer buttonPer1;
         private HpResergerUserControls.Dtgconten dtgconten;
         private System.Windows.Forms.Button btnExcel;
-        private HpResergerUserControls.TextBoxPer txtEntidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaIngreso;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtipoid;

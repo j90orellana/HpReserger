@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace HPReserger.ModuloRRHH
 {
-    public partial class frmReporteAFP : FormGradient
+    public partial class frmReporteRenta : FormGradient
     {
-        public frmReporteAFP()
+        public frmReporteRenta()
         {
             InitializeComponent();
         }
@@ -26,7 +26,6 @@ namespace HPReserger.ModuloRRHH
         private void CargarTextosPorDefecto()
         {
             txtbusEmpleado.CargarTextoporDefecto();
-            txtEntidad.CargarTextoporDefecto();
             txtbusEmpresa.CargarTextoporDefecto();
             cbofechade.Fecha(new DateTime(DateTime.Now.Year, 1, 1));
             cbofechahasta.Fecha(new DateTime(DateTime.Now.Year, 12, 31));
@@ -43,7 +42,7 @@ namespace HPReserger.ModuloRRHH
                     FechaInicial = cbofechahasta.FechaInicioMes;
                     FechaFinal = cbofechade.FechaFinMes;
                 }
-                TDatos = CapaLogica.AfpReporte(1, txtbusEmpresa.TextValido(), txtbusEmpleado.TextValido(), txtEntidad.TextValido(), FechaInicial, FechaFinal);
+                TDatos = CapaLogica.AfpReporte(2, txtbusEmpresa.TextValido(), txtbusEmpleado.TextValido(), "", FechaInicial, FechaFinal);
                 dtgconten.DataSource = TDatos;
                 lblRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
             }
@@ -92,8 +91,8 @@ namespace HPReserger.ModuloRRHH
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
                 int[] _ColumnasAutoajustar = new int[] { 2, 3, 4, 5 };
                 //
-                _NombreHoja = $"Resumen de AFP{FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
-                _Cabecera = "Resumen de las AFP";
+                _NombreHoja = $"Resumen de Renta {FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
+                _Cabecera = "Resumen de las Renta";
                 _NColumna = "N";
                 _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };

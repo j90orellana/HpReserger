@@ -35,6 +35,22 @@ namespace HPReserger
                 if (cboempresa.DataSource != null) cboempresa.Text = cadena;
             }
         }
+        public void CargarCuentaBancaria()
+        {
+            if (cboempresa.DataSource != null && cboempresa.SelectedValue != null)
+            {
+                string cadena = cboCuentaBancaria.Text;
+                DataTable TCuentas = CapaLogica.BuscarCuentasBancariasxEmpresas((int)cboempresa.SelectedValue);
+                //if (cboCuentaBancaria.Items.Count != TCuentas.Rows.Count)
+                //if (Cargar)
+                {
+                    cboCuentaBancaria.DisplayMember = "cuentabancaria";
+                    cboCuentaBancaria.ValueMember = "id_tipo_cta";
+                    cboCuentaBancaria.DataSource = TCuentas;
+                    if (cboCuentaBancaria.DataSource != null) cboCuentaBancaria.Text = cadena;
+                }
+            }
+        }
         public void cargartipoid()
         {
             cbotipoid.DataSource = CapaLogica.ListadodeTablaORdenadoxCodigo("Codigo_Tipo_ID", "desc_tipo_id", "tbl_tipo_id");
@@ -99,6 +115,14 @@ namespace HPReserger
                 if (cboproyecto.SelectedValue == null) { msgError("Seleccione una Proyecto"); cboproyecto.Focus(); return; }
                 if (cboetapa.Items.Count == 0) { msgError("No hay Etapas"); cboetapa.Focus(); return; }
                 if (cboetapa.SelectedValue == null) { msgError("Seleccione una Etapa"); cboetapa.Focus(); return; }
+                //Validacion de cuentas bancarias
+                if (cboCuentaBancaria.DataSource == null) { msgError("No hay Cuentas Bancarias para esta Empresas"); cboCuentaBancaria.Focus(); return; }
+                if (cboCuentaBancaria.SelectedValue == null) { msgError("Seleccione una Cuenta Bancaria"); cboCuentaBancaria.Focus(); return; }
+                DataTable TablaBan = (DataTable)cboCuentaBancaria.DataSource; int iBan = cboCuentaBancaria.SelectedIndex;
+                DataRow FilaBan = TablaBan.Rows[iBan];
+                idcuentaContable = FilaBan["idcuentacontable"].ToString();
+                NroCta = FilaBan["nro_Cta"].ToString();
+                if (idcuentaContable == "") { msgError("No se Encontro una CuentaContable para la Cuenta seleccionada"); cboCuentaBancaria.Focus(); return; }
                 //if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
                 //
                 int IdEmpresa = (int)cboempresa.SelectedValue;
@@ -270,6 +294,13 @@ namespace HPReserger
                         Boolean Debe = item["debehaber"].ToString() == "D" ? true : false;
                         Boolean IncluirFecha = (Boolean)item["incluirfechaglosa"];
                         string CuentaContable = item["cuenta"].ToString();
+                        string NroCuentaBancaria = "";
+                        //Cambiamos la Data si la cuenta es 10;
+                        if (CuentaContable.Substring(0, 2) == "10")
+                        {
+                            CuentaContable = idcuentaContable;
+                            NroCuentaBancaria = NroCta;
+                        }
                         string ColumnaTabla = item["columnatabla"].ToString();
                         decimal ValorDebeMN = Debe ? Suma : 0;
                         decimal ValorHaberMN = Debe ? 0 : Suma;
@@ -289,11 +320,10 @@ namespace HPReserger
                                 string RucProveedor = filas["doc"].ToString();
                                 string NameProveedor = filas["nombres_emp"].ToString();
                                 int idcomprobante = 0;
-                                string SerieDocumento = Tipo == 1 ? "BOL" : "PROV";
+                                string SerieDocumento = Tipo == 4 ? "CTS" : "PROV";
                                 string NumDocumento = FechaContable.ToString("MMyyyy");
                                 decimal ValorSoles = (decimal)filas[item["ColumnaTabla"].ToString()];
                                 decimal ValorDolares = ValorSoles / TC;
-                                string NroCuentaBancaria = "";
                                 ///
                                 CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila, NumAsiento, FechaContable, CuentaContable, IdProyecto, TipoIdProveedor, RucProveedor, NameProveedor,
                                     idcomprobante, SerieDocumento, NumDocumento, 0, FechaContable, FechaContable, FechaContable, ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "",
@@ -315,8 +345,8 @@ namespace HPReserger
                 //txtglosa2.Visible = 
                 txtGlosa1.Visible = cboproyecto.Visible = cboetapa.Visible = true;
                 //Cambiamos el size del formulario
-                this.MinimumSize = new Size(517, 284);
-                this.MaximumSize = new Size(517, 284);
+                this.MinimumSize = new Size(517, 310);
+                this.MaximumSize = new Size(517, 310);
                 //if (rbTodasEmpresa.Checked)
                 //{
                 //    rbTodasEmpresa.Checked = false;
@@ -338,6 +368,8 @@ namespace HPReserger
         private DateTime FechaContable;
         private int IdEmpresa;
 
+        public string idcuentaContable { get; private set; }
+        public string NroCta { get; private set; }
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -362,6 +394,7 @@ namespace HPReserger
             cboproyecto.DisplayMember = "proyecto";
             cboproyecto.ValueMember = "id_proyecto";
             cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cadena);
+            CargarCuentaBancaria();
         }
 
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
@@ -383,6 +416,12 @@ namespace HPReserger
             txtGlosa1.TextoDefecto = $"DEPOSITO CTS SEM-{comboMesAño1.FechaInicioMes.ToString("MMMM yyyy").ToUpper() }";
             if (prueba) txtGlosa1.CargarTextoporDefecto();
         }
+
+        private void cboCuentaBancaria_Click(object sender, EventArgs e)
+        {
+            CargarCuentaBancaria();
+        }
+
         private void frmGenerarCTS_Load(object sender, EventArgs e)
         {
             CambiarTextoxDefectoGlosas();

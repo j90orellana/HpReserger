@@ -31,9 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteCTS));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,10 +52,13 @@
             this.cbofechahasta = new HpResergerUserControls.ComboMesAño();
             this.cbofechade = new HpResergerUserControls.ComboMesAño();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NroDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ximporteBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xSextoGrati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMontoGrati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -253,20 +258,23 @@
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xEmpresa,
-            this.xFechaIngreso,
+            this.xFecha,
             this.xtipoid,
+            this.xtipodoc,
             this.NroDoc,
             this.xNombres,
+            this.ximporteBase,
+            this.xSextoGrati,
             this.xMontoGrati});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -282,13 +290,13 @@
             // 
             // cbofechahasta
             // 
-            this.cbofechahasta.FechaConDiaActual = new System.DateTime(2020, 8, 17, 0, 0, 0, 0);
-            this.cbofechahasta.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
-            this.cbofechahasta.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
+            this.cbofechahasta.FechaConDiaActual = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
+            this.cbofechahasta.FechaFinMes = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
+            this.cbofechahasta.FechaInicioMes = new System.DateTime(2020, 9, 1, 0, 0, 0, 0);
             this.cbofechahasta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbofechahasta.Location = new System.Drawing.Point(303, 48);
             this.cbofechahasta.Name = "cbofechahasta";
-            this.cbofechahasta.Size = new System.Drawing.Size(197, 26);
+            this.cbofechahasta.Size = new System.Drawing.Size(230, 26);
             this.cbofechahasta.TabIndex = 233;
             this.cbofechahasta.VerAño = true;
             this.cbofechahasta.VerMes = true;
@@ -296,9 +304,9 @@
             // 
             // cbofechade
             // 
-            this.cbofechade.FechaConDiaActual = new System.DateTime(2020, 8, 17, 0, 0, 0, 0);
-            this.cbofechade.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
-            this.cbofechade.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
+            this.cbofechade.FechaConDiaActual = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
+            this.cbofechade.FechaFinMes = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
+            this.cbofechade.FechaInicioMes = new System.DateTime(2020, 9, 1, 0, 0, 0, 0);
             this.cbofechade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbofechade.Location = new System.Drawing.Point(34, 48);
             this.cbofechade.Name = "cbofechade";
@@ -317,18 +325,17 @@
             this.xEmpresa.Name = "xEmpresa";
             this.xEmpresa.Width = 200;
             // 
-            // xFechaIngreso
+            // xFecha
             // 
-            this.xFechaIngreso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xFechaIngreso.DataPropertyName = "Fecha";
+            this.xFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xFecha.DataPropertyName = "Fecha";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "d";
-            this.xFechaIngreso.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xFechaIngreso.FillWeight = 19.68504F;
-            this.xFechaIngreso.HeaderText = "Fecha";
-            this.xFechaIngreso.MinimumWidth = 65;
-            this.xFechaIngreso.Name = "xFechaIngreso";
-            this.xFechaIngreso.Width = 65;
+            this.xFecha.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xFecha.FillWeight = 19.68504F;
+            this.xFecha.HeaderText = "Periodo";
+            this.xFecha.MinimumWidth = 60;
+            this.xFecha.Name = "xFecha";
+            this.xFecha.Width = 60;
             // 
             // xtipoid
             // 
@@ -336,6 +343,15 @@
             this.xtipoid.HeaderText = "TipoId";
             this.xtipoid.Name = "xtipoid";
             this.xtipoid.Visible = false;
+            // 
+            // xtipodoc
+            // 
+            this.xtipodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xtipodoc.DataPropertyName = "tipodoc";
+            this.xtipodoc.HeaderText = "TipoDoc";
+            this.xtipodoc.MinimumWidth = 60;
+            this.xtipodoc.Name = "xtipodoc";
+            this.xtipodoc.Width = 60;
             // 
             // NroDoc
             // 
@@ -355,17 +371,41 @@
             this.xNombres.MinimumWidth = 150;
             this.xNombres.Name = "xNombres";
             // 
+            // ximporteBase
+            // 
+            this.ximporteBase.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.ximporteBase.DataPropertyName = "importebase";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.ximporteBase.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ximporteBase.HeaderText = "MontoBase";
+            this.ximporteBase.MinimumWidth = 70;
+            this.ximporteBase.Name = "ximporteBase";
+            this.ximporteBase.Width = 70;
+            // 
+            // xSextoGrati
+            // 
+            this.xSextoGrati.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xSextoGrati.DataPropertyName = "sextograti";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.xSextoGrati.DefaultCellStyle = dataGridViewCellStyle5;
+            this.xSextoGrati.HeaderText = "SextoGrati";
+            this.xSextoGrati.MinimumWidth = 70;
+            this.xSextoGrati.Name = "xSextoGrati";
+            this.xSextoGrati.Width = 70;
+            // 
             // xMontoGrati
             // 
             this.xMontoGrati.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xMontoGrati.DataPropertyName = "montocts";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.xMontoGrati.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.xMontoGrati.DefaultCellStyle = dataGridViewCellStyle6;
             this.xMontoGrati.HeaderText = "CTS";
-            this.xMontoGrati.MinimumWidth = 80;
+            this.xMontoGrati.MinimumWidth = 70;
             this.xMontoGrati.Name = "xMontoGrati";
-            this.xMontoGrati.Width = 80;
+            this.xMontoGrati.Width = 70;
             // 
             // frmReporteCTS
             // 
@@ -415,10 +455,13 @@
         private HpResergerUserControls.ComboMesAño cbofechahasta;
         private HpResergerUserControls.ComboMesAño cbofechade;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaIngreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtipoid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xtipodoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNombres;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ximporteBase;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xSextoGrati;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMontoGrati;
     }
 }

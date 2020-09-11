@@ -1209,9 +1209,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.CTSReporte(empresa, empleado, FechaIni, FechaFin);
         }
-        public DataTable AfpReporte(string empresa, string empleado, DateTime FechaIni, DateTime FechaFin)
+        public DataTable AfpReporte(int opcion, string empresa, string empleado, string entidad, DateTime FechaIni, DateTime FechaFin)
         {
-            return cdOrdenPedido.AfpReporte(empresa, empleado, FechaIni, FechaFin);
+            return cdOrdenPedido.AfpReporte(opcion, empresa, empleado, entidad, FechaIni, FechaFin);
         }
         public DataRow Sueldo(int Tipo_ID_Emp, string Nro_ID_Emp)
         {
@@ -1336,10 +1336,14 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ReportedeOC(opcion, articulo, servicio, fecha, fechaini, fechafin, anulado, registrado, entregadoincompleto, cotizado, cotizadocompleto, cotizacooc, busca, importe, minimo, maximo);
 
         }
-        public DataTable Reporteempleados(int opcion, int opciones, string buscar, int dni, int carnet, int pasa, int cedula, int ruc, int practicas, int planillaempleado,
+        public DataTable ReporteempleadosReporteempleados(int opcion, int opciones, string buscar, int dni, int carnet, int pasa, int cedula, int ruc, int practicas, int planillaempleado,
            int planillaobrero, int recibo, int sueldo, decimal minimo, decimal maximo, int fecha, DateTime fechaini, DateTime fechafinal, int banco, string codbanco)
         {
             return cdOrdenPedido.Reporteempleados(opcion, opciones, buscar, dni, carnet, pasa, cedula, ruc, practicas, planillaempleado, planillaobrero, recibo, sueldo, minimo, maximo, fecha, fechaini, fechafinal, banco, codbanco);
+        }
+        public DataTable ReporteempleadosFiltrados(int Opcion, string empleado, string empresa, string cargo, string areagerencia, int tipodoc, int tipocontrato)
+        {
+            return cdOrdenPedido.ReporteempleadosFiltrados(Opcion, empleado, empresa, cargo, areagerencia, tipodoc, tipocontrato);
         }
         public DataTable ListarBancosCts()
         {

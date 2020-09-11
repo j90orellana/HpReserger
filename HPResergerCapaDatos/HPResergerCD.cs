@@ -3224,10 +3224,10 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, empleado, FechaIni, FechaFin };
             return bd.DataTableFromProcedure("CalculoCTSReporte", parametros, valores, null);
         }
-        public DataTable AfpReporte(string empresa, string empleado, DateTime FechaIni, DateTime FechaFin)
+        public DataTable AfpReporte(int opcion, string empresa, string empleado, string entidad, DateTime FechaIni, DateTime FechaFin)
         {
-            string[] parametros = { "@empresa", "@empleado", "@FechaIni", "@FechaFin" };
-            object[] valores = { empresa, empleado, FechaIni, FechaFin };
+            string[] parametros = { "@opcion", "@empresa", "@empleado", "@entidad", "@FechaIni", "@FechaFin" };
+            object[] valores = { opcion, empresa, empleado, entidad, FechaIni, FechaFin };
             return bd.DataTableFromProcedure("usp_AfpReporte", parametros, valores, null);
         }
         public DataRow Sueldo(int Tipo_ID_Emp, string Nro_ID_Emp)
@@ -3502,6 +3502,12 @@ namespace HPResergerCapaDatos
                 "@recibo","@sueldo","@minimo","@maximo","@fecha","@fechaini","@fechafinal","@banco","@codbanco"};
             object[] valores = { opcion, opciones, buscar, dni, carnet, pasa, cedula, ruc, practicas, planillaempleado, planillaobrero, recibo, sueldo, minimo, maximo, fecha, fechaini, fechafinal, banco, codbanco };
             return bd.DataTableFromProcedure("usp_ListarReporteEmpleados", parametros, valores, null);
+        }
+        public DataTable ReporteempleadosFiltrados(int Opcion, string empleado, string empresa, string cargo, string areagerencia, int tipodoc, int tipocontrato)
+        {
+            string[] parametros = { "@opcion", "@empleado", "@empresa", "@cargo", "@areagerencia", "@tipoid", "@tipocontrato" };
+            object[] valores = { Opcion, empleado, empresa, cargo, areagerencia, tipodoc, tipocontrato };
+            return bd.DataTableFromProcedure("[usp_ListarReporteEmpleadosFiltrados]", parametros, valores, null);
         }
         public DataTable ListarBancosCts()
         {
