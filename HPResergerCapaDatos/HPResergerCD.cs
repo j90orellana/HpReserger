@@ -3797,6 +3797,12 @@ namespace HPResergerCapaDatos
             object[] valores = { proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1, estado, empresa };
             return bd.DataTableFromProcedure("usp_ListarFacturasPagadosxEmpresa", parametros, valores, null);
         }
+        public DataTable ActualizarReporteAfpRentaSeguros(int opcion, int tipoid, string doc, DateTime Fecha, int Empresa, int cta, decimal monto)
+        {
+            string[] parametros = { "@opcion", "@tipoid", "@doc", "@Fecha", "@empresa",  "@cta", "@monto" };
+            object[] valores = { opcion, tipoid, doc, Fecha, Empresa,  cta, monto };
+            return bd.DataTableFromProcedure("usp_ActualizarReporteAfpRentaSeguros", parametros, valores, null);
+        }
         public DataTable insertarPagarfactura(string nrofactura, string proveedor, int tipo, string nropago, decimal apagar, decimal subtotal, decimal igv, decimal total, int usuario, int opcion, int banco, string nrocuenta, DateTime fechapago, int @idcomprobante, int empresa, string cuo)
         {
             string[] parametros = { "@nrofactura", "@proveedor", "@tipo", "@nropago", "@apagar", "@subtotal", "@igv", "@total", "@usuario", "@opcion", "@Banco", "@Nrocuenta", "@Fechapago", "@idcomprobante", "@cuo", "@empresa" };

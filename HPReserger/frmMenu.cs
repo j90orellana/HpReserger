@@ -4724,6 +4724,39 @@ namespace HPReserger
         ModuloRRHH.frmReporteAFP frmreporteafps;
         private void toolStripMenuItem14_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void Cerrarfrmreporteafps(object sender, FormClosedEventArgs e)
+        {
+            frmreporteafps = null;
+        }
+        ModuloRRHH.frmReporteRenta frmreporteaRentas;
+        private void toolStripMenuItem15_Click(object sender, EventArgs e)
+        {
+            if (frmreporteaRentas == null)
+            {
+                frmreporteaRentas = new ModuloRRHH.frmReporteRenta();
+                frmreporteaRentas.MdiParent = this;
+                frmreporteaRentas.Icon = ICono;
+                frmreporteaRentas.FormClosed += new FormClosedEventHandler(CerrarfrmreporteaRentas);
+                frmreporteaRentas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreporteaRentas.Activate();
+                ValidarVentanas(frmreporteaRentas);
+            }
+        }
+
+        private void CerrarfrmreporteaRentas(object sender, FormClosedEventArgs e)
+        {
+            frmreporteaRentas = null;
+        }
+
+        private void toolStripMenuItem16_Click(object sender, EventArgs e)
+        {
             if (frmreporteafps == null)
             {
                 frmreporteafps = new ModuloRRHH.frmReporteAFP();
@@ -4738,11 +4771,31 @@ namespace HPReserger
                 frmreporteafps.Activate();
                 ValidarVentanas(frmreporteafps);
             }
+
+        }
+        ModuloRRHH.frmReporteSeguroSocial frmreporteaSeguros;
+
+        private void toolStripMenuItem14_Click_1(object sender, EventArgs e)
+        {
+            if (frmreporteaSeguros == null)
+            {
+                frmreporteaSeguros = new ModuloRRHH.frmReporteSeguroSocial();
+                frmreporteaSeguros.MdiParent = this;
+                frmreporteaSeguros.Icon = ICono;
+                frmreporteaSeguros.FormClosed += new FormClosedEventHandler(CerrarfrmreporteaSeguros);
+                frmreporteaSeguros.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreporteaSeguros.Activate();
+                ValidarVentanas(frmreporteaSeguros);
+            }
         }
 
-        private void Cerrarfrmreporteafps(object sender, FormClosedEventArgs e)
+        private void CerrarfrmreporteaSeguros(object sender, FormClosedEventArgs e)
         {
-            frmreporteafps = null;
+            frmreporteaSeguros = null;
         }
     }
 }

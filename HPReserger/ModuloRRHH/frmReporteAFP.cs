@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace HPReserger.ModuloRRHH
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgE(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+        public DialogResult msgYesCancel(string cadena, string detalle) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena, detalle); }
         private void CargarTextosPorDefecto()
         {
             txtbusEmpleado.CargarTextoporDefecto();
@@ -159,7 +161,111 @@ namespace HPReserger.ModuloRRHH
             else { msgE("No hay Datos que Mostrar"); }
         }
 
+        private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgconten.Rows.Count > 0)
+            {
+                pkempresa = (int)dtgconten[xpkempresa.Index, 0].Value;
+            }
+        }
         public string NombreEmpleado;
+        private int _pkEmpresa;
+        public int pkempresa
+        {
 
+            get { return _pkEmpresa; }
+            set
+            {
+                var Buscar = false;
+                if (value != _pkEmpresa)
+                {
+                    Buscar = true;
+                }
+                _pkEmpresa = value;
+                if (Buscar) ConsultarcuentaBancaria();
+            }
+        }
+
+        public int CtaBancaria { get; private set; }
+        private void btnTXT_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.Rows.Count == 0) { msgE("No hay Datos en la Grilla"); return; }
+            if (cboCuentaBancaria.SelectedValue == null) { msgE("Seleccione una Cuenta Bancaria"); return; }
+            if (cboCuentaBancaria.DataSource == null) { msgE("No hay cuentas Bancarias para seleccionar"); return; }
+            foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
+            {
+                if ((int)item[xpkempresa.DataPropertyName] != pkempresa)
+                {
+                    msgE("Hay mas de una empresa en la grilla"); return;
+                }
+            }
+
+            if (msgYesCancel("Seguro Desea Generar el TXT", "Generando el TXT y Pago") == DialogResult.Yes)
+            {
+                CtaBancaria = (int)cboCuentaBancaria.SelectedValue;
+                if (SaveFile.FileName == "") SaveFile.FileName = $"Pago AFP -{cboCuentaBancaria.Text}.txt";
+                DialogResult Dial = SaveFile.ShowDialog();
+                if (Dial != DialogResult.OK) { msgE("Cancelado por el Usuario"); return; }
+                ProcesodeGrabadoenBase();
+                ProcesodeGenerarTXT();
+                msgOK("Generado con Exito");
+                MostrarDatosFiltrados();
+            }
+        }
+        private StreamWriter st;
+
+        private void ProcesodeGenerarTXT()
+        {
+            //Avanza para Generar el TXT
+            string[] campo = new string[dtgconten.Columns.Count];
+            string cadenatxt = "";            //int ValorPrueba = 0;
+            DataTable TablaPrueba = ((DataTable)dtgconten.DataSource);
+            foreach (DataRow Filas in TablaPrueba.Rows)
+            {
+                int c = 0;
+                foreach (DataColumn Col in TablaPrueba.Columns)
+                {
+                    campo[c++] = Filas[Col.ColumnName].ToString();
+                }
+                //Uniendo por pipes
+                cadenatxt += string.Join("|", campo) + $"{Environment.NewLine }";
+                //Limpiamos el Campo
+                //campo = null;
+            }
+            //Formato 1.1
+            //SaveFile.FileName = $"PAgoAFP.txt";
+            string path = SaveFile.FileName;
+            st = File.CreateText(path);
+            st.Write(cadenatxt);
+            st.Close();
+        }
+
+        private void ProcesodeGrabadoenBase()
+        {
+            foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
+            {
+                int tipoid = (int)item[xtipoid.DataPropertyName];
+                string doc = item[NroDoc.DataPropertyName].ToString();
+                DateTime fecha = (DateTime)item[xFechaIngreso.DataPropertyName];
+                int Empresa = (int)item[xpkempresa.DataPropertyName];
+                decimal monto = (decimal)item[xaporte.DataPropertyName] + (decimal)item[xSeguroAFP.DataPropertyName] + (decimal)item[xcomisionafp.DataPropertyName];
+                CapaLogica.ActualizarReporteAfpRentaSeguros(1, tipoid, doc, fecha, Empresa, CtaBancaria, monto);
+            }
+        }
+
+        private void ConsultarcuentaBancaria()
+        {
+            string cadena = cboCuentaBancaria.Text;
+            DataTable TCuentas = CapaLogica.BuscarCuentasBancariasxEmpresas(pkempresa);
+            //if (cboCuentaBancaria.Items.Count != TCuentas.Rows.Count)
+            //if (Cargar)
+            {
+                cboCuentaBancaria.DisplayMember = "cuentabancaria";
+                cboCuentaBancaria.ValueMember = "id_tipo_cta";
+                cboCuentaBancaria.DataSource = TCuentas;
+                if (cboCuentaBancaria.DataSource != null) cboCuentaBancaria.Text = cadena;
+            }
+        }
     }
 }
+

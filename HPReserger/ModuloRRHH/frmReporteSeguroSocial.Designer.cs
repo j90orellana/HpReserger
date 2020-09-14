@@ -31,14 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteSeguroSocial));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label5 = new System.Windows.Forms.Label();
             this.cbofechahasta = new HpResergerUserControls.ComboMesAño();
@@ -53,23 +49,21 @@
             this.lblRegistros = new System.Windows.Forms.Label();
             this.buttonPer1 = new HpResergerUserControls.ButtonPer();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.btnExcel = new System.Windows.Forms.Button();
+            this.xpkempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NroDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xaporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xcomisionafp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xSeguroAFP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xImporteONP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xeps = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEmpresaAFP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xRenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAporteEssalud = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAporteEps = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.btnTXT = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboCuentaBancaria = new System.Windows.Forms.ComboBox();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +85,7 @@
             // 
             // cbofechahasta
             // 
+            this.cbofechahasta.BackColor = System.Drawing.Color.Transparent;
             this.cbofechahasta.FechaConDiaActual = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
             this.cbofechahasta.FechaFinMes = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
             this.cbofechahasta.FechaInicioMes = new System.DateTime(2020, 9, 1, 0, 0, 0, 0);
@@ -105,6 +100,7 @@
             // 
             // cbofechade
             // 
+            this.cbofechade.BackColor = System.Drawing.Color.Transparent;
             this.cbofechade.FechaConDiaActual = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
             this.cbofechade.FechaFinMes = new System.DateTime(2020, 9, 30, 0, 0, 0, 0);
             this.cbofechade.FechaInicioMes = new System.DateTime(2020, 9, 1, 0, 0, 0, 0);
@@ -174,7 +170,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 75);
+            this.label1.Location = new System.Drawing.Point(7, 97);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 13);
             this.label1.TabIndex = 240;
@@ -281,56 +277,45 @@
             this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.xpkempresa,
             this.xEmpresa,
             this.xFechaIngreso,
             this.xtipoid,
             this.xtipodoc,
             this.NroDoc,
             this.xNombres,
-            this.xaporte,
-            this.xcomisionafp,
-            this.xSeguroAFP,
-            this.xImporteONP,
             this.xeps,
-            this.xEmpresaAFP,
-            this.xRenta,
             this.xAporteEssalud,
             this.xAporteEps});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(13, 91);
+            this.dtgconten.Location = new System.Drawing.Point(10, 113);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(960, 395);
+            this.dtgconten.Size = new System.Drawing.Size(960, 373);
             this.dtgconten.TabIndex = 234;
+            this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
-            // btnExcel
+            // xpkempresa
             // 
-            this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(406, 492);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(83, 24);
-            this.btnExcel.TabIndex = 235;
-            this.btnExcel.Text = "EXCEL";
-            this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            this.xpkempresa.DataPropertyName = "pkempresa";
+            this.xpkempresa.HeaderText = "IdEmpresa";
+            this.xpkempresa.Name = "xpkempresa";
+            this.xpkempresa.Visible = false;
             // 
             // xEmpresa
             // 
@@ -388,52 +373,6 @@
             this.xNombres.MinimumWidth = 150;
             this.xNombres.Name = "xNombres";
             // 
-            // xaporte
-            // 
-            this.xaporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xaporte.DataPropertyName = "aporte";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.xaporte.DefaultCellStyle = dataGridViewCellStyle4;
-            this.xaporte.HeaderText = "Aporte AFP";
-            this.xaporte.MinimumWidth = 50;
-            this.xaporte.Name = "xaporte";
-            this.xaporte.Width = 50;
-            // 
-            // xcomisionafp
-            // 
-            this.xcomisionafp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xcomisionafp.DataPropertyName = "comisionafp";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.xcomisionafp.DefaultCellStyle = dataGridViewCellStyle5;
-            this.xcomisionafp.HeaderText = "Comisiòn AFP";
-            this.xcomisionafp.MinimumWidth = 50;
-            this.xcomisionafp.Name = "xcomisionafp";
-            this.xcomisionafp.Width = 50;
-            // 
-            // xSeguroAFP
-            // 
-            this.xSeguroAFP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xSeguroAFP.DataPropertyName = "seguro";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n2";
-            this.xSeguroAFP.DefaultCellStyle = dataGridViewCellStyle6;
-            this.xSeguroAFP.HeaderText = "Seguro AFP";
-            this.xSeguroAFP.MinimumWidth = 50;
-            this.xSeguroAFP.Name = "xSeguroAFP";
-            this.xSeguroAFP.Width = 50;
-            // 
-            // xImporteONP
-            // 
-            this.xImporteONP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xImporteONP.DataPropertyName = "importeonp";
-            this.xImporteONP.HeaderText = "Monto ONP";
-            this.xImporteONP.MinimumWidth = 50;
-            this.xImporteONP.Name = "xImporteONP";
-            this.xImporteONP.Width = 50;
-            // 
             // xeps
             // 
             this.xeps.DataPropertyName = "eps";
@@ -441,33 +380,13 @@
             this.xeps.Name = "xeps";
             this.xeps.Visible = false;
             // 
-            // xEmpresaAFP
-            // 
-            this.xEmpresaAFP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xEmpresaAFP.DataPropertyName = "empresaafp";
-            this.xEmpresaAFP.HeaderText = "Empresa AFP";
-            this.xEmpresaAFP.MinimumWidth = 100;
-            this.xEmpresaAFP.Name = "xEmpresaAFP";
-            // 
-            // xRenta
-            // 
-            this.xRenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xRenta.DataPropertyName = "renta";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "n2";
-            this.xRenta.DefaultCellStyle = dataGridViewCellStyle7;
-            this.xRenta.HeaderText = "Renta";
-            this.xRenta.MinimumWidth = 40;
-            this.xRenta.Name = "xRenta";
-            this.xRenta.Width = 40;
-            // 
             // xAporteEssalud
             // 
             this.xAporteEssalud.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xAporteEssalud.DataPropertyName = "AporteEssalud";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "n2";
-            this.xAporteEssalud.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.xAporteEssalud.DefaultCellStyle = dataGridViewCellStyle4;
             this.xAporteEssalud.HeaderText = "Aporte Essalud";
             this.xAporteEssalud.MinimumWidth = 50;
             this.xAporteEssalud.Name = "xAporteEssalud";
@@ -477,13 +396,27 @@
             // 
             this.xAporteEps.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xAporteEps.DataPropertyName = "AporteEps";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "n2";
-            this.xAporteEps.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.xAporteEps.DefaultCellStyle = dataGridViewCellStyle5;
             this.xAporteEps.HeaderText = "Aporte Eps";
             this.xAporteEps.MinimumWidth = 50;
             this.xAporteEps.Name = "xAporteEps";
             this.xAporteEps.Width = 50;
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
+            this.btnExcel.Location = new System.Drawing.Point(406, 492);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(83, 24);
+            this.btnExcel.TabIndex = 235;
+            this.btnExcel.Text = "EXCEL";
+            this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnTXT
             // 
@@ -497,13 +430,39 @@
             this.btnTXT.Text = "TXT";
             this.btnTXT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTXT.UseVisualStyleBackColor = true;
-            this.btnTXT.Click += new System.EventHandler(this.btnExcel_Click);
+            this.btnTXT.Click += new System.EventHandler(this.btnTXT_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 13);
+            this.label3.TabIndex = 249;
+            this.label3.Text = "Cuenta Bancaria:";
+            // 
+            // cboCuentaBancaria
+            // 
+            this.cboCuentaBancaria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCuentaBancaria.FormattingEnabled = true;
+            this.cboCuentaBancaria.Location = new System.Drawing.Point(105, 75);
+            this.cboCuentaBancaria.Name = "cboCuentaBancaria";
+            this.cboCuentaBancaria.Size = new System.Drawing.Size(479, 21);
+            this.cboCuentaBancaria.TabIndex = 248;
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Archivos de Texto|*.txt";
             // 
             // frmReporteSeguroSocial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 525);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cboCuentaBancaria);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbofechahasta);
             this.Controls.Add(this.cbofechade);
@@ -547,21 +506,19 @@
         private HpResergerUserControls.ButtonPer buttonPer1;
         private HpResergerUserControls.Dtgconten dtgconten;
         private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.Button btnTXT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xpkempresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaIngreso;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtipoid;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtipodoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNombres;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xaporte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xcomisionafp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xSeguroAFP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xImporteONP;
         private System.Windows.Forms.DataGridViewTextBoxColumn xeps;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresaAFP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xRenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAporteEssalud;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAporteEps;
-        private System.Windows.Forms.Button btnTXT;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboCuentaBancaria;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
     }
 }

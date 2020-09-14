@@ -1543,6 +1543,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarFacturasPagadosxEmpresa(proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1, estado, empresa);
         }
+        public DataTable ActualizarReporteAfpRentaSeguros(int opcion, int tipoid, string doc, DateTime Fecha, int empresa, int cta, decimal monto)
+        {
+            return cdOrdenPedido.ActualizarReporteAfpRentaSeguros(opcion, tipoid, doc, Fecha, empresa, cta, monto);
+        }
         public DataTable insertarPagarfactura(string nrofactura, string proveedor, int tipo, string nropago, decimal apagar, decimal subtotal, decimal igv, decimal total, int usuario, int opcion, int banco, string nrocuenta, DateTime fechapago, int @idcomprobante, int empresa, string cuo)
         {
             return cdOrdenPedido.insertarPagarfactura(nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion, banco, nrocuenta, fechapago, @idcomprobante, empresa, cuo);
