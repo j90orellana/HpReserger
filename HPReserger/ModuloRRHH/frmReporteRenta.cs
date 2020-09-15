@@ -94,7 +94,7 @@ namespace HPReserger.ModuloRRHH
                 //
                 _NombreHoja = $"Resumen de Renta {FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
                 _Cabecera = "Resumen de las Renta";
-                _NColumna = "N";
+                _NColumna = "H";
                 _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
                 //
@@ -126,7 +126,7 @@ namespace HPReserger.ModuloRRHH
                     TableResuk.Columns[item.DataPropertyName].ColumnName = item.HeaderText;
                 }
                 //Removemos las Columnas que no Necesitamos        
-                TableResuk.Columns.RemoveAt(9);
+                //TableResuk.Columns.RemoveAt(9);
                 //TableResuk.Columns.RemoveAt(6);
                 //TableResuk.Columns.RemoveAt(5);
 
@@ -249,6 +249,23 @@ namespace HPReserger.ModuloRRHH
                 decimal monto = (decimal)item[xRenta.DataPropertyName];
                 CapaLogica.ActualizarReporteAfpRentaSeguros(2, tipoid, doc, fecha, Empresa, CtaBancaria, monto);
             }
+        }
+        ModuloRRHH.frmReporteRentaPagados frmReporteRentaPagados1;
+        private void btnVerPagados_Click(object sender, EventArgs e)
+        {
+            if (frmReporteRentaPagados1 == null)
+            {
+                frmReporteRentaPagados1 = new frmReporteRentaPagados();
+                frmReporteRentaPagados1.FormClosed += frmReporteRentaPagados_FormClosed;
+                frmReporteRentaPagados1.MdiParent = MdiParent;
+                frmReporteRentaPagados1.Show();
+            }
+            else frmReporteRentaPagados1.Activate();
+        }
+
+        private void frmReporteRentaPagados_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmReporteRentaPagados1 = null;
         }
         private void ConsultarcuentaBancaria()
         {

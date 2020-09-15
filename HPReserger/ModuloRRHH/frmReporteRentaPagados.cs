@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace HPReserger.ModuloRRHH
 {
-    public partial class frmReporteSeguroSocial : FormGradient
+    public partial class frmReporteRentaPagados : FormGradient
     {
-        public frmReporteSeguroSocial()
+        public frmReporteRentaPagados()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace HPReserger.ModuloRRHH
                     FechaInicial = cbofechahasta.FechaInicioMes;
                     FechaFinal = cbofechade.FechaFinMes;
                 }
-                TDatos = CapaLogica.AfpReporte(3, txtbusEmpresa.TextValido(), txtbusEmpleado.TextValido(), "", FechaInicial, FechaFinal);
+                TDatos = CapaLogica.AfpReporte(20, txtbusEmpresa.TextValido(), txtbusEmpleado.TextValido(), "", FechaInicial, FechaFinal);
                 dtgconten.DataSource = TDatos;
                 lblRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
             }
@@ -75,23 +75,6 @@ namespace HPReserger.ModuloRRHH
         {
             MostrarDatosFiltrados();
         }
-        private int _pkEmpresa;
-        public int pkempresa
-        {
-            get { return _pkEmpresa; }
-            set
-            {
-                var Buscar = false;
-                if (value != _pkEmpresa)
-                {
-                    Buscar = true;
-                }
-                _pkEmpresa = value;
-                if (Buscar) ConsultarcuentaBancaria();
-            }
-        }
-
-        public int CtaBancaria { get; private set; }
         private void frmReporteAFP_Load(object sender, EventArgs e)
         {
             CargarTextosPorDefecto();
@@ -109,8 +92,8 @@ namespace HPReserger.ModuloRRHH
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
                 int[] _ColumnasAutoajustar = new int[] { 2, 3, 4, 5 };
                 //
-                _NombreHoja = $"Resumen de Seguros {FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
-                _Cabecera = "Resumen de los Seguros";
+                _NombreHoja = $"Resumen de Pago de Rentas {FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
+                _Cabecera = "Resumen de Pago de las Renta";
                 _NColumna = "I";
                 _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
@@ -143,7 +126,7 @@ namespace HPReserger.ModuloRRHH
                     TableResuk.Columns[item.DataPropertyName].ColumnName = item.HeaderText;
                 }
                 //Removemos las Columnas que no Necesitamos        
-                TableResuk.Columns.RemoveAt(7);
+                //TableResuk.Columns.RemoveAt(9);
                 //TableResuk.Columns.RemoveAt(6);
                 //TableResuk.Columns.RemoveAt(5);
 
@@ -176,19 +159,34 @@ namespace HPReserger.ModuloRRHH
             else { msgE("No hay Datos que Mostrar"); }
         }
 
-        private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
+        public string NombreEmpleado;
+        private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgconten.Rows.Count > 0)
+
+        }
+        private int _pkEmpresa;
+        public int pkempresa
+        {
+
+            get { return _pkEmpresa; }
+            set
             {
-                pkempresa = (int)dtgconten.Rows[0].Cells[xpkempresa.Name].Value;
+                var Buscar = false;
+                if (value != _pkEmpresa)
+                {
+                    Buscar = true;
+                }
+                _pkEmpresa = value;
+                if (Buscar) ConsultarcuentaBancaria();
             }
         }
-        public string NombreEmpleado;
+
+        public int CtaBancaria { get; private set; }
         private void btnTXT_Click(object sender, EventArgs e)
         {
             if (dtgconten.Rows.Count == 0) { msgE("No hay Datos en la Grilla"); return; }
-            if (cboCuentaBancaria.SelectedValue == null) { msgE("Seleccione una Cuenta Bancaria"); return; }
-            if (cboCuentaBancaria.DataSource == null) { msgE("No hay cuentas Bancarias para seleccionar"); return; }
+            //if (cboCuentaBancaria.SelectedValue == null) { msgE("Seleccione una Cuenta Bancaria"); return; }
+            //if (cboCuentaBancaria.DataSource == null) { msgE("No hay cuentas Bancarias para seleccionar"); return; }
             foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
             {
                 if ((int)item[xpkempresa.DataPropertyName] != pkempresa)
@@ -199,8 +197,8 @@ namespace HPReserger.ModuloRRHH
 
             if (msgYesCancel("Seguro Desea Generar el TXT", "Generando el TXT y Pago") == DialogResult.Yes)
             {
-                CtaBancaria = (int)cboCuentaBancaria.SelectedValue;
-                if (SaveFile.FileName == "") SaveFile.FileName = $"Pago Seguros -{cboCuentaBancaria.Text}.txt";
+                //CtaBancaria = (int)cboCuentaBancaria.SelectedValue;
+                //if (SaveFile.FileName == "") SaveFile.FileName = $"Pago Renta -{cboCuentaBancaria.Text}.txt";
                 DialogResult Dial = SaveFile.ShowDialog();
                 if (Dial != DialogResult.OK) { msgE("Cancelado por el Usuario"); return; }
                 ProcesodeGrabadoenBase();
@@ -211,6 +209,7 @@ namespace HPReserger.ModuloRRHH
         }
         private StreamWriter st;
         public DialogResult msgYesCancel(string cadena, string detalle) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena, detalle); }
+
         private void ProcesodeGenerarTXT()
         {
             //Avanza para Generar el TXT
@@ -236,7 +235,6 @@ namespace HPReserger.ModuloRRHH
             st.Write(cadenatxt);
             st.Close();
         }
-
         private void ProcesodeGrabadoenBase()
         {
             foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
@@ -245,41 +243,22 @@ namespace HPReserger.ModuloRRHH
                 string doc = item[NroDoc.DataPropertyName].ToString();
                 DateTime fecha = (DateTime)item[xFechaIngreso.DataPropertyName];
                 int Empresa = (int)item[xpkempresa.DataPropertyName];
-                decimal monto = (decimal)item[xAporteEps.DataPropertyName] + (decimal)item[xAporteEssalud.DataPropertyName];
-                CapaLogica.ActualizarReporteAfpRentaSeguros(3, tipoid, doc, fecha, Empresa, CtaBancaria, monto);
+                decimal monto = (decimal)item[xRenta.DataPropertyName];
+                CapaLogica.ActualizarReporteAfpRentaSeguros(2, tipoid, doc, fecha, Empresa, CtaBancaria, monto);
             }
         }
-        ModuloRRHH.frmReporteSeguroSocialPagados frmpagoseguros;
-        private void btnVerPagados_Click(object sender, EventArgs e)
-        {
-            if (frmpagoseguros == null)
-            {
-                frmpagoseguros = new frmReporteSeguroSocialPagados();
-                frmpagoseguros.FormClosed += frmpagoseguros_FormClosed;
-                frmpagoseguros.MdiParent = MdiParent;
-                frmpagoseguros.Show();
-            }
-            else frmpagoseguros.Activate();
-        }
-
-        private void frmpagoseguros_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            frmpagoseguros = null;
-        }
-
         private void ConsultarcuentaBancaria()
         {
-            string cadena = cboCuentaBancaria.Text;
-            DataTable TCuentas = CapaLogica.BuscarCuentasBancariasxEmpresas(pkempresa);
-            //if (cboCuentaBancaria.Items.Count != TCuentas.Rows.Count)
-            //if (Cargar)
-            {
-                cboCuentaBancaria.DisplayMember = "cuentabancaria";
-                cboCuentaBancaria.ValueMember = "id_tipo_cta";
-                cboCuentaBancaria.DataSource = TCuentas;
-                if (cboCuentaBancaria.DataSource != null) cboCuentaBancaria.Text = cadena;
-            }
+            //string cadena = cboCuentaBancaria.Text;
+            //DataTable TCuentas = CapaLogica.BuscarCuentasBancariasxEmpresas(pkempresa);
+            ////if (cboCuentaBancaria.Items.Count != TCuentas.Rows.Count)
+            ////if (Cargar)
+            //{
+            //    cboCuentaBancaria.DisplayMember = "cuentabancaria";
+            //    cboCuentaBancaria.ValueMember = "id_tipo_cta";
+            //    cboCuentaBancaria.DataSource = TCuentas;
+            //    if (cboCuentaBancaria.DataSource != null) cboCuentaBancaria.Text = cadena;
+            //}
         }
-
     }
 }

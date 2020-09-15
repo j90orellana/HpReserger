@@ -544,6 +544,24 @@
     <Compile Include="ModuloRRHH\frmBonosEmpleados.Designer.cs">
       <DependentUpon>frmBonosEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloRRHH\frmReporteAfpPagados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmReporteAfpPagados.Designer.cs">
+      <DependentUpon>frmReporteAfpPagados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmReporteRentaPagados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmReporteRentaPagados.Designer.cs">
+      <DependentUpon>frmReporteRentaPagados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmReporteSeguroSocialPagados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmReporteSeguroSocialPagados.Designer.cs">
+      <DependentUpon>frmReporteSeguroSocialPagados.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloRRHH\frmReporteSeguroSocial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2139,6 +2157,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmBonosEmpleados.resx">
       <DependentUpon>frmBonosEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloRRHH\frmReporteAfpPagados.resx">
+      <DependentUpon>frmReporteAfpPagados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloRRHH\frmReporteRentaPagados.resx">
+      <DependentUpon>frmReporteRentaPagados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloRRHH\frmReporteSeguroSocialPagados.resx">
+      <DependentUpon>frmReporteSeguroSocialPagados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmReporteSeguroSocial.resx">
       <DependentUpon>frmReporteSeguroSocial.cs</DependentUpon>

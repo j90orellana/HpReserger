@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace HPReserger.ModuloRRHH
 {
-    public partial class frmReporteSeguroSocial : FormGradient
+    public partial class frmReporteSeguroSocialPagados : FormGradient
     {
-        public frmReporteSeguroSocial()
+        public frmReporteSeguroSocialPagados()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace HPReserger.ModuloRRHH
                     FechaInicial = cbofechahasta.FechaInicioMes;
                     FechaFinal = cbofechade.FechaFinMes;
                 }
-                TDatos = CapaLogica.AfpReporte(3, txtbusEmpresa.TextValido(), txtbusEmpleado.TextValido(), "", FechaInicial, FechaFinal);
+                TDatos = CapaLogica.AfpReporte(30, txtbusEmpresa.TextValido(), txtbusEmpleado.TextValido(), "", FechaInicial, FechaFinal);
                 dtgconten.DataSource = TDatos;
                 lblRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
             }
@@ -109,9 +109,9 @@ namespace HPReserger.ModuloRRHH
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
                 int[] _ColumnasAutoajustar = new int[] { 2, 3, 4, 5 };
                 //
-                _NombreHoja = $"Resumen de Seguros {FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
-                _Cabecera = "Resumen de los Seguros";
-                _NColumna = "I";
+                _NombreHoja = $"Resumen de Pago de Seguros {FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
+                _Cabecera = "Resumen de los Pagos de Seguros";
+                _NColumna = "j";
                 _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
                 //
@@ -187,8 +187,8 @@ namespace HPReserger.ModuloRRHH
         private void btnTXT_Click(object sender, EventArgs e)
         {
             if (dtgconten.Rows.Count == 0) { msgE("No hay Datos en la Grilla"); return; }
-            if (cboCuentaBancaria.SelectedValue == null) { msgE("Seleccione una Cuenta Bancaria"); return; }
-            if (cboCuentaBancaria.DataSource == null) { msgE("No hay cuentas Bancarias para seleccionar"); return; }
+            //if (cboCuentaBancaria.SelectedValue == null) { msgE("Seleccione una Cuenta Bancaria"); return; }
+            //if (cboCuentaBancaria.DataSource == null) { msgE("No hay cuentas Bancarias para seleccionar"); return; }
             foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
             {
                 if ((int)item[xpkempresa.DataPropertyName] != pkempresa)
@@ -199,8 +199,8 @@ namespace HPReserger.ModuloRRHH
 
             if (msgYesCancel("Seguro Desea Generar el TXT", "Generando el TXT y Pago") == DialogResult.Yes)
             {
-                CtaBancaria = (int)cboCuentaBancaria.SelectedValue;
-                if (SaveFile.FileName == "") SaveFile.FileName = $"Pago Seguros -{cboCuentaBancaria.Text}.txt";
+                //CtaBancaria = (int)cboCuentaBancaria.SelectedValue;
+                //if (SaveFile.FileName == "") SaveFile.FileName = $"Pago Seguros -{cboCuentaBancaria.Text}.txt";
                 DialogResult Dial = SaveFile.ShowDialog();
                 if (Dial != DialogResult.OK) { msgE("Cancelado por el Usuario"); return; }
                 ProcesodeGrabadoenBase();
@@ -249,36 +249,19 @@ namespace HPReserger.ModuloRRHH
                 CapaLogica.ActualizarReporteAfpRentaSeguros(3, tipoid, doc, fecha, Empresa, CtaBancaria, monto);
             }
         }
-        ModuloRRHH.frmReporteSeguroSocialPagados frmpagoseguros;
-        private void btnVerPagados_Click(object sender, EventArgs e)
-        {
-            if (frmpagoseguros == null)
-            {
-                frmpagoseguros = new frmReporteSeguroSocialPagados();
-                frmpagoseguros.FormClosed += frmpagoseguros_FormClosed;
-                frmpagoseguros.MdiParent = MdiParent;
-                frmpagoseguros.Show();
-            }
-            else frmpagoseguros.Activate();
-        }
-
-        private void frmpagoseguros_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            frmpagoseguros = null;
-        }
 
         private void ConsultarcuentaBancaria()
         {
-            string cadena = cboCuentaBancaria.Text;
-            DataTable TCuentas = CapaLogica.BuscarCuentasBancariasxEmpresas(pkempresa);
-            //if (cboCuentaBancaria.Items.Count != TCuentas.Rows.Count)
-            //if (Cargar)
-            {
-                cboCuentaBancaria.DisplayMember = "cuentabancaria";
-                cboCuentaBancaria.ValueMember = "id_tipo_cta";
-                cboCuentaBancaria.DataSource = TCuentas;
-                if (cboCuentaBancaria.DataSource != null) cboCuentaBancaria.Text = cadena;
-            }
+            //string cadena = cboCuentaBancaria.Text;
+            //DataTable TCuentas = CapaLogica.BuscarCuentasBancariasxEmpresas(pkempresa);
+            ////if (cboCuentaBancaria.Items.Count != TCuentas.Rows.Count)
+            ////if (Cargar)
+            //{
+            //    cboCuentaBancaria.DisplayMember = "cuentabancaria";
+            //    cboCuentaBancaria.ValueMember = "id_tipo_cta";
+            //    cboCuentaBancaria.DataSource = TCuentas;
+            //    if (cboCuentaBancaria.DataSource != null) cboCuentaBancaria.Text = cadena;
+            //}
         }
 
     }

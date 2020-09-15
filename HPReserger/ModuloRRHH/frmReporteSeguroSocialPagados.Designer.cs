@@ -1,6 +1,6 @@
 ﻿namespace HPReserger.ModuloRRHH
 {
-    partial class frmReporteSeguroSocial
+    partial class frmReporteSeguroSocialPagados
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteSeguroSocial));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteSeguroSocialPagados));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,6 +49,9 @@
             this.lblRegistros = new System.Windows.Forms.Label();
             this.buttonPer1 = new HpResergerUserControls.ButtonPer();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnTXT = new System.Windows.Forms.Button();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.xpkempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,12 +62,7 @@
             this.xeps = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAporteEssalud = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAporteEps = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.btnTXT = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboCuentaBancaria = new System.Windows.Forms.ComboBox();
-            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.btnVerPagados = new System.Windows.Forms.Button();
+            this.xNroCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,7 +169,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 97);
+            this.label1.Location = new System.Drawing.Point(7, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 13);
             this.label1.TabIndex = 240;
@@ -287,7 +285,8 @@
             this.xNombres,
             this.xeps,
             this.xAporteEssalud,
-            this.xAporteEps});
+            this.xAporteEps,
+            this.xNroCuenta});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
@@ -300,16 +299,48 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(10, 113);
+            this.dtgconten.Location = new System.Drawing.Point(10, 93);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(960, 373);
+            this.dtgconten.Size = new System.Drawing.Size(960, 393);
             this.dtgconten.TabIndex = 234;
-            this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
+            this.btnExcel.Location = new System.Drawing.Point(406, 492);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(83, 24);
+            this.btnExcel.TabIndex = 235;
+            this.btnExcel.Text = "EXCEL";
+            this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnTXT
+            // 
+            this.btnTXT.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnTXT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTXT.Image = ((System.Drawing.Image)(resources.GetObject("btnTXT.Image")));
+            this.btnTXT.Location = new System.Drawing.Point(495, 492);
+            this.btnTXT.Name = "btnTXT";
+            this.btnTXT.Size = new System.Drawing.Size(83, 24);
+            this.btnTXT.TabIndex = 235;
+            this.btnTXT.Text = "TXT";
+            this.btnTXT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTXT.UseVisualStyleBackColor = true;
+            this.btnTXT.Visible = false;
+            this.btnTXT.Click += new System.EventHandler(this.btnTXT_Click);
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Archivos de Texto|*.txt";
             // 
             // xpkempresa
             // 
@@ -405,83 +436,20 @@
             this.xAporteEps.Name = "xAporteEps";
             this.xAporteEps.Width = 50;
             // 
-            // btnExcel
+            // xNroCuenta
             // 
-            this.btnExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(406, 492);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(83, 24);
-            this.btnExcel.TabIndex = 235;
-            this.btnExcel.Text = "EXCEL";
-            this.btnExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            this.xNroCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xNroCuenta.DataPropertyName = "NroCuenta";
+            this.xNroCuenta.HeaderText = "NroCuenta";
+            this.xNroCuenta.MinimumWidth = 120;
+            this.xNroCuenta.Name = "xNroCuenta";
+            this.xNroCuenta.Width = 120;
             // 
-            // btnTXT
-            // 
-            this.btnTXT.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnTXT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTXT.Image = ((System.Drawing.Image)(resources.GetObject("btnTXT.Image")));
-            this.btnTXT.Location = new System.Drawing.Point(495, 492);
-            this.btnTXT.Name = "btnTXT";
-            this.btnTXT.Size = new System.Drawing.Size(83, 24);
-            this.btnTXT.TabIndex = 235;
-            this.btnTXT.Text = "TXT";
-            this.btnTXT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTXT.UseVisualStyleBackColor = true;
-            this.btnTXT.Click += new System.EventHandler(this.btnTXT_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 79);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 13);
-            this.label3.TabIndex = 249;
-            this.label3.Text = "Cuenta Bancaria:";
-            // 
-            // cboCuentaBancaria
-            // 
-            this.cboCuentaBancaria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCuentaBancaria.FormattingEnabled = true;
-            this.cboCuentaBancaria.Location = new System.Drawing.Point(105, 75);
-            this.cboCuentaBancaria.Name = "cboCuentaBancaria";
-            this.cboCuentaBancaria.Size = new System.Drawing.Size(479, 21);
-            this.cboCuentaBancaria.TabIndex = 248;
-            // 
-            // SaveFile
-            // 
-            this.SaveFile.Filter = "Archivos de Texto|*.txt";
-            // 
-            // btnVerPagados
-            // 
-            this.btnVerPagados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVerPagados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.btnVerPagados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerPagados.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnVerPagados.ForeColor = System.Drawing.Color.White;
-            this.btnVerPagados.Image = ((System.Drawing.Image)(resources.GetObject("btnVerPagados.Image")));
-            this.btnVerPagados.Location = new System.Drawing.Point(888, 86);
-            this.btnVerPagados.Name = "btnVerPagados";
-            this.btnVerPagados.Size = new System.Drawing.Size(82, 24);
-            this.btnVerPagados.TabIndex = 251;
-            this.btnVerPagados.Text = "Pagados";
-            this.btnVerPagados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVerPagados.UseVisualStyleBackColor = false;
-            this.btnVerPagados.Click += new System.EventHandler(this.btnVerPagados_Click);
-            // 
-            // frmReporteSeguroSocial
+            // frmReporteSeguroSocialPagados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 525);
-            this.Controls.Add(this.btnVerPagados);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cboCuentaBancaria);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbofechahasta);
             this.Controls.Add(this.cbofechade);
@@ -498,9 +466,9 @@
             this.Controls.Add(this.btnTXT);
             this.Controls.Add(this.btnExcel);
             this.MinimumSize = new System.Drawing.Size(1000, 564);
-            this.Name = "frmReporteSeguroSocial";
-            this.Nombre = "Reporte Seguro Social";
-            this.Text = "Reporte Seguro Social";
+            this.Name = "frmReporteSeguroSocialPagados";
+            this.Nombre = "Reporte Seguro Social - Pagados";
+            this.Text = "Reporte Seguro Social - Pagados";
             this.Load += new System.EventHandler(this.frmReporteAFP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);
@@ -526,6 +494,7 @@
         private HpResergerUserControls.Dtgconten dtgconten;
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Button btnTXT;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpkempresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaIngreso;
@@ -536,9 +505,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xeps;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAporteEssalud;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAporteEps;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cboCuentaBancaria;
-        private System.Windows.Forms.SaveFileDialog SaveFile;
-        private System.Windows.Forms.Button btnVerPagados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNroCuenta;
     }
 }

@@ -96,7 +96,7 @@ namespace HPReserger.ModuloRRHH
                 //
                 _NombreHoja = $"Resumen de AFP{FechaInicial.ToString("dd-MM-yyyy")} Al {FechaFinal.ToString("dd-MM-yyyy")}".ToUpper();
                 _Cabecera = "Resumen de las AFP";
-                _NColumna = "N";
+                _NColumna = "L";
                 _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
                 //
@@ -251,6 +251,23 @@ namespace HPReserger.ModuloRRHH
                 decimal monto = (decimal)item[xaporte.DataPropertyName] + (decimal)item[xSeguroAFP.DataPropertyName] + (decimal)item[xcomisionafp.DataPropertyName];
                 CapaLogica.ActualizarReporteAfpRentaSeguros(1, tipoid, doc, fecha, Empresa, CtaBancaria, monto);
             }
+        }
+        ModuloRRHH.frmReporteAfpPagados frmReporteafpPagados;
+        private void btnVerPagados_Click(object sender, EventArgs e)
+        {
+            if (frmReporteafpPagados == null)
+            {
+                frmReporteafpPagados = new frmReporteAfpPagados();
+                frmReporteafpPagados.FormClosed += FrmReporteafpPagados_FormClosed;
+                frmReporteafpPagados.MdiParent = MdiParent;
+                frmReporteafpPagados.Show();
+            }
+            else frmReporteafpPagados.Activate();
+        }
+
+        private void FrmReporteafpPagados_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmReporteafpPagados = null;
         }
 
         private void ConsultarcuentaBancaria()
