@@ -585,7 +585,7 @@ namespace HPReserger.ModuloFinanzas
                         //
                         if (int.Parse(CuoOrigenValue.Substring(5)) != 0)
                         {
-                            NumComprobante = "Pr." + pkid + "-" + ((DateTime)item.Cells[xFechaPrestado.Name].Value).ToShortDateString();
+                            NumComprobante = "Pr." + pkid + "-" + ((DateTime)item.Cells[xFechaPrestado.Name].Value).ToString("dd/MM/yyyy");
                             idTipoDocProveedor = 5;
                         }
                         /////Detalle en la Empresa Origen - BANCOS

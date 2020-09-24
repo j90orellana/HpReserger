@@ -1376,10 +1376,11 @@ namespace HPReserger
                 //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones  
                 if (estado == 1 && Dtgconten.RowCount > 1)
                 {
-                    ultimoasiento();
                     //string cadena = "";
                     if (txtdinamica.Text.Length <= 0) txtdinamica.Text = "CD_000";
                     CArgarValoresIngreso();
+                    //SACAMOS EL ULTIMO ASIENTO
+                    ultimoasiento();
                     // MostrarValores(cadena + Detalle(), codigo);
                     for (int i = 0; i < Dtgconten.RowCount; i++)
                     {

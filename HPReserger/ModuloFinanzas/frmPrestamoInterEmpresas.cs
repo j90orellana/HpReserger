@@ -451,9 +451,9 @@ namespace HPReserger
                 int SiguientePkId = (int)CapaLogica.SiguienteIdPrestamoInterEmpresa(IdEmpresaOri).Rows[0]["SiguientePkid"];
                 string NumComprobante = "";
                 if (Estado == 1)
-                    NumComprobante = "Pr." + SiguientePkId + "-" + FechaPrestamo.ToShortDateString();
+                    NumComprobante = "Pr." + SiguientePkId + "-" + FechaPrestamo.ToString("dd/MM/yyyy");
                 if (Estado == 2)
-                    NumComprobante = "Pr." + _FkId + "-" + FechaPrestamo.ToShortDateString();
+                    NumComprobante = "Pr." + _FkId + "-" + FechaPrestamo.ToString("dd/MM/yyyy");
                 //Sacamos el Ruc de la Empresa Origen y DEstino
                 string RucOrigen = ((DataRowView)cboOriEmpresa.SelectedItem)["ruc"].ToString();
                 string RucDestrino = ((DataRowView)cboDesEmpresa.SelectedItem)["ruc"].ToString();
