@@ -760,6 +760,7 @@ namespace HPReserger
                 if (decimal.Parse(txttipocambio.TextValido()) == 0) { msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
                 if (!txtruc.EstaLLeno()) { msg("Ingrese RUC del Comprobante"); txtruc.Focus(); return; }
                 if (_TipoDoc == 0) if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
+                if (!txtrazon.EstaLLeno()) { msg("No se Encontro Razon Social"); txtruc.Focus(); return; }
                 ///valido compensacion
                 DatosCompensacion = "";
                 if ((new int[] { 1, 2, 3 }).Contains((int)cbocompensa.SelectedValue))

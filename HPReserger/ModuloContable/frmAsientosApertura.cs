@@ -224,9 +224,9 @@ namespace HPReserger
                     }
                 }
                 //
-                //Asiento 3
-                SumaSoles = SumaDolares = 0;
-                dv.RowFilter = "cuenta_contable like '70*'";
+                //Asiento 3 --BIENES
+                SumaSoles = SumaDolares = 0;             
+                dv.RowFilter = "cuenta_contable like '70*' and cuenta_contable not like '704*'";
                 if (dv.ToTable().Rows.Count > 0)
                 {
                     DataRow Filax = dv.ToTable().Rows[0];
@@ -239,26 +239,68 @@ namespace HPReserger
                         dv.RowFilter = "cuenta_contable like '69*'";
                         InsertarFilasFiltradasADD(TResult, dv.ToTable());
                         TTemporal.Rows.Add("", "", "8111101", "8111101 - PRODUCCIÓN DE BIENES", SumaSoles, SumaDolares);
-                        dvt.RowFilter = "cuenta_contable like '81*'";
+                        dvt.RowFilter = "cuenta_contable like '811*'";
                         InsertarFilasFiltradas(TResult, dvt.ToTable());
                         dtgconten.DataSource = TResult;
                         TResult.Rows.Add("Glosa : Por la cancelacion del Costo de producción de inmuebles en Proceso");
                     }
                 }
+                //Asiento 3.1 --SERVICIOS
+                SumaSoles = SumaDolares = 0;
+                dv.RowFilter = "cuenta_contable like '704*' ";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    DataRow Filax = dv.ToTable().Rows[0];
+                    if ((decimal)Filax["pen"] + (decimal)Filax["usd"] != 0)
+                    {
+                        TResult.Rows.Add();
+                        TResult.Rows.Add($"ASIENTO {c++}");
+                        InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                        //dv.Table = tdatos;
+                        //dv.RowFilter = "cuenta_contable like '69*'";
+                        //InsertarFilasFiltradasADD(TResult, dv.ToTable());
+                        TTemporal.Rows.Add("", "", "8121101", "8121101 - PRODUCCIÓN DE SERVICIOS", SumaSoles, SumaDolares);
+                        dvt.RowFilter = "cuenta_contable like '812*'";
+                        InsertarFilasFiltradas(TResult, dvt.ToTable());
+                        dtgconten.DataSource = TResult;
+                        TResult.Rows.Add("Glosa : Asiento 3.1 Glosa Not Found");
+                    }
+                }
+                //Asiento 4.1 --SERVICIOS
+                SumaDolares = SumaSoles = 0;
+                dvt.RowFilter = "cuenta_contable like '812*'";
+                if (dvt.ToTable().Rows.Count > 0)
+                {
+                    DataRow Filax = dvt.ToTable().Rows[0];
+                    if ((decimal)Filax["pen"] + (decimal)Filax["usd"] != 0)
+                    {
+                        VoltearValores(TTemporal, "812");
+                        dvt.RowFilter = "cuenta_contable like '812*'";
+                        TResult.Rows.Add();
+                        TResult.Rows.Add($"ASIENTO {c++}");
+                        InsertarFilasFiltradasADD(TResult, dvt.ToTable());
+                        TrasladarSaldo("812", "8211101", "8211101 - VALOR AGREGADO", TTemporal);
+                        //
+                        dvt.RowFilter = "cuenta_contable like '82*'";
+                        InsertarFilasFiltradas(TResult, dvt.ToTable());
+                        dtgconten.DataSource = TResult;
+                        TResult.Rows.Add("Glosa : Asiento 4.1 Glosa Not Found");
+                    }
+                }
                 //Asiento 4
                 SumaDolares = SumaSoles = 0;
-                dvt.RowFilter = "cuenta_contable like '81*'";
+                dvt.RowFilter = "cuenta_contable like '811*'";
                 if (dvt.ToTable().Rows.Count > 0)
                 {
                     DataRow Filax = dvt.ToTable().Rows[0];
                     if ((decimal)Filax["pen"] + (decimal)Filax["usd"] != 0)
                     {
                         VoltearValores(TTemporal, "81");
-                        dvt.RowFilter = "cuenta_contable like '81*'";
+                        dvt.RowFilter = "cuenta_contable like '811*'";
                         TResult.Rows.Add();
                         TResult.Rows.Add($"ASIENTO {c++}");
                         InsertarFilasFiltradasADD(TResult, dvt.ToTable());
-                        TrasladarSaldo("81", "8211101", "8211101 - VALOR AGREGADO", TTemporal);
+                        TrasladarSaldo("811", "8211101", "8211101 - VALOR AGREGADO", TTemporal);
                         //
                         dvt.RowFilter = "cuenta_contable like '82*'";
                         InsertarFilasFiltradas(TResult, dvt.ToTable());
@@ -440,7 +482,7 @@ namespace HPReserger
                 string CuentaResultado = "";
                 string CuentaResul = "";
                 dvt.RowFilter = "cuenta_contable like '85*'";
-                if ((decimal)dvt[0]["pen"] > 0)
+                if ((decimal)dvt[0]["pen"] < 0)
                 {
                     CuentaResultado = "8911101 - UTILIDAD";
                     CuentaResul = "8911101";
@@ -532,7 +574,7 @@ namespace HPReserger
             Boolean Encontrado = false;
             foreach (DataRow item in temporal.Rows)
             {
-                if (item["Cuenta_contable"].ToString().Substring(0, 2) == v1)
+                if (item["Cuenta_contable"].ToString().Substring(0, v1.Length) == v1)
                 {
                     SumaSoles = (decimal)item["pen"];
                     SumaDolares = (decimal)item["usd"];
@@ -622,7 +664,7 @@ namespace HPReserger
         {
             foreach (DataRow item in temporal.Rows)
             {
-                if (item["cuenta_contable"].ToString().Substring(0, 2) == v)
+                if (item["cuenta_contable"].ToString().Substring(0, v.Length) == v)
                 {
                     item["pen"] = (decimal)item["pen"] * -1;
                     item["usd"] = (decimal)item["usd"] * -1;

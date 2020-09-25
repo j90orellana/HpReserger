@@ -513,6 +513,7 @@ namespace HPReserger
                 if (chkDocAnulado.Checked) { if (txttotalfac.EstaLLeno()) { msg("El Total del Comprobante debe ser Cero"); txttotalfac.Focus(); return; } }
                 if (!txtdoc.EstaLLeno()) { msg("Ingrese Nro.Doc. del Cliente"); txtdoc.Focus(); return; }
                 if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
+                if (!txtrazon.EstaLLeno()) { msg("No se Encontro Nombre del Cliente"); txtdoc.Focus(); return; }
                 //// SI TIENE DETALLE LA FACTURA
                 if (Dtgconten.RowCount > 0)
                 {
