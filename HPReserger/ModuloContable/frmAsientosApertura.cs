@@ -263,7 +263,7 @@ namespace HPReserger
                         dvt.RowFilter = "cuenta_contable like '812*'";
                         InsertarFilasFiltradas(TResult, dvt.ToTable());
                         dtgconten.DataSource = TResult;
-                        TResult.Rows.Add("Glosa : Asiento 3.1 Glosa Not Found");
+                        TResult.Rows.Add("Glosa : Por el cierre del saldo de la cuenta de Servicios");
                     }
                 }
                 //Asiento 4.1 --SERVICIOS
@@ -284,7 +284,7 @@ namespace HPReserger
                         dvt.RowFilter = "cuenta_contable like '82*'";
                         InsertarFilasFiltradas(TResult, dvt.ToTable());
                         dtgconten.DataSource = TResult;
-                        TResult.Rows.Add("Glosa : Asiento 4.1 Glosa Not Found");
+                        TResult.Rows.Add("Glosa : Por el cierre del saldo acreedor de la cuenta de Producción al cierre del ejercicio");
                     }
                 }
                 //Asiento 4
@@ -479,7 +479,7 @@ namespace HPReserger
                 TResult.Rows.Add();
                 SumaDolares = SumaSoles = 0;
                 TResult.Rows.Add($"ASIENTO {c++}");
-                string CuentaResultado = "";
+                string CuentaResultado = ""; 
                 string CuentaResul = "";
                 dvt.RowFilter = "cuenta_contable like '85*'";
                 if ((decimal)dvt[0]["pen"] < 0)
