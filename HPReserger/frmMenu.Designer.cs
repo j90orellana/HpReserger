@@ -185,6 +185,8 @@
             this.vacacionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gratificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cTSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -305,8 +307,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteConcliliaciónFinanzaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -587,7 +588,8 @@
             // 
             this.conciliaciónBancariaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.conciliarBancosToolStripMenuItem,
-            this.reporteConciliacionesToolStripMenuItem});
+            this.reporteConciliacionesToolStripMenuItem,
+            this.reporteConcliliaciónFinanzaToolStripMenuItem});
             this.conciliaciónBancariaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("conciliaciónBancariaToolStripMenuItem.Image")));
             this.conciliaciónBancariaToolStripMenuItem.Name = "conciliaciónBancariaToolStripMenuItem";
             this.conciliaciónBancariaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
@@ -599,7 +601,7 @@
             // 
             this.conciliarBancosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("conciliarBancosToolStripMenuItem.Image")));
             this.conciliarBancosToolStripMenuItem.Name = "conciliarBancosToolStripMenuItem";
-            this.conciliarBancosToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.conciliarBancosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.conciliarBancosToolStripMenuItem.Tag = "1009001";
             this.conciliarBancosToolStripMenuItem.Text = "Conciliar Bancos";
             this.conciliarBancosToolStripMenuItem.Click += new System.EventHandler(this.conciliarBancosToolStripMenuItem_Click);
@@ -608,7 +610,7 @@
             // 
             this.reporteConciliacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteConciliacionesToolStripMenuItem.Image")));
             this.reporteConciliacionesToolStripMenuItem.Name = "reporteConciliacionesToolStripMenuItem";
-            this.reporteConciliacionesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.reporteConciliacionesToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.reporteConciliacionesToolStripMenuItem.Tag = "1009002";
             this.reporteConciliacionesToolStripMenuItem.Text = "Reporte Conciliaciones";
             this.reporteConciliacionesToolStripMenuItem.Click += new System.EventHandler(this.reporteConciliacionesToolStripMenuItem_Click);
@@ -1809,7 +1811,7 @@
             // 
             this.empleadoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("empleadoToolStripMenuItem1.Image")));
             this.empleadoToolStripMenuItem1.Name = "empleadoToolStripMenuItem1";
-            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
             this.empleadoToolStripMenuItem1.Tag = "1508001";
             this.empleadoToolStripMenuItem1.Text = "Empleado";
             this.empleadoToolStripMenuItem1.Click += new System.EventHandler(this.empleadoToolStripMenuItem1_Click);
@@ -1818,7 +1820,7 @@
             // 
             this.boletasToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("boletasToolStripMenuItem1.Image")));
             this.boletasToolStripMenuItem1.Name = "boletasToolStripMenuItem1";
-            this.boletasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.boletasToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
             this.boletasToolStripMenuItem1.Tag = "1508002";
             this.boletasToolStripMenuItem1.Text = "Boletas";
             this.boletasToolStripMenuItem1.Click += new System.EventHandler(this.boletasToolStripMenuItem1_Click);
@@ -1827,7 +1829,7 @@
             // 
             this.vacacionesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("vacacionesToolStripMenuItem1.Image")));
             this.vacacionesToolStripMenuItem1.Name = "vacacionesToolStripMenuItem1";
-            this.vacacionesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.vacacionesToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
             this.vacacionesToolStripMenuItem1.Tag = "1508003";
             this.vacacionesToolStripMenuItem1.Text = "Vacaciones";
             this.vacacionesToolStripMenuItem1.Click += new System.EventHandler(this.vacacionesToolStripMenuItem1_Click);
@@ -1836,7 +1838,7 @@
             // 
             this.gratificacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("gratificacionesToolStripMenuItem.Image")));
             this.gratificacionesToolStripMenuItem.Name = "gratificacionesToolStripMenuItem";
-            this.gratificacionesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gratificacionesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.gratificacionesToolStripMenuItem.Text = "Gratificaciones";
             this.gratificacionesToolStripMenuItem.Click += new System.EventHandler(this.gratificacionesToolStripMenuItem_Click);
             // 
@@ -1844,15 +1846,31 @@
             // 
             this.cTSToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cTSToolStripMenuItem.Image")));
             this.cTSToolStripMenuItem.Name = "cTSToolStripMenuItem";
-            this.cTSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cTSToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.cTSToolStripMenuItem.Text = "CTS";
             this.cTSToolStripMenuItem.Click += new System.EventHandler(this.cTSToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem16
+            // 
+            this.toolStripMenuItem16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem16.Image")));
+            this.toolStripMenuItem16.Name = "toolStripMenuItem16";
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItem16.Text = "AFP";
+            this.toolStripMenuItem16.Click += new System.EventHandler(this.toolStripMenuItem16_Click);
+            // 
+            // toolStripMenuItem15
+            // 
+            this.toolStripMenuItem15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem15.Image")));
+            this.toolStripMenuItem15.Name = "toolStripMenuItem15";
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItem15.Text = "Renta";
+            this.toolStripMenuItem15.Click += new System.EventHandler(this.toolStripMenuItem15_Click);
             // 
             // toolStripMenuItem14
             // 
             this.toolStripMenuItem14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem14.Image")));
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(144, 22);
             this.toolStripMenuItem14.Text = "Seguros";
             this.toolStripMenuItem14.Click += new System.EventHandler(this.toolStripMenuItem14_Click_1);
             // 
@@ -2978,21 +2996,13 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
-            // toolStripMenuItem15
+            // reporteConcliliaciónFinanzaToolStripMenuItem
             // 
-            this.toolStripMenuItem15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem15.Image")));
-            this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem15.Text = "Renta";
-            this.toolStripMenuItem15.Click += new System.EventHandler(this.toolStripMenuItem15_Click);
-            // 
-            // toolStripMenuItem16
-            // 
-            this.toolStripMenuItem16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem16.Image")));
-            this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem16.Text = "AFP";
-            this.toolStripMenuItem16.Click += new System.EventHandler(this.toolStripMenuItem16_Click);
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteConcliliaciónFinanzaToolStripMenuItem.Image")));
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Name = "reporteConcliliaciónFinanzaToolStripMenuItem";
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Text = "Reporte Concliliación Finanza";
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Click += new System.EventHandler(this.reporteConcliliaciónFinanzaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -3310,5 +3320,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
+        private System.Windows.Forms.ToolStripMenuItem reporteConcliliaciónFinanzaToolStripMenuItem;
     }
 }

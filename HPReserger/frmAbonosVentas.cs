@@ -862,8 +862,19 @@ namespace HPReserger
                 if (TotalAbonado != 0)
                 {
                     DateTime fecha = DateTime.Now;
+                    decimal AbonadoSoles = 0, AbonadoDolares = 0;
+                    if (moneda == 1)
+                    {
+                        AbonadoSoles = Math.Abs((TotalAbonado) + MontoPenalidad);
+                        AbonadoDolares = (Math.Abs((TotalAbonado) + MontoPenalidad) / tc);
+                    }
+                    if (moneda == 2)
+                    {
+                        AbonadoSoles = (Math.Abs((TotalAbonado) + MontoPenalidad)) * tc;
+                        AbonadoDolares = Math.Abs((TotalAbonado) + MontoPenalidad);
+                    }
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaBanco, proyecto, 0, "99999", "VARIOS", 0, "0", "0", 0,
-                                           FechaPago, FechaContable, FechaContable, Math.Abs((TotalAbonado) + MontoPenalidad), (Math.Abs((TotalAbonado) + MontoPenalidad) / tc), tc, 1, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, CuoReg, (int)cbotipo.SelectedValue);
+                                           FechaPago, FechaContable, FechaContable, AbonadoSoles, AbonadoDolares, tc, moneda, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, CuoReg, (int)cbotipo.SelectedValue);
                 }
                 //foreach (DataGridViewRow item in dtgconten.Rows)
                 //{

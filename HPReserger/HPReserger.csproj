@@ -262,6 +262,12 @@
     <Compile Include="ModuloFinanzas\frmReporteConciliaciones.Designer.cs">
       <DependentUpon>frmReporteConciliaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloFinanzas\frmReporteConciliacionesFinanzas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmReporteConciliacionesFinanzas.Designer.cs">
+      <DependentUpon>frmReporteConciliacionesFinanzas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\frmFlujodeGastosRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2015,6 +2021,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmReporteConciliaciones.resx">
       <DependentUpon>frmReporteConciliaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmReporteConciliacionesFinanzas.resx">
+      <DependentUpon>frmReporteConciliacionesFinanzas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmFlujodeGastosDoc.resx">
       <DependentUpon>frmFlujodeGastosDoc.cs</DependentUpon>

@@ -128,7 +128,7 @@ namespace HPReserger.ModuloFinanzas
                 chkOperacion.Checked = false;
                 if (ProcesodeAnalisis(pkBanco, NroCuenta))
                 {
-                    if (FormatearlaTabla(pkBanco))
+                    if (FormatearlaTabla(pkBanco)) //Seleccion del Banco
                     {
                         //Datos del Excel
                         BuscanEnSistemMovimientosExcel();
@@ -293,7 +293,7 @@ namespace HPReserger.ModuloFinanzas
                 DataColumn ColPkid = new DataColumn("pkid", typeof(int));
                 ColPkid.DefaultValue = 0;
                 TdatosExcel.Columns.Add(ColPkid);
-                TdatosExcel.Columns.Add("Comentario"); 
+                TdatosExcel.Columns.Add("Comentario");
 
                 TdatosExcel.AcceptChanges();
                 return true;
@@ -425,6 +425,49 @@ namespace HPReserger.ModuloFinanzas
                 //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
                 //foreach (DataRow item in TdatosExcel.Rows)
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
+                return true;
+            }
+            else if (pkBanco == 5) //Banco de la Nacion
+            {
+                int PosDelete = 7, i = 0;
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    i++;
+                    if (PosDelete > i) item.Delete();
+                    else
+                    {
+                        DateTime Fecha;
+                        if (!DateTime.TryParse(item[5].ToString(), out Fecha)) item.Delete();
+                    }
+                }
+                int[] IndexColumnasEliminar = new int[] { 13, 12, 11, 10, 9, 8, 7, 6, 4, 2 };
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    TdatosExcel.Columns.RemoveAt(item);
+                }
+                //Damos Nombres a las Columnas
+                TdatosExcel.Columns[3].ColumnName = "Fecha";
+                TdatosExcel.Columns[2].ColumnName = "Monto";
+                TdatosExcel.Columns[1].ColumnName = "Operacion";
+                TdatosExcel.Columns[0].ColumnName = "Glosa";
+                //TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[0].SetOrdinal(3);
+                TdatosExcel.Columns[1].SetOrdinal(3);
+                TdatosExcel.Columns[3].SetOrdinal(0);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Comentario");
+                TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.AcceptChanges();
+
                 return true;
             }
             return false;
@@ -629,9 +672,67 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
+            else if (pkBanco == 5)
+            {
+                if (TdatosExcel.Columns.Count <= 5)
+                {
+                    msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
+                    return false;
+                }
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString());
+                //
+                string ValCuenta = TdatosExcel.Rows[6][2].ToString();
+                if (!ValCuenta.Contains(nroCuenta))
+                {
+                    msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
+                    return false;
+                }
+                int pos = 11; int i = 0;
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    if (i++ > pos)
+                    {
+                        decimal ValPrueba = 0;
+                        if (decimal.TryParse(item[2].ToString(), out ValPrueba))
+                        {
+                            if (ValPrueba > 0)
+                                item[3] = ValPrueba * -1;
+                        }
+                    }
+                }
+                TdatosExcel.AcceptChanges();
+                //
+                pos = 11; int c = 0;
+                DateTime FechaMin = new DateTime(2200, 1, 1);
+                DateTime FechaMax = new DateTime(1900, 1, 1);
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    if (c++ >= pos)
+                    {
+                        DateTime Fecha;
+                        if (DateTime.TryParse(item[5].ToString(), out Fecha))
+                        {
+                            Fecha = DateTime.Parse(item[5].ToString());
+                            if (Fecha < FechaMin) FechaMin = Fecha;
+                            if (Fecha > FechaMax) FechaMax = Fecha;
+                        }
+                        else item.Delete();
+                    }
+                }
+                DateTime FechaCombo = comboMesAño1.GetFecha();
+                if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
+                {
+                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
+                    return false;
+                }
+                TdatosExcel.AcceptChanges();
+
+                return true;
+            }
             else
             {
-                msgError("Por el Momento se puede Conciliar el Banco BCP - Pichincha - BBVA - ScotiaBank");
+                msgError("Por el Momento se puede Conciliar el Banco BCP - Pichincha - BBVA - ScotiaBank - B.Nación");
                 return false;
             }
             return false;

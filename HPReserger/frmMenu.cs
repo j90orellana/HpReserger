@@ -4797,5 +4797,27 @@ namespace HPReserger
         {
             frmreporteaSeguros = null;
         }
+        ModuloFinanzas.frmReporteConciliacionesFinanzas frmReporteFinanzas;
+        private void reporteConcliliaciónFinanzaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmReporteFinanzas == null)
+            {
+                frmReporteFinanzas = new ModuloFinanzas.frmReporteConciliacionesFinanzas();
+                frmReporteFinanzas.MdiParent = this;
+                frmReporteFinanzas.Icon = ICono;
+                frmReporteFinanzas.FormClosed += new FormClosedEventHandler(CerrarfrmReporteFinanzas);
+                frmReporteFinanzas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmReporteFinanzas.Activate();
+                ValidarVentanas(frmReporteFinanzas);
+            }
+        }
+        private void CerrarfrmReporteFinanzas(object sender, FormClosedEventArgs e)
+        {
+            frmReporteFinanzas = null;
+        }
     }
 }
