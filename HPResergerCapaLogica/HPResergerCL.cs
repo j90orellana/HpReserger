@@ -2631,14 +2631,18 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ActualizarNumeroOperacion(empresa, cuo, nroop, idctabancaria);
         }
         public DataTable ConciliacionDetalle(int @opcion, int @fkid, int @pkid, int @tipo, int? grupo, string @cuo, DateTime @Fecha, DateTime @FechaEjecuta,
-            decimal @monto, string @operacion, string @glosa, string @glosa2, int @idasiento, int @estado, string @seguimiento)
+            decimal @monto, string @operacion, string @glosa, string @glosa2, int @idasiento, int @estado, string @seguimiento, string proveedor)
         {
             return cdOrdenPedido.ConciliacionDetalle(@opcion, @fkid, @pkid, @tipo, grupo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2,
-                @idasiento, @estado, @seguimiento);
+                @idasiento, @estado, @seguimiento, proveedor);
         }
         public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha)
         {
             return cdOrdenPedido.Conciliacion_Busqueda(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
+        }
+        public DataTable ReporteConciliacionFinanzas(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha)
+        {
+            return cdOrdenPedido.ReporteConciliacionFinanzas(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
         }
         public DataTable Conciliacion_Busqueda_ConDetalle(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha)
         {

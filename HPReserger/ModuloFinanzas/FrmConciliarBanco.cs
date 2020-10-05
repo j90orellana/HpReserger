@@ -1265,13 +1265,15 @@ namespace HPReserger.ModuloFinanzas
                         //Tipo  1 para los Cargados por Excel
                         CapaLogica.ConciliacionDetalle(1, PkId, Continuacion ? 0 : (int)item[xpkid.DataPropertyName], 1, null, "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()), FechaEjecucion,
                          decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
-                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 1, item[xComentario.DataPropertyName].ToString());
+                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 1, item[xComentario.DataPropertyName].ToString()
+                            , "");
 
                     }
                     else
                         CapaLogica.ConciliacionDetalle(1, PkId, Continuacion ? 0 : (int)item[xpkid.DataPropertyName], 1, (int)item[xGrupo.DataPropertyName], "", DateTime.Parse(item[xFecha.DataPropertyName].ToString()),
                             FechaEjecucion, decimal.Parse(item[xMonto.DataPropertyName].ToString()), item[xNroOperacion.DataPropertyName].ToString(),
-                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 0, item[xComentario.DataPropertyName].ToString());
+                            item[xGlosa.DataPropertyName].ToString(), item[xGlosa2.DataPropertyName].ToString(), 0, 0, item[xComentario.DataPropertyName].ToString()
+                            , "");
                 }
                 foreach (DataRow item in TdatosSist.Rows)
                 {
@@ -1286,7 +1288,7 @@ namespace HPReserger.ModuloFinanzas
                                 item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                                 item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0
-                                , item[yComentario.DataPropertyName].ToString());
+                                , item[yComentario.DataPropertyName].ToString(), item[xProveedor.DataPropertyName].ToString());
                         }
                         //Esto es cuando ya existe en la base le pasamos cero en el estado para que no altere el contador
                         if ((int)item[xEstado.DataPropertyName] == 0 || (int)item[xEstado.DataPropertyName] == 1)
@@ -1297,7 +1299,7 @@ namespace HPReserger.ModuloFinanzas
                                 //(tipo == 1 ? -1 : 1) *
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                                item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 1
-                               , item[yComentario.DataPropertyName].ToString());
+                               , item[yComentario.DataPropertyName].ToString(), item[xProveedor.DataPropertyName].ToString());
                         }
                     }
                     else
@@ -1310,7 +1312,7 @@ namespace HPReserger.ModuloFinanzas
                                 //(tipo == 1 ? 1 : -1) *
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], 0
-                              , item[yComentario.DataPropertyName].ToString());
+                              , item[yComentario.DataPropertyName].ToString(), item[xProveedor.DataPropertyName].ToString());
                         }
                         if ((int)item[xEstado.DataPropertyName] == -1)
                         {
@@ -1320,7 +1322,7 @@ namespace HPReserger.ModuloFinanzas
                                 //(tipo == 1 ? 1 : -1) * 
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1
-                              , item[yComentario.DataPropertyName].ToString());
+                              , item[yComentario.DataPropertyName].ToString(), item[xProveedor.DataPropertyName].ToString());
                         }
                         if ((int)item[xEstado.DataPropertyName] == 0)
                         {
@@ -1329,7 +1331,7 @@ namespace HPReserger.ModuloFinanzas
                                item[ycuo.DataPropertyName].ToString(), DateTime.Parse(item[yFecha.DataPropertyName].ToString()), FechaEjecucion,
                                 decimal.Parse(item[ymonto.DataPropertyName].ToString()), item[yoperacion.DataPropertyName].ToString(),
                               item[yglosa.DataPropertyName].ToString(), item[yglosa2.DataPropertyName].ToString(), (int)item[yidasiento.DataPropertyName], -1
-                              , item[yComentario.DataPropertyName].ToString());
+                              , item[yComentario.DataPropertyName].ToString(), item[xProveedor.DataPropertyName].ToString());
                         }
                     }
                 }
