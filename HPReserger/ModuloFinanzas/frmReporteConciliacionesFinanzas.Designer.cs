@@ -78,6 +78,7 @@
             this.chkFecha.TabIndex = 212;
             this.chkFecha.Text = "Fecha";
             this.chkFecha.UseVisualStyleBackColor = false;
+            this.chkFecha.CheckedChanged += new System.EventHandler(this.chkFecha_CheckedChanged);
             // 
             // backgroundWorker1
             // 

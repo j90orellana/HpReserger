@@ -61,6 +61,7 @@
             this.conciliaciónBancariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conciliarBancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteConciliacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteConcliliaciónFinanzaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -307,7 +308,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.reporteConcliliaciónFinanzaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -601,7 +601,7 @@
             // 
             this.conciliarBancosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("conciliarBancosToolStripMenuItem.Image")));
             this.conciliarBancosToolStripMenuItem.Name = "conciliarBancosToolStripMenuItem";
-            this.conciliarBancosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.conciliarBancosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.conciliarBancosToolStripMenuItem.Tag = "1009001";
             this.conciliarBancosToolStripMenuItem.Text = "Conciliar Bancos";
             this.conciliarBancosToolStripMenuItem.Click += new System.EventHandler(this.conciliarBancosToolStripMenuItem_Click);
@@ -610,10 +610,19 @@
             // 
             this.reporteConciliacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteConciliacionesToolStripMenuItem.Image")));
             this.reporteConciliacionesToolStripMenuItem.Name = "reporteConciliacionesToolStripMenuItem";
-            this.reporteConciliacionesToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.reporteConciliacionesToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.reporteConciliacionesToolStripMenuItem.Tag = "1009002";
             this.reporteConciliacionesToolStripMenuItem.Text = "Reporte Conciliaciones";
             this.reporteConciliacionesToolStripMenuItem.Click += new System.EventHandler(this.reporteConciliacionesToolStripMenuItem_Click);
+            // 
+            // reporteConcliliaciónFinanzaToolStripMenuItem
+            // 
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteConcliliaciónFinanzaToolStripMenuItem.Image")));
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Name = "reporteConcliliaciónFinanzaToolStripMenuItem";
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Tag = "1009003";
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Text = "Reporte Concliliación Finanzas";
+            this.reporteConcliliaciónFinanzaToolStripMenuItem.Click += new System.EventHandler(this.reporteConcliliaciónFinanzaToolStripMenuItem_Click);
             // 
             // proyectosToolStripMenuItem1
             // 
@@ -2995,14 +3004,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // reporteConcliliaciónFinanzaToolStripMenuItem
-            // 
-            this.reporteConcliliaciónFinanzaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteConcliliaciónFinanzaToolStripMenuItem.Image")));
-            this.reporteConcliliaciónFinanzaToolStripMenuItem.Name = "reporteConcliliaciónFinanzaToolStripMenuItem";
-            this.reporteConcliliaciónFinanzaToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.reporteConcliliaciónFinanzaToolStripMenuItem.Text = "Reporte Concliliación Finanza";
-            this.reporteConcliliaciónFinanzaToolStripMenuItem.Click += new System.EventHandler(this.reporteConcliliaciónFinanzaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

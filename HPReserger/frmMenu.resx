@@ -148,7 +148,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADe
-        XAAAAk1TRnQBSQFMAwEBAAEYAQgBGAEIAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
+        XAAAAk1TRnQBSQFMAwEBAAEoAQgBKAEIAWQBAAFkAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABkAEB
         AgABZAMAAQEBAAEgBgABcQEC/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wBqAAMpAT8DXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
         AcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANcAcwDXAHMA1wBzANc
@@ -730,14 +730,14 @@
   </data>
   <data name="reporteConcliliaciónFinanzaToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAFdSURBVDhPY6AZcHR0LATi3SDs5ORUABXGDhoSEjga40MqGxLD+mA4O8z/DjY2CIPVAvVAtTMw
-        NCZHHO7NS/5PCm5MDj8I1c7A0Joa9RibInwYpAeqnYYG3D65A4yxyaEY0JgUdg2bomuHN/+/emgThjgI
-        NyaGXoVqZ2DI83NaXRrq+b8s1IsoDFIL0gPVDjTA13FVro/jf1w4z9/1f01z1//WGUv+N01Z8L80P/8/
-        SA9UO2EDQJo3nH/+//KrP//PPP/zf/Lqvf9LsjOOQLUTNqBl2uL/++7//n/o4Z//hx/9+b/txpf/dV2T
-        n0K1MzDkeDu1YNMIw02T5//ffe83HG+89OZ/XeeE81DtwKTs4MCS5+3smOvt4IINV7f2TZ2y7tCHHbe+
-        ATW//d86d/Wbut45zlDtxIG6yUs8G2Yu21Q3Y/mciv7ZTul1HXfCskp8odKkg+DM4gC3yMQnABmCjzyL
-        uOmZAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAV1JREFUOE9j
+        oBlwdHQsBOLdIOzk5FQAFcYOGhISOBrjQyobEsP6YDg7zP8ONjYIg9UC9UC1MzA0Jkcc7s1L/k8KbkwO
+        PwjVzsDQmhr1GJsifBikB6qdhgbcPrkDjLHJoRjQmBR2DZuia4c3/796aBOGOAg3JoZehWpnYMjzc1pd
+        Gur5vyzUiygMUgvSA9UONMDXcVWuj+N/XDjP3/V/TXPX/9YZS/43TVnwvzQ//z9ID1Q7YQNAmjecf/7/
+        8qs//888//N/8uq9/0uyM45AtRM2oGXa4v/77v/+f+jhn/+HH/35v+3Gl/91XZOfQrUzMOR4O7Vg0wjD
+        TZPn/9997zccb7z05n9d54TzUO3ApOzgwJLn7eyY6+3ggg1Xt/ZNnbLu0Icdt74BNb/93zp39Zu63jnO
+        UO3EgbrJSzwbZi7bVDdj+ZyK/tlO6XUdd8KySnyh0qSD4MziALfIxCcAGYKPPIu46ZkAAAAASUVORK5C
+        YII=
 </value>
   </data>
   <data name="conciliaciónBancariaToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
