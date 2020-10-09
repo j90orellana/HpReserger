@@ -187,7 +187,7 @@ namespace HPReserger
                         int x = dtgconten.CurrentRow.Index;
                         CapaLogica.Periodos(2, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
                         msgOK("Periodo Abierto!");
-                        CargarDatos();
+                        CargarDatosFiltrado();
                         dtgconten.CurrentCell = dtgconten[empresax.Name, x];
                     }
                 }
@@ -198,7 +198,7 @@ namespace HPReserger
                         int x = dtgconten.CurrentRow.Index;
                         CapaLogica.Periodos(3, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
                         msgOK("Periodo Cerrado!");
-                        CargarDatos();
+                        CargarDatosFiltrado();
                         dtgconten.CurrentCell = dtgconten[empresax.Name, x];
                     }
                 }

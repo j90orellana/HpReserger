@@ -767,7 +767,8 @@ namespace HPReserger
                           (DateTime?)(item[xFechaEmision.DataPropertyName].ToString() == "" ? null : (DateTime?)item[xFechaEmision.DataPropertyName]), (int)item[xId_Comprobante.DataPropertyName],
                           item[xCod_Comprobante.DataPropertyName].ToString(), item[xNum_Comprobante.DataPropertyName].ToString(), item[xNum_Doc.DataPropertyName].ToString(),
                           item[xRazon_Social.DataPropertyName].ToString(), item[xGlosa.DataPropertyName].ToString(), item[xCuenta_Contable.DataPropertyName].ToString(),
-                          item[xdescripcion.DataPropertyName].ToString(), (int)item[xCtaBancaria.DataPropertyName], item[xCuentaBanco.DataPropertyName].ToString(), item[xmoneda.DataPropertyName].ToString(),
+                          item[xdescripcion.DataPropertyName].ToString(), (int)(item[xCtaBancaria.DataPropertyName].ToString()==""?0: item[xCtaBancaria.DataPropertyName]),
+                          item[xCuentaBanco.DataPropertyName].ToString(), item[xmoneda.DataPropertyName].ToString(),
                           (decimal)item[xpen.DataPropertyName], (decimal)item[xusd.DataPropertyName], (decimal)item[xtipocambio.DataPropertyName]);
                         x++;
                     }

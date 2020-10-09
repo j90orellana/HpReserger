@@ -627,7 +627,7 @@ namespace HPReserger.ModuloFinanzas
                     return false;
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
-                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[13][8].ToString()) + decimal.Parse(TdatosExcel.Rows[13][5].ToString()) - decimal.Parse(TdatosExcel.Rows[13][6].ToString());///////////////////////
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[13][8].ToString());// + decimal.Parse(TdatosExcel.Rows[13][5].ToString()) - decimal.Parse(TdatosExcel.Rows[13][6].ToString());///////////////////////
                 //EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
                 string ValCuenta = TdatosExcel.Rows[4][2].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
