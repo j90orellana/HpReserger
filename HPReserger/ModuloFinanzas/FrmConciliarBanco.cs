@@ -237,7 +237,7 @@ namespace HPReserger.ModuloFinanzas
             SaldoContable = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(comboMesAño1.FechaInicioMes.Year, 1, 1), comboMesAño1.FechaFinMes, NroCuenta, pkMoneda).Rows[0]["monto"];
             SaldoContableInicial = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(FechaAux.Year, 1, 1), FechaAux, NroCuenta, pkMoneda).Rows[0]["monto"];
 
-            if (SaldoContable == 0) msgError("No hay Movimientos Contables");
+            if (SaldoContableInicial == 0) msgError("No hay Movimientos Contables");
             TdatosSist = CapaLogica.MovimientoBancariosxEmpresa(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
         }
         private void BuscanEnSistemMovimientosExcel()
@@ -440,20 +440,21 @@ namespace HPReserger.ModuloFinanzas
                         if (!DateTime.TryParse(item[5].ToString(), out Fecha)) item.Delete();
                     }
                 }
-                int[] IndexColumnasEliminar = new int[] { 13, 12, 11, 10, 9, 8, 7, 6, 4, 2 };
+                int[] IndexColumnasEliminar = new int[] { 13, 12, 11, 10, 9, 8, 7, 6, 2, 0 };
                 foreach (int item in IndexColumnasEliminar)
                 {
                     TdatosExcel.Columns.RemoveAt(item);
                 }
+                //TdatosExcel.AcceptChanges();
                 //Damos Nombres a las Columnas
                 TdatosExcel.Columns[3].ColumnName = "Fecha";
-                TdatosExcel.Columns[2].ColumnName = "Monto";
-                TdatosExcel.Columns[1].ColumnName = "Operacion";
-                TdatosExcel.Columns[0].ColumnName = "Glosa";
+                TdatosExcel.Columns[1].ColumnName = "Monto";
+                TdatosExcel.Columns[0].ColumnName = "Operacion";
+                TdatosExcel.Columns[2].ColumnName = "Glosa";
                 //TdatosExcel.Columns[4].ColumnName = "Glosa2";
-                TdatosExcel.Columns[0].SetOrdinal(3);
-                TdatosExcel.Columns[1].SetOrdinal(3);
+                TdatosExcel.Columns[1].SetOrdinal(0);
                 TdatosExcel.Columns[3].SetOrdinal(0);
+                //TdatosExcel.Columns[3].SetOrdinal(0);
                 //Agregamos la Columnas
                 DataColumn ColOk = new DataColumn("ok", typeof(int));
                 ColOk.DefaultValue = 0;
@@ -672,15 +673,15 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (pkBanco == 5)
+            else if (pkBanco == 5)// Banco de la Nacion
             {
                 if (TdatosExcel.Columns.Count <= 5)
                 {
                     msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
                     return false;
                 }
-                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
-                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString());
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString());
                 //
                 string ValCuenta = TdatosExcel.Rows[6][2].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
@@ -691,7 +692,7 @@ namespace HPReserger.ModuloFinanzas
                 int pos = 11; int i = 0;
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
-                    if (i++ > pos)
+                    if (i++ >= pos)
                     {
                         decimal ValPrueba = 0;
                         if (decimal.TryParse(item[2].ToString(), out ValPrueba))

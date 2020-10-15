@@ -170,8 +170,13 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                             if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
-                        //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"1.1 LIBRO CAJA Y BANCOS {EmpresaValor}.xlsx";
+                        //Asignacion de Nombre y Eliminacion del Excel Antiguo 
+                        string Cadenax = "";
+                        if (cboperiodode.FechaInicioMes.Month == FechaFinal.Month && cboperiodode.FechaInicioMes.Year == FechaFinal.Year)
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy");
+                        else
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy") + "-" + FechaFinal.ToString("MMMyyyy");
+                        string NameFile = valor + $"{Cadenax.ToUpper()} 1.1 LIBRO CAJA Y BANCOS {EmpresaValor}.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")

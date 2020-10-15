@@ -125,8 +125,14 @@ namespace HPReserger
                             if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
-                        //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"8.3 REGISTRO DE COMPRAS SIMPLIFICADO - {EmpresaValor}.xlsx";
+                        //Asignacion de Nombre y Eliminacion del Excel Antiguo 
+                        string Cadenax = "";
+                        if (cboperiodode.FechaInicioMes.Month == FechaFin.Month && cboperiodode.FechaInicioMes.Year == FechaFin.Year)
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy");
+                        else
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy") + "-" + FechaFin.ToString("MMMyyyy");
+                        Cadenax = Cadenax.ToUpper();
+                        string NameFile = valor + $"{Cadenax} 8.3 REGISTRO DE COMPRAS SIMPLIFICADO - {EmpresaValor}.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")

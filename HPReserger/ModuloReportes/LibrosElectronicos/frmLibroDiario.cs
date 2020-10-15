@@ -55,7 +55,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         {
             CerrarPanelTxt();
             Cursor = Cursors.WaitCursor;
-            if(chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
+            if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
             DateTime FechaAuxiliar;
             string ListadoEmpresas = "";
             if (cboperiodode.FechaInicioMes > cboperiodohasta.FechaInicioMes)
@@ -363,8 +363,14 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                             if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
-                        //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"LIBRO DIARIO {EmpresaValor}.xlsx";
+                        //Asignacion de Nombre y Eliminacion del Excel Antiguo 
+                        string Cadenax = "";
+                        if (cboperiodode.FechaInicioMes.Month == cboperiodohasta.FechaFinMes.Month && cboperiodode.FechaInicioMes.Year == cboperiodohasta.FechaInicioMes.Year)
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy");
+                        else
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy") + "-" + cboperiodohasta.FechaInicioMes.ToString("MMMyyyy");
+                        Cadenax = Cadenax.ToUpper();
+                        string NameFile = valor + $"{Cadenax} LIBRO DIARIO {EmpresaValor}.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")
@@ -465,8 +471,8 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         TablaResult.Columns.RemoveAt(4);
                                     }
                                     else
-                                        foreach (DataColumn items in TablaResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
-
+                                        foreach (DataGridViewColumn items in dtgconten.Columns)
+                                            TablaResult.Columns[items.DataPropertyName].ColumnName = items.HeaderText;                                  
                                     if (Auditoria)
                                     {
                                         DataRow nueva = TablaResult.NewRow();
@@ -480,7 +486,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     /////
                                     ////Anterior               
                                     //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { 2, 5, 3, 6, 7, 8, 9 }, "");
+                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { 2, 5, 3, 6, 7, 8, 9}, "");
                                 }
                             }
                         }

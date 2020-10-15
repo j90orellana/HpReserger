@@ -128,11 +128,18 @@ namespace HPReserger
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
                         string NameFile;
-                        //ELiminamos el Excel Antiguo 
-                        if (!chksubtotales.Checked)
-                            NameFile = valor + $"REGISTRO DE COMPRAS {EmpresaValor}.xlsx";
+                        //Asignacion de Nombre y Eliminacion del Excel Antiguo 
+                        string Cadenax = "";
+                        if (cboperiodode.FechaInicioMes.Month == FechaFin.Month && cboperiodode.FechaInicioMes.Year == FechaFin.Year)
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy");
                         else
-                            NameFile = valor + $"REGISTRO DE COMPRAS {EmpresaValor} - Totales.xlsx";
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy") + "-" + FechaFin.ToString("MMMyyyy");
+                        Cadenax = Cadenax.ToUpper();
+                      
+                        if (!chksubtotales.Checked)
+                            NameFile = valor + $"{ Cadenax} REGISTRO DE COMPRAS {EmpresaValor}.xlsx";
+                        else
+                            NameFile = valor + $"{Cadenax} REGISTRO DE COMPRAS {EmpresaValor} - Totales.xlsx";
 
                         File.Delete(NameFile);
                         File.Exists(NameFile);

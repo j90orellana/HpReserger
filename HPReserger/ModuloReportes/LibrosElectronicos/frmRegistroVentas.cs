@@ -134,17 +134,24 @@ namespace HPReserger
                             if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
                                 Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                         }
-                        //ELiminamos el Excel Antiguo
+                        //Asignacion de Nombre y Eliminacion del Excel Antiguo 
+                        string Cadenax = "";
+                        if (cboperiodode.FechaInicioMes.Month == FechaFin.Month && cboperiodode.FechaInicioMes.Year == FechaFin.Year)
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy");
+                        else
+                            Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy") + "-" + FechaFin.ToString("MMMyyyy");
+                        Cadenax = Cadenax.ToUpper();
+
                         string NameFile;
                         if (chksubtotales.Checked)
                         {
-                            NameFile = valor + $"REGISTRO DE VENTAS {EmpresaValor} - Totales.xlsx";
+                            NameFile = valor + $"{Cadenax} REGISTRO DE VENTAS {EmpresaValor} - Totales.xlsx";
                             File.Delete(NameFile);
                             File.Exists(NameFile);
                         }
                         else
                         {
-                            NameFile = valor + $"REGISTRO DE VENTAS {EmpresaValor}.xlsx";
+                            NameFile = valor + $"{Cadenax}REGISTRO DE VENTAS {EmpresaValor}.xlsx";
                             File.Delete(NameFile);
                             File.Exists(NameFile);
                         }

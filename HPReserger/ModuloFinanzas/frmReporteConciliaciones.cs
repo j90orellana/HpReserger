@@ -123,7 +123,7 @@ namespace HPReserger.ModuloFinanzas
         {
             if (dtgconten.RowCount >= 0)
             {
-                DataExcel = CapaLogica.Conciliacion_Busqueda_ConDetalle(txtbusEmpresa.TextValido(), txtbusbanco.TextValido(), txtbusnrocuenta.TextValido(), FechaInicial, FechaFinal,chkFecha.Checked?1:0);
+                DataExcel = CapaLogica.Conciliacion_Busqueda_ConDetalle(txtbusEmpresa.TextValido(), txtbusbanco.TextValido(), txtbusnrocuenta.TextValido(), FechaInicial, FechaFinal, chkFecha.Checked ? 1 : 0);
                 if (DataExcel.Rows.Count == 0) msgError("No hay Datos para Exportar");
                 ////
                 backgroundWorker1.WorkerSupportsCancellation = true;
