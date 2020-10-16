@@ -5036,6 +5036,18 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, FechaInicial, FechaFinal };
             return bd.DataTableFromProcedure("usp_FormatoCajaBanco1_1", parametros, valores, null);
         }
+        public DataTable FormatoCajaBancos1_1Auditoria(string empresa, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { empresa, FechaInicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_FormatoCajaBancos1_1Auditoria", parametros, valores, null);
+        }
+        public DataTable FormatoCajaBanco1_2Auditoria(string empresa, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal" };
+            object[] valores = { empresa, FechaInicial, FechaFinal };
+            return bd.DataTableFromProcedure("usp_FormatoCajaBanco1_2Auditoria", parametros, valores, null);
+        }
         public DataTable FormatoCajaBanco1_1Masivo(string empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
         {
             string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal", "@cuentas" };

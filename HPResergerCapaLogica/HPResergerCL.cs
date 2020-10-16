@@ -2734,6 +2734,14 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FormatoCajaBanco1_1(empresa, FechaInicial, FechaFinal);
         }
+        public DataTable FormatoCajaBancos1_1Auditoria(string empresa, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            return cdOrdenPedido.FormatoCajaBancos1_1Auditoria(empresa, FechaInicial, FechaFinal);
+        }
+        public DataTable FormatoCajaBanco1_2Auditoria(string empresa, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            return cdOrdenPedido.FormatoCajaBanco1_2Auditoria(empresa, FechaInicial, FechaFinal);
+        }
         public DataTable FormatoCajaBanco1_1Masivo(string empresa, DateTime FechaInicial, DateTime FechaFinal, string cuentas)
         {
             return cdOrdenPedido.FormatoCajaBanco1_1Masivo(empresa, FechaInicial, FechaFinal, cuentas);
