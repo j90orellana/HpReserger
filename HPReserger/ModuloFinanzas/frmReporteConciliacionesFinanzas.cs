@@ -23,13 +23,20 @@ namespace HPReserger.ModuloFinanzas
         private void frmReporteConciliacionesFinanzas_Load(object sender, EventArgs e)
         {
             LimpiarBotones();
+            CargarEmpresa();
             Cargado = true;
             FiltrarDatosConciliaciones();
+        }
+        public void CargarEmpresa()
+        {
+            cboempresa.ValueMember = "codigo";
+            cboempresa.DisplayMember = "descripcion";
+            cboempresa.DataSource = CapaLogica.getCargoTipoContratacion("Id_empresa", "empresa", "tbl_empresa");
         }
         private void LimpiarBotones()
         {
             txtbusbanco.CargarTextoporDefecto();
-            txtbusEmpresa.CargarTextoporDefecto();
+            //txtbusEmpresa.CargarTextoporDefecto();
             txtbusnrocuenta.CargarTextoporDefecto();
             cbofechaini.Fecha(new DateTime(DateTime.Now.Year, 1, 1));
             cbofechafin.Fecha(new DateTime(DateTime.Now.Year, 12, 31));
@@ -42,7 +49,8 @@ namespace HPReserger.ModuloFinanzas
         DateTime FechaFinal;
         private void FiltrarDatosConciliaciones()
         {
-            if (!txtbusbanco.EstaLLeno() && !txtbusEmpresa.EstaLLeno() && !txtbusnrocuenta.EstaLLeno() && !chkFecha.Checked)
+            if (Configuraciones.ValidarSQLInyect(txtbusbanco, txtbusnrocuenta)) { msgError("Se Encontro un ingreso de dato Malicioso"); return; };
+            if (!txtbusbanco.EstaLLeno() && !txtbusnrocuenta.EstaLLeno() && !chkFecha.Checked)
             {
                 if (dtgconten.DataSource != null) dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
                 lblRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
@@ -59,7 +67,7 @@ namespace HPReserger.ModuloFinanzas
                     FechaFinal = FechaInicial;
                     FechaInicial = Fechaaux;
                 }
-                dtgconten.DataSource = CapaLogica.Conciliacion_Busqueda(txtbusEmpresa.TextValido(), txtbusbanco.TextValido(), txtbusnrocuenta.TextValido(),
+                dtgconten.DataSource = CapaLogica.Conciliacion_Busqueda(cboempresa.Text, txtbusbanco.TextValido(), txtbusnrocuenta.TextValido(),
                     FechaInicial, FechaFinal, chkFecha.Checked ? 1 : 0);
                 lblRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
             }
@@ -98,7 +106,7 @@ namespace HPReserger.ModuloFinanzas
             if (Frmreporte == null)
             {
                 Frmreporte = new frmConciliacionReportepdf();
-                Frmreporte.empresa = txtbusEmpresa.TextValido();
+                //Frmreporte.empresa = txtbusEmpresa.TextValido();
                 Frmreporte.nrocuenta = txtbusnrocuenta.TextValido();
                 Frmreporte.banco = txtbusbanco.TextValido();
                 Frmreporte.fechaini = FechaInicial;
@@ -121,13 +129,14 @@ namespace HPReserger.ModuloFinanzas
         DataTable DataExcel;
         private void btnExcel_Click(object sender, EventArgs e)
         {
+           if( cboempresa.SelectedValue ==null ) { msgError("Selecione una Empresa"); return; }
             if (dtgconten.RowCount >= 0)
             {
-                DataExcel = CapaLogica.ReporteConciliacionFinanzas(txtbusEmpresa.TextValido(), txtbusbanco.TextValido(), txtbusnrocuenta.TextValido(), FechaInicial, FechaFinal, chkFecha.Checked ? 1 : 0);
-                if (DataExcel.Rows.Count == 0) msgError("No hay Datos para Exportar");
+                DataExcel = CapaLogica.ReporteConciliacionFinanzas((int)cboempresa.SelectedValue, txtbusbanco.TextValido(), txtbusnrocuenta.TextValido(), FechaInicial, FechaFinal, chkFecha.Checked ? 1 : 0);
+              //  if (DataExcel.Rows.Count == 0) msgError("No hay Datos para Exportar");
                 ////
                 backgroundWorker1.WorkerSupportsCancellation = true;
-                if (dtgconten.RowCount > 0)
+                if (DataExcel.Rows.Count > 0)
                 {
                     if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                     {
@@ -142,10 +151,10 @@ namespace HPReserger.ModuloFinanzas
                 }
                 else
                 {
-                    msg("No hay Datos que Exportar");
+                    msgError("No hay Datos que Exportar");
                 }
             }
-            else msgError("No hay datos para Exportar");
+            //else msgError("No hay datos para Exportar");
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -171,10 +180,12 @@ namespace HPReserger.ModuloFinanzas
         Color Fore = Color.Black;
         Color ForeAmarillo = Color.FromArgb(228, 255, 0);
         Color ForeBlanco = Color.White;
+        private int idEmpresa;
+
         //
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (dtgconten.RowCount > 0 && DataExcel.Rows.Count > 0)
+            if ( DataExcel.Rows.Count > 0)
             {
                 List<EmpresaFecha> ListadoEmpresaFechas = new List<EmpresaFecha>();
                 List<String> ListadoEmpresas = new List<string>();
@@ -358,7 +369,7 @@ namespace HPReserger.ModuloFinanzas
                                 foreach (DataRow item in TablaResult.Rows)
                                 {
                                     if ((int)item["tipo"] == 2 && (int)item["grupo"] == 0)
-                                   
+
                                     {
                                         pos++;
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"B{15 + i}", $"B{15 + i}", ((DateTime)item["FECHAPAGO"]).ToString("dd/MM/yyyy"), 10, false, true, HPResergerFunciones.Utilitarios.Alineado.derecha, 1 % 2 == 1 ? ForeBlanco : BackGrilla, Fore, Configuraciones.FuenteReportesTahoma10, pos % 2 == 1 ? false : true));
@@ -376,7 +387,7 @@ namespace HPReserger.ModuloFinanzas
                                     }
                                 }
                                 //if (SumatoriaT1Abonos + SumatoriaT1Cargos != 0)
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{14 + i - pos}", $"I{14 + i - pos }", SumatoriaT1Abonos, 10, false, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
+                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{14 + i - pos}", $"I{14 + i - pos }", SumatoriaT1Abonos, 10, false, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
                                 //Detalle de OPERACIONES PENDIENTES
                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"D{16 + i}", $"D{16 + i }", "Operaciones Pendientes :", 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, ForeBlanco, Configuraciones.FuenteReportesTahoma10, true));
                                 //Detalle de los Movimientos Bancarios no Registrados
@@ -401,12 +412,12 @@ namespace HPReserger.ModuloFinanzas
                                     }
                                 }
                                 //if (SumatoriaT1Abonos + SumatoriaT1Cargos != 0)
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{16 + i - pos}", $"I{16 + i - pos }", SumatoriaT1Cargos, 10, false, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
+                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{16 + i - pos}", $"I{16 + i - pos }", SumatoriaT1Cargos, 10, false, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
 
                                 //Fila de los Totales
                                 //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{15 + i }", $"E{15 + i}", (SaldoContable + SumatoriaT1 + SumatoriaT2Abonos), 10, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, ForeAmarillo, Configuraciones.FuenteReportesTahoma10, true));
                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{18 + i}", $"E{18 + i}", "Saldo Según Banco: ", 10, false, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
-                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{18 + i}", $"I{18 + i}", SaldoContableAux , 10, false, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
+                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{18 + i}", $"I{18 + i}", SaldoContableAux, 10, false, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
 
                                 //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{17 + i}", $"C{17 + i}", "CONCILIADO", 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, ForeBlanco, Configuraciones.FuenteReportesTahoma10, true));
                                 //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{17 + i}", $"E{17 + i}", (SaldoContable + SumatoriaT1 + SumatoriaT2Abonos - EstadoCuenta), 10, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
@@ -451,6 +462,20 @@ namespace HPReserger.ModuloFinanzas
             FiltrarDatosConciliaciones();
 
         }
+        private void cboempresa_Click(object sender, EventArgs e)
+        {
+            DataTable Tablita = CapaLogica.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
+            if (cboempresa.Items.Count != Tablita.Rows.Count)
+            {
+                string cadena = cboempresa.Text;
+                cboempresa.DataSource = Tablita;
+                cboempresa.Text = cadena;
+            }
+        }
 
+        private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarDatosConciliaciones();
+        }
     }
 }
