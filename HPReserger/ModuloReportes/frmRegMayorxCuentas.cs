@@ -228,7 +228,7 @@ namespace HPReserger
                                     Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                             }
                             //ELiminamos el Excel Antiguo
-                            string NameFile = valor + $"LIBRO MAYOR {EmpresaValor}.xlsx";
+                            string NameFile = valor + $"LIBRO MAYOR {FechaInicio.ToString("MMMyyyy").ToUpper()}-{FechaFin.ToString("MMMyyyy").ToUpper()} {EmpresaValor}.xlsx";
                             File.Delete(NameFile);
                             File.Exists(NameFile);
                             if (item.ToString() != "TODAS")
@@ -296,7 +296,7 @@ namespace HPReserger
                                         TablaResult.Columns["PEN"].ColumnName = "MOV. DEUDOR";
                                         TablaResult.Columns["USD"].ColumnName = "MOV. ACREEDOR";
                                         //
-                                        string cuo = "", Cuenta = "";
+                                        string cuo = "", Cuenta = "", CuentaFila = "";
                                         SumDebe = 0; SumHaber = 0;
                                         decimal valdebe = 0, valhaber = 0;
                                         decimal Sumvaldebe = 0, Sumvalhaber = 0;
@@ -314,11 +314,11 @@ namespace HPReserger
                                             if (fila["descripcion"].ToString() != Cuenta && i > 0)
                                             {
                                                 DataRow nueva11 = TablaResult.NewRow();
-                                                nueva11["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"TOTAL CUENTA: {fila["Cuenta_Contable"].ToString()}";
+                                                nueva11["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"TOTAL CUENTA: {Cuenta}";
                                                 nueva11["mov. deudor"] = Sumvaldebe;
                                                 nueva11["mov. acreedor"] = Sumvalhaber;
                                                 DataRow nueva12 = TablaResult.NewRow();
-                                                nueva12["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"SALDO CUENTA: {fila["Cuenta_Contable"].ToString()}";
+                                                nueva12["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"SALDO CUENTA: {Cuenta}";
                                                 nueva12["mov. deudor"] = Sumvaldebe - Sumvalhaber > 0 ? Sumvaldebe - Sumvalhaber : 0;
                                                 nueva12["mov. acreedor"] = Sumvaldebe - Sumvalhaber < 0 ? -Sumvaldebe + Sumvalhaber : 0;
                                                 TablaResult.Rows.InsertAt(nueva12, i);
@@ -327,31 +327,46 @@ namespace HPReserger
                                                 i++;
                                                 Sumvaldebe = Sumvalhaber = 0;
                                             }
-                                            //Para la Ultima Fila
+                                            //Cabecera de las Cuentas
+                                            if (fila["descripcion"].ToString() != Cuenta)
+                                            {
+                                                DataRow FiladeCuentas = TablaResult.NewRow();
+                                                FiladeCuentas["Nº CORRELATIVO"] = fila["descripcion"].ToString();
+                                                DataRow FilaSaldoInicial = TablaResult.NewRow();
+                                                FilaSaldoInicial["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = "SALDO INICIAL";
+                                                //
+                                                decimal MontoInicial = 0;
+                                                MontoInicial = (decimal)fila["saldoinicial"];
+                                                FilaSaldoInicial["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = "SALDO INICIAL";
+                                                FilaSaldoInicial["MOV. DEUDOR"] = MontoInicial > 0 ? Math.Abs(MontoInicial) : 0;
+                                                FilaSaldoInicial["MOV. ACREEDOR"] = MontoInicial < 0 ? Math.Abs(MontoInicial) : 0;
+                                                //
+                                                TablaResult.Rows.InsertAt(FilaSaldoInicial, i);
+                                                TablaResult.Rows.InsertAt(FiladeCuentas, i);
+                                                i++;
+                                                i++;
+                                                Sumvaldebe = MontoInicial > 0 ? Math.Abs(MontoInicial) : 0;
+                                                Sumvalhaber = MontoInicial < 0 ? Math.Abs(MontoInicial) : 0;
+                                                SumDebe += Sumvaldebe;
+                                                SumHaber += Sumvalhaber;
+                                                Cuenta = fila["descripcion"].ToString();
+                                            }
+                                            //para la fila final
                                             if (i == TablaResult.Rows.Count - 1)
                                             {
                                                 Sumvaldebe += valdebe;
                                                 Sumvalhaber += valhaber;
                                                 DataRow nueva11 = TablaResult.NewRow();
-                                                nueva11["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"TOTAL CUENTA: {fila["Cuenta_Contable"].ToString()}";
+                                                nueva11["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"TOTAL CUENTA: {Cuenta}";
                                                 nueva11["mov. deudor"] = Sumvaldebe;
                                                 nueva11["mov. acreedor"] = Sumvalhaber;
                                                 DataRow nueva12 = TablaResult.NewRow();
-                                                nueva12["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"SALDO CUENTA: {fila["Cuenta_Contable"].ToString()}";
+                                                nueva12["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"SALDO CUENTA: {Cuenta}";
                                                 nueva12["mov. deudor"] = Sumvaldebe - Sumvalhaber > 0 ? Sumvaldebe - Sumvalhaber : 0;
                                                 nueva12["mov. acreedor"] = Sumvaldebe - Sumvalhaber < 0 ? -Sumvaldebe + Sumvalhaber : 0;
                                                 TablaResult.Rows.InsertAt(nueva12, i + 1);
                                                 TablaResult.Rows.InsertAt(nueva11, i + 1);
                                                 i++;
-                                                i++;
-                                                Sumvaldebe = Sumvalhaber = 0;
-                                            }
-                                            //Cabecera de las Cuentas
-                                            if (fila["descripcion"].ToString() != Cuenta)
-                                            {
-                                                DataRow nueva = TablaResult.NewRow();
-                                                nueva["Nº CORRELATIVO"] = fila["descripcion"].ToString();
-                                                TablaResult.Rows.InsertAt(nueva, i);
                                                 i++;
                                                 Sumvaldebe = Sumvalhaber = 0;
                                             }
@@ -369,6 +384,9 @@ namespace HPReserger
                                         nueva1["MOV. DEUDOR"] = SumDebe;
                                         nueva1["MOV. acreedor"] = SumHaber;
                                         TablaResult.Rows.Add(nueva2);
+
+                                        //removemos la columna de saldos iniciales
+                                        TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
                                         ///
                                         ////Anterior               
                                         //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
@@ -405,6 +423,7 @@ namespace HPReserger
                     DataTable TableResult = new DataTable();
                     DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
                     TableResult = dt.ToTable();
+                    TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
                     foreach (DataColumn item in TableResult.Columns) item.ColumnName = dtgconten.Columns["x" + item.ColumnName].HeaderText;
                     //MACRO
                     int PosInicialGrilla = 4;
@@ -417,7 +436,7 @@ namespace HPReserger
                         string Carpeta = folderBrowserDialog1.SelectedPath;
                         string valor = Carpeta + @"\";
                         //ELiminamos el Excel Antiguo
-                        string NameFile = valor + $"6.2 LIBRO MAYOR.xlsx";
+                        string NameFile = valor + $"6.2 {FechaInicio.ToString("MMMyyyy").ToUpper()}-{FechaFin.ToString("MMMyyyy").ToUpper()} LIBRO MAYOR.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TableResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, 1, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");

@@ -129,11 +129,11 @@ namespace HPReserger.ModuloFinanzas
         DataTable DataExcel;
         private void btnExcel_Click(object sender, EventArgs e)
         {
-           if( cboempresa.SelectedValue ==null ) { msgError("Selecione una Empresa"); return; }
+            if (cboempresa.SelectedValue == null) { msgError("Selecione una Empresa"); return; }
             if (dtgconten.RowCount >= 0)
             {
                 DataExcel = CapaLogica.ReporteConciliacionFinanzas((int)cboempresa.SelectedValue, txtbusbanco.TextValido(), txtbusnrocuenta.TextValido(), FechaInicial, FechaFinal, chkFecha.Checked ? 1 : 0);
-              //  if (DataExcel.Rows.Count == 0) msgError("No hay Datos para Exportar");
+                //  if (DataExcel.Rows.Count == 0) msgError("No hay Datos para Exportar");
                 ////
                 backgroundWorker1.WorkerSupportsCancellation = true;
                 if (DataExcel.Rows.Count > 0)
@@ -180,12 +180,10 @@ namespace HPReserger.ModuloFinanzas
         Color Fore = Color.Black;
         Color ForeAmarillo = Color.FromArgb(228, 255, 0);
         Color ForeBlanco = Color.White;
-        private int idEmpresa;
-
         //
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            if ( DataExcel.Rows.Count > 0)
+            if (DataExcel.Rows.Count > 0)
             {
                 List<EmpresaFecha> ListadoEmpresaFechas = new List<EmpresaFecha>();
                 List<String> ListadoEmpresas = new List<string>();
@@ -227,7 +225,7 @@ namespace HPReserger.ModuloFinanzas
                         Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                     //}
                     //ELiminamos el Excel Antiguo
-                    string NameFile = valor + $"CB-Fi - {EmpresaValor}.xlsx";
+                    string NameFile = valor + $"CB-Fi {FechaInicial.ToString("MMM-yyyy").ToUpper()}-{FechaFinal.ToString("MMM-yyyy").ToUpper()} - {EmpresaValor}.xlsx";
                     File.Delete(NameFile);
                     File.Exists(NameFile);
                     //POR PERIODOS

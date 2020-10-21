@@ -210,7 +210,7 @@ namespace HPReserger.ModuloFinanzas
                         Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                     //}
                     //ELiminamos el Excel Antiguo
-                    string NameFile = valor + $"CB - {EmpresaValor}.xlsx";
+                    string NameFile = valor + $"CB {FechaInicial.ToString("MMM-yyyy").ToUpper()}-{FechaFinal.ToString("MMM-yyyy").ToUpper()}- {EmpresaValor}.xlsx";
                     File.Delete(NameFile);
                     File.Exists(NameFile);
                     //POR PERIODOS

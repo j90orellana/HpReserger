@@ -33,6 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,9 +43,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,24 +60,19 @@
             this.btnCargar = new HpResergerUserControls.ButtonPer();
             this.btnPaso2 = new HpResergerUserControls.ButtonPer();
             this.dtgContenExcel = new HpResergerUserControls.Dtgconten();
+            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNroOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xGlosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yproveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRegistroExcel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dtgContenSistema = new HpResergerUserControls.Dtgconten();
-            this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xUpdate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ygrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ycuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ymonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yoperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yglosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ypkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblexcel = new System.Windows.Forms.Label();
             this.lblSistema = new System.Windows.Forms.Label();
             this.lblTotales = new System.Windows.Forms.Label();
@@ -97,16 +92,22 @@
             this.lblEstadoCuenta = new System.Windows.Forms.Label();
             this.lblsaldoFinal = new System.Windows.Forms.Label();
             this.btnActualizarExcel = new HpResergerUserControls.ButtonPer();
-            this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNroOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xGlosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yproveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xUpdate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ygrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ycuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ymonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yoperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yglosa2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ypkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNumComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenExcel)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenSistema)).BeginInit();
@@ -401,6 +402,112 @@
             this.dtgContenExcel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_CellValueChanged);
             this.dtgContenExcel.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_RowEnter);
             // 
+            // xok
+            // 
+            this.xok.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xok.DataPropertyName = "ok";
+            this.xok.FalseValue = "0";
+            this.xok.HeaderText = "Ok";
+            this.xok.MinimumWidth = 25;
+            this.xok.Name = "xok";
+            this.xok.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.xok.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xok.TrueValue = "1";
+            this.xok.Width = 25;
+            // 
+            // xGrupo
+            // 
+            this.xGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xGrupo.DataPropertyName = "index";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xGrupo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xGrupo.HeaderText = "Grupo";
+            this.xGrupo.MinimumWidth = 40;
+            this.xGrupo.Name = "xGrupo";
+            this.xGrupo.ReadOnly = true;
+            this.xGrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xGrupo.Width = 40;
+            // 
+            // xFecha
+            // 
+            this.xFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xFecha.DataPropertyName = "Fecha";
+            dataGridViewCellStyle4.Format = "d";
+            this.xFecha.DefaultCellStyle = dataGridViewCellStyle4;
+            this.xFecha.HeaderText = "Fecha";
+            this.xFecha.MinimumWidth = 50;
+            this.xFecha.Name = "xFecha";
+            this.xFecha.ReadOnly = true;
+            this.xFecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xFecha.Width = 50;
+            // 
+            // xMonto
+            // 
+            this.xMonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xMonto.DataPropertyName = "Monto";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.xMonto.DefaultCellStyle = dataGridViewCellStyle5;
+            this.xMonto.HeaderText = "Monto";
+            this.xMonto.MinimumWidth = 50;
+            this.xMonto.Name = "xMonto";
+            this.xMonto.ReadOnly = true;
+            this.xMonto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xMonto.Width = 50;
+            // 
+            // xNroOperacion
+            // 
+            this.xNroOperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xNroOperacion.DataPropertyName = "Operacion";
+            this.xNroOperacion.HeaderText = "Operacion";
+            this.xNroOperacion.MinimumWidth = 60;
+            this.xNroOperacion.Name = "xNroOperacion";
+            this.xNroOperacion.ReadOnly = true;
+            this.xNroOperacion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.xNroOperacion.Width = 60;
+            // 
+            // xGlosa
+            // 
+            this.xGlosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xGlosa.DataPropertyName = "Glosa";
+            this.xGlosa.HeaderText = "Glosa 1";
+            this.xGlosa.MinimumWidth = 80;
+            this.xGlosa.Name = "xGlosa";
+            this.xGlosa.ReadOnly = true;
+            this.xGlosa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // xGlosa2
+            // 
+            this.xGlosa2.DataPropertyName = "glosa2";
+            this.xGlosa2.HeaderText = "Glosa 2";
+            this.xGlosa2.MinimumWidth = 50;
+            this.xGlosa2.Name = "xGlosa2";
+            this.xGlosa2.ReadOnly = true;
+            this.xGlosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // xpkid
+            // 
+            this.xpkid.DataPropertyName = "pkid";
+            this.xpkid.HeaderText = "pkid";
+            this.xpkid.Name = "xpkid";
+            this.xpkid.Visible = false;
+            // 
+            // xComentario
+            // 
+            this.xComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xComentario.DataPropertyName = "comentario";
+            this.xComentario.HeaderText = "Comentario";
+            this.xComentario.Name = "xComentario";
+            this.xComentario.ReadOnly = true;
+            this.xComentario.Width = 81;
+            // 
+            // yproveedor
+            // 
+            this.yproveedor.DataPropertyName = "proveedor";
+            this.yproveedor.HeaderText = "proveedor";
+            this.yproveedor.Name = "yproveedor";
+            this.yproveedor.Visible = false;
+            // 
             // lblRegistroExcel
             // 
             this.lblRegistroExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -433,7 +540,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1041, 406);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1041, 386);
             this.tableLayoutPanel1.TabIndex = 190;
             // 
             // dtgContenSistema
@@ -475,7 +582,8 @@
             this.xEstado,
             this.ypkid,
             this.yComentario,
-            this.xProveedor});
+            this.xProveedor,
+            this.xNumComprobante});
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -508,6 +616,259 @@
             this.dtgContenSistema.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgContenSistema_CellFormatting);
             this.dtgContenSistema.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellValueChanged);
             this.dtgContenSistema.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_RowEnter);
+            // 
+            // lblexcel
+            // 
+            this.lblexcel.AutoSize = true;
+            this.lblexcel.BackColor = System.Drawing.Color.Transparent;
+            this.lblexcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblexcel.Location = new System.Drawing.Point(3, 0);
+            this.lblexcel.Name = "lblexcel";
+            this.lblexcel.Size = new System.Drawing.Size(266, 13);
+            this.lblexcel.TabIndex = 43;
+            this.lblexcel.Text = "Datos de Movimiento Bancario del Excel Cargado.";
+            // 
+            // lblSistema
+            // 
+            this.lblSistema.AutoSize = true;
+            this.lblSistema.BackColor = System.Drawing.Color.Transparent;
+            this.lblSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblSistema.Location = new System.Drawing.Point(523, 0);
+            this.lblSistema.Name = "lblSistema";
+            this.lblSistema.Size = new System.Drawing.Size(242, 13);
+            this.lblSistema.TabIndex = 43;
+            this.lblSistema.Text = "Datos de Movimiento Bancario en el Sistema.";
+            // 
+            // lblTotales
+            // 
+            this.lblTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotales.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotales.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotales.Location = new System.Drawing.Point(786, 530);
+            this.lblTotales.Name = "lblTotales";
+            this.lblTotales.Size = new System.Drawing.Size(271, 13);
+            this.lblTotales.TabIndex = 189;
+            this.lblTotales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTotales.Click += new System.EventHandler(this.lblTotales_Click);
+            // 
+            // lblFunciones
+            // 
+            this.lblFunciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFunciones.AutoSize = true;
+            this.lblFunciones.BackColor = System.Drawing.Color.Transparent;
+            this.lblFunciones.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFunciones.Location = new System.Drawing.Point(468, 27);
+            this.lblFunciones.Name = "lblFunciones";
+            this.lblFunciones.Size = new System.Drawing.Size(72, 13);
+            this.lblFunciones.TabIndex = 189;
+            this.lblFunciones.Text = "Agrupar Por:";
+            this.lblFunciones.Visible = false;
+            this.lblFunciones.Click += new System.EventHandler(this.lblFunciones_Click);
+            // 
+            // btnFechaMonto
+            // 
+            this.btnFechaMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFechaMonto.AutoSize = true;
+            this.btnFechaMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnFechaMonto.Location = new System.Drawing.Point(540, 27);
+            this.btnFechaMonto.Name = "btnFechaMonto";
+            this.btnFechaMonto.Size = new System.Drawing.Size(83, 13);
+            this.btnFechaMonto.TabIndex = 191;
+            this.btnFechaMonto.TabStop = true;
+            this.btnFechaMonto.Text = "Fecha y Monto";
+            this.toolTip1.SetToolTip(this.btnFechaMonto, "Agrupa los Movimientos por Fecha y Monto");
+            this.btnFechaMonto.Visible = false;
+            this.btnFechaMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnFechaMonto_LinkClicked);
+            // 
+            // btnOperacionMonto
+            // 
+            this.btnOperacionMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOperacionMonto.AutoSize = true;
+            this.btnOperacionMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnOperacionMonto.Location = new System.Drawing.Point(623, 27);
+            this.btnOperacionMonto.Name = "btnOperacionMonto";
+            this.btnOperacionMonto.Size = new System.Drawing.Size(107, 13);
+            this.btnOperacionMonto.TabIndex = 191;
+            this.btnOperacionMonto.TabStop = true;
+            this.btnOperacionMonto.Text = "Operación y Monto";
+            this.toolTip1.SetToolTip(this.btnOperacionMonto, "Agrupa los Movimientos por Operación y Monto");
+            this.btnOperacionMonto.Visible = false;
+            this.btnOperacionMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOperacionMonto_LinkClicked);
+            // 
+            // btnOperacion
+            // 
+            this.btnOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOperacion.AutoSize = true;
+            this.btnOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnOperacion.Location = new System.Drawing.Point(730, 27);
+            this.btnOperacion.Name = "btnOperacion";
+            this.btnOperacion.Size = new System.Drawing.Size(61, 13);
+            this.btnOperacion.TabIndex = 191;
+            this.btnOperacion.TabStop = true;
+            this.btnOperacion.Text = "Operación";
+            this.toolTip1.SetToolTip(this.btnOperacion, "Agrupa los Movimientos por Nùmero de Operación");
+            this.btnOperacion.Visible = false;
+            // 
+            // lblmanual
+            // 
+            this.lblmanual.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblmanual.AutoSize = true;
+            this.lblmanual.BackColor = System.Drawing.Color.Transparent;
+            this.lblmanual.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmanual.Location = new System.Drawing.Point(361, 557);
+            this.lblmanual.Name = "lblmanual";
+            this.lblmanual.Size = new System.Drawing.Size(49, 13);
+            this.lblmanual.TabIndex = 192;
+            this.lblmanual.Text = "Manual:";
+            this.lblmanual.Click += new System.EventHandler(this.lblmanual_Click);
+            // 
+            // btnAgrupar
+            // 
+            this.btnAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAgrupar.AutoSize = true;
+            this.btnAgrupar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnAgrupar.Location = new System.Drawing.Point(410, 557);
+            this.btnAgrupar.Name = "btnAgrupar";
+            this.btnAgrupar.Size = new System.Drawing.Size(49, 13);
+            this.btnAgrupar.TabIndex = 191;
+            this.btnAgrupar.TabStop = true;
+            this.btnAgrupar.Text = "Agrupar";
+            this.toolTip1.SetToolTip(this.btnAgrupar, "Agrupa los Movimientos Seleccionadas");
+            this.btnAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnAgrupar_LinkClicked);
+            // 
+            // btnDesAgrupar
+            // 
+            this.btnDesAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDesAgrupar.AutoSize = true;
+            this.btnDesAgrupar.BackColor = System.Drawing.Color.Transparent;
+            this.btnDesAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnDesAgrupar.Location = new System.Drawing.Point(459, 557);
+            this.btnDesAgrupar.Name = "btnDesAgrupar";
+            this.btnDesAgrupar.Size = new System.Drawing.Size(68, 13);
+            this.btnDesAgrupar.TabIndex = 191;
+            this.btnDesAgrupar.TabStop = true;
+            this.btnDesAgrupar.Text = "DesAgrupar";
+            this.toolTip1.SetToolTip(this.btnDesAgrupar, "DesAgrupa los Momivientos Seleccionados");
+            this.btnDesAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnDesAgrupar_LinkClicked);
+            // 
+            // chkOperacion
+            // 
+            this.chkOperacion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkOperacion.AutoSize = true;
+            this.chkOperacion.BackColor = System.Drawing.Color.Transparent;
+            this.chkOperacion.ColorChecked = System.Drawing.Color.Empty;
+            this.chkOperacion.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkOperacion.Location = new System.Drawing.Point(533, 556);
+            this.chkOperacion.Name = "chkOperacion";
+            this.chkOperacion.Size = new System.Drawing.Size(169, 17);
+            this.chkOperacion.TabIndex = 193;
+            this.chkOperacion.Text = "Actualizar Todos los NroOp.";
+            this.toolTip1.SetToolTip(this.chkOperacion, "Actualiza el Nùmero de Operación en el Sistema con los Datos del Excel");
+            this.chkOperacion.UseVisualStyleBackColor = false;
+            this.chkOperacion.CheckedChanged += new System.EventHandler(this.chkOperacion_CheckedChanged);
+            // 
+            // lblRegistroExcel2
+            // 
+            this.lblRegistroExcel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegistroExcel2.AutoSize = true;
+            this.lblRegistroExcel2.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroExcel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 546);
+            this.lblRegistroExcel2.Name = "lblRegistroExcel2";
+            this.lblRegistroExcel2.Size = new System.Drawing.Size(185, 13);
+            this.lblRegistroExcel2.TabIndex = 189;
+            this.lblRegistroExcel2.Text = "Total Consolidado: 0 Pendientes: 0";
+            this.lblRegistroExcel2.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // lblRegistroSistema
+            // 
+            this.lblRegistroSistema.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblRegistroSistema.AutoSize = true;
+            this.lblRegistroSistema.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroSistema.Location = new System.Drawing.Point(533, 530);
+            this.lblRegistroSistema.Name = "lblRegistroSistema";
+            this.lblRegistroSistema.Size = new System.Drawing.Size(156, 13);
+            this.lblRegistroSistema.TabIndex = 189;
+            this.lblRegistroSistema.Text = "Total Registros del Sistema: 0";
+            this.lblRegistroSistema.Click += new System.EventHandler(this.lblRegistroExcel_Click);
+            // 
+            // lblRegistroSistema2
+            // 
+            this.lblRegistroSistema2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblRegistroSistema2.AutoSize = true;
+            this.lblRegistroSistema2.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistroSistema2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistroSistema2.Location = new System.Drawing.Point(533, 543);
+            this.lblRegistroSistema2.Name = "lblRegistroSistema2";
+            this.lblRegistroSistema2.Size = new System.Drawing.Size(185, 13);
+            this.lblRegistroSistema2.TabIndex = 189;
+            this.lblRegistroSistema2.Text = "Total Consolidado: 0 Pendientes: 0";
+            this.lblRegistroSistema2.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // btnReversar
+            // 
+            this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnReversar.BackColor = System.Drawing.Color.Crimson;
+            this.btnReversar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnReversar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnReversar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReversar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReversar.ForeColor = System.Drawing.Color.White;
+            this.btnReversar.Location = new System.Drawing.Point(446, 531);
+            this.btnReversar.Name = "btnReversar";
+            this.btnReversar.Size = new System.Drawing.Size(83, 23);
+            this.btnReversar.TabIndex = 183;
+            this.btnReversar.Text = "Reversar";
+            this.btnReversar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReversar.UseVisualStyleBackColor = false;
+            this.btnReversar.Visible = false;
+            this.btnReversar.EnabledChanged += new System.EventHandler(this.btnReversar_EnabledChanged);
+            this.btnReversar.VisibleChanged += new System.EventHandler(this.btnReversar_VisibleChanged);
+            this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
+            // 
+            // lblEstadoCuenta
+            // 
+            this.lblEstadoCuenta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblEstadoCuenta.AutoSize = true;
+            this.lblEstadoCuenta.BackColor = System.Drawing.Color.Transparent;
+            this.lblEstadoCuenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblEstadoCuenta.Location = new System.Drawing.Point(13, 515);
+            this.lblEstadoCuenta.Name = "lblEstadoCuenta";
+            this.lblEstadoCuenta.Size = new System.Drawing.Size(0, 13);
+            this.lblEstadoCuenta.TabIndex = 190;
+            // 
+            // lblsaldoFinal
+            // 
+            this.lblsaldoFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblsaldoFinal.AutoSize = true;
+            this.lblsaldoFinal.BackColor = System.Drawing.Color.Transparent;
+            this.lblsaldoFinal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblsaldoFinal.Location = new System.Drawing.Point(533, 515);
+            this.lblsaldoFinal.Name = "lblsaldoFinal";
+            this.lblsaldoFinal.Size = new System.Drawing.Size(0, 13);
+            this.lblsaldoFinal.TabIndex = 190;
+            // 
+            // btnActualizarExcel
+            // 
+            this.btnActualizarExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnActualizarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.btnActualizarExcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnActualizarExcel.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnActualizarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarExcel.ForeColor = System.Drawing.Color.White;
+            this.btnActualizarExcel.Location = new System.Drawing.Point(359, 531);
+            this.btnActualizarExcel.Name = "btnActualizarExcel";
+            this.btnActualizarExcel.Size = new System.Drawing.Size(83, 23);
+            this.btnActualizarExcel.TabIndex = 194;
+            this.btnActualizarExcel.Text = "Subir Excel";
+            this.btnActualizarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizarExcel.UseVisualStyleBackColor = false;
+            this.btnActualizarExcel.Visible = false;
+            this.btnActualizarExcel.Click += new System.EventHandler(this.btnActualizarExcel_Click);
             // 
             // yok
             // 
@@ -657,362 +1018,12 @@
             this.xProveedor.Name = "xProveedor";
             this.xProveedor.Visible = false;
             // 
-            // lblexcel
+            // xNumComprobante
             // 
-            this.lblexcel.AutoSize = true;
-            this.lblexcel.BackColor = System.Drawing.Color.Transparent;
-            this.lblexcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblexcel.Location = new System.Drawing.Point(3, 0);
-            this.lblexcel.Name = "lblexcel";
-            this.lblexcel.Size = new System.Drawing.Size(266, 13);
-            this.lblexcel.TabIndex = 43;
-            this.lblexcel.Text = "Datos de Movimiento Bancario del Excel Cargado.";
-            // 
-            // lblSistema
-            // 
-            this.lblSistema.AutoSize = true;
-            this.lblSistema.BackColor = System.Drawing.Color.Transparent;
-            this.lblSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblSistema.Location = new System.Drawing.Point(523, 0);
-            this.lblSistema.Name = "lblSistema";
-            this.lblSistema.Size = new System.Drawing.Size(242, 13);
-            this.lblSistema.TabIndex = 43;
-            this.lblSistema.Text = "Datos de Movimiento Bancario en el Sistema.";
-            // 
-            // lblTotales
-            // 
-            this.lblTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotales.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotales.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotales.Location = new System.Drawing.Point(786, 530);
-            this.lblTotales.Name = "lblTotales";
-            this.lblTotales.Size = new System.Drawing.Size(271, 13);
-            this.lblTotales.TabIndex = 189;
-            this.lblTotales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblTotales.Click += new System.EventHandler(this.lblTotales_Click);
-            // 
-            // lblFunciones
-            // 
-            this.lblFunciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblFunciones.AutoSize = true;
-            this.lblFunciones.BackColor = System.Drawing.Color.Transparent;
-            this.lblFunciones.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFunciones.Location = new System.Drawing.Point(468, 27);
-            this.lblFunciones.Name = "lblFunciones";
-            this.lblFunciones.Size = new System.Drawing.Size(72, 13);
-            this.lblFunciones.TabIndex = 189;
-            this.lblFunciones.Text = "Agrupar Por:";
-            this.lblFunciones.Visible = false;
-            this.lblFunciones.Click += new System.EventHandler(this.lblFunciones_Click);
-            // 
-            // btnFechaMonto
-            // 
-            this.btnFechaMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFechaMonto.AutoSize = true;
-            this.btnFechaMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnFechaMonto.Location = new System.Drawing.Point(540, 27);
-            this.btnFechaMonto.Name = "btnFechaMonto";
-            this.btnFechaMonto.Size = new System.Drawing.Size(83, 13);
-            this.btnFechaMonto.TabIndex = 191;
-            this.btnFechaMonto.TabStop = true;
-            this.btnFechaMonto.Text = "Fecha y Monto";
-            this.toolTip1.SetToolTip(this.btnFechaMonto, "Agrupa los Movimientos por Fecha y Monto");
-            this.btnFechaMonto.Visible = false;
-            this.btnFechaMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnFechaMonto_LinkClicked);
-            // 
-            // btnOperacionMonto
-            // 
-            this.btnOperacionMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOperacionMonto.AutoSize = true;
-            this.btnOperacionMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnOperacionMonto.Location = new System.Drawing.Point(623, 27);
-            this.btnOperacionMonto.Name = "btnOperacionMonto";
-            this.btnOperacionMonto.Size = new System.Drawing.Size(107, 13);
-            this.btnOperacionMonto.TabIndex = 191;
-            this.btnOperacionMonto.TabStop = true;
-            this.btnOperacionMonto.Text = "Operación y Monto";
-            this.toolTip1.SetToolTip(this.btnOperacionMonto, "Agrupa los Movimientos por Operación y Monto");
-            this.btnOperacionMonto.Visible = false;
-            this.btnOperacionMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOperacionMonto_LinkClicked);
-            // 
-            // btnOperacion
-            // 
-            this.btnOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOperacion.AutoSize = true;
-            this.btnOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnOperacion.Location = new System.Drawing.Point(730, 27);
-            this.btnOperacion.Name = "btnOperacion";
-            this.btnOperacion.Size = new System.Drawing.Size(61, 13);
-            this.btnOperacion.TabIndex = 191;
-            this.btnOperacion.TabStop = true;
-            this.btnOperacion.Text = "Operación";
-            this.toolTip1.SetToolTip(this.btnOperacion, "Agrupa los Movimientos por Nùmero de Operación");
-            this.btnOperacion.Visible = false;
-            // 
-            // lblmanual
-            // 
-            this.lblmanual.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblmanual.AutoSize = true;
-            this.lblmanual.BackColor = System.Drawing.Color.Transparent;
-            this.lblmanual.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmanual.Location = new System.Drawing.Point(361, 557);
-            this.lblmanual.Name = "lblmanual";
-            this.lblmanual.Size = new System.Drawing.Size(49, 13);
-            this.lblmanual.TabIndex = 192;
-            this.lblmanual.Text = "Manual:";
-            this.lblmanual.Click += new System.EventHandler(this.lblmanual_Click);
-            // 
-            // btnAgrupar
-            // 
-            this.btnAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAgrupar.AutoSize = true;
-            this.btnAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnAgrupar.Location = new System.Drawing.Point(410, 557);
-            this.btnAgrupar.Name = "btnAgrupar";
-            this.btnAgrupar.Size = new System.Drawing.Size(49, 13);
-            this.btnAgrupar.TabIndex = 191;
-            this.btnAgrupar.TabStop = true;
-            this.btnAgrupar.Text = "Agrupar";
-            this.toolTip1.SetToolTip(this.btnAgrupar, "Agrupa los Movimientos Seleccionadas");
-            this.btnAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnAgrupar_LinkClicked);
-            // 
-            // btnDesAgrupar
-            // 
-            this.btnDesAgrupar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDesAgrupar.AutoSize = true;
-            this.btnDesAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnDesAgrupar.Location = new System.Drawing.Point(459, 557);
-            this.btnDesAgrupar.Name = "btnDesAgrupar";
-            this.btnDesAgrupar.Size = new System.Drawing.Size(68, 13);
-            this.btnDesAgrupar.TabIndex = 191;
-            this.btnDesAgrupar.TabStop = true;
-            this.btnDesAgrupar.Text = "DesAgrupar";
-            this.toolTip1.SetToolTip(this.btnDesAgrupar, "DesAgrupa los Momivientos Seleccionados");
-            this.btnDesAgrupar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnDesAgrupar_LinkClicked);
-            // 
-            // chkOperacion
-            // 
-            this.chkOperacion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkOperacion.AutoSize = true;
-            this.chkOperacion.BackColor = System.Drawing.Color.Transparent;
-            this.chkOperacion.ColorChecked = System.Drawing.Color.Empty;
-            this.chkOperacion.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkOperacion.Location = new System.Drawing.Point(533, 556);
-            this.chkOperacion.Name = "chkOperacion";
-            this.chkOperacion.Size = new System.Drawing.Size(169, 17);
-            this.chkOperacion.TabIndex = 193;
-            this.chkOperacion.Text = "Actualizar Todos los NroOp.";
-            this.toolTip1.SetToolTip(this.chkOperacion, "Actualiza el Nùmero de Operación en el Sistema con los Datos del Excel");
-            this.chkOperacion.UseVisualStyleBackColor = false;
-            this.chkOperacion.CheckedChanged += new System.EventHandler(this.chkOperacion_CheckedChanged);
-            // 
-            // lblRegistroExcel2
-            // 
-            this.lblRegistroExcel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblRegistroExcel2.AutoSize = true;
-            this.lblRegistroExcel2.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroExcel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 546);
-            this.lblRegistroExcel2.Name = "lblRegistroExcel2";
-            this.lblRegistroExcel2.Size = new System.Drawing.Size(185, 13);
-            this.lblRegistroExcel2.TabIndex = 189;
-            this.lblRegistroExcel2.Text = "Total Consolidado: 0 Pendientes: 0";
-            this.lblRegistroExcel2.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // lblRegistroSistema
-            // 
-            this.lblRegistroSistema.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblRegistroSistema.AutoSize = true;
-            this.lblRegistroSistema.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroSistema.Location = new System.Drawing.Point(533, 530);
-            this.lblRegistroSistema.Name = "lblRegistroSistema";
-            this.lblRegistroSistema.Size = new System.Drawing.Size(156, 13);
-            this.lblRegistroSistema.TabIndex = 189;
-            this.lblRegistroSistema.Text = "Total Registros del Sistema: 0";
-            this.lblRegistroSistema.Click += new System.EventHandler(this.lblRegistroExcel_Click);
-            // 
-            // lblRegistroSistema2
-            // 
-            this.lblRegistroSistema2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblRegistroSistema2.AutoSize = true;
-            this.lblRegistroSistema2.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegistroSistema2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroSistema2.Location = new System.Drawing.Point(533, 543);
-            this.lblRegistroSistema2.Name = "lblRegistroSistema2";
-            this.lblRegistroSistema2.Size = new System.Drawing.Size(185, 13);
-            this.lblRegistroSistema2.TabIndex = 189;
-            this.lblRegistroSistema2.Text = "Total Consolidado: 0 Pendientes: 0";
-            this.lblRegistroSistema2.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // btnReversar
-            // 
-            this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReversar.BackColor = System.Drawing.Color.Crimson;
-            this.btnReversar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnReversar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btnReversar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReversar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReversar.ForeColor = System.Drawing.Color.White;
-            this.btnReversar.Location = new System.Drawing.Point(446, 531);
-            this.btnReversar.Name = "btnReversar";
-            this.btnReversar.Size = new System.Drawing.Size(83, 23);
-            this.btnReversar.TabIndex = 183;
-            this.btnReversar.Text = "Reversar";
-            this.btnReversar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReversar.UseVisualStyleBackColor = false;
-            this.btnReversar.Visible = false;
-            this.btnReversar.EnabledChanged += new System.EventHandler(this.btnReversar_EnabledChanged);
-            this.btnReversar.VisibleChanged += new System.EventHandler(this.btnReversar_VisibleChanged);
-            this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
-            // 
-            // lblEstadoCuenta
-            // 
-            this.lblEstadoCuenta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblEstadoCuenta.AutoSize = true;
-            this.lblEstadoCuenta.BackColor = System.Drawing.Color.Transparent;
-            this.lblEstadoCuenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblEstadoCuenta.Location = new System.Drawing.Point(188, 531);
-            this.lblEstadoCuenta.Name = "lblEstadoCuenta";
-            this.lblEstadoCuenta.Size = new System.Drawing.Size(0, 13);
-            this.lblEstadoCuenta.TabIndex = 190;
-            // 
-            // lblsaldoFinal
-            // 
-            this.lblsaldoFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblsaldoFinal.AutoSize = true;
-            this.lblsaldoFinal.BackColor = System.Drawing.Color.Transparent;
-            this.lblsaldoFinal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblsaldoFinal.Location = new System.Drawing.Point(715, 531);
-            this.lblsaldoFinal.Name = "lblsaldoFinal";
-            this.lblsaldoFinal.Size = new System.Drawing.Size(0, 13);
-            this.lblsaldoFinal.TabIndex = 190;
-            // 
-            // btnActualizarExcel
-            // 
-            this.btnActualizarExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnActualizarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.btnActualizarExcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnActualizarExcel.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnActualizarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarExcel.ForeColor = System.Drawing.Color.White;
-            this.btnActualizarExcel.Location = new System.Drawing.Point(359, 531);
-            this.btnActualizarExcel.Name = "btnActualizarExcel";
-            this.btnActualizarExcel.Size = new System.Drawing.Size(83, 23);
-            this.btnActualizarExcel.TabIndex = 194;
-            this.btnActualizarExcel.Text = "Subir Excel";
-            this.btnActualizarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnActualizarExcel.UseVisualStyleBackColor = false;
-            this.btnActualizarExcel.Visible = false;
-            this.btnActualizarExcel.Click += new System.EventHandler(this.btnActualizarExcel_Click);
-            // 
-            // xok
-            // 
-            this.xok.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xok.DataPropertyName = "ok";
-            this.xok.FalseValue = "0";
-            this.xok.HeaderText = "Ok";
-            this.xok.MinimumWidth = 25;
-            this.xok.Name = "xok";
-            this.xok.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.xok.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xok.TrueValue = "1";
-            this.xok.Width = 25;
-            // 
-            // xGrupo
-            // 
-            this.xGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xGrupo.DataPropertyName = "index";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xGrupo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xGrupo.HeaderText = "Grupo";
-            this.xGrupo.MinimumWidth = 40;
-            this.xGrupo.Name = "xGrupo";
-            this.xGrupo.ReadOnly = true;
-            this.xGrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xGrupo.Width = 40;
-            // 
-            // xFecha
-            // 
-            this.xFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xFecha.DataPropertyName = "Fecha";
-            dataGridViewCellStyle4.Format = "d";
-            this.xFecha.DefaultCellStyle = dataGridViewCellStyle4;
-            this.xFecha.HeaderText = "Fecha";
-            this.xFecha.MinimumWidth = 50;
-            this.xFecha.Name = "xFecha";
-            this.xFecha.ReadOnly = true;
-            this.xFecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xFecha.Width = 50;
-            // 
-            // xMonto
-            // 
-            this.xMonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xMonto.DataPropertyName = "Monto";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.xMonto.DefaultCellStyle = dataGridViewCellStyle5;
-            this.xMonto.HeaderText = "Monto";
-            this.xMonto.MinimumWidth = 50;
-            this.xMonto.Name = "xMonto";
-            this.xMonto.ReadOnly = true;
-            this.xMonto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xMonto.Width = 50;
-            // 
-            // xNroOperacion
-            // 
-            this.xNroOperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.xNroOperacion.DataPropertyName = "Operacion";
-            this.xNroOperacion.HeaderText = "Operacion";
-            this.xNroOperacion.MinimumWidth = 60;
-            this.xNroOperacion.Name = "xNroOperacion";
-            this.xNroOperacion.ReadOnly = true;
-            this.xNroOperacion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xNroOperacion.Width = 60;
-            // 
-            // xGlosa
-            // 
-            this.xGlosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xGlosa.DataPropertyName = "Glosa";
-            this.xGlosa.HeaderText = "Glosa 1";
-            this.xGlosa.MinimumWidth = 80;
-            this.xGlosa.Name = "xGlosa";
-            this.xGlosa.ReadOnly = true;
-            this.xGlosa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // xGlosa2
-            // 
-            this.xGlosa2.DataPropertyName = "glosa2";
-            this.xGlosa2.HeaderText = "Glosa 2";
-            this.xGlosa2.MinimumWidth = 50;
-            this.xGlosa2.Name = "xGlosa2";
-            this.xGlosa2.ReadOnly = true;
-            this.xGlosa2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // xpkid
-            // 
-            this.xpkid.DataPropertyName = "pkid";
-            this.xpkid.HeaderText = "pkid";
-            this.xpkid.Name = "xpkid";
-            this.xpkid.Visible = false;
-            // 
-            // xComentario
-            // 
-            this.xComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xComentario.DataPropertyName = "comentario";
-            this.xComentario.HeaderText = "Comentario";
-            this.xComentario.Name = "xComentario";
-            this.xComentario.ReadOnly = true;
-            this.xComentario.Width = 81;
-            // 
-            // yproveedor
-            // 
-            this.yproveedor.DataPropertyName = "proveedor";
-            this.yproveedor.HeaderText = "proveedor";
-            this.yproveedor.Name = "yproveedor";
-            this.yproveedor.Visible = false;
+            this.xNumComprobante.DataPropertyName = "NumComprobante";
+            this.xNumComprobante.HeaderText = "NumComprobante";
+            this.xNumComprobante.Name = "xNumComprobante";
+            this.xNumComprobante.Visible = false;
             // 
             // FrmConciliarBanco
             // 
@@ -1106,6 +1117,16 @@
         private System.Windows.Forms.Label lblEstadoCuenta;
         private System.Windows.Forms.Label lblsaldoFinal;
         private HpResergerUserControls.ButtonPer btnActualizarExcel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn xok;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xGrupo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xMonto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNroOperacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xComentario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yproveedor;
         private System.Windows.Forms.DataGridViewCheckBoxColumn yok;
         private System.Windows.Forms.DataGridViewCheckBoxColumn xUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ygrupo;
@@ -1121,15 +1142,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ypkid;
         private System.Windows.Forms.DataGridViewTextBoxColumn yComentario;
         private System.Windows.Forms.DataGridViewTextBoxColumn xProveedor;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn xok;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xGrupo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xFecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xMonto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNroOperacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xComentario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yproveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNumComprobante;
     }
 }
