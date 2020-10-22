@@ -2640,6 +2640,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Conciliacion_Busqueda(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
         }
+        public DataTable Conciliacion_BusquedaFinanzas(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha)
+        {
+            return cdOrdenPedido.Conciliacion_BusquedaFinanzas(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
+        }
         public DataTable ReporteConciliacionFinanzas(int empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha)
         {
             return cdOrdenPedido.ReporteConciliacionFinanzas(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
