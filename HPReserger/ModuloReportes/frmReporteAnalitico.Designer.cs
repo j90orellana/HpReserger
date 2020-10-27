@@ -66,6 +66,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.chkAgruparCuentas = new HpResergerUserControls.checkboxOre();
             this.xRUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,12 +82,12 @@
             this.xproveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xSubOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtotalmn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtotalme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xusuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkAgruparCuentas = new HpResergerUserControls.checkboxOre();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -380,7 +381,7 @@
             this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensaje.Location = new System.Drawing.Point(15, 535);
             this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(110, 13);
+            this.lblmensaje.Size = new System.Drawing.Size(111, 13);
             this.lblmensaje.TabIndex = 404;
             this.lblmensaje.Text = "Total de Registros: 0";
             // 
@@ -436,9 +437,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 19);
+            this.label1.Size = new System.Drawing.Size(190, 19);
             this.label1.TabIndex = 401;
-            this.label1.Text = "Reporte Analítico";
+            this.label1.Text = "Reporte Analítico Contable";
             // 
             // dtgconten
             // 
@@ -483,6 +484,7 @@
             this.xproveedor,
             this.xRazonSocial,
             this.xGlosa,
+            this.xSubOperacion,
             this.xMoneda,
             this.xtotalmn,
             this.xtotalme,
@@ -507,6 +509,21 @@
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(1201, 396);
             this.dtgconten.TabIndex = 10;
+            // 
+            // chkAgruparCuentas
+            // 
+            this.chkAgruparCuentas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkAgruparCuentas.AutoSize = true;
+            this.chkAgruparCuentas.BackColor = System.Drawing.Color.Transparent;
+            this.chkAgruparCuentas.ColorChecked = System.Drawing.Color.Empty;
+            this.chkAgruparCuentas.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkAgruparCuentas.Location = new System.Drawing.Point(703, 543);
+            this.chkAgruparCuentas.Name = "chkAgruparCuentas";
+            this.chkAgruparCuentas.Size = new System.Drawing.Size(113, 17);
+            this.chkAgruparCuentas.TabIndex = 417;
+            this.chkAgruparCuentas.Text = "Agrupar Cuentas";
+            this.chkAgruparCuentas.UseVisualStyleBackColor = false;
+            this.chkAgruparCuentas.CheckedChanged += new System.EventHandler(this.chkAgruparCuentas_CheckedChanged);
             // 
             // xRUC
             // 
@@ -652,6 +669,16 @@
             this.xGlosa.Name = "xGlosa";
             this.xGlosa.ReadOnly = true;
             // 
+            // xSubOperacion
+            // 
+            this.xSubOperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xSubOperacion.DataPropertyName = "SubOperacion";
+            this.xSubOperacion.HeaderText = "SubOperacion";
+            this.xSubOperacion.MinimumWidth = 70;
+            this.xSubOperacion.Name = "xSubOperacion";
+            this.xSubOperacion.ReadOnly = true;
+            this.xSubOperacion.Width = 70;
+            // 
             // xMoneda
             // 
             this.xMoneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -695,7 +722,7 @@
             this.xtc.HeaderText = "T.C.";
             this.xtc.Name = "xtc";
             this.xtc.ReadOnly = true;
-            this.xtc.Width = 49;
+            this.xtc.Width = 50;
             // 
             // xusuario
             // 
@@ -705,21 +732,6 @@
             this.xusuario.Name = "xusuario";
             this.xusuario.ReadOnly = true;
             this.xusuario.Width = 71;
-            // 
-            // chkAgruparCuentas
-            // 
-            this.chkAgruparCuentas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkAgruparCuentas.AutoSize = true;
-            this.chkAgruparCuentas.BackColor = System.Drawing.Color.Transparent;
-            this.chkAgruparCuentas.ColorChecked = System.Drawing.Color.Empty;
-            this.chkAgruparCuentas.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkAgruparCuentas.Location = new System.Drawing.Point(703, 543);
-            this.chkAgruparCuentas.Name = "chkAgruparCuentas";
-            this.chkAgruparCuentas.Size = new System.Drawing.Size(113, 17);
-            this.chkAgruparCuentas.TabIndex = 417;
-            this.chkAgruparCuentas.Text = "Agrupar Cuentas";
-            this.chkAgruparCuentas.UseVisualStyleBackColor = false;
-            this.chkAgruparCuentas.CheckedChanged += new System.EventHandler(this.chkAgruparCuentas_CheckedChanged);
             // 
             // frmReporteAnalitico
             // 
@@ -756,8 +768,8 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.MinimumSize = new System.Drawing.Size(1241, 600);
             this.Name = "frmReporteAnalitico";
-            this.Nombre = "Reporte Analítico";
-            this.Text = "Reporte Analítico";
+            this.Nombre = "Reporte Analítico Contable";
+            this.Text = "Reporte Analítico Contable";
             this.Load += new System.EventHandler(this.frmReporteAnalitico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);
@@ -811,6 +823,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xproveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn xRazonSocial;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xSubOperacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMoneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtotalmn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtotalme;

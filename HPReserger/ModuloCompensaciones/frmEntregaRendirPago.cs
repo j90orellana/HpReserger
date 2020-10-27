@@ -845,7 +845,7 @@ namespace HPReserger.ModuloCompensaciones
                         {
                             if ((int)item.Cells[yOk.Name].Value == 1)
                             {
-                                string[] NumFac = $"0-Ent.N°{(int)item.Cells[xpkid.Name].Value} {((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString("d")}".Split('-');
+                                string[] NumFac = $"0-Ent.N°{(int)item.Cells[xpkid.Name].Value} {((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString("dd/MM/yyyy")}".Split('-');
                                 //Asiento de las facturas al debe
                                 string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                                 decimal MontoSoles = (decimal)item.Cells[xMontoMN.Name].Value;
@@ -878,7 +878,7 @@ namespace HPReserger.ModuloCompensaciones
                             {
                                 //SAco El Acumalado.
                                 AcumuladoFacturas = AcumuladoFacturas - (moneda == 1 ? (decimal)item.Cells[xMontoMN.Name].Value : (decimal)item.Cells[xMontoME.Name].Value);
-                                string[] NumFac = $"0-Ent.N°{(int)item.Cells[xpkid.Name].Value} {((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString("d")}".Split('-');
+                                string[] NumFac = $"0-Ent.N°{(int)item.Cells[xpkid.Name].Value} {((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString("dd/MM/yyyy")}".Split('-');
                                 //Asiento de las Entregas a Rendir al Haber.
                                 string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                                 decimal MontoSoles = (decimal)item.Cells[xMontoMN.Name].Value;

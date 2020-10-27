@@ -65,6 +65,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.chkAgruparCuentas = new HpResergerUserControls.checkboxOre();
             this.xRUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,11 +79,11 @@
             this.xproveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xSubOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtotalmn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtotalme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkAgruparCuentas = new HpResergerUserControls.checkboxOre();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -376,7 +377,7 @@
             this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensaje.Location = new System.Drawing.Point(15, 535);
             this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(110, 13);
+            this.lblmensaje.Size = new System.Drawing.Size(111, 13);
             this.lblmensaje.TabIndex = 404;
             this.lblmensaje.Text = "Total de Registros: 0";
             // 
@@ -456,7 +457,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -477,13 +478,14 @@
             this.xproveedor,
             this.xRazonSocial,
             this.xGlosa,
+            this.xSubOperacion,
             this.xMoneda,
             this.xtotalmn,
             this.xtotalme,
             this.xtc});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
@@ -501,6 +503,21 @@
             this.dtgconten.Size = new System.Drawing.Size(1201, 396);
             this.dtgconten.TabIndex = 10;
             // 
+            // chkAgruparCuentas
+            // 
+            this.chkAgruparCuentas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkAgruparCuentas.AutoSize = true;
+            this.chkAgruparCuentas.BackColor = System.Drawing.Color.Transparent;
+            this.chkAgruparCuentas.ColorChecked = System.Drawing.Color.Empty;
+            this.chkAgruparCuentas.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkAgruparCuentas.Location = new System.Drawing.Point(703, 543);
+            this.chkAgruparCuentas.Name = "chkAgruparCuentas";
+            this.chkAgruparCuentas.Size = new System.Drawing.Size(113, 17);
+            this.chkAgruparCuentas.TabIndex = 417;
+            this.chkAgruparCuentas.Text = "Agrupar Cuentas";
+            this.chkAgruparCuentas.UseVisualStyleBackColor = false;
+            this.chkAgruparCuentas.CheckedChanged += new System.EventHandler(this.chkAgruparCuentas_CheckedChanged);
+            // 
             // xRUC
             // 
             this.xRUC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -508,7 +525,7 @@
             this.xRUC.HeaderText = "RUC";
             this.xRUC.Name = "xRUC";
             this.xRUC.ReadOnly = true;
-            this.xRUC.Width = 52;
+            this.xRUC.Width = 53;
             // 
             // xEmpresa
             // 
@@ -527,7 +544,7 @@
             this.xCuenta.HeaderText = "Cuenta";
             this.xCuenta.Name = "xCuenta";
             this.xCuenta.ReadOnly = true;
-            this.xCuenta.Width = 66;
+            this.xCuenta.Width = 68;
             // 
             // xDESCRIPCION
             // 
@@ -544,7 +561,7 @@
             this.xcuo.HeaderText = "CUO";
             this.xcuo.Name = "xcuo";
             this.xcuo.ReadOnly = true;
-            this.xcuo.Width = 53;
+            this.xcuo.Width = 55;
             // 
             // xFCtble
             // 
@@ -556,7 +573,7 @@
             this.xFCtble.HeaderText = "F.Ctble";
             this.xFCtble.Name = "xFCtble";
             this.xFCtble.ReadOnly = true;
-            this.xFCtble.Width = 66;
+            this.xFCtble.Width = 67;
             // 
             // xidsunat
             // 
@@ -585,7 +602,7 @@
             this.xnumdoc.HeaderText = "Num.Doc.";
             this.xnumdoc.Name = "xnumdoc";
             this.xnumdoc.ReadOnly = true;
-            this.xnumdoc.Width = 78;
+            this.xnumdoc.Width = 81;
             // 
             // xtipoiddoc
             // 
@@ -604,7 +621,7 @@
             this.xproveedor.HeaderText = "Ruc-NroId";
             this.xproveedor.Name = "xproveedor";
             this.xproveedor.ReadOnly = true;
-            this.xproveedor.Width = 80;
+            this.xproveedor.Width = 83;
             // 
             // xRazonSocial
             // 
@@ -624,6 +641,16 @@
             this.xGlosa.Name = "xGlosa";
             this.xGlosa.ReadOnly = true;
             // 
+            // xSubOperacion
+            // 
+            this.xSubOperacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xSubOperacion.DataPropertyName = "SubOperacion";
+            this.xSubOperacion.HeaderText = "SubOperacion";
+            this.xSubOperacion.MinimumWidth = 70;
+            this.xSubOperacion.Name = "xSubOperacion";
+            this.xSubOperacion.ReadOnly = true;
+            this.xSubOperacion.Width = 70;
+            // 
             // xMoneda
             // 
             this.xMoneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -631,7 +658,7 @@
             this.xMoneda.HeaderText = "Moneda";
             this.xMoneda.Name = "xMoneda";
             this.xMoneda.ReadOnly = true;
-            this.xMoneda.Width = 69;
+            this.xMoneda.Width = 74;
             // 
             // xtotalmn
             // 
@@ -643,7 +670,7 @@
             this.xtotalmn.HeaderText = "PEN";
             this.xtotalmn.Name = "xtotalmn";
             this.xtotalmn.ReadOnly = true;
-            this.xtotalmn.Width = 50;
+            this.xtotalmn.Width = 51;
             // 
             // xtotalme
             // 
@@ -655,7 +682,7 @@
             this.xtotalme.HeaderText = "USD";
             this.xtotalme.Name = "xtotalme";
             this.xtotalme.ReadOnly = true;
-            this.xtotalme.Width = 51;
+            this.xtotalme.Width = 53;
             // 
             // xtc
             // 
@@ -667,22 +694,7 @@
             this.xtc.HeaderText = "T.C.";
             this.xtc.Name = "xtc";
             this.xtc.ReadOnly = true;
-            this.xtc.Width = 52;
-            // 
-            // chkAgruparCuentas
-            // 
-            this.chkAgruparCuentas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkAgruparCuentas.AutoSize = true;
-            this.chkAgruparCuentas.BackColor = System.Drawing.Color.Transparent;
-            this.chkAgruparCuentas.ColorChecked = System.Drawing.Color.Empty;
-            this.chkAgruparCuentas.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkAgruparCuentas.Location = new System.Drawing.Point(703, 543);
-            this.chkAgruparCuentas.Name = "chkAgruparCuentas";
-            this.chkAgruparCuentas.Size = new System.Drawing.Size(113, 17);
-            this.chkAgruparCuentas.TabIndex = 417;
-            this.chkAgruparCuentas.Text = "Agrupar Cuentas";
-            this.chkAgruparCuentas.UseVisualStyleBackColor = false;
-            this.chkAgruparCuentas.CheckedChanged += new System.EventHandler(this.chkAgruparCuentas_CheckedChanged);
+            this.xtc.Width = 50;
             // 
             // frmReporteAnalitico2
             // 
@@ -772,6 +784,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xproveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn xRazonSocial;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xSubOperacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMoneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtotalmn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtotalme;

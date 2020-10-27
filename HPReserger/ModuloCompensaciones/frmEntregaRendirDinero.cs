@@ -410,7 +410,7 @@ namespace HPReserger.ModuloCompensaciones
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, 0, TotalPagar, TCPago, proyecto, 0, Cuo, moneda, Glosa, FechaPago, -25);
                 //detalle del pago del banco
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(UserCompensa[0]), UserCompensa[1]
-                  , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"{FechaPago.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
+                  , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"{FechaPago.ToString("dd/MM/yyyy")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
                   , 0, FechaPago, FechaPago, FechaPago, moneda == 1 ? TotalPagar : TotalPagar * TCPago, moneda == 2 ? TotalPagar : TotalPagar / TCPago, TCPago, moneda, nroKuenta, "", Glosa, FechaPago,
                   IdLogin, Cuo, TipoPago);
                 //OTRASCUENTAS POR PAGAR
@@ -431,7 +431,7 @@ namespace HPReserger.ModuloCompensaciones
                         //detalle de otras cuentas x pagar a terceros
                         ////Detalle Facturas
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, int.Parse(UserCompensa[0]), UserCompensa[1],
-                            cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"{FechaPago.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
+                            cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"{FechaPago.ToString("dd/MM/yyyy")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
                            , 0, FechaPagoFac, FechaPago, FechaPago, MontoMN, MontoME, MontoMN / MontoME, moneda, "", "", Glosa, FechaPago, IdLogin, Cuo);
                         //fin de pago de otras cuentas
                         //Inserto compensaciones!

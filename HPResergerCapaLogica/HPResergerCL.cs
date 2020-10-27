@@ -2184,10 +2184,10 @@ namespace HPResergerCapaLogica
         }
         public DataTable PagarDetracionesVentaDetalle(int @Asiento, int @tipodoc, string @numdoc, string @nombreCliente, int @idcomprobante, string @Codfac, string @Numfac, string @nroBoleta, decimal montototal,
             decimal montoredondeo, decimal montodiferencia, decimal @tc, string @CuentaContableNacion, string @CuentaContableBanco, int @cuentaBanco, DateTime @fechaContable, string cuentaredondeo, string @glosa,
-            int @Usuario, int fkempresa, decimal tcpago, int pkproyecto, int Detalle, string nrooperacion, int tipopago)
+            int @Usuario, int fkempresa, decimal tcpago, int pkproyecto, int Detalle, string nrooperacion, int tipopago, int idctabancoDetracion)
         {
             return cdOrdenPedido.PagarDetracionesVentaDetalle(@Asiento, @tipodoc, @numdoc, @nombreCliente, @idcomprobante, @Codfac, @Numfac, @nroBoleta, montototal, montoredondeo, montodiferencia, @tc,
-                @CuentaContableNacion, @CuentaContableBanco, @cuentaBanco, cuentaredondeo, @fechaContable, @glosa, @Usuario, fkempresa, tcpago, pkproyecto, Detalle, nrooperacion, tipopago);
+                @CuentaContableNacion, @CuentaContableBanco, @cuentaBanco, cuentaredondeo, @fechaContable, @glosa, @Usuario, fkempresa, tcpago, pkproyecto, Detalle, nrooperacion, tipopago, idctabancoDetracion);
         }
         public DataTable ReversarAsientos(int idasiento, int proyecto, int usuario, DateTime Fecha)
         {

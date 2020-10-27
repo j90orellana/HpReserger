@@ -178,6 +178,12 @@
     <Compile Include="ModuloBancario\frmBancoScotiaBank.Designer.cs">
       <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCompensaciones\frmCompensacionCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmCompensacionCuentas.Designer.cs">
+      <DependentUpon>frmCompensacionCuentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloCompensaciones\frmEntregaRendirDinero.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1978,6 +1984,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoScotiaBank.resx">
       <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmCompensacionCuentas.resx">
+      <DependentUpon>frmCompensacionCuentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmEntregaRendirDinero.resx">
       <DependentUpon>frmEntregaRendirDinero.cs</DependentUpon>

@@ -325,7 +325,7 @@ namespace HPReserger
             this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmsg.Location = new System.Drawing.Point(12, 501);
             this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(85, 13);
+            this.lblmsg.Size = new System.Drawing.Size(86, 13);
             this.lblmsg.TabIndex = 166;
             this.lblmsg.Text = "Total Registros:";
             // 
@@ -348,7 +348,7 @@ namespace HPReserger
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(1035, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 167;
             this.label4.Text = "Total:";
             // 
@@ -387,7 +387,7 @@ namespace HPReserger
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(894, 484);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 13);
+            this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 171;
             this.label5.Text = "Total M.E.";
             // 
@@ -399,7 +399,7 @@ namespace HPReserger
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(779, 484);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 173;
             this.label6.Text = "Total M.N.";
             // 
@@ -473,9 +473,9 @@ namespace HPReserger
             this.chkAutoConversion.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAutoConversion.Enabled = false;
             this.chkAutoConversion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAutoConversion.Location = new System.Drawing.Point(804, 26);
+            this.chkAutoConversion.Location = new System.Drawing.Point(803, 26);
             this.chkAutoConversion.Name = "chkAutoConversion";
-            this.chkAutoConversion.Size = new System.Drawing.Size(208, 17);
+            this.chkAutoConversion.Size = new System.Drawing.Size(209, 17);
             this.chkAutoConversion.TabIndex = 169;
             this.chkAutoConversion.Text = "AutoConversión de Tipo de Cambio";
             this.chkAutoConversion.UseVisualStyleBackColor = false;
@@ -591,7 +591,7 @@ namespace HPReserger
             this.codcomprobantex.DefaultCellStyle = dataGridViewCellStyle5;
             this.codcomprobantex.FillWeight = 45F;
             this.codcomprobantex.HeaderText = "Serie C.";
-            this.codcomprobantex.MaxInputLength = 4;
+            this.codcomprobantex.MaxInputLength = 15;
             this.codcomprobantex.MinimumWidth = 45;
             this.codcomprobantex.Name = "codcomprobantex";
             this.codcomprobantex.ToolTipText = "Codigo Comprobante\\nEjm:\'001\'";
@@ -605,7 +605,7 @@ namespace HPReserger
             this.numcomprobantex.DefaultCellStyle = dataGridViewCellStyle6;
             this.numcomprobantex.FillWeight = 70F;
             this.numcomprobantex.HeaderText = "Num. Comproban.";
-            this.numcomprobantex.MaxInputLength = 10;
+            this.numcomprobantex.MaxInputLength = 25;
             this.numcomprobantex.MinimumWidth = 70;
             this.numcomprobantex.Name = "numcomprobantex";
             this.numcomprobantex.ToolTipText = "Número Comprobante";

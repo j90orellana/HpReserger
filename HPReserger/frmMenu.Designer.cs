@@ -1299,7 +1299,7 @@
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(225, 22);
             this.toolStripMenuItem6.Tag = "1406004";
-            this.toolStripMenuItem6.Text = "Reporte Analítico 1";
+            this.toolStripMenuItem6.Text = "Reporte Analítico Contable";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.reporteAnalíticoToolStripMenuItem_Click);
             // 
             // reporteAnalíticoToolStripMenuItem
