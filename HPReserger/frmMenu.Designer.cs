@@ -308,6 +308,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.compensarCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1078,7 +1079,8 @@
             this.entregasARendirToolStripMenuItem,
             this.reembolsoGastosToolStripMenuItem,
             this.anticipoProveedoresToolStripMenuItem,
-            this.listadoCompensacionesToolStripMenuItem});
+            this.listadoCompensacionesToolStripMenuItem,
+            this.compensarCuentasToolStripMenuItem});
             this.compensacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compensacionesToolStripMenuItem.Image")));
             this.compensacionesToolStripMenuItem.Name = "compensacionesToolStripMenuItem";
             this.compensacionesToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
@@ -3005,6 +3007,14 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // compensarCuentasToolStripMenuItem
+            // 
+            this.compensarCuentasToolStripMenuItem.Name = "compensarCuentasToolStripMenuItem";
+            this.compensarCuentasToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.compensarCuentasToolStripMenuItem.Tag = "1405006";
+            this.compensarCuentasToolStripMenuItem.Text = "Compensar Cuentas";
+            this.compensarCuentasToolStripMenuItem.Click += new System.EventHandler(this.compensarCuentasToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -3322,5 +3332,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem reporteConcliliaciónFinanzaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compensarCuentasToolStripMenuItem;
     }
 }

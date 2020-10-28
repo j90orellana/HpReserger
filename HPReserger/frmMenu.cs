@@ -4819,5 +4819,28 @@ namespace HPReserger
         {
             frmReporteFinanzas = null;
         }
+        ModuloCompensaciones.frmCompensacionCuentas frmCompensarCuentas;
+        private void compensarCuentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmCompensarCuentas == null)
+            {
+                frmCompensarCuentas = new ModuloCompensaciones.frmCompensacionCuentas();
+                frmCompensarCuentas.MdiParent = this;
+                frmCompensarCuentas.Icon = ICono;
+                frmCompensarCuentas.FormClosed += new FormClosedEventHandler(CerrarfrmCompensarCuentas);
+                frmCompensarCuentas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmCompensarCuentas.Activate();
+                ValidarVentanas(frmCompensarCuentas);
+            }
+        }
+
+        private void CerrarfrmCompensarCuentas(object sender, FormClosedEventArgs e)
+        {
+            frmCompensarCuentas = null;
+        }
     }
 }
