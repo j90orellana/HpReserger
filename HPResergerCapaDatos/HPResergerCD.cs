@@ -4910,6 +4910,13 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin, fecha };
             return bd.DataTableFromProcedure("usp_ReporteConcilicacionFinanzas", parametros, valores, null);
         }
+        public DataTable CompensacionDeCuentas(int empresa, string cuos)
+        {
+            string[] parametros = { "@empresa", "@cuos"};
+            object[] valores = { empresa, cuos };
+            return bd.DataTableFromProcedure("usp_CompensaciondeCuentas", parametros, valores, null);
+        }
+
         public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento, int @idusuario) //1 activa ,cualquiera desactiva
         {
             string[] parametros = { "@opcion", "@pkid", "@tipodoc", "@nrodoc", "@periodo", "@importe", "@sustento", "@idusuario" };

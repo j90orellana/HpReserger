@@ -121,6 +121,7 @@
             this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoCompensacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compensarCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.reportesContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -308,7 +309,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.compensarCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1225,6 +1225,14 @@
             this.listadoCompensacionesToolStripMenuItem.Tag = "1405005";
             this.listadoCompensacionesToolStripMenuItem.Text = "Listado Compensaciones";
             this.listadoCompensacionesToolStripMenuItem.Click += new System.EventHandler(this.listadoCompensacionesToolStripMenuItem_Click);
+            // 
+            // compensarCuentasToolStripMenuItem
+            // 
+            this.compensarCuentasToolStripMenuItem.Name = "compensarCuentasToolStripMenuItem";
+            this.compensarCuentasToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.compensarCuentasToolStripMenuItem.Tag = "1405006";
+            this.compensarCuentasToolStripMenuItem.Text = "Compensar Cuentas";
+            this.compensarCuentasToolStripMenuItem.Click += new System.EventHandler(this.compensarCuentasToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
@@ -3006,14 +3014,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // compensarCuentasToolStripMenuItem
-            // 
-            this.compensarCuentasToolStripMenuItem.Name = "compensarCuentasToolStripMenuItem";
-            this.compensarCuentasToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.compensarCuentasToolStripMenuItem.Tag = "1405006";
-            this.compensarCuentasToolStripMenuItem.Text = "Compensar Cuentas";
-            this.compensarCuentasToolStripMenuItem.Click += new System.EventHandler(this.compensarCuentasToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
