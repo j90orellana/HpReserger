@@ -4816,12 +4816,12 @@ namespace HPResergerCapaDatos
         }
         public DataTable InsertarAsientoFacturaDetalle(int @opcion, int @Id, int @Asiento, DateTime @fechaContable, string @Cuenta, int @proyecto, int @tipodoc, string @numdoc, string @razon, int @idcomprobante,
             string @codcomprobante, string @numcomprobante, int @cc, DateTime @fechaemision, DateTime @fechavencimiento, DateTime @fecharecepcion, decimal @impormn, decimal @importeme, decimal @tc, int @Fkmoneda,
-            string @cuentabanco, string @nroopbanco, string @glosa, DateTime @fechaasiento, int @usuario, string @fkasi, int Tipopago)
+            string @cuentabanco, string @nroopbanco, string @glosa, DateTime @fechaasiento, int @usuario, string @fkasi, int Tipopago, int @idctabbanco)
         {
             string[] parametros = { "@opcion", "@Id", "@Asiento", "@fechaContable", "@Cuenta", "@proyecto", "@tipodoc", "@numdoc", "@razon", "@idcomprobante", "@codcomprobante", "@numcomprobante", "@cc", "@fechaemision",
-                "@fechavencimiento", "@fecharecepcion", "@impormn", "@importeme", "@tc", "@Fkmoneda", "@cuentabanco", "@nroopbanco", "@glosa", "@fechaasiento", "@usuario", "@fkasi","@Tipopago" };
+                "@fechavencimiento", "@fecharecepcion", "@impormn", "@importeme", "@tc", "@Fkmoneda", "@cuentabanco", "@nroopbanco", "@glosa", "@fechaasiento", "@usuario", "@fkasi","@Tipopago","@idctabbanco" };
             object[] valores = { @opcion, @Id, @Asiento, @fechaContable, @Cuenta, @proyecto, @tipodoc, @numdoc, @razon, @idcomprobante, @codcomprobante, @numcomprobante, @cc, @fechaemision, @fechavencimiento,
-                @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi,Tipopago };
+                @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi,Tipopago,@idctabbanco };
             return bd.DataTableFromProcedure("usp_InsertarAsientoFacturaDetalle", parametros, valores, null);
         }
         public DataTable InsertarAsientoDetalle(int @opcion, int @Id, int @Asiento, DateTime @fechaContable, string @Cuenta, int @proyecto, int @tipodoc, string @numdoc, string @razon, int @idcomprobante,
@@ -4912,7 +4912,7 @@ namespace HPResergerCapaDatos
         }
         public DataTable CompensacionDeCuentas(int empresa, string cuos)
         {
-            string[] parametros = { "@empresa", "@cuos"};
+            string[] parametros = { "@empresa", "@cuos" };
             object[] valores = { empresa, cuos };
             return bd.DataTableFromProcedure("usp_CompensaciondeCuentas", parametros, valores, null);
         }
