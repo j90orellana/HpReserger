@@ -1228,6 +1228,7 @@
             // 
             // compensarCuentasToolStripMenuItem
             // 
+            this.compensarCuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compensarCuentasToolStripMenuItem.Image")));
             this.compensarCuentasToolStripMenuItem.Name = "compensarCuentasToolStripMenuItem";
             this.compensarCuentasToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.compensarCuentasToolStripMenuItem.Tag = "1405006";
