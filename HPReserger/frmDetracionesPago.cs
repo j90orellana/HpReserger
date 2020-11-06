@@ -231,15 +231,22 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            //Declaracion de variables
+            decimal TC = 0;
+            DateTime FechaPago = dtpFechaPago.Value;
+            DateTime FechaContable = dtpFechaContable.Value;
+            TC = CapaLogica.TipoCambioDia("Venta", FechaPago);
+            //validacion de datos
             if (cboproyecto.SelectedValue == null) { msg("Seleccione un Proyecto"); cboproyecto.Focus(); return; }
             if (cboempresa.SelectedValue == null) { msg("Seleccione una Empresa"); cboempresa.Focus(); return; }
+            if (TC == 0) { msg("No se Encontro un Tipo de Cambio Registrado para Hoy, Revise el Formulario  de Tipo de Cambio"); return; }
             //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
             int IdEmpresa = (int)cboempresa.SelectedValue;
             DateTime FechaCoontable = dtpFechaContable.Value;
             if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
             {
                 if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
-                    return;
+                    return; 
             }
             //Verificamos si el periodo esta Abierto
             if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaCoontable))
@@ -306,9 +313,7 @@ namespace HPReserger
                     }
                     if (!VerificarErrorDiferencia()) return;
                     if (Verificar) { msg("No se Puede Pagar Valores en Cero"); return; }
-                    ///DECLARACION DE LAS VARIABLES
-                    DateTime FechaPago = dtpFechaPago.Value;
-                    DateTime FechaContable = dtpFechaContable.Value;
+                    ///DECLARACION DE LAS VARIABLES                 
                     int IdProyecto = (int)cboproyecto.SelectedValue;
                     DataRow FilaDato = (CapaLogica.UltimoAsiento(IdEmpresa, FechaContable)).Rows[0];
                     int codigo = (int)FilaDato["codigo"];
@@ -316,8 +321,6 @@ namespace HPReserger
                     int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                     int IdUsuario = frmLogin.CodigoUsuario;
                     string glosa = txtglosa.TextValido();
-                    decimal TC = 0;
-                    TC = CapaLogica.TipoCambioDia("Venta", FechaPago);
                     ///FIN DECLARACION DE VARIABLES
                     //PROCESO DE PAGO
                     string nrofac = "", ruc = "";
