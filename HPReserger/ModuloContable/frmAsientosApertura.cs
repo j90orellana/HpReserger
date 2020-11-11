@@ -225,7 +225,7 @@ namespace HPReserger
                 }
                 //
                 //Asiento 3 --BIENES
-                SumaSoles = SumaDolares = 0;             
+                SumaSoles = SumaDolares = 0;
                 dv.RowFilter = "cuenta_contable like '70*' and cuenta_contable not like '704*'";
                 if (dv.ToTable().Rows.Count > 0)
                 {
@@ -479,7 +479,7 @@ namespace HPReserger
                 TResult.Rows.Add();
                 SumaDolares = SumaSoles = 0;
                 TResult.Rows.Add($"ASIENTO {c++}");
-                string CuentaResultado = ""; 
+                string CuentaResultado = "";
                 string CuentaResul = "";
                 dvt.RowFilter = "cuenta_contable like '85*'";
                 if ((decimal)dvt[0]["pen"] < 0)
@@ -767,7 +767,7 @@ namespace HPReserger
                           (DateTime?)(item[xFechaEmision.DataPropertyName].ToString() == "" ? null : (DateTime?)item[xFechaEmision.DataPropertyName]), (int)item[xId_Comprobante.DataPropertyName],
                           item[xCod_Comprobante.DataPropertyName].ToString(), item[xNum_Comprobante.DataPropertyName].ToString(), item[xNum_Doc.DataPropertyName].ToString(),
                           item[xRazon_Social.DataPropertyName].ToString(), item[xGlosa.DataPropertyName].ToString(), item[xCuenta_Contable.DataPropertyName].ToString(),
-                          item[xdescripcion.DataPropertyName].ToString(), (int)(item[xCtaBancaria.DataPropertyName].ToString()==""?0: item[xCtaBancaria.DataPropertyName]),
+                          item[xdescripcion.DataPropertyName].ToString(), (int)(item[xCtaBancaria.DataPropertyName].ToString() == "" ? 0 : item[xCtaBancaria.DataPropertyName]),
                           item[xCuentaBanco.DataPropertyName].ToString(), item[xmoneda.DataPropertyName].ToString(),
                           (decimal)item[xpen.DataPropertyName], (decimal)item[xusd.DataPropertyName], (decimal)item[xtipocambio.DataPropertyName]);
                         x++;
@@ -880,6 +880,7 @@ namespace HPReserger
                         //fin Calculos
                         //string GLOSA = $"RESULTADO DEL EJERCICIO {comboMesAño.GetFecha().Year - 1}";
                         string GLOSA = $"CANCELACION DE CUENTAS DE BALANCE";
+                        if (!Sentido) GLOSA = $"ASIENTOS DE APERTURA {FechaContable.Year}";
                         CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila++, NumAsiento, FechaContable, CuentaContable, ValorDebeMN, ValorHaberMN, TC,
                             fkProyecto, 0, cuo, IdSoles, GLOSA, FechaContable, iddinamica);
                         //Detalle del asiento del Debe      

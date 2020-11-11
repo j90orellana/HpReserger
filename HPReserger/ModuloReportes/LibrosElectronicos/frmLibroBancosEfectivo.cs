@@ -193,6 +193,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                 DataTable TablaResult = dvf.ToTable();
                                 string añio = fechas.Substring(0, 4);
                                 string mes = fechas.Substring(4, 2);
+                                DateTime Periodo = new DateTime(int.Parse(añio), int.Parse(mes), 1);
                                 //Sí no hay datos
                                 if (TablaResult.Rows.Count > 0)
                                 {
@@ -203,19 +204,20 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     _NColumna = "m";
                                     List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                                     //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
-                                    Color BackGrilla = Color.FromArgb(204, 218, 231);
+                                    Color BackGrilla = Color.White;// Color.FromArgb(204, 218, 231);
                                     Color ForeAmarillo = Color.FromArgb(228, 255, 0);
                                     Color ForeBlanco = Color.White;
-                                    Color Back = Color.FromArgb(78, 129, 189);
-                                    Color Fore = Color.FromArgb(255, 255, 255);
+                                    Color Back = Color.White;// Color.FromArgb(78, 129, 189);
+                                    Color Fore = Color.Black;// Color.FromArgb(255, 255, 255);
+
                                     Color ForeBlack = Color.Black;
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{Ruc}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     if (!Auditoria)
                                     {
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "n1", _Cabecera.ToUpper(), 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas} {FechaInicial.Month.ToString("00")}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{Periodo.ToString("yyyy MM")}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "RUC:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "g4", "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("h4", "n4", $"{EmpresaValor}", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     }
@@ -223,8 +225,8 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     {
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "g1", _Cabecera.ToUpper(), 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas} {FechaInicial.Month.ToString("00")}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{Periodo.ToString("yyyy MM")}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "RUC:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "c4", "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("d4", "g4", $"{EmpresaValor}", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     }
@@ -299,11 +301,22 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
                                     /////fin estilo de las celdas
-
+                                    DataTable Table = new DataTable();
+                                    Table.Columns.Add("Nº CORRELATIVO DEL REGISTRO");
+                                    Table.Columns.Add("FECHA DE OPERACIÓN");
+                                    Table.Columns.Add("DESCRIPCIÓN DE LA OPERACIÓN");
+                                    Table.Columns.Add("CÓDIGO CUENTA");
+                                    Table.Columns.Add("CUENTA DENOMINACIÓN");
+                                    Table.Columns.Add("SALDO DEUDOR");
+                                    Table.Columns.Add("SALDO ACREEDOR");
+                                    Table.Rows.Add(Table.NewRow());
                                     /////
                                     ////Anterior               
                                     //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(Auditoria ? null : TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 6, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "", !Auditoria);
+                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(Auditoria ? null : TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja,
+                                        contador++, Celdas, 6, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+                                        }, "", true//!Auditoria
+                                        );
                                 }
                             }
                         }

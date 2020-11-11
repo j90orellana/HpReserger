@@ -113,6 +113,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             {
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 {
+                    Auditoria = false;
                     dtgconten.SuspendLayout();
                     Cursor = Cursors.WaitCursor;
                     frmproce = new HPReserger.frmProcesando();
@@ -244,7 +245,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{8 + pos}", $"J{8 + pos}", $"CUENTA: {TablaAux.Rows[0]["cuenta_contable"].ToString()}", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                                 //Colocamos los Nombres de las Columnas en Base al Excel                                     
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"D{9 + pos}", $"D{9 + pos}", $"SALDO INICIAL", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                                decimal Monto = (decimal)TablaAux.Rows[0]["Saldosoles"];
+                                                decimal Monto = 0; decimal.TryParse(TablaAux.Rows[0]["Saldosoles"].ToString(), out Monto);
                                                 if (Monto >= 0)
                                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{9 + pos}", $"I{9 + pos}", Math.Abs(Monto), 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
                                                 else

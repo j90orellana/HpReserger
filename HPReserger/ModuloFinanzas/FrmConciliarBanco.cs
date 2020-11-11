@@ -85,6 +85,7 @@ namespace HPReserger.ModuloFinanzas
                 Estado = 2;
                 EstadoCuenta = (decimal)TDatosAux.Rows[0]["estadocuenta"];
                 EstadoCuentaInicial = (decimal)TDatosAux.Rows[0]["estadocuentaInicial"];
+            
                 SaldoContable = (decimal)TDatosAux.Rows[0]["saldocontable"];
                 SaldoContableInicial = (decimal)TDatosAux.Rows[0]["saldocontableinicial"];
                 MostrarDatosdeEtiquetasGrillas(true);

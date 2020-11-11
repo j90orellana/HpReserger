@@ -151,9 +151,7 @@
             this.tpLibroInventario3_13 = new System.Windows.Forms.ToolStripMenuItem();
             this.LibroInventario3_6 = new System.Windows.Forms.ToolStripSeparator();
             this.libroDiarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.libroDiarioToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.mayorPorCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
@@ -163,6 +161,9 @@
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formato142REgistroVentasSimplificado = new System.Windows.Forms.ToolStripMenuItem();
+            this.otrosLibrosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -958,6 +959,7 @@
             this.toolStripSeparator13,
             this.reportesContablesToolStripMenuItem,
             this.librosElectronicosToolStripMenuItem,
+            this.otrosLibrosToolStripMenuItem1,
             this.toolStripSeparator14,
             this.periodosToolStripMenuItem,
             this.asientosAbiertosToolStripMenuItem,
@@ -1390,9 +1392,7 @@
             this.tpLibroInventario3_13,
             this.LibroInventario3_6,
             this.libroDiarioToolStripMenuItem1,
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem,
             this.libroDiarioToolStripMenuItem2,
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem,
             this.toolStripSeparator20,
             this.mayorPorCuentasToolStripMenuItem,
             this.toolStripSeparator22,
@@ -1406,7 +1406,7 @@
             this.librosElectronicosToolStripMenuItem.Name = "librosElectronicosToolStripMenuItem";
             this.librosElectronicosToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.librosElectronicosToolStripMenuItem.Tag = "1407";
-            this.librosElectronicosToolStripMenuItem.Text = "Libros Electrónicos";
+            this.librosElectronicosToolStripMenuItem.Text = "Libros Contables";
             // 
             // lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem
             // 
@@ -1522,15 +1522,6 @@
             this.libroDiarioToolStripMenuItem1.Text = "5.1 Libro Diario";
             this.libroDiarioToolStripMenuItem1.Click += new System.EventHandler(this.libroDiarioToolStripMenuItem1_Click);
             // 
-            // libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem
-            // 
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Image")));
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Name = "libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem";
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(475, 22);
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Tag = "1407053";
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.3 Libro Diario - Detalle Del Plan Contable Utilizado";
-            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Click += new System.EventHandler(this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem_Click);
-            // 
             // libroDiarioToolStripMenuItem2
             // 
             this.libroDiarioToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioToolStripMenuItem2.Image")));
@@ -1539,16 +1530,6 @@
             this.libroDiarioToolStripMenuItem2.Tag = "1407052";
             this.libroDiarioToolStripMenuItem2.Text = "5.2 Libro Diario De Formato Simplificado";
             this.libroDiarioToolStripMenuItem2.Click += new System.EventHandler(this.libroDiarioToolStripMenuItem2_Click);
-            // 
-            // libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem
-            // 
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem." +
-        "Image")));
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Name = "libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem";
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(475, 22);
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Tag = "1407054";
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.4 Libro Diario De Formato Simplificado - Detalle Del Plan Contable Utilizado";
-            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Click += new System.EventHandler(this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem_Click);
             // 
             // toolStripSeparator20
             // 
@@ -1621,6 +1602,36 @@
             this.formato142REgistroVentasSimplificado.Tag = "1407142";
             this.formato142REgistroVentasSimplificado.Text = "14.2 Registro De Ventas E Ingresos Simplificado";
             this.formato142REgistroVentasSimplificado.Click += new System.EventHandler(this.formato142REgistroVentasSimplificado_Click);
+            // 
+            // otrosLibrosToolStripMenuItem1
+            // 
+            this.otrosLibrosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem,
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem});
+            this.otrosLibrosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("otrosLibrosToolStripMenuItem1.Image")));
+            this.otrosLibrosToolStripMenuItem1.Name = "otrosLibrosToolStripMenuItem1";
+            this.otrosLibrosToolStripMenuItem1.Size = new System.Drawing.Size(238, 22);
+            this.otrosLibrosToolStripMenuItem1.Tag = "1414";
+            this.otrosLibrosToolStripMenuItem1.Text = "Otros Libros";
+            // 
+            // libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem
+            // 
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Image")));
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Name = "libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem";
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(436, 22);
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Tag = "1414053";
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.3 Libro Diario - Detalle Del Plan Contable Utilizado";
+            this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem.Click += new System.EventHandler(this.libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem_Click_1);
+            // 
+            // libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem
+            // 
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem." +
+        "Image")));
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Name = "libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem";
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Size = new System.Drawing.Size(436, 22);
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Tag = "1414054";
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Text = "5.4 Libro Diario De Formato Simplificado - Detalle Del Plan Contable Utilizado";
+            this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem.Click += new System.EventHandler(this.libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem_Click_1);
             // 
             // toolStripSeparator14
             // 
@@ -3291,9 +3302,7 @@
         private System.Windows.Forms.ToolStripMenuItem libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator LibroInventario3_6;
         private System.Windows.Forms.ToolStripMenuItem libroDiarioToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroDiarioToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
@@ -3334,5 +3343,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem reporteConcliliaciónFinanzaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compensarCuentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem otrosLibrosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem;
     }
 }
