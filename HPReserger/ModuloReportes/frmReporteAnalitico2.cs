@@ -149,14 +149,14 @@ namespace HPReserger
                         $"Range(Selection, Selection.End(xlToRight)).Select {Environment.NewLine} " +
                         $"Range(Selection, Selection.End(xlDown)).Select {Environment.NewLine} " +
                         $"ActiveWindow.SmallScroll Down:= -36 {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Clear {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},2), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},2)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},12), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},12)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},3), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},3)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},9), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},9)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},8), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},8)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                        //$"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},1)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortTextAsNumbers {Environment.NewLine} " +
-                        $"With ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Clear {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},2), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},2)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},12), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},12)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},3), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},3)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},9), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},9)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},8), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},8)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        //$"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},1)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortTextAsNumbers {Environment.NewLine} " +
+                        $"With ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort {Environment.NewLine} " +
                         $".SetRange Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})) {Environment.NewLine} " +
                         $".Header = xlYes {Environment.NewLine} " +
                         $".MatchCase = False {Environment.NewLine} " +
@@ -164,7 +164,7 @@ namespace HPReserger
                         $".SortMethod = xlPinYin {Environment.NewLine} " +
                         $".Apply {Environment.NewLine} " +
                         $"End With {Environment.NewLine} " +
-                        $"Selection.Subtotal GroupBy:= 12, Function:= xlSum, TotalList:= Array(15, 16), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
+                        $"Selection.Subtotal GroupBy:= 12, Function:= xlSum, TotalList:= Array(16, 17), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
                         $"End Sub";
                 }
                 if (chkAgruparCuentas.Checked)
@@ -174,13 +174,13 @@ namespace HPReserger
                         $"Range(Selection, Selection.End(xlToRight)).Select {Environment.NewLine} " +
                         $"Range(Selection, Selection.End(xlDown)).Select {Environment.NewLine} " +
                         $"ActiveWindow.SmallScroll Down:= -36 {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Clear {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},2), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},2)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},3), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},3)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortTextAsNumbers {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},12), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},12)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},9), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},9)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},8), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},8)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +                        
-                        $"With ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Clear {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},2), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},2)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},3), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},3)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortTextAsNumbers {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},12), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},12)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},9), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},9)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},8), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},8)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +                        
+                        $"With ActiveWorkbook.Worksheets(\"{_NombreHoja}\").Sort {Environment.NewLine} " +
                         $".SetRange Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})) {Environment.NewLine} " +
                         $".Header = xlYes {Environment.NewLine} " +
                         $".MatchCase = False {Environment.NewLine} " +
@@ -188,7 +188,7 @@ namespace HPReserger
                         $".SortMethod = xlPinYin {Environment.NewLine} " +
                         $".Apply {Environment.NewLine} " +
                         $"End With {Environment.NewLine} " +
-                        $"Selection.Subtotal GroupBy:= 4, Function:= xlSum, TotalList:= Array(15, 16), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
+                        $"Selection.Subtotal GroupBy:= 4, Function:= xlSum, TotalList:= Array(16, 17), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
                         $"End Sub";
                 }
                 ///

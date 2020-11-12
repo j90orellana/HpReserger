@@ -924,9 +924,10 @@ namespace HPResergerFunciones
             , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro)
         {
             //Principal para generar exportacion a Excel
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ExcelPackage Excel = new ExcelPackage();
             Excel.Workbook.Worksheets.Add(nombrehoja);
-            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[1];
+            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[0];
             Hoja_Trabajo.Name = nombrehoja;
             ///Ponemos Nombre a las Celdas      
             foreach (RangoCelda Nombres in NombresCeldas)
@@ -1124,7 +1125,7 @@ namespace HPResergerFunciones
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ExcelPackage Excel = new ExcelPackage(FileName);
             Excel.Workbook.Worksheets.Add(nombrehoja);
-            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index-1];
+            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index - 1];
             //Hoja_Trabajo.Name = nombrehoja; 
             ///Ponemos Nombre a las Celdas      
             foreach (RangoCelda Nombres in NombresCeldas)
@@ -1239,17 +1240,17 @@ namespace HPResergerFunciones
             ///_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * "-"??_ ;_ @_ 
             string Pos = $"{PosInicialGrilla}:{PosInicialGrilla}";
             //if (!ImprimirCabecera)
-                Hoja_Trabajo.Cells[Pos].Style.WrapText = true;
+            Hoja_Trabajo.Cells[Pos].Style.WrapText = true;
             Hoja_Trabajo.Cells[Pos].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
             Hoja_Trabajo.Cells[Pos].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
             //AutoAjustarColumnas
-            //foreach (int i in AutoAjustarColumnas)
-            //{
-            //    Hoja_Trabajo.Column(i).BestFit = true;
-            //    Hoja_Trabajo.Column(i).AutoFit();
-            //}
-            Hoja_Trabajo.Cells.AutoFitColumns();
-
+            foreach (int i in AutoAjustarColumnas)
+            {
+                Hoja_Trabajo.Column(i).BestFit = true;
+                Hoja_Trabajo.Column(i).AutoFit();
+            }
+            if (grd == null)
+                Hoja_Trabajo.Cells.AutoFitColumns();
             //var ax = Hoja_Trabajo.Dimension.Address;
             if (!string.IsNullOrWhiteSpace(NameFile))
             {
@@ -1267,9 +1268,10 @@ namespace HPResergerFunciones
             //if (NombresCeldas[0].BackColor != Color.Empty) ForzarAutoAjustado = true;
             //Principal para generar exportacion a Excel
             FileInfo FileName = new FileInfo(NameFile);
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ExcelPackage Excel = new ExcelPackage(FileName);
             Excel.Workbook.Worksheets.Add(nombrehoja);
-            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index];
+            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index - 1];
             //Hoja_Trabajo.Name = nombrehoja; 
             ///Ponemos Nombre a las Celdas      
             foreach (RangoCelda Nombres in NombresCeldas)
@@ -1399,6 +1401,8 @@ namespace HPResergerFunciones
                     Hoja_Trabajo.Column(i).AutoFit();
                     Hoja_Trabajo.Cells[$"{i}:{i}"].AutoFitColumns();
                 }
+            if (grd == null)
+                Hoja_Trabajo.Cells.AutoFitColumns();
             //Fin Ajuste de Texto
             //if (!EstaArchivoAbierto(FileName.ToString()))
             //{
