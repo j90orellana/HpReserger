@@ -257,7 +257,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                             DataTable TablaAux = dx.ToTable();
                                             if (TablaAux.Rows.Count > 0)
                                             {
-                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{8 + pos}", $"g{8 + pos}", $"CUENTA: {TablaAux.Rows[0]["cuentacontable"].ToString()}", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{8 + pos}", $"g{8 + pos}", $"CUENTA: {TablaAux.Rows[0]["codigo"].ToString()} - {TablaAux.Rows[0]["cuentacontable"].ToString()}", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                                 //Colocamos los Nombres de las Columnas en Base al Excel                                     
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"C{9 + pos}", $"C{9 + pos}", $"SALDO INICIAL", 8, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                                 decimal Monto = (decimal)TablaAux.Rows[0]["Saldosoles"];
@@ -300,16 +300,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     ///////estilos de la celdas
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
-                                    /////fin estilo de las celdas
-                                    DataTable Table = new DataTable();
-                                    Table.Columns.Add("Nº CORRELATIVO DEL REGISTRO");
-                                    Table.Columns.Add("FECHA DE OPERACIÓN");
-                                    Table.Columns.Add("DESCRIPCIÓN DE LA OPERACIÓN");
-                                    Table.Columns.Add("CÓDIGO CUENTA");
-                                    Table.Columns.Add("CUENTA DENOMINACIÓN");
-                                    Table.Columns.Add("SALDO DEUDOR");
-                                    Table.Columns.Add("SALDO ACREEDOR");
-                                    Table.Rows.Add(Table.NewRow());
+                                    /////fin estilo de las celdas                                 
                                     /////
                                     ////Anterior               
                                     //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });

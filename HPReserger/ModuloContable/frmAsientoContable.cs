@@ -1780,6 +1780,7 @@ namespace HPReserger
         }
         public void RevisarDetalleCuadrado(DataGridViewRow item)
         {
+            if (cboproyecto.SelectedValue == null) return;
             DataTable Tdatos = new DataTable();
             DateTime fechita;
             //if (chkfechavalor.Checked) 
