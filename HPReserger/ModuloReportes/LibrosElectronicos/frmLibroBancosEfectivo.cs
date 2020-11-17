@@ -209,7 +209,6 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     Color ForeBlanco = Color.White;
                                     Color Back = Color.White;// Color.FromArgb(78, 129, 189);
                                     Color Fore = Color.Black;// Color.FromArgb(255, 255, 255);
-
                                     Color ForeBlack = Color.Black;
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "B3", $"{Ruc}", 8, false, true, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                     if (!Auditoria)

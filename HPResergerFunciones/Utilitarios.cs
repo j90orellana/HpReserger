@@ -1403,6 +1403,13 @@ namespace HPResergerFunciones
                 }
             if (grd == null)
                 Hoja_Trabajo.Cells.AutoFitColumns();
+            //AJUSTE DE AREA DE IMPRESION            
+            //Hoja_Trabajo.PrinterSettings.PrintArea = null;
+            Hoja_Trabajo.PrinterSettings.PrintArea = Hoja_Trabajo.Cells[$"A:{ExcelRange.GetAddressCol(grd.Columns.Count )}"];
+            Hoja_Trabajo.PrinterSettings.PaperSize = ePaperSize.A4;
+            Hoja_Trabajo.PrinterSettings.FitToPage = true;
+            Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
+            Hoja_Trabajo.PrinterSettings.Orientation = eOrientation.Portrait;
             //Fin Ajuste de Texto
             //if (!EstaArchivoAbierto(FileName.ToString()))
             //{

@@ -94,10 +94,13 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                 BuscarEmpresa += ")";
             }
             else BuscarEmpresa = " e.Id_Empresa like '%%'";
+            ///
             /////ASIGNACION DE LOS DATOS
             //Stopwatch stopwatch = new Stopwatch();
             //stopwatch.Start();
-            TDatos = CapaLogica.LibroDiario5_1(FechaInicio, FechaFin, "0=0", "0=0", "0=0", "0=0", BuscarEmpresa, "0=0");
+            TDatos = CapaLogica.LibroDiario5_1(FechaInicio, FechaFin, "0=0", "0=0", "0=0", "0=0", ListadoEmpresas, "0=0");
+            //REMOVEMOS LA COLUMNA DE IDASIENTO
+            TDatos.Columns.RemoveAt(TDatos.Columns.Count - 1);
             dtgconten.DataSource = TDatos;
             //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();
             //dtgconten.AutoGenerateColumns = true;            
@@ -370,7 +373,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                         else
                             Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy") + "-" + cboperiodohasta.FechaInicioMes.ToString("MMMyyyy");
                         Cadenax = Cadenax.ToUpper();
-                        string NameFile = valor + $"{Cadenax} LIBRO DIARIO {EmpresaValor}.xlsx";
+                        string NameFile = valor + $"{Cadenax} LIBRO DIARIO {EmpresaValor} {(Auditoria ? "-AUD" : "")}.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
                         if (item.ToString() != "TODAS")
@@ -396,8 +399,11 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
 
                                     List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                                     //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
-                                    Color Back = Color.FromArgb(78, 129, 189);
-                                    Color Fore = Color.FromArgb(255, 255, 255);
+                                    //Color Back = Color.FromArgb(78, 129, 189);
+                                    //Color Fore = Color.FromArgb(255, 255, 255);
+                                    Color Back = Color.White;// Color.FromArgb(78, 129, 189);
+                                    Color Fore = Color.Black;// Color.FromArgb(255, 255, 255);
+                                    Color ForeBlack = Color.Black;
                                     if (Auditoria)
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a1", "LIBRO DIARIO", 14, true, false, Back, Fore));
                                     else
@@ -405,7 +411,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     //
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 10, false, false, Back, Fore));
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas}", 10, false, false, Back, Fore));
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 10, false, false, Back, Fore));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "RUC:", 10, false, false, Back, Fore));
                                     ////ACTIVAR CODIGO RUC
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{Ruc}", 10, false, false, Back, Fore));
                                     if (Auditoria)
@@ -417,11 +423,16 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     else
                                     {
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", "APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:", 10, false, false, Back, Fore));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("g4", "i4", $"{EmpresaValor}", 10, false, false, Back, Fore));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("g4", "i4", $"{EmpresaValor}", 10, false, true, Back, Fore));
                                     }
                                     ///////estilos de la celdas
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                                     HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                                    if (Auditoria)
+                                    {
+                                        CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(Color.White, new Font("tahoma", 8, FontStyle.Regular), Color.Black);
+                                        CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(Color.White, new Font("tahoma", 8, FontStyle.Bold), Color.Black);
+                                    }
                                     /////fin estilo de las celdas
                                     //DataTable TableResult = new DataTable(); DataView dt = ((DataTable)dtgconten.DataSource).AsDataView(); TableResult = dt.ToTable();
                                     ///Tabla
@@ -472,7 +483,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     }
                                     else
                                         foreach (DataGridViewColumn items in dtgconten.Columns)
-                                            TablaResult.Columns[items.DataPropertyName].ColumnName = items.HeaderText;                                  
+                                            TablaResult.Columns[items.DataPropertyName].ColumnName = items.HeaderText;
                                     if (Auditoria)
                                     {
                                         DataRow nueva = TablaResult.NewRow();
@@ -486,7 +497,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     /////
                                     ////Anterior               
                                     //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { 2, 5, 3, 6, 7, 8, 9}, "");
+                                    HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 6, _Columnas, new int[] { }, new int[] { 2, 5, 3, 6, 7, 8, 9 }, "");
                                 }
                             }
                         }

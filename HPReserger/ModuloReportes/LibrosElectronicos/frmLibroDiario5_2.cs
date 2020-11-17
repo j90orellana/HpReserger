@@ -97,7 +97,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             /////ASIGNACION DE LOS DATOS
             //Stopwatch stopwatch = new Stopwatch();
             //stopwatch.Start();
-            TDatos = CapaLogica.LibroDiario5_1(FechaInicio, FechaFin, "0=0", "0=0", "0=0", "0=0", BuscarEmpresa, "0=0");
+            TDatos = CapaLogica.LibroDiario5_1(FechaInicio, FechaFin, "0=0", "0=0", "0=0", "0=0", ListadoEmpresas, "0=0");
             dtgconten.DataSource = TDatos;
             //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();
             //dtgconten.AutoGenerateColumns = true;            
