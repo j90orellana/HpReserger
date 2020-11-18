@@ -471,8 +471,8 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         TablaResult.Columns.RemoveAt(4);
                                     }
                                     else
-                                        foreach (DataColumn items in TablaResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
-
+                                        foreach (DataGridViewColumn items in dtgconten.Columns)
+                                            TablaResult.Columns[items.DataPropertyName].ColumnName = items.HeaderText;
                                     if (Auditoria)
                                     {
                                         DataRow nueva = TablaResult.NewRow();

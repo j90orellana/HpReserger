@@ -228,7 +228,7 @@ namespace HPReserger
                                     Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
                             }
                             //ELiminamos el Excel Antiguo
-                            string NameFile = valor + $"LIBRO MAYOR {FechaInicio.ToString("MMMyyyy").ToUpper()}-{FechaFin.ToString("MMMyyyy").ToUpper()} {EmpresaValor}.xlsx";
+                            string NameFile = valor + $"LIBRO MAYOR {FechaInicio.ToString("MMMyyyy").ToUpper()}-{FechaFin.ToString("MMMyyyy").ToUpper()} {EmpresaValor} {(Auditoria ? "-AUD" : "")}.xlsx";
                             File.Delete(NameFile);
                             File.Exists(NameFile);
                             if (item.ToString() != "TODAS")
@@ -257,16 +257,16 @@ namespace HPReserger
                                         //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
                                         Color Back = Color.FromArgb(78, 129, 189);
                                         Color Fore = Color.FromArgb(255, 255, 255);
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "i1", "LIBRO MAYOR", 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "g1", "LIBRO MAYOR", 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "RUC:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{Ruc}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "b4", "RAZÓN SOCIAL:", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("c4", "i4", $"{EmpresaValor}", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("c4", "g4", $"{EmpresaValor}", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         ///////estilos de la celdas
-                                        HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
-                                        HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, Configuraciones.FuenteReportesTahoma8, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                                        HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(Color.White, Configuraciones.FuenteReportesTahoma8, Color.White);
+                                        HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(Color.White, new Font("tahoma", 8, FontStyle.Bold), Color.Black);
                                         /////fin estilo de las celdas
                                         //DataTable TableResult = new DataTable(); DataView dt = ((DataTable)dtgconten.DataSource).AsDataView(); TableResult = dt.ToTable();
                                         ///Tabla 
@@ -331,7 +331,7 @@ namespace HPReserger
                                             if (fila["descripcion"].ToString() != Cuenta)
                                             {
                                                 DataRow FiladeCuentas = TablaResult.NewRow();
-                                                FiladeCuentas["Nº CORRELATIVO"] = fila["descripcion"].ToString();
+                                                FiladeCuentas["NOMBRE O RAZON SOCIAL"] = fila["descripcion"].ToString();
                                                 DataRow FilaSaldoInicial = TablaResult.NewRow();
                                                 FilaSaldoInicial["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = "SALDO INICIAL";
                                                 //
@@ -390,7 +390,7 @@ namespace HPReserger
                                         ///
                                         ////Anterior               
                                         //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _Columnas, new int[] { }, new int[] { 1, 4, 5, 6, 7 }, "");
+                                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 6, _Columnas, new int[] { }, new int[] { 1, 4, 5, 6, 7 }, "");
                                     }
                                 }
                             }

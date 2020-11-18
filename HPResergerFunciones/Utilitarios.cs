@@ -1033,6 +1033,15 @@ namespace HPResergerFunciones
                 Hoja_Trabajo.Column(i).AutoFit(7);
 
             }
+            if (grd != null)
+                Hoja_Trabajo.PrinterSettings.PrintArea = Hoja_Trabajo.Cells[$"A:{ExcelRange.GetAddressCol(grd.Columns.Count)}"];
+            else
+                Hoja_Trabajo.PrinterSettings.PrintArea = Hoja_Trabajo.Cells[$"A:{ExcelRange.GetAddressCol(Hoja_Trabajo.Dimension.Columns)}"];
+
+            Hoja_Trabajo.PrinterSettings.PaperSize = ePaperSize.A4;
+            Hoja_Trabajo.PrinterSettings.FitToPage = true;
+            Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
+            Hoja_Trabajo.PrinterSettings.Orientation = eOrientation.Portrait;
             //Fin Ajuste de Texto
             if (!EstaArchivoAbierto(file.ToString()))
             {
@@ -1252,6 +1261,16 @@ namespace HPResergerFunciones
             if (grd == null)
                 Hoja_Trabajo.Cells.AutoFitColumns();
             //var ax = Hoja_Trabajo.Dimension.Address;
+            if (grd != null)
+                Hoja_Trabajo.PrinterSettings.PrintArea = Hoja_Trabajo.Cells[$"A:{ExcelRange.GetAddressCol(grd.Columns.Count)}"];
+            else
+                Hoja_Trabajo.PrinterSettings.PrintArea = Hoja_Trabajo.Cells[$"A:{ExcelRange.GetAddressCol(Hoja_Trabajo.Dimension.Columns)}"];
+
+            Hoja_Trabajo.PrinterSettings.PaperSize = ePaperSize.A4;
+            Hoja_Trabajo.PrinterSettings.FitToPage = true;
+            Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
+            Hoja_Trabajo.PrinterSettings.Orientation = eOrientation.Portrait;
+
             if (!string.IsNullOrWhiteSpace(NameFile))
             {
                 Excel.SaveAs(FileName);
@@ -1405,7 +1424,7 @@ namespace HPResergerFunciones
                 Hoja_Trabajo.Cells.AutoFitColumns();
             //AJUSTE DE AREA DE IMPRESION            
             //Hoja_Trabajo.PrinterSettings.PrintArea = null;
-            Hoja_Trabajo.PrinterSettings.PrintArea = Hoja_Trabajo.Cells[$"A:{ExcelRange.GetAddressCol(grd.Columns.Count )}"];
+            Hoja_Trabajo.PrinterSettings.PrintArea = Hoja_Trabajo.Cells[$"A:{ExcelRange.GetAddressCol(grd.Columns.Count)}"];
             Hoja_Trabajo.PrinterSettings.PaperSize = ePaperSize.A4;
             Hoja_Trabajo.PrinterSettings.FitToPage = true;
             Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
