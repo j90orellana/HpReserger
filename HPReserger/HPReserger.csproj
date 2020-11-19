@@ -246,6 +246,12 @@
     <Compile Include="ModuloContable\frmTipoPlanCuenta.Designer.cs">
       <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCrystalReport\rptLibroDiario5_1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLibroDiario5_1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ModuloFinanzas\FrmConciliarBanco.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2020,6 +2026,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmTipoPlanCuenta.resx">
       <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\rptLibroDiario5_1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLibroDiario5_1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\FrmConciliarBanco.resx">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
