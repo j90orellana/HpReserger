@@ -117,6 +117,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.chkCarpetas = new System.Windows.Forms.CheckBox();
             this.btnAuditoria = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
@@ -149,9 +150,9 @@
             // 
             this.cboperiodohasta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cboperiodohasta.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 2, 7, 0, 0, 0, 0);
-            this.cboperiodohasta.FechaFinMes = new System.DateTime(2020, 2, 29, 0, 0, 0, 0);
-            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2020, 2, 1, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaConDiaActual = new System.DateTime(2020, 11, 30, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaFinMes = new System.DateTime(2020, 11, 30, 0, 0, 0, 0);
+            this.cboperiodohasta.FechaInicioMes = new System.DateTime(2020, 11, 1, 0, 0, 0, 0);
             this.cboperiodohasta.Location = new System.Drawing.Point(95, 58);
             this.cboperiodohasta.Name = "cboperiodohasta";
             this.cboperiodohasta.Size = new System.Drawing.Size(218, 22);
@@ -163,9 +164,9 @@
             // 
             this.cboperiodode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cboperiodode.BackColor = System.Drawing.Color.Transparent;
-            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 2, 7, 0, 0, 0, 0);
-            this.cboperiodode.FechaFinMes = new System.DateTime(2020, 2, 29, 0, 0, 0, 0);
-            this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 2, 1, 0, 0, 0, 0);
+            this.cboperiodode.FechaConDiaActual = new System.DateTime(2020, 11, 30, 0, 0, 0, 0);
+            this.cboperiodode.FechaFinMes = new System.DateTime(2020, 11, 30, 0, 0, 0, 0);
+            this.cboperiodode.FechaInicioMes = new System.DateTime(2020, 11, 1, 0, 0, 0, 0);
             this.cboperiodode.Location = new System.Drawing.Point(95, 30);
             this.cboperiodode.Name = "cboperiodode";
             this.cboperiodode.Size = new System.Drawing.Size(218, 22);
@@ -212,7 +213,7 @@
             this.btnGenerarTXT.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnGenerarTXT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarTXT.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarTXT.Image")));
-            this.btnGenerarTXT.Location = new System.Drawing.Point(570, 532);
+            this.btnGenerarTXT.Location = new System.Drawing.Point(620, 532);
             this.btnGenerarTXT.Name = "btnGenerarTXT";
             this.btnGenerarTXT.Size = new System.Drawing.Size(82, 23);
             this.btnGenerarTXT.TabIndex = 397;
@@ -227,7 +228,7 @@
             this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
-            this.btnexcel.Location = new System.Drawing.Point(486, 532);
+            this.btnexcel.Location = new System.Drawing.Point(530, 532);
             this.btnexcel.Name = "btnexcel";
             this.btnexcel.Size = new System.Drawing.Size(82, 23);
             this.btnexcel.TabIndex = 396;
@@ -258,7 +259,7 @@
             this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensaje.Location = new System.Drawing.Point(4, 537);
             this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(110, 13);
+            this.lblmensaje.Size = new System.Drawing.Size(111, 13);
             this.lblmensaje.TabIndex = 394;
             this.lblmensaje.Text = "Total de Registros: 0";
             // 
@@ -495,6 +496,7 @@
             this.xCuentaBanco.HeaderText = "CuentaBanco";
             this.xCuentaBanco.Name = "xCuentaBanco";
             this.xCuentaBanco.ReadOnly = true;
+            this.xCuentaBanco.Width = 99;
             // 
             // xMoneda
             // 
@@ -547,7 +549,7 @@
             this.xTipoCambio.HeaderText = "T.C.";
             this.xTipoCambio.Name = "xTipoCambio";
             this.xTipoCambio.ReadOnly = true;
-            this.xTipoCambio.Width = 49;
+            this.xTipoCambio.Width = 50;
             // 
             // xUsers
             // 
@@ -1158,7 +1160,7 @@
             this.chkCarpetas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkCarpetas.AutoSize = true;
             this.chkCarpetas.BackColor = System.Drawing.Color.Transparent;
-            this.chkCarpetas.Location = new System.Drawing.Point(658, 535);
+            this.chkCarpetas.Location = new System.Drawing.Point(710, 535);
             this.chkCarpetas.Name = "chkCarpetas";
             this.chkCarpetas.Size = new System.Drawing.Size(104, 17);
             this.chkCarpetas.TabIndex = 401;
@@ -1171,7 +1173,7 @@
             this.btnAuditoria.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAuditoria.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAuditoria.Image = ((System.Drawing.Image)(resources.GetObject("btnAuditoria.Image")));
-            this.btnAuditoria.Location = new System.Drawing.Point(402, 532);
+            this.btnAuditoria.Location = new System.Drawing.Point(440, 532);
             this.btnAuditoria.Name = "btnAuditoria";
             this.btnAuditoria.Size = new System.Drawing.Size(82, 23);
             this.btnAuditoria.TabIndex = 396;
@@ -1180,11 +1182,27 @@
             this.btnAuditoria.UseVisualStyleBackColor = true;
             this.btnAuditoria.Click += new System.EventHandler(this.btnAuditoria_Click);
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(350, 531);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 23);
+            this.button1.TabIndex = 403;
+            this.button1.Text = "L. Físico";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmLibroDiario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 561);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.PanelTxt);
             this.Controls.Add(this.chkCarpetas);
             this.Controls.Add(this.label4);
@@ -1296,5 +1314,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xMes;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTipoCambio;
         private System.Windows.Forms.DataGridViewTextBoxColumn xUsers;
+        private System.Windows.Forms.Button button1;
     }
 }

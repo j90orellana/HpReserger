@@ -50,14 +50,14 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
         DataTable TDatos;
 
         public string nameEmpresa { get; private set; }
-
+        string ListadoEmpresas = "";
         private void btngenerar_Click(object sender, EventArgs e)
         {
             CerrarPanelTxt();
             Cursor = Cursors.WaitCursor;
             if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
             DateTime FechaAuxiliar;
-            string ListadoEmpresas = "";
+            ListadoEmpresas = "";
             if (cboperiodode.FechaInicioMes > cboperiodohasta.FechaInicioMes)
             {
                 FechaAuxiliar = cboperiodode.FechaInicioMes;
@@ -538,6 +538,31 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             {
                 msg("No hay Datos que Exportar");
             }
+        }
+        ModuloCrystalReport.frmReporteLibroDiario5_1 frmReporteLibrosDiarios;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (frmReporteLibrosDiarios == null)
+            {
+                frmReporteLibrosDiarios = new ModuloCrystalReport.frmReporteLibroDiario5_1();
+                string ValDEfecto = "0=0";
+                frmReporteLibrosDiarios.FechaIni = FechaInicio;
+                frmReporteLibrosDiarios.FechaFin = FechaFin;
+                frmReporteLibrosDiarios.Cuentas = ValDEfecto;
+                frmReporteLibrosDiarios.glosas = ValDEfecto;
+                frmReporteLibrosDiarios.nrodoc = ValDEfecto;
+                frmReporteLibrosDiarios.ruc = ValDEfecto;
+                frmReporteLibrosDiarios.empresa = ListadoEmpresas;
+                frmReporteLibrosDiarios.razonsocial = ValDEfecto;
+                frmReporteLibrosDiarios.FormClosed += FrmReporteLibrosDiarios_FormClosed;
+
+                frmReporteLibrosDiarios.Show();
+            }
+            else frmReporteLibrosDiarios.Activate();
+        }
+        private void FrmReporteLibrosDiarios_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmReporteLibrosDiarios = null;
         }
     }
 }
