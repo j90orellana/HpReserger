@@ -154,7 +154,7 @@ namespace HPReserger.ModuloReportes
             {
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
                 _NombreHoja = $"-{NameEmpresa}-{FechaGenerado}".ToUpper(); _Cabecera = "Balance de Comprobación";
-                _Columnas = new int[] { }; _NColumna = "l";
+                _Columnas = new int[] { }; _NColumna = "n";
                 //
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 Color Back = Color.FromArgb(78, 129, 189);
@@ -175,6 +175,9 @@ namespace HPReserger.ModuloReportes
                 //TablaExportar.Columns.RemoveAt(0);
                 //
                 //
+                foreach (DataColumn item in TablaExportar.Columns)                
+                    item.ColumnName = dtgconten.Columns[item.Ordinal].HeaderText;                
+
                 if (chkCarpeta.Checked)
                 {
                     string Carpeta = folderBrowserDialog1.SelectedPath;

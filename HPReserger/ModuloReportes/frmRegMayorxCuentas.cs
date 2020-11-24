@@ -385,7 +385,8 @@ namespace HPReserger
                                         nueva1["MOV. acreedor"] = SumHaber;
                                         TablaResult.Rows.Add(nueva2);
 
-                                        //removemos la columna de saldos iniciales
+                                        //removemos la columna de saldos iniciales - indices
+                                        TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
                                         TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
                                         ///
                                         ////Anterior               
@@ -423,6 +424,8 @@ namespace HPReserger
                     DataTable TableResult = new DataTable();
                     DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
                     TableResult = dt.ToTable();
+                    //removemos indices y saldos iniciales
+                    TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
                     TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
                     foreach (DataColumn item in TableResult.Columns) item.ColumnName = dtgconten.Columns["x" + item.ColumnName].HeaderText;
                     //MACRO
