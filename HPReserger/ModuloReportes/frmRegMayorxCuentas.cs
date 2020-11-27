@@ -152,6 +152,7 @@ namespace HPReserger
             //Stopwatch stopwatch = new Stopwatch();
             //stopwatch.Start();
             TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+            TDatos.Columns.RemoveAt(TDatos.Columns.Count - 1);
             dtgconten.DataSource = TDatos;
             //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();
             //dtgconten.AutoGenerateColumns = true;            
@@ -207,6 +208,7 @@ namespace HPReserger
                     //PROCESO DE AUDITORIA
                     DateTime FechaInicial = FechaInicio;
                     List<string> ListadoFecha = new List<string>();
+                    if (FechaInicial == FechaFin) FechaFin = FechaFin.AddDays(1);
                     while (FechaInicial < FechaFin)
                     {
                         ListadoFecha.Add(FechaInicial.ToString("yyyyMM"));
@@ -387,7 +389,7 @@ namespace HPReserger
 
                                         //removemos la columna de saldos iniciales - indices
                                         TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
-                                        TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
+                                        //TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
                                         ///
                                         ////Anterior               
                                         //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
@@ -426,7 +428,7 @@ namespace HPReserger
                     TableResult = dt.ToTable();
                     //removemos indices y saldos iniciales
                     TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
-                    TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
+                    //TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
                     foreach (DataColumn item in TableResult.Columns) item.ColumnName = dtgconten.Columns["x" + item.ColumnName].HeaderText;
                     //MACRO
                     int PosInicialGrilla = 4;

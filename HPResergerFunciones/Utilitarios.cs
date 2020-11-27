@@ -1043,6 +1043,7 @@ namespace HPResergerFunciones
             Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
             Hoja_Trabajo.PrinterSettings.Orientation = eOrientation.Portrait;
             //Fin Ajuste de Texto
+            Hoja_Trabajo.View.ShowGridLines = false;
             if (!EstaArchivoAbierto(file.ToString()))
             {
                 Boolean Prueba = true;
@@ -1270,7 +1271,7 @@ namespace HPResergerFunciones
             Hoja_Trabajo.PrinterSettings.FitToPage = true;
             Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
             Hoja_Trabajo.PrinterSettings.Orientation = eOrientation.Portrait;
-
+            Hoja_Trabajo.View.ShowGridLines = false;
             if (!string.IsNullOrWhiteSpace(NameFile))
             {
                 Excel.SaveAs(FileName);
@@ -1430,6 +1431,7 @@ namespace HPResergerFunciones
             Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
             Hoja_Trabajo.PrinterSettings.Orientation = eOrientation.Portrait;
             //Fin Ajuste de Texto
+            Hoja_Trabajo.View.ShowGridLines = false;
             //if (!EstaArchivoAbierto(FileName.ToString()))
             //{
             //    Excel.SaveAs(FileName);
