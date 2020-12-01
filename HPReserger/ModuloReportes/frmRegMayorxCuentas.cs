@@ -256,16 +256,22 @@ namespace HPReserger
                                         _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 }; _NColumna = "m";
 
                                         List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
-                                        //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
-                                        Color Back = Color.FromArgb(78, 129, 189);
-                                        Color Fore = Color.FromArgb(255, 255, 255);
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "g1", "LIBRO MAYOR", 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"{fechas}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "RUC:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{Ruc}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "b4", "RAZÓN SOCIAL:", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("c4", "g4", $"{EmpresaValor}", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);                                     
+                                        Color BackGrilla = Color.White;// Color.FromArgb(204, 218, 231);
+                                        Color ForeAmarillo = Color.FromArgb(228, 255, 0);
+                                        Color ForeBlanco = Color.White;
+                                        Color Back = Color.White;// Color.FromArgb(78, 129, 189);
+                                        Color Fore = Color.Black;// Color.FromArgb(255, 255, 255);
+                                        Color ForeBlack = Color.Black;
+                                        //**********CABECERAS*****************//
+                                        int pos = 0;
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"a1", $"g1", "LIBRO MAYOR", 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"a3", $"a3", "PERIODO:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "b3", $"{fechas}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a4", "a4", "RUC:", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b4", "c4", $"{Ruc}", 8, false, false, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a5", "b5", "RAZÓN SOCIAL:", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("c5", "g5", $"{EmpresaValor}", 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                         ///////estilos de la celdas
                                         HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(Color.White, Configuraciones.FuenteReportesTahoma8, Color.White);
                                         HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(Color.White, new Font("tahoma", 8, FontStyle.Bold), Color.Black);
@@ -297,7 +303,19 @@ namespace HPReserger
                                         TablaResult.Columns["Razon_Social"].ColumnName = "NOMBRE O RAZON SOCIAL";
                                         TablaResult.Columns["PEN"].ColumnName = "MOV. DEUDOR";
                                         TablaResult.Columns["USD"].ColumnName = "MOV. ACREEDOR";
-                                        //
+                                        //AGREGAMOS COLUMNAS********************//
+                                        pos = 1;
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{6 + pos}", $"A{6 + pos}", "Nº CORRELATIVO", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"B{6 + pos}", $"B{6 + pos}", "FECHA DE OPERACIÓN", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"C{6 + pos}", $"C{6 + pos}", "MEDIO PAGO", 10, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"D{6 + pos}", $"D{6 + pos}", "NOMBRE O RAZON SOCIAL", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{6 + pos}", $"E{6 + pos}", "DESCRIPCIÓN O GLOSA DE LA OPERACIÓN", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"F{6 + pos}", $"F{6 + pos}", "MOV. DEUDOR", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"G{6 + pos}", $"G{6 + pos}", "MOV. ACREEDOR", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                        //*************//
+                                        pos = 0;
+                                        int loc = 9;
+                                        //*************//
                                         string cuo = "", Cuenta = "", CuentaFila = "";
                                         SumDebe = 0; SumHaber = 0;
                                         decimal valdebe = 0, valhaber = 0;
@@ -305,35 +323,14 @@ namespace HPReserger
                                         for (int i = 0; i < TablaResult.Rows.Count; i++)
                                         {
                                             DataRow fila = TablaResult.Rows[i];
-                                            valdebe = (decimal)fila["mov. deudor"] > 0 ? (decimal)fila["mov. deudor"] : 0;
-                                            valhaber = (decimal)fila["mov. deudor"] < 0 ? Math.Abs((decimal)fila["mov. deudor"]) : 0;
-                                            fila["mov. deudor"] = valdebe;
-                                            fila["mov. acreedor"] = valhaber;
-                                            SumDebe += valdebe;
-                                            SumHaber += valhaber;
-                                            //fila["NUMERO DE DOCUMENTO"] = $"{fila["Cod_Comprobante"]}-{fila["NUMERO DE DOCUMENTO"]}";
-                                            //Para Todas la filas
-                                            if (fila["descripcion"].ToString() != Cuenta && i > 0)
-                                            {
-                                                DataRow nueva11 = TablaResult.NewRow();
-                                                nueva11["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"TOTAL CUENTA: {Cuenta}";
-                                                nueva11["mov. deudor"] = Sumvaldebe;
-                                                nueva11["mov. acreedor"] = Sumvalhaber;
-                                                DataRow nueva12 = TablaResult.NewRow();
-                                                nueva12["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"SALDO CUENTA: {Cuenta}";
-                                                nueva12["mov. deudor"] = Sumvaldebe - Sumvalhaber > 0 ? Sumvaldebe - Sumvalhaber : 0;
-                                                nueva12["mov. acreedor"] = Sumvaldebe - Sumvalhaber < 0 ? -Sumvaldebe + Sumvalhaber : 0;
-                                                TablaResult.Rows.InsertAt(nueva12, i);
-                                                TablaResult.Rows.InsertAt(nueva11, i);
-                                                i++;
-                                                i++;
-                                                Sumvaldebe = Sumvalhaber = 0;
-                                            }
                                             //Cabecera de las Cuentas
                                             if (fila["descripcion"].ToString() != Cuenta)
                                             {
+                                                Sumvaldebe = 0; Sumvalhaber = 0;
                                                 DataRow FiladeCuentas = TablaResult.NewRow();
                                                 FiladeCuentas["NOMBRE O RAZON SOCIAL"] = fila["descripcion"].ToString();
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{loc + pos }", $"G{loc + pos }", fila["descripcion"].ToString(), 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                pos++;
                                                 DataRow FilaSaldoInicial = TablaResult.NewRow();
                                                 FilaSaldoInicial["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = "SALDO INICIAL";
                                                 //
@@ -343,15 +340,71 @@ namespace HPReserger
                                                 FilaSaldoInicial["MOV. DEUDOR"] = MontoInicial > 0 ? Math.Abs(MontoInicial) : 0;
                                                 FilaSaldoInicial["MOV. ACREEDOR"] = MontoInicial < 0 ? Math.Abs(MontoInicial) : 0;
                                                 //
-                                                TablaResult.Rows.InsertAt(FilaSaldoInicial, i);
-                                                TablaResult.Rows.InsertAt(FiladeCuentas, i);
-                                                i++;
-                                                i++;
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{loc + pos }", $"E{loc + pos }", "SALDO INICIAL", 8, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"F{loc + pos }", $"F{loc + pos }", MontoInicial > 0 ? Math.Abs(MontoInicial) : 0, 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"G{loc + pos}", $"G{loc + pos }", MontoInicial < 0 ? Math.Abs(MontoInicial) : 0, 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+
+                                                pos++;
+                                                //
+                                                //TablaResult.Rows.InsertAt(FilaSaldoInicial, i);
+                                                //TablaResult.Rows.InsertAt(FiladeCuentas, i);
+                                                //i++;
+                                                //i++;
                                                 Sumvaldebe = MontoInicial > 0 ? Math.Abs(MontoInicial) : 0;
                                                 Sumvalhaber = MontoInicial < 0 ? Math.Abs(MontoInicial) : 0;
-                                                SumDebe += Sumvaldebe;
-                                                SumHaber += Sumvalhaber;
+                                                //POR SI NECESITA LA SUMA DEL SALDO INICIAL
+                                                //SumDebe += Sumvaldebe;
+                                                //SumHaber += Sumvalhaber;
                                                 Cuenta = fila["descripcion"].ToString();
+                                                //SACAMOS EL DETALLE
+                                                DataView dvR = TablaResult.Copy().AsDataView();
+                                                dvR.RowFilter = $"descripcion = '{Cuenta}'";
+                                                foreach (DataRow FILA in dvR.ToTable().Rows)
+                                                {
+                                                    valdebe = (decimal)FILA["mov. deudor"] > 0 ? (decimal)FILA["mov. deudor"] : 0;
+                                                    valhaber = (decimal)FILA["mov. deudor"] < 0 ? Math.Abs((decimal)FILA["mov. deudor"]) : 0;
+                                                    FILA["mov. deudor"] = valdebe;
+                                                    FILA["mov. acreedor"] = valhaber;
+                                                    SumDebe += valdebe;
+                                                    SumHaber += valhaber;
+                                                    Sumvaldebe += valdebe;
+                                                    Sumvalhaber += valhaber;
+                                                    //****************************//
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{loc + pos}", $"A{loc + pos}", FILA["Nº CORRELATIVO"].ToString(), 8, false, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"B{loc + pos}", $"B{loc + pos}", ((DateTime)FILA["FECHA DE OPERACIÓN"]).ToString("dd/MM/yyyy"), 8, false, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"C{loc + pos}", $"C{loc + pos}", FILA["MEDIO PAGO"].ToString(), 8, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"D{loc + pos}", $"D{loc + pos}", FILA["NOMBRE O RAZON SOCIAL"].ToString(), 8, false, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{loc + pos}", $"E{loc + pos}", FILA["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"].ToString(), 8, false, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"F{loc + pos}", $"F{loc + pos}", valdebe, 8, false, false, HPResergerFunciones.Utilitarios.Alineado.derecha, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"G{loc + pos}", $"G{loc + pos}", valhaber, 8, false, false, HPResergerFunciones.Utilitarios.Alineado.derecha, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+
+                                                    pos++;
+                                                    //****************************//
+                                                    //FILA["NUMERO DE DOCUMENTO"] = $"{FILA["Cod_Comprobante"]}-{FILA["NUMERO DE DOCUMENTO"]}";
+                                                    //Para Todas la FILAs
+                                                }
+                                                DataRow nueva11 = TablaResult.NewRow();
+                                                nueva11["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"TOTAL CUENTA: {Cuenta}";
+                                                nueva11["mov. deudor"] = Sumvaldebe;
+                                                nueva11["mov. acreedor"] = Sumvalhaber;
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{loc + pos}", $"E{loc + pos}", $"TOTAL CUENTA: {Cuenta}", 8, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"F{loc + pos}", $"F{loc + pos}", Sumvaldebe, 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"G{loc + pos}", $"G{loc + pos}", Sumvalhaber, 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                pos++;
+                                                DataRow nueva12 = TablaResult.NewRow();
+                                                nueva12["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = $"SALDO CUENTA: {Cuenta}";
+                                                nueva12["mov. deudor"] = Sumvaldebe - Sumvalhaber > 0 ? Sumvaldebe - Sumvalhaber : 0;
+                                                nueva12["mov. acreedor"] = Sumvaldebe - Sumvalhaber < 0 ? -Sumvaldebe + Sumvalhaber : 0;
+                                                //TablaResult.Rows.InsertAt(nueva12, i);
+                                                //TablaResult.Rows.InsertAt(nueva11, i);
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{loc + pos}", $"E{loc + pos}", $"SALDO CUENTA: {Cuenta}", 8, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"F{loc + pos}", $"F{loc + pos}", Sumvaldebe - Sumvalhaber > 0 ? Sumvaldebe - Sumvalhaber : 0, 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"G{loc + pos}", $"G{loc + pos}", Sumvaldebe - Sumvalhaber < 0 ? -Sumvaldebe + Sumvalhaber : 0, 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, i % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (i % 2 == 0 ? true : false)));
+                                                //i++;
+                                                //i++;
+                                                pos += 2;
+                                                Sumvaldebe = Sumvalhaber = 0;
+
                                             }
                                             //para la fila final
                                             if (i == TablaResult.Rows.Count - 1)
@@ -380,20 +433,24 @@ namespace HPReserger
                                         TablaResult.Columns.RemoveAt(6);
                                         TablaResult.Columns.RemoveAt(5);
                                         DataRow nueva1 = TablaResult.NewRow();
-                                        TablaResult.Rows.Add(nueva1);
+                                        //TablaResult.Rows.Add(nueva1);
                                         DataRow nueva2 = TablaResult.NewRow();
                                         nueva1["DESCRIPCIÓN O GLOSA DE LA OPERACIÓN"] = "TOTAL GENERAL";
                                         nueva1["MOV. DEUDOR"] = SumDebe;
                                         nueva1["MOV. acreedor"] = SumHaber;
-                                        TablaResult.Rows.Add(nueva2);
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{loc + pos}", $"E{loc + pos}", "TOTAL GENERAL", 8, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, 0 % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (0 % 2 == 0 ? true : false)));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"F{loc + pos}", $"F{loc + pos}", SumDebe, 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, 0 % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (0 % 2 == 0 ? true : false)));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"G{loc + pos}", $"G{loc + pos}", SumHaber, 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, 0 % 2 == 1 ? ForeBlanco : BackGrilla, ForeBlack, Configuraciones.FuenteReportesTahoma8, (0 % 2 == 0 ? true : false)));
 
-                                        //removemos la columna de saldos iniciales - indices
-                                        TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
+                                        //TablaResult.Rows.Add(nueva2);
+
+                                        ////removemos la columna de saldos iniciales - indices
+                                        //TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
                                         //TablaResult.Columns.RemoveAt(TablaResult.Columns.Count - 1);
                                         ///
                                         ////Anterior               
                                         //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 6, _Columnas, new int[] { }, new int[] { 1, 4, 5, 6, 7 }, "");
+                                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(Auditoria ? null : TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 7, _Columnas, new int[] { }, new int[] { 1, 4, 5, 6, 7 }, "", true);
                                     }
                                 }
                             }
@@ -755,6 +812,31 @@ namespace HPReserger
             {
                 msg("No hay Datos que Exportar");
             }
+        }
+        ModuloCrystalReport.frmReporteLibroDiario5_1 frmReporteLibrosDiarios;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (frmReporteLibrosDiarios == null)
+            {
+                frmReporteLibrosDiarios = new ModuloCrystalReport.frmReporteLibroDiario5_1();
+                string ValDEfecto = "0=0";
+                frmReporteLibrosDiarios.FechaIni = FechaInicio;
+                frmReporteLibrosDiarios.FechaFin = FechaFin;
+                frmReporteLibrosDiarios.Cuentas = ValDEfecto;
+                frmReporteLibrosDiarios.glosas = ValDEfecto;
+                frmReporteLibrosDiarios.nrodoc = ValDEfecto;
+                frmReporteLibrosDiarios.ruc = ValDEfecto;
+                frmReporteLibrosDiarios.empresa = "";
+                frmReporteLibrosDiarios.razonsocial = ValDEfecto;
+                frmReporteLibrosDiarios.FormClosed += FrmReporteLibrosDiarios_FormClosed;
+
+                frmReporteLibrosDiarios.Show();
+            }
+            else frmReporteLibrosDiarios.Activate();
+        }
+        private void FrmReporteLibrosDiarios_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmReporteLibrosDiarios = null;
         }
     }
 }

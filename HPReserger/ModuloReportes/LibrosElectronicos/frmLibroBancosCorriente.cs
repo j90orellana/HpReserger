@@ -227,8 +227,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                         int pos = 0;
                                         DataView dx = TablaResult.AsDataView();
                                         //cabeceras
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{6 + pos}", $"A{6 + pos}", "Nº CORRELATIVO DEL REGISTRO", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
-                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{6 + pos}", $"A{6 + pos}", "Nº CORRELATIVO DEL REGISTRO", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                        Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{6 + pos}", $"A{6 + pos}", "Nº CORRELATIVO DEL REGISTRO", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));                                       
 
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"B{6 + pos}", $"B{6 + pos}", "FECHA DE OPERACIÓN", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
                                         Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"C{6 + pos}", $"C{6 + pos}", "MEDIO DE PAGO", 10, true, false, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
@@ -252,9 +251,9 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"D{9 + pos}", $"D{9 + pos}", $"SALDO INICIAL", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
                                                 decimal Monto = 0; decimal.TryParse(TablaAux.Rows[0]["Saldosoles"].ToString(), out Monto);
                                                 if (Monto >= 0)
-                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{9 + pos}", $"I{9 + pos}", Math.Abs(Monto), 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{9 + pos}", $"I{9 + pos}", Math.Abs(Monto), 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
                                                 else
-                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"J{9 + pos}", $"J{9 + pos}", Math.Abs(Monto), 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
+                                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"J{9 + pos}", $"J{9 + pos}", Math.Abs(Monto), 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, true));
                                                 Sumatoria += Monto;
                                                 SumaDeudor += Monto > 0 ? Math.Abs(Monto) : 0;
                                                 SumaAcreedor += Monto < 0 ? Math.Abs(Monto) : 0;
@@ -280,11 +279,11 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                                 }
                                                 //Totalizando
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"D{ 10 + pos}", $"D{10 + pos}", $"SALDO FINAL PARA EL SIGUIENTE MES", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"{(Sumatoria < 0 ? "I" : "J")}{ 10 + pos}", $"{(Sumatoria < 0 ? "I" : "J")}{10 + pos}", Math.Abs(Sumatoria), 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, false));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"{(Sumatoria < 0 ? "I" : "J")}{ 10 + pos}", $"{(Sumatoria < 0 ? "I" : "J")}{10 + pos}", Math.Abs(Sumatoria), 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, false));
 
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"D{ 11 + pos}", $"D{11 + pos}", $"TOTAL DE LA CUENTA {CUENTAS}", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8));
-                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{ 11 + pos}", $"I{11 + pos}", SumaDeudor + (Sumatoria < 0 ? Math.Abs(Sumatoria) : 0), 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, false));
-                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"J{ 11 + pos}", $"J{11 + pos}", SumaAcreedor + (Sumatoria > 0 ? Math.Abs(Sumatoria) : 0), 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, false));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"I{ 11 + pos}", $"I{11 + pos}", SumaDeudor + (Sumatoria < 0 ? Math.Abs(Sumatoria) : 0), 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, false));
+                                                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"J{ 11 + pos}", $"J{11 + pos}", SumaAcreedor + (Sumatoria > 0 ? Math.Abs(Sumatoria) : 0), 8, true, false, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma8, false));
                                                 //
                                                 pos += 5;
                                             }

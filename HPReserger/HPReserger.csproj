@@ -252,10 +252,22 @@
     <Compile Include="ModuloCrystalReport\frmReporteLibroDiario5_1.Designer.cs">
       <DependentUpon>frmReporteLibroDiario5_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCrystalReport\frmReporteMayor6_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCrystalReport\frmReporteMayor6_1.Designer.cs">
+      <DependentUpon>frmReporteMayor6_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloCrystalReport\rptLibroDiario5_1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptLibroDiario5_1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModuloCrystalReport\rptLibroMayor6_1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLibroMayor6_1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ModuloFinanzas\FrmConciliarBanco.cs">
@@ -2036,9 +2048,16 @@
     <EmbeddedResource Include="ModuloCrystalReport\frmReporteLibroDiario5_1.resx">
       <DependentUpon>frmReporteLibroDiario5_1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\frmReporteMayor6_1.resx">
+      <DependentUpon>frmReporteMayor6_1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloCrystalReport\rptLibroDiario5_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLibroDiario5_1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\rptLibroMayor6_1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLibroMayor6_1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\FrmConciliarBanco.resx">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
