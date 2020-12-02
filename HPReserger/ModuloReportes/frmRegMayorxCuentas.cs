@@ -42,6 +42,7 @@ namespace HPReserger
         }
         DateTime FechaIni;
         DateTime FechaFin;
+        string BuscarEmpresa = "";
         private void btngenerar_Click(object sender, EventArgs e)
         {
             if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
@@ -56,7 +57,7 @@ namespace HPReserger
                 FechaIni = FechaAux;
             }
             string Buscarcuenta = "";
-            string BuscarEmpresa = "";
+            BuscarEmpresa = "";
             string BuscarRuc = "";
             string BuscarRazon = "";
             string BuscarGlosa = "";
@@ -813,30 +814,30 @@ namespace HPReserger
                 msg("No hay Datos que Exportar");
             }
         }
-        ModuloCrystalReport.frmReporteLibroDiario5_1 frmReporteLibrosDiarios;
+        ModuloCrystalReport.frmReporteMayor6_1 frmReporteLibroMayor6_1;
         private void button1_Click(object sender, EventArgs e)
         {
-            if (frmReporteLibrosDiarios == null)
+            if (frmReporteLibroMayor6_1 == null)
             {
-                frmReporteLibrosDiarios = new ModuloCrystalReport.frmReporteLibroDiario5_1();
-                string ValDEfecto = "0=0";
-                frmReporteLibrosDiarios.FechaIni = FechaInicio;
-                frmReporteLibrosDiarios.FechaFin = FechaFin;
-                frmReporteLibrosDiarios.Cuentas = ValDEfecto;
-                frmReporteLibrosDiarios.glosas = ValDEfecto;
-                frmReporteLibrosDiarios.nrodoc = ValDEfecto;
-                frmReporteLibrosDiarios.ruc = ValDEfecto;
-                frmReporteLibrosDiarios.empresa = "";
-                frmReporteLibrosDiarios.razonsocial = ValDEfecto;
-                frmReporteLibrosDiarios.FormClosed += FrmReporteLibrosDiarios_FormClosed;
+                frmReporteLibroMayor6_1 = new ModuloCrystalReport.frmReporteMayor6_1();
+                string ValDEfecto = "(0=0)";
+                frmReporteLibroMayor6_1.FechaIni = FechaInicio;
+                frmReporteLibroMayor6_1.FechaFin = FechaFin;
+                frmReporteLibroMayor6_1.Cuentas = ValDEfecto;
+                frmReporteLibroMayor6_1.glosas = ValDEfecto;
+                frmReporteLibroMayor6_1.nrodoc = ValDEfecto;
+                frmReporteLibroMayor6_1.ruc = ValDEfecto;
+                frmReporteLibroMayor6_1.empresa = BuscarEmpresa;
+                frmReporteLibroMayor6_1.razonsocial = ValDEfecto;
+                frmReporteLibroMayor6_1.FormClosed += FrmReporteLibrosDiarios_FormClosed;
 
-                frmReporteLibrosDiarios.Show();
+                frmReporteLibroMayor6_1.Show();
             }
-            else frmReporteLibrosDiarios.Activate();
+            else frmReporteLibroMayor6_1.Activate();
         }
         private void FrmReporteLibrosDiarios_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmReporteLibrosDiarios = null;
+            frmReporteLibroMayor6_1 = null;
         }
     }
 }

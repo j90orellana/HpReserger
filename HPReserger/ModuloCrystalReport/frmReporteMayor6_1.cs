@@ -20,12 +20,12 @@ namespace HPReserger.ModuloCrystalReport
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
-        rptLibroDiario5_1 reporte;
+        rptLibroMayor6_1 reporte;
         public DateTime FechaIni, FechaFin;
         public string Cuentas, glosas, nrodoc, ruc, empresa, razonsocial;
         private void frmReporteMayor6_1_Load(object sender, EventArgs e)
         {
-            reporte = new rptLibroDiario5_1();
+            reporte = new rptLibroMayor6_1();
             reporte.SetParameterValue("@Fechaini", FechaIni);
             reporte.SetParameterValue("@FechaFin", FechaFin);
             reporte.SetParameterValue("@cuentas", Cuentas);
