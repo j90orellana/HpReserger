@@ -31,18 +31,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteSaldosContables));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteSaldosContables));
             this.comboMesAño = new HpResergerUserControls.ComboMesAño();
             this.cboEmpresas = new System.Windows.Forms.ComboBox();
             this.lblfechasReporte = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMontoSoles = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMontoDolares = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
             this.lblconteo = new System.Windows.Forms.Label();
             this.btnexportarexcel = new System.Windows.Forms.Button();
@@ -50,6 +46,10 @@
             this.btnGenerar = new HpResergerUserControls.ButtonPer();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.chk2col = new HpResergerUserControls.checkboxOre();
+            this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMontoSoles = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMontoDolares = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,9 +59,9 @@
             this.comboMesAño.AutoSize = true;
             this.comboMesAño.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2019, 11, 25, 0, 0, 0, 0);
-            this.comboMesAño.FechaFinMes = new System.DateTime(2019, 11, 30, 0, 0, 0, 0);
-            this.comboMesAño.FechaInicioMes = new System.DateTime(2019, 11, 1, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño.FechaFinMes = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño.FechaInicioMes = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(203, 54);
             this.comboMesAño.Name = "comboMesAño";
             this.comboMesAño.Size = new System.Drawing.Size(200, 27);
@@ -160,46 +160,6 @@
             this.dtgconten.Size = new System.Drawing.Size(584, 393);
             this.dtgconten.TabIndex = 420;
             // 
-            // xCuentaContable
-            // 
-            this.xCuentaContable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xCuentaContable.DataPropertyName = "cuentacontable";
-            this.xCuentaContable.HeaderText = "Cuenta Contable";
-            this.xCuentaContable.Name = "xCuentaContable";
-            this.xCuentaContable.ReadOnly = true;
-            this.xCuentaContable.Width = 117;
-            // 
-            // xDescripcion
-            // 
-            this.xDescripcion.DataPropertyName = "cuenta_contable";
-            this.xDescripcion.HeaderText = "Descripción";
-            this.xDescripcion.Name = "xDescripcion";
-            this.xDescripcion.ReadOnly = true;
-            // 
-            // xMontoSoles
-            // 
-            this.xMontoSoles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xMontoSoles.DataPropertyName = "Montosoles";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            this.xMontoSoles.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xMontoSoles.HeaderText = "Moneda";
-            this.xMontoSoles.MinimumWidth = 100;
-            this.xMontoSoles.Name = "xMontoSoles";
-            this.xMontoSoles.ReadOnly = true;
-            // 
-            // xMontoDolares
-            // 
-            this.xMontoDolares.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xMontoDolares.DataPropertyName = "montodolares";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.xMontoDolares.DefaultCellStyle = dataGridViewCellStyle4;
-            this.xMontoDolares.HeaderText = "Monto";
-            this.xMontoDolares.MinimumWidth = 100;
-            this.xMontoDolares.Name = "xMontoDolares";
-            this.xMontoDolares.ReadOnly = true;
-            // 
             // separadorOre1
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -292,6 +252,47 @@
             this.chk2col.Visible = false;
             this.chk2col.CheckedChanged += new System.EventHandler(this.chk2col_CheckedChanged);
             // 
+            // xCuentaContable
+            // 
+            this.xCuentaContable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xCuentaContable.DataPropertyName = "cuentacontable";
+            this.xCuentaContable.HeaderText = "Cuenta Contable";
+            this.xCuentaContable.Name = "xCuentaContable";
+            this.xCuentaContable.ReadOnly = true;
+            this.xCuentaContable.Width = 117;
+            // 
+            // xDescripcion
+            // 
+            this.xDescripcion.DataPropertyName = "cuenta_contable";
+            this.xDescripcion.HeaderText = "Descripción";
+            this.xDescripcion.Name = "xDescripcion";
+            this.xDescripcion.ReadOnly = true;
+            // 
+            // xMontoSoles
+            // 
+            this.xMontoSoles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xMontoSoles.DataPropertyName = "SaldoSoles";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "n2";
+            this.xMontoSoles.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xMontoSoles.HeaderText = "Saldo Soles";
+            this.xMontoSoles.MinimumWidth = 100;
+            this.xMontoSoles.Name = "xMontoSoles";
+            this.xMontoSoles.ReadOnly = true;
+            // 
+            // xMontoDolares
+            // 
+            this.xMontoDolares.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xMontoDolares.DataPropertyName = "SaldoDolares";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.xMontoDolares.DefaultCellStyle = dataGridViewCellStyle4;
+            this.xMontoDolares.HeaderText = "Saldo Dolares";
+            this.xMontoDolares.MinimumWidth = 100;
+            this.xMontoDolares.Name = "xMontoDolares";
+            this.xMontoDolares.ReadOnly = true;
+            this.xMontoDolares.Width = 101;
+            // 
             // frmReporteSaldosContables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,10 +334,10 @@
         private System.Windows.Forms.Button btncancelar;
         private HpResergerUserControls.ButtonPer btnGenerar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private HpResergerUserControls.checkboxOre chk2col;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMontoSoles;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMontoDolares;
-        private HpResergerUserControls.checkboxOre chk2col;
     }
 }

@@ -125,8 +125,8 @@ namespace HPReserger.ModuloReportes
                 //por la segunda columna
                 if (chk2col.Checked)
                 {
-                    TableResult.Columns[2].ColumnName = "Moneda";
-                    TableResult.Columns[3].ColumnName = "Monto";
+                    TableResult.Columns[2].ColumnName = "Saldo Soles";
+                    TableResult.Columns[3].ColumnName = "Saldo Dolares";
                 }
                 ///
                 HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, _AutoAjustarColumnas, Macro);
