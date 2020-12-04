@@ -99,37 +99,43 @@ namespace HPReserger.ModuloReportes
                 _NombreHoja = "Reporte Saldos Contables"; _Cabecera = "Reporte Saldos Contables";
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
                 //Columnas AutoAjustar
-                int[] _AutoAjustarColumnas = new int[] { 2, 3, 4 };
+                int[] _AutoAjustarColumnas = new int[] { 2, 3, 4, 5 };
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
                 Color Back = Color.FromArgb(78, 129, 189);
                 Color Fore = Color.FromArgb(255, 255, 255);
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a4", _Cabecera.ToUpper(), 16, true, false, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "Empresa:", 12, false, false, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", NameEmpresa, 12, false, false, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", $"De: {FechaInicioAnio.ToShortDateString()} Al: {FechaFinMes.ToShortDateString()} ", 12, false, false, Back, Fore));
+                Font FontCabcera = new Font("tahoma", 10, FontStyle.Bold);
+                Font FontDetalle = new Font("tahoma", 8, FontStyle.Regular);
+                //
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "a4", _Cabecera.ToUpper(), 14, true, false, Back, Fore, FontCabcera));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "Empresa:", 10, false, false, Back, Fore, FontDetalle));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("C2", "C2", NameEmpresa, 10, false, false, Back, Fore, FontDetalle));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", $"De: {FechaInicioAnio.ToShortDateString()} Al: {FechaFinMes.ToShortDateString()} ", 10, false, false, Back, Fore, FontDetalle));
                 // Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", "Ruc:", 12, false, true, Back, Fore));
                 //// Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b3", "c3", $"{txtruc.Text}", 12, false, true, Back, Fore));
                 //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a3", "a3", txtbuscuenta.Text.Length > 0 ? "CUENTA CONTABLE:" : "", 12, false, false, Back, Fore));
                 //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("d3", "d3", $"{(txtbuscuenta.Text.Length > 0 ? txtbuscuenta.Text : "")}", 12, false, false, Back, Fore));
                 //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "Nombre Vendedor:", 11));
-                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
-                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, FontDetalle, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, FontDetalle, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
                 /////fin estilo de las celdas
                 DataTable TableResult = new DataTable();
                 DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
                 TableResult = dt.ToTable();
+                //
+                foreach (DataGridViewColumn item in dtgconten.Columns)
+                    TableResult.Columns[item.DataPropertyName].ColumnName = item.HeaderText;
                 //MACRO
-                int PosInicialGrilla = 4;
+                int PosInicialGrilla = 5;
                 string Macro = "";
                 //por la segunda columna
-                if (chk2col.Checked)
-                {
-                    TableResult.Columns[2].ColumnName = "Saldo Soles";
-                    TableResult.Columns[3].ColumnName = "Saldo Dolares";
-                }
+                //if (chk2col.Checked)
+                //{
+                //    TableResult.Columns[2].ColumnName = "Saldo Soles";
+                //    TableResult.Columns[3].ColumnName = "Saldo Dolares";
+                //}
                 ///
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, _AutoAjustarColumnas, Macro);
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, (" " + NameEmpresa), _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, _AutoAjustarColumnas, Macro);
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
             }
             else msg("No hay Registros en la Grilla");

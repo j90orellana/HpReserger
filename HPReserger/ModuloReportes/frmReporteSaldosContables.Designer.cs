@@ -46,6 +46,7 @@
             this.btnGenerar = new HpResergerUserControls.ButtonPer();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.chk2col = new HpResergerUserControls.checkboxOre();
+            this.xPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMontoSoles = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,6 +134,7 @@
             this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.xPeriodo,
             this.xCuentaContable,
             this.xDescripcion,
             this.xMontoSoles,
@@ -252,19 +254,29 @@
             this.chk2col.Visible = false;
             this.chk2col.CheckedChanged += new System.EventHandler(this.chk2col_CheckedChanged);
             // 
+            // xPeriodo
+            // 
+            this.xPeriodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xPeriodo.DataPropertyName = "periodo";
+            this.xPeriodo.HeaderText = "Periodo";
+            this.xPeriodo.MinimumWidth = 60;
+            this.xPeriodo.Name = "xPeriodo";
+            this.xPeriodo.ReadOnly = true;
+            this.xPeriodo.Width = 60;
+            // 
             // xCuentaContable
             // 
             this.xCuentaContable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xCuentaContable.DataPropertyName = "cuentacontable";
-            this.xCuentaContable.HeaderText = "Cuenta Contable";
+            this.xCuentaContable.HeaderText = "Cuenta";
             this.xCuentaContable.Name = "xCuentaContable";
             this.xCuentaContable.ReadOnly = true;
-            this.xCuentaContable.Width = 117;
+            this.xCuentaContable.Width = 67;
             // 
             // xDescripcion
             // 
             this.xDescripcion.DataPropertyName = "cuenta_contable";
-            this.xDescripcion.HeaderText = "Descripción";
+            this.xDescripcion.HeaderText = "Descripción Cuenta Contable";
             this.xDescripcion.Name = "xDescripcion";
             this.xDescripcion.ReadOnly = true;
             // 
@@ -335,6 +347,7 @@
         private HpResergerUserControls.ButtonPer btnGenerar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private HpResergerUserControls.checkboxOre chk2col;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xPeriodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMontoSoles;
