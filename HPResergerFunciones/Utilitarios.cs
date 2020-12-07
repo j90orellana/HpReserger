@@ -1431,6 +1431,8 @@ namespace HPResergerFunciones
             Hoja_Trabajo.PrinterSettings.FitToPage = true;
             Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
             Hoja_Trabajo.PrinterSettings.Orientation = eOrientation.Portrait;
+            ExcelAddress FilaRepetir = new ExcelAddress($"{PosInicialGrilla}:{PosInicialGrilla}");
+            Hoja_Trabajo.PrinterSettings.RepeatRows = FilaRepetir;
             //Fin Ajuste de Texto
             Hoja_Trabajo.View.ShowGridLines = false;
             //if (!EstaArchivoAbierto(FileName.ToString()))
@@ -1498,7 +1500,170 @@ namespace HPResergerFunciones
                 Excel.SaveAs(FileName);
             }
         }
+        public static void ExportarAExcelOrdenandoColumnasCreado(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile,
+       string nombrehoja, int index, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
+              , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro, string RangoFilaRepetir)
+        {
+            Boolean ForzarAutoAjustado = false;
+            string Extesion = "x";
+            if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
+            NameFile = NameFile.Substring(0, NameFile.Length - 1) + Extesion;
+            //if (NombresCeldas[0].BackColor != Color.Empty) ForzarAutoAjustado = true;
+            //Principal para generar exportacion a Excel
+            FileInfo FileName = new FileInfo(NameFile);
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            ExcelPackage Excel = new ExcelPackage(FileName);
+            Excel.Workbook.Worksheets.Add(nombrehoja);
+            ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index - 1];
+            //Hoja_Trabajo.Name = nombrehoja; 
+            ///Ponemos Nombre a las Celdas      
+            foreach (RangoCelda Nombres in NombresCeldas)
+            {
+                if (Nombres.Nombre == null)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.ValorDecimal;
+                    Hoja_Trabajo.Cells[Nombres.fila].Style.Numberformat.Format = Nombres.Formato;//Formato Contabilidad
+                }
+                else
+                    Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.Nombre;
+                //
+                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
+                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.Font.Bold = Nombres._Negrita;
+                if (Nombres.TamañoFuente != 0)
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Size = Nombres.TamañoFuente;
+                if (!Nombres._Centrar)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila /*+ ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
+                }
+                else
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Merge = true;
+                if (Nombres.Fuente != null)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Name = Nombres.Fuente.Name;
+                }
+                if (Nombres.Alineado != null)
+                {
+                    if (Alineado.izquierda == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    }
+                    if (Alineado.derecha == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                    }
+                    if (Alineado.centro == Nombres.Alineado)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    }
+                }
+                //backcolor
+                if (Nombres.BackColor != Color.Empty)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Fill.BackgroundColor.SetColor(Nombres.BackColor);
+                    //ForzarAutoAjustado = true;
+                }
+                //la linea de abajo si vale solo que hay que corregir por la letra blancas
+                if (Nombres.ForeColor != Color.Empty)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Color.SetColor(Nombres.ForeColor);
+                    //ForzarAutoAjustado = true;
+                }
+            }
+            //Recorremos el DataGridView rellenando la hoja de trabajo
+            if (grd != null)
+            {
+                int Conta = grd.Rows.Count;
+                //int i = 0;
+                Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);
+                //Hoja_Trabajo
+                FileInfo file = new FileInfo(NameFile);//Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{""}" + $".xls{Extesion}");
+                int ConCol = grd.Columns.Count;
 
+                for (int i = 0; i < grd.Rows.Count + 1; i++)
+                {
+                    if (i == 0)
+                    {
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaCabecera.ColorRelleno);
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.Color.SetColor(CeldaCabecera.ColorFuente);
+                        if (CeldaCabecera.FuenteRelleno != null)
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
+                    }
+                    else if ((i % 2) == 0)
+                    {
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
+                        if (CeldaDefecto.FuenteRelleno != null)
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                    }
+                    else
+                    {
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(Color.White);
+                        if (CeldaDefecto.FuenteRelleno != null)
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                    }
+                }
+                int CountRows = grd.Rows.Count + PosInicialGrilla;
+                foreach (DataColumn item in grd.Columns)
+                {
+                    if (item.DataType == typeof(decimal))
+                        Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = "_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * \" - \"??_ ;_ @_ ";//Formato Contabilidad
+                    if (item.DataType == typeof(DateTime))
+                        Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+                }
+                if (!string.IsNullOrWhiteSpace(ScriptMacro))
+                {
+                    Excel.Workbook.CreateVBAProject();
+                    var worksheet = Excel.Workbook.Worksheets.Add("HojaDeMacros");
+                    worksheet.CodeModule.Code = ScriptMacro.ToString();
+                    worksheet.CodeModule.Name = "HojaDeMacros";
+                    Hoja_Trabajo.Workbook.CodeModule.Code = ScriptMacro;
+                    Hoja_Trabajo.Workbook.Worksheets["HojaDeMacros"].Hidden = eWorkSheetHidden.Hidden;
+                }
+            }
+            ///Ajustamos al Texto
+            ///_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * "-"??_ ;_ @_ 
+            string Pos = $"{PosInicialGrilla}:{PosInicialGrilla}";
+            Hoja_Trabajo.Cells[Pos].Style.WrapText = true;
+            Hoja_Trabajo.Cells[Pos].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+            Hoja_Trabajo.Cells[Pos].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+            //AutoAjustarColumnas
+            foreach (int i in AutoAjustarColumnas)
+            {
+                Hoja_Trabajo.Column(i).AutoFit(7);
+            }
+            if (ForzarAutoAjustado)
+                foreach (int i in AutoAjustarColumnas)
+                {
+                    Hoja_Trabajo.Column(i).BestFit = true;
+                    //Hoja_Trabajo.Column(i).AutoFit(1000);
+                    Hoja_Trabajo.Column(i).AutoFit();
+                    Hoja_Trabajo.Cells[$"{i}:{i}"].AutoFitColumns();
+                }
+            if (grd == null)
+                Hoja_Trabajo.Cells.AutoFitColumns();
+            //AJUSTE DE AREA DE IMPRESION            
+            //Hoja_Trabajo.PrinterSettings.PrintArea = null;
+
+            Hoja_Trabajo.PrinterSettings.PrintArea = Hoja_Trabajo.Cells[$"A:{ExcelRange.GetAddressCol(grd == null ? Hoja_Trabajo.Dimension.Columns : grd.Columns.Count)}"];
+            Hoja_Trabajo.PrinterSettings.PaperSize = ePaperSize.A4;
+            Hoja_Trabajo.PrinterSettings.FitToPage = true;
+            Hoja_Trabajo.PrinterSettings.FitToHeight = 0;
+            Hoja_Trabajo.PrinterSettings.Orientation = eOrientation.Portrait;
+            ExcelAddress FilaRepetir = new ExcelAddress(RangoFilaRepetir);
+            Hoja_Trabajo.PrinterSettings.RepeatRows = FilaRepetir;
+            //Fin Ajuste de Texto
+            Hoja_Trabajo.View.ShowGridLines = false;
+
+            if (!string.IsNullOrWhiteSpace(NameFile))
+            {
+                Excel.SaveAs(FileName);
+            }
+        }
         public static Boolean EstaArchivoAbierto(string filePath)
         {
             Boolean rtnvalue = false;
