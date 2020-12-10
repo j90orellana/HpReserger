@@ -728,19 +728,19 @@ namespace HPReserger
             if (rbCierre.Checked && !rbCierre.Enabled) { msg("No se Puede Aplicar Asiento de Cierre"); return; }
             if (rbApertura.Checked && !rbApertura.Enabled) { msg("No se Puede Aplicar Asiento de Apertura"); return; }
             //validamos que este todos los periodos Cerrados
-            Boolean Validar = false;
-            for (int i = 1; i < 12; i++)
-            {
-                DateTime FechaPrueba = new DateTime(comboMesAño.GetFecha().Year - 1, i, 1);
-                if (CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, FechaPrueba))
-                {
-                    Validar = true;
-                }
-            }
-            if (Validar)
-            {
-                msg("Cierre Todos los Periodos de la Empresa Seleccionada."); return;
-            }
+            //Boolean Validar = false;
+            //for (int i = 1; i < 12; i++)
+            //{
+            //    DateTime FechaPrueba = new DateTime(comboMesAño.GetFecha().Year - 1, i, 1);
+            //    if (CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, FechaPrueba))
+            //    {
+            //        Validar = true;
+            //    }
+            //}
+            //if (Validar)
+            //{
+            //    msg("Cierre Todos los Periodos de la Empresa Seleccionada."); return;
+            //}
             //if (VerificarsiYaexisteAsiento()) { msg("Ya Existe un Asiento de Apertura para este Año"); return; }
             //Dinamica para el Cierre Mensual
             DateTime FechaContable = new DateTime(comboMesAño.FechaFinMes.Year, 1, 1);
