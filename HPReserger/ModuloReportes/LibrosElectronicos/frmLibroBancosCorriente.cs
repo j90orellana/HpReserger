@@ -47,7 +47,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             Cursor = Cursors.WaitCursor;
             if (chklist.CheckedItems.Count == 0) { msgError("Seleccione una Empresa"); return; }
             DateTime FechaAuxiliar;
-            string ListadoEmpresas = "";
+            ListadoEmpresas = "";
             if (cboperiodode.FechaInicioMes > cboperiodohasta.FechaInicioMes)
             {
                 FechaAuxiliar = cboperiodode.FechaInicioMes;
@@ -506,19 +506,15 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             Ordenado = true;
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
         DataTable TAuditoria = new DataTable();
+        string ListadoEmpresas = "";
         private void btnAuditoria_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
             {
                 Auditoria = true;
                 DateTime FechaAuxiliar;
-                string ListadoEmpresas = "";
+                ListadoEmpresas = "";
                 if (cboperiodode.FechaInicioMes > cboperiodohasta.FechaInicioMes)
                 {
                     FechaAuxiliar = cboperiodode.FechaInicioMes;
@@ -557,6 +553,29 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                 }
                 else msgError("No hay Datos que Exportar");
             }
+        }
+        ModuloCrystalReport.frmLibroBanco1_2 frmReportelibro1_2;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.Rows.Count == 0) { msgError("No hay datos que Exportar"); return; }
+            if (frmReportelibro1_2 == null)
+            {
+                frmReportelibro1_2 = new ModuloCrystalReport.frmLibroBanco1_2();
+                frmReportelibro1_2.ListadoEmpresas = ListadoEmpresas;
+                frmReportelibro1_2.FechaIni = FechaInicial;
+                frmReportelibro1_2.FechaFin = FechaFinal;
+                frmReportelibro1_2.FormClosed += FrmReportelibro1_2_FormClosed;
+                frmReportelibro1_2.Show();
+            }
+            else
+            {
+                frmReportelibro1_2.Activate();
+            }
+        }
+        private void FrmReportelibro1_2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmReportelibro1_2 = null;
         }
     }
 }
