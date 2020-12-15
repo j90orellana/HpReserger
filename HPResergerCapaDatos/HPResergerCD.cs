@@ -5154,8 +5154,8 @@ namespace HPResergerCapaDatos
         }
         public DataTable MayorPorCuentas(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {
-            string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial" };
-            object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon };
+            string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial", "@CierreApertura" };
+            object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon, 1 };
             return bd.DataTableFromProcedure("usp_MayorPorCuentas", parametros, valores, null);
         }
         public DataTable MayorPorCuentasPerfil(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
