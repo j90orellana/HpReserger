@@ -167,9 +167,9 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 10, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 10, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 10, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.comboMesAño1.Location = new System.Drawing.Point(776, 43);
             this.comboMesAño1.Name = "comboMesAño1";
@@ -214,7 +214,7 @@
             this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(971, 546);
+            this.BtnCerrar.Location = new System.Drawing.Point(971, 571);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(83, 23);
             this.BtnCerrar.TabIndex = 183;
@@ -231,7 +231,7 @@
             this.btnTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTxt.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTxt.ForeColor = System.Drawing.Color.White;
-            this.btnTxt.Location = new System.Drawing.Point(885, 546);
+            this.btnTxt.Location = new System.Drawing.Point(885, 571);
             this.btnTxt.Name = "btnTxt";
             this.btnTxt.Size = new System.Drawing.Size(83, 23);
             this.btnTxt.TabIndex = 184;
@@ -515,7 +515,7 @@
             this.lblRegistroExcel.AutoSize = true;
             this.lblRegistroExcel.BackColor = System.Drawing.Color.Transparent;
             this.lblRegistroExcel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroExcel.Location = new System.Drawing.Point(13, 530);
+            this.lblRegistroExcel.Location = new System.Drawing.Point(13, 555);
             this.lblRegistroExcel.Name = "lblRegistroExcel";
             this.lblRegistroExcel.Size = new System.Drawing.Size(142, 13);
             this.lblRegistroExcel.TabIndex = 189;
@@ -541,7 +541,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1041, 386);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1041, 411);
             this.tableLayoutPanel1.TabIndex = 190;
             // 
             // dtgContenSistema
@@ -800,7 +800,7 @@
             this.lblTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotales.BackColor = System.Drawing.Color.Transparent;
             this.lblTotales.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotales.Location = new System.Drawing.Point(786, 530);
+            this.lblTotales.Location = new System.Drawing.Point(786, 555);
             this.lblTotales.Name = "lblTotales";
             this.lblTotales.Size = new System.Drawing.Size(271, 13);
             this.lblTotales.TabIndex = 189;
@@ -813,7 +813,7 @@
             this.lblFunciones.AutoSize = true;
             this.lblFunciones.BackColor = System.Drawing.Color.Transparent;
             this.lblFunciones.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFunciones.Location = new System.Drawing.Point(468, 27);
+            this.lblFunciones.Location = new System.Drawing.Point(468, 52);
             this.lblFunciones.Name = "lblFunciones";
             this.lblFunciones.Size = new System.Drawing.Size(72, 13);
             this.lblFunciones.TabIndex = 189;
@@ -826,7 +826,7 @@
             this.btnFechaMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnFechaMonto.AutoSize = true;
             this.btnFechaMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnFechaMonto.Location = new System.Drawing.Point(540, 27);
+            this.btnFechaMonto.Location = new System.Drawing.Point(540, 52);
             this.btnFechaMonto.Name = "btnFechaMonto";
             this.btnFechaMonto.Size = new System.Drawing.Size(83, 13);
             this.btnFechaMonto.TabIndex = 191;
@@ -841,7 +841,7 @@
             this.btnOperacionMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnOperacionMonto.AutoSize = true;
             this.btnOperacionMonto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnOperacionMonto.Location = new System.Drawing.Point(623, 27);
+            this.btnOperacionMonto.Location = new System.Drawing.Point(623, 52);
             this.btnOperacionMonto.Name = "btnOperacionMonto";
             this.btnOperacionMonto.Size = new System.Drawing.Size(107, 13);
             this.btnOperacionMonto.TabIndex = 191;
@@ -856,7 +856,7 @@
             this.btnOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnOperacion.AutoSize = true;
             this.btnOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnOperacion.Location = new System.Drawing.Point(730, 27);
+            this.btnOperacion.Location = new System.Drawing.Point(730, 52);
             this.btnOperacion.Name = "btnOperacion";
             this.btnOperacion.Size = new System.Drawing.Size(61, 13);
             this.btnOperacion.TabIndex = 191;
@@ -871,7 +871,7 @@
             this.lblmanual.AutoSize = true;
             this.lblmanual.BackColor = System.Drawing.Color.Transparent;
             this.lblmanual.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmanual.Location = new System.Drawing.Point(361, 557);
+            this.lblmanual.Location = new System.Drawing.Point(361, 582);
             this.lblmanual.Name = "lblmanual";
             this.lblmanual.Size = new System.Drawing.Size(49, 13);
             this.lblmanual.TabIndex = 192;
@@ -884,7 +884,7 @@
             this.btnAgrupar.AutoSize = true;
             this.btnAgrupar.BackColor = System.Drawing.Color.Transparent;
             this.btnAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnAgrupar.Location = new System.Drawing.Point(410, 557);
+            this.btnAgrupar.Location = new System.Drawing.Point(410, 582);
             this.btnAgrupar.Name = "btnAgrupar";
             this.btnAgrupar.Size = new System.Drawing.Size(49, 13);
             this.btnAgrupar.TabIndex = 191;
@@ -899,7 +899,7 @@
             this.btnDesAgrupar.AutoSize = true;
             this.btnDesAgrupar.BackColor = System.Drawing.Color.Transparent;
             this.btnDesAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnDesAgrupar.Location = new System.Drawing.Point(459, 557);
+            this.btnDesAgrupar.Location = new System.Drawing.Point(459, 582);
             this.btnDesAgrupar.Name = "btnDesAgrupar";
             this.btnDesAgrupar.Size = new System.Drawing.Size(68, 13);
             this.btnDesAgrupar.TabIndex = 191;
@@ -916,7 +916,7 @@
             this.chkOperacion.ColorChecked = System.Drawing.Color.Empty;
             this.chkOperacion.ColorUnChecked = System.Drawing.Color.Empty;
             this.chkOperacion.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkOperacion.Location = new System.Drawing.Point(533, 556);
+            this.chkOperacion.Location = new System.Drawing.Point(533, 581);
             this.chkOperacion.Name = "chkOperacion";
             this.chkOperacion.Size = new System.Drawing.Size(169, 17);
             this.chkOperacion.TabIndex = 193;
@@ -931,7 +931,7 @@
             this.lblRegistroExcel2.AutoSize = true;
             this.lblRegistroExcel2.BackColor = System.Drawing.Color.Transparent;
             this.lblRegistroExcel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 546);
+            this.lblRegistroExcel2.Location = new System.Drawing.Point(13, 571);
             this.lblRegistroExcel2.Name = "lblRegistroExcel2";
             this.lblRegistroExcel2.Size = new System.Drawing.Size(185, 13);
             this.lblRegistroExcel2.TabIndex = 189;
@@ -944,7 +944,7 @@
             this.lblRegistroSistema.AutoSize = true;
             this.lblRegistroSistema.BackColor = System.Drawing.Color.Transparent;
             this.lblRegistroSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroSistema.Location = new System.Drawing.Point(533, 530);
+            this.lblRegistroSistema.Location = new System.Drawing.Point(533, 555);
             this.lblRegistroSistema.Name = "lblRegistroSistema";
             this.lblRegistroSistema.Size = new System.Drawing.Size(156, 13);
             this.lblRegistroSistema.TabIndex = 189;
@@ -957,7 +957,7 @@
             this.lblRegistroSistema2.AutoSize = true;
             this.lblRegistroSistema2.BackColor = System.Drawing.Color.Transparent;
             this.lblRegistroSistema2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistroSistema2.Location = new System.Drawing.Point(533, 543);
+            this.lblRegistroSistema2.Location = new System.Drawing.Point(533, 568);
             this.lblRegistroSistema2.Name = "lblRegistroSistema2";
             this.lblRegistroSistema2.Size = new System.Drawing.Size(185, 13);
             this.lblRegistroSistema2.TabIndex = 189;
@@ -973,7 +973,7 @@
             this.btnReversar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReversar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReversar.ForeColor = System.Drawing.Color.White;
-            this.btnReversar.Location = new System.Drawing.Point(446, 531);
+            this.btnReversar.Location = new System.Drawing.Point(446, 556);
             this.btnReversar.Name = "btnReversar";
             this.btnReversar.Size = new System.Drawing.Size(83, 23);
             this.btnReversar.TabIndex = 183;
@@ -991,7 +991,7 @@
             this.lblEstadoCuenta.AutoSize = true;
             this.lblEstadoCuenta.BackColor = System.Drawing.Color.Transparent;
             this.lblEstadoCuenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblEstadoCuenta.Location = new System.Drawing.Point(13, 515);
+            this.lblEstadoCuenta.Location = new System.Drawing.Point(13, 540);
             this.lblEstadoCuenta.Name = "lblEstadoCuenta";
             this.lblEstadoCuenta.Size = new System.Drawing.Size(0, 13);
             this.lblEstadoCuenta.TabIndex = 190;
@@ -1002,7 +1002,7 @@
             this.lblsaldoFinal.AutoSize = true;
             this.lblsaldoFinal.BackColor = System.Drawing.Color.Transparent;
             this.lblsaldoFinal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblsaldoFinal.Location = new System.Drawing.Point(533, 515);
+            this.lblsaldoFinal.Location = new System.Drawing.Point(533, 540);
             this.lblsaldoFinal.Name = "lblsaldoFinal";
             this.lblsaldoFinal.Size = new System.Drawing.Size(0, 13);
             this.lblsaldoFinal.TabIndex = 190;
@@ -1016,7 +1016,7 @@
             this.btnActualizarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizarExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizarExcel.ForeColor = System.Drawing.Color.White;
-            this.btnActualizarExcel.Location = new System.Drawing.Point(359, 531);
+            this.btnActualizarExcel.Location = new System.Drawing.Point(359, 556);
             this.btnActualizarExcel.Name = "btnActualizarExcel";
             this.btnActualizarExcel.Size = new System.Drawing.Size(83, 23);
             this.btnActualizarExcel.TabIndex = 194;
@@ -1029,7 +1029,7 @@
             // FrmConciliarBanco
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1064, 575);
+            this.ClientSize = new System.Drawing.Size(1064, 600);
             this.Controls.Add(this.btnActualizarExcel);
             this.Controls.Add(this.lblsaldoFinal);
             this.Controls.Add(this.lblEstadoCuenta);

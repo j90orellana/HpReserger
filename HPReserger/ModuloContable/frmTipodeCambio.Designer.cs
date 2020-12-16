@@ -59,6 +59,7 @@
             this.vv = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.lblmsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbdown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbigual)).BeginInit();
@@ -105,9 +106,10 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 451);
+            this.label1.Location = new System.Drawing.Point(0, 459);
             this.label1.MinimumSize = new System.Drawing.Size(482, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(482, 87);
@@ -184,12 +186,12 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 6, 26, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 6, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 6, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(12, 11);
             this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.Size = new System.Drawing.Size(197, 27);
             this.comboMesAño1.TabIndex = 63;
             this.comboMesAño1.VerAño = true;
             this.comboMesAño1.VerMes = true;
@@ -247,7 +249,7 @@
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dtgconten.Size = new System.Drawing.Size(458, 407);
+            this.dtgconten.Size = new System.Drawing.Size(458, 400);
             this.dtgconten.TabIndex = 61;
             this.dtgconten.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtgconten_MouseDown);
             // 
@@ -326,11 +328,22 @@
             this.Timer.Tag = "3600000";
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
+            // lblmsg
+            // 
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsg.Location = new System.Drawing.Point(7, 444);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(0, 13);
+            this.lblmsg.TabIndex = 71;
+            // 
             // frmTipodeCambio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 538);
+            this.ClientSize = new System.Drawing.Size(482, 546);
+            this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.btnaddtipo);
             this.Controls.Add(this.pbigual);
             this.Controls.Add(this.pbdown);
@@ -380,5 +393,6 @@
         public HpResergerUserControls.ComboMesAño comboMesAño1;
         private System.Windows.Forms.Button Buscar;
         private System.Windows.Forms.Timer Timer;
+        private System.Windows.Forms.Label lblmsg;
     }
 }

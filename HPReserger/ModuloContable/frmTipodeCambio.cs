@@ -22,6 +22,7 @@ namespace HPReserger
         byte[] ImgVenta;
         DateTime fechaactual;
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msglbl(string cadena) { lblmsg.Text = cadena; }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         public bool BusquedaExterna { get; internal set; }
@@ -93,7 +94,7 @@ namespace HPReserger
                     return;
                 }
             }
-            catch (Exception ex) { msg("No hay Conexion a Sunat"); return; }
+            catch (Exception ex) { msglbl("No hay Conexion a Sunat"); return; }
             if (Carga == true)
             {
                 tablita.Clear();
@@ -249,6 +250,9 @@ namespace HPReserger
         }
         public void Buscar_Click(object sender, EventArgs e)
         {
+            msglbl("");
+            if (dtgconten.DataSource != null) dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
+            else dtgconten.DataSource = null;
             BusquedaExterna = false;
             //busqueda de tipo de cambio
             TablaConsultadias = ConsultaDia();
