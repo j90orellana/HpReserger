@@ -328,6 +328,9 @@ namespace HPReserger
             }
             else
             {
+                tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
+                dtgconten.DataSource = tablita;
+                CargarImagenes();
                 //DataTable tables= CapaLogica.TipodeCambio(10, comboMesAño1.GetFecha().AddMonths(1).Year, comboMesAño1.GetFecha().AddMonths(1).Month, 1, 0, 0, ImgVenta);
                 //DataRow filita = tables.Rows[0];
                 ////pregunta si ya esta guardado de la base de datos
