@@ -301,8 +301,11 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     /////
                                     ////Anterior               
                                     //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
+                                    List<HPResergerFunciones.Utilitarios.Columnas> ListadoColumnas = new List<HPResergerFunciones.Utilitarios.Columnas>();
+                                    ListadoColumnas.Add(new HPResergerFunciones.Utilitarios.Columnas(4, 45));
+                                    ListadoColumnas.Add(new HPResergerFunciones.Utilitarios.Columnas(5, 45));
                                     HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(Auditoria ? null : TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas,
-                                        6, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "", "$1:$6");
+                                        6, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "", "$1:$6", ListadoColumnas);
                                     // HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 5, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }, "");
                                 }
                             }

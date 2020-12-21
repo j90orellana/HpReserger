@@ -20,7 +20,7 @@ namespace HPReserger
             InitializeComponent();
             ICono = this.Icon;
         }
-        public static int Users = 16;
+        public static int Users = 0;
         //public static DateTime DateLicense = new DateTime(2018, 11, 16);//2 Noviembre del 2019
         public static int DaysCaducatesLicence = 30;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
@@ -197,6 +197,22 @@ namespace HPReserger
             Application.ApplicationExit += new EventHandler(ExitApplication);
             CapaLogica.CambiarBase(frmLogin.Basedatos);
             RecargarMenu();
+            DataRow dATOS = CapaLogica.CantidadLlamadas(DateTime.Now).Rows[0];
+            DataTable table = CapaLogica.UsuarioConectado(frmLogin.CodigoUsuario, "", 10);
+            DataRow file = table.Rows[0];
+            int ConUsuarios = (int)file["usuarios"];
+            Users = ((int)dATOS["grado"] * (int)dATOS["duracion"]) - (int)dATOS["nrollamadas"];
+            DateTime Fecha =(DateTime) dATOS["fecha"];
+            if (Nombres != "Administrador")
+                if (ConUsuarios > frmMenu.Users && DateTime.Now >=Fecha )
+                {
+                    //mensaje de Cancelación
+                    frmMensajeLicencia frmmensa = new frmMensajeLicencia();
+                    frmmensa.ShowDialog();
+                    ExitApplication(sender, e);
+                    cerrar = 10;
+                    Application.Exit();
+                }
             MdiClient mdi;
             foreach (Control ctl in this.Controls)
             {

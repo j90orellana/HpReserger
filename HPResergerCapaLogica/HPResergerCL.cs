@@ -2849,6 +2849,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.CierreMensualSaldos(empresa, fechaini, fechafin, tccomprasbs, tcventasbs);
         }
+        public DataTable CantidadLlamadas(DateTime FECHA)
+        {
+            return cdOrdenPedido.CantidadLlamadas(FECHA);
+        }
         public DataTable CierreMensualDocumentos(int empresa, DateTime fechaini, DateTime fechafin, decimal tccomprasbs, decimal tcventasbs, Boolean generar)
         {
             return cdOrdenPedido.CierreMensualDocumentos(empresa, fechaini, fechafin, tccomprasbs, tcventasbs, generar);

@@ -313,7 +313,9 @@ namespace HPReserger.ModuloFinanzas
                                     int pos = 0;
                                     foreach (DataRow item in TablaResult.Rows)
                                     {
-                                        if ((int)item["tipo"] == 2 && ((int)item["grupo"] != 0 || (int)item["pkid"] == 0) && FechaCierre.Month == ((DateTime)item["Fechapago"]).Month && FechaCierre.Year == ((DateTime)item["Fechapago"]).Year)
+                                        if ((((int)item["grupo"] != 0) && FechaCierre.Month == ((DateTime)item["Fechapago"]).Month && FechaCierre.Year == ((DateTime)item["Fechapago"]).Year)
+                                            ||
+                                            (((int)item["pkid"] == 0) && ((int)item["grupo"] == 0)))
                                         {
                                             if (CUOArrastre == item["cuo"].ToString() && item["cuo"].ToString() != "" && item["total"].ToString() != "")//QUIERE DECIR QUE ES EL MISMO ASIENTO - MOSTRAREMOS DETALLE
                                             {
@@ -431,7 +433,7 @@ namespace HPReserger.ModuloFinanzas
                                     foreach (DataRow item in TablaResult.Rows)
                                     {
                                         //DETALLE DE OPERACIONES PENDIENTES
-                                        if ((int)item["tipo"] == 1 && (int)item["pkid"] != 0)
+                                        if ((int)item["tipo"] == 1 && (int)item["grupo"] == 0 && (int)item["pkid"] != 0)
                                         {
                                             pos++;
                                             Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"B{17 + i}", $"B{17 + i}", ((DateTime)item["FECHAPAGO"]).ToString("dd/MM/yyyy"), 8, false, false, HPResergerFunciones.Utilitarios.Alineado.derecha, 1 % 2 == 1 ? ForeBlanco : BackGrilla, Fore, Configuraciones.FuenteReportesTahoma10, pos % 2 == 1 ? false : true));
@@ -451,7 +453,7 @@ namespace HPReserger.ModuloFinanzas
                                         }
                                     }
                                     //if (SumatoriaT1Abonos + SumatoriaT1Cargos != 0)
-                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"K{16 + i - pos}", $"K{16 + i - pos }", SumatoriaT1Cargos, 8, false, false, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
+                                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"K{16 + i - pos}", $"K{16 + i - pos }", -SumatoriaT1Cargos, 8, false, false, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
                                     //Fila de los Totales
                                     //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"E{15 + i }", $"E{15 + i}", (SaldoContable + SumatoriaT1 + SumatoriaT2Abonos), 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, ForeAmarillo, Configuraciones.FuenteReportesTahoma10, true));
                                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"G{18 + i}", $"G{18 + i}", "Saldo Según Banco: ", 8, true, true, HPResergerFunciones.Utilitarios.Alineado.derecha, Back, Fore, Configuraciones.FuenteReportesTahoma10, false));
@@ -466,8 +468,11 @@ namespace HPReserger.ModuloFinanzas
                                 }
                             }
                         }
+                        List<HPResergerFunciones.Utilitarios.Columnas> ListadoColumnas = new List<HPResergerFunciones.Utilitarios.Columnas>();
+                        ListadoColumnas.Add(new HPResergerFunciones.Utilitarios.Columnas(6, 50));
+                        ListadoColumnas.Add(new HPResergerFunciones.Utilitarios.Columnas(7, 50));
                         HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(null, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, Hoja, Celdas, 6, new int[] { }, new int[] { },
-                            new int[] { 1, 2, 3, 4, 5 }, "", $"{6}:{6}");
+                            new int[] { 1, 2, 3, 4, 5 }, "", $"{6}:{6}",ListadoColumnas);
                     }
                 }
                 msg($"Archivo Grabados en \n{folderBrowserDialog1.SelectedPath}");

@@ -1500,9 +1500,19 @@ namespace HPResergerFunciones
                 Excel.SaveAs(FileName);
             }
         }
+        public class Columnas
+        {
+            public int ind = 0;
+            public int largo = 0;
+            public Columnas(int _ind, int _largo)
+            {
+                ind = _ind;
+                largo = _largo;
+            }
+        }
         public static void ExportarAExcelOrdenandoColumnasCreado(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile,
-       string nombrehoja, int index, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
-              , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro, string RangoFilaRepetir)
+        string nombrehoja, int index, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
+              , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro, string RangoFilaRepetir, List<Columnas> ListadoColumnas)
         {
             Boolean ForzarAutoAjustado = false;
             string Extesion = "x";
@@ -1646,6 +1656,11 @@ namespace HPResergerFunciones
                 }
             if (grd == null)
                 Hoja_Trabajo.Cells.AutoFitColumns();
+            //AJUSTAMOS MANUALEMNTE LA COLUMNA
+            if (ListadoColumnas != null)
+                foreach (Columnas col in ListadoColumnas)
+                    Hoja_Trabajo.Column(col.ind).Width = col.largo;
+
             //AJUSTE DE AREA DE IMPRESION            
             //Hoja_Trabajo.PrinterSettings.PrintArea = null;
 

@@ -443,6 +443,8 @@ namespace HPReserger
                 frmaddtipo.Show();
             }
             else { frmaddtipo.Activate(); }
+            //webBrowser1.BringToFront();
+            //webBrowser1.Visible = true;
         }
         private void Frmaddtipo_FormClosed(object sender, FormClosedEventArgs e)
         {

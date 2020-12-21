@@ -306,7 +306,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                     HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(Auditoria ? null : TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja,
                                         contador++, Celdas, 6, _OrdenarColumnas, new int[] { }, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
                                         }, "", $"$1:${6}"//!Auditoria
-                                        );
+                                        ,null);
                                 }
                             }
                         }
