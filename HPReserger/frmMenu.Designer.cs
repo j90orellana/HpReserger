@@ -310,6 +310,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.reporteCentroDeCostosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1257,7 +1258,8 @@
             this.libroMayorToolStripMenuItem1,
             this.toolStripSeparator18,
             this.balanceDeComprobaciónToolStripMenuItem1,
-            this.gestiónToolStripMenuItem});
+            this.gestiónToolStripMenuItem,
+            this.reporteCentroDeCostosToolStripMenuItem});
             this.reportesContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportesContablesToolStripMenuItem.Image")));
             this.reportesContablesToolStripMenuItem.Name = "reportesContablesToolStripMenuItem";
             this.reportesContablesToolStripMenuItem.ShowShortcutKeys = false;
@@ -3027,6 +3029,13 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // reporteCentroDeCostosToolStripMenuItem
+            // 
+            this.reporteCentroDeCostosToolStripMenuItem.Name = "reporteCentroDeCostosToolStripMenuItem";
+            this.reporteCentroDeCostosToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.reporteCentroDeCostosToolStripMenuItem.Text = "Reporte Centro de Costos";
+            this.reporteCentroDeCostosToolStripMenuItem.Click += new System.EventHandler(this.reporteCentroDeCostosToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -3346,5 +3355,6 @@
         private System.Windows.Forms.ToolStripMenuItem otrosLibrosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteCentroDeCostosToolStripMenuItem;
     }
 }

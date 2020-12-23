@@ -51,6 +51,17 @@ namespace HPResergerFunciones
             }
             return Result;
         }
+        public static Boolean TipoCambioValido(string cadena)
+        {
+            if (ValorCero(cadena) == 0) return false;
+            else return true;
+        }
+        public static decimal ValorCero(string cadena)
+        {
+            decimal valor = 0;
+            decimal.TryParse(cadena, out valor);
+            return valor;
+        }
         public static void SacarPosicionActualFilaColumna(DataGridView dtg, out int fila, out int columna)
         {
             fila = dtg.CurrentRow.Index;

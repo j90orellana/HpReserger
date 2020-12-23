@@ -297,6 +297,11 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            if (!HPResergerFunciones.Utilitarios.TipoCambioValido(txttipocambio.Text))
+            {
+                HPResergerFunciones.frmInformativo.MostrarDialogError("No se encontro tipo de cambio.");
+                return;
+            }
             //Validacion de la Fecha de Recepción sea meno a la de pago
             foreach (DataGridViewRow item in Dtguias.Rows)
             {

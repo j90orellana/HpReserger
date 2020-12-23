@@ -296,7 +296,7 @@ namespace HPReserger.ModuloBancario
                         campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xDoiNumero.Name].Value.ToString().Trim().ToUpper(), ' ', 12, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                         campo[3] = item.Cells[xTipoAbono.Name].Value.ToString().Trim().ToUpper();
                         campo[4] = item.Cells[xCuentaAbonar.Name].Value.ToString().Trim().ToUpper();
-                        campo[5] = HPResergerFunciones.Utilitarios.AddCaracter(Configuraciones.RemoveAsentosyN(item.Cells[xNombreBeneficiario.Name].Value.ToString()).Trim().ToUpper(), ' ', 40, HPResergerFunciones.Utilitarios.Direccion.izquierda);
+                        campo[5] = HPResergerFunciones.Utilitarios.AddCaracter(Configuraciones.RemoverAcentosÑApostrofe(item.Cells[xNombreBeneficiario.Name].Value.ToString()).Trim().ToUpper(), ' ', 40, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                         campo[6] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100(item.Cells[xImporteAbonar.Name].Value.ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                         campo[7] = item.Cells[xTipoRecibo.Name].Value.ToString().Trim().ToUpper();
                         campo[8] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xNroDocumento.Name].Value.ToString().Trim().ToUpper(), ' ', 12, HPResergerFunciones.Utilitarios.Direccion.izquierda);

@@ -118,7 +118,7 @@ namespace HpResergerUserControls
             }
             return resul;
         }
-        public static string RemoveAsentosyN(String s)
+        public static string RemoverAcentosÑApostrofe(String s)
         {
             String normalizedString = s.Normalize(NormalizationForm.FormD);
             StringBuilder stringBuilder = new StringBuilder();
@@ -129,7 +129,9 @@ namespace HpResergerUserControls
                 if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
                     stringBuilder.Append(c);
             }
-
+            stringBuilder = stringBuilder.Replace("'", "");
+            stringBuilder = stringBuilder.Replace("´", "");
+            stringBuilder = stringBuilder.Replace("`", "");
             return stringBuilder.ToString();
         }
         public static string CadenaDelimitada(string cadena, int len)

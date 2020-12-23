@@ -202,9 +202,9 @@ namespace HPReserger
             DataRow file = table.Rows[0];
             int ConUsuarios = (int)file["usuarios"];
             Users = ((int)dATOS["grado"] * (int)dATOS["duracion"]) - (int)dATOS["nrollamadas"];
-            DateTime Fecha =(DateTime) dATOS["fecha"];
+            DateTime Fecha = (DateTime)dATOS["fecha"];
             if (Nombres != "Administrador")
-                if (ConUsuarios > frmMenu.Users && DateTime.Now >=Fecha )
+                if (ConUsuarios > frmMenu.Users && DateTime.Now >= Fecha)
                 {
                     //mensaje de Cancelación
                     frmMensajeLicencia frmmensa = new frmMensajeLicencia();
@@ -4903,6 +4903,29 @@ namespace HPReserger
         private void CerrarFrmLibros5_4(object sender, FormClosedEventArgs e)
         {
             frmLibroDiario5_4 = null;
+        }
+        ModuloReportes.frmReporteCentrodeCosto frmreporteCentrodeCostos;
+        private void reporteCentroDeCostosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmreporteCentrodeCostos == null)
+            {
+                frmreporteCentrodeCostos = new ModuloReportes.frmReporteCentrodeCosto();
+                frmreporteCentrodeCostos.MdiParent = this;
+                frmreporteCentrodeCostos.Icon = ICono;
+                frmreporteCentrodeCostos.FormClosed += new FormClosedEventHandler(CerrarfrmreporteCentrodeCostos);
+                frmreporteCentrodeCostos.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreporteCentrodeCostos.Activate();
+                ValidarVentanas(frmreporteCentrodeCostos);
+            }
+        }
+
+        private void CerrarfrmreporteCentrodeCostos(object sender, FormClosedEventArgs e)
+        {
+            frmreporteCentrodeCostos = null;
         }
     }
 }

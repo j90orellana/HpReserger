@@ -194,7 +194,7 @@ namespace HPReserger
                 campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xruc.Name].Value.ToString(), ' ', 11, HPResergerFunciones.Utilitarios.Direccion.izquierda);//11
                 //if ((int)item.Cells[xtipoid.Name].Value == 1)
                 //AGREGAMOS LA VALIDACION QUITANDO LA Ñ QUE DABA PROBEMAS AL SUBIR EL TXT PARA VALIDAR
-                campo[2] = (HPResergerFunciones.Utilitarios.AddCaracter(HPResergerFunciones.Utilitarios.QuitarÑ(item.Cells[xrazon.Name].Value.ToString()), ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda)).ToUpper();//35
+                campo[2] = (HPResergerFunciones.Utilitarios.AddCaracter(Configuraciones.RemoverAcentosÑApostrofe(item.Cells[xrazon.Name].Value.ToString()), ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda)).ToUpper();//35
                 //else
                 //    campo[2] = HPResergerFunciones.Utilitarios.AddCaracter("", ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda);//35
                 campo[3] = "000000000";//9

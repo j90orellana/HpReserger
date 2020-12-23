@@ -342,6 +342,12 @@
     <Compile Include="ModuloReportes\frmRegMayorxCuentasPerfil.Designer.cs">
       <DependentUpon>frmRegMayorxCuentasPerfil.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\frmReporteCentrodeCosto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\frmReporteCentrodeCosto.Designer.cs">
+      <DependentUpon>frmReporteCentrodeCosto.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\frmReporteDocumentosImpagos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2120,6 +2126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmRegMayorxCuentasPerfil.resx">
       <DependentUpon>frmRegMayorxCuentasPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\frmReporteCentrodeCosto.resx">
+      <DependentUpon>frmReporteCentrodeCosto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmReporteDocumentosImpagos.resx">
       <DependentUpon>frmReporteDocumentosImpagos.cs</DependentUpon>
