@@ -192,17 +192,28 @@ namespace HPReserger
             //Sí se Muestra un SubMenu, se Muestra El Menu!
 
         }
+        DataRow dATOS;
         private void frmMenu_Load(object sender, EventArgs e)
         {
             Application.ApplicationExit += new EventHandler(ExitApplication);
             CapaLogica.CambiarBase(frmLogin.Basedatos);
             RecargarMenu();
-            DataRow dATOS = CapaLogica.CantidadLlamadas(DateTime.Now).Rows[0];
+            DataTable TAblas = CapaLogica.CantidadLlamadas(DateTime.Now);
+            if (TAblas.Rows.Count != 0)
+                dATOS = TAblas.Rows[0];
+            else
+            {
+                frmMensajeLicencia frmmensa = new frmMensajeLicencia();
+                frmmensa.ShowDialog();
+                ExitApplication(sender, e);
+                cerrar = 10;
+                Application.Exit();
+            }
             DataTable table = CapaLogica.UsuarioConectado(frmLogin.CodigoUsuario, "", 10);
             DataRow file = table.Rows[0];
             int ConUsuarios = (int)file["usuarios"];
             Users = ((int)dATOS["grado"] * (int)dATOS["duracion"]) - (int)dATOS["nrollamadas"];
-            DateTime Fecha = (DateTime)dATOS["fecha"];
+            DateTime Fecha = (DateTime)dATOS["datos"];
             if (Nombres != "Administrador")
                 if (ConUsuarios > frmMenu.Users && DateTime.Now >= Fecha)
                 {
@@ -259,14 +270,16 @@ namespace HPReserger
         }
         private void ConsultarCaducarLicencia()
         {
-            var resul = (HPResergerCapaDatos.HPResergerCD.FechaCaduca - DateTime.Now);
-            if (resul.Days <= DaysCaducatesLicence)
+
+            var resul = (int)dATOS["FECHAS"];
+            //(HPResergerCapaDatos.HPResergerCD.FechaCaduca - DateTime.Now);
+            if (resul <= DaysCaducatesLicence)
             {
                 HpResergerUserControls.FotoCheck fotito = new HpResergerUserControls.FotoCheck();
                 //fotito.BackColor = Color.Transparent;
                 fotito.Nombre = "Mensaje de Licencia";
                 fotito.Cargo = $"Su Licencia Caduca en";
-                fotito.Observacion = $"{resul.Days} Dias";
+                fotito.Observacion = $"{resul + 1} Dias";
                 fotito.ImagenLicencia();
                 FlowPanel.Controls.Add(fotito);
                 fotito.Width = FlowPanel.Width;

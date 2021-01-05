@@ -14,6 +14,7 @@ namespace HpResergerUserControls
     public class Configuraciones
     {
         public static string PaginaTCSunat = "https://e-consulta.sunat.gob.pe/cl-at-ittipcam/tcS01Alias";
+        public static string ApiTCSunat = "https://api.sunat.online/cambio/";//Indicar el AÑo despues del slash
         //COLORES POR DEFECTO
         public static Color ColordeEnabledReadOnly = Color.FromArgb(204, 218, 231);
         ///COLORES DE GRILLAS

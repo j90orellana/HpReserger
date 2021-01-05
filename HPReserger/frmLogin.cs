@@ -103,20 +103,31 @@ namespace HPReserger
         {
             HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
+        DataRow dATOS;
         private void btnLogueo_Click(object sender, EventArgs e)
-        {            
+        {
             //VERIFICAR LA LICENCIA
-            if (HPResergerCapaDatos.HPResergerCD.FechaCaduca < DateTime.Now)
-            {
-                frmMensajeLicencia frmmensa = new frmMensajeLicencia();
-                frmmensa.NombreTitulo = "Tu Licencia ha Caducado";
-                frmmensa.Mensaje = "La Licencia ha Caducado " + Environment.NewLine + "Debe Adquirir una Nueva Licencia ";
-                frmmensa.Caducado();
-                frmmensa.ShowDialog();
-                frmLogin.DesconectarUsuario();
-                lblmsg.Text = "Caducó Licencia";
-                return;
-            }
+            //DataTable TAblas = clLogueo.CantidadLlamadas(DateTime.Now);
+            //if (TAblas.Rows.Count != 0)
+            //    dATOS = TAblas.Rows[0];
+            //else
+            //{
+            //    frmMensajeLicencia frmmensa = new frmMensajeLicencia();
+            //    frmmensa.ShowDialog();             
+            //    Application.Exit();
+            //}
+            //DateTime Fecha = (DateTime)dATOS["datos"];
+            //if (Fecha <= DateTime.Now)
+            //{
+            //    frmMensajeLicencia frmmensa = new frmMensajeLicencia();
+            //    frmmensa.NombreTitulo = "Tu Licencia ha Caducado";
+            //    frmmensa.Mensaje = "La Licencia ha Caducado " + Environment.NewLine + "Debe Adquirir una Nueva Licencia ";
+            //    frmmensa.Caducado();
+            //    frmmensa.ShowDialog();
+            //    frmLogin.DesconectarUsuario();
+            //    lblmsg.Text = "Caducó Licencia";
+            //    return;
+            //}
             //Asignacion de la base de datos estatica
             Basedatos = cboBase.Text;
             clLogueo.CambiarBase(Basedatos);

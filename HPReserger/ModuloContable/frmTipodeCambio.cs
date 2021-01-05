@@ -1,10 +1,13 @@
 ﻿using HpResergerUserControls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,8 +38,32 @@ namespace HPReserger
                 CargarTipoCambio();
             }
         }
+        public class Detalle
+        {
+            public string venta { get; set; }
+            public string compra { get; set; }
+        }
+        public class TC
+        {
+            public string fecha { get; set; }
+            public Detalle Detalles { get; set; }
+            public string venta { get; set; }
+            public string compra { get; set; }
+        }
+        public async Task<string> GetHTTPs(int año, int mes)
+        {
+            string url = Configuraciones.ApiTCSunat + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
         private void TipodeCambio_Load(object sender, EventArgs e)
         {
+            BuscarTipoCambio(DateTime.Now.Year, DateTime.Now.Month);
+
             ImgVenta = new byte[0];
             ImageConverter _imageConverter = new ImageConverter();
             ImgVenta = (byte[])_imageConverter.ConvertTo(pbigual.Image, typeof(byte[]));
@@ -53,6 +80,32 @@ namespace HPReserger
                 CargarImagenes();
             }
             else { CargarTipoCambio(); }
+        }
+        public async void BuscarTipoCambio(int año, int mes)
+        {
+            string respuesta = await GetHTTPs(año, mes);
+            respuesta = "[\n " + respuesta + " \n]";
+            List<TC> lstTC = JsonConvert.DeserializeObject<List<TC>>(respuesta);
+            //SAcamos la Data
+            int CantDecimales = 5;
+            int ela = respuesta.IndexOf(año + "-");
+            if (ela != -1)
+            {
+                while (ela != 0)
+                {
+                    DateTime TFecha = DateTime.Parse(respuesta.Substring(ela, 10));
+                    decimal Tcompra = decimal.Parse(respuesta.Substring(ela + 34, CantDecimales));
+                    decimal Tventa = decimal.Parse(respuesta.Substring(ela + 60, CantDecimales));
+                    //Proceso  de Insert en la base de Datos
+                    CapaLogica.TipodeCambio(15, TFecha.Year, TFecha.Month, TFecha.Day, Tcompra, Tventa, null);
+                    //Fin Insert
+                    ela = respuesta.IndexOf(año + "-", ela + 50);
+                    if (ela == -1) break;
+                }
+                Buscar_Click(new object(), new EventArgs());
+                Carga = true;
+                webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
+            }
         }
         public DataTable ConsultaDia()
         {
@@ -72,13 +125,17 @@ namespace HPReserger
         DataTable tablita = new DataTable();
         public void ColumnasTAblas()
         {
-            tablita.Columns.Add("Dia", typeof(int));
-            tablita.Columns.Add("Compra", typeof(decimal));
-            tablita.Columns.Add("Venta", typeof(decimal));
-            tablita.Columns.Add("Mes", typeof(int));
-            tablita.Columns.Add("Año", typeof(int));
-            tablita.Columns.Add("CompraImg", typeof(byte[]));
-            tablita.Columns.Add("VentaImg", typeof(byte[]));
+            try
+            {
+                tablita.Columns.Add("Dia", typeof(int));
+                tablita.Columns.Add("Compra", typeof(decimal));
+                tablita.Columns.Add("Venta", typeof(decimal));
+                tablita.Columns.Add("Mes", typeof(int));
+                tablita.Columns.Add("Año", typeof(int));
+                tablita.Columns.Add("CompraImg", typeof(byte[]));
+                tablita.Columns.Add("VentaImg", typeof(byte[]));
+            }
+            catch (Exception) { }
         }
         string[] Tcambio = new string[3];
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -95,30 +152,30 @@ namespace HPReserger
                 }
             }
             catch (Exception ex) { msglbl("No hay Conexion a Sunat"); return; }
-            if (Carga == true)
-            {
-                tablita.Clear();
-                HtmlElementCollection datos = webBrowser1.Document.GetElementsByTagName("td");
-                int con = 0; string cadena = "";
-                foreach (HtmlElement dato in datos)
-                {
-                    if (dato.InnerText.Trim() != "Tipo de cambio publicado al :")
-                    {
-                        if (char.IsDigit(char.Parse((dato.InnerText.Substring(0, 1)))))
-                        {
-                            con++;
-                            cadena += dato.InnerText;
-                            if (con == 3)
-                            {
-                                Tcambio = cadena.Split(' ');
-                                tablita.Rows.Add(int.Parse(Tcambio[0]), decimal.Parse(Tcambio[1]), decimal.Parse(Tcambio[2]), comboMesAño1.getMesNumero(), comboMesAño1.GetAño(), ImgVenta, ImgVenta);
-                                con = 0;
-                                cadena = "";
-                            }
-                        }
-                    }
-                }
-            }
+            //if (Carga == true)
+            //{
+            //    tablita.Clear();
+            //    HtmlElementCollection datos = webBrowser1.Document.GetElementsByTagName("td");
+            //    int con = 0; string cadena = "";
+            //    foreach (HtmlElement dato in datos)
+            //    {
+            //        if (dato.InnerText.Trim() != "Tipo de cambio publicado al :")
+            //        {
+            //            if (char.IsDigit(char.Parse((dato.InnerText.Substring(0, 1)))))
+            //            {
+            //                con++;
+            //                cadena += dato.InnerText;
+            //                if (con == 3)
+            //                {
+            //                    Tcambio = cadena.Split(' ');
+            //                    tablita.Rows.Add(int.Parse(Tcambio[0]), decimal.Parse(Tcambio[1]), decimal.Parse(Tcambio[2]), comboMesAño1.getMesNumero(), comboMesAño1.GetAño(), ImgVenta, ImgVenta);
+            //                    con = 0;
+            //                    cadena = "";
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
             if (tablita.Rows.Count > 0)
             {
                 DataRow filita = tablita.Rows[0];
@@ -232,7 +289,7 @@ namespace HPReserger
             }
             else
             {
-                msg("No Hay Datos de Tipo de Cambio para este Mes");
+                //msg("No Hay Datos de Tipo de Cambio para este Mes");
             }
             //tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
             //dtgconten.DataSource = tablita;
@@ -340,6 +397,8 @@ namespace HPReserger
                 {
                     Carga = false;
                     webBrowser1.Navigate(Configuraciones.PaginaTCSunat);
+                    BuscarTipoCambio(comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month);
+
                     //webBrowser1.Document.GetElementById("mes").SetAttribute("value", comboMesAño1.getMesNumero().ToString("00"));
                     //webBrowser1.Document.GetElementById("anho").SetAttribute("value", comboMesAño1.GetAño().ToString());
                     //webBrowser1.Document.GetElementById("B1").InvokeMember("click");
@@ -455,6 +514,8 @@ namespace HPReserger
         {
             if (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 16)
             {
+                if (FechaActual != DateTime.Now.Date) { BuscarTipoCambio(DateTime.Now.Year, DateTime.Now.Month); }
+
                 FechaActual = DateTime.Now;
                 comboMesAño1.ActualizarMesAÑo(FechaActual.Month, FechaActual.Year);
                 //MSG("REfrescado");
