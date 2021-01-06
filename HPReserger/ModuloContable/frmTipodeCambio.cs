@@ -101,10 +101,10 @@ namespace HPReserger
                     //Fin Insert
                     ela = respuesta.IndexOf(año + "-", ela + 50);
                     if (ela == -1) break;
-                }
-                Buscar_Click(new object(), new EventArgs());
+                }             
                 Carga = true;
                 webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
+                Buscar_Click(new object(), new EventArgs());
             }
         }
         public DataTable ConsultaDia()
