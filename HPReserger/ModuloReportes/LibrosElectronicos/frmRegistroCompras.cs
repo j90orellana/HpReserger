@@ -135,7 +135,7 @@ namespace HPReserger
                         else
                             Cadenax = cboperiodode.FechaInicioMes.ToString("MMMyyyy") + "-" + FechaFin.ToString("MMMyyyy");
                         Cadenax = Cadenax.ToUpper();
-                      
+
                         if (!chksubtotales.Checked)
                             NameFile = valor + $"{ Cadenax} REGISTRO DE COMPRAS {EmpresaValor}.xlsx";
                         else
@@ -441,7 +441,7 @@ namespace HPReserger
                                 //si hay datos
                                 else
                                 {
-                                    string[] campo = new string[42];
+                                    string[] campo = new string[43];
                                     string cadenatxt = "";
                                     int ValorPrueba = 0;
                                     foreach (DataRow fila in TablaResult.Rows)
@@ -480,6 +480,7 @@ namespace HPReserger
                                         //20
                                         campo[c++] = ((decimal)fila[ximporteNGR.DataPropertyName]).ToString("0.00");
                                         campo[c++] = ((decimal)fila[xisc.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = ((decimal)fila[xICBP.DataPropertyName]).ToString("0.00");
                                         campo[c++] = ((decimal)fila[xOtrosTributos.DataPropertyName]).ToString("0.00");
                                         //Validar Moneda
                                         campo[c++] = ((decimal)fila[xImporteTotal.DataPropertyName]).ToString("0.00");

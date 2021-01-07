@@ -384,6 +384,7 @@ namespace HPReserger
                                         //Parte de los IGV
                                         campo[c++] = ((decimal)fila[xImporteTotal.DataPropertyName]).ToString("0.00");
                                         campo[c++] = ((decimal)fila[xMontoIgv.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = ((decimal)fila[xICBP.DataPropertyName]).ToString("0.00");
                                         campo[c++] = ((decimal)fila[xOtrosTributos.DataPropertyName]).ToString("0.00");
                                         //15
                                         //Validar Moneda

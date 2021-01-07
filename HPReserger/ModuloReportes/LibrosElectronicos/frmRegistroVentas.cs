@@ -423,7 +423,7 @@ namespace HPReserger
                                 //si hay datos
                                 else
                                 {
-                                    string[] campo = new string[35];
+                                    string[] campo = new string[36];
                                     string cadenatxt = "";
                                     int ValorPrueba = 0;
                                     foreach (DataRow fila in TablaResult.Rows)
@@ -463,6 +463,7 @@ namespace HPReserger
                                         campo[c++] = "0";
                                         campo[c++] = "0";
                                         //Otros Conceptos
+                                        campo[c++] = ((decimal)fila[xICBP.DataPropertyName]).ToString("0.00");
                                         campo[c++] = ((decimal)fila[xOtrosTributos.DataPropertyName]).ToString("0.00");
                                         //Validar Moneda
                                         campo[c++] = ((decimal)fila[xImporteTotal.DataPropertyName]).ToString("0.00");
