@@ -256,6 +256,13 @@ namespace HPReserger.ModuloCompensaciones
                 //Grabamos Cabecera y Detalle de los Datos de la Grilla
                 DataView dv = new DataView(Tdatos);
                 decimal Soles = 0, Dolares = 0;
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (string Cuenta in LCuentas)
+                    ListaAuxiliar.Add(Cuenta);
+                ListaAuxiliar.Add(txtCuenta.Text);
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 foreach (string Cuenta in LCuentas)
                 {
                     Soles = Dolares = 0;

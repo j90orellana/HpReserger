@@ -2821,6 +2821,28 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.MayorPorCuentas(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
         }
+        public DataTable MayorPorCuentasConAperturaCierre(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
+        {
+            return cdOrdenPedido.MayorPorCuentasConAperturaCierre(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
+        }
+        public DataTable CuentaContableValidarActivas(string CUENTA)
+        {
+            return cdOrdenPedido.CuentaContableValidarActivas(CUENTA);
+        }
+        public Boolean CuentaContableValidarActivas(string CUENTA, string MensajeError)
+        {
+            string cadena = null;
+            DataTable TAbla = cdOrdenPedido.CuentaContableValidarActivas(CUENTA);
+            if (TAbla.Rows.Count == 0) return false;
+            else
+            {
+                cadena = MensajeError + (char)13;
+                foreach (DataRow item in TAbla.Rows)
+                    cadena += item["Cuenta_Contable"].ToString() + (char)13;
+                HPResergerFunciones.frmInformativo.MostrarDialogError(cadena, MensajeError);
+            }
+            return true;
+        }
         public DataTable MayorPorCuentasPerfil(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {
             return cdOrdenPedido.MayorPorCuentasPerfil(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);

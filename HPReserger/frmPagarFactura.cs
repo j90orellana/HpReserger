@@ -661,6 +661,15 @@ namespace HPReserger
                 foreach (DataGridViewRow item in Dtguias.Rows)
                     if ((int)item.Cells[OK.Name].Value == 1) { IdMonedaAsiento = item.Cells[monedax.Name].Value.ToString() == "USD" ? 2 : 1; break; }
                 /////////////////
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataGridViewRow item in Dtguias.Rows)
+                    if ((int)item.Cells[OK.Name].Value == 1)
+                        ListaAuxiliar.Add(item.Cells[xCuentaContable.Name].Value.ToString());
+                ListaAuxiliar.Add(txtCuentaExceso.Text);
+                ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //PROCESO DE ACTUALIZACION DE FACTURAS
                 ////////////////
                 int MedioPago = (int)cbotipo.SelectedValue;

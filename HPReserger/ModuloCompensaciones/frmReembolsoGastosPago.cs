@@ -194,6 +194,15 @@ namespace HPReserger.ModuloCompensaciones
                 //}
                 //string CuoNext = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
                 PosFila = 0;
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataGridViewRow item in Dtgconten.Rows)
+                    if ((int)item.Cells[xok.Name].Value == 1)
+                        ListaAuxiliar.Add(item.Cells[xCuentaContable.Name].Value.ToString());
+                ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
+
                 //CUENTAS DEL BANCO
                 //salida del banco 
                 string nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);

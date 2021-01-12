@@ -460,6 +460,15 @@ namespace HPReserger
                     int Tipoid = 0;
                     int posSelec = cbocuentabanco.SelectedIndex;
                     string NroCuenta = ((DataTable)cbocuentabanco.DataSource).Rows[posSelec]["NroCta"].ToString();
+                    //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                    List<string> ListaAuxiliar = new List<string>();                 
+                    ListaAuxiliar.Add("9559501");
+                    ListaAuxiliar.Add("7599103");
+                    ListaAuxiliar.Add(CuentaContableBanco);
+                    ListaAuxiliar.Add(CuentaDetracciones);
+                    if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                    //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
+
                     foreach (DataGridViewRow item in dtgconten.Rows)
                     {
                         if ((int)item.Cells[opcionx.Name].Value == 1)

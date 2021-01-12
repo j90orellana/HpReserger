@@ -246,7 +246,7 @@ namespace HPReserger
             if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
             {
                 if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
-                    return; 
+                    return;
             }
             //Verificamos si el periodo esta Abierto
             if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaCoontable))
@@ -327,6 +327,16 @@ namespace HPReserger
                     int idcomprobante = 0;
                     int posSelec = cbocuentabanco.SelectedIndex;
                     string NroCuenta = ((DataTable)cbocuentabanco.DataSource).Rows[posSelec]["NroCta"].ToString();
+                    //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                    List<string> ListaAuxiliar = new List<string>();
+                    ListaAuxiliar.Add("9559501,7599103");
+                    ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
+                    ListaAuxiliar.Add(((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"].ToString());
+                    ListaAuxiliar.Add(txtcuentaredondeo.Text);
+                    ///fin de la cabecera del exceso             
+                    if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                    //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
+
                     foreach (DataGridViewRow item in dtgconten.Rows)
                     {
                         if ((int)item.Cells[opcionx.Name].Value == 1)

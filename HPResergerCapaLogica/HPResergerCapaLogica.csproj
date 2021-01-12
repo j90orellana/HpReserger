@@ -49,6 +49,12 @@
     <Compile Include="HPResergerCL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HPResergerFunciones\HPResergerFunciones.csproj">
+      <Project>{2fe42f25-103c-4988-a3f5-132981069795}</Project>
+      <Name>HPResergerFunciones</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -747,6 +747,20 @@ namespace HPReserger
             ///////                   
             Cursor = Cursors.WaitCursor;
             decimal TC = CapaLogica.TipoCambioDia("venta", new DateTime(comboMesAño.GetFecha().Year - 1, 12, 31));
+            //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+            List<string> ListaAuxiliar = new List<string>();
+            foreach (DataRow item in Tdatos.Rows)
+            {
+                string valcuenta = item["Cuentacontable"].ToString().Substring(0, item["Cuentacontable"].ToString().IndexOf(' '));
+                if (!ListaAuxiliar.Contains(valcuenta)) ListaAuxiliar.Add(valcuenta);
+            }
+            foreach (DataRow item in TDBalance.Rows)
+            {
+                string valcuenta = item[xCuenta_Contable.DataPropertyName].ToString();
+                if (!ListaAuxiliar.Contains(valcuenta)) ListaAuxiliar.Add(valcuenta);
+            }
+            if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+            //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
             //Grabamos los Datos a la Tablas!
             if (rbCierre.Checked && rbCierre.Enabled)
             {
@@ -929,7 +943,7 @@ namespace HPReserger
                 int TipoPago = 0;
                 string NroPago = "";
                 int IdSoles = 1, IdDolares = 2;
-                string CuentaContable = DFila["Cuentacontable"].ToString().Substring(0, DFila["Cuentacontable"].ToString().IndexOf(' '));
+                string CuentaContable = DFila["Cuentacontable"].ToString().Substring(0, DFila["Cuentacontable"].ToString().IndexOf(' ')); 
                 string CaracterFueraMes = debe ? "13" : "00";
                 string cuo = $"{fechaContable.Year.ToString().Substring(2, 2) }{CaracterFueraMes}-{NumAsiento.ToString("00000")}";
                 string NroCuentaBancaria = "";

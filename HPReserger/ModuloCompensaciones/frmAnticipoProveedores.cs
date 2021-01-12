@@ -268,6 +268,12 @@ namespace HPReserger.ModuloCompensaciones
                 idTipocuenta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 DateTime FechaContable = dtpFechaContable.Value;
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                ListaAuxiliar.Add(CuentaAnticipo);
+                ListaAuxiliar.Add(BanCuenta);
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //Debe
                 //Asiento del Anticipo
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaAnticipo, moneda == 1 ? MontoSoles : MontoDolares, 0, tc,

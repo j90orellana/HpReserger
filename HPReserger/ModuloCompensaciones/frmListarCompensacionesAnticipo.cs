@@ -539,6 +539,17 @@ namespace HPReserger.ModuloCompensaciones
                 //
                 decimal AcumuladoAnticipos = moneda == 1 ? AnticipoSoles : AnticipoDolares;
                 //Facturas al Debe      -- xok
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
+                    if ((int)item.Cells[xok.Name].Value == 1)
+                        ListaAuxiliar.Add(item.Cells[xcuenta.Name].Value.ToString());
+                foreach (DataGridViewRow item in DtgcontenAnticipos.Rows)
+                    if ((int)item.Cells[yOk.Name].Value == 1)
+                        ListaAuxiliar.Add(item.Cells[xcuentacontable.Name].Value.ToString());
+                ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
                 {
                     if ((int)item.Cells[xok.Name].Value == 1)

@@ -28,7 +28,7 @@ namespace HPResergerFunciones
         {
             cadena = Convert.ToBase64String(Encoding.Unicode.GetBytes(cadena));
             return cadena;
-        }
+        }      
         public static string DesEncriptar(string cadena)
         {
             cadena = Encoding.Unicode.GetString(Convert.FromBase64String(cadena), 0, Convert.FromBase64String(cadena).Length);

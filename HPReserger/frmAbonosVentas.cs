@@ -496,6 +496,7 @@ namespace HPReserger
         int[] ContenedorIdNotas = { 8, 54, 58, 9, 55, 59 };
         string[] ContenedorNotasCredito = { "8", "54", "58" };
         string[] ContenedorNotasDebito = { "9", "55", "59" };
+
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             CalcularTotal();
@@ -519,6 +520,7 @@ namespace HPReserger
                 if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
                     return;
             }
+
             //FIN Validacion de la Fecha de Recepción sea meno a la de pago
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
             {
@@ -737,6 +739,12 @@ namespace HPReserger
             decimal.TryParse(txttotalAbonado.Text, out MontoAbonado);
             if (chkPenalidad.Checked || chkPenalidadTodo.Checked)
             {
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                string valex = "";
+                foreach (Cuentas item in ListCuentas) valex += item._Cuenta + ",";
+                valex += txtCuentaExceso.Text;
+                if (CapaLogica.CuentaContableValidarActivas(valex, "Cuentas Contables Desactivadas")) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 decimal.TryParse(txtMontoPenalidad.Text, out MontoPenalidad);
                 //Cabecera de Penalidad
                 //Cuenta de Facturas 
@@ -818,6 +826,16 @@ namespace HPReserger
             //Penalidad + Abono 
             if (!chkPenalidad.Checked)
             {
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataGridViewRow item in dtgconten.Rows)
+                    if ((int)item.Cells[xopcion.Name].Value == 1)
+                        ListaAuxiliar.Add(item.Cells[xCuentaContable.Name].Value.ToString());
+                ListaAuxiliar.Add(CuentaBanco);
+                ListaAuxiliar.Add(CuentaExceso);
+                ///fin de la cabecera del exceso             
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 PosFila = 1;
                 //CUENTA BANCO
                 if (TotalAbonado != 0)

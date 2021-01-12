@@ -152,7 +152,8 @@ namespace HPReserger
             /////ASIGNACION DE LOS DATOS
             //Stopwatch stopwatch = new Stopwatch();
             //stopwatch.Start();
-            TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+           // TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+            TDatos = CapaLogica.MayorPorCuentasConAperturaCierre(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
             TDatos.Columns.RemoveAt(TDatos.Columns.Count - 1);
             dtgconten.DataSource = TDatos;
             //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();

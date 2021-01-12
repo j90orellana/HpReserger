@@ -410,6 +410,14 @@ namespace HPReserger
             int IdProyectoDes = (int)(cboDesProyecto.SelectedValue);
             int IdEtapaOri = (int)(cboOriEtapa.SelectedValue);
             int IdEtapaDes = (int)(cboDesEtapa.SelectedValue);
+            //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+            List<string> ListaAuxiliar = new List<string>();
+            ListaAuxiliar.Add(cboOriCuentaContable.SelectedValue.ToString());
+            ListaAuxiliar.Add(cboOriCuentaBanco.SelectedValue.ToString());
+            ListaAuxiliar.Add(cboDesCuentaBanco.SelectedValue.ToString());
+            ListaAuxiliar.Add(cboDesCuentaContable.SelectedValue.ToString());
+            if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+            //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
             //Modificar Cartel Consulta
             string CartelPregunta = Estado == 1 ? "Seguro Desea Proceder con el Préstamo" : "Seguro Desea Proceder con la Modificación";
             //Procedemos

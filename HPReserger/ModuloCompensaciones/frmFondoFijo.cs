@@ -353,6 +353,12 @@ namespace HPReserger.ModuloCompensaciones
                     DateTime FechaCompensa = dtpFechaCompensa.Value;
                     DateTime FechaContable = dtpFechaContable.Value;
                     DateTime FechaVence = dtpFechaCompensa.Value.AddMonths(1);
+                    //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                    List<string> ListaAuxiliar = new List<string>();
+                    ListaAuxiliar.Add(CuentaFondoFijo);
+                    ListaAuxiliar.Add(BanCuenta);
+                    if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                    //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                     ///
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, PorAbonar < 0 ? Math.Abs(moneda == 1 ? MontoSoles : MontoDolares) : 0,
                          PorAbonar > 0 ? Math.Abs(moneda == 1 ? MontoSoles : MontoDolares) : 0, tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -17);
@@ -423,6 +429,12 @@ namespace HPReserger.ModuloCompensaciones
                     int pos = dtgconten.CurrentCell.RowIndex;
                     MontoSoles = (decimal)dtgconten[xMontoMN.Name, pos].Value;
                     MontoDolares = (decimal)dtgconten[xMontoME.Name, pos].Value;
+                    //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                    List<string> ListaAuxiliar = new List<string>();
+                    ListaAuxiliar.Add(CuentaFondoFijo);
+                    ListaAuxiliar.Add(BanCuenta);
+                    if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                    //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                     //debe
                     //Asiento del salida del Banco
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, Math.Abs(moneda == 1 ? MontoSoles : MontoDolares),
@@ -499,6 +511,12 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaVence = dtpFechaCompensa.Value.AddMonths(1);
                 NumID = (CapaLogica.SiguienteIDCompensaciones(_idempresa, 1).Rows[0]["valor"].ToString()); //1= Fondo Fijo
                 //Debe
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                ListaAuxiliar.Add(CuentaFondoFijo);
+                ListaAuxiliar.Add(BanCuenta);
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //Asiento del Anticipo
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, moneda == 1 ? MontoSoles : MontoDolares, 0, tc,
                     proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -12);

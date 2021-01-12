@@ -590,6 +590,12 @@ namespace HPReserger
             if (_TipoDoc == 2 || _TipoDoc == 3) OpcionBusqueda = 2;
             NumFac = txtcodfactura.Text + "-" + txtnrofactura.Text;
             NumFacRef = txtSerieRef.Text + "-" + txtNumRef.Text;
+            //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+            List<string> ListaAuxiliar = new List<string>();
+            foreach (DataGridViewRow item in Dtgconten.Rows)
+                ListaAuxiliar.Add(item.Cells[xCuentaContable.Name].Value.ToString());
+            if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+            //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
             /////los estados
             if (Estado == 1)
             {

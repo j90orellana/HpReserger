@@ -406,6 +406,15 @@ namespace HPReserger.ModuloCompensaciones
                 else
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
                 idTipocuenta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataGridViewRow item in Dtgconten.Rows)
+                    if ((int)item.Cells[xok.Name].Value == 1)
+                        ListaAuxiliar.Add(item.Cells[xCuentaContable.Name].Value.ToString());
+                ListaAuxiliar.Add(BanCuenta);
+                ListaAuxiliar.Add(BanCuenta);
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //Cabecera del pago del banco            
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, 0, TotalPagar, TCPago, proyecto, 0, Cuo, moneda, Glosa, FechaPago, -25);
                 //detalle del pago del banco

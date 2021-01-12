@@ -127,7 +127,7 @@ namespace HPReserger
                 DataTable TablaBan = (DataTable)cboCuentaBancaria.DataSource; int iBan = cboCuentaBancaria.SelectedIndex;
                 DataRow FilaBan = TablaBan.Rows[iBan];
                 idcuentaContable = FilaBan["idcuentacontable"].ToString();
-                NroCta = FilaBan["nro_Cta"].ToString();                
+                NroCta = FilaBan["nro_Cta"].ToString();
                 if (idcuentaContable == "") { msgError("No se Encontro una CuentaContable para la Cuenta seleccionada"); cboCuentaBancaria.Focus(); return; }
                 //if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
                 //
@@ -192,7 +192,14 @@ namespace HPReserger
             //Proceso de los Asientos            
             if (chkGAsientos.Checked)
             {
-                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas(3);//PARTE PARA SELECCIONAR LOS TIPOS
+                DataTable TConfi = CapaLogica.ConfigurarAsientoBoletas(3);
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataRow item in TConfi.Rows)
+                    ListaAuxiliar.Add(item["CUENTA"].ToString());
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
+                //PARTE PARA SELECCIONAR LOS TIPOS
                 if (TConfi.Rows.Count == 0) { msgError("No se Encontró la Configuracion para el Asiento de la Gratificación"); return; }
                 DataTable TDatos = CapaLogica.ReporteBoletasAsiento(cboempresa.Text, txtnumero.Text, comboMesAño1.GetFechaPRimerDia(), comboMesAño1.GetFechaPRimerDia());
                 if (TDatos.Rows.Count == 0) { msgError("No hay Gratificacion Generadas"); return; }

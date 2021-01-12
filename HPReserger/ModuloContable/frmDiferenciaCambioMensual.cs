@@ -170,6 +170,18 @@ namespace HPReserger
                 //msg("Falta la dinamica del asiento");
                 //return;
             }
+            //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+            List<string> ListaAuxiliar = new List<string>();
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                string cuentita = item.Cells[xcuentacontable.Name].Value.ToString();
+                if (!ListaAuxiliar.Contains(cuentita))
+                    ListaAuxiliar.Add(cuentita);
+            }
+            ListaAuxiliar.Add(CuentaGanacia);
+            ListaAuxiliar.Add(CuentaPerdida);
+            if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+            //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
             //Grabamos los Datos a la Tablas!
             foreach (DataGridViewRow item in dtgconten.Rows)
             {

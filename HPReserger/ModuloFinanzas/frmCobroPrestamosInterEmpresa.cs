@@ -515,6 +515,18 @@ namespace HPReserger.ModuloFinanzas
             string NroOperacion = txtnrooperacion.TextValido();
             if (msgp("Seguro Desea Proceder con el Abono") == DialogResult.Yes)
             {
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataGridViewRow item in dtgconten.Rows)
+                    if ((int)item.Cells[xok.Name].Value == 1)
+                    {
+                        ListaAuxiliar.Add(item.Cells[xCtaContableOri.Name].Value.ToString());
+                        ListaAuxiliar.Add(item.Cells[xCtaContableDes.Name].Value.ToString());
+                    }
+                ListaAuxiliar.Add(cboOriCuentaBanco.SelectedValue.ToString());
+                ListaAuxiliar.Add(cboDesCuentaBanco.SelectedValue.ToString());
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //Proceso de Abono
                 ///Asiento Empresa Origen y Destino
                 ///Cabeceras

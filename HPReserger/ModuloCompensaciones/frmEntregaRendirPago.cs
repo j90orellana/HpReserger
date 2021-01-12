@@ -760,6 +760,22 @@ namespace HPReserger.ModuloCompensaciones
                 string[] UserCompensa = cboempleado.SelectedValue.ToString().Split('-');
                 int IdLogin = frmLogin.CodigoUsuario;
                 DateTime FechaPago = dtpFechaCompensa.Value;
+                string CtaPerdida = CapaLogica.BuscarCuentas("perdida%cambio", 5).Rows[1]["idcuenta"].ToString();
+                string CtaGanacia = CapaLogica.BuscarCuentas("ganancia%cambio", 5).Rows[0]["idcuenta"].ToString();
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
+                    if ((int)item.Cells[xok.Name].Value == 1)
+                        ListaAuxiliar.Add(item.Cells[xcuenta.Name].Value.ToString());
+                foreach (DataGridViewRow item in DtgcontenEntregas.Rows)
+                    if ((int)item.Cells[yOk.Name].Value == 1)
+                        ListaAuxiliar.Add(item.Cells[xcuentacontable.Name].Value.ToString());
+                ListaAuxiliar.Add(CtaPerdida);
+                ListaAuxiliar.Add(CtaGanacia);
+                ListaAuxiliar.Add(CuentaCtaBanco);
+                ListaAuxiliar.Add(cbocuentaxpagar.SelectedValue.ToString());
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //Facturas al Debe      -- xok
                 foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
                 {
@@ -817,9 +833,7 @@ namespace HPReserger.ModuloCompensaciones
                 //Diferencial Ganacia Perdida
                 if (Math.Abs(decimal.Parse(txttotaldifMN.Text) + decimal.Parse(txttotaldifME.Text)) > 0)
                 {
-                    //cabecera
-                    string CtaPerdida = CapaLogica.BuscarCuentas("perdida%cambio", 5).Rows[1]["idcuenta"].ToString();
-                    string CtaGanacia = CapaLogica.BuscarCuentas("ganancia%cambio", 5).Rows[0]["idcuenta"].ToString();
+                    //cabecera                  
                     DateTime fecha = FechaCompensa;
                     decimal diferencial = (moneda == 1 ? decimal.Parse(txttotaldifMN.Text) : decimal.Parse(txttotaldifME.Text));
                     decimal Tc = tc;

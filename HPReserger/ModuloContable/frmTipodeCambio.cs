@@ -55,15 +55,24 @@ namespace HPReserger
             string url = Configuraciones.ApiTCSunat + año + "-" + mes.ToString("00");
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebRequest oRequest = WebRequest.Create(url);
-
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        public async Task<string> GetEstructura()
+        {
+            string url = Configuraciones.PaginaTCSunat;
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
             WebResponse oResponse = oRequest.GetResponse();
             StreamReader sr = new StreamReader(oResponse.GetResponseStream());
             return await sr.ReadToEndAsync();
         }
         private void TipodeCambio_Load(object sender, EventArgs e)
         {
+            //  CargarTipoCambio();
             BuscarTipoCambio(DateTime.Now.Year, DateTime.Now.Month);
-
+            //BuscarEstructura();
             ImgVenta = new byte[0];
             ImageConverter _imageConverter = new ImageConverter();
             ImgVenta = (byte[])_imageConverter.ConvertTo(pbigual.Image, typeof(byte[]));
@@ -81,6 +90,12 @@ namespace HPReserger
             }
             else { CargarTipoCambio(); }
         }
+
+        private async void BuscarEstructura()
+        {
+            string respuesta = await GetEstructura();
+        }
+
         public async void BuscarTipoCambio(int año, int mes)
         {
             string respuesta = await GetHTTPs(año, mes);
@@ -101,7 +116,7 @@ namespace HPReserger
                     //Fin Insert
                     ela = respuesta.IndexOf(año + "-", ela + 50);
                     if (ela == -1) break;
-                }             
+                }
                 Carga = true;
                 webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
                 Buscar_Click(new object(), new EventArgs());

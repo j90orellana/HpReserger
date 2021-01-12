@@ -131,6 +131,7 @@
     <Compile Include="frmInformativo.Designer.cs">
       <DependentUpon>frmInformativo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mensajes.cs" />
     <Compile Include="MoveControl.cs">
       <SubType>Component</SubType>
     </Compile>

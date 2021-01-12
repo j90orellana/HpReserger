@@ -1373,6 +1373,12 @@ namespace HPReserger
             aceptar = true;
             if (salida)
             {
+                //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                List<string> ListaAuxiliar = new List<string>();
+                foreach (DataGridViewRow item in Dtgconten.Rows)
+                    ListaAuxiliar.Add(item.Cells[cuenta.Name].Value.ToString());
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS                
                 //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones  
                 if (estado == 1 && Dtgconten.RowCount > 1)
                 {
@@ -1856,6 +1862,12 @@ namespace HPReserger
                 //Proceso de la Reversa
                 if (HPResergerFunciones.Utilitarios.msgp($"Seguro Desea Reversar Este Asiento Nro {txtcuo.Text}") == DialogResult.Yes)
                 {
+                    //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
+                    List<string> ListaAuxiliar = new List<string>();
+                    foreach (DataGridViewRow item in Dtgconten.Rows)
+                        ListaAuxiliar.Add(item.Cells[cuenta.Name].Value.ToString());
+                    if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                    //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                     cuoReversa = txtcuo.Text;
                     //Proceso Reversa del Asiento               
                     DataRow Filita = CapaLogica.ReversarAsientos((int.Parse(txtcodigo.Text)), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, dtpfechavalor.Value).Rows[0];
