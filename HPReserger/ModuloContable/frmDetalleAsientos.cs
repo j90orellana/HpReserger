@@ -461,7 +461,8 @@ namespace HPReserger
         {
             int y = Dtgconten.CurrentCell.ColumnIndex, x = Dtgconten.CurrentCell.RowIndex;
             string cadena = Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? "0" : Dtgconten[tipodocx.Name, x].Value.ToString();
-            LengthTipDoc = (int.Parse((TipoDocLength.Select($"codigo='{cadena}'"))[0].ItemArray[1].ToString()));
+            if (TipoDocLength.Select($"codigo='{cadena}'").Count() > 0)
+                LengthTipDoc = (int.Parse((TipoDocLength.Select($"codigo='{cadena}'"))[0].ItemArray[1].ToString()));
             if (x >= 0)
             {
                 if (y == Dtgconten.Columns[importemnx.Name].Index || y == Dtgconten.Columns[importemex.Name].Index || y == Dtgconten.Columns[tipocambiox.Name].Index)
@@ -703,7 +704,7 @@ namespace HPReserger
                             {
                                 if ((int)filo.Rows[i]["tipo"] == TipoBusqueda)
                                 { ind = i; break; }
-                            }  
+                            }
                         }
                         else if (filo.Rows.Count > 1)
                         {
@@ -721,7 +722,7 @@ namespace HPReserger
                                 if ((int)filo.Rows[ii]["tipo"] == ind)
                                 { ind = ii; break; }
                             }
-                            frmlispersonas = null;                          
+                            frmlispersonas = null;
                         }
                         DataRow filita = filo.Rows[ind];
                         TipoBusqueda = 0;
@@ -971,7 +972,7 @@ namespace HPReserger
                             Dtgconten_CellValueChanged(sender, new DataGridViewCellEventArgs(Dtgconten.Columns[numdocx.Name].Index, FilaPos));
                         }
                         TipoBusqueda = 1;
-                        
+
                         Dtgconten[numdocx.Name, FilaPos].Value = frmprovee.rucito;
                         Dtgconten[tipodocx.Name, FilaPos].Value = frmprovee.tipoid;
                     }
