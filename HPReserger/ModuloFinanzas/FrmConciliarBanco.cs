@@ -85,7 +85,7 @@ namespace HPReserger.ModuloFinanzas
                 Estado = 2;
                 EstadoCuenta = (decimal)TDatosAux.Rows[0]["estadocuenta"];
                 EstadoCuentaInicial = (decimal)TDatosAux.Rows[0]["estadocuentaInicial"];
-            
+
                 SaldoContable = (decimal)TDatosAux.Rows[0]["saldocontable"];
                 SaldoContableInicial = (decimal)TDatosAux.Rows[0]["saldocontableinicial"];
                 MostrarDatosdeEtiquetasGrillas(true);
@@ -1503,6 +1503,44 @@ namespace HPReserger.ModuloFinanzas
 
             }
         }
+
+        private void dtgContenSistema_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void dtgContenSistema_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13) //Presionar Enter
+            {
+                SeleccionarColumnasAlEnter(dtgContenSistema, yok, ygrupo);
+            }
+        }
+        private void SeleccionarColumnasAlEnter(Dtgconten dtgContenSistemaAux, DataGridViewCheckBoxColumn yokAux, DataGridViewTextBoxColumn ygrupoAux)
+        {
+            int valor = (int)dtgContenSistemaAux[yokAux.Name, dtgContenSistemaAux.SelectedCells[0].RowIndex].Value;
+            foreach (DataGridViewCell item in dtgContenSistemaAux.SelectedCells)
+            {
+                if (item.ColumnIndex == dtgContenSistemaAux.Columns[yokAux.Name].Index)
+                    if (dtgContenSistemaAux[ygrupoAux.Name, item.RowIndex].Value.ToString() == "")
+                    {
+                        dtgContenSistemaAux[yokAux.Name, item.RowIndex].Value = valor == 1 ? 0 : 1;
+                    }
+            }
+        }
+        private void dtgContenSistema_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void dtgContenExcel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                SeleccionarColumnasAlEnter(dtgContenExcel, xok, xGrupo);
+            }
+        }
+
         private void MostrarTotales()
         {
             int x1 = 0, x2 = 0, y1 = 0, y2 = 0;

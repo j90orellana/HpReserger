@@ -167,9 +167,9 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2021, 1, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2021, 1, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.comboMesAño1.Location = new System.Drawing.Point(776, 43);
             this.comboMesAño1.Name = "comboMesAño1";
@@ -402,6 +402,7 @@
             this.dtgContenExcel.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgContenExcel_CellFormatting);
             this.dtgContenExcel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_CellValueChanged);
             this.dtgContenExcel.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenExcel_RowEnter);
+            this.dtgContenExcel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtgContenExcel_KeyPress);
             // 
             // xok
             // 
@@ -617,6 +618,9 @@
             this.dtgContenSistema.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgContenSistema_CellFormatting);
             this.dtgContenSistema.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_CellValueChanged);
             this.dtgContenSistema.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgContenSistema_RowEnter);
+            this.dtgContenSistema.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgContenSistema_KeyDown);
+            this.dtgContenSistema.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtgContenSistema_KeyPress);
+            this.dtgContenSistema.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dtgContenSistema_KeyUp);
             // 
             // yok
             // 
