@@ -291,7 +291,7 @@ namespace HPReserger.ModuloCompensaciones
             if (cboempleado.SelectedValue == null) { msg("Seleccione un Empleado"); cboempleado.Focus(); return; }
             string[] empleado = cboempleado.SelectedValue.ToString().Split('-');
             DataTable Filita = CapaLogica.FondoFijoVeriricarExistencia(_idempresa, int.Parse(empleado[0]), empleado[1], CuentaFondoFijo, int.Parse(NumID));
-            if (Filita.Rows.Count > 0)
+            if (Filita.Rows.Count > 0 && Estado != 10)
             {
                 msg("Este Empleado Ya tiene un Fondo Fijo Activo");
                 return;

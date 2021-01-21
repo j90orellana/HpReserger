@@ -911,7 +911,7 @@ namespace HPReserger
                             decimal ValorSoles = (decimal)DVFila[xpen.DataPropertyName] * (Sentido ? 1 : -1) * (ValorDebeMN < ValorHaberMN ? 1 : -1);
                             GLOSA = DVFila[xGlosa.DataPropertyName].ToString();
                             string NroCuentaBancaria = DVFila[xCuentaBanco.DataPropertyName].ToString();
-                            IdSoles = DVFila[xmoneda.DataPropertyName].ToString() == "PEN" ? 1 : 2;
+                            IdSoles = DVFila[xmoneda.DataPropertyName].ToString() == "SOL" ? 1 : 2;
                             DateTime FechaEmision = DVFila[xFechaEmision.DataPropertyName].ToString() == "" ? FechaContable : (DateTime)DVFila[xFechaEmision.DataPropertyName];
                             //
                             CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila - 1, NumAsiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,

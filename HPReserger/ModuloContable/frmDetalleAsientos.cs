@@ -193,6 +193,16 @@ namespace HPReserger
         {
             if (estado == 2)
             {
+                //validamos que las cuentas bancarias, siempre sehan seleccionadas
+                if (txtcuenta.Text.Substring(0, 3) == "104")
+                    foreach (DataGridViewRow item in Dtgconten.Rows)
+                        if (item.Cells[xCtaBancaria.Name].Value != null)
+                            if (item.Cells[xCtaBancaria.Name].Value.ToString() == "" || item.Cells[xCtaBancaria.Name].Value.ToString() == "0")
+                            {
+                                msg("Debe Seleccionar la Cta Bancaria de esta Cuenta");
+                                return;
+                            }
+                //fin de validacion de cuentas bancarias
                 SumatoriaMN = SumatoriaME = 0;
                 _breakpoint = 0;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
