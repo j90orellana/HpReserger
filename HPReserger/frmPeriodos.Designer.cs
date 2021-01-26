@@ -59,6 +59,7 @@
             this.txtbusmes = new HpResergerUserControls.TextBoxPer();
             this.txtbusempresa = new HpResergerUserControls.TextBoxPer();
             this.lblmensaje = new System.Windows.Forms.Label();
+            this.btnCrearPeriodo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +115,7 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(630, 296);
+            this.dtgconten.Size = new System.Drawing.Size(666, 296);
             this.dtgconten.TabIndex = 9;
             this.dtgconten.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgconten_CellFormatting);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
@@ -198,7 +199,7 @@
             // 
             this.btncancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(330, 362);
+            this.btncancelar.Location = new System.Drawing.Point(348, 362);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 11;
@@ -211,7 +212,7 @@
             // 
             this.btnaceptar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(249, 362);
+            this.btnaceptar.Location = new System.Drawing.Point(267, 362);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 10;
@@ -300,7 +301,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(567, 11);
+            this.button1.Location = new System.Drawing.Point(603, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -319,7 +320,7 @@
             this.btnabriperiodo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnabriperiodo.Enabled = false;
             this.btnabriperiodo.Image = ((System.Drawing.Image)(resources.GetObject("btnabriperiodo.Image")));
-            this.btnabriperiodo.Location = new System.Drawing.Point(492, 11);
+            this.btnabriperiodo.Location = new System.Drawing.Point(528, 11);
             this.btnabriperiodo.Name = "btnabriperiodo";
             this.btnabriperiodo.Size = new System.Drawing.Size(75, 23);
             this.btnabriperiodo.TabIndex = 3;
@@ -332,7 +333,7 @@
             // 
             this.btncleanfind.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
-            this.btncleanfind.Location = new System.Drawing.Point(617, 35);
+            this.btncleanfind.Location = new System.Drawing.Point(653, 35);
             this.btncleanfind.Name = "btncleanfind";
             this.btncleanfind.Size = new System.Drawing.Size(25, 23);
             this.btncleanfind.TabIndex = 8;
@@ -395,7 +396,7 @@
             this.txtbusempresa.MaxLength = 300;
             this.txtbusempresa.Name = "txtbusempresa";
             this.txtbusempresa.NextControlOnEnter = null;
-            this.txtbusempresa.Size = new System.Drawing.Size(370, 21);
+            this.txtbusempresa.Size = new System.Drawing.Size(402, 21);
             this.txtbusempresa.TabIndex = 7;
             this.txtbusempresa.Text = "Buscar Empresa";
             this.txtbusempresa.TextoDefecto = "Buscar Empresa";
@@ -411,15 +412,28 @@
             this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensaje.Location = new System.Drawing.Point(12, 367);
             this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(110, 13);
+            this.lblmensaje.Size = new System.Drawing.Size(111, 13);
             this.lblmensaje.TabIndex = 236;
             this.lblmensaje.Text = "Total de Registros: 0";
+            // 
+            // btnCrearPeriodo
+            // 
+            this.btnCrearPeriodo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCrearPeriodo.Image = ((System.Drawing.Image)(resources.GetObject("btnCrearPeriodo.Image")));
+            this.btnCrearPeriodo.Location = new System.Drawing.Point(452, 11);
+            this.btnCrearPeriodo.Name = "btnCrearPeriodo";
+            this.btnCrearPeriodo.Size = new System.Drawing.Size(75, 23);
+            this.btnCrearPeriodo.TabIndex = 3;
+            this.btnCrearPeriodo.Text = "Crear";
+            this.btnCrearPeriodo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCrearPeriodo.UseVisualStyleBackColor = true;
+            this.btnCrearPeriodo.Click += new System.EventHandler(this.btnCrearPeriodo_Click);
             // 
             // frmPeriodos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 391);
+            this.ClientSize = new System.Drawing.Size(690, 391);
             this.Controls.Add(this.lblmensaje);
             this.Controls.Add(this.btncleanfind);
             this.Controls.Add(this.txtbusempresa);
@@ -432,6 +446,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtanio);
+            this.Controls.Add(this.btnCrearPeriodo);
             this.Controls.Add(this.btnabriperiodo);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btncancelar);
@@ -475,5 +490,6 @@
         private HpResergerUserControls.TextBoxPer txtbusmes;
         private HpResergerUserControls.TextBoxPer txtbusempresa;
         private System.Windows.Forms.Label lblmensaje;
+        private System.Windows.Forms.Button btnCrearPeriodo;
     }
 }

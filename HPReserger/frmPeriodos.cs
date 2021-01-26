@@ -220,5 +220,22 @@ namespace HPReserger
         {
             LimpiarValores();
         }
+        frmAddPeriodo frmaddperiodo;
+        private void btnCrearPeriodo_Click(object sender, EventArgs e)
+        {
+            if (frmaddperiodo == null)
+            {
+                frmaddperiodo = new frmAddPeriodo();
+                frmaddperiodo.FormClosed += Frmaddperiodo_FormClosed;
+                frmaddperiodo.MdiParent = this.ParentForm;
+                frmaddperiodo.Show();
+            }
+            else frmaddperiodo.Activate();
+        }
+
+        private void Frmaddperiodo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmaddperiodo = null;
+        }
     }
 }
