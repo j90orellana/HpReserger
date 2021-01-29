@@ -41,7 +41,7 @@ namespace HPReserger
             DateTime Fecha = comboMesAño1.GetFechaPRimerDia();
             //Proceso
             if (CapaLogica.ValidarCrearPeriodo(pkEmpresa, Fecha)) { msg("Este Periodo Ya Existe"); return; }
-
+            //99 es la opcion para insertar un periodo continuo de 1 mes y lo crea cerrado
             if (CapaLogica.Periodos(99, pkEmpresa, Fecha).Rows.Count > 0)
             {
                 msgOK("Periodo Creado Cerrado");

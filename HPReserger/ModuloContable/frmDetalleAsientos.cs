@@ -296,6 +296,7 @@ namespace HPReserger
                         }
                         if (!(item.Cells[tipodocx.Name].Value.ToString() == "0" || item.Cells[tipodocx.Name].Value.ToString() == "6"))
                         {
+                            //validacion de numero de documentos.
                             int index = (int.Parse((TipoDocLength.Select($"codigo='{item.Cells[tipodocx.Name].Value.ToString()}'"))[0].ItemArray[1].ToString()));
                             if (item.Cells[numdocx.Name].Value.ToString().ToUpper().Contains("DNI") || item.Cells[numdocx.Name].Value.ToString().ToUpper().Contains("RUC"))
                             {
