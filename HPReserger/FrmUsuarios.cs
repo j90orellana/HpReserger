@@ -383,7 +383,7 @@ namespace HPReserger
                 {
                     DataRow file = table.Rows[0];
                     int ConUsuarios = (int)file["usuarios"];
-                    if (estado == 1 || estado == 5)
+                    if ((int)cboestado.SelectedValue == 1 || (int)cboestado.SelectedValue == 5)
                     {
                         ConUsuarios++;
                     }
