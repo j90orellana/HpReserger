@@ -562,7 +562,27 @@ namespace HPReserger.ModuloFinanzas
                 if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
                 {
                     msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
-                    return false;
+                    return false; ID_Entidad Entidad_Financiera  Sufijo Cod_Sunat
+1   BANCO DE CRÉDITO CREDITO 2
+2   BANCO SCOTIABANK    SCOTIABANK  9
+3   BANCO CONTINENTAL   CONTINENTAL 11
+4   BANCO INTERBANK INTERBANK   3
+5   BANCO DE LA NACION  BN  18
+6   BANCO FALABELLA FALABELLA   99
+7   BANCO FINANCIERO    FINANCIERO  35
+8   BANBIF BIF 38
+9   BANCO GNB   GNB 99
+10  BANCO PICHINCHA PICHINCHA   99ID_Entidad	Entidad_Financiera	Sufijo	Cod_Sunat
+1	BANCO DE CRÉDITO	CREDITO	2
+2	BANCO SCOTIABANK	SCOTIABANK	9
+3	BANCO CONTINENTAL	CONTINENTAL	11
+4	BANCO INTERBANK	INTERBANK	3
+5	BANCO DE LA NACION	BN	18
+6	BANCO FALABELLA	FALABELLA	99
+7	BANCO FINANCIERO	FINANCIERO	35
+8	BANBIF	BIF	38
+9	BANCO GNB	GNB	99
+10	BANCO PICHINCHA	PICHINCHA	99
                 }
                 return true;
             }
