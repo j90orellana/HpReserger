@@ -527,7 +527,7 @@ namespace HPReserger
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 16)
+            if (DateTime.Now.Hour > 9 && DateTime.Now.Hour < 17)//coontrol de que hora se procede con la actualizacion
             {
                 if (FechaActual != DateTime.Now.Date) { BuscarTipoCambio(DateTime.Now.Year, DateTime.Now.Month); }
 
