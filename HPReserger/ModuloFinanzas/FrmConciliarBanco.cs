@@ -236,9 +236,9 @@ namespace HPReserger.ModuloFinanzas
             DateTime FechaAux;
             FechaAux = (comboMesAño1.FechaInicioMes).AddDays(-1);
             SaldoContable = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(comboMesAño1.FechaInicioMes.Year, 1, 1), comboMesAño1.FechaFinMes, NroCuenta, pkMoneda).Rows[0]["monto"];
-            SaldoContableInicial = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(FechaAux.Year, 1, 1), FechaAux, NroCuenta, pkMoneda).Rows[0]["monto"];
+            SaldoContableInicial =  (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(FechaAux.Year, 1, 1), FechaAux, NroCuenta, pkMoneda).Rows[0]["monto"];
 
-            if (SaldoContableInicial == 0) msgError("No hay Movimientos Contables");
+            if (SaldoContableInicial == 0) msgError("Saldo Inicial en Cero");
             TdatosSist = CapaLogica.MovimientoBancariosxEmpresa(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
         }
         private void BuscanEnSistemMovimientosExcel()
@@ -681,15 +681,16 @@ namespace HPReserger.ModuloFinanzas
                     msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
                     return false;
                 }
-                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
-                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString());
-                //
                 string ValCuenta = TdatosExcel.Rows[6][2].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
                 {
                     msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
                     return false;
                 }
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString());
+                //
+
                 int pos = 11; int i = 0;
                 foreach (DataRow item in TdatosExcel.Rows)
                 {

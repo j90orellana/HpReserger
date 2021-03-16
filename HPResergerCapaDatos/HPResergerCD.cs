@@ -53,7 +53,7 @@ namespace HPResergerCapaDatos
                 DATASOURCE = "192.168.0.102";
                 BASEDEDATOS = "sige";
             }
-            bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
+            bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; Persist Security Info=True ; user id = " + USERID + "; password = " + USERPASS + "");
         }
         private DateTime CalculoDeFechaLicencia(string code, string key)
         {
