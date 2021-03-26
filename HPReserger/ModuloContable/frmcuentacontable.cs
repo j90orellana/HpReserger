@@ -417,7 +417,7 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones   
+            //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones   0.1423
             string codigo;
             string nombrecuenta;
             nombrecuenta = txtnombrecuenta.TextValido();

@@ -236,7 +236,7 @@ namespace HPReserger.ModuloFinanzas
             DateTime FechaAux;
             FechaAux = (comboMesAño1.FechaInicioMes).AddDays(-1);
             SaldoContable = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(comboMesAño1.FechaInicioMes.Year, 1, 1), comboMesAño1.FechaFinMes, NroCuenta, pkMoneda).Rows[0]["monto"];
-            SaldoContableInicial =  (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(FechaAux.Year, 1, 1), FechaAux, NroCuenta, pkMoneda).Rows[0]["monto"];
+            SaldoContableInicial = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(FechaAux.Year, 1, 1), FechaAux, NroCuenta, pkMoneda).Rows[0]["monto"];
 
             if (SaldoContableInicial == 0) msgError("Saldo Inicial en Cero");
             TdatosSist = CapaLogica.MovimientoBancariosxEmpresa(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
@@ -722,6 +722,10 @@ namespace HPReserger.ModuloFinanzas
                         }
                         else item.Delete();
                     }
+                }
+                if (pkBanco == 5 && c == 18)//banco de la nacion
+                {
+                    FechaMin = FechaMax = DateTime.Parse(TdatosExcel.Rows[3][5].ToString());
                 }
                 DateTime FechaCombo = comboMesAño1.GetFecha();
                 if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))

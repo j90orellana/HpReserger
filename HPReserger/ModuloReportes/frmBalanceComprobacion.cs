@@ -107,6 +107,26 @@ namespace HPReserger.ModuloReportes
                         }
                     }
                 }
+                //Marcas de Error en Datos
+                decimal sumInventario = (decimal)dtgconten[xInventarioActivo.Name, FilaTotal + 2].Value + (decimal)dtgconten[xInventarioPasivo.Name, FilaTotal + 2].Value;
+                decimal sumNaturaleza = (decimal)dtgconten[xNaturalezaGanancia.Name, FilaTotal + 2].Value + (decimal)dtgconten[xNaturalezaPerdida.Name, FilaTotal + 2].Value;
+                decimal sumFuncion = (decimal)dtgconten[xfuncionGanancia.Name, FilaTotal + 2].Value + (decimal)dtgconten[xFuncionPerdida.Name, FilaTotal + 2].Value;
+                //proceso pintado
+                if (sumInventario == sumNaturaleza && sumFuncion != sumInventario)
+                {
+                    dtgconten.Rows[FilaTotal + 2].Cells[xFuncionPerdida.Name].InheritedStyle.BackColor = Configuraciones.RojoUI;
+                    dtgconten.Rows[FilaTotal + 2].Cells[xfuncionGanancia.Name].InheritedStyle.BackColor = Configuraciones.RojoUI;
+                }
+                if (sumNaturaleza == sumFuncion && sumInventario != sumNaturaleza)
+                {
+                    dtgconten.Rows[FilaTotal + 2].Cells[xInventarioPasivo.Name].Style.BackColor = Configuraciones.RojoUI;
+                    dtgconten.Rows[FilaTotal + 2].Cells[xInventarioActivo.Name].Style.BackColor = Configuraciones.RojoUI;
+                }
+                if (sumInventario == sumFuncion && sumNaturaleza != sumInventario)
+                {
+                    dtgconten.Rows[FilaTotal + 2].Cells[xNaturalezaGanancia.Name].Style.BackColor = Configuraciones.RojoUI;
+                    dtgconten.Rows[FilaTotal + 2].Cells[xNaturalezaPerdida.Name].Style.BackColor = Configuraciones.RojoUI;
+                }
             }
         }
         private void BtnCerrar_Click(object sender, EventArgs e)
@@ -175,8 +195,8 @@ namespace HPReserger.ModuloReportes
                 //TablaExportar.Columns.RemoveAt(0);
                 //
                 //
-                foreach (DataColumn item in TablaExportar.Columns)                
-                    item.ColumnName = dtgconten.Columns[item.Ordinal].HeaderText;                
+                foreach (DataColumn item in TablaExportar.Columns)
+                    item.ColumnName = dtgconten.Columns[item.Ordinal].HeaderText;
 
                 if (chkCarpeta.Checked)
                 {
