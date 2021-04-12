@@ -13,8 +13,17 @@ namespace HpResergerUserControls
 {
     public class Configuraciones
     {
+        //LISTADO DE APIS
         public static string PaginaTCSunat = "https://e-consulta.sunat.gob.pe/cl-at-ittipcam/tcS01Alias";
-        public static string ApiTCSunat = "https://api.sunat.online/cambio/";//Indicar el AÑo despues del slash
+        public static string APITcDiario = "https://api.apis.net.pe/v1/tipo-cambio-sunat?fecha="; //se usa de Respaldo diario //año-mes-dia
+        //public static string ApiTCSunat = "https://api.sunat.online/cambio/";//Indicar el AÑo despues del slash
+        public static string ApiTCSunat = "https://dni.optimizeperu.com/api/tipo-cambio";//Indicar el AÑo despues del slash      
+        public static string ApiRuc = "https://api.apis.net.pe/v1/ruc?numero=";
+        public static string ApiReniec = "https://api.apis.net.pe/v1/dni?numero=";
+        //FIN APIS
+        public static string ApiRUCToken = "https://dniruc.apisperu.com/api/v1/ruc/";
+        public static string APiReniecToken = "https://dniruc.apisperu.com/api/v1/dni/";
+        public static string Token = "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imo5MG9yZWxsYW5hdmVnYUBnbWFpbC5jb20ifQ.G81KqiFUZjYrdcr_87qt-Nu52L24zdGGUHOLzhXywHs";
         //COLORES POR DEFECTO
         public static Color ColordeEnabledReadOnly = Color.FromArgb(204, 218, 231);
         ///COLORES DE GRILLAS
@@ -255,7 +264,7 @@ namespace HpResergerUserControls
         public static String ToFechaSql(DateTime datetime)
         {
             string cadena = "";
-            cadena = $"{datetime.Year}-{datetime.Month}-{datetime.Day}";
+            cadena = $"{datetime.Year}-{datetime.Month.ToString("00")}-{datetime.Day.ToString("00")}";
             return cadena;
         }
         public static decimal Decimal(string cadena)

@@ -1,10 +1,13 @@
 ﻿using HpResergerUserControls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -645,5 +648,54 @@ namespace HPReserger
         {
             LimpiarBusquedas();
         }
+
+        private void txtnroid_TextChanged(object sender, EventArgs e)
+        {
+            if (estado == 1)
+                if (txtnroid.Text.Length == 8)
+                {
+                    //ANULADO POR FALTA DE DATA DE LA API RENIEC
+                    BuscarReniecAPiToken(txtnroid.Text);
+                }
+        }
+        public async Task<string> GetHTTPs(string dni)
+        {
+            string url = Configuraciones.APiReniecToken + dni + Configuraciones.Token;// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        private async void BuscarReniecAPiToken(string dni)
+        {
+            try
+            {
+                string respuesta = await GetHTTPs(dni);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<DNI> LstData = JsonConvert.DeserializeObject<List<DNI>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                    DNI data = LstData[0];
+                    txtapetpat.Text = data.apellidoPaterno;
+                    txtapemat.Text = data.apellidoMaterno;
+                    txtnombre.Text = data.nombres;
+                    cbotipoid.SelectedValue = 1;
+
+                }
+            }
+            catch (Exception) { }
+        }
+        public class DNI
+        {
+            public string dni { get; set; }
+            public string nombres { get; set; }
+            public string apellidoPaterno { get; set; }
+            public string apellidoMaterno { get; set; }
+            public string codVerifica { get; set; }
+        }
+
+
     }
 }

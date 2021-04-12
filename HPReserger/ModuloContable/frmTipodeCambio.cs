@@ -38,21 +38,21 @@ namespace HPReserger
                 CargarTipoCambio();
             }
         }
-        public class Detalle
-        {
-            public string venta { get; set; }
-            public string compra { get; set; }
-        }
-        public class TC
-        {
-            public string fecha { get; set; }
-            public Detalle Detalles { get; set; }
-            public string venta { get; set; }
-            public string compra { get; set; }
-        }
+        //public class Detalle
+        //{
+        //    public string venta { get; set; }
+        //    public string compra { get; set; }
+        //}
+        //public class TC
+        //{
+        //    public string fecha { get; set; }
+        //    public Detalle Detalles { get; set; }
+        //    public string venta { get; set; }
+        //    public string compra { get; set; }
+        //}
         public async Task<string> GetHTTPs(int año, int mes)
         {
-            string url = Configuraciones.ApiTCSunat + año + "-" + mes.ToString("00");
+            string url = Configuraciones.ApiTCSunat;// + año + "-" + mes.ToString("00");
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebRequest oRequest = WebRequest.Create(url);
             WebResponse oResponse = oRequest.GetResponse();
@@ -95,32 +95,76 @@ namespace HPReserger
         {
             string respuesta = await GetEstructura();
         }
-
+        public class Anio
+        {
+            public string mes_nombre { get; set; }
+            public int mes_valor { get; set; }
+            public int anio { get; set; }
+        }
+        public class CambioActual
+        {
+            public string dia { get; set; }
+            public string compra { get; set; }
+            public string venta { get; set; }
+        }
+        public class Dias
+        {
+            public string dia { get; set; }
+            public decimal compra { get; set; }
+            public decimal venta { get; set; }
+        }
+        public class Ruta
+        {
+            public Anio anio { get; set; }
+            public CambioActual cambio_actual { get; set; }
+            public List<Dias> dias { get; set; }
+        }
         public async void BuscarTipoCambio(int año, int mes)
         {
-            string respuesta = await GetHTTPs(año, mes);
-            respuesta = "[\n " + respuesta + " \n]";
-            List<TC> lstTC = JsonConvert.DeserializeObject<List<TC>>(respuesta);
-            //SAcamos la Data
-            int CantDecimales = 5;
-            int ela = respuesta.IndexOf(año + "-");
-            if (ela != -1)
+            try
             {
-                while (ela != 0)
+                string respuesta = await GetHTTPs(año, mes);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<Ruta> lstTC = JsonConvert.DeserializeObject<List<Ruta>>(respuesta);
+                //SAcamos la Data
+                int CantDecimales = 5;
+                int ela = respuesta.IndexOf(año + "-");
+                if (lstTC.Count > 0)
                 {
-                    DateTime TFecha = DateTime.Parse(respuesta.Substring(ela, 10));
-                    decimal Tcompra = decimal.Parse(respuesta.Substring(ela + 34, CantDecimales));
-                    decimal Tventa = decimal.Parse(respuesta.Substring(ela + 60, CantDecimales));
-                    //Proceso  de Insert en la base de Datos
-                    CapaLogica.TipodeCambio(15, TFecha.Year, TFecha.Month, TFecha.Day, Tcompra, Tventa, null);
-                    //Fin Insert
-                    ela = respuesta.IndexOf(año + "-", ela + 50);
-                    if (ela == -1) break;
+                    if (año == lstTC[0].anio.anio && mes == lstTC[0].anio.mes_valor)
+                    {
+                        foreach (Dias item in lstTC[0].dias)
+                        {
+                            CapaLogica.TipodeCambio(15, lstTC[0].anio.anio, lstTC[0].anio.mes_valor, int.Parse(item.dia), (item.compra), (item.venta), null);
+                        }
+                        Carga = true;
+                        tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
+                        CompletarEstructura();
+                        //webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
+                        Buscar_Click(new object(), new EventArgs());
+                    }
                 }
-                Carga = true;
-                webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
-                Buscar_Click(new object(), new EventArgs());
+                //if (ela != -1)
+                //{
+                //    while (ela != 0)
+                //    {
+                //        DateTime TFecha = DateTime.Parse(respuesta.Substring(ela, 10));
+                //        decimal Tcompra = decimal.Parse(respuesta.Substring(ela + 34, CantDecimales));
+                //        decimal Tventa = decimal.Parse(respuesta.Substring(ela + 60, CantDecimales));
+                //        //Proceso  de Insert en la base de Datos
+                //        CapaLogica.TipodeCambio(15, TFecha.Year, TFecha.Month, TFecha.Day, Tcompra, Tventa, null);
+                //        //Fin Insert
+                //        ela = respuesta.IndexOf(año + "-", ela + 50);
+                //        if (ela == -1) break;
+                //    }
+                //    Carga = true;
+                //    webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
+                //    Buscar_Click(new object(), new EventArgs());
+                //}
+
+
             }
+            catch (Exception) { BuscarTipoCambio(año, mes); }
         }
         public DataTable ConsultaDia()
         {
@@ -131,7 +175,7 @@ namespace HPReserger
             try
             {
                 //webBrowser1.Navigate("http://www.sunat.gob.pe/cl-at-ittipcam/tcS01Alias");
-                webBrowser1.Navigate(Configuraciones.PaginaTCSunat);
+                //webBrowser1.Navigate(Configuraciones.PaginaTCSunat);
 
             }
             catch { msg("No Se pudo Conectar con la Sunat"); }
@@ -153,6 +197,92 @@ namespace HPReserger
             catch (Exception) { }
         }
         string[] Tcambio = new string[3];
+        public void CompletarEstructura()
+        {
+            if (tablita.Rows.Count > 0)
+            {
+                DataRow filita = tablita.Rows[0];
+                DataRow filiaux;
+                int min = int.Parse(filita["dia"].ToString());
+                filita = tablita.Rows[tablita.Rows.Count - 1];
+                int max;
+                max = int.Parse(filita["dia"].ToString());
+                int aux = 0;
+                for (int i = min; i <= max; i++)
+                {
+                    //completa los dias Saltados
+                    filita = tablita.Rows[aux];
+                    if (int.Parse(filita["dia"].ToString()) != i)
+                    {
+                        filiaux = tablita.NewRow();
+                        filita = tablita.Rows[aux - 1];
+                        filiaux["dia"] = i;
+                        filiaux["mes"] = filita["mes"];
+                        filiaux["año"] = filita["año"];
+                        filiaux["compra"] = filita["compra"];
+                        filiaux["venta"] = filita["venta"];
+                        tablita.Rows.InsertAt(filiaux, aux);
+                        aux++;
+                    }
+                    else { aux++; }
+                }
+                //Completa al Dia Actual
+                if (comboMesAño1.GetFecha().Month == DateTime.Now.Month && comboMesAño1.GetFecha().Year == DateTime.Now.Year)
+                {
+                    int dif = 0; int inicial;
+                    filita = tablita.Rows[tablita.Rows.Count - 1];
+                    dif = DateTime.Now.Day - (int)filita["dia"];
+                    inicial = (int)filita["dia"];
+                    for (int i = 0; i < dif; i++)
+                    {
+                        filiaux = tablita.NewRow();
+                        filiaux["dia"] = inicial + i + 1;
+                        filiaux["mes"] = filita["mes"];
+                        filiaux["año"] = filita["año"];
+                        filiaux["compra"] = filita["compra"];
+                        filiaux["venta"] = filita["venta"];
+                        tablita.Rows.Add(filiaux);
+                    }
+                }
+                ///completar el ultimo dia del mes 
+                //if ((int)filita["mes"] != DateTime.Now.Month && (int)filita["año"] != DateTime.Now.Year)
+                DateTime fechax = new DateTime((int)filita["año"], (int)filita["mes"], 1);
+                DateTime fechita = DateTime.Now;
+                if (new DateTime(fechita.Year, fechita.Month, 1) > new DateTime(fechax.Year, fechax.Month, 1))
+                {
+                    int mesio = comboMesAño1.GetFecha().Month;
+                    int añio = comboMesAño1.GetFecha().Year;
+                    int length = (int)(tablita.Rows[tablita.Rows.Count - 1])["dia"];
+                    if (comboMesAño1.UltimoDiaDelMes().Day != length)
+                    {
+                        for (int i = length; i < comboMesAño1.UltimoDiaDelMes().Day; i++)
+                        {
+                            filiaux = tablita.NewRow();
+                            filiaux["dia"] = i + 1;
+                            filiaux["mes"] = comboMesAño1.GetFecha().Month;
+                            filiaux["año"] = comboMesAño1.GetFecha().Year;
+                            filiaux["compra"] = (tablita.Rows[tablita.Rows.Count - 1])["compra"];
+                            filiaux["venta"] = (tablita.Rows[tablita.Rows.Count - 1])["venta"];
+                            tablita.Rows.Add(filiaux);
+                        }
+                        foreach (DataRow filitas in tablita.Rows)
+                        {
+                            //inserto a la base de datos el tipo de cambio
+                            CapaLogica.TipodeCambio(1, (int)filitas["año"], (int)filitas["mes"], (int)filitas["dia"], (decimal)filitas["compra"], (decimal)filitas["venta"], ImgVenta);
+                        }
+                    }
+                }
+                foreach (DataRow filitas in tablita.Rows)
+                {
+                    //inserto a la base de datos el tipo de cambio
+                    CapaLogica.TipodeCambio(1, (int)filitas["año"], (int)filitas["mes"], (int)filitas["dia"], (decimal)filitas["compra"], (decimal)filitas["venta"], ImgVenta);
+                }
+                tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
+                dtgconten.DataSource = tablita;
+                CargarImagenes();
+                OnActualizoTipoCambio(new EventArgs());
+            }
+        }
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             try
@@ -300,7 +430,7 @@ namespace HPReserger
                 tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
                 dtgconten.DataSource = tablita;
                 CargarImagenes();
-                OnActualizoTipoCambio(e);
+                OnActualizoTipoCambio(new EventArgs());
             }
             else
             {
@@ -411,8 +541,8 @@ namespace HPReserger
                 try
                 {
                     Carga = false;
-                    webBrowser1.Navigate(Configuraciones.PaginaTCSunat);
-                    BuscarTipoCambio(comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month);
+                    //webBrowser1.Navigate(Configuraciones.PaginaTCSunat);
+                    //BuscarTipoCambio(comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month);
 
                     //webBrowser1.Document.GetElementById("mes").SetAttribute("value", comboMesAño1.getMesNumero().ToString("00"));
                     //webBrowser1.Document.GetElementById("anho").SetAttribute("value", comboMesAño1.GetAño().ToString());
@@ -527,15 +657,51 @@ namespace HPReserger
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (DateTime.Now.Hour > 9 && DateTime.Now.Hour < 17)//coontrol de que hora se procede con la actualizacion
-            {
-                if (FechaActual != DateTime.Now.Date) { BuscarTipoCambio(DateTime.Now.Year, DateTime.Now.Month); }
+            if (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 17)//coontrol de que hora se procede con la actualizacion
+            {                
+                if (FechaActual != DateTime.Now.Date)
+                {                
+                    //  BuscarTipoCambio(DateTime.Now.Year, DateTime.Now.Month);
+                    BuscarTipodeCambiodelDia();
+                }
 
                 FechaActual = DateTime.Now;
                 comboMesAño1.ActualizarMesAÑo(FechaActual.Month, FechaActual.Year);
                 //MSG("REfrescado");
             }
-
+        }
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        public class TIPOCAMBIO
+        {
+            public decimal compra { get; set; }
+            public decimal venta { get; set; }
+            public string origen { get; set; }
+            public string moneda { get; set; }
+            public DateTime fecha { get; set; }
+        }
+        public async Task<string> GetHTTPs()
+        {
+            string url = Configuraciones.APITcDiario + Configuraciones.ToFechaSql(DateTime.Now);// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        public async void BuscarTipodeCambiodelDia()
+        {
+            try
+            {
+                string respuesta = await GetHTTPs();
+                respuesta = "[\n " + respuesta + " \n]";
+                List<TIPOCAMBIO> lstTC = JsonConvert.DeserializeObject<List<TIPOCAMBIO>>(respuesta);
+                //SAcamos la Data             
+                if (lstTC.Count > 0)
+                {
+                    CapaLogica.TipodeCambio(15, lstTC[0].fecha.Year, lstTC[0].fecha.Month, lstTC[0].fecha.Day, lstTC[0].compra, lstTC[0].venta, null);
+                }
+            }
+            catch (Exception) { }
         }
     }
 }

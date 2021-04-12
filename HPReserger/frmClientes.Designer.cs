@@ -119,7 +119,7 @@
             this.lblmsg.BackColor = System.Drawing.Color.Transparent;
             this.lblmsg.Location = new System.Drawing.Point(12, 535);
             this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(113, 13);
+            this.lblmsg.Size = new System.Drawing.Size(114, 13);
             this.lblmsg.TabIndex = 97;
             this.lblmsg.Text = "Total de Registros : 0";
             // 
@@ -521,6 +521,7 @@
             this.txtnroid.TextoDefecto = "000000";
             this.txtnroid.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtnroid.TextChanged += new System.EventHandler(this.txtnroid_TextChanged);
             // 
             // cbotipoid
             // 
@@ -1063,7 +1064,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(347, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 82;
             this.label2.Text = "Tipo Id:";
             // 
@@ -1083,7 +1084,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Location = new System.Drawing.Point(498, 89);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 13);
+            this.label11.Size = new System.Drawing.Size(49, 13);
             this.label11.TabIndex = 88;
             this.label11.Text = "Tel. Fijo:";
             // 
@@ -1113,7 +1114,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Location = new System.Drawing.Point(660, 89);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 13);
+            this.label12.Size = new System.Drawing.Size(66, 13);
             this.label12.TabIndex = 88;
             this.label12.Text = "Tel. Celular:";
             // 

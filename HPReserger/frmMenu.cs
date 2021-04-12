@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Net;
+using HpResergerUserControls;
+using Newtonsoft.Json;
 
 namespace HPReserger
 {
@@ -4939,6 +4942,50 @@ namespace HPReserger
         private void CerrarfrmreporteCentrodeCostos(object sender, FormClosedEventArgs e)
         {
             frmreporteCentrodeCostos = null;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            //Validamos que el tipo de cambio exista y no este registrado
+            DateTime FechaConsulta = DateTime.Now;
+            DataTable TablaTC = CapaLogica.TipodeCambioxDia(FechaConsulta);
+            if (TablaTC.Rows.Count == 0) // no existe registrado el tipo de cambio
+            {
+                DescargarTipoCambioDia(FechaConsulta);
+            }
+            TimerTC.Interval = 3600000;//pasamos a que valide cada hora
+        }
+        public class TIPOCAMBIO
+        {
+            public decimal compra { get; set; }
+            public decimal venta { get; set; }
+            public string origen { get; set; }
+            public string moneda { get; set; }
+            public DateTime fecha { get; set; }
+        }
+        public async Task<string> GetHTTPs(DateTime Fecha)
+        {
+            string url = Configuraciones.APITcDiario + Configuraciones.ToFechaSql(Fecha);// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        public async void DescargarTipoCambioDia(DateTime Fecha)
+        {
+            try
+            {
+                string respuesta = await GetHTTPs(Fecha);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<TIPOCAMBIO> lstTC = JsonConvert.DeserializeObject<List<TIPOCAMBIO>>(respuesta);
+                //SAcamos la Data             
+                if (lstTC.Count > 0)
+                {
+                    CapaLogica.TipodeCambio(15, lstTC[0].fecha.Year, lstTC[0].fecha.Month, lstTC[0].fecha.Day, lstTC[0].compra, lstTC[0].venta, null);
+                }
+            }
+            catch (Exception) { }
         }
     }
 }

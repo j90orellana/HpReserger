@@ -137,6 +137,7 @@
             this.balanceDeComprobaciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteCentroDeCostosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.librosElectronicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -310,7 +311,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.reporteCentroDeCostosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimerTC = new System.Windows.Forms.Timer(this.components);
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1377,6 +1378,13 @@
             this.toolStripMenuItem10.Tag = "140600801";
             this.toolStripMenuItem10.Text = "Flujo de Caja";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            // 
+            // reporteCentroDeCostosToolStripMenuItem
+            // 
+            this.reporteCentroDeCostosToolStripMenuItem.Name = "reporteCentroDeCostosToolStripMenuItem";
+            this.reporteCentroDeCostosToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.reporteCentroDeCostosToolStripMenuItem.Text = "Reporte Centro de Costos";
+            this.reporteCentroDeCostosToolStripMenuItem.Click += new System.EventHandler(this.reporteCentroDeCostosToolStripMenuItem_Click);
             // 
             // librosElectronicosToolStripMenuItem
             // 
@@ -3029,12 +3037,12 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
-            // reporteCentroDeCostosToolStripMenuItem
+            // TimerTC
             // 
-            this.reporteCentroDeCostosToolStripMenuItem.Name = "reporteCentroDeCostosToolStripMenuItem";
-            this.reporteCentroDeCostosToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.reporteCentroDeCostosToolStripMenuItem.Text = "Reporte Centro de Costos";
-            this.reporteCentroDeCostosToolStripMenuItem.Click += new System.EventHandler(this.reporteCentroDeCostosToolStripMenuItem_Click);
+            this.TimerTC.Enabled = true;
+            this.TimerTC.Interval = 500;
+            this.TimerTC.Tag = "3600000";
+            this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // frmMenu
             // 
@@ -3356,5 +3364,6 @@
         private System.Windows.Forms.ToolStripMenuItem libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteCentroDeCostosToolStripMenuItem;
+        private System.Windows.Forms.Timer TimerTC;
     }
 }

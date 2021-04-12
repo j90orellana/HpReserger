@@ -1,10 +1,13 @@
 ﻿using HpResergerUserControls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -88,9 +91,9 @@ namespace HPReserger
             DataTable tabla2 = new DataTable();
             tabla2.Columns.Add("CODIGO");
             tabla2.Columns.Add("DESCRIPCION");
-            tabla2.Rows.Add(new object[] { "1", "1. Activo" });
-            tabla2.Rows.Add(new object[] { "2", "2. Suspensión Temporal" });
-            tabla2.Rows.Add(new object[] { "3", "3. Baja De Actividades" });
+            tabla2.Rows.Add(new object[] { "1", "1. ACTIVO" });
+            tabla2.Rows.Add(new object[] { "2", "2. SUSPENSION TEMPORAL" });
+            tabla2.Rows.Add(new object[] { "3", "3. BAJA DE ACTIVIDADES" });
             cboestado.DataSource = tabla2;
             cboestado.DisplayMember = "DESCRIPCION";
             cboestado.ValueMember = "CODIGO";
@@ -535,7 +538,7 @@ namespace HPReserger
         private void txtnumeroidentidad_KeyDown(object sender, KeyEventArgs e)
         {
             if (cbodocumento.Text.ToUpper() != "OTROS")
-                HPResergerFunciones.Utilitarios.Validardocumentos(e, txtnumeroidentidad, 10);
+                HPResergerFunciones.Utilitarios.Validardocumentos(e, txtnumeroidentidad, 11);
         }
 
         private void txttelefonooficina_KeyDown(object sender, KeyEventArgs e)
@@ -609,9 +612,134 @@ namespace HPReserger
         }
         private void txtnumeroidentidad_TextChanged(object sender, EventArgs e)
         {
+            if (estado == 1)//cuando vamos a ingresar uno nuevo
+                if (txtnumeroidentidad.Text.Length == 11)
+                {
+                    //BuscarProveedorAPiToken(txtnumeroidentidad.Text);
+                    BuscarProveedorAPi(txtnumeroidentidad.Text);
+                }
+        }
+        public async Task<string> GetHTTPsToken(string ruc)
+        {
+            string url = Configuraciones.ApiRUCToken + ruc + Configuraciones.Token;
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        private async void BuscarProveedorAPiToken(string ruc)
+        {
+            try
+            {
+                string respuesta = await GetHTTPsToken(ruc);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<ProveedorToken> LstData = JsonConvert.DeserializeObject<List<ProveedorToken>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                    ProveedorToken Pro = LstData[0];
+                    txtnombrerazonsocial.Text = txtnombrecomercial.Text = LstData[0].razonSocial;
+                    //cbodocumento.SelectedValue = LstData[0].tipoDocumento - 1;
+                    txtdireccionoficina.Text = LstData[0].direccion;
+                    //if (txtdireccionoficina.Text == "- -  - ") txtdireccionoficina.Text = "-";
+                    if (LstData[0].condicion == "HABIDO") cbocondicion.SelectedValue = 1; else cbocondicion.SelectedIndex = 2;
+                    if (LstData[0].estado == "ACTIVO") cboestado.SelectedValue = 1;
+                    if (LstData[0].estado == "SUSPENSION TEMPORAL") cboestado.SelectedValue = 2;
+                    if (LstData[0].estado == "BAJA DEFINITIVA") cboestado.SelectedValue = 3;
+                    if (LstData[0].estado == "BAJA DE OFICIO") cboestado.SelectedValue = 3;
+                }
+            }
+            catch (Exception) { }
 
         }
 
+        public async Task<string> GetHTTPs(string ruc)
+        {
+            string url = Configuraciones.ApiRuc + ruc;// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        public async void BuscarProveedorAPi(string ruc)
+        {
+            try
+            {
+                string respuesta = await GetHTTPs(ruc);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<Proveedor> LstData = JsonConvert.DeserializeObject<List<Proveedor>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                    txtnombrerazonsocial.Text = txtnombrecomercial.Text = LstData[0].nombre;
+                    cbodocumento.SelectedValue = LstData[0].tipoDocumento - 1;
+                    txtdireccionoficina.Text = LstData[0].direccion + " - " + LstData[0].distrito + " - " + LstData[0].departamento;
+                    if (txtdireccionoficina.Text == "- -  - ") txtdireccionoficina.Text = "-";
+                    if (LstData[0].condicion == "HABIDO") cbocondicion.SelectedIndex = 0; else cbocondicion.SelectedIndex = 1;
+                    if (LstData[0].estado == "ACTIVO") cboestado.SelectedValue = 1;
+                    if (LstData[0].estado == "SUSPENSION TEMPORAL") cboestado.SelectedValue = 2;
+                    if (LstData[0].estado == "BAJA DEFINITIVA") cboestado.SelectedValue = 3;
+                    if (LstData[0].estado == "BAJA DE OFICIO") cboestado.SelectedValue = 3;
+                }
+            }
+            catch (Exception) { }
+        }
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        public class ProveedorToken
+        {
+            public string ruc { get; set; }
+            public string razonSocial { get; set; }
+            public object nombreComercial { get; set; }
+            public List<object> telefonos { get; set; }
+            public object tipo { get; set; }
+            public string estado { get; set; }
+            public string condicion { get; set; }
+            public string direccion { get; set; }
+            public string departamento { get; set; }
+            public string provincia { get; set; }
+            public string distrito { get; set; }
+            public object fechaInscripcion { get; set; }
+            public object sistEmsion { get; set; }
+            public object sistContabilidad { get; set; }
+            public object actExterior { get; set; }
+            public List<object> actEconomicas { get; set; }
+            public List<object> cpPago { get; set; }
+            public List<object> sistElectronica { get; set; }
+            public object fechaEmisorFe { get; set; }
+            public List<object> cpeElectronico { get; set; }
+            public object fechaPle { get; set; }
+            public List<object> padrones { get; set; }
+            public object fechaBaja { get; set; }
+            public object profesion { get; set; }
+            public string ubigeo { get; set; }
+            public string capital { get; set; }
+        }
+
+        public class Proveedor
+        {
+            public string nombre { get; set; }
+            public int tipoDocumento { get; set; }
+            public string numeroDocumento { get; set; }
+            public string estado { get; set; }
+            public string condicion { get; set; }
+            public string direccion { get; set; }
+            public string ubigeo { get; set; }
+            public string viaTipo { get; set; }
+            public string viaNombre { get; set; }
+            public string zonaCodigo { get; set; }
+            public string zonaTipo { get; set; }
+            public string numero { get; set; }
+            public string interior { get; set; }
+            public string lote { get; set; }
+            public string dpto { get; set; }
+            public string manzana { get; set; }
+            public string kilometro { get; set; }
+            public string distrito { get; set; }
+            public string provincia { get; set; }
+            public string departamento { get; set; }
+        }
         private void cbodocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
             int x = cbodocumento.SelectedIndex;
