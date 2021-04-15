@@ -42,6 +42,7 @@ namespace HPReserger
         public int OldIdComprobanteSelect { get; private set; }
         public int NotasEstado { get; private set; }
         public decimal igvs { get; private set; }
+        public int ActivoFijo { get; private set; }
 
         private void FrmFacturaManual_Load(object sender, EventArgs e)
         {
@@ -136,6 +137,7 @@ namespace HPReserger
             btnmasdetracion.Enabled = !a;
             ////
             txtNumRef.ReadOnly = txtSerieRef.ReadOnly = a;
+            chkActivoFijo.Enabled = a;
             chkfac.Enabled = !a;
         }
         DataTable TDebeHaber;
@@ -710,6 +712,16 @@ namespace HPReserger
         int[] ListaIdNotas = { 8, 9 };
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
+            if (Estado == 2)
+            {
+                //Validacion para que un Activo fijo no se quede sin su factura de registro y activacion
+                if (ActivoFijo == 2 && !chkActivoFijo.Checked)
+                {
+                    msg("No se Puede quitar el CHECK a activo fijo de la factura, ya que está pertenece a una Activo Fijo Activado");
+                    return;
+                }
+            }
+
             if (Estado == 10)
             {
                 CapaLogica.FacturaManualCabecera(_idFac, imgfactura);
@@ -723,6 +735,17 @@ namespace HPReserger
             }
             if (Estado == 1 || Estado == 2)
             {
+                foreach (DataGridViewRow item in Dtgconten.Rows)
+                {
+                    if (item.Cells[xCuentaContable.Name].Value.ToString().Substring(0, 1) == "3" && !chkActivoFijo.Checked)
+                    {
+                        msg("La Factura tiene una cuenta de Activo Fijo");
+                        chkActivoFijo.Checked = true;
+                        return;
+                    }
+                }
+
+
                 if (_TipoDoc == 3 || _TipoDoc == 2)
                 {
                     if (chkfac.Checked)
@@ -866,7 +889,7 @@ namespace HPReserger
                 /////INSERTANDO LA FACTURA
                 CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
                    decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
-                  decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion);
+                  decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion, chkActivoFijo.Checked ? 1 : 0);
 
                 ////INSERTANDO EL DETALLE DE LA FACTURA
                 foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -912,13 +935,13 @@ namespace HPReserger
                     //Inserto un Nuevo Registro
                     CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
                         decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, OpcionBusqueda == 1 ? compensada ? 3 : FacturaEstado : NotasEstado == 2 ? 2 : compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
-                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion);
+                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion, ActivoFijo == 2 ? 2 : chkActivoFijo.Checked ? 1 : 0);
 
                 }
                 else
                     CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 2 : 200, _idFac, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
                         decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, OpcionBusqueda == 1 ? compensada ? 3 : FacturaEstado : NotasEstado == 2 ? 2 : compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
-                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion);
+                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion, ActivoFijo == 2 ? 2 : chkActivoFijo.Checked ? 1 : 0);
 
                 ///BORRAMOS LOS DATOS ANTERIOES
                 if (OldCuo != null)
@@ -1048,6 +1071,7 @@ namespace HPReserger
             txtDifDetra.CargarTextoporDefecto();
             txtrenta.CargarTextoporDefecto();
             txtSerieRef.Text = txtNumRef.Text = "";
+            chkActivoFijo.Checked = false;
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
@@ -1056,6 +1080,7 @@ namespace HPReserger
             _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
             compensada = false;
             Estado = 1;
+            ActivoFijo = 0;
             ModoEdicion(true);
             Limpiar();
             if (Dtgconten.DataSource != null)
@@ -1165,6 +1190,7 @@ namespace HPReserger
             cbotipodoc_SelectedIndexChanged(sender, e);
             MostrarFormato82(false);
         }
+
         private void dtgBusqueda_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
@@ -1195,6 +1221,10 @@ namespace HPReserger
                 txtrenta.Text = TotalIgv.ToString("n2");
                 string[] CodNroFacRef;
                 string NumFacRefe = R.Cells[yNroComprobanteRef.Name].Value.ToString();
+                //Activo fijo
+                ActivoFijo = (int)R.Cells[xActivoFijo.Name].Value;
+                chkActivoFijo.Checked = ((int)R.Cells[xActivoFijo.Name].Value) == 0 ? false : true;
+                //
                 if (NumFacRefe != "")
                 {
                     CodNroFacRef = R.Cells[yNroComprobanteRef.Name].Value.ToString().Split('-'); txtSerieRef.Text = CodNroFacRef[0]; txtNumRef.Text = CodNroFacRef[1];

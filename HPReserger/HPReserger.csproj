@@ -172,6 +172,18 @@
     <Compile Include="frmTipoFaltas.Designer.cs">
       <DependentUpon>frmTipoFaltas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivoFijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivoFijo.Designer.cs">
+      <DependentUpon>frmActivoFijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivoFijoCuentasContable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivoFijoCuentasContable.Designer.cs">
+      <DependentUpon>frmActivoFijoCuentasContable.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloBancario\frmBancoBBVA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2044,6 +2056,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTipoFaltas.resx">
       <DependentUpon>frmTipoFaltas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmActivoFijo.resx">
+      <DependentUpon>frmActivoFijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmActivoFijoCuentasContable.resx">
+      <DependentUpon>frmActivoFijoCuentasContable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoBBVA.resx">
       <DependentUpon>frmBancoBBVA.cs</DependentUpon>

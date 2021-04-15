@@ -4987,5 +4987,50 @@ namespace HPReserger
             }
             catch (Exception) { }
         }
+        ModuloActivoFijo.frmActivoFijo frmActivoFijo;
+        private void activoFijoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmActivoFijo == null)
+            {
+                frmActivoFijo = new ModuloActivoFijo.frmActivoFijo();
+                frmActivoFijo.MdiParent = this;
+                frmActivoFijo.Icon = ICono;
+                frmActivoFijo.FormClosed += new FormClosedEventHandler(CerrarfrmActivoFijo);
+                frmActivoFijo.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmActivoFijo.Activate();
+                ValidarVentanas(frmActivoFijo);
+            }
+        }
+        private void CerrarfrmActivoFijo(object sender, FormClosedEventArgs e)
+        {
+            frmActivoFijo = null;
+        }
+        ModuloActivoFijo.frmActivoFijoCuentasContable frmcuentascontablesactivofijo;
+        private void cuentasContablesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (frmcuentascontablesactivofijo == null)
+            {
+                frmcuentascontablesactivofijo = new ModuloActivoFijo.frmActivoFijoCuentasContable();
+                frmcuentascontablesactivofijo.MdiParent = this;
+                frmcuentascontablesactivofijo.Icon = ICono;
+                frmcuentascontablesactivofijo.FormClosed += new FormClosedEventHandler(Cerrarfrmcuentascontablesactivofijo);
+                frmcuentascontablesactivofijo.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcuentascontablesactivofijo.Activate();
+                ValidarVentanas(frmcuentascontablesactivofijo);
+            }
+        }
+
+        private void Cerrarfrmcuentascontablesactivofijo(object sender, FormClosedEventArgs e)
+        {
+            frmcuentascontablesactivofijo = null;
+        }
     }
 }

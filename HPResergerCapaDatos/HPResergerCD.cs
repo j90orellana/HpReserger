@@ -4697,10 +4697,27 @@ namespace HPResergerCapaDatos
             object[] valores = { Fecha };
             return bd.DataTableFromProcedure("usp_TipodeCambioxDia", parametros, valores, null);
         }
-        public DataTable FacturaManualCabecera(int @opcion, int @idfac, int @id, string @nro, string @nroRef, string @ruc, int @empresa, int @proyecto, int @etapa, int @compensa, int @moneda, decimal @tc, decimal @total, decimal @igv, int @gravaigv, DateTime @fechaemision, DateTime @fecharecepcion, DateTime @fechavence, DateTime @fechacontable, int @estado, int @tipopago, string @nrodocpago, string coddet, decimal porcentaje, decimal @detracion, byte[] @imgfac, string @glosa, int @usuario, string @usuarioCompensacion)
+        public DataTable ActivoFijoCrear(int empresa, int activofijo)
         {
-            string[] parametros = { "@opcion", "@idfac", "@id", "@nro", "@nroRef", "@ruc", "@empresa", "@proyecto", "@etapa", "@compensa", "@moneda", "@tc", "@total", "@igv", "@gravaigv", "@fechaemision", "@fecharecepcion", "@fechavence", "@fechacontable", "@estado", "@tipopago", "@nrodocpago", "@coddet", "@porcentaje", "@detracion", "@imgfac", "@glosa", "@usuario", "@usuarioCompensacion" };
-            object[] valores = { @opcion, @idfac, @id, @nro, nroRef, @ruc, @empresa, @proyecto, @etapa, @compensa, @moneda, @tc, @total, @igv, @gravaigv, @fechaemision, @fecharecepcion, @fechavence, fechacontable, @estado, @tipopago, @nrodocpago, coddet, porcentaje, @detracion, @imgfac, @glosa, @usuario, @usuarioCompensacion };
+            string[] parametros = { "@empresa", "@activofijo" };
+            object[] valores = { empresa, activofijo };
+            return bd.DataTableFromProcedure("usp_ActivoFijo_Create", parametros, valores, null);
+        }
+        public DataTable ActivoFijo_CuentasContable(int opcion, string cuenta)
+        {
+            string[] parametros = { "@opcion    ", "@cuenta" };
+            object[] valores = { opcion, cuenta };
+            return bd.DataTableFromProcedure("usp_ActivoFijo_CuentasContable", parametros, valores, null);
+        }
+        public DataTable FacturaManualCabecera(int @opcion, int @idfac, int @id, string @nro, string @nroRef, string @ruc, int @empresa, int @proyecto, int @etapa, int @compensa, int @moneda,
+            decimal @tc, decimal @total, decimal @igv, int @gravaigv, DateTime @fechaemision, DateTime @fecharecepcion, DateTime @fechavence, DateTime @fechacontable, int @estado, int @tipopago,
+            string @nrodocpago, string coddet, decimal porcentaje, decimal @detracion, byte[] @imgfac, string @glosa, int @usuario, string @usuarioCompensacion, int ActivoFijo)
+        {
+            string[] parametros = { "@opcion", "@idfac", "@id", "@nro", "@nroRef", "@ruc", "@empresa", "@proyecto", "@etapa", "@compensa", "@moneda", "@tc", "@total", "@igv", "@gravaigv",
+                "@fechaemision", "@fecharecepcion", "@fechavence", "@fechacontable", "@estado", "@tipopago", "@nrodocpago", "@coddet", "@porcentaje", "@detracion", "@imgfac", "@glosa", "@usuario",
+                "@usuarioCompensacion","@ActivoFijo" };
+            object[] valores = { @opcion, @idfac, @id, @nro, nroRef, @ruc, @empresa, @proyecto, @etapa, @compensa, @moneda, @tc, @total, @igv, @gravaigv, @fechaemision, @fecharecepcion,
+                @fechavence, fechacontable, @estado, @tipopago, @nrodocpago, coddet, porcentaje, @detracion, @imgfac, @glosa, @usuario, @usuarioCompensacion, ActivoFijo };
             return bd.DataTableFromProcedure("usp_FacturaManualCabecera", parametros, valores, null);
         }
         public DataTable FacturaManualVentaCabecera(int @opcion, int @idfac, int @id, string @nro, string @nroRef, int @tipoid, string @nroid, int @empresa, int @proyecto, int @etapa, int @moneda, decimal @tc, decimal @total, decimal @igv, DateTime @fechaemision, DateTime @fechavence, DateTime @fechacontable, int @estado, int @tipopago, string @nrodocpago, string coddet, decimal porcentaje, decimal @detracion, byte[] @imgfac, string @glosa, int @usuario)

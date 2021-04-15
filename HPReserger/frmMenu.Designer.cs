@@ -173,6 +173,7 @@
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.tipoDeCambioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAperturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.activoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitudEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postulanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -312,6 +313,8 @@
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
             this.TimerTC = new System.Windows.Forms.Timer(this.components);
+            this.crearActivoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuentasContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -969,7 +972,8 @@
             this.diferenciaDeCambioToolStripMenuItem,
             this.toolStripSeparator17,
             this.tipoDeCambioToolStripMenuItem,
-            this.asientosAperturaToolStripMenuItem});
+            this.asientosAperturaToolStripMenuItem,
+            this.activoFijoToolStripMenuItem});
             this.contabilidadToolStripMenuItem.Name = "contabilidadToolStripMenuItem";
             this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.contabilidadToolStripMenuItem.Tag = "14";
@@ -1710,6 +1714,15 @@
             this.asientosAperturaToolStripMenuItem.Tag = "1413";
             this.asientosAperturaToolStripMenuItem.Text = "Asiento Cierre Anual";
             this.asientosAperturaToolStripMenuItem.Click += new System.EventHandler(this.asientosAperturaToolStripMenuItem_Click);
+            // 
+            // activoFijoToolStripMenuItem
+            // 
+            this.activoFijoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearActivoFijoToolStripMenuItem,
+            this.cuentasContablesToolStripMenuItem});
+            this.activoFijoToolStripMenuItem.Name = "activoFijoToolStripMenuItem";
+            this.activoFijoToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.activoFijoToolStripMenuItem.Text = "Activo Fijo";
             // 
             // planillaToolStripMenuItem
             // 
@@ -3044,6 +3057,20 @@
             this.TimerTC.Tag = "3600000";
             this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
             // 
+            // crearActivoFijoToolStripMenuItem
+            // 
+            this.crearActivoFijoToolStripMenuItem.Name = "crearActivoFijoToolStripMenuItem";
+            this.crearActivoFijoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.crearActivoFijoToolStripMenuItem.Text = "Crear Activo Fijo";
+            this.crearActivoFijoToolStripMenuItem.Click += new System.EventHandler(this.activoFijoToolStripMenuItem_Click);
+            // 
+            // cuentasContablesToolStripMenuItem
+            // 
+            this.cuentasContablesToolStripMenuItem.Name = "cuentasContablesToolStripMenuItem";
+            this.cuentasContablesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.cuentasContablesToolStripMenuItem.Text = "Cuentas Contables ";
+            this.cuentasContablesToolStripMenuItem.Click += new System.EventHandler(this.cuentasContablesToolStripMenuItem_Click_1);
+            // 
             // frmMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -3365,5 +3392,8 @@
         private System.Windows.Forms.ToolStripMenuItem libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteCentroDeCostosToolStripMenuItem;
         private System.Windows.Forms.Timer TimerTC;
+        private System.Windows.Forms.ToolStripMenuItem activoFijoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearActivoFijoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cuentasContablesToolStripMenuItem;
     }
 }
