@@ -2506,7 +2506,7 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerFacturasPagadasVentas(TipoYIdCliente, nrofac, @idcomprobante, idempresa);
         }
-        public DataTable ActivoFijo_CuentasContable(int opcion,string cuenta)
+        public DataTable ActivoFijo_CuentasContable(int opcion, string cuenta)
         {
             return cdOrdenPedido.ActivoFijo_CuentasContable(opcion, cuenta);
         }
@@ -2517,6 +2517,22 @@ namespace HPResergerCapaLogica
         public DataTable ActivoFijoCrear(int empresa, int activofijo)
         {
             return cdOrdenPedido.ActivoFijoCrear(empresa, activofijo);
+        }
+        public DataTable ActivoFijo(int @opcion, int @pkid, int @fkEmpresa, int @pkProyecto, int @pkEtapa, DateTime @FechaActivacion, DateTime @FechaContable, decimal @VidaUtil, decimal @PorcentajeTributario,
+          decimal @PorcentajeContable, decimal @ValorResidual, decimal @ValorActivo, string @Glosa, string @Facturas, string @CuentaActivo, string @CuentaGasto, string @CuentaDepreciacion, string @CUOActivo, int @Estado)
+        {
+            return cdOrdenPedido.ActivoFijo(@opcion, @pkid, @fkEmpresa, @pkProyecto, @pkEtapa, @FechaActivacion, @FechaContable, @VidaUtil, @PorcentajeTributario, @PorcentajeContable, @ValorResidual, @ValorActivo,
+                @Glosa, @Facturas, @CuentaActivo, @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado);
+        }
+        public DataTable ActivoFijo(int @fkEmpresa)
+        {
+            DateTime f = DateTime.Now;
+            return cdOrdenPedido.ActivoFijo(0, 0, @fkEmpresa, 0, 0, f, f, 0, 0, 0, 0, 0, "", "", "", "", "", "", 0);
+        }
+        public DataTable ActivoFijo_CambiarEstadoFactura(int Factura)
+        {
+            DateTime f = DateTime.Now;
+            return cdOrdenPedido.ActivoFijo(9, Factura, 0, 0, 0, f, f, 0, 0, 0, 0, 0, "", "", "", "", "", "", 0);
         }
         public DataTable VerPeriodoAbierto(int empresa, DateTime Fecha)
         {

@@ -136,6 +136,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ACTUAL_BETADataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmConciliacionReportepdf.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3024,6 +3029,17 @@
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="ACTUAL_BETADataSet.xsc">
+      <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ACTUAL_BETADataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ACTUAL_BETADataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ACTUAL_BETADataSet.xss">
+      <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
+    </None>
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />

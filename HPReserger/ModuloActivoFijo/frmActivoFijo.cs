@@ -30,34 +30,43 @@ namespace HPReserger.ModuloActivoFijo
 
         private void frmActivoFijo_Load(object sender, EventArgs e)
         {
+
             cargarValoresDefecto();
             CargarEmpresa();
-            CargarDatos();
+            //CargarDatos();
             CArgarCuentas();
             CargarCuentaActivo();
+            //
+            Estado = 0; ModoEdicion(false);
+            //CargarActivos();
+        }
+
+        private void CargarActivos()
+        {
+            dtgActivos.DataSource = CapaLogica.ActivoFijo(_idempresa);
         }
 
         private void CargarCuentaActivo()
         {
             tDAtos = CArgarCuentas();
-            cboCuentaCrearActivo.DisplayMember = "Cuenta_Contable";
-            cboCuentaCrearActivo.ValueMember = "Id_Cuenta_Contable";
-            cboCuentaCrearActivo.DataSource = CArgarCuentas();
-            //
             cboCuentaActivo.DisplayMember = "Cuenta_Contable";
             cboCuentaActivo.ValueMember = "Id_Cuenta_Contable";
             cboCuentaActivo.DataSource = CArgarCuentas();
+            //
+            cboCuentaDepreciacion.DisplayMember = "Cuenta_Contable";
+            cboCuentaDepreciacion.ValueMember = "Id_Cuenta_Contable";
+            cboCuentaDepreciacion.DataSource = CArgarCuentas();
         }
-
-        DataTable TCuentas;
         private DataTable CArgarCuentas()
         {
             return CapaLogica.ActivoFijo_CuentasContable(1);
         }
         private void cargarValoresDefecto()
         {
+            lblNoAgrupar.Text = "Sí hay más de 1 Factura seleccionada, Se necesita agruparlas para crear un Activo Fijo.";
             dtpFechaActivacion.Value = dtpFechaContable.Value = DateTime.Now;
             Configuraciones.CargarTextoPorDefecto(txtGlosa, txtPorcentajeContable, txtPorcentajeTributario, txtValorActivo, txtValorResidual, txtVidaUtil);
+            Configuraciones.CargarTextoPorDefecto(txtCuentaContable, txtDescripcionCuenta);
         }
         DataTable tDAtos;
         private void CargarDatos()
@@ -102,6 +111,7 @@ namespace HPReserger.ModuloActivoFijo
                     _idempresa = (int)cboempresa.SelectedValue;
                     CargarDatos();
                     SumarTotalActivo();
+                    CargarActivos();
                 }
             }
             else msgError("No hay Empresas");
@@ -122,6 +132,9 @@ namespace HPReserger.ModuloActivoFijo
         }
         decimal SumaSoles;
         int ConFacturas;
+        private int _etapa;
+        public int Estado { get; private set; }
+
         private void SumarTotalActivo()
         {
             SumaSoles = 0;
@@ -134,8 +147,8 @@ namespace HPReserger.ModuloActivoFijo
                     SumaSoles += (decimal)item.Cells[xSoles.Name].Value;
                     ConFacturas++;
                     if (!txtGlosa.EstaLLeno()) txtGlosa.Text = item.Cells[xGlosa.Name].Value.ToString();
-                    if (ConFacturas == 1)
-                        cboCuentaActivo.Text = item.Cells[xccuenta.Name].Value.ToString();
+                    //if (ConFacturas == 1)
+                    //    cboCuentaActivo.Text = item.Cells[xccuenta.Name].Value.ToString();
                 }
             }
             txtValorActivo.Text = SumaSoles.ToString("n2");
@@ -143,12 +156,8 @@ namespace HPReserger.ModuloActivoFijo
             {
                 txtGlosa.CargarTextoporDefecto();
             }
-            if (ConFacturas > 1)
-            {
-                cboCuentaCrearActivo.Visible = lblCrearActivo.Visible = true;
-            }
-            else
-                cboCuentaCrearActivo.Visible = lblCrearActivo.Visible = false;
+            if (ConFacturas > 1) { lblNoAgrupar.Visible = false; cboCuentaActivo.Visible = lblCrearActivo.Visible = true; }
+            else { cboCuentaActivo.Visible = lblCrearActivo.Visible = false; lblNoAgrupar.Visible = true; }
 
         }
         private void Dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -188,28 +197,28 @@ namespace HPReserger.ModuloActivoFijo
 
         private void cboCuentaCrearActivo_Click(object sender, EventArgs e)
         {
-            if (cboCuentaCrearActivo.Items.Count != CArgarCuentas().Rows.Count)
+            if (cboCuentaActivo.Items.Count != CArgarCuentas().Rows.Count)
             {
-                string cuenta = cboCuentaCrearActivo.Text;
-                string cuenta1 = cboCuentaActivo.Text;
-                cboCuentaCrearActivo.DataSource = CArgarCuentas();
+                string cuenta = cboCuentaActivo.Text;
+                string cuenta1 = cboCuentaDepreciacion.Text;
                 cboCuentaActivo.DataSource = CArgarCuentas();
-                cboCuentaCrearActivo.Text = cuenta;
-                cboCuentaActivo.Text = cuenta1;
+                cboCuentaDepreciacion.DataSource = CArgarCuentas();
+                cboCuentaActivo.Text = cuenta;
+                cboCuentaDepreciacion.Text = cuenta1;
             }
         }
 
         private void cboCuentaActivo_Click(object sender, EventArgs e)
         {
-            if (cboCuentaActivo.Items.Count != CArgarCuentas().Rows.Count)
+            if (cboCuentaDepreciacion.Items.Count != CArgarCuentas().Rows.Count)
             {
-                string cuenta = cboCuentaCrearActivo.Text;
-                string cuenta1 = cboCuentaActivo.Text;
+                string cuenta = cboCuentaActivo.Text;
+                string cuenta1 = cboCuentaDepreciacion.Text;
                 tDAtos = CArgarCuentas();
-                cboCuentaCrearActivo.DataSource = CArgarCuentas();
                 cboCuentaActivo.DataSource = CArgarCuentas();
-                cboCuentaCrearActivo.Text = cuenta;
-                cboCuentaActivo.Text = cuenta1;
+                cboCuentaDepreciacion.DataSource = CArgarCuentas();
+                cboCuentaActivo.Text = cuenta;
+                cboCuentaDepreciacion.Text = cuenta1;
             }
         }
 
@@ -221,6 +230,132 @@ namespace HPReserger.ModuloActivoFijo
             if (frmBuscarCuenta.aceptar)
                 txtCuentaContable.Text = frmBuscarCuenta.codigo;
 
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            //PROCESO DE VALIDACIONES
+            if (cboempresa.SelectedValue == null) { cboempresa.Focus(); msgError("Seleccione una Empresa"); return; }
+            if (cboproyecto.SelectedValue == null) { cboproyecto.Focus(); msgError("Seleccione un Proyecto"); return; }
+            if (cboetapa.SelectedValue == null) { cboetapa.Focus(); msgError("Seleccione una Etapa"); return; }
+            //
+            if (!txtValorActivo.EstaLLeno()) { txtValorActivo.Focus(); msgError("El Valor del Activo, no puede ser CERO"); return; }
+            if (txtValorResidual.DecimalValido() >= txtValorActivo.DecimalValido()) { txtValorResidual.Focus(); msgError("El Valor Residual no debe ser mayor al Valor del Activo"); return; }
+            if (ConFacturas <= 0) { msgError("Debe seleccionar la Factura del Activo Fijo"); return; }
+            if (dtpFechaContable.Value < dtpFechaActivacion.Value) { msgError("La Fecha Contable, no puede ser menor a la Fecha Activación"); return; }
+            if (txtVidaUtil.DecimalValido() <= 0) { txtVidaUtil.Focus(); msgError("Vida util debe ser mayor a CERO"); return; }
+            if (!txtGlosa.EstaLLeno()) { txtGlosa.Focus(); msgError("Escriba una Glosa"); return; }
+            if (!txtDescripcionCuenta.EstaLLeno()) { txtCuentaContable.Focus(); msgError("Ingrese la Cuenta de Gasto"); return; }
+            if (cboCuentaDepreciacion.SelectedValue == null) { cboCuentaDepreciacion.Focus(); msgError("Seleccione cuenta de Depreciación"); return; }
+            if (txtPorcentajeContable.DecimalValido() <= 0 || txtPorcentajeContable.DecimalValido() > 100) { txtPorcentajeContable.Focus(); msgError("El Porcentaje Contable debe ser entre 1 y 100%"); return; }
+            if (txtPorcentajeTributario.DecimalValido() <= 0 || txtPorcentajeTributario.DecimalValido() > 100) { txtPorcentajeTributario.Focus(); msgError("El Porcentaje Tributario debe ser entre 1 y 100%"); return; }
+            //CARGAR VARIABLES
+            _idempresa = (int)cboempresa.SelectedValue;
+            _proyecto = (int)cboproyecto.SelectedValue;
+            _etapa = (int)cboetapa.SelectedValue;
+            DateTime FechaActivacion = dtpFechaActivacion.Value;
+            DateTime FechaContable = dtpFechaContable.Value;
+            string Facturas = "";
+            List<string> LisFac = new List<string>();
+            foreach (DataGridViewRow item in Dtgconten.Rows)
+            {
+                if ((int)item.Cells[xOK.Name].Value == 1) LisFac.Add(item.Cells[xpkid.Name].Value.ToString());
+            }
+            Facturas = string.Join(",", LisFac.ToArray());
+            string CUO = "";
+            int Estado = 1;
+            //GRABAR EL ACTIVO FIJO EN LA BASE
+            CapaLogica.ActivoFijo(1, 0, _idempresa, _proyecto, _etapa, FechaActivacion, FechaContable, txtVidaUtil.DecimalValido(), txtPorcentajeTributario.DecimalValido(), txtPorcentajeContable.DecimalValido(),
+                txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas, cboCuentaActivo.SelectedValue.ToString(), txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
+                CUO, Estado);
+            //CAMBIAMOS EL ESTADO DE LAS FACTURAS QUE TIENEN ACTIVO FIJO, CAMBIAMOS A 2 PARA IDENTIFICAR QUE ESA FACTURA ESTA ASOCIADA A UNA ACTIVO FIJO EN DEPRECIACION
+            foreach (string item in LisFac)
+                CapaLogica.ActivoFijo_CambiarEstadoFactura(int.Parse(item));
+
+            Estado = 0;
+            ModoEdicion(false);
+            CargarActivos();
+            msgOK("Activo Fijo Creado");
+        }
+
+        private void btnnuevo_Click(object sender, EventArgs e)
+        {
+            Estado = 1;
+            ModoEdicion(true);
+            CargarDatos();
+            cargarValoresDefecto();
+        }
+
+        private void ModoEdicion(bool v)
+        {
+            if (v)
+            {
+                Configuraciones.Activar(cboproyecto, cboetapa, dtpFechaActivacion, dtpFechaContable, txtCuentaContable, txtGlosa, txtPorcentajeContable, txtPorcentajeTributario, txtValorActivo, txtValorResidual, txtVidaUtil,
+                cboCuentaActivo, cboCuentaDepreciacion, btnAceptar, chkFacturaTodas);
+                Configuraciones.Desactivar(btnmodificar, btnnuevo, dtgActivos, btnActualizar);
+                Dtgconten.Columns[0].ReadOnly = false;
+            }
+            else
+            {
+                chkFacturaTodas.Checked = true;
+                Configuraciones.Desactivar(cboproyecto, cboetapa, dtpFechaActivacion, dtpFechaContable, txtCuentaContable, txtGlosa, txtPorcentajeContable, txtPorcentajeTributario, txtValorActivo, txtValorResidual, txtVidaUtil,
+                cboCuentaActivo, cboCuentaDepreciacion, btnAceptar, chkFacturaTodas);
+                Configuraciones.Activar(btnmodificar, btnnuevo, dtgActivos, btnActualizar);
+                foreach (DataGridViewColumn item in Dtgconten.Columns)
+                    item.ReadOnly = !v;
+            }
+        }
+
+        private void btnmodificar_Click(object sender, EventArgs e)
+        {
+            Estado = 2;
+            ModoEdicion(true);
+        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            if (Estado == 0)
+            {
+
+                this.Close();
+            }
+            else
+            {
+                Estado = 0;
+                ModoEdicion(false);
+                CargarDatos();
+                CargarActivos();
+            }
+        }
+
+        private void dtgActivos_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow Fila = dtgActivos.Rows[e.RowIndex];
+                dtpFechaActivacion.Value = (DateTime)Fila.Cells[fechaActivacionDataGridViewTextBoxColumn.Name].Value;
+                dtpFechaContable.Value = (DateTime)Fila.Cells[fechaContableDataGridViewTextBoxColumn.Name].Value;
+                cboproyecto.SelectedValue = (int)Fila.Cells[pkProyectoDataGridViewTextBoxColumn.Name].Value;
+                cboetapa.SelectedValue = (int)Fila.Cells[pkEtapaDataGridViewTextBoxColumn.Name].Value;
+                txtVidaUtil.Text = Fila.Cells[vidaUtilDataGridViewTextBoxColumn.Name].Value.ToString();
+                txtPorcentajeContable.Text = Fila.Cells[porcentajeContableDataGridViewTextBoxColumn.Name].Value.ToString();
+                txtPorcentajeTributario.Text = Fila.Cells[porcentajeTributarioDataGridViewTextBoxColumn.Name].Value.ToString();
+                txtValorResidual.Text = Fila.Cells[valorResidualDataGridViewTextBoxColumn.Name].Value.ToString();
+                txtValorActivo.Text = Fila.Cells[valorActivoDataGridViewTextBoxColumn.Name].Value.ToString();
+                txtGlosa.Text = Fila.Cells[glosaDataGridViewTextBoxColumn.Name].Value.ToString();
+                txtCuentaContable.Text = Fila.Cells[cuentaGastoDataGridViewTextBoxColumn.Name].Value.ToString();
+                cboCuentaActivo.SelectedValue = Fila.Cells[cuentaActivoDataGridViewTextBoxColumn.Name].Value.ToString();
+                cboCuentaDepreciacion.SelectedValue = Fila.Cells[cuentaGastoDataGridViewTextBoxColumn.Name].Value.ToString();
+                string[] Lfac = Fila.Cells[facturasDataGridViewTextBoxColumn.Name].Value.ToString().Split(',');
+                foreach (DataGridViewRow item in Dtgconten.Rows)
+                {
+                    if (Lfac.Contains(item.Cells[xpkid.Name].Value.ToString()))
+                        item.Cells[xOK.Name].Value = 1;
+
+                }
+
+
+            }
         }
     }
 }

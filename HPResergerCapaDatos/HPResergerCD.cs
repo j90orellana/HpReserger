@@ -4703,6 +4703,16 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, activofijo };
             return bd.DataTableFromProcedure("usp_ActivoFijo_Create", parametros, valores, null);
         }
+        public DataTable ActivoFijo(int @opcion, int @pkid, int @fkEmpresa, int @pkProyecto, int @pkEtapa, DateTime @FechaActivacion, DateTime @FechaContable, decimal @VidaUtil, decimal @PorcentajeTributario,
+            decimal @PorcentajeContable, decimal @ValorResidual, decimal @ValorActivo, string @Glosa, string @Facturas, string @CuentaActivo, string @CuentaGasto, string @CuentaDepreciacion, string @CUOActivo, int @Estado)
+        {
+            string[] parametros = { "@opcion", "@pkid", "@fkEmpresa", "@pkProyecto", "@pkEtapa", "@FechaActivacion", "@FechaContable", "@VidaUtil", "@PorcentajeTributario", "@PorcentajeContable", "@ValorResidual",
+                "@ValorActivo", "@Glosa", "@Facturas", "@CuentaActivo", "@CuentaGasto", "@CuentaDepreciacion", "@CUOActivo", "@Estado" };
+            object[] valores = { @opcion, @pkid, @fkEmpresa, @pkProyecto, @pkEtapa, @FechaActivacion, @FechaContable, @VidaUtil, @PorcentajeTributario, @PorcentajeContable, @ValorResidual, @ValorActivo,
+                @Glosa, @Facturas, @CuentaActivo, @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado };
+            return bd.DataTableFromProcedure("usp_ActivoFijo", parametros, valores, null);
+        }
+
         public DataTable ActivoFijo_CuentasContable(int opcion, string cuenta)
         {
             string[] parametros = { "@opcion    ", "@cuenta" };
