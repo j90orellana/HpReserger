@@ -30,7 +30,6 @@ namespace HPReserger.ModuloActivoFijo
 
         private void frmActivoFijo_Load(object sender, EventArgs e)
         {
-
             cargarValoresDefecto();
             CargarEmpresa();
             //CargarDatos();
@@ -120,24 +119,26 @@ namespace HPReserger.ModuloActivoFijo
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             CargarDatos();
+            SeleccionarFacturasdelActivo();
         }
 
         private void Dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                // Dtgconten.EndEdit();
-                SumarTotalActivo();
-            }
+            // Dtgconten.EndEdit();
+            SumarTotalActivo();
         }
         decimal SumaSoles;
+        decimal SumaDolares;
         int ConFacturas;
         private int _etapa;
+        private string CuoAsiento;
+
         public int Estado { get; private set; }
+        public int _pkidActivo { get; private set; }
 
         private void SumarTotalActivo()
         {
-            SumaSoles = 0;
+            SumaSoles = 0; SumaDolares = 0;
             ConFacturas = 0;
             //
             foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -145,6 +146,7 @@ namespace HPReserger.ModuloActivoFijo
                 if ((int)item.Cells[xOK.Name].Value == 1)
                 {
                     SumaSoles += (decimal)item.Cells[xSoles.Name].Value;
+                    SumaDolares += (decimal)item.Cells[xdolares.Name].Value;
                     ConFacturas++;
                     if (!txtGlosa.EstaLLeno()) txtGlosa.Text = item.Cells[xGlosa.Name].Value.ToString();
                     //if (ConFacturas == 1)
@@ -167,7 +169,8 @@ namespace HPReserger.ModuloActivoFijo
 
         private void Dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Dtgconten.EndEdit();
+            if (Estado > 0)
+                Dtgconten.EndEdit();
         }
 
         private void chkFacturaTodas_CheckedChanged(object sender, EventArgs e)
@@ -178,12 +181,15 @@ namespace HPReserger.ModuloActivoFijo
 
         private void txtVidaUtil_TextChanged(object sender, EventArgs e)
         {
-            decimal val = txtVidaUtil.DecimalValido();
-            if (val > 0)
+            if (Estado > 0)
             {
-                val = 100 / val;
-                txtPorcentajeContable.Text = val.ToString();
-                txtPorcentajeTributario.Text = val.ToString();
+                decimal val = txtVidaUtil.DecimalValido();
+                if (val > 0)
+                {
+                    val = 100 / val;
+                    txtPorcentajeContable.Text = val.ToString();
+                    txtPorcentajeTributario.Text = val.ToString();
+                }
             }
         }
         private void txtCuentaContable_TextChanged(object sender, EventArgs e)
@@ -229,9 +235,7 @@ namespace HPReserger.ModuloActivoFijo
             frmBuscarCuenta.ShowDialog();
             if (frmBuscarCuenta.aceptar)
                 txtCuentaContable.Text = frmBuscarCuenta.codigo;
-
         }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             //PROCESO DE VALIDACIONES
@@ -262,20 +266,139 @@ namespace HPReserger.ModuloActivoFijo
                 if ((int)item.Cells[xOK.Name].Value == 1) LisFac.Add(item.Cells[xpkid.Name].Value.ToString());
             }
             Facturas = string.Join(",", LisFac.ToArray());
-            string CUO = "";
-            int Estado = 1;
+            int EstadoAct = 1;
+            int codigo = 0;
+            decimal VResidual = txtValorResidual.DecimalValido();
+            double vdebe = (double)(SumaSoles - VResidual);
+            double vhaber = 0;
+            string CuentaActivo = cboCuentaActivo.SelectedValue.ToString();
+            string Glosa = txtGlosa.TextValido();
+            decimal TC = SumaSoles / SumaDolares;
+            int dinamica = -24;
+            int idUsuario = frmLogin.CodigoUsuario;
+            //DAMOS DE BAJA EL ASIENTO CUANDO MODIFICAMOS Y SOLO DEJAMOS UNA FACTURA
+            if (Estado == 2 && CuoAsiento != "" && ConFacturas <= 1)
+            {
+                CapaLogica.ReversarAsientosSoloEstado(oldAsiento, oldProyecto, oldFechaContable);//Cambiará El Estado del ASiento a REVERSADO
+            }
+            //PROCESO DE INSERTAR ASIENTO CONTABLE
+            if (ConFacturas > 1) //
+            {
+                if (!CapaLogica.ValidarCrearPeriodo(_idempresa, FechaContable))
+                    if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaContable.ToString("MMMM")}-{FechaContable.Year}?") != DialogResult.Yes)
+                        return;
+                DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto(_idempresa, FechaContable);
+                if (TPrueba2.Rows.Count == 0) { msgError("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
+                //
+                if (Estado == 1)//Nuevo                
+                    CapaLogica.UltimoAsiento(_idempresa, FechaContable, out codigo, out CuoAsiento);
+                //validamos que las cuentas contables NO esten desactivadas
+                List<string> ListaAuxiliar = new List<string>();
+                if (ConFacturas > 1)
+                    ListaAuxiliar.Add(cboCuentaActivo.SelectedValue.ToString());
+                ListaAuxiliar.Add(txtCuentaContable.Text);
+                ListaAuxiliar.Add(cboCuentaDepreciacion.SelectedValue.ToString());
+                if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                int i = 1;
+                if (Estado == 1 && ConFacturas > 1)
+                {
+                    //CABECERA ASIENTO DEBE
+                    CapaLogica.InsertarAsiento(i, codigo, FechaActivacion, CuentaActivo, vdebe, 0, dinamica, 1, FechaContable, _proyecto, _etapa, Glosa, 1, TC);
+                    //DETALLE ASIENTO DEBE
+                    CapaLogica.DetalleAsientos(1, i, codigo, CuentaActivo, 0, "0", "0", 0, "0", "0", 0, Glosa, FechaActivacion, FechaContable, SumaSoles - VResidual, (SumaSoles - VResidual) / TC,
+                        TC, idUsuario, _proyecto, FechaActivacion, 1, FechaContable, 0, "", "", 0);
+                    i++;
+                    foreach (DataGridViewRow item in Dtgconten.Rows)
+                    {
+                        if ((int)item.Cells[xOK.Name].Value == 1)
+                        {
+                            string[] Nrofactura = item.Cells[xNroFactura.Name].Value.ToString().Split('-');
+                            int idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
+                            string ruc = item.Cells[xProveedor.Name].Value.ToString();
+                            string razon = item.Cells[xrazon.Name].Value.ToString();
+                            decimal debe1 = (decimal)vdebe;
+                            decimal debe = debe1 / SumaSoles * (decimal)item.Cells[xSoles.Name].Value;
+                            vhaber = (double)(debe);
+                            decimal tc = (decimal)item.Cells[xSoles.Name].Value / (decimal)item.Cells[xdolares.Name].Value;
+                            //DETALLE ASIENTO HABER
+                            CapaLogica.InsertarAsiento(i, codigo, FechaActivacion, item.Cells[xcuentacontable.Name].Value.ToString(), 0, vhaber, dinamica, 1, FechaContable, _proyecto, _etapa,
+                                Glosa, 1, TC);
+                            //DETALLE ASIENTO HABER
+                            CapaLogica.DetalleAsientos(1, i, codigo, item.Cells[xcuentacontable.Name].Value.ToString(), 5, ruc, razon, idcomprobante, Nrofactura[0], Nrofactura[1], 0, Glosa,
+                                FechaActivacion, FechaActivacion, (decimal)vhaber, (decimal)vhaber / tc, tc, idUsuario, _proyecto, FechaActivacion, 1, FechaContable, 0, "", "", 0);
+                            i++;
+                        }
+                    }                   
+                    CapaLogica.CuadrarAsiento(CuoAsiento, _proyecto, FechaContable, 1);
+                }
+                else if (Estado == 2)
+                {
+                    if (CuoAsiento != "")//DEBEMOS LIMPIAR EL ASIENTO PARA INSERTAR UN ACTUALIZADO    
+                    {
+                        CapaLogica.EliminarAsiento(CuoAsiento, oldEmpresa, oldFechaContable, 0);
+                        codigo = oldAsiento;
+                    }
+                    if (CuoAsiento == "" && ConFacturas > 1)
+                        CapaLogica.UltimoAsiento(_idempresa, FechaContable, out codigo, out CuoAsiento);
+                    if (ConFacturas > 1)
+                    {
+                        //CABECERA ASIENTO DEBE
+                        CapaLogica.InsertarAsiento(i, codigo, FechaActivacion, CuentaActivo, vdebe, 0, dinamica, 1, FechaContable, _proyecto, _etapa, Glosa, 1, TC);
+                        //DETALLE ASIENTO DEBE
+                        CapaLogica.DetalleAsientos(1, i, codigo, CuentaActivo, 0, "0", "0", 0, "0", "0", 0, Glosa, FechaActivacion, FechaContable, SumaSoles - VResidual, (SumaSoles - VResidual) / TC,
+                            TC, idUsuario, _proyecto, FechaActivacion, 1, FechaContable, 0, "", "", 0);
+                        i++;
+                        foreach (DataGridViewRow item in Dtgconten.Rows)
+                        {
+                            if ((int)item.Cells[xOK.Name].Value == 1)
+                            {
+                                string[] Nrofactura = item.Cells[xNroFactura.Name].Value.ToString().Split('-');
+                                int idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
+                                string ruc = item.Cells[xProveedor.Name].Value.ToString();
+                                string razon = item.Cells[xrazon.Name].Value.ToString();
+                                decimal debe1 = (decimal)vdebe;
+                                decimal debe = debe1 / SumaSoles * (decimal)item.Cells[xSoles.Name].Value;
+                                vhaber = (double)(debe);
+                                decimal tc = (decimal)item.Cells[xSoles.Name].Value / (decimal)item.Cells[xdolares.Name].Value;
+                                //DETALLE ASIENTO HABER
+                                CapaLogica.InsertarAsiento(i, codigo, FechaActivacion, item.Cells[xcuentacontable.Name].Value.ToString(), 0, vhaber, dinamica, 1, FechaContable, _proyecto, _etapa,
+                                    Glosa, 1, TC);
+                                //DETALLE ASIENTO HABER
+                                CapaLogica.DetalleAsientos(1, i, codigo, item.Cells[xcuentacontable.Name].Value.ToString(), 5, ruc, razon, idcomprobante, Nrofactura[0], Nrofactura[1], 0, Glosa,
+                                    FechaActivacion, FechaActivacion, (decimal)vhaber, (decimal)vhaber / tc, tc, idUsuario, _proyecto, FechaActivacion, 1, FechaContable, 0, "", "", 0);
+                                i++;
+                            }
+                        }
+                    }                   
+                    CapaLogica.CuadrarAsiento(CuoAsiento, _proyecto, FechaContable, 1);
+                }
+            }
             //GRABAR EL ACTIVO FIJO EN LA BASE
-            CapaLogica.ActivoFijo(1, 0, _idempresa, _proyecto, _etapa, FechaActivacion, FechaContable, txtVidaUtil.DecimalValido(), txtPorcentajeTributario.DecimalValido(), txtPorcentajeContable.DecimalValido(),
-                txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas, cboCuentaActivo.SelectedValue.ToString(), txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
-                CUO, Estado);
-            //CAMBIAMOS EL ESTADO DE LAS FACTURAS QUE TIENEN ACTIVO FIJO, CAMBIAMOS A 2 PARA IDENTIFICAR QUE ESA FACTURA ESTA ASOCIADA A UNA ACTIVO FIJO EN DEPRECIACION
-            foreach (string item in LisFac)
-                CapaLogica.ActivoFijo_CambiarEstadoFactura(int.Parse(item));
-
+            if (Estado == 1)
+            {
+                CapaLogica.ActivoFijo(1, 0, _idempresa, _proyecto, _etapa, FechaActivacion, FechaContable, txtVidaUtil.DecimalValido(), txtPorcentajeTributario.DecimalValido(),
+                    txtPorcentajeContable.DecimalValido(), txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas, cboCuentaActivo.SelectedValue.ToString(),
+                    txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
+                  ConFacturas > 1 ? CuoAsiento : "", EstadoAct);
+                //CAMBIAMOS EL ESTADO DE LAS FACTURAS QUE TIENEN ACTIVO FIJO, CAMBIAMOS A 2 PARA IDENTIFICAR QUE ESA FACTURA ESTA ASOCIADA A UNA ACTIVO FIJO EN DEPRECIACION
+                foreach (string item in LisFac)
+                    CapaLogica.ActivoFijo_CambiarEstadoFactura(int.Parse(item));
+            }
+            else
+            if (Estado == 2)
+            {
+                CapaLogica.ActivoFijo(2, _pkidActivo, _idempresa, _proyecto, _etapa, FechaActivacion, FechaContable, txtVidaUtil.DecimalValido(), txtPorcentajeTributario.DecimalValido(),
+                   txtPorcentajeContable.DecimalValido(), txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas, cboCuentaActivo.SelectedValue.ToString(),
+                   txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
+                   ConFacturas > 1 ? CuoAsiento : "", EstadoAct);
+                //CAMBIAMOS EL ESTADO DE LAS FACTURAS QUE TIENEN ACTIVO FIJO, CAMBIAMOS A 2 PARA IDENTIFICAR QUE ESA FACTURA ESTA ASOCIADA A UNA ACTIVO FIJO EN DEPRECIACION
+                foreach (string item in LisFac)
+                    CapaLogica.ActivoFijo_CambiarEstadoFactura(int.Parse(item));
+            }
             Estado = 0;
             ModoEdicion(false);
             CargarActivos();
-            msgOK("Activo Fijo Creado");
+            msgOK(Estado == 1 ? "Activo Fijo Creado con Exito" : "Activo Modificado con Exito");
         }
 
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -305,20 +428,22 @@ namespace HPReserger.ModuloActivoFijo
                     item.ReadOnly = !v;
             }
         }
-
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             Estado = 2;
             ModoEdicion(true);
+            oldProyecto = _proyecto;
+            oldEmpresa = _idempresa;
+            oldFechaContable = dtpFechaContable.Value;
+            if (CuoAsiento != "")
+                oldAsiento = int.Parse(CuoAsiento.Substring(6));
+            else oldAsiento = 0;
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (Estado == 0)
-            {
-
                 this.Close();
-            }
             else
             {
                 Estado = 0;
@@ -327,6 +452,11 @@ namespace HPReserger.ModuloActivoFijo
                 CargarActivos();
             }
         }
+        string[] Lfac;
+        private int oldProyecto;
+        private DateTime oldFechaContable;
+        private int oldAsiento;
+        private int oldEmpresa;
 
         private void dtgActivos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -341,20 +471,53 @@ namespace HPReserger.ModuloActivoFijo
                 txtPorcentajeContable.Text = Fila.Cells[porcentajeContableDataGridViewTextBoxColumn.Name].Value.ToString();
                 txtPorcentajeTributario.Text = Fila.Cells[porcentajeTributarioDataGridViewTextBoxColumn.Name].Value.ToString();
                 txtValorResidual.Text = Fila.Cells[valorResidualDataGridViewTextBoxColumn.Name].Value.ToString();
-                txtValorActivo.Text = Fila.Cells[valorActivoDataGridViewTextBoxColumn.Name].Value.ToString();
                 txtGlosa.Text = Fila.Cells[glosaDataGridViewTextBoxColumn.Name].Value.ToString();
                 txtCuentaContable.Text = Fila.Cells[cuentaGastoDataGridViewTextBoxColumn.Name].Value.ToString();
                 cboCuentaActivo.SelectedValue = Fila.Cells[cuentaActivoDataGridViewTextBoxColumn.Name].Value.ToString();
-                cboCuentaDepreciacion.SelectedValue = Fila.Cells[cuentaGastoDataGridViewTextBoxColumn.Name].Value.ToString();
-                string[] Lfac = Fila.Cells[facturasDataGridViewTextBoxColumn.Name].Value.ToString().Split(',');
+                cboCuentaDepreciacion.SelectedValue = Fila.Cells[cuentaDepreciacionDataGridViewTextBoxColumn.Name].Value.ToString();
+                _pkidActivo = (int)Fila.Cells[pkidDataGridViewTextBoxColumn.Name].Value;
+                CuoAsiento = Fila.Cells[cUOActivoDataGridViewTextBoxColumn.Name].Value.ToString();
+                Lfac = Fila.Cells[facturasDataGridViewTextBoxColumn.Name].Value.ToString().Split(',');
+                CargarDatos();
+                SeleccionarFacturasdelActivo();
+                txtValorActivo.Text = Fila.Cells[valorActivoDataGridViewTextBoxColumn.Name].Value.ToString();
+            }
+        }
+        private void SeleccionarFacturasdelActivo()
+        {
+            //Dtgconten.EndEdit();          
+            //for (int i = 0; i < Dtgconten.Rows.Count; i++)            
+            //    Dtgconten[xOK.Name, i].Value = 0;           
+            if (Lfac != null)
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     if (Lfac.Contains(item.Cells[xpkid.Name].Value.ToString()))
                         item.Cells[xOK.Name].Value = 1;
-
                 }
+            if (Estado == 0)
+            {
+                Dtgconten.Sort(Dtgconten.Columns[xOK.Name], ListSortDirection.Descending);
+                Dtgconten.RefreshEdit();
+            }
+        }
 
-
+        private void Dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //if(Dtgconten.Columns[xOK.Name].Index == e.ColumnIndex)
+                //{
+                if ((int)Dtgconten[xOK.Name, e.RowIndex].Value == 1)
+                {
+                    Dtgconten.Rows[e.RowIndex].DefaultCellStyle.BackColor = Configuraciones.AzulUI;
+                    Dtgconten.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUISelect;
+                }
+                else
+                {
+                    Dtgconten.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Empty;
+                    Dtgconten.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.Empty;
+                }
+                //}
             }
         }
     }

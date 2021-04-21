@@ -174,6 +174,10 @@
             this.tipoDeCambioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAperturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearActivoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depreciacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
+            this.cuentasContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitudEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postulanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -313,8 +317,7 @@
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
             this.TimerTC = new System.Windows.Forms.Timer(this.components);
-            this.crearActivoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cuentasContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDepreciaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1719,10 +1722,43 @@
             // 
             this.activoFijoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearActivoFijoToolStripMenuItem,
+            this.depreciacionesToolStripMenuItem,
+            this.reporteDepreciaciónToolStripMenuItem,
+            this.toolStripSeparator19,
             this.cuentasContablesToolStripMenuItem});
+            this.activoFijoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("activoFijoToolStripMenuItem.Image")));
             this.activoFijoToolStripMenuItem.Name = "activoFijoToolStripMenuItem";
             this.activoFijoToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.activoFijoToolStripMenuItem.Text = "Activo Fijo";
+            // 
+            // crearActivoFijoToolStripMenuItem
+            // 
+            this.crearActivoFijoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("crearActivoFijoToolStripMenuItem.Image")));
+            this.crearActivoFijoToolStripMenuItem.Name = "crearActivoFijoToolStripMenuItem";
+            this.crearActivoFijoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.crearActivoFijoToolStripMenuItem.Text = "Crear Activo Fijo";
+            this.crearActivoFijoToolStripMenuItem.Click += new System.EventHandler(this.activoFijoToolStripMenuItem_Click);
+            // 
+            // depreciacionesToolStripMenuItem
+            // 
+            this.depreciacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("depreciacionesToolStripMenuItem.Image")));
+            this.depreciacionesToolStripMenuItem.Name = "depreciacionesToolStripMenuItem";
+            this.depreciacionesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.depreciacionesToolStripMenuItem.Text = "Depreciaciones";
+            this.depreciacionesToolStripMenuItem.Click += new System.EventHandler(this.depreciacionesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            this.toolStripSeparator19.Size = new System.Drawing.Size(165, 6);
+            // 
+            // cuentasContablesToolStripMenuItem
+            // 
+            this.cuentasContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cuentasContablesToolStripMenuItem.Image")));
+            this.cuentasContablesToolStripMenuItem.Name = "cuentasContablesToolStripMenuItem";
+            this.cuentasContablesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.cuentasContablesToolStripMenuItem.Text = "Cuentas Contables ";
+            this.cuentasContablesToolStripMenuItem.Click += new System.EventHandler(this.cuentasContablesToolStripMenuItem_Click_1);
             // 
             // planillaToolStripMenuItem
             // 
@@ -3057,19 +3093,12 @@
             this.TimerTC.Tag = "3600000";
             this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
             // 
-            // crearActivoFijoToolStripMenuItem
+            // reporteDepreciaciónToolStripMenuItem
             // 
-            this.crearActivoFijoToolStripMenuItem.Name = "crearActivoFijoToolStripMenuItem";
-            this.crearActivoFijoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.crearActivoFijoToolStripMenuItem.Text = "Crear Activo Fijo";
-            this.crearActivoFijoToolStripMenuItem.Click += new System.EventHandler(this.activoFijoToolStripMenuItem_Click);
-            // 
-            // cuentasContablesToolStripMenuItem
-            // 
-            this.cuentasContablesToolStripMenuItem.Name = "cuentasContablesToolStripMenuItem";
-            this.cuentasContablesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.cuentasContablesToolStripMenuItem.Text = "Cuentas Contables ";
-            this.cuentasContablesToolStripMenuItem.Click += new System.EventHandler(this.cuentasContablesToolStripMenuItem_Click_1);
+            this.reporteDepreciaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteDepreciaciónToolStripMenuItem.Image")));
+            this.reporteDepreciaciónToolStripMenuItem.Name = "reporteDepreciaciónToolStripMenuItem";
+            this.reporteDepreciaciónToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.reporteDepreciaciónToolStripMenuItem.Text = "Reporte Depreciación";
             // 
             // frmMenu
             // 
@@ -3395,5 +3424,8 @@
         private System.Windows.Forms.ToolStripMenuItem activoFijoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearActivoFijoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cuentasContablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem depreciacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
+        private System.Windows.Forms.ToolStripMenuItem reporteDepreciaciónToolStripMenuItem;
     }
 }

@@ -189,6 +189,18 @@
     <Compile Include="ModuloActivoFijo\frmActivoFijoCuentasContable.Designer.cs">
       <DependentUpon>frmActivoFijoCuentasContable.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloActivoFijo\frmProcesoDepreciacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmProcesoDepreciacion.Designer.cs">
+      <DependentUpon>frmProcesoDepreciacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmReporteDepreciaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmReporteDepreciaciones.Designer.cs">
+      <DependentUpon>frmReporteDepreciaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloBancario\frmBancoBBVA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2067,6 +2079,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloActivoFijo\frmActivoFijoCuentasContable.resx">
       <DependentUpon>frmActivoFijoCuentasContable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmProcesoDepreciacion.resx">
+      <DependentUpon>frmProcesoDepreciacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmReporteDepreciaciones.resx">
+      <DependentUpon>frmReporteDepreciaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoBBVA.resx">
       <DependentUpon>frmBancoBBVA.cs</DependentUpon>

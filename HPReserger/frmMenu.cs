@@ -5032,5 +5032,28 @@ namespace HPReserger
         {
             frmcuentascontablesactivofijo = null;
         }
+        ModuloActivoFijo.frmProcesoDepreciacion frmprocesodepreciacion;
+        private void depreciacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmprocesodepreciacion == null)
+            {
+                frmprocesodepreciacion = new ModuloActivoFijo.frmProcesoDepreciacion();
+                frmprocesodepreciacion.MdiParent = this;
+                frmprocesodepreciacion.Icon = ICono;
+                frmprocesodepreciacion.FormClosed += new FormClosedEventHandler(Cerrarfrmprocesodepreciacion);
+                frmprocesodepreciacion.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmprocesodepreciacion.Activate();
+                ValidarVentanas(frmprocesodepreciacion);
+            }
+        }
+
+        private void Cerrarfrmprocesodepreciacion(object sender, FormClosedEventArgs e)
+        {
+            frmprocesodepreciacion = null;
+        }
     }
 }
