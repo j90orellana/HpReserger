@@ -4703,6 +4703,19 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, activofijo };
             return bd.DataTableFromProcedure("usp_ActivoFijo_Create", parametros, valores, null);
         }
+        public DataTable ActivoFijosParaDepreciar(int empresa, DateTime fecha)
+        {
+            string[] parametros = { "@empresa", "@fecha" };
+            object[] valores = { empresa, fecha };
+            return bd.DataTableFromProcedure("usp_ActivoFijosParaDepreciar", parametros, valores, null);
+        }
+        public DataTable ActivoFijo_Depreciacion(int @opcion, int @pkid, int @fkid, int @fkempresa, DateTime @FechaContable, int @Mes, decimal @vTributario, decimal @vContable, string @Cuo,
+            string @Glosa, int @Estado)
+        {
+            string[] parametros = { "@opcion", "@pkid", "@fkid", "@fkempresa", "@FechaContable", "@Mes", "@vTributario", "@vContable", "@Cuo", "@Glosa", "@Estado" };
+            object[] valores = { @opcion, @pkid, @fkid, @fkempresa, @FechaContable, @Mes, @vTributario, @vContable, @Cuo, @Glosa, @Estado };
+            return bd.DataTableFromProcedure("usp_ActivoFijo_Depreciacion", parametros, valores, null);
+        }
         public DataTable ActivoFijo(int @opcion, int @pkid, int @fkEmpresa, int @pkProyecto, int @pkEtapa, DateTime @FechaActivacion, DateTime @FechaContable, decimal @VidaUtil, decimal @PorcentajeTributario,
             decimal @PorcentajeContable, decimal @ValorResidual, decimal @ValorActivo, string @Glosa, string @Facturas, string @CuentaActivo, string @CuentaGasto, string @CuentaDepreciacion, string @CUOActivo, int @Estado)
         {

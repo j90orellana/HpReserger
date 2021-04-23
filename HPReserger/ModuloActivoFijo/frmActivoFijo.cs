@@ -20,7 +20,6 @@ namespace HPReserger.ModuloActivoFijo
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private int _proyecto;
         private int _idempresa;
-
         public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public void CargarEmpresa()
@@ -158,8 +157,8 @@ namespace HPReserger.ModuloActivoFijo
             {
                 txtGlosa.CargarTextoporDefecto();
             }
-            if (ConFacturas > 1) { lblNoAgrupar.Visible = false; cboCuentaActivo.Visible = lblCrearActivo.Visible = true; }
-            else { cboCuentaActivo.Visible = lblCrearActivo.Visible = false; lblNoAgrupar.Visible = true; }
+            if (ConFacturas > 1) { lblNoAgrupar.Visible = false; cboCuentaActivo.Visible = lblCrearActivo.Visible = true; chkAsiento.Visible = true; chkAsiento.Checked = true; }
+            else { cboCuentaActivo.Visible = lblCrearActivo.Visible = false; lblNoAgrupar.Visible = true; chkAsiento.Visible = false; chkAsiento.Checked = false; }
 
         }
         private void Dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -300,7 +299,7 @@ namespace HPReserger.ModuloActivoFijo
                 ListaAuxiliar.Add(cboCuentaDepreciacion.SelectedValue.ToString());
                 if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
                 int i = 1;
-                if (Estado == 1 && ConFacturas > 1)
+                if (Estado == 1 && ConFacturas > 1 && chkAsiento.Checked)
                 {
                     //CABECERA ASIENTO DEBE
                     CapaLogica.InsertarAsiento(i, codigo, FechaActivacion, CuentaActivo, vdebe, 0, dinamica, 1, FechaContable, _proyecto, _etapa, Glosa, 1, TC);
@@ -328,10 +327,10 @@ namespace HPReserger.ModuloActivoFijo
                                 FechaActivacion, FechaActivacion, (decimal)vhaber, (decimal)vhaber / tc, tc, idUsuario, _proyecto, FechaActivacion, 1, FechaContable, 0, "", "", 0);
                             i++;
                         }
-                    }                   
+                    }
                     CapaLogica.CuadrarAsiento(CuoAsiento, _proyecto, FechaContable, 1);
                 }
-                else if (Estado == 2)
+                else if (Estado == 2 && chkAsiento.Checked)
                 {
                     if (CuoAsiento != "")//DEBEMOS LIMPIAR EL ASIENTO PARA INSERTAR UN ACTUALIZADO    
                     {
@@ -369,7 +368,7 @@ namespace HPReserger.ModuloActivoFijo
                                 i++;
                             }
                         }
-                    }                   
+                    }
                     CapaLogica.CuadrarAsiento(CuoAsiento, _proyecto, FechaContable, 1);
                 }
             }
@@ -395,10 +394,11 @@ namespace HPReserger.ModuloActivoFijo
                 foreach (string item in LisFac)
                     CapaLogica.ActivoFijo_CambiarEstadoFactura(int.Parse(item));
             }
+            msgOK(Estado == 1 ? "Activo Fijo Creado con Exito" : "Activo Modificado con Exito");
             Estado = 0;
             ModoEdicion(false);
             CargarActivos();
-            msgOK(Estado == 1 ? "Activo Fijo Creado con Exito" : "Activo Modificado con Exito");
+        
         }
 
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -519,6 +519,11 @@ namespace HPReserger.ModuloActivoFijo
                 }
                 //}
             }
+        }
+
+        private void chkAsiento_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

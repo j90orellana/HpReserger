@@ -2518,6 +2518,19 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ActivoFijoCrear(empresa, activofijo);
         }
+        public DataTable ActivoFijosParaDepreciar(int empresa, DateTime fecha)
+        {
+            return cdOrdenPedido.ActivoFijosParaDepreciar(empresa, fecha);
+        }
+        public DataTable ActivoFijo_Depreciacion(int @opcion, int @pkid, int @fkid, int @fkempresa, DateTime @FechaContable, int @Mes, decimal @vTributario, decimal @vContable, string @Cuo,
+          string @Glosa, int @Estado)
+        {
+            return cdOrdenPedido.ActivoFijo_Depreciacion(@opcion, @pkid, @fkid, @fkempresa, @FechaContable, @Mes, @vTributario, @vContable, @Cuo, @Glosa, @Estado);
+        }
+        public DataTable ActivoFijo_Depreciacion(int @fkempresa, DateTime @FechaContable)
+        {
+            return cdOrdenPedido.ActivoFijo_Depreciacion(0, 0, 0, @fkempresa, @FechaContable, 0, 0, 0, "", "", 0);
+        }
         public DataTable ActivoFijo(int @opcion, int @pkid, int @fkEmpresa, int @pkProyecto, int @pkEtapa, DateTime @FechaActivacion, DateTime @FechaContable, decimal @VidaUtil, decimal @PorcentajeTributario,
           decimal @PorcentajeContable, decimal @ValorResidual, decimal @ValorActivo, string @Glosa, string @Facturas, string @CuentaActivo, string @CuentaGasto, string @CuentaDepreciacion, string @CUOActivo, int @Estado)
         {
