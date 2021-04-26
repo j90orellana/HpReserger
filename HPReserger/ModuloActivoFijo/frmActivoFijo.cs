@@ -147,6 +147,7 @@ namespace HPReserger.ModuloActivoFijo
                     SumaSoles += (decimal)item.Cells[xSoles.Name].Value;
                     SumaDolares += (decimal)item.Cells[xdolares.Name].Value;
                     ConFacturas++;
+                    CuentaActivo = item.Cells[xcuentacontable.Name].Value.ToString();
                     if (!txtGlosa.EstaLLeno()) txtGlosa.Text = item.Cells[xGlosa.Name].Value.ToString();
                     //if (ConFacturas == 1)
                     //    cboCuentaActivo.Text = item.Cells[xccuenta.Name].Value.ToString();
@@ -376,8 +377,8 @@ namespace HPReserger.ModuloActivoFijo
             if (Estado == 1)
             {
                 CapaLogica.ActivoFijo(1, 0, _idempresa, _proyecto, _etapa, FechaActivacion, FechaContable, txtVidaUtil.DecimalValido(), txtPorcentajeTributario.DecimalValido(),
-                    txtPorcentajeContable.DecimalValido(), txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas, cboCuentaActivo.SelectedValue.ToString(),
-                    txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
+                    txtPorcentajeContable.DecimalValido(), txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas,
+                    ConFacturas > 1 ? cboCuentaActivo.SelectedValue.ToString() : CuentaActivo, txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
                   ConFacturas > 1 ? CuoAsiento : "", EstadoAct);
                 //CAMBIAMOS EL ESTADO DE LAS FACTURAS QUE TIENEN ACTIVO FIJO, CAMBIAMOS A 2 PARA IDENTIFICAR QUE ESA FACTURA ESTA ASOCIADA A UNA ACTIVO FIJO EN DEPRECIACION
                 foreach (string item in LisFac)
@@ -387,8 +388,8 @@ namespace HPReserger.ModuloActivoFijo
             if (Estado == 2)
             {
                 CapaLogica.ActivoFijo(2, _pkidActivo, _idempresa, _proyecto, _etapa, FechaActivacion, FechaContable, txtVidaUtil.DecimalValido(), txtPorcentajeTributario.DecimalValido(),
-                   txtPorcentajeContable.DecimalValido(), txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas, cboCuentaActivo.SelectedValue.ToString(),
-                   txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
+                   txtPorcentajeContable.DecimalValido(), txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas,
+                   ConFacturas > 1 ? cboCuentaActivo.SelectedValue.ToString() : CuentaActivo, txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
                    ConFacturas > 1 ? CuoAsiento : "", EstadoAct);
                 //CAMBIAMOS EL ESTADO DE LAS FACTURAS QUE TIENEN ACTIVO FIJO, CAMBIAMOS A 2 PARA IDENTIFICAR QUE ESA FACTURA ESTA ASOCIADA A UNA ACTIVO FIJO EN DEPRECIACION
                 foreach (string item in LisFac)
@@ -398,7 +399,7 @@ namespace HPReserger.ModuloActivoFijo
             Estado = 0;
             ModoEdicion(false);
             CargarActivos();
-        
+
         }
 
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -457,6 +458,7 @@ namespace HPReserger.ModuloActivoFijo
         private DateTime oldFechaContable;
         private int oldAsiento;
         private int oldEmpresa;
+        private string CuentaActivo;
 
         private void dtgActivos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

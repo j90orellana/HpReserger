@@ -22,6 +22,9 @@ namespace HPReserger.ModuloActivoFijo
         private int _idempresa;
         private int Estado;
         private int _etapa;
+        private int codigo;
+        private string CuoAsiento;
+
         public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public void CargarEmpresa()
@@ -89,6 +92,14 @@ namespace HPReserger.ModuloActivoFijo
         {
             Dtgconten.DataSource = CapaLogica.ActivoFijosParaDepreciar(_idempresa, cboMesAnio.FechaFinMes);
             ContarRegistros();
+            //Quitamos que se pueda dar check a un registro Depreciado
+            foreach (DataGridViewRow item in Dtgconten.Rows)
+            {
+                if (item.Cells[xCompensado.Name].Value.ToString() == "SI")
+                {
+                    item.Cells[xok.Name].ReadOnly = true;
+                }
+            }
         }
         public int ConReg { get; private set; }
         private void ContarRegistros()
@@ -138,7 +149,16 @@ namespace HPReserger.ModuloActivoFijo
                     if ((int)item.Cells[xok.Name].Value == 1)
                     {
                         if (ConReg == 0)
-                            txtGlosa.Text = $"DEPREC.{cboMesAnio.FechaFinMes.ToString("MMMyy")}/{item.Cells[xcc.Name].Value.ToString()}";
+                        {
+
+                            if (item.Cells[xcc.Name].Value.ToString().Contains("/"))
+                            {
+                                string prueba = item.Cells[xcc.Name].Value.ToString();
+                                txtGlosa.Text = $"{prueba.Substring(0, prueba.IndexOf('.'))}.{cboMesAnio.FechaFinMes.ToString("MMMyy")}/{prueba.Substring(prueba.IndexOf('/') + 1)}";
+                            }
+                            else
+                                txtGlosa.Text = $"DEPREC.{cboMesAnio.FechaFinMes.ToString("MMMyy")}/{item.Cells[xcc.Name].Value.ToString()}";
+                        }
                         ConReg++;
                     }
                 }
@@ -153,6 +173,15 @@ namespace HPReserger.ModuloActivoFijo
             {
                 if (Estado == 1) //Generar Asiento contable y Registro en la tabla de depreciacion
                 {
+                    //CARGAR VARIABLES
+                    _idempresa = (int)cboempresa.SelectedValue;
+                    _proyecto = (int)cboproyecto.SelectedValue;
+                    _etapa = (int)cboetapa.SelectedValue;
+                    int _dinamica = -26;
+                    DateTime FechaContable = cboMesAnio.FechaFinMes;
+                    string Glosa = txtGlosa.TextValido();
+                    int _estado = 1;
+                    decimal tc = CapaLogica.TipoCambioDia("Venta", FechaContable);
                     //PROCESO DE VALIDACIONES
                     if (cboempresa.SelectedValue == null) { cboempresa.Focus(); msgError("Seleccione una Empresa"); return; }
                     if (cboproyecto.SelectedValue == null) { cboproyecto.Focus(); msgError("Seleccione un Proyecto"); return; }
@@ -160,21 +189,64 @@ namespace HPReserger.ModuloActivoFijo
                     //              
                     if (!txtGlosa.EstaLLeno()) { txtGlosa.Focus(); msgError("Escriba una Glosa"); return; }
                     if (ConReg == 0) { msgError("Debe Seleccionar Activos Fijos para Depreciar"); return; }
-                    //CARGAR VARIABLES
-                    _idempresa = (int)cboempresa.SelectedValue;
-                    _proyecto = (int)cboproyecto.SelectedValue;
-                    _etapa = (int)cboetapa.SelectedValue;
-                    DateTime FechaContable = cboMesAnio.FechaFinMes;
-                    string Glosa = txtGlosa.TextValido();
-                    int _estado = 1;
-
+                    if (tc == 0) { msgError("No hay TIPO DE CAMBIO para el fin de mes del Mes Contable"); return; }
+                    //VALIDACION DE CUENTAS CONTABLES Y PERIODOS
+                    if (!CapaLogica.ValidarCrearPeriodo(_idempresa, FechaContable))
+                        if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaContable.ToString("MMMM")}-{FechaContable.Year}?") != DialogResult.Yes)
+                            return;
+                    DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto(_idempresa, FechaContable);
+                    if (TPrueba2.Rows.Count == 0) { msgError("El Periodo está Cerrado, Debe Abrirlo"); return; }
+                    //
+                    if (Estado == 1)//Nuevo                
+                        CapaLogica.UltimoAsiento(_idempresa, FechaContable, out codigo, out CuoAsiento);
+                    //validamos que las cuentas contables NO esten desactivadas
+                    List<string> ListaAuxiliar = new List<string>();
+                    if (ConReg > 1)
+                        foreach (DataGridViewRow item in Dtgconten.Rows)
+                            if ((int)item.Cells[xok.Name].Value == 1)
+                            {
+                                ListaAuxiliar.Add(item.Cells[xCGasto.Name].Value.ToString());
+                                ListaAuxiliar.Add(item.Cells[xCDepreciacion.Name].Value.ToString());
+                            }
+                    if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
+                    //GRABAMOS LOS ASIENTOS CONTABLES
+                    int i = 0;
+                    foreach (DataGridViewRow item in Dtgconten.Rows)
+                    {
+                        if ((int)item.Cells[xok.Name].Value == 1)
+                        {
+                            i++;
+                            string SerFac = "VR";
+                            string NumFac = FechaContable.ToString("yyyy-MM");
+                            int idcomprobante = Configuraciones.IdComprobante;
+                            string ruc = "0";
+                            string razon = "";
+                            decimal soles = (decimal)item.Cells[xVContable.Name].Value;
+                            decimal dolares = soles / tc;
+                            int idUsuario = frmLogin.CodigoUsuario;
+                            //CABECERA ASIENTO DEL GASTO AL DEBE
+                            CapaLogica.InsertarAsiento(i, codigo, FechaContable, item.Cells[xCGasto.Name].Value.ToString(), soles, 0, _dinamica, 1, FechaContable, _proyecto, _etapa,
+                                Glosa, 1, tc);
+                            //DETALLE ASIENTO DEL GASTO AL DEBE
+                            CapaLogica.DetalleAsientos(1, i, codigo, item.Cells[xCGasto.Name].Value.ToString(), 5, ruc, razon, idcomprobante, SerFac, NumFac, 0, Glosa, FechaContable, FechaContable,
+                                soles, dolares, tc, idUsuario, _proyecto, FechaContable, 1, FechaContable, 0, "", "", 0);
+                            i++;
+                            //CABECERA ASIENTO DEL GASTO AL HABER
+                            CapaLogica.InsertarAsiento(i, codigo, FechaContable, item.Cells[xCDepreciacion.Name].Value.ToString(), 0, soles, _dinamica, 1, FechaContable, _proyecto, _etapa,
+                                Glosa, 1, tc);
+                            //DETALLE ASIENTO DEL GASTO AL HABER
+                            CapaLogica.DetalleAsientos(1, i, codigo, item.Cells[xCDepreciacion.Name].Value.ToString(), 5, ruc, razon, idcomprobante, SerFac, NumFac, 0, Glosa, FechaContable,
+                                FechaContable, soles, dolares, tc, idUsuario, _proyecto, FechaContable, 1, FechaContable, 0, "", "", 0);
+                        }
+                    }
+                    CapaLogica.CuadrarAsiento(CuoAsiento, _proyecto, FechaContable, 1);
                     //GRABAMOS EL DETALLE DE LA DEPRECIACION
                     foreach (DataGridViewRow item in Dtgconten.Rows)
                     {
                         if ((int)item.Cells[xok.Name].Value == 1) //Los Activos Seleccionados
                         {
                             CapaLogica.ActivoFijo_Depreciacion(1, 0, (int)item.Cells[xpkid.Name].Value, _idempresa, FechaContable, (int)item.Cells[xMes.Name].Value,
-                                (decimal)item.Cells[xVTributario.Name].Value, (decimal)item.Cells[xVContable.Name].Value, "", Glosa, _estado);
+                                (decimal)item.Cells[xVTributario.Name].Value, (decimal)item.Cells[xVContable.Name].Value, CuoAsiento, Glosa, _estado);
                         }
                     }
                     msgOK("Depreciación Grabada con Exito");
@@ -186,6 +258,16 @@ namespace HPReserger.ModuloActivoFijo
                     ContarRegistros();
                 }
             }
+        }
+
+        private void Dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+                if (Estado == 1)
+                    if (Dtgconten[xCompensado.Name, e.RowIndex].Value.ToString() == "SI")
+                    {
+                        msgError("No Se Puede Seleccionar, El Activo Ya Fue Depreciado Este Mes");
+                    }
         }
     }
 }

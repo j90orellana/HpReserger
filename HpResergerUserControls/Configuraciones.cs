@@ -59,9 +59,12 @@ namespace HpResergerUserControls
         public static Font FuenteReportesTahoma10 = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         //FIN FUENTES 
         //VALORES PARA DOCUMENTOS
-        public static int TipoDocumento = 0;
-        public static string NumeroDocumento = "0000";
-        public static string NumProveedor = "9999";
+        public static int IdRuc = 0;
+        public static string Ruc = "99999";
+        public static string Razon = "VARIOS";
+        public static int IdComprobante = 0;
+        public static string NumFac = "0";
+        public static string SerFac = "0";        
         //FIN VALORES PARA DOCUMENTOS
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
         public static string FilterImagenes()

@@ -251,6 +251,7 @@
             this.Dtgconten.Size = new System.Drawing.Size(860, 411);
             this.Dtgconten.TabIndex = 236;
             this.Dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentClick);
+            this.Dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentDoubleClick);
             this.Dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellValueChanged);
             // 
             // btnAvanzar
@@ -548,7 +549,7 @@
             // 
             this.xCompensado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xCompensado.DataPropertyName = "Compensado";
-            this.xCompensado.HeaderText = "Compen sado";
+            this.xCompensado.HeaderText = "Depre ciado";
             this.xCompensado.MinimumWidth = 50;
             this.xCompensado.Name = "xCompensado";
             this.xCompensado.Width = 50;

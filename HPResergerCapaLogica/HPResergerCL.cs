@@ -493,6 +493,10 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.InsertarAsiento(id, codigo, fecha, cuenta, debe, haber, dina, estado, fechavalor, proyecto, etapa, glosa, moneda, tc);
         }
+        public void InsertarAsiento(int id, int codigo, DateTime fecha, string cuenta, decimal debe, decimal haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa, string glosa, int moneda, decimal tc)
+        {
+            cdOrdenPedido.InsertarAsiento(id, codigo, fecha, cuenta, debe, haber, dina, estado, fechavalor, proyecto, etapa, glosa, moneda, tc);
+        }
         public void ActualizarDetalleAsiento(int oldasiento, int oldproyecto, DateTime oldfecha, int newasiento, int newproyecto, DateTime newfecha)
         {
             cdOrdenPedido.ActualizarDetalleAsiento(oldasiento, oldproyecto, oldfecha, newasiento, newproyecto, newfecha);

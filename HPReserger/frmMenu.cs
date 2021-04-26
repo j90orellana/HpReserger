@@ -5055,5 +5055,30 @@ namespace HPReserger
         {
             frmprocesodepreciacion = null;
         }
+        ModuloActivoFijo.frmReporteCostoyDepreciacionActivo frmreporteCostoyDepreciacion;
+
+        private void reporteDepreciaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (frmreporteCostoyDepreciacion == null)
+            {
+                frmreporteCostoyDepreciacion = new ModuloActivoFijo.frmReporteCostoyDepreciacionActivo();
+                frmreporteCostoyDepreciacion.MdiParent = this;
+                frmreporteCostoyDepreciacion.Icon = ICono;
+                frmreporteCostoyDepreciacion.FormClosed += new FormClosedEventHandler(CerrarfrmreporteCostoyDepreciacion);
+                frmreporteCostoyDepreciacion.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreporteCostoyDepreciacion.Activate();
+                ValidarVentanas(frmreporteCostoyDepreciacion);
+            }
+        }
+
+        private void CerrarfrmreporteCostoyDepreciacion(object sender, FormClosedEventArgs e)
+        {
+            frmreporteCostoyDepreciacion = null;
+        }
     }
 }

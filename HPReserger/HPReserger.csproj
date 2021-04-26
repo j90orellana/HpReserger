@@ -195,6 +195,12 @@
     <Compile Include="ModuloActivoFijo\frmProcesoDepreciacion.Designer.cs">
       <DependentUpon>frmProcesoDepreciacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloActivoFijo\frmReporteCostoyDepreciacionActivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmReporteCostoyDepreciacionActivo.Designer.cs">
+      <DependentUpon>frmReporteCostoyDepreciacionActivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloActivoFijo\frmReporteDepreciaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2082,6 +2088,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloActivoFijo\frmProcesoDepreciacion.resx">
       <DependentUpon>frmProcesoDepreciacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmReporteCostoyDepreciacionActivo.resx">
+      <DependentUpon>frmReporteCostoyDepreciacionActivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloActivoFijo\frmReporteDepreciaciones.resx">
       <DependentUpon>frmReporteDepreciaciones.cs</DependentUpon>

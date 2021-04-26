@@ -176,6 +176,7 @@
             this.activoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearActivoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.depreciacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDepreciaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.cuentasContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -317,7 +318,6 @@
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
             this.TimerTC = new System.Windows.Forms.Timer(this.components);
-            this.reporteDepreciaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1747,10 +1747,18 @@
             this.depreciacionesToolStripMenuItem.Text = "Depreciaciones";
             this.depreciacionesToolStripMenuItem.Click += new System.EventHandler(this.depreciacionesToolStripMenuItem_Click);
             // 
+            // reporteDepreciaciónToolStripMenuItem
+            // 
+            this.reporteDepreciaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteDepreciaciónToolStripMenuItem.Image")));
+            this.reporteDepreciaciónToolStripMenuItem.Name = "reporteDepreciaciónToolStripMenuItem";
+            this.reporteDepreciaciónToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.reporteDepreciaciónToolStripMenuItem.Text = "Reporte Depreciación";
+            this.reporteDepreciaciónToolStripMenuItem.Click += new System.EventHandler(this.reporteDepreciaciónToolStripMenuItem_Click);
+            // 
             // toolStripSeparator19
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator19.Size = new System.Drawing.Size(174, 6);
             // 
             // cuentasContablesToolStripMenuItem
             // 
@@ -3092,13 +3100,6 @@
             this.TimerTC.Interval = 500;
             this.TimerTC.Tag = "3600000";
             this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
-            // 
-            // reporteDepreciaciónToolStripMenuItem
-            // 
-            this.reporteDepreciaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteDepreciaciónToolStripMenuItem.Image")));
-            this.reporteDepreciaciónToolStripMenuItem.Name = "reporteDepreciaciónToolStripMenuItem";
-            this.reporteDepreciaciónToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.reporteDepreciaciónToolStripMenuItem.Text = "Reporte Depreciación";
             // 
             // frmMenu
             // 

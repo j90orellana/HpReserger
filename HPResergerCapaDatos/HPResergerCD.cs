@@ -1308,7 +1308,7 @@ namespace HPResergerCapaDatos
             object[] valores = { oldasiento, oldproyecto, oldfecha, newasiento, newproyecto, newfecha };
             bd.DataTableFromProcedure("usp_ActualizarDetalleAsientoCambioPeriodo", parametros, valores, null);
         }
-        public void InsertarAsiento(int id, int codigo, DateTime fecha, string cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa, string glosa, int moneda, decimal tc)
+        public void InsertarAsiento(int id, int codigo, DateTime fecha, string cuenta, decimal debe, decimal haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa, string glosa, int moneda, decimal tc)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1319,7 +1319,6 @@ namespace HPResergerCapaDatos
                     cmd.CommandText = "dbo.usp_insertar_asiento_contable";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
-
                     cmd.Parameters.Add("@codigo", SqlDbType.Int).Value = codigo;
                     cmd.Parameters.Add("@fecha", SqlDbType.DateTime).Value = fecha;
                     cmd.Parameters.Add("@cuenta", SqlDbType.VarChar, 12).Value = cuenta;
@@ -1333,7 +1332,40 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@glosa", SqlDbType.NVarChar, 300).Value = glosa;
                     cmd.Parameters.Add("@tc", SqlDbType.Decimal).Value = tc;
                     cmd.Parameters.Add("@moneda", SqlDbType.Int).Value = moneda;
-
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex) { }
+                }
+                cn.Close();
+                cn.Dispose();
+            }
+        }
+        public void InsertarAsiento(int id, int codigo, DateTime fecha, string cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa, string glosa, int moneda, decimal tc)
+        {
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "dbo.usp_insertar_asiento_contable";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                    cmd.Parameters.Add("@codigo", SqlDbType.Int).Value = codigo;
+                    cmd.Parameters.Add("@fecha", SqlDbType.DateTime).Value = fecha;
+                    cmd.Parameters.Add("@cuenta", SqlDbType.VarChar, 12).Value = cuenta;
+                    cmd.Parameters.Add("@debe", SqlDbType.Decimal).Value = debe;
+                    cmd.Parameters.Add("@haber", SqlDbType.Decimal).Value = haber;
+                    cmd.Parameters.Add("@dina", SqlDbType.Int).Value = dina;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
+                    cmd.Parameters.Add("@fechavalor", SqlDbType.DateTime).Value = fechavalor;
+                    cmd.Parameters.Add("@proyec", SqlDbType.Int).Value = proyecto;
+                    cmd.Parameters.Add("@etapa", SqlDbType.Int).Value = etapa;
+                    cmd.Parameters.Add("@glosa", SqlDbType.NVarChar, 300).Value = glosa;
+                    cmd.Parameters.Add("@tc", SqlDbType.Decimal).Value = tc;
+                    cmd.Parameters.Add("@moneda", SqlDbType.Int).Value = moneda;
                     try
                     {
                         cmd.ExecuteNonQuery();
