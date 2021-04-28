@@ -4749,12 +4749,13 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_ActivoFijo_Depreciacion", parametros, valores, null);
         }
         public DataTable ActivoFijo(int @opcion, int @pkid, int @fkEmpresa, int @pkProyecto, int @pkEtapa, DateTime @FechaActivacion, DateTime @FechaContable, decimal @VidaUtil, decimal @PorcentajeTributario,
-            decimal @PorcentajeContable, decimal @ValorResidual, decimal @ValorActivo, string @Glosa, string @Facturas, string @CuentaActivo, string @CuentaGasto, string @CuentaDepreciacion, string @CUOActivo, int @Estado)
+            decimal @PorcentajeContable, decimal @ValorResidual, decimal @ValorActivo, string @Glosa, string @Facturas, string @CuentaActivo, string @CuentaGasto, string @CuentaDepreciacion, string @CUOActivo, int @Estado
+            , DateTime fechadoc, string cuofac)
         {
             string[] parametros = { "@opcion", "@pkid", "@fkEmpresa", "@pkProyecto", "@pkEtapa", "@FechaActivacion", "@FechaContable", "@VidaUtil", "@PorcentajeTributario", "@PorcentajeContable", "@ValorResidual",
-                "@ValorActivo", "@Glosa", "@Facturas", "@CuentaActivo", "@CuentaGasto", "@CuentaDepreciacion", "@CUOActivo", "@Estado" };
+                "@ValorActivo", "@Glosa", "@Facturas", "@CuentaActivo", "@CuentaGasto", "@CuentaDepreciacion", "@CUOActivo", "@Estado" ,"@fechadoc","@cuofac"};
             object[] valores = { @opcion, @pkid, @fkEmpresa, @pkProyecto, @pkEtapa, @FechaActivacion, @FechaContable, @VidaUtil, @PorcentajeTributario, @PorcentajeContable, @ValorResidual, @ValorActivo,
-                @Glosa, @Facturas, @CuentaActivo, @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado };
+                @Glosa, @Facturas, @CuentaActivo, @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado ,fechadoc,cuofac};
             return bd.DataTableFromProcedure("usp_ActivoFijo", parametros, valores, null);
         }
         public DataTable ReporteDepreciacionActivoFijo(int empresa, DateTime fechaini, DateTime fechafin)

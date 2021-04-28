@@ -83,6 +83,7 @@
             this.xSoles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xdolares = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.chkFacturaTodas = new System.Windows.Forms.CheckBox();
@@ -98,6 +99,11 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dtgActivos = new HpResergerUserControls.Dtgconten();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lblNoAgrupar = new System.Windows.Forms.Label();
+            this.btnmodificar = new System.Windows.Forms.Button();
+            this.btnnuevo = new System.Windows.Forms.Button();
+            this.chkAsiento = new HpResergerUserControls.checkboxOre();
             this.pkidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fkEmpresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pkProyectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,11 +122,8 @@
             this.cuentaDepreciacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cUOActivoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblNoAgrupar = new System.Windows.Forms.Label();
-            this.btnmodificar = new System.Windows.Forms.Button();
-            this.btnnuevo = new System.Windows.Forms.Button();
-            this.chkAsiento = new HpResergerUserControls.checkboxOre();
+            this.xFechaDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCuofac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgActivos)).BeginInit();
             this.SuspendLayout();
@@ -514,7 +517,8 @@
             this.xccuenta,
             this.xSoles,
             this.xdolares,
-            this.xEstado});
+            this.xEstado,
+            this.xFechaEmision});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -672,6 +676,13 @@
             this.xEstado.MinimumWidth = 50;
             this.xEstado.Name = "xEstado";
             this.xEstado.Width = 50;
+            // 
+            // xFechaEmision
+            // 
+            this.xFechaEmision.DataPropertyName = "FechaEmision";
+            this.xFechaEmision.HeaderText = "FechaEmision";
+            this.xFechaEmision.Name = "xFechaEmision";
+            this.xFechaEmision.Visible = false;
             // 
             // label9
             // 
@@ -901,7 +912,9 @@
             this.cuentaGastoDataGridViewTextBoxColumn,
             this.cuentaDepreciacionDataGridViewTextBoxColumn,
             this.cUOActivoDataGridViewTextBoxColumn,
-            this.estadoDataGridViewTextBoxColumn});
+            this.estadoDataGridViewTextBoxColumn,
+            this.xFechaDoc,
+            this.xCuofac});
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -928,6 +941,73 @@
             this.dtgActivos.Size = new System.Drawing.Size(862, 152);
             this.dtgActivos.TabIndex = 334;
             this.dtgActivos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgActivos_RowEnter);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(10, 308);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(211, 13);
+            this.label14.TabIndex = 335;
+            this.label14.Text = "Seleccione la dinámica de depreciación:";
+            // 
+            // lblNoAgrupar
+            // 
+            this.lblNoAgrupar.AutoSize = true;
+            this.lblNoAgrupar.BackColor = System.Drawing.Color.Transparent;
+            this.lblNoAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoAgrupar.Location = new System.Drawing.Point(10, 288);
+            this.lblNoAgrupar.Name = "lblNoAgrupar";
+            this.lblNoAgrupar.Size = new System.Drawing.Size(53, 13);
+            this.lblNoAgrupar.TabIndex = 336;
+            this.lblNoAgrupar.Text = "msgagru";
+            this.lblNoAgrupar.Visible = false;
+            // 
+            // btnmodificar
+            // 
+            this.btnmodificar.Enabled = false;
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
+            this.btnmodificar.Location = new System.Drawing.Point(780, 38);
+            this.btnmodificar.Name = "btnmodificar";
+            this.btnmodificar.Size = new System.Drawing.Size(92, 25);
+            this.btnmodificar.TabIndex = 337;
+            this.btnmodificar.Text = "&Modificar";
+            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
+            // 
+            // btnnuevo
+            // 
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
+            this.btnnuevo.Location = new System.Drawing.Point(780, 10);
+            this.btnnuevo.Name = "btnnuevo";
+            this.btnnuevo.Size = new System.Drawing.Size(92, 25);
+            this.btnnuevo.TabIndex = 338;
+            this.btnnuevo.Text = "&Nuevo";
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnnuevo.UseVisualStyleBackColor = true;
+            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
+            // 
+            // chkAsiento
+            // 
+            this.chkAsiento.AutoSize = true;
+            this.chkAsiento.BackColor = System.Drawing.Color.Transparent;
+            this.chkAsiento.Checked = true;
+            this.chkAsiento.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAsiento.ColorChecked = System.Drawing.Color.Empty;
+            this.chkAsiento.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkAsiento.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkAsiento.Location = new System.Drawing.Point(776, 286);
+            this.chkAsiento.Name = "chkAsiento";
+            this.chkAsiento.Size = new System.Drawing.Size(109, 17);
+            this.chkAsiento.TabIndex = 339;
+            this.chkAsiento.Text = "Generar Asiento";
+            this.chkAsiento.UseVisualStyleBackColor = false;
+            this.chkAsiento.CheckedChanged += new System.EventHandler(this.chkAsiento_CheckedChanged);
             // 
             // pkidDataGridViewTextBoxColumn
             // 
@@ -1073,72 +1153,19 @@
             this.estadoDataGridViewTextBoxColumn.Name = "estadoDataGridViewTextBoxColumn";
             this.estadoDataGridViewTextBoxColumn.Visible = false;
             // 
-            // label14
+            // xFechaDoc
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(10, 308);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(211, 13);
-            this.label14.TabIndex = 335;
-            this.label14.Text = "Seleccione la dinámica de depreciación:";
+            this.xFechaDoc.DataPropertyName = "fechadoc";
+            this.xFechaDoc.HeaderText = "Fechadoc";
+            this.xFechaDoc.Name = "xFechaDoc";
+            this.xFechaDoc.Visible = false;
             // 
-            // lblNoAgrupar
+            // xCuofac
             // 
-            this.lblNoAgrupar.AutoSize = true;
-            this.lblNoAgrupar.BackColor = System.Drawing.Color.Transparent;
-            this.lblNoAgrupar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNoAgrupar.Location = new System.Drawing.Point(10, 288);
-            this.lblNoAgrupar.Name = "lblNoAgrupar";
-            this.lblNoAgrupar.Size = new System.Drawing.Size(53, 13);
-            this.lblNoAgrupar.TabIndex = 336;
-            this.lblNoAgrupar.Text = "msgagru";
-            this.lblNoAgrupar.Visible = false;
-            // 
-            // btnmodificar
-            // 
-            this.btnmodificar.Enabled = false;
-            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(780, 38);
-            this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(92, 25);
-            this.btnmodificar.TabIndex = 337;
-            this.btnmodificar.Text = "&Modificar";
-            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
-            // 
-            // btnnuevo
-            // 
-            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
-            this.btnnuevo.Location = new System.Drawing.Point(780, 10);
-            this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(92, 25);
-            this.btnnuevo.TabIndex = 338;
-            this.btnnuevo.Text = "&Nuevo";
-            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnnuevo.UseVisualStyleBackColor = true;
-            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
-            // 
-            // chkAsiento
-            // 
-            this.chkAsiento.AutoSize = true;
-            this.chkAsiento.BackColor = System.Drawing.Color.Transparent;
-            this.chkAsiento.Checked = true;
-            this.chkAsiento.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAsiento.ColorChecked = System.Drawing.Color.Empty;
-            this.chkAsiento.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkAsiento.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkAsiento.Location = new System.Drawing.Point(776, 286);
-            this.chkAsiento.Name = "chkAsiento";
-            this.chkAsiento.Size = new System.Drawing.Size(109, 17);
-            this.chkAsiento.TabIndex = 339;
-            this.chkAsiento.Text = "Generar Asiento";
-            this.chkAsiento.UseVisualStyleBackColor = false;
-            this.chkAsiento.CheckedChanged += new System.EventHandler(this.chkAsiento_CheckedChanged);
+            this.xCuofac.DataPropertyName = "cuofac";
+            this.xCuofac.HeaderText = "CuoFac";
+            this.xCuofac.Name = "xCuofac";
+            this.xCuofac.Visible = false;
             // 
             // frmActivoFijo
             // 
@@ -1250,6 +1277,7 @@
         private System.Windows.Forms.Label lblNoAgrupar;
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Button btnnuevo;
+        private HpResergerUserControls.checkboxOre chkAsiento;
         private System.Windows.Forms.DataGridViewCheckBoxColumn xOK;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidcomprobante;
@@ -1263,6 +1291,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xSoles;
         private System.Windows.Forms.DataGridViewTextBoxColumn xdolares;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaEmision;
         private System.Windows.Forms.DataGridViewTextBoxColumn pkidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fkEmpresaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pkProyectoDataGridViewTextBoxColumn;
@@ -1281,6 +1310,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuentaDepreciacionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cUOActivoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoDataGridViewTextBoxColumn;
-        private HpResergerUserControls.checkboxOre chkAsiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCuofac;
     }
 }
