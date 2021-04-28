@@ -4757,7 +4757,12 @@ namespace HPResergerCapaDatos
                 @Glosa, @Facturas, @CuentaActivo, @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado };
             return bd.DataTableFromProcedure("usp_ActivoFijo", parametros, valores, null);
         }
-
+        public DataTable ReporteDepreciacionActivoFijo(int empresa, DateTime fechaini, DateTime fechafin)
+        {
+            string[] parametros = { "@empresa", "@fechaini", "@fechafin" };
+            object[] valores = { empresa, fechaini, fechafin };
+            return bd.DataTableFromProcedure("usp_ReporteDepreciacionActivoFijo", parametros, valores, null);
+        }
         public DataTable ActivoFijo_CuentasContable(int opcion, string cuenta)
         {
             string[] parametros = { "@opcion    ", "@cuenta" };

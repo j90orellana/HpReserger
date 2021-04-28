@@ -2551,6 +2551,10 @@ namespace HPResergerCapaLogica
             DateTime f = DateTime.Now;
             return cdOrdenPedido.ActivoFijo(9, Factura, 0, 0, 0, f, f, 0, 0, 0, 0, 0, "", "", "", "", "", "", 0);
         }
+        public DataTable ReporteDepreciacionActivoFijo(int empresa, DateTime fechaini, DateTime fechafin)
+        {
+            return cdOrdenPedido.ReporteDepreciacionActivoFijo(empresa, fechaini, fechafin);
+        }
         public DataTable VerPeriodoAbierto(int empresa, DateTime Fecha)
         {
             return cdOrdenPedido.VerPeriodoAbierto(empresa, Fecha);

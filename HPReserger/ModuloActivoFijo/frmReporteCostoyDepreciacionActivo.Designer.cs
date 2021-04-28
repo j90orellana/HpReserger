@@ -35,9 +35,11 @@
             this.cbodesde = new HpResergerUserControls.ComboMesAño();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
+            this.cboA = new HpResergerUserControls.ComboMesAño();
             this.btnProcesar = new HpResergerUserControls.ButtonPer();
             this.btncancelar = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // label4
@@ -63,6 +65,7 @@
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(440, 21);
             this.cboempresa.TabIndex = 338;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -111,19 +114,19 @@
             this.label2.TabIndex = 340;
             this.label2.Text = "A:";
             // 
-            // comboMesAño1
+            // cboA
             // 
-            this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2021, 4, 1, 0, 0, 0, 0);
-            this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.comboMesAño1.Location = new System.Drawing.Point(332, 47);
-            this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(261, 26);
-            this.comboMesAño1.TabIndex = 341;
-            this.comboMesAño1.VerAño = true;
-            this.comboMesAño1.VerMes = true;
+            this.cboA.BackColor = System.Drawing.Color.Transparent;
+            this.cboA.FechaConDiaActual = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
+            this.cboA.FechaFinMes = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
+            this.cboA.FechaInicioMes = new System.DateTime(2021, 4, 1, 0, 0, 0, 0);
+            this.cboA.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.cboA.Location = new System.Drawing.Point(332, 47);
+            this.cboA.Name = "cboA";
+            this.cboA.Size = new System.Drawing.Size(261, 26);
+            this.cboA.TabIndex = 341;
+            this.cboA.VerAño = true;
+            this.cboA.VerMes = true;
             // 
             // btnProcesar
             // 
@@ -139,6 +142,7 @@
             this.btnProcesar.Text = "Excel";
             this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
             // btncancelar
             // 
@@ -153,6 +157,11 @@
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // frmReporteCostoyDepreciacionActivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,7 +169,7 @@
             this.ClientSize = new System.Drawing.Size(602, 141);
             this.Controls.Add(this.btnProcesar);
             this.Controls.Add(this.btncancelar);
-            this.Controls.Add(this.comboMesAño1);
+            this.Controls.Add(this.cboA);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbodesde);
             this.Controls.Add(this.label1);
@@ -184,8 +193,10 @@
         private HpResergerUserControls.ComboMesAño cbodesde;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private HpResergerUserControls.ComboMesAño comboMesAño1;
+        private HpResergerUserControls.ComboMesAño cboA;
         private HpResergerUserControls.ButtonPer btnProcesar;
         private System.Windows.Forms.Button btncancelar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

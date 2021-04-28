@@ -28,7 +28,7 @@ namespace HPResergerFunciones
         {
             cadena = Convert.ToBase64String(Encoding.Unicode.GetBytes(cadena));
             return cadena;
-        }      
+        }
         public static string DesEncriptar(string cadena)
         {
             cadena = Encoding.Unicode.GetString(Convert.FromBase64String(cadena), 0, Convert.FromBase64String(cadena).Length);
@@ -403,6 +403,7 @@ namespace HPResergerFunciones
             public Color ForeColor = Color.Empty;
             public Font Fuente = null;
             public Alineado? Alineado = null;
+            public Boolean Wrap = false;
             public RangoCelda() { }
             public RangoCelda(string _fila, string _columna, string _nombre)
             {
@@ -524,6 +525,21 @@ namespace HPResergerFunciones
                 _Centrar = Centrar;
                 Fuente = _fuente;
                 Alineado = _alineado;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Alineado _alineado, Color _BackColor, Color _ForeColor, Font _fuente, Boolean AplicarColores, Boolean AjustarTexto)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
+                _Negrita = Negrita;
+                ForeColor = _ForeColor;
+                BackColor = _BackColor;
+                _Centrar = Centrar;
+                _Centrar = Centrar;
+                Fuente = _fuente;
+                Alineado = _alineado;
+                Wrap = AjustarTexto;
             }
         }
         public static void DescargarImagen(PictureBox Fotos)
@@ -1202,6 +1218,12 @@ namespace HPResergerFunciones
                 {
                     Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Color.SetColor(Nombres.ForeColor);
                     //ForzarAutoAjustado = true;
+                }
+                if (Nombres.Wrap)
+                {
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.WrapText = true;
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                 }
             }
             //Recorremos el DataGridView rellenando la hoja de trabajo
