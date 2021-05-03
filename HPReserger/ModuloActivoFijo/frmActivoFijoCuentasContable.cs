@@ -17,14 +17,24 @@ namespace HPReserger.ModuloActivoFijo
         {
             InitializeComponent();
         }
+        public frmActivoFijoCuentasContable(string text)
+        {
+            InitializeComponent();
+            Busqueda = true;
+            Result = text;
+        }
+        Boolean Busqueda = false;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public int Estado { get; private set; }
+        public string Result { get; private set; }
+
         private void frmActivoFijoCuentasContable_Load(object sender, EventArgs e)
         {
             Estado = 0;
             txtCuenta.CargarTextoporDefecto();
             CargarDAtos();
             ModoEdicion(true);
+            if (Busqueda) txtCuenta.Text = Result;
         }
         DataTable Tdatos;
         DataView dv;
@@ -57,7 +67,7 @@ namespace HPReserger.ModuloActivoFijo
             else { this.Close(); }
         }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
-
+        public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             CapaLogica.ActivoFijo_CuentasContable(2);
@@ -88,7 +98,15 @@ namespace HPReserger.ModuloActivoFijo
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-                CapaLogica.ActivoFijo_CuentasContable(((int)Dtgconten[0, e.RowIndex].Value) == 1 ? 3 : 2, Dtgconten[xId_Cuenta_Contable.Name, e.RowIndex].Value.ToString());
+                DataTable Tdato = CapaLogica.ActivoFijo_CuentasContable(((int)Dtgconten[0, e.RowIndex].Value) == 1 ? 3 : 2, Dtgconten[xId_Cuenta_Contable.Name, e.RowIndex].Value.ToString());
+                if (Tdato.Rows.Count > 0)
+                {
+                    DataRow Fila = Tdato.Rows[0];
+                    if ((int)Fila["resultado"] == 1) { }
+                    msgError("Cuenta Esta en Uso");
+                    Dtgconten[xActivoFijo.Name, e.RowIndex].Value = 1;
+                    Dtgconten.RefreshEdit();
+                }
             }
         }
 
@@ -99,6 +117,21 @@ namespace HPReserger.ModuloActivoFijo
                 dv.RowFilter = $"Cuenta_Contable like '%{txtCuenta.TextValido()}%'";
             }
             else dv.RowFilter = "";
+        }
+
+        private void Dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Dtgconten[xActivoFijo.Name, e.RowIndex].Value = 1;
+                Dtgconten.EndEdit();
+                if (Busqueda)
+                {
+                    Result = Dtgconten[xId_Cuenta_Contable.Name, e.RowIndex].Value.ToString();
+                    DialogResult = DialogResult.OK;
+                }
+
+            }
         }
     }
 }

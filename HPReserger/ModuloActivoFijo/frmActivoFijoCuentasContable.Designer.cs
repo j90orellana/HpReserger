@@ -103,6 +103,7 @@
             this.Dtgconten.Size = new System.Drawing.Size(625, 392);
             this.Dtgconten.TabIndex = 12;
             this.Dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentClick);
+            this.Dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentDoubleClick);
             this.Dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellValueChanged);
             // 
             // xActivoFijo
@@ -206,6 +207,7 @@
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Visible = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // txtCuenta
@@ -215,7 +217,7 @@
             this.txtCuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtCuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtCuenta.ForeColor = System.Drawing.Color.Black;
             this.txtCuenta.Format = null;
             this.txtCuenta.Location = new System.Drawing.Point(12, 42);
             this.txtCuenta.MaxLength = 300;

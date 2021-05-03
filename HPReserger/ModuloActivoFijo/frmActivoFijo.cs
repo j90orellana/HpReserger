@@ -160,8 +160,16 @@ namespace HPReserger.ModuloActivoFijo
             {
                 txtGlosa.CargarTextoporDefecto();
             }
-            if (ConFacturas > 1) { lblNoAgrupar.Visible = false; cboCuentaActivo.Visible = lblCrearActivo.Visible = true; chkAsiento.Visible = true; chkAsiento.Checked = true; }
-            else { cboCuentaActivo.Visible = lblCrearActivo.Visible = false; lblNoAgrupar.Visible = true; chkAsiento.Visible = false; chkAsiento.Checked = false; }
+            if (ConFacturas > 1)
+            {
+                lblNoAgrupar.Visible = false; cboCuentaActivo.Visible = lblCrearActivo.Visible = true; chkAsiento.Visible = true; chkAsiento.Checked = true;
+                txtCtaActivo.Visible = true;
+            }
+            else
+            {
+                cboCuentaActivo.Visible = lblCrearActivo.Visible = false; lblNoAgrupar.Visible = true; chkAsiento.Visible = false; chkAsiento.Checked = false;
+                txtCtaActivo.Visible = false;
+            }
 
         }
         private void Dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -397,7 +405,10 @@ namespace HPReserger.ModuloActivoFijo
                 foreach (string item in LisFac)
                     CapaLogica.ActivoFijo_CambiarEstadoFactura(int.Parse(item));
             }
-            msgOK(Estado == 1 ? "Activo Fijo Creado con Exito" : "Activo Modificado con Exito");
+            string msg = "";
+            if (ConFacturas > 1)
+                msg = $"\nAsiento Grabado con CUO:{CuoAsiento}";
+            msgOK(Estado == 1 ? $"Activo Fijo Creado con Exito {msg}" : $"Activo Modificado con Exito {msg}");
             Estado = 0;
             ModoEdicion(false);
             CargarActivos();
@@ -417,7 +428,7 @@ namespace HPReserger.ModuloActivoFijo
             if (v)
             {
                 Configuraciones.Activar(cboproyecto, cboetapa, dtpFechaActivacion, dtpFechaContable, txtCuentaContable, txtGlosa, txtPorcentajeContable, txtPorcentajeTributario, txtValorActivo, txtValorResidual, txtVidaUtil,
-                cboCuentaActivo, cboCuentaDepreciacion, btnAceptar, chkFacturaTodas);
+                cboCuentaActivo, cboCuentaDepreciacion, btnAceptar, chkFacturaTodas, txtCtaActivo, txtctaDepre);
                 Configuraciones.Desactivar(btnmodificar, btnnuevo, dtgActivos, btnActualizar);
                 Dtgconten.Columns[0].ReadOnly = false;
             }
@@ -425,7 +436,7 @@ namespace HPReserger.ModuloActivoFijo
             {
                 chkFacturaTodas.Checked = true;
                 Configuraciones.Desactivar(cboproyecto, cboetapa, dtpFechaActivacion, dtpFechaContable, txtCuentaContable, txtGlosa, txtPorcentajeContable, txtPorcentajeTributario, txtValorActivo, txtValorResidual, txtVidaUtil,
-                cboCuentaActivo, cboCuentaDepreciacion, btnAceptar, chkFacturaTodas);
+                cboCuentaActivo, cboCuentaDepreciacion, btnAceptar, chkFacturaTodas, txtCtaActivo, txtctaDepre);
                 Configuraciones.Activar(btnmodificar, btnnuevo, dtgActivos, btnActualizar);
                 foreach (DataGridViewColumn item in Dtgconten.Columns)
                     item.ReadOnly = !v;
@@ -478,8 +489,8 @@ namespace HPReserger.ModuloActivoFijo
                 txtValorResidual.Text = Fila.Cells[valorResidualDataGridViewTextBoxColumn.Name].Value.ToString();
                 txtGlosa.Text = Fila.Cells[glosaDataGridViewTextBoxColumn.Name].Value.ToString();
                 txtCuentaContable.Text = Fila.Cells[cuentaGastoDataGridViewTextBoxColumn.Name].Value.ToString();
-                cboCuentaActivo.SelectedValue = Fila.Cells[cuentaActivoDataGridViewTextBoxColumn.Name].Value.ToString();
-                cboCuentaDepreciacion.SelectedValue = Fila.Cells[cuentaDepreciacionDataGridViewTextBoxColumn.Name].Value.ToString();
+                txtCtaActivo.Text = Fila.Cells[cuentaActivoDataGridViewTextBoxColumn.Name].Value.ToString();
+                txtctaDepre.Text = Fila.Cells[cuentaDepreciacionDataGridViewTextBoxColumn.Name].Value.ToString();
                 _pkidActivo = (int)Fila.Cells[pkidDataGridViewTextBoxColumn.Name].Value;
                 CuoAsiento = Fila.Cells[cUOActivoDataGridViewTextBoxColumn.Name].Value.ToString();
                 Lfac = Fila.Cells[facturasDataGridViewTextBoxColumn.Name].Value.ToString().Split(',');
@@ -529,6 +540,56 @@ namespace HPReserger.ModuloActivoFijo
         private void chkAsiento_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCtaActivo_TextChanged(object sender, EventArgs e)
+        {
+            cboCuentaActivo.SelectedValue = txtCtaActivo.Text;
+        }
+
+        private void txtctaDepre_TextChanged(object sender, EventArgs e)
+        {
+            cboCuentaDepreciacion.SelectedValue = txtctaDepre.Text;
+        }
+
+        private void cboCuentaActivo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCuentaActivo.SelectedValue != null)
+
+                if (cboCuentaActivo.SelectedValue.ToString() != txtCtaActivo.Text)
+                    txtCtaActivo.Text = cboCuentaActivo.SelectedValue.ToString();
+        }
+
+        private void cboCuentaDepreciacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCuentaDepreciacion.SelectedValue != null)
+
+                if (cboCuentaDepreciacion.SelectedValue.ToString() != txtctaDepre.Text)
+                    txtctaDepre.Text = cboCuentaDepreciacion.SelectedValue.ToString();
+        }
+        private void txtCtaActivo_DoubleClick(object sender, EventArgs e)
+        {
+            if (Estado > 0)
+                txtCtaActivo.Text = BuscarCuentaActivosFijos(txtCtaActivo.Text);
+        }
+
+        private string BuscarCuentaActivosFijos(string text)
+        {
+            ModuloActivoFijo.frmActivoFijoCuentasContable frmcuentasActivo = new frmActivoFijoCuentasContable(text);
+            if (frmcuentasActivo.ShowDialog() != DialogResult.OK)
+                return text;
+            else
+            {
+                cboCuentaActivo_Click(new object(), new EventArgs());
+                cboCuentaCrearActivo_Click(new object(), new EventArgs());
+                return frmcuentasActivo.Result;
+            }
+
+        }
+        private void txtctaDepre_DoubleClick(object sender, EventArgs e)
+        {
+            if (Estado > 0)
+                txtctaDepre.Text = BuscarCuentaActivosFijos(txtctaDepre.Text);
         }
     }
 }

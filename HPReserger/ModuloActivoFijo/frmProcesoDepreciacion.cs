@@ -44,7 +44,7 @@ namespace HPReserger.ModuloActivoFijo
         }
         private void cargarValoresDefecto()
         {
-            Configuraciones.CargarTextoPorDefecto(txtGlosa);
+            Configuraciones.CargarTextoPorDefecto(txtGlosa, txtfiltro);
         }
 
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,15 +87,16 @@ namespace HPReserger.ModuloActivoFijo
             //if (!txtGlosa.EstaLLeno())
             txtGlosa.Text = $"DEPREC.{cboMesAnio.FechaFinMes.ToString("MMMyy")}/";
         }
-
+        DataView dv;
         private void CargarDatos()
         {
-            Dtgconten.DataSource = CapaLogica.ActivoFijosParaDepreciar(_idempresa, cboMesAnio.FechaFinMes);
+            dv = CapaLogica.ActivoFijosParaDepreciar(_idempresa, cboMesAnio.FechaFinMes).AsDataView();
+            Dtgconten.DataSource = dv;
             ContarRegistros();
             //Quitamos que se pueda dar check a un registro Depreciado
             foreach (DataGridViewRow item in Dtgconten.Rows)
             {
-                if (item.Cells[xCompensado.Name].Value.ToString() == "SI")
+                if (item.Cells[xCompensado.Name].Value.ToString() != "FALTA")
                 {
                     item.Cells[xok.Name].ReadOnly = true;
                 }
@@ -113,10 +114,11 @@ namespace HPReserger.ModuloActivoFijo
             {
                 Estado = 0;
                 ModoEdicion(false);
-                if (Dtgconten.DataSource != null) Dtgconten.DataSource = ((DataTable)Dtgconten.DataSource).Clone();
+                if (Dtgconten.DataSource != null) Dtgconten.DataSource = dv.ToTable().Clone();
                 else Dtgconten.DataSource = null;
                 ConReg = 0;
                 ContarRegistros();
+                cargarValoresDefecto();
             }
         }
 
@@ -125,6 +127,7 @@ namespace HPReserger.ModuloActivoFijo
             cboempresa.Enabled = cboMesAnio.Enabled = !v;
             btnAvanzar.Enabled = !v;
             btnProcesar.Visible = v;
+            txtfiltro.Enabled = v;
             foreach (DataGridViewColumn item in Dtgconten.Columns)
                 item.ReadOnly = true;
             if (v)
@@ -169,6 +172,7 @@ namespace HPReserger.ModuloActivoFijo
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
+            txtfiltro.CargarTextoporDefecto();
             if (msgp("Seguro Desea Grabar la Depreciación") == DialogResult.Yes)
             {
                 if (Estado == 1) //Generar Asiento contable y Registro en la tabla de depreciacion
@@ -249,12 +253,13 @@ namespace HPReserger.ModuloActivoFijo
                                 (decimal)item.Cells[xVTributario.Name].Value, (decimal)item.Cells[xVContable.Name].Value, CuoAsiento, Glosa, _estado);
                         }
                     }
-                    msgOK("Depreciación Grabada con Exito");
+                    msgOK($"Depreciación Grabada con Exito\nCon Cuo: {CuoAsiento}");
                     Estado = 0;
                     ModoEdicion(false);
-                    CargarDatos();
-                    cargarValoresDefecto();
                     ConReg = 0;
+                    if (Dtgconten.DataSource != null) Dtgconten.DataSource = dv.ToTable().Clone();
+                    else Dtgconten.DataSource = null;
+                    cargarValoresDefecto();
                     ContarRegistros();
                 }
             }
@@ -264,10 +269,23 @@ namespace HPReserger.ModuloActivoFijo
         {
             if (e.RowIndex >= 0)
                 if (Estado == 1)
-                    if (Dtgconten[xCompensado.Name, e.RowIndex].Value.ToString() == "SI")
+                    if (Dtgconten[xCompensado.Name, e.RowIndex].Value.ToString() != "FALTA")
                     {
                         msgError("No Se Puede Seleccionar, El Activo Ya Fue Depreciado Este Mes");
                     }
+        }
+
+        private void txtfiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtfiltro.EstaLLeno())
+            {
+                dv.RowFilter = $"glosa like '%{txtfiltro.TextValido()}%' or ccdepre like '%{txtfiltro.TextValido()}%' or ccgasto like '%{txtfiltro.TextValido()}%' or ccactivo like '%{txtfiltro.TextValido()}%'";
+            }
+            else
+            {
+                dv.RowFilter = "";
+                dv.Sort = $" {xok.DataPropertyName} desc";
+            }
         }
     }
 }

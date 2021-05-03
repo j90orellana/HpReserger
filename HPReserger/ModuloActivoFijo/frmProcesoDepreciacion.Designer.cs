@@ -57,6 +57,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.btnProcesar = new HpResergerUserControls.ButtonPer();
+            this.txtfiltro = new HpResergerUserControls.TextBoxPer();
+            this.label3 = new System.Windows.Forms.Label();
+            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
             this.xok = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xdias = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +80,9 @@
             this.xcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCompensado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCCActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCCDepre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCCGasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,9 +161,9 @@
             // cboMesAnio
             // 
             this.cboMesAnio.BackColor = System.Drawing.Color.Transparent;
-            this.cboMesAnio.FechaConDiaActual = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
-            this.cboMesAnio.FechaFinMes = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
-            this.cboMesAnio.FechaInicioMes = new System.DateTime(2021, 4, 1, 0, 0, 0, 0);
+            this.cboMesAnio.FechaConDiaActual = new System.DateTime(2021, 5, 31, 0, 0, 0, 0);
+            this.cboMesAnio.FechaFinMes = new System.DateTime(2021, 5, 31, 0, 0, 0, 0);
+            this.cboMesAnio.FechaInicioMes = new System.DateTime(2021, 5, 1, 0, 0, 0, 0);
             this.cboMesAnio.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cboMesAnio.Location = new System.Drawing.Point(98, 44);
             this.cboMesAnio.Name = "cboMesAnio";
@@ -224,7 +230,10 @@
             this.xCGasto,
             this.xcc,
             this.xMes,
-            this.xCompensado});
+            this.xCompensado,
+            this.xCCActivo,
+            this.xCCDepre,
+            this.xCCGasto});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8F);
@@ -236,7 +245,7 @@
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtgconten.EnableHeadersVisualStyles = false;
             this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.Dtgconten.Location = new System.Drawing.Point(12, 113);
+            this.Dtgconten.Location = new System.Drawing.Point(12, 142);
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -248,7 +257,7 @@
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
-            this.Dtgconten.Size = new System.Drawing.Size(860, 411);
+            this.Dtgconten.Size = new System.Drawing.Size(860, 382);
             this.Dtgconten.TabIndex = 236;
             this.Dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentClick);
             this.Dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentDoubleClick);
@@ -367,6 +376,48 @@
             this.btnProcesar.UseVisualStyleBackColor = false;
             this.btnProcesar.Visible = false;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
+            // 
+            // txtfiltro
+            // 
+            this.txtfiltro.BackColor = System.Drawing.Color.White;
+            this.txtfiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtfiltro.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtfiltro.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtfiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfiltro.ForeColor = System.Drawing.Color.Black;
+            this.txtfiltro.Format = null;
+            this.txtfiltro.Location = new System.Drawing.Point(53, 118);
+            this.txtfiltro.MaxLength = 300;
+            this.txtfiltro.Name = "txtfiltro";
+            this.txtfiltro.NextControlOnEnter = null;
+            this.txtfiltro.Size = new System.Drawing.Size(425, 21);
+            this.txtfiltro.TabIndex = 340;
+            this.txtfiltro.Text = "Buscar Glosa o Cuenta";
+            this.txtfiltro.TextoDefecto = "Buscar Glosa o Cuenta";
+            this.txtfiltro.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtfiltro.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtfiltro.TextChanged += new System.EventHandler(this.txtfiltro_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 122);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 335;
+            this.label3.Text = "Buscar:";
+            // 
+            // separadorOre1
+            // 
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre1.Location = new System.Drawing.Point(0, 113);
+            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre1.Name = "separadorOre1";
+            this.separadorOre1.Size = new System.Drawing.Size(900, 2);
+            this.separadorOre1.TabIndex = 341;
             // 
             // xok
             // 
@@ -549,21 +600,45 @@
             // 
             this.xCompensado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xCompensado.DataPropertyName = "Compensado";
-            this.xCompensado.HeaderText = "Depre ciado";
+            this.xCompensado.HeaderText = "CUO";
             this.xCompensado.MinimumWidth = 50;
             this.xCompensado.Name = "xCompensado";
             this.xCompensado.Width = 50;
+            // 
+            // xCCActivo
+            // 
+            this.xCCActivo.DataPropertyName = "CCActivo";
+            this.xCCActivo.HeaderText = "CCActivo";
+            this.xCCActivo.Name = "xCCActivo";
+            this.xCCActivo.Visible = false;
+            // 
+            // xCCDepre
+            // 
+            this.xCCDepre.DataPropertyName = "CCDepre";
+            this.xCCDepre.HeaderText = "CCDepre";
+            this.xCCDepre.Name = "xCCDepre";
+            this.xCCDepre.Visible = false;
+            // 
+            // xCCGasto
+            // 
+            this.xCCGasto.DataPropertyName = "CCGasto";
+            this.xCCGasto.HeaderText = "CCGasto";
+            this.xCCGasto.Name = "xCCGasto";
+            this.xCCGasto.Visible = false;
             // 
             // frmProcesoDepreciacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.separadorOre1);
+            this.Controls.Add(this.txtfiltro);
             this.Controls.Add(this.btnProcesar);
             this.Controls.Add(this.lblRegistros);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtGlosa);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnAvanzar);
@@ -606,6 +681,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblRegistros;
         private HpResergerUserControls.ButtonPer btnProcesar;
+        private HpResergerUserControls.TextBoxPer txtfiltro;
+        private System.Windows.Forms.Label label3;
+        private HpResergerUserControls.SeparadorOre separadorOre1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn xok;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
         private System.Windows.Forms.DataGridViewTextBoxColumn xdias;
@@ -626,5 +704,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xcc;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMes;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCompensado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCCActivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCCDepre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCCGasto;
     }
 }

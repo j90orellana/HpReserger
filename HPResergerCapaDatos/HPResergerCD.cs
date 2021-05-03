@@ -4528,11 +4528,12 @@ namespace HPResergerCapaDatos
             object[] valores = { asiento, cuo, montoTotal, montoredondeo, montodiferencia, nroboleta, cuentaContableNacion, cuentacontablebanco, CuentaRedondeo, fechacontable, glosa, fkempresa, FechaPago, idcomprobante, TC, pkproyecto };
             return bd.DataTableFromProcedure("usp_PagarDetracionesVentaCabecera", parametros, valores, null);
         }
-        public DataTable PagarDetracionesDetalle(int @Asiento, string @Cuo, int @Empresa, int proyecto, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string @Ruc, string @Codfac, string @Numfac,
-            decimal @Total, decimal @tc, int @Idcuenta, string @Cuentacontablebanco, string CuentaRedondeo, DateTime @fechaContable, string @glosa, int @Usuario, int @idcomprobante, string nrooperacion, int tipopago)
+        public DataTable PagarDetracionesDetalle(int @Asiento, string @Cuo, int @Empresa, int proyecto, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string @Ruc, string @Codfac,
+            string @Numfac, decimal @Total, decimal @tc, int @Idcuenta, string @Cuentacontablebanco, string CuentaRedondeo, DateTime @fechaContable, string @glosa, int @Usuario, int @idcomprobante,
+            string nrooperacion, int tipopago)
         {
-            string[] parametros = { "@Asiento", "@Cuo", "@Empresa","@Proyecto", "@MontoTotal", "@MontoRedondeo", "@MontoDiferencia", "@Ruc", "@Codfac", "@Numfac", "@Total", "@tc", "@Idcuenta", "@Cuentacontablebanco",
-                "@CuentaRedondeo", "@fechaContable", "@glosa", "@Usuario", "@idcomprobante","@nrooperacion","@tipopago" };
+            string[] parametros = { "@Asiento", "@Cuo", "@Empresa","@Proyecto", "@MontoTotal", "@MontoRedondeo", "@MontoDiferencia", "@Ruc", "@Codfac", "@Numfac", "@Total", "@tc", "@Idcuenta",
+                "@Cuentacontablebanco",                "@CuentaRedondeo", "@fechaContable", "@glosa", "@Usuario", "@idcomprobante","@nrooperacion","@tipopago" };
             object[] valores = { @Asiento, @Cuo, @Empresa,proyecto, montoTotal, montoredondeo, montodiferencia, @Ruc, @Codfac, @Numfac, @Total, @tc, @Idcuenta, @Cuentacontablebanco, CuentaRedondeo, @fechaContable,
                 @glosa, @Usuario, @idcomprobante,nrooperacion,tipopago };
             return bd.DataTableFromProcedure("usp_PagarDetracionesDetalle", parametros, valores, null);

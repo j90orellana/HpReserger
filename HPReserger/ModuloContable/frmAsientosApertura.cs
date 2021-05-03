@@ -751,7 +751,7 @@ namespace HPReserger
             List<string> ListaAuxiliar = new List<string>();
             foreach (DataRow item in Tdatos.Rows)
             {
-                string valcuenta = item["Cuentacontable"].ToString().Substring(0, item["Cuentacontable"].ToString().IndexOf(' '));
+                string valcuenta = item["Cuenta_contable"].ToString();//.Substring(0, item["Cuenta_contable"].ToString().IndexOf(' '));
                 if (!ListaAuxiliar.Contains(valcuenta)) ListaAuxiliar.Add(valcuenta);
             }
             foreach (DataRow item in TDBalance.Rows)
