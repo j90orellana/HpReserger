@@ -1222,8 +1222,11 @@ namespace HPReserger
                 string[] CodNroFacRef;
                 string NumFacRefe = R.Cells[yNroComprobanteRef.Name].Value.ToString();
                 //Activo fijo
-                ActivoFijo = (int)R.Cells[xActivoFijo.Name].Value;
-                chkActivoFijo.Checked = ((int)R.Cells[xActivoFijo.Name].Value) == 0 ? false : true;
+                if (R.Cells[xActivoFijo.Name].Value != null)
+                {
+                    ActivoFijo = (int)R.Cells[xActivoFijo.Name].Value;
+                    chkActivoFijo.Checked = ((int)R.Cells[xActivoFijo.Name].Value) == 0 ? false : true;
+                }
                 //
                 if (NumFacRefe != "")
                 {

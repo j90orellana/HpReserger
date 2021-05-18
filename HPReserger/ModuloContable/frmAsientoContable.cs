@@ -832,7 +832,7 @@ namespace HPReserger
                 int[] Val = new int[] { -4, -5 };
                 if (!Val.Contains(int.Parse(dtgbusca[Iddinamica.Name, e.RowIndex].Value.ToString()))) btnreversa.Enabled = true;
                 int y = e.RowIndex;
-                dtgayuda3.DataSource = CapaLogica.BuscarAsientosContables(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa);
+                dtgayuda3.DataSource = CapaLogica.BuscarAsientosContables(dtgbusca[Codidasiento.Name, y].Value.ToString(), 4, _idempresa);
                 if (dtgayuda3.RowCount > 0)
                 {
                     dtpfecha.Value = Convert.ToDateTime(dtgbusca[Fechax.Name, e.RowIndex].Value);
@@ -876,7 +876,7 @@ namespace HPReserger
                     txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString().Trim();
                     cbomoneda.SelectedValue = (int)(dtgbusca[xmoneda.Name, e.RowIndex].Value.ToString() == "" ? 0 : dtgbusca[xmoneda.Name, e.RowIndex].Value);
                     ///fin
-                    DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa, fechita);
+                    DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[Codidasiento.Name, y].Value.ToString(), 4, _idempresa, fechita);
                     Dtgconten.DataSource = Datos;
                     ///Reviso si el Asiento esta Cuadrado
                     string[] ListaEstados = { "4", "0" };

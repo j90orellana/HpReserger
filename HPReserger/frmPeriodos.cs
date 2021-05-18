@@ -45,7 +45,7 @@ namespace HPReserger
         public void LimpiarValores()
         {
             Cargado1 = false;
-            txtbusaño.CargarTextoporDefecto(); txtbusempresa.CargarTextoporDefecto(); txtbusmes.CargarTextoporDefecto();
+            Configuraciones.CargarTextoPorDefecto(txtbusaño, txtbusempresa, txtbusmes, txtbusEstado);
             Cargado1 = true;
         }
         public void CargarDatos()
@@ -55,7 +55,7 @@ namespace HPReserger
         }
         public void CargarDatosFiltrado()
         {
-            dtgconten.DataSource = CapaLogica.Periodos(txtbusempresa.TextValido(), txtbusmes.TextValido(), txtbusaño.TextValido());
+            dtgconten.DataSource = CapaLogica.Periodos(txtbusempresa.TextValido(), txtbusmes.TextValido(), txtbusaño.TextValido(), txtbusEstado.TextValido());
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
         }
         public void CargarMeses(ComboBox combito)

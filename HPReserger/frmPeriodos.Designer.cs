@@ -60,6 +60,7 @@
             this.txtbusempresa = new HpResergerUserControls.TextBoxPer();
             this.lblmensaje = new System.Windows.Forms.Label();
             this.btnCrearPeriodo = new System.Windows.Forms.Button();
+            this.txtbusEstado = new HpResergerUserControls.TextBoxPer();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -371,11 +372,11 @@
             this.txtbusmes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusmes.ForeColor = System.Drawing.Color.Black;
             this.txtbusmes.Format = null;
-            this.txtbusmes.Location = new System.Drawing.Point(87, 36);
+            this.txtbusmes.Location = new System.Drawing.Point(92, 36);
             this.txtbusmes.MaxLength = 300;
             this.txtbusmes.Name = "txtbusmes";
             this.txtbusmes.NextControlOnEnter = null;
-            this.txtbusmes.Size = new System.Drawing.Size(155, 21);
+            this.txtbusmes.Size = new System.Drawing.Size(84, 21);
             this.txtbusmes.TabIndex = 6;
             this.txtbusmes.Text = "Buscar Mes";
             this.txtbusmes.TextoDefecto = "Buscar Mes";
@@ -392,11 +393,11 @@
             this.txtbusempresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusempresa.ForeColor = System.Drawing.Color.Black;
             this.txtbusempresa.Format = null;
-            this.txtbusempresa.Location = new System.Drawing.Point(245, 36);
+            this.txtbusempresa.Location = new System.Drawing.Point(184, 36);
             this.txtbusempresa.MaxLength = 300;
             this.txtbusempresa.Name = "txtbusempresa";
             this.txtbusempresa.NextControlOnEnter = null;
-            this.txtbusempresa.Size = new System.Drawing.Size(402, 21);
+            this.txtbusempresa.Size = new System.Drawing.Size(363, 21);
             this.txtbusempresa.TabIndex = 7;
             this.txtbusempresa.Text = "Buscar Empresa";
             this.txtbusempresa.TextoDefecto = "Buscar Empresa";
@@ -429,6 +430,27 @@
             this.btnCrearPeriodo.UseVisualStyleBackColor = true;
             this.btnCrearPeriodo.Click += new System.EventHandler(this.btnCrearPeriodo_Click);
             // 
+            // txtbusEstado
+            // 
+            this.txtbusEstado.BackColor = System.Drawing.Color.White;
+            this.txtbusEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusEstado.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusEstado.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusEstado.ForeColor = System.Drawing.Color.Black;
+            this.txtbusEstado.Format = null;
+            this.txtbusEstado.Location = new System.Drawing.Point(553, 36);
+            this.txtbusEstado.MaxLength = 300;
+            this.txtbusEstado.Name = "txtbusEstado";
+            this.txtbusEstado.NextControlOnEnter = null;
+            this.txtbusEstado.Size = new System.Drawing.Size(94, 21);
+            this.txtbusEstado.TabIndex = 6;
+            this.txtbusEstado.Text = "Buscar Estado";
+            this.txtbusEstado.TextoDefecto = "Buscar Estado";
+            this.txtbusEstado.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusEstado.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusEstado.TextChanged += new System.EventHandler(this.txtbusmes_TextChanged);
+            // 
             // frmPeriodos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,6 +459,7 @@
             this.Controls.Add(this.lblmensaje);
             this.Controls.Add(this.btncleanfind);
             this.Controls.Add(this.txtbusempresa);
+            this.Controls.Add(this.txtbusEstado);
             this.Controls.Add(this.txtbusmes);
             this.Controls.Add(this.txtbusaño);
             this.Controls.Add(this.button1);
@@ -491,5 +514,6 @@
         private HpResergerUserControls.TextBoxPer txtbusempresa;
         private System.Windows.Forms.Label lblmensaje;
         private System.Windows.Forms.Button btnCrearPeriodo;
+        private HpResergerUserControls.TextBoxPer txtbusEstado;
     }
 }

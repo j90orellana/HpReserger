@@ -2105,9 +2105,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Periodos(opcion, empresa, fechas);
         }
-        public DataTable Periodos(string @empresa, string mes, string año)
+        public DataTable Periodos(string @empresa, string mes, string año, string estado)
         {
-            return cdOrdenPedido.Periodos(empresa, mes, año);
+            return cdOrdenPedido.Periodos(empresa, mes, año, estado);
         }
         public Boolean ValidarCrearPeriodo(int @empresa, DateTime fechacontable)
         {
