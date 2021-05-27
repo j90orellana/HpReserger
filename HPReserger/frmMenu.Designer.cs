@@ -318,6 +318,7 @@
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
             this.TimerTC = new System.Windows.Forms.Timer(this.components);
+            this.reporteActivosFijosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1724,6 +1725,7 @@
             this.crearActivoFijoToolStripMenuItem,
             this.depreciacionesToolStripMenuItem,
             this.reporteDepreciaciónToolStripMenuItem,
+            this.reporteActivosFijosToolStripMenuItem,
             this.toolStripSeparator19,
             this.cuentasContablesToolStripMenuItem});
             this.activoFijoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("activoFijoToolStripMenuItem.Image")));
@@ -3106,6 +3108,15 @@
             this.TimerTC.Tag = "3600000";
             this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
             // 
+            // reporteActivosFijosToolStripMenuItem
+            // 
+            this.reporteActivosFijosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteActivosFijosToolStripMenuItem.Image")));
+            this.reporteActivosFijosToolStripMenuItem.Name = "reporteActivosFijosToolStripMenuItem";
+            this.reporteActivosFijosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.reporteActivosFijosToolStripMenuItem.Tag = "1415005";
+            this.reporteActivosFijosToolStripMenuItem.Text = "Reporte Activos Fijos";
+            this.reporteActivosFijosToolStripMenuItem.Click += new System.EventHandler(this.reporteActivosFijosToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -3433,5 +3444,6 @@
         private System.Windows.Forms.ToolStripMenuItem depreciacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripMenuItem reporteDepreciaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteActivosFijosToolStripMenuItem;
     }
 }

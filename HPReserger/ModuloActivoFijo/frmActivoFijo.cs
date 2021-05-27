@@ -31,6 +31,7 @@ namespace HPReserger.ModuloActivoFijo
         {
             cargarValoresDefecto();
             CargarEmpresa();
+            cargarcombos();
             //CargarDatos();
             CArgarCuentas();
             CargarCuentaActivo();
@@ -39,6 +40,57 @@ namespace HPReserger.ModuloActivoFijo
             //CargarActivos();
         }
 
+        private void cargarcombos()
+        {
+            CargarResponsables(cboResponsable);
+            CargarGerencia(cboGerencia);
+            CargarActivos(cboActivo);
+            CargarTiposActivos(cbotipo);
+            CargarMetodoDepreciacion(cboMetodo);
+        }
+        private void CargarMetodoDepreciacion(ComboBox cboMetodo)
+        {
+            DataTable TData = CapaLogica.CualquierTablaFiltrada("TBL_AF_MetodoDepreciacion", "ESTADO", 1);
+            cboMetodo.DisplayMember = "nombre";
+            cboMetodo.ValueMember = "pkid";
+            cboMetodo.DataSource = TData;
+        }
+        private void CargarActivos(ComboBox cboCombo)
+        {
+            DataTable TData = CapaLogica.CualquierTabla("TBL_AF_Activo");
+            cboCombo.DisplayMember = "nombre";
+            cboCombo.ValueMember = "pkid";
+            cboCombo.DataSource = TData;
+        }
+        private void CargarTiposActivos(ComboBox cboCombo)
+        {
+            DataTable TData = CapaLogica.CualquierTabla("TBL_AF_TipoActivo");
+            cboCombo.DisplayMember = "nombre";
+            cboCombo.ValueMember = "pkid";
+            cboCombo.DataSource = TData;
+        }
+        private void CargarGerencia(ComboBox cboCombo)
+        {
+            DataTable TData = CapaLogica.CualquierTabla("TBL_Gerencia");
+            cboCombo.DisplayMember = "gerencia";
+            cboCombo.ValueMember = "id_gerencia";
+            cboCombo.DataSource = TData;
+            DataRow dFila = TData.NewRow();
+            dFila[0] = 0;
+            dFila[1] = "NINGUNA";
+            TData.Rows.InsertAt(dFila, 0);
+        }
+        private void CargarResponsables(ComboBox cboCombo)
+        {
+            DataTable TData = CapaLogica.BuscarEmpleadoActivo();
+            cboCombo.DisplayMember = "empleado";
+            cboCombo.ValueMember = "tipo";
+            cboCombo.DataSource = TData;
+            DataRow dFila = TData.NewRow();
+            dFila[0] = "";
+            dFila[1] = "NINGUNO";
+            TData.Rows.InsertAt(dFila, 0);
+        }
         private void CargarActivos()
         {
             dtgActivos.DataSource = CapaLogica.ActivoFijo(_idempresa);
@@ -65,6 +117,7 @@ namespace HPReserger.ModuloActivoFijo
             dtpFechaActivacion.Value = dtpFechaContable.Value = DateTime.Now;
             Configuraciones.CargarTextoPorDefecto(txtGlosa, txtPorcentajeContable, txtPorcentajeTributario, txtValorActivo, txtValorResidual, txtVidaUtil);
             Configuraciones.CargarTextoPorDefecto(txtCuentaContable, txtDescripcionCuenta);
+            Configuraciones.CargarTextoPorDefecto(txtcodigoTI, txtMarca, txtModelo, txtNumeroSerie, txtPartida);
         }
         DataTable tDAtos;
         private void CargarDatos()
@@ -253,6 +306,10 @@ namespace HPReserger.ModuloActivoFijo
             if (cboproyecto.SelectedValue == null) { cboproyecto.Focus(); msgError("Seleccione un Proyecto"); return; }
             if (cboetapa.SelectedValue == null) { cboetapa.Focus(); msgError("Seleccione una Etapa"); return; }
             //
+            if (cboActivo.SelectedValue == null) { cboActivo.Focus(); msgError("Seleccione el Activo"); return; }
+            if (cbotipo.SelectedValue == null) { cbotipo.Focus(); msgError("Seleccione una Tipo de Activo"); return; }
+            if (cboMetodo.SelectedValue == null) { cboMetodo.Focus(); msgError("Seleccione un Metodo de Depreciación"); return; }
+            //
             if (!txtValorActivo.EstaLLeno()) { txtValorActivo.Focus(); msgError("El Valor del Activo, no puede ser CERO"); return; }
             if (txtValorResidual.DecimalValido() >= txtValorActivo.DecimalValido()) { txtValorResidual.Focus(); msgError("El Valor Residual no debe ser mayor al Valor del Activo"); return; }
             if (ConFacturas <= 0) { msgError("Debe seleccionar la Factura del Activo Fijo"); return; }
@@ -384,12 +441,22 @@ namespace HPReserger.ModuloActivoFijo
                 }
             }
             //GRABAR EL ACTIVO FIJO EN LA BASE
+            int activo = (int)cboActivo.SelectedValue;
+            int tipoactivo = (int)cbotipo.SelectedValue;
+            string codigoTI = txtcodigoTI.TextValido();
+            int metodo = (int)cboMetodo.SelectedValue;
+            int gerencia = (int)cboGerencia.SelectedValue;
+            string partida = txtPartida.TextValido();
+            string marca = txtMarca.TextValido();
+            string modelo = txtModelo.TextValido();
+            string numeroserie = txtNumeroSerie.TextValido();
+            string responsable = cboResponsable.SelectedValue.ToString();
             if (Estado == 1)
             {
                 CapaLogica.ActivoFijo(1, 0, _idempresa, _proyecto, _etapa, FechaActivacion, FechaContable, txtVidaUtil.DecimalValido(), txtPorcentajeTributario.DecimalValido(),
                     txtPorcentajeContable.DecimalValido(), txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas,
                     ConFacturas > 1 ? cboCuentaActivo.SelectedValue.ToString() : CuentaActivo, txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
-                  ConFacturas > 1 ? CuoAsiento : "", EstadoAct, FechaEmision, CuoFac);
+                  ConFacturas > 1 ? CuoAsiento : "", EstadoAct, FechaEmision, CuoFac, activo, tipoactivo, codigoTI, gerencia, metodo, partida, marca, modelo, numeroserie, responsable);
                 //CAMBIAMOS EL ESTADO DE LAS FACTURAS QUE TIENEN ACTIVO FIJO, CAMBIAMOS A 2 PARA IDENTIFICAR QUE ESA FACTURA ESTA ASOCIADA A UNA ACTIVO FIJO EN DEPRECIACION
                 foreach (string item in LisFac)
                     CapaLogica.ActivoFijo_CambiarEstadoFactura(int.Parse(item));
@@ -400,7 +467,7 @@ namespace HPReserger.ModuloActivoFijo
                 CapaLogica.ActivoFijo(2, _pkidActivo, _idempresa, _proyecto, _etapa, FechaActivacion, FechaContable, txtVidaUtil.DecimalValido(), txtPorcentajeTributario.DecimalValido(),
                    txtPorcentajeContable.DecimalValido(), txtValorResidual.DecimalValido(), txtValorActivo.DecimalValido(), txtGlosa.Text, Facturas,
                    ConFacturas > 1 ? cboCuentaActivo.SelectedValue.ToString() : CuentaActivo, txtCuentaContable.Text, cboCuentaDepreciacion.SelectedValue.ToString(),
-                   ConFacturas > 1 ? CuoAsiento : "", EstadoAct, FechaEmision, CuoFac);
+                   ConFacturas > 1 ? CuoAsiento : "", EstadoAct, FechaEmision, CuoFac, activo, tipoactivo, codigoTI, gerencia, metodo, partida, marca, modelo, numeroserie, responsable);
                 //CAMBIAMOS EL ESTADO DE LAS FACTURAS QUE TIENEN ACTIVO FIJO, CAMBIAMOS A 2 PARA IDENTIFICAR QUE ESA FACTURA ESTA ASOCIADA A UNA ACTIVO FIJO EN DEPRECIACION
                 foreach (string item in LisFac)
                     CapaLogica.ActivoFijo_CambiarEstadoFactura(int.Parse(item));
@@ -421,6 +488,7 @@ namespace HPReserger.ModuloActivoFijo
             ModoEdicion(true);
             CargarDatos();
             cargarValoresDefecto();
+            cboResponsable.SelectedIndex = 0;
         }
 
         private void ModoEdicion(bool v)
@@ -431,6 +499,8 @@ namespace HPReserger.ModuloActivoFijo
                 cboCuentaActivo, cboCuentaDepreciacion, btnAceptar, chkFacturaTodas, txtCtaActivo, txtctaDepre);
                 Configuraciones.Desactivar(btnmodificar, btnnuevo, dtgActivos, btnActualizar);
                 Dtgconten.Columns[0].ReadOnly = false;
+
+                Configuraciones.Activar(cboActivo, cbotipo, cboMetodo, cboGerencia, cboResponsable, txtcodigoTI, txtMarca, txtModelo, txtNumeroSerie, txtPartida);
             }
             else
             {
@@ -440,6 +510,8 @@ namespace HPReserger.ModuloActivoFijo
                 Configuraciones.Activar(btnmodificar, btnnuevo, dtgActivos, btnActualizar);
                 foreach (DataGridViewColumn item in Dtgconten.Columns)
                     item.ReadOnly = !v;
+                Configuraciones.Desactivar(cboActivo, cbotipo, cboMetodo, cboGerencia, cboResponsable, txtcodigoTI, txtMarca, txtModelo, txtNumeroSerie, txtPartida);
+
             }
         }
         private void btnmodificar_Click(object sender, EventArgs e)
@@ -452,6 +524,8 @@ namespace HPReserger.ModuloActivoFijo
             if (CuoAsiento != "")
                 oldAsiento = int.Parse(CuoAsiento.Substring(6));
             else oldAsiento = 0;
+            Configuraciones.CargarTextoPorDefectoDeVacios(txtcodigoTI, txtMarca, txtModelo, txtNumeroSerie, txtPartida);
+
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
@@ -497,6 +571,17 @@ namespace HPReserger.ModuloActivoFijo
                 CargarDatos();
                 SeleccionarFacturasdelActivo();
                 txtValorActivo.Text = Fila.Cells[valorActivoDataGridViewTextBoxColumn.Name].Value.ToString();
+                //
+                cboActivo.SelectedValue = (int)Fila.Cells[xactivo.Name].Value;
+                cbotipo.SelectedValue = (int)Fila.Cells[xtipoactivo.Name].Value;
+                cboResponsable.SelectedValue = Fila.Cells[xresponsable.Name].Value;
+                cboGerencia.SelectedValue = (int)Fila.Cells[xgerencia.Name].Value;
+                cboMetodo.SelectedValue = (int)Fila.Cells[xmetodo.Name].Value;
+                txtcodigoTI.Text = Fila.Cells[xcodigoti.Name].Value.ToString();
+                txtMarca.Text = Fila.Cells[xmarca.Name].Value.ToString();
+                txtModelo.Text = Fila.Cells[xmodelo.Name].Value.ToString();
+                txtNumeroSerie.Text = Fila.Cells[xpartida.Name].Value.ToString();
+                txtPartida.Text = Fila.Cells[xnumeroserie.Name].Value.ToString();
             }
         }
         private void SeleccionarFacturasdelActivo()

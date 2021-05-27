@@ -1165,67 +1165,68 @@ namespace HPResergerFunciones
             ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[index - 1];
             //Hoja_Trabajo.Name = nombrehoja; 
             ///Ponemos Nombre a las Celdas      
-            foreach (RangoCelda Nombres in NombresCeldas)
-            {
-                if (Nombres.Nombre == null)
+            if (NombresCeldas != null)
+                foreach (RangoCelda Nombres in NombresCeldas)
                 {
-                    Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.ValorDecimal;
-                    Hoja_Trabajo.Cells[Nombres.fila].Style.Numberformat.Format = Nombres.Formato;//Formato Contabilidad
-                }
-                else
-                    Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.Nombre;
-                //
-                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
-                Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.Font.Bold = Nombres._Negrita;
-                if (Nombres.TamañoFuente != 0)
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Size = Nombres.TamañoFuente;
-                if (!Nombres._Centrar)
-                {
-                    Hoja_Trabajo.Cells[Nombres.fila /*+ ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    if (Nombres.Nombre == null)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.ValorDecimal;
+                        Hoja_Trabajo.Cells[Nombres.fila].Style.Numberformat.Format = Nombres.Formato;//Formato Contabilidad
+                    }
+                    else
+                        Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.Nombre;
+                    //
+                    Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                     Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
-                }
-                else
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Merge = true;
-                if (Nombres.Fuente != null)
-                {
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Name = Nombres.Fuente.Name;
-                }
-                if (Nombres.Alineado != null)
-                {
-                    if (Alineado.izquierda == Nombres.Alineado)
+                    Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.Font.Bold = Nombres._Negrita;
+                    if (Nombres.TamañoFuente != 0)
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Size = Nombres.TamañoFuente;
+                    if (!Nombres._Centrar)
                     {
-                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                        Hoja_Trabajo.Cells[Nombres.fila /*+ ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                        Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
                     }
-                    if (Alineado.derecha == Nombres.Alineado)
+                    else
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Merge = true;
+                    if (Nombres.Fuente != null)
                     {
-                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Name = Nombres.Fuente.Name;
                     }
-                    if (Alineado.centro == Nombres.Alineado)
+                    if (Nombres.Alineado != null)
                     {
+                        if (Alineado.izquierda == Nombres.Alineado)
+                        {
+                            Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                        }
+                        if (Alineado.derecha == Nombres.Alineado)
+                        {
+                            Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                        }
+                        if (Alineado.centro == Nombres.Alineado)
+                        {
+                            Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                        }
+                    }
+                    //backcolor
+                    if (Nombres.BackColor != Color.Empty)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Fill.BackgroundColor.SetColor(Nombres.BackColor);
+                        //ForzarAutoAjustado = true;
+                    }
+                    //la linea de abajo si vale solo que hay que corregir por la letra blancas
+                    if (Nombres.ForeColor != Color.Empty)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Color.SetColor(Nombres.ForeColor);
+                        //ForzarAutoAjustado = true;
+                    }
+                    if (Nombres.Wrap)
+                    {
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.WrapText = true;
+                        Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                         Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                     }
                 }
-                //backcolor
-                if (Nombres.BackColor != Color.Empty)
-                {
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Fill.BackgroundColor.SetColor(Nombres.BackColor);
-                    //ForzarAutoAjustado = true;
-                }
-                //la linea de abajo si vale solo que hay que corregir por la letra blancas
-                if (Nombres.ForeColor != Color.Empty)
-                {
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Color.SetColor(Nombres.ForeColor);
-                    //ForzarAutoAjustado = true;
-                }
-                if (Nombres.Wrap)
-                {
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.WrapText = true;
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-                    Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                }
-            }
             //Recorremos el DataGridView rellenando la hoja de trabajo
             if (grd != null)
             {

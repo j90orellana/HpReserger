@@ -64,7 +64,7 @@ namespace HpResergerUserControls
         public static string Razon = "VARIOS";
         public static int IdComprobante = 0;
         public static string NumFac = "0";
-        public static string SerFac = "0";        
+        public static string SerFac = "0";
         //FIN VALORES PARA DOCUMENTOS
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
         public static string FilterImagenes()
@@ -320,6 +320,13 @@ namespace HpResergerUserControls
                     ((TextBoxPer)x).CargarTextoporDefecto();
                 }
             }
+        }
+
+        public static void CargarTextoPorDefectoDeVacios(params TextBox[] control)
+        {
+            foreach (TextBoxPer x in control)
+                if (!x.EstaLLeno())
+                    x.CargarTextoporDefecto();
         }
     }
 

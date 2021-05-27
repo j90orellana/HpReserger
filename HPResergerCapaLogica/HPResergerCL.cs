@@ -46,6 +46,16 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.RegistroVentas(opcion, tipo, nrocompra, tipoid, nro, cliente, producto, proyecto, etapa, cantida, precio, vendedor, usuario);
         }
+
+        public DataTable CualquierTablaFiltrada(string NombreTabla, string ColumnaFiltrar, int VEntero)
+        {
+            return cdOrdenPedido.CualquierTablaFiltrada(NombreTabla, ColumnaFiltrar, VEntero);
+        }
+        public DataTable CualquierTablaFiltrada(string NombreTabla, string ColumnaFiltrar, string VString)
+        {
+            return cdOrdenPedido.CualquierTablaFiltrada(NombreTabla, ColumnaFiltrar, VString);
+        }
+
         public DataTable Proyecto_Productos(int codigo, int opcion, int proy, int prod, decimal cantidad, int unidad, int moneda, decimal precipre, decimal precio, string etapa, int estado, string observacion, int usuarioo, int tipoinicial, decimal vinicial)
         {
             return cdOrdenPedido.Proyecto_Productos(codigo, opcion, proy, prod, moneda, unidad, cantidad, precipre, precio, etapa, estado, observacion, usuarioo, tipoinicial, vinicial);
@@ -2537,20 +2547,28 @@ namespace HPResergerCapaLogica
         }
         public DataTable ActivoFijo(int @opcion, int @pkid, int @fkEmpresa, int @pkProyecto, int @pkEtapa, DateTime @FechaActivacion, DateTime @FechaContable, decimal @VidaUtil, decimal @PorcentajeTributario,
           decimal @PorcentajeContable, decimal @ValorResidual, decimal @ValorActivo, string @Glosa, string @Facturas, string @CuentaActivo, string @CuentaGasto, string @CuentaDepreciacion, string @CUOActivo, int @Estado
-            , DateTime fechadoc, string cuofac)
+            , DateTime fechadoc, string cuofac, int @activo, int @tipoactivo, string @codigoti, int gerencia, int metodo, string partida, string marca, string modelo, string numeroserie, string responsable)
         {
             return cdOrdenPedido.ActivoFijo(@opcion, @pkid, @fkEmpresa, @pkProyecto, @pkEtapa, @FechaActivacion, @FechaContable, @VidaUtil, @PorcentajeTributario, @PorcentajeContable, @ValorResidual, @ValorActivo,
-                @Glosa, @Facturas, @CuentaActivo, @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado, fechadoc, cuofac);
+                @Glosa, @Facturas, @CuentaActivo, @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado, fechadoc, cuofac, @activo, @tipoactivo, @codigoti, gerencia, metodo, partida, marca, modelo, numeroserie, responsable);
+        }
+        public DataTable ActivoFijos_Saldos(DateTime Fecha)
+        {
+            return cdOrdenPedido.ActivoFijos_Saldos(Fecha);
+        }
+        public DataTable ActivoFijos_SaldosResumen(DateTime Fecha)
+        {
+            return cdOrdenPedido.ActivoFijos_SaldosResumen(Fecha);
         }
         public DataTable ActivoFijo(int @fkEmpresa)
         {
             DateTime f = DateTime.Now;
-            return cdOrdenPedido.ActivoFijo(0, 0, @fkEmpresa, 0, 0, f, f, 0, 0, 0, 0, 0, "", "", "", "", "", "", 0, f, "");
+            return cdOrdenPedido.ActivoFijo(0, 0, @fkEmpresa, 0, 0, f, f, 0, 0, 0, 0, 0, "", "", "", "", "", "", 0, f, "", 0, 0, "", 0, 0, "", "", "", "", "");
         }
         public DataTable ActivoFijo_CambiarEstadoFactura(int Factura)
         {
             DateTime f = DateTime.Now;
-            return cdOrdenPedido.ActivoFijo(9, Factura, 0, 0, 0, f, f, 0, 0, 0, 0, 0, "", "", "", "", "", "", 0, f, "");
+            return cdOrdenPedido.ActivoFijo(9, Factura, 0, 0, 0, f, f, 0, 0, 0, 0, 0, "", "", "", "", "", "", 0, f, "", 0, 0, "", 0, 0, "", "", "", "", "");
         }
         public DataTable ReporteDepreciacionActivoFijo(int empresa, DateTime fechaini, DateTime fechafin)
         {

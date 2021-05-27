@@ -3096,6 +3096,18 @@ namespace HPResergerCapaDatos
             object[] valores = { Tabla, campo, fila };
             return bd.DataTableFromProcedure("usp_CualquierTablaMenos", parametros, valores, null);
         }
+        public DataTable CualquierTablaFiltrada(string Tabla, string campo, int VEntero)
+        {
+            string[] parametros = { "@tabla", "@campo", "@vEntero", "@Vstring" };
+            object[] valores = { Tabla, campo, VEntero, null };
+            return bd.DataTableFromProcedure("usp_CualquierTablaFiltrada", parametros, valores, null);
+        }
+        public DataTable CualquierTablaFiltrada(string Tabla, string campo, string VString)
+        {
+            string[] parametros = { "@tabla", "@campo", "@vEntero", "@Vstring" };
+            object[] valores = { Tabla, campo, null, VString };
+            return bd.DataTableFromProcedure("usp_CualquierTablaFiltrada", parametros, valores, null);
+        }
         public DataTable ListarSECombo(int Usuario, int Solicitud)
         {
             string[] parametros = { "@Usuario", "@Solicitud" };
@@ -4436,7 +4448,7 @@ namespace HPResergerCapaDatos
         public DataTable Periodos(string @empresa, string mes, string año, string estado)
         {
             string[] parametros = { "@empresa", "@mes", "@año", "@estado" };
-            object[] valores = { empresa, mes, año, estado  };
+            object[] valores = { empresa, mes, año, estado };
             return bd.DataTableFromProcedure("usp_PeriodosBusqueda", parametros, valores, null);
         }
         public DataTable ValidarCrearPeriodo(int @empresa, DateTime fechacontable)
@@ -4730,6 +4742,18 @@ namespace HPResergerCapaDatos
             object[] valores = { Fecha };
             return bd.DataTableFromProcedure("usp_TipodeCambioxDia", parametros, valores, null);
         }
+        public DataTable ActivoFijos_Saldos(DateTime Fecha)
+        {
+            string[] parametros = { "@fecha" };
+            object[] valores = { Fecha };
+            return bd.DataTableFromProcedure("usp_ActivoFijos_Saldos", parametros, valores, null);
+        }
+        public DataTable ActivoFijos_SaldosResumen(DateTime Fecha)
+        {
+            string[] parametros = { "@fecha" };
+            object[] valores = { Fecha };
+            return bd.DataTableFromProcedure("usp_ActivoFijos_Saldos_Resumen", parametros, valores, null);
+        }
         public DataTable ActivoFijoCrear(int empresa, int activofijo)
         {
             string[] parametros = { "@empresa", "@activofijo" };
@@ -4751,12 +4775,13 @@ namespace HPResergerCapaDatos
         }
         public DataTable ActivoFijo(int @opcion, int @pkid, int @fkEmpresa, int @pkProyecto, int @pkEtapa, DateTime @FechaActivacion, DateTime @FechaContable, decimal @VidaUtil, decimal @PorcentajeTributario,
             decimal @PorcentajeContable, decimal @ValorResidual, decimal @ValorActivo, string @Glosa, string @Facturas, string @CuentaActivo, string @CuentaGasto, string @CuentaDepreciacion, string @CUOActivo, int @Estado
-            , DateTime fechadoc, string cuofac)
+            , DateTime fechadoc, string cuofac, int @activo, int @tipoactivo, string @codigoti, int gerencia, int metodo, string partida, string marca, string modelo, string numeroserie, string responsable)
         {
-            string[] parametros = { "@opcion", "@pkid", "@fkEmpresa", "@pkProyecto", "@pkEtapa", "@FechaActivacion", "@FechaContable", "@VidaUtil", "@PorcentajeTributario", "@PorcentajeContable", "@ValorResidual",
-                "@ValorActivo", "@Glosa", "@Facturas", "@CuentaActivo", "@CuentaGasto", "@CuentaDepreciacion", "@CUOActivo", "@Estado" ,"@fechadoc","@cuofac"};
-            object[] valores = { @opcion, @pkid, @fkEmpresa, @pkProyecto, @pkEtapa, @FechaActivacion, @FechaContable, @VidaUtil, @PorcentajeTributario, @PorcentajeContable, @ValorResidual, @ValorActivo,
-                @Glosa, @Facturas, @CuentaActivo, @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado ,fechadoc,cuofac};
+            string[] parametros = { "@opcion", "@pkid", "@fkEmpresa", "@pkProyecto", "@pkEtapa", "@FechaActivacion", "@FechaContable", "@VidaUtil", "@PorcentajeTributario", "@PorcentajeContable", "@ValorResidual", "@ValorActivo",
+                "@Glosa", "@Facturas", "@CuentaActivo", "@CuentaGasto", "@CuentaDepreciacion", "@CUOActivo", "@Estado", "@fechadoc", "@cuofac", "@Activo", "@TipoActivo", "@CodigoTI", "@Gerencia", "@Metodo", "@Partida", "@Marca",
+                "@Modelo", "@NumeroSerie", "@Responsable" };
+            object[] valores = { @opcion, @pkid, @fkEmpresa, @pkProyecto, @pkEtapa, @FechaActivacion, @FechaContable, @VidaUtil, @PorcentajeTributario, @PorcentajeContable, @ValorResidual, @ValorActivo, @Glosa, @Facturas, @CuentaActivo,
+                @CuentaGasto, @CuentaDepreciacion, @CUOActivo, @Estado, fechadoc, cuofac, @activo, @tipoactivo, @codigoti, gerencia, metodo, partida, marca, modelo, numeroserie, responsable };
             return bd.DataTableFromProcedure("usp_ActivoFijo", parametros, valores, null);
         }
         public DataTable ReporteDepreciacionActivoFijo(int empresa, DateTime fechaini, DateTime fechafin)

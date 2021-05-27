@@ -39,7 +39,6 @@ namespace HPReserger.ModuloActivoFijo
         DataTable TDatos;
         DateTime FechaInicial, FechaFin;
         private string NameEmpresa;
-
         private void btnProcesar_Click(object sender, EventArgs e)
         {
             //VALIDACIONES

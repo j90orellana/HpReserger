@@ -5080,5 +5080,28 @@ namespace HPReserger
         {
             frmreporteCostoyDepreciacion = null;
         }
+        ModuloActivoFijo.frmReporteDepreciaciones frmReporteDepreciaciones;
+        private void reporteActivosFijosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmReporteDepreciaciones == null)
+            {
+                frmReporteDepreciaciones = new ModuloActivoFijo.frmReporteDepreciaciones();
+                frmReporteDepreciaciones.MdiParent = this;
+                frmReporteDepreciaciones.Icon = ICono;
+                frmReporteDepreciaciones.FormClosed += new FormClosedEventHandler(CerrarfrmReporteDepreciaciones);
+                frmReporteDepreciaciones.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmReporteDepreciaciones.Activate();
+                ValidarVentanas(frmReporteDepreciaciones);
+            }
+        }
+
+        private void CerrarfrmReporteDepreciaciones(object sender, FormClosedEventArgs e)
+        {
+            frmReporteDepreciaciones = null;
+        }
     }
 }
