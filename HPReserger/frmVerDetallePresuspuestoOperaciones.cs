@@ -18,7 +18,7 @@ namespace HPReserger
             InitializeComponent();
         }
         public int etapa;
-        public int cuenta;
+        public string cuenta;
         public DateTime fecha;
         public int Tipo;
         HPResergerCapaLogica.HPResergerCL Ccampos = new HPResergerCapaLogica.HPResergerCL();

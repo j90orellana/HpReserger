@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,12 +23,18 @@ namespace HPReserger
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmReportedeFlujoOperaciones_Load(object sender, EventArgs e)
         {
+            CargarEmpresas();          
+        }
+
+        private void CargarEmpresas()
+        {
             cboempresa.ValueMember = "codigo";
             cboempresa.DisplayMember = "descripcion";
             cboempresa.DataSource = CapaLogica.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
             if (cboempresa.Items.Count < 1)
                 msg("No hay Empresas");
         }
+
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboempresa.SelectedIndex > -1)
@@ -58,7 +65,9 @@ namespace HPReserger
         {
             this.Close();
         }
-
+        public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        string EmpresaValor = "";
+        string NameProyecto = "";
         private void btnexportarexcel_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
@@ -66,12 +75,40 @@ namespace HPReserger
                 int a = 0;
                 foreach (DataGridViewRow xx in dtgconten.Rows)
                 {
-                    if ((decimal)xx.Cells[Importe.Name].Value != 0 || (decimal)xx.Cells[importe_proy.Name].Value != 0 || (decimal)xx.Cells[Diferencia.Name].Value != 0)
-                        dtgconten_CellContentClick(sender, new DataGridViewCellEventArgs(2, a));
+                    if ((decimal)xx.Cells[Importe.Name].Value != 0 || (decimal)xx.Cells[importe_proy.Name].Value != 0 || (decimal)xx.Cells[Operaciones.Name].Value != 0)
+                        if ((int)xx.Cells[conta.Name].Value == 0)
+                            dtgconten_CellContentClick(sender, new DataGridViewCellEventArgs(2, a));
                     a++;
                 }
-                ExportarDataGridViewExcel(dtgconten);
-                msgOK("Exportado con Exito");
+                TDatos = ((DataTable)dtgconten.DataSource).Copy();
+                
+                if (TDatos.Rows.Count == 0)
+                {
+                    msgError("No hay Registros para Mostrar");
+                    Cursor = Cursors.Default;
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    backgroundWorker1.WorkerSupportsCancellation = true;
+                    if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        Cursor = Cursors.Default;
+                        frmproce = new HPReserger.frmProcesando();
+                        frmproce.Show();
+                        EmpresaValor = cboempresa.Text;
+                        NameProyecto = cboproyecto.Text;
+                        if (!backgroundWorker1.IsBusy)
+                        {
+                            backgroundWorker1.RunWorkerAsync();
+                        }
+                    }
+                    else
+                    {
+                        Cursor = Cursors.Default;
+                        return;
+                    }
+                }
             }
             else
             {
@@ -201,7 +238,7 @@ namespace HPReserger
                     DateTime tiempo = DateTime.Parse("01/" + fila[0] + "/" + fila[1]);
                     // MSG(tiempo.ToString());
                     frmVerDetallePresuspuestoOperaciones Frmpresu = new frmVerDetallePresuspuestoOperaciones();
-                    Frmpresu.cuenta = int.Parse(dtgconten["cta_contable", y].Value.ToString());
+                    Frmpresu.cuenta =  (dtgconten[Cta_Contable.Name, y].Value.ToString());
                     Frmpresu.etapa = int.Parse(dtgconten["id_etapas", y].Value.ToString());
                     Frmpresu.fecha = tiempo;
                     Frmpresu.Icon = Icon;
@@ -209,6 +246,66 @@ namespace HPReserger
                     Frmpresu.ShowDialog();
                 }
             }
+        }
+        frmProcesando frmproce;
+        DataTable TDatos = new DataTable();
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (TDatos.Rows.Count > 0)
+            {                
+                string Carpeta = folderBrowserDialog1.SelectedPath;
+                //               
+                //string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
+                string valor = Carpeta + @"\";
+                //if (chkCarpetas.Checked)
+                //{
+                valor = Carpeta + @"\" + EmpresaValor + @"\";
+                if (!Directory.Exists(Carpeta + @"\" + EmpresaValor))
+                    Directory.CreateDirectory(Carpeta + @"\" + Configuraciones.ValidarRutaValida(EmpresaValor));
+                //}
+                string NameFile = "";
+                NameFile = valor + $"Reporte Flujo Caja  {EmpresaValor} - {NameProyecto}.xlsx";
+                //ELiminamos el Excel Antiguo                
+                File.Delete(NameFile);
+                File.Exists(NameFile);
+                //DEFINICIONES
+                int i = 0; //posicion de la hoja no  es index
+                int Hoja = 0;
+                Color BackAlterno = Color.FromArgb(220, 230, 241);
+                Color ForeAlterno = Color.Black;
+                Color BackColumna = Color.FromArgb(78, 129, 189);
+                Color ForeColumna = Color.White;
+                //
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(BackAlterno, Configuraciones.FuenteReportesTahoma8, ForeAlterno);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(BackColumna, Configuraciones.FuenteReportesTahoma8, ForeColumna);
+                //PRIMERA HOJA RESUMEN
+                Hoja++;
+                String _NombreHoja = $"Resumen";
+                List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+               Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{1 + i}", $"F{1+ i}", $"{EmpresaValor}", 12, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{2 + i}", $"F{2 + i}", $"{NameProyecto}", 9, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{3 + i}", $"F{3 + i}", $"Reporte de Presupuesto Etapas", 9, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+
+                TDatos.Columns.RemoveAt(10);
+                TDatos.Columns.RemoveAt(6);
+                TDatos.Columns.RemoveAt(4);
+                TDatos.Columns.RemoveAt(3);
+                TDatos.Columns.RemoveAt(0);
+                TDatos.Columns[5].SetOrdinal(2);
+                
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TDatos, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, Hoja, Celdas, 5, new int[] { }, new int[] { },
+                  new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, "", true);
+              
+                msgOK($"Archivo Grabados en \n{folderBrowserDialog1.SelectedPath}");
+                if (backgroundWorker1.IsBusy) backgroundWorker1.CancelAsync();
+            }
+            else msgError("No hay Registros en la Grilla");
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
         }
 
         public void Sumatoria()

@@ -1925,11 +1925,11 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarDetalleDelReporteDeCentrodeCostoFecha(etapa, cuenta, fecha);
         }
-        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFacturas(int etapa, int cuenta, DateTime fecha)
+        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFacturas(int etapa, string cuenta, DateTime fecha)
         {
             return cdOrdenPedido.ListarDetalleDelReporteDeCentrodeCostoFechaFacturas(etapa, cuenta, fecha);
         }
-        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFlujoFacturas(int etapa, int cuenta, DateTime fecha)
+        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFlujoFacturas(int etapa, string cuenta, DateTime fecha)
         {
             return cdOrdenPedido.ListarDetalleDelReporteDeCentrodeCostoFechaFlujoFacturas(etapa, cuenta, fecha);
         }

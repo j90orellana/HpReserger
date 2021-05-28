@@ -30,9 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportePresupuestoOperaciones));
             this.label1 = new System.Windows.Forms.Label();
             this.cboempresa = new System.Windows.Forms.ComboBox();
@@ -114,11 +116,27 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;          
+            this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iddep,
             this.conta,
@@ -131,11 +149,22 @@
             this.Operaciones,
             this.Diferencia,
             this.id_etapas});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dtgconten.EnableHeadersVisualStyles = false;
+            this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(12, 67);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
+            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -179,13 +208,13 @@
             this.Cta_Contable.Name = "Cta_Contable";
             this.Cta_Contable.ReadOnly = true;
             this.Cta_Contable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Cta_Contable.Width = 97;
+            this.Cta_Contable.Width = 96;
             // 
             // importe_proy
             // 
             this.importe_proy.DataPropertyName = "importe_proy";
-            dataGridViewCellStyle2.Format = "n2";
-            this.importe_proy.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "n2";
+            this.importe_proy.DefaultCellStyle = dataGridViewCellStyle3;
             this.importe_proy.HeaderText = "Importe_proy";
             this.importe_proy.Name = "importe_proy";
             this.importe_proy.ReadOnly = true;
@@ -199,7 +228,7 @@
             this.CodCentroC.Name = "CodCentroC";
             this.CodCentroC.ReadOnly = true;
             this.CodCentroC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CodCentroC.Width = 78;
+            this.CodCentroC.Width = 77;
             // 
             // descripcionetapa
             // 
@@ -209,46 +238,46 @@
             this.descripcionetapa.Name = "descripcionetapa";
             this.descripcionetapa.ReadOnly = true;
             this.descripcionetapa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.descripcionetapa.Width = 47;
+            this.descripcionetapa.Width = 46;
             // 
             // importe
             // 
             this.importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.importe.DataPropertyName = "importe_Ceco";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            this.importe.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.importe.DefaultCellStyle = dataGridViewCellStyle4;
             this.importe.HeaderText = "Importe";
             this.importe.Name = "importe";
             this.importe.ReadOnly = true;
             this.importe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.importe.Width = 53;
+            this.importe.Width = 52;
             // 
             // Operaciones
             // 
             this.Operaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Operaciones.DataPropertyName = "operaciones";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.Operaciones.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.Operaciones.DefaultCellStyle = dataGridViewCellStyle5;
             this.Operaciones.HeaderText = "Operaciones";
             this.Operaciones.Name = "Operaciones";
             this.Operaciones.ReadOnly = true;
             this.Operaciones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Operaciones.Width = 78;
+            this.Operaciones.Width = 77;
             // 
             // Diferencia
             // 
             this.Diferencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Diferencia.DataPropertyName = "diferencia";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.Diferencia.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.Diferencia.DefaultCellStyle = dataGridViewCellStyle6;
             this.Diferencia.HeaderText = "Diferencia";
             this.Diferencia.Name = "Diferencia";
             this.Diferencia.ReadOnly = true;
             this.Diferencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Diferencia.Width = 65;
+            this.Diferencia.Width = 64;
             // 
             // id_etapas
             // 
@@ -324,7 +353,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(623, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 28;
             this.label3.Text = "Totales:";
             // 
@@ -354,6 +383,7 @@
             this.button1.Text = "Análisis por Periodo";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4

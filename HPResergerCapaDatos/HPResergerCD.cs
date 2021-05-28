@@ -4184,13 +4184,13 @@ namespace HPResergerCapaDatos
             object[] valores = { etapa, cuenta, fecha };
             return bd.DataTableFromProcedure("usp_ListarDetalleDelReporteDeCentrodeCostoFecha", parametros, valores, null);
         }
-        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFacturas(int etapa, int cuenta, DateTime fecha)
+        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFacturas(int etapa, string cuenta, DateTime fecha)
         {
             string[] parametros = { "@etapa", "@cuenta", "@fecha" };
             object[] valores = { etapa, cuenta, fecha };
             return bd.DataTableFromProcedure("usp_ListarDetalleDelReporteDeCentrodeCostoFechaFacturas", parametros, valores, null);
         }
-        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFlujoFacturas(int etapa, int cuenta, DateTime fecha)
+        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFlujoFacturas(int etapa, string cuenta, DateTime fecha)
         {
             string[] parametros = { "@etapa", "@cuenta", "@fecha" };
             object[] valores = { etapa, cuenta, fecha };

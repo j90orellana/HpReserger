@@ -264,7 +264,8 @@ namespace HPReserger
             this.OrdenCompra.HeaderText = "Orden Compra";
             this.OrdenCompra.Name = "OrdenCompra";
             this.OrdenCompra.ReadOnly = true;
-            this.OrdenCompra.Width = 101;
+            this.OrdenCompra.Visible = false;
+            this.OrdenCompra.Width = 110;
             // 
             // Subtotal
             // 
@@ -273,6 +274,7 @@ namespace HPReserger
             this.Subtotal.HeaderText = "Subtotal";
             this.Subtotal.Name = "Subtotal";
             this.Subtotal.ReadOnly = true;
+            this.Subtotal.Visible = false;
             this.Subtotal.Width = 75;
             // 
             // impuesto
@@ -282,6 +284,7 @@ namespace HPReserger
             this.impuesto.HeaderText = "Imp";
             this.impuesto.Name = "impuesto";
             this.impuesto.ReadOnly = true;
+            this.impuesto.Visible = false;
             this.impuesto.Width = 52;
             // 
             // Total
@@ -291,7 +294,7 @@ namespace HPReserger
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
-            this.Total.Width = 57;
+            this.Total.Width = 56;
             // 
             // fechafac
             // 

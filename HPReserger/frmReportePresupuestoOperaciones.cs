@@ -279,7 +279,7 @@ namespace HPReserger
                     DateTime tiempo = DateTime.Parse("01/" + fila[0] + "/" + fila[1]);
                     // MSG(tiempo.ToString());
                     frmVerDetallePresuspuestoOperaciones Frmpresu = new frmVerDetallePresuspuestoOperaciones();
-                    Frmpresu.cuenta = int.Parse(dtgconten["cta_contable", y].Value.ToString());
+                    Frmpresu.cuenta = (dtgconten[Cta_Contable.Name, y].Value.ToString());
                     Frmpresu.etapa = int.Parse(dtgconten["id_etapas", y].Value.ToString());
                     Frmpresu.Tipo = 1;//flujos
                     Frmpresu.fecha = tiempo;
