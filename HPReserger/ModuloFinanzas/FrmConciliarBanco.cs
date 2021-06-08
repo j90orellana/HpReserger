@@ -768,6 +768,7 @@ namespace HPReserger.ModuloFinanzas
             dtgContenExcel.Enabled = !v;
             dtgContenSistema.Enabled = !v;
             btnPaso2.Enabled = v;
+            btnSaltar.Enabled = v;
         }
         private void PasarAPaso1(bool v)
         {
@@ -777,6 +778,7 @@ namespace HPReserger.ModuloFinanzas
             comboMesAño1.Enabled = v;
             btnPaso1.Enabled = v;
             btnCargar.Enabled = !v;
+            btnSaltar.Enabled = !v;
         }
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
@@ -1544,6 +1546,253 @@ namespace HPReserger.ModuloFinanzas
             {
                 SeleccionarColumnasAlEnter(dtgContenExcel, xok, xGrupo);
             }
+        }
+
+        private void bntSaltar_Click(object sender, EventArgs e)
+        {
+            PasarAPaso2(true);
+            Estado = 2;
+            BuscanEnSistemMovimientos();
+            //
+            EstadoCuenta = SaldoContable;
+            EstadoCuentaInicial = SaldoContableInicial;
+            decimal AuxSum = 0;
+            foreach (DataRow item in TdatosExcel.Rows)
+            {
+                AuxSum = (decimal)item["monto"];
+            }
+            EstadoCuenta += AuxSum; EstadoCuentaInicial += AuxSum;
+            chkOperacion.Checked = false;
+            //if (ProcesodeAnalisis(pkBanco, NroCuenta))
+            //DataTable TablaAux = CapaLogica.MovimientoBancariosxEmpresaExcel(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
+            //TdatosExcel = new DataTable();
+            //if (FormatearlaTablaVacia(pkBanco)) //Seleccion del Banco
+            TdatosExcel = CapaLogica.MovimientoBancariosxEmpresaExcel(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
+            //Datos del Excel
+            //BuscanEnSistemMovimientosExcel();
+            dtgContenExcel.DataSource = TdatosExcel;
+            //Datos del Sistema
+            dtgContenSistema.DataSource = TdatosSist;
+            ContarRegistros();
+            OrdenarDataGridViews();
+            ActivarFunciones(true);
+            Cfilas = 0;
+            ConciliarMovimientos(Conciliaciones.FechaMonto);
+            MostrarDatosdeEtiquetasGrillas(true);
+            MostrarTotales();
+            //}
+
+            //else
+            //{
+            //    Estado = 1;
+            //    PasarAPaso2(false);
+            //}
+        }
+
+        private bool FormatearlaTablaVacia(int Banco)
+        {
+
+            if (Banco == 1) //Banco BCP
+            {
+                TdatosExcel.Columns.Add("Fecha", typeof(DateTime));
+
+                //DataColumn ColOk = new DataColumn("ok", typeof(int));
+
+                TdatosExcel.Columns[0].ColumnName = "Fecha";
+                TdatosExcel.Columns[2].ColumnName = "Monto";
+                TdatosExcel.Columns[3].ColumnName = "Operacion";
+                TdatosExcel.Columns[3].ColumnName = "Glosa";
+                TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[1].SetOrdinal(3);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Comentario");
+
+                TdatosExcel.AcceptChanges();
+                return true;
+            }
+            else if (Banco == 10) //Banco Pichincha{
+            {
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    DateTime Fecha;
+                    if (!DateTime.TryParse(item[1].ToString(), out Fecha))
+                    {
+                        item.Delete();
+                    }
+                }
+                int[] IndexColumnasEliminar = new int[] { 17, 16, 14, 13, 11, 9, 8, 7, 6, 4, 3, 2, 0 };
+                TdatosExcel.AcceptChanges();
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    if (TdatosExcel.Columns.Count > item)
+                        TdatosExcel.Columns.RemoveAt(item);
+                }
+                TdatosExcel.AcceptChanges();
+                TdatosExcel.Columns[0].ColumnName = "Fecha";
+                TdatosExcel.Columns[2].ColumnName = "Monto";
+                TdatosExcel.Columns[3].ColumnName = "Operacion";
+                TdatosExcel.Columns[1].ColumnName = "Glosa";
+                TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[1].SetOrdinal(3);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Comentario");
+
+                TdatosExcel.AcceptChanges();
+                //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
+                foreach (DataRow item in TdatosExcel.Rows)
+                    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
+                return true;
+            }
+            else if (pkBanco == 3) // para el banco continental
+            {
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    DateTime Fecha;
+                    if (!DateTime.TryParse(item[0].ToString(), out Fecha))
+                    {
+                        item.Delete();
+                    }
+                }
+                //TdatosExcel.AcceptChanges();
+                int[] IndexColumnasEliminar = new int[] { 6, 2, 1 };
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    TdatosExcel.Columns.RemoveAt(item);
+                }
+                TdatosExcel.Columns[0].ColumnName = "Fecha";
+                TdatosExcel.Columns[3].ColumnName = "Monto";
+                TdatosExcel.Columns[1].ColumnName = "Operacion";
+                TdatosExcel.Columns[2].ColumnName = "Glosa";
+                //TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[2].SetOrdinal(3);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.Columns.Add("Comentario");
+                TdatosExcel.AcceptChanges();
+                //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
+                //foreach (DataRow item in TdatosExcel.Rows)
+                //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
+                return true;
+            }
+            else if (pkBanco == 2) // Banco ScotiaBank
+            {
+                try
+                {
+                    foreach (DataRow item in TdatosExcel.Rows)
+                    {
+                        DateTime Fecha;
+                        if (!DateTime.TryParse(item[7].ToString(), out Fecha))
+                        {
+                            item.Delete();
+                        }
+                    }
+                }
+                catch (Exception) { }
+                TdatosExcel.AcceptChanges();
+                int[] IndexColumnasEliminar = new int[] { 16, 15, 14, 12, 11, 10, 9, 8, 6, 4, 3, 1, 0 };
+
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    TdatosExcel.Columns.RemoveAt(item);
+                }
+                TdatosExcel.Columns[2].ColumnName = "Fecha";
+                TdatosExcel.Columns[1].ColumnName = "Monto";
+                TdatosExcel.Columns[3].ColumnName = "Operacion";
+                TdatosExcel.Columns[0].ColumnName = "Glosa";
+                //TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[0].SetOrdinal(3);
+                TdatosExcel.Columns[1].SetOrdinal(0);
+                TdatosExcel.Columns[1].SetOrdinal(2);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.Columns.Add("Comentario");
+                TdatosExcel.AcceptChanges();
+                //Corregimos la columna de monto, ya que viene con un espacio adelante de signo
+                //foreach (DataRow item in TdatosExcel.Rows)
+                //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
+                return true;
+            }
+            else if (pkBanco == 5) //Banco de la Nacion
+            {
+                int PosDelete = 7, i = 0;
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    i++;
+                    if (PosDelete > i) item.Delete();
+                    else
+                    {
+                        DateTime Fecha;
+                        if (!DateTime.TryParse(item[5].ToString(), out Fecha)) item.Delete();
+                    }
+                }
+                int[] IndexColumnasEliminar = new int[] { 13, 12, 11, 10, 9, 8, 7, 6, 2, 0 };
+                foreach (int item in IndexColumnasEliminar)
+                {
+                    TdatosExcel.Columns.RemoveAt(item);
+                }
+                //TdatosExcel.AcceptChanges();
+                //Damos Nombres a las Columnas
+                TdatosExcel.Columns[3].ColumnName = "Fecha";
+                TdatosExcel.Columns[1].ColumnName = "Monto";
+                TdatosExcel.Columns[0].ColumnName = "Operacion";
+                TdatosExcel.Columns[2].ColumnName = "Glosa";
+                //TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[1].SetOrdinal(0);
+                TdatosExcel.Columns[3].SetOrdinal(0);
+                //TdatosExcel.Columns[3].SetOrdinal(0);
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Comentario");
+                TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.AcceptChanges();
+
+                return true;
+            }
+            return false;
         }
 
         private void MostrarTotales()

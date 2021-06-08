@@ -657,6 +657,7 @@ namespace HPReserger
                 int ContadorPosicion = 0;
                 //////////////////
                 //Buscamos la Moneda del Asiento!
+                int CC = 0;
                 IdMonedaAsiento = 0;
                 foreach (DataGridViewRow item in Dtguias.Rows)
                     if ((int)item.Cells[OK.Name].Value == 1) { IdMonedaAsiento = item.Cells[monedax.Name].Value.ToString() == "USD" ? 2 : 1; break; }
@@ -783,6 +784,7 @@ namespace HPReserger
                             int idComprobante = (int)item.Cells[xidcomprobante.Name].Value;
                             string[] valor = item.Cells[nrofactura.Name].Value.ToString().Split('-');
                             decimal tcReg = (decimal)item.Cells[xtc.Name].Value;
+                            CC = (int)item.Cells[centrocostox.Name].Value;
                             //Calculo del Exceso 
                             if (aPagar > saldo) aPagar = saldo;
                             int Multiplicador = 1;
@@ -796,7 +798,7 @@ namespace HPReserger
                                 , AbonoCabecera < 0 ? Math.Abs(AbonoCabecera) : 0, tc, proyecto, 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
                             //Detalle de las facturas
                             CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContablesFacturas, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0]
-                                , valor[1], 0, FechaPago, FechaContable, FechaContable, (AbonoCabecera < 0 ? -1 : 1) * (ExcesoMN), (AbonoCabecera < 0 ? -1 : 1) * (ExcesoME), tcReg, idMoneda, "", NroOperacion,
+                                , valor[1], CC, FechaPago, FechaContable, FechaContable, (AbonoCabecera < 0 ? -1 : 1) * (ExcesoMN), (AbonoCabecera < 0 ? -1 : 1) * (ExcesoME), tcReg, idMoneda, "", NroOperacion,
                                 glosa, FechaPago, idUsuario, "", MedioPago);
                         }
                     }
@@ -836,13 +838,14 @@ namespace HPReserger
                             decimal ExcesoME = (idMoneda == 2 ? aPagar : (aPagar) / tc) * Multiplicador;
                             decimal AbonoCabecera = IdMonedaAsiento == 1 ? ExcesoMN : ExcesoME;
                             string CuentaContableNotas = item.Cells[xCuentaContable.Name].Value.ToString();
+                            CC = (int)item.Cells[centrocostox.Name].Value;
                             /// fin de la declaracion del dato de las ntoas
                             /// CABECERA de las notas
                             CapaLogica.InsertarAsientoFacturaCabecera(1, ++ContadorFacturas, numasiento + 1, FechaContable, CuentaContableNotas, AbonoCabecera > 0 ? Math.Abs(AbonoCabecera) : 0
                                 , AbonoCabecera < 0 ? Math.Abs(AbonoCabecera) : 0, tc, proyecto, 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
                             //DETALLE de las notas
-                            CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContableNotas, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0
-                                , FechaPago, FechaContable, FechaContable, Math.Abs(ExcesoMN), Math.Abs(ExcesoME), tc, idMoneda, "", NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
+                            CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContableNotas, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1],
+                                CC, FechaPago, FechaContable, FechaContable, Math.Abs(ExcesoMN), Math.Abs(ExcesoME), tc, idMoneda, "", NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
                         }
                     }
                 }
@@ -881,7 +884,7 @@ namespace HPReserger
                     //
                     //CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
                     //FechaPago, FechaContable, FechaContable, (Abonado < 0 ? -1 : 1) * ExcesoMN, (Abonado < 0 ? -1 : 1) * ExcesoME, tc, idMoneda, nroKuenta, "", glosa, FechaPago, idUsuario, "");
-                    CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 0, "99999", "VARIOS", 0, "0", "0", 0,
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 0, "99999", "VARIOS", 0, "0", "0", CC,
                    FechaPago, FechaContable, FechaContable, Math.Abs(decimal.Parse(txttotalAbonadoMN.Text)), Math.Abs(decimal.Parse(txttotalAbonadoME.Text)), tc, IdMonedaAsiento, nroKuenta, NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
                     //    }
                     //}
@@ -905,13 +908,14 @@ namespace HPReserger
                         //Calculo del Exceso
                         decimal ExcesoMN = (idMoneda == 1 ? aPagar - saldo : (aPagar - saldo) * tc);
                         decimal ExcesoME = (idMoneda == 2 ? aPagar - saldo : (aPagar - saldo) / tc);
+                        CC = (int)item.Cells[centrocostox.Name].Value;
                         if (aPagar > saldo)
                         {
                             //Procedemos a guardar el Exceso!
                             totalExcesoMN += ExcesoMN;
                             totalExcesoME += ExcesoME;
                             //Detalle del asiento en exceso
-                            CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
+                            CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], CC,
                                 FechaPago, FechaContable, FechaContable, ExcesoMN, ExcesoME, tc, idMoneda, "", NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
                         }
                     }

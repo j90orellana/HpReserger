@@ -30,52 +30,66 @@ namespace HPReserger
         {
             if (Estado)
             {
-                dtgconten.ReadOnly = true;
-                dtgconten1.ReadOnly = true;
+                dtgGastos.ReadOnly = true;
+                //dtgFlujos.ReadOnly = true;
                 btnguardar.Enabled = false;
             }
             else
             {
-                dtgconten.ReadOnly = false;
-                dtgconten1.ReadOnly = false;
+                dtgGastos.ReadOnly = false;
+                // dtgFlujos.ReadOnly = false;
                 btnguardar.Enabled = true;
             }
             ok = false;
             //Application.CurrentCulture = new System.Globalization.CultureInfo("EN-US");
-            dtgconten.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
-            dtgconten1.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
-            dtgconten.Columns[0].Visible = false;
-            dtgconten1.Columns[0].Visible = false;
+            dtgGastos.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
+            dtgFlujos.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
+            dtgDiferencia.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
+            dtgGastos.Columns[0].Visible = false;
+            dtgFlujos.Columns[0].Visible = false;
+            dtgDiferencia.Columns[0].Visible = false;
             DataTable EtapasDatos = CLpresupuestoetapa.ListarEtapasdelProyecto(10, 0, etapa, "", 0, DateTime.Now, DateTime.Now, 0, "", 0);
             DataRow filadatos = EtapasDatos.Rows[0];
             dtpinicio.Value = (DateTime)filadatos["fecha_inicio"];
             dtpfin.Value = (DateTime)filadatos["fecha_fin"];
-            for (int i = 1; i < dtgconten.ColumnCount; i++)
+            for (int i = 1; i < dtgGastos.ColumnCount; i++)
             {
-                dtgconten[i, 0].Value = "0.00";
-                dtgconten1[i, 0].Value = "0.00";
-                dtgconten.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dtgconten1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                if (dtgconten.ColumnCount - i < 3)
+                dtgGastos[i, 0].Value = "0.00";
+                dtgFlujos[i, 0].Value = "0.00";
+                dtgDiferencia[i, 0].Value = "0.00";
+                dtgGastos.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dtgFlujos.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dtgDiferencia.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                if (dtgGastos.ColumnCount - i < 3)
                 {
-                    dtgconten.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);
-                    dtgconten1.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);
-                    dtgconten.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
-                    dtgconten1.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
+                    dtgGastos.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);
+                    dtgFlujos.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);
+                    dtgDiferencia.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);
+                    dtgGastos.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
+                    dtgFlujos.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
+                    dtgDiferencia.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
                 }
             }
             cc = txtcc.Text;
             dtgvalores.DataSource = CLpresupuestoetapa.MesEtapaCentroCosto(0, etapa, 0, cc, 0, 0, cabecera, 0);
+            DataTable RFila = CLpresupuestoetapa.ListarReporteCuentaCostoFlujo(etapa, cc);
+            if (RFila.Rows.Count > 0)
+            {
+                for (int i = 0; i < RFila.Rows.Count; i++)
+                {
+                    dtgFlujos[i + 1, 0].Value = RFila.Rows[i]["operaciones"];
+                }
+            }
             if (dtgvalores.RowCount > 0)
             {
                 for (int i = 0; i < dtgvalores.RowCount; i++)
                 {
-                    dtgconten[i + 1, 0].Value = dtgvalores["Importe_MesEtapa", i].Value;
-                    dtgconten1[i + 1, 0].Value = dtgvalores["Importe_Flujo", i].Value;
+                    dtgGastos[i + 1, 0].Value = dtgvalores["Importe_MesEtapa", i].Value;
                 }
             }
-            CalcularTotal(dtgconten, txtpagos);
-            CalcularTotal(dtgconten1, txtflujo);
+            CalcularTotal(dtgGastos, txtpagos);
+            CalcularTotal(dtgFlujos, txtflujo);
+            CalcularDiferenciaGrillas();
         }
         private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -84,7 +98,7 @@ namespace HPReserger
             {
                 if (x == 0)
                 {
-                    dtgconten[x, 0].ReadOnly = true;
+                    dtgGastos[x, 0].ReadOnly = true;
                 }
             }
         }
@@ -92,7 +106,7 @@ namespace HPReserger
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                dtgconten.EndEdit();
+                dtgGastos.EndEdit();
                 // btnmas_Click(sender, e);
             }
             else { e.Handled = true; }
@@ -100,7 +114,7 @@ namespace HPReserger
         TextBox txt;
         private void dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (dtgconten.CurrentCell.RowIndex == 0)
+            if (dtgGastos.CurrentCell.RowIndex == 0)
             {
                 txt = e.Control as TextBox;
                 if (txt != null)
@@ -126,16 +140,25 @@ namespace HPReserger
             int x = e.ColumnIndex, y = e.RowIndex;
             if (y >= 0 && x > 0)
             {
-                if (!string.IsNullOrWhiteSpace(dtgconten[x, y].Value.ToString()))
+                if (!string.IsNullOrWhiteSpace(dtgGastos[x, y].Value.ToString()))
                 {
-                    numero = decimal.Parse(dtgconten[x, y].Value.ToString());
+                    numero = decimal.Parse(dtgGastos[x, y].Value.ToString());
                     numero = decimal.Parse(numero.ToString("n2"));
-                    dtgconten[x, y].Value = numero;
+                    dtgGastos[x, y].Value = numero;
                 }
                 else
-                    dtgconten[x, y].Value = "0.00";
+                    dtgGastos[x, y].Value = "0.00";
             }
-            CalcularTotal(dtgconten, txtpagos);
+            CalcularTotal(dtgGastos, txtpagos);
+            CalcularDiferenciaGrillas();
+        }
+        private void CalcularDiferenciaGrillas()
+        {
+            for (int i = 0; i < dtgGastos.ColumnCount; i++)
+            {
+                if (i > 0)
+                    dtgDiferencia[i, 0].Value = (decimal)dtgGastos[i, 0].Value - (decimal)dtgFlujos[i, 0].Value;
+            }
         }
         public void CalcularTotal(DataGridView dtg, TextBox txtbox)
         {
@@ -154,15 +177,15 @@ namespace HPReserger
         }
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            dtgconten.EndEdit(); dtgconten1.EndEdit();
-            dtgconten.CurrentCell = dtgconten[1, 0];
+            dtgGastos.EndEdit(); dtgFlujos.EndEdit();
+            dtgGastos.CurrentCell = dtgGastos[1, 0];
             CLpresupuestoetapa.MesEtapaCentroCosto(10, etapa, 0, cc, 0, 0, cabecera, 0);
             valor = 0; valorflujo = 0;
-            for (int i = 1; i < dtgconten.ColumnCount; i++)
+            for (int i = 1; i < dtgGastos.ColumnCount; i++)
             {
-                CLpresupuestoetapa.MesEtapaCentroCosto(1, etapa, i, cc, (decimal)dtgconten[i, 0].Value, (decimal)dtgconten1[i, 0].Value, cabecera, frmLogin.CodigoUsuario);
-                valor += (decimal)dtgconten[i, 0].Value;
-                valorflujo += (decimal)dtgconten1[i, 0].Value;
+                CLpresupuestoetapa.MesEtapaCentroCosto(1, etapa, i, cc, (decimal)dtgGastos[i, 0].Value, (decimal)dtgFlujos[i, 0].Value, cabecera, frmLogin.CodigoUsuario);
+                valor += (decimal)dtgGastos[i, 0].Value;
+                valorflujo += (decimal)dtgFlujos[i, 0].Value;
             }
             msgOK("Guardado Con exito");
             ok = true;
@@ -173,7 +196,7 @@ namespace HPReserger
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                dtgconten1.EndEdit();
+                dtgFlujos.EndEdit();
                 // btnmas_Click(sender, e);
             }
             else { e.Handled = true; }
@@ -186,7 +209,7 @@ namespace HPReserger
             {
                 if (x == 0)
                 {
-                    dtgconten1[x, 0].ReadOnly = true;
+                    dtgFlujos[x, 0].ReadOnly = true;
                 }
             }
         }
@@ -196,21 +219,21 @@ namespace HPReserger
             int x = e.ColumnIndex, y = e.RowIndex;
             if (y >= 0 && x > 0)
             {
-                if (!string.IsNullOrWhiteSpace(dtgconten1[x, y].Value.ToString()))
+                if (!string.IsNullOrWhiteSpace(dtgFlujos[x, y].Value.ToString()))
                 {
-                    numero = decimal.Parse(dtgconten1[x, y].Value.ToString());
+                    numero = decimal.Parse(dtgFlujos[x, y].Value.ToString());
                     numero = decimal.Parse(numero.ToString("n2"));
-                    dtgconten1[x, y].Value = numero;
+                    dtgFlujos[x, y].Value = numero;
                 }
                 else
-                    dtgconten1[x, y].Value = "0.00";
+                    dtgFlujos[x, y].Value = "0.00";
             }
-            CalcularTotal(dtgconten1, txtflujo);
+            CalcularTotal(dtgFlujos, txtflujo);
         }
 
         private void dtgconten1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (dtgconten1.CurrentCell.RowIndex == 0)
+            if (dtgFlujos.CurrentCell.RowIndex == 0)
             {
                 txt = e.Control as TextBox;
                 if (txt != null)

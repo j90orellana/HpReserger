@@ -49,7 +49,7 @@ namespace HPReserger
                 dtgdiferencia[i, 0].Value = "0.00";
             }
             cc = txtcc.Text;
-            dtgvalores.DataSource = CLpresupuestoetapa.MesEtapaCentroCosto(0, etapa, 0, cc, 0, 0, cabecera, 0);
+            dtgvalores.DataSource = CLpresupuestoetapa.MesEtapaCentroCosto(0, etapa, 0, cc, 0, 0, cabecera, 0);          
             if (dtgvalores.RowCount > 0)
             {
                 for (int i = 0; i < dtgvalores.RowCount; i++)
@@ -57,7 +57,8 @@ namespace HPReserger
                     if (Tipo == 1)
                         dtgconten[i + 1, 0].Value = dtgvalores["Importe_MesEtapa", i].Value;
                     else
-                        dtgconten[i + 1, 0].Value = dtgvalores["Importe_Flujo", i].Value;
+                       // dtgconten[i + 1, 0].Value = dtgvalores["Importe_Flujo", i].Value;
+                        dtgconten[i + 1, 0].Value = dtgvalores["Importe_MesEtapa", i].Value;
                 }
             }
             if (Tipo == 1)
@@ -77,7 +78,8 @@ namespace HPReserger
                 {
                     if (Tipo == 1)
                         dtgdiferencia[i + 1, 0].Value = (decimal)dtgvalores["Importe_MesEtapa", i].Value - (decimal)dtgvalores1["operaciones", i].Value;
-                    else dtgdiferencia[i + 1, 0].Value = (decimal)dtgvalores["Importe_Flujo", i].Value - (decimal)dtgvalores1["operaciones", i].Value;
+              //      else dtgdiferencia[i + 1, 0].Value = (decimal)dtgvalores["Importe_Flujo", i].Value - (decimal)dtgvalores1["operaciones", i].Value;
+                    else dtgdiferencia[i + 1, 0].Value = (decimal)dtgvalores["Importe_MesEtapa", i].Value - (decimal)dtgvalores1["operaciones", i].Value;
                 }
             }
 

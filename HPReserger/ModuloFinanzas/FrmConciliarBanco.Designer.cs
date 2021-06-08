@@ -108,6 +108,7 @@
             this.lblEstadoCuenta = new System.Windows.Forms.Label();
             this.lblsaldoFinal = new System.Windows.Forms.Label();
             this.btnActualizarExcel = new HpResergerUserControls.ButtonPer();
+            this.btnSaltar = new HpResergerUserControls.ButtonPer();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenExcel)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContenSistema)).BeginInit();
@@ -167,11 +168,11 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2021, 1, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2021, 1, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2021, 6, 30, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2021, 6, 30, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2021, 6, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.comboMesAño1.Location = new System.Drawing.Point(776, 43);
+            this.comboMesAño1.Location = new System.Drawing.Point(786, 43);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(197, 26);
             this.comboMesAño1.TabIndex = 45;
@@ -196,9 +197,9 @@
             this.btnPaso1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaso1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaso1.ForeColor = System.Drawing.Color.White;
-            this.btnPaso1.Location = new System.Drawing.Point(979, 45);
+            this.btnPaso1.Location = new System.Drawing.Point(991, 45);
             this.btnPaso1.Name = "btnPaso1";
-            this.btnPaso1.Size = new System.Drawing.Size(75, 23);
+            this.btnPaso1.Size = new System.Drawing.Size(63, 23);
             this.btnPaso1.TabIndex = 46;
             this.btnPaso1.Text = "Avanzar";
             this.btnPaso1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -289,7 +290,7 @@
             this.txtRutaExcel.Name = "txtRutaExcel";
             this.txtRutaExcel.NextControlOnEnter = null;
             this.txtRutaExcel.ReadOnly = true;
-            this.txtRutaExcel.Size = new System.Drawing.Size(830, 22);
+            this.txtRutaExcel.Size = new System.Drawing.Size(787, 22);
             this.txtRutaExcel.TabIndex = 186;
             this.txtRutaExcel.TextoDefecto = "";
             this.txtRutaExcel.TextoDefectoColor = System.Drawing.Color.White;
@@ -309,12 +310,13 @@
             this.btnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargar.ForeColor = System.Drawing.Color.White;
-            this.btnCargar.Location = new System.Drawing.Point(900, 87);
+            this.btnCargar.Location = new System.Drawing.Point(857, 87);
             this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(75, 23);
+            this.btnCargar.Size = new System.Drawing.Size(63, 23);
             this.btnCargar.TabIndex = 187;
             this.btnCargar.Text = "Buscar";
             this.btnCargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCargar, "Buscamos El Archivo Excel del Estado de Cuenta");
             this.btnCargar.UseVisualStyleBackColor = false;
             this.btnCargar.Click += new System.EventHandler(this.buttonPer1_Click_1);
             // 
@@ -326,9 +328,9 @@
             this.btnPaso2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaso2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaso2.ForeColor = System.Drawing.Color.White;
-            this.btnPaso2.Location = new System.Drawing.Point(979, 87);
+            this.btnPaso2.Location = new System.Drawing.Point(989, 87);
             this.btnPaso2.Name = "btnPaso2";
-            this.btnPaso2.Size = new System.Drawing.Size(75, 23);
+            this.btnPaso2.Size = new System.Drawing.Size(63, 23);
             this.btnPaso2.TabIndex = 46;
             this.btnPaso2.Text = "Avanzar";
             this.btnPaso2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1030,6 +1032,24 @@
             this.btnActualizarExcel.Visible = false;
             this.btnActualizarExcel.Click += new System.EventHandler(this.btnActualizarExcel_Click);
             // 
+            // btnSaltar
+            // 
+            this.btnSaltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.btnSaltar.Enabled = false;
+            this.btnSaltar.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnSaltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaltar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaltar.ForeColor = System.Drawing.Color.White;
+            this.btnSaltar.Location = new System.Drawing.Point(923, 87);
+            this.btnSaltar.Name = "btnSaltar";
+            this.btnSaltar.Size = new System.Drawing.Size(63, 23);
+            this.btnSaltar.TabIndex = 187;
+            this.btnSaltar.Text = "Saltar";
+            this.btnSaltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnSaltar, "No Hay Movimientos en este MES");
+            this.btnSaltar.UseVisualStyleBackColor = false;
+            this.btnSaltar.Click += new System.EventHandler(this.bntSaltar_Click);
+            // 
             // FrmConciliarBanco
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1052,6 +1072,7 @@
             this.Controls.Add(this.lblRegistroExcel2);
             this.Controls.Add(this.lblRegistroSistema);
             this.Controls.Add(this.lblRegistroExcel);
+            this.Controls.Add(this.btnSaltar);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.txtRutaExcel);
             this.Controls.Add(this.label5);
@@ -1148,5 +1169,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yComentario;
         private System.Windows.Forms.DataGridViewTextBoxColumn xProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNumComprobante;
+        private HpResergerUserControls.ButtonPer btnSaltar;
     }
 }
