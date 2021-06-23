@@ -17,7 +17,8 @@ namespace HpResergerUserControls
         public static string PaginaTCSunat = "https://e-consulta.sunat.gob.pe/cl-at-ittipcam/tcS01Alias";
         public static string APITcDiario = "https://api.apis.net.pe/v1/tipo-cambio-sunat?fecha="; //se usa de Respaldo diario //año-mes-dia
         //public static string ApiTCSunat = "https://api.sunat.online/cambio/";//Indicar el AÑo despues del slash
-        public static string ApiTCSunat = "https://dni.optimizeperu.com/api/tipo-cambio";//Indicar el AÑo despues del slash      
+        //public static string ApiTCSunat = "https://dni.optimizeperu.com/api/prod/tipo-cambio";//Indicar el AÑo despues del slash      
+        public static string ApiTCSunat = "https://api.apis.net.pe/v1/tipo-cambio-sunat?";// year=2021&month=6
         public static string ApiRuc = "https://api.apis.net.pe/v1/ruc?numero=";
         public static string ApiReniec = "https://api.apis.net.pe/v1/dni?numero=";
         //FIN APIS

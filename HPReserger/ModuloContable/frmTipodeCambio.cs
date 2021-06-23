@@ -52,7 +52,9 @@ namespace HPReserger
         //}
         public async Task<string> GetHTTPs(int año, int mes)
         {
-            string url = Configuraciones.ApiTCSunat;// + año + "-" + mes.ToString("00");
+            //string url = Configuraciones.ApiTCSunat;// + año + "-" + mes.ToString("00");
+            string url = Configuraciones.ApiTCSunat + $"year={año}&month={mes}";
+            //string url = Configuraciones.PaginaTCSunat;// + año + "-" + mes.ToString("00");
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebRequest oRequest = WebRequest.Create(url);
             WebResponse oResponse = oRequest.GetResponse();
@@ -113,37 +115,45 @@ namespace HPReserger
             public decimal compra { get; set; }
             public decimal venta { get; set; }
         }
+        //public class Ruta
+        //{
+        //    public Anio anio { get; set; }
+        //    public CambioActual cambio_actual { get; set; }
+        //    public List<Dias> dias { get; set; }
+        //}
         public class Ruta
         {
-            public Anio anio { get; set; }
-            public CambioActual cambio_actual { get; set; }
-            public List<Dias> dias { get; set; }
+            public double compra { get; set; }
+            public double venta { get; set; }
+            public string origen { get; set; }
+            public string moneda { get; set; }
+            public DateTime fecha { get; set; }
         }
         public async void BuscarTipoCambio(int año, int mes)
         {
             try
             {
                 string respuesta = await GetHTTPs(año, mes);
-                respuesta = "[\n " + respuesta + " \n]";
-                List<Ruta> lstTC = JsonConvert.DeserializeObject<List<Ruta>>(respuesta);
-                //SAcamos la Data
-                int CantDecimales = 5;
-                int ela = respuesta.IndexOf(año + "-");
-                if (lstTC.Count > 0)
+            //respuesta = "[\n " + respuesta + " \n]";
+            List<Ruta> lstTC = JsonConvert.DeserializeObject<List<Ruta>>(respuesta);
+            //SAcamos la Data
+            int CantDecimales = 5;
+            int ela = respuesta.IndexOf(año + "-");
+            if (lstTC.Count > 0)
+            {
+                if (año == lstTC[0].fecha.Year && mes == lstTC[0].fecha.Month)
                 {
-                    if (año == lstTC[0].anio.anio && mes == lstTC[0].anio.mes_valor)
+                    foreach (Ruta item in lstTC)
                     {
-                        foreach (Dias item in lstTC[0].dias)
-                        {
-                            CapaLogica.TipodeCambio(15, lstTC[0].anio.anio, lstTC[0].anio.mes_valor, int.Parse(item.dia), (item.compra), (item.venta), null);
-                        }
-                        Carga = true;
-                        tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
-                        CompletarEstructura();
-                        //webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
-                        Buscar_Click(new object(), new EventArgs());
+                        CapaLogica.TipodeCambio(15, item.fecha.Year, item.fecha.Month, (item.fecha.Day), (decimal)(item.compra), (decimal)(item.venta), null);
                     }
+                    Carga = true;
+                    tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
+                    CompletarEstructura();
+                    //webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
+                    Buscar_Click(new object(), new EventArgs());
                 }
+            }
                 //if (ela != -1)
                 //{
                 //    while (ela != 0)
@@ -542,7 +552,7 @@ namespace HPReserger
                 {
                     Carga = false;
                     //webBrowser1.Navigate(Configuraciones.PaginaTCSunat);
-                    //BuscarTipoCambio(comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month);
+                    BuscarTipoCambio(comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month);
 
                     //webBrowser1.Document.GetElementById("mes").SetAttribute("value", comboMesAño1.getMesNumero().ToString("00"));
                     //webBrowser1.Document.GetElementById("anho").SetAttribute("value", comboMesAño1.GetAño().ToString());
@@ -658,9 +668,9 @@ namespace HPReserger
         private void Timer_Tick(object sender, EventArgs e)
         {
             if (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 17)//coontrol de que hora se procede con la actualizacion
-            {                
+            {
                 if (FechaActual != DateTime.Now.Date)
-                {                
+                {
                     //  BuscarTipoCambio(DateTime.Now.Year, DateTime.Now.Month);
                     BuscarTipodeCambiodelDia();
                 }
