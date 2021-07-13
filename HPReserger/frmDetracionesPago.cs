@@ -229,6 +229,7 @@ namespace HPReserger
         {
             this.Close();
         }
+
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Declaracion de variables
@@ -336,7 +337,28 @@ namespace HPReserger
                     ///fin de la cabecera del exceso             
                     if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
                     //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
+                    ///PROCESO DEL TXT
+                    DialogResult Result = msgP("Desea Generar el TXT de Pago");
+                    if (Result == DialogResult.Cancel) return;
+                    if (Result == DialogResult.Yes)
+                    {
+                        frmDetraccionVentaPagoBancoNacion frmpagoventa = new frmDetraccionVentaPagoBancoNacion();
+                        frmpagoventa.Text = "Generación del TXT de Pago de Detracciones de Compras";
+                        frmpagoventa.IdEmpresa = (int)cboempresa.SelectedValue;
+                        frmpagoventa.Compra = true;
+                        frmpagoventa.NroCuentaBanco = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), '-');
+                        ////datos de la tabla
+                        //frmpagoventa.TDetracciones = new DataTable();
+                        dtgconten.EndEdit();
+                        dtgconten.RefreshEdit();
+                        //frmpagoventa.TDetracciones = new DataTable();
+                        frmpagoventa.TDetracciones = ((DataTable)dtgconten.DataSource).Clone();
+                        foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
+                            frmpagoventa.TDetracciones.Rows.Add(item.ItemArray);
 
+                        if (frmpagoventa.ShowDialog() != DialogResult.Yes) return;
+                    }
+                    //PROCESO DE PAGO                    
                     foreach (DataGridViewRow item in dtgconten.Rows)
                     {
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -381,6 +403,7 @@ namespace HPReserger
             }
             else msg("No Hay Detracciones por Pagar");
         }
+        public DialogResult msgP(string cadena) { return HPResergerFunciones.Utilitarios.msgync(cadena); }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Detracion.Clear();
@@ -392,7 +415,7 @@ namespace HPReserger
         private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
-            if (dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "0")
+            if (dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "0" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "-")
             {
                 dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.RojoUISelect;
                 dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.RojoUI;

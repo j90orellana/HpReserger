@@ -23,7 +23,6 @@ namespace HPReserger
             get { return txtcodctacte.Text; }
             set { txtcodctacte.Text = value; }
         }
-
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         DataTable TTipoid;
         DataTable TTipoDoc;
@@ -61,15 +60,35 @@ namespace HPReserger
             txtRuc.Text = TDAtos.Rows[0]["ruc"].ToString();
             txtnombreempresa.Text = TDAtos.Rows[0]["empresa"].ToString();
             ///datatable Acciones
-            TDetracciones.Columns.Remove("nro_cta_detracciones");
+            if (Compra)
+            {
+                TDetracciones.Columns["proveedor"].ColumnName = "nroid";
+                TDetracciones.Columns["razon"].ColumnName = "nombre";
+                TDetracciones.Columns["id_comprobante"].ColumnName = "idComprobanteSunat";
+                dtgconten.Columns[xigv.Name].Visible = false;
+                dtgconten.Columns[xmoneda.Name].HeaderText = "Nro Cta Detrac.";
+                TDetracciones.Columns.Remove("namecorto");
+                TDetracciones.Columns["nro_cta_detracciones"].ColumnName = "namecorto";
+                TDetracciones.Columns["tipo"].ColumnName = "tipoid";
+                foreach (DataRow item in TDetracciones.Rows)
+                {
+                    if ((int)item["idcomprobantesunat"] == 2) item[xtipodoc.DataPropertyName] = 1;
+                    if ((int)item["idcomprobantesunat"] == 4) item[xtipodoc.DataPropertyName] = 3;
+                    item[xtipoid.DataPropertyName] = "Ruc";
+                }
+            }
             TDetracciones.Columns.Remove("BasePEN");
             TDetracciones.Columns.Remove("Moneda");
             TDetracciones.Columns.Remove("diferencia");
             TDetracciones.Columns.Remove("FechaRecepcion");
             TDetracciones.Columns.Remove("FechaCancelado");
             TDetracciones.Columns.Remove("BaseMO");
-            TDetracciones.Columns.Remove("tipocomprobante");
-            TDetracciones.Columns.Remove("tipo");
+            if (!Compra)
+            {
+                TDetracciones.Columns.Remove("nro_cta_detracciones");
+                TDetracciones.Columns.Remove("tipocomprobante");
+                TDetracciones.Columns.Remove("tipo");
+            }
             for (int i = 0; i < TDetracciones.Rows.Count; i++)
             {
                 if ((int)TDetracciones.Rows[i]["opcion"] != 1) { TDetracciones.Rows.RemoveAt(i); i--; }
@@ -81,7 +100,7 @@ namespace HPReserger
             TDetracciones.Columns["numero"].SetOrdinal(2);
             //
             TDetracciones.Columns["fechaemision"].SetOrdinal(3);
-            TDetracciones.Columns["redondeo"].SetOrdinal(12);
+            TDetracciones.Columns["redondeo"].SetOrdinal(!Compra ? 12 : 11);
             foreach (DataRow item in TDetracciones.Rows)
             {
                 item["empresa"] = txtnombreempresa.Text;
@@ -103,10 +122,18 @@ namespace HPReserger
             //Fin de Setteo de las Columnas
             dtgconten.DataSource = TDetracciones;
             lblmensaje.Text = $"Número de Registros = {dtgconten.RowCount}";
-            if (TDetracciones.Rows.Count > 0)
+            if (!Compra)
             {
-                txtcodbienserv.Text = TDetracciones.Rows[0][xCod_Detraccion.DataPropertyName].ToString();
-                txttasaDetraccion.Text = decimal.Parse(TDetracciones.Rows[0][xPorcentaje.DataPropertyName].ToString()).ToString("n2");
+                if (TDetracciones.Rows.Count > 0)
+                {
+                    txtcodbienserv.Text = TDetracciones.Rows[0][xCod_Detraccion.DataPropertyName].ToString();
+                    txttasaDetraccion.Text = decimal.Parse(TDetracciones.Rows[0][xPorcentaje.DataPropertyName].ToString()).ToString("n2");
+                }
+            }
+            else
+            {
+                txtcodbienserv.Text = "037";
+                dtgconten.Columns[xtipoid.Name].DisplayIndex = 6;
             }
             CalcularTotales();
         }
@@ -114,6 +141,7 @@ namespace HPReserger
         DataGridViewComboBoxColumn Combo2;
         public int IdEmpresa { get; internal set; }
         public DataTable TDetracciones { get; set; }
+        public bool Compra { get; set; }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -182,7 +210,7 @@ namespace HPReserger
             string[] campo = new string[19];
             string[] Cabecera = new string[19];
             //cCABECERA DEL TXT
-            Cabecera[0] = $"P";
+            Cabecera[0] = Compra ? $"*" : $"P";
             Cabecera[1] = txtRuc.Text;//11
             Cabecera[2] = HPResergerFunciones.Utilitarios.AddCaracter(txtnombreempresa.Text, ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda);//35
             Cabecera[3] = txtlote.Text;//6
@@ -190,7 +218,7 @@ namespace HPReserger
             cabecera = string.Join("", Cabecera) + $"{Environment.NewLine}";//aGREGAMOS EL SALTO DE LINEA QUE VARIA EL SISTEMA OPERATIVO
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                campo[0] = item.Cells[xtipoid.Name].Value.ToString();//1
+                campo[0] = Compra ? "6" : item.Cells[xtipoid.Name].Value.ToString();//1
                 campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xruc.Name].Value.ToString(), ' ', 11, HPResergerFunciones.Utilitarios.Direccion.izquierda);//11
                 //if ((int)item.Cells[xtipoid.Name].Value == 1)
                 //AGREGAMOS LA VALIDACION QUITANDO LA Ñ QUE DABA PROBEMAS AL SUBIR EL TXT PARA VALIDAR
@@ -199,7 +227,7 @@ namespace HPReserger
                 //    campo[2] = HPResergerFunciones.Utilitarios.AddCaracter("", ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda);//35
                 campo[3] = "000000000";//9
                 campo[4] = txtcodbienserv.Text;
-                campo[5] = txtcodctacte.Text;
+                campo[5] = Compra ? HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xmoneda.Name].Value.ToString(), '0', 11, HPResergerFunciones.Utilitarios.Direccion.derecha) : txtcodctacte.Text;
                 campo[6] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100((decimal.Parse(item.Cells[xdetraccion.Name].Value.ToString())).ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                 campo[7] = "01";
                 campo[8] = ((DateTime)item.Cells[xFechaEmision.Name].Value).Year.ToString();
