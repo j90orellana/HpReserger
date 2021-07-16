@@ -29,6 +29,7 @@ namespace HPReserger.ModuloCompensaciones
                 {
                     cboempresa.Enabled = a;
                     txtcuos.Enabled = a;
+                    txtCuentas.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = a;
                     dtgconten.Enabled = !a;
                     btnPaso1.Enabled = a;
                     if (dtgconten.DataSource != null)
@@ -44,6 +45,7 @@ namespace HPReserger.ModuloCompensaciones
                 {
                     cboempresa.Enabled = !a;
                     txtcuos.Enabled = !a;
+                    txtCuentas.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = !a;
                     dtgconten.Enabled = a;
                 }
             }
@@ -57,7 +59,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         private void frmCompensacionCuentas_Load(object sender, EventArgs e)
         {
-            dtpFechaContable.Value = dtpFechaEmision.Value = DateTime.Now;
+            dtpfechade.Value = dtpFechaHasta.Value = dtpFechaContable.Value = dtpFechaEmision.Value = DateTime.Now;
             CargarTextxDefecto();
             Estado = 0;
             CargarEmpresa();
@@ -72,6 +74,7 @@ namespace HPReserger.ModuloCompensaciones
             txtcuos.CargarTextoporDefecto();
             txtCuenta.CargarTextoporDefecto();
             txtGlosa.CargarTextoporDefecto();
+            txtCuentas.CargarTextoporDefecto();
         }
         public void CargarEmpresa()
         {
@@ -114,10 +117,16 @@ namespace HPReserger.ModuloCompensaciones
         {
             if (cboempresa.SelectedValue == null) { msgError("Seleccione una Empresa"); cboempresa.Focus(); return; }
             if (Configuraciones.ValidarSQLInyect(txtcuos)) { msgError("Codigo Malicioso Detectado"); txtcuos.Focus(); return; }
-            if (!txtcuos.EstaLLeno()) { msgError("Ingrese 2 CUOS minimos"); txtcuos.Focus(); return; }
-            if ((txtcuos.TextValido().Split(',')).Count() < 2) { msgError("Ingrese 2 CUOS minimos"); txtcuos.Focus(); return; }
+            //if (!txtcuos.EstaLLeno()) { msgError("Ingrese 2 CUOS minimos"); txtcuos.Focus(); return; }
+            //if ((txtcuos.TextValido().Split(',')).Count() < 2) { msgError("Ingrese 2 CUOS minimos"); txtcuos.Focus(); return; }
             List<string> Listado = new List<string>();
-            Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa, txtcuos.TextValido());
+            DateTime Fechade;
+            DateTime FechaHasta;
+            FechaHasta = dtpFechaHasta.Value; Fechade = dtpfechade.Value;
+            if (dtpfechade.Value > dtpFechaHasta.Value) { Fechade = dtpFechaHasta.Value; FechaHasta = dtpfechade.Value; }
+            //
+            Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa, txtcuos.TextValido(), txtCuentas.TextValido(), chkFecha.Checked ? 1 : 0, Fechade, FechaHasta);
+            if (Tdatos == null) { msgError("No Hay Asientos que mostrar"); return; }
             foreach (DataRow item in Tdatos.Rows)
             {
                 if (!Listado.Contains(item["cuo"].ToString())) Listado.Add(item["cuo"].ToString());
@@ -274,14 +283,18 @@ namespace HPReserger.ModuloCompensaciones
                     }
                     int FactorSOles = Soles > 0 ? 1 : -1;
                     int FactorDolares = Dolares > 0 ? 1 : -1;
-                    //Grabamos la Cabeceras
-                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, Cuenta,
-                        (moneda == 1 ? Soles : Dolares) > 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
-                        (moneda == 1 ? Soles : Dolares) < 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
-                        3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
-                    //Grabamos el Detalle 
+                    //GRABADO DE LOS REGISTROS LINEA A LINEA
                     foreach (DataRow itemx in dv.ToTable().Rows)
                     {
+                        //Grabamos la Cabeceras
+                        CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, Cuenta,
+                            moneda == 1 ? (decimal)itemx[xHaberSoles.DataPropertyName] : (decimal)itemx[xHaberDOlares.DataPropertyName],
+                            moneda == 1 ? (decimal)itemx[xDebeSoles.DataPropertyName] : (decimal)itemx[xDebeDolares.DataPropertyName],
+
+                            //(moneda == 1 ? Soles : Dolares) > 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
+                            //(moneda == 1 ? Soles : Dolares) < 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
+                            3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
+                        //Grabamos el Detalle 
                         CapaLogica.InsertarDetalleAsiento(11, PosFila, numasiento, FechaContable, Cuenta, proyecto, (int)itemx[xtipodoc.DataPropertyName], itemx[xNumDoc.DataPropertyName].ToString(),
                             itemx[xRazonSocial.DataPropertyName].ToString(), (int)itemx[xidComprobante.DataPropertyName], itemx[xCodComprobante.DataPropertyName].ToString(),
                             itemx[xNumComprobante.DataPropertyName].ToString(), (int)itemx[xCC.DataPropertyName], (DateTime)itemx[xFechaEmision.DataPropertyName],
@@ -294,16 +307,22 @@ namespace HPReserger.ModuloCompensaciones
                 }
                 //Grabamos lo que se envia a la cuenta de diferencia                
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, txtCuenta.Text,
-                    (moneda == 1 ? SumaSoles : SumaDolares) < 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
                     (moneda == 1 ? SumaSoles : SumaDolares) > 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
+                    (moneda == 1 ? SumaSoles : SumaDolares) < 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
                     3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
                 //Grabamos el Detalle 
                 CapaLogica.InsertarDetalleAsiento(11, PosFila, numasiento, FechaContable, txtCuenta.Text, proyecto, 0, "99999999", "", 0, "", "9999", 0, FechaEmision, FechaContable, FechaContable,
                     Math.Abs(SumaSoles), Math.Abs(SumaDolares), 3.3000m, moneda, 0, "", GlosaCab, FechaContable, idUsuario, "", 0);
                 //Fin de la Grabacion
-                msgOK("Compensación Grabada con Exito");
+                msgOK($"Compensación Grabada con Exito con Cuo: {Cuo}");
                 Estado = 0;
             }
+        }
+
+        private void checkboxOre1_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpfechade.Enabled = dtpFechaHasta.Enabled = false;
+            if (chkFecha.Checked) dtpfechade.Enabled = dtpFechaHasta.Enabled = true;
         }
         private void MostrarParteFinal()
         {
@@ -329,12 +348,12 @@ namespace HPReserger.ModuloCompensaciones
                 txtSoles.Text = txtDolares.Text = SumaSoles.ToString("n2");
                 txtDolares.Text = SumaDolares.ToString("n2");
                 cboproyecto.Enabled = dtpFechaContable.Enabled = dtpFechaEmision.Enabled = a;
-                if (SumaSoles != 0 && SumaDolares != 0)
-                {
-                    cbomoneda.Enabled = a;
-                }
-                if (SumaDolares != 0) cbomoneda.SelectedValue = 2;
-                if (SumaSoles != 0) cbomoneda.SelectedValue = 1;
+                //if (SumaSoles != 0 && SumaDolares != 0)
+                //{
+                //    cbomoneda.Enabled = a;
+                //}
+                //if (SumaDolares != 0) cbomoneda.SelectedValue = 2;
+                //if (SumaSoles != 0) cbomoneda.SelectedValue = 1;
             }
         }
     }

@@ -62,6 +62,8 @@ namespace HPReserger
             ///datatable Acciones
             if (Compra)
             {
+                //por defecto colocamos la el año 2dig y semada del año en 4dig
+                txtlote.Text = $"{DateTime.Now.ToString("yy")}{ System.Globalization.CultureInfo.CurrentUICulture.Calendar.GetWeekOfYear(DateTime.Now, System.Globalization.CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday).ToString("0000")}";
                 TDetracciones.Columns["proveedor"].ColumnName = "nroid";
                 TDetracciones.Columns["razon"].ColumnName = "nombre";
                 TDetracciones.Columns["id_comprobante"].ColumnName = "idComprobanteSunat";
@@ -220,11 +222,11 @@ namespace HPReserger
             {
                 campo[0] = Compra ? "6" : item.Cells[xtipoid.Name].Value.ToString();//1
                 campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xruc.Name].Value.ToString(), ' ', 11, HPResergerFunciones.Utilitarios.Direccion.izquierda);//11
-                //if ((int)item.Cells[xtipoid.Name].Value == 1)
-                //AGREGAMOS LA VALIDACION QUITANDO LA Ñ QUE DABA PROBEMAS AL SUBIR EL TXT PARA VALIDAR
-                campo[2] = (HPResergerFunciones.Utilitarios.AddCaracter(Configuraciones.RemoverAcentosÑApostrofe(item.Cells[xrazon.Name].Value.ToString()), ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda)).ToUpper();//35
-                //else
-                //    campo[2] = HPResergerFunciones.Utilitarios.AddCaracter("", ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda);//35
+                                                                                                                                                                             //if ((int)item.Cells[xtipoid.Name].Value == 1)
+                                                                                                                                                                             //AGREGAMOS LA VALIDACION QUITANDO LA Ñ QUE DABA PROBEMAS AL SUBIR EL TXT PARA VALIDAR
+                //campo[2] = (HPResergerFunciones.Utilitarios.AddCaracter(Configuraciones.RemoverAcentosÑApostrofe(item.Cells[xrazon.Name].Value.ToString()), ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda)).ToUpper();//35
+                                                                                                                                                                                                                                     //else
+                campo[2] = HPResergerFunciones.Utilitarios.AddCaracter("", ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda);//35
                 campo[3] = "000000000";//9
                 campo[4] = txtcodbienserv.Text;
                 campo[5] = Compra ? HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xmoneda.Name].Value.ToString(), '0', 11, HPResergerFunciones.Utilitarios.Direccion.derecha) : txtcodctacte.Text;

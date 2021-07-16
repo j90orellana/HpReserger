@@ -37,6 +37,15 @@ namespace HPReserger
             txtcuentaredondeo.CargarTextoporDefecto();
             txtnrooperacion.CargarTextoporDefecto();
             CargarTipoPagos();
+            GenerarGlosaxDefectoxFechaPago();
+        }
+        private void GenerarGlosaxDefectoxFechaPago()
+        {
+            if (!txtglosa.EstaLLeno())
+            {
+                txtglosa.TextoDefecto = $"PAGO MASIVO DETRACCIONES {dtpFechaPago.Value.ToString("dd-MM-yyyy")}";
+                txtglosa.Text = $"PAGO MASIVO DETRACCIONES {dtpFechaPago.Value.ToString("dd-MM-yyyy")}";
+            }
         }
         public void CargarTipoPagos()
         {
@@ -321,7 +330,7 @@ namespace HPReserger
                     string CuoPago = FilaDato["cuo"].ToString();
                     int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                     int IdUsuario = frmLogin.CodigoUsuario;
-                    string glosa = txtglosa.TextValido();
+                    string glosa = txtglosa.Text;
                     ///FIN DECLARACION DE VARIABLES
                     //PROCESO DE PAGO
                     string nrofac = "", ruc = "";
@@ -375,10 +384,21 @@ namespace HPReserger
                             }
                         }
                     }
+                    //CABECERA Y DETALLE DETRACCIONES
+                    int c = 1;
+                    foreach (DataGridViewRow item in dtgconten.Rows)
+                    {
+                        if ((int)item.Cells[opcionx.Name].Value == 1)
+                            if ((decimal)item.Cells[xRedondeo.Name].Value != 0)
+                                CapaLogica.PagarDetracionesCabecera(c++, codigo, CuoPago, IdEmpresa, IdProyecto, decimal.Parse(txtredondeo.Text), (decimal)item.Cells[xRedondeo.Name].Value,
+                                    decimal.Parse(txtdiferencia.Text), ruc, nrofac, cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante, TC, 0);
+                    }
+                    //CABECERA Y DETALLE BANCOS
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesCabecera(codigo, CuoPago, IdEmpresa, IdProyecto, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac
-                        , cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante, TC);
+                    CapaLogica.PagarDetracionesCabecera(c++, codigo, CuoPago, IdEmpresa, IdProyecto, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac
+                        , cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante, TC, 1);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
+                    c = 1;
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
                             if ((decimal)item.Cells[xRedondeo.Name].Value != 0)
@@ -388,9 +408,22 @@ namespace HPReserger
                                 string codfac = fac[0]; string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
-                                CapaLogica.PagarDetracionesDetalle(codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
+                                CapaLogica.PagarDetracionesDetalle(c++, codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
                                     , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
-                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante, NroOperacion, TipoPago);
+                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante, NroOperacion, TipoPago, 0);
+                            }
+                    foreach (DataGridViewRow item in dtgconten.Rows)
+                        if ((int)item.Cells[opcionx.Name].Value == 1)
+                            if ((decimal)item.Cells[xRedondeo.Name].Value != 0)
+                            {//si el valor a pagar es superior a cero
+                                nrofac = item.Cells[nrofacturax.Name].Value.ToString();
+                                string[] fac = nrofac.Split('-');
+                                string codfac = fac[0]; string numfac = fac[1];
+                                ruc = item.Cells[Proveedorx.Name].Value.ToString();
+                                idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
+                                CapaLogica.PagarDetracionesDetalle(c, codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
+                                    , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
+                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante, NroOperacion, TipoPago, 1);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
                     //Cuadramos El Asiento
@@ -584,6 +617,11 @@ namespace HPReserger
             Cursor = Cursors.Default;
             frmproce.Close();
             dtgconten.ResumeLayout();
+        }
+
+        private void dtpFechaPago_ValueChanged(object sender, EventArgs e)
+        {
+            GenerarGlosaxDefectoxFechaPago();
         }
 
         private void txtcuentadetracciones_TextChanged(object sender, EventArgs e)
