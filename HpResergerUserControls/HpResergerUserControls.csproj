@@ -95,6 +95,12 @@
     <Compile Include="DtgConten.Designer.cs">
       <DependentUpon>DtgConten.cs</DependentUpon>
     </Compile>
+    <Compile Include="DuplicadorBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DuplicadorBase.Designer.cs">
+      <DependentUpon>DuplicadorBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="FondoColorOre.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComboMesAño.resx">
       <DependentUpon>ComboMesAño.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DuplicadorBase.resx">
+      <DependentUpon>DuplicadorBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGradient.resx">
       <DependentUpon>FormGradient.cs</DependentUpon>

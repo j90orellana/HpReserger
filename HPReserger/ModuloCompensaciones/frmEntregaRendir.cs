@@ -340,7 +340,8 @@ namespace HPReserger.ModuloCompensaciones
             }
             string NumID = "0";
             if (dtgconten.CurrentCell != null) NumID = dtgconten[xpkid.Name, dtgconten.CurrentCell.RowIndex].Value.ToString();
-            string[] NumFac = $"0-Ent.N°{NumID} {(dtpFechaCompensa.Value).ToString("dd/MM/yyyy")}".Split('-');
+            //string[] NumFac = $"0-ER {NumID} {(dtpFechaCompensa.Value).ToString("dd/MM/yyyy")}".Split('-');
+            string[] NumFac = $"0-ER {(dtpFechaCompensa.Value).ToString("dd/MM/yyyy")}".Split('-');
             string CuentaFondoFijo = cbocuentaxpagar.SelectedValue.ToString();
             if (cboempleado.SelectedValue == null) { msg("Seleccione un Empleado"); cboempleado.Focus(); return; }
             string[] empleado = cboempleado.SelectedValue.ToString().Split('-');
@@ -487,7 +488,8 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaVence = dtpFechaCompensa.Value.AddMonths(1);
                 NumID = (CapaLogica.SiguienteIDCompensaciones(_idempresa, 3).Rows[0]["valor"].ToString()); //1= Fondo Fijo
-                NumFac = $"0-Ent.N°{NumID} {(FechaCompensa).ToString("dd/MM/yyyy")}".Split('-');
+                                                                                                           //NumFac = $"0-Ent.N°{NumID} {(FechaCompensa).ToString("dd/MM/yyyy")}".Split('-');
+                NumFac = $"0-ER {(dtpFechaCompensa.Value).ToString("dd/MM/yyyy")}".Split('-');
                 //Debe
                 //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
                 List<string> ListaAuxiliar = new List<string>();

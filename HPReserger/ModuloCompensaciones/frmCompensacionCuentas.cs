@@ -233,7 +233,7 @@ namespace HPReserger.ModuloCompensaciones
             if (cbomoneda.SelectedValue == null) { msgError("Seleccione una Moneda"); cbomoneda.Focus(); return; }
             if (!txtGlosa.EstaLLeno()) { msgError("Ingrese una Glosa"); txtGlosa.Focus(); return; }
             if (cboempresa.SelectedValue == null) { msgError("Seleccione una Empresa"); cboempresa.Focus(); return; }
-            if (SumaDolares + SumaSoles == 0)
+            if (SumaDolares + SumaSoles != 0)
                 if (!txtdescripcion.EstaLLeno()) { msgError("Ingrese una Cuenta Contable para mandar la Diferencia"); txtCuenta.Focus(); return; }
 
             //msgError("No se ha Generado Diferencia"); return; }
@@ -251,7 +251,6 @@ namespace HPReserger.ModuloCompensaciones
             }
             if (msgp("¿Seguro Desea Grabar la Compensacion?") == DialogResult.Yes)
             {
-                return;
                 //Asientos
                 int numasiento = 0;
                 if (numasiento == 0)
@@ -287,47 +286,60 @@ namespace HPReserger.ModuloCompensaciones
                 ListaAuxiliar.Add(txtCuenta.Text);
                 if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
                 //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
-                foreach (string Cuenta in LCuentas)
+                //foreach (var item in collection)                
+                //{
+                //    Soles = Dolares = 0;
+                //dv.RowFilter = $"ok=1";
+                //    foreach (DataRow itemx in dv.ToTable().Rows)
+                //    {
+                //        Soles += (decimal)itemx[xPEN.DataPropertyName];
+                //        Dolares += (decimal)itemx[xUSD.DataPropertyName];
+                //    }
+                //    int FactorSOles = Soles > 0 ? 1 : -1;
+                //    int FactorDolares = Dolares > 0 ? 1 : -1;
+                //GRABADO DE LOS REGISTROS LINEA A LINEA
+                dv.RowFilter = $"ok=1";
+                foreach (DataRow itemx in dv.ToTable().Rows)
                 {
-                    Soles = Dolares = 0;
-                    dv.RowFilter = $"cuenta = {Cuenta} and ok=1";
-                    foreach (DataRow itemx in dv.ToTable().Rows)
-                    {
-                        Soles += (decimal)itemx[xPEN.DataPropertyName];
-                        Dolares += (decimal)itemx[xUSD.DataPropertyName];
-                    }
-                    int FactorSOles = Soles > 0 ? 1 : -1;
-                    int FactorDolares = Dolares > 0 ? 1 : -1;
-                    //GRABADO DE LOS REGISTROS LINEA A LINEA
-                    foreach (DataRow itemx in dv.ToTable().Rows)
-                    {
-                        //Grabamos la Cabeceras
-                        CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, Cuenta,
-                            moneda == 1 ? (decimal)itemx[xPEN.DataPropertyName] : (decimal)itemx[xPEN.DataPropertyName],
-                            moneda == 1 ? (decimal)itemx[xUSD.DataPropertyName] : (decimal)itemx[xUSD.DataPropertyName],
-
-                            //(moneda == 1 ? Soles : Dolares) > 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
-                            //(moneda == 1 ? Soles : Dolares) < 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
-                            3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
-                        //Grabamos el Detalle 
-                        CapaLogica.InsertarDetalleAsiento(11, PosFila, numasiento, FechaContable, Cuenta, proyecto, (int)itemx[xtipodoc.DataPropertyName], itemx[xNumDoc.DataPropertyName].ToString(),
-                            itemx[xRazonSocial.DataPropertyName].ToString(), (int)itemx[xidComprobante.DataPropertyName], itemx[xCodComprobante.DataPropertyName].ToString(),
-                            itemx[xNumComprobante.DataPropertyName].ToString(), (int)itemx[xCC.DataPropertyName], (DateTime)itemx[xFechaEmision.DataPropertyName],
-                            (DateTime)itemx[xFechaVence.DataPropertyName], (DateTime)itemx[xFechaREcepcion.DataPropertyName],
-                           FactorSOles * Math.Abs((decimal)itemx[xPEN.DataPropertyName]), FactorDolares * Math.Abs((decimal)itemx[xUSD.DataPropertyName]),
-                            (decimal)itemx[xTC.DataPropertyName], (int)itemx[xfkmoneda.DataPropertyName],
-                            (int)itemx[xctabanco.DataPropertyName], "", itemx[xGlosa.DataPropertyName].ToString(), FechaContable, idUsuario, itemx[xCUO.DataPropertyName].ToString(), 0);
-                    }
+                    //Grabamos la Cabeceras
+                    string Cuenta = itemx[xCuenta.DataPropertyName].ToString();
+                    decimal DebePen = (decimal)itemx[xPEN.DataPropertyName];
+                    decimal HaberPen = (decimal)itemx[xPEN.DataPropertyName];
+                    decimal DebeUsd = (decimal)itemx[xUSD.DataPropertyName];
+                    decimal HaberUsd = (decimal)itemx[xUSD.DataPropertyName];
+                    //
+                    DebePen = DebePen < 0 ? DebePen : 0;
+                    HaberPen = HaberPen > 0 ? HaberPen : 0;
+                    DebeUsd = DebeUsd < 0 ? DebeUsd : 0;
+                    HaberUsd = HaberUsd > 0 ? HaberUsd : 0;
+                    //
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, Cuenta,
+                       Math.Abs(moneda == 1 ? DebePen : DebeUsd),
+                       Math.Abs(moneda == 1 ? HaberPen : HaberUsd),
+                        //(moneda == 1 ? Soles : Dolares) > 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
+                        //(moneda == 1 ? Soles : Dolares) < 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
+                        3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
+                    //Grabamos el Detalle 
+                    CapaLogica.InsertarDetalleAsiento(11, PosFila, numasiento, FechaContable, Cuenta, proyecto, (int)itemx[xtipodoc.DataPropertyName], itemx[xNumDoc.DataPropertyName].ToString(),
+                        itemx[xRazonSocial.DataPropertyName].ToString(), (int)itemx[xidComprobante.DataPropertyName], itemx[xCodComprobante.DataPropertyName].ToString(),
+                        itemx[xNumComprobante.DataPropertyName].ToString(), (int)itemx[xCC.DataPropertyName], (DateTime)itemx[xFechaEmision.DataPropertyName],
+                        (DateTime)itemx[xFechaVence.DataPropertyName], (DateTime)itemx[xFechaREcepcion.DataPropertyName],
+                       Math.Abs(DebePen + HaberPen), Math.Abs(DebeUsd + HaberUsd),
+                        (decimal)itemx[xTC.DataPropertyName], (int)itemx[xfkmoneda.DataPropertyName],
+                        (int)itemx[xctabanco.DataPropertyName], "", itemx[xGlosa.DataPropertyName].ToString(), FechaContable, idUsuario, itemx[xCUO.DataPropertyName].ToString(), 0);
+                    //}
                 }
-                //Grabamos lo que se envia a la cuenta de diferencia                
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, txtCuenta.Text,
-                    (moneda == 1 ? SumaSoles : SumaDolares) > 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
-                    (moneda == 1 ? SumaSoles : SumaDolares) < 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
-                    3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
-                //Grabamos el Detalle 
-                CapaLogica.InsertarDetalleAsiento(11, PosFila, numasiento, FechaContable, txtCuenta.Text, proyecto, 0, "99999999", "", 0, "", "9999", 0, FechaEmision, FechaContable, FechaContable,
-                    Math.Abs(SumaSoles), Math.Abs(SumaDolares), 3.3000m, moneda, 0, "", GlosaCab, FechaContable, idUsuario, "", 0);
-                //Fin de la Grabacion
+                //Grabamos lo que se envia a la cuenta de diferencia           
+                if (SumaSoles + SumaDolares != 0)
+                {
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, txtCuenta.Text,
+                        (moneda == 1 ? SumaSoles : SumaDolares) > 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
+                        (moneda == 1 ? SumaSoles : SumaDolares) < 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
+                        3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
+                    //Grabamos el Detalle 
+                    CapaLogica.InsertarDetalleAsiento(11, PosFila, numasiento, FechaContable, txtCuenta.Text, proyecto, 0, "99999999", "", 0, "", "9999", 0, FechaEmision, FechaContable, FechaContable,
+                        -1 * Math.Abs(SumaSoles), -1 * Math.Abs(SumaDolares), 3.3000m, moneda, 0, "", GlosaCab, FechaContable, idUsuario, "", 0);
+                }//Fin de la Grabacion
                 msgOK($"Compensación Grabada con Exito con Cuo: {Cuo}");
                 Estado = 0;
             }
@@ -534,7 +546,7 @@ namespace HPReserger.ModuloCompensaciones
             if (e.RowIndex >= 0)
             {
                 if ((int)dtgconten[xok.Name, e.RowIndex].Value == 1)
-                    HPResergerFunciones.Utilitarios.ColorFilaSeleccionada(dtgconten.Rows[e.RowIndex], Color.FromArgb(255, 235, 156));// Color.FromArgb(137, 171, 211));
+                    HPResergerFunciones.Utilitarios.ColorFilaSeleccionada(dtgconten.Rows[e.RowIndex], Configuraciones.ColorFilaSeleccionada);// Color.FromArgb(137, 171, 211));
                 else
                     HPResergerFunciones.Utilitarios.ColorFilaDefecto(dtgconten.Rows[e.RowIndex]);
             }

@@ -2082,6 +2082,11 @@ namespace HPReserger
 
         }
 
+        private void duplicadorBase1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();

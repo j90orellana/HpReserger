@@ -37,6 +37,7 @@ namespace HpResergerUserControls
         public static Color ForeAlterno = Color.Black;
         public static Color BackColumna = Color.FromArgb(78, 129, 189);
         public static Color ForeColumna = Color.White;
+        public static Color ColorFilaSeleccionada = Color.FromArgb(255, 235, 156);
         ///FIN COLORES DE GRILLAS
         ///COLORES CON UI
         public static Color AzulUI = Color.FromArgb(52, 152, 219);
@@ -71,7 +72,7 @@ namespace HpResergerUserControls
         public static int DefIdComprobante = 0;
         public static string DefNumFac = "0";
         public static string DefSerieFac = "0";
-        public static int DefCentroCosto = 0;
+        public static int DefCentroCosto = 0;        
         //FIN VALORES PARA DOCUMENTOS
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
         public static string FilterImagenes()

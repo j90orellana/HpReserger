@@ -273,7 +273,7 @@
             this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(958, 302);
+            this.dtgconten.Size = new System.Drawing.Size(858, 302);
             this.dtgconten.TabIndex = 355;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
@@ -288,7 +288,7 @@
             this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(803, 530);
+            this.btnProcesar.Location = new System.Drawing.Point(703, 530);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(83, 23);
             this.btnProcesar.TabIndex = 357;
@@ -307,7 +307,7 @@
             this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(889, 530);
+            this.BtnCerrar.Location = new System.Drawing.Point(789, 530);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(83, 23);
             this.BtnCerrar.TabIndex = 356;
@@ -706,7 +706,7 @@
             this.btnexcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexcel.ForeColor = System.Drawing.Color.White;
-            this.btnexcel.Location = new System.Drawing.Point(451, 530);
+            this.btnexcel.Location = new System.Drawing.Point(401, 530);
             this.btnexcel.Name = "btnexcel";
             this.btnexcel.Size = new System.Drawing.Size(83, 23);
             this.btnexcel.TabIndex = 375;
@@ -961,7 +961,7 @@
             // frmCompensacionCuentas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.dtpFechaHasta);
             this.Controls.Add(this.dtpfechade);
