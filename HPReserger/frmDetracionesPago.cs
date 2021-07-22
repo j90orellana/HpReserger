@@ -399,6 +399,7 @@ namespace HPReserger
                         , cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante, TC, 1);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     c = 1;
+                    decimal SumaSoles = 0, SumaDolares = 0;
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
                             if ((decimal)item.Cells[xRedondeo.Name].Value != 0)
@@ -408,10 +409,19 @@ namespace HPReserger
                                 string codfac = fac[0]; string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
+                                SumaSoles += (decimal)item.Cells[porpagarx.Name].Value;
+                                SumaDolares += decimal.Round((decimal)item.Cells[porpagarx.Name].Value / (decimal)item.Cells[xtc.Name].Value, 2);
                                 CapaLogica.PagarDetracionesDetalle(c++, codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
                                     , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
                                    decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante, NroOperacion, TipoPago, 0);
                             }
+                    //detalle de los bancos
+                    string CuentaBanco = cbocuentabanco.SelectedValue.ToString();
+                    CapaLogica.InsertarAsientoDetalle(10, c++, codigo, FechaContable, CuentaBanco, IdProyecto, Configuraciones.DefIdRuc, Configuraciones.DefRuc, Configuraciones.DefRazonSocial,
+                        Configuraciones.DefIdComprobante, Configuraciones.DefSerieFac, Configuraciones.DefNumFac, Configuraciones.DefCentroCosto, FechaPago, FechaPago, FechaPago, SumaSoles,
+                        SumaDolares, TC, 1, idCta, NroOperacion, glosa, FechaContable, IdUsuario, "");
+
+
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
                             if ((decimal)item.Cells[xRedondeo.Name].Value != 0)

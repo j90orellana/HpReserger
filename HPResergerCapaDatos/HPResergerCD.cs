@@ -5017,10 +5017,10 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin, fecha };
             return bd.DataTableFromProcedure("usp_ReporteConcilicacionFinanzas", parametros, valores, null);
         }
-        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, int fecha, DateTime fechade, DateTime fechahasta)
+        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, string rucs, int fecha, DateTime fechade, DateTime fechahasta)
         {
-            string[] parametros = { "@empresa", "@cuos", "@cuentas", "@fecha", "@Fechade", "@fechahasta" };
-            object[] valores = { empresa, cuos, cuentas, fecha, fechade, fechahasta };
+            string[] parametros = { "@empresa", "@cuos", "@cuentas", "@rucs", "@fecha", "@Fechade", "@fechahasta" };
+            object[] valores = { empresa, cuos, cuentas, rucs, fecha, fechade, fechahasta };
             return bd.DataTableFromProcedure("usp_CompensaciondeCuentas", parametros, valores, null);
         }
 

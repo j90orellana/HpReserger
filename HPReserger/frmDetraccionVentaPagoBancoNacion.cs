@@ -62,6 +62,9 @@ namespace HPReserger
             ///datatable Acciones
             if (Compra)
             {
+                txtcodbienserv.Visible = label3.Visible = false;
+                dtgconten.Columns[xCod_Detraccion.Name].Visible = true;
+
                 //por defecto colocamos la el año 2dig y semada del año en 4dig
                 txtlote.Text = $"{DateTime.Now.ToString("yy")}{ System.Globalization.CultureInfo.CurrentUICulture.Calendar.GetWeekOfYear(DateTime.Now, System.Globalization.CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday).ToString("0000")}";
                 TDetracciones.Columns["proveedor"].ColumnName = "nroid";
@@ -224,11 +227,11 @@ namespace HPReserger
                 campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xruc.Name].Value.ToString(), ' ', 11, HPResergerFunciones.Utilitarios.Direccion.izquierda);//11
                                                                                                                                                                              //if ((int)item.Cells[xtipoid.Name].Value == 1)
                                                                                                                                                                              //AGREGAMOS LA VALIDACION QUITANDO LA Ñ QUE DABA PROBEMAS AL SUBIR EL TXT PARA VALIDAR
-                //campo[2] = (HPResergerFunciones.Utilitarios.AddCaracter(Configuraciones.RemoverAcentosÑApostrofe(item.Cells[xrazon.Name].Value.ToString()), ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda)).ToUpper();//35
-                                                                                                                                                                                                                                     //else
+                                                                                                                                                                             //campo[2] = (HPResergerFunciones.Utilitarios.AddCaracter(Configuraciones.RemoverAcentosÑApostrofe(item.Cells[xrazon.Name].Value.ToString()), ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda)).ToUpper();//35
+                                                                                                                                                                             //else
                 campo[2] = HPResergerFunciones.Utilitarios.AddCaracter("", ' ', 35, HPResergerFunciones.Utilitarios.Direccion.izquierda);//35
                 campo[3] = "000000000";//9
-                campo[4] = txtcodbienserv.Text;
+                campo[4] = Compra ? HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xCod_Detraccion.Name].Value.ToString(), '0', 3, HPResergerFunciones.Utilitarios.Direccion.derecha) : txtcodbienserv.Text;
                 campo[5] = Compra ? HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xmoneda.Name].Value.ToString(), '0', 11, HPResergerFunciones.Utilitarios.Direccion.derecha) : txtcodctacte.Text;
                 campo[6] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100((decimal.Parse(item.Cells[xdetraccion.Name].Value.ToString())).ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                 campo[7] = "01";
@@ -251,7 +254,7 @@ namespace HPReserger
                 st.Close();
                 if (msgp("Generado TXT con Éxito, Desea Continuar") == DialogResult.Yes)
                 {
-                    DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.Yes;
                     this.Close();
                 }
                 else return;

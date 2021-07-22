@@ -13,7 +13,7 @@ namespace HPReserger
 {
     public partial class frmMemoPremioObservaciones : FormGradient
     {
-        public string Observaciones { get; set; }
+        public string Observaciones { get { return txtObservaciones.Text; } set { txtObservaciones.Text = value; } }
 
         public frmMemoPremioObservaciones()
         {
@@ -23,6 +23,11 @@ namespace HPReserger
         private void frmMemoPremioObservaciones_Load(object sender, EventArgs e)
         {
             txtObservaciones.Text = Observaciones;
+        }
+        public void MostrarDatos()
+        {
+            txtObservaciones.Enabled = true;
+            MinimumSize = new Size(0, 0);
         }
     }
 }

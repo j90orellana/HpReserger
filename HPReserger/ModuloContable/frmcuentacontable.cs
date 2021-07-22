@@ -152,6 +152,7 @@ namespace HPReserger
         }
         private void frmcuentacontable_Load(object sender, EventArgs e)
         {
+            dtgconten.MultiSelect = true;
             estado = 0;
             tipobusca = 4;
             RellenarCombosSiNo(cborefleja);

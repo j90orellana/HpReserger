@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +31,7 @@ namespace HPReserger.ModuloCompensaciones
                 {
                     cboempresa.Enabled = a;
                     txtcuos.Enabled = a;
-                    txtCuentas.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = a;
+                    txtCuentas.Enabled = txtRucs.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = a;
                     dtgconten.Enabled = !a;
                     btnPaso1.Enabled = a;
                     if (dtgconten.DataSource != null)
@@ -45,11 +47,14 @@ namespace HPReserger.ModuloCompensaciones
                 {
                     cboempresa.Enabled = !a;
                     txtcuos.Enabled = !a;
-                    txtCuentas.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = !a;
+                    txtCuentas.Enabled = txtRucs.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = !a;
                     dtgconten.Enabled = a;
                 }
             }
         }
+
+        public string NameEmpresa { get; private set; }
+
         public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
@@ -59,7 +64,9 @@ namespace HPReserger.ModuloCompensaciones
         }
         private void frmCompensacionCuentas_Load(object sender, EventArgs e)
         {
-            dtpfechade.Value = dtpFechaHasta.Value = dtpFechaContable.Value = dtpFechaEmision.Value = DateTime.Now;
+            DateTime Fecha = DateTime.Now;
+            dtpFechaHasta.Value = dtpFechaContable.Value = dtpFechaEmision.Value = Fecha;
+            dtpfechade.Value = new DateTime(Fecha.Year, Fecha.Month, 1);
             CargarTextxDefecto();
             Estado = 0;
             CargarEmpresa();
@@ -74,6 +81,7 @@ namespace HPReserger.ModuloCompensaciones
             txtcuos.CargarTextoporDefecto();
             txtCuenta.CargarTextoporDefecto();
             txtGlosa.CargarTextoporDefecto();
+            txtRucs.CargarTextoporDefecto();
             txtCuentas.CargarTextoporDefecto();
         }
         public void CargarEmpresa()
@@ -91,6 +99,7 @@ namespace HPReserger.ModuloCompensaciones
                 cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
                 cboproyecto.DisplayMember = "proyecto";
                 cboproyecto.ValueMember = "id_proyecto";
+                NameEmpresa = cboempresa.Text;
             }
         }
         private void cboempresa_Click(object sender, EventArgs e)
@@ -125,13 +134,16 @@ namespace HPReserger.ModuloCompensaciones
             FechaHasta = dtpFechaHasta.Value; Fechade = dtpfechade.Value;
             if (dtpfechade.Value > dtpFechaHasta.Value) { Fechade = dtpFechaHasta.Value; FechaHasta = dtpfechade.Value; }
             //
-            Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa, txtcuos.TextValido(), txtCuentas.TextValido(), chkFecha.Checked ? 1 : 0, Fechade, FechaHasta);
+            Cursor = Cursors.WaitCursor;
+            Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa, txtcuos.TextValido(), txtCuentas.TextValido(), txtRucs.TextValido(), chkFecha.Checked ? 1 : 0, Fechade, FechaHasta);
+            Cursor = Cursors.Default;
             if (Tdatos == null) { msgError("No Hay Asientos que mostrar"); return; }
             foreach (DataRow item in Tdatos.Rows)
             {
                 if (!Listado.Contains(item["cuo"].ToString())) Listado.Add(item["cuo"].ToString());
             }
-            if (Listado.Count < 2) { msgError("CUOS invalidos, verifique que los CUOS Existan"); return; }
+            if (Listado.Count < 2) { msgError("No hay Datos para mostrar"); return; }
+
             Estado++;
             dtgconten.DataSource = Tdatos;
             lbltotalRegistros.Text = $"Total de Registros:{dtgconten.RowCount}";
@@ -206,8 +218,8 @@ namespace HPReserger.ModuloCompensaciones
                     if ((int)item[xok.DataPropertyName] == 1)
                     {
                         contador++;
-                        SumaSoles += (decimal)item[xDebeSoles.DataPropertyName] - (decimal)item[xHaberSoles.DataPropertyName];
-                        SumaDolares += (decimal)item[xDebeDolares.DataPropertyName] - (decimal)item[xHaberDOlares.DataPropertyName];
+                        SumaSoles += (decimal)item[xPEN.DataPropertyName];
+                        SumaDolares += (decimal)item[xUSD.DataPropertyName];
                     }
 
                 }
@@ -219,10 +231,12 @@ namespace HPReserger.ModuloCompensaciones
         {
             if (cboproyecto.SelectedValue == null) { msgError("Seleccione un Proyecto"); cboproyecto.Focus(); return; }
             if (cbomoneda.SelectedValue == null) { msgError("Seleccione una Moneda"); cbomoneda.Focus(); return; }
-            if (!txtdescripcion.EstaLLeno()) { msgError("Ingrese una Cuenta Contable para mandar la Diferncia"); txtCuenta.Focus(); return; }
             if (!txtGlosa.EstaLLeno()) { msgError("Ingrese una Glosa"); txtGlosa.Focus(); return; }
             if (cboempresa.SelectedValue == null) { msgError("Seleccione una Empresa"); cboempresa.Focus(); return; }
-            if (SumaDolares + SumaSoles == 0) { msgError("No se ha Generado Diferencia"); return; }
+            if (SumaDolares + SumaSoles == 0)
+                if (!txtdescripcion.EstaLLeno()) { msgError("Ingrese una Cuenta Contable para mandar la Diferencia"); txtCuenta.Focus(); return; }
+
+            //msgError("No se ha Generado Diferencia"); return; }
             //
             //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados        
             DateTime FechaContable = dtpFechaContable.Value;
@@ -237,6 +251,7 @@ namespace HPReserger.ModuloCompensaciones
             }
             if (msgp("¿Seguro Desea Grabar la Compensacion?") == DialogResult.Yes)
             {
+                return;
                 //Asientos
                 int numasiento = 0;
                 if (numasiento == 0)
@@ -278,8 +293,8 @@ namespace HPReserger.ModuloCompensaciones
                     dv.RowFilter = $"cuenta = {Cuenta} and ok=1";
                     foreach (DataRow itemx in dv.ToTable().Rows)
                     {
-                        Soles += (decimal)itemx[xDebeSoles.DataPropertyName] - (decimal)itemx[xHaberSoles.DataPropertyName];
-                        Dolares += (decimal)itemx[xDebeDolares.DataPropertyName] - (decimal)itemx[xHaberDOlares.DataPropertyName];
+                        Soles += (decimal)itemx[xPEN.DataPropertyName];
+                        Dolares += (decimal)itemx[xUSD.DataPropertyName];
                     }
                     int FactorSOles = Soles > 0 ? 1 : -1;
                     int FactorDolares = Dolares > 0 ? 1 : -1;
@@ -288,8 +303,8 @@ namespace HPReserger.ModuloCompensaciones
                     {
                         //Grabamos la Cabeceras
                         CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, Cuenta,
-                            moneda == 1 ? (decimal)itemx[xHaberSoles.DataPropertyName] : (decimal)itemx[xHaberDOlares.DataPropertyName],
-                            moneda == 1 ? (decimal)itemx[xDebeSoles.DataPropertyName] : (decimal)itemx[xDebeDolares.DataPropertyName],
+                            moneda == 1 ? (decimal)itemx[xPEN.DataPropertyName] : (decimal)itemx[xPEN.DataPropertyName],
+                            moneda == 1 ? (decimal)itemx[xUSD.DataPropertyName] : (decimal)itemx[xUSD.DataPropertyName],
 
                             //(moneda == 1 ? Soles : Dolares) > 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
                             //(moneda == 1 ? Soles : Dolares) < 0 ? Math.Abs((moneda == 1 ? Soles : Dolares)) : 0,
@@ -299,8 +314,7 @@ namespace HPReserger.ModuloCompensaciones
                             itemx[xRazonSocial.DataPropertyName].ToString(), (int)itemx[xidComprobante.DataPropertyName], itemx[xCodComprobante.DataPropertyName].ToString(),
                             itemx[xNumComprobante.DataPropertyName].ToString(), (int)itemx[xCC.DataPropertyName], (DateTime)itemx[xFechaEmision.DataPropertyName],
                             (DateTime)itemx[xFechaVence.DataPropertyName], (DateTime)itemx[xFechaREcepcion.DataPropertyName],
-                           FactorSOles * ((decimal)itemx[xDebeSoles.DataPropertyName] - (decimal)itemx[xHaberSoles.DataPropertyName]),
-                           FactorDolares * ((decimal)itemx[xDebeDolares.DataPropertyName] - (decimal)itemx[xHaberDOlares.DataPropertyName]),
+                           FactorSOles * Math.Abs((decimal)itemx[xPEN.DataPropertyName]), FactorDolares * Math.Abs((decimal)itemx[xUSD.DataPropertyName]),
                             (decimal)itemx[xTC.DataPropertyName], (int)itemx[xfkmoneda.DataPropertyName],
                             (int)itemx[xctabanco.DataPropertyName], "", itemx[xGlosa.DataPropertyName].ToString(), FechaContable, idUsuario, itemx[xCUO.DataPropertyName].ToString(), 0);
                     }
@@ -324,6 +338,208 @@ namespace HPReserger.ModuloCompensaciones
             dtpfechade.Enabled = dtpFechaHasta.Enabled = false;
             if (chkFecha.Checked) dtpfechade.Enabled = dtpFechaHasta.Enabled = true;
         }
+        private void SerializarTexto(TextBox textbox)
+        {
+            string txt = textbox.Text;
+            string cadena = $"{txt},";// {Clipboard.GetText()},";
+            cadena = cadena.Replace("\n", ",");
+            cadena = cadena.Replace("\r", ",");
+            cadena = cadena.Replace(" ", ",");
+            string[] Array = cadena.Split(',');
+            string[] Array2 = Array.OrderBy(x => x).GroupBy(x => x).Select(x => x.Key).ToArray();
+            textbox.Text = $"{string.Join(",", Array2)},";
+        }
+        private void txtcuos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)//control v         
+            {
+                SerializarTexto((TextBox)sender);
+                e.Handled = false;
+            }
+        }
+        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1 && e.ColumnIndex == 0)
+            {
+                if (dtgconten.Rows.Count > 0)
+                {
+                    int val = (int)Tdatos.Rows[0][xok.DataPropertyName];
+                    foreach (DataRow item in Tdatos.Rows)
+                    {
+                        item[xok.DataPropertyName] = val == 1 ? 0 : 1;
+                    }
+                }
+                CalcularTotales();
+            }
+            if (e.RowIndex > 0 && e.ColumnIndex > 0)
+            {
+                dtgconten[xok.Name, e.RowIndex].Value = (int)dtgconten[xok.Name, e.RowIndex].Value == 1 ? 0 : 1;
+            }
+        }
+
+        private void btnexcel_Click(object sender, EventArgs e)
+        {
+            //VALIDACIONES
+            if (cboempresa.SelectedValue == null) { cboempresa.Focus(); msgError("Seleccione una Empresa"); return; }
+            if (Tdatos.Rows.Count == 0)
+            {
+                msgError("No hay Registros para Mostrar");
+                Cursor = Cursors.Default;
+            }
+            else
+            {
+                Cursor = Cursors.WaitCursor;
+                backgroundWorker1.WorkerSupportsCancellation = true;
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    Cursor = Cursors.Default;
+                    frmproce = new HPReserger.frmProcesando();
+                    frmproce.Show();
+                    if (!backgroundWorker1.IsBusy)
+                    {
+                        backgroundWorker1.RunWorkerAsync();
+                    }
+                }
+                else
+                {
+                    Cursor = Cursors.Default;
+                    return;
+                }
+            }
+        }
+        frmProcesando frmproce;
+        private void btnexcel_Click_1(object sender, EventArgs e)
+        {
+            if (Tdatos.Rows.Count == 0)
+            {
+                msgError("No hay Registros para Mostrar");
+                Cursor = Cursors.Default;
+            }
+            else
+            {
+                Cursor = Cursors.WaitCursor;
+                backgroundWorker1.WorkerSupportsCancellation = true;
+                //   if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                Cursor = Cursors.Default;
+                frmproce = new HPReserger.frmProcesando();
+                frmproce.Show();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+
+                else
+                {
+                    Cursor = Cursors.Default;
+                    return;
+                }
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (Tdatos.Rows.Count > 0)
+            {
+                //DESARROLLO PARA MOSTRAR EL ESQUEMA DEL REPORTE DEL EXCEL                
+                List<string> ListCuentas = new List<string>();
+                //AGREGAMOS LAS CUENTAS CONTABLES A UNA LISTA PARA FILTRAR
+                DataView dv = Tdatos.AsDataView();
+                string Carpeta = Application.CommonAppDataPath;
+                //
+                string EmpresaValor = Configuraciones.ValidarRutaValida(NameEmpresa);
+                //string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
+                string valor = Carpeta + @"\";
+                //if (chkCarpetas.Checked)
+                //{
+                valor = Carpeta + @"\" + EmpresaValor + @"\";
+                string directorio = (Carpeta + @"\" + EmpresaValor).Replace(" ", "_");
+                if (!Directory.Exists(directorio))
+                    Directory.CreateDirectory(directorio);
+                //}
+                string NameFile = "";
+                NameFile = valor + $"C.Cta {EmpresaValor}.xlsx";
+                NameFile = NameFile.Replace(" ", "_");
+                //ELiminamos el Excel Antiguo
+                try
+                {
+                    if (File.Exists(NameFile)) File.Delete(NameFile);
+                }
+                catch { msgError("El Archivo Esta Abierto"); }
+                //DEFINICIONES
+                int i = 0; //posicion de la hoja no  es index
+                int Hoja = 0;
+                //
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(Configuraciones.BackAlterno, Configuraciones.FuenteReportesTahoma10, Configuraciones.ForeAlterno);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(Configuraciones.BackColumna, Configuraciones.FuenteReportesTahoma10, Configuraciones.ForeColumna);
+                //RECORREMOS EL RANGO DE PERIODOS QUE SE INGRESO               
+                i = 0;
+                Hoja++;
+                String _NombreHoja = $"Compensar Cuentas";
+                List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{1 + i}", $"R{1 + i}", EmpresaValor, 12, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{2 + i}", $"R{2 + i}", "CUENTAS A COMPENSAR", 9, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{4 + i}", $"R{4 + i}", ($"COSTO Y DEPRECIACIÓN ACUMULADA AL {FechaTempFinMes.ToString("dd 'DE' MMMM yyyy")}").ToUpper(), 9, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                DataTable TResult = dv.ToTable();
+                Configuraciones.CambiarNombreColumnsTablaGrilla(TResult, dtgconten.Columns);
+                Configuraciones.QuitarColumnas(TResult, new int[] { 0, 18, 14, 19, 20, 21, 22 });
+                int FilCabecera = 5;
+                foreach (DataColumn item in TResult.Columns)
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"{char.ConvertFromUtf32(65 + i)}{FilCabecera}", $"{char.ConvertFromUtf32(65 + i++)}{FilCabecera}", item.ColumnName, 9, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, Hoja, Celdas, FilCabecera, new int[] { }, new int[] { },
+                  new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }, "", true);
+                //Agregamos un MES  
+
+                // msgOK($"Archivo Grabados en \n{folderBrowserDialog1.SelectedPath}");
+                //ProcessStartInfo startInfo = new ProcessStartInfo();
+                //startInfo.FileName = "EXCEL.EXE";
+                //startInfo.Arguments = NameFile;
+                //Process.Start(startInfo);
+                Process.Start(NameFile);
+                if (backgroundWorker1.IsBusy) backgroundWorker1.CancelAsync();
+            }
+            else msgError("No hay Registros en la Grilla");
+        }
+
+        private void txtcuos_DoubleClick(object sender, EventArgs e)
+        {
+            ((TextBox)sender).Text = MostrarTextoenVentana(((TextBox)sender).Text, "Ver");
+            SerializarTexto((TextBox)sender);
+        }
+
+        private string MostrarTextoenVentana(string text, string v)
+        {
+            frmMemoPremioObservaciones frmver = new frmMemoPremioObservaciones();
+            frmver.Text = v;
+            frmver.Observaciones = text;
+            frmver.MostrarDatos();
+            if (frmver.ShowDialog() != DialogResult.OK)
+                return frmver.Observaciones;
+            return "";
+        }
+
+        private void txtSoles_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if ((int)dtgconten[xok.Name, e.RowIndex].Value == 1)
+                    HPResergerFunciones.Utilitarios.ColorFilaSeleccionada(dtgconten.Rows[e.RowIndex], Color.FromArgb(255, 235, 156));// Color.FromArgb(137, 171, 211));
+                else
+                    HPResergerFunciones.Utilitarios.ColorFilaDefecto(dtgconten.Rows[e.RowIndex]);
+            }
+        }
+
         private void MostrarParteFinal()
         {
             //Bloquear Controles
@@ -332,7 +548,8 @@ namespace HPReserger.ModuloCompensaciones
             txtdescripcion.Enabled = !a;
             txtGlosa.Enabled = !a;
             btnProcesar.Visible = !a;
-            txtSoles.Text = txtDolares.Text = "0.00";
+            txtSoles.Text = SumaSoles.ToString("n2");
+            txtDolares.Text = SumaDolares.ToString("n2");
             //
             cboproyecto.Enabled = !a;
             cbomoneda.Enabled = !a;
@@ -345,15 +562,12 @@ namespace HPReserger.ModuloCompensaciones
                 txtdescripcion.Enabled = a;
                 txtGlosa.Enabled = a;
                 btnProcesar.Visible = a;
-                txtSoles.Text = txtDolares.Text = SumaSoles.ToString("n2");
-                txtDolares.Text = SumaDolares.ToString("n2");
                 cboproyecto.Enabled = dtpFechaContable.Enabled = dtpFechaEmision.Enabled = a;
-                //if (SumaSoles != 0 && SumaDolares != 0)
-                //{
-                //    cbomoneda.Enabled = a;
-                //}
-                //if (SumaDolares != 0) cbomoneda.SelectedValue = 2;
-                //if (SumaSoles != 0) cbomoneda.SelectedValue = 1;
+                cbomoneda.Enabled = a;
+                if (SumaSoles + SumaDolares == 0)
+                {
+                    txtCuenta.Enabled = a;
+                }
             }
         }
     }

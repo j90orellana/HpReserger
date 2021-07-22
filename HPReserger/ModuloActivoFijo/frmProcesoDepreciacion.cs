@@ -222,7 +222,7 @@ namespace HPReserger.ModuloActivoFijo
                             i++;
                             string SerFac = "VR";
                             string NumFac = FechaContable.ToString("yyyy-MM");
-                            int idcomprobante = Configuraciones.IdComprobante;
+                            int idcomprobante = Configuraciones.DefIdComprobante;
                             string ruc = "0";
                             string razon = "";
                             decimal soles = (decimal)item.Cells[xVContable.Name].Value;

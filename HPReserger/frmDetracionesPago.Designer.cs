@@ -75,6 +75,13 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnseleccion = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblguia1 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboproyecto = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnexcel = new System.Windows.Forms.Button();
             this.opcionx = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.xidcomprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,13 +101,7 @@
             this.xFechaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrodetraccionesx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblguia1 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cboproyecto = new System.Windows.Forms.ComboBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnexcel = new System.Windows.Forms.Button();
+            this.xcod_detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -582,7 +583,8 @@
             this.FechaCanceladox,
             this.xFechaContable,
             this.nrodetraccionesx,
-            this.xtotal});
+            this.xtotal,
+            this.xcod_detraccion});
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -606,6 +608,81 @@
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
             this.dtgconten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtgconten_DataError);
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten_EditingControlShowing);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(569, 82);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 325;
+            this.label6.Text = "Fecha Pago:";
+            // 
+            // lblguia1
+            // 
+            this.lblguia1.AutoSize = true;
+            this.lblguia1.BackColor = System.Drawing.Color.Transparent;
+            this.lblguia1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblguia1.Location = new System.Drawing.Point(349, 58);
+            this.lblguia1.Name = "lblguia1";
+            this.lblguia1.Size = new System.Drawing.Size(81, 13);
+            this.lblguia1.TabIndex = 73;
+            this.lblguia1.Text = "Cuenta Banco:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(399, 82);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(90, 13);
+            this.label19.TabIndex = 325;
+            this.label19.Text = "Fecha Contable:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(348, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.TabIndex = 80;
+            this.label7.Text = "Proyecto:";
+            // 
+            // cboproyecto
+            // 
+            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyecto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.Location = new System.Drawing.Point(402, 8);
+            this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.Size = new System.Drawing.Size(315, 21);
+            this.cboproyecto.TabIndex = 81;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // btnexcel
+            // 
+            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
+            this.btnexcel.Location = new System.Drawing.Point(349, 469);
+            this.btnexcel.Name = "btnexcel";
+            this.btnexcel.Size = new System.Drawing.Size(82, 23);
+            this.btnexcel.TabIndex = 373;
+            this.btnexcel.Text = "Excel";
+            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnexcel.UseVisualStyleBackColor = true;
+            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
             // 
             // opcionx
             // 
@@ -809,81 +886,14 @@
             this.xtotal.HeaderText = "Total";
             this.xtotal.Name = "xtotal";
             this.xtotal.Visible = false;
+            this.xtotal.Width = 56;
             // 
-            // label6
+            // xcod_detraccion
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(569, 82);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 325;
-            this.label6.Text = "Fecha Pago:";
-            // 
-            // lblguia1
-            // 
-            this.lblguia1.AutoSize = true;
-            this.lblguia1.BackColor = System.Drawing.Color.Transparent;
-            this.lblguia1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblguia1.Location = new System.Drawing.Point(349, 58);
-            this.lblguia1.Name = "lblguia1";
-            this.lblguia1.Size = new System.Drawing.Size(81, 13);
-            this.lblguia1.TabIndex = 73;
-            this.lblguia1.Text = "Cuenta Banco:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(399, 82);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(90, 13);
-            this.label19.TabIndex = 325;
-            this.label19.Text = "Fecha Contable:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(348, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 13);
-            this.label7.TabIndex = 80;
-            this.label7.Text = "Proyecto:";
-            // 
-            // cboproyecto
-            // 
-            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboproyecto.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.cboproyecto.FormattingEnabled = true;
-            this.cboproyecto.Location = new System.Drawing.Point(402, 8);
-            this.cboproyecto.Name = "cboproyecto";
-            this.cboproyecto.Size = new System.Drawing.Size(315, 21);
-            this.cboproyecto.TabIndex = 81;
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // btnexcel
-            // 
-            this.btnexcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnexcel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
-            this.btnexcel.Location = new System.Drawing.Point(349, 469);
-            this.btnexcel.Name = "btnexcel";
-            this.btnexcel.Size = new System.Drawing.Size(82, 23);
-            this.btnexcel.TabIndex = 373;
-            this.btnexcel.Text = "Excel";
-            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnexcel.UseVisualStyleBackColor = true;
-            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
+            this.xcod_detraccion.DataPropertyName = "cod_detraccion";
+            this.xcod_detraccion.HeaderText = "cod_detraccion";
+            this.xcod_detraccion.Name = "xcod_detraccion";
+            this.xcod_detraccion.Visible = false;
             // 
             // frmDetracionesPago
             // 
@@ -973,6 +983,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpFechaPago;
+        private HpResergerUserControls.TextBoxPer txtnrooperacion;
+        private System.Windows.Forms.Label lblcheque;
+        private System.Windows.Forms.ComboBox cbotipo;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cboproyecto;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnexcel;
         private System.Windows.Forms.DataGridViewCheckBoxColumn opcionx;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidcomprobante;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtipo;
@@ -992,13 +1010,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrodetraccionesx;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtotal;
-        private HpResergerUserControls.TextBoxPer txtnrooperacion;
-        private System.Windows.Forms.Label lblcheque;
-        private System.Windows.Forms.ComboBox cbotipo;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cboproyecto;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button btnexcel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xcod_detraccion;
     }
 }

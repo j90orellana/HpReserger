@@ -2733,9 +2733,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Conciliacion_Busqueda_ConDetalle(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
         }
-        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, int fecha, DateTime fechade, DateTime fechahasta)
+        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, string rucs, int fecha, DateTime fechade, DateTime fechahasta)
         {
-            return cdOrdenPedido.CompensacionDeCuentas(empresa, cuos, cuentas, fecha, fechade, fechahasta);
+            return cdOrdenPedido.CompensacionDeCuentas(empresa, cuos, cuentas, rucs, fecha, fechade, fechahasta);
         }
         public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento, int idlogin)
         {

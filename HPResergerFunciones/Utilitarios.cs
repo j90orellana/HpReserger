@@ -2124,6 +2124,19 @@ namespace HPResergerFunciones
             item.Style.BackColor = Color.Empty;
             item.Style.SelectionBackColor = Color.Empty;
         }
+        public static void ColorFilaDefecto(DataGridViewRow item)
+        {
+            item.DefaultCellStyle.ForeColor = Color.Empty;
+            item.DefaultCellStyle.BackColor = Color.Empty;
+            item.DefaultCellStyle.SelectionBackColor = Color.Empty;
+        }
+        public static void ColorFilaSeleccionada(DataGridViewRow item,Color ColorFondo)
+        {
+            item.DefaultCellStyle.ForeColor = Color.Empty;
+            item.DefaultCellStyle.BackColor = ColorFondo;
+            item.DefaultCellStyle.SelectionBackColor = ColorFondo;
+
+        }
         public static void AjustarTexto(TextBox cajita, int len)
         {
             if (cajita.Text.Length > 0)

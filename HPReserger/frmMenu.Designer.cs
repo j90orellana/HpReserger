@@ -177,6 +177,7 @@
             this.crearActivoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.depreciacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDepreciaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteActivosFijosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.cuentasContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -318,7 +319,6 @@
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
             this.TimerTC = new System.Windows.Forms.Timer(this.components);
-            this.reporteActivosFijosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -427,6 +427,7 @@
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfotoempleado.TabIndex = 54;
             this.pbfotoempleado.TabStop = false;
+            this.pbfotoempleado.Visible = false;
             this.pbfotoempleado.Click += new System.EventHandler(this.pbfotoempleado_Click);
             // 
             // arToolStripMenuItem
@@ -1761,6 +1762,15 @@
             this.reporteDepreciaciónToolStripMenuItem.Text = "Reporte Depreciación";
             this.reporteDepreciaciónToolStripMenuItem.Click += new System.EventHandler(this.reporteDepreciaciónToolStripMenuItem_Click);
             // 
+            // reporteActivosFijosToolStripMenuItem
+            // 
+            this.reporteActivosFijosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteActivosFijosToolStripMenuItem.Image")));
+            this.reporteActivosFijosToolStripMenuItem.Name = "reporteActivosFijosToolStripMenuItem";
+            this.reporteActivosFijosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.reporteActivosFijosToolStripMenuItem.Tag = "1415005";
+            this.reporteActivosFijosToolStripMenuItem.Text = "Reporte Activos Fijos";
+            this.reporteActivosFijosToolStripMenuItem.Click += new System.EventHandler(this.reporteActivosFijosToolStripMenuItem_Click);
+            // 
             // toolStripSeparator19
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
@@ -2993,7 +3003,6 @@
             // 
             // menuStrip2
             // 
-            this.menuStrip2.AutoSize = false;
             this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.menuStrip2.ContextMenuStrip = this.cmenuclick;
             this.menuStrip2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3046,7 +3055,7 @@
             // 
             // lblpuntero
             // 
-            this.lblpuntero.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblpuntero.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblpuntero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblpuntero.Font = new System.Drawing.Font("Tahoma", 9F);
             this.lblpuntero.Location = new System.Drawing.Point(621, 6);
@@ -3063,7 +3072,6 @@
             // 
             this.lblwelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblwelcome.ContextMenuStrip = this.cmenuclick;
-            this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblwelcome.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblwelcome.ImageIndex = 0;
             this.lblwelcome.Location = new System.Drawing.Point(0, 0);
@@ -3074,6 +3082,7 @@
             this.lblwelcome.Text = "Bienvenidos";
             this.lblwelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblwelcome.UseMnemonic = false;
+            this.lblwelcome.Visible = false;
             this.lblwelcome.Click += new System.EventHandler(this.lblwelcome_Click);
             this.lblwelcome.DoubleClick += new System.EventHandler(this.lblwelcome_DoubleClick);
             // 
@@ -3107,15 +3116,6 @@
             this.TimerTC.Interval = 500;
             this.TimerTC.Tag = "3600000";
             this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
-            // 
-            // reporteActivosFijosToolStripMenuItem
-            // 
-            this.reporteActivosFijosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteActivosFijosToolStripMenuItem.Image")));
-            this.reporteActivosFijosToolStripMenuItem.Name = "reporteActivosFijosToolStripMenuItem";
-            this.reporteActivosFijosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.reporteActivosFijosToolStripMenuItem.Tag = "1415005";
-            this.reporteActivosFijosToolStripMenuItem.Text = "Reporte Activos Fijos";
-            this.reporteActivosFijosToolStripMenuItem.Click += new System.EventHandler(this.reporteActivosFijosToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

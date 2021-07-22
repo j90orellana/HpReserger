@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -32,6 +33,10 @@ namespace HpResergerUserControls
         public static Color ColorPrecaucion = Color.FromArgb(192, 0, 0);
         public static Color ColorBienSeleccionadas = Color.FromArgb(0, 0, 170);
         public static Color ColorPrecaucionSeleccionadas = Color.FromArgb(170, 0, 0);
+        public static Color BackAlterno = Color.FromArgb(220, 230, 241);
+        public static Color ForeAlterno = Color.Black;
+        public static Color BackColumna = Color.FromArgb(78, 129, 189);
+        public static Color ForeColumna = Color.White;
         ///FIN COLORES DE GRILLAS
         ///COLORES CON UI
         public static Color AzulUI = Color.FromArgb(52, 152, 219);
@@ -60,12 +65,13 @@ namespace HpResergerUserControls
         public static Font FuenteReportesTahoma10 = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         //FIN FUENTES 
         //VALORES PARA DOCUMENTOS
-        public static int IdRuc = 0;
-        public static string Ruc = "99999";
-        public static string Razon = "VARIOS";
-        public static int IdComprobante = 0;
-        public static string NumFac = "0";
-        public static string SerFac = "0";
+        public static int DefIdRuc = 0;
+        public static string DefRuc = "99999";
+        public static string DefRazonSocial = "VARIOS";
+        public static int DefIdComprobante = 0;
+        public static string DefNumFac = "0";
+        public static string DefSerieFac = "0";
+        public static int DefCentroCosto = 0;
         //FIN VALORES PARA DOCUMENTOS
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
         public static string FilterImagenes()
@@ -75,6 +81,12 @@ namespace HpResergerUserControls
         public static string MayusculaCadaPalabra(string cadena)
         {
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cadena.ToLower());
+        }
+        public static void QuitarColumnas(DataTable result, int[] v)
+        {
+            v = v.OrderByDescending(c => c).ToArray();
+            foreach (int i in v)
+                result.Columns.RemoveAt(i);
         }
         public static string DefectoSunatString(string cadena)
         {
@@ -328,6 +340,12 @@ namespace HpResergerUserControls
             foreach (TextBoxPer x in control)
                 if (!x.EstaLLeno())
                     x.CargarTextoporDefecto();
+        }
+
+        public static void CambiarNombreColumnsTablaGrilla(DataTable result, DataGridViewColumnCollection columns)
+        {
+            foreach (DataGridViewColumn item in columns)
+                result.Columns[item.DataPropertyName].ColumnName = item.HeaderText;
         }
     }
 
