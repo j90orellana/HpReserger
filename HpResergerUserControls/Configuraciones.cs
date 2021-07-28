@@ -24,6 +24,14 @@ namespace HpResergerUserControls
         public static string ApiReniec = "https://api.apis.net.pe/v1/dni?numero=";
         //FIN APIS
         public static string ApiRUCToken = "https://dniruc.apisperu.com/api/v1/ruc/";
+
+        public static void CambiarReadOnlyGrilla(Dtgconten dtgconten, bool v, params DataGridViewTextBoxColumn[] xEmpresaOrigen)
+        {
+            foreach (DataGridViewTextBoxColumn item in xEmpresaOrigen)
+            {
+                dtgconten.Columns[item.Name].ReadOnly = v;
+            }
+        }
         public static string APiReniecToken = "https://dniruc.apisperu.com/api/v1/dni/";
         public static string Token = "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imo5MG9yZWxsYW5hdmVnYUBnbWFpbC5jb20ifQ.G81KqiFUZjYrdcr_87qt-Nu52L24zdGGUHOLzhXywHs";
         //COLORES POR DEFECTO
@@ -38,6 +46,24 @@ namespace HpResergerUserControls
         public static Color BackColumna = Color.FromArgb(78, 129, 189);
         public static Color ForeColumna = Color.White;
         public static Color ColorFilaSeleccionada = Color.FromArgb(255, 235, 156);
+        public static void PintarDeColoresValoresUnicos(Dtgconten dtg, DataGridViewTextBoxColumn ColName)
+        {
+            int pos = 1;
+            string cadena = "";
+            foreach (DataGridViewRow item in dtg.Rows)
+            {
+                if (item.Cells[ColName.Name].Value.ToString() != cadena)
+                {
+                    pos = pos == 0 ? 1 : 0;
+                }
+                cadena = item.Cells[ColName.Name].Value.ToString();
+                if (pos == 0)
+                    item.DefaultCellStyle.BackColor = Color.White;
+                else
+                    item.DefaultCellStyle.BackColor = BackAlterno;
+            }
+        }
+
         ///FIN COLORES DE GRILLAS
         ///COLORES CON UI
         public static Color AzulUI = Color.FromArgb(52, 152, 219);
@@ -64,6 +90,17 @@ namespace HpResergerUserControls
         //FUENTES
         public static Font FuenteReportesTahoma8 = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Font FuenteReportesTahoma10 = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+        public static List<string> ExtraerListaSinDuplicados(DataTable TablaDatos, string NombreColumna)
+        {
+            List<string> Listado = new List<string>();
+            foreach (DataRow item in TablaDatos.Rows)
+            {
+                string cadena = item[NombreColumna].ToString();
+                if (!Listado.Contains(cadena)) Listado.Add(cadena);
+            }
+            return Listado;
+        }
         //FIN FUENTES 
         //VALORES PARA DOCUMENTOS
         public static int DefIdRuc = 0;
@@ -72,7 +109,16 @@ namespace HpResergerUserControls
         public static int DefIdComprobante = 0;
         public static string DefNumFac = "0";
         public static string DefSerieFac = "0";
-        public static int DefCentroCosto = 0;        
+        public static int DefCentroCosto = 0;
+        public static string ddMMyyyy = "dd/MM/yyyy";
+        public static string ddMMyy = "dd/MM/yy";
+        //Valores Defecto Formularios
+        public static int InsertarValor = 1;
+        public static int ModificarValor = 2;
+        public static int EstadoActivo = 1;
+        public static string MMyyyy = "MM/yyyy";
+        public static string MM_yyyy = "MM-yyyy";
+
         //FIN VALORES PARA DOCUMENTOS
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
         public static string FilterImagenes()
@@ -346,7 +392,11 @@ namespace HpResergerUserControls
         public static void CambiarNombreColumnsTablaGrilla(DataTable result, DataGridViewColumnCollection columns)
         {
             foreach (DataGridViewColumn item in columns)
-                result.Columns[item.DataPropertyName].ColumnName = item.HeaderText;
+                try
+                {
+                    result.Columns[item.DataPropertyName].ColumnName = item.HeaderText;
+                }
+                catch (NullReferenceException) { }
         }
     }
 

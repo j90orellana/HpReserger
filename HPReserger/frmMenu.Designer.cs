@@ -319,6 +319,7 @@
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
             this.TimerTC = new System.Windows.Forms.Timer(this.components);
+            this.comisionesYBonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -427,7 +428,6 @@
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfotoempleado.TabIndex = 54;
             this.pbfotoempleado.TabStop = false;
-            this.pbfotoempleado.Visible = false;
             this.pbfotoempleado.Click += new System.EventHandler(this.pbfotoempleado_Click);
             // 
             // arToolStripMenuItem
@@ -1913,7 +1913,8 @@
             this.cTSToolStripMenuItem,
             this.toolStripMenuItem16,
             this.toolStripMenuItem15,
-            this.toolStripMenuItem14});
+            this.toolStripMenuItem14,
+            this.comisionesYBonosToolStripMenuItem});
             this.seguimientoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("seguimientoToolStripMenuItem1.Image")));
             this.seguimientoToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.White;
             this.seguimientoToolStripMenuItem1.Name = "seguimientoToolStripMenuItem1";
@@ -1926,7 +1927,7 @@
             // 
             this.empleadoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("empleadoToolStripMenuItem1.Image")));
             this.empleadoToolStripMenuItem1.Name = "empleadoToolStripMenuItem1";
-            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.empleadoToolStripMenuItem1.Tag = "1508001";
             this.empleadoToolStripMenuItem1.Text = "Empleado";
             this.empleadoToolStripMenuItem1.Click += new System.EventHandler(this.empleadoToolStripMenuItem1_Click);
@@ -1935,7 +1936,7 @@
             // 
             this.boletasToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("boletasToolStripMenuItem1.Image")));
             this.boletasToolStripMenuItem1.Name = "boletasToolStripMenuItem1";
-            this.boletasToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.boletasToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.boletasToolStripMenuItem1.Tag = "1508002";
             this.boletasToolStripMenuItem1.Text = "Boletas";
             this.boletasToolStripMenuItem1.Click += new System.EventHandler(this.boletasToolStripMenuItem1_Click);
@@ -1944,7 +1945,7 @@
             // 
             this.vacacionesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("vacacionesToolStripMenuItem1.Image")));
             this.vacacionesToolStripMenuItem1.Name = "vacacionesToolStripMenuItem1";
-            this.vacacionesToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.vacacionesToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.vacacionesToolStripMenuItem1.Tag = "1508003";
             this.vacacionesToolStripMenuItem1.Text = "Vacaciones";
             this.vacacionesToolStripMenuItem1.Click += new System.EventHandler(this.vacacionesToolStripMenuItem1_Click);
@@ -1953,7 +1954,7 @@
             // 
             this.gratificacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("gratificacionesToolStripMenuItem.Image")));
             this.gratificacionesToolStripMenuItem.Name = "gratificacionesToolStripMenuItem";
-            this.gratificacionesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.gratificacionesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.gratificacionesToolStripMenuItem.Text = "Gratificaciones";
             this.gratificacionesToolStripMenuItem.Click += new System.EventHandler(this.gratificacionesToolStripMenuItem_Click);
             // 
@@ -1961,7 +1962,7 @@
             // 
             this.cTSToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cTSToolStripMenuItem.Image")));
             this.cTSToolStripMenuItem.Name = "cTSToolStripMenuItem";
-            this.cTSToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.cTSToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.cTSToolStripMenuItem.Text = "CTS";
             this.cTSToolStripMenuItem.Click += new System.EventHandler(this.cTSToolStripMenuItem_Click);
             // 
@@ -1969,7 +1970,7 @@
             // 
             this.toolStripMenuItem16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem16.Image")));
             this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(168, 22);
             this.toolStripMenuItem16.Text = "AFP";
             this.toolStripMenuItem16.Click += new System.EventHandler(this.toolStripMenuItem16_Click);
             // 
@@ -1977,7 +1978,7 @@
             // 
             this.toolStripMenuItem15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem15.Image")));
             this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(168, 22);
             this.toolStripMenuItem15.Text = "Renta";
             this.toolStripMenuItem15.Click += new System.EventHandler(this.toolStripMenuItem15_Click);
             // 
@@ -1985,7 +1986,7 @@
             // 
             this.toolStripMenuItem14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem14.Image")));
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(168, 22);
             this.toolStripMenuItem14.Text = "Seguros";
             this.toolStripMenuItem14.Click += new System.EventHandler(this.toolStripMenuItem14_Click_1);
             // 
@@ -3072,6 +3073,7 @@
             // 
             this.lblwelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblwelcome.ContextMenuStrip = this.cmenuclick;
+            this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblwelcome.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblwelcome.ImageIndex = 0;
             this.lblwelcome.Location = new System.Drawing.Point(0, 0);
@@ -3082,7 +3084,6 @@
             this.lblwelcome.Text = "Bienvenidos";
             this.lblwelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblwelcome.UseMnemonic = false;
-            this.lblwelcome.Visible = false;
             this.lblwelcome.Click += new System.EventHandler(this.lblwelcome_Click);
             this.lblwelcome.DoubleClick += new System.EventHandler(this.lblwelcome_DoubleClick);
             // 
@@ -3116,6 +3117,15 @@
             this.TimerTC.Interval = 500;
             this.TimerTC.Tag = "3600000";
             this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
+            // 
+            // comisionesYBonosToolStripMenuItem
+            // 
+            this.comisionesYBonosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("comisionesYBonosToolStripMenuItem.Image")));
+            this.comisionesYBonosToolStripMenuItem.Name = "comisionesYBonosToolStripMenuItem";
+            this.comisionesYBonosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.comisionesYBonosToolStripMenuItem.Tag = "1508009";
+            this.comisionesYBonosToolStripMenuItem.Text = "Comisiones y Bonos";
+            this.comisionesYBonosToolStripMenuItem.Click += new System.EventHandler(this.comisionesYBonosToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -3445,5 +3455,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripMenuItem reporteDepreciaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteActivosFijosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comisionesYBonosToolStripMenuItem;
     }
 }

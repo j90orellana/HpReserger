@@ -145,6 +145,7 @@ namespace HPReserger
             this.pbFotoContrato = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.chkBonos = new HpResergerUserControls.checkboxOre();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.grpcontrato.SuspendLayout();
             this.grpcontra.SuspendLayout();
@@ -227,7 +228,7 @@ namespace HPReserger
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(235, 22);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 13);
+            this.label8.Size = new System.Drawing.Size(95, 13);
             this.label8.TabIndex = 7;
             this.label8.Text = "Tipo de Contrato";
             // 
@@ -381,6 +382,8 @@ namespace HPReserger
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -747,7 +750,7 @@ namespace HPReserger
             this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmsg.Location = new System.Drawing.Point(12, 626);
             this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(101, 13);
+            this.lblmsg.Size = new System.Drawing.Size(102, 13);
             this.lblmsg.TabIndex = 150;
             this.lblmsg.Text = "Total de Registros:";
             // 
@@ -778,6 +781,7 @@ namespace HPReserger
             // grpcontrato
             // 
             this.grpcontrato.BackColor = System.Drawing.Color.Transparent;
+            this.grpcontrato.Controls.Add(this.chkBonos);
             this.grpcontrato.Controls.Add(this.cbotipocontratacion);
             this.grpcontrato.Controls.Add(this.cboJefeInmediato);
             this.grpcontrato.Controls.Add(this.cboCargo);
@@ -859,7 +863,7 @@ namespace HPReserger
             // btnbonos
             // 
             this.btnbonos.Image = ((System.Drawing.Image)(resources.GetObject("btnbonos.Image")));
-            this.btnbonos.Location = new System.Drawing.Point(106, 215);
+            this.btnbonos.Location = new System.Drawing.Point(160, 216);
             this.btnbonos.Name = "btnbonos";
             this.btnbonos.Size = new System.Drawing.Size(75, 23);
             this.btnbonos.TabIndex = 159;
@@ -1195,7 +1199,7 @@ namespace HPReserger
             this.label21.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(10, 122);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(112, 13);
+            this.label21.Size = new System.Drawing.Size(113, 13);
             this.label21.TabIndex = 154;
             this.label21.Text = "Tiene Cargo de Jefe?";
             // 
@@ -1254,7 +1258,7 @@ namespace HPReserger
             this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(7, 22);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(115, 13);
+            this.label22.Size = new System.Drawing.Size(116, 13);
             this.label22.TabIndex = 155;
             this.label22.Text = "Tipo de Contratación";
             // 
@@ -1351,6 +1355,19 @@ namespace HPReserger
             this.label17.Size = new System.Drawing.Size(115, 13);
             this.label17.TabIndex = 150;
             this.label17.Text = "Detalle Del Contrato:";
+            // 
+            // chkBonos
+            // 
+            this.chkBonos.AutoSize = true;
+            this.chkBonos.BackColor = System.Drawing.Color.Transparent;
+            this.chkBonos.ColorChecked = System.Drawing.Color.Empty;
+            this.chkBonos.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkBonos.Location = new System.Drawing.Point(104, 219);
+            this.chkBonos.Name = "chkBonos";
+            this.chkBonos.Size = new System.Drawing.Size(56, 17);
+            this.chkBonos.TabIndex = 161;
+            this.chkBonos.Text = "Bonos";
+            this.chkBonos.UseVisualStyleBackColor = false;
             // 
             // frmContrato
             // 
@@ -1524,5 +1541,6 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private checkboxOre chkBonos;
     }
 }

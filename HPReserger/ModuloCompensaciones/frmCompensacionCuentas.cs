@@ -54,7 +54,6 @@ namespace HPReserger.ModuloCompensaciones
         }
 
         public string NameEmpresa { get; private set; }
-
         public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
@@ -383,7 +382,7 @@ namespace HPReserger.ModuloCompensaciones
                 }
                 CalcularTotales();
             }
-            if (e.RowIndex > 0 && e.ColumnIndex > 0)
+            if (e.RowIndex >= 0 && e.ColumnIndex > 0)
             {
                 dtgconten[xok.Name, e.RowIndex].Value = (int)dtgconten[xok.Name, e.RowIndex].Value == 1 ? 0 : 1;
             }

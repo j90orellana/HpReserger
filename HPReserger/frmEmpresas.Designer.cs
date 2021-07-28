@@ -60,6 +60,7 @@ namespace HPReserger
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eps = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -90,6 +91,9 @@ namespace HPReserger
             this.btnciaseguro = new System.Windows.Forms.Button();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
             this.lbltotalregistros = new System.Windows.Forms.Label();
+            this.chkStock = new HpResergerUserControls.checkboxOre();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,6 +160,8 @@ namespace HPReserger
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -187,7 +193,8 @@ namespace HPReserger
             this.ciaseguro,
             this.usuario,
             this.fecha,
-            this.eps});
+            this.eps,
+            this.xStock});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -211,7 +218,6 @@ namespace HPReserger
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(1059, 217);
             this.dtgconten.TabIndex = 124;
-            this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
             // ruc
@@ -248,7 +254,7 @@ namespace HPReserger
             this.tipodni.HeaderText = "Tipo";
             this.tipodni.Name = "tipodni";
             this.tipodni.ReadOnly = true;
-            this.tipodni.Width = 55;
+            this.tipodni.Visible = false;
             // 
             // nroid
             // 
@@ -257,7 +263,7 @@ namespace HPReserger
             this.nroid.HeaderText = "Nro Doc";
             this.nroid.Name = "nroid";
             this.nroid.ReadOnly = true;
-            this.nroid.Width = 75;
+            this.nroid.Visible = false;
             // 
             // representante
             // 
@@ -285,7 +291,7 @@ namespace HPReserger
             this.dep.HeaderText = "Departamento";
             this.dep.Name = "dep";
             this.dep.ReadOnly = true;
-            this.dep.Width = 107;
+            this.dep.Visible = false;
             // 
             // pro
             // 
@@ -294,7 +300,7 @@ namespace HPReserger
             this.pro.HeaderText = "Provincia";
             this.pro.Name = "pro";
             this.pro.ReadOnly = true;
-            this.pro.Width = 80;
+            this.pro.Visible = false;
             // 
             // dis
             // 
@@ -393,6 +399,16 @@ namespace HPReserger
             this.eps.ReadOnly = true;
             this.eps.Visible = false;
             // 
+            // xStock
+            // 
+            this.xStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xStock.DataPropertyName = "stock";
+            this.xStock.HeaderText = "Stock";
+            this.xStock.MinimumWidth = 40;
+            this.xStock.Name = "xStock";
+            this.xStock.ReadOnly = true;
+            this.xStock.Width = 40;
+            // 
             // btneliminar
             // 
             this.btneliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -479,7 +495,7 @@ namespace HPReserger
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(167, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 13);
+            this.label3.Size = new System.Drawing.Size(124, 13);
             this.label3.TabIndex = 120;
             this.label3.Text = "Tipo Id Representante:";
             // 
@@ -502,7 +518,7 @@ namespace HPReserger
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(19, 116);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 121;
             this.label4.Text = "Buscar:";
             // 
@@ -740,15 +756,36 @@ namespace HPReserger
             this.lbltotalregistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltotalregistros.Location = new System.Drawing.Point(12, 369);
             this.lbltotalregistros.Name = "lbltotalregistros";
-            this.lbltotalregistros.Size = new System.Drawing.Size(104, 13);
+            this.lbltotalregistros.Size = new System.Drawing.Size(105, 13);
             this.lbltotalregistros.TabIndex = 156;
             this.lbltotalregistros.Text = "Total de Registros: ";
+            // 
+            // chkStock
+            // 
+            this.chkStock.AutoSize = true;
+            this.chkStock.BackColor = System.Drawing.Color.Transparent;
+            this.chkStock.ColorChecked = System.Drawing.Color.Empty;
+            this.chkStock.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkStock.Enabled = false;
+            this.chkStock.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkStock.Location = new System.Drawing.Point(924, 85);
+            this.chkStock.Name = "chkStock";
+            this.chkStock.Size = new System.Drawing.Size(54, 17);
+            this.chkStock.TabIndex = 157;
+            this.chkStock.Text = "Stock";
+            this.chkStock.UseVisualStyleBackColor = false;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // frmEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1083, 394);
+            this.Controls.Add(this.chkStock);
             this.Controls.Add(this.lbltotalregistros);
             this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.btnciaseguro);
@@ -830,6 +867,7 @@ namespace HPReserger
         private System.Windows.Forms.Button btnsector;
         private System.Windows.Forms.Button btnciaseguro;
         private SeparadorOre separadorOre1;
+        private System.Windows.Forms.Label lbltotalregistros;
         private System.Windows.Forms.DataGridViewTextBoxColumn ruc;
         private System.Windows.Forms.DataGridViewTextBoxColumn empresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
@@ -851,6 +889,9 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn eps;
-        private System.Windows.Forms.Label lbltotalregistros;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xStock;
+        private checkboxOre chkStock;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

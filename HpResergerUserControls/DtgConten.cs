@@ -12,8 +12,11 @@ namespace HpResergerUserControls
 {
     public partial class Dtgconten : DataGridView
     {
+        public string CheckColumna { get; set; }
+        public int CheckValor { get; set; }
         public Dtgconten()
         {
+            CheckValor = 1;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -71,7 +74,20 @@ namespace HpResergerUserControls
             base.OnEditingControlShowing(e);
             e.Control.KeyDown += Control_KeyDown; ;
         }
-
+        protected override void OnCellFormatting(DataGridViewCellFormattingEventArgs e)
+        {
+            if (CheckColumna != "" && CheckColumna != null)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    if ((int)this[CheckColumna, e.RowIndex].Value == CheckValor)
+                        HPResergerFunciones.Utilitarios.ColorFilaSeleccionada(this.Rows[e.RowIndex], Configuraciones.ColorFilaSeleccionada);
+                    //else
+                       // HPResergerFunciones.Utilitarios.ColorFilaDefecto(this.Rows[e.RowIndex]);
+                }
+            }
+            base.OnCellFormatting(e);
+        }
         private void Control_KeyDown(object sender, KeyEventArgs e)
         {
             if (this.CurrentCell != null)
@@ -81,7 +97,7 @@ namespace HpResergerUserControls
                     if (CurrentCell.IsInEditMode)
 
                         if (e.KeyCode == Keys.F6)
-                        {                           
+                        {
                             this[CurrentCell.ColumnIndex, CurrentCell.RowIndex].Value = this[CurrentCell.ColumnIndex, CurrentCell.RowIndex - 1].Value;
                             this.EndEdit();
                             this.RefreshEdit();
@@ -89,6 +105,22 @@ namespace HpResergerUserControls
                 }
             }
             //base.OnKeyDown(e);
+        }
+        protected override void OnCellDoubleClick(DataGridViewCellEventArgs e)
+        {
+            if (CheckColumna != "" && CheckColumna != null)
+                if (e.RowIndex == -1 && e.ColumnIndex == this.Columns[CheckColumna].Index)
+                {
+                    if (this.Rows.Count > 0)
+                    {
+                        int val = (int)this[CheckColumna, 0].Value;
+                        foreach (DataGridViewRow item in this.Rows)
+                        {
+                            item.Cells[CheckColumna].Value = val == 1 ? 0 : 1;
+                        }
+                    }
+                }
+            base.OnCellDoubleClick(e);
         }
     }
 }

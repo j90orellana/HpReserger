@@ -4162,11 +4162,25 @@ namespace HPResergerCapaDatos
             object[] valores = { cod, opcion, campo1, campo2, campo3, usuario, cod2 };
             return bd.DataTableFromProcedure("usp_InsertarActualizarListarSubOperacion", parametros, valores, null);
         }
-        public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo, string @repre, int @cia, int usuario)
+        public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo,
+            string @repre, int @cia, int usuario, int stock)
         {
-            string[] parametros = { "@id", "@opcion", "@campo1", "@campo2", "@sector", "@direcc", "@dep", "@prov", "@dis", "@tipo", "@repre", "@cia", "@usuario" };
-            object[] valores = { @id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario };
+            string[] parametros = { "@id", "@opcion", "@campo1", "@campo2", "@sector", "@direcc", "@dep", "@prov", "@dis", "@tipo", "@repre", "@cia", "@usuario", "@stock" };
+            object[] valores = { @id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario, stock };
             return bd.DataTableFromProcedure("usp_InsertarActualizarListarEmpresas", parametros, valores, null);
+        }
+        public DataTable ComisionesBonos(int @opcion, int @pkid, int @tipoid, string @numdoc, int @pkempresa, int @fkempresa, DateTime @periodo, decimal sueldo, decimal @comision, decimal @bono,
+            int @idusuario, DateTime @fecha, int Estado)
+        {
+            string[] parametros = { "@opcion", "@pkid", "@tipoid", "@numdoc", "@pkempresa", "@fkempresa", "@periodo", "@sueldo", "@comision", "@bono", "@idusuario", "@fecha", "@estado" };
+            object[] valores = { @opcion, @pkid, @tipoid, @numdoc, @pkempresa, @fkempresa, @periodo, sueldo, @comision, @bono, @idusuario, @fecha, Estado };
+            return bd.DataTableFromProcedure("usp_ComisionesBonos", parametros, valores, null);
+        }
+        public DataTable ComisionesBonos_Reporte(DateTime fechade, DateTime fechaa)
+        {
+            string[] parametros = { "@fechade", "@fechaa" };
+            object[] valores = { fechade, fechaa };
+            return bd.DataTableFromProcedure("usp_ComisionesBonos_Reporte", parametros, valores, null);
         }
         public DataTable BuscarEmpleadoActivo()
         {

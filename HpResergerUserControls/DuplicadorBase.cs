@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace HpResergerUserControls
 {
@@ -40,7 +41,10 @@ namespace HpResergerUserControls
                         cadena += "\n";
                     }
                     Clipboard.SetText(cadena);
-                    tip.Show("Copiado", pbfoto);
+                    tip.Show("Copiado", pbfoto, 2);
+                    Thread.Sleep(2000);
+                    tip.SetToolTip(pbfoto, "Copiar Grilla");
+                    //tip.SetToolTip(pbfoto, "Copiar Grilla");
                 }
                 else
                 {
@@ -51,7 +55,7 @@ namespace HpResergerUserControls
 
         private void DuplicadorBase_Load(object sender, EventArgs e)
         {
-            tip.Show("Copiar Grilla", pbfoto);
+            tip.SetToolTip(pbfoto, "Copiar Grilla");
         }
     }
 }

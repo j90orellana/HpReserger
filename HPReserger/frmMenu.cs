@@ -4593,12 +4593,13 @@ namespace HPReserger
         {
             frmMayorcuentasPerfil = null;
         }
-        ModuloRRHH.frmBonosEmpleados frmbonoempleados;
+        //ModuloRRHH.frmBonosEmpleados frmbonoempleados;
+        ModuloRRHH.frmComisionesBonos frmbonoempleados;
         private void bonosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (frmbonoempleados == null)
             {
-                frmbonoempleados = new ModuloRRHH.frmBonosEmpleados();
+                frmbonoempleados = new ModuloRRHH.frmComisionesBonos();
                 frmbonoempleados.MdiParent = this;
                 frmbonoempleados.Icon = ICono;
                 frmbonoempleados.FormClosed += new FormClosedEventHandler(Cerrarfrmbonoempleados);
@@ -5102,6 +5103,28 @@ namespace HPReserger
         private void CerrarfrmReporteDepreciaciones(object sender, FormClosedEventArgs e)
         {
             frmReporteDepreciaciones = null;
+        }
+        ModuloRRHH.frmReporteComisiones frmreportecomisiones;
+        private void comisionesYBonosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmreportecomisiones == null)
+            {
+                frmreportecomisiones = new ModuloRRHH.frmReporteComisiones();
+                frmreportecomisiones.MdiParent = this;
+                frmreportecomisiones.Icon = ICono;
+                frmreportecomisiones.FormClosed += new FormClosedEventHandler(Cerrarfrmreportecomisiones);
+                frmreportecomisiones.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreportecomisiones.Activate();
+                ValidarVentanas(frmreportecomisiones);
+            }
+        }
+        private void Cerrarfrmreportecomisiones(object sender, FormClosedEventArgs e)
+        {
+            frmreportecomisiones = null;
         }
     }
 }

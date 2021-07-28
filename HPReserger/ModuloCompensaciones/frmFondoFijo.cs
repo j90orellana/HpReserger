@@ -358,20 +358,22 @@ namespace HPReserger.ModuloCompensaciones
                     ListaAuxiliar.Add(CuentaFondoFijo);
                     ListaAuxiliar.Add(BanCuenta);
                     if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+                    string NumFac = $"FF {FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
                     //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                     ///
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, PorAbonar < 0 ? Math.Abs(moneda == 1 ? MontoSoles : MontoDolares) : 0,
                          PorAbonar > 0 ? Math.Abs(moneda == 1 ? MontoSoles : MontoDolares) : 0, tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -17);
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaFondoFijo, proyecto, TipoId, Numdoc
-                        , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                        , NameEmpleado, 0, "0", NumFac //FechaCompensa.ToString("yyyyMMdd"), NumID
+                        , 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
                     //Haber
                     //Asiento del salida del Banco
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, PorAbonar > 0 ? Math.Abs(moneda == 1 ? MontoSoles : MontoDolares) : 0,
                          PorAbonar < 0 ? Math.Abs(moneda == 1 ? MontoSoles : MontoDolares) : 0, tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -17);
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoId, Numdoc
-                        , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, nroKuenta,
+                        , NameEmpleado, 0, "0", NumFac, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, nroKuenta,
                         nroOperacion, glosa, FechaCompensa, frmLogin.CodigoUsuario, "", TipoPago);
                     //Inserto compensaciones!
                     CapaLogica.InsertarCompensacionesDetalle(int.Parse(NumID), _idempresa, 1, (PorAbonar > 0 ? 1 : -1) * Math.Abs(MontoSoles), (PorAbonar > 0 ? 1 : -1) * Math.Abs(MontoDolares), TipoPago, nroKuenta, nroOperacion,
@@ -437,18 +439,19 @@ namespace HPReserger.ModuloCompensaciones
                     //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                     //debe
                     //Asiento del salida del Banco
+                    string NumFac = $"FF {FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, Math.Abs(moneda == 1 ? MontoSoles : MontoDolares),
                          0, tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -16);
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoId, Numdoc
-                        , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, nroKuenta,
+                        , NameEmpleado, 0, "0", NumFac, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, nroKuenta,
                         nroOperacion, glosa, FechaCompensa, frmLogin.CodigoUsuario, "", TipoPago);
                     //haber
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, 0,
                         Math.Abs(moneda == 1 ? MontoSoles : MontoDolares), tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -16);
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaFondoFijo, proyecto, TipoId, Numdoc
-                        , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, "", "", glosa,
+                        , NameEmpleado, 0, "0", NumFac, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, "", "", glosa,
                         FechaCompensa, frmLogin.CodigoUsuario, "");
                     //Inserto compensaciones!
                     CapaLogica.InsertarCompensacionesDetalle(int.Parse(NumID), _idempresa, 1, MontoSoles, MontoDolares, TipoPago, nroKuenta, nroOperacion,
@@ -518,22 +521,23 @@ namespace HPReserger.ModuloCompensaciones
                 if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
                 //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //Asiento del Anticipo
+                string NumFac = $"FF {FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, moneda == 1 ? MontoSoles : MontoDolares, 0, tc,
                     proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -12);
                 //Detalle del asiento
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaFondoFijo, proyecto, TipoId, Numdoc
-                    , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, " ");
+                    , NameEmpleado, 0, "0", NumFac, 0, FechaContable, FechaVence, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, " ");
                 //Haber
                 //Asiento del salida del Banco
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, 0, moneda == 1 ? MontoSoles : MontoDolares, tc,
                     proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -12);
                 //Detalle del asiento
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoId, Numdoc
-                    , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, txtnrooperacion.Text, glosa,
+                    , NameEmpleado, 0, "0", NumFac, 0, FechaContable, FechaVence, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, txtnrooperacion.Text, glosa,
                     FechaCompensa, frmLogin.CodigoUsuario, " ", TipoPago);
                 //Inserto compensaciones!
                 CapaLogica.InsertarCompensaciones(_idempresa, 1, TipoId, Numdoc, MontoSoles, MontoDolares, Cuo, TipoPago, nroKuenta, txtnrooperacion.TextValido(),
-                    $"{dtpFechaCompensa.Value.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}", dtpFechaCompensa.Value, 2, CuentaFondoFijo, "");
+                    $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}", FechaCompensa, 2, CuentaFondoFijo, "");
                 //
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(Cuo, proyecto, dtpFechaContable.Value, 2);

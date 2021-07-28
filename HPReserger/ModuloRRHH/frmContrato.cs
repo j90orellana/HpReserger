@@ -117,6 +117,7 @@ namespace HPReserger
                     lbladenda.Text = "Adenda Del Contrato Nº " + dtgconten["adenda", fila].Value.ToString();
                 else lbladenda.Text = "";
                 cbotipocontratacion.SelectedValue = Int32.Parse(dtgconten["tc", fila].Value.ToString());
+                chkBonos.Checked = dtgconten["bono", fila].Value.ToString() == "SI" ? true : false;
                 if (int.Parse(dtgconten["MercadoObra", fila].Value.ToString()) == 1)
                 {
                     btnmercado.ForeColor = Color.Blue; btnobradeterminada.Visible = false;
@@ -570,7 +571,11 @@ namespace HPReserger
                 numero = Convert.ToInt32(dtgconten["NRO", dtgconten.CurrentCell.RowIndex].Value.ToString());
             }
             else { numero = 0; }
-            clContrato.EmpleadoContrato(numero, CodigoDocumento, NumeroDocumento, tipocontra, adendas, mercadoobras, jefe, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()), Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), tipojefe, docjefe, Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value, Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), "SI", ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones, txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
+            clContrato.EmpleadoContrato(numero, CodigoDocumento, NumeroDocumento, tipocontra, adendas, mercadoobras, jefe, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()),
+                Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), tipojefe, docjefe,
+                Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value,
+                Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), chkBonos.Checked?"SI":"NO", ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones,
+                txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
             //Message Box.Show(numero+" "+CodigoDocumento +" "+ NumeroDocumento);
         }
 
@@ -990,7 +995,7 @@ namespace HPReserger
                 catch (Exception ex) { HPResergerFunciones.frmInformativo.MostrarDialogError(ex.Message); }
 
             }
-        }       
+        }
         private void lklanexo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MostrarFoto(pbFotoAnexoFunciones, $"Imagen de Anexo de Funciones");

@@ -1756,14 +1756,42 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarActualizarListarSubOperacion(cod, opcion, campo1, campo2, campo3, usuario, cod2);
         }
-        public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo, string @repre, int @cia, int usuario)
+        public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo,
+            string @repre, int @cia, int usuario, int stock)
         {
-            return cdOrdenPedido.InsertarActualizarListarEmpresas(@id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario);
+            return cdOrdenPedido.InsertarActualizarListarEmpresas(@id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario, stock);
+        }
+        public DataTable ComisionesBonos(int @opcion, int @pkid, int @tipoid, string @numdoc, int @pkempresa, int @fkempresa, DateTime @periodo, decimal sueldo, decimal @comision, decimal @bono,
+            int @idusuario, DateTime @fecha, int estado)
+        {
+            return cdOrdenPedido.ComisionesBonos(@opcion, @pkid, @tipoid, @numdoc, @pkempresa, @fkempresa, @periodo, sueldo, @comision, @bono, @idusuario, @fecha, estado);
+        }
+        public DataTable ComisionesBonos_Reporte(DateTime fechade, DateTime fechaa)
+        {
+            return cdOrdenPedido.ComisionesBonos_Reporte(fechade, fechaa);
+        }
+        public DataTable ComisionesBonosPeriodo(DateTime @periodo)
+        {
+            string v = "";
+            DateTime d = DateTime.Now;
+            return cdOrdenPedido.ComisionesBonos(0, 0, 0, v, 0, 0, @periodo, 0, 0, 0, 0, d, 1);
+        }
+        public DataTable ComisionesBonosCambiarEstado(DateTime periodo)
+        {
+            string v = "";
+            DateTime d = DateTime.Now;
+            return cdOrdenPedido.ComisionesBonos(9, 0, 0, v, 0, 0, @periodo, 0, 0, 0, 0, d, 0); //Cambiamos el Estado a 0=Eliminar
+        }
+        public DataTable ComisionesBonosEliminar(DateTime periodo)
+        {
+            string v = "";
+            DateTime d = DateTime.Now;
+            return cdOrdenPedido.ComisionesBonos(10, 0, 0, v, 0, 0, @periodo, 0, 0, 0, 0, d, 0); //Eliminamos los Registros
         }
         public DataTable ListarEmpresas()
         {
             //id_empresa    empresa
-            return cdOrdenPedido.InsertarActualizarListarEmpresas("", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0);
+            return cdOrdenPedido.InsertarActualizarListarEmpresas("", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0);
         }
         public void TablaComprobantes(ComboBox combo)
         {

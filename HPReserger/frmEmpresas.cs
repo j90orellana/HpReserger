@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,7 @@ namespace HPReserger
             cbonombre.Enabled = a;
             btnsector.Enabled = a;
             btnciaseguro.Enabled = a;
+            chkStock.Enabled = a;
         }
         public void CargarCombos(ComboBox combito)
         {
@@ -61,9 +63,11 @@ namespace HPReserger
         {
             HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
+        DataTable Tdatos;
         public void CargarDatos()
         {
-            dtgconten.DataSource = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0);
+            Tdatos = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0);
+            dtgconten.DataSource = Tdatos;
             dtgconten.Focus();
             lbltotalregistros.Text = $"Total Registros: {dtgconten.RowCount}";
         }
@@ -148,6 +152,7 @@ namespace HPReserger
                 cboseguro.SelectedValue = dtgconten["cia", e.RowIndex].Value.ToString();
                 btneliminar.Enabled = true;
                 btnexportarExcel.Enabled = true;
+                chkStock.Checked = dtgconten[xStock.Name, e.RowIndex].Value.ToString() == "SI" ? true : false;
             }
             else
             {
@@ -185,24 +190,39 @@ namespace HPReserger
             }
             CargarDatos();
         }
-
+        public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
+        frmProcesando frmproce;
         private void btnexportarExcel_Click(object sender, EventArgs e)
         {
-            if (dtgconten.RowCount > 0)
+            if (Tdatos.Rows.Count == 0)
             {
-                List<HPResergerFunciones.Utilitarios.NombreCelda> Celditas = new List<HPResergerFunciones.Utilitarios.NombreCelda>();
-                HPResergerFunciones.Utilitarios.NombreCelda Celdita = new HPResergerFunciones.Utilitarios.NombreCelda();
-                Celdita.fila = 1; Celdita.columna = 1; Celdita.Nombre = "Listado de Empresas";
-                Celditas.Add(Celdita);
-                //HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Empresas", Celditas, 1, new int[] { 1, 4, 6, 7, 8, 9, 11, 12, 13, 20 }, new int[] { 1 }, new int[] { });
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Empresas", Celditas, 1, new int[] { 2, 3, 5, 19, 10, 18, 14, 15, 16, 17, 21 }, new int[] { 1 }, new int[] { });
-                HPResergerFunciones.frmInformativo.MostrarDialog("Exportado con Exito");
+                msgError("No hay Registros para Mostrar");
+                Cursor = Cursors.Default;
             }
             else
-                msg("No hay Filas para Exportar");
+            {
+                backgroundWorker1.WorkerSupportsCancellation = true;
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    Cursor = Cursors.WaitCursor;
+                    frmproce = new HPReserger.frmProcesando();
+                    frmproce.Show();
+                    if (!backgroundWorker1.IsBusy)
+                    {
+                        backgroundWorker1.RunWorkerAsync();
+                    }
 
+                    else
+                    {
+                        Cursor = Cursors.Default;
+                        return;
+                    }
+                }
+                Cursor = Cursors.Default;
+            }
         }
-
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             estado = 2; btnmodificar.Enabled = false;
@@ -278,7 +298,7 @@ namespace HPReserger
                 cboseguro.Focus();
                 return;
             }
-
+            int Stock = chkStock.Checked ? 1 : 0;
             /* decimal aportex = decimal.Parse(txtaporte.Text) / 100;
              decimal segurox = decimal.Parse(txtseguro.Text) / 100;
              decimal comisionx = decimal.Parse(txtcomision.Text) / 100;*/
@@ -301,7 +321,8 @@ namespace HPReserger
                     }
                 }
                 //Insertando;
-                CapaLogica.InsertarActualizarListarEmpresas(txtruc.Text, 1, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
+                CapaLogica.InsertarActualizarListarEmpresas(txtruc.Text, 1, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue,
+                    (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario, Stock);
                 HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -327,7 +348,8 @@ namespace HPReserger
                     fila++;
                 }
                 //modificando
-                CapaLogica.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
+                CapaLogica.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text,
+                    (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario, Stock);
                 HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -344,13 +366,7 @@ namespace HPReserger
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
-            dtgconten.DataSource = CapaLogica.InsertarActualizarListarEmpresas("1", 10, txtbuscar.Text, "", 0, "", 0, 0, 0, 0, "", 0, 0);
-        }
-
-        private void dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
+            dtgconten.DataSource = CapaLogica.InsertarActualizarListarEmpresas("1", 10, txtbuscar.Text, "", 0, "", 0, 0, 0, 0, "", 0, 0, 0);
         }
 
         private void txtnombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -402,6 +418,69 @@ namespace HPReserger
                 CargarSeguros(cboseguro);
                 cboseguro.SelectedValue = frmempresaeps.estado;
             }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (Tdatos.Rows.Count > 0)
+            {
+                //DESARROLLO PARA MOSTRAR EL ESQUEMA DEL REPORTE DEL EXCEL                
+                List<string> ListCuentas = new List<string>();
+                //AGREGAMOS LAS CUENTAS CONTABLES A UNA LISTA PARA FILTRAR
+                DataView dv = Tdatos.AsDataView();
+                string Carpeta = folderBrowserDialog1.SelectedPath;
+                //
+                string EmpresaValor = Configuraciones.ValidarRutaValida("");
+                //string Ruc = CapaLogica.BuscarRucEmpresa(EmpresaValor)[0].ToString();
+                string valor = Carpeta + @"\";
+                //if (chkCarpetas.Checked)
+                //{
+                valor = Carpeta + @"\" + EmpresaValor + @"\";
+                string directorio = (Carpeta + @"\" + EmpresaValor).Replace(" ", "_");
+                if (!Directory.Exists(directorio))
+                    Directory.CreateDirectory(directorio);
+                //}
+                string NameFile = "";
+                NameFile = valor + $"Listado Empresas {EmpresaValor}.xlsx";
+                //ELiminamos el Excel Antiguo
+                try
+                {
+                    if (File.Exists(NameFile)) File.Delete(NameFile);
+                }
+                catch { msgError("El Archivo Esta Abierto"); }
+                //DEFINICIONES
+                int i = 0; //posicion de la hoja no  es index
+                int Hoja = 0;
+                //
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(Configuraciones.BackAlterno, Configuraciones.FuenteReportesTahoma10, Configuraciones.ForeAlterno);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(Configuraciones.BackColumna, Configuraciones.FuenteReportesTahoma10, Configuraciones.ForeColumna);
+                //RECORREMOS EL RANGO DE PERIODOS QUE SE INGRESO               
+                i = 0;
+                Hoja++;
+                String _NombreHoja = $"Listado de Empresas";
+                List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{1 + i}", $"R{1 + i}", "Listado de Empresas", 12, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{2 + i}", $"R{2 + i}", "Detalle de las Empresas", 9, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{4 + i}", $"R{4 + i}", ($"COSTO Y DEPRECIACIÓN ACUMULADA AL {FechaTempFinMes.ToString("dd 'DE' MMMM yyyy")}").ToUpper(), 9, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                DataTable TResult = dv.ToTable();
+                Configuraciones.QuitarColumnas(TResult, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 19 });
+                Configuraciones.CambiarNombreColumnsTablaGrilla(TResult, dtgconten.Columns);
+                int FilCabecera = 5;
+                foreach (DataColumn item in TResult.Columns)
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"{char.ConvertFromUtf32(65 + i)}{FilCabecera}", $"{char.ConvertFromUtf32(65 + i++)}{FilCabecera}", item.ColumnName, 9, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, Hoja, Celdas, FilCabecera, new int[] { }, new int[] { }, new int[] { 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13 }, "", true);
+                //Agregamos un MES  
+
+                msgOK($"Archivo Grabados en \n{folderBrowserDialog1.SelectedPath}");
+                if (backgroundWorker1.IsBusy) backgroundWorker1.CancelAsync();
+            }
+            else msgError("No hay Registros en la Grilla");
+        }
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
         }
     }
 }

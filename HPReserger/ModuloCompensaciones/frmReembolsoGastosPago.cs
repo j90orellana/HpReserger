@@ -212,10 +212,11 @@ namespace HPReserger.ModuloCompensaciones
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
                 idTipocuenta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                 //Cabecera del pago del banco            
+                string NumDoc = $"RG {FechaPago.ToString(Configuraciones.ddMMyyyy)}";
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, 0, TotalPagar, TCPago, proyecto, 0, Cuo, moneda, Glosa, FechaPago, -18);
                 //detalle del pago del banco
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(UserCompensa[0]), UserCompensa[1]
-                  , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"{FechaPago.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
+                  , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", NumDoc // $"{FechaPago.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
                   , 0, FechaPago, FechaPago, FechaPago, moneda == 1 ? TotalPagar : TotalPagar * TCPago, moneda == 2 ? TotalPagar : TotalPagar / TCPago, TCPago, moneda, nroKuenta, "", Glosa, FechaPago,
                   IdLogin, Cuo, TipoPago);
                 //OTRASCUENTAS POR PAGAR
@@ -232,11 +233,12 @@ namespace HPReserger.ModuloCompensaciones
                     /////////////////////
                     if ((int)item.Cells[xok.Name].Value == 1)
                     {
+                        NumDoc = $"RG {((DateTime)item.Cells[xFechaPago.Name].Value).ToString(Configuraciones.ddMMyyyy)}";
                         CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, moneda == 1 ? MontoMN : MontoME, 0, TCPago, proyecto, 0, Cuo, moneda, Glosa, FechaPago, -18);
                         //detalle de otras cuentas x pagar a terceros
                         ////Detalle Facturas
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, int.Parse(UserCompensa[0]), UserCompensa[1],
-                            cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"{FechaPago.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
+                            cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", NumDoc// $"{FechaPago.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
                            , 0, FechaPagoFac, FechaPago, FechaPago, MontoMN, MontoME, TCPago, moneda, "", "", Glosa, FechaPago, IdLogin, Cuo);
                         //fin de pago de otras cuentas
                         //Inserto compensaciones!

@@ -474,6 +474,7 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 int pkIdTipo = (int)((DataTable)cbocuentaxpagar.DataSource).Rows[cbocuentaxpagar.SelectedIndex]["pkid"];
+                DateTime FechaCreacionFondoFijo = (DateTime)((DataTable)cbocuentaxpagar.DataSource).Rows[cbocuentaxpagar.SelectedIndex]["fechapago"];
                 //DataRow FilaData = ((DataTable)cboempleado.DataSource).Rows[cboempleado.SelectedIndex];
                 ////Datos del empleado del Reembolso
                 //int TipoIdEmpleado = (int)FilaData["Tipo_ID_Emp"];
@@ -594,8 +595,10 @@ namespace HPReserger.ModuloCompensaciones
                                           0, tc, proyecto, 0, CuoNext, moneda, glosa, FechaCompensa, -13);
                 //detalle de otras cuentas x pagar a terceros                               
                 ////Detalle Facturas
+                string NumFac = $"FF {FechaCreacionFondoFijo.ToString(Configuraciones.ddMMyyyy)}";
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, cbocuentaxpagar.SelectedValue.ToString(), proyecto, int.Parse(Empleado[0]), Empleado[1]
-                   , NameEmpleado, 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
+                   , NameEmpleado, 0, "0", NumFac
+                   // $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
                    , 0, FechaCompensa, FechaCompensa, FechaCompensa, decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text)
                    , tc, moneda, "", "", glosa, FechaCompensa, IdUsuario, Cuo);
                 //salida del banco 
@@ -617,7 +620,7 @@ namespace HPReserger.ModuloCompensaciones
                 //  , 0, FechaCompensa, FechaCompensa, FechaCompensa, decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text)
                 //  , tc, moneda, nroKuenta, NroPago, glosa, FechaCompensa, IdUsuario, Cuo);
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(Empleado[0]), Empleado[1]
-                  , NameEmpleado, 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
+                  , NameEmpleado, 0, "0", NumFac//$"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
                   , 0, FechaCompensa, FechaCompensa, FechaCompensa, moneda == 1 ? MontoPago : MontoPago * tc, moneda == 2 ? MontoPago : MontoPago / tc
                   , tc, moneda, nroKuenta, NroPago, glosa, FechaCompensa, IdUsuario, Cuo, TipoPago);
                 //Inserto compensaciones!
