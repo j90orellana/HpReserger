@@ -1720,6 +1720,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarActualizarSede(cod, opcion, cargo, usuario);
         }
+        public DataTable InsertarActualizarAFP(int @cod, int @opcion, string @cargo)
+        {
+            return cdOrdenPedido.InsertarActualizarAFP(cod, opcion, cargo);
+        }
         public DataTable InsertarActualizarSexo(int @cod, int @opcion, string @cargo, int @usuario)
         {
             return cdOrdenPedido.InsertarActualizarSexo(cod, opcion, cargo, usuario);
@@ -1736,9 +1740,17 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarActualizarVinculoFamiliar(cod, opcion, cargo, usuario);
         }
-        public DataTable InsertarActualizarListarAfp(int @cod, int @opcion, string descripcion, decimal aporte, decimal seguro, decimal comision, int @usuario)
+        public DataTable InsertarActualizarListarAfp(int @cod, int @opcion, string descripcion, decimal aporte, decimal seguro, decimal comision, DateTime periodo, decimal rma, int @usuario)
         {
-            return cdOrdenPedido.InsertarActualizarListarAfp(cod, opcion, descripcion, aporte, seguro, comision, usuario);
+            return cdOrdenPedido.InsertarActualizarListarAfp(cod, opcion, descripcion, aporte, seguro, comision, periodo, rma, usuario);
+        }
+        public DataTable DetalleAFPCambiarEstado(DateTime periodo)
+        {
+            return cdOrdenPedido.InsertarActualizarListarAfp(0, 2, "", 0, 0, 0, periodo, 0, 0);
+        }
+        public DataTable DetalleAFPEliminar(DateTime periodo)
+        {
+            return cdOrdenPedido.InsertarActualizarListarAfp(0, 3, "", 0, 0, 0, periodo, 0, 0);
         }
         public DataTable InsertarActualizarListarInstitucionEducativa(string @cod, int @opcion, string descripcion, string direccion, int @usuario)
         {

@@ -11,168 +11,138 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmAfps : FormGradient
+    public partial class frmAfpsComisiones : FormGradient
     {
-        public frmAfps()
+        public frmAfpsComisiones()
         {
             InitializeComponent();
         }
-        HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
-        int estado = 0;
-        //string tabla = "TBL_Cargo";
-        //string campo = "Cargo";
-        //string id = "Id_Cargo";
+        HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public int Estado
+        {
+            get { return estado; }
+            set
+            {
+                estado = value;
+                btnaceptar.Enabled = false;
+                dtgconten.ReadOnly = true;
+                btnmodificar.Enabled = true;
+                cboperiodo.Enabled = false;
+                btnPaso1.Enabled = false;
+                dtgconten.Columns[xPeriodo.Name].ReadOnly = true;
+                dtgconten.Columns[xAfp.Name].ReadOnly = true;
+                if (estado == 1)
+                {
+                    cboperiodo.Enabled = true;
+                    btnPaso1.Enabled = true;
+                    btnmodificar.Enabled = false;
+                }
+                if (estado == 2)
+                {
+                    btnaceptar.Enabled = true;
+                    dtgconten.ReadOnly = false;
+                    btnmodificar.Enabled = false;
+                    Configuraciones.CambiarReadOnlyGrilla(dtgconten, true, xAfp, xPeriodo);
+                }
+                //if (estado == 0)
+                //    if (TDatos != null)
+                //        dtgconten.DataSource = TDatos.Clone();
+            }
+        }
+        private int estado = 0;
         public void iniciar(Boolean a)
         {
-            btnnuevo.Enabled = !a;
             btnmodificar.Enabled = !a;
             btnaceptar.Enabled = a;
             dtgconten.Enabled = !a;
             btneliminar.Enabled = !a;
-            txtgerencia.Enabled = a;
-            txtaporte.Enabled = a;
-            txtseguro.Enabled = a;
-            txtcomision.Enabled = a;
         }
-        //private void Msg(string cadena)
-        //{
-        //    MessageBox.Showa(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
-        //}
+        DataTable TDatos;
         public void CargarDatos()
         {
-            dtgconten.DataSource = CCargos.InsertarActualizarListarAfp(0, 0, "0", 0, 0, 0, 0);
+            TDatos = CapaLogica.InsertarActualizarListarAfp(0, 0, "0", 0, 0, 0, DateTime.Now, 0, 0);
+            dtgconten.DataSource = TDatos;
             dtgconten.Focus();
+            lbltotalRegistros.Text = $"Total Registos: {dtgconten.RowCount}";
+            PintarDeColoresValoresUnicos(dtgconten, xPeriodo);
+
+        }
+        private void PintarDeColoresValoresUnicos(Dtgconten dtgconten, DataGridViewTextBoxColumn xid)
+        {
+            Configuraciones.PintarDeColoresValoresUnicos(dtgconten, xid);
+        }
+        private void CargarDatosFiltrados()
+        {
+            TDatos = CapaLogica.InsertarActualizarListarAfp(0, 10, "0", 0, 0, 0, cboperiodo.FechaInicioMes, 0, 0);
+            dtgconten.DataSource = TDatos;
+            dtgconten.Focus();
+            lbltotalRegistros.Text = $"Total Registos: {dtgconten.RowCount}";
         }
         private void frmAfps_Load(object sender, EventArgs e)
         {
             CargarDatos();
+            Estado = 0;
+            PintarDeColoresValoresUnicos(dtgconten, xPeriodo);
         }
-
-        private void btnnuevo_Click(object sender, EventArgs e)
-        {
-            estado = 1;
-            iniciar(true);
-            txtgerencia.Text = txtaporte.Text = txtseguro.Text = txtcomision.Text = "";
-            //DataRow codigo = CCargos.VerUltimoIdentificador(tabla, id);
-            //txtaporte.Text = (int.Parse(codigo["ultimo"].ToString()) + 1).ToString();
-            txtgerencia.Focus();
-        }
-
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            estado = 2; btnmodificar.Enabled = false;
-            iniciar(true); txtgerencia.Focus();
+            Estado = 1;
+            //btnmodificar.Enabled = false;
+            //iniciar(true);
+
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            if (estado == 0)
+            if (Estado == 0)
             {
                 this.Close();
             }
             else
             {
-                iniciar(false);
-                estado = 0;
+                //iniciar(false);
+                Estado--;
             }
             CargarDatos();
         }
 
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtaporte.Text))
+            if (msgYesCancel("Desea Grabar Cambios") == DialogResult.Yes)
             {
-                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Aporte");
-                txtaporte.Focus();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtcomision.Text))
-            {
-                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Comisión");
-                txtcomision.Focus();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtseguro.Text))
-            {
-                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Seguro");
-                txtseguro.Focus();
-                return;
-            }
-            decimal aportex = decimal.Parse(txtaporte.Text) / 100;
-            decimal segurox = decimal.Parse(txtseguro.Text) / 100;
-            decimal comisionx = decimal.Parse(txtcomision.Text) / 100;
-            if (estado == 1)
-            {
-                //nuevo
-                if (string.IsNullOrWhiteSpace(txtgerencia.Text))
+                DateTime periodo = cboperiodo.FechaInicioMes;
+                CapaLogica.DetalleAFPCambiarEstado(periodo);
+                foreach (DataRow item in TDatos.Rows)
                 {
-                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Nombre del Afp");
-                    txtgerencia.Focus();
-                    return;
+                    int idusuario = frmLogin.CodigoUsuario;
+                    int cod = (int)item[xid.DataPropertyName];
+                    decimal aporte = (decimal)item[xAporte.DataPropertyName];
+                    string descripcion = "";
+                    decimal seguro = (decimal)item[xSeguro.DataPropertyName];
+                    decimal rma = (decimal)item[xRMA.DataPropertyName];
+                    decimal comision = (decimal)item[xComision.DataPropertyName];
+                    //
+                    CapaLogica.InsertarActualizarListarAfp(cod, Configuraciones.InsertarValor, descripcion, aporte, seguro, comision, periodo, rma, idusuario);
                 }
-                foreach (DataGridViewRow valor in dtgconten.Rows)
-                {
-                    if (txtgerencia.Text.ToString() == valor.Cells["afp"].Value.ToString())
-                    {
-                        HPResergerFunciones.frmInformativo.MostrarDialogError("El Afp ya Existe");
-                        txtgerencia.Focus();
-                        return;
-                    }
-                }
-                //Insertando;
-                CCargos.InsertarActualizarListarAfp(0, 1, txtgerencia.Text, aportex, segurox, comisionx, frmLogin.CodigoUsuario);
-                HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
-                btncancelar_Click(sender, e);
-            }
-            if (estado == 2)
-            {
-                //Modificar
-                if (string.IsNullOrWhiteSpace(txtgerencia.Text))
-                {
-                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Nombre del Afp");
-                    txtgerencia.Focus();
-                    return;
-                }
-                int fila = 0;
-                foreach (DataGridViewRow valor in dtgconten.Rows)
-                {
-                    if (txtgerencia.Text.ToString() == valor.Cells["afp"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
-                    {
-                        HPResergerFunciones.frmInformativo.MostrarDialogError("El Afp ya Existe");
-                        txtgerencia.Focus();
-                        return;
-                    }
-                    fila++;
-                }
-                //modificando
-                CCargos.InsertarActualizarListarAfp(int.Parse(dtgconten["idafp", dtgconten.CurrentCell.RowIndex].Value.ToString()), 2, txtgerencia.Text, aportex, segurox, comisionx, frmLogin.CodigoUsuario);
-                HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
-                btncancelar_Click(sender, e);
-            }
-            if (estado == 0)
-            {
-
+                CapaLogica.DetalleAFPEliminar(periodo);
+                msgOK("Detalle de las AFPS Grabadas con Exito");
             }
         }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgconten.RowCount > 0)
-            {
-                btnmodificar.Enabled = true;
-                txtaporte.Text = ((decimal)dtgconten["aporte", e.RowIndex].Value * 100).ToString("n2");
-                txtseguro.Text = ((decimal)dtgconten["seguro", e.RowIndex].Value * 100).ToString("n2");
-                txtcomision.Text = ((decimal)dtgconten["comision", e.RowIndex].Value * 100).ToString("n2");
-                txtgerencia.Text = (string)dtgconten[1, e.RowIndex].Value.ToString();
-                btneliminar.Enabled = true;
-                btnexportarExcel.Enabled = true;
-            }
-            else
-            {
-                btnexportarExcel.Enabled = false;
-                btnmodificar.Enabled = false;
-                btneliminar.Enabled = false;
-            }
+            //if (dtgconten.RowCount > 0)
+            //{
+            //    btnmodificar.Enabled = true;
+            //    btneliminar.Enabled = true;
+            //    btnexportarExcel.Enabled = true;
+            //}
+            //else
+            //{
+            //    btnexportarExcel.Enabled = false;
+            //    btnmodificar.Enabled = false;
+            //    btneliminar.Enabled = false;
+            //}
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -191,19 +161,62 @@ namespace HPReserger
                 HPResergerFunciones.frmInformativo.MostrarDialogError("No hay Filas para Exportar");
         }
 
-        private void txtaporte_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnPaso1_Click(object sender, EventArgs e)
         {
-            HPResergerFunciones.Utilitarios.SoloNumerosDecimalesX(e, txtaporte.Text);
+            Estado = 2;
+            CargarDatosFiltrados();
+        }
+        public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+        public DialogResult msgYesCancel(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
+        Boolean ControlarCelda = true;
+        private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == dtgconten.Columns[xRMA.Name].Index && ControlarCelda)
+                {
+                    //Duplicamos el Valor llenado en todas las Celdas de la columna
+                    RellenarValorenCeldas((decimal)dtgconten[e.ColumnIndex, e.RowIndex].Value);
+                }
+                if (ControlarCelda && (e.ColumnIndex == dtgconten.Columns[xSeguro.Name].Index || e.ColumnIndex == dtgconten.Columns[xComision.Name].Index || e.ColumnIndex == dtgconten.Columns[xAporte.Name].Index))
+                {
+                    ControlarCelda = false;
+                    dtgconten[e.ColumnIndex, e.RowIndex].Value = ((decimal)dtgconten[e.ColumnIndex, e.RowIndex].Value) / 100;
+                    ControlarCelda = true;
+                }
+            }
         }
 
-        private void txtseguro_KeyPress(object sender, KeyPressEventArgs e)
+        private void RellenarValorenCeldas(decimal Valor)
         {
-            HPResergerFunciones.Utilitarios.SoloNumerosDecimalesX(e, txtseguro.Text);
+            ControlarCelda = false;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+                item.Cells[xRMA.Name].Value = Valor;
+            ControlarCelda = true;
         }
 
-        private void txtcomision_KeyPress(object sender, KeyPressEventArgs e)
+        private void dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.SoloNumerosDecimalesX(e, txtcomision.Text);
+            int x = dtgconten.CurrentCell.RowIndex, y = dtgconten.CurrentCell.ColumnIndex;
+            txt = e.Control as TextBox;
+            txt.KeyDown -= Txt_KeyDown;
+            txt.KeyPress -= Txt_KeyPress;
+            if (y == dtgconten.Columns[xSeguro.Name].Index || y == dtgconten.Columns[xComision.Name].Index || y == dtgconten.Columns[xAporte.Name].Index ||
+                y == dtgconten.Columns[xRMA.Name].Index)
+            {
+                txt.KeyDown += Txt_KeyDown;
+                txt.KeyPress += Txt_KeyPress;
+            }
+        }
+        TextBox txt;
+        private void Txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.SoloNumerosDecimalesX(e, txt.Text);
+        }
+        private void Txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.ValidarDinero(e, txt);
         }
     }
 }

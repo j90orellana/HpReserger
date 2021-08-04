@@ -141,6 +141,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmAfpEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAfpEmpresas.Designer.cs">
+      <DependentUpon>frmAfpEmpresas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConciliacionReportepdf.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2074,6 +2080,9 @@
     <Compile Include="ModuloContable\frmTipodeCambio.Designer.cs">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAfpEmpresas.resx">
+      <DependentUpon>frmAfpEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConciliacionReportepdf.resx">
       <DependentUpon>frmConciliacionReportepdf.cs</DependentUpon>
     </EmbeddedResource>

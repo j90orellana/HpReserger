@@ -4108,6 +4108,12 @@ namespace HPResergerCapaDatos
             object[] valores = { cod, opcion, cargo, usuario };
             return bd.DataTableFromProcedure("usp_InsertarActualizarSede", parametros, valores, null);
         }
+        public DataTable InsertarActualizarAFP(int @cod, int @opcion, string @cargo)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo" };
+            object[] valores = { cod, opcion, cargo };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarAFP", parametros, valores, null);
+        }
         public DataTable InsertarActualizarSexo(int @cod, int @opcion, string @cargo, int @usuario)
         {
             string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
@@ -4132,10 +4138,10 @@ namespace HPResergerCapaDatos
             object[] valores = { cod, opcion, cargo, usuario };
             return bd.DataTableFromProcedure("usp_InsertarActualizarVinculoFamiliar", parametros, valores, null);
         }
-        public DataTable InsertarActualizarListarAfp(int @cod, int @opcion, string descripcion, decimal aporte, decimal seguro, decimal comision, int @usuario)
+        public DataTable InsertarActualizarListarAfp(int @cod, int @opcion, string descripcion, decimal aporte, decimal seguro, decimal comision, DateTime periodo, decimal rma, int @usuario)
         {
-            string[] parametros = { "@cod", "@opcion", "@descripcion", "@aporte", "@seguro", "@comision", "@usuario" };
-            object[] valores = { cod, opcion, descripcion, aporte, seguro, comision, usuario };
+            string[] parametros = { "@cod", "@opcion", "@descripcion", "@aporte", "@seguro", "@comision", "@periodo", "@rma", "@usuario" };
+            object[] valores = { cod, opcion, descripcion, aporte, seguro, comision, periodo, rma, usuario };
             return bd.DataTableFromProcedure("usp_InsertarActualizarListarAfp", parametros, valores, null);
         }
         public DataTable InsertarActualizarListarInstitucionEducativa(string @cod, int @opcion, string descripcion, string direccion, int @usuario)

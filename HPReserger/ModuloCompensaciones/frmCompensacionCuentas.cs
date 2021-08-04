@@ -220,9 +220,10 @@ namespace HPReserger.ModuloCompensaciones
                         SumaSoles += (decimal)item[xPEN.DataPropertyName];
                         SumaDolares += (decimal)item[xUSD.DataPropertyName];
                     }
-
                 }
             }
+            SumaSoles = SumaSoles * -1;
+            SumaDolares = SumaDolares * -1;
             MostrarParteFinal();
         }
 
@@ -331,13 +332,20 @@ namespace HPReserger.ModuloCompensaciones
                 //Grabamos lo que se envia a la cuenta de diferencia           
                 if (SumaSoles + SumaDolares != 0)
                 {
+                    SumaSoles = SumaSoles * -1;
+                    SumaDolares = SumaDolares * -1;
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, txtCuenta.Text,
                         (moneda == 1 ? SumaSoles : SumaDolares) > 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
                         (moneda == 1 ? SumaSoles : SumaDolares) < 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
                         3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
                     //Grabamos el Detalle 
+                    if (SumaSoles != 0 && moneda == 1) { SumaSoles = Math.Abs(SumaSoles); if (Math.Sign(SumaSoles) == Math.Sign(SumaDolares)) SumaDolares = Math.Abs(SumaDolares); }
+                    if (SumaDolares != 0 && moneda == 2) { SumaDolares = Math.Abs(SumaDolares); if (Math.Sign(SumaSoles) == Math.Sign(SumaDolares)) SumaSoles = Math.Abs(SumaSoles); }
+                    //
+                    if (SumaSoles == 0 && moneda == 1 && (txtCuenta.Text == "7599103" || txtCuenta.Text == "7761101")) SumaDolares = SumaDolares * -1;
+                    if (SumaDolares == 0 && moneda == 1 && (txtCuenta.Text == "7599103" || txtCuenta.Text == "7761101")) SumaSoles = SumaSoles * -1;
                     CapaLogica.InsertarDetalleAsiento(11, PosFila, numasiento, FechaContable, txtCuenta.Text, proyecto, 0, "99999999", "", 0, "", "9999", 0, FechaEmision, FechaContable, FechaContable,
-                        -1 * Math.Abs(SumaSoles), -1 * Math.Abs(SumaDolares), 3.3000m, moneda, 0, "", GlosaCab, FechaContable, idUsuario, "", 0);
+                         (SumaSoles), (SumaDolares), 3.3000m, moneda, 0, "", GlosaCab, FechaContable, idUsuario, "", 0);
                 }//Fin de la Grabacion
                 msgOK($"Compensación Grabada con Exito con Cuo: {Cuo}");
                 Estado = 0;

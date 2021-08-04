@@ -144,8 +144,8 @@ namespace HPReserger.ModuloRRHH
                     Hoja++;
                     String _NombreHoja = $"{Periodo}";
                     List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
-                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{1 + i}", $"i{1 + i}", "Listado de Comisiones y Bonos", 12, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
-                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{2 + i}", $"i{2 + i}", "Listado de las Comisiones de los Empleados", 9, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{1 + i}", $"i{1 + i}", "PLANILLA DE HABERES DE PERSONAL DE VENTAS POR OBRA", 12, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
+                    Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{2 + i}", $"i{2 + i}", "SUELDOS Y COMISIONES PLANILLA", 9, false, true, HPResergerFunciones.Utilitarios.Alineado.izquierda, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
                     //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{4 + i}", $"R{4 + i}", ($"COSTO Y DEPRECIACIÓN ACUMULADA AL {FechaTempFinMes.ToString("dd 'DE' MMMM yyyy")}").ToUpper(), 9, true, true, HPResergerFunciones.Utilitarios.Alineado.centro, Color.White, Color.Black, Configuraciones.FuenteReportesTahoma10, true));
                     DataTable TResult = dv.ToTable();
                     Configuraciones.QuitarColumnas(TResult, new int[] { 0, 1, 5, 7, 9 });

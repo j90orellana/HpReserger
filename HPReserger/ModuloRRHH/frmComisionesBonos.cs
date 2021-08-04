@@ -126,5 +126,10 @@ namespace HPReserger.ModuloRRHH
                 msgOK("Comisiones Grabadas con Exito");
             }
         }
+
+        private void frmComisionesBonos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

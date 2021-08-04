@@ -1956,29 +1956,28 @@ namespace HPReserger
             frmVinculo = null;
             //pbfotoempleado.Visible = false;
         }
-        frmAfps frmafp;
+        frmAfpEmpresas frmEmpresaafp;
         private void afpsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmafp == null)
+            if (frmEmpresaafp == null)
             {
-                frmafp = new frmAfps();
-                frmafp.MdiParent = this;
-                frmafp.Icon = ICono;
+                frmEmpresaafp = new frmAfpEmpresas();
+                frmEmpresaafp.MdiParent = this;
+                frmEmpresaafp.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
                 ////pbfotoempleado.Visible = false;
-                frmafp.FormClosed += new FormClosedEventHandler(cerrarafps);
-                frmafp.Show();
+                frmEmpresaafp.FormClosed += new FormClosedEventHandler(cerrarafpsEmpresas);
+                frmEmpresaafp.Show();
             }
             else
             {
-                frmafp.Activate();
-                ValidarVentanas(frmafp);
+                frmEmpresaafp.Activate();
+                ValidarVentanas(frmEmpresaafp);
             }
         }
-        void cerrarafps(object sender, FormClosedEventArgs e)
+        private void cerrarafpsEmpresas(object sender, FormClosedEventArgs e)
         {
-            frmafp = null;
-            //pbfotoempleado.Visible = false;
+            frmEmpresaafp = null;
         }
         frmInstitucionesEducativas frmedu;
         private void institucionesEducativasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -5125,6 +5124,33 @@ namespace HPReserger
         private void Cerrarfrmreportecomisiones(object sender, FormClosedEventArgs e)
         {
             frmreportecomisiones = null;
+        }
+        frmAfpsComisiones frmafp;
+        private void aFPComisionesYPrimasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            if (frmafp == null)
+            {
+                frmafp = new frmAfpsComisiones();
+                frmafp.MdiParent = this;
+                frmafp.Icon = ICono;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                ////pbfotoempleado.Visible = false;
+                frmafp.FormClosed += new FormClosedEventHandler(cerrarafps);
+                frmafp.Show();
+            }
+            else
+            {
+                frmafp.Activate();
+                ValidarVentanas(frmafp);
+            }
+        }
+        void cerrarafps(object sender, FormClosedEventArgs e)
+
+        {
+            frmafp = null;
+            //pbfotoempleado.Visible = false;
         }
     }
 }

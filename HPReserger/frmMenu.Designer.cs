@@ -199,6 +199,7 @@
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
+            this.comisionesYBonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boletasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pagarBoletasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -313,13 +314,13 @@
             this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.haceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimerTC = new System.Windows.Forms.Timer(this.components);
             this.panelOre1 = new HpResergerUserControls.PanelOre();
             this.lblpuntero = new System.Windows.Forms.Label();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.TimerTC = new System.Windows.Forms.Timer(this.components);
-            this.comisionesYBonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aFPComisionesYPrimasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1990,6 +1991,15 @@
             this.toolStripMenuItem14.Text = "Seguros";
             this.toolStripMenuItem14.Click += new System.EventHandler(this.toolStripMenuItem14_Click_1);
             // 
+            // comisionesYBonosToolStripMenuItem
+            // 
+            this.comisionesYBonosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("comisionesYBonosToolStripMenuItem.Image")));
+            this.comisionesYBonosToolStripMenuItem.Name = "comisionesYBonosToolStripMenuItem";
+            this.comisionesYBonosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.comisionesYBonosToolStripMenuItem.Tag = "1508009";
+            this.comisionesYBonosToolStripMenuItem.Text = "Comisiones y Bonos";
+            this.comisionesYBonosToolStripMenuItem.Click += new System.EventHandler(this.comisionesYBonosToolStripMenuItem_Click);
+            // 
             // boletasToolStripMenuItem
             // 
             this.boletasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2479,7 +2489,8 @@
             this.institucionesEducativasToolStripMenuItem1,
             this.empresasEPSToolStripMenuItem1,
             this.ePSAdicionalToolStripMenuItem1,
-            this.aFPToolStripMenuItem});
+            this.aFPToolStripMenuItem,
+            this.aFPComisionesYPrimasToolStripMenuItem});
             this.institucionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("institucionesToolStripMenuItem.Image")));
             this.institucionesToolStripMenuItem.Name = "institucionesToolStripMenuItem";
             this.institucionesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
@@ -2489,7 +2500,7 @@
             // institucionesEducativasToolStripMenuItem1
             // 
             this.institucionesEducativasToolStripMenuItem1.Name = "institucionesEducativasToolStripMenuItem1";
-            this.institucionesEducativasToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.institucionesEducativasToolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
             this.institucionesEducativasToolStripMenuItem1.Tag = "1606001";
             this.institucionesEducativasToolStripMenuItem1.Text = "Instituciones Educativas";
             this.institucionesEducativasToolStripMenuItem1.Click += new System.EventHandler(this.institucionesEducativasToolStripMenuItem_Click);
@@ -2497,7 +2508,7 @@
             // empresasEPSToolStripMenuItem1
             // 
             this.empresasEPSToolStripMenuItem1.Name = "empresasEPSToolStripMenuItem1";
-            this.empresasEPSToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.empresasEPSToolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
             this.empresasEPSToolStripMenuItem1.Tag = "1606002";
             this.empresasEPSToolStripMenuItem1.Text = "Empresas EPS";
             this.empresasEPSToolStripMenuItem1.Click += new System.EventHandler(this.empresasEPSToolStripMenuItem_Click);
@@ -2505,7 +2516,7 @@
             // ePSAdicionalToolStripMenuItem1
             // 
             this.ePSAdicionalToolStripMenuItem1.Name = "ePSAdicionalToolStripMenuItem1";
-            this.ePSAdicionalToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.ePSAdicionalToolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
             this.ePSAdicionalToolStripMenuItem1.Tag = "1606003";
             this.ePSAdicionalToolStripMenuItem1.Text = "EPS Adicional";
             this.ePSAdicionalToolStripMenuItem1.Click += new System.EventHandler(this.epsAdicionalToolStripMenuItem_Click);
@@ -2513,7 +2524,7 @@
             // aFPToolStripMenuItem
             // 
             this.aFPToolStripMenuItem.Name = "aFPToolStripMenuItem";
-            this.aFPToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.aFPToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.aFPToolStripMenuItem.Tag = "1606004";
             this.aFPToolStripMenuItem.Text = "AFP";
             this.aFPToolStripMenuItem.Click += new System.EventHandler(this.afpsToolStripMenuItem_Click);
@@ -3041,6 +3052,13 @@
             this.haceToolStripMenuItem.Name = "haceToolStripMenuItem";
             this.haceToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
+            // TimerTC
+            // 
+            this.TimerTC.Enabled = true;
+            this.TimerTC.Interval = 500;
+            this.TimerTC.Tag = "3600000";
+            this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
+            // 
             // panelOre1
             // 
             this.panelOre1.AutoSize = true;
@@ -3111,21 +3129,12 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
-            // TimerTC
+            // aFPComisionesYPrimasToolStripMenuItem
             // 
-            this.TimerTC.Enabled = true;
-            this.TimerTC.Interval = 500;
-            this.TimerTC.Tag = "3600000";
-            this.TimerTC.Tick += new System.EventHandler(this.Timer_Tick);
-            // 
-            // comisionesYBonosToolStripMenuItem
-            // 
-            this.comisionesYBonosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("comisionesYBonosToolStripMenuItem.Image")));
-            this.comisionesYBonosToolStripMenuItem.Name = "comisionesYBonosToolStripMenuItem";
-            this.comisionesYBonosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.comisionesYBonosToolStripMenuItem.Tag = "1508009";
-            this.comisionesYBonosToolStripMenuItem.Text = "Comisiones y Bonos";
-            this.comisionesYBonosToolStripMenuItem.Click += new System.EventHandler(this.comisionesYBonosToolStripMenuItem_Click);
+            this.aFPComisionesYPrimasToolStripMenuItem.Name = "aFPComisionesYPrimasToolStripMenuItem";
+            this.aFPComisionesYPrimasToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.aFPComisionesYPrimasToolStripMenuItem.Text = "AFP Comisiones y Primas";
+            this.aFPComisionesYPrimasToolStripMenuItem.Click += new System.EventHandler(this.aFPComisionesYPrimasToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -3456,5 +3465,6 @@
         private System.Windows.Forms.ToolStripMenuItem reporteDepreciaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteActivosFijosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comisionesYBonosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aFPComisionesYPrimasToolStripMenuItem;
     }
 }

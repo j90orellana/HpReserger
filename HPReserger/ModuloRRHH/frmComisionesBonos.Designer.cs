@@ -61,9 +61,9 @@
             // comboMesAño1
             // 
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2021, 7, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2021, 7, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2021, 7, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2021, 8, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2021, 8, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2021, 8, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboMesAño1.Location = new System.Drawing.Point(12, 21);
             this.comboMesAño1.Name = "comboMesAño1";
@@ -353,6 +353,7 @@
             this.Name = "frmComisionesBonos";
             this.Nombre = "Carga de Comisiones y Bonos de Empleados";
             this.Text = "Carga de Comisiones y Bonos de Empleados";
+            this.Load += new System.EventHandler(this.frmComisionesBonos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

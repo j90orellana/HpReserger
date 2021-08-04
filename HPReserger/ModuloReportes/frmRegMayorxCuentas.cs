@@ -152,7 +152,7 @@ namespace HPReserger
             /////ASIGNACION DE LOS DATOS
             //Stopwatch stopwatch = new Stopwatch();
             //stopwatch.Start();
-           // TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+            // TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
             TDatos = CapaLogica.MayorPorCuentasConAperturaCierre(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
             TDatos.Columns.RemoveAt(TDatos.Columns.Count - 1);
             dtgconten.DataSource = TDatos;
@@ -461,10 +461,19 @@ namespace HPReserger
                     msgOK($"Archivo Grabados en \n{folderBrowserDialog1.SelectedPath}");
                     if (backgroundWorker1.IsBusy) backgroundWorker1.CancelAsync();
                 }
+                // NO ES AUDITORIA
                 else
                 {
-                    string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
-                    _NombreHoja = "Mayor_x_Cuentas"; _Cabecera = "MAYOR POR CUENTAS CONTABLES";
+                    DateTime FechaMin, FechaMax;
+                    FechaMin = FechaIni; FechaMax = FechaFin;
+                    Configuraciones.FechaMenorMayor(FechaMin, FechaMax);
+                    string _NombreHoja = "";
+                    string _NombreHojaFile = "";
+                    string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
+                    _NombreHojaFile = "Mayor_x_Cuentas";
+                    _NombreHoja = $"Mayor_x_Cuentas {FechaMin.ToString(Configuraciones.dd_MM_yy)}{(FechaMin == FechaMax ? "" : $" al {FechaMax.ToString(Configuraciones.dd_MM_yy)}")}";
+
+                    _Cabecera = "MAYOR POR CUENTAS CONTABLES";
                     _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
 
                     List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
@@ -503,7 +512,7 @@ namespace HPReserger
                         string NameFile = valor + $"6.2 {FechaInicio.ToString("MMMyyyy").ToUpper()}-{FechaFin.ToString("MMMyyyy").ToUpper()} LIBRO MAYOR.xlsx";
                         File.Delete(NameFile);
                         File.Exists(NameFile);
-                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TableResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, 1, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
+                        HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TableResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHojaFile, 1, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 3, 5, 6, 7, 8, 10, 11, 12, 18, 19, 20, 21, 22, 23 }, chksubtotales.Checked ? Macro : "");
                         msgOK($"Archivo Grabado en \n{folderBrowserDialog1.SelectedPath}");
                     }
                     else

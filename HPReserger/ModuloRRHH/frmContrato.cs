@@ -785,30 +785,30 @@ namespace HPReserger
                     btnModificar.Enabled = true;
                     btncancelar_Click(sender, e);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4 && string.IsNullOrWhiteSpace(txtContrato.Text))
-                    {
-                        clContrato.LocacionServicios(dtgconten["nro", 0].Value.ToString(), CodigoDocumento.ToString(), NumeroDocumento, 1, locacion.ocupacion, locacion.detalle);
-                        locacionservis.contrato = dtgconten["nro", 0].Value.ToString();
-                        locacionservis.tipo = CodigoDocumento.ToString();
-                        locacionservis.numero = NumeroDocumento;
-                        locacionservis.Icon = this.Icon;
-                        locacionservis.ShowDialog();
-                    }
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1 && string.IsNullOrWhiteSpace(txtContrato.Text))
-                    {
-                        clContrato.PracticasPreProfesionales(dtgconten["nro", 0].Value.ToString(), CodigoDocumento.ToString(), NumeroDocumento, 1, pracprepro.ruc, pracprepro.representante, pracprepro.tipoidrepre, pracprepro.docrepre, pracprepro.situacion, pracprepro.especialidad, pracprepro.ocupacion, pracprepro.dias, pracprepro.horario);
-                    }
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3 && string.IsNullOrWhiteSpace(txtContrato.Text))
-                    {
-                        if (btnmercado.ForeColor == Color.Blue)
-                        {
-                            repormercado.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
-                            repormercado.tipo = CodigoDocumento.ToString();
-                            repormercado.Icon = this.Icon;
-                            repormercado.numero = NumeroDocumento;
-                            repormercado.ShowDialog();
-                        }
-                    }
+                    //if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4 && string.IsNullOrWhiteSpace(txtContrato.Text))
+                    //{
+                    //    clContrato.LocacionServicios(dtgconten["nro", 0].Value.ToString(), CodigoDocumento.ToString(), NumeroDocumento, 1, locacion.ocupacion, locacion.detalle);
+                    //    locacionservis.contrato = dtgconten["nro", 0].Value.ToString();
+                    //    locacionservis.tipo = CodigoDocumento.ToString();
+                    //    locacionservis.numero = NumeroDocumento;
+                    //    locacionservis.Icon = this.Icon;
+                    //    locacionservis.ShowDialog();
+                    //}
+                    //if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1 && string.IsNullOrWhiteSpace(txtContrato.Text))
+                    //{
+                    //    clContrato.PracticasPreProfesionales(dtgconten["nro", 0].Value.ToString(), CodigoDocumento.ToString(), NumeroDocumento, 1, pracprepro.ruc, pracprepro.representante, pracprepro.tipoidrepre, pracprepro.docrepre, pracprepro.situacion, pracprepro.especialidad, pracprepro.ocupacion, pracprepro.dias, pracprepro.horario);
+                    //}
+                    //if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3 && string.IsNullOrWhiteSpace(txtContrato.Text))
+                    //{
+                    //    if (btnmercado.ForeColor == Color.Blue)
+                    //    {
+                    //        repormercado.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
+                    //        repormercado.tipo = CodigoDocumento.ToString();
+                    //        repormercado.Icon = this.Icon;
+                    //        repormercado.numero = NumeroDocumento;
+                    //        repormercado.ShowDialog();
+                    //    }
+                    //}
                     cartelito(dtgconten);
                     //Limpiar();
                 }
@@ -824,41 +824,41 @@ namespace HPReserger
                     btncancelar_Click(sender, e);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
                     cartelito(dtgconten);
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4 && string.IsNullOrWhiteSpace(txtContrato.Text))
-                    {
-                        locacionservis.contrato = dtgconten["nro", 0].Value.ToString();
-                        locacionservis.tipo = CodigoDocumento.ToString();
-                        locacionservis.numero = NumeroDocumento;
-                        locacionservis.Icon = this.Icon;
-                        locacionservis.ShowDialog();
-                    }
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1 && string.IsNullOrWhiteSpace(txtContrato.Text))
-                    {
-                        reporpracticas.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
-                        reporpracticas.tipo = CodigoDocumento;
-                        reporpracticas.numero = NumeroDocumento;
-                        reporpracticas.Icon = this.Icon;
-                        reporpracticas.ShowDialog();
-                    }
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3 && string.IsNullOrWhiteSpace(txtContrato.Text))
-                    {
-                        if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() == "0" && string.IsNullOrWhiteSpace(txtContrato.Text))
-                        {
-                            repormercado.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
-                            repormercado.tipo = CodigoDocumento.ToString();
-                            repormercado.numero = NumeroDocumento;
-                            repormercado.Icon = this.Icon;
-                            repormercado.ShowDialog();
-                        }
-                        if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() != "0" && string.IsNullOrWhiteSpace(txtContrato.Text))
-                        {
-                            reporteadenda.contrato = (dtgconten["nro", 0].Value.ToString());
-                            reporteadenda.tipo = CodigoDocumento.ToString();
-                            reporteadenda.Icon = this.Icon;
-                            reporteadenda.numero = NumeroDocumento;
-                            reporteadenda.ShowDialog();
-                        }
-                    }
+                    //if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4 && string.IsNullOrWhiteSpace(txtContrato.Text))
+                    //{
+                    //    locacionservis.contrato = dtgconten["nro", 0].Value.ToString();
+                    //    locacionservis.tipo = CodigoDocumento.ToString();
+                    //    locacionservis.numero = NumeroDocumento;
+                    //    locacionservis.Icon = this.Icon;
+                    //    locacionservis.ShowDialog();
+                    //}
+                    //if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1 && string.IsNullOrWhiteSpace(txtContrato.Text))
+                    //{
+                    //    reporpracticas.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
+                    //    reporpracticas.tipo = CodigoDocumento;
+                    //    reporpracticas.numero = NumeroDocumento;
+                    //    reporpracticas.Icon = this.Icon;
+                    //    reporpracticas.ShowDialog();
+                    //}
+                    //if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3 && string.IsNullOrWhiteSpace(txtContrato.Text))
+                    //{
+                    //    if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() == "0" && string.IsNullOrWhiteSpace(txtContrato.Text))
+                    //    {
+                    //        repormercado.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
+                    //        repormercado.tipo = CodigoDocumento.ToString();
+                    //        repormercado.numero = NumeroDocumento;
+                    //        repormercado.Icon = this.Icon;
+                    //        repormercado.ShowDialog();
+                    //    }
+                    //    if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() != "0" && string.IsNullOrWhiteSpace(txtContrato.Text))
+                    //    {
+                    //        reporteadenda.contrato = (dtgconten["nro", 0].Value.ToString());
+                    //        reporteadenda.tipo = CodigoDocumento.ToString();
+                    //        reporteadenda.Icon = this.Icon;
+                    //        reporteadenda.numero = NumeroDocumento;
+                    //        reporteadenda.ShowDialog();
+                    //    }
+                    //}
                 }
                 else return;
             }

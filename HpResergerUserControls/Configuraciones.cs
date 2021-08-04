@@ -118,6 +118,8 @@ namespace HpResergerUserControls
         public static int EstadoActivo = 1;
         public static string MMyyyy = "MM/yyyy";
         public static string MM_yyyy = "MM-yyyy";
+        public static string dd_MM_yyyy = "dd-MM-yyyy";
+        public static string dd_MM_yy = "dd-MM-yy";
 
         //FIN VALORES PARA DOCUMENTOS
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
@@ -397,6 +399,11 @@ namespace HpResergerUserControls
                     result.Columns[item.DataPropertyName].ColumnName = item.HeaderText;
                 }
                 catch (NullReferenceException) { }
+        }
+        public static void FechaMenorMayor(DateTime FechaMin, DateTime FechaMax)
+        {
+            DateTime fechaaux = FechaMin;
+            if (FechaMin > FechaMax) { FechaMin = FechaMax; FechaMax = fechaaux; }
         }
     }
 

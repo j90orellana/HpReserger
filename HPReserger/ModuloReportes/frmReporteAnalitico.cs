@@ -117,7 +117,9 @@ namespace HPReserger
             {
 
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
-                _NombreHoja = "Reporte Analítico Contable"; _Cabecera = "REPORTE ANALITICO DE CUENTAS";
+                _NombreHoja = $"Reporte Analítico Contable {FechaIni.ToString(Configuraciones.dd_MM_yy)}{(FechaIni == FechaFin ? "" : $" al {FechaFin.ToString(Configuraciones.dd_MM_yy)}")}";
+                    
+                _Cabecera = "REPORTE ANALITICO DE CUENTAS";
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
 
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
