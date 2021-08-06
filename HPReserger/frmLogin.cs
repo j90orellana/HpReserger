@@ -99,10 +99,8 @@ namespace HPReserger
             //GRafico.AddEllipse(0.12f, 0.12f,this.Width, this.Width );
             //this.Region = new Region(GRafico);
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public DialogResult msgP(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         DataRow dATOS;
         private void btnLogueo_Click(object sender, EventArgs e)
         {
@@ -161,8 +159,12 @@ namespace HPReserger
                 {
                     if (filitaAcceso["conectado"].ToString() != "0")
                     {
-                        msg("Usuario YA está Conectado");
-                        return;
+                        if (msgP("Usuario Ya está Conectado\nDesea Desconectarlo") == DialogResult.Yes)
+                        {
+                            DesconectarUsuario();
+                        }
+                        else
+                            return;
                     }
                 }
                 else

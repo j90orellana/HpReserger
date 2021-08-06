@@ -398,9 +398,13 @@ namespace HPReserger
                         if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
                             return;
                     }
+                    else if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+                    {
+                        msgError("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+                    }
                     //Verificamos si el periodo esta Abierto
-                    DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
-                    if (TPrueba2.Rows.Count == 0) { msgError("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
+                    //DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
+                    //if (TPrueba2.Rows.Count == 0) { msgError("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
                     Boolean Verificar = false;
                     //validar que no se pague valores en cero
                     foreach (DataGridViewRow item in dtgconten.Rows)
@@ -425,7 +429,7 @@ namespace HPReserger
                     {
                         frmDetraccionVentaPagoBancoNacion frmpagoventa = new frmDetraccionVentaPagoBancoNacion();
                         frmpagoventa.IdEmpresa = (int)cboempresa.SelectedValue;
-                        frmpagoventa.NroCuentaBanco = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), '-');
+                        frmpagoventa.NroCuentaBanco = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros($"{cboCuentasBancarias.Text} "), '-');
                         ////datos de la tabla
                         //frmpagoventa.TDetracciones = new DataTable();
                         dtgconten.EndEdit();

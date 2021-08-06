@@ -253,6 +253,7 @@
             this.empresasEPSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ePSAdicionalToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aFPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aFPComisionesYPrimasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sectorEmpresarialToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -320,7 +321,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.aFPComisionesYPrimasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -2526,8 +2526,16 @@
             this.aFPToolStripMenuItem.Name = "aFPToolStripMenuItem";
             this.aFPToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.aFPToolStripMenuItem.Tag = "1606004";
-            this.aFPToolStripMenuItem.Text = "AFP";
+            this.aFPToolStripMenuItem.Text = "Empresas AFP";
             this.aFPToolStripMenuItem.Click += new System.EventHandler(this.afpsToolStripMenuItem_Click);
+            // 
+            // aFPComisionesYPrimasToolStripMenuItem
+            // 
+            this.aFPComisionesYPrimasToolStripMenuItem.Name = "aFPComisionesYPrimasToolStripMenuItem";
+            this.aFPComisionesYPrimasToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.aFPComisionesYPrimasToolStripMenuItem.Tag = "1606005";
+            this.aFPComisionesYPrimasToolStripMenuItem.Text = "AFP Comisiones y Primas";
+            this.aFPComisionesYPrimasToolStripMenuItem.Click += new System.EventHandler(this.aFPComisionesYPrimasToolStripMenuItem_Click);
             // 
             // proveedoresToolStripMenuItem
             // 
@@ -3128,13 +3136,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // aFPComisionesYPrimasToolStripMenuItem
-            // 
-            this.aFPComisionesYPrimasToolStripMenuItem.Name = "aFPComisionesYPrimasToolStripMenuItem";
-            this.aFPComisionesYPrimasToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.aFPComisionesYPrimasToolStripMenuItem.Text = "AFP Comisiones y Primas";
-            this.aFPComisionesYPrimasToolStripMenuItem.Click += new System.EventHandler(this.aFPComisionesYPrimasToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

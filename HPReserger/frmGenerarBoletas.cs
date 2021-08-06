@@ -95,7 +95,7 @@ namespace HPReserger
                         return;
                 }
                 //validamos que el periodo este abierto
-                if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContable))
+                else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContable))
                 {
                     msgError("El Periodo Esta Cerrado, Cambie Fecha Contable"); comboMesAño1.Focus(); return;
                 }

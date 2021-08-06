@@ -352,11 +352,17 @@ namespace HPReserger.ModuloActivoFijo
             if (ConFacturas > 1) //
             {
                 if (!CapaLogica.ValidarCrearPeriodo(_idempresa, FechaContable))
+                {
                     if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaContable.ToString("MMMM")}-{FechaContable.Year}?") != DialogResult.Yes)
                         return;
-                DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto(_idempresa, FechaContable);
-                if (TPrueba2.Rows.Count == 0) { msgError("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
-                //
+                }
+                else if (!CapaLogica.VerificarPeriodoAbierto(_idempresa, FechaContable))
+                {
+                    msgError("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+                }
+                //DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto(_idempresa, FechaContable);
+                //if (TPrueba2.Rows.Count == 0) { msgError("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
+                ////
                 if (Estado == 1)//Nuevo                
                     CapaLogica.UltimoAsiento(_idempresa, FechaContable, out codigo, out CuoAsiento);
                 //validamos que las cuentas contables NO esten desactivadas

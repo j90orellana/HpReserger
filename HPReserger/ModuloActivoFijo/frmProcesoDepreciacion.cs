@@ -196,10 +196,16 @@ namespace HPReserger.ModuloActivoFijo
                     if (tc == 0) { msgError("No hay TIPO DE CAMBIO para el fin de mes del Mes Contable"); return; }
                     //VALIDACION DE CUENTAS CONTABLES Y PERIODOS
                     if (!CapaLogica.ValidarCrearPeriodo(_idempresa, FechaContable))
+                    {
                         if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaContable.ToString("MMMM")}-{FechaContable.Year}?") != DialogResult.Yes)
                             return;
-                    DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto(_idempresa, FechaContable);
-                    if (TPrueba2.Rows.Count == 0) { msgError("El Periodo está Cerrado, Debe Abrirlo"); return; }
+                    }
+                    else if (!CapaLogica.VerificarPeriodoAbierto(_idempresa, FechaContable))
+                    {
+                        msgError("El Periodo Esta Cerrado, Cambie Fecha Contable");  return;
+                    }
+                    //DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto(_idempresa, FechaContable);
+                    //if (TPrueba2.Rows.Count == 0) { msgError("El Periodo está Cerrado, Debe Abrirlo"); return; }
                     //
                     if (Estado == 1)//Nuevo                
                         CapaLogica.UltimoAsiento(_idempresa, FechaContable, out codigo, out CuoAsiento);

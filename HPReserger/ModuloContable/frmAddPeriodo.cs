@@ -35,7 +35,7 @@ namespace HPReserger
         {
             //Validaciones
             if (cboempresa.SelectedValue == null) { msg("Selecciones una Empresa"); return; }
-            if (comboMesAño1.GetFechaPRimerDia() == null) { msg("Selecicone una Fecha Valida"); return; }
+            if (comboMesAño1.GetFechaPRimerDia() == null) { msg("Seleccione una Fecha Valida"); return; }
             //Declaraciones
             int pkEmpresa = (int)cboempresa.SelectedValue;
             DateTime Fecha = comboMesAño1.GetFechaPRimerDia();

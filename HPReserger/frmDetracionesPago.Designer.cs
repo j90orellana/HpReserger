@@ -545,6 +545,7 @@
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -617,9 +618,11 @@
             this.opcionx.DataPropertyName = "opcion";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.opcionx.DefaultCellStyle = dataGridViewCellStyle3;
+            this.opcionx.FalseValue = "0";
             this.opcionx.HeaderText = "Ok";
             this.opcionx.MinimumWidth = 30;
             this.opcionx.Name = "opcionx";
+            this.opcionx.TrueValue = "1";
             this.opcionx.Width = 30;
             // 
             // xidcomprobante

@@ -448,6 +448,10 @@ namespace HPReserger.ModuloFinanzas
                 if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
                     return;
             }
+            else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContable))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
             IdEmpresa = (int)cboDesEmpresa.SelectedValue;
             if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
@@ -455,18 +459,22 @@ namespace HPReserger.ModuloFinanzas
                 if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
                     return;
             }
+            else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContable))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             ///validaciones de Logica
             if ((int)cboOriEmpresa.SelectedValue == (int)cboDesEmpresa.SelectedValue) { cboDesEmpresa.Focus(); msg("Seleccione Diferentes Empresas"); return; }
-            if (!CapaLogica.VerificarPeriodoAbierto((int)cboOriEmpresa.SelectedValue, FechaContable))
-            {
-                mensaje += $"\n{cboOriEmpresa.Text}";
-                dtpFechaContable.Focus(); Prueba = false;
-            }
-            if (!CapaLogica.VerificarPeriodoAbierto((int)cboDesEmpresa.SelectedValue, FechaContable))
-            {
-                mensaje += $"\n{cboDesEmpresa.Text}";
-                dtpFechaContable.Focus(); Prueba = false;
-            }
+            //if (!CapaLogica.VerificarPeriodoAbierto((int)cboOriEmpresa.SelectedValue, FechaContable))
+            //{
+            //    mensaje += $"\n{cboOriEmpresa.Text}";
+            //    dtpFechaContable.Focus(); Prueba = false;
+            //}
+            //if (!CapaLogica.VerificarPeriodoAbierto((int)cboDesEmpresa.SelectedValue, FechaContable))
+            //{
+            //    mensaje += $"\n{cboDesEmpresa.Text}";
+            //    dtpFechaContable.Focus(); Prueba = false;
+            //}
             mensaje += "\nCambie Fecha Contable";
             if (!Prueba) { msg(mensaje); return; }
             ///Validaciones de Importes decimales

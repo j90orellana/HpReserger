@@ -245,7 +245,7 @@ namespace HPReserger.ModuloCompensaciones
                 if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaContable.ToString("MMMM")}-{FechaContable.Year}?") != DialogResult.Yes)
                     return;
             }
-            if (!CapaLogica.VerificarPeriodoAbierto(pkEmpresa, FechaContable))
+            else if (!CapaLogica.VerificarPeriodoAbierto(pkEmpresa, FechaContable))
             {
                 msgError("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }

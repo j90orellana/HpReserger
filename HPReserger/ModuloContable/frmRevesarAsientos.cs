@@ -34,11 +34,11 @@ namespace HPReserger.ModuloContable
         {
             //Sacamos los Asientos Relacionados
             btnAsientosRelacionados.Visible = false;
-            TablaDatos = CapaLogica.ListarAsientosRelacionasPagos(IdProyecto, FechaValor, Codigo, IdDinamica);
-            if (TablaDatos.Rows.Count > 0)
-            {
-                btnAsientosRelacionados.Visible = true;
-            }
+            //TablaDatos = CapaLogica.ListarAsientosRelacionasPagos(IdProyecto, FechaValor, Codigo, IdDinamica);
+            //if (TablaDatos.Rows.Count > 0)
+            //{
+            //    btnAsientosRelacionados.Visible = true;
+            //}
         }
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
@@ -58,7 +58,7 @@ namespace HPReserger.ModuloContable
                         return;
                 }
                 //Verifico si el Periodo esta Abierto para Proceder con la Anulacion - REversa
-                if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))
+                else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))
                 {
                     if (msgp("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
                     {
@@ -106,7 +106,7 @@ namespace HPReserger.ModuloContable
                         return;
                 }
                 //Verificio si el Periodo esta Abierto para Proceder con la Anulacion - REversa
-                if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))
+                else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))
                 {
                     if (msgp("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
                     {

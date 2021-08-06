@@ -123,7 +123,7 @@ namespace HPReserger
         {
             if (e.ColumnIndex == dtgconten.Columns[opcionx.Name].Index)
             {
-                dtgconten.EndEdit();
+                dtgconten.EndEdit(); dtgconten.RefreshEdit();
             }
         }
         decimal sumatoria = 1000, sumadif = 0, sumaTotal = 0;
@@ -238,7 +238,7 @@ namespace HPReserger
         {
             this.Close();
         }
-
+        public DialogResult msgp(string cadena, string detalle) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena, detalle); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Declaracion de variables
@@ -255,9 +255,15 @@ namespace HPReserger
             DateTime FechaCoontable = dtpFechaContable.Value;
             if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
             {
-                if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                if (msgp("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
                     return;
             }
+            else
+            //if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+            //{
+            //    if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+            //        return;
+            //}
             //Verificamos si el periodo esta Abierto
             if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaCoontable))
             {
@@ -390,7 +396,7 @@ namespace HPReserger
                     {
                         if ((int)item.Cells[opcionx.Name].Value == 1)
                             if ((decimal)item.Cells[xRedondeo.Name].Value != 0)
-                                CapaLogica.PagarDetracionesCabecera(c++, codigo, CuoPago, IdEmpresa, IdProyecto, decimal.Parse(txtredondeo.Text), (decimal)item.Cells[xRedondeo.Name].Value,
+                                CapaLogica.PagarDetracionesCabecera(c++, codigo, CuoPago, IdEmpresa, IdProyecto, decimal.Parse(txtredondeo.Text), (decimal)item.Cells[porpagarx.Name].Value,
                                     decimal.Parse(txtdiferencia.Text), ruc, nrofac, cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante, TC, 0);
                     }
                     //CABECERA Y DETALLE BANCOS
@@ -409,11 +415,12 @@ namespace HPReserger
                                 string codfac = fac[0]; string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
-                                SumaSoles += (decimal)item.Cells[porpagarx.Name].Value;
-                                SumaDolares += decimal.Round((decimal)item.Cells[porpagarx.Name].Value / (decimal)item.Cells[xtc.Name].Value, 2);
-                                CapaLogica.PagarDetracionesDetalle(c++, codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
-                                    , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
-                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante, NroOperacion, TipoPago, 0);
+                                SumaSoles += (decimal)item.Cells[xRedondeo.Name].Value;
+                                SumaDolares += decimal.Round((decimal)item.Cells[xRedondeo.Name].Value / (decimal)item.Cells[xtc.Name].Value, 2);
+                                CapaLogica.PagarDetracionesDetalle(c++, codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value,
+                                    (decimal)item.Cells[xDiferencia.Name].Value, ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta,
+                                    cbocuentabanco.SelectedValue.ToString(), decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante,
+                                    NroOperacion, TipoPago, 0);
                             }
                     //detalle de los bancos
                     string CuentaBanco = cbocuentabanco.SelectedValue.ToString();
@@ -421,7 +428,7 @@ namespace HPReserger
                         Configuraciones.DefIdComprobante, Configuraciones.DefSerieFac, Configuraciones.DefNumFac, Configuraciones.DefCentroCosto, FechaPago, FechaPago, FechaPago, SumaSoles,
                         SumaDolares, TC, 1, idCta, NroOperacion, glosa, FechaContable, IdUsuario, "");
 
-
+                    c--;
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
                             if ((decimal)item.Cells[xRedondeo.Name].Value != 0)
@@ -431,13 +438,13 @@ namespace HPReserger
                                 string codfac = fac[0]; string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
-                                CapaLogica.PagarDetracionesDetalle(c, codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
+                                CapaLogica.PagarDetracionesDetalle(c, codigo, CuoPago, IdEmpresa, IdProyecto, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
                                     , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
                                    decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante, NroOperacion, TipoPago, 1);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
                     //Cuadramos El Asiento
-                    CapaLogica.CuadrarAsiento(CuoPago, IdProyecto, FechaContable, 1);
+                    //CapaLogica.CuadrarAsiento(CuoPago, IdProyecto, FechaContable, 1);
                     //Fin Cuadre del Asiento
                     msgOK($"Detracciones Pagadas! con Asiento {CuoPago}");
                     btnActualizar_Click(sender, e);
@@ -458,15 +465,31 @@ namespace HPReserger
         private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
-            if (dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "0" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "-")
+            if (e.RowIndex >= 0)
             {
-                dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.RojoUISelect;
-                dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.RojoUI;
-            }
-            else
-            {
-                dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.OscuroUISelect;
-                dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUISelect;
+                if ((dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "0" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "-"))
+                {
+                    dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.RojoUISelect;
+                    dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.RojoUI;
+                }
+                else
+                {
+                    //dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.OscuroUISelect;
+                    //dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUISelect;
+                }
+                //if (dtgconten[opcionx.Name, x].Value.ToString() == "1")
+                //{
+                //    dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.Empty;
+                //    dtgconten.Rows[x].DefaultCellStyle.BackColor = Configuraciones.ColorFilaSeleccionada;
+                //    dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.ColorFilaSeleccionada;
+                //}
+                //else
+                //{
+                //    dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.Empty;
+                //    dtgconten.Rows[x].DefaultCellStyle.BackColor = Color.Empty;
+                //    dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Color.Empty;
+                //}
+                //dtgconten.SendToBack();
             }
         }
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -632,6 +655,11 @@ namespace HPReserger
         private void dtpFechaPago_ValueChanged(object sender, EventArgs e)
         {
             GenerarGlosaxDefectoxFechaPago();
+        }
+
+        private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void txtcuentadetracciones_TextChanged(object sender, EventArgs e)

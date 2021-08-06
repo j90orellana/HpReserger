@@ -82,8 +82,8 @@ namespace HpResergerUserControls
                 {
                     if ((int)this[CheckColumna, e.RowIndex].Value == CheckValor)
                         HPResergerFunciones.Utilitarios.ColorFilaSeleccionada(this.Rows[e.RowIndex], Configuraciones.ColorFilaSeleccionada);
-                    //else
-                       // HPResergerFunciones.Utilitarios.ColorFilaDefecto(this.Rows[e.RowIndex]);
+                    else
+                        HPResergerFunciones.Utilitarios.ColorFilaDefecto(this.Rows[e.RowIndex]);
                 }
             }
             base.OnCellFormatting(e);
@@ -98,7 +98,14 @@ namespace HpResergerUserControls
 
                         if (e.KeyCode == Keys.F6)
                         {
-                            this[CurrentCell.ColumnIndex, CurrentCell.RowIndex].Value = this[CurrentCell.ColumnIndex, CurrentCell.RowIndex - 1].Value;
+                            if (this[CurrentCell.ColumnIndex, CurrentCell.RowIndex - 1].InheritedStyle.Format.Contains('%'))
+                            {
+                                this[CurrentCell.ColumnIndex, CurrentCell.RowIndex].Value = ((decimal)this[CurrentCell.ColumnIndex, CurrentCell.RowIndex - 1].Value) * 100;
+                            }
+                            else
+                            {
+                                this[CurrentCell.ColumnIndex, CurrentCell.RowIndex].Value = this[CurrentCell.ColumnIndex, CurrentCell.RowIndex - 1].Value;
+                            }
                             this.EndEdit();
                             this.RefreshEdit();
                         }
