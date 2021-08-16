@@ -234,7 +234,10 @@ namespace HpResergerUserControls
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if (_NextControlOnEnter != null)
+                {
                     _NextControlOnEnter.Focus();
+                }
+                PresionarEnter(e);
             }
             base.OnKeyPress(e);
         }
@@ -257,6 +260,12 @@ namespace HpResergerUserControls
                 HPResergerFunciones.Utilitarios.ValidarCuentaBancos(e, this, this.MaxLength);
             }
             base.OnKeyDown(e);
+        }
+        public event KeyPressEventHandler OnPresionarEnter;
+        protected virtual void PresionarEnter(KeyPressEventArgs e)
+        {
+            if (OnPresionarEnter != null)
+                OnPresionarEnter(this, e);
         }
     }
 }

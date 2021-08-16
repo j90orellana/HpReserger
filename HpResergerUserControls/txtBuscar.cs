@@ -18,6 +18,7 @@ namespace HpResergerUserControls
         public event EventHandler BuscarClick;
         public event EventHandler ClickLimpiarboton;
         public event EventHandler BuscarTextChanged;
+        public event KeyPressEventHandler PresionarEnter;
         private Image _ImgBotonCerrar;
         public Image ImgBotonCerrar { get { return _ImgBotonCerrar; } set { _ImgBotonCerrar = value; } }
         public Image FondoBoton { get { return btnbuscar.Image; } set { btnbuscar.Image = value; } }
@@ -82,6 +83,11 @@ namespace HpResergerUserControls
         private void txtBuscar_Resize(object sender, EventArgs e)
         {
             txtbusca.Font = new Font(this.Font.FontFamily, this.Height / 2);
+        }
+
+        private void txtbusca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            PresionarEnter?.Invoke(this, e);
         }
     }
 }

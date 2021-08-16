@@ -298,7 +298,7 @@ namespace HPReserger.ModuloCompensaciones
                 if (frmtipo == null)
                 {
                     frmtipo = new frmTipodeCambio();
-                    frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
+                    //frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
                     frmtipo.Show();
                     frmtipo.Hide();
                     frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());

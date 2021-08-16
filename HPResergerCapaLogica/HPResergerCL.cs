@@ -2071,6 +2071,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, fecha, fechaini, fechafin, usuario);
         }
+        public DataTable FacturasManualesBusqueda(string empresa, string nrofac, string proveedor, string glosa, int fecha, DateTime fechaini, DateTime fechafin, string listadoFacturas)
+        {
+            return cdOrdenPedido.FacturasManualesBusqueda(empresa, nrofac, proveedor, glosa, fecha, fechaini, fechafin, listadoFacturas);
+        }
         public DataTable TipodeCambio(int opcion, int año, int mes, int dia, decimal compra, decimal venta, byte[] img)
         {
             return cdOrdenPedido.TipodeCambio(opcion, año, mes, dia, compra, venta, img);

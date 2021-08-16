@@ -41,7 +41,6 @@ namespace HPReserger
         public int Estado { get; internal set; }
         public string Glosa { get; internal set; }
         public int TipoBusqueda { get; private set; }
-
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
         {
@@ -69,6 +68,22 @@ namespace HPReserger
             SacarDatos();
             SacarTotales();
             ChkDuplicar.Enabled = _dinamica >= 0 ? true : false;
+            MostrarOcultarColumnas();
+        }
+        Boolean MostrarColumnas = false;
+        private void MostrarOcultarColumnas()
+        {
+            if (MostrarColumnas == false) btnColumnas.Text = "+ Columnas";
+            else btnColumnas.Text = "- Columnas";
+
+            Dtgconten.Columns[FechaRecepcionx.Name].Visible = MostrarColumnas;
+            Dtgconten.Columns[FechaVencimientox.Name].Visible = MostrarColumnas;
+            Dtgconten.Columns[fk_asisx.Name].Visible = MostrarColumnas;
+            //
+            Dtgconten.Columns[FechaRecepcionx.Name].HeaderCell.Style.BackColor = Configuraciones.AzulUI;
+            Dtgconten.Columns[FechaVencimientox.Name].HeaderCell.Style.BackColor = Configuraciones.AzulUI;
+            Dtgconten.Columns[fk_asisx.Name].HeaderCell.Style.BackColor = Configuraciones.AzulUI;
+            MostrarColumnas = !MostrarColumnas;
         }
         public void BuscarSiDuplica()
         {
@@ -465,6 +480,12 @@ namespace HPReserger
                     msj("Cancelado Por el Usuario");
                 }
             }
+            if (e.KeyCode == Keys.Left && Dtgconten.Columns[xNroOPBanco.Name].Index == Dtgconten.CurrentCell.ColumnIndex && estado == 2)
+            {
+                e.Handled = true;
+                Dtgconten.CurrentCell = Dtgconten[Dtgconten.Columns[glosax.Name].Index, Dtgconten.CurrentRow.Index];
+
+            }
         }
         TextBox txt;
         int LengthTipDoc = 0;
@@ -485,7 +506,7 @@ namespace HPReserger
                         txt.KeyPress += new KeyPressEventHandler(Txt_KeyPress);
                     }
                 }
-                if (y == Dtgconten.Columns[numdocx.Name].Index)
+                else if (y == Dtgconten.Columns[numdocx.Name].Index)
                 {
                     txt = e.Control as TextBox;
                     if (txt != null)
@@ -494,7 +515,7 @@ namespace HPReserger
                         txt.KeyPress += new KeyPressEventHandler(Txt_KeyPressSoloLetrasMayusculas);
                     }
                 }
-                if (y == Dtgconten.Columns[numdocx.Name].Index)
+                else if (y == Dtgconten.Columns[numdocx.Name].Index)
                 {
                     //    txt = e.Control as TextBox;
                     //    if (txt != null)
@@ -503,7 +524,7 @@ namespace HPReserger
                     //        txt.KeyPress -= new KeyPressEventHandler(Txt_KeyPress);
                     //    }
                 }
-                if (y == Dtgconten.Columns[codcomprobantex.Name].Index || y == Dtgconten.Columns[glosax.Name].Index || y == Dtgconten.Columns[numcomprobantex.Name].Index || y == Dtgconten.Columns[fechaemisionx.Name].Index || y == Dtgconten.Columns[FechaVencimientox.Name].Index || y == Dtgconten.Columns[razonsocialx.Name].Index)
+                else if (y == Dtgconten.Columns[codcomprobantex.Name].Index || y == Dtgconten.Columns[glosax.Name].Index || y == Dtgconten.Columns[numcomprobantex.Name].Index || y == Dtgconten.Columns[fechaemisionx.Name].Index || y == Dtgconten.Columns[FechaVencimientox.Name].Index || y == Dtgconten.Columns[razonsocialx.Name].Index)
                 {
                     txt = e.Control as TextBox;
                     if (txt != null)
@@ -514,12 +535,23 @@ namespace HPReserger
 
                     }
                 }
-                //if (Dtgconten.RowCount == 1)
-                //{
-                //    ((DataTable)Dtgconten.DataSource).Rows.Add();
-                //}
+
             }
         }
+
+        private void Txt_KeyDown1(object sender, KeyEventArgs e)
+        {
+            if (estado == 2)
+            {
+                if (e.KeyCode == Keys.Left)
+                {
+                    if (txt.SelectionStart == 0)
+                        e.Handled = true;
+
+                }
+            }
+        }
+
         private void Txt_KeyDown(object sender, KeyEventArgs e)
         {
             txt.MaxLength = LengthTipDoc;
@@ -964,6 +996,7 @@ namespace HPReserger
                     msj("Cancelado Por el Usuario");
                 }
             }
+
         }
         int FilaPos = 0;
         frmproveedor frmprovee;
@@ -1039,6 +1072,12 @@ namespace HPReserger
             }
         }
         int IndexPos;
+
+        private void btnColumnas_Click(object sender, EventArgs e)
+        {
+            MostrarOcultarColumnas();
+        }
+
         private void Frmlispersonas_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (frmlispersonas.Busqueda)

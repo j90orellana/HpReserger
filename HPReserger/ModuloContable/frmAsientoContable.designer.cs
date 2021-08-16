@@ -32,6 +32,11 @@ namespace HPReserger
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsientoContable));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,16 +45,27 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtbusGlosa = new HpResergerUserControls.TextBoxPer();
             this.btnreversa = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
             this.duplicadorBase1 = new HpResergerUserControls.DuplicadorBase();
+            this.dtgbusca = new HpResergerUserControls.Dtgconten();
+            this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechavalorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubOperacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iddinamica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empresax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proyectox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.etapax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha_Asientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dtgconten = new HpResergerUserControls.Dtgconten();
             this.IDASIENTOX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,29 +146,13 @@ namespace HPReserger
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dtgbusca = new HpResergerUserControls.Dtgconten();
-            this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Codidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechavalorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubOperacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Iddinamica = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empresax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.proyectox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.etapax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha_Asientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
             this.SuspendLayout();
             // 
             // txtbusGlosa
@@ -178,6 +178,7 @@ namespace HPReserger
             this.txtbusGlosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.toolTip1.SetToolTip(this.txtbusGlosa, "(;) Glosas Separadas");
             this.txtbusGlosa.Visible = false;
+            this.txtbusGlosa.OnPresionarEnter += new System.Windows.Forms.KeyPressEventHandler(this.txtbuscuo_OnPresionarEnter);
             this.txtbusGlosa.TextChanged += new System.EventHandler(this.txtbusGlosa_TextChanged);
             // 
             // btnreversa
@@ -224,6 +225,211 @@ namespace HPReserger
             this.toolTip1.SetToolTip(this.duplicadorBase1, "Presiona para copiar la Grilla");
             this.duplicadorBase1.Load += new System.EventHandler(this.duplicadorBase1_Load);
             // 
+            // dtgbusca
+            // 
+            this.dtgbusca.AllowUserToAddRows = false;
+            this.dtgbusca.AllowUserToDeleteRows = false;
+            this.dtgbusca.AllowUserToResizeColumns = false;
+            this.dtgbusca.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgbusca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgbusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgbusca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgbusca.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgbusca.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtgbusca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgbusca.CheckColumna = null;
+            this.dtgbusca.CheckValor = 1;
+            this.dtgbusca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgbusca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgbusca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtgbusca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idx,
+            this.Codidasiento,
+            this.Fechax,
+            this.fechavalorx,
+            this.SubOperacionx,
+            this.Iddinamica,
+            this.Estadox,
+            this.empresax,
+            this.proyectox,
+            this.etapax,
+            this.nameestado,
+            this.Fecha_Asientox,
+            this.xglosa,
+            this.xmoneda,
+            this.xtc});
+            this.dtgbusca.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgbusca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dtgbusca.EnableHeadersVisualStyles = false;
+            this.dtgbusca.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.dtgbusca.Location = new System.Drawing.Point(9, 420);
+            this.dtgbusca.MultiSelect = false;
+            this.dtgbusca.Name = "dtgbusca";
+            this.dtgbusca.ReadOnly = true;
+            this.dtgbusca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgbusca.RowHeadersVisible = false;
+            this.dtgbusca.RowTemplate.Height = 16;
+            this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgbusca.Size = new System.Drawing.Size(664, 155);
+            this.dtgbusca.TabIndex = 34;
+            this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
+            this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
+            // 
+            // idx
+            // 
+            this.idx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.idx.DataPropertyName = "id";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.idx.DefaultCellStyle = dataGridViewCellStyle3;
+            this.idx.HeaderText = "Num";
+            this.idx.MinimumWidth = 40;
+            this.idx.Name = "idx";
+            this.idx.ReadOnly = true;
+            this.idx.Width = 40;
+            // 
+            // Codidasiento
+            // 
+            this.Codidasiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Codidasiento.DataPropertyName = "cuo";
+            this.Codidasiento.HeaderText = "Cuo";
+            this.Codidasiento.Name = "Codidasiento";
+            this.Codidasiento.ReadOnly = true;
+            this.Codidasiento.Width = 51;
+            // 
+            // Fechax
+            // 
+            this.Fechax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Fechax.DataPropertyName = "fecha";
+            this.Fechax.HeaderText = "Fecha";
+            this.Fechax.Name = "Fechax";
+            this.Fechax.ReadOnly = true;
+            this.Fechax.Width = 60;
+            // 
+            // fechavalorx
+            // 
+            this.fechavalorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fechavalorx.DataPropertyName = "fechavalor";
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle4.NullValue = null;
+            this.fechavalorx.DefaultCellStyle = dataGridViewCellStyle4;
+            this.fechavalorx.FillWeight = 70F;
+            this.fechavalorx.HeaderText = "Fec.Valor";
+            this.fechavalorx.MinimumWidth = 70;
+            this.fechavalorx.Name = "fechavalorx";
+            this.fechavalorx.ReadOnly = true;
+            this.fechavalorx.Width = 76;
+            // 
+            // SubOperacionx
+            // 
+            this.SubOperacionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SubOperacionx.DataPropertyName = "sub-operacion";
+            this.SubOperacionx.HeaderText = "SubOperación";
+            this.SubOperacionx.MinimumWidth = 100;
+            this.SubOperacionx.Name = "SubOperacionx";
+            this.SubOperacionx.ReadOnly = true;
+            this.SubOperacionx.Width = 104;
+            // 
+            // Iddinamica
+            // 
+            this.Iddinamica.DataPropertyName = "iddinamica";
+            this.Iddinamica.HeaderText = "IDdinamica";
+            this.Iddinamica.Name = "Iddinamica";
+            this.Iddinamica.ReadOnly = true;
+            this.Iddinamica.Visible = false;
+            // 
+            // Estadox
+            // 
+            this.Estadox.DataPropertyName = "estado";
+            this.Estadox.HeaderText = "Estado";
+            this.Estadox.Name = "Estadox";
+            this.Estadox.ReadOnly = true;
+            this.Estadox.Visible = false;
+            // 
+            // empresax
+            // 
+            this.empresax.DataPropertyName = "empresa";
+            this.empresax.HeaderText = "empresa";
+            this.empresax.Name = "empresax";
+            this.empresax.ReadOnly = true;
+            this.empresax.Visible = false;
+            // 
+            // proyectox
+            // 
+            this.proyectox.DataPropertyName = "proyecto";
+            this.proyectox.HeaderText = "proyecto";
+            this.proyectox.Name = "proyectox";
+            this.proyectox.ReadOnly = true;
+            this.proyectox.Visible = false;
+            // 
+            // etapax
+            // 
+            this.etapax.DataPropertyName = "etapa";
+            this.etapax.HeaderText = "etapa";
+            this.etapax.Name = "etapax";
+            this.etapax.ReadOnly = true;
+            this.etapax.Visible = false;
+            // 
+            // nameestado
+            // 
+            this.nameestado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameestado.DataPropertyName = "estados";
+            this.nameestado.HeaderText = "Estado";
+            this.nameestado.MinimumWidth = 50;
+            this.nameestado.Name = "nameestado";
+            this.nameestado.ReadOnly = true;
+            this.nameestado.Width = 65;
+            // 
+            // Fecha_Asientox
+            // 
+            this.Fecha_Asientox.DataPropertyName = "Fecha_Asiento";
+            this.Fecha_Asientox.HeaderText = "Fecha_Asiento";
+            this.Fecha_Asientox.Name = "Fecha_Asientox";
+            this.Fecha_Asientox.ReadOnly = true;
+            this.Fecha_Asientox.Visible = false;
+            // 
+            // xglosa
+            // 
+            this.xglosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xglosa.DataPropertyName = "glosa";
+            this.xglosa.HeaderText = "Glosa";
+            this.xglosa.MinimumWidth = 100;
+            this.xglosa.Name = "xglosa";
+            this.xglosa.ReadOnly = true;
+            // 
+            // xmoneda
+            // 
+            this.xmoneda.DataPropertyName = "moneda";
+            this.xmoneda.HeaderText = "moneda";
+            this.xmoneda.Name = "xmoneda";
+            this.xmoneda.ReadOnly = true;
+            this.xmoneda.Visible = false;
+            // 
+            // xtc
+            // 
+            this.xtc.DataPropertyName = "tc";
+            this.xtc.HeaderText = "tc";
+            this.xtc.Name = "xtc";
+            this.xtc.ReadOnly = true;
+            this.xtc.Visible = false;
+            // 
             // Dtgconten
             // 
             this.Dtgconten.AllowUserToAddRows = false;
@@ -240,6 +446,8 @@ namespace HPReserger
             this.Dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.Dtgconten.CheckColumna = null;
+            this.Dtgconten.CheckValor = 1;
             this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -434,6 +642,7 @@ namespace HPReserger
             this.txtbuscuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbuscuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbuscuenta.Visible = false;
+            this.txtbuscuenta.OnPresionarEnter += new System.Windows.Forms.KeyPressEventHandler(this.txtbuscuo_OnPresionarEnter);
             this.txtbuscuenta.TextChanged += new System.EventHandler(this.txtbuscuo_TextChanged);
             // 
             // btncleanfind
@@ -571,6 +780,7 @@ namespace HPReserger
             this.txtbusSuboperacion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbusSuboperacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbusSuboperacion.Visible = false;
+            this.txtbusSuboperacion.OnPresionarEnter += new System.Windows.Forms.KeyPressEventHandler(this.txtbuscuo_OnPresionarEnter);
             this.txtbusSuboperacion.TextChanged += new System.EventHandler(this.txtbusSuboperacion_TextChanged);
             // 
             // radioButton1
@@ -622,6 +832,7 @@ namespace HPReserger
             this.txtbuscuo.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbuscuo.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbuscuo.Visible = false;
+            this.txtbuscuo.OnPresionarEnter += new System.Windows.Forms.KeyPressEventHandler(this.txtbuscuo_OnPresionarEnter);
             this.txtbuscuo.TextChanged += new System.EventHandler(this.txtbuscuo_TextChanged);
             // 
             // chkPulser
@@ -790,7 +1001,7 @@ namespace HPReserger
             this.Txtbusca.TabIndex = 35;
             this.Txtbusca.BuscarClick += new System.EventHandler(this.Txtbusca_TextChanged);
             this.Txtbusca.ClickLimpiarboton += new System.EventHandler(this.btnlimpiar_Click);
-            this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
+            this.Txtbusca.PresionarEnter += new System.Windows.Forms.KeyPressEventHandler(this.Txtbusca_PresionarEnter);
             this.Txtbusca.Load += new System.EventHandler(this.Txtbusca_Load);
             // 
             // labelCuadre
@@ -1374,209 +1585,6 @@ namespace HPReserger
             this.label8.TabIndex = 45;
             this.label8.Text = "Empresa:";
             // 
-            // dtgbusca
-            // 
-            this.dtgbusca.AllowUserToAddRows = false;
-            this.dtgbusca.AllowUserToDeleteRows = false;
-            this.dtgbusca.AllowUserToResizeColumns = false;
-            this.dtgbusca.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgbusca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgbusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgbusca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgbusca.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.dtgbusca.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgbusca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgbusca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgbusca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgbusca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtgbusca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idx,
-            this.Codidasiento,
-            this.Fechax,
-            this.fechavalorx,
-            this.SubOperacionx,
-            this.Iddinamica,
-            this.Estadox,
-            this.empresax,
-            this.proyectox,
-            this.etapax,
-            this.nameestado,
-            this.Fecha_Asientox,
-            this.xglosa,
-            this.xmoneda,
-            this.xtc});
-            this.dtgbusca.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dtgbusca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgbusca.EnableHeadersVisualStyles = false;
-            this.dtgbusca.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgbusca.Location = new System.Drawing.Point(9, 420);
-            this.dtgbusca.MultiSelect = false;
-            this.dtgbusca.Name = "dtgbusca";
-            this.dtgbusca.ReadOnly = true;
-            this.dtgbusca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dtgbusca.RowHeadersVisible = false;
-            this.dtgbusca.RowTemplate.Height = 16;
-            this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgbusca.Size = new System.Drawing.Size(664, 155);
-            this.dtgbusca.TabIndex = 34;
-            this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
-            this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
-            // 
-            // idx
-            // 
-            this.idx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.idx.DataPropertyName = "id";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.idx.DefaultCellStyle = dataGridViewCellStyle3;
-            this.idx.HeaderText = "Num";
-            this.idx.MinimumWidth = 40;
-            this.idx.Name = "idx";
-            this.idx.ReadOnly = true;
-            this.idx.Width = 40;
-            // 
-            // Codidasiento
-            // 
-            this.Codidasiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Codidasiento.DataPropertyName = "cuo";
-            this.Codidasiento.HeaderText = "Cuo";
-            this.Codidasiento.Name = "Codidasiento";
-            this.Codidasiento.ReadOnly = true;
-            this.Codidasiento.Width = 51;
-            // 
-            // Fechax
-            // 
-            this.Fechax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Fechax.DataPropertyName = "fecha";
-            this.Fechax.HeaderText = "Fecha";
-            this.Fechax.Name = "Fechax";
-            this.Fechax.ReadOnly = true;
-            this.Fechax.Width = 60;
-            // 
-            // fechavalorx
-            // 
-            this.fechavalorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.fechavalorx.DataPropertyName = "fechavalor";
-            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle4.NullValue = null;
-            this.fechavalorx.DefaultCellStyle = dataGridViewCellStyle4;
-            this.fechavalorx.FillWeight = 70F;
-            this.fechavalorx.HeaderText = "Fec.Valor";
-            this.fechavalorx.MinimumWidth = 70;
-            this.fechavalorx.Name = "fechavalorx";
-            this.fechavalorx.ReadOnly = true;
-            this.fechavalorx.Width = 76;
-            // 
-            // SubOperacionx
-            // 
-            this.SubOperacionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.SubOperacionx.DataPropertyName = "sub-operacion";
-            this.SubOperacionx.HeaderText = "SubOperación";
-            this.SubOperacionx.MinimumWidth = 100;
-            this.SubOperacionx.Name = "SubOperacionx";
-            this.SubOperacionx.ReadOnly = true;
-            this.SubOperacionx.Width = 104;
-            // 
-            // Iddinamica
-            // 
-            this.Iddinamica.DataPropertyName = "iddinamica";
-            this.Iddinamica.HeaderText = "IDdinamica";
-            this.Iddinamica.Name = "Iddinamica";
-            this.Iddinamica.ReadOnly = true;
-            this.Iddinamica.Visible = false;
-            // 
-            // Estadox
-            // 
-            this.Estadox.DataPropertyName = "estado";
-            this.Estadox.HeaderText = "Estado";
-            this.Estadox.Name = "Estadox";
-            this.Estadox.ReadOnly = true;
-            this.Estadox.Visible = false;
-            // 
-            // empresax
-            // 
-            this.empresax.DataPropertyName = "empresa";
-            this.empresax.HeaderText = "empresa";
-            this.empresax.Name = "empresax";
-            this.empresax.ReadOnly = true;
-            this.empresax.Visible = false;
-            // 
-            // proyectox
-            // 
-            this.proyectox.DataPropertyName = "proyecto";
-            this.proyectox.HeaderText = "proyecto";
-            this.proyectox.Name = "proyectox";
-            this.proyectox.ReadOnly = true;
-            this.proyectox.Visible = false;
-            // 
-            // etapax
-            // 
-            this.etapax.DataPropertyName = "etapa";
-            this.etapax.HeaderText = "etapa";
-            this.etapax.Name = "etapax";
-            this.etapax.ReadOnly = true;
-            this.etapax.Visible = false;
-            // 
-            // nameestado
-            // 
-            this.nameestado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nameestado.DataPropertyName = "estados";
-            this.nameestado.HeaderText = "Estado";
-            this.nameestado.MinimumWidth = 50;
-            this.nameestado.Name = "nameestado";
-            this.nameestado.ReadOnly = true;
-            this.nameestado.Width = 65;
-            // 
-            // Fecha_Asientox
-            // 
-            this.Fecha_Asientox.DataPropertyName = "Fecha_Asiento";
-            this.Fecha_Asientox.HeaderText = "Fecha_Asiento";
-            this.Fecha_Asientox.Name = "Fecha_Asientox";
-            this.Fecha_Asientox.ReadOnly = true;
-            this.Fecha_Asientox.Visible = false;
-            // 
-            // xglosa
-            // 
-            this.xglosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xglosa.DataPropertyName = "glosa";
-            this.xglosa.HeaderText = "Glosa";
-            this.xglosa.MinimumWidth = 100;
-            this.xglosa.Name = "xglosa";
-            this.xglosa.ReadOnly = true;
-            // 
-            // xmoneda
-            // 
-            this.xmoneda.DataPropertyName = "moneda";
-            this.xmoneda.HeaderText = "moneda";
-            this.xmoneda.Name = "xmoneda";
-            this.xmoneda.ReadOnly = true;
-            this.xmoneda.Visible = false;
-            // 
-            // xtc
-            // 
-            this.xtc.DataPropertyName = "tc";
-            this.xtc.HeaderText = "tc";
-            this.xtc.Name = "xtc";
-            this.xtc.ReadOnly = true;
-            this.xtc.Visible = false;
-            // 
             // fondoColorOre1
             // 
             this.fondoColorOre1.Angulo = 135;
@@ -1678,12 +1686,12 @@ namespace HPReserger
             this.Activated += new System.EventHandler(this.frmAsientoContable_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAsientoContable_FormClosing);
             this.Load += new System.EventHandler(this.frmAsientoContable_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

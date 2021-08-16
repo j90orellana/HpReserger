@@ -345,6 +345,12 @@
       <DependentUpon>rptLibroMayor6_1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ModuloFacturacion\frmListarFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFacturacion\frmListarFacturas.Designer.cs">
+      <DependentUpon>frmListarFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloFinanzas\FrmConciliarBanco.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -668,6 +674,12 @@
     </Compile>
     <Compile Include="ModuloRRHH\frmComisionesBonos.Designer.cs">
       <DependentUpon>frmComisionesBonos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmRegistroFacturasCreditoEPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloRRHH\frmRegistroFacturasCreditoEPS.Designer.cs">
+      <DependentUpon>frmRegistroFacturasCreditoEPS.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloRRHH\frmReporteAfpPagados.cs">
       <SubType>Form</SubType>
@@ -2187,6 +2199,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLibroMayor6_1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFacturacion\frmListarFacturas.resx">
+      <DependentUpon>frmListarFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\FrmConciliarBanco.resx">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
     </EmbeddedResource>
@@ -2349,6 +2364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmComisionesBonos.resx">
       <DependentUpon>frmComisionesBonos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloRRHH\frmRegistroFacturasCreditoEPS.resx">
+      <DependentUpon>frmRegistroFacturasCreditoEPS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmReporteAfpPagados.resx">
       <DependentUpon>frmReporteAfpPagados.cs</DependentUpon>

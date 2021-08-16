@@ -4435,6 +4435,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, tipo, numero, fecha, fecinicio, fecfin };
             return bd.DataTableFromProcedure("usp_BuscarBoletasPOrPAgar", parametros, valores, null); ;
         }
+        public DataTable FacturasManualesBusqueda(string empresa, string nrofac, string proveedor, string glosa, int fecha, DateTime fechaini, DateTime fechafin, string listadoFacturas)
+        {
+            string[] parametros = { "@empresa", "@nrofac", "@proveedor", "@glosa", "@fecha", "@fechaini", "@fechaFin", "@listadoFacturas" };
+            object[] valores = { empresa, nrofac, proveedor, glosa, fecha, fechaini, fechafin, listadoFacturas };
+            return bd.DataTableFromProcedure("usp_FacturasManualesBusqueda", parametros, valores, null); ;
+        }
         public DataTable CargosAreas(int opcion, int cargo, int area, string cadena)
         {
             string[] parametros = { "@opcion", "@cargo", "@area", "@cadena" };

@@ -745,13 +745,12 @@ namespace HPReserger
         }
         public void CargarDatos()
         {
-            Txtbusca_TextChanged(new object { }, new EventArgs());
+            BuscarDatos();
         }
         public int tipobusca = 0;
-        private void Txtbusca_TextChanged(object sender, EventArgs e)
+        public void BuscarDatos()
         {
-            if (sender.GetType().FullName == "System.Windows.Forms.TextBox")
-                if (Configuraciones.ValidarSQLInyect(((TextBox)sender))) { return; }
+            if (Configuraciones.ValidarSQLInyect(txtbuscuenta, txtbuscuo, txtbusGlosa, txtbusSuboperacion)) return;
             if (ListoParaBuscar)
             {
                 if (fechaini.Value < fechafin.Value)
@@ -763,8 +762,9 @@ namespace HPReserger
                     }
                     else
                     {
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
-                       txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido());
+                        dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
+                            dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(),
+                            txtbusSuboperacion.TextValido());
                     }
                 }
                 else
@@ -776,8 +776,9 @@ namespace HPReserger
                     }
                     else
                     {
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
-                     txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido());
+                        dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
+                            dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(),
+                            txtbusSuboperacion.TextValido());
                     }
                 }
                 msg2(dtgbusca);
@@ -788,33 +789,38 @@ namespace HPReserger
                 }
             }
         }
+
+        private void Txtbusca_TextChanged(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
             Txtbusca.Text = "";
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             tipobusca = 1;
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             tipobusca = 2;
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             tipobusca = 3;
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
         private void fechaini_ValueChanged(object sender, EventArgs e)
         {
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
         private void fechafin_ValueChanged(object sender, EventArgs e)
         {
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
         public int dinamica { get; set; }
         public decimal activo, pasivo;
@@ -1409,6 +1415,7 @@ namespace HPReserger
 
                     activar();
                     estado = 0;
+                    Txtbusca.txtbusca.Text = "";
                     btnActualizar_Click(new object { }, new EventArgs());
                     Boolean busca = false;
                     foreach (DataGridViewRow item in dtgbusca.Rows)
@@ -1628,7 +1635,7 @@ namespace HPReserger
         {
             if (chkfecha.Checked) fechacheck = 1;
             else fechacheck = 0;
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
         private void dtgbusca_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1677,7 +1684,7 @@ namespace HPReserger
             //Txtbusca.Text = "";
             //System.Diagnostics.Stopwatch yquedice = new System.Diagnostics.Stopwatch();
             //yquedice.Start();
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
             /////
             foreach (DataGridViewRow item in dtgbusca.Rows)
             {
@@ -1732,7 +1739,7 @@ namespace HPReserger
                         {
                             txtcodigo.Text = "0";
                             txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
-                            Txtbusca_TextChanged(sender, e);
+                            BuscarDatos();
                         }
                         if (estado == 1)
                         {
@@ -1927,7 +1934,9 @@ namespace HPReserger
         private void fecha_ValueChanged(object sender, EventArgs e)
         {
             if (estado == 1 || estado == 2)
-                SacarTipoCambio();
+                if (dtpfecha.Value <= DateTime.Now)
+                    SacarTipoCambio();
+                else txttipocambio.Text = "0.00";
         }
         private void dtfechavalor_ValueChanged(object sender, EventArgs e)
         {
@@ -1951,15 +1960,19 @@ namespace HPReserger
             txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n4");
             if (decimal.Parse(txttipocambio.Text) == 0)
             {
-                if (frmtipo == null)
+                try
                 {
-                    frmtipo = new frmTipodeCambio();
-                    frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
-                    frmtipo.Show();
-                    frmtipo.Hide();
-                    frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());
-                    frmtipo.Buscar_Click(new object(), new EventArgs());
+                    if (frmtipo == null)
+                    {
+                        frmtipo = new frmTipodeCambio();
+                        //frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
+                        frmtipo.Show();
+                        frmtipo.Hide();
+                        frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());
+                        frmtipo.Buscar_Click(new object(), new EventArgs());
+                    }
                 }
+                catch (Exception) { }
             }
         }
         private void Frmtipo_ActualizoTipoCambio(object sender, EventArgs e)
@@ -2031,27 +2044,27 @@ namespace HPReserger
 
         private void txtbusSuboperacion_TextChanged(object sender, EventArgs e)
         {
-            Txtbusca_TextChanged(sender, e);
+            //BuscarDatos();
         }
 
         private void txtbusGlosa_TextChanged(object sender, EventArgs e)
         {
-            Txtbusca_TextChanged(sender, e);
+            //  BuscarDatos();
         }
 
         private void txtbuscuo_TextChanged(object sender, EventArgs e)
         {
-            Txtbusca_TextChanged(sender, e);
+            //BuscarDatos();
         }
 
         private void dtpfechaini_ValueChanged(object sender, EventArgs e)
         {
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
 
         private void dtpfechafin_ValueChanged(object sender, EventArgs e)
         {
-            Txtbusca_TextChanged(sender, e);
+            BuscarDatos();
         }
 
         private void btnpdf_Click(object sender, EventArgs e)
@@ -2085,6 +2098,19 @@ namespace HPReserger
         private void duplicadorBase1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtbuscuo_OnPresionarEnter(object sender, KeyPressEventArgs e)
+        {
+            CargarDatos();
+        }
+
+        private void Txtbusca_PresionarEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter) 
+            {
+                CargarDatos();
+            }
         }
 
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

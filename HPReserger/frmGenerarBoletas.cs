@@ -337,7 +337,7 @@ namespace HPReserger
                         string ColumnaTabla = item["columnatabla"].ToString();
                         decimal ValorDebeMN = Debe ? Suma : 0;
                         decimal ValorHaberMN = Debe ? 0 : Suma;
-                        string GlosaDetalle = item["glosa"].ToString() + $" {FechaContable.ToString("MMMM/yyyy")}";
+                        string GlosaDetalle = item["glosa"].ToString() + $" {FechaContable.ToString(Configuraciones.MMyyyy)}";
                         GlosaDetalle = IncluirFecha ? GlosaDetalle : item["glosa"].ToString();
                         GlosaDetalle = GlosaDetalle.ToUpper();
                         //Cabecera
@@ -354,7 +354,7 @@ namespace HPReserger
                                 string NameProveedor = filas["nombreempleado"].ToString();
                                 int idcomprobante = 0;
                                 string SerieDocumento = Tipo == 1 ? "BOL" : "PROV";
-                                string NumDocumento = FechaContable.ToString("MMyyyy");
+                                string NumDocumento = FechaContable.ToString(Configuraciones.MMyyyy);
                                 decimal ValorSoles = (decimal)filas[item["ColumnaTabla"].ToString()];
                                 decimal ValorDolares = ValorSoles / TC;
                                 string NroCuentaBancaria = "";

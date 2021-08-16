@@ -321,6 +321,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.facturasParaElCreditoEPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1797,6 +1798,7 @@
             this.faltasToolStripMenuItem,
             this.amonestacionesPremiosToolStripMenuItem,
             this.bonosToolStripMenuItem,
+            this.facturasParaElCreditoEPSToolStripMenuItem,
             this.toolStripSeparator3,
             this.seguimientoToolStripMenuItem1,
             this.boletasToolStripMenuItem,
@@ -3137,6 +3139,13 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // facturasParaElCreditoEPSToolStripMenuItem
+            // 
+            this.facturasParaElCreditoEPSToolStripMenuItem.Name = "facturasParaElCreditoEPSToolStripMenuItem";
+            this.facturasParaElCreditoEPSToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.facturasParaElCreditoEPSToolStripMenuItem.Text = "Facturas Credito EPS";
+            this.facturasParaElCreditoEPSToolStripMenuItem.Click += new System.EventHandler(this.facturasParaElCreditoEPSToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -3467,5 +3476,6 @@
         private System.Windows.Forms.ToolStripMenuItem reporteActivosFijosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comisionesYBonosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aFPComisionesYPrimasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturasParaElCreditoEPSToolStripMenuItem;
     }
 }

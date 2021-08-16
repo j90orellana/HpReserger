@@ -253,6 +253,7 @@ namespace HPReserger
             VerFotoAdmin();
             Text = Text + $" [{frmLogin.Basedatos}]";
             //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   +            
+            //PRUEBA DE CARGAS DE FORMULARIOS
         }
         public void ControlPerfilPrioritario()
         {
@@ -5128,8 +5129,6 @@ namespace HPReserger
         frmAfpsComisiones frmafp;
         private void aFPComisionesYPrimasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             if (frmafp == null)
             {
                 frmafp = new frmAfpsComisiones();
@@ -5151,6 +5150,31 @@ namespace HPReserger
         {
             frmafp = null;
             //pbfotoempleado.Visible = false;
+        }
+        ModuloRRHH.frmRegistroFacturasCreditoEPS frmRegistroFacEPS;
+        private void facturasParaElCreditoEPSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (frmRegistroFacEPS == null)
+            {
+                frmRegistroFacEPS = new ModuloRRHH.frmRegistroFacturasCreditoEPS();
+                frmRegistroFacEPS.MdiParent = this;
+                frmRegistroFacEPS.Icon = ICono;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                ////pbfotoempleado.Visible = false;
+                frmRegistroFacEPS.FormClosed += new FormClosedEventHandler(cerrarfrmRegistroFacEPS);
+                frmRegistroFacEPS.Show();
+            }
+            else
+            {
+                frmRegistroFacEPS.Activate();
+                ValidarVentanas(frmRegistroFacEPS);
+            }
+        }
+
+        private void cerrarfrmRegistroFacEPS(object sender, FormClosedEventArgs e)
+        {
+            frmRegistroFacEPS = null;
         }
     }
 }

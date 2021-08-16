@@ -51,6 +51,7 @@
             this.txtbusca.Text = "Buscar";
             this.txtbusca.Click += new System.EventHandler(this.txtbusca_Click);
             this.txtbusca.DoubleClick += new System.EventHandler(this.txtbusca_DoubleClick);
+            this.txtbusca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbusca_KeyPress);
             this.txtbusca.Leave += new System.EventHandler(this.txtbusca_Leave);
             // 
             // btnbuscar

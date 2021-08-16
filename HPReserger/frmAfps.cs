@@ -126,6 +126,7 @@ namespace HPReserger
                 }
                 CapaLogica.DetalleAFPEliminar(periodo);
                 msgOK("Detalle de las AFPS Grabadas con Exito");
+                Estado--;
             }
         }
 
