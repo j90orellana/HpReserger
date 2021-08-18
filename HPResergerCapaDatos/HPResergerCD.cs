@@ -1228,11 +1228,46 @@ namespace HPResergerCapaDatos
             object[] valor = { busca, opcion, fechaini, fechafin, fecha, empresa };
             return bd.DataTableFromProcedure("usp_listar_asientos", parametros, valor, null);
         }
+        public DataRow ConsultarParametros(DateTime Fecha, string campo)
+        {
+            string[] parametros = { "@fecha", "@campo" };
+            object[] valores = { Fecha, campo };
+            return bd.DatarowFromProcedure("usp_ConsultarParametros", parametros, valores, null);
+        }
+        public DataRow AfpDetalle_BusquedaFecha(DateTime Fecha)
+        {
+            string[] parametros = { "@fecha" };
+            object[] valores = { Fecha };
+            return bd.DatarowFromProcedure("usp_AfpDetalle_BusquedaFecha", parametros, valores, null);
+        }
+        public DataTable ConsultarEmpleadosActivos(int empresa, DateTime fecha)
+        {
+            string[] parametros = { "@empresa", "@fecha" };
+            object[] valores = { empresa, fecha };
+            return bd.DataTableFromProcedure("usp_ConsultarEmpleadosActivos", parametros, valores, null);
+        }
         public DataTable ContarCantidadAsientos(int empresa)
         {
             string[] parametros = { "@empresa" };
             object[] valor = { empresa };
             return bd.DataTableFromProcedure("usp_ContarCantidadAsientos", parametros, valor, null);
+        }
+        public DataTable BusquedaFacturasdeCadena(string cadena)
+        {
+            string[] parametros = { "@cadena" };
+            object[] valor = { cadena };
+            return bd.DataTableFromProcedure("usp_BusquedaFacturasdeCadena", parametros, valor, null);
+        }
+        public DataTable Facturas_EPS_Listar(int @opcion, int @pkid, int @fkempresa, DateTime @Periodo, int @CantTrabajadores, decimal @TotalFacturas, decimal @UIT, decimal @TopeLegal,
+            string @ListaFacturas, decimal @AporteESSALUD, decimal @SueldosEPS_F, decimal @MontoCredito_F, int @Estado, DateTime @Fecha, int @Usuario)
+        {
+            string[] parametros = { "@opcion", "@pkid", "@fkempresa", "@Periodo", "@CantTrabajadores", "@TotalFacturas", "@UIT", "@TopeLegal", "@ListaFacturas", "@AporteESSALUD", "@SueldosEPS_F", "@MontoCredito_F", "@Estado", "@Fecha", "@Usuario" };
+            object[] valor = { @opcion, @pkid, @fkempresa, @Periodo, @CantTrabajadores, @TotalFacturas, @UIT, @TopeLegal, @ListaFacturas, @AporteESSALUD, @SueldosEPS_F, @MontoCredito_F, @Estado, @Fecha, @Usuario };
+            return bd.DataTableFromProcedure("usp_Facturas_EPS_Listar", parametros, valor, null);
+        }
+        public DataTable Facturas_EPS_Listar()
+        {
+            return bd.DataTableFromProcedure("usp_Facturas_EPS_Listar", null, null, null);
         }
         public DataTable ListarAsientosFiltrados(int empresa, DateTime Fechaini, DateTime Fechafin, string cuo, string cuenta, string glosa, string suboperacion)
         {

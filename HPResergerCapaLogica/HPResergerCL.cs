@@ -429,6 +429,32 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarAsientosContables(busca, opcion, fechaini, fechafin, fecha, empresa);
         }
+        public DataRow ConsultarParametros(DateTime Fecha, string campo)
+        {
+            return cdOrdenPedido.ConsultarParametros(Fecha, campo);
+        }
+        public DataRow AfpDetalle_BusquedaFecha(DateTime Fecha)
+        {
+            return cdOrdenPedido.AfpDetalle_BusquedaFecha(Fecha);
+        }
+        public DataTable ConsultarEmpleadosActivos(int empresa, DateTime fecha)
+        {
+            return cdOrdenPedido.ConsultarEmpleadosActivos(empresa, fecha);
+        }
+        public DataTable BusquedaFacturasdeCadena(string cadena)
+        {
+            return cdOrdenPedido.BusquedaFacturasdeCadena(cadena);
+        }
+        public DataTable Facturas_EPS_Listar()
+        {
+            return cdOrdenPedido.Facturas_EPS_Listar();
+        }
+        public DataTable Facturas_EPS_Listar(int @opcion, int @pkid, int @fkempresa, DateTime @Periodo, int @CantTrabajadores, decimal @TotalFacturas, decimal @UIT, decimal @TopeLegal,
+          string @ListaFacturas, decimal @AporteESSALUD, decimal @SueldosEPS_F, decimal @MontoCredito_F, int @Estado, DateTime @Fecha, int @Usuario)
+        {
+            return cdOrdenPedido.Facturas_EPS_Listar(@opcion, @pkid, @fkempresa, @Periodo, @CantTrabajadores, @TotalFacturas, @UIT, @TopeLegal, @ListaFacturas, @AporteESSALUD, @SueldosEPS_F,
+                @MontoCredito_F, @Estado, @Fecha, @Usuario);
+        }
         public DataRow ContarCantidadAsientos(int empresa)
         {
             //Columnas: Total

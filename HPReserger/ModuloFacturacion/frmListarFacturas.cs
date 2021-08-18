@@ -23,37 +23,42 @@ namespace HPReserger.ModuloFacturacion
             Buscar = buscar;
             MultiSeleccion = multiseleccion;
             BuscarPresionandoEnter = presionaEnter;
-            ListadoFacturas = listadoFacturas;
+            CadenaFacturasProtegidas = listadoFacturas;
+            CadenaFacturas = listadoFacturas;
             Sumatoria = total;
         }
         public Boolean Buscar = false;
         public Boolean MultiSeleccion = false;
         public Boolean BuscarPresionandoEnter = true;
-        public string ListadoFacturas = "";
+        public string CadenaFacturasProtegidas = "";
+        public string CadenaFacturas = "";
         //
         private Boolean FormCargado = false;
+        public string ListadoFacturasResult = "";
         //
+        private List<string> ListadeFacturas;
         public string ValEmpresa
         {
             get { return txtbusEmpresa.Text; }
             set { txtbusEmpresa.Text = value; }
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
-        public List<int> ListadoFactura { get; set; }
         private void btnProcesar_Click(object sender, EventArgs e)
         {
             SacarFacturasSeleccionadas();
+            CadenaFacturasProtegidas = string.Join(",", ListadeFacturas);
             DialogResult = DialogResult.OK;
         }
         private void frmListarFacturas_Load(object sender, EventArgs e)
         {
+            ListadeFacturas = CadenaFacturasProtegidas.Split(',').ToList();
             if (!Buscar)
                 CargarValoresxDefecto();
             else
                 CargarValoresxDefectoVacios();
             if (!MultiSeleccion)
                 dtgconten.Columns[xok.Name].Visible = false;
-            //
+            //            
             FormCargado = true;
             CargarDatos();
         }
@@ -69,16 +74,16 @@ namespace HPReserger.ModuloFacturacion
         {
             if (FormCargado)
             {
+                ListadoFacturasResult = string.Join(",", ListadeFacturas);
                 DateTime Fechade = dtpfechade.Value;
                 DateTime Fechaa = dtpFechaHasta.Value;
                 Configuraciones.FechaMenorMayor(Fechade, Fechaa);
                 Tdatos = CapaLogica.FacturasManualesBusqueda(txtbusEmpresa.TextValido(), txtbusNumFac.TextValido(), txtbusproveedor.TextValido(), txtbusglosa.TextValido(),
-                    chkFecha.Checked ? 1 : 0, Fechade, Fechaa, ListadoFacturas);
+                    chkFecha.Checked ? 1 : 0, Fechade, Fechaa, ListadoFacturasResult);
                 dtgconten.DataSource = Tdatos;
                 lbltotalRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
             }
         }
-
         private void CargarValoresxDefecto()
         {
             Configuraciones.CargarTextoPorDefecto(txtbusEmpresa, txtbusglosa, txtbusNumFac, txtbusproveedor);
@@ -88,7 +93,7 @@ namespace HPReserger.ModuloFacturacion
 
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            ListadoFactura = null;
+            CadenaFacturas = CadenaFacturasProtegidas;
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -101,12 +106,13 @@ namespace HPReserger.ModuloFacturacion
         {
             if (FormCargado && !BuscarPresionandoEnter)
             {
+                string lista = string.Join(",", ListadeFacturas.ToArray());
                 if (Configuraciones.ValidarSQLInyect(txtbusEmpresa, txtbusglosa, txtbusNumFac, txtbusproveedor)) return;//si encontramos codigo dañido de la base, rechazamos lo escrito;
                 DateTime Fechade = dtpfechade.Value;
                 DateTime Fechaa = dtpFechaHasta.Value;
                 Configuraciones.FechaMenorMayor(Fechade, Fechaa);
                 Tdatos = CapaLogica.FacturasManualesBusqueda(txtbusEmpresa.TextValido(), txtbusNumFac.TextValido(), txtbusproveedor.TextValido(), txtbusglosa.TextValido(),
-                    chkFecha.Checked ? 1 : 0, Fechade, Fechaa, ListadoFacturas);
+                    chkFecha.Checked ? 1 : 0, Fechade, Fechaa, lista);
                 dtgconten.DataSource = Tdatos;
                 lbltotalRegistros.Text = $"Total Registros: {dtgconten.RowCount}";
             }
@@ -156,25 +162,18 @@ namespace HPReserger.ModuloFacturacion
             }
             if (!MultiSeleccion) DialogResult = DialogResult.OK;
             if (e.RowIndex >= 0 && e.ColumnIndex > 0)
+            {
                 dtgconten[xok.Name, e.RowIndex].Value = (int)dtgconten[xok.Name, e.RowIndex].Value == 1 ? 0 : 1;
+
+            }
         }
         private void SacarFacturasSeleccionadas()
         {
-            ListadoFactura = new List<int>();
-            if (MultiSeleccion) //Retornaremos Varias Facturas
+            if (!MultiSeleccion) //Retornameros solo la con dobleclick
             {
-                foreach (DataGridViewRow item in dtgconten.Rows)
-                {
-                    if ((int)item.Cells[xok.Name].Value == 1)
-                        ListadoFactura.Add((int)item.Cells[xpkfac.Name].Value);
-                }
-            }
-            else //Retornameros solo la con dobleclick
-            {
-                ListadoFactura.Add((int)dtgconten.CurrentRow.Cells[xpkfac.Name].Value);
+                ListadeFacturas.Add(dtgconten.CurrentRow.Cells[xpkfac.Name].Value.ToString());
             }
         }
-
         private void dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -183,11 +182,20 @@ namespace HPReserger.ModuloFacturacion
                     dtgconten.EndEdit(); dtgconten.RefreshEdit();
                 }
         }
-
         private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
+            {
+                int x = e.RowIndex;
+                int valor = (int)dtgconten[xok.Name, x].Value;
+                string fac = dtgconten[xpkfac.Name, x].Value.ToString();
+                if (valor == 1)
+                {
+                    if (!ListadeFacturas.Contains(fac)) ListadeFacturas.Add(fac);
+                }
+                else ListadeFacturas.Remove(fac);
                 CalcularSumatoria();
+            }
         }
         private decimal sumatoria;
         public decimal Sumatoria

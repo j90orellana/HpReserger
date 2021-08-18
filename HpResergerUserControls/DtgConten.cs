@@ -80,10 +80,11 @@ namespace HpResergerUserControls
             {
                 if (e.RowIndex >= 0)
                 {
-                    if ((int)this[CheckColumna, e.RowIndex].Value == CheckValor)
-                        HPResergerFunciones.Utilitarios.ColorFilaSeleccionada(this.Rows[e.RowIndex], Configuraciones.ColorFilaSeleccionada);
-                    else
-                        HPResergerFunciones.Utilitarios.ColorFilaDefecto(this.Rows[e.RowIndex]);
+                    if (this.Columns.Contains(CheckColumna))
+                        if ((int)this[CheckColumna, e.RowIndex].Value == CheckValor)
+                            HPResergerFunciones.Utilitarios.ColorFilaSeleccionada(this.Rows[e.RowIndex], Configuraciones.ColorFilaSeleccionada);
+                        else
+                            HPResergerFunciones.Utilitarios.ColorFilaDefecto(this.Rows[e.RowIndex]);
                 }
             }
             base.OnCellFormatting(e);
