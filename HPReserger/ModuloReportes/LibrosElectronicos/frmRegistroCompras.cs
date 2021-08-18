@@ -71,6 +71,7 @@ namespace HPReserger
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
             Ordenado = false;
             Cursor = Cursors.Default;
+            //                        
         }
         DataTable TDatos;
         private void btncancelar_Click(object sender, EventArgs e)
@@ -454,8 +455,8 @@ namespace HPReserger
                                         campo[c++] = "M2";
                                         campo[c++] = ((DateTime)fila[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");
                                         //5
-                                        campo[c++] = (int)fila[xidC.DataPropertyName] != 14 ? "" : ((DateTime)fila[xFechaVencimiento.DataPropertyName]).ToString("dd/MM/yyyy");
-                                        campo[c++] = ((int)fila[xidC.DataPropertyName]).ToString("00");
+                                        campo[c++] = int.Parse(fila[xidC.DataPropertyName].ToString()) != 14 ? "" : ((DateTime)fila[xFechaVencimiento.DataPropertyName]).ToString("dd/MM/yyyy");
+                                        campo[c++] = (int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00");
                                         campo[c++] = fila[xSerieCom.DataPropertyName].ToString();
                                         int.TryParse(fila[xAñoDua.DataPropertyName].ToString(), out ValorPrueba);
                                         campo[c++] = ValorPrueba.ToString();
@@ -468,26 +469,26 @@ namespace HPReserger
                                         string Cadena = fila[xNombrePro.DataPropertyName].ToString().ToUpper().Trim();
                                         campo[c++] = Cadena.Substring(0, Cadena.Length > 60 ? 60 : Cadena.Length);
                                         //Parte de los IGV
-                                        campo[c++] = ((decimal)fila[ximporteIGV.DataPropertyName]).ToString("0.00");
-                                        campo[c++] = ((decimal)fila[xigvIGV.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[ximporteIGV.DataPropertyName].ToString())).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[xigvIGV.DataPropertyName].ToString())).ToString("0.00");
                                         //Partes de los GNG
-                                        campo[c++] = ((decimal)fila[ximporteGNG.DataPropertyName]).ToString("0.00");
-                                        campo[c++] = ((decimal)fila[xigvGNG.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[ximporteGNG.DataPropertyName].ToString())).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[xigvGNG.DataPropertyName].ToString())).ToString("0.00");
                                         //Partes de los ONG
-                                        campo[c++] = ((decimal)fila[ximporteONG.DataPropertyName]).ToString("0.00");
-                                        campo[c++] = ((decimal)fila[xigvONG.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[ximporteONG.DataPropertyName].ToString())).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[xigvONG.DataPropertyName].ToString())).ToString("0.00");
                                         //Partes de NGR
                                         //20
-                                        campo[c++] = ((decimal)fila[ximporteNGR.DataPropertyName]).ToString("0.00");
-                                        campo[c++] = ((decimal)fila[xisc.DataPropertyName]).ToString("0.00");
-                                        campo[c++] = ((decimal)fila[xICBP.DataPropertyName]).ToString("0.00");
-                                        campo[c++] = ((decimal)fila[xOtrosTributos.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString())).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[xisc.DataPropertyName].ToString())).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[xICBP.DataPropertyName].ToString())).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[xOtrosTributos.DataPropertyName].ToString())).ToString("0.00");
                                         //Validar Moneda
-                                        campo[c++] = ((decimal)fila[xImporteTotal.DataPropertyName]).ToString("0.00");
+                                        campo[c++] = (decimal.Parse(fila[xImporteTotal.DataPropertyName].ToString())).ToString("0.00");
                                         if (fila[xMoneda.DataPropertyName].ToString() == "USD")
                                         {
                                             campo[c++] = "USD";
-                                            campo[c++] = ((decimal)fila[xTC.DataPropertyName]).ToString("0.000");
+                                            campo[c++] = (decimal.Parse(fila[xTC.DataPropertyName].ToString())).ToString("0.000");
                                         }
                                         else
                                         {
@@ -533,7 +534,7 @@ namespace HPReserger
                                         //Mismo Mes de Declaración
                                         if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
                                         {
-                                            if (((decimal)fila[ximporteNGR.DataPropertyName]) > 0)
+                                            if (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()) > 0)
                                                 Estado = 0;
                                             else
                                                 Estado = 1;
@@ -642,6 +643,46 @@ namespace HPReserger
         private void dtgconten_Sorted(object sender, EventArgs e)
         {
             Ordenado = true;
+        }
+
+        private void buttonPer1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            CargarDatosDelExcel(openFileDialog1.FileName);
+        }
+        private Boolean CargarDatosDelExcel(string Ruta)
+        {
+            TDatos = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, 1, 7, 11);
+            for (int i = 0; i < 6; i++)
+            {
+                TDatos.Rows.RemoveAt(0);
+            }
+            TDatos.Rows.RemoveAt(TDatos.Rows.Count - 1);
+            int x = 0;
+            foreach (DataGridViewColumn item in dtgconten.Columns)
+            {
+                TDatos.Columns[x].ColumnName = item.DataPropertyName;
+                x++;
+            }
+
+
+            dtgconten.DataSource = TDatos;
+            if (TDatos.Rows.Count == 0)
+            {
+                return false;
+            }
+            return true;
+            //List<string> Listado = new List<string>();
+            //foreach (string item in HPResergerFunciones.Utilitarios.ListarHojasDeunExcel(Ruta))
+            //{
+            //    Listado.Add(item);
+            //}
+            //dtgconten.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, Listado[0].ToString());
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
