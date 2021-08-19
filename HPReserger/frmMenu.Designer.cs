@@ -189,6 +189,7 @@
             this.faltasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.amonestacionesPremiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturasParaElCreditoEPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.seguimientoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -321,7 +322,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.facturasParaElCreditoEPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1900,6 +1900,15 @@
             this.bonosToolStripMenuItem.Text = "Comisiones";
             this.bonosToolStripMenuItem.Click += new System.EventHandler(this.bonosToolStripMenuItem_Click);
             // 
+            // facturasParaElCreditoEPSToolStripMenuItem
+            // 
+            this.facturasParaElCreditoEPSToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturasParaElCreditoEPSToolStripMenuItem.Image")));
+            this.facturasParaElCreditoEPSToolStripMenuItem.Name = "facturasParaElCreditoEPSToolStripMenuItem";
+            this.facturasParaElCreditoEPSToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.facturasParaElCreditoEPSToolStripMenuItem.Tag = "1513";
+            this.facturasParaElCreditoEPSToolStripMenuItem.Text = "Facturas Credito EPS";
+            this.facturasParaElCreditoEPSToolStripMenuItem.Click += new System.EventHandler(this.facturasParaElCreditoEPSToolStripMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -3138,13 +3147,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // facturasParaElCreditoEPSToolStripMenuItem
-            // 
-            this.facturasParaElCreditoEPSToolStripMenuItem.Name = "facturasParaElCreditoEPSToolStripMenuItem";
-            this.facturasParaElCreditoEPSToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
-            this.facturasParaElCreditoEPSToolStripMenuItem.Text = "Facturas Credito EPS";
-            this.facturasParaElCreditoEPSToolStripMenuItem.Click += new System.EventHandler(this.facturasParaElCreditoEPSToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

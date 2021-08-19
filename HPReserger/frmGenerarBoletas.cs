@@ -79,8 +79,8 @@ namespace HPReserger
                 if (cboproyecto.SelectedValue == null) { msgError("Seleccione una Proyecto"); cboproyecto.Focus(); return; }
                 if (cboetapa.Items.Count == 0) { msgError("No hay Etapas"); cboetapa.Focus(); return; }
                 if (cboetapa.SelectedValue == null) { msgError("Seleccione una Etapa"); cboetapa.Focus(); return; }
-                if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
-                if (!txtglosa2.EstaLLeno()) { msgError("Ingrese la Glosa del asiento de Provisión"); txtglosa2.Focus(); return; }
+                //if (!txtGlosa1.EstaLLeno()) { msgError("Ingrese Glosa del Asiento de la Boleta"); txtGlosa1.Focus(); return; }
+                //if (!txtglosa2.EstaLLeno()) { msgError("Ingrese la Glosa del asiento de Provisión"); txtglosa2.Focus(); return; }
                 //
                 int IdEmpresa = (int)cboempresa.SelectedValue;
                 FechaContable = comboMesAño1.GetFecha();
@@ -462,6 +462,15 @@ namespace HPReserger
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboMesAño1_CambioFechas(object sender, EventArgs e)
+        {
+            DateTime periodo = comboMesAño1.FechaInicioMes;
+            txtGlosa1.TextoDefecto = $"PLANILLA MES: {periodo.ToString("MMMM yyyy")}";
+            txtglosa2.TextoDefecto = $"PROVISIÓN BB.SS.MES: {periodo.ToString("MMMM yyyy")}";
+            txtGlosa1.Text = txtglosa2.Text = "";
+            Configuraciones.CargarTextoPorDefectoDeVacios(txtGlosa1, txtglosa2);
         }
 
         private void ValidarCheck()

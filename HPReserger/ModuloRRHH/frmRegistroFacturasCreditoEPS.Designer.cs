@@ -74,12 +74,13 @@
             this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fkEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCantTrabajadores = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTotalFacturas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xUIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xTopeLegal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xListaFacturas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAporteEssalud = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTotalFacturas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xSueldos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMontoCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -170,12 +171,13 @@
             this.xpkid,
             this.fkEmpresa,
             this.xPeriodo,
+            this.xEmpresa,
             this.xCantTrabajadores,
-            this.xTotalFacturas,
             this.xUIT,
             this.xTopeLegal,
             this.xListaFacturas,
             this.xAporteEssalud,
+            this.xTotalFacturas,
             this.xSueldos,
             this.xMontoCredito,
             this.xEstado,
@@ -634,6 +636,15 @@
             this.xPeriodo.ReadOnly = true;
             this.xPeriodo.Width = 70;
             // 
+            // xEmpresa
+            // 
+            this.xEmpresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xEmpresa.DataPropertyName = "empresa";
+            this.xEmpresa.HeaderText = "Empresa";
+            this.xEmpresa.MinimumWidth = 180;
+            this.xEmpresa.Name = "xEmpresa";
+            this.xEmpresa.ReadOnly = true;
+            // 
             // xCantTrabajadores
             // 
             this.xCantTrabajadores.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -648,41 +659,31 @@
             this.xCantTrabajadores.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.xCantTrabajadores.Width = 50;
             // 
-            // xTotalFacturas
-            // 
-            this.xTotalFacturas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xTotalFacturas.DataPropertyName = "totalfacturas";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.xTotalFacturas.DefaultCellStyle = dataGridViewCellStyle5;
-            this.xTotalFacturas.HeaderText = "TotalFac";
-            this.xTotalFacturas.MinimumWidth = 65;
-            this.xTotalFacturas.Name = "xTotalFacturas";
-            this.xTotalFacturas.ReadOnly = true;
-            // 
             // xUIT
             // 
-            this.xUIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xUIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xUIT.DataPropertyName = "uit";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n2";
-            this.xUIT.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.xUIT.DefaultCellStyle = dataGridViewCellStyle5;
             this.xUIT.HeaderText = "UIT";
             this.xUIT.MinimumWidth = 60;
             this.xUIT.Name = "xUIT";
             this.xUIT.ReadOnly = true;
+            this.xUIT.Width = 60;
             // 
             // xTopeLegal
             // 
-            this.xTopeLegal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xTopeLegal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xTopeLegal.DataPropertyName = "topelegal";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "n2";
-            this.xTopeLegal.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.xTopeLegal.DefaultCellStyle = dataGridViewCellStyle6;
             this.xTopeLegal.HeaderText = "Tope Legal";
             this.xTopeLegal.Name = "xTopeLegal";
             this.xTopeLegal.ReadOnly = true;
             this.xTopeLegal.Visible = false;
+            this.xTopeLegal.Width = 5;
             // 
             // xListaFacturas
             // 
@@ -694,19 +695,33 @@
             // 
             // xAporteEssalud
             // 
-            this.xAporteEssalud.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xAporteEssalud.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xAporteEssalud.DataPropertyName = "AporteESSALUD";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "00.00%";
-            this.xAporteEssalud.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "0.00%";
+            this.xAporteEssalud.DefaultCellStyle = dataGridViewCellStyle7;
             this.xAporteEssalud.HeaderText = "Aporte Essalud";
             this.xAporteEssalud.MinimumWidth = 60;
             this.xAporteEssalud.Name = "xAporteEssalud";
             this.xAporteEssalud.ReadOnly = true;
+            this.xAporteEssalud.Width = 60;
+            // 
+            // xTotalFacturas
+            // 
+            this.xTotalFacturas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.xTotalFacturas.DataPropertyName = "totalfacturas";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n2";
+            this.xTotalFacturas.DefaultCellStyle = dataGridViewCellStyle8;
+            this.xTotalFacturas.HeaderText = "TotalFac";
+            this.xTotalFacturas.MinimumWidth = 65;
+            this.xTotalFacturas.Name = "xTotalFacturas";
+            this.xTotalFacturas.ReadOnly = true;
+            this.xTotalFacturas.Width = 65;
             // 
             // xSueldos
             // 
-            this.xSueldos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xSueldos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xSueldos.DataPropertyName = "SueldosEPS_F";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle9.Format = "n2";
@@ -715,10 +730,11 @@
             this.xSueldos.MinimumWidth = 65;
             this.xSueldos.Name = "xSueldos";
             this.xSueldos.ReadOnly = true;
+            this.xSueldos.Width = 65;
             // 
             // xMontoCredito
             // 
-            this.xMontoCredito.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xMontoCredito.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.xMontoCredito.DataPropertyName = "MontoCredito_F";
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle10.Format = "n2";
@@ -727,6 +743,7 @@
             this.xMontoCredito.MinimumWidth = 65;
             this.xMontoCredito.Name = "xMontoCredito";
             this.xMontoCredito.ReadOnly = true;
+            this.xMontoCredito.Width = 65;
             // 
             // xEstado
             // 
@@ -833,12 +850,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
         private System.Windows.Forms.DataGridViewTextBoxColumn fkEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xPeriodo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCantTrabajadores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTotalFacturas;
         private System.Windows.Forms.DataGridViewTextBoxColumn xUIT;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTopeLegal;
         private System.Windows.Forms.DataGridViewTextBoxColumn xListaFacturas;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAporteEssalud;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTotalFacturas;
         private System.Windows.Forms.DataGridViewTextBoxColumn xSueldos;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMontoCredito;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;

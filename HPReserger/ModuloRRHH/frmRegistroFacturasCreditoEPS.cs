@@ -120,6 +120,10 @@ namespace HPReserger.ModuloRRHH
             ListadoFacturas = "";
             BuscarDatosdelPeriodo();
             BuscarCantidadEmpleados();
+            //
+            txttotal.CargarTextoporDefecto();
+            ListadoFacturas = "";
+            cboFacturas.DataSource = null;
         }
         private void MostrarLabelyTextboxSueldos(bool v)
         {
@@ -134,7 +138,7 @@ namespace HPReserger.ModuloRRHH
         {
             Estado = 2;
             BuscarCantidadEmpleados();
-            cboEmpresa.Enabled = false;
+            cboEmpresa.ReadOnly = true;
             pkid = (int)dtgconten.CurrentRow.Cells[xpkid.Name].Value;
         }
         private void BtnCerrar_Click(object sender, EventArgs e)

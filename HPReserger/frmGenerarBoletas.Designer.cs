@@ -105,9 +105,9 @@
             // 
             this.comboMesAño2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño2.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2020, 8, 5, 0, 0, 0, 0);
-            this.comboMesAño2.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
-            this.comboMesAño2.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
+            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2021, 8, 31, 0, 0, 0, 0);
+            this.comboMesAño2.FechaFinMes = new System.DateTime(2021, 8, 31, 0, 0, 0, 0);
+            this.comboMesAño2.FechaInicioMes = new System.DateTime(2021, 8, 1, 0, 0, 0, 0);
             this.comboMesAño2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.comboMesAño2.Location = new System.Drawing.Point(163, 173);
             this.comboMesAño2.Name = "comboMesAño2";
@@ -120,9 +120,9 @@
             // 
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2020, 8, 5, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2020, 8, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2021, 8, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2021, 8, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2021, 8, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.comboMesAño1.Location = new System.Drawing.Point(163, 150);
             this.comboMesAño1.Name = "comboMesAño1";
@@ -130,6 +130,7 @@
             this.comboMesAño1.TabIndex = 5;
             this.comboMesAño1.VerAño = true;
             this.comboMesAño1.VerMes = true;
+            this.comboMesAño1.CambioFechas += new System.EventHandler(this.comboMesAño1_CambioFechas);
             // 
             // rbPersona
             // 
