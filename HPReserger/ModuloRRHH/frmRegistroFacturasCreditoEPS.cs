@@ -208,6 +208,11 @@ namespace HPReserger.ModuloRRHH
         private void cboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             BuscarCantidadEmpleados();
+            if (estado == 1) //Creando un registros
+            {
+                ListadoFacturas = "";
+                cboFacturas.DataSource = null;
+            }
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

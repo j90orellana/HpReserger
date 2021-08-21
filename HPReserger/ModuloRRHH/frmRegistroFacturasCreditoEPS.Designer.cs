@@ -191,6 +191,7 @@
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(15, 115);
@@ -656,7 +657,6 @@
             this.xCantTrabajadores.MinimumWidth = 50;
             this.xCantTrabajadores.Name = "xCantTrabajadores";
             this.xCantTrabajadores.ReadOnly = true;
-            this.xCantTrabajadores.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.xCantTrabajadores.Width = 50;
             // 
             // xUIT

@@ -48,7 +48,6 @@ namespace HPReserger
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtbusGlosa = new HpResergerUserControls.TextBoxPer();
             this.btnreversa = new System.Windows.Forms.Button();
-            this.btneliminar = new System.Windows.Forms.Button();
             this.duplicadorBase1 = new HpResergerUserControls.DuplicadorBase();
             this.dtgbusca = new HpResergerUserControls.Dtgconten();
             this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,14 +119,9 @@ namespace HPReserger
             this.txttotaldebe = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txttotalhaber = new System.Windows.Forms.TextBox();
-            this.btndina = new System.Windows.Forms.Button();
             this.btnmas = new System.Windows.Forms.Button();
             this.dtpfecha = new System.Windows.Forms.DateTimePicker();
             this.lblmsg2 = new System.Windows.Forms.Label();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.btnmodificar = new System.Windows.Forms.Button();
-            this.btnnuevo = new System.Windows.Forms.Button();
             this.txtdinamica = new System.Windows.Forms.TextBox();
             this.txtcuo = new System.Windows.Forms.TextBox();
             this.txtcodigo = new System.Windows.Forms.TextBox();
@@ -147,6 +141,12 @@ namespace HPReserger
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.btnProcesar = new HpResergerUserControls.ButtonPer();
+            this.btncancelar = new HpResergerUserControls.ButtonPer();
+            this.btnmodificar = new HpResergerUserControls.ButtonPer();
+            this.btnnuevo = new HpResergerUserControls.ButtonPer();
+            this.btneliminar = new HpResergerUserControls.ButtonPer();
+            this.btndina = new HpResergerUserControls.ButtonPer();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -196,22 +196,6 @@ namespace HPReserger
             this.toolTip1.SetToolTip(this.btnreversa, "Reversa el Asiento ");
             this.btnreversa.UseVisualStyleBackColor = true;
             this.btnreversa.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btneliminar
-            // 
-            this.btneliminar.Enabled = false;
-            this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(581, 64);
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(92, 23);
-            this.btneliminar.TabIndex = 39;
-            this.btneliminar.TabStop = false;
-            this.btneliminar.Text = "Eliminar";
-            this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.btneliminar, "Cambia el Estado del Asiento a Anulado");
-            this.btneliminar.UseVisualStyleBackColor = true;
-            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // duplicadorBase1
             // 
@@ -490,7 +474,6 @@ namespace HPReserger
             this.Dtgconten.Size = new System.Drawing.Size(664, 158);
             this.Dtgconten.TabIndex = 17;
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
-            this.Dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellEndEdit);
             this.Dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellValueChanged);
             this.Dtgconten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Dtgconten_DataError);
             this.Dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.Dtgconten_EditingControlShowing);
@@ -1114,7 +1097,7 @@ namespace HPReserger
             this.dtpfechavalor.Enabled = false;
             this.dtpfechavalor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpfechavalor.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpfechavalor.Location = new System.Drawing.Point(296, 28);
+            this.dtpfechavalor.Location = new System.Drawing.Point(296, 29);
             this.dtpfechavalor.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpfechavalor.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpfechavalor.Name = "dtpfechavalor";
@@ -1238,18 +1221,6 @@ namespace HPReserger
             this.txttotalhaber.TabIndex = 19;
             this.txttotalhaber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btndina
-            // 
-            this.btndina.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btndina.BackgroundImage")));
-            this.btndina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btndina.Enabled = false;
-            this.btndina.Location = new System.Drawing.Point(447, 29);
-            this.btndina.Name = "btndina";
-            this.btndina.Size = new System.Drawing.Size(21, 20);
-            this.btndina.TabIndex = 40;
-            this.btndina.UseVisualStyleBackColor = true;
-            this.btndina.Click += new System.EventHandler(this.btndina_Click);
-            // 
             // btnmas
             // 
             this.btnmas.Enabled = false;
@@ -1269,7 +1240,7 @@ namespace HPReserger
             this.dtpfecha.Enabled = false;
             this.dtpfecha.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpfecha.Location = new System.Drawing.Point(89, 28);
+            this.dtpfecha.Location = new System.Drawing.Point(89, 29);
             this.dtpfecha.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpfecha.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpfecha.Name = "dtpfecha";
@@ -1289,67 +1260,12 @@ namespace HPReserger
             this.lblmsg2.TabIndex = 35;
             this.lblmsg2.Text = "Total de Registros:";
             // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(581, 578);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(92, 23);
-            this.btncancelar.TabIndex = 33;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(485, 578);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(92, 23);
-            this.btnaceptar.TabIndex = 32;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btnmodificar
-            // 
-            this.btnmodificar.Enabled = false;
-            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(581, 28);
-            this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(92, 23);
-            this.btnmodificar.TabIndex = 1;
-            this.btnmodificar.Text = "Modificar";
-            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
-            // 
-            // btnnuevo
-            // 
-            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
-            this.btnnuevo.Location = new System.Drawing.Point(581, 5);
-            this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(92, 23);
-            this.btnnuevo.TabIndex = 0;
-            this.btnnuevo.Text = "Nuevo";
-            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnnuevo.UseVisualStyleBackColor = true;
-            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
-            // 
             // txtdinamica
             // 
             this.txtdinamica.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtdinamica.Enabled = false;
             this.txtdinamica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdinamica.Location = new System.Drawing.Point(471, 29);
+            this.txtdinamica.Location = new System.Drawing.Point(471, 30);
             this.txtdinamica.MaxLength = 15;
             this.txtdinamica.Name = "txtdinamica";
             this.txtdinamica.Size = new System.Drawing.Size(107, 21);
@@ -1394,7 +1310,7 @@ namespace HPReserger
             this.Dinamica.AutoSize = true;
             this.Dinamica.BackColor = System.Drawing.Color.Transparent;
             this.Dinamica.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dinamica.Location = new System.Drawing.Point(392, 33);
+            this.Dinamica.Location = new System.Drawing.Point(392, 34);
             this.Dinamica.Name = "Dinamica";
             this.Dinamica.Size = new System.Drawing.Size(57, 13);
             this.Dinamica.TabIndex = 41;
@@ -1416,7 +1332,7 @@ namespace HPReserger
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(204, 33);
+            this.label12.Location = new System.Drawing.Point(204, 34);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 13);
             this.label12.TabIndex = 42;
@@ -1546,7 +1462,7 @@ namespace HPReserger
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 33);
+            this.label2.Location = new System.Drawing.Point(9, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 43;
@@ -1594,6 +1510,117 @@ namespace HPReserger
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
             this.fondoColorOre1.control = null;
             // 
+            // btnProcesar
+            // 
+            this.btnProcesar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
+            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcesar.ForeColor = System.Drawing.Color.White;
+            this.btnProcesar.Location = new System.Drawing.Point(484, 578);
+            this.btnProcesar.Name = "btnProcesar";
+            this.btnProcesar.Size = new System.Drawing.Size(92, 23);
+            this.btnProcesar.TabIndex = 169;
+            this.btnProcesar.Text = "OK";
+            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.BackColor = System.Drawing.Color.Crimson;
+            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.ForeColor = System.Drawing.Color.White;
+            this.btncancelar.Location = new System.Drawing.Point(581, 578);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(92, 23);
+            this.btncancelar.TabIndex = 170;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = false;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btnmodificar
+            // 
+            this.btnmodificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.btnmodificar.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnmodificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmodificar.ForeColor = System.Drawing.Color.White;
+            this.btnmodificar.Location = new System.Drawing.Point(581, 29);
+            this.btnmodificar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnmodificar.Name = "btnmodificar";
+            this.btnmodificar.Size = new System.Drawing.Size(92, 22);
+            this.btnmodificar.TabIndex = 368;
+            this.btnmodificar.Tag = "1";
+            this.btnmodificar.Text = "Modificar";
+            this.btnmodificar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnmodificar.UseVisualStyleBackColor = false;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
+            // 
+            // btnnuevo
+            // 
+            this.btnnuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.btnnuevo.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnnuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnnuevo.ForeColor = System.Drawing.Color.White;
+            this.btnnuevo.Location = new System.Drawing.Point(581, 5);
+            this.btnnuevo.Margin = new System.Windows.Forms.Padding(0);
+            this.btnnuevo.Name = "btnnuevo";
+            this.btnnuevo.Size = new System.Drawing.Size(92, 22);
+            this.btnnuevo.TabIndex = 369;
+            this.btnnuevo.Tag = "1";
+            this.btnnuevo.Text = "Nuevo";
+            this.btnnuevo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnnuevo.UseVisualStyleBackColor = false;
+            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.btneliminar.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btneliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneliminar.ForeColor = System.Drawing.Color.White;
+            this.btneliminar.Location = new System.Drawing.Point(581, 64);
+            this.btneliminar.Margin = new System.Windows.Forms.Padding(0);
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.Size = new System.Drawing.Size(92, 22);
+            this.btneliminar.TabIndex = 368;
+            this.btneliminar.Tag = "1";
+            this.btneliminar.Text = "Eliminar";
+            this.btneliminar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btneliminar.UseVisualStyleBackColor = false;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
+            // 
+            // btndina
+            // 
+            this.btndina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.btndina.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btndina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btndina.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndina.ForeColor = System.Drawing.Color.White;
+            this.btndina.Location = new System.Drawing.Point(447, 30);
+            this.btndina.Margin = new System.Windows.Forms.Padding(0);
+            this.btndina.Name = "btndina";
+            this.btndina.Size = new System.Drawing.Size(21, 20);
+            this.btndina.TabIndex = 370;
+            this.btndina.Tag = "1";
+            this.btndina.Text = "+";
+            this.btndina.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btndina.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btndina.UseVisualStyleBackColor = false;
+            this.btndina.Click += new System.EventHandler(this.btndina_Click);
+            // 
             // frmAsientoContable
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1603,6 +1630,11 @@ namespace HPReserger
         System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.btnnuevo);
+            this.Controls.Add(this.btnmodificar);
+            this.Controls.Add(this.btneliminar);
+            this.Controls.Add(this.btndina);
+            this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.duplicadorBase1);
             this.Controls.Add(this.btnpdf);
             this.Controls.Add(this.txtbuscuenta);
@@ -1649,16 +1681,10 @@ namespace HPReserger
             this.Controls.Add(this.txttotaldebe);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txttotalhaber);
-            this.Controls.Add(this.btndina);
             this.Controls.Add(this.btnmas);
             this.Controls.Add(this.Dtgconten);
             this.Controls.Add(this.dtpfecha);
             this.Controls.Add(this.lblmsg2);
-            this.Controls.Add(this.btncancelar);
-            this.Controls.Add(this.btnaceptar);
-            this.Controls.Add(this.btneliminar);
-            this.Controls.Add(this.btnmodificar);
-            this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.txtdinamica);
             this.Controls.Add(this.txtcuo);
             this.Controls.Add(this.txtcodigo);
@@ -1678,6 +1704,7 @@ namespace HPReserger
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtgbusca);
+            this.Controls.Add(this.btnProcesar);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(700, 644);
             this.Name = "frmAsientoContable";
@@ -1701,11 +1728,6 @@ namespace HPReserger
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label lblmsg2;
-        private System.Windows.Forms.Button btncancelar;
-        private System.Windows.Forms.Button btnaceptar;
-        private System.Windows.Forms.Button btneliminar;
-        private System.Windows.Forms.Button btnmodificar;
-        private System.Windows.Forms.Button btnnuevo;
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.Label label13;
         private Dtgconten dtgbusca;
@@ -1716,7 +1738,6 @@ namespace HPReserger
         private System.Windows.Forms.Label Dinamica;
         private System.Windows.Forms.TextBox txtdinamica;
         private System.Windows.Forms.DataGridView dtgayuda;
-        private System.Windows.Forms.Button btndina;
         private System.Windows.Forms.DataGridView dtgayuda2;
         private System.Windows.Forms.TextBox txttotalhaber;
         private System.Windows.Forms.Label label3;
@@ -1800,5 +1821,11 @@ namespace HPReserger
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cuadrarAsientoToolStripMenuItem;
         private DuplicadorBase duplicadorBase1;
+        private ButtonPer btnProcesar;
+        private ButtonPer btncancelar;
+        private ButtonPer btnmodificar;
+        private ButtonPer btnnuevo;
+        private ButtonPer btneliminar;
+        private ButtonPer btndina;
     }
 }
