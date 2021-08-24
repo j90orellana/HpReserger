@@ -132,7 +132,6 @@ namespace HPReserger
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.chkfechavalor = new System.Windows.Forms.CheckBox();
-            this.dtgayuda3 = new System.Windows.Forms.DataGridView();
             this.dtgayuda2 = new System.Windows.Forms.DataGridView();
             this.dtgayuda = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
@@ -150,7 +149,6 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
             this.SuspendLayout();
@@ -199,6 +197,7 @@ namespace HPReserger
             // 
             // duplicadorBase1
             // 
+            this.duplicadorBase1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.duplicadorBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.duplicadorBase1.dataTable = this.dtgbusca;
             this.duplicadorBase1.img = ((System.Drawing.Image)(resources.GetObject("duplicadorBase1.img")));
@@ -275,7 +274,6 @@ namespace HPReserger
             this.dtgbusca.Size = new System.Drawing.Size(664, 155);
             this.dtgbusca.TabIndex = 34;
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
-            this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
             // 
             // idx
             // 
@@ -474,12 +472,13 @@ namespace HPReserger
             this.Dtgconten.Size = new System.Drawing.Size(664, 158);
             this.Dtgconten.TabIndex = 17;
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
+            this.Dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellEndEdit);
+            this.Dtgconten.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.Dtgconten_CellFormatting);
             this.Dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellValueChanged);
             this.Dtgconten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Dtgconten_DataError);
             this.Dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.Dtgconten_EditingControlShowing);
             this.Dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_RowEnter);
             this.Dtgconten.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.Dtgconten_RowsAdded);
-            this.Dtgconten.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.Dtgconten_RowsRemoved);
             this.Dtgconten.Sorted += new System.EventHandler(this.Dtgconten_Sorted);
             this.Dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dtgconten_KeyDown);
             this.Dtgconten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dtgconten_KeyPress);
@@ -1074,7 +1073,6 @@ namespace HPReserger
             this.cboempresa.Size = new System.Drawing.Size(215, 21);
             this.cboempresa.TabIndex = 44;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged_1);
-            this.cboempresa.SelectedValueChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click_1);
             // 
             // cboproyecto
@@ -1388,25 +1386,6 @@ namespace HPReserger
             this.chkfechavalor.Visible = false;
             this.chkfechavalor.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // dtgayuda3
-            // 
-            this.dtgayuda3.AllowUserToAddRows = false;
-            this.dtgayuda3.AllowUserToDeleteRows = false;
-            this.dtgayuda3.AllowUserToResizeColumns = false;
-            this.dtgayuda3.BackgroundColor = System.Drawing.SystemColors.HighlightText;
-            this.dtgayuda3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgayuda3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dtgayuda3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtgayuda3.Location = new System.Drawing.Point(750, 290);
-            this.dtgayuda3.Name = "dtgayuda3";
-            this.dtgayuda3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgayuda3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dtgayuda3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgayuda3.Size = new System.Drawing.Size(662, 191);
-            this.dtgayuda3.TabIndex = 167;
-            this.dtgayuda3.Visible = false;
-            this.dtgayuda3.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgayuda3_RowEnter);
-            // 
             // dtgayuda2
             // 
             this.dtgayuda2.AllowUserToAddRows = false;
@@ -1442,9 +1421,6 @@ namespace HPReserger
             this.dtgayuda.Size = new System.Drawing.Size(456, 191);
             this.dtgayuda.TabIndex = 158;
             this.dtgayuda.Visible = false;
-            this.dtgayuda.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgayuda_CellEnter);
-            this.dtgayuda.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgayuda_CellValueChanged);
-            this.dtgayuda.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtgayuda_RowsAdded);
             // 
             // label6
             // 
@@ -1555,12 +1531,12 @@ namespace HPReserger
             this.btnmodificar.Location = new System.Drawing.Point(581, 29);
             this.btnmodificar.Margin = new System.Windows.Forms.Padding(0);
             this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(92, 22);
+            this.btnmodificar.Size = new System.Drawing.Size(92, 23);
             this.btnmodificar.TabIndex = 368;
             this.btnmodificar.Tag = "1";
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = false;
             this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
             // 
@@ -1574,12 +1550,12 @@ namespace HPReserger
             this.btnnuevo.Location = new System.Drawing.Point(581, 5);
             this.btnnuevo.Margin = new System.Windows.Forms.Padding(0);
             this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(92, 22);
+            this.btnnuevo.Size = new System.Drawing.Size(92, 23);
             this.btnnuevo.TabIndex = 369;
             this.btnnuevo.Tag = "1";
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = false;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
             // 
@@ -1695,7 +1671,6 @@ namespace HPReserger
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.chkfechavalor);
-            this.Controls.Add(this.dtgayuda3);
             this.Controls.Add(this.dtgayuda2);
             this.Controls.Add(this.dtgayuda);
             this.Controls.Add(this.label6);
@@ -1716,7 +1691,6 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).EndInit();
             this.ResumeLayout(false);
@@ -1748,7 +1722,6 @@ namespace HPReserger
         private System.Windows.Forms.Label lblmsg;
         private System.Windows.Forms.DateTimePicker fechafin;
         private System.Windows.Forms.DateTimePicker fechaini;
-        private System.Windows.Forms.DataGridView dtgayuda3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboestado;
         private System.Windows.Forms.CheckBox chkfecha;

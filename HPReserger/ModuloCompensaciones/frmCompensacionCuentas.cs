@@ -29,6 +29,8 @@ namespace HPReserger.ModuloCompensaciones
                 btnPaso1.Enabled = !a;
                 if (value == 0)
                 {
+                    txtSoles.Text = txtDolares.Text = "0.00";
+                    SumaSoles = SumaDolares = 0;
                     cboempresa.Enabled = a;
                     txtcuos.Enabled = a;
                     txtCuentas.Enabled = txtRucs.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = a;
@@ -326,7 +328,8 @@ namespace HPReserger.ModuloCompensaciones
                         (DateTime)itemx[xFechaVence.DataPropertyName], (DateTime)itemx[xFechaREcepcion.DataPropertyName],
                        Math.Abs(DebePen + HaberPen), Math.Abs(DebeUsd + HaberUsd),
                         (decimal)itemx[xTC.DataPropertyName], (int)itemx[xfkmoneda.DataPropertyName],
-                        (int)itemx[xctabanco.DataPropertyName], "", itemx[xGlosa.DataPropertyName].ToString(), FechaContable, idUsuario, itemx[xCUO.DataPropertyName].ToString(), 0);
+                        itemx[xctabanco.DataPropertyName].ToString() == "" ? 0 : (int)itemx[xctabanco.DataPropertyName], "", itemx[xGlosa.DataPropertyName].ToString(), FechaContable, idUsuario,
+                        itemx[xCUO.DataPropertyName].ToString(), 0);
                     //}
                 }
                 //Grabamos lo que se envia a la cuenta de diferencia           

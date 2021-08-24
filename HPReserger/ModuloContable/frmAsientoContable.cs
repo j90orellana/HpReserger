@@ -55,19 +55,16 @@ namespace HPReserger
                 fechafin.Value = (FechaPrueba.AddMonths(1)).AddDays(-1);
             }
             BuscarEmpresa = true;
-            ListoParaBuscar = true;
             //Dtgconten.DataSource = CapaLogica.BuscarAsientosContablesconTodo("0", 4, 1, fechita);
             //dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
             //Cambio de Empresa      
             this.Activated -= frmAsientoContable_Activated;
-            estado = 0;
-            BuscarDatos();
-            if (dtgbusca.RowCount == 0)
-            {
-                desactivar();
-                //dtgbusca_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
-            }
+
             this.Activated += frmAsientoContable_Activated;
+            ListoParaBuscar = true;
+            BuscarDatos();
+            estado = 0;
+            if (dtgbusca.RowCount == 0) desactivar();
         }
         private void CargarValoresDefectoBusquedas()
         {
@@ -387,59 +384,50 @@ namespace HPReserger
                 btndina.Focus();
             }
         }
-        private void dtgayuda_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void dtgayuda_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void dtgayuda_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-
-        }
         private void Dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex >= 0)
             {
-                if (BusquedaCuenta)
+                try
                 {
-                    if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index)
-                    { //MODIFICAR LA COLUMNA DE CODIGOS
-                      //usp_buscar_cuenta
-                        DataTable TCuentas = CapaLogica.BuscarCuentas(Dtgconten[cuenta.Name, e.RowIndex].Value.ToString(), 1); 
-                        if (TCuentas.Rows.Count == 1)
-                        {
-                            Dtgconten[descripcion.Name, e.RowIndex].Value = TCuentas.Rows[0][0].ToString();
-                            Dtgconten[SolicitaDetallex.Name, e.RowIndex].Value = TCuentas.Rows[0][2].ToString();
-                            //Dtgconten[2, e.RowIndex].Value = dtgayuda2[1, 0].Value.ToString();
-                            //aux = true;
-                        }
-                        else
-                        {
-                            Dtgconten[descripcion.Name, e.RowIndex].Value = "";
-                            //aux = false;
-                        }
-                    }
-                    if (e.RowIndex >= 0)
+                    if (BusquedaCuenta)
                     {
-                        if (Dtgconten.Columns[descripcion.Name].Index == e.ColumnIndex)
-                        {
-                            if (Dtgconten[IDASIENTOX.Name, e.RowIndex].Value == null)
+                        if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index)
+                        { //MODIFICAR LA COLUMNA DE CODIGOS
+                          //usp_buscar_cuenta
+                            DataTable TCuentas = CapaLogica.BuscarCuentas(Dtgconten[cuenta.Name, e.RowIndex].Value.ToString(), 1);
+                            if (TCuentas.Rows.Count == 1)
                             {
-                                //if (Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString() == "")
-                                //{
-                                //    Dtgconten[IDASIENTOX.Name, e.RowIndex].Value = e.RowIndex + 1;
-                                //}
-                                Dtgconten[IDASIENTOX.Name, e.RowIndex].Value = e.RowIndex + 1;
+                                Dtgconten[descripcion.Name, e.RowIndex].Value = TCuentas.Rows[0][0].ToString();
+                                Dtgconten[SolicitaDetallex.Name, e.RowIndex].Value = TCuentas.Rows[0][2].ToString();
+                                //Dtgconten[2, e.RowIndex].Value = dtgayuda2[1, 0].Value.ToString();
+                                //aux = true;
+                            }
+                            else
+                            {
+                                Dtgconten[descripcion.Name, e.RowIndex].Value = "";
+                                //aux = false;
+                            }
+                        }
+                        if (e.RowIndex >= 0)
+                        {
+                            if (Dtgconten.Columns[descripcion.Name].Index == e.ColumnIndex)
+                            {
+                                if (Dtgconten[IDASIENTOX.Name, e.RowIndex].Value == null)
+                                {
+                                    //if (Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString() == "")
+                                    //{
+                                    //    Dtgconten[IDASIENTOX.Name, e.RowIndex].Value = e.RowIndex + 1;
+                                    //}
+                                    Dtgconten[IDASIENTOX.Name, e.RowIndex].Value = e.RowIndex + 1;
+                                }
                             }
                         }
                     }
+                    RevisarDetalleCuadrado(Dtgconten.Rows[e.RowIndex]);
                 }
-                RevisarDetalleCuadrado(Dtgconten.Rows[e.RowIndex]);
+                catch { }
             }
-            catch { }
         }
         private void Dtgconten_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -826,7 +814,7 @@ namespace HPReserger
         public int dinamica { get; set; }
         public decimal activo, pasivo;
         Boolean BusquedaCuenta = true;
-
+        DataTable TAyuda3;
         private void dtgbusca_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             //System.Diagnostics.Stopwatch PruebaTime = new System.Diagnostics.Stopwatch();
@@ -839,8 +827,8 @@ namespace HPReserger
                 int[] Val = new int[] { -4, -5 };
                 if (!Val.Contains(int.Parse(dtgbusca[Iddinamica.Name, e.RowIndex].Value.ToString()))) btnreversa.Enabled = true;
                 int y = e.RowIndex;
-                dtgayuda3.DataSource = CapaLogica.BuscarAsientosContables(dtgbusca[Codidasiento.Name, y].Value.ToString(), 4, _idempresa);
-                if (dtgayuda3.RowCount > 0)
+                TAyuda3 = CapaLogica.BuscarAsientosContables(dtgbusca[Codidasiento.Name, y].Value.ToString(), 4, _idempresa);
+                if (TAyuda3.Rows.Count > 0)
                 {
                     dtpfecha.Value = Convert.ToDateTime(dtgbusca[Fechax.Name, e.RowIndex].Value);
                     //dtfechavalor.Value = Convert.ToDateTime(dtgbusca[8, e.RowIndex].Value.ToString() == "" ? fecha.Value : dtgbusca[8, e.RowIndex].Value);
@@ -996,51 +984,42 @@ namespace HPReserger
         }
         public void PintardeCOlores()
         {
-            foreach (DataGridViewRow item in Dtgconten.Rows)
-            {
-                if (item.Cells[EstadoCuen.Name].Value != null)
-                    if (item.Cells[EstadoCuen.Name].Value.ToString() == "3")
-                    {
-                        item.DefaultCellStyle.ForeColor = Configuraciones.RojoUI;
-                        item.DefaultCellStyle.SelectionForeColor = Configuraciones.RojoUISelect;
-                    }
-                if (item.Cells[detallex.Name].Value != null)
-                    if (int.Parse(item.Cells[detallex.Name].Value.ToString() == "" ? "0" : item.Cells[detallex.Name].Value.ToString()) > 0 && item.Cells[EstadoCuen.Name].Value.ToString() != "3")
-                    {
-                        item.DefaultCellStyle.ForeColor = Configuraciones.ColorBien;
-                        item.DefaultCellStyle.SelectionForeColor = Configuraciones.ColorBienSeleccionadas;
-                    }
-            }
+            //foreach (DataGridViewRow item in Dtgconten.Rows)
+            //{
+            //    if (item.Cells[EstadoCuen.Name].Value != null)
+            //        if (item.Cells[EstadoCuen.Name].Value.ToString() == "3")
+            //        {
+            //            item.DefaultCellStyle.ForeColor = Configuraciones.RojoUI;
+            //            item.DefaultCellStyle.SelectionForeColor = Configuraciones.RojoUISelect;
+            //        }
+            //    if (item.Cells[detallex.Name].Value != null)
+            //        if (int.Parse(item.Cells[detallex.Name].Value.ToString() == "" ? "0" : item.Cells[detallex.Name].Value.ToString()) > 0 && item.Cells[EstadoCuen.Name].Value.ToString() != "3")
+            //        {
+            //            item.DefaultCellStyle.ForeColor = Configuraciones.ColorBien;
+            //            item.DefaultCellStyle.SelectionForeColor = Configuraciones.ColorBienSeleccionadas;
+            //        }
+            //}
         }
         public void PintardeCOloresFila(DataGridViewRow item)
         {
-            if (item.Cells[EstadoCuen.Name].Value != null)
-                if (item.Cells[EstadoCuen.Name].Value.ToString() == "3")
-                {
-                    item.DefaultCellStyle.ForeColor = Configuraciones.RojoUI;
-                    item.DefaultCellStyle.SelectionForeColor = Configuraciones.RojoUISelect;
-                    item.Cells[debe.Name].Style.ForeColor = Configuraciones.RojoUI;
-                    item.Cells[haber.Name].Style.ForeColor = Configuraciones.RojoUI;
-                    item.Cells[debe.Name].Style.SelectionForeColor = Configuraciones.RojoUISelect;
-                    item.Cells[haber.Name].Style.SelectionForeColor = Configuraciones.RojoUISelect;
-                }
-            if (item.Cells[detallex.Name].Value != null)
-                if (int.Parse(item.Cells[detallex.Name].Value.ToString() == "" ? "0" : item.Cells[detallex.Name].Value.ToString()) > 0 && item.Cells[EstadoCuen.Name].Value.ToString() != "3")
-                {
-                    item.DefaultCellStyle.ForeColor = Configuraciones.ColorBien;
-                    item.DefaultCellStyle.SelectionForeColor = Configuraciones.ColorBienSeleccionadas;
-                    item.Cells[debe.Name].Style.ForeColor = Configuraciones.ColorBien;
-                    item.Cells[haber.Name].Style.ForeColor = Configuraciones.ColorBien;
-                }
-        }
-        private void dtgbusca_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-        private void dtgbusca_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-        private void dtgbusca_CellValidated(object sender, DataGridViewCellEventArgs e)
-        {
+            //if (item.Cells[EstadoCuen.Name].Value != null)
+            //    if (item.Cells[EstadoCuen.Name].Value.ToString() == "3")
+            //    {
+            //        item.DefaultCellStyle.ForeColor = Configuraciones.RojoUI;
+            //        item.DefaultCellStyle.SelectionForeColor = Configuraciones.RojoUISelect;
+            //        item.Cells[debe.Name].Style.ForeColor = Configuraciones.RojoUI;
+            //        item.Cells[haber.Name].Style.ForeColor = Configuraciones.RojoUI;
+            //        item.Cells[debe.Name].Style.SelectionForeColor = Configuraciones.RojoUISelect;
+            //        item.Cells[haber.Name].Style.SelectionForeColor = Configuraciones.RojoUISelect;
+            //    }
+            //if (item.Cells[detallex.Name].Value != null)
+            //    if (int.Parse(item.Cells[detallex.Name].Value.ToString() == "" ? "0" : item.Cells[detallex.Name].Value.ToString()) > 0 && item.Cells[EstadoCuen.Name].Value.ToString() != "3")
+            //    {
+            //        item.DefaultCellStyle.ForeColor = Configuraciones.ColorBien;
+            //        item.DefaultCellStyle.SelectionForeColor = Configuraciones.ColorBienSeleccionadas;
+            //        item.Cells[debe.Name].Style.ForeColor = Configuraciones.ColorBien;
+            //        item.Cells[haber.Name].Style.ForeColor = Configuraciones.ColorBien;
+            //    }
         }
         public void RellenarEstado(ComboBox combito)
         {
@@ -1194,7 +1173,7 @@ namespace HPReserger
             {
                 if (Dtgconten.RowCount <= 0) { msg("No Hay Datos"); return; }
                 estado = 2;
-                dinamimodi = Convert.ToInt16(dtgayuda3[7, 0].Value.ToString());
+                dinamimodi = Convert.ToInt16(TAyuda3.Rows[0][7].ToString());
                 modifico = false;
                 desactivar();
                 Dtgconten.ReadOnly = true;
@@ -1696,10 +1675,6 @@ namespace HPReserger
             //HpResergerUserControls.Configuraciones.TiempoEjecucionMsg(yquedice);
 
         }
-        private void dtgayuda3_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //Dtgconten_CellEndEdit(sender, e);
-        }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             //if (estado == 1)
@@ -1723,10 +1698,6 @@ namespace HPReserger
 
         }
         public int _idempresa = 0;
-        private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboproyecto.SelectedIndex >= 0)
@@ -1745,7 +1716,7 @@ namespace HPReserger
         private void cboproyecto_Enter(object sender, EventArgs e)
         {
             string cadena = cboproyecto.Text;
-            cboempresa_SelectedIndexChanged(sender, e);
+            cboempresa_SelectedIndexChanged_1(sender, e);
             cboproyecto.Text = cadena;
         }
         private void cboetapa_Enter(object sender, EventArgs e)
@@ -2080,18 +2051,22 @@ namespace HPReserger
                     cboproyecto.DisplayMember = "proyecto";
                     cboproyecto.ValueMember = "id_proyecto";
                     //busqueda de Asientos
-                    _idempresa = (int)cboempresa.SelectedValue;
-                    if (estado == 0)
+                    if (_idempresa != (int)cboempresa.SelectedValue && ListoParaBuscar)
                     {
-                        txtcodigo.Text = "0";
-                        txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
-                        BuscarDatos();
+                        _idempresa = (int)cboempresa.SelectedValue;
+                        if (estado == 0)
+                        {
+                            txtcodigo.Text = "0";
+                            txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
+                            BuscarDatos();
+                        }
+                        if (estado == 1)
+                        {
+                            ultimoasiento();
+                            txtcodigo.Text = (codigo).ToString();
+                        }
                     }
-                    if (estado == 1)
-                    {
-                        ultimoasiento();
-                        txtcodigo.Text = (codigo).ToString();
-                    }
+                    else _idempresa = (int)cboempresa.SelectedValue;
                 }
             }
             else msg("No hay Empresas");
@@ -2114,6 +2089,29 @@ namespace HPReserger
             {
                 CargarDatos();
             }
+        }
+
+        private void Dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRow item = Dtgconten.Rows[e.RowIndex];
+            if (item.Cells[EstadoCuen.Name].Value != null)
+                if (item.Cells[EstadoCuen.Name].Value.ToString() == "3")
+                {
+                    item.DefaultCellStyle.ForeColor = Configuraciones.RojoUI;
+                    item.DefaultCellStyle.SelectionForeColor = Configuraciones.RojoUISelect;
+                    item.Cells[debe.Name].Style.ForeColor = Configuraciones.RojoUI;
+                    item.Cells[haber.Name].Style.ForeColor = Configuraciones.RojoUI;
+                    item.Cells[debe.Name].Style.SelectionForeColor = Configuraciones.RojoUISelect;
+                    item.Cells[haber.Name].Style.SelectionForeColor = Configuraciones.RojoUISelect;
+                }
+            if (item.Cells[detallex.Name].Value != null)
+                if (int.Parse(item.Cells[detallex.Name].Value.ToString() == "" ? "0" : item.Cells[detallex.Name].Value.ToString()) > 0 && item.Cells[EstadoCuen.Name].Value.ToString() != "3")
+                {
+                    item.DefaultCellStyle.ForeColor = Configuraciones.ColorBien;
+                    item.DefaultCellStyle.SelectionForeColor = Configuraciones.ColorBienSeleccionadas;
+                    item.Cells[debe.Name].Style.ForeColor = Configuraciones.ColorBien;
+                    item.Cells[haber.Name].Style.ForeColor = Configuraciones.ColorBien;
+                }
         }
 
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
