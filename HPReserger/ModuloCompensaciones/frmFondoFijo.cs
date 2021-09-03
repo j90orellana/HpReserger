@@ -404,7 +404,8 @@ namespace HPReserger.ModuloCompensaciones
                     else
                         numasiento = ((int)asiento["codigo"]);
                 }
-                if (msgp("¿Seguro Desea Dar de Baja el Fondo Fijo?") == DialogResult.Yes)
+                decimal PorAbonar = decimal.Parse(txtPorAbonar.Text);
+                if (msgp($"¿Seguro Desea Dar de Baja {(PorAbonar == 0 ? "" : "Parcial")} el Fondo Fijo?") == DialogResult.Yes)
                 {
                     int PosFila = 0;
                     string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
@@ -431,6 +432,11 @@ namespace HPReserger.ModuloCompensaciones
                     int pos = dtgconten.CurrentCell.RowIndex;
                     MontoSoles = (decimal)dtgconten[xMontoMN.Name, pos].Value;
                     MontoDolares = (decimal)dtgconten[xMontoME.Name, pos].Value;
+                    if (PorAbonar != 0) //Baja Parcial del Fondo
+                    {
+                        MontoSoles = moneda == 1 ? PorAbonar : PorAbonar * tc;
+                        MontoDolares = moneda == 2 ? PorAbonar : PorAbonar / tc;
+                    }
                     //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
                     List<string> ListaAuxiliar = new List<string>();
                     ListaAuxiliar.Add(CuentaFondoFijo);
@@ -454,14 +460,22 @@ namespace HPReserger.ModuloCompensaciones
                         , NameEmpleado, 0, "0", NumFac, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, "", "", glosa,
                         FechaCompensa, frmLogin.CodigoUsuario, "");
                     //Inserto compensaciones!
-                    CapaLogica.InsertarCompensacionesDetalle(int.Parse(NumID), _idempresa, 1, MontoSoles, MontoDolares, TipoPago, nroKuenta, nroOperacion,
-                        $"{Configuraciones.MayusculaCadaPalabra(NameEmpleado)} {FechaCompensa.ToString()}", FechaCompensa, 2, Cuo);
-                    CapaLogica.ActualizarCompensaciones(_idempresa, 1, int.Parse(NumID), 1, TipoPago, nroKuenta, nroOperacion, Cuo);
+                    if (PorAbonar == 0) //Baja Completa
+                    {
+                        CapaLogica.InsertarCompensacionesDetalle(int.Parse(NumID), _idempresa, 1, MontoSoles, MontoDolares, TipoPago, nroKuenta, nroOperacion,
+                           $"{Configuraciones.MayusculaCadaPalabra(NameEmpleado)} {FechaCompensa.ToString()}", FechaCompensa, 2, Cuo);
+                        CapaLogica.ActualizarCompensaciones(_idempresa, 1, int.Parse(NumID), 1, TipoPago, nroKuenta, nroOperacion, Cuo);
+                    }
+                    else  //Baja Parcial
+                    {
+                        CapaLogica.InsertarCompensacionesDetalle(int.Parse(NumID), _idempresa, 1, MontoSoles, MontoDolares, TipoPago, nroKuenta, nroOperacion,
+                         $"{Configuraciones.MayusculaCadaPalabra(NameEmpleado)} {FechaCompensa.ToString()}", FechaCompensa, 1, Cuo);
+                    }
                     //
                     //Cuadre Asiento
                     CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
                     //Fin Cuadre              
-                    msgOK($"Se Dio de Baja El Fondo Fijo con Cuo {Cuo}");
+                    msgOK($"Se Dio de Baja {(PorAbonar != 0 ? "Parcial" : "")} El Fondo Fijo con Cuo {Cuo}");
                     lblabonar.Visible = txtPorAbonar.Visible = true;
                     txtImporteTotal.Enabled = txtPorAbonar.Enabled = true;
                     ModoEdicion(false);
@@ -653,6 +667,7 @@ namespace HPReserger.ModuloCompensaciones
             btnmodificar.Enabled = false;
             ModoEdicion(true);
             ImporteTotalCambio();
+            //txtImporteTotal.Enabled = true;
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

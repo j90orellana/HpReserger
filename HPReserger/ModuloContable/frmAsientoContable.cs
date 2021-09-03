@@ -21,6 +21,7 @@ namespace HPReserger
         public decimal totalhaber { get; set; }
         int fechacheck = 0;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        DataTable TDinamica;
         public void Cargarmoneda()
         {
             CapaLogica.TablaMonedas(cbomoneda);
@@ -115,7 +116,7 @@ namespace HPReserger
             {
                 if (!llamado)
                 {
-                    dtgayuda.DataSource = CapaLogica.ListarDinamicas(coddinamica + "", 10);
+                    TDinamica = CapaLogica.ListarDinamicas(coddinamica + "", 10);
                 }
             }
             catch { }
@@ -351,23 +352,23 @@ namespace HPReserger
         }
         public void CargaDinamicas()
         {
-            if (dtgayuda.RowCount > 0)
+            if (TDinamica.Rows.Count > 0)
             {
                 DataTable aux = ((DataTable)Dtgconten.DataSource).Clone();
                 Dtgconten.DataSource = aux;
-                for (int i = 0; i < dtgayuda.RowCount; i++)
-                {//6=CodigoCuenta 7=DescripcionCuenta 8=Debe/Haber //0=CodigoCuenta 1=Descripcion 2=debe 3=haber
+                foreach (DataRow item in TDinamica.Rows)
+                {
+                    //6=CodigoCuenta 7=DescripcionCuenta 8=Debe/Haber //0=CodigoCuenta 1=Descripcion 2=debe 3=haber
                     DataRow filita = aux.NewRow();
-                    filita["cod"] = dtgayuda[6, i].Value;
-                    filita["cuenta"] = dtgayuda[7, i].Value;
+                    filita["cod"] = item[6].ToString();
+                    filita["cuenta"] = item[7].ToString();
                     filita["detalle"] = 0;
                     filita["solicita"] = 0;
                     filita["estado"] = 1;
                     filita["id"] = Dtgconten.RowCount + 1;
                     filita[debe.Name] = 0.00m;
                     filita[haber.Name] = 0.00m;
-                    txtglosa.Text = dtgayuda["glosa", i].Value.ToString();
-
+                    txtglosa.Text = item["glosa"].ToString();
                     aux.Rows.Add(filita);
                 }
                 txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
@@ -379,7 +380,7 @@ namespace HPReserger
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 coddinamica = HPResergerFunciones.Utilitarios.ExtraeEnterodeCadena(txtdinamica.Text);
-                dtgayuda.DataSource = CapaLogica.ListarDinamicas(coddinamica + "", 10);
+                TDinamica = CapaLogica.ListarDinamicas(coddinamica + "", 10);
                 CargaDinamicas();
                 btndina.Focus();
             }
@@ -400,7 +401,6 @@ namespace HPReserger
                             {
                                 Dtgconten[descripcion.Name, e.RowIndex].Value = TCuentas.Rows[0][0].ToString();
                                 Dtgconten[SolicitaDetallex.Name, e.RowIndex].Value = TCuentas.Rows[0][2].ToString();
-                                //Dtgconten[2, e.RowIndex].Value = dtgayuda2[1, 0].Value.ToString();
                                 //aux = true;
                             }
                             else

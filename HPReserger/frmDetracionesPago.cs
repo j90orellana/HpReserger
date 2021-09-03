@@ -465,7 +465,7 @@ namespace HPReserger
         private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
-            if (e.RowIndex >= 0)
+            if (x >= 0)
             {
                 if ((dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "0" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "-"))
                 {
@@ -474,8 +474,8 @@ namespace HPReserger
                 }
                 else
                 {
-                    //dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.OscuroUISelect;
-                    //dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUISelect;
+                    dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.OscuroUISelect;
+                    dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUISelect;
                 }
                 //if (dtgconten[opcionx.Name, x].Value.ToString() == "1")
                 //{
@@ -541,13 +541,13 @@ namespace HPReserger
         }
         private void cboempresa_Click(object sender, EventArgs e)
         {
-            string cadena = cboempresa.Text;
-            NameProyecto = cboproyecto.Text;
-            if (cboempresa.Items.Count != CapaLogica.TablaEmpresa().Rows.Count)
-            {
-                CapaLogica.TablaEmpresa(cboempresa);
-                cboempresa.Text = cadena;
-            }
+            //string cadena = cboempresa.Text;
+            //NameProyecto = cboproyecto.Text;
+            //if (cboempresa.Items.Count != CapaLogica.TablaEmpresa().Rows.Count)
+            //{
+            //    CapaLogica.TablaEmpresa(cboempresa);
+            //    cboempresa.Text = cadena;
+            //}
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
