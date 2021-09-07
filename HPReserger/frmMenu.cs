@@ -249,7 +249,9 @@ namespace HPReserger
             FlowPanel_ControlRemoved_1(sender, new ControlEventArgs(FlowPanel));
             if (FlowPanel.Controls.Count > 0)
                 Mostrado = true;
-            else Mostrado = false;
+            else
+                Mostrado = false;
+            pbesquina_Click(sender, e);
             VerFotoAdmin();
             Text = Text + $" [{frmLogin.Basedatos}]";
             //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   +            

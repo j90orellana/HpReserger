@@ -358,7 +358,7 @@ namespace HPReserger.ModuloCompensaciones
                     ListaAuxiliar.Add(CuentaFondoFijo);
                     ListaAuxiliar.Add(BanCuenta);
                     if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
-                    string NumFac = $"FF {FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
+                    string NumFac = $"FF{FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
                     //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                     ///
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, PorAbonar < 0 ? Math.Abs(moneda == 1 ? MontoSoles : MontoDolares) : 0,
@@ -445,7 +445,7 @@ namespace HPReserger.ModuloCompensaciones
                     //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                     //debe
                     //Asiento del salida del Banco
-                    string NumFac = $"FF {FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
+                    string NumFac = $"FF{FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, Math.Abs(moneda == 1 ? MontoSoles : MontoDolares),
                          0, tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -16);
                     //Detalle del asiento
@@ -535,7 +535,7 @@ namespace HPReserger.ModuloCompensaciones
                 if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
                 //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //Asiento del Anticipo
-                string NumFac = $"FF {FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
+                string NumFac = $"FF{FechaCompensa.ToString(Configuraciones.ddMMyyyy)}";
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, moneda == 1 ? MontoSoles : MontoDolares, 0, tc,
                     proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -12);
                 //Detalle del asiento

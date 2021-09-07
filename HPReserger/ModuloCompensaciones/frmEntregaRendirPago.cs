@@ -861,7 +861,7 @@ namespace HPReserger.ModuloCompensaciones
                             if ((int)item.Cells[yOk.Name].Value == 1)
                             {
                                 //string[] NumFac = $"0-Ent.N°{(int)item.Cells[xpkid.Name].Value} {((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString("dd/MM/yyyy")}".Split('-');
-                                string[] NumFac = $"0-ER {((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString("dd/MM/yyyy")}".Split('-');
+                                string[] NumFac = $"{(int)item.Cells[xpkid.Name].Value}-ER{((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString(Configuraciones.ddMMyy)}".Split('-');
                                 //Asiento de las facturas al debe
                                 string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                                 decimal MontoSoles = (decimal)item.Cells[xMontoMN.Name].Value;
@@ -895,7 +895,7 @@ namespace HPReserger.ModuloCompensaciones
                                 //SAco El Acumalado.
                                 AcumuladoFacturas = AcumuladoFacturas - (moneda == 1 ? (decimal)item.Cells[xMontoMN.Name].Value : (decimal)item.Cells[xMontoME.Name].Value);
                                 //string[] NumFac = $"0-Ent.N°{(int)item.Cells[xpkid.Name].Value} {((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString("dd/MM/yyyy")}".Split('-');
-                                string[] NumFac = $"0-ER {((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString("dd/MM/yyyy")}".Split('-');
+                                string[] NumFac = $"{(int)item.Cells[xpkid.Name].Value}-ER{((DateTime)item.Cells[xFechaCompensa.Name].Value).ToString(Configuraciones.ddMMyy)}".Split('-');
                                 //Asiento de las Entregas a Rendir al Haber.
                                 string CuentaContable = item.Cells[xcuentacontable.Name].Value.ToString();
                                 decimal MontoSoles = (decimal)item.Cells[xMontoMN.Name].Value;
@@ -964,7 +964,7 @@ namespace HPReserger.ModuloCompensaciones
                     decimal MontoSoles = Configuraciones.Redondear(moneda == 1 ? ImporteTotal : ImporteTotal * tc);
                     decimal MontoDolares = Configuraciones.Redondear(moneda == 2 ? ImporteTotal : ImporteTotal / tc);
                     decimal TC = tc;
-                    string[] NumFac = $"0-ER { FechaCompensa.ToString("d")}".Split('-');
+                    string[] NumFac = $"0-ER{FechaCompensa.ToString(Configuraciones.ddMMyy)}".Split('-');
                     int idfac = 0;
                     //Salida o Entrada de Dinero
                     //Salido = positiva = Otras cuentas x Pagar
@@ -1027,7 +1027,7 @@ namespace HPReserger.ModuloCompensaciones
                     decimal MontoSoles = Configuraciones.Redondear(moneda == 1 ? ImporteTotal : ImporteTotal * tc);
                     decimal MontoDolares = Configuraciones.Redondear(moneda == 2 ? ImporteTotal : ImporteTotal / tc);
                     decimal TC = tc;
-                    string[] NumFac = $"0-ER { FechaCompensa.ToString("d")}".Split('-');
+                    string[] NumFac = $"0-ER{FechaCompensa.ToString(Configuraciones.ddMMyy)}".Split('-');
                     int idfac = 0;
                     //Salida o Entrada de Dinero
                     //Salido = positiva = Otras cuentas x Pagar
@@ -1071,7 +1071,7 @@ namespace HPReserger.ModuloCompensaciones
                     decimal MontoSoles = Configuraciones.Redondear(moneda == 1 ? ImporteTotal : ImporteTotal * tc);
                     decimal MontoDolares = Configuraciones.Redondear(moneda == 2 ? ImporteTotal : ImporteTotal / tc);
                     decimal TC = tc;
-                    string[] NumFac = $"0-ER { FechaCompensa.ToString("d")}".Split('-');
+                    string[] NumFac = $"0-ER{FechaCompensa.ToString(Configuraciones.ddMMyy)}".Split('-');
                     int idfac = 0;
                     //Salida o Entrada de Dinero
                     //Salido = positiva = Otras cuentas x Pagar

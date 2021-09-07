@@ -595,7 +595,7 @@ namespace HPReserger.ModuloCompensaciones
                                           0, tc, proyecto, 0, CuoNext, moneda, glosa, FechaCompensa, -13);
                 //detalle de otras cuentas x pagar a terceros                               
                 ////Detalle Facturas
-                string NumFac = $"FF {FechaCreacionFondoFijo.ToString(Configuraciones.ddMMyyyy)}";
+                string NumFac = $"FF{FechaCreacionFondoFijo.ToString(Configuraciones.ddMMyyyy)}";
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, cbocuentaxpagar.SelectedValue.ToString(), proyecto, int.Parse(Empleado[0]), Empleado[1]
                    , NameEmpleado, 0, "0", NumFac
                    // $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"

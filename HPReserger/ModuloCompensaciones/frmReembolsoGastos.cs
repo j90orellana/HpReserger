@@ -62,7 +62,7 @@ namespace HPReserger.ModuloCompensaciones
                     tipomoneda = "me";
                 }
             }
-            DataTable TablePagar = CapaLogica.BuscarCuentas($"OTRAS CUENTAS POR PAGAR%{tipomoneda}", 5);
+            DataTable TablePagar = CapaLogica.BuscarCuentas($"46%OTRAS CUENTAS POR PAGAR%{tipomoneda}", 5);
             return TablePagar;
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -462,7 +462,7 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaPago = dtpFechaCompensa.Value;
                 string NumDoc = $"{ FechaPago.Year }-{SiguientePkId}";
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, cbocuentaxpagar.SelectedValue.ToString(), proyecto, int.Parse(UserCompensa[0]), UserCompensa[1]
-               , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"RG {FechaPago.ToString("dd/MM/yyyy")}"  // cboempleado.SelectedValue.ToString()//$"{dtpFechaCompensa.Value.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
+               , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, "0", $"RG{FechaPago.ToString(Configuraciones.ddMMyy)}"  // cboempleado.SelectedValue.ToString()//$"{dtpFechaCompensa.Value.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
                , 0, FechaPago, FechaPago, FechaPago, decimal.Parse(txttotalMN.Text) + decimal.Parse(txttotaldifMN.Text), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text),
                decimal.Parse(txttipocambio.Text), moneda, "", "", txtglosa.TextValido(), FechaPago, IdLogin, "");
                 //foreach (DataGridViewRow item in Dtgconten.Rows)

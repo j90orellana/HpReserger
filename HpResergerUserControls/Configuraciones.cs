@@ -110,8 +110,8 @@ namespace HpResergerUserControls
         public static string DefNumFac = "0";
         public static string DefSerieFac = "0";
         public static int DefCentroCosto = 0;
-        public static string ddMMyyyy = "dd/MM/yyyy";
-        public static string ddMMyy = "dd/MM/yy";
+        public static string ddMMyyyy = "ddMMyy";
+        public static string ddMMyy = "ddMMyy";
         //Valores Defecto Formularios
         public static int InsertarValor = 1;
         public static int ModificarValor = 2;

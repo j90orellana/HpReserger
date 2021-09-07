@@ -212,7 +212,7 @@ namespace HPReserger.ModuloCompensaciones
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
                 idTipocuenta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                 //Cabecera del pago del banco            
-                string NumDoc = $"RG {FechaPago.ToString(Configuraciones.ddMMyyyy)}";
+                string NumDoc = $"RG{FechaPago.ToString(Configuraciones.ddMMyyyy)}";
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, 0, TotalPagar, TCPago, proyecto, 0, Cuo, moneda, Glosa, FechaPago, -18);
                 //detalle del pago del banco
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(UserCompensa[0]), UserCompensa[1]
@@ -233,7 +233,7 @@ namespace HPReserger.ModuloCompensaciones
                     /////////////////////
                     if ((int)item.Cells[xok.Name].Value == 1)
                     {
-                        NumDoc = $"RG {((DateTime)item.Cells[xFechaPago.Name].Value).ToString(Configuraciones.ddMMyyyy)}";
+                        NumDoc = $"RG{((DateTime)item.Cells[xFechaPago.Name].Value).ToString(Configuraciones.ddMMyyyy)}";
                         CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable, moneda == 1 ? MontoMN : MontoME, 0, TCPago, proyecto, 0, Cuo, moneda, Glosa, FechaPago, -18);
                         //detalle de otras cuentas x pagar a terceros
                         ////Detalle Facturas
