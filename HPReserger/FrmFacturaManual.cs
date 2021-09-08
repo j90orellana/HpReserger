@@ -1946,7 +1946,7 @@ namespace HPReserger
                 FormLlenadoFormato82.Periodo = dtpFechaContable.Value;
                 FormLlenadoFormato82.AnioDua = dtpfecharecep.Value.Year;
 
-                FormLlenadoFormato82.idComprobante = (int)cbotipodoc.SelectedValue;
+                FormLlenadoFormato82.idComprobante =int.Parse( cbotipodoc.Text.Substring(0, 2));
                 FormLlenadoFormato82.Ruc = txtruc.Text;
                 //
                 FormLlenadoFormato82.RazonSocial = txtrazon.Text;

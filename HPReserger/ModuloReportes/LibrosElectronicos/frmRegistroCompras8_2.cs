@@ -381,7 +381,7 @@ namespace HPReserger
                                         //15
                                         campo[c++] = ((decimal)fila[xMontoRetencion.DataPropertyName]).ToString("0.00");
                                         campo[c++] = fila[xCodigoMoneda.DataPropertyName].ToString();
-                                        campo[c++] = ((decimal)fila[xTipoCambio.DataPropertyName]).ToString("0.0000");
+                                        campo[c++] = ((decimal)fila[xTipoCambio.DataPropertyName]).ToString("0.000");
                                         campo[c++] = fila[xPaisSujeto.DataPropertyName].ToString();
                                         campo[c++] = fila[xRazonSocialSujeto.DataPropertyName].ToString();
                                         //20

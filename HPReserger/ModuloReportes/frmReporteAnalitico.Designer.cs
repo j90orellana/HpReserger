@@ -32,12 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteAnalitico));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chksubtotales = new HpResergerUserControls.checkboxOre();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnbusCuenta = new System.Windows.Forms.Button();
@@ -69,11 +70,13 @@
             this.chkAgruparCuentas = new HpResergerUserControls.checkboxOre();
             this.xRUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xperiodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xcuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFCtble = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xfecharegistroasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xidsunat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xTCmprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xSerieDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -458,6 +461,8 @@
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -471,11 +476,13 @@
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xRUC,
             this.xEmpresa,
+            this.xperiodo,
             this.xCuenta,
             this.xDESCRIPCION,
             this.xcuo,
             this.xFechaEmision,
             this.xFCtble,
+            this.xfecharegistroasiento,
             this.xidsunat,
             this.xTCmprobante,
             this.xSerieDoc,
@@ -490,14 +497,14 @@
             this.xtotalme,
             this.xtc,
             this.xusuario});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle9;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -543,6 +550,14 @@
             this.xEmpresa.Name = "xEmpresa";
             this.xEmpresa.ReadOnly = true;
             this.xEmpresa.Width = 120;
+            // 
+            // xperiodo
+            // 
+            this.xperiodo.DataPropertyName = "periodo";
+            this.xperiodo.HeaderText = "Periodo";
+            this.xperiodo.MinimumWidth = 50;
+            this.xperiodo.Name = "xperiodo";
+            this.xperiodo.ReadOnly = true;
             // 
             // xCuenta
             // 
@@ -593,6 +608,16 @@
             this.xFCtble.Name = "xFCtble";
             this.xFCtble.ReadOnly = true;
             this.xFCtble.Width = 67;
+            // 
+            // xfecharegistroasiento
+            // 
+            this.xfecharegistroasiento.DataPropertyName = "fecharegistroasiento";
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            this.xfecharegistroasiento.DefaultCellStyle = dataGridViewCellStyle5;
+            this.xfecharegistroasiento.HeaderText = "F.Reg.Asi";
+            this.xfecharegistroasiento.MinimumWidth = 65;
+            this.xfecharegistroasiento.Name = "xfecharegistroasiento";
+            this.xfecharegistroasiento.ReadOnly = true;
             // 
             // xidsunat
             // 
@@ -692,9 +717,9 @@
             // 
             this.xtotalmn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xtotalmn.DataPropertyName = "totalmn";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.xtotalmn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.xtotalmn.DefaultCellStyle = dataGridViewCellStyle6;
             this.xtotalmn.HeaderText = "PEN";
             this.xtotalmn.Name = "xtotalmn";
             this.xtotalmn.ReadOnly = true;
@@ -704,9 +729,9 @@
             // 
             this.xtotalme.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xtotalme.DataPropertyName = "totalme";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n2";
-            this.xtotalme.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "n2";
+            this.xtotalme.DefaultCellStyle = dataGridViewCellStyle7;
             this.xtotalme.HeaderText = "USD";
             this.xtotalme.Name = "xtotalme";
             this.xtotalme.ReadOnly = true;
@@ -716,9 +741,9 @@
             // 
             this.xtc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xtc.DataPropertyName = "tc";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "n3";
-            this.xtc.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n3";
+            this.xtc.DefaultCellStyle = dataGridViewCellStyle8;
             this.xtc.HeaderText = "T.C.";
             this.xtc.Name = "xtc";
             this.xtc.ReadOnly = true;
@@ -810,11 +835,13 @@
         private HpResergerUserControls.checkboxOre chkAgruparCuentas;
         private System.Windows.Forms.DataGridViewTextBoxColumn xRUC;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xperiodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDESCRIPCION;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaEmision;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFCtble;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xfecharegistroasiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidsunat;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTCmprobante;
         private System.Windows.Forms.DataGridViewTextBoxColumn xSerieDoc;

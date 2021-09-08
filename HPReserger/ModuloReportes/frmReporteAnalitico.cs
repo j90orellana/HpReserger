@@ -117,7 +117,7 @@ namespace HPReserger
             {
 
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
-                _NombreHoja = $"Reporte Analítico Contable {FechaIni.ToString(Configuraciones.dd_MM_yy)}{(FechaIni == FechaFin ? "" : $" al {FechaFin.ToString(Configuraciones.dd_MM_yy)}")}";
+                _NombreHoja = $"RAC {FechaIni.ToString(Configuraciones.dd_MM_yy)}{(FechaIni == FechaFin ? "" : $" al {FechaFin.ToString(Configuraciones.dd_MM_yy)}")}";
                     
                 _Cabecera = "REPORTE ANALITICO DE CUENTAS";
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
@@ -166,7 +166,7 @@ namespace HPReserger
                         $".SortMethod = xlPinYin {Environment.NewLine} " +
                         $".Apply {Environment.NewLine} " +
                         $"End With {Environment.NewLine} " +
-                        $"Selection.Subtotal GroupBy:= 14, Function:= xlSum, TotalList:= Array( 18,19), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
+                        $"Selection.Subtotal GroupBy:= 16, Function:= xlSum, TotalList:= Array( 20,21), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
                         $"End Sub";
                 }
                 if (chkAgruparCuentas.Checked)
@@ -191,7 +191,7 @@ namespace HPReserger
                         $".SortMethod = xlPinYin {Environment.NewLine} " +
                         $".Apply {Environment.NewLine} " +
                         $"End With {Environment.NewLine} " +
-                        $"Selection.Subtotal GroupBy:= 4, Function:= xlSum, TotalList:= Array( 18,19), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
+                        $"Selection.Subtotal GroupBy:= 5, Function:= xlSum, TotalList:= Array( 20,21), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
                         $"End Sub";
                 }
                 ///

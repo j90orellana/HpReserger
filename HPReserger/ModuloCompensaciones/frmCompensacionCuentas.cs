@@ -326,7 +326,8 @@ namespace HPReserger.ModuloCompensaciones
                         itemx[xRazonSocial.DataPropertyName].ToString(), (int)itemx[xidComprobante.DataPropertyName], itemx[xCodComprobante.DataPropertyName].ToString(),
                         itemx[xNumComprobante.DataPropertyName].ToString(), (int)itemx[xCC.DataPropertyName], (DateTime)itemx[xFechaEmision.DataPropertyName],
                         (DateTime)itemx[xFechaVence.DataPropertyName], (DateTime)itemx[xFechaREcepcion.DataPropertyName],
-                       Math.Abs(DebePen + HaberPen), Math.Abs(DebeUsd + HaberUsd),
+                        (HaberUsd + DebeUsd == 0 ? (DebePen + HaberPen > 0) ? -1 : 1 : 1) * Math.Abs(DebePen + HaberPen),
+                        (HaberPen + DebePen == 0 ? (DebeUsd + HaberUsd > 0) ? -1 : 1 : 1) * Math.Abs(DebeUsd + HaberUsd),
                         (decimal)itemx[xTC.DataPropertyName], (int)itemx[xfkmoneda.DataPropertyName],
                         itemx[xctabanco.DataPropertyName].ToString() == "" ? 0 : (int)itemx[xctabanco.DataPropertyName], "", itemx[xGlosa.DataPropertyName].ToString(), FechaContable, idUsuario,
                         itemx[xCUO.DataPropertyName].ToString(), 0);
@@ -342,8 +343,8 @@ namespace HPReserger.ModuloCompensaciones
                         (moneda == 1 ? SumaSoles : SumaDolares) < 0 ? Math.Abs((moneda == 1 ? SumaSoles : SumaDolares)) : 0,
                         3.3000m, proyecto, 0, Cuo, moneda, GlosaCab, FechaEmision, idDinamica);
                     //Grabamos el Detalle 
-                    if (SumaSoles != 0 && moneda == 1) { SumaSoles = Math.Abs(SumaSoles); if (Math.Sign(SumaSoles) == Math.Sign(SumaDolares)) SumaDolares = Math.Abs(SumaDolares); }
-                    if (SumaDolares != 0 && moneda == 2) { SumaDolares = Math.Abs(SumaDolares); if (Math.Sign(SumaSoles) == Math.Sign(SumaDolares)) SumaSoles = Math.Abs(SumaSoles); }
+                    if (SumaSoles != 0 && moneda == 1) { SumaSoles = Math.Abs(SumaSoles); if (Math.Sign(SumaSoles) != Math.Sign(SumaDolares)) SumaDolares = Math.Abs(SumaDolares); }
+                    if (SumaDolares != 0 && moneda == 2) { SumaDolares = Math.Abs(SumaDolares); if (Math.Sign(SumaSoles) != Math.Sign(SumaDolares)) SumaSoles = Math.Abs(SumaSoles); }
                     //
                     if (SumaSoles == 0 && moneda == 1 && (txtCuenta.Text == "7599103" || txtCuenta.Text == "7761101")) SumaDolares = SumaDolares * -1;
                     if (SumaDolares == 0 && moneda == 1 && (txtCuenta.Text == "7599103" || txtCuenta.Text == "7761101")) SumaSoles = SumaSoles * -1;
