@@ -35,10 +35,23 @@ namespace HPReserger.ModuloCompensaciones
             Dtgconten.Columns[xMontoME.Name].Visible = false;
             _Entregas = Entregas;
         }
+        public frmReembolsoGastosDetalleFact(Boolean FondoFijo, int _idempresa, int _pkid)
+        {
+            InitializeComponent();
+            idempresa = _idempresa;
+            pkid = _pkid;
+            lblcabecera.Text = this.Text = "Detalle de las Facturas Relacionadas al Fondo Fijo:";
+            //quitamos las Columnas que no ocupamos
+            Dtgconten.Columns[xTCReg.Name].Visible = false;
+            Dtgconten.Columns[xTotal.Name].Visible = false;
+            Dtgconten.Columns[xMontoME.Name].Visible = false;
+            _FondoFijo = FondoFijo;
+        }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private int idempresa;
         private int pkid;
         private bool _Entregas;
+        private bool _FondoFijo;
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -49,6 +62,8 @@ namespace HPReserger.ModuloCompensaciones
             this.CerrarAlPresionarESC = true;
             if (_Entregas)
                 Dtgconten.DataSource = CapaLogica.EntregasRendir_Detalle(pkid, idempresa);
+            else if (_FondoFijo)
+                Dtgconten.DataSource = CapaLogica.FondoFijo_Detalle(pkid, idempresa);
             else
                 Dtgconten.DataSource = CapaLogica.ReembolsoGastos_Detalle(pkid, idempresa);
             lbltotalregistros.Text = $"Total de Registros: {Dtgconten.RowCount}";

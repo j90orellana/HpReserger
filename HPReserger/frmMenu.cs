@@ -5178,5 +5178,29 @@ namespace HPReserger
         {
             frmRegistroFacEPS = null;
         }
+        ModuloCompensaciones.frmFondoFijoPagoFinanzas frmfondopagofinanzas;
+        private void pagoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (frmfondopagofinanzas == null)
+            {
+                frmfondopagofinanzas = new ModuloCompensaciones.frmFondoFijoPagoFinanzas();
+                frmfondopagofinanzas.MdiParent = this;
+                frmfondopagofinanzas.Icon = ICono;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                ////pbfotoempleado.Visible = false;
+                frmfondopagofinanzas.FormClosed += new FormClosedEventHandler(cerrarfrmfondopagofinanzas);
+                frmfondopagofinanzas.Show();
+            }
+            else
+            {
+                frmfondopagofinanzas.Activate();
+                ValidarVentanas(frmfondopagofinanzas);
+            }
+        }
+
+        private void cerrarfrmfondopagofinanzas(object sender, FormClosedEventArgs e)
+        {
+            frmfondopagofinanzas = null;
+        }
     }
 }

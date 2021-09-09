@@ -237,6 +237,12 @@
     <Compile Include="ModuloCompensaciones\frmEntregaRendirDinero.Designer.cs">
       <DependentUpon>frmEntregaRendirDinero.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCompensaciones\frmFondoFijoPagoFinanzas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmFondoFijoPagoFinanzas.Designer.cs">
+      <DependentUpon>frmFondoFijoPagoFinanzas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloCompensaciones\frmReembolsoGastosDetalleFact.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2139,6 +2145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmEntregaRendirDinero.resx">
       <DependentUpon>frmEntregaRendirDinero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmFondoFijoPagoFinanzas.resx">
+      <DependentUpon>frmFondoFijoPagoFinanzas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmReembolsoGastosDetalleFact.resx">
       <DependentUpon>frmReembolsoGastosDetalleFact.cs</DependentUpon>

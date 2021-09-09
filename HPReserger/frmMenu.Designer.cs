@@ -322,6 +322,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.pagoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1107,7 +1108,8 @@
             // 
             this.fondoFijoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearToolStripMenuItem,
-            this.compensarToolStripMenuItem});
+            this.compensarToolStripMenuItem,
+            this.pagoToolStripMenuItem1});
             this.fondoFijoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("fondoFijoToolStripMenuItem.Image")));
             this.fondoFijoToolStripMenuItem.Name = "fondoFijoToolStripMenuItem";
             this.fondoFijoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
@@ -1119,7 +1121,7 @@
             // 
             this.crearToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("crearToolStripMenuItem.Image")));
             this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
-            this.crearToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.crearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.crearToolStripMenuItem.Tag = "140500101";
             this.crearToolStripMenuItem.Text = "Apertura";
             this.crearToolStripMenuItem.Click += new System.EventHandler(this.crearToolStripMenuItem_Click);
@@ -1128,7 +1130,7 @@
             // 
             this.compensarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compensarToolStripMenuItem.Image")));
             this.compensarToolStripMenuItem.Name = "compensarToolStripMenuItem";
-            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.compensarToolStripMenuItem.Tag = "140500102";
             this.compensarToolStripMenuItem.Text = "Compensar";
             this.compensarToolStripMenuItem.Click += new System.EventHandler(this.compensarToolStripMenuItem_Click);
@@ -1149,7 +1151,7 @@
             // 
             this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(128, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem5.Tag = "140500201";
             this.toolStripMenuItem5.Text = "Apertura";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
@@ -1158,7 +1160,7 @@
             // 
             this.toolStripMenuItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem7.Image")));
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(128, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem7.Tag = "140500202";
             this.toolStripMenuItem7.Text = "Compensar";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
@@ -1167,7 +1169,7 @@
             // 
             this.devoluciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("devoluciónToolStripMenuItem.Image")));
             this.devoluciónToolStripMenuItem.Name = "devoluciónToolStripMenuItem";
-            this.devoluciónToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.devoluciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.devoluciónToolStripMenuItem.Tag = "140500203";
             this.devoluciónToolStripMenuItem.Text = "Devolución";
             this.devoluciónToolStripMenuItem.Click += new System.EventHandler(this.devoluciónToolStripMenuItem_Click);
@@ -1188,7 +1190,7 @@
             // 
             this.aplicaciónToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem1.Image")));
             this.aplicaciónToolStripMenuItem1.Name = "aplicaciónToolStripMenuItem1";
-            this.aplicaciónToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.aplicaciónToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.aplicaciónToolStripMenuItem1.Tag = "140500301";
             this.aplicaciónToolStripMenuItem1.Text = "Aplicación";
             this.aplicaciónToolStripMenuItem1.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem1_Click);
@@ -1197,7 +1199,7 @@
             // 
             this.pagoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagoToolStripMenuItem.Image")));
             this.pagoToolStripMenuItem.Name = "pagoToolStripMenuItem";
-            this.pagoToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.pagoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pagoToolStripMenuItem.Tag = "140500302";
             this.pagoToolStripMenuItem.Text = "Pago";
             this.pagoToolStripMenuItem.Click += new System.EventHandler(this.pagoToolStripMenuItem_Click);
@@ -1218,7 +1220,7 @@
             // 
             this.registroToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registroToolStripMenuItem.Image")));
             this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
-            this.registroToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.registroToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.registroToolStripMenuItem.Tag = "140500401";
             this.registroToolStripMenuItem.Text = "Registro";
             this.registroToolStripMenuItem.Click += new System.EventHandler(this.registroToolStripMenuItem_Click);
@@ -1227,7 +1229,7 @@
             // 
             this.aplicaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem.Image")));
             this.aplicaciónToolStripMenuItem.Name = "aplicaciónToolStripMenuItem";
-            this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aplicaciónToolStripMenuItem.Tag = "140500402";
             this.aplicaciónToolStripMenuItem.Text = "Aplicación";
             this.aplicaciónToolStripMenuItem.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem_Click);
@@ -3148,6 +3150,15 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // pagoToolStripMenuItem1
+            // 
+            this.pagoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("pagoToolStripMenuItem1.Image")));
+            this.pagoToolStripMenuItem1.Name = "pagoToolStripMenuItem1";
+            this.pagoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.pagoToolStripMenuItem1.Tag = "140500103";
+            this.pagoToolStripMenuItem1.Text = "Pago";
+            this.pagoToolStripMenuItem1.Click += new System.EventHandler(this.pagoToolStripMenuItem1_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -3479,5 +3490,6 @@
         private System.Windows.Forms.ToolStripMenuItem comisionesYBonosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aFPComisionesYPrimasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturasParaElCreditoEPSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pagoToolStripMenuItem1;
     }
 }

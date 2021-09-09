@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Datos>
   <BaseDeDatos>sige</BaseDeDatos>
-  <DataSource>192.168.0.102</DataSource>
+  <DataSource>192.168.0.102\MSSQLSERVER15</DataSource>
   <BasesdeDatos>
     <ListadoBases>Actual</ListadoBases>
     <ListadoBases>SIGE</ListadoBases>
