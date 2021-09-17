@@ -471,7 +471,7 @@ namespace HPReserger
                     string _NombreHojaFile = "";
                     string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
                     _NombreHojaFile = "Mayor_x_Cuentas";
-                    _NombreHoja = $"Mayor_x_Cuentas {FechaMin.ToString(Configuraciones.dd_MM_yy)}{(FechaMin == FechaMax ? "" : $" al {FechaMax.ToString(Configuraciones.dd_MM_yy)}")}";
+                    _NombreHoja = $"Mayor Cuentas {FechaMin.ToString(Configuraciones.ddMMyy)}{(FechaMin == FechaMax ? "" : $" al {FechaMax.ToString(Configuraciones.ddMMyy)}")}";
 
                     _Cabecera = "MAYOR POR CUENTAS CONTABLES";
                     _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";

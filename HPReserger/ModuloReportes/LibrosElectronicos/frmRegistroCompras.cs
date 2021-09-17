@@ -500,10 +500,10 @@ namespace HPReserger
                                         campo[c++] = ValorPrueba.ToString("00");
                                         //Datos del Documento que Modifica
                                         campo[c++] = fila[xSerieDocRef.DataPropertyName].ToString() == "" ? "-" : fila[xSerieDocRef.DataPropertyName].ToString().Trim();
-                                        campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
+                                        campo[c++] = "-";
                                         //Número del comprobante de pago emitido por sujeto no domiciliado
                                         //30
-                                        campo[c++] = "-";
+                                        campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
                                         //Fecha de emisión de la Constancia de Depósito de Detracción 
                                         campo[c++] = fila[xFechaDet.DataPropertyName].ToString() == "" ? "01/01/0001" : ((DateTime)fila[xFechaDet.DataPropertyName]).ToString("dd/MM/yyyy");
                                         //Número de la Constancia de Depósito de Detracción               
@@ -534,9 +534,9 @@ namespace HPReserger
                                         //Mismo Mes de Declaración
                                         if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
                                         {
-                                            if (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()) > 0)
-                                                Estado = 0;
-                                            else
+                                            //if (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()) > 0)
+                                                //Estado = 0;
+                                            //else
                                                 Estado = 1;
                                         }
                                         else

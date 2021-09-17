@@ -404,8 +404,27 @@ namespace HPReserger
                                         campo[c++] = fila[xModalidad.DataPropertyName].ToString();
                                         //35
                                         campo[c++] = fila[xAplicación.DataPropertyName].ToString();
-                                        campo[c++] = ((int)fila[xEstado.DataPropertyName]).ToString("0");
-                                        
+                                        DateTime FechaDeclara = cboperiodode.GetFechaPRimerDia();
+                                        DateTime FechaEmision = (DateTime)fila[xFechaEmision.DataPropertyName];
+                                        int Estado = 0;
+                                        //Mismo Mes de Declaración
+                                        if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
+                                        {
+                                            //if (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()) > 0)
+                                            //Estado = 0;
+                                            //else
+                                            Estado = 1;
+                                        }
+                                        else
+                                        {
+                                            //Calculamos la diferencia para ver cuantos meses pasaron
+                                            int anio = FechaDeclara.Year - FechaEmision.Year;
+                                            int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
+                                            if (meses < 12)
+                                                Estado = 6;
+                                            else Estado = 7;
+                                        }
+                                        campo[c++] = ((int)fila[xEstado.DataPropertyName]).ToString("1");
                                         //Uniendo por pipes
                                         cadenatxt += string.Join("|", campo) + $"{Environment.NewLine}";
                                         //Limpiamos el Campo

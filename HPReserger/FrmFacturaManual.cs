@@ -1494,7 +1494,7 @@ namespace HPReserger
                     if (_TipoDoc == 0 || _TipoDoc == 3 || _TipoDoc == 1)
                     {
                         string CuentaContableAgregada = item.Cells[xCuentaContable.Name].Value.ToString();
-                        if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "D" || CuentaContableAgregada == "4221201")
+                        // if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "D" || CuentaContableAgregada == "4221201")
                         {
                             //REFLEJOS
                             DataTable Tprueba = CapaLogica.CuentasReflejo(item.Cells[xCuentaContable.Name].Value.ToString());
@@ -1521,7 +1521,7 @@ namespace HPReserger
                             }
                             //// FACTURA BOLETAS OTROS NOTA DEBITO
                             if (_TipoDoc != 1)
-                                if ((int)item.Cells[xTipoIgvg.Name].Value != 4)
+                                if (item.Cells[xTipoIgvg.Name].Value.ToString() != "4" && item.Cells[xTipoIgvg.Name].Value.ToString() != "")
                                 {
                                     DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
                                     filaIgv[xDebeHaber.DataPropertyName] = item.Cells[xDebeHaber.Name].Value.ToString();
@@ -1544,7 +1544,7 @@ namespace HPReserger
                     ////NOTA CREDITO 
                     if (_TipoDoc == 2)
                     {
-                        if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "H")
+                        //if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "H")
                         {
                             DataTable Tprueba = CapaLogica.CuentasReflejo(item.Cells[xCuentaContable.Name].Value.ToString());
                             if (Tprueba.Rows.Count > 0)
@@ -1568,11 +1568,10 @@ namespace HPReserger
                                     TDatos.Rows.Add(xfila);
                                 }
                             }
-
                             if ((item.Cells[xTipoIgvg.Name].Value.ToString() == "" ? 4 : (int)item.Cells[xTipoIgvg.Name].Value) != 4)
                             {
                                 DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                filaIgv[xDebeHaber.DataPropertyName] = "H";
+                                filaIgv[xDebeHaber.DataPropertyName] = item.Cells[xDebeHaber.Name].Value.ToString();
                                 filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
                                 filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
                                 filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
@@ -1946,7 +1945,7 @@ namespace HPReserger
                 FormLlenadoFormato82.Periodo = dtpFechaContable.Value;
                 FormLlenadoFormato82.AnioDua = dtpfecharecep.Value.Year;
 
-                FormLlenadoFormato82.idComprobante =int.Parse( cbotipodoc.Text.Substring(0, 2));
+                FormLlenadoFormato82.idComprobante = int.Parse(cbotipodoc.Text.Substring(0, 2));
                 FormLlenadoFormato82.Ruc = txtruc.Text;
                 //
                 FormLlenadoFormato82.RazonSocial = txtrazon.Text;

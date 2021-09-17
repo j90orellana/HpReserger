@@ -501,9 +501,9 @@ namespace HPReserger
                                         //Mismo Mes de Declaración
                                         if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
                                         {
-                                            if ((decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString())) > 0)
-                                                Estado = 1;
-                                            else
+                                            //if ((decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString())) > 0)
+                                                //Estado = 1;
+                                            //else
                                                 Estado = 1;
                                         }
                                         else
