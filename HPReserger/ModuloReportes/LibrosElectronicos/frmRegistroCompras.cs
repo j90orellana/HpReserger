@@ -449,6 +449,7 @@ namespace HPReserger
                                     {
                                         ValorPrueba = 0;
                                         int c = 0;
+                                        int idcomprobante = int.Parse(fila[xidC.DataPropertyName].ToString());
                                         //1
                                         campo[c++] = $"{añio}{mes}00";
                                         campo[c++] = ((fila[xcuo.DataPropertyName].ToString())).ToString();
@@ -460,9 +461,12 @@ namespace HPReserger
                                         campo[c++] = fila[xSerieCom.DataPropertyName].ToString();
                                         int.TryParse(fila[xAñoDua.DataPropertyName].ToString(), out ValorPrueba);
                                         campo[c++] = ValorPrueba.ToString();
-                                        campo[c++] = fila[xNumCom.DataPropertyName].ToString().Trim();
+                                        if ((new int[] { 1, 3, 4, 6, 7, 8, 36 }).Contains(idcomprobante))
+                                            campo[c++] = Configuraciones.SubstringRight(fila[xNumCom.DataPropertyName].ToString().Trim(), 8);
+                                        else
+                                            campo[c++] = fila[xNumCom.DataPropertyName].ToString().Trim();
                                         //En caso de optar por anotar el importe total de las operaciones diarias que no otorguen derecho a crédito fiscal en forma consolidada, registrar el número inicial
-                                        //10
+                                        //1
                                         campo[c++] = "";
                                         campo[c++] = (int.Parse(fila[xTipoIdPro.DataPropertyName].ToString())).ToString();
                                         campo[c++] = fila[xNumpro.DataPropertyName].ToString().Trim();
@@ -500,7 +504,7 @@ namespace HPReserger
                                         campo[c++] = ValorPrueba.ToString("00");
                                         //Datos del Documento que Modifica
                                         campo[c++] = fila[xSerieDocRef.DataPropertyName].ToString() == "" ? "-" : fila[xSerieDocRef.DataPropertyName].ToString().Trim();
-                                        campo[c++] = "-";
+                                        campo[c++] = "";
                                         //Número del comprobante de pago emitido por sujeto no domiciliado
                                         //30
                                         campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
@@ -535,9 +539,9 @@ namespace HPReserger
                                         if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
                                         {
                                             //if (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()) > 0)
-                                                //Estado = 0;
+                                            //Estado = 0;
                                             //else
-                                                Estado = 1;
+                                            Estado = 1;
                                         }
                                         else
                                         {
@@ -546,7 +550,7 @@ namespace HPReserger
                                             int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
                                             if (meses < 12)
                                                 Estado = 6;
-                                            else Estado = 7;
+                                            else Estado = 0;
                                         }
                                         //Columna Final
                                         campo[c++] = Estado.ToString();

@@ -511,7 +511,7 @@ namespace HPReserger
                                             //Calculamos la diferencia para ver cuantos meses pasaron
                                             int anio = FechaDeclara.Year - FechaEmision.Year;
                                             int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
-                                            if (meses < 120)
+                                            if (meses < 12)
                                                 Estado = 8;
                                             else Estado = 7;
                                         }

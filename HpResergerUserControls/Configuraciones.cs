@@ -101,6 +101,12 @@ namespace HpResergerUserControls
             }
             return Listado;
         }
+        public static string SubstringRight(string value, int length)
+        {
+            if (value.Length > length)
+                return value.Substring(value.Length - length);
+            else return value;
+        }
         //FIN FUENTES 
         //VALORES PARA DOCUMENTOS
         public static int DefIdRuc = 0;

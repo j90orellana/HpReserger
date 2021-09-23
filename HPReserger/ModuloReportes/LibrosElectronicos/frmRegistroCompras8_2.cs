@@ -359,6 +359,7 @@ namespace HPReserger
                                     {
                                         ValorPrueba = 0;
                                         int c = 0;
+                                        int idcomprobante = int.Parse(fila[xTipoComprobante.DataPropertyName].ToString());
                                         //1
                                         campo[c++] = fila[xFecha.DataPropertyName].ToString();
                                         campo[c++] = fila[xNumeroCorrelativo.DataPropertyName].ToString();
@@ -367,7 +368,11 @@ namespace HPReserger
                                         //5
                                         campo[c++] = fila[xTipoComprobante.DataPropertyName].ToString();
                                         campo[c++] = fila[xSerieComprobante.DataPropertyName].ToString();
-                                        campo[c++] = fila[xNumeroComprobante.DataPropertyName].ToString();
+                                        //campo[c++] = fila[xNumeroComprobante.DataPropertyName].ToString();                                          
+                                        if ((new int[] { 1, 3, 4, 6, 7, 8, 36 }).Contains(idcomprobante))
+                                            campo[c++] = Configuraciones.SubstringRight(fila[xNumeroComprobante.DataPropertyName].ToString().Trim(), 8);
+                                        else
+                                            campo[c++] = fila[xNumeroComprobante.DataPropertyName].ToString().Trim();
 
                                         campo[c++] = ((decimal)fila[xValorAdquisiciones.DataPropertyName]).ToString("0.00");
                                         campo[c++] = ((decimal)fila[xOtrosComprobantes.DataPropertyName]).ToString("0.00");
@@ -422,9 +427,9 @@ namespace HPReserger
                                             int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
                                             if (meses < 12)
                                                 Estado = 6;
-                                            else Estado = 7;
+                                            else Estado = 0;
                                         }
-                                        campo[c++] = ((int)fila[xEstado.DataPropertyName]).ToString("1");
+                                        campo[c++] = Estado.ToString();// ((int)fila[xEstado.DataPropertyName]).ToString("1");
                                         //Uniendo por pipes
                                         cadenatxt += string.Join("|", campo) + $"{Environment.NewLine}";
                                         //Limpiamos el Campo
