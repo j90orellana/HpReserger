@@ -790,7 +790,7 @@ namespace HPReserger.ModuloFinanzas
             {
                 PasarAPaso1(false);
                 Estado--;
-                btnPaso2.Enabled = false;
+                btnPaso2.Enabled = false;                
             }
             else if (Estado == 2)
             {
@@ -1557,10 +1557,10 @@ namespace HPReserger.ModuloFinanzas
             EstadoCuenta = SaldoContable;
             EstadoCuentaInicial = SaldoContableInicial;
             decimal AuxSum = 0;
-            foreach (DataRow item in TdatosExcel.Rows)
-            {
-                AuxSum = (decimal)item["monto"];
-            }
+            //foreach (DataRow item in TdatosExcel.Rows)
+            //{
+            //    AuxSum = (decimal)item["monto"];
+            //}
             EstadoCuenta += AuxSum; EstadoCuentaInicial += AuxSum;
             chkOperacion.Checked = false;
             //if (ProcesodeAnalisis(pkBanco, NroCuenta))

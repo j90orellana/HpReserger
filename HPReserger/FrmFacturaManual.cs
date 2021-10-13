@@ -1080,8 +1080,11 @@ namespace HPReserger
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             //_IndicadorColumna = dtgBusqueda.CurrentCell == null ? 6 : dtgBusqueda.CurrentCell.ColumnIndex;
-            _IndicadorFila = dtgBusqueda.CurrentCell.RowIndex;
-            _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
+            if (dtgBusqueda.CurrentCell != null)
+            {
+                _IndicadorFila = dtgBusqueda.CurrentCell.RowIndex;
+                _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
+            }
             compensada = false;
             Estado = 1;
             ActivoFijo = 0;

@@ -211,8 +211,11 @@ namespace HPReserger
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             //_IndicadorColumna = dtgBusqueda.CurrentCell == null ? 6 : dtgBusqueda.CurrentCell.ColumnIndex;
-            _IndicadorFila = dtgBusqueda.CurrentCell.RowIndex;
-            _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
+            if (dtgBusqueda.CurrentCell != null)
+            {
+                _IndicadorFila = dtgBusqueda.CurrentCell.RowIndex;
+                _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
+            }
             Estado = 1;
             ModoEdicion(true);
             Limpiar();
@@ -366,24 +369,43 @@ namespace HPReserger
                 detracion = 0;
                 OcultarDetraccion(true);
                 txtdescdetraccion.Text = detrac;
-                DataRow filaS = CapaLogica.BuscarParametros("%DETRACCION VENTA%", dtpfechaemision.Value);
-                if (filaS != null)
+                if ( txtdescdetraccion.Text == "")
                 {
-                    string resul = filaS["Observacion"].ToString();
-                    ////Fracionador
-                    string[] div = resul.Split('-');
-                    coddet = div[0].ToString();
-                    txtdescdetraccion.Text = div[1].ToString();
-                    numdetraccion.Value = ((decimal)filaS["Valor"]) * 100;
+                    DataRow filaS = CapaLogica.BuscarParametros("%DETRACCION VENTA%", dtpfechaemision.Value);
+                    if (filaS != null)
+                    {
+                        string resul = filaS["Observacion"].ToString();
+                        ////Fracionador
+                        string[] div = resul.Split('-');
+                        coddet = div[0].ToString();
+                        txtdescdetraccion.Text = div[1].ToString();
+                        numdetraccion.Value = ((decimal)filaS["Valor"]) * 100;
+                        if (!string.IsNullOrWhiteSpace(txttotalfac.Text))
+                            detracion = decimal.Parse(txttotalfac.Text.ToString()) * (numdetraccion.Value / 100);
+                    }
+                }
+                if (txtdescdetraccion.Text != "")
+                {
+                    DataView dv = DatosDetracciones.AsDataView();
+                    dv.RowFilter = $"desc_detraccion='{txtdescdetraccion.Text}'";
+                    if (dv != null)
+                    {
+                        numdetraccion.Value = (decimal) dv[0]["porcentaje"];
+                        coddet = dv[0]["cod_detraccion"].ToString();
                     if (!string.IsNullOrWhiteSpace(txttotalfac.Text))
-                        detracion = decimal.Parse(txttotalfac.Text.ToString()) * (numdetraccion.Value / 100);
+                            detracion = decimal.Parse(txttotalfac.Text.ToString()) * (numdetraccion.Value / 100);
+                    }
                 }
                 numdetraccion.Enabled = false;
                 txtmontodetraccion.Text = detracion.ToString("n2");
+                if (Estado == 1 || Estado == 2 || Estado == 10)
+                    btnmasdetracion.Enabled = true;
+                else btnmasdetracion.Enabled = false;
             }
             else
             {
                 OcultarDetraccion(false);
+                btnmasdetracion.Enabled = false;
                 numdetraccion.Value = 0;
                 txtdescdetraccion.Text = "NO APLICA";
                 txtmontodetraccion.Text = "0.00";
@@ -897,14 +919,6 @@ namespace HPReserger
             OldIdComprobanteSelect = (int)cbotipodoc.SelectedValue;
             cbotipodoc_SelectedIndexChanged(sender, e);
             if (decimal.Parse(txttotalfac.Text) == 0) chkDocAnulado.Checked = true; else chkDocAnulado.Checked = false;
-        }
-        frmdetracciones frdetracion;
-        private void btnmasdetracion_Click(object sender, EventArgs e)
-        {
-            frdetracion = new frmdetracciones();
-            frdetracion.FormClosed += Frdetracion_FormClosed;
-            frdetracion.BuscarValor = true; frdetracion.detraccion = txtdescdetraccion.Text;
-            frdetracion.ShowDialog();
         }
         private void Frdetracion_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -1636,6 +1650,17 @@ namespace HPReserger
         {
             Clipboard.SetText(txttotalfac.Text);
         }
+        frmdetracciones frdetracion;
+        private void btnmasdetracion_Click_1(object sender, EventArgs e)
+        {
+            frdetracion = new frmdetracciones();
+            frdetracion.FormClosed += Frdetracion_FormClosed;
+            frdetracion.BuscarValor = true; frdetracion.detraccion = txtdescdetraccion.Text;
+            frdetracion.btnaceptar.Enabled = true;
+            frdetracion.AcceptButton = frdetracion.btnaceptar;
+            frdetracion.ShowDialog();
+        }
+
         private void btneliminar_Click(object sender, EventArgs e)
         {
             if (_TipoDoc == 0 || _TipoDoc == 1) OpcionBusqueda = 1;

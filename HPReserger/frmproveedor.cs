@@ -684,7 +684,7 @@ namespace HPReserger
                     if (LstData[0].estado == "BAJA DE OFICIO") cboestado.SelectedValue = 3;
                 }
             }
-            catch (Exception) { }
+            catch (Exception e) { }
         }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class ProveedorToken

@@ -49,6 +49,7 @@
             this.Openfd = new System.Windows.Forms.OpenFileDialog();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.btnFormato82 = new System.Windows.Forms.Button();
+            this.chkActivoFijo = new System.Windows.Forms.CheckBox();
             this.btnCargarFoto = new System.Windows.Forms.Button();
             this.frmimagen = new HpResergerUserControls.frmimagen();
             this.cmsImagen = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -120,6 +121,42 @@
             this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
             this.lblcontador = new System.Windows.Forms.Label();
             this.dtgBusqueda = new HpResergerUserControls.Dtgconten();
+            this.yIdComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yNroComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yrazon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yfkempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yfkproyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yProyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yfkEtapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yetapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yCompensacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yfkMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yNameCorto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yGravaIgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yFechaRecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yFechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yfechacontable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ynamestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yNro_DocPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yCod_Detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yDetraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yImgFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yFechaModifica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yNroComprobanteRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xusuarioCompensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xActivoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtbusnrodoc = new HpResergerUserControls.TextBoxPer();
             this.btncleanfind = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -159,43 +196,6 @@
             this.txtNombreUsuarioCompensa = new HpResergerUserControls.TextBoxPer();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.txtBusTipoDoc = new HpResergerUserControls.TextBoxPer();
-            this.chkActivoFijo = new System.Windows.Forms.CheckBox();
-            this.yIdComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yNroComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yrazon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yfkempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yfkproyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yProyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yfkEtapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yetapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yCompensacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yfkMoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yNameCorto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yGravaIgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yFechaRecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yFechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yfechacontable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ynamestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yNro_DocPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yCod_Detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yDetraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yImgFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yGlosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yFechaModifica = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yNroComprobanteRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xusuarioCompensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xActivoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -234,6 +234,19 @@
             this.btnFormato82.UseVisualStyleBackColor = false;
             this.btnFormato82.Visible = false;
             this.btnFormato82.Click += new System.EventHandler(this.btnFormato82_Click);
+            // 
+            // chkActivoFijo
+            // 
+            this.chkActivoFijo.AutoSize = true;
+            this.chkActivoFijo.BackColor = System.Drawing.Color.Transparent;
+            this.chkActivoFijo.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkActivoFijo.Location = new System.Drawing.Point(555, 209);
+            this.chkActivoFijo.Name = "chkActivoFijo";
+            this.chkActivoFijo.Size = new System.Drawing.Size(93, 17);
+            this.chkActivoFijo.TabIndex = 325;
+            this.chkActivoFijo.Text = "Es Activo Fijo";
+            this.tooltip.SetToolTip(this.chkActivoFijo, "Seleccionar Sí la Factura es de un Activo Fijo");
+            this.chkActivoFijo.UseVisualStyleBackColor = false;
             // 
             // btnCargarFoto
             // 
@@ -350,6 +363,8 @@
             this.Dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.Dtgconten.CheckColumna = null;
+            this.Dtgconten.CheckValor = 1;
             this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -1184,6 +1199,8 @@
             this.dtgBusqueda.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgBusqueda.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgBusqueda.CheckColumna = null;
+            this.dtgBusqueda.CheckValor = 1;
             this.dtgBusqueda.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -1254,6 +1271,324 @@
             this.dtgBusqueda.Size = new System.Drawing.Size(1057, 159);
             this.dtgBusqueda.TabIndex = 246;
             this.dtgBusqueda.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgBusqueda_RowEnter);
+            // 
+            // yIdComprobante
+            // 
+            this.yIdComprobante.DataPropertyName = "IdComprobante";
+            this.yIdComprobante.HeaderText = "IdComprobante";
+            this.yIdComprobante.Name = "yIdComprobante";
+            this.yIdComprobante.ReadOnly = true;
+            this.yIdComprobante.Visible = false;
+            // 
+            // yid
+            // 
+            this.yid.DataPropertyName = "id";
+            this.yid.HeaderText = "ID";
+            this.yid.Name = "yid";
+            this.yid.ReadOnly = true;
+            this.yid.Visible = false;
+            // 
+            // yNroComprobante
+            // 
+            this.yNroComprobante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yNroComprobante.DataPropertyName = "NroComprobante";
+            this.yNroComprobante.HeaderText = "Nro Doc";
+            this.yNroComprobante.Name = "yNroComprobante";
+            this.yNroComprobante.ReadOnly = true;
+            this.yNroComprobante.Width = 72;
+            // 
+            // yProveedor
+            // 
+            this.yProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yProveedor.DataPropertyName = "Proveedor";
+            this.yProveedor.HeaderText = "Ruc";
+            this.yProveedor.Name = "yProveedor";
+            this.yProveedor.ReadOnly = true;
+            this.yProveedor.Width = 49;
+            // 
+            // yrazon
+            // 
+            this.yrazon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.yrazon.DataPropertyName = "razon";
+            this.yrazon.HeaderText = "Razon Social";
+            this.yrazon.MinimumWidth = 100;
+            this.yrazon.Name = "yrazon";
+            this.yrazon.ReadOnly = true;
+            // 
+            // yfkempresa
+            // 
+            this.yfkempresa.DataPropertyName = "fkempresa";
+            this.yfkempresa.HeaderText = "fkempresa";
+            this.yfkempresa.Name = "yfkempresa";
+            this.yfkempresa.ReadOnly = true;
+            this.yfkempresa.Visible = false;
+            // 
+            // yEmpresa
+            // 
+            this.yEmpresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.yEmpresa.DataPropertyName = "Empresa";
+            this.yEmpresa.HeaderText = "Empresa";
+            this.yEmpresa.MinimumWidth = 150;
+            this.yEmpresa.Name = "yEmpresa";
+            this.yEmpresa.ReadOnly = true;
+            // 
+            // yfkproyecto
+            // 
+            this.yfkproyecto.DataPropertyName = "fkproyecto";
+            this.yfkproyecto.HeaderText = "fkproyecto";
+            this.yfkproyecto.Name = "yfkproyecto";
+            this.yfkproyecto.ReadOnly = true;
+            this.yfkproyecto.Visible = false;
+            // 
+            // yProyecto
+            // 
+            this.yProyecto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yProyecto.DataPropertyName = "Proyecto";
+            this.yProyecto.HeaderText = "Proyecto";
+            this.yProyecto.Name = "yProyecto";
+            this.yProyecto.ReadOnly = true;
+            this.yProyecto.Width = 74;
+            // 
+            // yfkEtapa
+            // 
+            this.yfkEtapa.DataPropertyName = "fkEtapa";
+            this.yfkEtapa.HeaderText = "Etapa";
+            this.yfkEtapa.Name = "yfkEtapa";
+            this.yfkEtapa.ReadOnly = true;
+            this.yfkEtapa.Visible = false;
+            // 
+            // yetapa
+            // 
+            this.yetapa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yetapa.DataPropertyName = "Etapa";
+            this.yetapa.HeaderText = "Etapa";
+            this.yetapa.MinimumWidth = 60;
+            this.yetapa.Name = "yetapa";
+            this.yetapa.ReadOnly = true;
+            this.yetapa.Width = 60;
+            // 
+            // yCompensacion
+            // 
+            this.yCompensacion.DataPropertyName = "Compensacion";
+            this.yCompensacion.HeaderText = "Compensacion";
+            this.yCompensacion.Name = "yCompensacion";
+            this.yCompensacion.ReadOnly = true;
+            this.yCompensacion.Visible = false;
+            // 
+            // yfkMoneda
+            // 
+            this.yfkMoneda.DataPropertyName = "fkMoneda";
+            this.yfkMoneda.HeaderText = "Moneda";
+            this.yfkMoneda.Name = "yfkMoneda";
+            this.yfkMoneda.ReadOnly = true;
+            this.yfkMoneda.Visible = false;
+            // 
+            // yNameCorto
+            // 
+            this.yNameCorto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yNameCorto.DataPropertyName = "namecorto";
+            this.yNameCorto.HeaderText = "Mon";
+            this.yNameCorto.Name = "yNameCorto";
+            this.yNameCorto.ReadOnly = true;
+            this.yNameCorto.Width = 54;
+            // 
+            // yTC
+            // 
+            this.yTC.DataPropertyName = "TC";
+            this.yTC.HeaderText = "TC";
+            this.yTC.Name = "yTC";
+            this.yTC.ReadOnly = true;
+            this.yTC.Visible = false;
+            // 
+            // yTotal
+            // 
+            this.yTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yTotal.DataPropertyName = "Total";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "n2";
+            this.yTotal.DefaultCellStyle = dataGridViewCellStyle11;
+            this.yTotal.HeaderText = "Total";
+            this.yTotal.Name = "yTotal";
+            this.yTotal.ReadOnly = true;
+            this.yTotal.Width = 55;
+            // 
+            // yigv
+            // 
+            this.yigv.DataPropertyName = "igv";
+            this.yigv.HeaderText = "Igv";
+            this.yigv.Name = "yigv";
+            this.yigv.ReadOnly = true;
+            this.yigv.Visible = false;
+            // 
+            // yGravaIgv
+            // 
+            this.yGravaIgv.DataPropertyName = "GravaIgv";
+            this.yGravaIgv.HeaderText = "GravaIgv";
+            this.yGravaIgv.Name = "yGravaIgv";
+            this.yGravaIgv.ReadOnly = true;
+            this.yGravaIgv.Visible = false;
+            // 
+            // yFechaEmision
+            // 
+            this.yFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yFechaEmision.DataPropertyName = "FechaEmision";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "dd/MM/yyyy";
+            this.yFechaEmision.DefaultCellStyle = dataGridViewCellStyle12;
+            this.yFechaEmision.HeaderText = "F.Emite";
+            this.yFechaEmision.Name = "yFechaEmision";
+            this.yFechaEmision.ReadOnly = true;
+            this.yFechaEmision.Width = 67;
+            // 
+            // yFechaRecepcion
+            // 
+            this.yFechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yFechaRecepcion.DataPropertyName = "FechaRecepcion";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "dd/MM/yyyy";
+            this.yFechaRecepcion.DefaultCellStyle = dataGridViewCellStyle13;
+            this.yFechaRecepcion.HeaderText = "F.Recibe";
+            this.yFechaRecepcion.Name = "yFechaRecepcion";
+            this.yFechaRecepcion.ReadOnly = true;
+            this.yFechaRecepcion.Width = 73;
+            // 
+            // yFechaVencimiento
+            // 
+            this.yFechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yFechaVencimiento.DataPropertyName = "FechaVencimiento";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "dd/MM/yyyy";
+            this.yFechaVencimiento.DefaultCellStyle = dataGridViewCellStyle14;
+            this.yFechaVencimiento.HeaderText = "F.Vence";
+            this.yFechaVencimiento.Name = "yFechaVencimiento";
+            this.yFechaVencimiento.ReadOnly = true;
+            this.yFechaVencimiento.Visible = false;
+            // 
+            // yfechacontable
+            // 
+            this.yfechacontable.DataPropertyName = "fechacontable";
+            this.yfechacontable.HeaderText = "fechacontable";
+            this.yfechacontable.Name = "yfechacontable";
+            this.yfechacontable.ReadOnly = true;
+            this.yfechacontable.Visible = false;
+            // 
+            // yEstado
+            // 
+            this.yEstado.DataPropertyName = "Estado";
+            this.yEstado.HeaderText = "Estado";
+            this.yEstado.Name = "yEstado";
+            this.yEstado.ReadOnly = true;
+            this.yEstado.Visible = false;
+            // 
+            // ynamestado
+            // 
+            this.ynamestado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ynamestado.DataPropertyName = "nameestado";
+            this.ynamestado.HeaderText = "Estado";
+            this.ynamestado.Name = "ynamestado";
+            this.ynamestado.ReadOnly = true;
+            this.ynamestado.Width = 65;
+            // 
+            // yTipoPago
+            // 
+            this.yTipoPago.DataPropertyName = "TipoPago";
+            this.yTipoPago.HeaderText = "TipoPago";
+            this.yTipoPago.Name = "yTipoPago";
+            this.yTipoPago.ReadOnly = true;
+            this.yTipoPago.Visible = false;
+            // 
+            // yNro_DocPago
+            // 
+            this.yNro_DocPago.DataPropertyName = "Nro_DocPago";
+            this.yNro_DocPago.HeaderText = "Nro_DocPago";
+            this.yNro_DocPago.Name = "yNro_DocPago";
+            this.yNro_DocPago.ReadOnly = true;
+            this.yNro_DocPago.Visible = false;
+            // 
+            // yCod_Detraccion
+            // 
+            this.yCod_Detraccion.DataPropertyName = "Cod_Detraccion";
+            this.yCod_Detraccion.HeaderText = "Cod_Detraccion";
+            this.yCod_Detraccion.Name = "yCod_Detraccion";
+            this.yCod_Detraccion.ReadOnly = true;
+            this.yCod_Detraccion.Visible = false;
+            // 
+            // yPorcentaje
+            // 
+            this.yPorcentaje.DataPropertyName = "Porcentaje";
+            this.yPorcentaje.HeaderText = "Porcentaje";
+            this.yPorcentaje.Name = "yPorcentaje";
+            this.yPorcentaje.ReadOnly = true;
+            this.yPorcentaje.Visible = false;
+            // 
+            // yDetraccion
+            // 
+            this.yDetraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yDetraccion.DataPropertyName = "Detraccion";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "n2";
+            this.yDetraccion.DefaultCellStyle = dataGridViewCellStyle15;
+            this.yDetraccion.HeaderText = "Detr.";
+            this.yDetraccion.Name = "yDetraccion";
+            this.yDetraccion.ReadOnly = true;
+            this.yDetraccion.Width = 55;
+            // 
+            // yImgFactura
+            // 
+            this.yImgFactura.DataPropertyName = "ImgFactura";
+            this.yImgFactura.HeaderText = "ImgFactura";
+            this.yImgFactura.Name = "yImgFactura";
+            this.yImgFactura.ReadOnly = true;
+            this.yImgFactura.Visible = false;
+            // 
+            // yGlosa
+            // 
+            this.yGlosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.yGlosa.DataPropertyName = "Glosa";
+            this.yGlosa.HeaderText = "Glosa";
+            this.yGlosa.MinimumWidth = 100;
+            this.yGlosa.Name = "yGlosa";
+            this.yGlosa.ReadOnly = true;
+            // 
+            // yUsuario
+            // 
+            this.yUsuario.DataPropertyName = "Usuario";
+            this.yUsuario.HeaderText = "Usuario";
+            this.yUsuario.Name = "yUsuario";
+            this.yUsuario.ReadOnly = true;
+            this.yUsuario.Visible = false;
+            // 
+            // yFechaModifica
+            // 
+            this.yFechaModifica.DataPropertyName = "FechaModifica";
+            this.yFechaModifica.HeaderText = "FechaModifica";
+            this.yFechaModifica.Name = "yFechaModifica";
+            this.yFechaModifica.ReadOnly = true;
+            this.yFechaModifica.Visible = false;
+            // 
+            // yNroComprobanteRef
+            // 
+            this.yNroComprobanteRef.DataPropertyName = "NroComprobanteRef";
+            this.yNroComprobanteRef.HeaderText = "NroComprobanteRef";
+            this.yNroComprobanteRef.Name = "yNroComprobanteRef";
+            this.yNroComprobanteRef.ReadOnly = true;
+            this.yNroComprobanteRef.Visible = false;
+            // 
+            // xusuarioCompensa
+            // 
+            this.xusuarioCompensa.DataPropertyName = "UsuarioCompensa";
+            this.xusuarioCompensa.HeaderText = "UsuarioCompensa";
+            this.xusuarioCompensa.Name = "xusuarioCompensa";
+            this.xusuarioCompensa.ReadOnly = true;
+            this.xusuarioCompensa.Visible = false;
+            // 
+            // xActivoFijo
+            // 
+            this.xActivoFijo.DataPropertyName = "activofijo";
+            this.xActivoFijo.HeaderText = "ActivoFijo";
+            this.xActivoFijo.Name = "xActivoFijo";
+            this.xActivoFijo.ReadOnly = true;
+            this.xActivoFijo.Visible = false;
             // 
             // txtbusnrodoc
             // 
@@ -1847,338 +2182,6 @@
             this.txtBusTipoDoc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtBusTipoDoc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtBusTipoDoc.TextChanged += new System.EventHandler(this.textBoxPer2_TextChanged);
-            // 
-            // chkActivoFijo
-            // 
-            this.chkActivoFijo.AutoSize = true;
-            this.chkActivoFijo.BackColor = System.Drawing.Color.Transparent;
-            this.chkActivoFijo.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkActivoFijo.Location = new System.Drawing.Point(555, 209);
-            this.chkActivoFijo.Name = "chkActivoFijo";
-            this.chkActivoFijo.Size = new System.Drawing.Size(93, 17);
-            this.chkActivoFijo.TabIndex = 325;
-            this.chkActivoFijo.Text = "Es Activo Fijo";
-            this.tooltip.SetToolTip(this.chkActivoFijo, "Seleccionar Sí la Factura es de un Activo Fijo");
-            this.chkActivoFijo.UseVisualStyleBackColor = false;
-            // 
-            // yIdComprobante
-            // 
-            this.yIdComprobante.DataPropertyName = "IdComprobante";
-            this.yIdComprobante.HeaderText = "IdComprobante";
-            this.yIdComprobante.Name = "yIdComprobante";
-            this.yIdComprobante.ReadOnly = true;
-            this.yIdComprobante.Visible = false;
-            // 
-            // yid
-            // 
-            this.yid.DataPropertyName = "id";
-            this.yid.HeaderText = "ID";
-            this.yid.Name = "yid";
-            this.yid.ReadOnly = true;
-            this.yid.Visible = false;
-            // 
-            // yNroComprobante
-            // 
-            this.yNroComprobante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yNroComprobante.DataPropertyName = "NroComprobante";
-            this.yNroComprobante.HeaderText = "Nro Doc";
-            this.yNroComprobante.Name = "yNroComprobante";
-            this.yNroComprobante.ReadOnly = true;
-            this.yNroComprobante.Width = 72;
-            // 
-            // yProveedor
-            // 
-            this.yProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yProveedor.DataPropertyName = "Proveedor";
-            this.yProveedor.HeaderText = "Ruc";
-            this.yProveedor.Name = "yProveedor";
-            this.yProveedor.ReadOnly = true;
-            this.yProveedor.Width = 49;
-            // 
-            // yrazon
-            // 
-            this.yrazon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.yrazon.DataPropertyName = "razon";
-            this.yrazon.HeaderText = "Razon Social";
-            this.yrazon.MinimumWidth = 100;
-            this.yrazon.Name = "yrazon";
-            this.yrazon.ReadOnly = true;
-            // 
-            // yfkempresa
-            // 
-            this.yfkempresa.DataPropertyName = "fkempresa";
-            this.yfkempresa.HeaderText = "fkempresa";
-            this.yfkempresa.Name = "yfkempresa";
-            this.yfkempresa.ReadOnly = true;
-            this.yfkempresa.Visible = false;
-            // 
-            // yEmpresa
-            // 
-            this.yEmpresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.yEmpresa.DataPropertyName = "Empresa";
-            this.yEmpresa.HeaderText = "Empresa";
-            this.yEmpresa.MinimumWidth = 150;
-            this.yEmpresa.Name = "yEmpresa";
-            this.yEmpresa.ReadOnly = true;
-            // 
-            // yfkproyecto
-            // 
-            this.yfkproyecto.DataPropertyName = "fkproyecto";
-            this.yfkproyecto.HeaderText = "fkproyecto";
-            this.yfkproyecto.Name = "yfkproyecto";
-            this.yfkproyecto.ReadOnly = true;
-            this.yfkproyecto.Visible = false;
-            // 
-            // yProyecto
-            // 
-            this.yProyecto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yProyecto.DataPropertyName = "Proyecto";
-            this.yProyecto.HeaderText = "Proyecto";
-            this.yProyecto.Name = "yProyecto";
-            this.yProyecto.ReadOnly = true;
-            this.yProyecto.Width = 74;
-            // 
-            // yfkEtapa
-            // 
-            this.yfkEtapa.DataPropertyName = "fkEtapa";
-            this.yfkEtapa.HeaderText = "Etapa";
-            this.yfkEtapa.Name = "yfkEtapa";
-            this.yfkEtapa.ReadOnly = true;
-            this.yfkEtapa.Visible = false;
-            // 
-            // yetapa
-            // 
-            this.yetapa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yetapa.DataPropertyName = "Etapa";
-            this.yetapa.HeaderText = "Etapa";
-            this.yetapa.MinimumWidth = 60;
-            this.yetapa.Name = "yetapa";
-            this.yetapa.ReadOnly = true;
-            this.yetapa.Width = 60;
-            // 
-            // yCompensacion
-            // 
-            this.yCompensacion.DataPropertyName = "Compensacion";
-            this.yCompensacion.HeaderText = "Compensacion";
-            this.yCompensacion.Name = "yCompensacion";
-            this.yCompensacion.ReadOnly = true;
-            this.yCompensacion.Visible = false;
-            // 
-            // yfkMoneda
-            // 
-            this.yfkMoneda.DataPropertyName = "fkMoneda";
-            this.yfkMoneda.HeaderText = "Moneda";
-            this.yfkMoneda.Name = "yfkMoneda";
-            this.yfkMoneda.ReadOnly = true;
-            this.yfkMoneda.Visible = false;
-            // 
-            // yNameCorto
-            // 
-            this.yNameCorto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yNameCorto.DataPropertyName = "namecorto";
-            this.yNameCorto.HeaderText = "Mon";
-            this.yNameCorto.Name = "yNameCorto";
-            this.yNameCorto.ReadOnly = true;
-            this.yNameCorto.Width = 54;
-            // 
-            // yTC
-            // 
-            this.yTC.DataPropertyName = "TC";
-            this.yTC.HeaderText = "TC";
-            this.yTC.Name = "yTC";
-            this.yTC.ReadOnly = true;
-            this.yTC.Visible = false;
-            // 
-            // yTotal
-            // 
-            this.yTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yTotal.DataPropertyName = "Total";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "n2";
-            this.yTotal.DefaultCellStyle = dataGridViewCellStyle11;
-            this.yTotal.HeaderText = "Total";
-            this.yTotal.Name = "yTotal";
-            this.yTotal.ReadOnly = true;
-            this.yTotal.Width = 55;
-            // 
-            // yigv
-            // 
-            this.yigv.DataPropertyName = "igv";
-            this.yigv.HeaderText = "Igv";
-            this.yigv.Name = "yigv";
-            this.yigv.ReadOnly = true;
-            this.yigv.Visible = false;
-            // 
-            // yGravaIgv
-            // 
-            this.yGravaIgv.DataPropertyName = "GravaIgv";
-            this.yGravaIgv.HeaderText = "GravaIgv";
-            this.yGravaIgv.Name = "yGravaIgv";
-            this.yGravaIgv.ReadOnly = true;
-            this.yGravaIgv.Visible = false;
-            // 
-            // yFechaEmision
-            // 
-            this.yFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yFechaEmision.DataPropertyName = "FechaEmision";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "dd/MM/yyyy";
-            this.yFechaEmision.DefaultCellStyle = dataGridViewCellStyle12;
-            this.yFechaEmision.HeaderText = "F.Emite";
-            this.yFechaEmision.Name = "yFechaEmision";
-            this.yFechaEmision.ReadOnly = true;
-            this.yFechaEmision.Width = 67;
-            // 
-            // yFechaRecepcion
-            // 
-            this.yFechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yFechaRecepcion.DataPropertyName = "FechaRecepcion";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "dd/MM/yyyy";
-            this.yFechaRecepcion.DefaultCellStyle = dataGridViewCellStyle13;
-            this.yFechaRecepcion.HeaderText = "F.Recibe";
-            this.yFechaRecepcion.Name = "yFechaRecepcion";
-            this.yFechaRecepcion.ReadOnly = true;
-            this.yFechaRecepcion.Width = 73;
-            // 
-            // yFechaVencimiento
-            // 
-            this.yFechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yFechaVencimiento.DataPropertyName = "FechaVencimiento";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "dd/MM/yyyy";
-            this.yFechaVencimiento.DefaultCellStyle = dataGridViewCellStyle14;
-            this.yFechaVencimiento.HeaderText = "F.Vence";
-            this.yFechaVencimiento.Name = "yFechaVencimiento";
-            this.yFechaVencimiento.ReadOnly = true;
-            this.yFechaVencimiento.Visible = false;
-            this.yFechaVencimiento.Width = 69;
-            // 
-            // yfechacontable
-            // 
-            this.yfechacontable.DataPropertyName = "fechacontable";
-            this.yfechacontable.HeaderText = "fechacontable";
-            this.yfechacontable.Name = "yfechacontable";
-            this.yfechacontable.ReadOnly = true;
-            this.yfechacontable.Visible = false;
-            // 
-            // yEstado
-            // 
-            this.yEstado.DataPropertyName = "Estado";
-            this.yEstado.HeaderText = "Estado";
-            this.yEstado.Name = "yEstado";
-            this.yEstado.ReadOnly = true;
-            this.yEstado.Visible = false;
-            // 
-            // ynamestado
-            // 
-            this.ynamestado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ynamestado.DataPropertyName = "nameestado";
-            this.ynamestado.HeaderText = "Estado";
-            this.ynamestado.Name = "ynamestado";
-            this.ynamestado.ReadOnly = true;
-            this.ynamestado.Width = 65;
-            // 
-            // yTipoPago
-            // 
-            this.yTipoPago.DataPropertyName = "TipoPago";
-            this.yTipoPago.HeaderText = "TipoPago";
-            this.yTipoPago.Name = "yTipoPago";
-            this.yTipoPago.ReadOnly = true;
-            this.yTipoPago.Visible = false;
-            // 
-            // yNro_DocPago
-            // 
-            this.yNro_DocPago.DataPropertyName = "Nro_DocPago";
-            this.yNro_DocPago.HeaderText = "Nro_DocPago";
-            this.yNro_DocPago.Name = "yNro_DocPago";
-            this.yNro_DocPago.ReadOnly = true;
-            this.yNro_DocPago.Visible = false;
-            // 
-            // yCod_Detraccion
-            // 
-            this.yCod_Detraccion.DataPropertyName = "Cod_Detraccion";
-            this.yCod_Detraccion.HeaderText = "Cod_Detraccion";
-            this.yCod_Detraccion.Name = "yCod_Detraccion";
-            this.yCod_Detraccion.ReadOnly = true;
-            this.yCod_Detraccion.Visible = false;
-            // 
-            // yPorcentaje
-            // 
-            this.yPorcentaje.DataPropertyName = "Porcentaje";
-            this.yPorcentaje.HeaderText = "Porcentaje";
-            this.yPorcentaje.Name = "yPorcentaje";
-            this.yPorcentaje.ReadOnly = true;
-            this.yPorcentaje.Visible = false;
-            // 
-            // yDetraccion
-            // 
-            this.yDetraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yDetraccion.DataPropertyName = "Detraccion";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "n2";
-            this.yDetraccion.DefaultCellStyle = dataGridViewCellStyle15;
-            this.yDetraccion.HeaderText = "Detr.";
-            this.yDetraccion.Name = "yDetraccion";
-            this.yDetraccion.ReadOnly = true;
-            this.yDetraccion.Width = 55;
-            // 
-            // yImgFactura
-            // 
-            this.yImgFactura.DataPropertyName = "ImgFactura";
-            this.yImgFactura.HeaderText = "ImgFactura";
-            this.yImgFactura.Name = "yImgFactura";
-            this.yImgFactura.ReadOnly = true;
-            this.yImgFactura.Visible = false;
-            // 
-            // yGlosa
-            // 
-            this.yGlosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.yGlosa.DataPropertyName = "Glosa";
-            this.yGlosa.HeaderText = "Glosa";
-            this.yGlosa.MinimumWidth = 100;
-            this.yGlosa.Name = "yGlosa";
-            this.yGlosa.ReadOnly = true;
-            // 
-            // yUsuario
-            // 
-            this.yUsuario.DataPropertyName = "Usuario";
-            this.yUsuario.HeaderText = "Usuario";
-            this.yUsuario.Name = "yUsuario";
-            this.yUsuario.ReadOnly = true;
-            this.yUsuario.Visible = false;
-            // 
-            // yFechaModifica
-            // 
-            this.yFechaModifica.DataPropertyName = "FechaModifica";
-            this.yFechaModifica.HeaderText = "FechaModifica";
-            this.yFechaModifica.Name = "yFechaModifica";
-            this.yFechaModifica.ReadOnly = true;
-            this.yFechaModifica.Visible = false;
-            // 
-            // yNroComprobanteRef
-            // 
-            this.yNroComprobanteRef.DataPropertyName = "NroComprobanteRef";
-            this.yNroComprobanteRef.HeaderText = "NroComprobanteRef";
-            this.yNroComprobanteRef.Name = "yNroComprobanteRef";
-            this.yNroComprobanteRef.ReadOnly = true;
-            this.yNroComprobanteRef.Visible = false;
-            // 
-            // xusuarioCompensa
-            // 
-            this.xusuarioCompensa.DataPropertyName = "UsuarioCompensa";
-            this.xusuarioCompensa.HeaderText = "UsuarioCompensa";
-            this.xusuarioCompensa.Name = "xusuarioCompensa";
-            this.xusuarioCompensa.ReadOnly = true;
-            this.xusuarioCompensa.Visible = false;
-            // 
-            // xActivoFijo
-            // 
-            this.xActivoFijo.DataPropertyName = "activofijo";
-            this.xActivoFijo.HeaderText = "ActivoFijo";
-            this.xActivoFijo.Name = "xActivoFijo";
-            this.xActivoFijo.ReadOnly = true;
-            this.xActivoFijo.Visible = false;
             // 
             // FrmFacturaManual
             // 
