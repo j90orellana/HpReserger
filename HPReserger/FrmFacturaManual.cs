@@ -1507,14 +1507,14 @@ namespace HPReserger
                                 if (filita["reflejadebe"].ToString() != "")
                                 {
                                     DataRow fila = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                    fila[xDebeHaber.DataPropertyName] = "D";
+                                    fila[xDebeHaber.DataPropertyName] = fila["debehaber"].ToString(); //MANTIENE EL ORIGEN "D" O "H"
                                     fila[xCuentaContable.DataPropertyName] = filita["reflejadebe"].ToString();
                                     fila[xdescripcion.DataPropertyName] = filita["Namedebe"].ToString();
                                     fila[xUsuario.DataPropertyName] = 998;///por defecto
                                     fila[xCodAsientoCtble.DataPropertyName] = cuo;
                                     TDatos.Rows.Add(fila);
                                     DataRow xfila = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                    xfila[xDebeHaber.DataPropertyName] = "H";
+                                    xfila[xDebeHaber.DataPropertyName] = fila["debehaber"].ToString() == "D" ? "H" : "D";//Volteamos el debe o haber 
                                     xfila[xCuentaContable.DataPropertyName] = filita["reflejahaber"].ToString();
                                     xfila[xdescripcion.DataPropertyName] = filita["Namehaber"].ToString();
                                     xfila[xUsuario.DataPropertyName] = 998;///por defecto
@@ -1556,14 +1556,14 @@ namespace HPReserger
                                 if (filita["reflejadebe"].ToString() != "")
                                 {
                                     DataRow fila = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                    fila[xDebeHaber.DataPropertyName] = "H";
+                                    fila[xDebeHaber.DataPropertyName] = fila["debehaber"].ToString(); //MANTIENE EL ORIGEN "D" O "H"
                                     fila[xCuentaContable.DataPropertyName] = filita["reflejadebe"].ToString();
                                     fila[xdescripcion.DataPropertyName] = filita["Namedebe"].ToString();
                                     fila[xUsuario.DataPropertyName] = 998;///por defecto
                                     fila[xCodAsientoCtble.DataPropertyName] = cuo;
                                     TDatos.Rows.Add(fila);
                                     DataRow xfila = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                    xfila[xDebeHaber.DataPropertyName] = "D";
+                                    xfila[xDebeHaber.DataPropertyName] = fila["debehaber"].ToString() == "D" ? "H" : "D";//Volteamos el debe o haber 
                                     xfila[xCuentaContable.DataPropertyName] = filita["reflejahaber"].ToString();
                                     xfila[xdescripcion.DataPropertyName] = filita["Namehaber"].ToString();
                                     xfila[xUsuario.DataPropertyName] = 998;///por defecto

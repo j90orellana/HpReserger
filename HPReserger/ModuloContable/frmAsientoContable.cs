@@ -114,7 +114,7 @@ namespace HPReserger
             modifico = true;
             try
             {
-                if (!llamado)
+                if (!llamado)                    
                 {
                     TDinamica = CapaLogica.ListarDinamicas(coddinamica + "", 10);
                 }
@@ -2059,6 +2059,7 @@ namespace HPReserger
                             txtcodigo.Text = "0";
                             txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
                             BuscarDatos();
+                            if (dtgbusca.RowCount > 0) activar();
                         }
                         if (estado == 1)
                         {

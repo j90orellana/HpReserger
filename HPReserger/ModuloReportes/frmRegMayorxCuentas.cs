@@ -493,6 +493,7 @@ namespace HPReserger
                     /////fin estilo de las celdas
                     DataTable TableResult = new DataTable();
                     DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
+                    dt.RowFilter = "glosa not like '****** SIN MOVIMIENTO *******'";
                     TableResult = dt.ToTable();
                     //removemos indices y saldos iniciales
                     TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);

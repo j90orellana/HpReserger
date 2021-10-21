@@ -465,14 +465,14 @@ namespace HPReserger
                     int posSelec = cbocuentabanco.SelectedIndex;
                     string NroCuenta = ((DataTable)cbocuentabanco.DataSource).Rows[posSelec]["NroCta"].ToString();
                     //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
-                    List<string> ListaAuxiliar = new List<string>();                 
+                    List<string> ListaAuxiliar = new List<string>();
                     ListaAuxiliar.Add("9559501");
                     ListaAuxiliar.Add("7599103");
                     ListaAuxiliar.Add(CuentaContableBanco);
                     ListaAuxiliar.Add(CuentaDetracciones);
                     if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
                     //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
-
+                    Boolean AutoDetraccion = !txtcuentadetracciones.EstaLLeno() ? true : false;
                     foreach (DataGridViewRow item in dtgconten.Rows)
                     {
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -491,8 +491,8 @@ namespace HPReserger
                         }
                     }
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesVentaCabecera(codigo, CuopPago, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones
-                        , CuentaContableBanco, "9559501", FechaContable, glosa, IdEmpresa, FechaPago, idcomprobante, TC, (int)cboproyecto.SelectedValue);
+                    CapaLogica.PagarDetracionesVentaCabecera(codigo, CuopPago, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta
+                        , AutoDetraccion ? CuentaDetracciones : CuentaContableBanco, AutoDetraccion ? CuentaContableBanco : CuentaDetracciones, "9559501", FechaContable, glosa, IdEmpresa, FechaPago, idcomprobante, TC, (int)cboproyecto.SelectedValue);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     int Detalle = 1;
                     foreach (DataGridViewRow item in dtgconten.Rows)
@@ -509,7 +509,9 @@ namespace HPReserger
                                 , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[xredondeo.Name].Value, decimal.Parse(txtredondeo.Text)
                                 , (decimal)item.Cells[xdiferencia.Name].Value
                                 //item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value / (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value
-                                , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, FechaContable, decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103"
+                                , (decimal)item.Cells[xtc.Name].Value,
+                           AutoDetraccion ? CuentaDetracciones : CuentaContableBanco, AutoDetraccion ? CuentaContableBanco : CuentaDetracciones,
+                                idCta, FechaContable, decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103"
                                 , glosa, IdUsuario, IdEmpresa, TC, (int)cboproyecto.SelectedValue, Detalle++, NroOperacion, TipoPago, (int)cboCuentasBancarias.SelectedValue);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
