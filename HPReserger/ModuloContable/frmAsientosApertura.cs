@@ -132,11 +132,11 @@ namespace HPReserger
             DataTable Tprueba;
             if (SumaPen < 0)
             {
-                Tprueba = CapaLogica.BuscarCuentas("%perdida%acumulada%", 5);
+                Tprueba = CapaLogica.BuscarCuentas("%5911101%", 5);
             }
             else
             {
-                Tprueba = CapaLogica.BuscarCuentas("%utilidad%acumulada%", 5);
+                Tprueba = CapaLogica.BuscarCuentas("%5911101%", 5);
             }
             if (Tprueba.Rows.Count == 0)
             {
@@ -144,6 +144,8 @@ namespace HPReserger
                 return;
             }
             DateTime FechaContable = new DateTime(comboMesAño.GetFecha().AddYears(-1).Year, 12, 31);
+            DataView dv = new DataView(TDatosAux);
+            //dv.Sort = "cuenta_contable asc,Cod_Asiento_Contable asc";
             TDatosAux.ImportRow(TDatosAux.Rows[0]);
             DataRow Fila = TDatosAux.Rows[TDatosAux.Rows.Count - 1];
             Fila[xCuenta_Contable.DataPropertyName] = Tprueba.Rows[0]["idcuenta"].ToString();
@@ -161,8 +163,6 @@ namespace HPReserger
             Fila[xNum_Comprobante.DataPropertyName] = $"{FechaContable.ToString("ddMMyy")}";
             Fila[xNum_Doc.DataPropertyName] = "9999";
             Fila[xRazon_Social.DataPropertyName] = "VARIOS";
-            DataView dv = new DataView(TDatosAux);
-            dv.Sort = "cuenta_contable asc, Cod_Asiento_Contable asc";
             dtgcontenBalance.DataSource = TDBalance = dv.ToTable();
         }
         static decimal SumaSoles = 0, SumaDolares = 0;
@@ -537,10 +537,18 @@ namespace HPReserger
                 dvt.RowFilter = $"cuenta_contable like '{CuentaResul.Substring(0, 2)}*'";
                 string CuentaResultadoX = "";
                 string CuentaResulX = "";
-                if ((decimal)dvt[0]["pen"] < 0)
+                if (0 == 0)//(decimal)dvt[0]["pen"] < 0)
                 {
                     CuentaResultadoX = "5911101 - UTILIDADES ACUMULADAS";
                     CuentaResulX = "5911101";
+                    DataTable TCuenta = CapaLogica.BuscarCuentas("%5911101%", 5);
+                    if (TCuenta.Rows.Count == 0)
+                    {
+                        msg("No se Encontro Cuenta de Utilidad y Perdida");
+                        return;
+                    }
+                    CuentaResultadoX = TCuenta.Rows[0]["cuenta_contable"].ToString();
+                    CuentaResulX = TCuenta.Rows[0]["idcuenta"].ToString();
                 }
                 else
                 {
@@ -759,7 +767,10 @@ namespace HPReserger
                 string valcuenta = item[xCuenta_Contable.DataPropertyName].ToString();
                 if (!ListaAuxiliar.Contains(valcuenta)) ListaAuxiliar.Add(valcuenta);
             }
-            if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
+            if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas))
+            {
+                Cursor = Cursors.Default; return;
+            }
             //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
             //Grabamos los Datos a la Tablas!
             if (rbCierre.Checked && rbCierre.Enabled)
@@ -851,10 +862,16 @@ namespace HPReserger
             DataView DViewAux = TablaDatos.AsDataView();
             string CuentaContable = "";
             string CuentaAux = "";
+            string cuox = "";
             int PosFila = 1;
+            //ORDENAMOS TDATOS
+            DViewAux.Sort = "CUENTA_CONTABLE ASC";
+            TablaDatos = DViewAux.ToTable();
+            //
             foreach (DataRow item in TablaDatos.Rows)
             {
                 CuentaAux = item[xCuenta_Contable.DataPropertyName].ToString();
+                cuox = item[xcuo.DataPropertyName].ToString();
                 if (CuentaContable != CuentaAux)
                 {
                     CuentaContable = CuentaAux;
@@ -943,7 +960,7 @@ namespace HPReserger
                 int TipoPago = 0;
                 string NroPago = "";
                 int IdSoles = 1, IdDolares = 2;
-                string CuentaContable = DFila["Cuentacontable"].ToString().Substring(0, DFila["Cuentacontable"].ToString().IndexOf(' ')); 
+                string CuentaContable = DFila["Cuentacontable"].ToString().Substring(0, DFila["Cuentacontable"].ToString().IndexOf(' '));
                 string CaracterFueraMes = debe ? "13" : "00";
                 string cuo = $"{fechaContable.Year.ToString().Substring(2, 2) }{CaracterFueraMes}-{NumAsiento.ToString("00000")}";
                 string NroCuentaBancaria = "";

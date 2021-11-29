@@ -152,9 +152,15 @@ namespace HPReserger
             /////ASIGNACION DE LOS DATOS
             //Stopwatch stopwatch = new Stopwatch();
             //stopwatch.Start();
-            // TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
-            TDatos = CapaLogica.MayorPorCuentasConAperturaCierre(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
-            TDatos.Columns.RemoveAt(TDatos.Columns.Count - 1);
+            if (chkAuditoria.Checked)
+            {
+                TDatos = CapaLogica.MayorPorCuentasConAperturaCierre(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+                if (TDatos.Columns.Count > 0)
+                    TDatos.Columns.RemoveAt(TDatos.Columns.Count - 1);
+            }
+            else
+                TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+
             dtgconten.DataSource = TDatos;
             //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();
             //dtgconten.AutoGenerateColumns = true;            
@@ -755,14 +761,15 @@ namespace HPReserger
                                         campo[c++] = ((int)fila["Id_Comprobante"]).ToString("00");
                                         int[] tipos = { 1, 2, 3, 4, 6, 7, 8, 10, 22, 34, 35, 36, 46, 48, 56, 89 };
                                         string SerieDoc = fila["Cod_Comprobante"].ToString();
+                                        int idComprobante = (int)fila["Id_Comprobante"];
                                         if (tipos.Contains((int)fila["Id_Comprobante"]) && SerieDoc.Length != 4)
                                         {
                                             if (SerieDoc.Length > 4)
                                                 SerieDoc = SerieDoc.Substring(0, 4);
                                             SerieDoc = "0000".Substring(SerieDoc.Length) + SerieDoc;
                                         }
-                                        campo[c++] = Configuraciones.DefectoSunatString(SerieDoc);
-                                        campo[c++] = Configuraciones.DefectoSunatString(Configuraciones.AlfaNumericoSunat(fila["Num_Comprobante"].ToString()));
+                                        campo[c++] = Configuraciones.ValidarTipoDocumentoSerie(Configuraciones.DefectoSunatString(SerieDoc), idComprobante);
+                                        campo[c++] = Configuraciones.ValidarTipoDocumentoNumero(Configuraciones.DefectoSunatString(Configuraciones.AlfaNumericoSunat(fila["Num_Comprobante"].ToString())), idComprobante);
                                         campo[c++] = ((DateTime)fila["FechaContable"]).ToString("dd/MM/yyyy");
                                         campo[c++] = "";// ((DateTime)fila["FechaRegistro"]).ToString("dd/MM/yyyy");
                                                         //15
@@ -849,6 +856,22 @@ namespace HPReserger
         private void FrmReporteLibrosDiarios_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmReporteLibroMayor6_1 = null;
+        }
+
+        private void chkAuditoria_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAuditoria.Checked)
+            {
+                btnAuditoria.Enabled = true;
+                btnexcel.Enabled = btnGenerarTXT.Enabled = false;
+            }
+            else
+            {
+                btnAuditoria.Enabled = false;
+                btnexcel.Enabled = btnGenerarTXT.Enabled = true;
+            }
+
+
         }
     }
 }

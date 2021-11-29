@@ -145,7 +145,7 @@ namespace HpResergerUserControls
         }
         public static string DefectoSunatString(string cadena)
         {
-            return cadena == "" ? "-" : cadena;
+            return cadena == "" ? "-" : cadena.Trim();
         }
         public static string ValidarRutaValida(string cadena)
         {
@@ -410,6 +410,68 @@ namespace HpResergerUserControls
         {
             DateTime fechaaux = FechaMin;
             if (FechaMin > FechaMax) { FechaMin = FechaMax; FechaMax = fechaaux; }
+        }
+
+        public static string ValidarTipoDocumentoSerie(string v, int idComprobante)
+        {
+            string cadena = "";
+            if (idComprobante == 1)
+            {
+                if (!(new string[] { "E", "F" }).Contains(v.Substring(0, 1))) //si es una factura electronica
+                {
+                    cadena = "0000";
+                }
+                else if (v.Length > 4)
+                {
+                    cadena = v.Substring(0, 4);
+                }
+                else if (v.Length < 4)
+                {
+                    cadena = $"{v}{("0000").Remove(0, v.Length)}";
+                }
+                else cadena = v;
+
+            }
+            else if (idComprobante == 2)
+            {
+                if (!(new string[] { "E", "F" }).Contains(v.Substring(0, 1))) //si es una factura electronica
+                {
+                    cadena = "0000";
+                }
+                else
+                {
+                    cadena = $"{v.Substring(0, 1)}000".Substring(v.Length) + v;
+                }
+            }
+            else return v;
+            return cadena;
+        }
+
+        public static string ValidarTipoDocumentoNumero(string v, int idComprobante)
+        {
+            string cadena = v;
+            if (idComprobante == 1)
+            {
+                if (!char.IsNumber((v.Substring(0, 1)[0]))) //si es una factura electronica
+                {
+                    cadena = "00000001";
+                }
+                else cadena = v;
+            }
+            else if (idComprobante == 2)
+            {
+                if (!(new string[] { "E", "F" }).Contains(v.Substring(0, 1))) //si es una factura electronica
+                {
+                    cadena = "00000001";
+                }
+                else
+                {
+                    cadena = $"{v.Substring(0, 1)}000".Substring(v.Length) + v;
+                }
+            }
+            else return cadena.Substring(0, cadena.Length > 20 ? 20 : cadena.Length);
+            cadena = cadena.Substring(0, cadena.Length > 20 ? 20 : cadena.Length);
+            return cadena;
         }
     }
 

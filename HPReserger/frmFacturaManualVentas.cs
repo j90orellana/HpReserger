@@ -369,7 +369,7 @@ namespace HPReserger
                 detracion = 0;
                 OcultarDetraccion(true);
                 txtdescdetraccion.Text = detrac;
-                if ( txtdescdetraccion.Text == "")
+                if (txtdescdetraccion.Text == "")
                 {
                     DataRow filaS = CapaLogica.BuscarParametros("%DETRACCION VENTA%", dtpfechaemision.Value);
                     if (filaS != null)
@@ -390,9 +390,9 @@ namespace HPReserger
                     dv.RowFilter = $"desc_detraccion='{txtdescdetraccion.Text}'";
                     if (dv != null)
                     {
-                        numdetraccion.Value = (decimal) dv[0]["porcentaje"];
+                        numdetraccion.Value = (decimal)dv[0]["porcentaje"];
                         coddet = dv[0]["cod_detraccion"].ToString();
-                    if (!string.IsNullOrWhiteSpace(txttotalfac.Text))
+                        if (!string.IsNullOrWhiteSpace(txttotalfac.Text))
                             detracion = decimal.Parse(txttotalfac.Text.ToString()) * (numdetraccion.Value / 100);
                     }
                 }
@@ -1097,14 +1097,14 @@ namespace HPReserger
                     }
                     if (_TipoDoc == 0 || _TipoDoc == 3 || _TipoDoc == 1)
                     {
-                        if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "H")
+                        if (item.Cells[xTipoIgvg.Name].Value.ToString() != "")//item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "H")
                         {
                             if (_TipoDoc != 1)
                                 if (!DocAnulado)
                                     if ((int)item.Cells[xTipoIgvg.Name].Value == 1)
                                     {
                                         DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                        filaIgv[xDebeHaber.DataPropertyName] = "H";
+                                        filaIgv[xDebeHaber.DataPropertyName] = item.Cells[xDebeHaber.Name].Value.ToString().ToUpper();
                                         filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
                                         filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
                                         filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
