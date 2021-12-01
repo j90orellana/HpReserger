@@ -218,10 +218,20 @@ namespace HPReserger
             Users = ((int)dATOS["grado"] * (int)dATOS["duracion"]) - (int)dATOS["nrollamadas"];
             DateTime Fecha = (DateTime)dATOS["datos"];
             if (Nombres != "Administrador")
-                if (ConUsuarios > frmMenu.Users && DateTime.Now >= Fecha)
+                if (ConUsuarios > frmMenu.Users)
                 {
                     //mensaje de Cancelación
                     frmMensajeLicencia frmmensa = new frmMensajeLicencia();
+                    frmmensa.ShowDialog();
+                    ExitApplication(sender, e);
+                    cerrar = 10;
+                    Application.Exit();
+                }
+                else if (DateTime.Now > Fecha)
+                {
+                    //mensaje de Cancelación
+                    frmMensajeLicencia frmmensa = new frmMensajeLicencia();
+                    frmmensa.Mensaje = "Su Licencia a Caducado";                    
                     frmmensa.ShowDialog();
                     ExitApplication(sender, e);
                     cerrar = 10;
@@ -285,7 +295,7 @@ namespace HPReserger
                 //fotito.BackColor = Color.Transparent;
                 fotito.Nombre = "Mensaje de Licencia";
                 fotito.Cargo = $"Su Licencia Caduca en";
-                fotito.Observacion = $"{resul + 1} Dias";
+                fotito.Observacion = $"{resul} Dias";
                 fotito.ImagenLicencia();
                 FlowPanel.Controls.Add(fotito);
                 fotito.Width = FlowPanel.Width;
