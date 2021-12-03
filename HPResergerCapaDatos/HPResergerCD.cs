@@ -5324,7 +5324,7 @@ namespace HPResergerCapaDatos
         {
             string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial", "@CierreApertura" };
             object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon, 1 };
-            return bd.DataTableFromProcedure("usp_MayorPorCuentas", parametros, valores, null);
+            return bd.DataTableFromProcedure("usp_MayorPorCuentasNormal", parametros, valores, null);
         }
         public DataTable CuentaContableValidarActivas(String CUENTA)
         {
