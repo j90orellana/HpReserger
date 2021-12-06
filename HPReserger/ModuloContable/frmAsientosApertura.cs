@@ -130,13 +130,13 @@ namespace HPReserger
             //sumapen >=0 Utilidad
             string CuentaResultado = "";
             DataTable Tprueba;
-            if (SumaPen < 0)
+            if (SumaPen > 0)
             {
                 Tprueba = CapaLogica.BuscarCuentas("%5911101%", 5);
             }
             else
             {
-                Tprueba = CapaLogica.BuscarCuentas("%5911101%", 5);
+                Tprueba = CapaLogica.BuscarCuentas("%5921101%", 5);
             }
             if (Tprueba.Rows.Count == 0)
             {
@@ -145,6 +145,7 @@ namespace HPReserger
             }
             DateTime FechaContable = new DateTime(comboMesAño.GetFecha().AddYears(-1).Year, 12, 31);
             DataView dv = new DataView(TDatosAux);
+            if (TDatosAux.Rows.Count == 0) return;
             //dv.Sort = "cuenta_contable asc,Cod_Asiento_Contable asc";
             TDatosAux.ImportRow(TDatosAux.Rows[0]);
             DataRow Fila = TDatosAux.Rows[TDatosAux.Rows.Count - 1];
@@ -482,7 +483,7 @@ namespace HPReserger
                 string CuentaResultado = "";
                 string CuentaResul = "";
                 dvt.RowFilter = "cuenta_contable like '85*'";
-                if ((decimal)dvt[0]["pen"] < 0)
+                if ((decimal)dvt[0]["pen"] > 0)
                 {
                     CuentaResultado = "8911101 - UTILIDAD";
                     CuentaResul = "8911101";
@@ -537,7 +538,7 @@ namespace HPReserger
                 dvt.RowFilter = $"cuenta_contable like '{CuentaResul.Substring(0, 2)}*'";
                 string CuentaResultadoX = "";
                 string CuentaResulX = "";
-                if (0 == 0)//(decimal)dvt[0]["pen"] < 0)
+                if ((decimal)dvt[0]["pen"] < 0)
                 {
                     CuentaResultadoX = "5911101 - UTILIDADES ACUMULADAS";
                     CuentaResulX = "5911101";
@@ -554,6 +555,15 @@ namespace HPReserger
                 {
                     CuentaResultadoX = "5921101 - PERDIDAS ACUMULADAS";
                     CuentaResulX = "5921101";
+                    DataTable TCuenta = CapaLogica.BuscarCuentas("%5921101%", 5);
+                    if (TCuenta.Rows.Count == 0)
+                    {
+                        msg("No se Encontro Cuenta de Utilidad y Perdida");
+                        return;
+                    }
+                    CuentaResultadoX = TCuenta.Rows[0]["cuenta_contable"].ToString();
+                    CuentaResulX = TCuenta.Rows[0]["idcuenta"].ToString();
+
                 }
                 InsertarFilasFiltradasADD(TResult, dvt.ToTable());
                 //InsertarFilasFiltradasContra(TResult, dvt.ToTable(), "8311101", "8311101 - EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACIÓN", TTemporal);
@@ -875,7 +885,7 @@ namespace HPReserger
                 if (CuentaContable != CuentaAux)
                 {
                     CuentaContable = CuentaAux;
-                    DViewAux.RowFilter = $"cuenta_contable like '{CuentaContable}'";
+                    DViewAux.RowFilter = $"cuenta_contable like '{CuentaContable}' and cuenta_contable not like '59%'";
                     //en el DataView Esta el Filtro de todo los datos ue se deben grabar
                     //Sacamos el Total que va a ir a la cabecera;
                     decimal SumatoriaPEN = 0, SumatoriaUSD = 0;
@@ -936,6 +946,62 @@ namespace HPReserger
                             ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "", GLOSA, FechaContable, IdUsuario, "");
                         }
                     }
+                }
+            }
+            //Linea de Cuenta de Resultados
+            {
+                int fkProyecto = (int)cboproyectoCierre.SelectedValue;
+                int IdSoles = 1;
+                string CaracterFueraMes = Sentido ? "13" : "00";
+                string cuo = $"{FechaContable.Year.ToString().Substring(2, 2) }{CaracterFueraMes}-{NumAsiento.ToString("00000")}";
+                string GLOSA = $"CANCELACION DE CUENTAS DE BALANCE";
+                if (!Sentido) GLOSA = $"ASIENTOS DE APERTURA {FechaContable.Year}";
+
+                DViewAux.RowFilter = $"cuenta_contable like '59%'";
+                decimal SumaSoles59 = 0, SumaDolares59 = 0;
+                decimal ValorDebeMN = 0, ValorHaberMN = 0;
+                foreach (DataRow DVFila in DViewAux.ToTable().Rows)
+                {
+                    SumaSoles59 += (decimal)DVFila[xpen.DataPropertyName];
+                    SumaDolares59 += (decimal)DVFila[xusd.DataPropertyName];
+                }
+                SumaSoles59 = SumaSoles59 * (Sentido ? 1 : -1);
+                SumaDolares59 = SumaDolares59 * (Sentido ? 1 : -1);
+
+                DViewAux.RowFilter = $"cuenta_contable like '59%' and num_Doc like '9999'";
+                {
+                    DataRow DVFila = DViewAux.ToTable().Rows[0];
+                    if (SumaSoles59 < 0)
+                    {
+                        ValorDebeMN = Math.Abs(SumaSoles59); ValorHaberMN = 0;
+                    }
+                    else
+                    {
+                        ValorDebeMN = 0; ValorHaberMN = Math.Abs(SumaSoles59);
+                    }
+                    CuentaContable = DVFila[xCuenta_Contable.DataPropertyName].ToString();
+
+
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila++, NumAsiento, FechaContable, CuentaContable, ValorDebeMN, ValorHaberMN, TC,
+                                 fkProyecto, 0, cuo, IdSoles, GLOSA, FechaContable, iddinamica);
+                    //Detalle del asiento del Debe   
+                    int TipoIdProveedor = (int)DVFila[xTipo_Doc.DataPropertyName];
+                    string RucProveedor = DVFila[xNum_Doc.DataPropertyName].ToString();
+                    string NameProveedor = DVFila[xRazon_Social.DataPropertyName].ToString();
+                    int IdUsuario = frmLogin.CodigoUsuario;
+                    int idcomprobante = (int)DVFila[xId_Comprobante.DataPropertyName];
+                    string SerieDocumento = DVFila[xCod_Comprobante.DataPropertyName].ToString();
+                    string NumDocumento = DVFila[xNum_Comprobante.DataPropertyName].ToString();
+                    decimal ValorDolares = Math.Abs(SumaDolares59) * (Sentido ? 1 : -1) * (ValorDebeMN > ValorHaberMN ? 1 : -1);
+                    decimal ValorSoles = Math.Abs(SumaSoles59) * (Sentido ? 1 : -1) * (ValorDebeMN > ValorHaberMN ? 1 : -1);
+                    GLOSA = DVFila[xGlosa.DataPropertyName].ToString();
+                    string NroCuentaBancaria = DVFila[xCuentaBanco.DataPropertyName].ToString();
+                    IdSoles = DVFila[xmoneda.DataPropertyName].ToString() == "SOL" ? 1 : 2;
+                    DateTime FechaEmision = DVFila[xFechaEmision.DataPropertyName].ToString() == "" ? FechaContable : (DateTime)DVFila[xFechaEmision.DataPropertyName];
+                    //
+                    CapaLogica.InsertarAsientoFacturaDetalle(99, PosFila - 1, NumAsiento, FechaContable, CuentaContable, fkProyecto, TipoIdProveedor, RucProveedor,
+                    NameProveedor, idcomprobante, SerieDocumento, NumDocumento, iddinamica, FechaEmision, FechaContable, FechaContable,
+                    ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "", GLOSA, FechaContable, IdUsuario, "");
                 }
             }
         }
