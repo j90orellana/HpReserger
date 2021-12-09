@@ -502,7 +502,8 @@ namespace HPReserger
                     dt.RowFilter = "glosa not like '****** SIN MOVIMIENTO *******'";
                     TableResult = dt.ToTable();
                     //removemos indices y saldos iniciales
-                    TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
+                    if (chkAuditoria.Checked)
+                        TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
                     //TableResult.Columns.RemoveAt(TableResult.Columns.Count - 1);
                     foreach (DataColumn item in TableResult.Columns) item.ColumnName = dtgconten.Columns["x" + item.ColumnName].HeaderText;
                     //MACRO

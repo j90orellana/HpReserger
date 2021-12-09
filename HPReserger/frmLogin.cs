@@ -36,6 +36,19 @@ namespace HPReserger
         public frmLogin()
         {
             InitializeComponent();
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            //label1.Text = "versión: " + fvi.FileVersion;
+            // comprobamos actualizaciones (cada vez que se inicia el programa)         
+        }
+        public void ComprobarVersion()
+        {
+            if (Actualizaciones.check())
+            {
+                var d = new update();
+                d.ShowDialog();
+                d.Dispose();
+            }
         }
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -55,6 +68,7 @@ namespace HPReserger
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            
             //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(10, this, btnLogueo);
             //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(15, this, txtUsuario);
             //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(5, txtContraseña, txtUsuario, btnLogueo, this, cboBase);
@@ -98,6 +112,7 @@ namespace HPReserger
             //System.Drawing.Drawing2D.GraphicsPath GRafico = new System.Drawing.Drawing2D.GraphicsPath();
             //GRafico.AddEllipse(0.12f, 0.12f,this.Width, this.Width );
             //this.Region = new Region(GRafico);
+            ComprobarVersion();
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public DialogResult msgP(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }

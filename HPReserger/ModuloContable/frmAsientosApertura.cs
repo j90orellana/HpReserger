@@ -164,6 +164,8 @@ namespace HPReserger
             Fila[xNum_Comprobante.DataPropertyName] = $"{FechaContable.ToString("ddMMyy")}";
             Fila[xNum_Doc.DataPropertyName] = "9999";
             Fila[xRazon_Social.DataPropertyName] = "VARIOS";
+            Fila[xCuentaBanco.DataPropertyName] = "";
+            Fila[xCtaBancaria.DataPropertyName] = 0;
             dtgcontenBalance.DataSource = TDBalance = dv.ToTable();
         }
         static decimal SumaSoles = 0, SumaDolares = 0;

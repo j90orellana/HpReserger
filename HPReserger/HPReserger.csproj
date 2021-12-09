@@ -14,6 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>C:\Users\Hp\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,8 +32,6 @@
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -66,13 +66,23 @@
     <ManifestKeyFile>HPReserger_ClaveTemporal.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="abcBaseDatos">
       <HintPath>..\Referencias\abcBaseDatos.dll</HintPath>
@@ -89,6 +99,10 @@
     </Reference>
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Dropbox.Api, Version=4.0.0.0, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dropbox.Api.4.9.4\lib\net45\Dropbox.Api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -113,8 +127,8 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -152,6 +166,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Clases\Actualizaciones.cs" />
     <Compile Include="frmAfpEmpresas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2109,6 +2124,12 @@
     <Compile Include="ModuloContable\frmTipodeCambio.Designer.cs">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </Compile>
+    <Compile Include="update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="update.Designer.cs">
+      <DependentUpon>update.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmAfpEmpresas.resx">
       <DependentUpon>frmAfpEmpresas.cs</DependentUpon>
     </EmbeddedResource>
@@ -3121,6 +3142,9 @@
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="update.resx">
+      <DependentUpon>update.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ACTUAL_BETADataSet.xsc">
       <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
     </None>
@@ -3133,6 +3157,9 @@
       <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
     </None>
     <None Include="app.config" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="HPReserger_ClaveTemporal.pfx" />
@@ -3369,6 +3396,10 @@
       <Project>{2fe42f25-103c-4988-a3f5-132981069795}</Project>
       <Name>HPResergerFunciones</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HPResergerUpdate\HPResergerUpdate.csproj">
+      <Project>{7dcf9124-2f2e-436b-85b4-7dc3033f97c2}</Project>
+      <Name>HPResergerUpdate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HpResergerUserControls\HpResergerUserControls.csproj">
       <Project>{0a0953bd-57bc-48a4-b3e6-886a2f3be8b6}</Project>
       <Name>HpResergerUserControls</Name>
@@ -3378,6 +3409,9 @@
     <Content Include="Datos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="EMPRESA.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icono.ico" />
     <Content Include="ImgFiles\icons8_Close_Window_50px_3.png" />
@@ -3428,7 +3462,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clases\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
