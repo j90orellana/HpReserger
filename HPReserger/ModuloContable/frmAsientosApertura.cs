@@ -887,7 +887,14 @@ namespace HPReserger
                 if (CuentaContable != CuentaAux)
                 {
                     CuentaContable = CuentaAux;
-                    DViewAux.RowFilter = $"cuenta_contable like '{CuentaContable}' and cuenta_contable not like '59%'";
+                    if (Sentido)
+                    {
+                        DViewAux.RowFilter = $"cuenta_contable like '{CuentaContable}'";
+                    }
+                    else
+                    {
+                        DViewAux.RowFilter = $"cuenta_contable like '{CuentaContable}' and cuenta_contable not like '59%'";
+                    }
                     //en el DataView Esta el Filtro de todo los datos ue se deben grabar
                     //Sacamos el Total que va a ir a la cabecera;
                     decimal SumatoriaPEN = 0, SumatoriaUSD = 0;
@@ -951,6 +958,7 @@ namespace HPReserger
                 }
             }
             //Linea de Cuenta de Resultados
+            if (!Sentido)
             {
                 int fkProyecto = (int)cboproyectoCierre.SelectedValue;
                 int IdSoles = 1;

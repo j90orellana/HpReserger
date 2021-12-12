@@ -20,6 +20,7 @@ namespace HPReserger
     {
         public static string token;
         public static string Empresa;
+        public static string RutaEjecucion;
         public update()
         {
             InitializeComponent();
@@ -30,7 +31,8 @@ namespace HPReserger
         }
         static async Task DescargarArchivo()
         {
-            Empresa = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "EMPRESA.txt");
+            RutaEjecucion = Application.CommonAppDataPath + @"\";
+            Empresa = File.ReadAllText(AppDomain.CurrentDomain.DynamicDirectory + "EMPRESA.txt");
             try
             {
                 using (var dbx = new DropboxClient(token))
@@ -38,7 +40,7 @@ namespace HPReserger
                     string Path = $"/SISGEM/{Empresa}/SISGEM.zip";
                     Console.WriteLine(Path);
                     var response = await dbx.Files.DownloadAsync(Path);
-                    File.WriteAllBytes($"ACTUALIZACION.zip", await response.GetContentAsByteArrayAsync());
+                    File.WriteAllBytes($"{RutaEjecucion}ACTUALIZACION.zip", await response.GetContentAsByteArrayAsync());
                 }
             }
             catch (Exception ex)
@@ -54,7 +56,7 @@ namespace HPReserger
                 var task = Task.Run((Func<Task>)DescargarArchivo);
                 task.Wait();
             }
-            ProcessStartInfo psi = new ProcessStartInfo(AppDomain.CurrentDomain.BaseDirectory + "Updater.exe");
+            ProcessStartInfo psi = new ProcessStartInfo(AppDomain.CurrentDomain.DynamicDirectory + "Updater.exe", RutaEjecucion);
             psi.UseShellExecute = true;
             var d = Process.Start(psi);
 
