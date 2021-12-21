@@ -87,6 +87,8 @@
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -463,7 +465,7 @@
             this.txtsunat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtsunat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsunat.ForeColor = System.Drawing.Color.Black;
-            this.txtsunat.Format = null;
+            this.txtsunat.Format = "000";
             this.txtsunat.Location = new System.Drawing.Point(436, 36);
             this.txtsunat.MaxLength = 4;
             this.txtsunat.Name = "txtsunat";
@@ -497,7 +499,7 @@
             this.lblmsg2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmsg2.Location = new System.Drawing.Point(12, 379);
             this.lblmsg2.Name = "lblmsg2";
-            this.lblmsg2.Size = new System.Drawing.Size(113, 13);
+            this.lblmsg2.Size = new System.Drawing.Size(114, 13);
             this.lblmsg2.TabIndex = 140;
             this.lblmsg2.Text = "Total de Registros : 0";
             // 

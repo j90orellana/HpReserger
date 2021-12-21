@@ -388,7 +388,7 @@ namespace HPReserger
                 {
                     DataView dv = DatosDetracciones.AsDataView();
                     dv.RowFilter = $"desc_detraccion='{txtdescdetraccion.Text}'";
-                    if (dv != null)
+                    if (dv.Count != 0)
                     {
                         numdetraccion.Value = (decimal)dv[0]["porcentaje"];
                         coddet = dv[0]["cod_detraccion"].ToString();

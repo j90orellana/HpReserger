@@ -134,26 +134,26 @@ namespace HPReserger
             try
             {
                 string respuesta = await GetHTTPs(año, mes);
-            //respuesta = "[\n " + respuesta + " \n]";
-            List<Ruta> lstTC = JsonConvert.DeserializeObject<List<Ruta>>(respuesta);
-            //SAcamos la Data
-            int CantDecimales = 5;
-            int ela = respuesta.IndexOf(año + "-");
-            if (lstTC.Count > 0)
-            {
-                if (año == lstTC[0].fecha.Year && mes == lstTC[0].fecha.Month)
+                //respuesta = "[\n " + respuesta + " \n]";
+                List<Ruta> lstTC = JsonConvert.DeserializeObject<List<Ruta>>(respuesta);
+                //SAcamos la Data
+                int CantDecimales = 5;
+                int ela = respuesta.IndexOf(año + "-");
+                if (lstTC.Count > 0)
                 {
-                    foreach (Ruta item in lstTC)
+                    if (año == lstTC[0].fecha.Year && mes == lstTC[0].fecha.Month)
                     {
-                        CapaLogica.TipodeCambio(15, item.fecha.Year, item.fecha.Month, (item.fecha.Day), (decimal)(item.compra), (decimal)(item.venta), null);
+                        foreach (Ruta item in lstTC)
+                        {
+                            CapaLogica.TipodeCambio(15, item.fecha.Year, item.fecha.Month, (item.fecha.Day), (decimal)(item.compra), (decimal)(item.venta), null);
+                        }
+                        Carga = true;
+                        tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
+                        CompletarEstructura();
+                        //webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
+                        Buscar_Click(new object(), new EventArgs());
                     }
-                    Carga = true;
-                    tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
-                    CompletarEstructura();
-                    //webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
-                    Buscar_Click(new object(), new EventArgs());
                 }
-            }
                 //if (ela != -1)
                 //{
                 //    while (ela != 0)
@@ -171,11 +171,36 @@ namespace HPReserger
                 //    webBrowser1_DocumentCompleted(new object(), new WebBrowserDocumentCompletedEventArgs(null));
                 //    Buscar_Click(new object(), new EventArgs());
                 //}
-
-
             }
             catch (Exception) { BuscarTipoCambio(año, mes); }
         }
+        public async void BuscamosTipodeCambioEInsertamos(int año, int mes)
+        {
+            try
+            {
+                string respuesta = await GetHTTPs(año, mes);
+                //respuesta = "[\n " + respuesta + " \n]";
+                List<Ruta> lstTC = JsonConvert.DeserializeObject<List<Ruta>>(respuesta);
+                //SAcamos la Data
+                int ela = respuesta.IndexOf(año + "-");
+                if (lstTC.Count > 0)
+                {
+                    if (año == lstTC[0].fecha.Year && mes == lstTC[0].fecha.Month)
+                    {
+                        foreach (Ruta item in lstTC)
+                        {
+                            CapaLogica.TipodeCambio(15, item.fecha.Year, item.fecha.Month, (item.fecha.Day), (decimal)(item.compra), (decimal)(item.venta), null);
+                        }
+                        Carga = true;
+                        tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
+                        Buscar_Click(new object(), new EventArgs());
+                    }
+                }
+            }
+            catch (Exception) { msg("Hubo un Error al Descargar el Tipo de Cambio"); }
+        }
+
+
         public DataTable ConsultaDia()
         {
             return CapaLogica.TipodeCambio(10, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
@@ -712,6 +737,17 @@ namespace HPReserger
                 }
             }
             catch (Exception) { }
+        }
+
+        private void btnCompletar_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            //Descargarmos el Tipo de Cambio del mes
+            //Guardamos el tipo de cambio de todos los dias
+            //Actualizamos la Grilla
+            BuscamosTipodeCambioEInsertamos(comboMesAño1.GetAño(), comboMesAño1.getMesNumero());
+
+            Cursor = Cursors.Default;
         }
     }
 }

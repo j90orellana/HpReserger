@@ -234,7 +234,7 @@ namespace HPReserger
                     CapaLogica.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                     //Generar Asiento de Boletas Generadas
                     DataTable Tablita = new DataTable();
-                    Tablita = CapaLogica.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                    //Tablita = CapaLogica.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                     //if (Tablita.Rows.Count > 0)
                     //if (chkGAsientos.Checked)
                     //{                           
