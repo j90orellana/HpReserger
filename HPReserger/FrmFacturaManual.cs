@@ -462,7 +462,7 @@ namespace HPReserger
                     if (valor < 1) detracion = 1;
                     else
                         detracion = Math.Round(resul * (numdetraccion.Value / 100), 1);
-                    txtmontodetraccion.Text = detracion.ToString("N1");
+                    txtmontodetraccion.Text = detracion.ToString("N0");
 
                 }
                 else

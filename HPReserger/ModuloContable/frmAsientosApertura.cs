@@ -737,8 +737,8 @@ namespace HPReserger
         private void dtgconten1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
-        private int DinamicaCierre = -30;
-        private int DinamicaApertura = -30;
+        private int DinamicaCierre = -50;
+        private int DinamicaApertura = -51;
         frmProcesando frmprocesando;
         private void btncerrar_Click(object sender, EventArgs e)
         {
@@ -844,7 +844,7 @@ namespace HPReserger
                     GrabarAsientos(TDatos, c, FechaContable, PosI, PosF, DinamicaCierre, (int)cboproyectoCierre.SelectedValue, Debe, TC);
                 } while (Largo - 1 > PosF + 1);
                 //Grabar el Detalle y Cabecera de la dinamica de Cierre Balances; Sentido = los pasa del debe al haber
-                GrabarAsientosApertura(TDBalance, ++c, FechaContable, TC, -50, true);
+                GrabarAsientosApertura(TDBalance, ++c, FechaContable, TC, DinamicaCierre, true);
                 //Fin del Grabado.
                 //Eliminamos los REflejos
                 CapaLogica.ELiminarReflejosdeCierreApertura(comboMesAño.GetFecha(), (int)(cboempresa.SelectedValue));
@@ -859,7 +859,7 @@ namespace HPReserger
                 DateTime FechitaContable = new DateTime(comboMesAño.GetFecha().Year, 1, 1);
                 //DataTable TablaReflejo = TDBalance.Copy();
                 //TablaReflejo.Rows.RemoveAt(TablaReflejo.Rows.Count - 1);
-                GrabarAsientosApertura(TDBalance, 1, FechaContable, TC, -51, false);
+                GrabarAsientosApertura(TDBalance, 1, FechaContable, TC, DinamicaApertura, false);
                 btnAplicar.Enabled = false;
                 GenerarAsientoAPertura = false;
                 msgOK("Se Agregaron los Asientos de Apertura");
@@ -893,6 +893,7 @@ namespace HPReserger
                     }
                     else
                     {
+                        //Apertura
                         DViewAux.RowFilter = $"cuenta_contable like '{CuentaContable}' and cuenta_contable not like '59%'";
                     }
                     //en el DataView Esta el Filtro de todo los datos ue se deben grabar
@@ -907,7 +908,7 @@ namespace HPReserger
                     SumatoriaUSD = SumatoriaUSD * (Sentido ? 1 : -1);
                     //Ya tenemos el Total de la Cabecera,
                     //Sì es Diferente de Cero es que si tiene Saldo
-                    if (SumatoriaPEN != 0 && SumatoriaUSD != 0)
+                    if (SumatoriaPEN + SumatoriaUSD != 0)
                     {
                         //Declaraciones y definiciones
                         int fkProyecto = (int)cboproyectoCierre.SelectedValue;
@@ -955,6 +956,10 @@ namespace HPReserger
                             ValorSoles, ValorDolares, TC, IdSoles, NroCuentaBancaria, "", GLOSA, FechaContable, IdUsuario, "");
                         }
                     }
+                    else
+                    {
+
+                    }
                 }
             }
             //Linea de Cuenta de Resultados
@@ -990,7 +995,17 @@ namespace HPReserger
                         ValorDebeMN = 0; ValorHaberMN = Math.Abs(SumaSoles59);
                     }
                     CuentaContable = DVFila[xCuenta_Contable.DataPropertyName].ToString();
+                    DataTable TBusca;
+                    if (SumaSoles59 > 0)
+                    {
+                        TBusca = CapaLogica.BuscarCuentas("%5911101%", 5);
+                    }
+                    else
+                    {
+                        TBusca = CapaLogica.BuscarCuentas("%5921101%", 5);
+                    }
 
+                    CuentaContable = TBusca.Rows[0]["idcuenta"].ToString();
 
                     CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila++, NumAsiento, FechaContable, CuentaContable, ValorDebeMN, ValorHaberMN, TC,
                                  fkProyecto, 0, cuo, IdSoles, GLOSA, FechaContable, iddinamica);
@@ -1002,8 +1017,9 @@ namespace HPReserger
                     int idcomprobante = (int)DVFila[xId_Comprobante.DataPropertyName];
                     string SerieDocumento = DVFila[xCod_Comprobante.DataPropertyName].ToString();
                     string NumDocumento = DVFila[xNum_Comprobante.DataPropertyName].ToString();
-                    decimal ValorDolares = Math.Abs(SumaDolares59) * (Sentido ? 1 : -1) * (ValorDebeMN > ValorHaberMN ? 1 : -1);
-                    decimal ValorSoles = Math.Abs(SumaSoles59) * (Sentido ? 1 : -1) * (ValorDebeMN > ValorHaberMN ? 1 : -1);
+                    decimal ValorDolares = Math.Abs(SumaDolares59) * (Math.Sign(SumaSoles59) == Math.Sign(SumaDolares59) ? 1 : -1);// * (Sentido ? 1 : -1) * (ValorDebeMN > ValorHaberMN ? 1 : -1);
+                    decimal ValorSoles = Math.Abs(SumaSoles59);// * (Sentido ? 1 : -1) * (ValorDebeMN > ValorHaberMN ? 1 : -1);
+
                     GLOSA = DVFila[xGlosa.DataPropertyName].ToString();
                     string NroCuentaBancaria = DVFila[xCuentaBanco.DataPropertyName].ToString();
                     IdSoles = DVFila[xmoneda.DataPropertyName].ToString() == "SOL" ? 1 : 2;
