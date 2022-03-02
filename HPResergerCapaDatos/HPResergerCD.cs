@@ -5485,10 +5485,10 @@ namespace HPResergerCapaDatos
             object[] valores = { idempleado, empresa };
             return bd.DataTableFromProcedure("usp_ListarFacturasCompensaciones", parametros, valores, null);
         }
-        public DataTable ListarFacturasCompensaciones(string idempleado, int empresa, int tipo)
+        public DataTable ListarFacturasCompensaciones(string idempleado, int empresa, int tipo, int idmoneda)
         {
-            string[] parametros = { "@idEmpleado", "@empresa", "@tipo" };
-            object[] valores = { idempleado, empresa, tipo };
+            string[] parametros = { "@idEmpleado", "@empresa", "@tipo", "@idmoneda" };
+            object[] valores = { idempleado, empresa, tipo, idmoneda };
             return bd.DataTableFromProcedure("usp_ListarFacturasCompensacionesxTipo", parametros, valores, null);
         }
         public DataTable ListarFacturasAnticipos(string ruc, int empresa)

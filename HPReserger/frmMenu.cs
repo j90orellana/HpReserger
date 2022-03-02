@@ -210,12 +210,12 @@ namespace HPReserger
                 frmmensa.ShowDialog();
                 ExitApplication(sender, e);
                 cerrar = 10;
-                Application.Exit();
+                Application.Exit();               
             }
             DataTable table = CapaLogica.UsuarioConectado(frmLogin.CodigoUsuario, "", 10);
             DataRow file = table.Rows[0];
             int ConUsuarios = (int)file["usuarios"];
-            Users = ((int)dATOS["grado"] * (int)dATOS["duracion"]) - (int)dATOS["nrollamadas"];
+            Users = ((int)dATOS["usuario"]);// * (int)dATOS["duracion"]) - (int)dATOS["nrollamadas"];
             DateTime Fecha = (DateTime)dATOS["datos"];
             if (Nombres != "Administrador")
                 if (ConUsuarios > frmMenu.Users)
@@ -231,7 +231,7 @@ namespace HPReserger
                 {
                     //mensaje de Cancelación
                     frmMensajeLicencia frmmensa = new frmMensajeLicencia();
-                    frmmensa.Mensaje = "Su Licencia a Caducado";                    
+                    frmmensa.Mensaje = "Su Licencia a Caducado";
                     frmmensa.ShowDialog();
                     ExitApplication(sender, e);
                     cerrar = 10;

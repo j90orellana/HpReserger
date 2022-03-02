@@ -3104,9 +3104,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.LimpiezaDetalleAsientos(cuo, proyecto);
         }
-        public DataTable ListarFacturasCompensaciones(string idempleado, int empresa, int tipo)
+        public DataTable ListarFacturasCompensaciones(string idempleado, int empresa, int tipo,int idmoneda)
         {
-            return cdOrdenPedido.ListarFacturasCompensaciones(idempleado, empresa, tipo);
+            return cdOrdenPedido.ListarFacturasCompensaciones(idempleado, empresa, tipo,idmoneda);
         }
         public DataTable ListarFacturasCompensaciones(string idempleado, int empresa)
         {

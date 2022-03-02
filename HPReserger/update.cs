@@ -31,7 +31,7 @@ namespace HPReserger
         }
         static async Task DescargarArchivo()
         {
-            RutaEjecucion = Application.CommonAppDataPath + @"\";
+            RutaEjecucion = Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1'));
             Empresa = File.ReadAllText(AppDomain.CurrentDomain.DynamicDirectory + "EMPRESA.txt");
             try
             {

@@ -190,7 +190,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public DataTable FacturasxCompensa()
         {
-            return CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue, 3);
+            return CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue, 3, (int)cbomoneda.SelectedValue);
         }
         private void cbomoneda_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -814,18 +814,22 @@ namespace HPReserger.ModuloCompensaciones
                             {
                                 CapaLogica.EntregasRendir_Detalle(1, SiguientePkId, _idempresa, (int)item.Cells[xIdComprobante.Name].Value, 5, item.Cells[xProveedor.Name].Value.ToString(),
                                     item.Cells[xrazon_social.Name].Value.ToString(), string.Join("-", valor), (DateTime)item.Cells[xFechaEmision.Name].Value, string.Join("-", UserCompensa),
-                                    (int)item.Cells[xidMoneda.Name].Value, (decimal)item.Cells[xTcReg.Name].Value,
-                                    (int)item.Cells[xidMoneda.Name].Value == 1 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
-                                    (int)item.Cells[xidMoneda.Name].Value == 2 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
+                                   moneda, (decimal)item.Cells[xTcReg.Name].Value,
+                                   // (int)item.Cells[xidMoneda.Name].Value 
+                                   1== moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
+                                    //(int)item.Cells[xidMoneda.Name].Value 
+                                    2== moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
                                     Cuo, "", 1, "", "", "", FechaCompensa, cbocuentaxpagar.SelectedValue.ToString(), txtglosa.Text, item.Cells[xGlosa.Name].Value.ToString(), 1, IdLogin);
                             }
                             else
                             {
                                 CapaLogica.EntregasRendir_Detalle(1, SiguientePkId, _idempresa, -1, 5, item.Cells[xProveedor.Name].Value.ToString(),
                                     item.Cells[xrazon_social.Name].Value.ToString(), string.Join("-", valor), (DateTime)item.Cells[xFechaEmision.Name].Value, string.Join("-", UserCompensa),
-                                    (int)item.Cells[xidMoneda.Name].Value, (decimal)item.Cells[xTcReg.Name].Value,
-                                    (int)item.Cells[xidMoneda.Name].Value == 1 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
-                                    (int)item.Cells[xidMoneda.Name].Value == 2 ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
+                                   moneda, (decimal)item.Cells[xTcReg.Name].Value,
+                                    //(int)item.Cells[xidMoneda.Name].Value 
+                                    1== moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
+                                    //(int)item.Cells[xidMoneda.Name].Value 
+                                    2== moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
                                     Cuo, "", 1, "", "", "", FechaCompensa, cbocuentaxpagar.SelectedValue.ToString(), txtglosa.Text, item.Cells[xGlosa.Name].Value.ToString(), 1, IdLogin);
                             }
                         }

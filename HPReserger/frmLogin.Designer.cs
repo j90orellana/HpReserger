@@ -36,6 +36,7 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnLogueo = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.lblmsg = new System.Windows.Forms.Label();
             this.cboBase = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -127,6 +128,7 @@
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panel.Controls.Add(this.lblVersion);
             this.panel.Controls.Add(this.lblmsg);
             this.panel.Controls.Add(this.cboBase);
             this.panel.Controls.Add(this.panel1);
@@ -138,17 +140,30 @@
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(349, 216);
+            this.panel.Size = new System.Drawing.Size(349, 220);
             this.panel.TabIndex = 3;
             this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
             this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
             this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
             // 
+            // lblVersion
+            // 
+            this.lblVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(266, 174);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblVersion.Size = new System.Drawing.Size(80, 19);
+            this.lblVersion.TabIndex = 6;
+            this.lblVersion.Text = "Version:1.1.1.1";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // lblmsg
             // 
+            this.lblmsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.lblmsg.ForeColor = System.Drawing.Color.White;
-            this.lblmsg.Location = new System.Drawing.Point(16, 195);
+            this.lblmsg.Location = new System.Drawing.Point(37, 195);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblmsg.Size = new System.Drawing.Size(309, 19);
@@ -232,7 +247,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(349, 216);
+            this.ClientSize = new System.Drawing.Size(349, 220);
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -269,5 +284,6 @@
         private System.Windows.Forms.PictureBox pbfoto;
         private System.Windows.Forms.ComboBox cboBase;
         private System.Windows.Forms.Label lblmsg;
+        private System.Windows.Forms.Label lblVersion;
     }
 }

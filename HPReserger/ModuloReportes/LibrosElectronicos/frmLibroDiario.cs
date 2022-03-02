@@ -278,6 +278,10 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
                                                 SerieDoc = SerieDoc.Substring(0, 4);
                                             SerieDoc = "0000".Substring(SerieDoc.Length) + SerieDoc;
                                         }
+                                        if (tipos.Contains((int)fila["Id_Comprobante"]) && fila["num_comprobante"].ToString().Length > 8)
+                                        {
+                                            fila["num_comprobante"] = fila["num_comprobante"].ToString().Remove(0, fila["num_comprobante"].ToString().Length - 8);
+                                        }
                                         campo[c++] = Configuraciones.ValidarTipoDocumentoSerie(Configuraciones.DefectoSunatString(SerieDoc), TipoComprobante);
                                         campo[c++] = Configuraciones.ValidarTipoDocumentoNumero(Configuraciones.DefectoSunatString(Configuraciones.AlfaNumericoSunat(fila["Num_Comprobante"].ToString())), TipoComprobante);
                                         campo[c++] = ((DateTime)fila["FechaContable"]).ToString("dd/MM/yyyy");

@@ -39,7 +39,8 @@ namespace HPReserger
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
             //label1.Text = "versión: " + fvi.FileVersion;
-            // comprobamos actualizaciones (cada vez que se inicia el programa)         
+            // comprobamos actualizaciones (cada vez que se inicia el programa)     
+            lblVersion.Text = $"Version:{fvi.FileVersion}";
         }
         public void ComprobarVersion()
         {
@@ -68,7 +69,7 @@ namespace HPReserger
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            
+
             //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(10, this, btnLogueo);
             //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(15, this, txtUsuario);
             //HpResergerUserControls.BorderEsquinas.RedondearEsquinas(5, txtContraseña, txtUsuario, btnLogueo, this, cboBase);

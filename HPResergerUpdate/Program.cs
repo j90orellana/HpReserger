@@ -19,7 +19,7 @@ namespace HPResergerUpdate
         static void Main(string[] arg)
         {
             CarpetaAPPData = arg[0];
-            //CarpetaAPPData = @"C:\ProgramData\SISGEM\HPReserger\1.0.0.1\";
+            CarpetaAPPData = @"C:\ProgramData\SISGEM\HPReserger";
             RutaEjecucion = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 1);
             ArchivoZIP = Path.Combine(CarpetaAPPData, "ACTUALIZACION.zip");
             ZIP.ExtractToDirectory(new ZipArchive(new FileStream(ArchivoZIP, FileMode.Open)), CarpetaAPPData, true);
@@ -40,7 +40,7 @@ namespace HPResergerUpdate
         }
         private static void ActualizarAplicacion()
         {
-            string CarpetaExtraida = Path.Combine(CarpetaAPPData, "Extraido");
+            string CarpetaExtraida = Path.Combine(CarpetaAPPData, @"Extraido\\SISGEM");
             string Fase = "Fase Copiado";
             DirectoryInfo DirectoryExtraido = new DirectoryInfo(CarpetaExtraida);
 
@@ -138,7 +138,7 @@ namespace HPResergerUpdate
             }
             foreach (ZipArchiveEntry file in archive.Entries)
             {
-                string completeFileName = Path.Combine(destinationDirectoryName + @"Extraido\", file.FullName);
+                string completeFileName = Path.Combine(destinationDirectoryName + @"\\Extraido\", file.FullName);
                 string directory = Path.GetDirectoryName(completeFileName);
 
                 if (!Directory.Exists(directory))

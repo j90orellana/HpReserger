@@ -327,7 +327,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public DataTable FacturasxCompensa()
         {
-            return CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue, 1);
+            return CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue, 1, (int)cbomoneda.SelectedValue);
         }
         private void sacarFacturasxCompensar()
         {
@@ -457,7 +457,7 @@ namespace HPReserger.ModuloCompensaciones
                         ListaAuxiliar.Add(item.Cells[xcuenta.Name].Value.ToString());
                 ListaAuxiliar.Add(CtaPerdida);
                 ListaAuxiliar.Add(CtaGanacia);
-               // ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
+                // ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
                 ListaAuxiliar.Add(cbocuentaxpagar.SelectedValue.ToString());
                 if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
                 //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
@@ -547,7 +547,7 @@ namespace HPReserger.ModuloCompensaciones
                 CapaLogica.CuadrarAsiento(CuoReg, proyecto, FechaContable, 2);
                 //Fin Cuadre
                 ///////////
-              
+
                 msgOK(mensaje);
                 cboempleado_SelectedIndexChanged(sender, e);
                 CalcularTotal();

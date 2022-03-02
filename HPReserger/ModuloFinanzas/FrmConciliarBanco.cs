@@ -229,7 +229,18 @@ namespace HPReserger.ModuloFinanzas
                 dv.Sort = "index desc, monto asc";
                 dtgContenSistema.DataSource = TdatosSist = dv.ToTable();
             }
+            SaldoContable = CalcularSaldoFinal(SaldoContableInicial);
         }
+        private decimal CalcularSaldoFinal(decimal saldoContableInicial)
+        {
+            decimal Val = saldoContableInicial;
+            foreach (DataRow item in TdatosSist.Rows)
+            {
+                Val += (decimal)item[ymonto.DataPropertyName];
+            }
+            return Val;
+        }
+
         decimal SaldoContable = 0;
         private void BuscanEnSistemMovimientos()
         {
@@ -629,7 +640,7 @@ namespace HPReserger.ModuloFinanzas
                     return false;
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[7][2].ToString());
-                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[13][8].ToString());// + decimal.Parse(TdatosExcel.Rows[13][5].ToString()) - decimal.Parse(TdatosExcel.Rows[13][6].ToString());///////////////////////
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[13][8].ToString()) + decimal.Parse(TdatosExcel.Rows[13][5].ToString()) - decimal.Parse(TdatosExcel.Rows[13][6].ToString());///////////////////////
                 //EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
                 string ValCuenta = TdatosExcel.Rows[4][2].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
@@ -790,7 +801,7 @@ namespace HPReserger.ModuloFinanzas
             {
                 PasarAPaso1(false);
                 Estado--;
-                btnPaso2.Enabled = false;                
+                btnPaso2.Enabled = false;
             }
             else if (Estado == 2)
             {

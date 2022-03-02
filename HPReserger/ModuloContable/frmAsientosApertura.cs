@@ -1189,8 +1189,8 @@ namespace HPReserger
                 {
                     _NombreHoja = $"Dinámica Asiento Cierre {NameEmpresa}".ToUpper();
                     _Cabecera = "Dinámica Asiento Cierre";
-                    _NColumna = "R";
-                    _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 7, 8, 9, 12, 13, 14, 15, 16, 17, 18 };
+                    _NColumna = "T";
+                    _ColumnasAutoajustar = new int[] { 1, 2, 3, 4, 5, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20 };
                 }
                 _Columnas = new int[] { 1, 2, 3, 4, 5, 6 };
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();

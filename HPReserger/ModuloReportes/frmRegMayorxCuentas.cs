@@ -769,7 +769,11 @@ namespace HPReserger
                                                 SerieDoc = SerieDoc.Substring(0, 4);
                                             SerieDoc = "0000".Substring(SerieDoc.Length) + SerieDoc;
                                         }
-                                        campo[c++] = Configuraciones.ValidarTipoDocumentoSerie(Configuraciones.DefectoSunatString(SerieDoc), idComprobante);
+                                        if (tipos.Contains((int)fila["Id_Comprobante"]) && fila["num_comprobante"].ToString().Length > 8)
+                                        {
+                                            fila["num_comprobante"] = fila["num_comprobante"].ToString().Remove(0, fila["num_comprobante"].ToString().Length - 8);
+                                        }
+                                        campo[c++] = Configuraciones.ValidarTipoDocumentoSerie(Configuraciones.DefectoSunatString(SerieDoc), idComprobante);                                       
                                         campo[c++] = Configuraciones.ValidarTipoDocumentoNumero(Configuraciones.DefectoSunatString(Configuraciones.AlfaNumericoSunat(fila["Num_Comprobante"].ToString())), idComprobante);
                                         campo[c++] = ((DateTime)fila["FechaContable"]).ToString("dd/MM/yyyy");
                                         campo[c++] = "";// ((DateTime)fila["FechaRegistro"]).ToString("dd/MM/yyyy");
