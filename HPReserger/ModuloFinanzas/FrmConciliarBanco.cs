@@ -546,18 +546,18 @@ namespace HPReserger.ModuloFinanzas
                     msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
                     return false;
                 }
-                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[13][14].ToString());
-                EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[13][13].ToString() == "(-)" ? -1 : 1);
-                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][14].ToString());////////////////////////////////////////////
-                EstadoCuentaInicial = EstadoCuentaInicial * (TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][13].ToString() == "(-)" ? -1 : 1);////////////////////////////
-                EstadoCuentaInicial = EstadoCuentaInicial - decimal.Parse(HPResergerFunciones.Utilitarios.QuitarEspacios(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][10].ToString()));
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[10][12].ToString());
+                EstadoCuenta = EstadoCuenta * (TdatosExcel.Rows[10][11].ToString() == "(-)" ? -1 : 1);
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[15][13].ToString());////////////////////////////////////////////
+                EstadoCuentaInicial = EstadoCuentaInicial * (TdatosExcel.Rows[15][12].ToString() == "(-)" ? -1 : 1);////////////////////////////
+                EstadoCuentaInicial = EstadoCuentaInicial - decimal.Parse(HPResergerFunciones.Utilitarios.QuitarEspacios(TdatosExcel.Rows[15][10].ToString()));
                 string ValCuenta = TdatosExcel.Rows[7][4].ToString();
                 if (!ValCuenta.Contains(HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(nroCuenta.Substring(3), '-', ' ')))
                 {
                     msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
                     return false;
                 }
-                int pos = 14; int c = 1;
+                int pos = 16; int c = 1;
                 DateTime FechaMin = new DateTime(2200, 1, 1);
                 DateTime FechaMax = new DateTime(1900, 1, 1);
                 foreach (DataRow item in TdatosExcel.Rows)

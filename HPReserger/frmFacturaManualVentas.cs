@@ -864,8 +864,10 @@ namespace HPReserger
             btncleanfind.Enabled = btnnuevo.Enabled = btnmodificar.Enabled = !a;
         }
         int _IndicadorFila, _IndicadorColumna;
+        string GlosaAnterior;
         private void btnmodificar_Click(object sender, EventArgs e)
         {
+            GlosaAnterior = txtglosa.Text;
             _IndicadorFila = dtgBusqueda.CurrentCell.RowIndex;
             _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
             if (Dtgconten.RowCount > 0)
@@ -1659,6 +1661,22 @@ namespace HPReserger
             frdetracion.btnaceptar.Enabled = true;
             frdetracion.AcceptButton = frdetracion.btnaceptar;
             frdetracion.ShowDialog();
+        }
+
+        private void txtglosa_TextChanged(object sender, EventArgs e)
+        {
+            if (txtglosa.TextValido().Length > 0)
+            {
+                foreach (DataGridViewRow Fila in Dtgconten.Rows)
+                {
+                    string FilaGLosa = (Fila.Cells[xGlosa.Name].Value ?? "").ToString();
+                    if (FilaGLosa == "" || FilaGLosa == GlosaAnterior)
+                    {
+                        Fila.Cells[xGlosa.Name].Value = txtglosa.Text;
+                    }
+                }
+                GlosaAnterior = txtglosa.TextValido();
+            }
         }
 
         private void btneliminar_Click(object sender, EventArgs e)

@@ -110,6 +110,7 @@ namespace HPReserger.ModuloCompensaciones
                     //    txtcodigo.Text = (codigo).ToString();
                     //}    
                     cbobanco_SelectedIndexChanged(sender, e);
+                    cbobanco_Click(sender, e);
                     CargarProveedores();
                     //cboproveedor_SelectedIndexChanged(sender, e);
                 }

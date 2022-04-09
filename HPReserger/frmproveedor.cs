@@ -659,6 +659,8 @@ namespace HPReserger
             string url = Configuraciones.ApiRuc + ruc;// + año + "-" + mes.ToString("00");
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebRequest oRequest = WebRequest.Create(url);
+            oRequest.Headers.Clear();
+            oRequest.Headers.Add(HttpRequestHeader.Authorization, "Bearer $apis-token-1887.qDw9MbrxloHL-d0c8MlKO44xEQ3S-STB");
             WebResponse oResponse = oRequest.GetResponse();
             StreamReader sr = new StreamReader(oResponse.GetResponseStream());
             return await sr.ReadToEndAsync();

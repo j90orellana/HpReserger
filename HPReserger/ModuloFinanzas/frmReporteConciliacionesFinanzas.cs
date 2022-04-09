@@ -361,7 +361,10 @@ namespace HPReserger.ModuloFinanzas
                                             {
                                                 pos = 1;
                                                 contador = 0;
-                                                SaldoContableAux += (decimal)item["abono"] - Math.Abs((decimal)item["cargos"]);
+                                                SaldoContableAux += (decimal)item["totales"];
+                                                item["abono"] = (decimal)item["totales"] > 0 ? (decimal)item["totales"] : 0;
+                                                item["cargos"] = (decimal)item["totales"] < 0 ? Math.Abs((decimal)item["totales"]) : 0;
+
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"A{10 + i}", $"A{10 + i}", item["cuo"].ToString(), 8, false, false, HPResergerFunciones.Utilitarios.Alineado.derecha, pos % 2 == 1 ? ForeBlanco : BackGrilla, Fore, Configuraciones.FuenteReportesTahoma10, pos % 2 == 1 ? false : true));
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"B{10 + i}", $"B{10 + i}", ((DateTime)item["FECHAPAGO"]).ToString("dd/MM/yyyy"), 8, false, false, HPResergerFunciones.Utilitarios.Alineado.derecha, pos % 2 == 1 ? ForeBlanco : BackGrilla, Fore, Configuraciones.FuenteReportesTahoma10, pos % 2 == 1 ? false : true));
                                                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda($"C{10 + i}", $"C{10 + i}", item["NROCHEQUE"].ToString(), 8, false, false, HPResergerFunciones.Utilitarios.Alineado.derecha, pos % 2 == 1 ? ForeBlanco : BackGrilla, Fore, Configuraciones.FuenteReportesTahoma10, pos % 2 == 1 ? false : true));
@@ -472,7 +475,7 @@ namespace HPReserger.ModuloFinanzas
                         ListadoColumnas.Add(new HPResergerFunciones.Utilitarios.Columnas(6, 50));
                         ListadoColumnas.Add(new HPResergerFunciones.Utilitarios.Columnas(7, 50));
                         HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(null, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, Hoja, Celdas, 6, new int[] { }, new int[] { },
-                            new int[] { 1, 2, 3, 4, 5 }, "", $"{6}:{6}",ListadoColumnas);
+                            new int[] { 1, 2, 3, 4, 5 }, "", $"{6}:{6}", ListadoColumnas);
                     }
                 }
                 msg($"Archivo Grabados en \n{folderBrowserDialog1.SelectedPath}");

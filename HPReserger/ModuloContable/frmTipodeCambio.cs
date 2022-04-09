@@ -27,6 +27,7 @@ namespace HPReserger
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msglbl(string cadena) { lblmsg.Text = cadena; }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
 
         public bool BusquedaExterna { get; internal set; }
         public DateTime FechaActual
@@ -60,6 +61,7 @@ namespace HPReserger
             WebResponse oResponse = oRequest.GetResponse();
             StreamReader sr = new StreamReader(oResponse.GetResponseStream());
             return await sr.ReadToEndAsync();
+
         }
         public async Task<string> GetEstructura()
         {
@@ -72,7 +74,7 @@ namespace HPReserger
         }
         private void TipodeCambio_Load(object sender, EventArgs e)
         {
-            //  CargarTipoCambio();
+            //CargarTipoCambio();
             BuscarTipoCambio(DateTime.Now.Year, DateTime.Now.Month);
             //BuscarEstructura();
             ImgVenta = new byte[0];
@@ -129,10 +131,12 @@ namespace HPReserger
             public string moneda { get; set; }
             public DateTime fecha { get; set; }
         }
+        public Boolean RespuestaWebservices = true;
         public async void BuscarTipoCambio(int año, int mes)
         {
             try
             {
+                if (!RespuestaWebservices) { return; }
                 string respuesta = await GetHTTPs(año, mes);
                 //respuesta = "[\n " + respuesta + " \n]";
                 List<Ruta> lstTC = JsonConvert.DeserializeObject<List<Ruta>>(respuesta);
@@ -172,7 +176,7 @@ namespace HPReserger
                 //    Buscar_Click(new object(), new EventArgs());
                 //}
             }
-            catch (Exception) { BuscarTipoCambio(año, mes); }
+            catch (Exception) { RespuestaWebservices = false; BuscarTipoCambio(año, mes); }
         }
         public async void BuscamosTipodeCambioEInsertamos(int año, int mes)
         {
@@ -197,7 +201,15 @@ namespace HPReserger
                     }
                 }
             }
-            catch (Exception) { msg("Hubo un Error al Descargar el Tipo de Cambio"); }
+            catch (Exception)
+            {
+                msg("Hubo un Error al Descargar el Tipo de Cambio");
+                if (msgp("Completar los Registros los dias faltantes") == DialogResult.Yes)
+                {
+                    CompletarEstructura();
+                }
+
+            }
         }
 
 

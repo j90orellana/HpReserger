@@ -1126,8 +1126,10 @@ namespace HPReserger
         }
         int _IndicadorFila, _IndicadorColumna;
         Boolean compensada = false;
+        string GlosaAnterior;
         private void btnmodificar_Click(object sender, EventArgs e)
         {
+            GlosaAnterior = txtglosa.Text;
             _IndicadorFila = dtgBusqueda.CurrentCell.RowIndex;
             _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
             compensada = false;
@@ -1964,6 +1966,23 @@ namespace HPReserger
             FormLlenadoFormato82 = null;
             dtgBusqueda.Enabled = true;
         }
+
+        private void txtglosa_TextChanged(object sender, EventArgs e)
+        {
+            if (txtglosa.TextValido().Length > 0)
+            {
+                foreach (DataGridViewRow Fila in Dtgconten.Rows)
+                {
+                    string FilaGLosa =( Fila.Cells[xGlosa.Name].Value??"").ToString();
+                    if (FilaGLosa == "" || FilaGLosa == GlosaAnterior)
+                    {
+                        Fila.Cells[xGlosa.Name].Value = txtglosa.Text;
+                    }
+                }
+                GlosaAnterior = txtglosa.TextValido();
+            }
+        }
+
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             PanelRecibo.Visible = false;

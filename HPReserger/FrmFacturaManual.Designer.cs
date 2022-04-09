@@ -320,6 +320,7 @@
             this.txtglosa.TextoDefecto = "Ingrese La Glosa de la Factura";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtglosa.TextChanged += new System.EventHandler(this.txtglosa_TextChanged);
             // 
             // separadorOre1
             // 
