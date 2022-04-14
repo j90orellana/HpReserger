@@ -359,6 +359,7 @@ namespace HPReserger.ModuloFinanzas
                                             }
                                             else
                                             {
+                                                //AQUI VAN LOS VALORES DE LAS LINEAS QUE NO SON DETALLE DE FACTURAS!!
                                                 pos = 1;
                                                 contador = 0;
                                                 SaldoContableAux += (decimal)item["totales"];

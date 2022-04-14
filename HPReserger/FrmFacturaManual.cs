@@ -1462,12 +1462,16 @@ namespace HPReserger
                 if (decimal.Parse(txtmontodetraccion.Text) > 0)
                 {
                     DataTable Tprueba = CapaLogica.BuscarCuentas("DETRACCIONES POR PAGAR", 5);
+                    if (Tprueba.Rows.Count == 0)
+                    {
+                        Tprueba = CapaLogica.BuscarCuentas("IGV. DETRACCIONES", 5);
+                    }
                     if (Tprueba.Rows.Count > 0)
                     {
                         DataRow filita = Tprueba.Rows[0];
                         DataRow fila = TDatos.NewRow();
                         fila[xDebeHaber.DataPropertyName] = "H";
-                        fila[xCuentaContable.DataPropertyName] = filita["cuenta_contable"].ToString().Substring(0, 7);
+                        fila[xCuentaContable.DataPropertyName] = filita["idcuenta"].ToString();//.Substring(0, 7);
                         fila[xdescripcion.DataPropertyName] = filita["cuenta_contable"].ToString();
                         fila[xUsuario.DataPropertyName] = 999;///por defecto
                         fila[xGlosa.DataPropertyName] = glosa;
@@ -1487,10 +1491,18 @@ namespace HPReserger
                 } //////VAMOS CON EL IGV
                 igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
                 string CuentaIgv = "4011101";
+                string NamecuentaIGV = "4011101 - IGV - COMPRAS";
                 DataTable Tpruebas = CapaLogica.BuscarCuentas("IGV % COM", 5);
                 if (Tpruebas.Rows.Count > 0)
                 {
-                    CuentaIgv = (Tpruebas.Rows[0])["cuenta_contable"].ToString();
+                    CuentaIgv = (Tpruebas.Rows[0])["idcuenta"].ToString();
+                    NamecuentaIGV = (Tpruebas.Rows[0])["cuenta_contable"].ToString();
+                }
+                Tpruebas = CapaLogica.BuscarCuentas("I.G.V.", 5);
+                if (Tpruebas.Rows.Count > 0)
+                {
+                    CuentaIgv = (Tpruebas.Rows[0])["idcuenta"].ToString();
+                    NamecuentaIGV = (Tpruebas.Rows[0])["cuenta_contable"].ToString();
                 }
                 /////CALCULO DE LOS REFLEJOS
                 TotalIgv = 0;
@@ -1530,8 +1542,8 @@ namespace HPReserger
                                 {
                                     DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
                                     filaIgv[xDebeHaber.DataPropertyName] = item.Cells[xDebeHaber.Name].Value.ToString();
-                                    filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
-                                    filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
+                                    filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv;//.Substring(0, 7);
+                                    filaIgv[xdescripcion.DataPropertyName] = NamecuentaIGV;
                                     filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
                                     filaIgv[xImporteME.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                     filaIgv[xImporteMN.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
@@ -1577,8 +1589,8 @@ namespace HPReserger
                             {
                                 DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
                                 filaIgv[xDebeHaber.DataPropertyName] = item.Cells[xDebeHaber.Name].Value.ToString();
-                                filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
-                                filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
+                                filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv;//.Substring(0, 7);
+                                filaIgv[xdescripcion.DataPropertyName] = NamecuentaIGV;
                                 filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
                                 filaIgv[xImporteME.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                 filaIgv[xImporteMN.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
@@ -1660,7 +1672,7 @@ namespace HPReserger
                     DataRow filita = Tpruebass.Rows[0];
                     DataRow fila = TDatos.NewRow();
                     fila[xDebeHaber.DataPropertyName] = DH;
-                    fila[xCuentaContable.DataPropertyName] = filita["cuenta_contable"].ToString().Substring(0, 7);
+                    fila[xCuentaContable.DataPropertyName] = filita["idcuenta"].ToString();//.Substring(0, 7);
                     fila[xdescripcion.DataPropertyName] = filita["cuenta_contable"].ToString();
                     fila[xUsuario.DataPropertyName] = 999;///por defecto
                     fila[xGlosa.DataPropertyName] = "Redondeo en registro";
@@ -1973,7 +1985,7 @@ namespace HPReserger
             {
                 foreach (DataGridViewRow Fila in Dtgconten.Rows)
                 {
-                    string FilaGLosa =( Fila.Cells[xGlosa.Name].Value??"").ToString();
+                    string FilaGLosa = (Fila.Cells[xGlosa.Name].Value ?? "").ToString();
                     if (FilaGLosa == "" || FilaGLosa == GlosaAnterior)
                     {
                         Fila.Cells[xGlosa.Name].Value = txtglosa.Text;
