@@ -173,6 +173,9 @@
             this.txtNumRef = new System.Windows.Forms.TextBox();
             this.btnaplicar = new System.Windows.Forms.Button();
             this.chkDocAnulado = new System.Windows.Forms.CheckBox();
+            this.btnFormato = new System.Windows.Forms.Button();
+            this.btnCargar = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBusqueda)).BeginInit();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
@@ -1282,7 +1285,7 @@
             // 
             this.txtnrofactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnrofactura.Location = new System.Drawing.Point(683, 61);
-            this.txtnrofactura.MaxLength = 11;
+            this.txtnrofactura.MaxLength = 50;
             this.txtnrofactura.Name = "txtnrofactura";
             this.txtnrofactura.Size = new System.Drawing.Size(84, 21);
             this.txtnrofactura.TabIndex = 8;
@@ -1824,11 +1827,51 @@
             this.chkDocAnulado.UseVisualStyleBackColor = false;
             this.chkDocAnulado.CheckedChanged += new System.EventHandler(this.chkfac_CheckedChanged);
             // 
+            // btnFormato
+            // 
+            this.btnFormato.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFormato.Image = ((System.Drawing.Image)(resources.GetObject("btnFormato.Image")));
+            this.btnFormato.Location = new System.Drawing.Point(977, 149);
+            this.btnFormato.Name = "btnFormato";
+            this.btnFormato.Size = new System.Drawing.Size(92, 25);
+            this.btnFormato.TabIndex = 327;
+            this.btnFormato.Text = "&Formato";
+            this.btnFormato.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFormato.UseVisualStyleBackColor = true;
+            this.btnFormato.Click += new System.EventHandler(this.btnFormato_Click);
+            // 
+            // btnCargar
+            // 
+            this.btnCargar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargar.Image = ((System.Drawing.Image)(resources.GetObject("btnCargar.Image")));
+            this.btnCargar.Location = new System.Drawing.Point(977, 125);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(92, 25);
+            this.btnCargar.TabIndex = 328;
+            this.btnCargar.Text = "&Cargar";
+            this.btnCargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(977, 112);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(75, 13);
+            this.label12.TabIndex = 329;
+            this.label12.Text = "Carga Masiva";
+            // 
             // frmFacturaManualVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.btnFormato);
+            this.Controls.Add(this.btnCargar);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.chkDocAnulado);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.dtpFechaContable);
@@ -2035,5 +2078,8 @@
         private System.Windows.Forms.ToolStripMenuItem copiarIgvToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copiarIgvToolStripMenuItem1;
         private HpResergerUserControls.ButtonPer btnmasdetracion;
+        private System.Windows.Forms.Button btnFormato;
+        private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.Label label12;
     }
 }

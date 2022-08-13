@@ -934,7 +934,13 @@ namespace HPReserger
                 txttotaldetrac.Text = txttotalME.Text = txttotalAbonadoME.Text = txttotalAbonadoMN.Text = txttotalMN.Text = "0.00";
                 Comprobantes.Clear();
                 txtnrocheque.CargarTextoporDefecto();
-                btnRefrescar_Click(sender, e);
+                //QUITAMOS LA FORMA DE ACTUALIZAR Y SOLO LAS QUITAMOS DE LA TABLA CARGADA
+                btnRefrescar.PerformClick();
+                //Comprobantes.Clear();
+                //foreach (DataGridViewRow item in Dtguias.Rows)
+                //{
+                //    item.Cells[OK.Name]
+                //}
             }
         }
         string[] ContenedorNotasCredito = { "8", "54", "58" };
@@ -1343,34 +1349,37 @@ namespace HPReserger
         DateTime auxtmp;
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
-            if (dtfin.Value < dtinicio.Value)
+            if (Busqueda)
             {
-                auxtmp = dtfin.Value;
-                dtfin.Value = dtinicio.Value;
-                dtinicio.Value = auxtmp;
-            }
-            if (dtpfin.Value < dtpini.Value)
-            {
-                auxtmp = dtpfin.Value;
-                dtpfin.Value = dtpini.Value;
-                dtpini.Value = auxtmp;
-            }
-            if (cboempresa.SelectedValue != null)
-            {
-                if (rdbporPagar.Checked)
+                if (dtfin.Value < dtinicio.Value)
                 {
-                    SacarDatosFiltrados();
-                    //Dtguias.DataSource = CapaLogica.ListarFacturasPorPagarxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
-                    //cbotipo.SelectedIndex = 0;
-                    txttotaldetrac.Text = txttotalMN.Text = "0.00";
-                    btnaceptar.Enabled = false;
-                    FacturasSeleccionas();
-                    CalcularTotal();
+                    auxtmp = dtfin.Value;
+                    dtfin.Value = dtinicio.Value;
+                    dtinicio.Value = auxtmp;
                 }
-                else SacarDatosFiltrados();
-                //Dtguias.DataSource = CapaLogica.ListarFacturasPagadosxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+                if (dtpfin.Value < dtpini.Value)
+                {
+                    auxtmp = dtpfin.Value;
+                    dtpfin.Value = dtpini.Value;
+                    dtpini.Value = auxtmp;
+                }
+                if (cboempresa.SelectedValue != null)
+                {
+                    if (rdbporPagar.Checked)
+                    {
+                        SacarDatosFiltrados();
+                        //Dtguias.DataSource = CapaLogica.ListarFacturasPorPagarxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+                        //cbotipo.SelectedIndex = 0;
+                        txttotaldetrac.Text = txttotalMN.Text = "0.00";
+                        btnaceptar.Enabled = false;
+                        FacturasSeleccionas();
+                        CalcularTotal();
+                    }
+                    else SacarDatosFiltrados();
+                    //Dtguias.DataSource = CapaLogica.ListarFacturasPagadosxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+                }
+                ContarRegistros();
             }
-            ContarRegistros();
         }
         public void SacarDatosFiltrados()
         {
@@ -1386,6 +1395,10 @@ namespace HPReserger
             if (recepcion == 1)
             {
                 filter += $" {(prove == 1 || fecha == 1 ? "and" : "")} fecharecepcion >= '{Configuraciones.ToFechaSql(dtpini.Value)}' and fecharecepcion <= '{Configuraciones.ToFechaSql(dtpfin.Value)}'";
+            }
+            if (txtbuscarDocumentos.TextValido().Length > 0)
+            {
+                filter += $" NroFactura  like '%{txtbuscarDocumentos.TextValido()}%' ";
             }
             DataTable TableFiltrada;
             if (rdbporPagar.Checked)

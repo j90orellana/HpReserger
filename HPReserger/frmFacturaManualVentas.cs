@@ -30,6 +30,7 @@ namespace HPReserger
         public decimal TotalIgv { get; private set; }
         public int TipoIdDoc { get { return (int)cbotipoid.SelectedValue; } set { cbotipoid.SelectedValue = value; } }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        HPResergerCapaDatos.HPResergerCD CapaDatos = new HPResergerCapaDatos.HPResergerCD();
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void FacturaManualVentas_Load(object sender, EventArgs e)
@@ -88,6 +89,9 @@ namespace HPReserger
             dtgBusqueda.Enabled = !a; Dtgconten.ReadOnly = !a;
             btnnuevo.Enabled = !a; btnmodificar.Enabled = !a;
             chkfac.Enabled = !a;
+            //Cargar Masica
+            btnCargar.Enabled = !a;
+            btnFormato.Enabled = !a;
         }
         public void CargarEmpresa() { CapaLogica.TablaEmpresas(cboempresa); }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
@@ -220,8 +224,15 @@ namespace HPReserger
             ModoEdicion(true);
             Limpiar();
             if (Dtgconten.DataSource != null)
-                Dtgconten.DataSource = ((DataTable)Dtgconten.DataSource).Clone();
-            else Dtgconten.DataSource = CapaLogica.FacturaManualVentaDetalleBusqueda("", "", 0, 0);
+            {
+                TContenendor = ((DataTable)Dtgconten.DataSource).Clone();
+                Dtgconten.DataSource = TContenendor;
+            }
+            else
+            {
+                Dtgconten.DataSource = TContenendor;
+                CapaLogica.FacturaManualVentaDetalleBusqueda("", "", 0, 0);
+            }
             btnAceptar.Enabled = true;
             dtpfechaemision_ValueChanged(sender, e);
             cbotipodoc.Text = "BOLETA DE VENTA";
@@ -325,9 +336,11 @@ namespace HPReserger
                 CargarDatos();
                 if (Estado == 2 || Estado == 10 || Estado == 1)
                 {
-                    if (dtgBusqueda.RowCount < _IndicadorFila)
+                    if (dtgBusqueda.RowCount < _IndicadorFila && dtgBusqueda.RowCount > 0)
+                    {
                         _IndicadorFila = dtgBusqueda.RowCount - 1;
-                    dtgBusqueda.CurrentCell = dtgBusqueda[_IndicadorColumna, _IndicadorFila];
+                        dtgBusqueda.CurrentCell = dtgBusqueda[_IndicadorColumna, _IndicadorFila];
+                    }
                 }
                 Estado = 0;
                 cbotipodoc_SelectedIndexChanged(sender, e);
@@ -657,7 +670,10 @@ namespace HPReserger
                         i++;
                     }
                 }
-                if (FacturaEstado == 0) msgOK($"Factura de Venta Guardada Con Éxito"); else msgOK($"Factura de Venta Guardada \nGenerado sus Asiento : {cuo} \nCon Éxito");
+                if (!ProcesoMasivo)
+                    if (FacturaEstado == 0) msgOK($"Factura de Venta Guardada Con Éxito"); else msgOK($"Factura de Venta Guardada \nGenerado sus Asiento : {cuo} \nCon Éxito");
+                else
+                    ResultadoMasivoTXT += $"Documento Guardado:Ruc:{txtdoc  .Text} Comprobante:{txtcodfactura.Text}-{txtnrofactura.Text}  Generado sus Asiento:{ cuo} \n";
             }
             //////ACTUALIZANDO
             if (Estado == 2)
@@ -720,7 +736,8 @@ namespace HPReserger
             ModoEdicion(false);
             btnAceptar.Enabled = false;
             Limpiar();
-            CargarDatos();
+            if (!ProcesoMasivo)
+                CargarDatos();
             if (Estado == 2 || Estado == 10)
             {
                 foreach (DataGridViewRow item in dtgBusqueda.Rows)
@@ -1688,6 +1705,205 @@ namespace HPReserger
             }
         }
 
+        private void btnFormato_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog SF = new SaveFileDialog();
+            SF.Filter = "Archivos de Excel *.xlsx|*.xlsx";
+            SF.FileName = "Formato de Carga de Ventas";
+            var result = SF.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                File.WriteAllBytes(SF.FileName, Resource1.LISTADO_DE_VENTAS);
+                System.Diagnostics.Process.Start(SF.FileName);
+            }
+        }
+        string ResultadoMasivoTXT = "";
+        Boolean ProcesoMasivo = false;
+        DataTable TdatosExcel;
+        private Boolean CargarDatosDelExcel(string Ruta)
+        {
+            TdatosExcel = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, 1, 6, 11);
+            if (TdatosExcel.Rows.Count == 0)
+            {
+                return false;
+            }
+            return true;
+            //List<string> Listado = new List<string>();
+            //foreach (string item in HPResergerFunciones.Utilitarios.ListarHojasDeunExcel(Ruta))
+            //{
+            //    Listado.Add(item);
+            //}
+            //dtgconten.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, Listado[0].ToString());
+        }
+        DataTable TContenendor;
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openfile = new OpenFileDialog();
+            openfile.Filter = "Archivos de Excel *.xlsx|*.xlsx";
+            DialogResult resultado = openfile.ShowDialog();
+            if (resultado == DialogResult.OK)
+            {
+                if (File.Exists(openfile.FileName))
+                {
+                    if (CargarDatosDelExcel(openfile.FileName))
+                    {
+                        //VALIDAMOS LAS CUENTAS y numeros de ruc
+                        List<String> ListaCuentas = new List<string>();
+                        List<String> ListaRuc = new List<string>();
+                        string CuentaContable = "", NroRuc = "";
+                        ResultadoMasivoTXT = "";
+                        string cadenaResultado = "";
+
+                        int i = 0;
+                        foreach (DataRow item in TdatosExcel.Rows)
+                        {
+                            if (i > 0)
+                            {
+                                CuentaContable = item[19].ToString();  //CUENTA CONTABLE
+                                NroRuc = item[7].ToString(); //RUC PROVEEDOR
+                                if (!ListaCuentas.Contains(CuentaContable)) ListaCuentas.Add(CuentaContable);
+                                if (!ListaRuc.Contains(NroRuc)) ListaRuc.Add(NroRuc);
+                                if (item[31].ToString() == "")
+                                    cadenaResultado += $"En la Columna 31: Fila:{i + 1}, debe Registrar Tipo Documento del Cliente\n";
+                            }
+                            i++;
+                        }
+                        //fin de cargas de listas
+                        foreach (string Cuenta in ListaCuentas)
+                        {
+                            if (CapaDatos.BuscarCuentasQuery(Cuenta).Rows.Count == 0)
+                                cadenaResultado += $"No existe la cuenta: {Cuenta}\n";                          
+                        }
+                        foreach (string ruc in ListaRuc)
+                        {
+                            if (CapaDatos.BuscarClienteQuery(ruc).Rows.Count == 0)
+                                cadenaResultado += $"No existe el Cliente: {ruc}\n";
+                        }
+                        if (cadenaResultado != "")
+                        {
+                            string path = $"{Application.CommonAppDataPath}";
+                            //if (File.Exists(path)) File.Delete(path);
+                            path = Path.Combine(path, "Resultado.txt");
+                            File.WriteAllText(path, cadenaResultado);
+                            System.Diagnostics.Process.Start(path);
+                        }
+                        //SI CADENA RESULTADO ES IGUAL A VACIO, ES PORQUE SI EXISTEN LOS DATOS A CARGAR
+                        else
+                        {
+                            if (msgp("Se Cargo el Excel con exito, Desea proceder con los Registros") == DialogResult.Yes)
+                            {
+                                ProcesoMasivo = true;
+                                //PROCEDEMOS CON LA CARGA MASIVA
+                                i = 0;
+                                foreach (DataRow item in TdatosExcel.Rows)
+                                {
+                                    if (i > 0)
+                                    {
+                                        btnnuevo.PerformClick();
+                                        //CARGA DE LA CABECERA
+                                        cbodetraccion.Text = "NO";
+                                        int val = int.Parse(item[31].ToString());
+                                        switch (val)
+                                        {
+                                            case 6: cbotipoid.SelectedValue = 5; break;
+                                            case 1: cbotipoid.SelectedValue = 1; break;
+                                            case 7: cbotipoid.SelectedValue = 1; break;
+                                            default:
+                                                switch (item[28].ToString().Length)
+                                                {
+                                                    case 11: cbotipoid.SelectedValue = 6; break;
+                                                    case 8: cbotipoid.SelectedValue = 1; break;
+                                                    default:
+                                                        cbotipoid.SelectedValue = 1; break;
+                                                }
+                                                break;
+                                        }
+                                        string NDebe = "D", NHaber = "H";
+                                        txtdoc.Text = item[7].ToString();
+                                        dtpFechaContable.Value = DateTime.Parse(item[2].ToString());
+                                        dtpfechaemision.Value = DateTime.Parse(item[5].ToString());
+                                        dtpfechavence.Value = DateTime.Parse(item[6].ToString());
+                                        string[] Valr = item[4].ToString().Split('-');
+                                        txtcodfactura.Text = Valr[0];
+                                        txtnrofactura.Text = Valr[1];
+                                        cbomoneda.SelectedIndex = item[16].ToString() == "S" ? 0 : 1;
+                                        cbotipodoc.SelectedValue = 1 + int.Parse(item[3].ToString());
+                                        //
+                                        txttotalfac.Text = (decimal.Parse(item[9].ToString()) + decimal.Parse(item[13].ToString())).ToString("n2");
+                                        txtglosa.Text = item[20].ToString() == "" ? "CARGA MASIVA" : item[18].ToString();
+                                        //CARGA DEL DETALLE
+                                        btnAdd.PerformClick();
+                                        TContenendor.Rows.Add(TContenendor.NewRow());
+                                        if ((int)cbotipodoc.SelectedValue == 8) //LAS NOTAS VOLTEAN LOS ORIGENES
+                                        {
+                                            NDebe = "H";
+                                            NHaber = "D";
+                                            string[] Numref = item[26].ToString().Split('-');
+                                            txtSerieRef.Text = Numref[0];
+                                            txtNumRef.Text = Numref[1];
+                                            chkfac.Checked = true;
+                                        }
+                                        Dtgconten.Rows[0].Cells[xDebeHaber.Name].Value = NHaber;
+                                        Dtgconten.Rows[0].Cells[xGlosa.Name].Value = txtglosa.TextValido();
+                                        Dtgconten.Rows[0].Cells[xCuentaContable.Name].Value = item[19].ToString();
+                                        if (item[16].ToString() == "S")
+                                        {
+                                            Dtgconten.Rows[0].Cells[xImporteMN.Name].Value = decimal.Parse(item[9].ToString());
+                                        }
+                                        else
+                                        {
+                                            Dtgconten.Rows[0].Cells[xImporteME.Name].Value = decimal.Parse(item[9].ToString());
+                                        }
+                                        Dtgconten.Rows[0].Cells[xTipoIgvg.Name].Value = decimal.Parse(item[13].ToString()) > 0 ? 1 : 4;
+                                        TContenendor.AcceptChanges();
+                                        //
+                                        i++;
+                                        TContenendor.Rows.Add(TContenendor.NewRow());
+                                        Dtgconten.Rows[1].Cells[xDebeHaber.Name].Value = NDebe;
+                                        Dtgconten.Rows[1].Cells[xGlosa.Name].Value = txtglosa.TextValido();
+                                        Dtgconten.Rows[1].Cells[xCuentaContable.Name].Value = item[22].ToString();
+                                        if (item[16].ToString() == "S")
+                                        {
+                                            Dtgconten.Rows[1].Cells[xImporteMN.Name].Value = decimal.Parse(item[9].ToString()) + decimal.Parse(item[13].ToString());
+                                        }
+                                        else
+                                        {
+                                            Dtgconten.Rows[1].Cells[xImporteME.Name].Value = decimal.Parse(item[9].ToString()) + decimal.Parse(item[13].ToString());
+                                        }
+                                        TContenendor.AcceptChanges();
+                                        btnAdd.PerformClick();
+                                        btnvistaPrevia.PerformClick();
+                                        //Grabado
+                                        btnAceptar.PerformClick();
+                                        //return;
+                                    }
+                                    i++;
+                                }
+                            }
+                            if (ResultadoMasivoTXT.Length > 0)
+                            {
+                                string path = $"{Application.CommonAppDataPath}";
+                                //if (File.Exists(path)) File.Delete(path);
+                                path = Path.Combine(path, $"Reporte Facturas Ventas {DateTime.Now.ToString("dd-MM-yy")}.txt");
+                                File.WriteAllText(path, ResultadoMasivoTXT);
+                                System.Diagnostics.Process.Start(path);
+                            }
+                            ProcesoMasivo = false;
+                            CargarDatos();
+                        }
+                    }
+                    else
+                    {
+                        msgError("No se puedo Cargar el Excel");
+                    }
+                }
+                else
+                {
+                    msgError("Hubo un Problema con el Archivo");
+                }
+            }
+        }
+        public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         private void btneliminar_Click(object sender, EventArgs e)
         {
             if (_TipoDoc == 0 || _TipoDoc == 1) OpcionBusqueda = 1;

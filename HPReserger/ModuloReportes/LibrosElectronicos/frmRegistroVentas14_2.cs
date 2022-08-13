@@ -351,9 +351,10 @@ namespace HPReserger
                                         campo[c++] = "01/01/0001";//10
                                         campo[c++] = ((int)fila[xidC.DataPropertyName]).ToString("00");//2
                                         campo[c++] = fila[xSerieCom.DataPropertyName].ToString().Trim();//0-20
-                                        campo[c++] = fila[xNumCom.DataPropertyName].ToString().Trim();//0-20
+                                        string[] Tfilas = fila[xNumCom.DataPropertyName].ToString().Trim().Split('/');
+                                        campo[c++] = Tfilas[0].ToString();
                                         //Para Efectos de Registro de tickets
-                                        campo[c++] = "";//0-20
+                                        campo[c++] =Tfilas[1].ToString();//0-20
                                         //10
                                         campo[c++] = (int.Parse(fila[xTipoIdPro.DataPropertyName].ToString())).ToString();//1
                                         campo[c++] = fila[xNumpro.DataPropertyName].ToString() == "" ? "-" : fila[xNumpro.DataPropertyName].ToString().Trim();//15

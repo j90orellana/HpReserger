@@ -1309,6 +1309,30 @@ namespace HPResergerCapaDatos
         {
             return bd.DataTableFromProcedure("usp_ListarCuentas", null, null, null);
         }
+        public DataTable BuscarCuentasQuery(string cuenta)
+        {
+            string[] parametros = { "@id" };
+            object[] valor = { cuenta };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT Id_Cuenta_Contable,Cuenta_Contable FROM TBL_Cuenta_Contable WHERE Id_Cuenta_Contable = @id";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
+        public DataTable BuscarProveedorQuery(string Name)
+        {
+            string[] parametros = { "@id" };
+            object[] valor = { Name };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT Tipo_Id,RUC,razon_social,nombre_comercial FROM TBL_Proveedor WHERE ruc = @id";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
+        public DataTable BuscarClienteQuery(string Name)
+        {
+            string[] parametros = { "@id" };
+            object[] valor = { Name };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT Tipo_Id_Cli,Nro_Id_Cli,Apepat_RazSoc_Cli,Apemat_Cli,Nombres_Cli FROM TBL_Cliente WHERE Nro_Id_Cli = @id";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
            , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime FechaAsiento, int ctabancaria,
             string fkasi, string nroop, int tipopago)
@@ -4502,9 +4526,16 @@ namespace HPResergerCapaDatos
         }
         public DataTable Periodos(int opcion, int empresa, DateTime fechas)
         {
-            string[] parametros = { "@Opcion", "@empresa", "@fechas" };
-            object[] valores = { opcion, empresa, fechas };
-            return bd.DataTableFromProcedure("usp_Periodos", parametros, valores, null);
+            try
+            {
+                string[] parametros = { "@Opcion", "@empresa", "@fechas" };
+                object[] valores = { opcion, empresa, fechas };
+                return bd.DataTableFromProcedure("usp_Periodos", parametros, valores, null);
+            }
+            catch (Exception)
+            {
+                return Periodos(opcion, 0, DateTime.Now);
+            }
         }
         public DataTable Periodos(string @empresa, string mes, string año, string estado)
         {
@@ -4773,7 +4804,7 @@ namespace HPResergerCapaDatos
         }
         public DataTable CuentaBancaria(int @Opcion, int @Id, int @Empresa, int @Banco, int @Moneda, int @Tipo, string @Nrocuenta, string @Nrocuentacci, int @Usuario)
         {
-            string[] parametros = { "@Opcion", "@Id", "@Empresa", "@Banco", "@Moneda", "@Tipo", "@Nrocuenta", "@Nrocuentacci", "@Usuario" };
+            string[] parametros = { "@Opcion", "@Id", "@Empresa", "@Banco", "@Moneda", "@Tipo", "@Nrocuenta", "@Nrocuentacci", "@Usuario"};
             object[] valores = { @Opcion, @Id, @Empresa, @Banco, @Moneda, @Tipo, @Nrocuenta, @Nrocuentacci, @Usuario };
             return bd.DataTableFromProcedure("usp_CuentaBancaria", parametros, valores, null);
         }

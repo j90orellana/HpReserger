@@ -438,9 +438,13 @@ namespace HPReserger
                                         campo[c++] = "01/01/0001";
                                         campo[c++] = (int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00");
                                         campo[c++] = fila[xSerieCom.DataPropertyName].ToString().Trim();
-                                        campo[c++] = fila[xNumCom.DataPropertyName].ToString().Trim();
+                                        string[] Tfilas = new string[2];
+                                        Tfilas[0] = "";
+                                        Tfilas[1] = "";
+                                        Tfilas = fila[xNumCom.DataPropertyName].ToString().Trim().Split('/');
+                                        campo[c++] = int.Parse(Tfilas[0].ToString()).ToString();
                                         //En caso de optar por anotar el importe total de las operaciones realizadas diariamente, registrar el número final. 
-                                        campo[c++] = "";
+                                        campo[c++] = Tfilas.Length > 1 ? int.Parse(Tfilas[1].ToString()).ToString() : "";//0-20
                                         //10
                                         campo[c++] = (int.Parse(fila[xTipoIdPro.DataPropertyName].ToString())).ToString();
                                         campo[c++] = fila[xNumpro.DataPropertyName].ToString() == "" ? "-" : fila[xNumpro.DataPropertyName].ToString().Trim();
@@ -502,9 +506,9 @@ namespace HPReserger
                                         if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
                                         {
                                             //if ((decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString())) > 0)
-                                                //Estado = 1;
+                                            //Estado = 1;
                                             //else
-                                                Estado = 1;
+                                            Estado = 1;
                                         }
                                         else
                                         {
@@ -577,7 +581,10 @@ namespace HPReserger
             TDatos = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, 1, 7, 11);
             for (int i = 0; i < 5; i++)
             {
-                TDatos.Rows.RemoveAt(0);
+                if (i > 0)
+                {
+                    TDatos.Rows.RemoveAt(0);
+                }
             }
             TDatos.Rows.RemoveAt(TDatos.Rows.Count - 1);
             int x = 0;

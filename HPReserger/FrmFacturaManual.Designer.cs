@@ -196,6 +196,10 @@
             this.txtNombreUsuarioCompensa = new HpResergerUserControls.TextBoxPer();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.txtBusTipoDoc = new HpResergerUserControls.TextBoxPer();
+            this.btnCargar = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnFormato = new System.Windows.Forms.Button();
+            this.chkQuitarDetraccionaFactura = new System.Windows.Forms.CheckBox();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -2184,11 +2188,61 @@
             this.txtBusTipoDoc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtBusTipoDoc.TextChanged += new System.EventHandler(this.textBoxPer2_TextChanged);
             // 
+            // btnCargar
+            // 
+            this.btnCargar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargar.Image = ((System.Drawing.Image)(resources.GetObject("btnCargar.Image")));
+            this.btnCargar.Location = new System.Drawing.Point(980, 131);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(92, 25);
+            this.btnCargar.TabIndex = 0;
+            this.btnCargar.Text = "&Cargar";
+            this.btnCargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(980, 118);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(75, 13);
+            this.label12.TabIndex = 326;
+            this.label12.Text = "Carga Masiva";
+            // 
+            // btnFormato
+            // 
+            this.btnFormato.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFormato.Image = ((System.Drawing.Image)(resources.GetObject("btnFormato.Image")));
+            this.btnFormato.Location = new System.Drawing.Point(980, 155);
+            this.btnFormato.Name = "btnFormato";
+            this.btnFormato.Size = new System.Drawing.Size(92, 25);
+            this.btnFormato.TabIndex = 0;
+            this.btnFormato.Text = "&Formato";
+            this.btnFormato.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFormato.UseVisualStyleBackColor = true;
+            this.btnFormato.Click += new System.EventHandler(this.btnFormato_Click);
+            // 
+            // chkQuitarDetraccionaFactura
+            // 
+            this.chkQuitarDetraccionaFactura.AutoSize = true;
+            this.chkQuitarDetraccionaFactura.BackColor = System.Drawing.Color.Transparent;
+            this.chkQuitarDetraccionaFactura.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkQuitarDetraccionaFactura.Location = new System.Drawing.Point(399, 209);
+            this.chkQuitarDetraccionaFactura.Name = "chkQuitarDetraccionaFactura";
+            this.chkQuitarDetraccionaFactura.Size = new System.Drawing.Size(154, 17);
+            this.chkQuitarDetraccionaFactura.TabIndex = 325;
+            this.chkQuitarDetraccionaFactura.Text = "Reducir Detraccion de 42";
+            this.chkQuitarDetraccionaFactura.UseVisualStyleBackColor = false;
+            // 
             // FrmFacturaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.chkQuitarDetraccionaFactura);
             this.Controls.Add(this.chkActivoFijo);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnvistaPrevia);
@@ -2197,6 +2251,8 @@
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnFormato82);
             this.Controls.Add(this.btnmodificar);
+            this.Controls.Add(this.btnFormato);
+            this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnAceptar);
@@ -2259,6 +2315,7 @@
             this.Controls.Add(this.PanelNotaCredito);
             this.Controls.Add(this.PanelFactura);
             this.Controls.Add(this.PanelRecibo);
+            this.Controls.Add(this.label12);
             this.MinimumSize = new System.Drawing.Size(1097, 700);
             this.Name = "FrmFacturaManual";
             this.Nombre = "Factura Manual Compras";
@@ -2432,5 +2489,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yNroComprobanteRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn xusuarioCompensa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xActivoFijo;
+        private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnFormato;
+        private System.Windows.Forms.CheckBox chkQuitarDetraccionaFactura;
     }
 }

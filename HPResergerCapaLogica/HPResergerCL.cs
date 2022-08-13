@@ -2787,6 +2787,10 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ConciliacionDetalle(@opcion, @fkid, @pkid, @tipo, grupo, @cuo, @Fecha, FechaEjecuta, @monto, @operacion, @glosa, @glosa2,
                 @idasiento, @estado, @seguimiento, proveedor);
         }
+        public DataTable ConciliacionDetalleEliminarRegistro(int @pkid)
+        {
+            return cdOrdenPedido.ConciliacionDetalle(100, 0, @pkid, 0, null, "", DateTime.Now, DateTime.Now, 0, "", "", "", 0, 0, "", "");
+        }
         public DataTable Conciliacion_Busqueda(string empresa, string banco, string nrocuenta, DateTime FechaIni, DateTime FechaFin, int fecha)
         {
             return cdOrdenPedido.Conciliacion_Busqueda(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
@@ -3104,9 +3108,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.LimpiezaDetalleAsientos(cuo, proyecto);
         }
-        public DataTable ListarFacturasCompensaciones(string idempleado, int empresa, int tipo,int idmoneda)
+        public DataTable ListarFacturasCompensaciones(string idempleado, int empresa, int tipo, int idmoneda)
         {
-            return cdOrdenPedido.ListarFacturasCompensaciones(idempleado, empresa, tipo,idmoneda);
+            return cdOrdenPedido.ListarFacturasCompensaciones(idempleado, empresa, tipo, idmoneda);
         }
         public DataTable ListarFacturasCompensaciones(string idempleado, int empresa)
         {

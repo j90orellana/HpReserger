@@ -771,6 +771,11 @@
     <Compile Include="ModuloRRHH\frmVacacionesResumen.Designer.cs">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="rptConciliacionesReporte.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2437,6 +2442,10 @@
     <EmbeddedResource Include="ModuloRRHH\frmVacacionesResumen.resx">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptConciliacionesReporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptConciliacionesReporte.cs</LastGenOutput>
@@ -3171,6 +3180,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\LISTADO DE COMPRAS.xlsx" />
+    <None Include="Resources\LISTADO DE VENTAS.xlsx" />
     <None Include="SiGeDataSet.xsc">
       <DependentUpon>SiGeDataSet.xsd</DependentUpon>
     </None>
@@ -3407,6 +3418,9 @@
     <Content Include="Datos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ATKTKTK.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="EMPRESA.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

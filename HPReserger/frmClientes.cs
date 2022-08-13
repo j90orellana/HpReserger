@@ -453,6 +453,8 @@ namespace HPReserger
             DataRow filita = (CapaLogica.ClienteSiguienteCodigo()).Rows[0];
             txtcodigo.Text = filita["total"].ToString(); ;
             Codigo = (int)filita["total"];
+            cbosexo.SelectedItem = 1;
+            cbocivil.SelectedItem = 3;
         }
         private void LimpiarControles(params object[] control)
         {
@@ -648,7 +650,41 @@ namespace HPReserger
         {
             LimpiarBusquedas();
         }
-
+        public async Task<string> GetHTTPss(string ruc)
+        {
+            string url = Configuraciones.ApiRuc + ruc;// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            oRequest.Headers.Clear();
+            oRequest.Headers.Add(HttpRequestHeader.Authorization, "Bearer $apis-token-1887.qDw9MbrxloHL-d0c8MlKO44xEQ3S-STB");
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        public async void BuscarProveedorAPi(string ruc)
+        {
+            try
+            {
+                string respuesta = await GetHTTPss(ruc);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<Proveedor> LstData = JsonConvert.DeserializeObject<List<Proveedor>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                     txtnombre.Text = LstData[0].nombre;
+                    //cbodocumento.SelectedValue = LstData[0].tipoDocumento - 1;
+                    txtdireccion.Text = LstData[0].direccion + " - " + LstData[0].distrito + " - " + LstData[0].departamento;
+                    if (txtdireccion.Text == "- -  - ") txtdireccion.Text = "-";
+                    cbopersona.SelectedIndex = 0;
+                    //if (LstData[0].condicion == "HABIDO") cbocondicion.SelectedIndex = 0; else cbocondicion.SelectedIndex = 1;
+                    //if (LstData[0].estado == "ACTIVO") cboestado.SelectedValue = 1;
+                    //if (LstData[0].estado == "SUSPENSION TEMPORAL") cboestado.SelectedValue = 2;
+                    //if (LstData[0].estado == "BAJA DEFINITIVA") cboestado.SelectedValue = 3;
+                    //if (LstData[0].estado == "BAJA DE OFICIO") cboestado.SelectedValue = 3;
+                }
+            }
+            catch (Exception e) { }
+        }
         private void txtnroid_TextChanged(object sender, EventArgs e)
         {
             if (estado == 1)
@@ -657,6 +693,35 @@ namespace HPReserger
                     //ANULADO POR FALTA DE DATA DE LA API RENIEC
                     BuscarReniecAPiToken(txtnroid.Text);
                 }
+            if (estado == 1)//cuando vamos a ingresar uno nuevo
+                if (txtnroid.Text.Length == 11)
+                {
+                    //BuscarProveedorAPiToken(txtnumeroidentidad.Text);
+                    BuscarProveedorAPi(txtnroid.Text);
+                }
+        }
+        public class Proveedor
+        {
+            public string nombre { get; set; }
+            public int tipoDocumento { get; set; }
+            public string numeroDocumento { get; set; }
+            public string estado { get; set; }
+            public string condicion { get; set; }
+            public string direccion { get; set; }
+            public string ubigeo { get; set; }
+            public string viaTipo { get; set; }
+            public string viaNombre { get; set; }
+            public string zonaCodigo { get; set; }
+            public string zonaTipo { get; set; }
+            public string numero { get; set; }
+            public string interior { get; set; }
+            public string lote { get; set; }
+            public string dpto { get; set; }
+            public string manzana { get; set; }
+            public string kilometro { get; set; }
+            public string distrito { get; set; }
+            public string provincia { get; set; }
+            public string departamento { get; set; }
         }
         public async Task<string> GetHTTPs(string dni)
         {
@@ -681,6 +746,7 @@ namespace HPReserger
                     txtapetpat.Text = data.apellidoPaterno;
                     txtapemat.Text = data.apellidoMaterno;
                     txtnombre.Text = data.nombres;
+                    cbopersona.SelectedIndex = 1;
                     cbotipoid.SelectedValue = 1;
 
                 }

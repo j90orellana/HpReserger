@@ -13,7 +13,8 @@ namespace HPReserger
 {
     public class Actualizaciones
     {
-        public static string token = "tHlGXtx-5QYAAAAAAAAAAUbRpK7ycTQ2Dn3GEvHxTwSk0G6T14yLLggLN8llTXOr";
+        //public static string token = "tHlGXtx-5QYAAAAAAAAAAUbRpK7ycTQ2Dn3GEvHxTwSk0G6T14yLLggLN8llTXOr";
+        public static string token = "";
         public static string folder = "SISGEM";
         public static string file = "version.txt";
         public static string servidor = "";
@@ -23,25 +24,29 @@ namespace HPReserger
         {
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            token = File.ReadAllText("ATKTKTK.txt");
             string version = fvi.FileVersion;
-            {
-                var task = Task.Run((Func<Task>)getVersion);
-                task.Wait();
-            }
-            //{
-            //    var task = Task.Run((Func<Task>)ListarDatosCuenta);
-            //    task.Wait();
-            //}
+            //ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             //{
             //    var task = Task.Run((Func<Task>)ListarCarpetaRaiz);
             //    task.Wait();
             //}
+            //{
+            //    var task = Task.Run((Func<Task>)ListarDatosCuenta);
+            //    task.Wait();
+            //}
+            {
+                var task = Task.Run((Func<Task>)getVersion);
+                task.Wait();
+            }
             //{
             //    var task = Task.Run((Func<Task>)DescargarArchivo);
             //    task.Wait();
             //}
 
             if (servidor == "error") return false;
+            if (servidor == "") { System.Windows.Forms.MessageBox.Show("Hubo un Error con el Token de Actualización", "Error al Descargar"); return false; }
             // pasamos a números (separando los puntos)
             // EJ: "1.0.2.5" => [1, 0, 2, 5]
             List<int> v1, v2;
@@ -97,7 +102,7 @@ namespace HPReserger
             {
                 using (var dbx = new DropboxClient(token))
                 {
-                    var list = await dbx.Files.ListFolderAsync(string.Empty);
+                    var list = await dbx.Files.ListFolderAsync("");
                     // show folders then files
                     foreach (var item in list.Entries.Where(i => i.IsFolder))
                     {
@@ -133,8 +138,8 @@ namespace HPReserger
                 using (var dbx = new DropboxClient(token))
                 {
                     //string Path = $"/{folder}/{file}";
-                    string PathVersion = $"/sisgem/{Empresa}/version.txt";
-                    string PathCambios = $"/sisgem/{Empresa}/Cambios.txt";
+                    string PathVersion = $"/SISGEM/{Empresa}/version.txt";
+                    string PathCambios = $"/SISGEM/{Empresa}/Cambios.txt";
                     var ResponseVersion = await dbx.Files.DownloadAsync(PathVersion);
                     servidor = await ResponseVersion.GetContentAsStringAsync();
                     Console.WriteLine(servidor);

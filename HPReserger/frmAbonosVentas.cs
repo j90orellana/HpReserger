@@ -1121,6 +1121,18 @@ namespace HPReserger
                     BusquedaDatos();
                 }
             }
+            //else if (x == -1)
+            //{
+            //    if (y == dtgconten.Columns[xopcion.Name].Index)
+            //    {
+            //        //dtgconten.Sort(xopcion, ListSortDirection.Descending);
+            //        int val = (int)dtgconten[xopcion.Name, 0].Value;
+            //        foreach (DataGridViewRow item in dtgconten.Rows)
+            //        {
+            //            item.Cells[xopcion.Name].Value = val == 1 ? 0 : 1;
+            //        }
+            //    }
+            //}
         }
         frmProcesando frmproce;
         private void btnpdf_Click(object sender, EventArgs e)

@@ -76,7 +76,7 @@ namespace HPReserger.ModuloFinanzas
             DataTable TDatosAux = CapaLogica.ConciliacionCabeceraExiste(pkEmpresa, comboMesAño1.FechaFinMes, pkidCtaBanco);
             if (TDatosAux.Rows.Count > 0)
             {
-                Continuar = true;
+                Continuacion = Continuar = true;
                 PkId = (int)TDatosAux.Rows[0]["pkid"];
                 btnReversar.Visible = true;
                 CargamosDatosParaContinuar();
@@ -219,14 +219,14 @@ namespace HPReserger.ModuloFinanzas
             if (TdatosExcel.Rows.Count != 0)
             {
                 DataView dv = new DataView(TdatosExcel);
-                dv.Sort = "index desc, monto asc";
+                dv.Sort = "index desc,fecha desc";
                 dtgContenExcel.DataSource = TdatosExcel = dv.ToTable();
             }
             //Ordenar TAbla del Sistema
             if (TdatosSist.Rows.Count != 0)
             {
                 DataView dv = new DataView(TdatosSist);
-                dv.Sort = "index desc, monto asc";
+                dv.Sort = "index desc, fecha desc";
                 dtgContenSistema.DataSource = TdatosSist = dv.ToTable();
             }
             SaldoContable = CalcularSaldoFinal(SaldoContableInicial);
@@ -249,7 +249,7 @@ namespace HPReserger.ModuloFinanzas
             SaldoContable = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(comboMesAño1.FechaInicioMes.Year, 1, 1), comboMesAño1.FechaFinMes, NroCuenta, pkMoneda).Rows[0]["monto"];
             SaldoContableInicial = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(FechaAux.Year, 1, 1), FechaAux, NroCuenta, pkMoneda).Rows[0]["monto"];
 
-            if (SaldoContableInicial == 0) msgError("Saldo Inicial en Cero");
+            if (SaldoContableInicial == 0) { msgError("Saldo Inicial en Cero"); }
             TdatosSist = CapaLogica.MovimientoBancariosxEmpresa(pkEmpresa, comboMesAño1.FechaInicioMes, comboMesAño1.FechaFinMes, NroCuenta, pkMoneda, pkidCtaBanco);
         }
         private void BuscanEnSistemMovimientosExcel()
@@ -273,7 +273,7 @@ namespace HPReserger.ModuloFinanzas
         }
         private Boolean FormatearlaTabla(int Banco)
         {
-            if (Banco == 1) //Banco BCP
+            if (CodSunat == 2) //Banco BCP
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -352,7 +352,7 @@ namespace HPReserger.ModuloFinanzas
                     item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (pkBanco == 3) // para el banco continental
+            else if (CodSunat == 11) // para el banco continental
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -392,7 +392,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (pkBanco == 2) // Banco ScotiaBank
+            else if (CodSunat == 9) // Banco ScotiaBank
             {
                 try
                 {
@@ -439,7 +439,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (pkBanco == 5) //Banco de la Nacion
+            else if (CodSunat == 18) //Banco de la Nacion
             {
                 int PosDelete = 7, i = 0;
                 foreach (DataRow item in TdatosExcel.Rows)
@@ -503,7 +503,7 @@ namespace HPReserger.ModuloFinanzas
         decimal EstadoCuenta = 0;
         private Boolean ProcesodeAnalisis(int pkBanco, string nroCuenta)
         {
-            if (pkBanco == 1) //Banco BCP
+            if (CodSunat == 2) //Banco BCP
             {
                 //validamos Que pertenezca ala misma cuenta
                 if (TdatosExcel.Columns.Count != 11)
@@ -512,7 +512,9 @@ namespace HPReserger.ModuloFinanzas
                     return false;
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[5][4].ToString());
-                EstadoCuentaInicial = (-1 * decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][3].ToString())) + decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][4].ToString()); ///////////////////////////////////////
+                int x = 1;
+                if (TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][3].ToString() == "") x++;
+                EstadoCuentaInicial = (-1 * decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - x][3].ToString())) + decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - x][4].ToString()); ///////////////////////////////////////
                 string ValCuenta = TdatosExcel.Rows[0][1].ToString();
                 if (!ValCuenta.Contains(nroCuenta))
                 {
@@ -520,24 +522,33 @@ namespace HPReserger.ModuloFinanzas
                     return false;
                 }
                 int pos = 6; int c = 1;
-                DateTime FechaMin = new DateTime(2200, 1, 1);
-                DateTime FechaMax = new DateTime(1900, 1, 1);
-                foreach (DataRow item in TdatosExcel.Rows)
+                try
                 {
-                    if (c++ >= pos)
+                    DateTime FechaMin = new DateTime(2200, 1, 1);
+                    DateTime FechaMax = new DateTime(1900, 1, 1);
+                    foreach (DataRow item in TdatosExcel.Rows)
                     {
-                        DateTime Fecha = DateTime.Parse(item[0].ToString());
-                        if (Fecha < FechaMin) FechaMin = Fecha;
-                        if (Fecha > FechaMax) FechaMax = Fecha;
+                        if (c++ >= pos)
+                        {
+                            DateTime Fecha = DateTime.Parse(item[0].ToString());
+                            if (Fecha < FechaMin) FechaMin = Fecha;
+                            if (Fecha > FechaMax) FechaMax = Fecha;
+                        }
                     }
+
+                    DateTime FechaCombo = comboMesAño1.GetFecha();
+                    if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
+                    {
+                        msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
+                        return false;
+                    }
+                    return true;
                 }
-                DateTime FechaCombo = comboMesAño1.GetFecha();
-                if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
+                catch (Exception)
                 {
-                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
+                    msgError($"Hubo un error en el formato de la fecha de la Fila:{c}");
                     return false;
                 }
-                return true;
             }
             else if (pkBanco == 10) //Pichincha
             {
@@ -577,7 +588,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (pkBanco == 3) //BBVA continental
+            else if (CodSunat == 11) //BBVA continental
             {
                 if (TdatosExcel.Columns.Count != 7)
                 {
@@ -632,7 +643,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (pkBanco == 2)//ScotiaBank
+            else if (CodSunat == 9)//ScotiaBank
             {
                 if (TdatosExcel.Columns.Count != 17)
                 {
@@ -685,7 +696,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (pkBanco == 5)// Banco de la Nacion
+            else if (CodSunat == 18)// Banco de la Nacion
             {
                 if (TdatosExcel.Columns.Count <= 5)
                 {
@@ -734,7 +745,7 @@ namespace HPReserger.ModuloFinanzas
                         else item.Delete();
                     }
                 }
-                if (pkBanco == 5 && c == 18)//banco de la nacion
+                if (CodSunat == 18 && c == 18)//banco de la nacion
                 {
                     FechaMin = FechaMax = DateTime.Parse(TdatosExcel.Rows[3][5].ToString());
                 }
@@ -859,11 +870,13 @@ namespace HPReserger.ModuloFinanzas
         int pkidCtaBanco = 0;
         string NroCuenta = "";
         string CuentaContable = "";
+        int CodSunat = 0;
         private void cboCuentasBancarias_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboCuentasBancarias.SelectedValue != null)
             {
                 pkBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["banco"];
+                CodSunat = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["codsunat"];
                 NroCuenta = ((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Nro_Cta"].ToString();
                 pkMoneda = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Moneda"];
                 pkidCtaBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Id_Tipo_Cta"];
@@ -1104,6 +1117,8 @@ namespace HPReserger.ModuloFinanzas
 
                 Cfilas++;
                 //Asignamos los Montos de Sumatoria
+                dtgContenSistema.SuspendLayout();
+                dtgContenExcel.SuspendLayout();
                 foreach (DataRow item in TdatosExcel.Rows)
                     if ((int)item[xok.DataPropertyName] == 1)
                         item[xGrupo.DataPropertyName] = Cfilas;
@@ -1112,9 +1127,13 @@ namespace HPReserger.ModuloFinanzas
                         item[ygrupo.DataPropertyName] = Cfilas;
                 //Regresamos los Ok a Deseleccionados
                 foreach (DataRow item in TdatosExcel.Rows)
-                    item[xok.DataPropertyName] = 0;
+                    if ((int)item[xok.DataPropertyName] == 1)
+                        item[xok.DataPropertyName] = 0;
                 foreach (DataRow item in TdatosSist.Rows)
-                    item[yok.DataPropertyName] = 0;
+                    if ((int)item[yok.DataPropertyName] == 1)
+                        item[yok.DataPropertyName] = 0;
+                dtgContenSistema.ResumeLayout();
+                dtgContenExcel.ResumeLayout();
                 //Ordenamos
                 OrdenarDataGridViews(dtgContenExcel.FirstDisplayedCell.RowIndex, dtgContenSistema.FirstDisplayedCell.RowIndex);
                 //Sacamos los Totales
@@ -1533,6 +1552,16 @@ namespace HPReserger.ModuloFinanzas
             {
                 SeleccionarColumnasAlEnter(dtgContenSistema, yok, ygrupo);
             }
+            if (e.KeyChar == (char)8) //Presionar eliminar
+            {
+                if (dtgContenSistema.CurrentCell.RowIndex >= 0)
+                    if (dtgContenSistema[ypkid.Name, dtgContenSistema.CurrentCell.RowIndex].Value.ToString() != "")
+                        if (msgYesCancel("Desea Eliminar Registro") == DialogResult.Yes)
+                        {
+                            CapaLogica.ConciliacionDetalleEliminarRegistro((int)dtgContenSistema[ypkid.Name, dtgContenSistema.CurrentCell.RowIndex].Value);
+                            dtgContenSistema.Rows.RemoveAt(dtgContenSistema.CurrentCell.RowIndex);
+                        }
+            }
         }
         private void SeleccionarColumnasAlEnter(Dtgconten dtgContenSistemaAux, DataGridViewCheckBoxColumn yokAux, DataGridViewTextBoxColumn ygrupoAux)
         {
@@ -1603,7 +1632,7 @@ namespace HPReserger.ModuloFinanzas
         private bool FormatearlaTablaVacia(int Banco)
         {
 
-            if (Banco == 1) //Banco BCP
+            if (CodSunat == 2) //Banco BCP
             {
                 TdatosExcel.Columns.Add("Fecha", typeof(DateTime));
 
@@ -1672,7 +1701,7 @@ namespace HPReserger.ModuloFinanzas
                     item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (pkBanco == 3) // para el banco continental
+            else if (CodSunat == 11) // para el banco continental
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -1712,7 +1741,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (pkBanco == 2) // Banco ScotiaBank
+            else if (CodSunat == 9) // Banco ScotiaBank
             {
                 try
                 {
@@ -1759,7 +1788,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (pkBanco == 5) //Banco de la Nacion
+            else if (CodSunat == 18) //Banco de la Nacion
             {
                 int PosDelete = 7, i = 0;
                 foreach (DataRow item in TdatosExcel.Rows)

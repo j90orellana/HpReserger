@@ -32,6 +32,7 @@ namespace HPReserger.ModuloBancario
             txtnrocci.ReadOnly = !a;
             txtnrocuenta.ReadOnly = !a;
             dtgconten.Enabled = !a;
+            txtCtaContable.ReadOnly = !a;
         }
         public void CargarCombos()
         {
@@ -126,6 +127,7 @@ namespace HPReserger.ModuloBancario
                         cbobanco.SelectedValue = item.Cells[xidbanco.Name].Value;
                         txtnrocuenta.Text = item.Cells[xNro_Cta.Name].Value.ToString();
                         txtnrocci.Text = item.Cells[xNro_Cta_Cci.Name].Value.ToString();
+                        //txtCtaContable.Text = item.Cells[xCtaContable.Name].Value.ToString();
                     }
                 }
             }
@@ -136,7 +138,7 @@ namespace HPReserger.ModuloBancario
             Estado = 1;
             btnaceptar.Enabled = true;
             ModoEdicion(true);
-            txtnrocci.CargarTextoporDefecto(); txtnrocuenta.CargarTextoporDefecto();
+            txtCtaContable.CargarTextoporDefecto(); txtnrocci.CargarTextoporDefecto(); txtnrocuenta.CargarTextoporDefecto();
             BloquearControles(true);
         }
 
@@ -167,6 +169,7 @@ namespace HPReserger.ModuloBancario
             //Carga de Variables
             string NroKuenta = txtnrocuenta.TextValido().Trim();
             string NroKuentaCCi = txtnrocci.TextValido().Trim();
+            //string CtaContabe = txtCtaContable.TextValido().Trim();
             int fkEmpresa = (int)cboempresa.SelectedValue;
             int fkBanco = (int)cbobanco.SelectedValue;
             int fkMoneda = (int)cbomoneda.SelectedValue;
