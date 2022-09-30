@@ -145,6 +145,9 @@ namespace HPReserger
             chkActivoFijo.Enabled = a;
             chkfac.Enabled = !a;
             chkQuitarDetraccionaFactura.Enabled = a;
+
+            NumIGV.Enabled = false;
+            chkIGV.Enabled = a;
         }
         DataTable TDebeHaber;
         DataTable TGrava;
@@ -289,6 +292,7 @@ namespace HPReserger
                 SacarTipoCambio();
             if (Dtgconten.RowCount > 0) btnAceptar.Enabled = false;
             igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
+            NumIGV.Value = igvs * 100;
         }
         public byte[] imgfactura;
         MemoryStream _memoryStream = new MemoryStream();
@@ -834,6 +838,8 @@ namespace HPReserger
                 //// SI TIENE DETALLE LA FACTURA
                 if (Dtgconten.RowCount > 0)
                 {
+
+
                     FacturaEstado = 1;
                     Boolean errorc = false, ErrorDH = false;
                     foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -936,6 +942,18 @@ namespace HPReserger
                         item.Cells[xCuentaContable.Name].Value.ToString(), item.Cells[xCentroCosto.Name].Value.ToString(), item.Cells[xTipoIgvg.Name].Value.ToString() == "" ? 0 : (int)item.Cells[xTipoIgvg.Name].Value,
                      (decimal)item.Cells[xImporteMN.Name].Value, (decimal)item.Cells[xImporteME.Name].Value, item.Cells[xGlosa.Name].Value.ToString(), cuo, item.Cells[xUsuario.Name].Value.ToString() == "" ? frmLogin.CodigoUsuario : (int)item.Cells[xUsuario.Name].Value);
                 }
+
+
+                //Actualizamos los datos adicionales
+                DataTable tfACTURA = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
+                if (tfACTURA.Rows.Count > 0)
+                {
+                    _idFac = (int)tfACTURA.Rows[0]["ID"];
+                    _Tipo = (int)tfACTURA.Rows[0]["tipo"];
+                }
+                CapaDatos.FacturaManualDatosAdicionales(0, _idFac, Convert.ToInt32(igvs * 100), _Tipo);
+                //fin Actualizamos los datos adicionales
+
                 ////INSERTAR ASIENTO DE CABECERA Y DETALLE
                 int i = 1;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -987,6 +1005,17 @@ namespace HPReserger
                 if (OldCuo != null)
                     CapaLogica.FacturaManualDetalleRemover(OldNumFac, OldProveedor, OpcionBusqueda == 1 ? 3 : 300, OldIdComprobanteSelect);
                 ////INSERTANDO EL DETALLE DE LA FACTURA
+
+                //Actualizamos los datos adicionales
+                DataTable tfACTURA = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
+                if (tfACTURA.Rows.Count > 0)
+                {
+                    _idFac = (int)tfACTURA.Rows[0]["ID"];
+                    _Tipo = (int)tfACTURA.Rows[0]["tipo"];
+                }
+                CapaDatos.FacturaManualDatosAdicionales(0, _idFac, Convert.ToInt32(igvs * 100), _Tipo);
+                //fin Actualizamos los datos adicionales
+
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     //int usua; if (item.Cells[xUsuario.Name].Value.ToString() == "999" || item.Cells[xUsuario.Name].Value.ToString() == "998") usua = 999; else usua = frmLogin.CodigoUsuario;
@@ -1150,6 +1179,7 @@ namespace HPReserger
             cbotipodoc_SelectedIndexChanged(sender, e);
             MostrarFormato82(false);
 
+            chkIGV.Checked = false;
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
@@ -1247,6 +1277,10 @@ namespace HPReserger
             btnAceptar.Enabled = true;
             cbotipodoc_SelectedIndexChanged(sender, e);
             MostrarFormato82(false);
+
+            chkIGV.Checked = !chkIGV.Checked;
+            chkIGV.Checked = !chkIGV.Checked;
+
         }
 
         private void dtgBusqueda_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -1362,6 +1396,30 @@ namespace HPReserger
                 //Muestra de Boton de Formato 8.2
                 MostrarFormato82(false);
                 if ((int)cbotipodoc.SelectedValue == 45) MostrarFormato82(true);
+
+                //SACAMOS LOS DATOS ADICIONALES DE LA FACTURA
+                //Actualizamos los datos adicionales
+                DataTable tfACTURA = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
+                if (tfACTURA.Rows.Count > 0)
+                {
+                    _idFac = (int)tfACTURA.Rows[0]["ID"];
+                    _Tipo = (int)tfACTURA.Rows[0]["tipo"];
+                }
+                DataTable TdataAdicional = CapaDatos.FacturaManualDatosAdicionales(10, _idFac, 0, _Tipo);
+                if (TdataAdicional.Rows.Count > 0)
+                {
+                    if ((Int32)TdataAdicional.Rows[0]["igv"] == Convert.ToInt32(igvs * 100))
+                    {
+                        chkIGV.Checked = false;
+                    }
+                    else
+                    {
+                        chkIGV.Checked = true;
+                        NumIGV.Value = (Int32)TdataAdicional.Rows[0]["igv"];
+                    }
+                }
+                else
+                    chkIGV.Checked = false;
             }
         }
         public void MostrarFormato82(Boolean v)
@@ -1543,6 +1601,11 @@ namespace HPReserger
                     }
                 } //////VAMOS CON EL IGV
                 igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
+                if (chkIGV.Checked)
+                    igvs = NumIGV.Value / 100;
+                else
+                    NumIGV.Value = igvs * 100;
+
                 string CuentaIgv = "4011101";
                 string NamecuentaIGV = "4011101 - IGV - COMPRAS";
                 DataTable Tpruebas = CapaLogica.BuscarCuentas("IGV % COM", 5);
@@ -2303,6 +2366,8 @@ namespace HPReserger
             }
         }
         DataTable TdatosExcel;
+        private int _Tipo;
+
         private Boolean CargarDatosDelExcel(string Ruta)
         {
             TdatosExcel = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, 1, 6, 11);
@@ -2317,6 +2382,16 @@ namespace HPReserger
             //    Listado.Add(item);
             //}
             //dtgconten.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, Listado[0].ToString());
+        }
+
+        private void chkIGV_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkIGV.Checked)
+            {
+                NumIGV.Enabled = true;
+            }
+            else
+                NumIGV.Enabled = false;
         }
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {

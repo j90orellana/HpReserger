@@ -565,6 +565,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             if (frmReportelibro1_2 == null)
             {
                 frmReportelibro1_2 = new ModuloCrystalReport.frmLibroBanco1_2();
+                frmReportelibro1_2.Matricial = chkImpMatricial.Checked;
                 frmReportelibro1_2.ListadoEmpresas = ListadoEmpresas;
                 frmReportelibro1_2.FechaIni = FechaInicial;
                 frmReportelibro1_2.FechaFin = FechaFinal;

@@ -116,6 +116,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.btnAuditoria = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.chkImpMatricial = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
@@ -212,6 +213,8 @@
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -1195,11 +1198,24 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // chkImpMatricial
+            // 
+            this.chkImpMatricial.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkImpMatricial.AutoSize = true;
+            this.chkImpMatricial.BackColor = System.Drawing.Color.Transparent;
+            this.chkImpMatricial.Location = new System.Drawing.Point(226, 533);
+            this.chkImpMatricial.Name = "chkImpMatricial";
+            this.chkImpMatricial.Size = new System.Drawing.Size(92, 17);
+            this.chkImpMatricial.TabIndex = 407;
+            this.chkImpMatricial.Text = "Imp.Matricial";
+            this.chkImpMatricial.UseVisualStyleBackColor = false;
+            // 
             // frmLibroBancosEfectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.chkImpMatricial);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.PanelTxt);
             this.Controls.Add(this.chkCarpetas);
@@ -1314,5 +1330,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button btnAuditoria;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox chkImpMatricial;
     }
 }

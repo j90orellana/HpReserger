@@ -1454,6 +1454,16 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
+
+        public DataTable FacturaManualDatosAdicionales(int opcion, int idfactura, int igv, int TIPO)
+        {
+            // 0 : Actualiza e Inserta
+            //10: Muestra el dato de la factura
+            string[] parametros = { "@idfactura", "@igv", "@opcion", "@tipo" };
+            object[] valores = { idfactura, igv, opcion, TIPO };
+            return bd.DataTableFromProcedure("usp_FacturaManual_Adicionales", parametros, valores, null);
+        }
+
         public void EliminarASiento(int codigo, int proyecto, DateTime fecha)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
@@ -4804,7 +4814,7 @@ namespace HPResergerCapaDatos
         }
         public DataTable CuentaBancaria(int @Opcion, int @Id, int @Empresa, int @Banco, int @Moneda, int @Tipo, string @Nrocuenta, string @Nrocuentacci, int @Usuario)
         {
-            string[] parametros = { "@Opcion", "@Id", "@Empresa", "@Banco", "@Moneda", "@Tipo", "@Nrocuenta", "@Nrocuentacci", "@Usuario"};
+            string[] parametros = { "@Opcion", "@Id", "@Empresa", "@Banco", "@Moneda", "@Tipo", "@Nrocuenta", "@Nrocuentacci", "@Usuario" };
             object[] valores = { @Opcion, @Id, @Empresa, @Banco, @Moneda, @Tipo, @Nrocuenta, @Nrocuentacci, @Usuario };
             return bd.DataTableFromProcedure("usp_CuentaBancaria", parametros, valores, null);
         }

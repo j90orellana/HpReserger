@@ -551,6 +551,7 @@ namespace HPReserger.ModuloReportes.LibrosElectronicos
             {
                 frmReporteLibrosDiarios = new ModuloCrystalReport.frmReporteLibroDiario5_1();
                 string ValDEfecto = "0=0";
+                frmReporteLibrosDiarios.Matricial = chkImpMatricial.Checked;
                 frmReporteLibrosDiarios.FechaIni = FechaInicio;
                 frmReporteLibrosDiarios.FechaFin = FechaFin;
                 frmReporteLibrosDiarios.Cuentas = ValDEfecto;

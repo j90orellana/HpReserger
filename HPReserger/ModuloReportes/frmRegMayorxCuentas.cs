@@ -844,6 +844,7 @@ namespace HPReserger
             {
                 frmReporteLibroMayor6_1 = new ModuloCrystalReport.frmReporteMayor6_1();
                 string ValDEfecto = "(0=0)";
+                frmReporteLibroMayor6_1.Matricial = chkImpMatricial.Checked;
                 frmReporteLibroMayor6_1.FechaIni = FechaInicio;
                 frmReporteLibroMayor6_1.FechaFin = FechaFin;
                 frmReporteLibroMayor6_1.Cuentas = ValDEfecto;

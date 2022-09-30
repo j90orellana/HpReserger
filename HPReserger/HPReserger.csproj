@@ -351,11 +351,23 @@
     <Compile Include="ModuloCrystalReport\frmReporteMayor6_1.Designer.cs">
       <DependentUpon>frmReporteMayor6_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCrystalReport\rptLibro1Caja_1_Ori.cs">
+      <DependentUpon>rptLibro1Caja_1_Ori.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ModuloCrystalReport\rptLibro1Caja_1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptLibro1Caja_1.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModuloCrystalReport\rptLibroBanco_2_Ori.cs">
+      <DependentUpon>rptLibroBanco_2_Ori.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ModuloCrystalReport\rptLibroBanco_2.cs">
       <AutoGen>True</AutoGen>
@@ -363,11 +375,23 @@
       <DependentUpon>rptLibroBanco_2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ModuloCrystalReport\rptLibroDiario5_1_Ori.cs">
+      <DependentUpon>rptLibroDiario5_1_Ori.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ModuloCrystalReport\rptLibroDiario5_1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptLibroDiario5_1.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModuloCrystalReport\rptLibroMayor6_1_Ori.cs">
+      <DependentUpon>rptLibroMayor6_1_Ori.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ModuloCrystalReport\rptLibroMayor6_1.cs">
       <AutoGen>True</AutoGen>
@@ -2227,17 +2251,33 @@
     <EmbeddedResource Include="ModuloCrystalReport\frmReporteMayor6_1.resx">
       <DependentUpon>frmReporteMayor6_1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\rptLibro1Caja_1_Ori.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLibro1Caja_1_Ori.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloCrystalReport\rptLibro1Caja_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLibro1Caja_1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\rptLibroBanco_2_Ori.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLibroBanco_2_Ori.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCrystalReport\rptLibroBanco_2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLibroBanco_2.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\rptLibroDiario5_1_Ori.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLibroDiario5_1_Ori.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloCrystalReport\rptLibroDiario5_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLibroDiario5_1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\rptLibroMayor6_1_Ori.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLibroMayor6_1_Ori.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCrystalReport\rptLibroMayor6_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
