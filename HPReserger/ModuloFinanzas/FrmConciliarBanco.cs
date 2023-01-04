@@ -273,7 +273,7 @@ namespace HPReserger.ModuloFinanzas
         }
         private Boolean FormatearlaTabla(int Banco)
         {
-            if (CodSunat == 2) //Banco BCP
+            if (CodSunat == 1) //Banco BCP
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -352,7 +352,7 @@ namespace HPReserger.ModuloFinanzas
                     item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 11) // para el banco continental
+            else if (CodSunat == 3) // para el banco continental
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -392,7 +392,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 9) // Banco ScotiaBank
+            else if (CodSunat == 2) // Banco ScotiaBank
             {
                 try
                 {
@@ -439,7 +439,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 18) //Banco de la Nacion
+            else if (CodSunat == 5) //Banco de la Nacion
             {
                 int PosDelete = 7, i = 0;
                 foreach (DataRow item in TdatosExcel.Rows)
@@ -503,7 +503,7 @@ namespace HPReserger.ModuloFinanzas
         decimal EstadoCuenta = 0;
         private Boolean ProcesodeAnalisis(int pkBanco, string nroCuenta)
         {
-            if (CodSunat == 2) //Banco BCP
+            if (CodSunat == 1) //Banco BCP
             {
                 //validamos Que pertenezca ala misma cuenta
                 if (TdatosExcel.Columns.Count != 11)
@@ -588,7 +588,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (CodSunat == 11) //BBVA continental
+            else if (CodSunat == 3) //BBVA continental
             {
                 if (TdatosExcel.Columns.Count != 7)
                 {
@@ -643,7 +643,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (CodSunat == 9)//ScotiaBank
+            else if (CodSunat == 2)//ScotiaBank
             {
                 if (TdatosExcel.Columns.Count != 17)
                 {
@@ -696,7 +696,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (CodSunat == 18)// Banco de la Nacion
+            else if (CodSunat == 5)// Banco de la Nacion
             {
                 if (TdatosExcel.Columns.Count <= 5)
                 {
@@ -745,7 +745,7 @@ namespace HPReserger.ModuloFinanzas
                         else item.Delete();
                     }
                 }
-                if (CodSunat == 18 && c == 18)//banco de la nacion
+                if (CodSunat == 5 && c == 18)//banco de la nacion
                 {
                     FechaMin = FechaMax = DateTime.Parse(TdatosExcel.Rows[3][5].ToString());
                 }
@@ -876,7 +876,7 @@ namespace HPReserger.ModuloFinanzas
             if (cboCuentasBancarias.SelectedValue != null)
             {
                 pkBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["banco"];
-                CodSunat = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["codsunat"];
+                CodSunat = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["banco"];
                 NroCuenta = ((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Nro_Cta"].ToString();
                 pkMoneda = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Moneda"];
                 pkidCtaBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Id_Tipo_Cta"];
@@ -1632,7 +1632,7 @@ namespace HPReserger.ModuloFinanzas
         private bool FormatearlaTablaVacia(int Banco)
         {
 
-            if (CodSunat == 2) //Banco BCP
+            if (CodSunat == 1) //Banco BCP
             {
                 TdatosExcel.Columns.Add("Fecha", typeof(DateTime));
 
@@ -1701,7 +1701,7 @@ namespace HPReserger.ModuloFinanzas
                     item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 11) // para el banco continental
+            else if (CodSunat == 3) // para el banco continental
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -1741,7 +1741,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 9) // Banco ScotiaBank
+            else if (CodSunat == 2) // Banco ScotiaBank
             {
                 try
                 {
@@ -1788,7 +1788,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 18) //Banco de la Nacion
+            else if (CodSunat == 5) //Banco de la Nacion
             {
                 int PosDelete = 7, i = 0;
                 foreach (DataRow item in TdatosExcel.Rows)
@@ -1814,7 +1814,8 @@ namespace HPReserger.ModuloFinanzas
                 TdatosExcel.Columns[2].ColumnName = "Glosa";
                 //TdatosExcel.Columns[4].ColumnName = "Glosa2";
                 TdatosExcel.Columns[1].SetOrdinal(0);
-                TdatosExcel.Columns[3].SetOrdinal(0);
+
+               TdatosExcel.Columns[3].SetOrdinal(0);
                 //TdatosExcel.Columns[3].SetOrdinal(0);
                 //Agregamos la Columnas
                 DataColumn ColOk = new DataColumn("ok", typeof(int));

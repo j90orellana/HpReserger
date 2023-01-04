@@ -327,7 +327,8 @@ namespace HPReserger.ModuloBancario
                     foreach (DataGridViewRow item in dtgProveedor.Rows)
                     {
                         campo[0] = item.Cells[xRuc.Name].Value.ToString().Trim();//11
-                        campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xRazonSocial.Name].Value.ToString().Trim(), ' ', 60, HPResergerFunciones.Utilitarios.Direccion.izquierda);//60
+                      
+                        campo[1] = HPResergerFunciones.Utilitarios.AddCaracter(HPResergerFunciones.Utilitarios.PalabrasSinTildes(item.Cells[xRazonSocial.Name].Value.ToString()).Trim(), ' ', 60, HPResergerFunciones.Utilitarios.Direccion.izquierda);//60
                         campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xNroFactura.Name].Value.ToString().Trim(), ' ', 14, HPResergerFunciones.Utilitarios.Direccion.izquierda);//14
                         campo[3] = ((DateTime)item.Cells[xFechaFactura.Name].Value).ToString("yyyyMMdd");//8
                         campo[4] = HPResergerFunciones.Utilitarios.AddCaracterMultiplicarx100(item.Cells[xMontoPagar.Name].Value.ToString(), '0', 11, HPResergerFunciones.Utilitarios.Direccion.derecha);//11

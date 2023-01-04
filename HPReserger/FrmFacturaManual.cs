@@ -608,6 +608,7 @@ namespace HPReserger
             if (x >= 0)
             {
                 btnAceptar.Enabled = false;
+                
                 if (y == Dtgconten.Columns[xCuentaContable.Name].Index)
                 {
                     string consulta = Dtgconten[xCuentaContable.Name, x].Value == null ? "" : Dtgconten[xCuentaContable.Name, x].Value.ToString();
@@ -667,6 +668,7 @@ namespace HPReserger
                 if (y == Dtgconten.Columns[xDebeHaber.Name].Index && Dtgconten[xDebeHaber.Name, x].Value != null)
                 {
                     Dtgconten[xDebeHaber.Name, x].Value = Dtgconten[xDebeHaber.Name, x].Value.ToString().ToUpper();
+                    Dtgconten[xGlosa.Name, x].Value = txtglosa.TextValido();
                 }
             }
         }
@@ -794,7 +796,7 @@ namespace HPReserger
                     }
                     else
                     {
-                        BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { msgError("El Documento de Referencia no se ha Encontrado"); return; }
+                        BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { msgError("El Documento de Referencia no se ha Encontradoº>"); return; }
                     }
                 }//BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { Msg("El Documento de Referencia no se ha Encontrado"); return; } }
                  //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
@@ -2154,6 +2156,7 @@ namespace HPReserger
             OpenFileDialog openfile = new OpenFileDialog();
             openfile.Filter = "Archivos de Excel *.xlsx|*.xlsx";
             DialogResult resultado = openfile.ShowDialog();
+            int ValorEmpresa = (int)cboempresa.SelectedValue;
             if (resultado == DialogResult.OK)
             {
                 if (File.Exists(openfile.FileName))
@@ -2181,6 +2184,7 @@ namespace HPReserger
                                 //validamos importe vacios
                                 item[60] = item[60].ToString() == "" ? 0.00 : item[60];
                                 item[59] = item[59].ToString() == "" ? 0.00 : item[59];
+
                                 //Validamos notas
                                 if (int.Parse(item[3].ToString()) == 7)
                                 {
@@ -2230,6 +2234,7 @@ namespace HPReserger
                                     {
                                         btnnuevo.PerformClick();
                                         //CARGA DE LA CABECERA
+
                                         cbodetraccion.Text = "NO";
                                         txtruc.Text = item[7].ToString().Trim();
                                         dtpFechaContable.Value = DateTime.Parse(item[2].ToString());
@@ -2237,6 +2242,7 @@ namespace HPReserger
                                         dtpfechavence.Value = DateTime.Parse(item[6].ToString());
                                         //valos de ingreso
                                         item[8] = item[8].ToString() == "" ? "0" : item[8].ToString();
+                                        item[9] = item[9].ToString() == "" ? "0" : item[9].ToString();
                                         item[11] = item[11].ToString() == "" ? "0" : item[11].ToString();
                                         item[13] = item[13].ToString() == "" ? "0" : item[13].ToString();
                                         string[] Valr = item[4].ToString().Trim().Split('-');
@@ -2245,7 +2251,7 @@ namespace HPReserger
                                         cbomoneda.SelectedIndex = item[18].ToString() == "MN" ? 0 : 1;
                                         cbotipodoc.SelectedValue = 1 + int.Parse(item[3].ToString());
                                         //
-                                        txttotalfac.Text = (Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[11].ToString())) + decimal.Parse(item[13].ToString())).ToString("n2");
+                                        txttotalfac.Text = (Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[9].ToString())) + (decimal.Parse(item[11].ToString())) + decimal.Parse(item[13].ToString())).ToString("n2");
                                         txtglosa.Text = item[20].ToString() == "" ? "CARGA MASIVA" : item[20].ToString();
                                         //LAS DETRACCIONES
                                         txtdescdetraccion.Text = ""; detrac = "";
@@ -2258,7 +2264,7 @@ namespace HPReserger
                                         //CUENTA DE GASTO QUE GRABA IGV
                                         int pos = -1;
                                         btnAdd.PerformClick();
-                                        if (decimal.Parse(item[8].ToString()) != 0)
+                                        if (decimal.Parse(item[8].ToString()) != 0) // IGV
                                         {
                                             pos++;
                                             TContenendor.Rows.Add(TContenendor.NewRow());
@@ -2273,7 +2279,7 @@ namespace HPReserger
                                             }
                                             Dtgconten.Rows[pos].Cells[xDebeHaber.Name].Value = NDebe;
                                             Dtgconten.Rows[pos].Cells[xGlosa.Name].Value = txtglosa.TextValido();
-                                            Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[21].ToString().Trim();
+                                            Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[21].ToString().Trim(); //CUENTA DE GASTOS
                                             if (item[18].ToString() == "ME")
                                             {
                                                 Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[8].ToString()));
@@ -2285,11 +2291,11 @@ namespace HPReserger
                                             Dtgconten.Rows[pos].Cells[xTipoIgvg.Name].Value = decimal.Parse(item[13].ToString()) > 0 ? 1 : 4;
                                             TContenendor.AcceptChanges();
                                         }
-                                        if (decimal.Parse(item[11].ToString()) != 0 || (decimal.Parse(item[11].ToString()) == 0 && decimal.Parse(item[8].ToString()) == 0))
+                                        if (decimal.Parse(item[9].ToString()) != 0) // GNG
                                         {
-                                            TContenendor.Rows.Add(TContenendor.NewRow());
                                             pos++;
-                                            if ((int)cbotipodoc.SelectedValue == 8) //LAS NOTAS VOLTEAN LOS ORIGENES
+                                            TContenendor.Rows.Add(TContenendor.NewRow());
+                                            if ((int)cbotipodoc.SelectedValue == 8) //LAS NOTAS VOLTEAN LOS ORIGENES 
                                             {
                                                 NDebe = "H";
                                                 NHaber = "D";
@@ -2300,7 +2306,40 @@ namespace HPReserger
                                             }
                                             Dtgconten.Rows[pos].Cells[xDebeHaber.Name].Value = NDebe;
                                             Dtgconten.Rows[pos].Cells[xGlosa.Name].Value = txtglosa.TextValido();
-                                            Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[21].ToString().Trim();
+                                            Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[21].ToString().Trim(); //CUENTA DE GASTOS
+                                            if (item[18].ToString() == "ME")
+                                            {
+                                                Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[9].ToString()));
+                                            }
+                                            else
+                                            {
+                                                Dtgconten.Rows[pos].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[9].ToString()));
+                                            }
+                                            Dtgconten.Rows[pos].Cells[xTipoIgvg.Name].Value = 2;
+                                            TContenendor.AcceptChanges();
+                                        }
+                                        if (decimal.Parse(item[11].ToString()) != 0 || (decimal.Parse(item[11].ToString()) == 0 && decimal.Parse(item[8].ToString()) == 0 && decimal.Parse(item[9].ToString()) == 0)) //NGR
+                                        {
+                                            TContenendor.Rows.Add(TContenendor.NewRow());
+                                            pos++;
+                                            if ((int)cbotipodoc.SelectedValue == 8) //LAS NOTAS VOLTEAN LOS ORIGENES 
+                                            {
+                                                NDebe = "H";
+                                                NHaber = "D";
+                                                string[] Numref = item[28].ToString().Split('-');
+                                                txtSerieRef.Text = Numref[0];
+                                                txtNumRef.Text = Numref[1];
+                                                chkfac.Checked = true;
+                                            }
+                                            if (decimal.Parse(item[11].ToString()) < 0) //si es negativo
+                                            {
+                                                NDebe = NDebe == "H" ? "D" : "H";
+
+                                            }
+
+                                            Dtgconten.Rows[pos].Cells[xDebeHaber.Name].Value = NDebe;
+                                            Dtgconten.Rows[pos].Cells[xGlosa.Name].Value = txtglosa.TextValido();
+                                            Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[21].ToString().Trim();  //CUENTA DE GASTOS
                                             if (item[18].ToString() == "ME")
                                             {
                                                 Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[11].ToString()));
@@ -2319,14 +2358,14 @@ namespace HPReserger
                                         TContenendor.Rows.Add(TContenendor.NewRow());
                                         Dtgconten.Rows[pos].Cells[xDebeHaber.Name].Value = NHaber;
                                         Dtgconten.Rows[pos].Cells[xGlosa.Name].Value = txtglosa.TextValido();
-                                        Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[24].ToString();
+                                        Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[24].ToString(); //CUENTAS POR PAGAR 4212
                                         if (item[pos].ToString() == "ME")
                                         {
-                                            Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[8].ToString()) + decimal.Parse(item[13].ToString()) + decimal.Parse(item[11].ToString()));
+                                            Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[9].ToString())) + Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[13].ToString())) + (decimal.Parse(item[11].ToString()));
                                         }
                                         else
                                         {
-                                            Dtgconten.Rows[pos].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[8].ToString()) + decimal.Parse(item[13].ToString()) + decimal.Parse(item[11].ToString()));
+                                            Dtgconten.Rows[pos].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[9].ToString())) + Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[13].ToString())) + (decimal.Parse(item[11].ToString()));
                                         }
                                         TContenendor.AcceptChanges();
                                         //btnAdd.PerformClick();
@@ -2335,6 +2374,7 @@ namespace HPReserger
                                         //btnvistaPrevia.PerformClick();
                                         TContenendor.AcceptChanges();
                                         //Grabado
+                                        cboempresa.SelectedValue = ValorEmpresa; //porsi se cambia la empresa
                                         btnAceptar.PerformClick();
                                         //return;
                                     }

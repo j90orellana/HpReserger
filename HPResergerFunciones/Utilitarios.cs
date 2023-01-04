@@ -24,6 +24,15 @@ namespace HPResergerFunciones
 {
     public class Utilitarios
     {
+        public static string PalabrasSinTildes(string texto)
+        {
+            return new String(
+                   texto.Normalize(NormalizationForm.FormD)
+                   .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                   .ToArray()
+               )
+               .Normalize(NormalizationForm.FormC);
+        }
         public static string Encriptar(string cadena)
         {
             cadena = Convert.ToBase64String(Encoding.Unicode.GetBytes(cadena));
@@ -195,6 +204,20 @@ namespace HPResergerFunciones
             }
             return P.Handled;
         }
+        public static string SololetrasCadena(string P)
+        {
+            string cadena = "abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVWXYZÑñ " + (char)8;
+            string Retorno = "";
+            foreach (char caracter in P)
+            {
+                if (cadena.Contains(caracter))
+                {
+                    Retorno += caracter;
+                }
+            }
+            return Retorno;
+        }
+
         public static Boolean SoloLetrasMayusculas(KeyPressEventArgs P)
         {
             string cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZÑñ " + (char)8;
@@ -2130,7 +2153,7 @@ namespace HPResergerFunciones
             item.DefaultCellStyle.BackColor = Color.Empty;
             item.DefaultCellStyle.SelectionBackColor = Color.Empty;
         }
-        public static void ColorFilaSeleccionada(DataGridViewRow item,Color ColorFondo)
+        public static void ColorFilaSeleccionada(DataGridViewRow item, Color ColorFondo)
         {
             item.DefaultCellStyle.ForeColor = Color.Empty;
             item.DefaultCellStyle.BackColor = ColorFondo;
