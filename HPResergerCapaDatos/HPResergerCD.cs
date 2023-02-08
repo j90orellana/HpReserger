@@ -4726,6 +4726,12 @@ namespace HPResergerCapaDatos
             object[] valores = { codigo, valor, tipodet, fkempresa, cuo };
             return bd.DataTableFromProcedure("[usp_ActualizarNroOperacion]", parametros, valores, null);
         }
+        public DataTable ActualizarNroOperacionconFechaPago(int codigo, string valor, int tipodet, int fkempresa, string cuo,DateTime fechapago)
+        {
+            string[] parametros = { "@Codigo", "@Nroop", "@TipoDet", "@fkempresa", "@cuo","@fechapago" };
+            object[] valores = { codigo, valor, tipodet, fkempresa, cuo,fechapago };
+            return bd.DataTableFromProcedure("[usp_ActualizarNroOperacion_conFecha]", parametros, valores, null);
+        }
         public DataTable Vendedor(int cod, int opcion, int codigo, string nrocod, int estado, int usuario)
         {
             string[] parametros = { "@codigo", "@Opcion", "@Cod", "@Nro", "@estado", "@usuario" };

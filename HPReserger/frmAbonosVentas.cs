@@ -384,6 +384,8 @@ namespace HPReserger
                              dtgconten[xcuo.Name, x].Value.ToString());
                         frmnroop.Codigo = (int)dtgconten[xId.Name, x].Value;
                         frmnroop.nrooperacion = dtgconten[xGlosa.Name, x].Value.ToString();
+                        frmnroop.Fechapago = (DateTime)dtgconten[xFechaVencimiento.Name, x].Value;
+
                         frmnroop.Empresa = (int)cboempresa.SelectedValue;
                         //tipodet ==5 factura venta manual
                         frmnroop.Tipodet = (int)dtgconten[xdet.Name, x].Value;
@@ -1113,6 +1115,7 @@ namespace HPReserger
                         , dtgconten[xcuo.Name, x].Value.ToString());
                     frmnroop.Codigo = (int)dtgconten[xId.Name, x].Value;
                     frmnroop.nrooperacion = dtgconten[xGlosa.Name, x].Value.ToString();
+                    frmnroop.Fechapago = (DateTime)dtgconten[xFechaVencimiento.Name, x].Value;
                     frmnroop.Empresa = (int)cboempresa.SelectedValue;
                     //tipodet ==5 factura venta manual
                     frmnroop.Tipodet = 5;

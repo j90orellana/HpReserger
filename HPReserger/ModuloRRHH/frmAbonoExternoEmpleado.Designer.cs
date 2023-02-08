@@ -296,7 +296,7 @@ namespace HPReserger
             // btnrecempresa
             // 
             this.btnrecempresa.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnrecempresa.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
+            this.btnrecempresa.BackgroundImage = global::SISGEM.Properties.Resources.sshot_2017_06_13__17_59_46_;
             this.btnrecempresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnrecempresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnrecempresa.Location = new System.Drawing.Point(374, 12);

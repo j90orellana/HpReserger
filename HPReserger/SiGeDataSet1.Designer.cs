@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace HPReserger {
+namespace SISGEM {
     
     
     /// <summary>
@@ -959,7 +959,7 @@ namespace HPReserger {
         }
     }
 }
-namespace HPReserger.SiGeDataSet1TableAdapters {
+namespace SISGEM.SiGeDataSet1TableAdapters {
     
     
     /// <summary>
@@ -1104,7 +1104,7 @@ namespace HPReserger.SiGeDataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::HPReserger.Properties.Settings.Default.SiGeConnectionString;
+            this._connection.ConnectionString = global::SISGEM.Properties.Settings.Default.SiGeConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

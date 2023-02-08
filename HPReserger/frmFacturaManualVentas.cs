@@ -673,7 +673,7 @@ namespace HPReserger
                 if (!ProcesoMasivo)
                     if (FacturaEstado == 0) msgOK($"Factura de Venta Guardada Con Éxito"); else msgOK($"Factura de Venta Guardada \nGenerado sus Asiento : {cuo} \nCon Éxito");
                 else
-                    ResultadoMasivoTXT += $"Documento Guardado:Ruc:{txtdoc  .Text} Comprobante:{txtcodfactura.Text}-{txtnrofactura.Text}  Generado sus Asiento:{ cuo} \n";
+                    ResultadoMasivoTXT += $"Documento Guardado:Ruc:{txtdoc.Text} Comprobante:{txtcodfactura.Text}-{txtnrofactura.Text}  Generado sus Asiento:{ cuo} \n";
             }
             //////ACTUALIZANDO
             if (Estado == 2)
@@ -1713,7 +1713,7 @@ namespace HPReserger
             var result = SF.ShowDialog();
             if (result == DialogResult.OK)
             {
-                File.WriteAllBytes(SF.FileName, Resource1.LISTADO_DE_VENTAS);
+                File.WriteAllBytes(SF.FileName, SISGEM.Resource1.LISTADO_DE_VENTAS);
                 System.Diagnostics.Process.Start(SF.FileName);
             }
         }
@@ -1772,7 +1772,7 @@ namespace HPReserger
                         foreach (string Cuenta in ListaCuentas)
                         {
                             if (CapaDatos.BuscarCuentasQuery(Cuenta).Rows.Count == 0)
-                                cadenaResultado += $"No existe la cuenta: {Cuenta}\n";                          
+                                cadenaResultado += $"No existe la cuenta: {Cuenta}\n";
                         }
                         foreach (string ruc in ListaRuc)
                         {

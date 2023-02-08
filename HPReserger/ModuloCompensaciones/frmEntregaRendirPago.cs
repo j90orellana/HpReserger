@@ -808,6 +808,12 @@ namespace HPReserger.ModuloCompensaciones
                         //Actualizar su Estado y Fecha de Compensacion
                         if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
                             CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, FechaCompensa, TipoPago, NroOperacion);
+                        else
+                        {
+                            decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
+                            CapaLogica.Detracciones(1, string.Join("-", valor), item.Cells[xProveedor.Name].Value.ToString(), TotalDetracion, MontoSolesOri, decimal.Parse(txttipocambio.Text),
+                                TotalDetracion, 0, NroOperacion, "", "", FechaCompensa, IdLogin, (int)item.Cells[xIdComprobante.Name].Value, _idempresa, Cuo, TipoPago);
+                        }
                         if (TipoPago == 0 && ImporteTotal > 0)
                         {
                             if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
@@ -816,9 +822,9 @@ namespace HPReserger.ModuloCompensaciones
                                     item.Cells[xrazon_social.Name].Value.ToString(), string.Join("-", valor), (DateTime)item.Cells[xFechaEmision.Name].Value, string.Join("-", UserCompensa),
                                    moneda, (decimal)item.Cells[xTcReg.Name].Value,
                                    // (int)item.Cells[xidMoneda.Name].Value 
-                                   1== moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
+                                   1 == moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
                                     //(int)item.Cells[xidMoneda.Name].Value 
-                                    2== moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
+                                    2 == moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
                                     Cuo, "", 1, "", "", "", FechaCompensa, cbocuentaxpagar.SelectedValue.ToString(), txtglosa.Text, item.Cells[xGlosa.Name].Value.ToString(), 1, IdLogin);
                             }
                             else
@@ -827,10 +833,12 @@ namespace HPReserger.ModuloCompensaciones
                                     item.Cells[xrazon_social.Name].Value.ToString(), string.Join("-", valor), (DateTime)item.Cells[xFechaEmision.Name].Value, string.Join("-", UserCompensa),
                                    moneda, (decimal)item.Cells[xTcReg.Name].Value,
                                     //(int)item.Cells[xidMoneda.Name].Value 
-                                    1== moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
+                                    1 == moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) * (decimal)item.Cells[xTcReg.Name].Value,
                                     //(int)item.Cells[xidMoneda.Name].Value 
-                                    2== moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
+                                    2 == moneda ? Math.Abs(ImporteTotal) : Math.Abs(ImporteTotal) / (decimal)item.Cells[xTcReg.Name].Value,
                                     Cuo, "", 1, "", "", "", FechaCompensa, cbocuentaxpagar.SelectedValue.ToString(), txtglosa.Text, item.Cells[xGlosa.Name].Value.ToString(), 1, IdLogin);
+
+
                             }
                         }
                     }

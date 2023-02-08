@@ -1083,7 +1083,7 @@
             // 
             // pbfotoempleado
             // 
-            this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
+            this.pbfotoempleado.Image = global::SISGEM.Properties.Resources.sshot_2017_07_04__18_02s_16_;
             this.pbfotoempleado.Location = new System.Drawing.Point(598, 33);
             this.pbfotoempleado.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.pbfotoempleado.Name = "pbfotoempleado";

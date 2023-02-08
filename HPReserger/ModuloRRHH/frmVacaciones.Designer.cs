@@ -296,7 +296,7 @@ namespace HPReserger
             // 
             // pbVacaciones
             // 
-            this.pbVacaciones.Image = global::HPReserger.Properties.Resources.NoRegistrarVacaciones2;
+            this.pbVacaciones.Image = global::SISGEM.Properties.Resources.NoRegistrarVacaciones2;
             this.pbVacaciones.InitialImage = null;
             this.pbVacaciones.Location = new System.Drawing.Point(0, 0);
             this.pbVacaciones.Name = "pbVacaciones";

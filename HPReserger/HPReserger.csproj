@@ -8,7 +8,7 @@
     <ProjectGuid>{9A1A8436-3C5B-4F89-8E15-AE12C3263294}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HPReserger</RootNamespace>
+    <RootNamespace>SISGEM</RootNamespace>
     <AssemblyName>SISGEM</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -794,6 +794,11 @@
     </Compile>
     <Compile Include="ModuloRRHH\frmVacacionesResumen.Designer.cs">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2115,9 +2120,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="SiGeDataSet.cs">
-      <DependentUpon>SiGeDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="SiGeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

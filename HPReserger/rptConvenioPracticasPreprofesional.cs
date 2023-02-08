@@ -41,7 +41,7 @@ namespace HPReserger {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.rptConvenioPracticasPreprofesional.rpt";
+                return "SISGEM.rptConvenioPracticasPreprofesional.rpt";
             }
             set {
                 // Do nothing

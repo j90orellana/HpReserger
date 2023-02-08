@@ -41,7 +41,7 @@ namespace HPReserger.ModuloCrystalReport {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.ModuloCrystalReport.rptLibro1Caja_1_Ori.rpt";
+                return "SISGEM.ModuloCrystalReport.rptLibro1Caja_1_Ori.rpt";
             }
             set {
                 // Do nothing

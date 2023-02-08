@@ -1,5 +1,7 @@
 ﻿namespace HPReserger.ModuloCompensaciones
 {
+ 
+
     partial class frmReembolsoGastos
     {
         /// <summary>
@@ -66,7 +68,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboempleado = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.siGeDataSet = new HPReserger.SiGeDataSet();
+            this.siGeDataSet = new SISGEM.SiGeDataSet();
             this.siGeDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txttotalMN = new HpResergerUserControls.TextBoxPer();
             this.dtpFechaContable = new System.Windows.Forms.DateTimePicker();
@@ -897,7 +899,7 @@
         private System.Windows.Forms.ComboBox cboempleado;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource siGeDataSetBindingSource;
-        private SiGeDataSet siGeDataSet;
+        private SISGEM.SiGeDataSet siGeDataSet;
         private HpResergerUserControls.TextBoxPer txttotalMN;
         private System.Windows.Forms.DateTimePicker dtpFechaContable;
         private System.Windows.Forms.Label label15;

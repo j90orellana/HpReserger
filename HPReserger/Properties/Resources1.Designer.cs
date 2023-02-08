@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HPReserger.Properties {
+namespace SISGEM.Properties {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace HPReserger.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace HPReserger.Properties {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SISGEM.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace HPReserger.Properties {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,17 +63,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _48px_Crystal_Clear_action_share {
-            get {
-                object obj = ResourceManager.GetObject("48px-Crystal_Clear_action_share", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Account {
+        public static System.Drawing.Bitmap Account {
             get {
                 object obj = ResourceManager.GetObject("Account", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +73,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Almacen {
+        public static System.Drawing.Bitmap Almacen {
             get {
                 object obj = ResourceManager.GetObject("Almacen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +83,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Almacenes {
+        public static System.Drawing.Bitmap Almacenes {
             get {
                 object obj = ResourceManager.GetObject("Almacenes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +93,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Articulo {
+        public static System.Drawing.Bitmap Articulo {
             get {
                 object obj = ResourceManager.GetObject("Articulo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +103,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Articulos {
+        public static System.Drawing.Bitmap Articulos {
             get {
                 object obj = ResourceManager.GetObject("Articulos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +113,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AsientoContable {
+        public static System.Drawing.Bitmap AsientoContable {
             get {
                 object obj = ResourceManager.GetObject("AsientoContable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +123,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ban {
+        public static System.Drawing.Bitmap Ban {
             get {
                 object obj = ResourceManager.GetObject("Ban", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,9 +133,9 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BanBif_Proveedores {
+        public static System.Drawing.Bitmap BanBifroveedores {
             get {
-                object obj = ResourceManager.GetObject("BanBif-Proveedores", resourceCulture);
+                object obj = ResourceManager.GetObject("BanBifroveedores", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +143,9 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Bcp_Proveedores {
+        public static System.Drawing.Bitmap BcpProveedores {
             get {
-                object obj = ResourceManager.GetObject("Bcp-Proveedores", resourceCulture);
+                object obj = ResourceManager.GetObject("BcpProveedores", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,17 +153,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Bliss2 {
-            get {
-                object obj = ResourceManager.GetObject("Bliss2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Business {
+        public static System.Drawing.Bitmap Business {
             get {
                 object obj = ResourceManager.GetObject("Business", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,7 +163,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Buys {
+        public static System.Drawing.Bitmap Buys {
             get {
                 object obj = ResourceManager.GetObject("Buys", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -193,7 +173,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CambioClave {
+        public static System.Drawing.Bitmap CambioClave {
             get {
                 object obj = ResourceManager.GetObject("CambioClave", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +183,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Claves {
+        public static System.Drawing.Bitmap Claves {
             get {
                 object obj = ResourceManager.GetObject("Claves", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +193,17 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ComprobanteDePago {
+        public static System.Drawing.Bitmap ClearAccion {
+            get {
+                object obj = ResourceManager.GetObject("ClearAccion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ComprobanteDePago {
             get {
                 object obj = ResourceManager.GetObject("ComprobanteDePago", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +213,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ComprobantePago {
+        public static System.Drawing.Bitmap ComprobantePago {
             get {
                 object obj = ResourceManager.GetObject("ComprobantePago", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -233,7 +223,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cotizacion {
+        public static System.Drawing.Bitmap Cotizacion {
             get {
                 object obj = ResourceManager.GetObject("Cotizacion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +233,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cotizaciones {
+        public static System.Drawing.Bitmap Cotizaciones {
             get {
                 object obj = ResourceManager.GetObject("Cotizaciones", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -253,7 +243,17 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Desvincular {
+        public static System.Drawing.Bitmap Cuadros {
+            get {
+                object obj = ResourceManager.GetObject("Cuadros", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Desvincular {
             get {
                 object obj = ResourceManager.GetObject("Desvincular", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -263,7 +263,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Empleado {
+        public static System.Drawing.Bitmap Empleado {
             get {
                 object obj = ResourceManager.GetObject("Empleado", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -273,7 +273,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Empleados {
+        public static System.Drawing.Bitmap Empleados {
             get {
                 object obj = ResourceManager.GetObject("Empleados", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -283,7 +283,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap EntidadFinanciera {
+        public static System.Drawing.Bitmap EntidadFinanciera {
             get {
                 object obj = ResourceManager.GetObject("EntidadFinanciera", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -293,7 +293,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap erase {
+        public static System.Drawing.Bitmap erase {
             get {
                 object obj = ResourceManager.GetObject("erase", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -303,7 +303,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap External {
+        public static System.Drawing.Bitmap External {
             get {
                 object obj = ResourceManager.GetObject("External", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -313,7 +313,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Faltas {
+        public static System.Drawing.Bitmap Faltas {
             get {
                 object obj = ResourceManager.GetObject("Faltas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -323,7 +323,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fechas {
+        public static System.Drawing.Bitmap fechas {
             get {
                 object obj = ResourceManager.GetObject("fechas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -333,17 +333,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fondo_gris_degradado {
-            get {
-                object obj = ResourceManager.GetObject("fondo-gris-degradado", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Frames {
+        public static System.Drawing.Bitmap Frames {
             get {
                 object obj = ResourceManager.GetObject("Frames", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -353,7 +343,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Generate {
+        public static System.Drawing.Bitmap Generate {
             get {
                 object obj = ResourceManager.GetObject("Generate", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -361,9 +351,29 @@ namespace HPReserger.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        public static System.Drawing.Icon Icono {
+            get {
+                object obj = ResourceManager.GetObject("Icono", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Interbank {
+        public static System.Drawing.Bitmap icons8_Traveler_25px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Traveler_25px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Interbank {
             get {
                 object obj = ResourceManager.GetObject("Interbank", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -373,7 +383,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Interbank1 {
+        public static System.Drawing.Bitmap Interbank1 {
             get {
                 object obj = ResourceManager.GetObject("Interbank1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -383,7 +393,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap libro {
+        public static System.Drawing.Bitmap libro {
             get {
                 object obj = ResourceManager.GetObject("libro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -391,9 +401,39 @@ namespace HPReserger.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        public static byte[] LISTADO_DE_COMPRAS {
+            get {
+                object obj = ResourceManager.GetObject("LISTADO_DE_COMPRAS", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MainFrame {
+        public static System.Drawing.Bitmap LoadFile {
+            get {
+                object obj = ResourceManager.GetObject("LoadFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Logo_HP {
+            get {
+                object obj = ResourceManager.GetObject("Logo_HP", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap MainFrame {
             get {
                 object obj = ResourceManager.GetObject("MainFrame", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -403,7 +443,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap menu {
+        public static System.Drawing.Bitmap menu {
             get {
                 object obj = ResourceManager.GetObject("menu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -413,7 +453,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Moneda {
+        public static System.Drawing.Bitmap Moneda {
             get {
                 object obj = ResourceManager.GetObject("Moneda", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -423,7 +463,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NoRegistrarFaltas {
+        public static System.Drawing.Bitmap NoRegistrarFaltas {
             get {
                 object obj = ResourceManager.GetObject("NoRegistrarFaltas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -433,7 +473,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NoRegistrarVacaciones {
+        public static System.Drawing.Bitmap NoRegistrarVacaciones {
             get {
                 object obj = ResourceManager.GetObject("NoRegistrarVacaciones", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -443,7 +483,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NoRegistrarVacaciones1 {
+        public static System.Drawing.Bitmap NoRegistrarVacaciones1 {
             get {
                 object obj = ResourceManager.GetObject("NoRegistrarVacaciones1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -453,7 +493,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NoRegistrarVacaciones2 {
+        public static System.Drawing.Bitmap NoRegistrarVacaciones2 {
             get {
                 object obj = ResourceManager.GetObject("NoRegistrarVacaciones2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -463,7 +503,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Orden_Pedido {
+        public static System.Drawing.Bitmap Orden_Pedido {
             get {
                 object obj = ResourceManager.GetObject("Orden Pedido", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -473,7 +513,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OrdenCompra {
+        public static System.Drawing.Bitmap OrdenCompra {
             get {
                 object obj = ResourceManager.GetObject("OrdenCompra", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -483,7 +523,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ordencompras {
+        public static System.Drawing.Bitmap ordencompras {
             get {
                 object obj = ResourceManager.GetObject("ordencompras", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -493,7 +533,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OrdenPedido {
+        public static System.Drawing.Bitmap OrdenPedido {
             get {
                 object obj = ResourceManager.GetObject("OrdenPedido", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -503,7 +543,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Pagos {
+        public static System.Drawing.Bitmap Pagos {
             get {
                 object obj = ResourceManager.GetObject("Pagos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -513,7 +553,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap payment {
+        public static System.Drawing.Bitmap payment {
             get {
                 object obj = ResourceManager.GetObject("payment", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -523,7 +563,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PedidoOrden {
+        public static System.Drawing.Bitmap PedidoOrden {
             get {
                 object obj = ResourceManager.GetObject("PedidoOrden", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -533,7 +573,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Postulante {
+        public static System.Drawing.Bitmap Postulante {
             get {
                 object obj = ResourceManager.GetObject("Postulante", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -543,7 +583,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Postulantes {
+        public static System.Drawing.Bitmap Postulantes {
             get {
                 object obj = ResourceManager.GetObject("Postulantes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -553,7 +593,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Presentation {
+        public static System.Drawing.Bitmap Presentation {
             get {
                 object obj = ResourceManager.GetObject("Presentation", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -563,7 +603,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Presupuesto {
+        public static System.Drawing.Bitmap Presupuesto {
             get {
                 object obj = ResourceManager.GetObject("Presupuesto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -573,7 +613,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap profile {
+        public static System.Drawing.Bitmap profile {
             get {
                 object obj = ResourceManager.GetObject("profile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -583,7 +623,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Project {
+        public static System.Drawing.Bitmap Project {
             get {
                 object obj = ResourceManager.GetObject("Project", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -593,7 +633,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Proveedor {
+        public static System.Drawing.Bitmap Proveedor {
             get {
                 object obj = ResourceManager.GetObject("Proveedor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -603,7 +643,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Proyecto {
+        public static System.Drawing.Bitmap Proyecto {
             get {
                 object obj = ResourceManager.GetObject("Proyecto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -613,7 +653,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Request {
+        public static System.Drawing.Bitmap Request {
             get {
                 object obj = ResourceManager.GetObject("Request", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -623,7 +663,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Salir {
+        public static System.Drawing.Bitmap Salir {
             get {
                 object obj = ResourceManager.GetObject("Salir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -633,9 +673,9 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Salir__2_ {
+        public static System.Drawing.Bitmap Salir2 {
             get {
-                object obj = ResourceManager.GetObject("Salir (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("Salir2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -643,7 +683,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SalirButon {
+        public static System.Drawing.Bitmap SalirButon {
             get {
                 object obj = ResourceManager.GetObject("SalirButon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -653,7 +693,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Seguimiento {
+        public static System.Drawing.Bitmap Seguimiento {
             get {
                 object obj = ResourceManager.GetObject("Seguimiento", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -663,7 +703,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Settings {
+        public static System.Drawing.Bitmap Settings {
             get {
                 object obj = ResourceManager.GetObject("Settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -673,7 +713,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Solicita {
+        public static System.Drawing.Bitmap Solicita {
             get {
                 object obj = ResourceManager.GetObject("Solicita", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -683,7 +723,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SolicitaEmpleo {
+        public static System.Drawing.Bitmap SolicitaEmpleo {
             get {
                 object obj = ResourceManager.GetObject("SolicitaEmpleo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -693,7 +733,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sshot_2017_06_13__17_57_02_ {
+        public static System.Drawing.Bitmap sshot_2017_06_13__17_57_02_ {
             get {
                 object obj = ResourceManager.GetObject("sshot-2017-06-13-[17-57-02]", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -703,7 +743,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sshot_2017_06_13__17_59_46_ {
+        public static System.Drawing.Bitmap sshot_2017_06_13__17_59_46_ {
             get {
                 object obj = ResourceManager.GetObject("sshot-2017-06-13-[17-59-46]", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -713,7 +753,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sshot_2017_06_23__15_15_56_ {
+        public static System.Drawing.Bitmap sshot_2017_06_23__15_15_56_ {
             get {
                 object obj = ResourceManager.GetObject("sshot-2017-06-23-[15-15-56]", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -723,7 +763,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sshot_2017_07_03__11_20_28_ {
+        public static System.Drawing.Bitmap sshot_2017_07_03__11_20_28_ {
             get {
                 object obj = ResourceManager.GetObject("sshot-2017-07-03-[11-20-28]", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -733,7 +773,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sshot_2017_07_04__18_02s_16_ {
+        public static System.Drawing.Bitmap sshot_2017_07_04__18_02s_16_ {
             get {
                 object obj = ResourceManager.GetObject("sshot-2017-07-04-[18-02s-16]", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -743,7 +783,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ubicacion {
+        public static System.Drawing.Bitmap Ubicacion {
             get {
                 object obj = ResourceManager.GetObject("Ubicacion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -753,7 +793,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Users {
+        public static System.Drawing.Bitmap Users {
             get {
                 object obj = ResourceManager.GetObject("Users", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -763,7 +803,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Vacacion {
+        public static System.Drawing.Bitmap Vacacion {
             get {
                 object obj = ResourceManager.GetObject("Vacacion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -773,7 +813,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Vacaciones {
+        public static System.Drawing.Bitmap Vacaciones {
             get {
                 object obj = ResourceManager.GetObject("Vacaciones", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -783,7 +823,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap xCloseBlack {
+        public static System.Drawing.Bitmap xCloseBlack {
             get {
                 object obj = ResourceManager.GetObject("xCloseBlack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -793,7 +833,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap xCloseBlue {
+        public static System.Drawing.Bitmap xCloseBlue {
             get {
                 object obj = ResourceManager.GetObject("xCloseBlue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -803,7 +843,7 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap XCloseRed {
+        public static System.Drawing.Bitmap XCloseRed {
             get {
                 object obj = ResourceManager.GetObject("XCloseRed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

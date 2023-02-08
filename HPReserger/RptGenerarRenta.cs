@@ -41,7 +41,7 @@ namespace HPReserger {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.RptGenerarRenta.rpt";
+                return "SISGEM.rptGenerarRenta.rpt";
             }
             set {
                 // Do nothing

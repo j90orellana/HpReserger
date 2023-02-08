@@ -88,6 +88,12 @@ namespace HPReserger.ModuloFinanzas
 
                 SaldoContable = (decimal)TDatosAux.Rows[0]["saldocontable"];
                 SaldoContableInicial = (decimal)TDatosAux.Rows[0]["saldocontableinicial"];
+
+                DateTime FechaAux;
+                FechaAux = (comboMesAño1.FechaInicioMes).AddDays(-1);
+                SaldoContable = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(comboMesAño1.FechaInicioMes.Year, 1, 1), comboMesAño1.FechaFinMes, NroCuenta, pkMoneda).Rows[0]["monto"];
+                SaldoContableInicial = (decimal)CapaLogica.SaldoContableCuentaBancariaxEmpresa(pkEmpresa, new DateTime(FechaAux.Year, 1, 1), FechaAux, NroCuenta, pkMoneda).Rows[0]["monto"];
+
                 MostrarDatosdeEtiquetasGrillas(true);
                 ActivarFunciones(true);
                 MostrarTotales();
@@ -236,8 +242,15 @@ namespace HPReserger.ModuloFinanzas
             decimal Val = saldoContableInicial;
             foreach (DataRow item in TdatosSist.Rows)
             {
-                Val += (decimal)item[ymonto.DataPropertyName];
+                if ((DateTime)item["fecha"] >= comboMesAño1.FechaInicioMes)
+                    Val += (decimal)item[ymonto.DataPropertyName];
             }
+            //foreach (DataRow item in TdatosExcel.Rows)
+            //{
+            //    if (item["index"].ToString() == "" && (DateTime) item["fecha"]< comboMesAño1.FechaInicioMes)
+
+            //        Val += -(decimal)item["monto"];
+            //}
             return Val;
         }
 
@@ -1815,7 +1828,7 @@ namespace HPReserger.ModuloFinanzas
                 //TdatosExcel.Columns[4].ColumnName = "Glosa2";
                 TdatosExcel.Columns[1].SetOrdinal(0);
 
-               TdatosExcel.Columns[3].SetOrdinal(0);
+                TdatosExcel.Columns[3].SetOrdinal(0);
                 //TdatosExcel.Columns[3].SetOrdinal(0);
                 //Agregamos la Columnas
                 DataColumn ColOk = new DataColumn("ok", typeof(int));

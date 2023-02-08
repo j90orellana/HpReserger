@@ -41,7 +41,7 @@ namespace HPReserger {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.rptFormato81Compras.rpt";
+                return "SISGEM.rptFormato81Compras.rpt";
             }
             set {
                 // Do nothing

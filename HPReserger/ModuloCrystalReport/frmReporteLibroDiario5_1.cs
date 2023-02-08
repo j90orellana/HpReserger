@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.Shared;
 using HpResergerUserControls;
+using SISGEM.ModuloCrystalReport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

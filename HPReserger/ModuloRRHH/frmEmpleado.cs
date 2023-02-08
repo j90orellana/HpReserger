@@ -739,7 +739,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    pbfotoempleado.Image = HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
+                    pbfotoempleado.Image = SISGEM.Properties.Resources.sshot_2017_07_04__18_02s_16_;
                     Foto = null; NombreFoto = "";
                 }
 
@@ -814,7 +814,7 @@ namespace HPReserger
                 pbFotoAntecedentesPenales.Image = pbFotoAntecedentesPoliciales.Image = pbFotoReciboServicios.Image = null;
                 FotoAntecedentesPenales = FotoAntecedentesPoliciales = FotoReciboServicios = null;
                 lklpenales.Enabled = lklpoliciales.Enabled = lklservicios.Enabled = lklfirma.Enabled = false;
-                pbfotoempleado.Image = HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_; Foto = null; cbopais.SelectedItem = -1; txtlugarnacimiento.Text = "";
+                pbfotoempleado.Image = SISGEM.Properties.Resources.sshot_2017_07_04__18_02s_16_; Foto = null; cbopais.SelectedItem = -1; txtlugarnacimiento.Text = "";
                 pbfirma.Image = null; txtfirma.Text = ""; FotoFirma = null;
                 txtNHijos.Text = "0"; btnModificar.Enabled = false;
                 if (estadito == 0)

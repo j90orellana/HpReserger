@@ -41,11 +41,11 @@
             this.empresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idEmpresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uspListarAsientosAbiertosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.siGeDataSet1 = new HPReserger.SiGeDataSet1();
+            this.siGeDataSet1 = new SISGEM.SiGeDataSet1();
             this.label1 = new System.Windows.Forms.Label();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnactualizar = new System.Windows.Forms.Button();
-            this.usp_ListarAsientosAbiertosTableAdapter = new HPReserger.SiGeDataSet1TableAdapters.usp_ListarAsientosAbiertosTableAdapter();
+            this.usp_ListarAsientosAbiertosTableAdapter = new SISGEM.SiGeDataSet1TableAdapters.usp_ListarAsientosAbiertosTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
@@ -253,9 +253,9 @@
 
         private HpResergerUserControls.Dtgconten dtgconten;
         private System.Windows.Forms.BindingSource uspListarAsientosAbiertosBindingSource;
-        private SiGeDataSet1 siGeDataSet1;
+        private SISGEM. SiGeDataSet1 siGeDataSet1;
         private System.Windows.Forms.Label label1;
-        private SiGeDataSet1TableAdapters.usp_ListarAsientosAbiertosTableAdapter usp_ListarAsientosAbiertosTableAdapter;
+        private SISGEM. SiGeDataSet1TableAdapters.usp_ListarAsientosAbiertosTableAdapter usp_ListarAsientosAbiertosTableAdapter;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnactualizar;
         private System.Windows.Forms.Button button1;

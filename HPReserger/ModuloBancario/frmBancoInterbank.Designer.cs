@@ -407,7 +407,7 @@
             // 
             // ptb
             // 
-            this.ptb.Image = global::HPReserger.Properties.Resources.Interbank1;
+            this.ptb.Image = global::SISGEM.Properties.Resources.Interbank1;
             this.ptb.Location = new System.Drawing.Point(12, 11);
             this.ptb.Name = "ptb";
             this.ptb.Size = new System.Drawing.Size(605, 72);

@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ACTUAL_BETAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACTUAL_BETAConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.HPReserger.Properties.Settings.GlobalReference.Default.ACTUAL_BETAConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ACTUAL_BETAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ACTUAL_BETAConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SISGEM.Properties.Settings.GlobalReference.Default.ACTUAL_BETAConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TBL_ActivoFijoTableAdapter" GeneratorDataComponentClassName="TBL_ActivoFijoTableAdapter" Name="TBL_ActivoFijo" UserDataComponentName="TBL_ActivoFijoTableAdapter">
@@ -72,7 +72,7 @@
   <xs:element name="ACTUAL_BETADataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ACTUAL_BETADataSet" msprop:Generator_UserDSName="ACTUAL_BETADataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TBL_ActivoFijo" msprop:Generator_TableClassName="TBL_ActivoFijoDataTable" msprop:Generator_TableVarName="tableTBL_ActivoFijo" msprop:Generator_TablePropName="TBL_ActivoFijo" msprop:Generator_RowDeletingName="TBL_ActivoFijoRowDeleting" msprop:Generator_RowChangingName="TBL_ActivoFijoRowChanging" msprop:Generator_RowEvHandlerName="TBL_ActivoFijoRowChangeEventHandler" msprop:Generator_RowDeletedName="TBL_ActivoFijoRowDeleted" msprop:Generator_UserTableName="TBL_ActivoFijo" msprop:Generator_RowChangedName="TBL_ActivoFijoRowChanged" msprop:Generator_RowEvArgName="TBL_ActivoFijoRowChangeEvent" msprop:Generator_RowClassName="TBL_ActivoFijoRow">
+        <xs:element name="TBL_ActivoFijo" msprop:Generator_TableClassName="TBL_ActivoFijoDataTable" msprop:Generator_TableVarName="tableTBL_ActivoFijo" msprop:Generator_RowChangedName="TBL_ActivoFijoRowChanged" msprop:Generator_TablePropName="TBL_ActivoFijo" msprop:Generator_RowDeletingName="TBL_ActivoFijoRowDeleting" msprop:Generator_RowChangingName="TBL_ActivoFijoRowChanging" msprop:Generator_RowEvHandlerName="TBL_ActivoFijoRowChangeEventHandler" msprop:Generator_RowDeletedName="TBL_ActivoFijoRowDeleted" msprop:Generator_RowClassName="TBL_ActivoFijoRow" msprop:Generator_UserTableName="TBL_ActivoFijo" msprop:Generator_RowEvArgName="TBL_ActivoFijoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="pkid" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnpkid" msprop:Generator_ColumnPropNameInRow="pkid" msprop:Generator_ColumnPropNameInTable="pkidColumn" msprop:Generator_UserColumnName="pkid" type="xs:int" />

@@ -424,7 +424,7 @@
             this.pbfotoempleado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbfotoempleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.pbfotoempleado.ContextMenuStrip = this.cmenuclick;
-            this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
+            this.pbfotoempleado.Image = global::SISGEM.Properties.Resources.sshot_2017_07_04__18_02s_16_;
             this.pbfotoempleado.Location = new System.Drawing.Point(1110, 4);
             this.pbfotoempleado.Name = "pbfotoempleado";
             this.pbfotoempleado.Size = new System.Drawing.Size(45, 40);
@@ -449,7 +449,7 @@
             this.prestamoInterEmpresasToolStripMenuItem,
             this.cobroInterEmpresasToolStripMenuItem,
             this.conciliaciónBancariaToolStripMenuItem});
-            this.arToolStripMenuItem.Image = global::HPReserger.Properties.Resources.Orden_Pedido;
+            this.arToolStripMenuItem.Image = global::SISGEM.Properties.Resources.Orden_Pedido;
             this.arToolStripMenuItem.Name = "arToolStripMenuItem";
             this.arToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
             this.arToolStripMenuItem.Tag = "10";

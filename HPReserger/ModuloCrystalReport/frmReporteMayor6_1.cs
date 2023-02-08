@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+ 
 namespace HPReserger.ModuloCrystalReport
 {
     public partial class frmReporteMayor6_1 : FormGradient
@@ -71,7 +71,7 @@ namespace HPReserger.ModuloCrystalReport
             }
             else
             {
-                if (Matricial)
+                if (!Matricial)
                 {
                     Reporteori = new rptLibroMayor6_1_Ori();
                     Reporteori.SetParameterValue("@Fechaini", FechaIni);

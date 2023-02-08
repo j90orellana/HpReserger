@@ -41,7 +41,7 @@ namespace HPReserger {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.rptFlujodeCajaNormal.rpt";
+                return "SISGEM.rptFlujodeCajaNormal.rpt";
             }
             set {
                 // Do nothing

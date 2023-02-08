@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HPReserger.ModuloCrystalReport {
+namespace SISGEM.ModuloCrystalReport {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace HPReserger.ModuloCrystalReport {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.ModuloCrystalReport.rptLibroDiario5_1_Ori.rpt";
+                return "SISGEM.ModuloCrystalReport.rptLibroDiario5_1_Ori.rpt";
             }
             set {
                 // Do nothing

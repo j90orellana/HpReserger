@@ -548,7 +548,8 @@ namespace HPReserger.ModuloCompensaciones
                 foreach (DataGridViewRow item in DtgcontenAnticipos.Rows)
                     if ((int)item.Cells[yOk.Name].Value == 1)
                         ListaAuxiliar.Add(item.Cells[xcuentacontable.Name].Value.ToString());
-                ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
+                if (cbocuentabanco.SelectedValue != null)
+                    ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
                 if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), Mensajes.CuentasContablesDesactivadas)) return;
                 //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 foreach (DataGridViewRow item in DtgcontenFacturas.Rows)

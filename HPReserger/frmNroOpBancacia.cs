@@ -166,6 +166,7 @@ namespace HPReserger
                             , dtgconten[xcuo.Name, x].Value.ToString());
                         frmnroop.Codigo = (int)dtgconten[idx.Name, x].Value;
                         frmnroop.nrooperacion = dtgconten[NroOPBancox.Name, x].Value.ToString();
+                        frmnroop.Fechapago =(DateTime) dtgconten[FechaPagox.Name, x].Value;
                         frmnroop.Empresa = (int)dtgconten[xfkempresa.Name, x].Value;
                         frmnroop.Tipodet = (int)dtgconten[xdet.Name, x].Value;
                         frmnroop.ShowDialog();

@@ -355,11 +355,11 @@ namespace HPReserger
         }
         private void pbclose_MouseMove(object sender, MouseEventArgs e)
         {
-            pbclose.Image = HPReserger.Properties.Resources.xCloseBlue; ;
+            pbclose.Image = SISGEM.Properties.Resources.xCloseBlue; ;
         }
         private void pbclose_MouseLeave(object sender, EventArgs e)
         {
-            pbclose.Image = HPReserger.Properties.Resources.XCloseRed;
+            pbclose.Image = SISGEM.Properties.Resources.XCloseRed;
         }
         private void pbclose_Click(object sender, EventArgs e)
         {

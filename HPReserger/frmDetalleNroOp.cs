@@ -60,6 +60,11 @@ namespace HPReserger
             get { return txtruc.TextValido(); }
             set { txtruc.Text = value; }
         }
+        public DateTime Fechapago
+        {
+            get { return dtpFechaPago.Value; }
+            set { dtpFechaPago.Value = value; }
+        }
         private int empresa;
         private string Cuo;
 
@@ -78,18 +83,18 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (Tipodet == 1)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+                CapaLogica.ActualizarNroOperacionconFechaPago(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo,dtpFechaPago.Value);
             if (Tipodet == 2)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+                CapaLogica.ActualizarNroOperacionconFechaPago(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo, dtpFechaPago.Value);
             if (Tipodet == 3)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+                CapaLogica.ActualizarNroOperacionconFechaPago(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo, dtpFechaPago.Value);
             //Documentos de las Ventas
             if (Tipodet == 5)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+                CapaLogica.ActualizarNroOperacionconFechaPago(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo, dtpFechaPago.Value);
             if (Tipodet == 10)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+                CapaLogica.ActualizarNroOperacionconFechaPago(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo, dtpFechaPago.Value);
             if (Tipodet == 15)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+                CapaLogica.ActualizarNroOperacionconFechaPago(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo, dtpFechaPago.Value);
             this.Close();
         }
         private void frmDetalleNroOp_MouseMove(object sender, MouseEventArgs e)

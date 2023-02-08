@@ -432,6 +432,10 @@ namespace HPReserger.ModuloCompensaciones
                                 (int)item.Cells[xidMoneda.Name].Value == 1 ? (decimal)item.Cells[xTotal.Name].Value : (decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value,
                                 (int)item.Cells[xidMoneda.Name].Value == 2 ? (decimal)item.Cells[xTotal.Name].Value : (decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value,
                                 Cuo, "", 1, "", "", "", FechaCompensa, cbocuentaxpagar.SelectedValue.ToString(), txtglosa.Text, item.Cells[xGlosa.Name].Value.ToString(), 1, IdLogin);
+
+                            decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
+                            CapaLogica.Detracciones(1, string.Join("-", valor), item.Cells[xProveedor.Name].Value.ToString(), TotalDetracion, MontoSolesOri, decimal.Parse(txttipocambio.Text), TotalDetracion, 0, NroPago,"", "", FechaCompensa, IdLogin
+                                , (int)item.Cells[xIdComprobante.Name].Value, _idempresa, Cuo, TipoPago);
                         }
                         //Reembolso del gasto
                     }

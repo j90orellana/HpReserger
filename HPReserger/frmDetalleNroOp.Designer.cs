@@ -41,6 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtnrocomp = new HpResergerUserControls.TextBoxPer();
             this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtnrobanco
@@ -53,11 +55,11 @@
             this.txtnrobanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnrobanco.ForeColor = System.Drawing.Color.Black;
             this.txtnrobanco.Format = null;
-            this.txtnrobanco.Location = new System.Drawing.Point(269, 62);
+            this.txtnrobanco.Location = new System.Drawing.Point(117, 62);
             this.txtnrobanco.MaxLength = 20;
             this.txtnrobanco.Name = "txtnrobanco";
             this.txtnrobanco.NextControlOnEnter = this.btnaceptar;
-            this.txtnrobanco.Size = new System.Drawing.Size(228, 21);
+            this.txtnrobanco.Size = new System.Drawing.Size(192, 21);
             this.txtnrobanco.TabIndex = 1;
             this.txtnrobanco.Text = "Ingrese Nro Op Bancaria";
             this.txtnrobanco.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -86,9 +88,9 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(171, 66);
+            this.label7.Location = new System.Drawing.Point(20, 66);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.Size = new System.Drawing.Size(97, 13);
             this.label7.TabIndex = 141;
             this.label7.Text = "Nro Op. Bancaria:";
             // 
@@ -205,9 +207,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(350, 39);
+            this.label1.Location = new System.Drawing.Point(351, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 147;
             this.label1.Text = "Banco:";
             // 
@@ -246,11 +248,31 @@
             this.label2.TabIndex = 149;
             this.label2.Text = "Nro. Comp.";
             // 
+            // dtpFechaPago
+            // 
+            this.dtpFechaPago.Location = new System.Drawing.Point(392, 62);
+            this.dtpFechaPago.Name = "dtpFechaPago";
+            this.dtpFechaPago.Size = new System.Drawing.Size(228, 20);
+            this.dtpFechaPago.TabIndex = 150;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(323, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 147;
+            this.label3.Text = "Fecha Pago:";
+            // 
             // frmDetalleNroOp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 122);
+            this.Controls.Add(this.dtpFechaPago);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtnrocomp);
             this.Controls.Add(this.txtbanco);
@@ -261,6 +283,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.MaximumSize = new System.Drawing.Size(667, 161);
@@ -290,5 +313,7 @@
         private System.Windows.Forms.Label label1;
         private HpResergerUserControls.TextBoxPer txtnrocomp;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpFechaPago;
+        private System.Windows.Forms.Label label3;
     }
 }

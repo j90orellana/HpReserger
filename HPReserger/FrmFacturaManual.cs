@@ -2144,7 +2144,7 @@ namespace HPReserger
             var result = SF.ShowDialog();
             if (result == DialogResult.OK)
             {
-                File.WriteAllBytes(SF.FileName, Resource1.LISTADO_DE_COMPRAS);
+                File.WriteAllBytes(SF.FileName,SISGEM. Resource1.LISTADO_DE_COMPRAS);
                 System.Diagnostics.Process.Start(SF.FileName);
             }
         }

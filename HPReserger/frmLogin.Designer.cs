@@ -197,8 +197,8 @@
             // 
             // pbclose
             // 
-            this.pbclose.Image = global::HPReserger.Properties.Resources.XCloseRed;
-            this.pbclose.InitialImage = global::HPReserger.Properties.Resources.xCloseBlue;
+            this.pbclose.Image = global::SISGEM.Properties.Resources.XCloseRed;
+            this.pbclose.InitialImage = global::SISGEM.Properties.Resources.xCloseBlue;
             this.pbclose.Location = new System.Drawing.Point(316, 10);
             this.pbclose.Name = "pbclose";
             this.pbclose.Size = new System.Drawing.Size(30, 23);

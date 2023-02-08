@@ -444,7 +444,7 @@ namespace HPReserger
             // 
             this.btnREfres.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnREfres.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnREfres.Image = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
+            this.btnREfres.Image = global::SISGEM.Properties.Resources.sshot_2017_06_13__17_59_46_;
             this.btnREfres.Location = new System.Drawing.Point(797, 45);
             this.btnREfres.Name = "btnREfres";
             this.btnREfres.Size = new System.Drawing.Size(29, 23);

@@ -128,7 +128,7 @@
             // 
             // btnlimpiar
             // 
-            this.btnlimpiar.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_23__15_15_56_;
+            this.btnlimpiar.BackgroundImage = global::SISGEM.Properties.Resources.sshot_2017_06_23__15_15_56_;
             this.btnlimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnlimpiar.Enabled = false;
             this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -149,7 +149,7 @@
             // 
             // btnrectipo
             // 
-            this.btnrectipo.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
+            this.btnrectipo.BackgroundImage = global::SISGEM.Properties.Resources.sshot_2017_06_13__17_59_46_;
             this.btnrectipo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnrectipo.Enabled = false;
             this.btnrectipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -172,7 +172,7 @@
             // 
             // btnrecempresa
             // 
-            this.btnrecempresa.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
+            this.btnrecempresa.BackgroundImage = global::SISGEM.Properties.Resources.sshot_2017_06_13__17_59_46_;
             this.btnrecempresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnrecempresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnrecempresa.Location = new System.Drawing.Point(399, 55);

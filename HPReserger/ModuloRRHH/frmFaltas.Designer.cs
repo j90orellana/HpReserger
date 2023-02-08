@@ -385,7 +385,7 @@ namespace HPReserger
             // pbFaltas
             // 
             this.pbFaltas.BackColor = System.Drawing.Color.Transparent;
-            this.pbFaltas.Image = global::HPReserger.Properties.Resources.NoRegistrarFaltas;
+            this.pbFaltas.Image = global::SISGEM.Properties.Resources.NoRegistrarFaltas;
             this.pbFaltas.Location = new System.Drawing.Point(0, 0);
             this.pbFaltas.Name = "pbFaltas";
             this.pbFaltas.Size = new System.Drawing.Size(373, 236);

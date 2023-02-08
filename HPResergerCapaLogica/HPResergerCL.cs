@@ -2345,6 +2345,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ActualizarNroOperacion(codigo, valor, tipodet, fkempresa, cuo);
         }
+        public DataTable ActualizarNroOperacionconFechaPago(int codigo, string valor, int tipodet, int fkempresa, string cuo, DateTime fechapago)
+        {
+            return cdOrdenPedido.ActualizarNroOperacionconFechaPago(codigo, valor, tipodet, fkempresa, cuo, fechapago);
+        }
         public DataTable Vendedor(int opcion, int codigo, string nrocod, int estado, int usuario)
         {
             return cdOrdenPedido.Vendedor(0, opcion, codigo, nrocod, estado, usuario);
