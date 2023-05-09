@@ -772,7 +772,7 @@ namespace HPReserger
         private void txtbusproveedor_TextChanged(object sender, EventArgs e)
         {
             txtbusnrodoc.Text = txtbusnrodoc.Text.Replace("\t", "-");
-            CargarDatos();
+            //CargarDatos();
         }
 
         private void dtgBusqueda_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -1354,6 +1354,7 @@ namespace HPReserger
                 if (y == Dtgconten.Columns[xDebeHaber.Name].Index)
                 {
                     Dtgconten[xDebeHaber.Name, x].Value = Dtgconten[xDebeHaber.Name, x].Value.ToString().ToUpper();
+                    Dtgconten[xGlosa.Name, x].Value = txtglosa.TextValido();
                 }
             }
         }
@@ -1736,6 +1737,7 @@ namespace HPReserger
             //dtgconten.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, Listado[0].ToString());
         }
         DataTable TContenendor;
+        string CodDetracciones = "";
         private void btnCargar_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();
@@ -1831,6 +1833,11 @@ namespace HPReserger
                                         //
                                         txttotalfac.Text = (decimal.Parse(item[9].ToString()) + decimal.Parse(item[13].ToString())).ToString("n2");
                                         txtglosa.Text = item[20].ToString() == "" ? "CARGA MASIVA" : item[18].ToString();
+                                        //LAS DETRACCIONES
+                                        txtdescdetraccion.Text = ""; detrac = "";
+                                        CodDetracciones = item[50].ToString();
+                                        cbodetraccion.Text = item[50].ToString() == "" ? "NO" : "SI";
+
                                         //CARGA DEL DETALLE
                                         btnAdd.PerformClick();
                                         TContenendor.Rows.Add(TContenendor.NewRow());
@@ -1904,6 +1911,17 @@ namespace HPReserger
             }
         }
         public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        private void btnfiltrar_Click(object sender, EventArgs e)
+        {
+            LimpiarBusquedas();
+        }
+
         private void btneliminar_Click(object sender, EventArgs e)
         {
             if (_TipoDoc == 0 || _TipoDoc == 1) OpcionBusqueda = 1;

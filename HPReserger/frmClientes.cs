@@ -453,8 +453,8 @@ namespace HPReserger
             DataRow filita = (CapaLogica.ClienteSiguienteCodigo()).Rows[0];
             txtcodigo.Text = filita["total"].ToString(); ;
             Codigo = (int)filita["total"];
-            cbosexo.SelectedItem = 1;
-            cbocivil.SelectedItem = 3;
+            cbosexo.SelectedIndex = 1;
+            cbocivil.SelectedIndex = 3;
         }
         private void LimpiarControles(params object[] control)
         {

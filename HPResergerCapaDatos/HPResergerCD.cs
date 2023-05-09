@@ -1325,6 +1325,14 @@ namespace HPResergerCapaDatos
             string sql = "SELECT Tipo_Id,RUC,razon_social,nombre_comercial FROM TBL_Proveedor WHERE ruc = @id";
             return bd.DataTableFromQuery(sql, parametros, valor, direccion);
         }
+        public DataTable BuscarSolicitanteQuery(string Name)
+        {
+            string[] parametros = { "@id" };
+            object[] valor = { Name };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT * FROM TBL_Empleado e INNER JOIN TBL_Tipo_ID i ON e.Tipo_ID_Emp = i.Codigo_Tipo_ID WHERE @id = CONCAT(i.Desc_Tipo_ID, '-', Nro_ID_Emp)";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
         public DataTable BuscarClienteQuery(string Name)
         {
             string[] parametros = { "@id" };

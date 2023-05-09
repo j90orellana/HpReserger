@@ -161,6 +161,15 @@ namespace HPReserger
             else
                 TDatos = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
 
+            if ((FechaIni - FechaFin).TotalDays == 0)
+            {
+                DataView dvx = TDatos.AsDataView();
+                string filter = "fechacontable >= #" + FechaIni.ToString("MM/dd/yy") + "# and fechacontable <= #" + FechaFin.ToString("MM/dd/yy") + "#";
+                dvx.RowFilter = filter;
+                dvx.Sort = "cod_asiento_contable asc";
+                TDatos = dvx.ToTable();
+            }
+
             dtgconten.DataSource = TDatos;
             //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();
             //dtgconten.AutoGenerateColumns = true;            
@@ -773,7 +782,7 @@ namespace HPReserger
                                         {
                                             fila["num_comprobante"] = fila["num_comprobante"].ToString().Remove(0, fila["num_comprobante"].ToString().Length - 8);
                                         }
-                                        campo[c++] = Configuraciones.ValidarTipoDocumentoSerie(Configuraciones.DefectoSunatString(SerieDoc), idComprobante);                                       
+                                        campo[c++] = Configuraciones.ValidarTipoDocumentoSerie(Configuraciones.DefectoSunatString(SerieDoc), idComprobante);
                                         campo[c++] = Configuraciones.ValidarTipoDocumentoNumero(Configuraciones.DefectoSunatString(Configuraciones.AlfaNumericoSunat(fila["Num_Comprobante"].ToString())), idComprobante);
                                         campo[c++] = ((DateTime)fila["FechaContable"]).ToString("dd/MM/yyyy");
                                         campo[c++] = "";// ((DateTime)fila["FechaRegistro"]).ToString("dd/MM/yyyy");

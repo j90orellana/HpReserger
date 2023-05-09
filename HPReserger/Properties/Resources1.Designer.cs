@@ -203,6 +203,16 @@ namespace SISGEM.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap clearfilter_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("clearfilter_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ComprobanteDePago {
             get {
                 object obj = ResourceManager.GetObject("ComprobanteDePago", resourceCulture);
@@ -326,6 +336,16 @@ namespace SISGEM.Properties {
         public static System.Drawing.Bitmap fechas {
             get {
                 object obj = ResourceManager.GetObject("fechas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap find_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("find_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

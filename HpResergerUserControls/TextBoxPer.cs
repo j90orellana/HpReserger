@@ -205,7 +205,15 @@ namespace HpResergerUserControls
             if (TiposDatos == ListaTipos.MayusculaCadaPalabra)
             {
                 int pos = SelectionStart;
-                this.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(this.Text);
+                if (this.Text.Contains("'"))
+                {
+                    this.Text = this.Text;
+                }
+                else
+                {
+                    this.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(this.Text);
+
+                }
                 SelectionStart = pos;
             }
             if (Text != TextoPorDefecto)

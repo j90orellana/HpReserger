@@ -51,7 +51,6 @@
             this.btnnuevo = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.btncleanfind = new System.Windows.Forms.Button();
             this.txtbusproveedor = new HpResergerUserControls.TextBoxPer();
             this.txtbuscaempresa = new HpResergerUserControls.TextBoxPer();
             this.txtbusnrodoc = new HpResergerUserControls.TextBoxPer();
@@ -176,6 +175,8 @@
             this.btnFormato = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnbuscar = new DevExpress.XtraEditors.SimpleButton();
+            this.btncleanfind = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBusqueda)).BeginInit();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
@@ -277,19 +278,6 @@
             this.btnAceptar.Text = "&Grabar";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            // 
-            // btncleanfind
-            // 
-            this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btncleanfind.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
-            this.btncleanfind.Location = new System.Drawing.Point(526, 473);
-            this.btncleanfind.Name = "btncleanfind";
-            this.btncleanfind.Size = new System.Drawing.Size(25, 23);
-            this.btncleanfind.TabIndex = 24;
-            this.btncleanfind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncleanfind.UseVisualStyleBackColor = true;
-            this.btncleanfind.Click += new System.EventHandler(this.btncleanfind_Click);
             // 
             // txtbusproveedor
             // 
@@ -1864,11 +1852,33 @@
             this.label12.TabIndex = 329;
             this.label12.Text = "Carga Masiva";
             // 
+            // btnbuscar
+            // 
+            this.btnbuscar.Image = global::SISGEM.Properties.Resources.find_16x16;
+            this.btnbuscar.Location = new System.Drawing.Point(607, 473);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnbuscar.TabIndex = 330;
+            this.btnbuscar.Text = "Buscar";
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
+            // 
+            // btncleanfind
+            // 
+            this.btncleanfind.Image = global::SISGEM.Properties.Resources.clearfilter_16x16;
+            this.btncleanfind.Location = new System.Drawing.Point(526, 473);
+            this.btncleanfind.Name = "btncleanfind";
+            this.btncleanfind.Size = new System.Drawing.Size(75, 23);
+            this.btncleanfind.TabIndex = 331;
+            this.btncleanfind.Text = "Limpiar";
+            this.btncleanfind.Click += new System.EventHandler(this.btnfiltrar_Click);
+            // 
             // frmFacturaManualVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.btncleanfind);
+            this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.btnFormato);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.label12);
@@ -1884,7 +1894,6 @@
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.btncleanfind);
             this.Controls.Add(this.txtbusproveedor);
             this.Controls.Add(this.txtbuscaempresa);
             this.Controls.Add(this.txtbusnrodoc);
@@ -1956,7 +1965,6 @@
         private System.Windows.Forms.Button btnnuevo;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.Button btncleanfind;
         private HpResergerUserControls.TextBoxPer txtbusproveedor;
         private HpResergerUserControls.TextBoxPer txtbuscaempresa;
         private HpResergerUserControls.TextBoxPer txtbusnrodoc;
@@ -2081,5 +2089,7 @@
         private System.Windows.Forms.Button btnFormato;
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.Label label12;
+        private DevExpress.XtraEditors.SimpleButton btnbuscar;
+        private DevExpress.XtraEditors.SimpleButton btncleanfind;
     }
 }

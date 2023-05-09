@@ -142,9 +142,6 @@
   <data name="Frames" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frames.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logo_HP" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo_HP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Interbank1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Interbank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -165,6 +162,9 @@
   </data>
   <data name="BanBifroveedores" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BanBif-Proveedores.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Salir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Salir.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fechas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fechas.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,6 +250,9 @@
   <data name="Salir2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Salir (2).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Postulantes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Postulantes.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Solicita" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Solicita.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -270,6 +273,9 @@
   </data>
   <data name="Business" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Business.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ComprobanteDePago" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ComprobanteDePago.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="xCloseBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xCloseBlack.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -304,14 +310,14 @@
   <data name="Proveedor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Proveedor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ComprobanteDePago" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ComprobanteDePago.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_Traveler_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImgFiles\icons8_Traveler_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Salir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Salir.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Logo_HP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo_HP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Postulantes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Postulantes.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LISTADO_DE_COMPRAS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LISTADO DE COMPRAS.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Almacenes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Almacenes.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,6 +343,9 @@
   <data name="Request" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Request.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="find_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\find_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Vacaciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vacaciones.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -349,10 +358,7 @@
   <data name="Cotizacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cotizacion.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_Traveler_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImgFiles\icons8_Traveler_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LISTADO_DE_COMPRAS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LISTADO DE COMPRAS.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="clearfilter_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clearfilter_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

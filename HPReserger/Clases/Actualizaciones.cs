@@ -134,7 +134,19 @@ namespace HPReserger
         {
             try
             {
+                //string RutaVersiones = @"https://1drv.ms/u/s!AoGCuu9yuc86gcwj_aDS5mMpG1Dgww?e=AeliHE";
+                //string RutaVersionesx = @"https://terabox.com/s/1OyB534p9o5u79B3SaJNr2A";
+
+                //WebClient mywebClient = new WebClient();
+                //mywebClient.DownloadFile(RutaVersionesx, AppDomain.CurrentDomain.BaseDirectory + @"VERSIONES.rar");
+
+
+                //BinaryWriter  writer = new BinaryWriter(File.OpenWrite(AppDomain.CurrentDomain.BaseDirectory + @"ACTUAL_VERSIONES_.zip"));
+                //writer.Write(Data);
+                //writer.Dispose();
+
                 Empresa = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "EMPRESA.txt");
+
                 using (var dbx = new DropboxClient(token))
                 {
                     //string Path = $"/{folder}/{file}";

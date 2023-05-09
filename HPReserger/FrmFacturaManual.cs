@@ -132,7 +132,7 @@ namespace HPReserger
             ///datetimepicker
             dtpFechaContable.Enabled = dtpfechaemision.Enabled = dtpfecharecep.Enabled = dtpfechavence.Enabled = a;
             ///////////////////
-            btnActualizar.Enabled = btncleanfind.Enabled = !a;
+            btncleanfind.Enabled = !a;
             txtBusTipoDoc.ReadOnly = txtbusnrodoc.ReadOnly = txtbuscaempresa.ReadOnly = txtbusproveedor.ReadOnly = a;
             dtgBusqueda.Enabled = !a; Dtgconten.ReadOnly = !a;
             btnnuevo.Enabled = !a; btnmodificar.Enabled = !a;
@@ -608,7 +608,7 @@ namespace HPReserger
             if (x >= 0)
             {
                 btnAceptar.Enabled = false;
-                
+
                 if (y == Dtgconten.Columns[xCuentaContable.Name].Index)
                 {
                     string consulta = Dtgconten[xCuentaContable.Name, x].Value == null ? "" : Dtgconten[xCuentaContable.Name, x].Value.ToString();
@@ -1437,7 +1437,7 @@ namespace HPReserger
         {
             /////proceso de Busqueda
             txtbusnrodoc.Text = txtbusnrodoc.Text.Replace("\t", "-");
-            CargarDatos();
+            //CargarDatos();
         }
         private void txtbusempresa_TextChanged(object sender, EventArgs e)
         {
@@ -2144,7 +2144,7 @@ namespace HPReserger
             var result = SF.ShowDialog();
             if (result == DialogResult.OK)
             {
-                File.WriteAllBytes(SF.FileName,SISGEM. Resource1.LISTADO_DE_COMPRAS);
+                File.WriteAllBytes(SF.FileName, SISGEM.Resource1.LISTADO_DE_COMPRAS);
                 System.Diagnostics.Process.Start(SF.FileName);
             }
         }
@@ -2166,7 +2166,8 @@ namespace HPReserger
                         //VALIDAMOS LAS CUENTAS y numeros de ruc
                         List<String> ListaCuentas = new List<string>();
                         List<String> ListaRuc = new List<string>();
-                        string CuentaContable = "", CuentaContableFac = "", NroRuc = "";
+                        List<String> ListaSolicitante = new List<string>();
+                        string CuentaContable = "", CuentaContableFac = "", NroRuc = "", Solicitante = "";
                         ResultadoMasivoTXT = "";
                         string cadenaResultado = "";
 
@@ -2175,6 +2176,10 @@ namespace HPReserger
                         {
                             if (i > 0)
                             {
+                                if (item[0].ToString().Trim() == "")
+                                {
+                                    break;
+                                }
                                 CuentaContable = item[21].ToString().Trim();  //CUENTA CONTABLE
                                 CuentaContableFac = item[24].ToString().Trim();  //CUENTA CONTABLE
                                 NroRuc = item[7].ToString().Trim(); //RUC PROVEEDOR
@@ -2184,6 +2189,38 @@ namespace HPReserger
                                 //validamos importe vacios
                                 item[60] = item[60].ToString() == "" ? 0.00 : item[60];
                                 item[59] = item[59].ToString() == "" ? 0.00 : item[59];
+
+                                //
+                                item[8] = item[8].ToString() == "" ? 0.00 : item[8];
+                                item[10] = item[10].ToString() == "" ? 0.00 : item[10];
+                                item[11] = item[11].ToString() == "" ? 0.00 : item[11];
+                                item[13] = item[13].ToString() == "" ? 0.00 : item[13];
+
+                                //validamos las compensaciones
+                                if (!(item[1].ToString() == "" || item[1].ToString().ToLower() == "ninguno"))
+                                {
+                                    Solicitante = item[32].ToString().Trim() + "-" + item[33].ToString().Trim(); //EMPLEADO SOLICITANTE
+                                    if (!ListaSolicitante.Contains(Solicitante)) ListaSolicitante.Add(Solicitante);
+
+                                    if (item[32].ToString() == "")
+                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el tipo de documento del solicitante";
+                                    if (item[33].ToString() == "")
+                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar número de documento del solicitante";
+                                }
+                                //validamos la moneda
+                                if ((item[18].ToString() == ""))
+                                {
+                                    if (item[18].ToString() == "")
+                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar la moneda: MN o ME";
+                                }
+                                //BuscarEmpleado();
+
+                                //validamos que ingrese la palabra IGV-GNG-ONG
+                                if (!((item[9].ToString().ToLower() == "igv") || (item[9].ToString().ToLower() == "gng") || (item[9].ToString().ToLower() == "ong")))
+                                {
+                                    if (item[9].ToString() == "")
+                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el tipo De Impuesto, IGV, GNG, ONG";
+                                }
 
                                 //Validamos notas
                                 if (int.Parse(item[3].ToString()) == 7)
@@ -2212,6 +2249,11 @@ namespace HPReserger
                             if (CapaDatos.BuscarProveedorQuery(ruc).Rows.Count == 0)
                                 cadenaResultado += $"No existe el proveedor: {ruc}\n";
                         }
+                        foreach (string ruc in ListaSolicitante)
+                        {
+                            if (CapaDatos.BuscarSolicitanteQuery(ruc).Rows.Count == 0)
+                                cadenaResultado += $"No existe el Solicitante: {ruc}\n";
+                        }
                         if (cadenaResultado != "")
                         {
                             string path = $"{Application.CommonAppDataPath}";
@@ -2232,6 +2274,10 @@ namespace HPReserger
                                 {
                                     if (i > 0)
                                     {
+                                        if (item[0].ToString().Trim() == "")
+                                        {
+                                            break;
+                                        }
                                         btnnuevo.PerformClick();
                                         //CARGA DE LA CABECERA
 
@@ -2251,7 +2297,7 @@ namespace HPReserger
                                         cbomoneda.SelectedIndex = item[18].ToString() == "MN" ? 0 : 1;
                                         cbotipodoc.SelectedValue = 1 + int.Parse(item[3].ToString());
                                         //
-                                        txttotalfac.Text = (Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[9].ToString())) + (decimal.Parse(item[11].ToString())) + decimal.Parse(item[13].ToString())).ToString("n2");
+                                        txttotalfac.Text = (Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[10].ToString())) + (decimal.Parse(item[11].ToString())) + decimal.Parse(item[13].ToString())).ToString("n2");
                                         txtglosa.Text = item[20].ToString() == "" ? "CARGA MASIVA" : item[20].ToString();
                                         //LAS DETRACCIONES
                                         txtdescdetraccion.Text = ""; detrac = "";
@@ -2259,6 +2305,15 @@ namespace HPReserger
                                         CodDetracciones = item[55].ToString();
                                         cbodetraccion.Text = item[55].ToString() == "" ? "NO" : "SI";
                                         chkActivoFijo.Checked = item[21].ToString().Substring(0, 2) == "33" ? true : false;
+                                        //CONFIGURACION DE LAS COMPENSACIONES
+                                        if (!(item[1].ToString() == "" || item[1].ToString().ToLower() == "ninguno"))
+                                        {
+                                            cbocompensa.Text = item[1].ToString();
+                                            cbotipoidcompensa.Text = item[32].ToString();
+                                            txtnumdocompensa.Text = item[33].ToString();
+                                            BuscarEmpleado();
+                                        }
+
                                         string NDebe = "D", NHaber = "H";
                                         //CARGA DEL DETALLE
                                         //CUENTA DE GASTO QUE GRABA IGV
@@ -2288,10 +2343,11 @@ namespace HPReserger
                                             {
                                                 Dtgconten.Rows[pos].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[8].ToString()));
                                             }
-                                            Dtgconten.Rows[pos].Cells[xTipoIgvg.Name].Value = decimal.Parse(item[13].ToString()) > 0 ? 1 : 4;
+                                            string igv = item[9].ToString().ToLower();
+                                            Dtgconten.Rows[pos].Cells[xTipoIgvg.Name].Value = igv == "igv" ? 1:igv == "gng" ? 2 : 4;
                                             TContenendor.AcceptChanges();
                                         }
-                                        if (decimal.Parse(item[9].ToString()) != 0) // GNG
+                                        if (decimal.Parse(item[10].ToString()) != 0) // ONG
                                         {
                                             pos++;
                                             TContenendor.Rows.Add(TContenendor.NewRow());
@@ -2309,16 +2365,16 @@ namespace HPReserger
                                             Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[21].ToString().Trim(); //CUENTA DE GASTOS
                                             if (item[18].ToString() == "ME")
                                             {
-                                                Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[9].ToString()));
+                                                Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[10].ToString()));
                                             }
                                             else
                                             {
-                                                Dtgconten.Rows[pos].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[9].ToString()));
+                                                Dtgconten.Rows[pos].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[10].ToString()));
                                             }
-                                            Dtgconten.Rows[pos].Cells[xTipoIgvg.Name].Value = 2;
+                                            Dtgconten.Rows[pos].Cells[xTipoIgvg.Name].Value = 3;
                                             TContenendor.AcceptChanges();
                                         }
-                                        if (decimal.Parse(item[11].ToString()) != 0 || (decimal.Parse(item[11].ToString()) == 0 && decimal.Parse(item[8].ToString()) == 0 && decimal.Parse(item[9].ToString()) == 0)) //NGR
+                                        if (decimal.Parse(item[11].ToString()) != 0 )// || (decimal.Parse(item[11].ToString()) == 0 && decimal.Parse(item[8].ToString()) == 0 && decimal.Parse(item[9].ToString()) == 0)) //NGR
                                         {
                                             TContenendor.Rows.Add(TContenendor.NewRow());
                                             pos++;
@@ -2361,11 +2417,11 @@ namespace HPReserger
                                         Dtgconten.Rows[pos].Cells[xCuentaContable.Name].Value = item[24].ToString(); //CUENTAS POR PAGAR 4212
                                         if (item[pos].ToString() == "ME")
                                         {
-                                            Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[9].ToString())) + Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[13].ToString())) + (decimal.Parse(item[11].ToString()));
+                                            Dtgconten.Rows[pos].Cells[xImporteME.Name].Value = Math.Abs(decimal.Parse(item[10].ToString())) + Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[13].ToString())) + (decimal.Parse(item[11].ToString()));
                                         }
                                         else
                                         {
-                                            Dtgconten.Rows[pos].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[9].ToString())) + Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[13].ToString())) + (decimal.Parse(item[11].ToString()));
+                                            Dtgconten.Rows[pos].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[10].ToString())) + Math.Abs(decimal.Parse(item[8].ToString())) + Math.Abs(decimal.Parse(item[13].ToString())) + (decimal.Parse(item[11].ToString()));
                                         }
                                         TContenendor.AcceptChanges();
                                         //btnAdd.PerformClick();
@@ -2433,6 +2489,17 @@ namespace HPReserger
             else
                 NumIGV.Enabled = false;
         }
+
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            LimpiarBusquedas();
+        }
+
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             PanelRecibo.Visible = false;
