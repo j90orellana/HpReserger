@@ -89,10 +89,10 @@ namespace HPReserger
                 t.TestConnectivity();
                 logOnInfo = t.LogOnInfo;
                 logOnInfo.ReportName = reporte.Name;
-                logOnInfo.ConnectionInfo.ServerName = datos.DATASOURCE;
+                logOnInfo.ConnectionInfo.ServerName = HPResergerCapaDatos.HPResergerCD.DATASOURCE;
                 logOnInfo.ConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
-                logOnInfo.ConnectionInfo.UserID = datos.USERID;
-                logOnInfo.ConnectionInfo.Password = datos.USERPASS;
+                logOnInfo.ConnectionInfo.UserID = HPResergerCapaDatos.HPResergerCD.USERID;
+                logOnInfo.ConnectionInfo.Password = HPResergerCapaDatos.HPResergerCD.USERPASS;
                 logOnInfo.ConnectionInfo.Type = ConnectionInfoType.SQL;
                 logOnInfo.TableName = t.Name;
                 t.ApplyLogOnInfo(logOnInfo);

@@ -18,14 +18,47 @@ namespace HPResergerCapaDatos
     {
         abcBaseDatos.Database bd;
         //public string DATASOURCE = "HPLAPTOP";   
-        public static string BASEDEDATOS = "";// "Actual";
-        public string DATASOURCE = DataBase;
+        public static string BASEDEDATOS = "ACTUAL";// "Actual";
+        public static string DATASOURCE = "192.168.0.6";
         //public string DATASOURCE = "192.168.0.102";
         //public static string BASEDEDATOS = "sige";
-        public string USERID = "jorellana";
-        public string USERPASS = "Ore456";
+        public static string USERID = "jorellana";
+        public static string USERPASS = "Ore456";
+
+        public DataTable ListaDatosSistema()
+        {
+            //string[] parametros = { "@id" };
+            ////object[] valor = { Name };
+            //ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT Id,Version,Contenido FROM tbl_sistema  order by id desc";
+            return bd.DataTableFromQuery(sql, null, null, null);
+        }
+
+        public void CargarSistema_Insertar(string nombre, string text, byte[] datos)
+        {
+            string[] parametros = { "@nombre", "@texto", "@dato" };
+            object[] valor = { nombre, text, datos };
+            //ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "insert into tbl_sistema values (@nombre,@texto,@dato)";
+            bd.DataTableFromQuery(sql, parametros, valor, null);
+        }
+
+        public DataTable ExtraerUltimoSistema()
+        {
+            string sql = "SELECT top 1 Id,Version,Contenido,Datos FROM tbl_sistema  order by id desc";
+            return bd.DataTableFromQuery(sql, null, null, null);
+        }
+
         public static DateTime FechaCaduca;
         public static List<string> ListaBases;
+
+        public DataTable CargarSistema_Select()
+        {
+            string sql = "SELECT TOP 1 Id,Version,Contenido FROM tbl_sistema ORDER BY ID DESC";
+            return bd.DataTableFromQuery(sql, null, null, null);
+
+        }
+
         public static string DataBase;
         public HPResergerCD()
         {
@@ -37,6 +70,7 @@ namespace HPResergerCapaDatos
                 if (BASEDEDATOS == "")
                     BASEDEDATOS = datito["BaseDeDatos"].InnerText;
                 DataBase = @datito["DataSource"].InnerText;
+                DATASOURCE = DataBase;
                 var Bases = datito.ChildNodes[2];
                 ListaBases = new List<string>();
                 foreach (XmlNode item in Bases.ChildNodes)
@@ -1317,6 +1351,14 @@ namespace HPResergerCapaDatos
             string sql = "SELECT Id_Cuenta_Contable,Cuenta_Contable FROM TBL_Cuenta_Contable WHERE Id_Cuenta_Contable = @id";
             return bd.DataTableFromQuery(sql, parametros, valor, direccion);
         }
+        public DataTable BuscarPeriodoQuery(DateTime periodo)
+        {
+            string[] parametros = { "@periodo" };
+            object[] valor = { periodo };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT Id_Cuenta_Contable,Cuenta_Contable FROM TBL_Cuenta_Contable WHERE Id_Cuenta_Contable = @id";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
         public DataTable BuscarProveedorQuery(string Name)
         {
             string[] parametros = { "@id" };
@@ -1325,12 +1367,36 @@ namespace HPResergerCapaDatos
             string sql = "SELECT Tipo_Id,RUC,razon_social,nombre_comercial FROM TBL_Proveedor WHERE ruc = @id";
             return bd.DataTableFromQuery(sql, parametros, valor, direccion);
         }
+        public DataTable FacturaManualVentaCabecera(string empresa, string numero, int id)
+        {
+            string[] parametros = { };
+            object[] valor = { };
+            ParameterDirection[] direccion = { ParameterDirection.Output };
+            string sql = $"SELECT * FROM TBL_VentaManual v INNER JOIN TBL_Empresa e ON v.Empresa = e.Id_Empresa WHERE e.Empresa = '{empresa}' AND NroComprobante = '{numero}' AND v.IdComprobante = {id}";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
         public DataTable BuscarSolicitanteQuery(string Name)
         {
             string[] parametros = { "@id" };
             object[] valor = { Name };
             ParameterDirection[] direccion = { ParameterDirection.InputOutput };
             string sql = "SELECT * FROM TBL_Empleado e INNER JOIN TBL_Tipo_ID i ON e.Tipo_ID_Emp = i.Codigo_Tipo_ID WHERE @id = CONCAT(i.Desc_Tipo_ID, '-', Nro_ID_Emp)";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
+        public DataTable BuscarTipodeCambioQuery(DateTime FechaEmision)
+        {
+            string[] parametros = { "@fecha" };
+            object[] valor = { FechaEmision };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT * FROM TBL_Tipo_Cambio WHERE Anio = YEAR(@fecha) AND Mes = MONTH(@fecha) AND Dia = DAY(@fecha)";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
+        public DataTable BuscarEmpresaQuery(string Name)
+        {
+            string[] parametros = { "@empresa" };
+            object[] valor = { Name };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "select* from  tbl_empresa where Empresa like @empresa";
             return bd.DataTableFromQuery(sql, parametros, valor, direccion);
         }
         public DataTable BuscarClienteQuery(string Name)
@@ -4734,10 +4800,10 @@ namespace HPResergerCapaDatos
             object[] valores = { codigo, valor, tipodet, fkempresa, cuo };
             return bd.DataTableFromProcedure("[usp_ActualizarNroOperacion]", parametros, valores, null);
         }
-        public DataTable ActualizarNroOperacionconFechaPago(int codigo, string valor, int tipodet, int fkempresa, string cuo,DateTime fechapago)
+        public DataTable ActualizarNroOperacionconFechaPago(int codigo, string valor, int tipodet, int fkempresa, string cuo, DateTime fechapago)
         {
-            string[] parametros = { "@Codigo", "@Nroop", "@TipoDet", "@fkempresa", "@cuo","@fechapago" };
-            object[] valores = { codigo, valor, tipodet, fkempresa, cuo,fechapago };
+            string[] parametros = { "@Codigo", "@Nroop", "@TipoDet", "@fkempresa", "@cuo", "@fechapago" };
+            object[] valores = { codigo, valor, tipodet, fkempresa, cuo, fechapago };
             return bd.DataTableFromProcedure("[usp_ActualizarNroOperacion_conFecha]", parametros, valores, null);
         }
         public DataTable Vendedor(int cod, int opcion, int codigo, string nrocod, int estado, int usuario)

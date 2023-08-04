@@ -37,9 +37,9 @@ namespace HPReserger
             // ' ***************************************************************
             //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
             iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
-            iConnectionInfo.UserID = datos.USERID;
-            iConnectionInfo.Password = datos.USERPASS;
-            iConnectionInfo.ServerName = datos.DATASOURCE;
+            iConnectionInfo.UserID = HPResergerCapaDatos.HPResergerCD.USERID;
+            iConnectionInfo.Password = HPResergerCapaDatos.HPResergerCD.USERPASS;
+            iConnectionInfo.ServerName = HPResergerCapaDatos.HPResergerCD.DATASOURCE;
 
             iConnectionInfo.Type = ConnectionInfoType.SQL;
             CrystalDecisions.CrystalReports.Engine.Tables myTables;

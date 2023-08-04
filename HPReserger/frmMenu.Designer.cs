@@ -110,6 +110,7 @@
             this.fondoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compensarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.entregasARendirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
@@ -312,6 +313,7 @@
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCargarSistema = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -322,7 +324,7 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.pagoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.versionActualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -1121,7 +1123,7 @@
             // 
             this.crearToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("crearToolStripMenuItem.Image")));
             this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
-            this.crearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.crearToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.crearToolStripMenuItem.Tag = "140500101";
             this.crearToolStripMenuItem.Text = "Apertura";
             this.crearToolStripMenuItem.Click += new System.EventHandler(this.crearToolStripMenuItem_Click);
@@ -1130,10 +1132,19 @@
             // 
             this.compensarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compensarToolStripMenuItem.Image")));
             this.compensarToolStripMenuItem.Name = "compensarToolStripMenuItem";
-            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.compensarToolStripMenuItem.Tag = "140500102";
             this.compensarToolStripMenuItem.Text = "Compensar";
             this.compensarToolStripMenuItem.Click += new System.EventHandler(this.compensarToolStripMenuItem_Click);
+            // 
+            // pagoToolStripMenuItem1
+            // 
+            this.pagoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("pagoToolStripMenuItem1.Image")));
+            this.pagoToolStripMenuItem1.Name = "pagoToolStripMenuItem1";
+            this.pagoToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.pagoToolStripMenuItem1.Tag = "140500103";
+            this.pagoToolStripMenuItem1.Text = "Pago";
+            this.pagoToolStripMenuItem1.Click += new System.EventHandler(this.pagoToolStripMenuItem1_Click);
             // 
             // entregasARendirToolStripMenuItem
             // 
@@ -1151,7 +1162,7 @@
             // 
             this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItem5.Tag = "140500201";
             this.toolStripMenuItem5.Text = "Apertura";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
@@ -1160,7 +1171,7 @@
             // 
             this.toolStripMenuItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem7.Image")));
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItem7.Tag = "140500202";
             this.toolStripMenuItem7.Text = "Compensar";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
@@ -1169,7 +1180,7 @@
             // 
             this.devoluciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("devoluciónToolStripMenuItem.Image")));
             this.devoluciónToolStripMenuItem.Name = "devoluciónToolStripMenuItem";
-            this.devoluciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.devoluciónToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.devoluciónToolStripMenuItem.Tag = "140500203";
             this.devoluciónToolStripMenuItem.Text = "Devolución";
             this.devoluciónToolStripMenuItem.Click += new System.EventHandler(this.devoluciónToolStripMenuItem_Click);
@@ -1190,7 +1201,7 @@
             // 
             this.aplicaciónToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem1.Image")));
             this.aplicaciónToolStripMenuItem1.Name = "aplicaciónToolStripMenuItem1";
-            this.aplicaciónToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aplicaciónToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
             this.aplicaciónToolStripMenuItem1.Tag = "140500301";
             this.aplicaciónToolStripMenuItem1.Text = "Aplicación";
             this.aplicaciónToolStripMenuItem1.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem1_Click);
@@ -1199,7 +1210,7 @@
             // 
             this.pagoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagoToolStripMenuItem.Image")));
             this.pagoToolStripMenuItem.Name = "pagoToolStripMenuItem";
-            this.pagoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pagoToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.pagoToolStripMenuItem.Tag = "140500302";
             this.pagoToolStripMenuItem.Text = "Pago";
             this.pagoToolStripMenuItem.Click += new System.EventHandler(this.pagoToolStripMenuItem_Click);
@@ -1220,7 +1231,7 @@
             // 
             this.registroToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registroToolStripMenuItem.Image")));
             this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
-            this.registroToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.registroToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.registroToolStripMenuItem.Tag = "140500401";
             this.registroToolStripMenuItem.Text = "Registro";
             this.registroToolStripMenuItem.Click += new System.EventHandler(this.registroToolStripMenuItem_Click);
@@ -1229,7 +1240,7 @@
             // 
             this.aplicaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem.Image")));
             this.aplicaciónToolStripMenuItem.Name = "aplicaciónToolStripMenuItem";
-            this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.aplicaciónToolStripMenuItem.Tag = "140500402";
             this.aplicaciónToolStripMenuItem.Text = "Aplicación";
             this.aplicaciónToolStripMenuItem.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem_Click);
@@ -2313,7 +2324,7 @@
             // 
             this.paìsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("paìsToolStripMenuItem.Image")));
             this.paìsToolStripMenuItem.Name = "paìsToolStripMenuItem";
-            this.paìsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.paìsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.paìsToolStripMenuItem.Tag = "1603001";
             this.paìsToolStripMenuItem.Text = "País";
             this.paìsToolStripMenuItem.Click += new System.EventHandler(this.paísToolStripMenuItem_Click);
@@ -2322,7 +2333,7 @@
             // 
             this.departamentoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("departamentoToolStripMenuItem.Image")));
             this.departamentoToolStripMenuItem.Name = "departamentoToolStripMenuItem";
-            this.departamentoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.departamentoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.departamentoToolStripMenuItem.Tag = "1603002";
             this.departamentoToolStripMenuItem.Text = "Departamentos";
             this.departamentoToolStripMenuItem.Click += new System.EventHandler(this.departamentoToolStripMenuItem_Click);
@@ -2331,7 +2342,7 @@
             // 
             this.provinciaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("provinciaToolStripMenuItem.Image")));
             this.provinciaToolStripMenuItem.Name = "provinciaToolStripMenuItem";
-            this.provinciaToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.provinciaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.provinciaToolStripMenuItem.Tag = "1603003";
             this.provinciaToolStripMenuItem.Text = "Provincias";
             this.provinciaToolStripMenuItem.Click += new System.EventHandler(this.provinciaToolStripMenuItem_Click);
@@ -2340,7 +2351,7 @@
             // 
             this.distritoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("distritoToolStripMenuItem.Image")));
             this.distritoToolStripMenuItem.Name = "distritoToolStripMenuItem";
-            this.distritoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.distritoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.distritoToolStripMenuItem.Tag = "1603004";
             this.distritoToolStripMenuItem.Text = "Distritos";
             this.distritoToolStripMenuItem.Click += new System.EventHandler(this.distritoToolStripMenuItem_Click);
@@ -2918,7 +2929,8 @@
             this.ventanasToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ventanasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.organizarVentanasToolStripMenuItem,
-            this.cerrarTodasToolStripMenuItem1});
+            this.cerrarTodasToolStripMenuItem1,
+            this.versionActualToolStripMenuItem});
             this.ventanasToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.ventanasToolStripMenuItem.MergeIndex = 1;
             this.ventanasToolStripMenuItem.Name = "ventanasToolStripMenuItem";
@@ -3001,7 +3013,8 @@
             this.cerrarSesionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cerrarSesionToolStripMenuItem1,
             this.salirToolStripMenuItem,
-            this.cargarPdfToolStripMenuItem});
+            this.cargarPdfToolStripMenuItem,
+            this.btnCargarSistema});
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.cerrarSesionToolStripMenuItem.Tag = "8";
@@ -3013,7 +3026,7 @@
             this.cerrarSesionToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("cerrarSesionToolStripMenuItem1.Image")));
             this.cerrarSesionToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.White;
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
-            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.cerrarSesionToolStripMenuItem1.Text = "&Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem1_Click);
             // 
@@ -3022,17 +3035,24 @@
             this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
             this.salirToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // cargarPdfToolStripMenuItem
             // 
             this.cargarPdfToolStripMenuItem.Name = "cargarPdfToolStripMenuItem";
-            this.cargarPdfToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.cargarPdfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cargarPdfToolStripMenuItem.Tag = "803";
             this.cargarPdfToolStripMenuItem.Text = "Cargar Pdf";
             this.cargarPdfToolStripMenuItem.Click += new System.EventHandler(this.cargarPdfToolStripMenuItem_Click);
+            // 
+            // btnCargarSistema
+            // 
+            this.btnCargarSistema.Name = "btnCargarSistema";
+            this.btnCargarSistema.Size = new System.Drawing.Size(152, 22);
+            this.btnCargarSistema.Text = "Cargar Sistema";
+            this.btnCargarSistema.Click += new System.EventHandler(this.btnCargarSistema_Click);
             // 
             // menuStrip2
             // 
@@ -3042,8 +3062,8 @@
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arToolStripMenuItem,
             this.proyectosToolStripMenuItem1,
-            this.ventasToolStripMenuItem,
             this.verToolStripMenuItem,
+            this.ventasToolStripMenuItem,
             this.contabilidadToolStripMenuItem,
             this.planillaToolStripMenuItem,
             this.mantenimientoToolStripMenuItem,
@@ -3150,14 +3170,13 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
-            // pagoToolStripMenuItem1
+            // versionActualToolStripMenuItem
             // 
-            this.pagoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("pagoToolStripMenuItem1.Image")));
-            this.pagoToolStripMenuItem1.Name = "pagoToolStripMenuItem1";
-            this.pagoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.pagoToolStripMenuItem1.Tag = "140500103";
-            this.pagoToolStripMenuItem1.Text = "Pago";
-            this.pagoToolStripMenuItem1.Click += new System.EventHandler(this.pagoToolStripMenuItem1_Click);
+            this.versionActualToolStripMenuItem.Image = global::SISGEM.Properties.Resources.icons8_Traveler_25px;
+            this.versionActualToolStripMenuItem.Name = "versionActualToolStripMenuItem";
+            this.versionActualToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.versionActualToolStripMenuItem.Text = "Version Actual";
+            this.versionActualToolStripMenuItem.Click += new System.EventHandler(this.versionActualToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -3429,42 +3448,18 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem balanceDeComprobaciónToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mediosPagosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem librosElectronicosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator LibroInventario3_6;
-        private System.Windows.Forms.ToolStripMenuItem libroDiarioToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem libroDiarioToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
-        private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
-        private System.Windows.Forms.ToolStripMenuItem formato141RegistroDeVentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
-        private System.Windows.Forms.ToolStripMenuItem mayorPorCuentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposPlanContableToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
-        private System.Windows.Forms.ToolStripMenuItem libroDeInventariosYBalancesDetalleDelSaldoDeLaCuenta10EfectivoYEquivalentesDeEfectivoPCGEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem devoluciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
-        private System.Windows.Forms.ToolStripMenuItem LibroInventario3_5;
-        private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_6;
-        private System.Windows.Forms.ToolStripMenuItem tpLibroInventario311;
-        private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_12;
-        private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_13;
         private System.Windows.Forms.ToolStripMenuItem gestiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
-        private System.Windows.Forms.ToolStripMenuItem formato142REgistroVentasSimplificado;
         private System.Windows.Forms.ToolStripMenuItem asientosAperturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conciliaciónBancariaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conciliarBancosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteConciliacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroMayorToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bonosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem tiposFaltasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asientosBoletasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vacacionesToolStripMenuItem1;
@@ -3475,9 +3470,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem reporteConcliliaciónFinanzaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compensarCuentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem otrosLibrosToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteCentroDeCostosToolStripMenuItem;
         private System.Windows.Forms.Timer TimerTC;
         private System.Windows.Forms.ToolStripMenuItem activoFijoToolStripMenuItem;
@@ -3491,5 +3483,34 @@
         private System.Windows.Forms.ToolStripMenuItem aFPComisionesYPrimasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturasParaElCreditoEPSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pagoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem btnCargarSistema;
+        private System.Windows.Forms.ToolStripMenuItem librosElectronicosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lIBROCAJAYBANCOSDETALLEDELOSMOVIMIENTOSDELEFECTIVOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem libroCajaYBancosDetalleDeLosMovimientosDeLaCuentaCorrienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem libroDeInventariosYBalancesDetalleDelSaldoDeLaCuenta10EfectivoYEquivalentesDeEfectivoPCGEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LibroInventario3_5;
+        private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_6;
+        private System.Windows.Forms.ToolStripMenuItem tpLibroInventario311;
+        private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_12;
+        private System.Windows.Forms.ToolStripMenuItem tpLibroInventario3_13;
+        private System.Windows.Forms.ToolStripSeparator LibroInventario3_6;
+        private System.Windows.Forms.ToolStripMenuItem libroDiarioToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem libroDiarioToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
+        private System.Windows.Forms.ToolStripMenuItem mayorPorCuentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+        private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripMenuItem formato141RegistroDeVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formato142REgistroVentasSimplificado;
+        private System.Windows.Forms.ToolStripMenuItem otrosLibrosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem libroDiarioDetalleDelPlanContableUtilizadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem libroDiarioDeFormatoSimplificadoDetalleDelPlanContableUtilizadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem versionActualToolStripMenuItem;
     }
 }

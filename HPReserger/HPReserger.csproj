@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.props" Condition="Exists('..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.props')" />
+  <Import Project="..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props')" />
+  <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -97,11 +100,22 @@
     </Reference>
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.Images.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Dropbox.Api, Version=4.0.0.0, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
       <HintPath>..\packages\Dropbox.Api.4.9.4\lib\net45\Dropbox.Api.dll</HintPath>
       <Private>True</Private>
@@ -134,6 +148,9 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Octokit, Version=0.32.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.32.0\lib\net45\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -147,6 +164,7 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
@@ -163,6 +181,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ACTUAL_BETADataSet.Designer.cs">
@@ -176,6 +196,12 @@
     </Compile>
     <Compile Include="frmAfpEmpresas.Designer.cs">
       <DependentUpon>frmAfpEmpresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargarSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargarSistema.Designer.cs">
+      <DependentUpon>frmCargarSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConciliacionReportepdf.cs">
       <SubType>Form</SubType>
@@ -206,6 +232,9 @@
     </Compile>
     <Compile Include="frmListarFacturasPagadas.Designer.cs">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectorSkin.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTipoFaltas.cs">
       <SubType>Form</SubType>
@@ -440,6 +469,12 @@
     </Compile>
     <Compile Include="ModuloFinanzas\frmReporteConciliacionesFinanzas.Designer.cs">
       <DependentUpon>frmReporteConciliacionesFinanzas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloReportes\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloReportes\frmFlujodeGastosRegistro.cs">
       <SubType>Form</SubType>
@@ -800,6 +835,12 @@
     </Compile>
     <Compile Include="ModuloRRHH\frmVacacionesResumen.Designer.cs">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2168,6 +2209,9 @@
     <EmbeddedResource Include="frmAfpEmpresas.resx">
       <DependentUpon>frmAfpEmpresas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCargarSistema.resx">
+      <DependentUpon>frmCargarSistema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConciliacionReportepdf.resx">
       <DependentUpon>frmConciliacionReportepdf.cs</DependentUpon>
     </EmbeddedResource>
@@ -2308,6 +2352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmReporteConciliacionesFinanzas.resx">
       <DependentUpon>frmReporteConciliacionesFinanzas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmFlujodeGastosDoc.resx">
       <DependentUpon>frmFlujodeGastosDoc.cs</DependentUpon>
@@ -2490,6 +2537,10 @@
     <EmbeddedResource Include="ModuloRRHH\frmVacacionesResumen.resx">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
@@ -3488,6 +3539,32 @@
     <None Include="Resources\LoadFile.ico" />
     <None Include="Resources\find_16x16.png" />
     <None Include="Resources\clearfilter_16x16.png" />
+    <None Include="Resources\icons8_coin_in_hand_16px_1.png" />
+    <None Include="Resources\icons8_coin_in_hand_30px.png" />
+    <None Include="Resources\icons8_refund_16px.png" />
+    <None Include="Resources\icons8_refund_30px.png" />
+    <None Include="Resources\icons8_refund_16px1.png" />
+    <None Include="Resources\icons8_cash_in_hand_16px.png" />
+    <None Include="Resources\icons8_cash_in_hand_30px_1.png" />
+    <None Include="Resources\icons8_expensive_price_16px_1.png" />
+    <None Include="Resources\icons8_coins_30px.png" />
+    <None Include="Resources\icons8_Cash_16px.png" />
+    <None Include="Resources\icons8_Cash_30px.png" />
+    <None Include="Resources\icons8_meeting_16px.png" />
+    <None Include="Resources\icons8_meeting_30px.png" />
+    <None Include="Resources\icons8_exchange_16px.png" />
+    <None Include="Resources\icons8_exchange_30px.png" />
+    <None Include="Resources\icons8_payment_history_16px_1.png" />
+    <None Include="Resources\icons8_payment_history_30px_1.png" />
+    <None Include="Resources\icons8_request_money_16px.png" />
+    <None Include="Resources\icons8_request_money_30px.png" />
+    <None Include="Resources\icons8_initiate_money_transfer_16px.png" />
+    <None Include="Resources\icons8_initiate_money_transfer_30px.png" />
+    <None Include="Resources\icons8_request_money_30px1.png" />
+    <None Include="Resources\icons8_invoice_16px.png" />
+    <None Include="Resources\icons8_invoice_30px.png" />
+    <None Include="Resources\icons8_Peru_32px_1.png" />
+    <None Include="Resources\icons8_Peru_16px.png" />
     <Content Include="Resources\xCloseBlue.ico" />
     <None Include="Resources\xCloseBlue1.ico" />
     <None Include="Resources\xCloseBlack.ico" />
@@ -3533,8 +3610,17 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets')" />
+  <Import Project="..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets')" />
+  <Import Project="..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.targets" Condition="Exists('..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

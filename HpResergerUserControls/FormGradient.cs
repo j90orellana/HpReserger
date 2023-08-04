@@ -71,8 +71,13 @@ namespace HpResergerUserControls
             //if (this.WindowState == FormWindowState.Maximized) this.ShowIcon = false; else ShowIcon = true;
             ///Recarga el Fondo del control!.
             Invalidate();
-            base.OnSizeChanged(e);
-        }
+            try
+            {
+                base.OnSizeChanged(e);
+            }
+            catch { }
+
+            }
         //Para Quitar Parpadeo en los Formularios
         //protected override CreateParams CreateParams
         //{

@@ -725,7 +725,7 @@ namespace HPReserger
         }
         public async Task<string> GetHTTPs(string dni)
         {
-            string url = Configuraciones.APiReniecToken + dni + Configuraciones.Token;// + año + "-" + mes.ToString("00");
+            string url = Configuraciones.ApiReniec + dni;// + Configuraciones.Token;// + año + "-" + mes.ToString("00");
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebRequest oRequest = WebRequest.Create(url);
             WebResponse oResponse = oRequest.GetResponse();

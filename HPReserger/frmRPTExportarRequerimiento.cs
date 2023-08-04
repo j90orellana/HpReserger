@@ -24,20 +24,21 @@ namespace HPReserger
         {
             rptReporteRequerimientos requeri = new rptReporteRequerimientos();
             requeri.Refresh();
-            requeri.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+            requeri.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
+
             requeri.SetParameterValue(0, numerodocumento);
             requeri.SetParameterValue(1, codigodocumento);
             rptreporterequerimientos.AllowedExportFormats = (int)(ViewerExportFormats.PdfFormat | ViewerExportFormats.RtfFormat | ViewerExportFormats.EditableRtfFormat);
-            
+
             ConnectionInfo iConnectionInfo = new ConnectionInfo();
             // ' *****************************************************************************************************************
             // ' configuro el acceso a la base de datos
             //   ' *****************************************************************************************************************
             //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
             iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
-            iConnectionInfo.UserID = datos.USERID;
-            iConnectionInfo.Password = datos.USERPASS;
-            iConnectionInfo.ServerName = datos.DATASOURCE;
+            iConnectionInfo.UserID = HPResergerCapaDatos.HPResergerCD.USERID;
+            iConnectionInfo.Password = HPResergerCapaDatos.HPResergerCD.USERPASS;
+            iConnectionInfo.ServerName = HPResergerCapaDatos.HPResergerCD.DATASOURCE;
 
             iConnectionInfo.Type = ConnectionInfoType.SQL;
             CrystalDecisions.CrystalReports.Engine.Tables myTables;

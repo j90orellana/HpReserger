@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.Shared;
 using HpResergerUserControls;
+using SISGEM.ModuloCrystalReport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
- 
+
 namespace HPReserger.ModuloCrystalReport
 {
     public partial class frmReporteMayor6_1 : FormGradient
@@ -41,16 +42,16 @@ namespace HPReserger.ModuloCrystalReport
                 reporte.SetParameterValue("@Empresa", empresa);
                 reporte.SetParameterValue("@RazonSocial", razonsocial);
 
-                reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+                reporte.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
                 ConnectionInfo iConnectionInfo = new ConnectionInfo();
                 // ' ***************************************************************
                 // ' configuro el acceso a la base de datos
                 // ' ***************************************************************
                 //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
                 iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
-                iConnectionInfo.UserID = datos.USERID;
-                iConnectionInfo.Password = datos.USERPASS;
-                iConnectionInfo.ServerName = datos.DATASOURCE;
+                iConnectionInfo.UserID = HPResergerCapaDatos.HPResergerCD.USERID;
+                iConnectionInfo.Password = HPResergerCapaDatos.HPResergerCD.USERPASS;
+                iConnectionInfo.ServerName = HPResergerCapaDatos.HPResergerCD.DATASOURCE;
 
                 iConnectionInfo.Type = ConnectionInfoType.SQL;
                 CrystalDecisions.CrystalReports.Engine.Tables myTables;
@@ -83,16 +84,16 @@ namespace HPReserger.ModuloCrystalReport
                     Reporteori.SetParameterValue("@Empresa", empresa);
                     Reporteori.SetParameterValue("@RazonSocial", razonsocial);
 
-                    Reporteori.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+                    Reporteori.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
                     ConnectionInfo iConnectionInfo = new ConnectionInfo();
                     // ' ***************************************************************
                     // ' configuro el acceso a la base de datos
                     // ' ***************************************************************
                     //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
                     iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
-                    iConnectionInfo.UserID = datos.USERID;
-                    iConnectionInfo.Password = datos.USERPASS;
-                    iConnectionInfo.ServerName = datos.DATASOURCE;
+                    iConnectionInfo.UserID = HPResergerCapaDatos.HPResergerCD.USERID;
+                    iConnectionInfo.Password = HPResergerCapaDatos.HPResergerCD.USERPASS;
+                    iConnectionInfo.ServerName = HPResergerCapaDatos.HPResergerCD.DATASOURCE;
 
                     iConnectionInfo.Type = ConnectionInfoType.SQL;
                     CrystalDecisions.CrystalReports.Engine.Tables myTables;

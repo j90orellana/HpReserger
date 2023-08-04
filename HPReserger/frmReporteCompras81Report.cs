@@ -36,7 +36,8 @@ namespace HPReserger
         public void GenerarReporte()
         {
             rptFormato81Compras Reporte = new rptFormato81Compras();
-            Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+            Reporte.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
+
             Reporte.SetParameterValue("@Empresa", fkempresa);
             Reporte.SetParameterValue("@periodoAño", FechaPeriodo.Year);
             Reporte.SetParameterValue("@PeriodoMes", FechaPeriodo.Month);
@@ -48,9 +49,9 @@ namespace HPReserger
             // ' ***************************************'
             //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
             iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
-            iConnectionInfo.UserID = datos.USERID;
-            iConnectionInfo.Password = datos.USERPASS;
-            iConnectionInfo.ServerName = datos.DATASOURCE;
+            iConnectionInfo.UserID = HPResergerCapaDatos.HPResergerCD.USERID;
+            iConnectionInfo.Password = HPResergerCapaDatos.HPResergerCD.USERPASS;
+            iConnectionInfo.ServerName = HPResergerCapaDatos.HPResergerCD.DATASOURCE;
             iConnectionInfo.Type = ConnectionInfoType.OLAP;
             CrystalDecisions.CrystalReports.Engine.Tables myTables;
             myTables = Reporte.Database.Tables;

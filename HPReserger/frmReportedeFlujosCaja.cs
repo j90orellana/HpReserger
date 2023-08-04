@@ -45,7 +45,8 @@ namespace HPReserger
             reporte.SetParameterValue("@NombreEmpresa", NombreEmpresa);
             reporte.SetParameterValue("@empresa", empresa);
             reporte.SetParameterValue("@lenmes", 100);
-            reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+            reporte.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
+
 
             ConnectionInfo iConnectionInfo = new ConnectionInfo();
             // ' ***************************************************************
@@ -53,9 +54,9 @@ namespace HPReserger
             // ' ***************************************************************
             //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
             iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
-            iConnectionInfo.UserID = datos.USERID;
-            iConnectionInfo.Password = datos.USERPASS;
-            iConnectionInfo.ServerName = datos.DATASOURCE;
+            iConnectionInfo.UserID = HPResergerCapaDatos.HPResergerCD.USERID;
+            iConnectionInfo.Password = HPResergerCapaDatos.HPResergerCD.USERPASS;
+            iConnectionInfo.ServerName = HPResergerCapaDatos.HPResergerCD.DATASOURCE;
 
             iConnectionInfo.Type = ConnectionInfoType.SQL;
             CrystalDecisions.CrystalReports.Engine.Tables myTables;

@@ -300,6 +300,7 @@
             this.txtbusproveedor.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbusproveedor.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbusproveedor.TextChanged += new System.EventHandler(this.txtbusproveedor_TextChanged);
+            this.txtbusproveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbusnrodoc_KeyDown);
             // 
             // txtbuscaempresa
             // 
@@ -322,6 +323,7 @@
             this.txtbuscaempresa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbuscaempresa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbuscaempresa.TextChanged += new System.EventHandler(this.txtbusproveedor_TextChanged);
+            this.txtbuscaempresa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbusnrodoc_KeyDown);
             // 
             // txtbusnrodoc
             // 
@@ -345,6 +347,7 @@
             this.txtbusnrodoc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbusnrodoc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbusnrodoc.TextChanged += new System.EventHandler(this.txtbusproveedor_TextChanged);
+            this.txtbusnrodoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbusnrodoc_KeyDown);
             // 
             // dtgBusqueda
             // 
@@ -1854,6 +1857,7 @@
             // 
             // btnbuscar
             // 
+            this.btnbuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnbuscar.Image = global::SISGEM.Properties.Resources.find_16x16;
             this.btnbuscar.Location = new System.Drawing.Point(607, 473);
             this.btnbuscar.Name = "btnbuscar";
@@ -1864,6 +1868,7 @@
             // 
             // btncleanfind
             // 
+            this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btncleanfind.Image = global::SISGEM.Properties.Resources.clearfilter_16x16;
             this.btncleanfind.Location = new System.Drawing.Point(526, 473);
             this.btncleanfind.Name = "btncleanfind";

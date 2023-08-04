@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,7 +32,7 @@ namespace HPReserger
         public static string Gerencia;
         public static int CodigoPartidaPresupuesto;
         public static string PartidaPresupuesto;
-        public frmMenu frmM;
+        public static frmMenu frmM;
         public static string Basedatos = "sige";
         public int Intentos { get; set; }
         public frmLogin()
@@ -44,6 +46,33 @@ namespace HPReserger
         }
         public void ComprobarVersion()
         {
+            DataTable tdatos;
+            tdatos = datos.CargarSistema_Select();
+
+            if (tdatos.Rows.Count > 0)
+            {
+                System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+                //Boolean Descargar = false;
+                string version = fvi.FileVersion;
+                string versiones = tdatos.Rows[0]["version"].ToString();
+                //List<int> v1, v2;
+                //v1 = version.Split('.').ToList().Select(x => int.Parse(x)).ToList();
+                //v2 = versiones.Split('.').ToList().Select(x => int.Parse(x)).ToList();
+
+                //for (int i = 0; i < 4; i++)
+                //{
+                //    if (v2[i] > v1[i]) Descargar = true; // hay una nueva versión
+                //    if (v2[i] < v1[i]) Descargar = false; // tenemos una versión nueva
+                //}
+                // misma versión
+                //if (Descargar)
+                //{
+                Actualizaciones.servidor = versiones;
+                Actualizaciones.version = version;
+                Actualizaciones.cambios = tdatos.Rows[0]["contenido"].ToString();
+                //}
+            }
             if (Actualizaciones.check())
             {
                 var d = new update();
@@ -118,6 +147,8 @@ namespace HPReserger
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public DialogResult msgP(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         DataRow dATOS;
+        public static frmMenu menusito;
+        public static SISGEM.Principal frmprincipal;
         private void btnLogueo_Click(object sender, EventArgs e)
         {
             //VERIFICAR LA LICENCIA
@@ -201,7 +232,7 @@ namespace HPReserger
             if (txtUsuario.Text == txtContraseña.Text.ToUpper() && txtContraseña.Text.ToUpper() == "ADMIN" && Admin)
             {
                 this.Hide();
-                frmMenu menusito = new frmMenu();
+                menusito = new frmMenu();
                 menusito.nick = txtUsuario.Text;
                 CodigoUsuario = 0;
                 Usuario = "0";
@@ -217,7 +248,9 @@ namespace HPReserger
                 menusito.usuario = 0;
                 menusito.Nombres = "Usuario Prueba";
                 menusito.nick = "Usuario Prueba";
-                menusito.Show();
+                menusito.Hide();
+                frmprincipal = new SISGEM.Principal();
+                frmprincipal.Show();
                 Prueba = true;
             }
             if (Prueba)
@@ -259,40 +292,48 @@ namespace HPReserger
                             PartidaPresupuesto = drAcceso["PARTIDAPRESUPUESTO"].ToString();
                             LoginUser = drAcceso["LOGINUSER"].ToString();
                             this.Hide();
-                            frmM = new frmMenu();
-                            frmM.usuario = CodigoUsuario;
-                            frmM.Nombres = HpResergerUserControls.Configuraciones.MayusculaCadaPalabra(Usuario);
-                            frmM.nick = txtUsuario.Text;
+                            menusito = new frmMenu();
+                            menusito.usuario = CodigoUsuario;
+                            menusito.Nombres = HpResergerUserControls.Configuraciones.MayusculaCadaPalabra(Usuario);
+                            menusito.nick = txtUsuario.Text;
                             if (drAcceso["FOTO"] != null && drAcceso["FOTO"].ToString().Length > 0)
                             {
                                 byte[] Fotito = new byte[0];
                                 Fotito = (byte[])drAcceso["FOTO"];
                                 MemoryStream ms = new MemoryStream(Fotito);
-                                frmM.pbfotoempleado.Image = Bitmap.FromStream(ms);
+                                menusito.pbfotoempleado.Image = Bitmap.FromStream(ms);
                             }
                             UsuarioConectado();
-                            frmM.Show();
+                            menusito.Hide();
+                            frmprincipal = new SISGEM.Principal();
+                            frmprincipal.Show();
+                            Prueba = true;
                         }
                         else msg("Usuario No esta Activo");
                     }
                     else
                     {
                         drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
-                        if (Convert.ToInt32(drAcceso["intentos"].ToString()) == 4)
+                        try
                         {
-                            clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 2);
-                            msg("5 intentos fallidos, se bloqueó al Usuario ");
-                            return;
+                            if (Convert.ToInt32(drAcceso["intentos"].ToString()) == 4)
+                            {
+                                clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 2);
+                                msg("5 intentos fallidos, se bloqueó al Usuario ");
+                                return;
+                            }
+                            else
+                            {
+                                clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 0);
+                                drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
+                                msg("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "");
+                                txtUsuario.Text = "";
+                                txtContraseña.Text = "";
+                                txtUsuario.Focus();
+
+                            }
                         }
-                        else
-                        {
-                            clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 0);
-                            drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
-                            msg("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "");
-                            txtUsuario.Text = "";
-                            txtContraseña.Text = "";
-                            txtUsuario.Focus();
-                        }
+                        catch { }
                     }
                 }
             }
@@ -429,6 +470,24 @@ namespace HPReserger
             //// Dispose of the custom pens.
             //redPen.Dispose();
             //whitePen.Dispose();
+        }
+        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "cambios.txt");
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string cuerpo = reader.ReadToEnd(); // Leer todo el contenido del archivo
+                    XtraMessageBox.Show($"Historial de Versiones...\n\n{cuerpo}", "Historial", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                //MessageBox.Show("El texto se ha cargado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error al cargar el texto: " + ex.Message);
+            }
         }
 
         private void panel_MouseDown(object sender, MouseEventArgs e)

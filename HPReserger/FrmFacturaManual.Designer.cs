@@ -1620,6 +1620,7 @@
             this.txtbusnrodoc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbusnrodoc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbusnrodoc.TextChanged += new System.EventHandler(this.textBoxPer2_TextChanged);
+            this.txtbusnrodoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusTipoDoc_KeyDown);
             // 
             // btnAceptar
             // 
@@ -1731,6 +1732,7 @@
             this.txtbuscaempresa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbuscaempresa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbuscaempresa.TextChanged += new System.EventHandler(this.textBoxPer2_TextChanged);
+            this.txtbuscaempresa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusTipoDoc_KeyDown);
             // 
             // txtbusproveedor
             // 
@@ -1753,6 +1755,7 @@
             this.txtbusproveedor.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtbusproveedor.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtbusproveedor.TextChanged += new System.EventHandler(this.textBoxPer2_TextChanged);
+            this.txtbusproveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusTipoDoc_KeyDown);
             // 
             // btnvistaPrevia
             // 
@@ -2163,6 +2166,7 @@
             this.txtBusTipoDoc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtBusTipoDoc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtBusTipoDoc.TextChanged += new System.EventHandler(this.textBoxPer2_TextChanged);
+            this.txtBusTipoDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusTipoDoc_KeyDown);
             // 
             // btnCargar
             // 
@@ -2248,6 +2252,7 @@
             // 
             // btnbuscar
             // 
+            this.btnbuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnbuscar.Image = global::SISGEM.Properties.Resources.find_16x16;
             this.btnbuscar.Location = new System.Drawing.Point(763, 473);
             this.btnbuscar.Name = "btnbuscar";
@@ -2258,6 +2263,7 @@
             // 
             // btncleanfind
             // 
+            this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btncleanfind.Image = global::SISGEM.Properties.Resources.clearfilter_16x16;
             this.btncleanfind.Location = new System.Drawing.Point(682, 473);
             this.btncleanfind.Name = "btncleanfind";
@@ -2343,9 +2349,9 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.PanelFactura);
             this.Controls.Add(this.PanelRecibo);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.PanelNotaCredito);
             this.MinimumSize = new System.Drawing.Size(1097, 700);
             this.Name = "FrmFacturaManual";

@@ -27,7 +27,8 @@ namespace HPReserger
         private void frmReporteEstadoPerdidas_Load(object sender, EventArgs e)
         {
             rtpGanaciasPerdidas Reporte = new rtpGanaciasPerdidas();
-            Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+            Reporte.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
+
             Reporte.SetParameterValue(0, año);
             Reporte.SetParameterValue(1, empresa); 
             Reporte.SetParameterValue(2, NombreEmpresa); 
@@ -38,9 +39,9 @@ namespace HPReserger
             // ' ***************************************'
             //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
             iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
-            iConnectionInfo.UserID = datos.USERID;
-            iConnectionInfo.Password = datos.USERPASS;
-            iConnectionInfo.ServerName = datos.DATASOURCE;
+            iConnectionInfo.UserID = HPResergerCapaDatos.HPResergerCD.USERID;
+            iConnectionInfo.Password = HPResergerCapaDatos.HPResergerCD.USERPASS;
+            iConnectionInfo.ServerName = HPResergerCapaDatos.HPResergerCD.DATASOURCE;
 
             iConnectionInfo.Type = ConnectionInfoType.SQL;
             CrystalDecisions.CrystalReports.Engine.Tables myTables;

@@ -36,6 +36,7 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnLogueo = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblVersion = new System.Windows.Forms.Label();
             this.lblmsg = new System.Windows.Forms.Label();
             this.cboBase = new System.Windows.Forms.ComboBox();
@@ -128,6 +129,7 @@
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panel.Controls.Add(this.labelControl1);
             this.panel.Controls.Add(this.lblVersion);
             this.panel.Controls.Add(this.lblmsg);
             this.panel.Controls.Add(this.cboBase);
@@ -146,6 +148,16 @@
             this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
             this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("labelControl1.Appearance.Image")));
+            this.labelControl1.Location = new System.Drawing.Point(325, 195);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(16, 16);
+            this.labelControl1.TabIndex = 7;
+            this.labelControl1.ToolTip = "Ver Contenido de la Versión";
+            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
             // 
             // lblVersion
             // 
@@ -285,5 +297,6 @@
         private System.Windows.Forms.ComboBox cboBase;
         private System.Windows.Forms.Label lblmsg;
         private System.Windows.Forms.Label lblVersion;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

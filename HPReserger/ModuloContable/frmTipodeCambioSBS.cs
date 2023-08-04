@@ -25,6 +25,7 @@ namespace HPReserger
         public bool BusquedaExterna { get; internal set; }
         private void TipodeCambio_Load(object sender, EventArgs e)
         {
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             ImgVenta = new byte[0];
             ImageConverter _imageConverter = new ImageConverter();
             ImgVenta = (byte[])_imageConverter.ConvertTo(pbigual.Image, typeof(byte[]));

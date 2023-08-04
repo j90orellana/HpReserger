@@ -20,14 +20,15 @@ namespace HPReserger
         public static string servidor = "";
         public static string cambios = "";
         public static string Empresa = "";
+        public static string version = "";
         public static bool check()
         {
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
-            token = File.ReadAllText("ATKTKTK.txt");
-            string version = fvi.FileVersion;
+            //System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            //System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            //token = File.ReadAllText("ATKTKTK.txt");
+
             //ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             //{
             //    var task = Task.Run((Func<Task>)ListarCarpetaRaiz);
             //    task.Wait();
@@ -36,10 +37,10 @@ namespace HPReserger
             //    var task = Task.Run((Func<Task>)ListarDatosCuenta);
             //    task.Wait();
             //}
-            {
-                var task = Task.Run((Func<Task>)getVersion);
-                task.Wait();
-            }
+            //{
+            //    var task = Task.Run((Func<Task>)getVersion);
+            //    task.Wait();
+            //}
             //{
             //    var task = Task.Run((Func<Task>)DescargarArchivo);
             //    task.Wait();

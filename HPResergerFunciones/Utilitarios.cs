@@ -1027,7 +1027,8 @@ namespace HPResergerFunciones
             string Extesion = "x";
             if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
             //Hoja_Trabajo
-            FileInfo file = new FileInfo(Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{NameFile}" + $".xls{Extesion}");
+            FileInfo file = new FileInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), @"SISGEM\\\HPReserger\\") + nombrehoja + $"{NameFile}" + $".xls{Extesion}");
+
             int ConCol = grd.Columns.Count;
             for (int i = 0; i < grd.Rows.Count + 1; i++)
             {

@@ -198,6 +198,9 @@ namespace HPReserger
         DataRow dATOS;
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            //SISGEM.ModuloReportes.Form1 frmx = new SISGEM.ModuloReportes.Form1();
+            //frmx.Show();
+
             Application.ApplicationExit += new EventHandler(ExitApplication);
             CapaLogica.CambiarBase(frmLogin.Basedatos);
             RecargarMenu();
@@ -210,7 +213,7 @@ namespace HPReserger
                 frmmensa.ShowDialog();
                 ExitApplication(sender, e);
                 cerrar = 10;
-                Application.Exit();               
+                Application.Exit();
             }
             DataTable table = CapaLogica.UsuarioConectado(frmLogin.CodigoUsuario, "", 10);
             DataRow file = table.Rows[0];
@@ -266,6 +269,11 @@ namespace HPReserger
             Text = Text + $" [{frmLogin.Basedatos}]";
             //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   +            
             //PRUEBA DE CARGAS DE FORMULARIOS
+
+            if (frmLogin.CodigoUsuario != 0)
+            {
+                btnCargarSistema.Visible = false;
+            }
         }
         public void ControlPerfilPrioritario()
         {
@@ -1137,9 +1145,13 @@ namespace HPReserger
                 {
                     if (msgp("Seguro Desea Salir del Sistema") == DialogResult.Yes)
                     {
-                        cerrado = 0; cerrar = 10;
-                        frmLogin.DesconectarUsuario();
-                        Application.Exit();
+                        try
+                        {
+                            cerrado = 0; cerrar = 10;
+                            frmLogin.DesconectarUsuario();
+                            Application.Exit();
+                        }
+                        catch { }
                     }
                     else
                         e.Cancel = true;
@@ -5211,6 +5223,22 @@ namespace HPReserger
         private void cerrarfrmfondopagofinanzas(object sender, FormClosedEventArgs e)
         {
             frmfondopagofinanzas = null;
+        }
+
+        private void btnCargarSistema_Click(object sender, EventArgs e)
+        {
+            SISGEM.frmCargarSistema frm = new SISGEM.frmCargarSistema();
+            frm.Show();
+
+            SISGEM.Principal pinci = new SISGEM.Principal();
+            pinci.Show();
+
+        }
+
+        private void versionActualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmLogin.frmprincipal.Show();
         }
     }
 }
