@@ -309,8 +309,11 @@ namespace HPReserger
                 {
                     if (((DateTime)item.Cells[xFechaContable.Name].Value).Date > dtpFechaPago.Value.Date || ((DateTime)item.Cells[xFechaContable.Name].Value).Date > dtpFechaContable.Value.Date)
                     {
-                        HPResergerFunciones.frmInformativo.MostrarDialogError("No se Puede Pagar Documentos con fecha de Recepción superior a la Fecha de Pago", $"No se Proceso por: La Factura: {item.Cells[nrofactura.Name].Value.ToString()} \nRazonSocial: {item.Cells[razon.Name].Value}");
-                        return;
+                        if (((DateTime)item.Cells[fechaRecepcion.Name].Value).Date > dtpFechaPago.Value.Date)
+                        {
+                            HPResergerFunciones.frmInformativo.MostrarDialogError("No se Puede Pagar Documentos con fecha de Recepción superior a la Fecha de Pago", $"No se Proceso por: La Factura: {item.Cells[nrofactura.Name].Value.ToString()} \nRazonSocial: {item.Cells[razon.Name].Value}");
+                            return;
+                        }
                     }
                 }
             }

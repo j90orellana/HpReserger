@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HPReserger {
+namespace SISGEM {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;

@@ -50,6 +50,10 @@ namespace SISGEM
                 {
                 }
             }
+
+            frmDashBoard frmfrmDashBoard = new frmDashBoard();
+            frmfrmDashBoard.MdiParent = this;
+            frmfrmDashBoard.Show();
         }
 
         private void barButtonItem22_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -774,6 +778,13 @@ namespace SISGEM
         private void ribbonControl1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void barStaticItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmDashBoard frmfrmDashBoard = new frmDashBoard();
+            frmfrmDashBoard.MdiParent = this;
+            frmfrmDashBoard.Show();
         }
     }
 }

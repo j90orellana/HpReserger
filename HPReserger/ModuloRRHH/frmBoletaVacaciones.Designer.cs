@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using SISGEM;
+
+namespace HPReserger
 {
     partial class frmBoletaVacaciones
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.crvBoletaVacaciones = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rptVacaciones1 = new HPReserger.rptVacaciones();
+            this.rptVacaciones1 = new SISGEM.rptVacaciones();
             this.SuspendLayout();
             // 
             // crvBoletaVacaciones

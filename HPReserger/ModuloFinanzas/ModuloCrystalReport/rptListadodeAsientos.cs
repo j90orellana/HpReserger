@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HPReserger.ModuloFinanzas.ModuloCrystalReport {
+namespace SISGEM.ModuloFinanzas.ModuloCrystalReport {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace HPReserger.ModuloFinanzas.ModuloCrystalReport {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.ModuloFinanzas.ModuloCrystalReport.rptListadodeAsientos.rpt";
+                return "SISGEM.ModuloFinanzas.ModuloCrystalReport.rptListadodeAsientos.rpt";
             }
             set {
                 // Do nothing

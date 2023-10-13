@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using SISGEM;
+
+namespace HPReserger
 {
     partial class frmEvaludacionPracticas
     {
@@ -29,8 +31,8 @@
         private void InitializeComponent()
         {
             this.crvEvaluacionPracticas = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rptEvaluacionPracticas1 = new HPReserger.rptEvaluacionPracticas();
-            this.rptConstanciaTrabajo1 = new HPReserger.rptConstanciaTrabajo();
+            this.rptEvaluacionPracticas1 = new SISGEM.rptEvaluacionPracticas();
+            this.rptConstanciaTrabajo1 = new SISGEM.rptConstanciaTrabajo();
             this.SuspendLayout();
             // 
             // crvEvaluacionPracticas

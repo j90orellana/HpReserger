@@ -108,7 +108,7 @@ namespace HPReserger
             return Assembly.GetExecutingAssembly().GetName().Version;
         }
         private const string AcceptHeader = "application/vnd.github.v3+json";
-        private const string AuthorizationHeader = "Bearer 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";
+        private const string AuthorizationHeader = "Bearer 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";
         private const string GitHubApiVersionHeader = "application/vnd.github.v3+json";
         public static string cuerpo = "";
         public static string urlhtml = "";
@@ -119,7 +119,7 @@ namespace HPReserger
                 var repositoryOwner = "j90orellana"; // Reemplaza con el nombre del propietario del repositorio
                 var repositoryName = "HpReserger"; // Reemplaza con el nombre del repositorio
 
-                var token = "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"; // Reemplaza con tu token de acceso personal
+                var token = "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"; // Reemplaza con tu token de acceso personal
 
                 var githubClient = new GitHubClient(new Octokit.ProductHeaderValue("SISGEM"));
                 githubClient.Credentials = new Credentials(token); // Asigna las credenciales con tu token de acceso personal

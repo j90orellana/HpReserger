@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SISGEM.ModuloFinanzas;
 
 namespace HPReserger.ModuloCrystalReport
 {
@@ -44,7 +45,7 @@ namespace HPReserger.ModuloCrystalReport
         public int Estado = 1;
         private void frmReporteListadoAsientos_Load(object sender, EventArgs e)
         {
-            ModuloFinanzas.ModuloCrystalReport.rptListadodeAsientos Reporte = new ModuloFinanzas.ModuloCrystalReport.rptListadodeAsientos();
+            SISGEM.ModuloFinanzas.ModuloCrystalReport.rptListadodeAsientos Reporte = new SISGEM.ModuloFinanzas.ModuloCrystalReport.rptListadodeAsientos();
             Reporte.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
 
             Reporte.SetParameterValue(0, empresa);

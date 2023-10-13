@@ -2007,7 +2007,7 @@ namespace HPReserger
                                         cbomoneda.SelectedIndex = item[32].ToString() == "S" ? 0 : 1; //MONEDA
                                         cbotipodoc.SelectedValue = 1 + int.Parse(item[6].ToString()); //TIPO COMPROBANTE PAGO
                                                                                                       //
-                                        txttotalfac.Text = (Math.Abs(decimal.Parse(item[19].ToString()) + decimal.Parse(item[26].ToString()))).ToString("n2"); //TOTAL FACTURA
+                                        txttotalfac.Text = (Math.Abs(decimal.Parse(item[19].ToString())+   decimal.Parse(item[16].ToString()) + decimal.Parse(item[26].ToString()))).ToString("n2"); //TOTAL FACTURA
                                         txtglosa.Text = item[34].ToString() == "" ? "CARGA MASIVA" : item[34].ToString(); //GLOSA
                                         //LAS DETRACCIONES
                                         txtdescdetraccion.Text = ""; detrac = "";

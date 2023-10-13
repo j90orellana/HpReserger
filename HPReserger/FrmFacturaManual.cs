@@ -2292,7 +2292,7 @@ namespace HPReserger
                         }
 
                         //fin de cargas de listas
-                       
+
                         //fin de cargas de listas
                         foreach (string Cuenta in ListaCuentas)
                         {
@@ -2530,6 +2530,27 @@ namespace HPReserger
                                     i++;
                                 }
                             }
+                            //correcion de la fecha de pago por siacaso
+                            i = 0;
+                            foreach (DataRow item in TdatosExcel.Rows)
+                            {
+                                if (i > 0)
+                                {
+                                    if (item[0].ToString().Trim() == "")
+                                    {
+                                        break;
+                                    }
+                                    string Druc = item[7].ToString().Trim();
+                                    string Ddoc = item[4].ToString().Trim();
+                                    int DidDoc = 1 + int.Parse(item[3].ToString());
+                                    DateTime DfechaVence = DateTime.Parse(item[6].ToString());
+
+                                    CapaDatos.ActualizarFechaVencimiento_FacturaCompras(DidDoc, Ddoc, Druc, DfechaVence);
+                                }
+                                i++;
+
+                            }
+
                             Cursor = Cursors.Default;
 
                             if (ResultadoMasivoTXT.Length > 0)

@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using SISGEM;
+
+namespace HPReserger
 {
     partial class frmLiquidacion
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.cvrLiquidacion = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rptLiquidacion1 = new HPReserger.rptLiquidacion();
+            this.rptLiquidacion1 = new SISGEM.rptLiquidacion();
             this.SuspendLayout();
             // 
             // cvrLiquidacion

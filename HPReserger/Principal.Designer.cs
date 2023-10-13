@@ -210,6 +210,7 @@
             this.ribbonPageGroup22 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup23 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem92 = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem4 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -218,10 +219,10 @@
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 476);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 475);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1011, 27);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1011, 28);
             // 
             // ribbonControl1
             // 
@@ -359,11 +360,13 @@
             this.btnCuentasBancarias,
             this.btnCerrarSesion,
             this.btnSkin,
-            this.btnSkines});
+            this.btnSkines,
+            this.barStaticItem4});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 134;
+            this.ribbonControl1.MaxItemId = 135;
             this.ribbonControl1.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.PageHeaderItemLinks.Add(this.barStaticItem4);
             this.ribbonControl1.PageHeaderItemLinks.Add(this.btnSkines);
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barVersion);
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barUser);
@@ -383,7 +386,7 @@
             this.repositoryItemCalcEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.Size = new System.Drawing.Size(1311, 147);
-            this.ribbonControl1.StatusBar = this.ribbonStatusBar2;
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.Toolbar.ItemLinks.Add(this.barBasedatos);
             this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
@@ -1931,10 +1934,10 @@
             this.navBarGroup3});
             this.navBarControl2.Location = new System.Drawing.Point(0, 147);
             this.navBarControl2.Name = "navBarControl2";
-            this.navBarControl2.OptionsNavPane.ExpandedWidth = 113;
+            this.navBarControl2.OptionsNavPane.ExpandedWidth = 23;
             this.navBarControl2.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
             this.navBarControl2.ShowIcons = DevExpress.Utils.DefaultBoolean.True;
-            this.navBarControl2.Size = new System.Drawing.Size(113, 365);
+            this.navBarControl2.Size = new System.Drawing.Size(23, 365);
             this.navBarControl2.TabIndex = 6;
             this.navBarControl2.Text = "navBarControl2";
             // 
@@ -1964,6 +1967,15 @@
             this.barButtonItem92.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem92.LargeGlyph")));
             this.barButtonItem92.Name = "barButtonItem92";
             this.barButtonItem92.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
+            // barStaticItem4
+            // 
+            this.barStaticItem4.Caption = "DashBoard";
+            this.barStaticItem4.Id = 134;
+            this.barStaticItem4.ImageUri.Uri = "Home";
+            this.barStaticItem4.Name = "barStaticItem4";
+            this.barStaticItem4.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.barStaticItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItem4_ItemClick);
             // 
             // Principal
             // 
@@ -2181,5 +2193,6 @@
         private DevExpress.XtraBars.BarButtonItem btnCerrarSesion;
         private DevExpress.XtraBars.BarSubItem btnSkin;
         private DevExpress.XtraBars.BarStaticItem btnSkines;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem4;
     }
 }

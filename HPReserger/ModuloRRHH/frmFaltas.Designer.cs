@@ -1,4 +1,5 @@
 ﻿using HpResergerUserControls;
+using SISGEM;
 
 namespace HPReserger
 {
@@ -73,7 +74,7 @@ namespace HPReserger
             this.txtRuta = new System.Windows.Forms.TextBox();
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btndescargar = new System.Windows.Forms.Button();
-            this.cachedrptConvenioPracticasPreprofesional1 = new HPReserger.CachedrptConvenioPracticasPreprofesional();
+            this.cachedrptConvenioPracticasPreprofesional1 = new SISGEM.CachedrptConvenioPracticasPreprofesional();
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();

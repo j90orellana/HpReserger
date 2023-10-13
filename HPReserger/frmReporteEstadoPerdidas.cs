@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.Shared;
 using HpResergerUserControls;
+using SISGEM;
 
 namespace HPReserger
 {

@@ -11,6 +11,7 @@ using CrystalDecisions.Windows.Forms;
 using CrystalDecisions.Shared;
 using HpResergerUserControls;
 using CrystalDecisions.CrystalReports.Engine;
+using SISGEM;
 
 namespace HPReserger
 {

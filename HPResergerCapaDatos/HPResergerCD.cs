@@ -2693,6 +2693,37 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
+        public string ReplaceSqlVariables(string originalSql, string idParam, string numParam, string rucParam, string fechaParam)
+        {
+            // Reemplazar las variables en la consulta SQL con nombres de parámetros apropiados
+            string sql = originalSql.Replace("@ID", $"{idParam}")
+                                   .Replace("@NUM", $"{numParam}")
+                                   .Replace("@RUC", $"{rucParam}")
+                                   .Replace("@FECHA", $"{fechaParam}");
+
+            return sql;
+        }
+
+        public DataTable ActualizarFechaVencimiento_FacturaCompras(int didDoc, string ddoc, string druc, DateTime dfechaVence)
+        {
+            try
+            {
+                string sql = "UPDATE F SET  FechaVencimiento = '@FECHA' FROM TBL_FacturaManual F " +
+                 "WHERE IdComprobante = @ID AND NroComprobante = '@NUM' AND Proveedor = '@RUC'";
+
+                string idParam = didDoc.ToString();
+                string numParam = ddoc;
+                string rucParam = druc;
+                string fechaParam = dfechaVence.ToString("yyyyMMdd");
+
+                string sqlConParametrosReemplazados = ReplaceSqlVariables(sql, idParam, numParam, rucParam, fechaParam);
+                // Ahora sqlConParametrosReemplazados contiene la consulta SQL con los nombres de parámetros reemplazados
+
+                return bd.DataTableFromQuery(sqlConParametrosReemplazados, null, null, null);
+            }
+            catch (Exception ex) { return new DataTable(); }
+
+        }
 
         public DataTable ListarPostulanteSE(int Solicitud)
         {

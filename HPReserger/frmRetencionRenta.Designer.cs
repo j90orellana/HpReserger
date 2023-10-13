@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using SISGEM;
+
+namespace HPReserger
 {
     partial class frmRetencionRenta
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.crvRetencionRenta = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rptRetencionRemta1 = new HPReserger.rptRetencionRemta();
+            this.rptRetencionRemta1 = new SISGEM.rptRetencionRemta();
             this.SuspendLayout();
             // 
             // crvRetencionRenta

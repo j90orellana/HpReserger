@@ -441,7 +441,7 @@ namespace HPReserger.ModuloCompensaciones
                         //detalle de otras cuentas x pagar a terceros
                         ////Detalle Facturas
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, int.Parse(UserCompensa[0]), UserCompensa[1],
-                            cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, $"{pkId}", $"ER{((DateTime)item.Cells[xFechaPago.Name].Value).ToString(Configuraciones.ddMMyy)}"
+                            cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper(), 0, $"{0}", $"ER{((DateTime)item.Cells[xFechaPago.Name].Value).ToString(Configuraciones.ddMMyy)}"
                         //{Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
                            , 0, FechaPagoFac, FechaPago, FechaPago, MontoMN, MontoME, MontoMN / MontoME, moneda, "", "", Glosa, FechaPago, IdLogin, Cuo);
                         //fin de pago de otras cuentas

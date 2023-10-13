@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HPReserger {
+namespace SISGEM {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace HPReserger {
         
         public override string FullResourceName {
             get {
-                return "SISGEM.rptGenerarRenta.rpt";
+                return "SISGEM.RptGenerarRenta.rpt";
             }
             set {
                 // Do nothing

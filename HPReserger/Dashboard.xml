@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="es-PE">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="192.168.1.6_actual_Connection" ProviderKey="MSSqlServer">
+        <Parameters>
+          <Parameter Name="server" Value="192.168.1.6" />
+          <Parameter Name="database" Value="actual" />
+          <Parameter Name="useIntegratedSecurity" Value="False" />
+          <Parameter Name="read only" Value="1" />
+          <Parameter Name="generateConnectionHelper" Value="false" />
+          <Parameter Name="userid" Value="jorellana" />
+          <Parameter Name="password" Value="Ore456" />
+        </Parameters>
+      </Connection>
+      <Query Type="CustomSqlQuery" Name="CustomSqlQuery">
+        <Sql>SELECT e.Empresa,UPPER(CONCAT_WS(' ',c.Nombres_Cli,c.Apepat_RazSoc_Cli,c.Apemat_Cli)) AS Nombre,x.Id,x.IdComprobante,x.NroComprobante,x.TipoId,x.
+Cliente,x.Empresa idEmpresa,x.Proyecto,x.Etapa,x.Moneda,x.TC,x.Total,x.Igv,x.FechaEmision,x.FechaVencimiento,x.FechaContable,x.Estado,x.TipoPago,x.
+Nro_DocPago,x.Cod_Detraccion,x.Porcentaje,x.Detraccion,x.Glosa,x.Usuario,x.FechaModifica
+FROM dbo.TBL_VentaManual x
+     INNER JOIN TBL_Empresa e ON x.Empresa = e.Id_Empresa
+     LEFT JOIN TBL_Cliente c ON c.Tipo_Id_Cli = x.TipoId
+                                AND c.Nro_Id_Cli = x.Cliente</Sql>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="CustomSqlQuery">
+            <Field Name="Empresa" Type="String" />
+            <Field Name="Nombre" Type="String" />
+            <Field Name="Id" Type="Int32" />
+            <Field Name="IdComprobante" Type="Int32" />
+            <Field Name="NroComprobante" Type="String" />
+            <Field Name="TipoId" Type="Int32" />
+            <Field Name="Cliente" Type="String" />
+            <Field Name="idEmpresa" Type="Int32" />
+            <Field Name="Proyecto" Type="Int32" />
+            <Field Name="Etapa" Type="Int32" />
+            <Field Name="Moneda" Type="Int32" />
+            <Field Name="TC" Type="Decimal" />
+            <Field Name="Total" Type="Decimal" />
+            <Field Name="Igv" Type="Decimal" />
+            <Field Name="FechaEmision" Type="DateTime" />
+            <Field Name="FechaVencimiento" Type="DateTime" />
+            <Field Name="FechaContable" Type="DateTime" />
+            <Field Name="Estado" Type="Int32" />
+            <Field Name="TipoPago" Type="Int32" />
+            <Field Name="Nro_DocPago" Type="String" />
+            <Field Name="Cod_Detraccion" Type="String" />
+            <Field Name="Porcentaje" Type="Decimal" />
+            <Field Name="Detraccion" Type="Decimal" />
+            <Field Name="Glosa" Type="String" />
+            <Field Name="Usuario" Type="Int32" />
+            <Field Name="FechaModifica" Type="DateTime" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Ventas Totales" DataSource="dashboardSqlDataSource1" DataMember="CustomSqlQuery">
+      <InteractivityOptions MasterFilterMode="Multiple" />
+      <DataItems>
+        <Measure DataMember="Total" UniqueName="DataItem0" />
+        <Dimension DataMember="FechaEmision" DateTimeGroupInterval="MonthYear" UniqueName="DataItem1" />
+        <Dimension DataMember="Empresa" ColoringMode="Hue" UniqueName="DataItem2" />
+        <Measure DataMember="Total" UniqueName="DataItem3" />
+      </DataItems>
+      <HiddenMeasures>
+        <Measure UniqueName="DataItem0" />
+      </HiddenMeasures>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem2" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Panel 1">
+          <Series>
+            <Simple>
+              <Value UniqueName="DataItem3" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+      <ChartLegend OutsidePosition="TopLeftHorizontal" />
+    </Chart>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Filtrar por Empresa" DataSource="dashboardSqlDataSource1" DataMember="CustomSqlQuery" AutoExpand="true">
+      <DataItems>
+        <Dimension DataMember="Empresa" UniqueName="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension UniqueName="DataItem0" />
+      </FilterDimensions>
+    </TreeView>
+    <ListBox ComponentName="listBoxDashboardItem1" Name="Filtrar por Fechas" DataSource="dashboardSqlDataSource1" DataMember="CustomSqlQuery" IsMasterFilterCrossDataSource="true">
+      <DataItems>
+        <Dimension DataMember="FechaEmision" SortOrder="Descending" DateTimeGroupInterval="MonthYear" UniqueName="DataItem0">
+          <DateTimeFormat YearFormat="Full" />
+        </Dimension>
+      </DataItems>
+      <FilterDimensions>
+        <Dimension UniqueName="DataItem0" />
+      </FilterDimensions>
+    </ListBox>
+    <Pie ComponentName="pieDashboardItem1" Name="Ventas Totales" DataSource="dashboardSqlDataSource1" DataMember="CustomSqlQuery">
+      <DataItems>
+        <Measure DataMember="Total" UniqueName="DataItem2">
+          <NumericFormat FormatType="Currency" />
+        </Measure>
+        <Dimension DataMember="Empresa" SortOrder="Descending" SortByMeasure="DataItem2" UniqueName="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value UniqueName="DataItem2" />
+      </Values>
+    </Pie>
+    <Grid ComponentName="gridDashboardItem1" Name="Top 15 Clientes" DataSource="dashboardSqlDataSource1" DataMember="CustomSqlQuery">
+      <DataItems>
+        <Dimension DataMember="Nombre" TopNEnabled="true" TopNShowOthers="true" TopNCount="15" TopNMeasure="DataItem2" UniqueName="DataItem0" />
+        <Measure DataMember="Total" UniqueName="DataItem2" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension UniqueName="DataItem0" />
+        </GridDimensionColumn>
+        <GridMeasureColumn>
+          <Measure UniqueName="DataItem2" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutGroup Weight="45.420792079207921">
+        <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="24.916051040967091" />
+        <LayoutItem DashboardItem="listBoxDashboardItem1" Weight="20.953660174613834" />
+        <LayoutItem DashboardItem="pieDashboardItem1" Weight="34.922766957689724" />
+        <LayoutItem DashboardItem="gridDashboardItem1" Weight="19.207521826729348" />
+      </LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" Weight="54.579207920792079" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

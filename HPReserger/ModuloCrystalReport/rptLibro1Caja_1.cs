@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HPReserger.ModuloCrystalReport {
+namespace SISGEM.ModuloCrystalReport {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
