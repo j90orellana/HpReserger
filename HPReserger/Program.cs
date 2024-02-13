@@ -119,9 +119,14 @@ namespace HPReserger
                 var repositoryOwner = "j90orellana"; // Reemplaza con el nombre del propietario del repositorio
                 var repositoryName = "HpReserger"; // Reemplaza con el nombre del repositorio
 
-                var token = "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"; // Reemplaza con tu token de acceso personal
+                var token = "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"; // Reemplaza con tu token de acceso personal
 
+
+                //AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);
+                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
                 var githubClient = new GitHubClient(new Octokit.ProductHeaderValue("SISGEM"));
+
+
                 githubClient.Credentials = new Credentials(token); // Asigna las credenciales con tu token de acceso personal
                 var releases = await githubClient.Repository.Release.GetLatest(repositoryOwner, repositoryName);
                 var latestRelease = releases;// releases.OrderByDescending(r => r.CreatedAt).FirstOrDefault();

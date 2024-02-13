@@ -11,6 +11,7 @@
     <AssemblyName>HpResergerUserControls</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -236,16 +237,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HPResergerCapaLogica\HPResergerCapaLogica.csproj">
-      <Project>{71dbcb75-15d4-4de1-b486-bb2a1190e40c}</Project>
-      <Name>HPResergerCapaLogica</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HPResergerFunciones\HPResergerFunciones.csproj">
-      <Project>{2fe42f25-103c-4988-a3f5-132981069795}</Project>
-      <Name>HPResergerFunciones</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icons8_Download_16px.png" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +247,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_Search_16px_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HPResergerCapaLogica\HPResergerCapaLogica.csproj">
+      <Project>{71dbcb75-15d4-4de1-b486-bb2a1190e40c}</Project>
+      <Name>HPResergerCapaLogica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HPResergerFunciones\HPResergerFunciones.csproj">
+      <Project>{2fe42f25-103c-4988-a3f5-132981069795}</Project>
+      <Name>HPResergerFunciones</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

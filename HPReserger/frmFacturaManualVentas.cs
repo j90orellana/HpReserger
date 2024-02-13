@@ -1804,10 +1804,10 @@ namespace HPReserger
                                     break;
                                 }
 
-                                string CuentaContable27 = item[27].ToString();  //CUENTA CONTABLE
-                                string CuentaContable29 = item[29].ToString();  //CUENTA CONTABLE
-                                string CuentaContable31 = item[31].ToString();  //CUENTA CONTABLE
-                                string CuentaContable35 = item[35].ToString();  //CUENTA CONTABLE
+                                string CuentaContable27 = item[27].ToString().Trim();  //CUENTA CONTABLE
+                                string CuentaContable29 = item[29].ToString().Trim();  //CUENTA CONTABLE
+                                string CuentaContable31 = item[31].ToString().Trim();  //CUENTA CONTABLE
+                                string CuentaContable35 = item[35].ToString().Trim();  //CUENTA CONTABLE
                                 string CuentaContable36 = item[36].ToString();  //CUENTA CONTABLE
                                 string CuentaContable38 = item[38].ToString();  //CUENTA CONTABLE
 
@@ -1844,17 +1844,17 @@ namespace HPReserger
 
                                 if (item[28].ToString() != "0")
                                 {
-                                    NroRuc = item[48].ToString(); //RUC NIUBIZ  
+                                    NroRuc = item[48].ToString().Trim(); //RUC NIUBIZ  
                                     if (!ListaRUC.Contains(NroRuc)) ListaRUC.Add(NroRuc);
                                 }
                                 if (item[11].ToString() == "6")
                                 {
-                                    NroRuc = item[12].ToString(); //RUC CLIENTE  
+                                    NroRuc = item[12].ToString().Trim(); //RUC CLIENTE  
                                     if (!ListaCLientesRuc.Contains(NroRuc)) ListaCLientesRuc.Add(NroRuc);
                                 }
                                 if (item[11].ToString() != "6")
                                 {
-                                    NroRuc = item[12].ToString(); //DNI CLIENTE
+                                    NroRuc = item[12].ToString().Trim(); //DNI CLIENTE
                                     if (!ListaCLientesDni.Contains(NroRuc)) ListaCLientesDni.Add(NroRuc);
                                 }
                                 if (item[6].ToString() == "")

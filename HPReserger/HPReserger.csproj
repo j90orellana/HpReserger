@@ -89,6 +89,7 @@
     <Reference Include="abcBaseDatos">
       <HintPath>..\Referencias\abcBaseDatos.dll</HintPath>
     </Reference>
+    <Reference Include="Accessibility" />
     <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ejecutable\Bunifu_UI_v1.52.dll</HintPath>
@@ -167,8 +168,8 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Octokit, Version=0.32.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Octokit.0.32.0\lib\net45\Octokit.dll</HintPath>
+    <Reference Include="Octokit, Version=0.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.50.0\lib\net46\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -185,6 +186,7 @@
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Threading.Tasks" />
@@ -210,6 +212,102 @@
       <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Clases\Actualizaciones.cs" />
+    <Compile Include="CRM\FrmAddCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\FrmAddCliente.Designer.cs">
+      <DependentUpon>FrmAddCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddContacto.Designer.cs">
+      <DependentUpon>frmAddContacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddProducto.Designer.cs">
+      <DependentUpon>frmAddProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddProyecto.Designer.cs">
+      <DependentUpon>frmAddProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddSedesCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddSedesCRM.Designer.cs">
+      <DependentUpon>frmAddSedesCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddSeguimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddSeguimiento.Designer.cs">
+      <DependentUpon>frmAddSeguimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddServicio.Designer.cs">
+      <DependentUpon>frmAddServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddUsuario.Designer.cs">
+      <DependentUpon>frmAddUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmClienteCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmClienteCRM.Designer.cs">
+      <DependentUpon>frmClienteCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmContactoCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmContactoCRM.Designer.cs">
+      <DependentUpon>frmContactoCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmProductosCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmProductosCRM.Designer.cs">
+      <DependentUpon>frmProductosCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmProyectos.Designer.cs">
+      <DependentUpon>frmProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmSedeCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmSedeCRM.Designer.cs">
+      <DependentUpon>frmSedeCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmSegumiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmSegumiento.Designer.cs">
+      <DependentUpon>frmSegumiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmServicioCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmServicioCRM.Designer.cs">
+      <DependentUpon>frmServicioCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmUsuariosCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmUsuariosCRM.Designer.cs">
+      <DependentUpon>frmUsuariosCRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPruebas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2237,6 +2335,48 @@
     <Compile Include="update.Designer.cs">
       <DependentUpon>update.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CRM\FrmAddCliente.resx">
+      <DependentUpon>FrmAddCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddContacto.resx">
+      <DependentUpon>frmAddContacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddProyecto.resx">
+      <DependentUpon>frmAddProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddSedesCRM.resx">
+      <DependentUpon>frmAddSedesCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddSeguimiento.resx">
+      <DependentUpon>frmAddSeguimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddUsuario.resx">
+      <DependentUpon>frmAddUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmClienteCRM.resx">
+      <DependentUpon>frmClienteCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmContactoCRM.resx">
+      <DependentUpon>frmContactoCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmProductosCRM.resx">
+      <DependentUpon>frmProductosCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmProyectos.resx">
+      <DependentUpon>frmProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmSedeCRM.resx">
+      <DependentUpon>frmSedeCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmSegumiento.resx">
+      <DependentUpon>frmSegumiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmServicioCRM.resx">
+      <DependentUpon>frmServicioCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmUsuariosCRM.resx">
+      <DependentUpon>frmUsuariosCRM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPruebas.resx">
       <DependentUpon>FormPruebas.cs</DependentUpon>
     </EmbeddedResource>
@@ -3307,6 +3447,16 @@
     <None Include="ClassDiagram2.cd" />
     <None Include="HPReserger_ClaveTemporal.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Cliente.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ClienteRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ContactoRepository+Contacto.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ContactoRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ProyectoRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Sedes.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_SeguimientoRepository+CRM_Seguimiento.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_SeguimientoRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Usuario.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.Proyecto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -3541,6 +3691,10 @@
       <Project>{2fe42f25-103c-4988-a3f5-132981069795}</Project>
       <Name>HPResergerFunciones</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HpResergerNube\HpResergerNube.csproj">
+      <Project>{61db4bea-1b3d-4dae-8605-7c30a1a6db8b}</Project>
+      <Name>HpResergerNube</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HPResergerUpdate\HPResergerUpdate.csproj">
       <Project>{7dcf9124-2f2e-436b-85b4-7dc3033f97c2}</Project>
       <Name>HPResergerUpdate</Name>
@@ -3638,9 +3792,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

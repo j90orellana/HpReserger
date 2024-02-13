@@ -34,6 +34,9 @@ namespace SISGEM
             { }
             navBarControl2.OptionsNavPane.NavPaneState = DevExpress.XtraNavBar.NavPaneState.Collapsed;
 
+            //HPResergerCapaDatos.Tabla30SunatRepository xas = new HPResergerCapaDatos.Tabla30SunatRepository();
+            //DataTable x = xas.GetAll();
+
             barVersion.Caption = $"Version:{Application.ProductVersion}";
             barBasedatos.Caption = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
             barUser.Caption = $"{HPReserger.frmLogin.Usuario}";
@@ -51,11 +54,30 @@ namespace SISGEM
                 }
             }
 
-            frmDashBoard frmfrmDashBoard = new frmDashBoard();
-            frmfrmDashBoard.MdiParent = this;
-            frmfrmDashBoard.Show();
-        }
+            if (!BaseRemota)
+            {
 
+                frmDashBoard frmfrmDashBoard = new frmDashBoard();
+                frmfrmDashBoard.MdiParent = this;
+                frmfrmDashBoard.Show();
+
+                ControlPerfilPrioritario();
+            }
+            else
+            {
+                barStaticItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+            }
+        }
+        public void ControlPerfilPrioritario()
+        {
+            btnPeriodos.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            if ((new int[] { 0, 1, 2 }).Contains(HPReserger.frmLogin.CodigoUsuario))//Luego se lo cambia por el perfil
+            {
+                btnPeriodos.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+
+            }
+        }
         private void barButtonItem22_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             HPReserger.frmcuentacontable frm = new HPReserger.frmcuentacontable();
@@ -709,6 +731,9 @@ namespace SISGEM
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         int cerrado = 0;
         int cerrar = 0;
+
+        public bool BaseRemota { get; internal set; }
+
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void btnCerrarSesion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -785,6 +810,100 @@ namespace SISGEM
             frmDashBoard frmfrmDashBoard = new frmDashBoard();
             frmfrmDashBoard.MdiParent = this;
             frmfrmDashBoard.Show();
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmClienteCRM frm = new CRM.frmClienteCRM();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.FrmAddCliente frm = new CRM.FrmAddCliente();
+            //frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmSegumiento frm = new CRM.frmSegumiento();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmAddSeguimiento frm = new CRM.frmAddSeguimiento();
+            //frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmProyectos frm = new CRM.frmProyectos();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem19_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmAddProyecto frm = new CRM.frmAddProyecto();
+            frm.Show();
+        }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmContactoCRM frm = new CRM.frmContactoCRM();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmAddContacto frm = new CRM.frmAddContacto();
+            frm.Show();
+        }
+
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmSedeCRM frm = new CRM.frmSedeCRM();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem20_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmAddSedesCRM frm = new CRM.frmAddSedesCRM();
+            frm.Show();
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmUsuariosCRM frm = new CRM.frmUsuariosCRM();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmProductosCRM frm = new CRM.frmProductosCRM();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmServicioCRM frm = new CRM.frmServicioCRM();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem21_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmAddUsuario frm = new CRM.frmAddUsuario();
+            frm.Show();
         }
     }
 }

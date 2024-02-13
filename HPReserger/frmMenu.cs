@@ -4971,14 +4971,23 @@ namespace HPReserger
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            //Validamos que el tipo de cambio exista y no este registrado
-            DateTime FechaConsulta = DateTime.Now;
-            DataTable TablaTC = CapaLogica.TipodeCambioxDia(FechaConsulta);
-            if (TablaTC.Rows.Count == 0) // no existe registrado el tipo de cambio
+            if (!frmLogin.BaseRemota)
             {
-                DescargarTipoCambioDia(FechaConsulta);
+                //Validamos que el tipo de cambio exista y no este registrado
+                DateTime FechaConsulta = DateTime.Now;
+                DataTable TablaTC = CapaLogica.TipodeCambioxDia(FechaConsulta);
+                if (TablaTC.Rows.Count == 0) // no existe registrado el tipo de cambio
+                {
+                    DescargarTipoCambioDia(FechaConsulta);
+                }
+                TimerTC.Interval = 3600000;//pasamos a que valide cada hora
             }
-            TimerTC.Interval = 3600000;//pasamos a que valide cada hora
+            else
+            {
+                TimerTC.Enabled = false;
+
+
+            }
         }
         public class TIPOCAMBIO
         {

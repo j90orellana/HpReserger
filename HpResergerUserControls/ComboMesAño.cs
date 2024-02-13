@@ -17,6 +17,7 @@ namespace HpResergerUserControls
             InitializeComponent();
             this.DoubleBuffered = true;
         }
+        //HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         DataTable meses = null;
         DataTable años = null;

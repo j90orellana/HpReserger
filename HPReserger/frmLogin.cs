@@ -142,7 +142,13 @@ namespace HPReserger
             //System.Drawing.Drawing2D.GraphicsPath GRafico = new System.Drawing.Drawing2D.GraphicsPath();
             //GRafico.AddEllipse(0.12f, 0.12f,this.Width, this.Width );
             //this.Region = new Region(GRafico);
-            ComprobarVersion();
+            //ComprobarVersion();
+
+            HpResergerNube.DLConexion xd = new HpResergerNube.DLConexion();
+
+
+
+
         }
         public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public DialogResult msgP(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
@@ -175,165 +181,203 @@ namespace HPReserger
             //}
             //Asignacion de la base de datos estatica
             Basedatos = cboBase.Text;
-            clLogueo.CambiarBase(Basedatos);
-            HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
-            if (txtUsuario.Text.Length == 0)
-            {
-                msg("Ingrese Usuario");
-                txtUsuario.Focus();
-                return;
-            }
 
-            if (txtContraseña.Text.Length == 0)
+            if (BaseRemota)
             {
-                msg("Ingrese Contraseña");
-                txtContraseña.Focus();
-                return;
-            }
-            //VALIDAR SI YA ESTA LOGEADO EL USARIO
-            //frmProcesando frmproce = new frmProcesando("Conectado a la Base");            
-            //frmproce.Show();
-            lblmsg.Text = "Conectando a la Base de Datos";
-            DataTable TablaAcceso = clLogueo.UsuarioConectado(frmLogin.CodigoUsuario, txtUsuario.Text, 0);
-            //Regresa si no hay conexion a la Base de Datos;
-            if (TablaAcceso == null) { lblmsg.Text = "No se Encontró la Base de Datos"; return; }
-            //frmproce.Close();
-            lblmsg.Text = "";
-            if (TablaAcceso.Rows.Count > 0)
-            {
-                DataRow filitaAcceso = TablaAcceso.Rows[0];
-                if (filitaAcceso != null)
+                Basedatos = "PostgreSQL";
+                if (txtUsuario.Text.ToUpper() == "SISADMIN" && txtContraseña.Text.ToUpper() == "CORE")
                 {
-                    if (filitaAcceso["conectado"].ToString() != "0")
-                    {
-                        if (msgP("Usuario Ya está Conectado\nDesea Desconectarlo") == DialogResult.Yes)
-                        {
-                            DesconectarUsuario();
-                        }
-                        else
-                            return;
-                    }
+                    this.Hide();
+                    menusito = new frmMenu();
+                    menusito.nick = txtUsuario.Text;
+                    CodigoUsuario = 0;
+                    Usuario = "Administrador";
+                    CodigoArea = 0;
+                    Area = "Ninguna";
+                    CodigoCentroCosto = 0;
+                    CentroCosto = "Ninguno";
+                    CodigoGerencia = 0;
+                    Gerencia = "Ninguna";
+                    CodigoPartidaPresupuesto = 0;
+                    PartidaPresupuesto = "Ninguna";
+                    LoginUser = "SISADMIN";
+                    menusito.usuario = 0;
+                    menusito.Nombres = "SISADMIN";
+                    menusito.nick = "Administrador";
+                    menusito.Hide();
+                    frmprincipal = new SISGEM.Principal();
+                    frmprincipal.BaseRemota = true;
+                    frmprincipal.Show();
                 }
-                else
-                {
-                    msg("No Se Pudo Conectar con la Base de datos");
-                    return;
-                }
-            }
-            Boolean Prueba = false;
-            //verificacion si hay usuarios por defecto
-            DataTable datito = new DataTable();
-            datito = clLogueo.usuarios("0", 0, 0);
-            Boolean Admin;
-            if (datito.Rows.Count > 0)
-                Admin = false;
-            else Admin = true;
-            //entra por modo admin si no hay usuarios en el sistema
-            if (txtUsuario.Text == txtContraseña.Text.ToUpper() && txtContraseña.Text.ToUpper() == "ADMIN" && Admin)
-            {
-                this.Hide();
-                menusito = new frmMenu();
-                menusito.nick = txtUsuario.Text;
-                CodigoUsuario = 0;
-                Usuario = "0";
-                CodigoArea = 0;
-                Area = "Ninguna";
-                CodigoCentroCosto = 0;
-                CentroCosto = "Ninguno";
-                CodigoGerencia = 0;
-                Gerencia = "Ninguna";
-                CodigoPartidaPresupuesto = 0;
-                PartidaPresupuesto = "Ninguna";
-                LoginUser = "Usuario Prueba";
-                menusito.usuario = 0;
-                menusito.Nombres = "Usuario Prueba";
-                menusito.nick = "Usuario Prueba";
-                menusito.Hide();
-                frmprincipal = new SISGEM.Principal();
-                frmprincipal.Show();
-                Prueba = true;
-            }
-            if (Prueba)
-                return;
-            DataRow drAcceso;
-            drAcceso = clLogueo.Loguearse(txtUsuario.Text, 0);
-            if (drAcceso == null)
-            {
-                txtUsuario.Focus();
-                return;
             }
             else
             {
-                drAcceso = clLogueo.Loguearse(txtUsuario.Text, 2);
-                if (Convert.ToInt32(drAcceso["Estado"].ToString()) == 0)
+
+
+                clLogueo.CambiarBase(Basedatos);
+                HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
+                if (txtUsuario.Text.Length == 0)
                 {
-                    msg("Usuario bloqueado, contáctese con el Área de Sistemas");
+                    msg("Ingrese Usuario");
+                    txtUsuario.Focus();
+                    return;
+                }
+
+                if (txtContraseña.Text.Length == 0)
+                {
+                    msg("Ingrese Contraseña");
+                    txtContraseña.Focus();
+                    return;
+                }
+                //VALIDAR SI YA ESTA LOGEADO EL USARIO
+                //frmProcesando frmproce = new frmProcesando("Conectado a la Base");            
+                //frmproce.Show();
+                lblmsg.Text = "Conectando a la Base de Datos";
+                DataTable TablaAcceso = clLogueo.UsuarioConectado(frmLogin.CodigoUsuario, txtUsuario.Text, 0);
+                //Regresa si no hay conexion a la Base de Datos;
+                if (TablaAcceso == null) { lblmsg.Text = "No se Encontró la Base de Datos"; return; }
+                //frmproce.Close();
+                lblmsg.Text = "";
+                if (TablaAcceso.Rows.Count > 0)
+                {
+                    DataRow filitaAcceso = TablaAcceso.Rows[0];
+                    if (filitaAcceso != null)
+                    {
+                        if (filitaAcceso["conectado"].ToString() != "0")
+                        {
+                            if (msgP("Usuario Ya está Conectado\nDesea Desconectarlo") == DialogResult.Yes)
+                            {
+                                DesconectarUsuario();
+                            }
+                            else
+                                return;
+                        }
+                    }
+                    else
+                    {
+                        msg("No Se Pudo Conectar con la Base de datos");
+                        return;
+                    }
+                }
+                Boolean Prueba = false;
+                //verificacion si hay usuarios por defecto
+                DataTable datito = new DataTable();
+                datito = clLogueo.usuarios("0", 0, 0);
+                Boolean Admin;
+                if (datito.Rows.Count > 0)
+                    Admin = false;
+                else Admin = true;
+                //entra por modo admin si no hay usuarios en el sistema
+                if (txtUsuario.Text == txtContraseña.Text.ToUpper() && txtContraseña.Text.ToUpper() == "ADMIN" && Admin)
+                {
+                    this.Hide();
+                    menusito = new frmMenu();
+                    menusito.nick = txtUsuario.Text;
+                    CodigoUsuario = 0;
+                    Usuario = "0";
+                    CodigoArea = 0;
+                    Area = "Ninguna";
+                    CodigoCentroCosto = 0;
+                    CentroCosto = "Ninguno";
+                    CodigoGerencia = 0;
+                    Gerencia = "Ninguna";
+                    CodigoPartidaPresupuesto = 0;
+                    PartidaPresupuesto = "Ninguna";
+                    LoginUser = "Usuario Prueba";
+                    menusito.usuario = 0;
+                    menusito.Nombres = "Usuario Prueba";
+                    menusito.nick = "Usuario Prueba";
+                    menusito.Hide();
+                    frmprincipal = new SISGEM.Principal();
+                    frmprincipal.BaseRemota = false;
+
+                    frmprincipal.Show();
+                    Prueba = true;
+                }
+                if (Prueba)
+                    return;
+                DataRow drAcceso;
+                drAcceso = clLogueo.Loguearse(txtUsuario.Text, 0);
+                if (drAcceso == null)
+                {
                     txtUsuario.Focus();
                     return;
                 }
                 else
                 {
-                    drAcceso = clLogueo.Logueo(txtUsuario.Text, txtContraseña.Text);
-                    if (drAcceso != null)
+                    drAcceso = clLogueo.Loguearse(txtUsuario.Text, 2);
+                    if (Convert.ToInt32(drAcceso["Estado"].ToString()) == 0)
                     {
-                        clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 1);
-                        drAcceso = clLogueo.Loguearse(txtUsuario.Text, 3);
-                        if (drAcceso != null)
-                        {
-                            CodigoUsuario = Convert.ToInt32(drAcceso["CODIGOUSUARIO"].ToString());
-                            Usuario = drAcceso["USUARIO"].ToString();
-                            CodigoArea = Convert.ToInt32(drAcceso["CODIGOAREA"].ToString());
-                            Area = drAcceso["AREA"].ToString();
-                            CodigoCentroCosto = Convert.ToInt32(drAcceso["CODIGOCENTROCOSTO"].ToString());
-                            CentroCosto = drAcceso["CENTROCOSTO"].ToString();
-                            CodigoGerencia = Convert.ToInt32(drAcceso["CODIGOGERENCIA"].ToString());
-                            Gerencia = drAcceso["GERENCIA"].ToString();
-                            CodigoPartidaPresupuesto = Convert.ToInt32(drAcceso["CODIGOPARTIDAPRESUPUESTO"].ToString());
-                            PartidaPresupuesto = drAcceso["PARTIDAPRESUPUESTO"].ToString();
-                            LoginUser = drAcceso["LOGINUSER"].ToString();
-                            this.Hide();
-                            menusito = new frmMenu();
-                            menusito.usuario = CodigoUsuario;
-                            menusito.Nombres = HpResergerUserControls.Configuraciones.MayusculaCadaPalabra(Usuario);
-                            menusito.nick = txtUsuario.Text;
-                            if (drAcceso["FOTO"] != null && drAcceso["FOTO"].ToString().Length > 0)
-                            {
-                                byte[] Fotito = new byte[0];
-                                Fotito = (byte[])drAcceso["FOTO"];
-                                MemoryStream ms = new MemoryStream(Fotito);
-                                menusito.pbfotoempleado.Image = Bitmap.FromStream(ms);
-                            }
-                            UsuarioConectado();
-                            menusito.Hide();
-                            frmprincipal = new SISGEM.Principal();
-                            frmprincipal.Show();
-                            Prueba = true;
-                        }
-                        else msg("Usuario No esta Activo");
+                        msg("Usuario bloqueado, contáctese con el Área de Sistemas");
+                        txtUsuario.Focus();
+                        return;
                     }
                     else
                     {
-                        drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
-                        try
+                        drAcceso = clLogueo.Logueo(txtUsuario.Text, txtContraseña.Text);
+                        if (drAcceso != null)
                         {
-                            if (Convert.ToInt32(drAcceso["intentos"].ToString()) == 4)
+                            clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 1);
+                            drAcceso = clLogueo.Loguearse(txtUsuario.Text, 3);
+                            if (drAcceso != null)
                             {
-                                clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 2);
-                                msg("5 intentos fallidos, se bloqueó al Usuario ");
-                                return;
-                            }
-                            else
-                            {
-                                clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 0);
-                                drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
-                                msg("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "");
-                                txtUsuario.Text = "";
-                                txtContraseña.Text = "";
-                                txtUsuario.Focus();
+                                CodigoUsuario = Convert.ToInt32(drAcceso["CODIGOUSUARIO"].ToString());
+                                Usuario = drAcceso["USUARIO"].ToString();
+                                CodigoArea = Convert.ToInt32(drAcceso["CODIGOAREA"].ToString());
+                                Area = drAcceso["AREA"].ToString();
+                                CodigoCentroCosto = Convert.ToInt32(drAcceso["CODIGOCENTROCOSTO"].ToString());
+                                CentroCosto = drAcceso["CENTROCOSTO"].ToString();
+                                CodigoGerencia = Convert.ToInt32(drAcceso["CODIGOGERENCIA"].ToString());
+                                Gerencia = drAcceso["GERENCIA"].ToString();
+                                CodigoPartidaPresupuesto = Convert.ToInt32(drAcceso["CODIGOPARTIDAPRESUPUESTO"].ToString());
+                                PartidaPresupuesto = drAcceso["PARTIDAPRESUPUESTO"].ToString();
+                                LoginUser = drAcceso["LOGINUSER"].ToString();
+                                this.Hide();
+                                menusito = new frmMenu();
+                                menusito.usuario = CodigoUsuario;
+                                menusito.Nombres = HpResergerUserControls.Configuraciones.MayusculaCadaPalabra(Usuario);
+                                menusito.nick = txtUsuario.Text;
+                                if (drAcceso["FOTO"] != null && drAcceso["FOTO"].ToString().Length > 0)
+                                {
+                                    byte[] Fotito = new byte[0];
+                                    Fotito = (byte[])drAcceso["FOTO"];
+                                    MemoryStream ms = new MemoryStream(Fotito);
+                                    menusito.pbfotoempleado.Image = Bitmap.FromStream(ms);
+                                }
+                                UsuarioConectado();
+                                menusito.Hide();
+                                frmprincipal = new SISGEM.Principal();
+                                frmprincipal.BaseRemota = false;
 
+                                frmprincipal.Show();
+                                Prueba = true;
                             }
+                            else msg("Usuario No esta Activo");
                         }
-                        catch { }
+                        else
+                        {
+                            drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
+                            try
+                            {
+                                if (Convert.ToInt32(drAcceso["intentos"].ToString()) == 4)
+                                {
+                                    clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 2);
+                                    msg("5 intentos fallidos, se bloqueó al Usuario ");
+                                    return;
+                                }
+                                else
+                                {
+                                    clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 0);
+                                    drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
+                                    msg("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "");
+                                    txtUsuario.Text = "";
+                                    txtContraseña.Text = "";
+                                    txtUsuario.Focus();
+
+                                }
+                            }
+                            catch { }
+                        }
                     }
                 }
             }
@@ -345,8 +389,11 @@ namespace HPReserger
         }
         public static void DesconectarUsuario()
         {
-            HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
-            CapaLogica.UsuarioConectado(CodigoUsuario, "", 2);
+            if (!BaseRemota)
+            {
+                HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+                CapaLogica.UsuarioConectado(CodigoUsuario, "", 2);
+            }
         }
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -487,6 +534,20 @@ namespace HPReserger
             catch (Exception ex)
             {
                 //MessageBox.Show("Error al cargar el texto: " + ex.Message);
+            }
+        }
+        public static Boolean BaseRemota = false;
+        private void ChkCRM_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChkCRM.Checked)
+            {
+                cboBase.Visible = false;
+                BaseRemota = true;
+            }
+            else
+            {
+                cboBase.Visible = true;
+                BaseRemota = false;
             }
         }
 

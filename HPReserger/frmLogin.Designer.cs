@@ -45,10 +45,12 @@
             this.pbfoto = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.moveControl1 = new HpResergerUserControls.MoveControl(this.components);
+            this.ChkCRM = new DevExpress.XtraEditors.CheckEdit();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChkCRM.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -129,6 +131,7 @@
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panel.Controls.Add(this.ChkCRM);
             this.panel.Controls.Add(this.labelControl1);
             this.panel.Controls.Add(this.lblVersion);
             this.panel.Controls.Add(this.lblmsg);
@@ -253,6 +256,17 @@
             // 
             this.moveControl1.Control = this.panel1;
             // 
+            // ChkCRM
+            // 
+            this.ChkCRM.Location = new System.Drawing.Point(7, 192);
+            this.ChkCRM.Name = "ChkCRM";
+            this.ChkCRM.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.ChkCRM.Properties.Appearance.Options.UseForeColor = true;
+            this.ChkCRM.Properties.Caption = "Otros";
+            this.ChkCRM.Size = new System.Drawing.Size(75, 19);
+            this.ChkCRM.TabIndex = 8;
+            this.ChkCRM.CheckedChanged += new System.EventHandler(this.ChkCRM_CheckedChanged);
+            // 
             // frmLogin
             // 
             this.AllowDrop = true;
@@ -277,6 +291,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChkCRM.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -298,5 +313,6 @@
         private System.Windows.Forms.Label lblmsg;
         private System.Windows.Forms.Label lblVersion;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.CheckEdit ChkCRM;
     }
 }

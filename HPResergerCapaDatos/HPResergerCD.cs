@@ -17,6 +17,7 @@ namespace HPResergerCapaDatos
     public class HPResergerCD
     {
         abcBaseDatos.Database bd;
+        public static string Conexion = "";
         //public string DATASOURCE = "HPLAPTOP";   
         public static string BASEDEDATOS = "ACTUAL";// "Actual";
         public static string DATASOURCE = "192.168.0.6";
@@ -31,6 +32,15 @@ namespace HPResergerCapaDatos
             ////object[] valor = { Name };
             //ParameterDirection[] direccion = { ParameterDirection.InputOutput };
             string sql = "SELECT Id,Version,Contenido FROM tbl_sistema  order by id desc";
+            return bd.DataTableFromQuery(sql, null, null, null);
+        }
+        public DataTable CambiarEstadoDeFactura(int id, int estado)
+        {
+            string sql = "UPDATE f " +
+                         $"SET estado = {estado} " +
+                         "FROM TBL_FacturaManual f WHERE id = " + id +
+                         "SELECT * " +
+                         "FROM TBL_FacturaManual f WHERE id = " + id;
             return bd.DataTableFromQuery(sql, null, null, null);
         }
 
@@ -87,8 +97,26 @@ namespace HPResergerCapaDatos
                 DATASOURCE = "192.168.0.102";
                 BASEDEDATOS = "sige";
             }
+            Conexion = "data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; Persist Security Info=True ; user id = " + USERID + "; password = " + USERPASS + "";
             bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; Persist Security Info=True ; user id = " + USERID + "; password = " + USERPASS + "");
         }
+        public string ObtenerConexion()
+        {
+            string connection = null;
+
+            try
+            {
+                connection = Conexion;
+                    }
+            catch (Exception ex)
+            {
+                // Manejar la excepción aquí
+                MessageBox.Show("Error al establecer la conexión: " + ex.Message, "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return connection;
+        }
+
         private DateTime CalculoDeFechaLicencia(string code, string key)
         {
             DateTime FechaResul = DateTime.Now;

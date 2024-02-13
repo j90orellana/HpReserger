@@ -202,6 +202,7 @@
             this.NumIGV = new System.Windows.Forms.NumericUpDown();
             this.btnbuscar = new DevExpress.XtraEditors.SimpleButton();
             this.btncleanfind = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFacturaPagada = new DevExpress.XtraEditors.SimpleButton();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -2272,11 +2273,23 @@
             this.btncleanfind.Text = "Limpiar";
             this.btncleanfind.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // btnFacturaPagada
+            // 
+            this.btnFacturaPagada.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFacturaPagada.Location = new System.Drawing.Point(331, 432);
+            this.btnFacturaPagada.Name = "btnFacturaPagada";
+            this.btnFacturaPagada.Size = new System.Drawing.Size(122, 23);
+            this.btnFacturaPagada.TabIndex = 331;
+            this.btnFacturaPagada.Text = "Guardar como Pagada";
+            this.btnFacturaPagada.ToolTip = "Esta acción confirmará el pago de la factura.";
+            this.btnFacturaPagada.Click += new System.EventHandler(this.btnFacturaPagada_Click);
+            // 
             // FrmFacturaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.btnFacturaPagada);
             this.Controls.Add(this.btncleanfind);
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.NumIGV);
@@ -2533,5 +2546,6 @@
         private System.Windows.Forms.NumericUpDown NumIGV;
         private DevExpress.XtraEditors.SimpleButton btnbuscar;
         private DevExpress.XtraEditors.SimpleButton btncleanfind;
+        private DevExpress.XtraEditors.SimpleButton btnFacturaPagada;
     }
 }

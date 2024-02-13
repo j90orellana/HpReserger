@@ -130,5 +130,9 @@ namespace HpResergerUserControls
                 }
             base.OnCellDoubleClick(e);
         }
+        public void Ocultar()
+        {
+            this.Visible = !this.Visible;
+        }
     }
 }

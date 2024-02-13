@@ -31,8 +31,8 @@ namespace HPReserger
             dtgconten.Enabled = !a;
             btneliminar.Enabled = !a;
             txtruc.Enabled = a;
-            btnborrar.Enabled = !a;
-            txtbuscar.Enabled = !a;
+            //btnborrar.Enabled = !a;
+            //txtbuscar.Enabled = !a;
             cbotipo.Enabled = a;
             txtnombre.Enabled = a;
             txtdireccion.Enabled = a;
@@ -67,6 +67,9 @@ namespace HPReserger
         public void CargarDatos()
         {
             Tdatos = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0);
+            gridControl1.DataSource = Tdatos;
+
+
             dtgconten.DataSource = Tdatos;
             dtgconten.Focus();
             lbltotalregistros.Text = $"Total Registros: {dtgconten.RowCount}";
@@ -74,6 +77,8 @@ namespace HPReserger
         private void frmEmpresas_Load(object sender, EventArgs e)
         {
             CargarDatos();
+            dtgconten.Ocultar();
+            gridView1.BestFitColumns(true);
         }
         public void CargarSectores(ComboBox combito)
         {
@@ -361,12 +366,12 @@ namespace HPReserger
 
         private void btnborrar_Click(object sender, EventArgs e)
         {
-            txtbuscar.Text = "";
+            //txtbuscar.Text = "";
         }
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
-            dtgconten.DataSource = CapaLogica.InsertarActualizarListarEmpresas("1", 10, txtbuscar.Text, "", 0, "", 0, 0, 0, 0, "", 0, 0, 0);
+            //dtgconten.DataSource = CapaLogica.InsertarActualizarListarEmpresas("1", 10, txtbuscar.Text, "", 0, "", 0, 0, 0, 0, "", 0, 0, 0);
         }
 
         private void txtnombre_KeyPress(object sender, KeyPressEventArgs e)

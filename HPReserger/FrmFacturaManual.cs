@@ -1,4 +1,5 @@
-﻿using HpResergerUserControls;
+﻿using DevExpress.XtraEditors;
+using HpResergerUserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1290,8 +1291,13 @@ namespace HPReserger
         private void dtgBusqueda_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
+            btnFacturaPagada.Enabled = false;
+
             if (x >= 0)
             {
+                btnFacturaPagada.Enabled = true;
+
+
                 DataGridViewRow R = dtgBusqueda.Rows[x];
                 _idFac = (int)R.Cells[yid.Name].Value;
                 _idComprobante = (int)R.Cells[yIdComprobante.Name].Value;
@@ -2624,6 +2630,45 @@ namespace HPReserger
                 CargarDatos();
             }
         }
+
+        private void btnFacturaPagada_Click(object sender, EventArgs e)
+        {
+            if (_idFac > 0)
+            {
+                string facturaInfo = $"{txtcodfactura.Text}-{txtnrofactura.Text}";
+
+                DialogResult dialogResult = XtraMessageBox.Show($"¿Seguro que desea cambiar el estado de la factura {facturaInfo} a pagada?", "Confirmación",
+                                                                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    DataTable result = CapaDatos.CambiarEstadoDeFactura(_idFac, 2);
+
+                    if (result.Rows.Count > 0)
+                    {
+                        XtraMessageBox.Show("La factura se ha marcado como pagada exitosamente.", "Cambio de estado",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Hubo un error al intentar cambiar el estado de la factura. Por favor, intente nuevamente.",
+                                            "Error en el cambio de estado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Operación cancelada por el usuario.", "Cancelado",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Por favor, seleccione una factura antes de realizar el cambio de estado.", "Cambio de estado",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
 
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {
