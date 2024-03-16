@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Datos>
+  <BaseDeDatos>Actual</BaseDeDatos>
+  <DataSource>192.168.1.6</DataSource>
+  <BasesdeDatos>
+    <ListadoBases>Actual</ListadoBases>
+    <ListadoBases>Actual_Beta</ListadoBases>
+  </BasesdeDatos>
+  <Licencia>
+    <Key>158015936624</Key>
+    <Code>3526</Code>
+  </Licencia>
+</Datos>
+
+<!--<?xml version="1.0" encoding="utf-8" ?>
+<Datos>
+  <BaseDeDatos>Actual</BaseDeDatos>
+  <DataSource>actualcorp.database.windows.net</DataSource>
+  <BasesdeDatos>
+    <ListadoBases>Actual</ListadoBases>
+    <ListadoBases>Actual_Beta</ListadoBases>
+  </BasesdeDatos>
+  <Licencia>
+    <Key>158015936624</Key>
+    <Code>3526</Code>
+  </Licencia>
+</Datos>-->
+
+
+
+<!--<?xml version="1.0" encoding="utf-8" ?>
+<Datos>
+  <BaseDeDatos>ACTUAL</BaseDeDatos>
+  <DataSource>JEFFERSON</DataSource>
+  <BasesdeDatos>
+    <ListadoBases>Actual</ListadoBases>
+    <ListadoBases>SIGE</ListadoBases>
+    <ListadoBases>Actual_Beta</ListadoBases>
+    <ListadoBases>Actual_RRHH</ListadoBases>
+    <ListadoBases>v_CAPITAL_SA</ListadoBases>
+    <ListadoBases>BELGRAVIA</ListadoBases>
+  </BasesdeDatos>
+  <Licencia>
+    <Key>158015936624</Key>
+    <Code>3526</Code>
+  </Licencia>
+</Datos>-->

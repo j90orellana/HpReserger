@@ -1,0 +1,296 @@
+﻿using HpResergerUserControls;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace HPReserger
+{
+    public partial class FrmPerfil : FormGradient
+    {
+        HPResergerCapaLogica.HPResergerCL cperfil = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+        public int codigo { get; set; }
+        public int estado { get; set; }
+        public string descripcion { get; set; }
+        public FrmPerfil()
+        {
+            InitializeComponent();
+        }
+        private void FrmPerfil_Load(object sender, EventArgs e)
+        {
+            estado = 0;
+            dtgperfil.DataSource = cperfil.getCargoTipoContratacion("Codgo_perfil_User", "desc_perfil_user", "TBL_PERFIL_USER");
+            dtgperfil.Focus();
+            cboperfiles.ValueMember = "CODIGO";
+            cboperfiles.DisplayMember = "DESCRIPCION";
+            cboperfiles.DataSource = cperfil.getCargoTipoContratacion("Codgo_perfil_User", "desc_perfil_user", "TBL_PERFIL_USER");
+            if (treePerfiles.Nodes.Count == 0)
+                CargarDAtosalTRee(0, 0, 0);
+            //cboperfiles.SelectedIndex = 0;
+        }
+        TreeNode pap, ramita, ramon, ramons;
+        public void CargarDAtosalTRee(int Perfile, int opcion, int codigo)
+        {
+            DataTable Tablita = new DataTable();
+            Tablita = cperfil.ListarPerfiles(Perfile, opcion, codigo, frmLogin.CodigoUsuario, DateTime.Now);
+            treePerfiles.Nodes.Clear();
+            pap = ramita = ramon = ramons = null;
+            foreach (DataRow filita in Tablita.Rows)
+            {
+                if (filita["titulo"].ToString().Length == 2)
+                {
+                    pap = new TreeNode((filita["modulo_opcion"].ToString()));
+                    if ((int)filita["Checked"] == 1)
+                    {
+                        pap.Checked = true;
+                    }
+                    else pap.Checked = false;
+                    pap.Tag = filita["titulo"];
+                    treePerfiles.Nodes.Add(pap);
+                }
+                if (filita["titulo"].ToString().Length == 4)
+                {
+                    ramita = new TreeNode(filita["modulo_opcion"].ToString());
+                    if ((int)filita["Checked"] == 1)
+                    {
+                        ramita.Checked = true; pap.Expand();
+                    }
+                    else ramita.Checked = false;
+                    ramita.Tag = filita["titulo"];
+                    pap.Nodes.Add(ramita);
+                }
+                if (filita["titulo"].ToString().Length == 7)
+                {
+                    ramon = new TreeNode(filita["modulo_opcion"].ToString());
+                    if ((int)filita["Checked"] == 1)
+                    {
+                        ramon.Checked = true; ramita.Expand();
+                    }
+                    else ramon.Checked = false;
+                    ramon.Tag = filita["titulo"];
+                    ramita.Nodes.Add(ramon);
+                }
+                if (filita["titulo"].ToString().Length == 9)
+                {
+                    ramons = new TreeNode(filita["modulo_opcion"].ToString());
+                    if ((int)filita["Checked"] == 1)
+                    {
+                        ramons.Checked = true; ramon.Expand();
+                    }
+                    else ramons.Checked = false;
+                    ramons.Tag = filita["titulo"];
+                    ramon.Nodes.Add(ramons);
+                }
+            }
+        }
+        public Boolean ValidarDes(string valor)
+        {
+            Boolean Aux = true;
+            if (cboperfiles.SelectedIndex >= 0)
+                dtgperfil.CurrentCell = dtgperfil[1, cboperfiles.SelectedIndex];
+            for (int i = 0; i < dtgperfil.RowCount; i++)
+            {
+                if (estado == 1)
+                    if (dtgperfil[1, i].Value.ToString() == valor)
+                    {
+                        Aux = false;
+                        msg("Este valor:" + txtdes.Text + " ya Existe");
+                        return Aux;
+                    }
+                if (estado == 2)
+                    if (dtgperfil[1, i].Value.ToString() == valor && i != cboperfiles.SelectedIndex)
+                    {
+                        Aux = false;
+                        msg("Este valor:" + txtdes.Text + " ya Existe");
+                        return Aux;
+                    }
+            }
+            return Aux;
+        }
+        public void Activar(params object[] control)
+        {
+            foreach (object x in control)
+                ((Control)x).Enabled = true;
+        }
+        public void Desactivar(params object[] control)
+        {
+            foreach (object x in control)
+                ((Control)x).Enabled = false;
+        }
+        public void Desactivar()
+        {
+            btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgperfil.Enabled = false;
+        }
+        private void btnnuevo_Click(object sender, EventArgs e)
+        {
+            tipmsg.Show("Ingrese Descripción", txtdes, 1000);
+            txtcodigo.Text = txtdes.Text = "";
+            estado = 1;
+            Desactivar();
+            Activar(txtdes);
+            Desactivar(cboperfiles);
+        }
+        private void btnmodificar_Click(object sender, EventArgs e)
+        {
+            Desactivar();
+            estado = 2;
+
+            Activar(txtdes);
+            Desactivar(cboperfiles);
+        }
+        private void btneliminar_Click(object sender, EventArgs e)
+        {
+            estado = 3;
+            btnaceptar_Click(sender, e);
+        }
+
+        private void btnaceptar_Click(object sender, EventArgs e)
+        {
+            //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
+            string cade = txtdes.Text;
+            if (estado == 1 && ValidarDes(txtdes.Text))
+            {
+                cperfil.AgregarPerfil(txtdes.Text.ToString());
+                DataRow fiConsultalita = cperfil.VerUltimoIdentificador("TBL_Perfil_User", "Codgo_Perfil_User");
+                int ultimo = ((int)fiConsultalita["ultimo"]);
+                cperfil.ListarPerfiles(ultimo, 10, 0, frmLogin.CodigoUsuario, DateTime.Now);
+                foreach (TreeNode x in treePerfiles.Nodes)
+                    RecorrerNodos(x, ultimo);
+                Activar(cboperfiles);
+                Desactivar(txtdes);
+                msgOK("Insertado con exito");
+            }
+            else
+            {
+                if (estado == 2 && ValidarDes(txtdes.Text))
+                {
+                    cperfil.ActualizarPerfil(Convert.ToInt32(txtcodigo.Text), txtdes.Text.ToString());
+                    cperfil.ListarPerfiles((int)cboperfiles.SelectedValue, 10, 0, frmLogin.CodigoUsuario, DateTime.Now);
+                    foreach (TreeNode x in treePerfiles.Nodes)
+                        RecorrerNodos(x, (int)cboperfiles.SelectedValue);
+                    Activar(cboperfiles);
+                    Desactivar(txtdes);
+                    msgOK("Modificado con exito");
+                }
+                else
+                {
+                    if (estado == 3)
+                    {
+                        if (msgp("Seguró Desea Eliminar " + txtdes.Text) == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                cperfil.EliminarPerfil(Convert.ToInt32(txtcodigo.Text));
+                            }
+                            catch (Exception)
+                            {
+                                msg("No se Pudo Eliminar, Ya tiene Usuarios Asignados.");
+                                return;
+                            }
+                            cperfil.ListarPerfiles((int)cboperfiles.SelectedValue, 10, 0, frmLogin.CodigoUsuario, DateTime.Now);
+                            Activar(cboperfiles);
+                            Desactivar(txtdes);
+
+                        }
+                    }
+                }
+            }
+            estado = 0;
+            FrmPerfil_Load(sender, e);
+            btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgperfil.Enabled = true;
+            ((frmMenu)this.MdiParent).RecargarMenu();
+            cboperfiles.Text = cade;
+        }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            if (estado == 0)
+            {
+                this.Close();
+            }
+            else
+            {
+                estado = 0;
+                btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgperfil.Enabled = true;
+                FrmPerfil_Load(sender, e);
+                Activar(cboperfiles);
+                Desactivar(txtdes);
+            }
+        }
+        private void treePerfiles_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+        private void treePerfiles_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            foreach (TreeNode x in e.Node.Nodes)
+            {
+                x.Checked = e.Node.Checked;
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (TreeNode x in treePerfiles.Nodes)
+            {
+                foreach (TreeNode xx in x.Nodes)
+                    msgOK(xx.FullPath);
+            }
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        private void RecorrerNodos(TreeNode treeNode, int codigo)
+        {
+            // Print the node.         
+            if (treeNode.Checked)
+                cperfil.ListarPerfiles(codigo, 1, int.Parse(treeNode.Tag.ToString()), frmLogin.CodigoUsuario, DateTime.Now);
+            // Print each node recursively.
+            foreach (TreeNode tn in treeNode.Nodes)
+            {
+                RecorrerNodos(tn, codigo);
+            }
+        }
+
+        private void treePerfiles_BeforeCheck(object sender, TreeViewCancelEventArgs e)
+        {
+            if (estado == 0)
+                e.Cancel = true;
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            treePerfiles.ExpandAll();
+            btnocultar.BringToFront();
+        }
+
+        private void btnocultar_Click(object sender, EventArgs e)
+        {
+            treePerfiles.CollapseAll();
+            btnampliar.BringToFront();
+        }
+
+        private void dtgperfil_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cboperfiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboperfiles.Items.Count > 0)
+            {
+                txtcodigo.Text = cboperfiles.SelectedValue.ToString();
+                txtdes.Text = cboperfiles.Text;
+                CargarDAtosalTRee(int.Parse(cboperfiles.SelectedValue.ToString()), 0, 0);
+            }
+            else CargarDAtosalTRee(0, 0, 0);
+        }
+    }
+}

@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0A0953BD-57BC-48A4-B3E6-886A2F3BE8B6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HpResergerUserControls</RootNamespace>
+    <AssemblyName>HpResergerUserControls</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Ejecutable\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Referencias\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BorderEsquinas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BorderEsquinas.Designer.cs">
+      <DependentUpon>BorderEsquinas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonOre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ButtonOre.Designer.cs">
+      <DependentUpon>ButtonOre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonPer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ButtonPer.Designer.cs">
+      <DependentUpon>ButtonPer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="checkboxOre.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="checkboxOre.Designer.cs">
+      <DependentUpon>checkboxOre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboBoxPer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBoxPer.Designer.cs">
+      <DependentUpon>ComboBoxPer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboMesAño.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComboMesAño.Designer.cs">
+      <DependentUpon>ComboMesAño.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuraciones.cs" />
+    <Compile Include="ControlDeslizamiento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlDeslizamiento.Designer.cs">
+      <DependentUpon>ControlDeslizamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DtgConten.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DtgConten.Designer.cs">
+      <DependentUpon>DtgConten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DuplicadorBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DuplicadorBase.Designer.cs">
+      <DependentUpon>DuplicadorBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FondoColorOre.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FondoColorOre.Designer.cs">
+      <DependentUpon>FondoColorOre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGradient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGradient.Designer.cs">
+      <DependentUpon>FormGradient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FotoCheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FotoCheck.Designer.cs">
+      <DependentUpon>FotoCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmimagen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmimagen.Designer.cs">
+      <DependentUpon>frmimagen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImagenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImagenes.Designer.cs">
+      <DependentUpon>frmImagenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInformativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInformativo.Designer.cs">
+      <DependentUpon>frmInformativo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mensajes.cs" />
+    <Compile Include="MoveControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MoveControl.Designer.cs">
+      <DependentUpon>MoveControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumBox.Designer.cs">
+      <DependentUpon>NumBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelOre.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PanelOre.Designer.cs">
+      <DependentUpon>PanelOre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostITMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PostITMessage.Designer.cs">
+      <DependentUpon>PostITMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SeparadorOre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SeparadorOre.Designer.cs">
+      <DependentUpon>SeparadorOre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextBoxPer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TextBoxPer.Designer.cs">
+      <DependentUpon>TextBoxPer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="txtBuscar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="txtBuscar.Designer.cs">
+      <DependentUpon>txtBuscar.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ButtonOre.resx">
+      <DependentUpon>ButtonOre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="checkboxOre.resx">
+      <DependentUpon>checkboxOre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComboMesAño.resx">
+      <DependentUpon>ComboMesAño.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DuplicadorBase.resx">
+      <DependentUpon>DuplicadorBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGradient.resx">
+      <DependentUpon>FormGradient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FotoCheck.resx">
+      <DependentUpon>FotoCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmimagen.resx">
+      <DependentUpon>frmimagen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImagenes.resx">
+      <DependentUpon>frmImagenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInformativo.resx">
+      <DependentUpon>frmInformativo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumBox.resx">
+      <DependentUpon>NumBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostITMessage.resx">
+      <DependentUpon>PostITMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeparadorOre.resx">
+      <DependentUpon>SeparadorOre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextBoxPer.resx">
+      <DependentUpon>TextBoxPer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="txtBuscar.resx">
+      <DependentUpon>txtBuscar.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Download_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Download_16px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Search_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Search_16px_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HPResergerCapaLogica\HPResergerCapaLogica.csproj">
+      <Project>{71dbcb75-15d4-4de1-b486-bb2a1190e40c}</Project>
+      <Name>HPResergerCapaLogica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HPResergerFunciones\HPResergerFunciones.csproj">
+      <Project>{2fe42f25-103c-4988-a3f5-132981069795}</Project>
+      <Name>HPResergerFunciones</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

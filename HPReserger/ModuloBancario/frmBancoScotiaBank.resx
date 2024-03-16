@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ptb.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <metadata name="xRuc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xRazonSocial.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xNroFactura.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xFechaFactura.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xMontoPagar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xFormaPago.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="xFormaPago.ToolTipText" xml:space="preserve">
+    <value>"FORMA DE PAGO:     -Obligatorio-
+
+La Forma de Pago solo puede ser:
+1: para Cheque de Gerencia
+2: para Abono en Cuenta Corriente Scotiabank
+3: para Abono en Cuenta Ahorros Scotiabank
+4: para Abono en Cuenta en Otro Banco
+
+El campo Forma de Pago es de sólo 1 dígito
+"</value>
+  </data>
+  <metadata name="xCodigoOficina.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="xCodigoOficina.ToolTipText" xml:space="preserve">
+    <value>"CODIGO DE OFICINA:
+
+Se debe ingresar el Código de Oficina de la cuenta Scotiabank del Proveedor 
+
+El Código de Oficina debe ser de 3 dígitos
+
+Obligatorio para forma de pago : 2 y 3
+Dejar en blanco para forma de pago: 1 y 4
+"
+</value>
+  </data>
+  <metadata name="xCodigoCuenta.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="xCodigoCuenta.ToolTipText" xml:space="preserve">
+    <value>"CODIGO DE CUENTA:
+
+Se debe ingresar el Código de Cuenta de la cuenta Scotiabank del Proveedor 
+
+El Código de Cuenta debe ser de 7 dígitos
+
+Obligatorio para forma de pago : 2 y 3
+Dejar en blanco para forma de pago: 1 y 4
+"
+</value>
+  </data>
+  <metadata name="xSimplePay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xEmail.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xcci.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xFactoring.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xFechaVencimiento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xTransExterior.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="SaveFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="xdni.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xNameEmpleado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xConcepto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xFechaFactura1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xMontoPagar1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xFormaPago1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="xFormaPago1.ToolTipText" xml:space="preserve">
+    <value>"FORMA DE PAGO:     -Obligatorio-
+
+La Forma de Pago solo puede ser:
+1: para Cheque de Gerencia
+2: para Abono en Cuenta Corriente Scotiabank
+3: para Abono en Cuenta Ahorros Scotiabank
+4: para Abono en Cuenta en Otro Banco
+
+El campo Forma de Pago es de sólo 1 dígito
+"</value>
+  </data>
+  <metadata name="xCodigoOficina1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="xCodigoOficina1.ToolTipText" xml:space="preserve">
+    <value>"CODIGO DE OFICINA:
+
+Se debe ingresar el Código de Oficina de la cuenta Scotiabank del Proveedor 
+
+El Código de Oficina debe ser de 3 dígitos
+
+Obligatorio para forma de pago : 2 y 3
+Dejar en blanco para forma de pago: 1 y 4
+"
+</value>
+  </data>
+  <metadata name="xCodigoCuenta1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="xCodigoCuenta1.ToolTipText" xml:space="preserve">
+    <value>"CODIGO DE CUENTA:
+
+Se debe ingresar el Código de Cuenta de la cuenta Scotiabank del Proveedor 
+
+El Código de Cuenta debe ser de 7 dígitos
+
+Obligatorio para forma de pago : 2 y 3
+Dejar en blanco para forma de pago: 1 y 4
+"
+</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn8.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xReferencia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="xCCI1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn11.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn12.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn13.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>
