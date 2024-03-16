@@ -57,8 +57,7 @@ namespace SISGEM.CRM
             HpResergerNube.CRM_EstadoRepository objestado = new HpResergerNube.CRM_EstadoRepository();
             HpResergerNube.CRM_Situacion objsituacion = new HpResergerNube.CRM_Situacion();
             HpResergerNube.CRM_Usuario ousuario = new HpResergerNube.CRM_Usuario();
-            HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
-                
+
             //TIPO SITUACION
             DataTable tSituacion = objsituacion.GetAllSituaciones();
             ID_SituacionTextEdit.Properties.DataSource = tSituacion;
@@ -146,8 +145,15 @@ namespace SISGEM.CRM
             ID_EstadoTextEdit.Properties.View.Columns.AddVisible("Detalle_Estado", "Estado");
             ID_EstadoTextEdit.Properties.View.BestFitColumns();
 
-            //estado
-            DataTable tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue,DateTime.MaxValue);
+            RecargarCliente();
+
+
+        }
+        private void RecargarCliente()
+        {
+            HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
+            //cliente
+            DataTable tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue, DateTime.MaxValue);
             ItemForID_cliente.Properties.DataSource = tcliente;
             ItemForID_cliente.Properties.DisplayMember = "nombrecompleto";
             ItemForID_cliente.Properties.ValueMember = "ID_Cliente";
@@ -159,8 +165,8 @@ namespace SISGEM.CRM
             ItemForID_cliente.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
             ItemForID_cliente.Properties.View.BestFitColumns();
 
-
         }
+
         private void frmAddProyecto_Load(object sender, EventArgs e)
         {
             CargarCombos();
@@ -458,6 +464,16 @@ namespace SISGEM.CRM
 
             // Mostrar el formulario para ver la foto
             verFotoForm.ShowDialog();
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            string data = ItemForID_cliente.EditValue?.ToString() ?? "";
+
+            CRM.FrmAddCliente frm = new CRM.FrmAddCliente();
+            frm.ShowDialog();
+            RecargarCliente();
+            ItemForID_cliente.EditValue = data;
         }
     }
 }
