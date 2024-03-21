@@ -107,7 +107,7 @@ namespace HPResergerCapaDatos
             try
             {
                 connection = Conexion;
-                    }
+            }
             catch (Exception ex)
             {
                 // Manejar la excepción aquí
@@ -4371,10 +4371,10 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_InsertarActualizarListarSubOperacion", parametros, valores, null);
         }
         public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo,
-            string @repre, int @cia, int usuario, int stock)
+            string @repre, int @cia, int usuario, int stock, int ingresos)
         {
-            string[] parametros = { "@id", "@opcion", "@campo1", "@campo2", "@sector", "@direcc", "@dep", "@prov", "@dis", "@tipo", "@repre", "@cia", "@usuario", "@stock" };
-            object[] valores = { @id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario, stock };
+            string[] parametros = { "@id", "@opcion", "@campo1", "@campo2", "@sector", "@direcc", "@dep", "@prov", "@dis", "@tipo", "@repre", "@cia", "@usuario", "@stock", "@ingresos" };
+            object[] valores = { @id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario, stock, ingresos };
             return bd.DataTableFromProcedure("usp_InsertarActualizarListarEmpresas", parametros, valores, null);
         }
         public DataTable ComisionesBonos(int @opcion, int @pkid, int @tipoid, string @numdoc, int @pkempresa, int @fkempresa, DateTime @periodo, decimal sueldo, decimal @comision, decimal @bono,

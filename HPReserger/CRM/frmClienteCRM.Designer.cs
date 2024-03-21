@@ -86,11 +86,11 @@
             this.layoutControl1.Controls.Add(this.dtpFechade);
             this.layoutControl1.Controls.Add(this.dtpFechaa);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 31);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 28);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(498, 63, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(893, 358);
+            this.layoutControl1.Size = new System.Drawing.Size(893, 361);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -102,7 +102,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(869, 286);
+            this.gridControl1.Size = new System.Drawing.Size(869, 289);
             this.gridControl1.TabIndex = 7;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -242,7 +242,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(893, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(893, 28);
             // 
             // barDockControlBottom
             // 
@@ -255,15 +255,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 358);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 28);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 361);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(893, 31);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 358);
+            this.barDockControlRight.Location = new System.Drawing.Point(893, 28);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 361);
             // 
             // simpleButton1
             // 
@@ -271,7 +271,6 @@
             this.simpleButton1.Location = new System.Drawing.Point(233, 12);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(110, 22);
-            this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 6;
             this.simpleButton1.Text = "Buscar";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -287,7 +286,6 @@
             this.dtpFechade.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpFechade.Size = new System.Drawing.Size(143, 20);
-            this.dtpFechade.StyleController = this.layoutControl1;
             this.dtpFechade.TabIndex = 5;
             // 
             // dtpFechaa
@@ -301,7 +299,6 @@
             this.dtpFechaa.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpFechaa.Size = new System.Drawing.Size(143, 20);
-            this.dtpFechaa.StyleController = this.layoutControl1;
             this.dtpFechaa.TabIndex = 4;
             // 
             // layoutControlGroup1
@@ -316,7 +313,7 @@
             this.emptySpaceItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(893, 358);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(893, 361);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -342,7 +339,7 @@
             this.layoutControlItem4.Control = this.gridControl1;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(873, 290);
+            this.layoutControlItem4.Size = new System.Drawing.Size(873, 293);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 

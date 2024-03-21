@@ -124,10 +124,23 @@ namespace SISGEM.CRM
 
         private Image ByteArrayToImage(byte[] byteArrayIn)
         {
-            if (byteArrayIn == null)
-                return (Image)null;
-            using (MemoryStream memoryStream = new MemoryStream(byteArrayIn))
-                return Image.FromStream((Stream)memoryStream);
+            try
+            {
+
+                if (byteArrayIn == null || byteArrayIn.Length == 0)
+                {
+                    return null;
+                }
+
+                using (MemoryStream ms = new MemoryStream(byteArrayIn))
+                {
+                    return Image.FromStream(ms);
+                }
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private void ImagenPictureEdit_Click(object sender, EventArgs e)

@@ -28,7 +28,7 @@ namespace SISGEM.CRM
             if (!ValidarCamposNoNulos()) return;
             oSeguimiento.ID_Contacto = Convert.ToString(ID_ContactoTextEdit.EditValue);
             oSeguimiento.Contacto = ID_ContactoTextEdit.Text;
-            oSeguimiento.Descripción = Convert.ToString(DescripciónTextEdit.EditValue);
+            oSeguimiento.Descripcion = Convert.ToString(DescripciónTextEdit.EditValue);
             oSeguimiento.ID_Proyecto = Convert.ToDecimal(ID_ProyectoTextEdit.EditValue);
             oSeguimiento.Nombre_Proyecto = ID_ProyectoTextEdit.Text;
             oSeguimiento.ID_Tipo_Seguimiento = Convert.ToString(ID_Tipo_SeguimientoTextEdit.EditValue);
@@ -36,12 +36,16 @@ namespace SISGEM.CRM
             oSeguimiento.Usuario_Creacion = Convert.ToString(Usuario_CreacionTextEdit.EditValue);
             oSeguimiento.Fecha_Seguimiento = Convert.ToDateTime(Fecha_SeguimientoDateEdit.EditValue);
             oSeguimiento.Fecha_Prox_Seguimiento = Convert.ToDateTime(Fecha_Prox_SeguimientoDateEdit.EditValue);
+            oSeguimiento.ID_Cliente = cbocliente.EditValue.ToString();
 
             HpResergerNube.CRM_SeguimientoRepository objseguimiento = new HpResergerNube.CRM_SeguimientoRepository();
 
             if (_idseguimiento == 0)
             {
                 //Insertar
+                oSeguimiento.Fecha_Registro = DateTime.Now;
+
+
                 int insertedId = objseguimiento.InsertSeguimiento(oSeguimiento);
                 if (insertedId != -1)
                 {
@@ -77,7 +81,11 @@ namespace SISGEM.CRM
                 MessageBox.Show("Por favor, ingrese el ID de Contacto.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
+            if (cbocliente.EditValue == null || string.IsNullOrWhiteSpace(cbocliente.EditValue.ToString()))
+            {
+                MessageBox.Show("Por favor, ingrese el ID de Cliente.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             if (DescripciónTextEdit.EditValue == null || string.IsNullOrWhiteSpace(DescripciónTextEdit.EditValue.ToString()))
             {
                 MessageBox.Show("Por favor, ingrese la Descripción.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -131,12 +139,13 @@ namespace SISGEM.CRM
                 ID_SeguimientoTextEdit.EditValue = _idseguimiento;
                 oSeguimiento = objseguimiento.SelectSeguimiento(_idseguimiento);
                 ID_ContactoTextEdit.EditValue = oSeguimiento.ID_Contacto;
-                DescripciónTextEdit.EditValue = oSeguimiento.Descripción;
+                DescripciónTextEdit.EditValue = oSeguimiento.Descripcion;
                 ID_ProyectoTextEdit.EditValue = oSeguimiento.ID_Proyecto;
                 ID_Tipo_SeguimientoTextEdit.EditValue = oSeguimiento.ID_Tipo_Seguimiento;
                 Usuario_CreacionTextEdit.EditValue = oSeguimiento.Usuario_Creacion;
                 Fecha_SeguimientoDateEdit.EditValue = oSeguimiento.Fecha_Seguimiento;
                 Fecha_Prox_SeguimientoDateEdit.EditValue = oSeguimiento.Fecha_Prox_Seguimiento;
+                cbocliente.EditValue = oSeguimiento.ID_Cliente;
             }
         }
 
@@ -196,6 +205,18 @@ namespace SISGEM.CRM
             ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
             ID_ContactoTextEdit.Properties.View.BestFitColumns();
 
+            //cliejte
+            HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
+            DataTable Tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue,DateTime.MaxValue);
+            cbocliente.Properties.DataSource = Tcliente;
+            cbocliente.Properties.ValueMember = "ID_Cliente";
+            cbocliente.Properties.DisplayMember = "nombrecompleto";
+            cbocliente.EditValue = Tcliente.Rows.Count > 0 ? Tcliente.Rows[0]["ID_Cliente"] : null;
+
+            cbocliente.Properties.View.Columns.Clear();
+            cbocliente.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
+            cbocliente.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
+            cbocliente.Properties.View.BestFitColumns();
 
         }
     }

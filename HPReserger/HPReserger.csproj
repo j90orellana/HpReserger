@@ -224,11 +224,23 @@
     <Compile Include="CRM\frmAddContacto.Designer.cs">
       <DependentUpon>frmAddContacto.cs</DependentUpon>
     </Compile>
+    <Compile Include="CRM\frmAddCotizacionCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddCotizacionCRM.Designer.cs">
+      <DependentUpon>frmAddCotizacionCRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRM\frmAddProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CRM\frmAddProducto.Designer.cs">
       <DependentUpon>frmAddProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddProveedor.Designer.cs">
+      <DependentUpon>frmAddProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="CRM\frmAddProyecto.cs">
       <SubType>Form</SubType>
@@ -278,6 +290,12 @@
     <Compile Include="CRM\frmContactoCRM.Designer.cs">
       <DependentUpon>frmContactoCRM.cs</DependentUpon>
     </Compile>
+    <Compile Include="CRM\frmCotizadorCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmCotizadorCRM.Designer.cs">
+      <DependentUpon>frmCotizadorCRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRM\frmPerfilCRM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +307,12 @@
     </Compile>
     <Compile Include="CRM\frmProductosCRM.Designer.cs">
       <DependentUpon>frmProductosCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmProveedoresCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmProveedoresCRM.Designer.cs">
+      <DependentUpon>frmProveedoresCRM.cs</DependentUpon>
     </Compile>
     <Compile Include="CRM\frmProyectos.cs">
       <SubType>Form</SubType>
@@ -2359,8 +2383,14 @@
     <EmbeddedResource Include="CRM\frmAddContacto.resx">
       <DependentUpon>frmAddContacto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddCotizacionCRM.resx">
+      <DependentUpon>frmAddCotizacionCRM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmAddProducto.resx">
       <DependentUpon>frmAddProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddProveedor.resx">
+      <DependentUpon>frmAddProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmAddProyecto.resx">
       <DependentUpon>frmAddProyecto.cs</DependentUpon>
@@ -2386,11 +2416,17 @@
     <EmbeddedResource Include="CRM\frmContactoCRM.resx">
       <DependentUpon>frmContactoCRM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmCotizadorCRM.resx">
+      <DependentUpon>frmCotizadorCRM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmPerfilCRM.resx">
       <DependentUpon>frmPerfilCRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmProductosCRM.resx">
       <DependentUpon>frmProductosCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmProveedoresCRM.resx">
+      <DependentUpon>frmProveedoresCRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmProyectos.resx">
       <DependentUpon>frmProyectos.cs</DependentUpon>
@@ -3484,7 +3520,9 @@
     <None Include="Properties\DataSources\HpResergerNube.CRM_ClienteRepository.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_ContactoRepository+Contacto.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_ContactoRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Cotizador.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_ProductoRepository+Producto.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ProveedorRepository+CRM_Proveedor.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_ProyectoRepository.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_Sedes.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_SeguimientoRepository+CRM_Seguimiento.datasource" />

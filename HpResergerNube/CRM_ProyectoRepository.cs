@@ -56,6 +56,45 @@ namespace HpResergerNube
             return num;
         }
 
+        public object FilterProyectosByDateRange(DateTime startDate, DateTime endDate, string cliente, string usuario)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(this.connectionString))
+                {
+                    connection.Open();
+                    using (NpgsqlCommand selectCommand = new NpgsqlCommand(@"SELECT PRO.*, PRI.*, USU.""Nombre"" || ' ' || USU.""Apellido1"" || ' ' || USU.""Apellido2"" AS ""Nombre_Usuario"", 
+                CASE WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social"" ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", '')) END AS ""Nombre_Cliente"" 
+                FROM public.""CRM_Proyecto"" PRO
+                LEFT JOIN public.""CRM_Prioridad"" PRI ON PRO.""ID_Prioridad"" = PRI.""ID_Prioridad""
+                LEFT JOIN public.""CRM_Cliente"" CLI ON PRO.""ID_Cliente"" = CLI.""ID_Cliente""
+                LEFT JOIN public.""CRM_Usuario"" USU ON PRO.""ID_Usuario"" = USU.""ID_Usuario""
+                WHERE PRO.""Fecha_Creacion"" BETWEEN @DATE1 AND @DATE2
+                AND ('0' = @USER OR PRO.""ID_Usuario"" = @USER)
+                AND ('0' = @CLIENTE OR PRO.""ID_Cliente"" = @CLIENTE)
+                ORDER BY PRO.""Fecha_Creacion"" DESC;", connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@DATE1", startDate);
+                        selectCommand.Parameters.AddWithValue("@DATE2", endDate);
+                        selectCommand.Parameters.AddWithValue("@CLIENTE", cliente);
+                        selectCommand.Parameters.AddWithValue("@USER", usuario);
+                        using (NpgsqlDataAdapter npgsqlDataAdapter = new NpgsqlDataAdapter(selectCommand))
+                        {
+                            npgsqlDataAdapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al filtrar proyectos: " + ex.Message);
+            }
+            return dataTable;
+        }
+
+
+
         public bool UpdateProyecto(Proyecto proyecto)
         {
             try

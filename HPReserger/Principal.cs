@@ -64,6 +64,7 @@ namespace SISGEM
                 ControlPerfilPrioritario();
                 btnUsuario.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 btnUsuarioCRM.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                btnProveedorCRM.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             else
             {
@@ -71,6 +72,7 @@ namespace SISGEM
                 barStaticItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 btnUsuario.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 btnUsuarioCRM.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                btnProveedor.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 GrupoperfilesCRM.Visible = true;
             }
 
@@ -931,7 +933,11 @@ namespace SISGEM
 
         private void navBarItem1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
+            CRM.frmSegumiento frm = new CRM.frmSegumiento();
+            frm.CodigoUsuario = HPReserger.frmLogin.CodigoUsuario;
+            frm.MdiParent = this;
 
+            frm.Show();
         }
 
         private void btnUsuarioCRM_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -951,6 +957,20 @@ namespace SISGEM
         private void barButtonItem30_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             CRM.frmTipoCliente frm = new CRM.frmTipoCliente();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void btnProveedorCRM_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmProveedoresCRM frm = new CRM.frmProveedoresCRM();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem32_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmCotizadorCRM frm = new CRM.frmCotizadorCRM();
             frm.MdiParent = this;
             frm.Show();
         }

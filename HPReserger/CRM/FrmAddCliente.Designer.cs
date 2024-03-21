@@ -41,6 +41,9 @@
             this.cRMClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.cboTipoCliente = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID_ClienteTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.NombreTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Apellido1TextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -84,19 +87,18 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.ItemForID_Cliente = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForID_Codigo_postal = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cboTipoCliente = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cRMClienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTipoCliente.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ID_ClienteTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NombreTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Apellido1TextEdit.Properties)).BeginInit();
@@ -140,12 +142,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Cliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Codigo_postal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboTipoCliente.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -270,6 +270,37 @@
             this.dataLayoutControl1.Size = new System.Drawing.Size(605, 370);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(479, 324);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(114, 22);
+            this.simpleButton1.StyleController = this.dataLayoutControl1;
+            this.simpleButton1.TabIndex = 26;
+            this.simpleButton1.Text = "Agregar Contacto";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // cboTipoCliente
+            // 
+            this.cboTipoCliente.Location = new System.Drawing.Point(401, 36);
+            this.cboTipoCliente.MenuManager = this.barManager1;
+            this.cboTipoCliente.Name = "cboTipoCliente";
+            this.cboTipoCliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboTipoCliente.Properties.NullText = "";
+            this.cboTipoCliente.Properties.View = this.gridView1;
+            this.cboTipoCliente.Size = new System.Drawing.Size(192, 20);
+            this.cboTipoCliente.StyleController = this.dataLayoutControl1;
+            this.cboTipoCliente.TabIndex = 23;
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // ID_ClienteTextEdit
             // 
@@ -728,6 +759,27 @@
             this.ItemForID_Codigo_postal.Text = "Codigo Postal";
             this.ItemForID_Codigo_postal.TextSize = new System.Drawing.Size(94, 13);
             // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.cboTipoCliente;
+            this.layoutControlItem2.Location = new System.Drawing.Point(292, 24);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(293, 24);
+            this.layoutControlItem2.Text = "Tipo Cliente";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(94, 13);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.simpleButton1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(467, 312);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(118, 26);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(118, 26);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(118, 26);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -747,58 +799,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(609, 374);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // cboTipoCliente
-            // 
-            this.cboTipoCliente.Location = new System.Drawing.Point(401, 36);
-            this.cboTipoCliente.MenuManager = this.barManager1;
-            this.cboTipoCliente.Name = "cboTipoCliente";
-            this.cboTipoCliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboTipoCliente.Properties.NullText = "";
-            this.cboTipoCliente.Properties.View = this.gridView1;
-            this.cboTipoCliente.Size = new System.Drawing.Size(192, 20);
-            this.cboTipoCliente.StyleController = this.dataLayoutControl1;
-            this.cboTipoCliente.TabIndex = 23;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.cboTipoCliente;
-            this.layoutControlItem2.Location = new System.Drawing.Point(292, 24);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(293, 24);
-            this.layoutControlItem2.Text = "Tipo Cliente";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(94, 13);
-            // 
-            // gridView1
-            // 
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(479, 324);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(114, 22);
-            this.simpleButton1.StyleController = this.dataLayoutControl1;
-            this.simpleButton1.TabIndex = 26;
-            this.simpleButton1.Text = "Agregar Contacto";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.simpleButton1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(467, 312);
-            this.layoutControlItem3.MaxSize = new System.Drawing.Size(118, 26);
-            this.layoutControlItem3.MinSize = new System.Drawing.Size(118, 26);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(118, 26);
-            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
             // 
             // FrmAddCliente
             // 
@@ -821,6 +821,8 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboTipoCliente.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ID_ClienteTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NombreTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Apellido1TextEdit.Properties)).EndInit();
@@ -864,12 +866,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Cliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Codigo_postal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboTipoCliente.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

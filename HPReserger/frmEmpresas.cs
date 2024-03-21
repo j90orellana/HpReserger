@@ -47,6 +47,7 @@ namespace HPReserger
             btnsector.Enabled = a;
             btnciaseguro.Enabled = a;
             chkStock.Enabled = a;
+            chkIngresosMayores.Enabled = a;
         }
         public void CargarCombos(ComboBox combito)
         {
@@ -66,7 +67,7 @@ namespace HPReserger
         DataTable Tdatos;
         public void CargarDatos()
         {
-            Tdatos = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0);
+            Tdatos = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0);
             gridControl1.DataSource = Tdatos;
 
 
@@ -79,6 +80,7 @@ namespace HPReserger
             CargarDatos();
             dtgconten.Ocultar();
             gridView1.BestFitColumns(true);
+            dtgconten.Visible = false;
         }
         public void CargarSectores(ComboBox combito)
         {
@@ -158,6 +160,8 @@ namespace HPReserger
                 btneliminar.Enabled = true;
                 btnexportarExcel.Enabled = true;
                 chkStock.Checked = dtgconten[xStock.Name, e.RowIndex].Value.ToString() == "SI" ? true : false;
+
+                chkIngresosMayores.Checked = dtgconten[xIngresosMayores.Name, e.RowIndex].Value.ToString() == "1" ? true : false;
             }
             else
             {
@@ -304,6 +308,7 @@ namespace HPReserger
                 return;
             }
             int Stock = chkStock.Checked ? 1 : 0;
+            int ingresos = chkIngresosMayores.Checked ? 1 : 0;
             /* decimal aportex = decimal.Parse(txtaporte.Text) / 100;
              decimal segurox = decimal.Parse(txtseguro.Text) / 100;
              decimal comisionx = decimal.Parse(txtcomision.Text) / 100;*/
@@ -327,7 +332,7 @@ namespace HPReserger
                 }
                 //Insertando;
                 CapaLogica.InsertarActualizarListarEmpresas(txtruc.Text, 1, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue,
-                    (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario, Stock);
+                    (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario, Stock, ingresos);
                 HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -354,7 +359,7 @@ namespace HPReserger
                 }
                 //modificando
                 CapaLogica.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text,
-                    (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario, Stock);
+                    (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario, Stock, ingresos);
                 HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }

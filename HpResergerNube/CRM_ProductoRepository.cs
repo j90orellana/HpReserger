@@ -65,6 +65,55 @@ namespace HpResergerNube
         {
             this.connectionString = new DLConexion().GetConnectionString();
         }
+        public DataTable ObtenerProductosYServicios()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = @"SELECT ""ID_Producto"" AS ID, ""Detalle_Producto"" AS Nombre, ""Precio_1"" AS Precio FROM public.""CRM_Producto""
+                                 UNION ALL
+                                 SELECT ""ID_Servicio"" AS ID, ""Detalle_Servicio"" AS Nombre, ""Precio_Venta"" AS Precio FROM public.""CRM_Servicio""";
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+        public DataTable ObtenerProductosYServiciosPorID(string idProducto, string idServicio)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = @"SELECT ""ID_Producto"" AS ID, ""Detalle_Producto"" AS Nombre, ""Precio_1"" AS Precio FROM public.""CRM_Producto"" WHERE ""ID_Producto"" = @ID_Producto
+                         UNION ALL
+                         SELECT ""ID_Servicio"" AS ID, ""Detalle_Servicio"" AS Nombre, ""Precio_Venta"" AS Precio FROM public.""CRM_Servicio"" WHERE ""ID_Servicio"" = @ID_Servicio";
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ID_Producto", idProducto);
+                    cmd.Parameters.AddWithValue("@ID_Servicio", idServicio);
+
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
 
         public string InsertProducto(Producto producto)
         {

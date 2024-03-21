@@ -49,7 +49,9 @@
     <Compile Include="CRM_ClienteRepository.cs" />
     <Compile Include="CRM_CodigoPostalRepository.cs" />
     <Compile Include="CRM_ContactoRepository.cs" />
+    <Compile Include="CRM_Cotizador.cs" />
     <Compile Include="CRM_EstadoRepository.cs" />
+    <Compile Include="CRM_Items_Cotizador.cs" />
     <Compile Include="CRM_Kardex_ProductosRepository.cs" />
     <Compile Include="CRM_MonedaRepository.cs" />
     <Compile Include="CRM_PerfilesRepository.cs" />

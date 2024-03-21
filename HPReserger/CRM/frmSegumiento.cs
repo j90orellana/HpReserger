@@ -41,8 +41,8 @@ namespace SISGEM.CRM
             if (CodigoUsuario != 0)
             {
                 Usuario_CreacionTextEdit.EditValue = CodigoUsuario;
-                dtpFechade.EditValue = FechaHoy;
-                dtpFechaa.EditValue = FechaHoy;
+                dtpFechade.EditValue = DateTime.Now;
+                dtpFechaa.EditValue = DateTime.Now;
             }
             CargarDatos();
         }
@@ -122,6 +122,8 @@ namespace SISGEM.CRM
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             CargarDatos();
+
+
 
         }
     }

@@ -285,7 +285,9 @@
             // 
             // layoutView1
             // 
-            this.layoutView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.layoutView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.layoutView1.CardHorzInterval = 3;
+            this.layoutView1.CardMinSize = new System.Drawing.Size(300, 40);
             this.layoutView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.LayoutViewColumn[] {
             this.xID_Seguimiento,
             this.xNombre_Proyecto,
@@ -302,6 +304,7 @@
             this.layoutView1.OptionsFind.AlwaysVisible = true;
             this.layoutView1.OptionsFind.FindNullPrompt = "Ingrese texto a buscar";
             this.layoutView1.OptionsHeaderPanel.EnableCustomizeButton = false;
+            this.layoutView1.OptionsItemText.AlignMode = DevExpress.XtraGrid.Views.Layout.FieldTextAlignMode.AutoSize;
             this.layoutView1.OptionsLayout.StoreAllOptions = true;
             this.layoutView1.OptionsLayout.StoreAppearance = true;
             this.layoutView1.OptionsView.CardsAlignment = DevExpress.XtraGrid.Views.Layout.CardsAlignment.Far;
@@ -324,7 +327,7 @@
             this.layoutViewField_xID_Seguimiento.Location = new System.Drawing.Point(0, 0);
             this.layoutViewField_xID_Seguimiento.Name = "layoutViewField_xID_Seguimiento";
             this.layoutViewField_xID_Seguimiento.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xID_Seguimiento.TextSize = new System.Drawing.Size(58, 13);
+            this.layoutViewField_xID_Seguimiento.TextSize = new System.Drawing.Size(15, 13);
             // 
             // xNombre_Proyecto
             // 
@@ -340,7 +343,7 @@
             this.layoutViewField_xNombre_Proyecto.Location = new System.Drawing.Point(0, 24);
             this.layoutViewField_xNombre_Proyecto.Name = "layoutViewField_xNombre_Proyecto";
             this.layoutViewField_xNombre_Proyecto.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xNombre_Proyecto.TextSize = new System.Drawing.Size(58, 13);
+            this.layoutViewField_xNombre_Proyecto.TextSize = new System.Drawing.Size(47, 13);
             // 
             // xDetalle_Tipo_Seguimiento
             // 
@@ -356,7 +359,7 @@
             this.layoutViewField_xDetalle_Tipo_Seguimiento.Location = new System.Drawing.Point(0, 48);
             this.layoutViewField_xDetalle_Tipo_Seguimiento.Name = "layoutViewField_xDetalle_Tipo_Seguimiento";
             this.layoutViewField_xDetalle_Tipo_Seguimiento.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xDetalle_Tipo_Seguimiento.TextSize = new System.Drawing.Size(58, 13);
+            this.layoutViewField_xDetalle_Tipo_Seguimiento.TextSize = new System.Drawing.Size(49, 13);
             // 
             // xNombre
             // 
@@ -371,7 +374,7 @@
             this.layoutViewField_xNombre.Location = new System.Drawing.Point(0, 72);
             this.layoutViewField_xNombre.Name = "layoutViewField_xNombre";
             this.layoutViewField_xNombre.Size = new System.Drawing.Size(173, 20);
-            this.layoutViewField_xNombre.TextSize = new System.Drawing.Size(58, 13);
+            this.layoutViewField_xNombre.TextSize = new System.Drawing.Size(40, 13);
             // 
             // xContacto
             // 
@@ -387,7 +390,7 @@
             this.layoutViewField_xContacto.Location = new System.Drawing.Point(0, 92);
             this.layoutViewField_xContacto.Name = "layoutViewField_xContacto";
             this.layoutViewField_xContacto.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xContacto.TextSize = new System.Drawing.Size(58, 13);
+            this.layoutViewField_xContacto.TextSize = new System.Drawing.Size(48, 13);
             // 
             // xDescripción
             // 
@@ -439,7 +442,7 @@
             this.layoutViewField_xFecha_Prox_Seguimiento.Location = new System.Drawing.Point(0, 164);
             this.layoutViewField_xFecha_Prox_Seguimiento.Name = "layoutViewField_xFecha_Prox_Seguimiento";
             this.layoutViewField_xFecha_Prox_Seguimiento.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xFecha_Prox_Seguimiento.TextSize = new System.Drawing.Size(58, 13);
+            this.layoutViewField_xFecha_Prox_Seguimiento.TextSize = new System.Drawing.Size(55, 13);
             // 
             // layoutViewCard1
             // 
@@ -624,7 +627,7 @@
             this.ItemForID_Proyecto,
             this.emptySpaceItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1046, 436);
             this.layoutControlGroup1.TextVisible = false;
             // 

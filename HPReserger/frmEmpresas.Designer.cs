@@ -60,6 +60,7 @@ namespace HPReserger
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eps = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xIngresosMayores = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -115,6 +116,7 @@ namespace HPReserger
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.chkIngresosMayores = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -125,7 +127,6 @@ namespace HPReserger
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -143,6 +144,7 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkIngresosMayores.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -153,7 +155,6 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
@@ -241,7 +242,8 @@ namespace HPReserger
             this.usuario,
             this.fecha,
             this.eps,
-            this.xStock});
+            this.xStock,
+            this.xIngresosMayores});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -456,6 +458,13 @@ namespace HPReserger
             this.xStock.Name = "xStock";
             this.xStock.ReadOnly = true;
             this.xStock.Width = 40;
+            // 
+            // xIngresosMayores
+            // 
+            this.xIngresosMayores.DataPropertyName = "IngresosMayores";
+            this.xIngresosMayores.HeaderText = "IngresosMayores";
+            this.xIngresosMayores.Name = "xIngresosMayores";
+            this.xIngresosMayores.ReadOnly = true;
             // 
             // btneliminar
             // 
@@ -713,6 +722,8 @@ namespace HPReserger
             this.layoutControl1.Controls.Add(this.cbodep);
             this.layoutControl1.Controls.Add(this.dtgconten);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem10});
             this.layoutControl1.Location = new System.Drawing.Point(0, 22);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
@@ -722,11 +733,11 @@ namespace HPReserger
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(12, 303);
+            this.gridControl1.Location = new System.Drawing.Point(12, 135);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1079, 102);
+            this.gridControl1.Size = new System.Drawing.Size(1079, 270);
             this.gridControl1.TabIndex = 159;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -993,6 +1004,7 @@ namespace HPReserger
             // 
             // chkIngresosMayores
             // 
+            this.chkIngresosMayores.Enabled = false;
             this.chkIngresosMayores.Location = new System.Drawing.Point(79, 111);
             this.chkIngresosMayores.MenuManager = this.barManager1;
             this.chkIngresosMayores.Name = "chkIngresosMayores";
@@ -1000,6 +1012,15 @@ namespace HPReserger
             this.chkIngresosMayores.Size = new System.Drawing.Size(1012, 19);
             this.chkIngresosMayores.StyleController = this.layoutControl1;
             this.chkIngresosMayores.TabIndex = 158;
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.dtgconten;
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 123);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(1083, 168);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem10.TextVisible = false;
             // 
             // layoutControlGroup1
             // 
@@ -1015,7 +1036,6 @@ namespace HPReserger
             this.layoutControlItem7,
             this.layoutControlItem8,
             this.layoutControlItem9,
-            this.layoutControlItem10,
             this.layoutControlItem11,
             this.layoutControlItem13,
             this.layoutControlItem16,
@@ -1111,15 +1131,6 @@ namespace HPReserger
             this.layoutControlItem9.Text = "Distrito:";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(112, 13);
             // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.Control = this.dtgconten;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 123);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(1083, 168);
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem10.TextVisible = false;
-            // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.cbosector;
@@ -1211,9 +1222,9 @@ namespace HPReserger
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.gridControl1;
-            this.layoutControlItem17.Location = new System.Drawing.Point(0, 291);
+            this.layoutControlItem17.Location = new System.Drawing.Point(0, 123);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(1083, 106);
+            this.layoutControlItem17.Size = new System.Drawing.Size(1083, 274);
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
             // 
@@ -1246,6 +1257,7 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkIngresosMayores.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -1256,7 +1268,6 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
@@ -1294,28 +1305,6 @@ namespace HPReserger
         private System.Windows.Forms.Button btnsector;
         private System.Windows.Forms.Button btnciaseguro;
         private System.Windows.Forms.Label lbltotalregistros;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ruc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipodni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nroid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn representante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sector;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dep;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idempresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idsector;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coddep;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codpro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coddis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ciaseguro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eps;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xStock;
         private checkboxOre chkStock;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
@@ -1374,5 +1363,28 @@ namespace HPReserger
         private DevExpress.XtraGrid.Columns.GridColumn xcia;
         private DevExpress.XtraGrid.Columns.GridColumn xeps;
         private DevExpress.XtraGrid.Columns.GridColumn xstocks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ruc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipodni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nroid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn representante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sector;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idempresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idsector;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coddep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codpro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coddis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ciaseguro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eps;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xIngresosMayores;
     }
 }

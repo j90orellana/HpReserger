@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HpResergerNube;
 
 namespace SISGEM.CRM
 {
@@ -24,16 +25,59 @@ namespace SISGEM.CRM
 
         private void frmProyectos_Load(object sender, EventArgs e)
         {
+            CargarCombos();
             dtpFechade.EditValue = HpResergerNube.DLConexion.ObtenerPrimerDiaDelMes(DateTime.Now);
             dtpFechaa.EditValue = HpResergerNube.DLConexion.ObtenerUltimoDiaDelMes(DateTime.Now);
             CargarDatos();
         }
+
+        private void CargarCombos()
+        {
+            //Usuarios
+            CRM_Usuario crmUsuario = new CRM_Usuario();
+            DataTable usuariosConTodos = crmUsuario.GetAllUsuariosConTodos();
+            this.Usuario_CreacionTextEdit.Properties.DataSource = (object)usuariosConTodos;
+            this.Usuario_CreacionTextEdit.Properties.ValueMember = "id_usuario";
+            this.Usuario_CreacionTextEdit.Properties.DisplayMember = "nombre_completo";
+            this.Usuario_CreacionTextEdit.EditValue = usuariosConTodos.Rows.Count > 0 ? usuariosConTodos.Rows[0]["ID_Usuario"] : (object)null;
+            this.Usuario_CreacionTextEdit.Properties.View.Columns.Clear();
+            this.Usuario_CreacionTextEdit.Properties.View.Columns.AddVisible("id_usuario", "ID");
+            this.Usuario_CreacionTextEdit.Properties.View.Columns.AddVisible("nombre_completo", "Nombre Completo");
+            this.Usuario_CreacionTextEdit.Properties.View.BestFitColumns();
+
+            //CLIENTE
+            HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
+            DataTable Tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue, DateTime.MaxValue);
+            // Crear una nueva fila con el ID_Cliente 0 y nombre "Todos"
+            DataRow newRow = Tcliente.NewRow();
+            newRow["ID_Cliente"] = 0;
+            newRow["nombrecompleto"] = "Todos";
+
+            // Agregar la nueva fila al DataTable
+            Tcliente.Rows.InsertAt(newRow, 0);
+            ID_Tipo_personaTextEdit.Properties.DataSource = Tcliente;
+            ID_Tipo_personaTextEdit.Properties.ValueMember = "ID_Cliente";
+            ID_Tipo_personaTextEdit.Properties.DisplayMember = "nombrecompleto";
+            ID_Tipo_personaTextEdit.EditValue = Tcliente.Rows.Count > 0 ? Tcliente.Rows[0]["ID_Cliente"] : null;
+
+            ID_Tipo_personaTextEdit.Properties.View.Columns.Clear();
+            ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
+            ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("ID_Numero_Doc", "Número Documento");
+            ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
+            ID_Tipo_personaTextEdit.Properties.View.BestFitColumns();
+        }
+
         private void CargarDatos()
         {
 
             HpResergerNube.CRM_ProyectoRepository objproyecto = new HpResergerNube.CRM_ProyectoRepository();
+            DateTime fechaInicio = ((DateTime?)dtpFechade.EditValue)?.Date ?? DateTime.Now.Date;
+            DateTime fechaFin = ((DateTime?)dtpFechaa.EditValue)?.Date ?? DateTime.Now.Date;
+            string tipoPersona = ID_Tipo_personaTextEdit.EditValue?.ToString() ?? "0";
+            string usuarioCreacion = Usuario_CreacionTextEdit.EditValue?.ToString() ?? "0";
 
-            gridControl3.DataSource = objproyecto.FilterProyectosByDateRange(((DateTime)dtpFechade.EditValue).Date, ((DateTime)dtpFechaa.EditValue).Date);
+            gridControl3.DataSource = objproyecto.FilterProyectosByDateRange(fechaInicio, fechaFin, tipoPersona, usuarioCreacion);
+
         }
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -80,6 +124,7 @@ namespace SISGEM.CRM
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+
             CargarDatos();
         }
 
