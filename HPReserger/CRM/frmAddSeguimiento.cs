@@ -134,6 +134,9 @@ namespace SISGEM.CRM
             Fecha_SeguimientoDateEdit.EditValue = DateTime.Now;
             Fecha_Prox_SeguimientoDateEdit.EditValue = HpResergerNube.DLConexion.ObtenerUltimoDiaDelMes(DateTime.Now);
             HpResergerNube.CRM_SeguimientoRepository objseguimiento = new HpResergerNube.CRM_SeguimientoRepository();
+
+            Usuario_CreacionTextEdit.EditValue = HPReserger.frmLogin.CodigoUsuario;
+
             if (_idseguimiento != 0)
             {
                 ID_SeguimientoTextEdit.EditValue = _idseguimiento;
@@ -193,21 +196,30 @@ namespace SISGEM.CRM
             ID_Tipo_SeguimientoTextEdit.Properties.View.Columns.AddVisible("Detalle_Tipo_seguimiento", "Tipo Seguimiento");
             ID_Tipo_SeguimientoTextEdit.Properties.View.BestFitColumns();
 
-            //contacto
-            DataTable contactos = objcontacto.GetAllContactos();
-            ID_ContactoTextEdit.Properties.DataSource = contactos;
-            ID_ContactoTextEdit.Properties.ValueMember = "ID_Contacto";
-            ID_ContactoTextEdit.Properties.DisplayMember = "NombreCompleto";
-            ID_ContactoTextEdit.EditValue = contactos.Rows.Count > 0 ? contactos.Rows[0]["ID_Contacto"] : null;
+            ////contacto
+            //DataTable contactos = objcontacto.GetAllContactos();
+            //ID_ContactoTextEdit.Properties.DataSource = contactos;
+            //ID_ContactoTextEdit.Properties.ValueMember = "ID_Contacto";
+            //ID_ContactoTextEdit.Properties.DisplayMember = "NombreCompleto";
+            //ID_ContactoTextEdit.EditValue = contactos.Rows.Count > 0 ? contactos.Rows[0]["ID_Contacto"] : null;
 
-            ID_ContactoTextEdit.Properties.View.Columns.Clear();
-            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
-            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
-            ID_ContactoTextEdit.Properties.View.BestFitColumns();
+            //ID_ContactoTextEdit.Properties.View.Columns.Clear();
+            //ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
+            //ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
+            //ID_ContactoTextEdit.Properties.View.BestFitColumns();
 
+           
+
+            RecargarCliente();
+
+            RecargarContacto();
+        }
+
+        private void RecargarCliente()
+        {
             //cliejte
             HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
-            DataTable Tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue,DateTime.MaxValue);
+            DataTable Tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue, DateTime.MaxValue,ID_ProyectoTextEdit.EditValue.ToString());
             cbocliente.Properties.DataSource = Tcliente;
             cbocliente.Properties.ValueMember = "ID_Cliente";
             cbocliente.Properties.DisplayMember = "nombrecompleto";
@@ -217,7 +229,43 @@ namespace SISGEM.CRM
             cbocliente.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
             cbocliente.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
             cbocliente.Properties.View.BestFitColumns();
+        }
 
+        private void RecargarContacto()
+        {
+            // Crear instancia del repositorio de contactos
+            HpResergerNube.CRM_ContactoRepository ocontacto = new HpResergerNube.CRM_ContactoRepository();
+
+            // Obtener los contactos del cliente
+            DataTable contactos = ocontacto.GetContactosPorCliente(cbocliente.EditValue.ToString());
+
+            // Verificar si se encontraron contactos
+            if (contactos.Rows.Count > 0)
+            {
+                // Configurar el control de edición de ID_Contacto
+                ID_ContactoTextEdit.Properties.DataSource = contactos;
+                ID_ContactoTextEdit.Properties.ValueMember = "ID_Contacto";
+                ID_ContactoTextEdit.Properties.DisplayMember = "NombreCompleto";
+                ID_ContactoTextEdit.EditValue = contactos.Rows[0]["ID_Contacto"];
+
+                // Configurar las columnas visibles en la vista del control de edición de ID_Contacto
+                ID_ContactoTextEdit.Properties.View.Columns.Clear();
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Código");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
+                ID_ContactoTextEdit.Properties.View.BestFitColumns();
+            }
+            else
+            {
+                // Limpiar el control de edición de ID_Contacto si no se encontraron contactos
+                ID_ContactoTextEdit.Properties.DataSource = null;
+                ID_ContactoTextEdit.EditValue = null;
+            }
+        }
+
+        private void ID_ProyectoTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            RecargarCliente();
         }
     }
 }

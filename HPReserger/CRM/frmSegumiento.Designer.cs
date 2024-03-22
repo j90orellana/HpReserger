@@ -367,6 +367,7 @@
             this.xNombre.FieldName = "Nombre_Usuario";
             this.xNombre.LayoutViewField = this.layoutViewField_xNombre;
             this.xNombre.Name = "xNombre";
+            this.xNombre.OptionsColumn.AllowEdit = false;
             // 
             // layoutViewField_xNombre
             // 

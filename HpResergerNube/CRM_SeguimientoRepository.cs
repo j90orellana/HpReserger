@@ -49,10 +49,10 @@ namespace HpResergerNube
                     using (NpgsqlCommand selectCommand = new NpgsqlCommand(
                         "SELECT " +
                         "    s.*, " +
-                        "    u.\"Nombre\" AS \"Nombre_Usuario\" " +
+                        "     (u.\"Nombre\" || ' ' || u.\"Apellido1\" || ' ' || u.\"Apellido2\") AS \"Nombre_Usuario\"" +
                         "FROM " +
                         "    public.\"CRM_Seguimiento\" AS s " +
-                        "INNER JOIN " +
+                        "left  JOIN " +
                         "    public.\"CRM_Usuario\" AS u ON s.\"Usuario\" = u.\"ID_Usuario\" " +
                         "WHERE " +
                         "    (@UserID = '0' OR u.\"ID_Usuario\" = @UserID) AND " +
@@ -133,7 +133,7 @@ namespace HpResergerNube
                     using (NpgsqlCommand npgsqlCommand = new NpgsqlCommand())
                     {
                         npgsqlCommand.Connection = npgsqlConnection;
-                        npgsqlCommand.CommandText = "UPDATE public.\"CRM_Seguimiento\" SET \"ID_Proyecto\" = @ID_Proyecto, \"Nombre_Proyecto\" = @Nombre_Proyecto, \"ID_Cliente\" = @ID_Cliente, \"ID_Tipo_Documento\" = @ID_Tipo_Documento, \"ID_Numero_Doc\" = @ID_Numero_Doc, \"Nombre\" = @Nombre, \"Apellido1\" = @Apellido1, \"Apellido2\" = @Apellido2, \"Razon_Social\" = @Razon_Social, \"Usuario_Creacion\" = @Usuario_Creacion, \"ID_Tipo_Seguimiento\" = @ID_Tipo_Seguimiento, \"Detalle_Tipo_Seguimiento\" = @Detalle_Tipo_Seguimiento, \"ID_Contacto\" = @ID_Contacto, \"Contacto\" = @Contacto, \"Fecha_Seguimiento\" = @Fecha_Seguimiento, \"Fecha_Prox_Seguimiento\" = @Fecha_Prox_Seguimiento, \"Descripcion\" = @Descripcion WHERE \"ID_Seguimiento\" = @ID_Seguimiento";
+                        npgsqlCommand.CommandText = "UPDATE public.\"CRM_Seguimiento\" SET \"ID_Proyecto\" = @ID_Proyecto, \"Nombre_Proyecto\" = @Nombre_Proyecto, \"ID_Cliente\" = @ID_Cliente, \"ID_Tipo_Documento\" = @ID_Tipo_Documento, \"ID_Numero_Doc\" = @ID_Numero_Doc, \"Nombre\" = @Nombre, \"Apellido1\" = @Apellido1, \"Apellido2\" = @Apellido2, \"Razon_Social\" = @Razon_Social,  \"ID_Tipo_Seguimiento\" = @ID_Tipo_Seguimiento, \"Detalle_Tipo_Seguimiento\" = @Detalle_Tipo_Seguimiento, \"ID_Contacto\" = @ID_Contacto, \"Contacto\" = @Contacto, \"Fecha_Seguimiento\" = @Fecha_Seguimiento, \"Fecha_Prox_Seguimiento\" = @Fecha_Prox_Seguimiento, \"Descripcion\" = @Descripcion WHERE \"ID_Seguimiento\" = @ID_Seguimiento";
                         npgsqlCommand.Parameters.AddWithValue("@ID_Proyecto", (object)seguimiento.ID_Proyecto);
                         npgsqlCommand.Parameters.AddWithValue("@Nombre_Proyecto", (object)seguimiento.Nombre_Proyecto);
                         npgsqlCommand.Parameters.AddWithValue("@ID_Cliente", (object)seguimiento.ID_Cliente);
@@ -150,7 +150,7 @@ namespace HpResergerNube
                         npgsqlCommand.Parameters.AddWithValue("@Fecha_Seguimiento", (object)seguimiento.Fecha_Seguimiento);
                         npgsqlCommand.Parameters.AddWithValue("@Fecha_Prox_Seguimiento", (object)seguimiento.Fecha_Prox_Seguimiento);
                         npgsqlCommand.Parameters.AddWithValue("@Descripcion", (object)seguimiento.Descripcion);
-
+                        npgsqlCommand.Parameters.AddWithValue("@ID_Seguimiento", (object)seguimiento.ID_Seguimiento);
                         flag = npgsqlCommand.ExecuteNonQuery() > 0;
                     }
                 }
@@ -207,28 +207,44 @@ namespace HpResergerNube
 
         private CRM_Seguimiento MapSeguimientoFromDataReader(IDataReader reader)
         {
-            return new CRM_Seguimiento
+            try
             {
-                ID_Seguimiento = Convert.ToDecimal(reader["ID_Seguimiento"]),
-                ID_Proyecto = Convert.ToDecimal(reader["ID_Proyecto"]),
-                Nombre_Proyecto = reader["Nombre_Proyecto"].ToString(),
-                ID_Cliente = reader["ID_Cliente"].ToString(),
-                ID_Tipo_Documento = reader["ID_Tipo_Documento"].ToString(),
-                ID_Numero_Doc = Convert.ToDecimal(reader["ID_Numero_Doc"]),
-                Nombre = reader["Nombre"].ToString(),
-                Apellido1 = reader["Apellido1"].ToString(),
-                Apellido2 = reader["Apellido2"].ToString(),
-                Razon_Social = reader["Razon_Social"].ToString(),
-                Usuario_Creacion = reader["Usuario_Creacion"].ToString(),
-                ID_Tipo_Seguimiento = reader["ID_Tipo_Seguimiento"].ToString(),
-                Detalle_Tipo_Seguimiento = reader["Detalle_Tipo_Seguimiento"].ToString(),
-                ID_Contacto = reader["ID_Contacto"].ToString(),
-                Contacto = reader["Contacto"].ToString(),
-                Fecha_Seguimiento = Convert.ToDateTime(reader["Fecha_Seguimiento"]),
-                Fecha_Prox_Seguimiento = Convert.ToDateTime(reader["Fecha_Prox_Seguimiento"]),
-                Descripcion = reader["Descripcion"].ToString()
-            };
+                return new CRM_Seguimiento
+                {
+                    ID_Seguimiento = Convert.ToDecimal(reader["ID_Seguimiento"]),
+                    ID_Proyecto = Convert.ToDecimal(reader["ID_Proyecto"]),
+                    Nombre_Proyecto = reader["Nombre_Proyecto"].ToString(),
+                    ID_Cliente = reader["ID_Cliente"].ToString(),
+                    ID_Tipo_Documento = reader["ID_Tipo_Documento"].ToString(),
+                    ID_Numero_Doc = Convert.ToDecimal(reader["ID_Numero_Doc"]),
+                    Nombre = reader["Nombre"].ToString(),
+                    Apellido1 = reader["Apellido1"].ToString(),
+                    Apellido2 = reader["Apellido2"].ToString(),
+                    Razon_Social = reader["Razon_Social"].ToString(),
+                    Usuario_Creacion = reader["Usuario"].ToString(),
+                    ID_Tipo_Seguimiento = reader["ID_Tipo_Seguimiento"].ToString(),
+                    Detalle_Tipo_Seguimiento = reader["Detalle_Tipo_Seguimiento"].ToString(),
+                    ID_Contacto = reader["ID_Contacto"].ToString(),
+                    Contacto = reader["Contacto"].ToString(),
+                    Fecha_Seguimiento = Convert.ToDateTime(reader["Fecha_Seguimiento"]),
+                    Fecha_Prox_Seguimiento = Convert.ToDateTime(reader["Fecha_Prox_Seguimiento"]),
+                    Descripcion = reader["Descripcion"].ToString()
+                };
+            }
+            catch (InvalidCastException ex)
+            {
+                // Manejar la excepción específica si hay problemas de conversión de tipos
+                // Aquí puedes registrar o manejar el error de alguna manera
+                return null; // O lanza la excepción nuevamente si prefieres
+            }
+            catch (Exception ex)
+            {
+                // Manejar otras excepciones generales, si es necesario
+                // Aquí puedes registrar o manejar el error de alguna manera
+                return null; // O lanza la excepción nuevamente si prefieres
+            }
         }
+
 
         public class CRM_Seguimiento
         {

@@ -29,20 +29,36 @@ namespace SISGEM.CRM
         }
         private void RecargarContacto()
         {
-            HpResergerNube.CRM_ContactoRepository objcontacto = new HpResergerNube.CRM_ContactoRepository();
-            //contacto
-            DataTable contactos = objcontacto.GetAllContactos();
-            ID_ContactoTextEdit.Properties.DataSource = contactos;
-            ID_ContactoTextEdit.Properties.ValueMember = "ID_Contacto";
-            ID_ContactoTextEdit.Properties.DisplayMember = "NombreCompleto";
-            ID_ContactoTextEdit.EditValue = contactos.Rows.Count > 0 ? contactos.Rows[0]["ID_Contacto"] : null;
+            // Crear instancia del repositorio de contactos
+            HpResergerNube.CRM_ContactoRepository ocontacto = new HpResergerNube.CRM_ContactoRepository();
 
-            ID_ContactoTextEdit.Properties.View.Columns.Clear();
-            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
-            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
-            ID_ContactoTextEdit.Properties.View.BestFitColumns();
+            // Obtener los contactos del cliente
+            DataTable contactos = ocontacto.GetContactosPorCliente(ItemForID_cliente.EditValue.ToString());
 
+            // Verificar si se encontraron contactos
+            if (contactos.Rows.Count > 0)
+            {
+                // Configurar el control de edición de ID_Contacto
+                ID_ContactoTextEdit.Properties.DataSource = contactos;
+                ID_ContactoTextEdit.Properties.ValueMember = "ID_Contacto";
+                ID_ContactoTextEdit.Properties.DisplayMember = "NombreCompleto";
+                ID_ContactoTextEdit.EditValue = contactos.Rows[0]["ID_Contacto"];
+
+                // Configurar las columnas visibles en la vista del control de edición de ID_Contacto
+                ID_ContactoTextEdit.Properties.View.Columns.Clear();
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Código");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
+                ID_ContactoTextEdit.Properties.View.BestFitColumns();
+            }
+            else
+            {
+                // Limpiar el control de edición de ID_Contacto si no se encontraron contactos
+                ID_ContactoTextEdit.Properties.DataSource = null;
+                ID_ContactoTextEdit.EditValue = null;
+            }
         }
+
         private void CargarCombos()
         {
             Fecha_CreacionDateEdit.EditValue = DateTime.Now;
@@ -94,7 +110,6 @@ namespace SISGEM.CRM
             ID_Tipo_SeguimientoTextEdit.Properties.View.Columns.AddVisible("Detalle_Tipo_seguimiento", "Tipo Seguimiento");
             ID_Tipo_SeguimientoTextEdit.Properties.View.BestFitColumns();
 
-            RecargarContacto();
 
             //usuario   
             DataTable tusuario = ousuario.GetAllUsuarios();
@@ -147,6 +162,7 @@ namespace SISGEM.CRM
 
             RecargarCliente();
 
+            RecargarContacto();
 
         }
         private void RecargarCliente()
@@ -172,6 +188,9 @@ namespace SISGEM.CRM
             CargarCombos();
             ImagenPictureBox.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             HpResergerNube.CRM_ProyectoRepository objproyecto = new HpResergerNube.CRM_ProyectoRepository();
+
+            Usuario_CreacionTextEdit.EditValue = HPReserger.frmLogin.CodigoUsuario;
+
             if (_idProyecto != "")
             {
                 ID_ProyectoTextEdit.EditValue = _idProyecto;
@@ -482,6 +501,16 @@ namespace SISGEM.CRM
             frm.ShowDialog();
             RecargarCliente();
             ItemForID_cliente.EditValue = data;
+        }
+
+        private void ItemForID_cliente_EditValueChanged(object sender, EventArgs e)
+        {
+            RecargarContacto();
+        }
+
+        private void ID_ContactoTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

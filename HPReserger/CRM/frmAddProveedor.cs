@@ -106,6 +106,7 @@ namespace SISGEM.CRM
             this.ID_ContactoTextEdit.EditValue = allContactos.Rows.Count > 0 ? allContactos.Rows[0]["ID_Contacto"] : (object)null;
             this.ID_ContactoTextEdit.Properties.View.Columns.Clear();
             this.ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
             this.ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
             this.ID_ContactoTextEdit.Properties.View.BestFitColumns();
             DataTable allCodigosPostales = postalRepository.GetAllCodigosPostales();
@@ -166,6 +167,7 @@ namespace SISGEM.CRM
             this.ID_ContactoTextEdit.EditValue = allContactos.Rows.Count > 0 ? allContactos.Rows[0]["ID_Contacto"] : (object)null;
             this.ID_ContactoTextEdit.Properties.View.Columns.Clear();
             this.ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
             this.ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
             this.ID_ContactoTextEdit.Properties.View.BestFitColumns();
         }

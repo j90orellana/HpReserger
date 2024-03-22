@@ -16,6 +16,7 @@ namespace HpResergerNube
         public class Contacto
         {
             public string ID_Contacto { get; set; }
+            public string ID_Cliente { get; set; }
             public string ID_Tratamiento { get; set; }
             public string Nombre { get; set; }
             public string Apellido1 { get; set; }
@@ -69,7 +70,7 @@ namespace HpResergerNube
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = connection;
-                    cmd.CommandText = "INSERT INTO public.\"CRM_Contacto\" (\"ID_Contacto\", \"ID_Tratamiento\", \"Nombre\", \"Apellido1\", \"Apellido2\", \"Cargo\", \"Telefono1\", \"Telefono2\", \"email1\", \"email2\", \"Otros\", \"ID_Sexo\", \"ID_Usuario\", \"Usuario_Creacion\", \"Fecha_Creacion\") VALUES (@ID_Contacto, @ID_Tratamiento, @Nombre, @Apellido1, @Apellido2, @Cargo, @Telefono1, @Telefono2, @email1, @email2, @Otros, @ID_Sexo, @ID_Usuario, @Usuario_Creacion, @Fecha_Creacion)";
+                    cmd.CommandText = "INSERT INTO public.\"CRM_Contacto\" (\"ID_Contacto\", \"ID_Tratamiento\", \"Nombre\", \"Apellido1\", \"Apellido2\", \"Cargo\", \"Telefono1\", \"Telefono2\", \"email1\", \"email2\", \"Otros\", \"ID_Sexo\", \"ID_Usuario\", \"Usuario_Creacion\", \"Fecha_Creacion\",\"ID_Cliente\") VALUES (@ID_Contacto, @ID_Tratamiento, @Nombre, @Apellido1, @Apellido2, @Cargo, @Telefono1, @Telefono2, @email1, @email2, @Otros, @ID_Sexo, @ID_Usuario, @Usuario_Creacion, @Fecha_Creacion,@ID_Cliente)";
                     cmd.Parameters.AddWithValue("@ID_Contacto", newIDContacto);
                     cmd.Parameters.AddWithValue("@ID_Tratamiento", contacto.ID_Tratamiento);
                     cmd.Parameters.AddWithValue("@Nombre", contacto.Nombre);
@@ -85,11 +86,43 @@ namespace HpResergerNube
                     cmd.Parameters.AddWithValue("@ID_Usuario", contacto.ID_Usuario);
                     cmd.Parameters.AddWithValue("@Usuario_Creacion", contacto.Usuario_Creacion);
                     cmd.Parameters.AddWithValue("@Fecha_Creacion", contacto.Fecha_Creacion);
+                    cmd.Parameters.AddWithValue("@ID_Cliente", contacto.ID_Cliente);
                     cmd.ExecuteNonQuery();
                 }
             }
 
             return newIDContacto; // Retornar el nuevo ID_Contacto generado
+        }
+        public DataTable GetContactosPorCliente(string idCliente)
+        {
+            DataTable contactosDataTable = new DataTable();
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Consulta SQL para seleccionar los contactos de un cliente específico
+                string query = @"SELECT C.*, (C.""Nombre"" || ' ' || C.""Apellido1"" || ' ' || C.""Apellido2"") AS ""NombreCompleto""  FROM public.""CRM_Contacto"" C 
+                        LEFT JOIN public.""CRM_Cliente"" CLI ON CLI.""ID_Contacto"" = C.""ID_Contacto"" 
+                        WHERE CLI.""ID_Cliente"" = @ID_Cliente
+                        union all
+                        SELECT C.*, (C.""Nombre"" || ' ' || C.""Apellido1"" || ' ' || C.""Apellido2"") AS ""NombreCompleto""  FROM public.""CRM_Contacto"" C
+
+                                                WHERE C.""ID_Cliente"" = @ID_Cliente";
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ID_Cliente", idCliente);
+
+                    // Utilizar un NpgsqlDataAdapter para llenar el DataTable
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(contactosDataTable);
+                    }
+                }
+            }
+
+            return contactosDataTable;
         }
 
 
@@ -104,7 +137,7 @@ namespace HpResergerNube
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = connection;
-                    cmd.CommandText = "UPDATE public.\"CRM_Contacto\" SET \"ID_Tratamiento\" = @ID_Tratamiento, \"Nombre\" = @Nombre, \"Apellido1\" = @Apellido1, \"Apellido2\" = @Apellido2, \"Cargo\" = @Cargo, \"Telefono1\" = @Telefono1, \"Telefono2\" = @Telefono2, \"email1\" = @email1, \"email2\" = @email2, \"Otros\" = @Otros, \"ID_Sexo\" = @ID_Sexo, \"ID_Usuario\" = @ID_Usuario, \"Usuario_Modificacion\" = @Usuario_Modificacion, \"Fecha_Modificacion\" = @Fecha_Modificacion WHERE \"ID_Contacto\" = @ID_Contacto";
+                    cmd.CommandText = "UPDATE public.\"CRM_Contacto\" SET \"ID_Cliente\" = @ID_Cliente, \"ID_Tratamiento\" = @ID_Tratamiento, \"Nombre\" = @Nombre, \"Apellido1\" = @Apellido1, \"Apellido2\" = @Apellido2, \"Cargo\" = @Cargo, \"Telefono1\" = @Telefono1, \"Telefono2\" = @Telefono2, \"email1\" = @email1, \"email2\" = @email2, \"Otros\" = @Otros, \"ID_Sexo\" = @ID_Sexo, \"ID_Usuario\" = @ID_Usuario, \"Usuario_Modificacion\" = @Usuario_Modificacion, \"Fecha_Modificacion\" = @Fecha_Modificacion WHERE \"ID_Contacto\" = @ID_Contacto";
                     cmd.Parameters.AddWithValue("@ID_Contacto", contacto.ID_Contacto);
                     cmd.Parameters.AddWithValue("@ID_Tratamiento", contacto.ID_Tratamiento);
                     cmd.Parameters.AddWithValue("@Nombre", contacto.Nombre);
@@ -118,6 +151,7 @@ namespace HpResergerNube
                     cmd.Parameters.AddWithValue("@Otros", contacto.Otros != null ? (object)contacto.Otros : DBNull.Value);
                     cmd.Parameters.AddWithValue("@ID_Sexo", contacto.ID_Sexo != null ? (object)contacto.ID_Sexo : DBNull.Value);
                     cmd.Parameters.AddWithValue("@ID_Usuario", contacto.ID_Usuario);
+                    cmd.Parameters.AddWithValue("@ID_Cliente", contacto.ID_Cliente);
                     cmd.Parameters.AddWithValue("@Usuario_Modificacion", contacto.Usuario_Modificacion);
                     cmd.Parameters.AddWithValue("@Fecha_Modificacion", contacto.Fecha_Modificacion.HasValue ? (object)contacto.Fecha_Modificacion : DBNull.Value);
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -206,7 +240,8 @@ namespace HpResergerNube
                                 ID_Sexo = reader["ID_Sexo"].ToString(),
                                 ID_Usuario = reader["ID_Usuario"].ToString(),
                                 Usuario_Creacion = reader["Usuario_Creacion"].ToString(),
-                                Fecha_Creacion = Convert.ToDateTime(reader["Fecha_Creacion"])
+                                Fecha_Creacion = Convert.ToDateTime(reader["Fecha_Creacion"]),
+                                ID_Cliente = reader["ID_Cliente"].ToString()
                             };
                         }
                     }

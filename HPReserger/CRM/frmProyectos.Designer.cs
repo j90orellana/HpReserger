@@ -102,6 +102,8 @@
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.xNombre_Usuario = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xNombre_Cliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.xSeguimientos = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -325,8 +327,9 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
-            this.barButtonItem2});
-            this.barManager1.MaxItemId = 2;
+            this.barButtonItem2,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 3;
             // 
             // bar1
             // 
@@ -336,7 +339,8 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Personalizada 2";
             // 
             // barButtonItem2
@@ -426,11 +430,14 @@
             this.xRequerimiento,
             this.xObservaciones,
             this.xNombre_Usuario,
-            this.xNombre_Cliente});
+            this.xNombre_Cliente,
+            this.xSeguimientos});
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsFind.AlwaysVisible = true;
             this.gridView3.OptionsFind.FindNullPrompt = "Ingrese texto a buscar";
+            this.gridView3.OptionsView.ShowFooter = true;
+            this.gridView3.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView3_RowCellClick);
             this.gridView3.DoubleClick += new System.EventHandler(this.gridView3_DoubleClick);
             // 
             // xID_Proyecto
@@ -439,6 +446,7 @@
             this.xID_Proyecto.FieldName = "ID_Proyecto";
             this.xID_Proyecto.Name = "xID_Proyecto";
             this.xID_Proyecto.OptionsColumn.AllowEdit = false;
+            this.xID_Proyecto.OptionsColumn.Printable = DevExpress.Utils.DefaultBoolean.True;
             // 
             // xNombre_Proyecto
             // 
@@ -448,6 +456,7 @@
             this.xNombre_Proyecto.OptionsColumn.AllowEdit = false;
             this.xNombre_Proyecto.Visible = true;
             this.xNombre_Proyecto.VisibleIndex = 0;
+            this.xNombre_Proyecto.Width = 102;
             // 
             // xDireccion
             // 
@@ -457,6 +466,7 @@
             this.xDireccion.OptionsColumn.AllowEdit = false;
             this.xDireccion.Visible = true;
             this.xDireccion.VisibleIndex = 1;
+            this.xDireccion.Width = 102;
             // 
             // XDetalle_Prioridad
             // 
@@ -467,6 +477,7 @@
             this.XDetalle_Prioridad.OptionsColumn.AllowEdit = false;
             this.XDetalle_Prioridad.Visible = true;
             this.XDetalle_Prioridad.VisibleIndex = 2;
+            this.XDetalle_Prioridad.Width = 80;
             // 
             // xFecha_Cotizacion
             // 
@@ -499,7 +510,8 @@
             this.xRequerimiento.Name = "xRequerimiento";
             this.xRequerimiento.OptionsColumn.AllowEdit = false;
             this.xRequerimiento.Visible = true;
-            this.xRequerimiento.VisibleIndex = 7;
+            this.xRequerimiento.VisibleIndex = 8;
+            this.xRequerimiento.Width = 106;
             // 
             // xObservaciones
             // 
@@ -508,7 +520,8 @@
             this.xObservaciones.Name = "xObservaciones";
             this.xObservaciones.OptionsColumn.AllowEdit = false;
             this.xObservaciones.Visible = true;
-            this.xObservaciones.VisibleIndex = 8;
+            this.xObservaciones.VisibleIndex = 9;
+            this.xObservaciones.Width = 211;
             // 
             // repositoryItemDateEdit3
             // 
@@ -869,6 +882,7 @@
             this.xNombre_Usuario.OptionsColumn.AllowEdit = false;
             this.xNombre_Usuario.Visible = true;
             this.xNombre_Usuario.VisibleIndex = 6;
+            this.xNombre_Usuario.Width = 106;
             // 
             // xNombre_Cliente
             // 
@@ -878,6 +892,29 @@
             this.xNombre_Cliente.OptionsColumn.AllowEdit = false;
             this.xNombre_Cliente.Visible = true;
             this.xNombre_Cliente.VisibleIndex = 5;
+            this.xNombre_Cliente.Width = 106;
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Ver Seguimientos";
+            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
+            this.barButtonItem3.Id = 2;
+            this.barButtonItem3.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.LargeGlyph")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // xSeguimientos
+            // 
+            this.xSeguimientos.Caption = "Seguimientos";
+            this.xSeguimientos.FieldName = "Seguimientos";
+            this.xSeguimientos.MaxWidth = 75;
+            this.xSeguimientos.MinWidth = 75;
+            this.xSeguimientos.Name = "xSeguimientos";
+            this.xSeguimientos.OptionsColumn.AllowEdit = false;
+            this.xSeguimientos.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Seguimientos", "{0:#.##}")});
+            this.xSeguimientos.Visible = true;
+            this.xSeguimientos.VisibleIndex = 7;
             // 
             // frmProyectos
             // 
@@ -1013,5 +1050,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
         private DevExpress.XtraGrid.Columns.GridColumn xNombre_Usuario;
         private DevExpress.XtraGrid.Columns.GridColumn xNombre_Cliente;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraGrid.Columns.GridColumn xSeguimientos;
     }
 }

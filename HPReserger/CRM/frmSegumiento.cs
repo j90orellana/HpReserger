@@ -19,6 +19,8 @@ namespace SISGEM.CRM
 {
     public partial class frmSegumiento : Form
     {
+        internal string _idproyecto;
+
         public int CodigoUsuario { get; internal set; }
         public DateTime FechaHoy { get; internal set; }
 
@@ -37,6 +39,11 @@ namespace SISGEM.CRM
             dtpFechade.EditValue = HpResergerNube.DLConexion.ObtenerPrimerDiaDelMes(DateTime.Now);
             dtpFechaa.EditValue = HpResergerNube.DLConexion.ObtenerUltimoDiaDelMes(DateTime.Now);
             CargarCombos();
+
+            if (_idproyecto != null)
+            {
+                ID_ProyectoTextEdit.EditValue = _idproyecto;
+            }
 
             if (CodigoUsuario != 0)
             {

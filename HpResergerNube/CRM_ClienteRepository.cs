@@ -228,6 +228,47 @@ namespace HpResergerNube
 
             return dataTable;
         }
+        public DataTable FilterClientesByDateRange(DateTime startDate, DateTime endDate, string Proyecto)
+        {
+
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = @"SELECT CLI.*, PRO.""ID_Proyecto"",
+                    CASE WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social""
+                         ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
+                    END AS nombrecompleto
+                    FROM public.""CRM_Cliente"" CLI
+                    LEFT JOIN public.""CRM_Proyecto"" PRO ON PRO.""ID_Cliente"" = CLI.""ID_Cliente""
+                    WHERE CLI.""Fecha_Creacion"" >= @StartDate 
+                          AND CLI.""Fecha_Creacion"" <= @EndDate 
+                          AND PRO.""ID_Proyecto""= @idproyecto
+                    ORDER BY COALESCE(CLI.""Fecha_Modificacion"", CLI.""Fecha_Creacion"") DESC";
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@StartDate", startDate);
+                        cmd.Parameters.AddWithValue("@EndDate", endDate);
+                        cmd.Parameters.AddWithValue("@idproyecto", Convert.ToInt32( Proyecto));
+
+                        using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dataTable;
+        }
 
 
         private CRM_Cliente MapClienteFromDataReader(IDataReader reader)

@@ -18,6 +18,8 @@ namespace SISGEM.CRM
 {
     public partial class frmProyectos : XtraForm
     {
+        private string idProyecto = "";
+
         public frmProyectos()
         {
             InitializeComponent();
@@ -142,6 +144,41 @@ namespace SISGEM.CRM
                 frmAddProyecto xproyecto = new frmAddProyecto();
                 xproyecto._idProyecto = cellValue.ToString();
                 xproyecto.Show();
+            }
+        }
+
+        private void gridView3_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            // Verificar si se ha hecho clic en una fila válida
+            if (e.RowHandle >= 0)
+
+            {
+                // Obtener el valor de la celda en la columna 1 de la fila seleccionada
+                object cellValue = view.GetRowCellValue(e.RowHandle, view.Columns[xID_Proyecto.FieldName]); // Cambia 1 por el índice de la columna deseada
+                if (cellValue != null)
+                {
+                    // Hacer algo con el valor de la celda
+                    idProyecto = cellValue.ToString();
+
+                }
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (idProyecto != "")
+            {
+                CRM.frmSegumiento frmsegui = new frmSegumiento();
+
+                frmsegui._idproyecto = idProyecto;
+                frmsegui.MdiParent = this.MdiParent;
+                frmsegui.Show();
+            }
+            else
+            {
+                XtraMessageBox.Show("Por favor, selecciona un proyecto antes de continuar.", "Proyecto no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

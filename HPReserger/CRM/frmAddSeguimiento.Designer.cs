@@ -388,6 +388,7 @@
             this.ID_ProyectoTextEdit.Size = new System.Drawing.Size(282, 20);
             this.ID_ProyectoTextEdit.StyleController = this.dataLayoutControl2;
             this.ID_ProyectoTextEdit.TabIndex = 5;
+            this.ID_ProyectoTextEdit.EditValueChanged += new System.EventHandler(this.ID_ProyectoTextEdit_EditValueChanged);
             // 
             // searchLookUpEdit1View
             // 

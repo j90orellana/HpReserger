@@ -32,6 +32,8 @@ namespace SISGEM.CRM
             Fecha_CreacionDateEdit.EditValue = DateTime.Now;
             Fecha_ModificacionDateEdit.EditValue = DateTime.Now;
 
+            ID_UsuarioTextEdit.EditValue = HPReserger.frmLogin.CodigoUsuario;
+
 
             HpResergerNube.CRM_ContactoRepository objContacto = new HpResergerNube.CRM_ContactoRepository();
             if (_idcontacto != "")
@@ -52,6 +54,7 @@ namespace SISGEM.CRM
                 OtrosTextEdit.EditValue = oContacto.Otros;
                 ID_SexoTextEdit.EditValue = oContacto.ID_Sexo;
                 ID_UsuarioTextEdit.EditValue = oContacto.ID_Usuario;
+                ItemForID_cliente.EditValue = oContacto.ID_Cliente;
                 Usuario_CreacionTextEdit.EditValue = oContacto.Usuario_Creacion;
                 Fecha_CreacionDateEdit.EditValue = oContacto.Fecha_Creacion;
                 Usuario_ModificacionTextEdit.EditValue = oContacto.Usuario_Modificacion;
@@ -107,6 +110,20 @@ namespace SISGEM.CRM
             searchLookUpEdit1View.BestFitColumns();
             gridView1.BestFitColumns();
             gridView2.BestFitColumns();
+
+            HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
+            //cliente
+            DataTable tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue, DateTime.MaxValue);
+            ItemForID_cliente.Properties.DataSource = tcliente;
+            ItemForID_cliente.Properties.DisplayMember = "nombrecompleto";
+            ItemForID_cliente.Properties.ValueMember = "ID_Cliente";
+            ItemForID_cliente.EditValue = tcliente.Rows.Count > 0 ? tcliente.Rows[0]["ID_Cliente"] : null;
+
+            ItemForID_cliente.Properties.View.Columns.Clear();
+            ItemForID_cliente.Properties.View.Columns.AddVisible("ID_Cliente", "ID");
+            ItemForID_cliente.Properties.View.Columns.AddVisible("ID_Numero_Doc", "Numero Doc");
+            ItemForID_cliente.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
+            ItemForID_cliente.Properties.View.BestFitColumns();
 
         }
         public bool ValidarCamposNoNulos()
@@ -181,6 +198,7 @@ namespace SISGEM.CRM
             oContacto.Otros = OtrosTextEdit.EditValue?.ToString() ?? "";
             oContacto.ID_Sexo = ID_SexoTextEdit.EditValue?.ToString() ?? "";
             oContacto.ID_Usuario = ID_UsuarioTextEdit.EditValue?.ToString() ?? "";
+            oContacto.ID_Cliente = ItemForID_cliente.EditValue?.ToString() ?? "";
             oContacto.Usuario_Creacion = Usuario_CreacionTextEdit.EditValue?.ToString() ?? "";
             oContacto.Fecha_Creacion = Convert.ToDateTime(Fecha_CreacionDateEdit.EditValue ?? DateTime.MinValue);
             oContacto.Usuario_Modificacion = Usuario_ModificacionTextEdit.EditValue?.ToString() ?? "";
@@ -191,8 +209,11 @@ namespace SISGEM.CRM
             if (_idcontacto == "")
             {
                 //Insertar
-                oContacto.Usuario_Modificacion = "1001";
-                oContacto.Usuario_Creacion = "1001";
+
+
+
+                oContacto.Usuario_Modificacion = HPReserger.frmLogin.CodigoUsuario.ToString();
+                oContacto.Usuario_Creacion = HPReserger.frmLogin.CodigoUsuario.ToString();
                 oContacto.Fecha_Creacion = DateTime.Now;
                 oContacto.Fecha_Modificacion = DateTime.Now;
                 string insertedId = objContacto.InsertContacto(oContacto);
@@ -211,6 +232,7 @@ namespace SISGEM.CRM
             else
             {
                 //Update
+                oContacto.Usuario_Creacion = HPReserger.frmLogin.CodigoUsuario.ToString();
                 oContacto.ID_Contacto = _idcontacto;
                 oContacto.Fecha_Modificacion = DateTime.Now;
                 if (objContacto.UpdateContacto(oContacto))

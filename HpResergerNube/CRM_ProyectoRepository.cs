@@ -66,6 +66,9 @@ namespace HpResergerNube
                     connection.Open();
                     using (NpgsqlCommand selectCommand = new NpgsqlCommand(@"SELECT PRO.*, PRI.*, USU.""Nombre"" || ' ' || USU.""Apellido1"" || ' ' || USU.""Apellido2"" AS ""Nombre_Usuario"", 
                 CASE WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social"" ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", '')) END AS ""Nombre_Cliente"" 
+                	, (SELECT COUNT(1) FROM public.""CRM_Seguimiento"" SEG WHERE SEG.""ID_Proyecto"" = PRO.""ID_Proyecto"") AS ""Seguimientos""
+
+
                 FROM public.""CRM_Proyecto"" PRO
                 LEFT JOIN public.""CRM_Prioridad"" PRI ON PRO.""ID_Prioridad"" = PRI.""ID_Prioridad""
                 LEFT JOIN public.""CRM_Cliente"" CLI ON PRO.""ID_Cliente"" = CLI.""ID_Cliente""
