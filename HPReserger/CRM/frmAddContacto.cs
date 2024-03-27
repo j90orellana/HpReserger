@@ -147,11 +147,11 @@ namespace SISGEM.CRM
                 return false;
             }
 
-            if (Apellido2TextEdit.EditValue == null || string.IsNullOrWhiteSpace(Apellido2TextEdit.EditValue.ToString()))
-            {
-                MessageBox.Show("Por favor, ingrese el Segundo Apellido.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+            //if (Apellido2TextEdit.EditValue == null || string.IsNullOrWhiteSpace(Apellido2TextEdit.EditValue.ToString()))
+            //{
+            //    MessageBox.Show("Por favor, ingrese el Segundo Apellido.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return false;
+            //}
 
 
             if (Telefono1TextEdit.EditValue == null || string.IsNullOrWhiteSpace(Telefono1TextEdit.EditValue.ToString()))

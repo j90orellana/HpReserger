@@ -108,6 +108,8 @@ namespace SISGEM.CRM
             this.ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
                 ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
             this.ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
+            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Cargo", "Cargo");
+            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("email1", "Email");
             this.ID_ContactoTextEdit.Properties.View.BestFitColumns();
             DataTable allCodigosPostales = postalRepository.GetAllCodigosPostales();
             this.ID_Codigo_postalTextEdit.Properties.DataSource = (object)allCodigosPostales;
@@ -169,6 +171,8 @@ namespace SISGEM.CRM
             this.ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
                 ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
             this.ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
+            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Cargo", "Cargo");
+            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("email1", "Email");
             this.ID_ContactoTextEdit.Properties.View.BestFitColumns();
         }
         private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -49,6 +49,9 @@ namespace SISGEM.CRM
                 ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Código");
                 ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
                 ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
+
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Cargo", "Cargo");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("email1", "Email");
                 ID_ContactoTextEdit.Properties.View.BestFitColumns();
             }
             else

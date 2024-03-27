@@ -439,7 +439,7 @@
             // 
             // ID_ContactoTextEdit
             // 
-            this.ID_ContactoTextEdit.Location = new System.Drawing.Point(130, 108);
+            this.ID_ContactoTextEdit.Location = new System.Drawing.Point(130, 132);
             this.ID_ContactoTextEdit.MenuManager = this.barManager1;
             this.ID_ContactoTextEdit.Name = "ID_ContactoTextEdit";
             this.ID_ContactoTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -459,7 +459,7 @@
             // 
             // cbocliente
             // 
-            this.cbocliente.Location = new System.Drawing.Point(130, 132);
+            this.cbocliente.Location = new System.Drawing.Point(130, 108);
             this.cbocliente.Name = "cbocliente";
             this.cbocliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -468,6 +468,7 @@
             this.cbocliente.Size = new System.Drawing.Size(282, 20);
             this.cbocliente.StyleController = this.dataLayoutControl2;
             this.cbocliente.TabIndex = 7;
+            this.cbocliente.EditValueChanged += new System.EventHandler(this.cbocliente_EditValueChanged);
             // 
             // gridView7
             // 
@@ -545,7 +546,7 @@
             // ItemForID_Contacto
             // 
             this.ItemForID_Contacto.Control = this.ID_ContactoTextEdit;
-            this.ItemForID_Contacto.Location = new System.Drawing.Point(0, 96);
+            this.ItemForID_Contacto.Location = new System.Drawing.Point(0, 120);
             this.ItemForID_Contacto.Name = "ItemForID_Contacto";
             this.ItemForID_Contacto.Size = new System.Drawing.Size(404, 24);
             this.ItemForID_Contacto.Text = "Contacto";
@@ -582,7 +583,7 @@
             // 
             this.ItemForUsuario_Creacion1.Control = this.cbocliente;
             this.ItemForUsuario_Creacion1.CustomizationFormText = "Cliente";
-            this.ItemForUsuario_Creacion1.Location = new System.Drawing.Point(0, 120);
+            this.ItemForUsuario_Creacion1.Location = new System.Drawing.Point(0, 96);
             this.ItemForUsuario_Creacion1.Name = "ItemForUsuario_Creacion1";
             this.ItemForUsuario_Creacion1.Size = new System.Drawing.Size(404, 24);
             this.ItemForUsuario_Creacion1.Text = "Cliente";

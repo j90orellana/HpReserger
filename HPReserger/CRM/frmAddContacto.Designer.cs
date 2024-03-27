@@ -61,6 +61,8 @@
             this.ID_UsuarioTextEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.OtrosTextEdit = new DevExpress.XtraEditors.MemoEdit();
+            this.ItemForID_cliente = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForID_Contacto = new DevExpress.XtraLayout.LayoutControlItem();
@@ -80,11 +82,9 @@
             this.ItemForNombre = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForID_Tratamiento = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForID_Sexo = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForID_Contacto1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForID_cliente = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ItemForID_Contacto1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -113,6 +113,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ID_UsuarioTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OtrosTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_cliente.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto)).BeginInit();
@@ -132,11 +134,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNombre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Tratamiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Sexo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_cliente.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -311,6 +311,7 @@
             // Telefono1TextEdit
             // 
             this.Telefono1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contactoBindingSource, "Telefono1", true));
+            this.Telefono1TextEdit.EditValue = "1423";
             this.Telefono1TextEdit.Location = new System.Drawing.Point(115, 132);
             this.Telefono1TextEdit.MenuManager = this.barManager1;
             this.Telefono1TextEdit.Name = "Telefono1TextEdit";
@@ -340,6 +341,7 @@
             // Email1TextEdit
             // 
             this.Email1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contactoBindingSource, "Email1", true));
+            this.Email1TextEdit.EditValue = "hola@hola.com";
             this.Email1TextEdit.Location = new System.Drawing.Point(115, 156);
             this.Email1TextEdit.MenuManager = this.barManager1;
             this.Email1TextEdit.Name = "Email1TextEdit";
@@ -485,6 +487,25 @@
             this.OtrosTextEdit.Size = new System.Drawing.Size(536, 20);
             this.OtrosTextEdit.StyleController = this.dataLayoutControl1;
             this.OtrosTextEdit.TabIndex = 14;
+            // 
+            // ItemForID_cliente
+            // 
+            this.ItemForID_cliente.Location = new System.Drawing.Point(115, 252);
+            this.ItemForID_cliente.Name = "ItemForID_cliente";
+            this.ItemForID_cliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ItemForID_cliente.Properties.NullText = "";
+            this.ItemForID_cliente.Properties.View = this.gridView3;
+            this.ItemForID_cliente.Size = new System.Drawing.Size(536, 20);
+            this.ItemForID_cliente.StyleController = this.dataLayoutControl1;
+            this.ItemForID_cliente.TabIndex = 22;
+            // 
+            // gridView3
+            // 
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
             // 
             // Root
             // 
@@ -682,6 +703,16 @@
             this.ItemForID_Sexo.Text = "Sexo";
             this.ItemForID_Sexo.TextSize = new System.Drawing.Size(100, 13);
             // 
+            // ItemForID_Contacto1
+            // 
+            this.ItemForID_Contacto1.Control = this.ItemForID_cliente;
+            this.ItemForID_Contacto1.CustomizationFormText = "Contacto";
+            this.ItemForID_Contacto1.Location = new System.Drawing.Point(0, 240);
+            this.ItemForID_Contacto1.Name = "ItemForID_Contacto1";
+            this.ItemForID_Contacto1.Size = new System.Drawing.Size(643, 24);
+            this.ItemForID_Contacto1.Text = "Cliente";
+            this.ItemForID_Contacto1.TextSize = new System.Drawing.Size(100, 13);
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -701,35 +732,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(667, 360);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // ItemForID_cliente
-            // 
-            this.ItemForID_cliente.Location = new System.Drawing.Point(115, 252);
-            this.ItemForID_cliente.Name = "ItemForID_cliente";
-            this.ItemForID_cliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ItemForID_cliente.Properties.NullText = "";
-            this.ItemForID_cliente.Properties.View = this.gridView3;
-            this.ItemForID_cliente.Size = new System.Drawing.Size(536, 20);
-            this.ItemForID_cliente.StyleController = this.dataLayoutControl1;
-            this.ItemForID_cliente.TabIndex = 22;
-            // 
-            // gridView3
-            // 
-            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
-            // 
-            // ItemForID_Contacto1
-            // 
-            this.ItemForID_Contacto1.Control = this.ItemForID_cliente;
-            this.ItemForID_Contacto1.CustomizationFormText = "Contacto";
-            this.ItemForID_Contacto1.Location = new System.Drawing.Point(0, 240);
-            this.ItemForID_Contacto1.Name = "ItemForID_Contacto1";
-            this.ItemForID_Contacto1.Size = new System.Drawing.Size(643, 24);
-            this.ItemForID_Contacto1.Text = "Cliente";
-            this.ItemForID_Contacto1.TextSize = new System.Drawing.Size(100, 13);
             // 
             // frmAddContacto
             // 
@@ -774,6 +776,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ID_UsuarioTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OtrosTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_cliente.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto)).EndInit();
@@ -793,11 +797,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNombre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Tratamiento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Sexo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_cliente.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

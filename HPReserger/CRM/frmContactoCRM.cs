@@ -17,6 +17,8 @@ namespace SISGEM.CRM
 {
     public partial class frmContactoCRM : Form
     {
+        internal string _idcliente;
+
         public frmContactoCRM()
         {
             InitializeComponent();
@@ -84,17 +86,50 @@ namespace SISGEM.CRM
         }
         private void CargarDatos()
         {
+            try
+            {
+                DateTime fechaInicio = ((DateTime)dtpFechade.EditValue).Date;
+                DateTime fechaFin = ((DateTime)dtpFechaa.EditValue).Date;
+                string clienteSeleccionado = cbocliente.EditValue?.ToString() ?? "0"; // Verificación de nulidad
 
-            HpResergerNube.CRM_ContactoRepository objContacto = new HpResergerNube.CRM_ContactoRepository();
+                HpResergerNube.CRM_ContactoRepository objContacto = new HpResergerNube.CRM_ContactoRepository();
+                var datosClientes = objContacto.FilterClientesByDateRange(fechaInicio, fechaFin, clienteSeleccionado);
 
-            gridControl2.DataSource = objContacto.FilterClientesByDateRange(((DateTime)dtpFechade.EditValue).Date, ((DateTime)dtpFechaa.EditValue).Date);
+                gridControl2.DataSource = datosClientes;
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                Console.WriteLine("Error al cargar los datos: " + ex.Message);
+            }
         }
 
         private void frmContactoCRM_Load(object sender, EventArgs e)
         {
+            CargarCombo();
+            if (_idcliente != null)
+            {
+                cbocliente.EditValue = _idcliente;
+            }
             dtpFechade.EditValue = HpResergerNube.DLConexion.ObtenerPrimerDiaDelMes(DateTime.Now);
             dtpFechaa.EditValue = HpResergerNube.DLConexion.ObtenerUltimoDiaDelMes(DateTime.Now);
             CargarDatos();
+        }
+
+        private void CargarCombo()
+        {
+            //cliejte
+            HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
+            DataTable Tcliente = ocliente.GetAllClientesConTodos();
+            cbocliente.Properties.DataSource = Tcliente;
+            cbocliente.Properties.ValueMember = "id_cliente";
+            cbocliente.Properties.DisplayMember = "nombre_completo";
+            cbocliente.EditValue = Tcliente.Rows.Count > 0 ? Tcliente.Rows[0]["ID_Cliente"] : null;
+
+            cbocliente.Properties.View.Columns.Clear();
+            cbocliente.Properties.View.Columns.AddVisible("id_cliente", "Codigo");
+            cbocliente.Properties.View.Columns.AddVisible("nombre_completo", "Nombre Completo");
+            cbocliente.Properties.View.BestFitColumns();
         }
     }
 }

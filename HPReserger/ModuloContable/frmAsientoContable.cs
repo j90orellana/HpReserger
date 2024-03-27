@@ -1906,7 +1906,7 @@ namespace HPReserger
         public void SacarTipoCambio()
         {
             DateTime FechaValidaBuscar = dtpfecha.Value;
-            txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n4");
+            txttipocambio.Text = CapaLogica.TipoCambioDia(cbocambio.Text, FechaValidaBuscar).ToString("n4");
             if (decimal.Parse(txttipocambio.Text) == 0)
             {
                 try

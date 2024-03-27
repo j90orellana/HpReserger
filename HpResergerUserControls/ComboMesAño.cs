@@ -96,25 +96,31 @@ namespace HpResergerUserControls
         }
         public void cargarAños()
         {
-            años = new DataTable();
-            años.Columns.Add("codigo");
-            años.Columns.Add("valor", typeof(int));
-            int año = DateTime.Now.Year;
-            DataRow datito = CapaLogica.getMinMaxContrato();
-            int x;
-            if (datito["minimo"].ToString() != "")
-
-                x = DateTime.Now.Year + 1 - DateTime.Parse(datito["minimo"].ToString()).Year;
-            else
-                x = DateTime.Now.Year - DateTime.Now.Year + 1;
-
-            for (int i = 0; i < x; i++)
+            try
             {
-                años.Rows.Add(año - i, año - i);
+                años = new DataTable();
+                años.Columns.Add("codigo");
+                años.Columns.Add("valor", typeof(int));
+                int año = DateTime.Now.Year;
+                DataRow datito = CapaLogica.getMinMaxContrato();
+                int x;
+                if (datito["minimo"].ToString() != "")
+
+                    x = DateTime.Now.Year + 1 - DateTime.Parse(datito["minimo"].ToString()).Year;
+                else
+                    x = DateTime.Now.Year - DateTime.Now.Year + 1;
+
+                for (int i = 0; i < x; i++)
+                {
+                    años.Rows.Add(año - i, año - i);
+                }
+                comboaño.ValueMember = "valor";
+                comboaño.DisplayMember = "codigo";
+                comboaño.DataSource = años;
             }
-            comboaño.ValueMember = "valor";
-            comboaño.DisplayMember = "codigo";
-            comboaño.DataSource = años;
+            catch
+            { }
+
         }
         public void MostrarMeses(params int[] Cantmes)
         {

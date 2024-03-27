@@ -208,6 +208,45 @@ namespace HpResergerNube
 
             return dataTable;
         }
+        public DataTable FilterClientesByDateRange(DateTime startDate, DateTime endDate,string idCLiente)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = @"SELECT CON.""ID_Contacto"", CON.""ID_Tratamiento"", CON.""Nombre"", CON.""Apellido1"", CON.""Apellido2"", CON.""Cargo"", 
+                                CON.""Telefono1"", CON.""Telefono2"", CON.""email1"", CON.""email2"", CON.""Otros"", CON.""ID_Sexo"", CON.""ID_Usuario"", 
+                                CON.""Usuario_Creacion"", CON.""Fecha_Creacion"", CONCAT(CON.""Nombre"", ' ', CON.""Apellido1"", ' ', CON.""Apellido2"") AS ""NombreCompleto""
+                                ,CON.""ID_Cliente"", CASE
+                                    WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social""
+                                    ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
+                                    END AS nombrecompletoCLIENTE
+
+                               FROM public.""CRM_Contacto"" CON
+                               LEFT JOIN public.""CRM_Cliente"" CLI ON(CON.""ID_Cliente"" = CLI.""ID_Cliente"" OR
+                                                                     CLI.""ID_Contacto"" = CON.""ID_Contacto""
+																	 )
+                               WHERE CON.""Fecha_Creacion"" >= @StartDate AND CON.""Fecha_Creacion"" <= @EndDate
+                               and (@idCLiente='0' or CLI.""ID_Cliente"" =@idCLiente or CON.""ID_Cliente""= @idCLiente) 
+                              ORDER BY COALESCE(CON.""Fecha_Modificacion"",CON. ""Fecha_Creacion"") DESC";
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+                    cmd.Parameters.AddWithValue("@idCLiente", idCLiente);
+
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
         public Contacto ReadContacto(string idContacto)
         {
             Contacto contacto = null;

@@ -127,6 +127,39 @@ namespace HpResergerNube
 
             return success;
         }
+        public DataTable GetAllClientesConTodos()
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = connection;
+                        cmd.CommandText = @"SELECT '0' AS ID_Cliente, 'TODOS' AS Nombre_Completo UNION ALL SELECT ""ID_Cliente"",  CASE
+                                    WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social""
+                                    ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
+                                    END AS nombrecompleto FROM public.""CRM_Cliente"" as CLI";
+
+                        using (NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(cmd))
+                        {
+                            dataAdapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores, puedes imprimir o registrar el error
+                Console.WriteLine("Error al obtener los clientes: " + ex.Message);
+            }
+
+            return dataTable;
+        }
 
         public DataTable GetAllClientes()
         {
@@ -212,8 +245,20 @@ namespace HpResergerNube
             {
                 connection.Open();
 
-                string query = "SELECT *, CASE WHEN \"ID_Tipo_persona\" = 'J' THEN \"Razon_Social\" ELSE CONCAT(\"Nombre\", ' ', COALESCE(\"Apellido1\", ''), ' ', COALESCE(\"Apellido2\", '')) END AS nombrecompleto FROM public.\"CRM_Cliente\" WHERE \"Fecha_Creacion\" >= @StartDate AND \"Fecha_Creacion\" <= @EndDate ORDER BY COALESCE(\"Fecha_Modificacion\", \"Fecha_Creacion\") DESC";
+                string query = @"SELECT  CLI.*, 
+                                CASE
+                                    WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social""
+                                    ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
+                                END AS nombrecompleto,
+                                TIP.""Detalle_Tipo_Persona"" ,DOC.""Detalle_Tipo_documento""
+                        FROM public.""CRM_Cliente"" CLI
+                        LEFT JOIN public.""CRM_Tipo_Persona"" TIP ON TIP.""ID_Tipo_persona"" = CLI.""ID_Tipo_persona""
+                        LEFT JOIN public.""CRM_Tipo_documento"" DOC ON DOC.""ID_Tipo_documento"" = CLI.""ID_TIpo_Documento""
 
+
+                        WHERE ""Fecha_Creacion"" >= @StartDate
+                            AND ""Fecha_Creacion"" <= @EndDate
+                        ORDER BY COALESCE(""Fecha_Modificacion"", ""Fecha_Creacion"") DESC;";
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@StartDate", startDate);
@@ -253,7 +298,7 @@ namespace HpResergerNube
                     {
                         cmd.Parameters.AddWithValue("@StartDate", startDate);
                         cmd.Parameters.AddWithValue("@EndDate", endDate);
-                        cmd.Parameters.AddWithValue("@idproyecto", Convert.ToInt32( Proyecto));
+                        cmd.Parameters.AddWithValue("@idproyecto", Convert.ToInt32(Proyecto));
 
                         using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
                         {

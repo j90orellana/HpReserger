@@ -17,6 +17,8 @@ namespace SISGEM.CRM
 {
     public partial class frmClienteCRM : XtraForm
     {
+        private string idcliente;
+
         public frmClienteCRM()
         {
             InitializeComponent();
@@ -91,10 +93,45 @@ namespace SISGEM.CRM
             GridView view = sender as GridView;
             if (view != null && view.FocusedRowHandle >= 0 && view.FocusedColumn != null)
             {
-                object cellValue = view.GetRowCellValue(view.FocusedRowHandle,xID_Cliente.FieldName);
+                object cellValue = view.GetRowCellValue(view.FocusedRowHandle, xID_Cliente.FieldName);
                 FrmAddCliente xcliente = new FrmAddCliente();
                 xcliente._idCliente = cellValue.ToString();
                 xcliente.Show();
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (idcliente != "")
+            {
+                CRM.frmContactoCRM frmsegui = new frmContactoCRM();
+
+                frmsegui._idcliente = idcliente;
+                frmsegui.MdiParent = this.MdiParent;
+                frmsegui.Show();
+            }
+            else
+            {
+                XtraMessageBox.Show("Por favor, selecciona un Cliente antes de continuar.", "Proyecto no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            // Verificar si se ha hecho clic en una fila válida
+            if (e.RowHandle >= 0)
+
+            {
+                // Obtener el valor de la celda en la columna 1 de la fila seleccionada
+                object cellValue = view.GetRowCellValue(e.RowHandle, view.Columns[xID_Cliente.FieldName]); // Cambia 1 por el índice de la columna deseada
+                if (cellValue != null)
+                {
+                    // Hacer algo con el valor de la celda
+                    idcliente = cellValue.ToString();
+
+                }
             }
         }
     }

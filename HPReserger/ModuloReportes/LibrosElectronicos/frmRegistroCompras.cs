@@ -390,6 +390,12 @@ namespace HPReserger
                 ListadoFecha.Add(FechaInicial.ToString("yyyyMM"));
                 FechaInicial = FechaInicial.AddMonths(1);
             }
+
+            // Dividir la cadena de cabeceras por '|'
+            string cabeceras = "RUC|Apellidos y Nombres o Razón social|Periodo|CAR SUNAT|Fecha de emisión|Fecha Vcto/Pago|Tipo CP/Doc.|Serie del CDP|Año|Nro CP o Doc. Nro Inicial (Rango)|Nro Final (Rango)|Tipo Doc Identidad|Nro Doc Identidad|Apellidos Nombres/ Razón  Social|BI Gravado DG|IGV / IPM DG|BI Gravado DGNG|IGV / IPM DGNG|BI Gravado DNG|IGV / IPM DNG|Valor Adq. NG|ISC|ICBPER|Otros Trib/ Cargos|Total CP|Moneda|Tipo de Cambio|Fecha Emisión Doc Modificado|Tipo CP Modificado|Serie CP Modificado|COD. DAM O DSI|Nro CP Modificado|Clasif de Bss y Sss|ID Proyecto Operadores|PorcPart|IMB|CAR Orig/ Ind E o I|Detracción|Tipo de Nota|Est. Comp.|Incal|CLU1|CLU2|CLU3|CLU4|CLU5|CLU6|CLU7|CLU8|CLU9|CLU10|CLU11|CLU12|CLU13|CLU14|CLU15|CLU16|CLU17|CLU18|CLU19|CLU20|CLU21|CLU22|CLU23|CLU24|CLU25|CLU26|CLU27|CLU28|CLU29|CLU30|CLU31|CLU32|CLU33|CLU34|CLU35|CLU36|CLU37|CLU38|CLU39";
+            string[] cabeceraArray = cabeceras.Split('|');
+
+
             //Avanza para Generar el TXT           
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 foreach (var items in chklist.CheckedItems)
@@ -442,32 +448,58 @@ namespace HPReserger
                                 //si hay datos
                                 else
                                 {
-                                    string[] campo = new string[43];
+                                    string[] campo = new string[80];
                                     string cadenatxt = "";
                                     int ValorPrueba = 0;
+
+                                    int c = 0;
+
+                                    // Asignar cada parte de la cabecera a las columnas correspondientes
+                                    foreach (string cabecera in cabeceraArray)
+                                    {
+                                        campo[c++] = cabecera;
+                                    }
+                                    cadenatxt += string.Join("|", campo) + $"{Environment.NewLine }";
+                                    // Asignar cada parte de la cabecera a las columnas correspondientes
+                                    c = 0;
+                                    foreach (string cabecera in cabeceraArray)
+                                    {
+                                        campo[c++] = "";
+                                    }
+
+
                                     foreach (DataRow fila in TablaResult.Rows)
                                     {
                                         ValorPrueba = 0;
-                                        int c = 0;
+                                        c = 0;
                                         int idcomprobante = int.Parse(fila[xidC.DataPropertyName].ToString());
-                                        //1
-                                        campo[c++] = $"{añio}{mes}00";
-                                        campo[c++] = ((fila[xcuo.DataPropertyName].ToString())).ToString();
-                                        campo[c++] = "M2";
+
+                                        campo[c++] = Ruc;
+                                        campo[c++] = fila[xEmpresa.DataPropertyName].ToString();
+                                        campo[c++] = $"{añio}{mes}";
+
+                                        string[] Tfilas = new string[2];
+                                        Tfilas[0] = "";
+                                        Tfilas[1] = "";
+                                        Tfilas = fila[xNumCom.DataPropertyName].ToString().Trim().Split('/');
+                                        string numdoc = int.Parse(Tfilas[0].ToString()).ToString().PadLeft(10, '0');
+                                        campo[c++] = $"{fila[xNumpro.DataPropertyName].ToString().Trim()}{(int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00")}{fila[xSerieCom.DataPropertyName].ToString().Trim().Substring(0, Math.Min(4, fila[xSerieCom.DataPropertyName].ToString().Trim().Length))}{numdoc}";
                                         campo[c++] = ((DateTime)fila[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");
-                                        //5
                                         campo[c++] = int.Parse(fila[xidC.DataPropertyName].ToString()) != 14 ? "" : ((DateTime)fila[xFechaVencimiento.DataPropertyName]).ToString("dd/MM/yyyy");
                                         campo[c++] = (int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00");
                                         campo[c++] = fila[xSerieCom.DataPropertyName].ToString();
+                                        //Año
                                         int.TryParse(fila[xAñoDua.DataPropertyName].ToString(), out ValorPrueba);
                                         campo[c++] = ValorPrueba.ToString();
+                                        //Nro CP o Doc. Nro Inicial (Rango)
                                         if ((new int[] { 1, 3, 4, 6, 7, 8, 36 }).Contains(idcomprobante))
                                             campo[c++] = Configuraciones.SubstringRight(fila[xNumCom.DataPropertyName].ToString().Trim(), 8);
                                         else
                                             campo[c++] = fila[xNumCom.DataPropertyName].ToString().Trim();
-                                        //En caso de optar por anotar el importe total de las operaciones diarias que no otorguen derecho a crédito fiscal en forma consolidada, registrar el número inicial
-                                        //1
+                                        //Nro Final (Rango)
                                         campo[c++] = "";
+
+                                        //PROVEEDOR
                                         campo[c++] = (int.Parse(fila[xTipoIdPro.DataPropertyName].ToString())).ToString();
                                         campo[c++] = fila[xNumpro.DataPropertyName].ToString().Trim();
                                         string Cadena = fila[xNombrePro.DataPropertyName].ToString().ToUpper().Trim();
@@ -481,14 +513,15 @@ namespace HPReserger
                                         //Partes de los ONG
                                         campo[c++] = (decimal.Parse(fila[ximporteONG.DataPropertyName].ToString())).ToString("0.00");
                                         campo[c++] = (decimal.Parse(fila[xigvONG.DataPropertyName].ToString())).ToString("0.00");
-                                        //Partes de NGR
-                                        //20
+                                        //Valor Adq. NG
                                         campo[c++] = (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString())).ToString("0.00");
                                         campo[c++] = (decimal.Parse(fila[xisc.DataPropertyName].ToString())).ToString("0.00");
                                         campo[c++] = (decimal.Parse(fila[xICBP.DataPropertyName].ToString())).ToString("0.00");
                                         campo[c++] = (decimal.Parse(fila[xOtrosTributos.DataPropertyName].ToString())).ToString("0.00");
-                                        //Validar Moneda
+
+                                        //Total CP
                                         campo[c++] = (decimal.Parse(fila[xImporteTotal.DataPropertyName].ToString())).ToString("0.00");
+                                        //Validar Moneda
                                         if (fila[xMoneda.DataPropertyName].ToString() == "USD")
                                         {
                                             campo[c++] = "USD";
@@ -497,70 +530,154 @@ namespace HPReserger
                                         else
                                         {
                                             campo[c++] = "PEN";
-                                            campo[c++] = "0.000";
+                                            campo[c++] = "1.000";
                                         }
-                                        campo[c++] = fila[xFechaDocRef.DataPropertyName].ToString() == "" ? "01/01/0001" : ((DateTime)fila[xFechaDocRef.DataPropertyName]).ToString("dd/MM/yyyy");
+                                        //Tipo de Cambio
+                                        campo[c++] = fila[xFechaDocRef.DataPropertyName].ToString() == "" ? "" : ((DateTime)fila[xFechaDocRef.DataPropertyName]).ToString("dd/MM/yyyy");
                                         int.TryParse(fila[xTipoDocRef.DataPropertyName].ToString(), out ValorPrueba);
+                                        //Tipo CP Modificado
                                         campo[c++] = ValorPrueba.ToString("00");
-                                        //Datos del Documento que Modifica
-                                        campo[c++] = fila[xSerieDocRef.DataPropertyName].ToString() == "" ? "-" : fila[xSerieDocRef.DataPropertyName].ToString().Trim();
+                                        //Serie CP Modificado
+                                        campo[c++] = fila[xSerieDocRef.DataPropertyName].ToString() == "" ? "" : fila[xSerieDocRef.DataPropertyName].ToString().Trim();
+                                        //COD. DAM O DSI
                                         campo[c++] = "";
-                                        //Número del comprobante de pago emitido por sujeto no domiciliado
-                                        //30
+                                        //
                                         campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
-                                        //Fecha de emisión de la Constancia de Depósito de Detracción 
-                                        campo[c++] = fila[xFechaDet.DataPropertyName].ToString() == "" ? "01/01/0001" : ((DateTime)fila[xFechaDet.DataPropertyName]).ToString("dd/MM/yyyy");
-                                        //Número de la Constancia de Depósito de Detracción               
-                                        campo[c++] = fila[xNumDet.DataPropertyName].ToString() == "" ? "0" : fila[xNumDet.DataPropertyName].ToString().Trim();
-                                        //Marca del comprobante de pago sujeto a retención
-                                        //1. Obligatorio 
-                                        //2.Si identifica el comprobante sujeto a retención consignar '1', caso contrario '0'
+                                        //Clasif de Bss y Sss	
                                         campo[c++] = "";
-                                        //Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
-                                        //1. Obligatorio
-                                        //2.Registrar '1' cuando se anota el Comprobante de Pago o documento en el periodo que se emitió o que se pagó el impuesto, según corresponda.
-                                        //3.Registrar '6' cuando la fecha de emisión del Comprobante de Pago o de pago del impuesto es anterior al periodo de anotación y esta se produce dentro de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
-                                        //4.Registrar '7' cuando la fecha de emisión del Comprobante de Pago o pago del impuesto es anterior al periodo de anotación y esta se produce luego de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
-                                        //5.Registrar '9' cuando se realice un ajuste en la anotación de la información de una operación registrada en un periodo anterior.
+                                        //ID Proyecto Operadores
+                                        campo[c++] = "";
+                                        //PorcPart	
+                                        campo[c++] = "";
+                                        //IMB
+                                        campo[c++] = "0";
+                                        //CAR Orig/ Ind E o I
+                                        campo[c++] = "";
+                                        //Detracción	
+                                        campo[c++] = fila[xDetraccion.DataPropertyName].ToString();
+                                        //Tipo de Nota	
+                                        campo[c++] = ValorPrueba != 0 ? (Convert.ToDecimal(fila[xigvIGV.DataPropertyName].ToString()) == 0 ? "6" : "1") : "";
+                                        //Est. Comp.	
                                         campo[c++] = "1";
-                                        //7 Extras
-                                        campo[c++] = "";
-                                        campo[c++] = "";
-                                        campo[c++] = "";
-                                        campo[c++] = "";
-                                        campo[c++] = "";
-                                        campo[c++] = "";
-                                        //CampoFinal
-                                        //Validacion del Identificador de Estado!
-                                        int Estado = 0;
-                                        DateTime FechaDeclara = cboperiodode.GetFechaPRimerDia();
-                                        DateTime FechaEmision = (DateTime)fila[xFechaEmision.DataPropertyName];
-                                        //Mismo Mes de Declaración
-                                        if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
-                                        {
-                                            //if (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()) > 0)
-                                            //Estado = 0;
-                                            //else
-                                            Estado = 1;
-                                        }
-                                        else
-                                        {
-                                            //Calculamos la diferencia para ver cuantos meses pasaron
-                                            int anio = FechaDeclara.Year - FechaEmision.Year;
-                                            int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
-                                            if (meses < 12)
-                                                Estado = 6;
-                                            else Estado = 0;
-                                        }
-                                        //Columna Final
-                                        campo[c++] = Estado.ToString();
+                                        //Incal
+                                        campo[c++] = "0";
+
+
+
+
+
+
+                                        //1
+                                        //campo[c++] = $"{añio}{mes}00";
+                                        //campo[c++] = ((fila[xcuo.DataPropertyName].ToString())).ToString();
+                                        //campo[c++] = "M2";
+                                        //campo[c++] = ((DateTime)fila[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");
+                                        ////5
+                                        //campo[c++] = int.Parse(fila[xidC.DataPropertyName].ToString()) != 14 ? "" : ((DateTime)fila[xFechaVencimiento.DataPropertyName]).ToString("dd/MM/yyyy");
+                                        //campo[c++] = (int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00");
+                                        //campo[c++] = fila[xSerieCom.DataPropertyName].ToString();
+                                        //int.TryParse(fila[xAñoDua.DataPropertyName].ToString(), out ValorPrueba);
+                                        //campo[c++] = ValorPrueba.ToString();
+                                        //if ((new int[] { 1, 3, 4, 6, 7, 8, 36 }).Contains(idcomprobante))
+                                        //    campo[c++] = Configuraciones.SubstringRight(fila[xNumCom.DataPropertyName].ToString().Trim(), 8);
+                                        //else
+                                        //    campo[c++] = fila[xNumCom.DataPropertyName].ToString().Trim();
+                                        ////En caso de optar por anotar el importe total de las operaciones diarias que no otorguen derecho a crédito fiscal en forma consolidada, registrar el número inicial
+                                        ////1
+                                        //campo[c++] = "";
+                                        //campo[c++] = (int.Parse(fila[xTipoIdPro.DataPropertyName].ToString())).ToString();
+                                        //campo[c++] = fila[xNumpro.DataPropertyName].ToString().Trim();
+                                        //  Cadena = fila[xNombrePro.DataPropertyName].ToString().ToUpper().Trim();
+                                        //campo[c++] = Cadena.Substring(0, Cadena.Length > 60 ? 60 : Cadena.Length);
+                                        ////Parte de los IGV
+                                        //campo[c++] = (decimal.Parse(fila[ximporteIGV.DataPropertyName].ToString())).ToString("0.00");
+                                        //campo[c++] = (decimal.Parse(fila[xigvIGV.DataPropertyName].ToString())).ToString("0.00");
+                                        ////Partes de los GNG
+                                        //campo[c++] = (decimal.Parse(fila[ximporteGNG.DataPropertyName].ToString())).ToString("0.00");
+                                        //campo[c++] = (decimal.Parse(fila[xigvGNG.DataPropertyName].ToString())).ToString("0.00");
+                                        ////Partes de los ONG
+                                        //campo[c++] = (decimal.Parse(fila[ximporteONG.DataPropertyName].ToString())).ToString("0.00");
+                                        //campo[c++] = (decimal.Parse(fila[xigvONG.DataPropertyName].ToString())).ToString("0.00");
+                                        ////Partes de NGR
+                                        ////20
+                                        //campo[c++] = (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString())).ToString("0.00");
+                                        //campo[c++] = (decimal.Parse(fila[xisc.DataPropertyName].ToString())).ToString("0.00");
+                                        //campo[c++] = (decimal.Parse(fila[xICBP.DataPropertyName].ToString())).ToString("0.00");
+                                        //campo[c++] = (decimal.Parse(fila[xOtrosTributos.DataPropertyName].ToString())).ToString("0.00");
+                                        ////Validar Moneda
+                                        //campo[c++] = (decimal.Parse(fila[xImporteTotal.DataPropertyName].ToString())).ToString("0.00");
+                                        //if (fila[xMoneda.DataPropertyName].ToString() == "USD")
+                                        //{
+                                        //    campo[c++] = "USD";
+                                        //    campo[c++] = (decimal.Parse(fila[xTC.DataPropertyName].ToString())).ToString("0.000");
+                                        //}
+                                        //else
+                                        //{
+                                        //    campo[c++] = "PEN";
+                                        //    campo[c++] = "0.000";
+                                        //}
+                                        //campo[c++] = fila[xFechaDocRef.DataPropertyName].ToString() == "" ? "01/01/0001" : ((DateTime)fila[xFechaDocRef.DataPropertyName]).ToString("dd/MM/yyyy");
+                                        //int.TryParse(fila[xTipoDocRef.DataPropertyName].ToString(), out ValorPrueba);
+                                        //campo[c++] = ValorPrueba.ToString("00");
+                                        ////Datos del Documento que Modifica
+                                        //campo[c++] = fila[xSerieDocRef.DataPropertyName].ToString() == "" ? "-" : fila[xSerieDocRef.DataPropertyName].ToString().Trim();
+                                        //campo[c++] = "";
+                                        ////Número del comprobante de pago emitido por sujeto no domiciliado
+                                        ////30
+                                        //campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
+                                        ////Fecha de emisión de la Constancia de Depósito de Detracción 
+                                        //campo[c++] = fila[xFechaDet.DataPropertyName].ToString() == "" ? "01/01/0001" : ((DateTime)fila[xFechaDet.DataPropertyName]).ToString("dd/MM/yyyy");
+                                        ////Número de la Constancia de Depósito de Detracción               
+                                        //campo[c++] = fila[xNumDet.DataPropertyName].ToString() == "" ? "0" : fila[xNumDet.DataPropertyName].ToString().Trim();
+                                        ////Marca del comprobante de pago sujeto a retención
+                                        ////1. Obligatorio 
+                                        ////2.Si identifica el comprobante sujeto a retención consignar '1', caso contrario '0'
+                                        //campo[c++] = "";
+                                        ////Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
+                                        ////1. Obligatorio
+                                        ////2.Registrar '1' cuando se anota el Comprobante de Pago o documento en el periodo que se emitió o que se pagó el impuesto, según corresponda.
+                                        ////3.Registrar '6' cuando la fecha de emisión del Comprobante de Pago o de pago del impuesto es anterior al periodo de anotación y esta se produce dentro de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
+                                        ////4.Registrar '7' cuando la fecha de emisión del Comprobante de Pago o pago del impuesto es anterior al periodo de anotación y esta se produce luego de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
+                                        ////5.Registrar '9' cuando se realice un ajuste en la anotación de la información de una operación registrada en un periodo anterior.
+                                        //campo[c++] = "1";
+                                        ////7 Extras
+                                        //campo[c++] = "";
+                                        //campo[c++] = "";
+                                        //campo[c++] = "";
+                                        //campo[c++] = "";
+                                        //campo[c++] = "";
+                                        //campo[c++] = "";
+                                        ////CampoFinal
+                                        ////Validacion del Identificador de Estado!
+                                        //int Estado = 0;
+                                        //DateTime FechaDeclara = cboperiodode.GetFechaPRimerDia();
+                                        //DateTime FechaEmision = (DateTime)fila[xFechaEmision.DataPropertyName];
+                                        ////Mismo Mes de Declaración
+                                        //if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
+                                        //{
+                                        //    //if (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()) > 0)
+                                        //    //Estado = 0;
+                                        //    //else
+                                        //    Estado = 1;
+                                        //}
+                                        //else
+                                        //{
+                                        //    //Calculamos la diferencia para ver cuantos meses pasaron
+                                        //    int anio = FechaDeclara.Year - FechaEmision.Year;
+                                        //    int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
+                                        //    if (meses < 12)
+                                        //        Estado = 6;
+                                        //    else Estado = 0;
+                                        //}
+                                        ////Columna Final
+                                        //campo[c++] = Estado.ToString();
                                         //Uniendo por pipes
                                         cadenatxt += string.Join("|", campo) + $"{Environment.NewLine}";
                                         //Limpiamos el Campo
                                         //campo = null;
                                     }
                                     //Formato 8.1
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00080100001{1}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}000804001{1}11.txt";
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);

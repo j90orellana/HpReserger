@@ -226,7 +226,7 @@ namespace SISGEM.CRM
             cbocliente.EditValue = Tcliente.Rows.Count > 0 ? Tcliente.Rows[0]["ID_Cliente"] : null;
 
             cbocliente.Properties.View.Columns.Clear();
-            cbocliente.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
+            cbocliente.Properties.View.Columns.AddVisible("ID_Cliente", "Codigo");
             cbocliente.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
             cbocliente.Properties.View.BestFitColumns();
         }
@@ -253,6 +253,8 @@ namespace SISGEM.CRM
                 ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Código");
                 ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
                 ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Cargo", "Cargo");
+                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("email1", "Email");
                 ID_ContactoTextEdit.Properties.View.BestFitColumns();
             }
             else
@@ -266,6 +268,11 @@ namespace SISGEM.CRM
         private void ID_ProyectoTextEdit_EditValueChanged(object sender, EventArgs e)
         {
             RecargarCliente();
+        }
+
+        private void cbocliente_EditValueChanged(object sender, EventArgs e)
+        {
+            RecargarContacto();
         }
     }
 }

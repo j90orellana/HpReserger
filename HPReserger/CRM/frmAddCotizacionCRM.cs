@@ -217,20 +217,7 @@ namespace SISGEM.CRM
 
         private void CargarCombos()
         {
-            //cliejte
-            HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
-            DataTable Tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue, DateTime.MaxValue);
-            ID_Tipo_personaTextEdit.Properties.DataSource = Tcliente;
-            ID_Tipo_personaTextEdit.Properties.ValueMember = "ID_Cliente";
-            ID_Tipo_personaTextEdit.Properties.DisplayMember = "nombrecompleto";
-            ID_Tipo_personaTextEdit.EditValue = Tcliente.Rows.Count > 0 ? Tcliente.Rows[0]["ID_Cliente"] : null;
-
-            ID_Tipo_personaTextEdit.Properties.View.Columns.Clear();
-            ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
-            ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
-            ID_Tipo_personaTextEdit.Properties.View.BestFitColumns();
-
-
+           
             //proyectos
             HpResergerNube.CRM_ProyectoRepository oproyecto = new HpResergerNube.CRM_ProyectoRepository();
             DataTable tproyecto = oproyecto.GetAllProyectos();
@@ -282,6 +269,8 @@ namespace SISGEM.CRM
 
             //repositoryItemSearchLookUpEdit1.View.col"codigo").Width = 100;
             //repositoryItemSearchLookUpEdit1.View.Columns("descripcion").Width = 300;
+
+            RecargarCliente();
         }
 
         private void btnAgregarITem_Click(object sender, EventArgs e)
@@ -384,6 +373,26 @@ namespace SISGEM.CRM
                 IGVTextEdit.EditValue = totaligv;
                 Precio_ventaTextEdit.EditValue = totalsuma;
             }
+        }
+        private void RecargarCliente()
+        {
+            //cliejte
+            HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
+            DataTable Tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue, DateTime.MaxValue, Cod_proyectoTextEdit.EditValue.ToString());
+            ID_Tipo_personaTextEdit.Properties.DataSource = Tcliente;
+            ID_Tipo_personaTextEdit.Properties.ValueMember = "ID_Cliente";
+            ID_Tipo_personaTextEdit.Properties.DisplayMember = "nombrecompleto";
+            ID_Tipo_personaTextEdit.EditValue = Tcliente.Rows.Count > 0 ? Tcliente.Rows[0]["ID_Cliente"] : null;
+
+            ID_Tipo_personaTextEdit.Properties.View.Columns.Clear();
+            ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("ID_Cliente", "Codigo");
+            ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
+            ID_Tipo_personaTextEdit.Properties.View.BestFitColumns();
+        }
+        private void Cod_proyectoTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            RecargarCliente();
+
         }
     }
 }

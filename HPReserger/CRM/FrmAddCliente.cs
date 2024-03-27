@@ -189,8 +189,8 @@ namespace SISGEM.CRM
                 oCliente.ID_TIpo_Documento = ID_TIpo_DocumentoTextEdit.EditValue.ToString();
                 oCliente.ID_Numero_Doc = Convert.ToDecimal(ID_Numero_DocTextEdit.EditValue);
                 oCliente.Direccion = DireccionTextEdit.EditValue.ToString();
-                oCliente.Interior = InteriorTextEdit.EditValue.ToString();
-                oCliente.Piso = PisoTextEdit.EditValue.ToString();
+                oCliente.Interior = string.IsNullOrEmpty(InteriorTextEdit.EditValue?.ToString()) ? "" : InteriorTextEdit.EditValue.ToString();
+                oCliente.Piso = string.IsNullOrEmpty(PisoTextEdit.EditValue?.ToString()) ? "" : PisoTextEdit.EditValue.ToString();
                 oCliente.ID_Codigo_postal = string.IsNullOrEmpty(ID_Codigo_postalTextEdit.EditValue?.ToString()) ? 0 : Convert.ToDecimal(ID_Codigo_postalTextEdit.EditValue);
                 oCliente.Telefono1 = string.IsNullOrEmpty(Telefono1TextEdit.EditValue?.ToString()) ? 0 : Convert.ToDecimal(Telefono1TextEdit.EditValue);
                 oCliente.Telefono2 = string.IsNullOrEmpty(Telefono2TextEdit.EditValue?.ToString()) ? 0 : Convert.ToDecimal(Telefono2TextEdit.EditValue);
@@ -202,9 +202,9 @@ namespace SISGEM.CRM
                 oCliente.TipodeCliente = cboTipoCliente.EditValue.ToString();
 
                 oCliente.Fecha_Modificacion = DateTime.Now;
-                oCliente.Usuario_Modificacion = "1001";
+                oCliente.Usuario_Modificacion = HPReserger.frmLogin.CodigoUsuario.ToString();
                 oCliente.Fecha_Creacion = DateTime.Now;
-                oCliente.Usuario_Creacion = "1001";
+                oCliente.Usuario_Creacion = HPReserger.frmLogin.CodigoUsuario.ToString();
 
                 HpResergerNube.CRM_ClienteRepository Rcliente = new HpResergerNube.CRM_ClienteRepository();
                 if (Rcliente.InsertCliente(oCliente))
@@ -245,7 +245,7 @@ namespace SISGEM.CRM
                 oCliente.web = string.IsNullOrEmpty(webTextEdit.EditValue?.ToString()) ? "" : webTextEdit.EditValue.ToString();
                 oCliente.ID_Contacto = string.IsNullOrEmpty(ID_ContactoTextEdit.EditValue?.ToString()) ? "" : ID_ContactoTextEdit.EditValue.ToString();
                 oCliente.Fecha_Modificacion = DateTime.Now;
-                oCliente.Usuario_Modificacion = "1001";
+                oCliente.Usuario_Modificacion = HPReserger.frmLogin.CodigoUsuario.ToString();
 
                 HpResergerNube.CRM_ClienteRepository Rcliente = new HpResergerNube.CRM_ClienteRepository();
                 if (Rcliente.UpdateCliente(oCliente))
@@ -298,9 +298,11 @@ namespace SISGEM.CRM
             ID_ContactoTextEdit.EditValue = contactos.Rows.Count > 0 ? contactos.Rows[0]["ID_Contacto"] : null;
 
             ID_ContactoTextEdit.Properties.View.Columns.Clear();
-            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
-                ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
             ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
+            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("ID_Contacto", "Codigo");
+            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Telefono1", "Telefono");
+            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("Cargo", "Cargo");
+            ID_ContactoTextEdit.Properties.View.Columns.AddVisible("email1", "Email");
             ID_ContactoTextEdit.Properties.View.BestFitColumns();
 
         }

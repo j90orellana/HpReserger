@@ -84,6 +84,11 @@
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.cbocliente = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.XnombrecompletoCLIENTE = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -111,6 +116,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbocliente.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // barDockControlTop
@@ -193,6 +202,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.cbocliente);
             this.layoutControl1.Controls.Add(this.gridControl2);
             this.layoutControl1.Controls.Add(this.dtpFechade);
             this.layoutControl1.Controls.Add(this.simpleButton1);
@@ -207,13 +217,13 @@
             // 
             // gridControl2
             // 
-            this.gridControl2.Location = new System.Drawing.Point(12, 60);
+            this.gridControl2.Location = new System.Drawing.Point(12, 62);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.MenuManager = this.barManager1;
             this.gridControl2.Name = "gridControl2";
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit2});
-            this.gridControl2.Size = new System.Drawing.Size(913, 382);
+            this.gridControl2.Size = new System.Drawing.Size(913, 380);
             this.gridControl2.TabIndex = 8;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -228,7 +238,8 @@
             this.xTelefono2,
             this.xemail1,
             this.xID_Sexo,
-            this.xFecha_Creacion});
+            this.xFecha_Creacion,
+            this.XnombrecompletoCLIENTE});
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsFind.AlwaysVisible = true;
@@ -264,19 +275,25 @@
             // 
             this.xTelefono1.Caption = "Telefono1";
             this.xTelefono1.FieldName = "Telefono1";
+            this.xTelefono1.MaxWidth = 90;
+            this.xTelefono1.MinWidth = 90;
             this.xTelefono1.Name = "xTelefono1";
             this.xTelefono1.OptionsColumn.AllowEdit = false;
             this.xTelefono1.Visible = true;
             this.xTelefono1.VisibleIndex = 2;
+            this.xTelefono1.Width = 90;
             // 
             // xTelefono2
             // 
             this.xTelefono2.Caption = "Telefono2";
             this.xTelefono2.FieldName = "Telefono2";
+            this.xTelefono2.MaxWidth = 90;
+            this.xTelefono2.MinWidth = 90;
             this.xTelefono2.Name = "xTelefono2";
             this.xTelefono2.OptionsColumn.AllowEdit = false;
             this.xTelefono2.Visible = true;
             this.xTelefono2.VisibleIndex = 3;
+            this.xTelefono2.Width = 90;
             // 
             // xemail1
             // 
@@ -291,19 +308,25 @@
             // 
             this.xID_Sexo.Caption = "Sexo";
             this.xID_Sexo.FieldName = "ID_Sexo";
+            this.xID_Sexo.MaxWidth = 50;
+            this.xID_Sexo.MinWidth = 50;
             this.xID_Sexo.Name = "xID_Sexo";
             this.xID_Sexo.OptionsColumn.AllowEdit = false;
             this.xID_Sexo.Visible = true;
             this.xID_Sexo.VisibleIndex = 5;
+            this.xID_Sexo.Width = 50;
             // 
             // xFecha_Creacion
             // 
             this.xFecha_Creacion.Caption = "Fecha Creacion";
             this.xFecha_Creacion.FieldName = "Fecha_Creacion";
+            this.xFecha_Creacion.MaxWidth = 90;
+            this.xFecha_Creacion.MinWidth = 90;
             this.xFecha_Creacion.Name = "xFecha_Creacion";
             this.xFecha_Creacion.OptionsColumn.AllowEdit = false;
             this.xFecha_Creacion.Visible = true;
-            this.xFecha_Creacion.VisibleIndex = 6;
+            this.xFecha_Creacion.VisibleIndex = 7;
+            this.xFecha_Creacion.Width = 90;
             // 
             // repositoryItemDateEdit2
             // 
@@ -324,7 +347,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpFechade.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpFechade.Size = new System.Drawing.Size(154, 20);
+            this.dtpFechade.Size = new System.Drawing.Size(143, 20);
             this.dtpFechade.StyleController = this.layoutControl1;
             this.dtpFechade.TabIndex = 5;
             // 
@@ -387,9 +410,9 @@
             // simpleButton1
             // 
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(244, 12);
+            this.simpleButton1.Location = new System.Drawing.Point(479, 12);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(115, 22);
+            this.simpleButton1.Size = new System.Drawing.Size(62, 22);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 6;
             this.simpleButton1.Text = "Buscar";
@@ -398,14 +421,14 @@
             // dtpFechaa
             // 
             this.dtpFechaa.EditValue = null;
-            this.dtpFechaa.Location = new System.Drawing.Point(86, 36);
+            this.dtpFechaa.Location = new System.Drawing.Point(307, 12);
             this.dtpFechaa.MenuManager = this.barManager2;
             this.dtpFechaa.Name = "dtpFechaa";
             this.dtpFechaa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpFechaa.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpFechaa.Size = new System.Drawing.Size(154, 20);
+            this.dtpFechaa.Size = new System.Drawing.Size(168, 20);
             this.dtpFechaa.StyleController = this.layoutControl1;
             this.dtpFechaa.TabIndex = 4;
             // 
@@ -416,9 +439,11 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem5,
             this.layoutControlItem1,
-            this.layoutControlItem2,
             this.emptySpaceItem2,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.emptySpaceItem3,
+            this.layoutControlItem2,
+            this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(937, 454);
@@ -430,7 +455,7 @@
             this.layoutControlItem5.CustomizationFormText = "Fechas Desde:";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(232, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(221, 26);
             this.layoutControlItem5.Text = "Fechas Desde:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(71, 13);
             // 
@@ -438,9 +463,12 @@
             // 
             this.layoutControlItem1.Control = this.simpleButton1;
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem1.Location = new System.Drawing.Point(232, 0);
+            this.layoutControlItem1.Location = new System.Drawing.Point(467, 0);
+            this.layoutControlItem1.MaxSize = new System.Drawing.Size(66, 26);
+            this.layoutControlItem1.MinSize = new System.Drawing.Size(66, 26);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(119, 48);
+            this.layoutControlItem1.Size = new System.Drawing.Size(66, 26);
+            this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "layoutControlItem3";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
@@ -449,9 +477,9 @@
             // 
             this.layoutControlItem2.Control = this.dtpFechaa;
             this.layoutControlItem2.CustomizationFormText = "Fecha Hasta:";
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem2.Location = new System.Drawing.Point(221, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(232, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(246, 26);
             this.layoutControlItem2.Text = "Fecha Hasta:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(71, 13);
             // 
@@ -459,18 +487,18 @@
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(351, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(533, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(566, 48);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(384, 50);
             this.emptySpaceItem2.Text = "emptySpaceItem1";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.gridControl2;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 50);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(917, 386);
+            this.layoutControlItem4.Size = new System.Drawing.Size(917, 384);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -643,6 +671,52 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(873, 24);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // emptySpaceItem3
+            // 
+            this.emptySpaceItem3.AllowHotTrack = false;
+            this.emptySpaceItem3.Location = new System.Drawing.Point(467, 26);
+            this.emptySpaceItem3.Name = "emptySpaceItem3";
+            this.emptySpaceItem3.Size = new System.Drawing.Size(66, 24);
+            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // cbocliente
+            // 
+            this.cbocliente.EditValue = "Cliente";
+            this.cbocliente.Location = new System.Drawing.Point(86, 38);
+            this.cbocliente.Name = "cbocliente";
+            this.cbocliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbocliente.Properties.NullText = "";
+            this.cbocliente.Properties.View = this.gridView3;
+            this.cbocliente.Size = new System.Drawing.Size(389, 20);
+            this.cbocliente.StyleController = this.layoutControl1;
+            this.cbocliente.TabIndex = 23;
+            // 
+            // gridView3
+            // 
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.cbocliente;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(467, 24);
+            this.layoutControlItem6.Text = "Cliente";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(71, 13);
+            // 
+            // XnombrecompletoCLIENTE
+            // 
+            this.XnombrecompletoCLIENTE.Caption = "Cliente";
+            this.XnombrecompletoCLIENTE.FieldName = "nombrecompletocliente";
+            this.XnombrecompletoCLIENTE.Name = "XnombrecompletoCLIENTE";
+            this.XnombrecompletoCLIENTE.OptionsColumn.AllowEdit = false;
+            this.XnombrecompletoCLIENTE.Visible = true;
+            this.XnombrecompletoCLIENTE.VisibleIndex = 6;
+            // 
             // frmContactoCRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -689,6 +763,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbocliente.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -750,5 +828,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn xemail1;
         private DevExpress.XtraGrid.Columns.GridColumn xID_Sexo;
         private DevExpress.XtraGrid.Columns.GridColumn xFecha_Creacion;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
+        private DevExpress.XtraEditors.SearchLookUpEdit cbocliente;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraGrid.Columns.GridColumn XnombrecompletoCLIENTE;
     }
 }
