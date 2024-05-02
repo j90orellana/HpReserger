@@ -50,6 +50,7 @@
     <Compile Include="CRM_CodigoPostalRepository.cs" />
     <Compile Include="CRM_ContactoRepository.cs" />
     <Compile Include="CRM_Cotizador.cs" />
+    <Compile Include="CRM_Documentos.cs" />
     <Compile Include="CRM_EstadoRepository.cs" />
     <Compile Include="CRM_Items_Cotizador.cs" />
     <Compile Include="CRM_Kardex_ProductosRepository.cs" />
@@ -76,6 +77,9 @@
     <Compile Include="CRM_Usuario.cs" />
     <Compile Include="DLConexion.cs" />
     <Compile Include="Encriptacion.cs" />
+    <Compile Include="FtpClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

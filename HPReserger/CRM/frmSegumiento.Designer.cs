@@ -34,22 +34,14 @@
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.layoutView1 = new DevExpress.XtraGrid.Views.Layout.LayoutView();
             this.xID_Seguimiento = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
-            this.layoutViewField_xID_Seguimiento = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.xID_Proyecto = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
             this.xNombre_Proyecto = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
-            this.layoutViewField_xNombre_Proyecto = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.xDetalle_Tipo_Seguimiento = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
-            this.layoutViewField_xDetalle_Tipo_Seguimiento = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.xNombre = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
-            this.layoutViewField_xNombre = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.xContacto = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
-            this.layoutViewField_xContacto = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.xDescripción = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
-            this.layoutViewField_xDescripción = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.xFecha_Seguimiento = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
-            this.layoutViewField_xFecha_Seguimiento = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.xFecha_Prox_Seguimiento = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
-            this.layoutViewField_xFecha_Prox_Seguimiento = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
-            this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -146,19 +138,22 @@
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup11 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
+            this.layoutViewField_xID_Seguimiento = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewField_xNombre_Proyecto = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewField_xDetalle_Tipo_Seguimiento = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewField_xNombre = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewField_xContacto = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewField_xFecha_Seguimiento = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewField_layoutViewColumn1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewField_xDescripción = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewField_xFecha_Prox_Seguimiento = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.repositoryItemMemoEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xID_Seguimiento)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xNombre_Proyecto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xDetalle_Tipo_Seguimiento)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xNombre)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xContacto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xDescripción)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xFecha_Seguimiento)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xFecha_Prox_Seguimiento)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
@@ -252,6 +247,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xID_Seguimiento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xNombre_Proyecto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xDetalle_Tipo_Seguimiento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xNombre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xContacto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xFecha_Seguimiento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xDescripción)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xFecha_Prox_Seguimiento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -266,7 +273,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 31);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1046, 436);
+            this.layoutControl1.Size = new System.Drawing.Size(1046, 504);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -277,8 +284,10 @@
             this.gridControl2.MenuManager = this.barManager1;
             this.gridControl2.Name = "gridControl2";
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemDateEdit2});
-            this.gridControl2.Size = new System.Drawing.Size(1022, 362);
+            this.repositoryItemDateEdit2,
+            this.repositoryItemMemoEdit1,
+            this.repositoryItemMemoEdit2});
+            this.gridControl2.Size = new System.Drawing.Size(1022, 430);
             this.gridControl2.TabIndex = 8;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.layoutView1});
@@ -287,9 +296,10 @@
             // 
             this.layoutView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.layoutView1.CardHorzInterval = 3;
-            this.layoutView1.CardMinSize = new System.Drawing.Size(300, 40);
+            this.layoutView1.CardMinSize = new System.Drawing.Size(298, 261);
             this.layoutView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.LayoutViewColumn[] {
             this.xID_Seguimiento,
+            this.xID_Proyecto,
             this.xNombre_Proyecto,
             this.xDetalle_Tipo_Seguimiento,
             this.xNombre,
@@ -304,12 +314,11 @@
             this.layoutView1.OptionsFind.AlwaysVisible = true;
             this.layoutView1.OptionsFind.FindNullPrompt = "Ingrese texto a buscar";
             this.layoutView1.OptionsHeaderPanel.EnableCustomizeButton = false;
-            this.layoutView1.OptionsItemText.AlignMode = DevExpress.XtraGrid.Views.Layout.FieldTextAlignMode.AutoSize;
             this.layoutView1.OptionsLayout.StoreAllOptions = true;
             this.layoutView1.OptionsLayout.StoreAppearance = true;
-            this.layoutView1.OptionsView.CardsAlignment = DevExpress.XtraGrid.Views.Layout.CardsAlignment.Far;
+            this.layoutView1.OptionsView.CardsAlignment = DevExpress.XtraGrid.Views.Layout.CardsAlignment.Near;
             this.layoutView1.OptionsView.ShowCardLines = false;
-            this.layoutView1.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways;
+            this.layoutView1.OptionsView.ShowHeaderPanel = false;
             this.layoutView1.OptionsView.ViewMode = DevExpress.XtraGrid.Views.Layout.LayoutViewMode.MultiColumn;
             this.layoutView1.TemplateCard = this.layoutViewCard1;
             this.layoutView1.DoubleClick += new System.EventHandler(this.gridView2_DoubleClick);
@@ -320,30 +329,24 @@
             this.xID_Seguimiento.FieldName = "ID_Seguimiento";
             this.xID_Seguimiento.LayoutViewField = this.layoutViewField_xID_Seguimiento;
             this.xID_Seguimiento.Name = "xID_Seguimiento";
+            this.xID_Seguimiento.OptionsColumn.AllowEdit = false;
             // 
-            // layoutViewField_xID_Seguimiento
+            // xID_Proyecto
             // 
-            this.layoutViewField_xID_Seguimiento.EditorPreferredWidth = 108;
-            this.layoutViewField_xID_Seguimiento.Location = new System.Drawing.Point(0, 0);
-            this.layoutViewField_xID_Seguimiento.Name = "layoutViewField_xID_Seguimiento";
-            this.layoutViewField_xID_Seguimiento.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xID_Seguimiento.TextSize = new System.Drawing.Size(15, 13);
+            this.xID_Proyecto.Caption = "ID Proyecto";
+            this.xID_Proyecto.FieldName = "ID_Proyecto";
+            this.xID_Proyecto.LayoutViewField = this.layoutViewField_layoutViewColumn1;
+            this.xID_Proyecto.Name = "xID_Proyecto";
+            this.xID_Proyecto.OptionsColumn.AllowEdit = false;
             // 
             // xNombre_Proyecto
             // 
             this.xNombre_Proyecto.Caption = "Proyecto";
+            this.xNombre_Proyecto.ColumnEdit = this.repositoryItemMemoEdit2;
             this.xNombre_Proyecto.FieldName = "Nombre_Proyecto";
             this.xNombre_Proyecto.LayoutViewField = this.layoutViewField_xNombre_Proyecto;
             this.xNombre_Proyecto.Name = "xNombre_Proyecto";
             this.xNombre_Proyecto.OptionsColumn.AllowEdit = false;
-            // 
-            // layoutViewField_xNombre_Proyecto
-            // 
-            this.layoutViewField_xNombre_Proyecto.EditorPreferredWidth = 108;
-            this.layoutViewField_xNombre_Proyecto.Location = new System.Drawing.Point(0, 24);
-            this.layoutViewField_xNombre_Proyecto.Name = "layoutViewField_xNombre_Proyecto";
-            this.layoutViewField_xNombre_Proyecto.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xNombre_Proyecto.TextSize = new System.Drawing.Size(47, 13);
             // 
             // xDetalle_Tipo_Seguimiento
             // 
@@ -353,14 +356,6 @@
             this.xDetalle_Tipo_Seguimiento.Name = "xDetalle_Tipo_Seguimiento";
             this.xDetalle_Tipo_Seguimiento.OptionsColumn.AllowEdit = false;
             // 
-            // layoutViewField_xDetalle_Tipo_Seguimiento
-            // 
-            this.layoutViewField_xDetalle_Tipo_Seguimiento.EditorPreferredWidth = 108;
-            this.layoutViewField_xDetalle_Tipo_Seguimiento.Location = new System.Drawing.Point(0, 48);
-            this.layoutViewField_xDetalle_Tipo_Seguimiento.Name = "layoutViewField_xDetalle_Tipo_Seguimiento";
-            this.layoutViewField_xDetalle_Tipo_Seguimiento.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xDetalle_Tipo_Seguimiento.TextSize = new System.Drawing.Size(49, 13);
-            // 
             // xNombre
             // 
             this.xNombre.Caption = "Usuario";
@@ -368,14 +363,6 @@
             this.xNombre.LayoutViewField = this.layoutViewField_xNombre;
             this.xNombre.Name = "xNombre";
             this.xNombre.OptionsColumn.AllowEdit = false;
-            // 
-            // layoutViewField_xNombre
-            // 
-            this.layoutViewField_xNombre.EditorPreferredWidth = 108;
-            this.layoutViewField_xNombre.Location = new System.Drawing.Point(0, 72);
-            this.layoutViewField_xNombre.Name = "layoutViewField_xNombre";
-            this.layoutViewField_xNombre.Size = new System.Drawing.Size(173, 20);
-            this.layoutViewField_xNombre.TextSize = new System.Drawing.Size(40, 13);
             // 
             // xContacto
             // 
@@ -385,29 +372,14 @@
             this.xContacto.Name = "xContacto";
             this.xContacto.OptionsColumn.AllowEdit = false;
             // 
-            // layoutViewField_xContacto
-            // 
-            this.layoutViewField_xContacto.EditorPreferredWidth = 108;
-            this.layoutViewField_xContacto.Location = new System.Drawing.Point(0, 92);
-            this.layoutViewField_xContacto.Name = "layoutViewField_xContacto";
-            this.layoutViewField_xContacto.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xContacto.TextSize = new System.Drawing.Size(48, 13);
-            // 
             // xDescripción
             // 
             this.xDescripción.Caption = "Descripción";
+            this.xDescripción.ColumnEdit = this.repositoryItemMemoEdit1;
             this.xDescripción.FieldName = "Descripcion";
             this.xDescripción.LayoutViewField = this.layoutViewField_xDescripción;
             this.xDescripción.Name = "xDescripción";
             this.xDescripción.OptionsColumn.AllowEdit = false;
-            // 
-            // layoutViewField_xDescripción
-            // 
-            this.layoutViewField_xDescripción.EditorPreferredWidth = 108;
-            this.layoutViewField_xDescripción.Location = new System.Drawing.Point(0, 116);
-            this.layoutViewField_xDescripción.Name = "layoutViewField_xDescripción";
-            this.layoutViewField_xDescripción.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xDescripción.TextSize = new System.Drawing.Size(58, 13);
             // 
             // xFecha_Seguimiento
             // 
@@ -419,14 +391,6 @@
             this.xFecha_Seguimiento.Name = "xFecha_Seguimiento";
             this.xFecha_Seguimiento.OptionsColumn.AllowEdit = false;
             // 
-            // layoutViewField_xFecha_Seguimiento
-            // 
-            this.layoutViewField_xFecha_Seguimiento.EditorPreferredWidth = 108;
-            this.layoutViewField_xFecha_Seguimiento.Location = new System.Drawing.Point(0, 140);
-            this.layoutViewField_xFecha_Seguimiento.Name = "layoutViewField_xFecha_Seguimiento";
-            this.layoutViewField_xFecha_Seguimiento.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xFecha_Seguimiento.TextSize = new System.Drawing.Size(58, 13);
-            // 
             // xFecha_Prox_Seguimiento
             // 
             this.xFecha_Prox_Seguimiento.Caption = "Prox. Seg.";
@@ -436,28 +400,6 @@
             this.xFecha_Prox_Seguimiento.LayoutViewField = this.layoutViewField_xFecha_Prox_Seguimiento;
             this.xFecha_Prox_Seguimiento.Name = "xFecha_Prox_Seguimiento";
             this.xFecha_Prox_Seguimiento.OptionsColumn.AllowEdit = false;
-            // 
-            // layoutViewField_xFecha_Prox_Seguimiento
-            // 
-            this.layoutViewField_xFecha_Prox_Seguimiento.EditorPreferredWidth = 108;
-            this.layoutViewField_xFecha_Prox_Seguimiento.Location = new System.Drawing.Point(0, 164);
-            this.layoutViewField_xFecha_Prox_Seguimiento.Name = "layoutViewField_xFecha_Prox_Seguimiento";
-            this.layoutViewField_xFecha_Prox_Seguimiento.Size = new System.Drawing.Size(173, 24);
-            this.layoutViewField_xFecha_Prox_Seguimiento.TextSize = new System.Drawing.Size(55, 13);
-            // 
-            // layoutViewCard1
-            // 
-            this.layoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
-            this.layoutViewCard1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutViewField_xID_Seguimiento,
-            this.layoutViewField_xNombre_Proyecto,
-            this.layoutViewField_xDetalle_Tipo_Seguimiento,
-            this.layoutViewField_xNombre,
-            this.layoutViewField_xContacto,
-            this.layoutViewField_xDescripción,
-            this.layoutViewField_xFecha_Seguimiento,
-            this.layoutViewField_xFecha_Prox_Seguimiento});
-            this.layoutViewCard1.Name = "layoutViewCard1";
             // 
             // barManager1
             // 
@@ -513,7 +455,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 467);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 535);
             this.barDockControlBottom.Size = new System.Drawing.Size(1046, 0);
             // 
             // barDockControlLeft
@@ -521,14 +463,14 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 436);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 504);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1046, 31);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 436);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 504);
             // 
             // repositoryItemDateEdit2
             // 
@@ -629,7 +571,7 @@
             this.emptySpaceItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1046, 436);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1046, 504);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem5
@@ -681,7 +623,7 @@
             this.layoutControlItem4.Control = this.gridControl2;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 50);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(1026, 366);
+            this.layoutControlItem4.Size = new System.Drawing.Size(1026, 434);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -1441,11 +1383,131 @@
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
             // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemMemoEdit1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
+            // layoutViewCard1
+            // 
+            this.layoutViewCard1.CustomizationFormText = "TemplateCard";
+            this.layoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
+            this.layoutViewCard1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutViewField_xID_Seguimiento,
+            this.layoutViewField_xNombre_Proyecto,
+            this.layoutViewField_xDetalle_Tipo_Seguimiento,
+            this.layoutViewField_xNombre,
+            this.layoutViewField_xContacto,
+            this.layoutViewField_xFecha_Seguimiento,
+            this.layoutViewField_layoutViewColumn1,
+            this.layoutViewField_xDescripción,
+            this.layoutViewField_xFecha_Prox_Seguimiento});
+            this.layoutViewCard1.Name = "layoutViewCard1";
+            this.layoutViewCard1.OptionsItemText.TextToControlDistance = 5;
+            this.layoutViewCard1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewCard1.Text = "TemplateCard";
+            this.layoutViewCard1.TextLocation = DevExpress.Utils.Locations.Default;
+            // 
+            // layoutViewField_xID_Seguimiento
+            // 
+            this.layoutViewField_xID_Seguimiento.EditorPreferredWidth = 218;
+            this.layoutViewField_xID_Seguimiento.Location = new System.Drawing.Point(0, 0);
+            this.layoutViewField_xID_Seguimiento.Name = "layoutViewField_xID_Seguimiento";
+            this.layoutViewField_xID_Seguimiento.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_xID_Seguimiento.Size = new System.Drawing.Size(290, 26);
+            this.layoutViewField_xID_Seguimiento.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_xID_Seguimiento.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // layoutViewField_xNombre_Proyecto
+            // 
+            this.layoutViewField_xNombre_Proyecto.EditorPreferredWidth = 218;
+            this.layoutViewField_xNombre_Proyecto.Location = new System.Drawing.Point(0, 52);
+            this.layoutViewField_xNombre_Proyecto.Name = "layoutViewField_xNombre_Proyecto";
+            this.layoutViewField_xNombre_Proyecto.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_xNombre_Proyecto.Size = new System.Drawing.Size(290, 26);
+            this.layoutViewField_xNombre_Proyecto.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_xNombre_Proyecto.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // layoutViewField_xDetalle_Tipo_Seguimiento
+            // 
+            this.layoutViewField_xDetalle_Tipo_Seguimiento.EditorPreferredWidth = 218;
+            this.layoutViewField_xDetalle_Tipo_Seguimiento.Location = new System.Drawing.Point(0, 78);
+            this.layoutViewField_xDetalle_Tipo_Seguimiento.Name = "layoutViewField_xDetalle_Tipo_Seguimiento";
+            this.layoutViewField_xDetalle_Tipo_Seguimiento.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_xDetalle_Tipo_Seguimiento.Size = new System.Drawing.Size(290, 26);
+            this.layoutViewField_xDetalle_Tipo_Seguimiento.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_xDetalle_Tipo_Seguimiento.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // layoutViewField_xNombre
+            // 
+            this.layoutViewField_xNombre.EditorPreferredWidth = 218;
+            this.layoutViewField_xNombre.Location = new System.Drawing.Point(0, 104);
+            this.layoutViewField_xNombre.Name = "layoutViewField_xNombre";
+            this.layoutViewField_xNombre.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_xNombre.Size = new System.Drawing.Size(290, 26);
+            this.layoutViewField_xNombre.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_xNombre.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // layoutViewField_xContacto
+            // 
+            this.layoutViewField_xContacto.EditorPreferredWidth = 218;
+            this.layoutViewField_xContacto.Location = new System.Drawing.Point(0, 130);
+            this.layoutViewField_xContacto.Name = "layoutViewField_xContacto";
+            this.layoutViewField_xContacto.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_xContacto.Size = new System.Drawing.Size(290, 26);
+            this.layoutViewField_xContacto.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_xContacto.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // layoutViewField_xFecha_Seguimiento
+            // 
+            this.layoutViewField_xFecha_Seguimiento.EditorPreferredWidth = 218;
+            this.layoutViewField_xFecha_Seguimiento.Location = new System.Drawing.Point(0, 156);
+            this.layoutViewField_xFecha_Seguimiento.Name = "layoutViewField_xFecha_Seguimiento";
+            this.layoutViewField_xFecha_Seguimiento.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_xFecha_Seguimiento.Size = new System.Drawing.Size(290, 26);
+            this.layoutViewField_xFecha_Seguimiento.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_xFecha_Seguimiento.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // layoutViewField_layoutViewColumn1
+            // 
+            this.layoutViewField_layoutViewColumn1.EditorPreferredWidth = 218;
+            this.layoutViewField_layoutViewColumn1.Location = new System.Drawing.Point(0, 26);
+            this.layoutViewField_layoutViewColumn1.Name = "layoutViewField_layoutViewColumn1";
+            this.layoutViewField_layoutViewColumn1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_layoutViewColumn1.Size = new System.Drawing.Size(290, 26);
+            this.layoutViewField_layoutViewColumn1.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_layoutViewColumn1.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // layoutViewField_xDescripción
+            // 
+            this.layoutViewField_xDescripción.EditorPreferredWidth = 218;
+            this.layoutViewField_xDescripción.Location = new System.Drawing.Point(0, 208);
+            this.layoutViewField_xDescripción.Name = "layoutViewField_xDescripción";
+            this.layoutViewField_xDescripción.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_xDescripción.Size = new System.Drawing.Size(290, 133);
+            this.layoutViewField_xDescripción.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_xDescripción.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // layoutViewField_xFecha_Prox_Seguimiento
+            // 
+            this.layoutViewField_xFecha_Prox_Seguimiento.EditorPreferredWidth = 218;
+            this.layoutViewField_xFecha_Prox_Seguimiento.Location = new System.Drawing.Point(0, 182);
+            this.layoutViewField_xFecha_Prox_Seguimiento.Name = "layoutViewField_xFecha_Prox_Seguimiento";
+            this.layoutViewField_xFecha_Prox_Seguimiento.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutViewField_xFecha_Prox_Seguimiento.Size = new System.Drawing.Size(290, 26);
+            this.layoutViewField_xFecha_Prox_Seguimiento.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_xFecha_Prox_Seguimiento.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // repositoryItemMemoEdit2
+            // 
+            this.repositoryItemMemoEdit2.Name = "repositoryItemMemoEdit2";
+            // 
             // frmSegumiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 467);
+            this.ClientSize = new System.Drawing.Size(1046, 535);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1459,15 +1521,6 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xID_Seguimiento)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xNombre_Proyecto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xDetalle_Tipo_Seguimiento)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xNombre)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xContacto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xDescripción)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xFecha_Seguimiento)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xFecha_Prox_Seguimiento)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
@@ -1561,6 +1614,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xID_Seguimiento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xNombre_Proyecto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xDetalle_Tipo_Seguimiento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xNombre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xContacto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xFecha_Seguimiento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xDescripción)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_xFecha_Prox_Seguimiento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1608,22 +1673,13 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraGrid.Views.Layout.LayoutView layoutView1;
         private DevExpress.XtraGrid.Columns.LayoutViewColumn xID_Seguimiento;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xID_Seguimiento;
         private DevExpress.XtraGrid.Columns.LayoutViewColumn xNombre_Proyecto;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xNombre_Proyecto;
         private DevExpress.XtraGrid.Columns.LayoutViewColumn xDetalle_Tipo_Seguimiento;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xDetalle_Tipo_Seguimiento;
         private DevExpress.XtraGrid.Columns.LayoutViewColumn xNombre;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xNombre;
         private DevExpress.XtraGrid.Columns.LayoutViewColumn xContacto;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xContacto;
         private DevExpress.XtraGrid.Columns.LayoutViewColumn xDescripción;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xDescripción;
         private DevExpress.XtraGrid.Columns.LayoutViewColumn xFecha_Seguimiento;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xFecha_Seguimiento;
         private DevExpress.XtraGrid.Columns.LayoutViewColumn xFecha_Prox_Seguimiento;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xFecha_Prox_Seguimiento;
-        private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard1;
         private DevExpress.XtraEditors.SearchLookUpEdit ID_ProyectoTextEdit;
         private System.Windows.Forms.BindingSource bindingSource1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
@@ -1684,5 +1740,18 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup11;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
+        private DevExpress.XtraGrid.Columns.LayoutViewColumn xID_Proyecto;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xID_Seguimiento;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_layoutViewColumn1;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xNombre_Proyecto;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xDetalle_Tipo_Seguimiento;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xNombre;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xContacto;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xDescripción;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xFecha_Seguimiento;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_xFecha_Prox_Seguimiento;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit2;
     }
 }

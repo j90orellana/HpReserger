@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Compression;
 
 namespace HPReserger
 {
@@ -454,18 +455,18 @@ namespace HPReserger
 
                                     int c = 0;
 
-                                    // Asignar cada parte de la cabecera a las columnas correspondientes
-                                    foreach (string cabecera in cabeceraArray)
-                                    {
-                                        campo[c++] = cabecera;
-                                    }
-                                    cadenatxt += string.Join("|", campo) + $"{Environment.NewLine }";
-                                    // Asignar cada parte de la cabecera a las columnas correspondientes
-                                    c = 0;
-                                    foreach (string cabecera in cabeceraArray)
-                                    {
-                                        campo[c++] = "";
-                                    }
+                                    //// Asignar cada parte de la cabecera a las columnas correspondientes
+                                    //foreach (string cabecera in cabeceraArray)
+                                    //{
+                                    //    campo[c++] = cabecera;
+                                    //}
+                                    //cadenatxt += string.Join("|", campo) + $"{Environment.NewLine }";
+                                    //// Asignar cada parte de la cabecera a las columnas correspondientes
+                                    //c = 0;
+                                    //foreach (string cabecera in cabeceraArray)
+                                    //{
+                                    //    campo[c++] = "";
+                                    //}
 
 
                                     foreach (DataRow fila in TablaResult.Rows)
@@ -536,7 +537,7 @@ namespace HPReserger
                                         campo[c++] = fila[xFechaDocRef.DataPropertyName].ToString() == "" ? "" : ((DateTime)fila[xFechaDocRef.DataPropertyName]).ToString("dd/MM/yyyy");
                                         int.TryParse(fila[xTipoDocRef.DataPropertyName].ToString(), out ValorPrueba);
                                         //Tipo CP Modificado
-                                        campo[c++] = ValorPrueba.ToString("00");
+                                        campo[c++] = fila[xFechaDocRef.DataPropertyName].ToString() == "" ? "" : ValorPrueba.ToString("0");
                                         //Serie CP Modificado
                                         campo[c++] = fila[xSerieDocRef.DataPropertyName].ToString() == "" ? "" : fila[xSerieDocRef.DataPropertyName].ToString().Trim();
                                         //COD. DAM O DSI
@@ -544,7 +545,7 @@ namespace HPReserger
                                         //
                                         campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
                                         //Clasif de Bss y Sss	
-                                        campo[c++] = "";
+                                        campo[c++] = fila[xTBien.DataPropertyName].ToString();
                                         //ID Proyecto Operadores
                                         campo[c++] = "";
                                         //PorcPart	
@@ -558,7 +559,30 @@ namespace HPReserger
                                         //Tipo de Nota	
                                         campo[c++] = ValorPrueba != 0 ? (Convert.ToDecimal(fila[xigvIGV.DataPropertyName].ToString()) == 0 ? "6" : "1") : "";
                                         //Est. Comp.	
-                                        campo[c++] = "1";
+                                        //Validacion del Identificador de Estado!
+                                        int Estado = 0;
+                                        DateTime FechaDeclara = cboperiodode.GetFechaPRimerDia();
+                                        DateTime FechaEmision = (DateTime)fila[xFechaEmision.DataPropertyName];
+                                        //Mismo Mes de Declaración
+                                        if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
+                                        {
+                                            if (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()) > 0)
+                                                Estado = 0;
+                                            else
+                                                Estado = 1;
+                                        }
+                                        else
+                                        {
+                                            //Calculamos la diferencia para ver cuantos meses pasaron
+                                            int anio = FechaDeclara.Year - FechaEmision.Year;
+                                            int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
+                                            if (meses < 12)
+                                                Estado = 6;
+                                            else Estado = 0;
+                                        }
+                                        ////Columna Final
+                                        campo[c++] = Estado.ToString();
+                                        //campo[c++] = "1";
                                         //Incal
                                         campo[c++] = "0";
 
@@ -678,10 +702,13 @@ namespace HPReserger
                                     }
                                     //Formato 8.1
                                     SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}000804001{1}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00080400021112.txt";
+                                    
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);
                                     st.Close();
+ 
                                     //Formato 8.2
                                     //SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00080200001{0}11.txt";
                                     //path = SaveFile.FileName;

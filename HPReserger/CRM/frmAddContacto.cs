@@ -203,7 +203,7 @@ namespace SISGEM.CRM
             oContacto.Fecha_Creacion = Convert.ToDateTime(Fecha_CreacionDateEdit.EditValue ?? DateTime.MinValue);
             oContacto.Usuario_Modificacion = Usuario_ModificacionTextEdit.EditValue?.ToString() ?? "";
             oContacto.Fecha_Modificacion = Convert.ToDateTime(Fecha_ModificacionDateEdit.EditValue ?? DateTime.MinValue);
-            
+
             HpResergerNube.CRM_ContactoRepository objContacto = new HpResergerNube.CRM_ContactoRepository();
 
             if (_idcontacto == "")
@@ -244,6 +244,38 @@ namespace SISGEM.CRM
                     XtraMessageBox.Show("Hubo un error al intentar actualizar el contacto. Por favor, inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_idcontacto))
+            {
+                DialogResult result = XtraMessageBox.Show("¿Seguro desea eliminar el contacto de forma permanente?", "Confirmación de Eliminación", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    HpResergerNube.CRM_ContactoRepository contactoRepository = new HpResergerNube.CRM_ContactoRepository();
+                    if (contactoRepository.DeleteContacto(_idcontacto, HPReserger.frmLogin.CodigoUsuario.ToString(), DateTime.Now))
+                    {
+                        XtraMessageBox.Show("El contacto se eliminó correctamente.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Hubo un error al intentar Eliminar el contacto. Por favor, inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Se canceló la operación de eliminación.", "Operación Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Debe seleccionar un contacto.", "Seleccione un Contacto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
 
         }
     }

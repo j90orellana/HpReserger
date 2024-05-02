@@ -936,6 +936,7 @@ namespace SISGEM
             CRM.frmSegumiento frm = new CRM.frmSegumiento();
             frm.CodigoUsuario = HPReserger.frmLogin.CodigoUsuario;
             frm.MdiParent = this;
+            frm.Text = "Seguimientos Hoy";
 
             frm.Show();
         }
@@ -972,6 +973,26 @@ namespace SISGEM
         {
             CRM.frmCotizadorCRM frm = new CRM.frmCotizadorCRM();
             frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void navSeguimientosMañana_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            CRM.frmSegumiento frm = new CRM.frmSegumiento();
+            frm.CodigoUsuario = HPReserger.frmLogin.CodigoUsuario;
+            frm.MdiParent = this;
+            frm.Text = "Seguimientos Mañana";
+            frm.dias = 1;
+            frm.Show();
+        }
+
+        private void navPasadomañana_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            CRM.frmSegumiento frm = new CRM.frmSegumiento();
+            frm.CodigoUsuario = HPReserger.frmLogin.CodigoUsuario;
+            frm.MdiParent = this;
+            frm.Text = "Seguimientos pasado Mañana";
+            frm.dias = 2;
             frm.Show();
         }
     }

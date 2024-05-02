@@ -116,7 +116,22 @@ namespace HPResergerCapaDatos
 
             return connection;
         }
+        public static string StringObtenerConexion()
+        {
+            string connection = "";
 
+            try
+            {
+                connection = $"data source={DATASOURCE}; initial catalog={BASEDEDATOS}; Persist Security Info=True; user id={USERID}; password={USERPASS}";
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción aquí
+                MessageBox.Show("Error al establecer la conexión: " + ex.Message, "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return connection;
+        }
         private DateTime CalculoDeFechaLicencia(string code, string key)
         {
             DateTime FechaResul = DateTime.Now;

@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using HpResergerNube;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -218,12 +220,14 @@ namespace SISGEM.CRM
                 ObservacionesTextEdit.EditValue = oProyecto.Observaciones;
                 ID_Tipo_SeguimientoTextEdit.EditValue = oProyecto.ID_Tipo_Seguimiento;
                 ID_UsuarioTextEdit.EditValue = oProyecto.ID_Usuario;
-                ID_ContactoTextEdit.EditValue = oProyecto.ID_Contacto;
                 ArchivoTextEdit.EditValue = oProyecto.Archivo;
                 FotosTextEdit.EditValue = oProyecto.Fotos;
                 ImagenPictureBox.Image = ByteArrayToImage(oProyecto.Imagen);
                 Foto = oProyecto.Imagen;
                 ItemForID_cliente.EditValue = oProyecto.idcliente;
+                ID_ContactoTextEdit.EditValue = oProyecto.ID_Contacto;
+
+                ListarArchivos();
 
             }
         }
@@ -513,6 +517,144 @@ namespace SISGEM.CRM
 
         private void ID_ContactoTextEdit_EditValueChanged(object sender, EventArgs e)
         {
+
+        }
+        string remoteFileName = "tucson.pdf";
+        //string localFilePath = "";
+        string directoryName = HPReserger.frmLogin.Basedatos;
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            if (_idProyecto != "")
+            {
+                Cursor = Cursors.WaitCursor;
+                var ftpcliente1 = new FtpClient();
+                ftpcliente1.CreateDirectory(directoryName);
+
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Todos los archivos|*.*"; // Permitir todos los tipos de archivos
+                openFileDialog.Title = "Selecciona un archivo para subir";
+                var ftpClient = new FtpClient();
+                if (openFileDialog.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(openFileDialog.FileName))
+                {
+                    string localFilePath = openFileDialog.FileName;
+                    remoteFileName = directoryName + "/" + Convert.ToInt32(_idProyecto) + "." + openFileDialog.SafeFileName;
+
+                    ftpClient.UploadFile(localFilePath, remoteFileName);
+
+                    HpResergerNube.CRM_Documentos oDocumentos = new CRM_Documentos();
+                    oDocumentos.Insert(Convert.ToInt32(_idProyecto), this.Text, remoteFileName, openFileDialog.SafeFileName, DateTime.Now);
+
+                    XtraMessageBox.Show("El archivo se ha subido correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    XtraMessageBox.Show("No se seleccionó ningún archivo o la operación fue cancelada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Primero debe guardar el proyecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            ListarArchivos();
+        }
+
+        private void ListarArchivos()
+        {
+            txtRuta.EditValue = HPReserger.frmLogin.RutaDescarga;
+            if (_idProyecto != "")
+            {
+                HpResergerNube.CRM_Documentos odocumentos = new CRM_Documentos();
+                DataTable Tdata = odocumentos.ListByFkIdAndVentana(Convert.ToInt32(_idProyecto), this.Text);
+                gridControl1.DataSource = Tdata;
+            }
+        }
+        string Nombre_Archivo = "";
+        string Nombre_Completo_ftp = "";
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Nombre_Completo_ftp))
+            {
+                XtraMessageBox.Show("El nombre del archivo remoto está vacío. Por favor, seleccione un archivo antes de continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtRuta.EditValue?.ToString()))
+            {
+                XtraMessageBox.Show("Debe seleccionar la carpeta de descarga.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string selectedFolderPath = txtRuta.EditValue.ToString();
+
+            var ftpClient = new FtpClient();
+            try
+            {
+                ftpClient.DownloadFile(Nombre_Completo_ftp, Path.Combine(selectedFolderPath, Nombre_Archivo));
+                XtraMessageBox.Show("Archivo descargado exitosamente en la carpeta seleccionada.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Ocurrió un error al descargar el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void btnfolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                txtRuta.EditValue = folderBrowserDialog.SelectedPath;
+                HPReserger.frmLogin.RutaDescarga = txtRuta.EditValue.ToString();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                XtraMessageBox.Show("Operación cancelada por el usuario.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void gridView16_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridView16_Click(object sender, EventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view != null && view.FocusedRowHandle >= 0 && view.FocusedColumn != null)
+            {
+                object xNombre_Archivox = view.GetRowCellValue(view.FocusedRowHandle, xNombre_Archivo.FieldName);
+                object xNombre_Completo_ftpx = view.GetRowCellValue(view.FocusedRowHandle, xNombre_Completo_ftp.FieldName);
+
+                Nombre_Archivo = xNombre_Archivox.ToString();
+                Nombre_Completo_ftp = xNombre_Completo_ftpx.ToString();
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_idProyecto))
+            {
+                DialogResult result = XtraMessageBox.Show("¿Seguro desea eliminar el proyecto de forma permanente?", "Confirmación de Eliminación", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    HpResergerNube.CRM_ProyectoRepository oproyect = new CRM_ProyectoRepository();
+                    oproyect.DeleteProyecto(Convert.ToInt32(_idProyecto));
+                    XtraMessageBox.Show("El proyecto se eliminó correctamente. Se cerrará la ventana de proyecto.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Se canceló la operación de eliminación.", "Operación Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Debe seleccionar un proyecto.", "Seleccione un proyecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
     }

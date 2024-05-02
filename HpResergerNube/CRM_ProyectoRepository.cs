@@ -96,6 +96,50 @@ namespace HpResergerNube
             return dataTable;
         }
 
+        public object FilterProyectosByDateRange(DateTime startDate, DateTime endDate, string cliente, string usuario, string estado)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(this.connectionString))
+                {
+                    connection.Open();
+                    using (NpgsqlCommand selectCommand = new NpgsqlCommand(@"SELECT PRO.*, PRI.*, USU.""Nombre"" || ' ' || USU.""Apellido1"" || ' ' || USU.""Apellido2"" AS ""Nombre_Usuario"", 
+                CASE WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social"" ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", '')) END AS ""Nombre_Cliente"" 
+                	, (SELECT COUNT(1) FROM public.""CRM_Seguimiento"" SEG WHERE SEG.""ID_Proyecto"" = PRO.""ID_Proyecto"") AS ""Seguimientos""
+                    , (SELECT COUNT(1) FROM public.""CRM_Documentos"" DOC WHERE DOC.""fk_id"" = PRO.""ID_Proyecto"") AS ""Documentos""
+                ,    EST.""Detalle_Estado"" AS ""Estado"" 
+
+                FROM public.""CRM_Proyecto"" PRO
+                LEFT JOIN public.""CRM_Prioridad"" PRI ON PRO.""ID_Prioridad"" = PRI.""ID_Prioridad""
+                LEFT JOIN public.""CRM_Cliente"" CLI ON PRO.""ID_Cliente"" = CLI.""ID_Cliente""
+                LEFT JOIN public.""CRM_Usuario"" USU ON PRO.""ID_Usuario"" = USU.""ID_Usuario""
+                LEFT JOIN public.""CRM_Estado"" EST ON PRO.""ID_Estado"" = EST.""ID_Estado"" 
+                WHERE PRO.""Fecha_Creacion"" BETWEEN @DATE1 AND @DATE2
+                AND ('0' = @USER OR PRO.""ID_Usuario"" = @USER)
+                AND ('0' = @CLIENTE OR PRO.""ID_Cliente"" = @CLIENTE)
+                AND ('0' = @ESTADO OR PRO.""ID_Estado"" = @ESTADO)  
+                ORDER BY PRO.""Fecha_Creacion"" DESC;", connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@DATE1", startDate);
+                        selectCommand.Parameters.AddWithValue("@DATE2", endDate);
+                        selectCommand.Parameters.AddWithValue("@CLIENTE", cliente);
+                        selectCommand.Parameters.AddWithValue("@USER", usuario);
+                        selectCommand.Parameters.AddWithValue("@ESTADO", estado);
+
+                        using (NpgsqlDataAdapter npgsqlDataAdapter = new NpgsqlDataAdapter(selectCommand))
+                        {
+                            npgsqlDataAdapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al filtrar proyectos: " + ex.Message);
+            }
+            return dataTable;
+        }
 
 
         public bool UpdateProyecto(Proyecto proyecto)
@@ -208,7 +252,7 @@ namespace HpResergerNube
             using (NpgsqlConnection connection = new NpgsqlConnection(this.connectionString))
             {
                 connection.Open();
-                using (NpgsqlCommand selectCommand = new NpgsqlCommand("SELECT * FROM public.\"CRM_Proyecto\"", connection))
+                using (NpgsqlCommand selectCommand = new NpgsqlCommand("SELECT *,\"ID_Proyecto\" || ' - ' || \"Nombre_Proyecto\" AS \"NombreCompleto\" FROM public.\"CRM_Proyecto\"", connection))
                 {
                     using (NpgsqlDataAdapter npgsqlDataAdapter = new NpgsqlDataAdapter(selectCommand))
                         npgsqlDataAdapter.Fill(dataTable);

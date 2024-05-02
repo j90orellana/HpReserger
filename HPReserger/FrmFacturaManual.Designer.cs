@@ -203,6 +203,11 @@
             this.btnbuscar = new DevExpress.XtraEditors.SimpleButton();
             this.btncleanfind = new DevExpress.XtraEditors.SimpleButton();
             this.btnFacturaPagada = new DevExpress.XtraEditors.SimpleButton();
+            this.cboClasifBssYSss = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.label22 = new System.Windows.Forms.Label();
+            this.xNumero = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.yDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -212,6 +217,8 @@
             this.PanelFactura.SuspendLayout();
             this.PanelNotaCredito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumIGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboClasifBssYSss.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // Openfd
@@ -285,7 +292,7 @@
             this.frmimagen.Name = "frmimagen";
             this.frmimagen.Nombre = "Factura Manual";
             this.frmimagen.Padre = null;
-            this.frmimagen.Size = new System.Drawing.Size(206, 218);
+            this.frmimagen.Size = new System.Drawing.Size(206, 243);
             this.frmimagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.frmimagen.TabIndex = 236;
             this.frmimagen.DragDrop += new System.Windows.Forms.DragEventHandler(this.frmimagen_DragDrop);
@@ -412,7 +419,7 @@
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtgconten.EnableHeadersVisualStyles = false;
             this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.Dtgconten.Location = new System.Drawing.Point(15, 230);
+            this.Dtgconten.Location = new System.Drawing.Point(15, 258);
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -421,7 +428,7 @@
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
-            this.Dtgconten.Size = new System.Drawing.Size(1057, 200);
+            this.Dtgconten.Size = new System.Drawing.Size(1057, 172);
             this.Dtgconten.TabIndex = 231;
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.Dtgconten.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.Dtgconten_CellFormatting);
@@ -439,6 +446,7 @@
             this.xIdComprobante.HeaderText = "IdComprobante";
             this.xIdComprobante.Name = "xIdComprobante";
             this.xIdComprobante.Visible = false;
+            this.xIdComprobante.Width = 111;
             // 
             // xNroComprobante
             // 
@@ -447,6 +455,7 @@
             this.xNroComprobante.HeaderText = "NroComprobante";
             this.xNroComprobante.Name = "xNroComprobante";
             this.xNroComprobante.Visible = false;
+            this.xNroComprobante.Width = 120;
             // 
             // xProveedor
             // 
@@ -455,6 +464,7 @@
             this.xProveedor.HeaderText = "Proveedor";
             this.xProveedor.Name = "xProveedor";
             this.xProveedor.Visible = false;
+            this.xProveedor.Width = 82;
             // 
             // xDebeHaber
             // 
@@ -852,7 +862,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(12, 214);
+            this.label11.Location = new System.Drawing.Point(13, 243);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(115, 13);
             this.label11.TabIndex = 215;
@@ -1472,6 +1482,7 @@
             this.yFechaVencimiento.Name = "yFechaVencimiento";
             this.yFechaVencimiento.ReadOnly = true;
             this.yFechaVencimiento.Visible = false;
+            this.yFechaVencimiento.Width = 69;
             // 
             // yfechacontable
             // 
@@ -2284,11 +2295,64 @@
             this.btnFacturaPagada.ToolTip = "Esta acción confirmará el pago de la factura.";
             this.btnFacturaPagada.Click += new System.EventHandler(this.btnFacturaPagada_Click);
             // 
+            // cboClasifBssYSss
+            // 
+            this.cboClasifBssYSss.Enabled = false;
+            this.cboClasifBssYSss.Location = new System.Drawing.Point(270, 231);
+            this.cboClasifBssYSss.Name = "cboClasifBssYSss";
+            this.cboClasifBssYSss.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboClasifBssYSss.Properties.NullText = "";
+            this.cboClasifBssYSss.Properties.View = this.searchLookUpEdit1View;
+            this.cboClasifBssYSss.Size = new System.Drawing.Size(497, 20);
+            this.cboClasifBssYSss.TabIndex = 332;
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.xNumero,
+            this.yDescripcion});
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(172, 234);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(100, 13);
+            this.label22.TabIndex = 333;
+            this.label22.Text = "Clasif de Bss y Sss:";
+            // 
+            // xNumero
+            // 
+            this.xNumero.Caption = "Número";
+            this.xNumero.FieldName = "Numero";
+            this.xNumero.MaxWidth = 20;
+            this.xNumero.Name = "xNumero";
+            this.xNumero.Visible = true;
+            this.xNumero.VisibleIndex = 0;
+            this.xNumero.Width = 20;
+            // 
+            // yDescripcion
+            // 
+            this.yDescripcion.Caption = "Descripción";
+            this.yDescripcion.FieldName = "Descripcion";
+            this.yDescripcion.Name = "yDescripcion";
+            this.yDescripcion.Visible = true;
+            this.yDescripcion.VisibleIndex = 1;
+            // 
             // FrmFacturaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.cboClasifBssYSss);
             this.Controls.Add(this.btnFacturaPagada);
             this.Controls.Add(this.btncleanfind);
             this.Controls.Add(this.btnbuscar);
@@ -2383,6 +2447,8 @@
             this.PanelNotaCredito.ResumeLayout(false);
             this.PanelNotaCredito.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumIGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboClasifBssYSss.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2547,5 +2613,10 @@
         private DevExpress.XtraEditors.SimpleButton btnbuscar;
         private DevExpress.XtraEditors.SimpleButton btncleanfind;
         private DevExpress.XtraEditors.SimpleButton btnFacturaPagada;
+        private DevExpress.XtraEditors.SearchLookUpEdit cboClasifBssYSss;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private System.Windows.Forms.Label label22;
+        private DevExpress.XtraGrid.Columns.GridColumn xNumero;
+        private DevExpress.XtraGrid.Columns.GridColumn yDescripcion;
     }
 }

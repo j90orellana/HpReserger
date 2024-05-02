@@ -150,6 +150,14 @@ namespace HPReserger
 
             NumIGV.Enabled = false;
             chkIGV.Enabled = a;
+
+            cboClasifBssYSss.Enabled = !a;
+
+            if (_EmpresaNecesitaTabla30Bienes)
+            {
+                cboClasifBssYSss.Enabled = a;
+            }
+            else cboClasifBssYSss.Enabled = false;
         }
         DataTable TDebeHaber;
         DataTable TGrava;
@@ -169,6 +177,17 @@ namespace HPReserger
             TGrava.Rows.Add(2, "GNG");
             TGrava.Rows.Add(3, "ONG");
             TGrava.Rows.Add(4, "NGR");
+
+
+            HPResergerCapaLogica.Contable.ClaseContable oClase30 = new HPResergerCapaLogica.Contable.ClaseContable();
+            cboClasifBssYSss.Properties.DataSource = oClase30.GetAllWithDefaultAsDataTable30Sunat();
+            cboClasifBssYSss.Properties.DisplayMember = "Descripcion";
+            cboClasifBssYSss.Properties.ValueMember = "Numero";
+
+            xNumero.MaxWidth = 50;
+            xNumero.MinWidth = 50;
+
+
         }
         public void CargarEmpresa()
         {
@@ -448,6 +467,7 @@ namespace HPReserger
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _EmpresaNecesitaTabla30Bienes = false;
             if (cboempresa.Items.Count > 0)
             {
                 if (cboempresa.SelectedValue != null)
@@ -468,6 +488,23 @@ namespace HPReserger
                     //    ultimoasiento();
                     //    txtcodigo.Text = (codigo).ToString();
                     //}
+
+                    HPResergerCapaLogica.Contable.ClaseContable oclase = new HPResergerCapaLogica.Contable.ClaseContable();
+                    DataTable Tdata = oclase.GetEmpresaById((int)cboempresa.SelectedValue);
+                    if (Tdata.Rows.Count > 0)
+                    {
+                        if (Tdata.Rows[0]["IngresosMayores"].ToString() == "0")
+                        {
+                            _EmpresaNecesitaTabla30Bienes = false;
+                        }
+
+                        else
+                        {
+                            _EmpresaNecesitaTabla30Bienes = true;
+
+                        }
+                    }
+
                 }
             }
             else msgError("No hay Empresas");
@@ -840,6 +877,10 @@ namespace HPReserger
                     }
                     DatosCompensacion = cbotipoidcompensa.SelectedValue.ToString() + "-" + txtnumdocompensa.Text;
                 }
+
+
+
+
                 //// SI TIENE DETALLE LA FACTURA
                 if (Dtgconten.RowCount > 0)
                 {
@@ -880,6 +921,16 @@ namespace HPReserger
             ////INSERTAR ASIENTO DE CABECERA Y DETALLE 
             ////PARTE DE LOS ASIENTOS DONDE SE VALIDARA LA ELIMINACION, CREACION Y ACTUALIZACION -DETALLE
             ///semantiene la misma empresa
+            ///
+
+
+            if (_EmpresaNecesitaTabla30Bienes)
+            {
+                HPResergerCapaLogica.Contable.ClaseContable oclase = new HPResergerCapaLogica.Contable.ClaseContable();
+                oclase.UpdateOrInsertRelacion(_idFac, (int)cboClasifBssYSss.EditValue);
+            }
+
+
             if (Estado == 2)
             {
                 if (OldCuo != null)
@@ -1207,6 +1258,14 @@ namespace HPReserger
             dtgBusqueda.Enabled = !a;
             txtbuscaempresa.ReadOnly = txtbusnrodoc.ReadOnly = txtbusproveedor.ReadOnly = a;
             btncleanfind.Enabled = btnnuevo.Enabled = btnmodificar.Enabled = !a;
+            cboClasifBssYSss.Enabled = !a;
+
+            if (_EmpresaNecesitaTabla30Bienes)
+            {
+                cboClasifBssYSss.Enabled = a;
+            }
+            else cboClasifBssYSss.Enabled = false;
+
         }
         int _IndicadorFila, _IndicadorColumna;
         Boolean compensada = false;
@@ -1430,7 +1489,29 @@ namespace HPReserger
                 }
                 else
                     chkIGV.Checked = false;
+
+
+
+                //BUSCAMOS LOS DATOS DE ADICIONALES
+                if (_EmpresaNecesitaTabla30Bienes)
+                {
+                    HPResergerCapaLogica.Contable.ClaseContable oclase = new HPResergerCapaLogica.Contable.ClaseContable();
+                    DataTable TRelacion = oclase.GetRelacionByFacturaId(_idFac);
+                    if (TRelacion.Rows.Count > 0)
+                    {
+                        cboClasifBssYSss.EditValue = TRelacion.Rows[0]["Numero_TablaSunat"];
+                    }
+                    else
+                    {
+                        cboClasifBssYSss.EditValue = 0;
+                    }
+                }
+                else
+                {
+                    cboClasifBssYSss.EditValue = 0;
+                }
             }
+
         }
         public void MostrarFormato82(Boolean v)
         {
@@ -2221,6 +2302,11 @@ namespace HPReserger
                                 item[11] = item[11].ToString() == "" ? 0.00 : item[11];
                                 item[13] = item[13].ToString() == "" ? 0.00 : item[13];
 
+
+                                //T.Bien       
+                                item[27] = int.TryParse(item[27].ToString(), out int result) ? result : 0;
+
+
                                 //validamos que no tenga documento repetidos el excel
                                 string item7 = item[7].ToString().Trim();
                                 string item4 = item[4].ToString().Trim();
@@ -2265,7 +2351,17 @@ namespace HPReserger
                                     if (item[15].ToString() == "")
                                         cadenaResultado += $"En la Fila:{i + 1}, debe Registrar Cuenta Contable de Renta 4ta";
                                 }
-                                //validamos la fecha emision
+
+                                //T.Bien       
+                                if (_EmpresaNecesitaTabla30Bienes)
+                                    if (decimal.Parse(item[27].ToString()) != 0)
+                                    {
+                                        if (item[27].ToString() == "")
+                                            cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el Tipo de Bien según la tabla 30 de Sunat";
+                                    }
+
+
+                                //validamos la fecha emisiokn
                                 if (DateTime.Parse(item[5].ToString()) > DateTime.Now)
                                 {
                                     cadenaResultado += $"En la Fila:{i + 1}, la fecha de emision no puede ser mayor a hoy\n";
@@ -2585,6 +2681,7 @@ namespace HPReserger
         }
         DataTable TdatosExcel;
         private int _Tipo;
+        private Boolean _EmpresaNecesitaTabla30Bienes;
 
         private Boolean CargarDatosDelExcel(string Ruta)
         {

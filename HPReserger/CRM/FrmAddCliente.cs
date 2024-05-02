@@ -1,13 +1,18 @@
 ﻿using DevExpress.XtraEditors;
+using HpResergerUserControls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static HPReserger.frmClientes;
 
 namespace SISGEM.CRM
 {
@@ -128,6 +133,11 @@ namespace SISGEM.CRM
                 MessageBox.Show("Por favor, ingrese el Tipo de Persona.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            if (string.IsNullOrEmpty(ID_Numero_DocTextEdit.EditValue?.ToString()))
+            {
+                MessageBox.Show("Por favor, ingrese el Número de Documento.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             //if (string.IsNullOrEmpty(ID_RelacionTextEdit.EditValue?.ToString()))
             //{
             //    MessageBox.Show("Por favor, ingrese la Relación.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -148,11 +158,11 @@ namespace SISGEM.CRM
                 MessageBox.Show("Por favor, ingrese el Código Postal.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (string.IsNullOrEmpty(Telefono1TextEdit.EditValue?.ToString()))
-            {
-                MessageBox.Show("Por favor, ingrese el Teléfono.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+            //if (string.IsNullOrEmpty(Telefono1TextEdit.EditValue?.ToString()))
+            //{
+            //    MessageBox.Show("Por favor, ingrese el Teléfono.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return false;
+            //}
             if (string.IsNullOrEmpty(ID_ContactoTextEdit.EditValue?.ToString()))
             {
                 MessageBox.Show("Por favor, ingrese el ID del Contacto.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -315,5 +325,152 @@ namespace SISGEM.CRM
             RecargarContacto();
             ID_ContactoTextEdit.EditValue = data;
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_idCliente))
+            {
+                DialogResult result = XtraMessageBox.Show("¿Seguro desea eliminar el cliente de forma permanente?", "Confirmación de Eliminación", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    HpResergerNube.CRM_ClienteRepository clienteoRepository = new HpResergerNube.CRM_ClienteRepository();
+                    if (clienteoRepository.DeleteCliente(_idCliente))
+                    {
+                        XtraMessageBox.Show("El cliente se eliminó correctamente.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Hubo un error al intentar Eliminar el cliente. Por favor, inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Se canceló la operación de eliminación.", "Operación Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Debe seleccionar un cliente.", "Seleccione un cliente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+        public async Task<string> GetHTTPs(string ruc)
+        {
+            string url = Configuraciones.ApiRuc + ruc;// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            oRequest.Headers.Clear();
+            oRequest.Headers.Add(HttpRequestHeader.Authorization, "Bearer $apis-token-1887.qDw9MbrxloHL-d0c8MlKO44xEQ3S-STB");
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        public async void BuscarProveedorAPi(string ruc)
+        {
+            try
+            {
+                string respuesta = await GetHTTPs(ruc);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<HPReserger.frmproveedor.Proveedor > LstData = JsonConvert.DeserializeObject<List<HPReserger.frmproveedor.Proveedor>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                    Razon_SocialTextEdit.EditValue = LstData[0].nombre;
+                    DireccionTextEdit.EditValue = LstData[0].direccion + " - " + LstData[0].distrito + " - " + LstData[0].departamento;
+                    ID_Codigo_postalTextEdit.EditValue = LstData[0].ubigeo;
+                    ID_Tipo_personaTextEdit.EditValue = "J";
+
+                    //txtnombrerazonsocial.Text = txtnombrecomercial.Text = LstData[0].nombre;
+                    //cbodocumento.SelectedValue = LstData[0].tipoDocumento - 1;
+                    //txtdireccionoficina.Text = LstData[0].direccion + " - " + LstData[0].distrito + " - " + LstData[0].departamento;
+                    //if (txtdireccionoficina.Text == "- -  - ") txtdireccionoficina.Text = "-";
+                    //if (LstData[0].condicion == "HABIDO") cbocondicion.SelectedIndex = 0; else cbocondicion.SelectedIndex = 1;
+                    //if (LstData[0].estado == "ACTIVO") cboestado.SelectedValue = 1;
+                    //if (LstData[0].estado == "SUSPENSION TEMPORAL") cboestado.SelectedValue = 2;
+                    //if (LstData[0].estado == "BAJA DEFINITIVA") cboestado.SelectedValue = 3;
+                    //if (LstData[0].estado == "BAJA DE OFICIO") cboestado.SelectedValue = 3;
+                }
+            }
+            catch (Exception e) { }
+        }
+        public async Task<string> GetHTTPss(string dni)
+        {
+            string url = Configuraciones.ApiReniec + dni;// + Configuraciones.Token;// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        private async void BuscarReniecAPiToken(string dni)
+        {
+            try
+            {
+                string respuesta = await GetHTTPss(dni);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<DNI> LstData = JsonConvert.DeserializeObject<List<DNI>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                    DNI data = LstData[0];
+                    Apellido1TextEdit.Text = data.apellidoPaterno;
+                    Apellido2TextEdit.Text = data.apellidoMaterno;
+                    NombreTextEdit.Text = data.nombres;
+                    ID_Tipo_personaTextEdit.EditValue = "N";
+                    //cbopersona.SelectedIndex = 1;
+                    //cbotipoid.SelectedValue = 1;
+
+                }
+            }
+            catch (Exception) { }
+        }
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(ID_Numero_DocTextEdit.EditValue?.ToString()))
+            {
+                if (!string.IsNullOrWhiteSpace(ID_TIpo_DocumentoTextEdit.EditValue?.ToString()))
+                {
+                    int largo = ID_Numero_DocTextEdit.EditValue.ToString().Trim().Length;
+                    string doc = ID_Numero_DocTextEdit.EditValue.ToString().Trim();
+                    string valor = ID_TIpo_DocumentoTextEdit.EditValue.ToString();
+
+                    if (valor == "1" && largo == 8)
+                    {
+                        // DNI
+                        // Aquí se pueden agregar acciones específicas para el DNI si es necesario
+                        BuscarReniecAPiToken(doc);
+                    }
+                    else if (valor == "6" && largo == 11)
+                    {
+                        // RUC
+                        // Aquí se pueden agregar acciones específicas para el RUC si es necesario
+                        BuscarProveedorAPi(doc);
+                    }
+                    else
+                    {
+                        // La cantidad de caracteres del tipo de documento es incorrecta
+                        XtraMessageBox.Show("La cantidad de caracteres del tipo de documento es incorrecta. " +
+                                             "Por favor, asegúrate de que el tipo de documento seleccionado sea válido " +
+                                             "y que el número de documento tenga la longitud correcta.",
+                                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    // El tipo de documento no puede estar vacío
+                    XtraMessageBox.Show("Por favor, selecciona un tipo de documento.",
+                                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                // El número de documento no puede estar vacío
+                XtraMessageBox.Show("Por favor, ingresa un número de documento.",
+                                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

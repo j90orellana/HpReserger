@@ -144,6 +144,7 @@
             this.xSerieDocRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNumDocRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDetraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTBien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
@@ -211,7 +212,8 @@
             this.xTipoDocRef,
             this.xSerieDocRef,
             this.xNumDocRef,
-            this.xDetraccion});
+            this.xDetraccion,
+            this.xTBien});
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1392,6 +1394,13 @@
             this.xDetraccion.Name = "xDetraccion";
             this.xDetraccion.Visible = false;
             // 
+            // xTBien
+            // 
+            this.xTBien.DataPropertyName = "Numero_TablaSunat";
+            this.xTBien.HeaderText = "T.Bien";
+            this.xTBien.Name = "xTBien";
+            this.xTBien.Visible = false;
+            // 
             // frmRegistroCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1524,5 +1533,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xSerieDocRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNumDocRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDetraccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTBien;
     }
 }

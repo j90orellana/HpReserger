@@ -67,6 +67,26 @@ namespace SISGEM.CRM
             ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("ID_Numero_Doc", "Número Documento");
             ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("nombrecompleto", "Nombre Completo");
             ID_Tipo_personaTextEdit.Properties.View.BestFitColumns();
+
+            //estado
+            HpResergerNube.CRM_EstadoRepository objestado = new HpResergerNube.CRM_EstadoRepository();
+
+            DataTable testado = objestado.GetAllEstados();
+            // Crear una nueva fila con el ID_Cliente 0 y nombre "Todos"
+            DataRow newRowe = testado.NewRow();
+            newRowe["ID_Estado"] = 0;
+            newRowe["Detalle_Estado"] = "Todos";
+            testado.Rows.InsertAt(newRowe, 0);
+
+            ID_EstadoTextEdit.Properties.DataSource = testado;
+            ID_EstadoTextEdit.Properties.DisplayMember = "Detalle_Estado";
+            ID_EstadoTextEdit.Properties.ValueMember = "ID_Estado";
+            ID_EstadoTextEdit.EditValue = testado.Rows.Count > 0 ? testado.Rows[0]["ID_Estado"] : null;
+
+            ID_EstadoTextEdit.Properties.View.Columns.Clear();
+            ID_EstadoTextEdit.Properties.View.Columns.AddVisible("ID_Estado", "Codigo");
+            ID_EstadoTextEdit.Properties.View.Columns.AddVisible("Detalle_Estado", "Estado");
+            ID_EstadoTextEdit.Properties.View.BestFitColumns();
         }
 
         private void CargarDatos()
@@ -77,8 +97,9 @@ namespace SISGEM.CRM
             DateTime fechaFin = ((DateTime?)dtpFechaa.EditValue)?.Date ?? DateTime.Now.Date;
             string tipoPersona = ID_Tipo_personaTextEdit.EditValue?.ToString() ?? "0";
             string usuarioCreacion = Usuario_CreacionTextEdit.EditValue?.ToString() ?? "0";
+            string estadoproyecto = ID_EstadoTextEdit.EditValue?.ToString() ?? "0";
 
-            gridControl3.DataSource = objproyecto.FilterProyectosByDateRange(fechaInicio, fechaFin, tipoPersona, usuarioCreacion);
+            gridControl3.DataSource = objproyecto.FilterProyectosByDateRange(fechaInicio, fechaFin, tipoPersona, usuarioCreacion, estadoproyecto);
 
         }
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -170,11 +191,18 @@ namespace SISGEM.CRM
         {
             if (idProyecto != "")
             {
-                CRM.frmSegumiento frmsegui = new frmSegumiento();
+                // Crear una instancia del formulario de seguimiento
+                CRM.frmSegumiento formularioSeguimiento = new frmSegumiento();
 
-                frmsegui._idproyecto = idProyecto;
-                frmsegui.MdiParent = this.MdiParent;
-                frmsegui.Show();
+                // Configurar propiedades del formulario de seguimiento
+                formularioSeguimiento._idproyecto = idProyecto;
+                formularioSeguimiento.MdiParent = this.MdiParent;
+                formularioSeguimiento.Text = "Viendo Todos los Seguimientos de los Proyectos";
+                formularioSeguimiento.VerTodoslosRegistros = 1;
+
+                // Mostrar el formulario de seguimiento
+                formularioSeguimiento.Show();
+
             }
             else
             {

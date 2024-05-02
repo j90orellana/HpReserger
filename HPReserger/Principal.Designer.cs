@@ -187,6 +187,7 @@
             this.btnperfilesCRM = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
             this.btnProveedorCRM = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem32 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -241,6 +242,8 @@
             this.navBarControl2 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navSeguimientosMañana = new DevExpress.XtraNavBar.NavBarItem();
+            this.navPasadomañana = new DevExpress.XtraNavBar.NavBarItem();
             this.ribbonPageGroup22 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup23 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem92 = new DevExpress.XtraBars.BarButtonItem();
@@ -248,7 +251,6 @@
             this.ribbonPageGroup38 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup28 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup40 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem32 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -1837,6 +1839,16 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.btnProveedorCRM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProveedorCRM_ItemClick);
             // 
+            // barButtonItem32
+            // 
+            this.barButtonItem32.Caption = "Cotizador";
+            this.barButtonItem32.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem32.Glyph")));
+            this.barButtonItem32.Id = 157;
+            this.barButtonItem32.Name = "barButtonItem32";
+            this.barButtonItem32.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItem32.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem32_ItemClick);
+            // 
             // ribbonMiniToolbar1
             // 
             this.ribbonMiniToolbar1.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2314,29 +2326,45 @@
             this.navBarControl2.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroup3});
             this.navBarControl2.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.navBarItem1});
+            this.navBarItem1,
+            this.navSeguimientosMañana,
+            this.navPasadomañana});
             this.navBarControl2.Location = new System.Drawing.Point(0, 147);
             this.navBarControl2.Name = "navBarControl2";
-            this.navBarControl2.OptionsNavPane.ExpandedWidth = 140;
+            this.navBarControl2.OptionsNavPane.ExpandedWidth = 185;
             this.navBarControl2.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
             this.navBarControl2.ShowIcons = DevExpress.Utils.DefaultBoolean.True;
-            this.navBarControl2.Size = new System.Drawing.Size(140, 365);
+            this.navBarControl2.Size = new System.Drawing.Size(185, 365);
             this.navBarControl2.TabIndex = 6;
             this.navBarControl2.Text = "navBarControl2";
             // 
             // navBarGroup3
             // 
-            this.navBarGroup3.Caption = "Tareas Hoy";
+            this.navBarGroup3.Caption = "Tareas de Seguimiento";
             this.navBarGroup3.Expanded = true;
             this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navSeguimientosMañana),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navPasadomañana)});
             this.navBarGroup3.Name = "navBarGroup3";
             // 
             // navBarItem1
             // 
-            this.navBarItem1.Caption = "Seguimientos de Hoy";
+            this.navBarItem1.Caption = "Hoy";
             this.navBarItem1.Name = "navBarItem1";
             this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
+            // 
+            // navSeguimientosMañana
+            // 
+            this.navSeguimientosMañana.Caption = "Mañana";
+            this.navSeguimientosMañana.Name = "navSeguimientosMañana";
+            this.navSeguimientosMañana.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navSeguimientosMañana_LinkClicked);
+            // 
+            // navPasadomañana
+            // 
+            this.navPasadomañana.Caption = "Pasado mañana";
+            this.navPasadomañana.Name = "navPasadomañana";
+            this.navPasadomañana.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navPasadomañana_LinkClicked);
             // 
             // ribbonPageGroup22
             // 
@@ -2394,16 +2422,6 @@
             this.ribbonPageGroup40.Name = "ribbonPageGroup40";
             this.ribbonPageGroup40.ShowCaptionButton = false;
             this.ribbonPageGroup40.Text = "Proveedor";
-            // 
-            // barButtonItem32
-            // 
-            this.barButtonItem32.Caption = "Cotizador";
-            this.barButtonItem32.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem32.Glyph")));
-            this.barButtonItem32.Id = 157;
-            this.barButtonItem32.Name = "barButtonItem32";
-            this.barButtonItem32.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.barButtonItem32.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem32_ItemClick);
             // 
             // Principal
             // 
@@ -2660,5 +2678,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup28;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup40;
         private DevExpress.XtraBars.BarButtonItem barButtonItem32;
+        private DevExpress.XtraNavBar.NavBarItem navSeguimientosMañana;
+        private DevExpress.XtraNavBar.NavBarItem navPasadomañana;
     }
 }

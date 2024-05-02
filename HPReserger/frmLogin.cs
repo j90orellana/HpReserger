@@ -34,6 +34,7 @@ namespace HPReserger
         public static string PartidaPresupuesto;
         public static frmMenu frmM;
         public static string Basedatos = "sige";
+        public static string RutaDescarga = "";
         public int Intentos { get; set; }
         public frmLogin()
         {
@@ -184,7 +185,7 @@ namespace HPReserger
 
             if (BaseRemota)
             {
-                Basedatos = "PostgreSQL";
+                Basedatos = txtEmpresaData.Text;
                 if (txtUsuario.Text.ToUpper() == "SISADMIN" && txtContraseña.Text.ToUpper() == "CORE")
                 {
                     this.Hide();

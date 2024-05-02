@@ -85,6 +85,7 @@
             this.ItemForID_Contacto1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -150,9 +151,10 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnGuardar,
-            this.btnCerrar});
+            this.btnCerrar,
+            this.barButtonItem1});
             this.barManager1.MainMenu = this.bar5;
-            this.barManager1.MaxItemId = 2;
+            this.barManager1.MaxItemId = 3;
             // 
             // bar5
             // 
@@ -162,6 +164,7 @@
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGuardar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCerrar, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar5.OptionsBar.AllowQuickCustomization = false;
             this.bar5.OptionsBar.DrawBorder = false;
@@ -192,7 +195,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(687, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(687, 26);
             // 
             // barDockControlBottom
             // 
@@ -205,24 +208,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 380);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 378);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(687, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 380);
+            this.barDockControlRight.Location = new System.Drawing.Point(687, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 378);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.dataLayoutControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 26);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(687, 380);
+            this.layoutControl1.Size = new System.Drawing.Size(687, 378);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -250,7 +253,7 @@
             this.dataLayoutControl1.Location = new System.Drawing.Point(12, 12);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(663, 356);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(663, 354);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -366,7 +369,7 @@
             // Usuario_CreacionTextEdit
             // 
             this.Usuario_CreacionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contactoBindingSource, "Usuario_Creacion", true));
-            this.Usuario_CreacionTextEdit.Location = new System.Drawing.Point(115, 228);
+            this.Usuario_CreacionTextEdit.Location = new System.Drawing.Point(115, 226);
             this.Usuario_CreacionTextEdit.MenuManager = this.barManager1;
             this.Usuario_CreacionTextEdit.Name = "Usuario_CreacionTextEdit";
             this.Usuario_CreacionTextEdit.Size = new System.Drawing.Size(536, 20);
@@ -377,7 +380,7 @@
             // 
             this.Fecha_CreacionDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contactoBindingSource, "Fecha_Creacion", true));
             this.Fecha_CreacionDateEdit.EditValue = null;
-            this.Fecha_CreacionDateEdit.Location = new System.Drawing.Point(115, 276);
+            this.Fecha_CreacionDateEdit.Location = new System.Drawing.Point(115, 274);
             this.Fecha_CreacionDateEdit.MenuManager = this.barManager1;
             this.Fecha_CreacionDateEdit.Name = "Fecha_CreacionDateEdit";
             this.Fecha_CreacionDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -391,7 +394,7 @@
             // Usuario_ModificacionTextEdit
             // 
             this.Usuario_ModificacionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contactoBindingSource, "Usuario_Modificacion", true));
-            this.Usuario_ModificacionTextEdit.Location = new System.Drawing.Point(115, 300);
+            this.Usuario_ModificacionTextEdit.Location = new System.Drawing.Point(115, 298);
             this.Usuario_ModificacionTextEdit.MenuManager = this.barManager1;
             this.Usuario_ModificacionTextEdit.Name = "Usuario_ModificacionTextEdit";
             this.Usuario_ModificacionTextEdit.Size = new System.Drawing.Size(536, 20);
@@ -402,7 +405,7 @@
             // 
             this.Fecha_ModificacionDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contactoBindingSource, "Fecha_Modificacion", true));
             this.Fecha_ModificacionDateEdit.EditValue = null;
-            this.Fecha_ModificacionDateEdit.Location = new System.Drawing.Point(115, 324);
+            this.Fecha_ModificacionDateEdit.Location = new System.Drawing.Point(115, 322);
             this.Fecha_ModificacionDateEdit.MenuManager = this.barManager1;
             this.Fecha_ModificacionDateEdit.Name = "Fecha_ModificacionDateEdit";
             this.Fecha_ModificacionDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -484,13 +487,13 @@
             this.OtrosTextEdit.Location = new System.Drawing.Point(115, 204);
             this.OtrosTextEdit.MenuManager = this.barManager1;
             this.OtrosTextEdit.Name = "OtrosTextEdit";
-            this.OtrosTextEdit.Size = new System.Drawing.Size(536, 20);
+            this.OtrosTextEdit.Size = new System.Drawing.Size(536, 18);
             this.OtrosTextEdit.StyleController = this.dataLayoutControl1;
             this.OtrosTextEdit.TabIndex = 14;
             // 
             // ItemForID_cliente
             // 
-            this.ItemForID_cliente.Location = new System.Drawing.Point(115, 252);
+            this.ItemForID_cliente.Location = new System.Drawing.Point(115, 250);
             this.ItemForID_cliente.Name = "ItemForID_cliente";
             this.ItemForID_cliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -515,7 +518,7 @@
             this.layoutControlGroup2});
             this.Root.Location = new System.Drawing.Point(0, 0);
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(663, 356);
+            this.Root.Size = new System.Drawing.Size(663, 354);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -543,7 +546,7 @@
             this.ItemForID_Contacto1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(643, 336);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(643, 334);
             // 
             // ItemForID_Contacto
             // 
@@ -603,7 +606,7 @@
             // ItemForUsuario_Creacion
             // 
             this.ItemForUsuario_Creacion.Control = this.Usuario_CreacionTextEdit;
-            this.ItemForUsuario_Creacion.Location = new System.Drawing.Point(0, 216);
+            this.ItemForUsuario_Creacion.Location = new System.Drawing.Point(0, 214);
             this.ItemForUsuario_Creacion.Name = "ItemForUsuario_Creacion";
             this.ItemForUsuario_Creacion.Size = new System.Drawing.Size(643, 24);
             this.ItemForUsuario_Creacion.Text = "Usuario_Creacion";
@@ -613,7 +616,7 @@
             // ItemForFecha_Creacion
             // 
             this.ItemForFecha_Creacion.Control = this.Fecha_CreacionDateEdit;
-            this.ItemForFecha_Creacion.Location = new System.Drawing.Point(0, 264);
+            this.ItemForFecha_Creacion.Location = new System.Drawing.Point(0, 262);
             this.ItemForFecha_Creacion.Name = "ItemForFecha_Creacion";
             this.ItemForFecha_Creacion.Size = new System.Drawing.Size(643, 24);
             this.ItemForFecha_Creacion.Text = "Fecha_Creacion";
@@ -623,7 +626,7 @@
             // ItemForUsuario_Modificacion
             // 
             this.ItemForUsuario_Modificacion.Control = this.Usuario_ModificacionTextEdit;
-            this.ItemForUsuario_Modificacion.Location = new System.Drawing.Point(0, 288);
+            this.ItemForUsuario_Modificacion.Location = new System.Drawing.Point(0, 286);
             this.ItemForUsuario_Modificacion.Name = "ItemForUsuario_Modificacion";
             this.ItemForUsuario_Modificacion.Size = new System.Drawing.Size(643, 24);
             this.ItemForUsuario_Modificacion.Text = "Usuario_Modificacion";
@@ -660,7 +663,7 @@
             // ItemForFecha_Modificacion
             // 
             this.ItemForFecha_Modificacion.Control = this.Fecha_ModificacionDateEdit;
-            this.ItemForFecha_Modificacion.Location = new System.Drawing.Point(0, 312);
+            this.ItemForFecha_Modificacion.Location = new System.Drawing.Point(0, 310);
             this.ItemForFecha_Modificacion.Name = "ItemForFecha_Modificacion";
             this.ItemForFecha_Modificacion.Size = new System.Drawing.Size(643, 24);
             this.ItemForFecha_Modificacion.Text = "Fecha_Modificacion";
@@ -672,7 +675,7 @@
             this.ItemForOtros.Control = this.OtrosTextEdit;
             this.ItemForOtros.Location = new System.Drawing.Point(0, 192);
             this.ItemForOtros.Name = "ItemForOtros";
-            this.ItemForOtros.Size = new System.Drawing.Size(643, 24);
+            this.ItemForOtros.Size = new System.Drawing.Size(643, 22);
             this.ItemForOtros.Text = "Otros";
             this.ItemForOtros.TextSize = new System.Drawing.Size(100, 13);
             // 
@@ -707,7 +710,7 @@
             // 
             this.ItemForID_Contacto1.Control = this.ItemForID_cliente;
             this.ItemForID_Contacto1.CustomizationFormText = "Contacto";
-            this.ItemForID_Contacto1.Location = new System.Drawing.Point(0, 240);
+            this.ItemForID_Contacto1.Location = new System.Drawing.Point(0, 238);
             this.ItemForID_Contacto1.Name = "ItemForID_Contacto1";
             this.ItemForID_Contacto1.Size = new System.Drawing.Size(643, 24);
             this.ItemForID_Contacto1.Text = "Cliente";
@@ -721,7 +724,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(687, 380);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(687, 378);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -729,9 +732,18 @@
             this.layoutControlItem1.Control = this.dataLayoutControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(667, 360);
+            this.layoutControlItem1.Size = new System.Drawing.Size(667, 358);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Eliminar";
+            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
+            this.barButtonItem1.Id = 2;
+            this.barButtonItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.LargeGlyph")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // frmAddContacto
             // 
@@ -862,5 +874,6 @@
         private DevExpress.XtraEditors.SearchLookUpEdit ItemForID_cliente;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraLayout.LayoutControlItem ItemForID_Contacto1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

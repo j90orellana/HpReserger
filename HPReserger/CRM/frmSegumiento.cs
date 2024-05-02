@@ -20,6 +20,8 @@ namespace SISGEM.CRM
     public partial class frmSegumiento : Form
     {
         internal string _idproyecto;
+        internal int dias;
+        internal int VerTodoslosRegistros;
 
         public int CodigoUsuario { get; internal set; }
         public DateTime FechaHoy { get; internal set; }
@@ -48,8 +50,8 @@ namespace SISGEM.CRM
             if (CodigoUsuario != 0)
             {
                 Usuario_CreacionTextEdit.EditValue = CodigoUsuario;
-                dtpFechade.EditValue = DateTime.Now;
-                dtpFechaa.EditValue = DateTime.Now;
+                dtpFechade.EditValue = DateTime.Now.AddDays(dias);
+                dtpFechaa.EditValue = DateTime.Now.AddDays(dias);
             }
             CargarDatos();
         }
@@ -78,7 +80,12 @@ namespace SISGEM.CRM
         }
         private void CargarDatos()
         {
-            this.gridControl2.DataSource = (object)new CRM_SeguimientoRepository().FilterSeguimientosByDateRange(((DateTime)this.dtpFechade.EditValue).Date, ((DateTime)this.dtpFechaa.EditValue).Date, this.Usuario_CreacionTextEdit.EditValue != null ? this.Usuario_CreacionTextEdit.EditValue.ToString() : "0", this.ID_ProyectoTextEdit.EditValue != null ? this.ID_ProyectoTextEdit.EditValue.ToString() : "0");
+            if (VerTodoslosRegistros == 1)
+            {
+                this.gridControl2.DataSource = (object)new CRM_SeguimientoRepository().FilterSeguimientosByDateRange(((DateTime)this.dtpFechade.EditValue).Date, ((DateTime)this.dtpFechaa.EditValue).Date, this.Usuario_CreacionTextEdit.EditValue != null ? this.Usuario_CreacionTextEdit.EditValue.ToString() : "0", this.ID_ProyectoTextEdit.EditValue != null ? this.ID_ProyectoTextEdit.EditValue.ToString() : "0");
+            }
+            else
+                this.gridControl2.DataSource = (object)new CRM_SeguimientoRepository().FilterSeguimientosByDateRangeUnicos(((DateTime)this.dtpFechade.EditValue).Date, ((DateTime)this.dtpFechaa.EditValue).Date, this.Usuario_CreacionTextEdit.EditValue != null ? this.Usuario_CreacionTextEdit.EditValue.ToString() : "0", this.ID_ProyectoTextEdit.EditValue != null ? this.ID_ProyectoTextEdit.EditValue.ToString() : "0");
         }
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

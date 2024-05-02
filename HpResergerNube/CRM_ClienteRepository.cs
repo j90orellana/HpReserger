@@ -145,6 +145,16 @@ namespace HpResergerNube
                                     ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
                                     END AS nombrecompleto FROM public.""CRM_Cliente"" as CLI";
 
+                        cmd.CommandText = @"SELECT '0' AS ID_Cliente, 'TODOS' AS Nombre_Completo 
+                                    UNION ALL 
+                                    SELECT ""ID_Cliente"", CASE
+                                        WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social""
+                                        ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
+                                        END AS nombrecompleto 
+                                    FROM public.""CRM_Cliente"" as CLI
+                                    WHERE ""Usuario_Eliminacion"" IS NULL OR ""Usuario_Eliminacion"" = ''";
+
+
                         using (NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(cmd))
                         {
                             dataAdapter.Fill(dataTable);
@@ -176,6 +186,11 @@ namespace HpResergerNube
                         cmd.Connection = connection;
                         cmd.CommandText = "SELECT * FROM public.\"CRM_Cliente\"";
 
+                        cmd.CommandText = @"SELECT * 
+                                    FROM public.""CRM_Cliente""
+                                    WHERE ""Usuario_Eliminacion"" IS NULL OR ""Usuario_Eliminacion"" = ''";
+
+
                         using (NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(cmd))
                         {
                             dataAdapter.Fill(dataTable);
@@ -191,9 +206,10 @@ namespace HpResergerNube
 
             return dataTable;
         }
-
-        public void DeleteCliente(string clienteID)
+        public bool DeleteCliente(string idCliente, string usuarioEliminacion, DateTime fechaEliminacion)
         {
+            bool success = false;
+
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
                 connection.Open();
@@ -201,13 +217,48 @@ namespace HpResergerNube
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = connection;
-                    cmd.CommandText = "DELETE FROM public.\"CRM_Cliente\" WHERE \"ID_Cliente\" = @ID_Cliente";
+                    cmd.CommandText = "UPDATE public.\"CRM_Cliente\" SET \"Usuario_Eliminacion\" = @Usuario_Eliminacion, \"Fecha_Eliminacion\" = @Fecha_Eliminacion WHERE \"ID_Cliente\" = @ID_Cliente";
+                    cmd.Parameters.AddWithValue("@ID_Cliente", idCliente);
+                    cmd.Parameters.AddWithValue("@Usuario_Eliminacion", usuarioEliminacion);
+                    cmd.Parameters.AddWithValue("@Fecha_Eliminacion", fechaEliminacion);
+                    int rowsAffected = cmd.ExecuteNonQuery();
 
-                    // Set parameter
-                    cmd.Parameters.AddWithValue("@ID_Cliente", clienteID);
-
-                    cmd.ExecuteNonQuery();
+                    // Verificar si se ha actualizado al menos una fila
+                    success = rowsAffected > 0;
                 }
+            }
+
+            return success; // Retornar true si fue exitoso, false en caso contrario
+        }
+
+        public bool DeleteCliente(string clienteID)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = connection;
+                        cmd.CommandText = "DELETE FROM public.\"CRM_Cliente\" WHERE \"ID_Cliente\" = @ID_Cliente";
+
+                        // Set parameter
+                        cmd.Parameters.AddWithValue("@ID_Cliente", clienteID);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        // Si al menos una fila fue afectada, considera que la eliminación fue exitosa
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier excepción aquí, si es necesario
+                Console.WriteLine("Error: " + ex.Message); // Puedes imprimir o registrar el mensaje de error en algún otro lugar
+                return false;
             }
         }
 
@@ -259,6 +310,22 @@ namespace HpResergerNube
                         WHERE ""Fecha_Creacion"" >= @StartDate
                             AND ""Fecha_Creacion"" <= @EndDate
                         ORDER BY COALESCE(""Fecha_Modificacion"", ""Fecha_Creacion"") DESC;";
+
+                query = @"SELECT  CLI.*, 
+                                CASE
+                                    WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social""
+                                    ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
+                                END AS nombrecompleto,
+                                TIP.""Detalle_Tipo_Persona"" ,DOC.""Detalle_Tipo_documento""
+                        FROM public.""CRM_Cliente"" CLI
+                        LEFT JOIN public.""CRM_Tipo_Persona"" TIP ON TIP.""ID_Tipo_persona"" = CLI.""ID_Tipo_persona""
+                        LEFT JOIN public.""CRM_Tipo_documento"" DOC ON DOC.""ID_Tipo_documento"" = CLI.""ID_TIpo_Documento""
+                        WHERE ""Fecha_Creacion"" >= @StartDate
+                            AND ""Fecha_Creacion"" <= @EndDate
+                            AND (CLI.""Usuario_Eliminacion"" IS NULL OR CLI.""Usuario_Eliminacion"" = '')
+                        ORDER BY COALESCE(""Fecha_Modificacion"", ""Fecha_Creacion"") DESC;";
+
+
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@StartDate", startDate);
@@ -294,6 +361,22 @@ namespace HpResergerNube
                           AND CLI.""Fecha_Creacion"" <= @EndDate 
                           AND PRO.""ID_Proyecto""= @idproyecto
                     ORDER BY COALESCE(CLI.""Fecha_Modificacion"", CLI.""Fecha_Creacion"") DESC";
+
+                    query = @"SELECT CLI.*, PRO.""ID_Proyecto"",
+                            CASE 
+                                WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social""
+                                ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
+                            END AS nombrecompleto
+                            FROM public.""CRM_Cliente"" CLI
+                            LEFT JOIN public.""CRM_Proyecto"" PRO ON PRO.""ID_Cliente"" = CLI.""ID_Cliente""
+                            WHERE CLI.""Fecha_Creacion"" >= @StartDate 
+                            AND CLI.""Fecha_Creacion"" <= @EndDate 
+                            AND PRO.""ID_Proyecto"" = @idproyecto
+                            AND (CLI.""Usuario_Eliminacion"" IS NULL OR CLI.""Usuario_Eliminacion"" = '')
+                            ORDER BY COALESCE(CLI.""Fecha_Modificacion"", CLI.""Fecha_Creacion"") DESC";
+
+
+
                     using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@StartDate", startDate);

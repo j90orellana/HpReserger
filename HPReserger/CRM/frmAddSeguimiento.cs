@@ -164,10 +164,11 @@ namespace SISGEM.CRM
             DataTable tproyecto = oproyecto.GetAllProyectos();
             ID_ProyectoTextEdit.Properties.DataSource = tproyecto;
             ID_ProyectoTextEdit.Properties.ValueMember = "ID_Proyecto";
-            ID_ProyectoTextEdit.Properties.DisplayMember = "Nombre_Proyecto";
+            ID_ProyectoTextEdit.Properties.DisplayMember = "NombreCompleto";
             ID_ProyectoTextEdit.EditValue = tproyecto.Rows.Count > 0 ? tproyecto.Rows[0]["ID_Proyecto"] : null;
 
             ID_ProyectoTextEdit.Properties.View.Columns.Clear();
+            ID_ProyectoTextEdit.Properties.View.Columns.AddVisible("ID_Proyecto", "ID");
             ID_ProyectoTextEdit.Properties.View.Columns.AddVisible("Nombre_Proyecto", "Nombre Proyecto");
             ID_ProyectoTextEdit.Properties.View.Columns.AddVisible("Requerimiento", "Requerimiento");
             ID_ProyectoTextEdit.Properties.View.BestFitColumns();
@@ -208,7 +209,7 @@ namespace SISGEM.CRM
             //ID_ContactoTextEdit.Properties.View.Columns.AddVisible("NombreCompleto", "Nombre Completo");
             //ID_ContactoTextEdit.Properties.View.BestFitColumns();
 
-           
+
 
             RecargarCliente();
 
@@ -219,7 +220,7 @@ namespace SISGEM.CRM
         {
             //cliejte
             HpResergerNube.CRM_ClienteRepository ocliente = new HpResergerNube.CRM_ClienteRepository();
-            DataTable Tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue, DateTime.MaxValue,ID_ProyectoTextEdit.EditValue.ToString());
+            DataTable Tcliente = ocliente.FilterClientesByDateRange(DateTime.MinValue, DateTime.MaxValue, ID_ProyectoTextEdit.EditValue.ToString());
             cbocliente.Properties.DataSource = Tcliente;
             cbocliente.Properties.ValueMember = "ID_Cliente";
             cbocliente.Properties.DisplayMember = "nombrecompleto";
@@ -237,7 +238,8 @@ namespace SISGEM.CRM
             HpResergerNube.CRM_ContactoRepository ocontacto = new HpResergerNube.CRM_ContactoRepository();
 
             // Obtener los contactos del cliente
-            DataTable contactos = ocontacto.GetContactosPorCliente(cbocliente.EditValue.ToString());
+            DataTable contactos = ocontacto.GetContactosPorCliente(cbocliente.EditValue?.ToString() ?? "");
+            
 
             // Verificar si se encontraron contactos
             if (contactos.Rows.Count > 0)
@@ -246,7 +248,32 @@ namespace SISGEM.CRM
                 ID_ContactoTextEdit.Properties.DataSource = contactos;
                 ID_ContactoTextEdit.Properties.ValueMember = "ID_Contacto";
                 ID_ContactoTextEdit.Properties.DisplayMember = "NombreCompleto";
-                ID_ContactoTextEdit.EditValue = contactos.Rows[0]["ID_Contacto"];
+
+                HpResergerNube.CRM_ProyectoRepository oproyect = new HpResergerNube.CRM_ProyectoRepository();
+
+                if (!string.IsNullOrEmpty(ID_ProyectoTextEdit.EditValue?.ToString()))
+                {
+                    int idProyecto = Convert.ToInt32(ID_ProyectoTextEdit.EditValue.ToString());
+                    HpResergerNube.Proyecto proyecto = oproyect.ReadProyecto(idProyecto);
+
+                    if (proyecto != null)
+                    {
+                        ID_ContactoTextEdit.EditValue = proyecto.ID_Contacto;
+                    }
+                    else
+                    {
+                        if (contactos.Rows.Count > 0)
+                        {
+                            ID_ContactoTextEdit.EditValue = contactos.Rows[0]["ID_Contacto"];
+                        }
+                        else
+                        {
+                            ID_ContactoTextEdit.Properties.DataSource = null;
+                            ID_ContactoTextEdit.EditValue = null;
+                        }
+                    }
+                }
+
 
                 // Configurar las columnas visibles en la vista del control de edición de ID_Contacto
                 ID_ContactoTextEdit.Properties.View.Columns.Clear();

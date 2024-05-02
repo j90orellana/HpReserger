@@ -37,6 +37,64 @@ namespace HpResergerNube
             }
             return dataTable;
         }
+        public DataTable FilterSeguimientosByDateRangeUnicos(DateTime startDate, DateTime endDate, string userID, string projectID)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(this.connectionString))
+                {
+                    connection.Open();
+                    using (NpgsqlCommand selectCommand = new NpgsqlCommand(
+                        "SELECT " +
+                        "    s.\"ID_Seguimiento\", " +
+                        "    s.\"ID_Proyecto\", " +
+                        "    s.\"Nombre_Proyecto\", " +
+                        "    s.\"ID_Cliente\", " +
+                        "    s.\"ID_Tipo_Documento\", " +
+                        "    s.\"ID_Numero_Doc\", " +
+                        "    s.\"Nombre\", " +
+                        "    s.\"Apellido1\", " +
+                        "    s.\"Apellido2\", " +
+                        "    s.\"Razon_Social\", " +
+                        "    s.\"ID_Tipo_Seguimiento\", " +
+                        "    s.\"Detalle_Tipo_Seguimiento\", " +
+                        "    s.\"ID_Contacto\", " +
+                        "    s.\"Contacto\", " +
+                        "    s.\"Fecha_Seguimiento\", " +
+                        "    s.\"Fecha_Prox_Seguimiento\", " +
+                        "    s.\"Descripcion\", " +
+                        "    s.\"Usuario\", " +
+                        "    s.\"Fecha_Registro\", " +
+                        "    (u.\"Nombre\" || ' ' || u.\"Apellido1\" || ' ' || u.\"Apellido2\") AS \"Nombre_Usuario\"" +
+                        "FROM " +
+                        "    public.\"CRM_Seguimiento\" AS s " +
+                        "LEFT JOIN " +
+                        "    public.\"CRM_Usuario\" AS u ON s.\"Usuario\" = u.\"ID_Usuario\" " +
+                        "WHERE " +
+                        "    (@UserID = '0' OR u.\"ID_Usuario\" = @UserID) AND " +
+                        "    (@ProjectID = 0 OR s.\"ID_Proyecto\" = @ProjectID) AND " +
+                        "    s.\"Fecha_Prox_Seguimiento\" >= @StartDate AND " +
+                        "    s.\"Fecha_Prox_Seguimiento\" <= @EndDate AND " +
+                        "    s.\"ID_Seguimiento\" IN (SELECT MAX(\"ID_Seguimiento\") FROM public.\"CRM_Seguimiento\" GROUP BY \"ID_Proyecto\")", connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@StartDate", startDate);
+                        selectCommand.Parameters.AddWithValue("@EndDate", endDate.AddDays(0));
+                        selectCommand.Parameters.AddWithValue("@UserID", userID);
+                        selectCommand.Parameters.AddWithValue("@ProjectID", Convert.ToInt32(projectID));
+                        using (NpgsqlDataAdapter npgsqlDataAdapter = new NpgsqlDataAdapter(selectCommand))
+                            npgsqlDataAdapter.Fill(dataTable);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+            }
+            return dataTable;
+        }
+
+
 
         public DataTable FilterSeguimientosByDateRange(DateTime startDate, DateTime endDate, string userID, string projectID)
         {
@@ -57,13 +115,15 @@ namespace HpResergerNube
                         "WHERE " +
                         "    (@UserID = '0' OR u.\"ID_Usuario\" = @UserID) AND " +
                         "    (@ProjectID = 0 OR s.\"ID_Proyecto\" = @ProjectID) AND " +
-                        "    s.\"Fecha_Seguimiento\" >= @StartDate AND " +
-                        "    s.\"Fecha_Seguimiento\" <= @EndDate " +
+                        "    s.\"Fecha_Prox_Seguimiento\" >= @StartDate AND " +
+                        "    s.\"Fecha_Prox_Seguimiento\" <= @EndDate " +
+                         " --  AND s.\"Fecha_Seguimiento\" >= CURRENT_DATE  " +
+
                         "ORDER BY " +
                         "    s.\"Fecha_Seguimiento\" DESC", connection))
                     {
                         selectCommand.Parameters.AddWithValue("@StartDate", (object)startDate);
-                        selectCommand.Parameters.AddWithValue("@EndDate", (object)endDate.AddDays(1));
+                        selectCommand.Parameters.AddWithValue("@EndDate", (object)endDate.AddDays(0));
                         selectCommand.Parameters.AddWithValue("@UserID", (object)userID);
                         selectCommand.Parameters.AddWithValue("@ProjectID", (object)Convert.ToInt32(projectID));
                         using (NpgsqlDataAdapter npgsqlDataAdapter = new NpgsqlDataAdapter(selectCommand))
@@ -80,6 +140,7 @@ namespace HpResergerNube
 
 
 
+
         public int InsertSeguimiento(CRM_Seguimiento seguimiento)
         {
             int num = -1;
@@ -91,7 +152,7 @@ namespace HpResergerNube
                     using (NpgsqlCommand npgsqlCommand = new NpgsqlCommand())
                     {
                         npgsqlCommand.Connection = npgsqlConnection;
-                        npgsqlCommand.CommandText = "INSERT INTO public.\"CRM_Seguimiento\" (\"ID_Seguimiento\", \"ID_Proyecto\", \"Nombre_Proyecto\", \"ID_Cliente\", \"ID_Tipo_Documento\", \"ID_Numero_Doc\", \"Nombre\", \"Apellido1\", \"Apellido2\", \"Razon_Social\", \"ID_Tipo_Seguimiento\", \"Detalle_Tipo_Seguimiento\", \"ID_Contacto\", \"Contacto\", \"Fecha_Seguimiento\", \"Fecha_Prox_Seguimiento\", \"Descripcion\", \"Usuario\", \"Fecha_Registro\") VALUES ((SELECT COALESCE(MAX(\"ID_Seguimiento\"), 0) + 1 FROM public.\"CRM_Seguimiento\"), @ID_Proyecto, @Nombre_Proyecto, @ID_Cliente, @ID_Tipo_Documento, @ID_Numero_Doc, @Nombre, @Apellido1, @Apellido2, @Razon_Social, @ID_Tipo_Seguimiento, @Detalle_Tipo_Seguimiento, @ID_Contacto, @Contacto, @Fecha_Seguimiento, @Fecha_Prox_Seguimiento, @Descripcion, @Usuario, @Fecha_Registro) RETURNING \"ID_Seguimiento\"";
+                        npgsqlCommand.CommandText = "INSERT INTO public.\"CRM_Seguimiento\" ( \"ID_Proyecto\", \"Nombre_Proyecto\", \"ID_Cliente\", \"ID_Tipo_Documento\", \"ID_Numero_Doc\", \"Nombre\", \"Apellido1\", \"Apellido2\", \"Razon_Social\", \"ID_Tipo_Seguimiento\", \"Detalle_Tipo_Seguimiento\", \"ID_Contacto\", \"Contacto\", \"Fecha_Seguimiento\", \"Fecha_Prox_Seguimiento\", \"Descripcion\", \"Usuario\", \"Fecha_Registro\") VALUES ( @ID_Proyecto, @Nombre_Proyecto, @ID_Cliente, @ID_Tipo_Documento, @ID_Numero_Doc, @Nombre, @Apellido1, @Apellido2, @Razon_Social, @ID_Tipo_Seguimiento, @Detalle_Tipo_Seguimiento, @ID_Contacto, @Contacto, @Fecha_Seguimiento, @Fecha_Prox_Seguimiento, @Descripcion, @Usuario, @Fecha_Registro) RETURNING \"ID_Seguimiento\"";
                         npgsqlCommand.Parameters.AddWithValue("@ID_Proyecto", (object)seguimiento.ID_Proyecto);
                         npgsqlCommand.Parameters.AddWithValue("@Nombre_Proyecto", (object)seguimiento.Nombre_Proyecto);
                         npgsqlCommand.Parameters.AddWithValue("@ID_Cliente", (object)seguimiento.ID_Cliente);

@@ -110,6 +110,17 @@ namespace HpResergerNube
 
                                                 WHERE C.""ID_Cliente"" = @ID_Cliente";
 
+                query = @"SELECT C.*, (C.""Nombre"" || ' ' || C.""Apellido1"" || ' ' || C.""Apellido2"") AS ""NombreCompleto""
+                        FROM public.""CRM_Contacto"" C
+                        LEFT JOIN public.""CRM_Cliente"" CLI ON CLI.""ID_Contacto"" = C.""ID_Contacto""
+                        WHERE CLI.""ID_Cliente"" = @ID_Cliente
+                        AND (C.""Usuario_Eliminacion"" IS NULL OR C.""Usuario_Eliminacion"" = '')
+                        UNION ALL
+                        SELECT C.*, (C.""Nombre"" || ' ' || C.""Apellido1"" || ' ' || C.""Apellido2"") AS ""NombreCompleto""
+                        FROM public.""CRM_Contacto"" C
+                        WHERE C.""ID_Cliente"" = @ID_Cliente
+                        AND(C.""Usuario_Eliminacion"" IS NULL OR C.""Usuario_Eliminacion"" = '') ";
+
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@ID_Cliente", idCliente);
@@ -163,6 +174,30 @@ namespace HpResergerNube
 
             return success; // Retornar true si fue exitoso, false en caso contrario
         }
+        public bool DeleteContacto(string idContacto, string usuarioEliminacion, DateTime fechaEliminacion)
+        {
+            bool success = false;
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = connection;
+                    cmd.CommandText = "UPDATE public.\"CRM_Contacto\" SET \"Usuario_Eliminacion\" = @Usuario_Eliminacion, \"Fecha_Eliminacion\" = @Fecha_Eliminacion WHERE \"ID_Contacto\" = @ID_Contacto";
+                    cmd.Parameters.AddWithValue("@ID_Contacto", idContacto);
+                    cmd.Parameters.AddWithValue("@Usuario_Eliminacion", usuarioEliminacion);
+                    cmd.Parameters.AddWithValue("@Fecha_Eliminacion", fechaEliminacion);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    // Verificar si se ha actualizado al menos una fila
+                    success = rowsAffected > 0;
+                }
+            }
+
+            return success; // Retornar true si fue exitoso, false en caso contrario
+        }
 
 
         public void DeleteContacto(string idContacto)
@@ -194,6 +229,13 @@ namespace HpResergerNube
                               "WHERE \"Fecha_Creacion\" >= @StartDate AND \"Fecha_Creacion\" <= @EndDate " +
                               "ORDER BY COALESCE(\"Fecha_Modificacion\", \"Fecha_Creacion\") DESC";
 
+                query = @"SELECT ""ID_Contacto"", ""ID_Tratamiento"", ""Nombre"", ""Apellido1"", ""Apellido2"", ""Cargo"", ""Telefono1"", ""Telefono2"", ""email1"", ""email2"", ""Otros"", ""ID_Sexo"", ""ID_Usuario"", ""Usuario_Creacion"", ""Fecha_Creacion"", CONCAT(""Nombre"", ' ', ""Apellido1"", ' ', ""Apellido2"") AS ""NombreCompleto"" 
+                        FROM public.""CRM_Contacto"" 
+                        WHERE ""Fecha_Creacion"" >= @StartDate AND ""Fecha_Creacion"" <= @EndDate 
+                        AND (""Usuario_Eliminacion"" IS NULL OR ""Usuario_Eliminacion"" = '')
+                        ORDER BY COALESCE(""Fecha_Modificacion"", ""Fecha_Creacion"") DESC";
+
+
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@StartDate", startDate);
@@ -208,7 +250,7 @@ namespace HpResergerNube
 
             return dataTable;
         }
-        public DataTable FilterClientesByDateRange(DateTime startDate, DateTime endDate,string idCLiente)
+        public DataTable FilterClientesByDateRange(DateTime startDate, DateTime endDate, string idCLiente)
         {
             DataTable dataTable = new DataTable();
 
@@ -231,6 +273,22 @@ namespace HpResergerNube
                                WHERE CON.""Fecha_Creacion"" >= @StartDate AND CON.""Fecha_Creacion"" <= @EndDate
                                and (@idCLiente='0' or CLI.""ID_Cliente"" =@idCLiente or CON.""ID_Cliente""= @idCLiente) 
                               ORDER BY COALESCE(CON.""Fecha_Modificacion"",CON. ""Fecha_Creacion"") DESC";
+
+                query = @"SELECT CON.""ID_Contacto"", CON.""ID_Tratamiento"", CON.""Nombre"", CON.""Apellido1"", CON.""Apellido2"", CON.""Cargo"", 
+                        CON.""Telefono1"", CON.""Telefono2"", CON.""email1"", CON.""email2"", CON.""Otros"", CON.""ID_Sexo"", CON.""ID_Usuario"", 
+                        CON.""Usuario_Creacion"", CON.""Fecha_Creacion"", CONCAT(CON.""Nombre"", ' ', CON.""Apellido1"", ' ', CON.""Apellido2"") AS ""NombreCompleto"",
+                        CON.""ID_Cliente"", CASE
+                            WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social""
+                            ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", ''))
+                            END AS nombrecompletoCLIENTE
+                        FROM public.""CRM_Contacto"" CON
+                        LEFT JOIN public.""CRM_Cliente"" CLI ON (CON.""ID_Cliente"" = CLI.""ID_Cliente"" OR
+                                                                 CLI.""ID_Contacto"" = CON.""ID_Contacto"")
+                        WHERE CON.""Fecha_Creacion"" >= @StartDate AND CON.""Fecha_Creacion"" <= @EndDate
+                        AND (@idCliente = '0' OR CLI.""ID_Cliente"" = @idCliente OR CON.""ID_Cliente"" = @idCliente)
+                        AND (CON.""Usuario_Eliminacion"" IS NULL OR CON.""Usuario_Eliminacion"" = '')
+                        ORDER BY COALESCE(CON.""Fecha_Modificacion"", CON.""Fecha_Creacion"") DESC";
+
 
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                 {
@@ -299,6 +357,11 @@ namespace HpResergerNube
                 connection.Open();
 
                 string query = "SELECT *, (\"Nombre\" || ' ' || \"Apellido1\" || ' ' || \"Apellido2\") AS \"NombreCompleto\" FROM public.\"CRM_Contacto\"";
+
+                query = @"SELECT *, (""Nombre"" || ' ' || ""Apellido1"" || ' ' || ""Apellido2"") AS ""NombreCompleto""
+                        FROM public.""CRM_Contacto""
+                        WHERE ""Usuario_Eliminacion"" IS NULL OR ""Usuario_Eliminacion"" = ''";
+
 
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                 {
