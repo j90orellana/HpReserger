@@ -545,7 +545,7 @@ namespace HPReserger
                                         //
                                         campo[c++] = fila[xNumDocRef.DataPropertyName].ToString() == "" ? "" : fila[xNumDocRef.DataPropertyName].ToString().Trim();
                                         //Clasif de Bss y Sss	
-                                        campo[c++] = fila[xTBien.DataPropertyName].ToString();
+                                        campo[c++] = fila[xNumero_TablaSunat.DataPropertyName].ToString();
                                         //ID Proyecto Operadores
                                         campo[c++] = "";
                                         //PorcPart	

@@ -58,11 +58,13 @@
     <Compile Include="CRM_PerfilesRepository.cs" />
     <Compile Include="CRM_PrioridadRepository.cs" />
     <Compile Include="CRM_ProductoRepository.cs" />
+    <Compile Include="CRM_Producto_IMO.cs" />
     <Compile Include="CRM_ProveedorRepository.cs" />
     <Compile Include="CRM_ProyectoRepository.cs" />
     <Compile Include="CRM_Sedes.cs" />
     <Compile Include="CRM_SeguimientoRepository.cs" />
     <Compile Include="CRM_Servicio.cs" />
+    <Compile Include="CRM_Servicio_IMO.cs" />
     <Compile Include="CRM_Sexo.cs" />
     <Compile Include="CRM_Situacion.cs" />
     <Compile Include="CRM_TipoCliente.cs" />

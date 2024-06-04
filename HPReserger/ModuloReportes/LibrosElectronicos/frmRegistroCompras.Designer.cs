@@ -144,7 +144,7 @@
             this.xSerieDocRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNumDocRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDetraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTBien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNumero_TablaSunat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.PanelTxt.SuspendLayout();
             this.SuspendLayout();
@@ -213,7 +213,7 @@
             this.xSerieDocRef,
             this.xNumDocRef,
             this.xDetraccion,
-            this.xTBien});
+            this.xNumero_TablaSunat});
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1394,12 +1394,12 @@
             this.xDetraccion.Name = "xDetraccion";
             this.xDetraccion.Visible = false;
             // 
-            // xTBien
+            // xNumero_TablaSunat
             // 
-            this.xTBien.DataPropertyName = "Numero_TablaSunat";
-            this.xTBien.HeaderText = "T.Bien";
-            this.xTBien.Name = "xTBien";
-            this.xTBien.Visible = false;
+            this.xNumero_TablaSunat.DataPropertyName = "Numero_TablaSunat";
+            this.xNumero_TablaSunat.HeaderText = "T.Bien";
+            this.xNumero_TablaSunat.Name = "xNumero_TablaSunat";
+            this.xNumero_TablaSunat.Visible = false;
             // 
             // frmRegistroCompras
             // 
@@ -1533,6 +1533,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xSerieDocRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNumDocRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDetraccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTBien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNumero_TablaSunat;
     }
 }
