@@ -1,13 +1,18 @@
 ﻿using DevExpress.XtraEditors;
+using HpResergerUserControls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static HPReserger.frmClientes;
 
 namespace SISGEM.CRM
 {
@@ -30,6 +35,11 @@ namespace SISGEM.CRM
         {
             CargarCombos();
             HpResergerNube.CRM_Usuario objClase = new HpResergerNube.CRM_Usuario();
+
+            Fecha_CreacionDateEdit.EditValue = DateTime.Now;
+            ID_Tipo_DocumentoTextEdit.EditValue = 1;
+            Usuario_CreacionTextEdit.EditValue = HPReserger.frmLogin.CodigoUsuario;
+
             if (_idUsuario != "")
             {
                 oUsuario = objClase.ReadUsuario(_idUsuario);
@@ -170,7 +180,8 @@ namespace SISGEM.CRM
             oUsuario.ID_Tratamiento = ID_TratamientoTextEdit.EditValue?.ToString() ?? "";
             oUsuario.Otros = OtrosTextEdit.EditValue?.ToString() ?? "";
             oUsuario.Usuario_Creacion = Usuario_CreacionTextEdit.EditValue?.ToString() ?? "";
-            oUsuario.Fecha_Creacion = (DateTime)Fecha_CreacionDateEdit.EditValue;
+            oUsuario.Fecha_Creacion = Fecha_CreacionDateEdit.EditValue as DateTime? ?? DateTime.Now;
+
             oUsuario.Usuario_Modificacion = Usuario_ModificacionTextEdit.EditValue?.ToString() ?? "";
             oUsuario.Fecha_Modificacion = Fecha_ModificacionDateEdit.EditValue as DateTime? ?? DateTime.MinValue;
             oUsuario.Usuario_Eliminacion = Usuario_EliminacionTextEdit.EditValue?.ToString() ?? "";
@@ -225,6 +236,76 @@ namespace SISGEM.CRM
                 }
             }
 
+        }
+        private async void BuscarReniecAPiToken(string dni)
+        {
+            try
+            {
+                string respuesta = await GetHTTPss(dni);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<DNI> LstData = JsonConvert.DeserializeObject<List<DNI>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                    DNI data = LstData[0];
+                    Apellido1TextEdit.Text = data.apellidoPaterno;
+                    Apellido2TextEdit.Text = data.apellidoMaterno;
+                    NombreTextEdit.Text = data.nombres;
+                    //cbopersona.SelectedIndex = 1;
+                    //cbotipoid.SelectedValue = 1;
+
+                }
+            }
+            catch (Exception) { }
+        }
+        public async Task<string> GetHTTPss(string dni)
+        {
+            string url = Configuraciones.ApiReniec + dni;// + Configuraciones.Token;// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(ID_Numero_DocTextEdit.EditValue?.ToString()))
+            {
+                if (!string.IsNullOrWhiteSpace(ID_Tipo_DocumentoTextEdit.EditValue?.ToString()))
+                {
+                    int largo = ID_Numero_DocTextEdit.EditValue.ToString().Trim().Length;
+                    string doc = ID_Numero_DocTextEdit.EditValue.ToString().Trim();
+                    string valor = ID_Tipo_DocumentoTextEdit.EditValue.ToString();
+
+                    if (valor == "1" && largo == 8)
+                    {
+                        // DNI
+                        // Aquí se pueden agregar acciones específicas para el DNI si es necesario
+                        BuscarReniecAPiToken(doc);
+                    }
+                  
+                    else
+                    {
+                        // La cantidad de caracteres del tipo de documento es incorrecta
+                        XtraMessageBox.Show("La cantidad de caracteres del tipo de documento es incorrecta. " +
+                                             "Por favor, asegúrate de que el tipo de documento seleccionado sea válido " +
+                                             "y que el número de documento tenga la longitud correcta.",
+                                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    // El tipo de documento no puede estar vacío
+                    XtraMessageBox.Show("Por favor, selecciona un tipo de documento.",
+                                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                // El número de documento no puede estar vacío
+                XtraMessageBox.Show("Por favor, ingresa un número de documento.",
+                                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

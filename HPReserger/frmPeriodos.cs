@@ -199,7 +199,11 @@ namespace HPReserger
                         CapaLogica.Periodos(3, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
                         msgOK("Periodo Cerrado!");
                         CargarDatosFiltrado();
-                        dtgconten.CurrentCell = dtgconten[empresax.Name, x];
+                        try
+                        {
+                            dtgconten.CurrentCell = dtgconten[empresax.Name, x];
+                        }
+                        catch { }
                     }
                 }
         }

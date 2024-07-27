@@ -121,7 +121,7 @@ namespace HPReserger
 
 
 
-                var token = "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"; // Reemplaza con tu token de acceso personal
+                var token = "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"; // Reemplaza con tu token de acceso personal
 
 
                 //AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);

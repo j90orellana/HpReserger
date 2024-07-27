@@ -48,6 +48,7 @@
             this.gridView16 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xNombre_Completo_ftp = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xNombre_Archivo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xFecha = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -110,14 +111,14 @@
             this.ItemForObservaciones = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForUsuario_Creacion = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForID_Contacto1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForID_Contacto1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
@@ -177,7 +178,6 @@
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.xFecha = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -249,14 +249,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForObservaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForUsuario_Creacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -403,7 +403,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1194, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1194, 26);
             // 
             // barDockControlBottom
             // 
@@ -416,24 +416,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 492);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 490);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1194, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 492);
+            this.barDockControlRight.Location = new System.Drawing.Point(1194, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 490);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.dataLayoutControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 26);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1194, 492);
+            this.layoutControl1.Size = new System.Drawing.Size(1194, 490);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -474,7 +474,7 @@
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(361, 232, 697, 350);
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1170, 468);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1170, 466);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -504,7 +504,7 @@
             this.gridControl1.MainView = this.gridView16;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(423, 392);
+            this.gridControl1.Size = new System.Drawing.Size(423, 390);
             this.gridControl1.TabIndex = 30;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView16});
@@ -536,6 +536,17 @@
             this.xNombre_Archivo.OptionsColumn.AllowEdit = false;
             this.xNombre_Archivo.Visible = true;
             this.xNombre_Archivo.VisibleIndex = 0;
+            // 
+            // xFecha
+            // 
+            this.xFecha.Caption = "Fecha";
+            this.xFecha.FieldName = "Fecha";
+            this.xFecha.MaxWidth = 70;
+            this.xFecha.Name = "xFecha";
+            this.xFecha.OptionsColumn.AllowEdit = false;
+            this.xFecha.Visible = true;
+            this.xFecha.VisibleIndex = 1;
+            this.xFecha.Width = 70;
             // 
             // simpleButton5
             // 
@@ -735,7 +746,7 @@
             // FotosTextEdit
             // 
             this.FotosTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.proyectoBindingSource, "Fotos", true));
-            this.FotosTextEdit.Location = new System.Drawing.Point(117, 436);
+            this.FotosTextEdit.Location = new System.Drawing.Point(117, 434);
             this.FotosTextEdit.MenuManager = this.barManager1;
             this.FotosTextEdit.Name = "FotosTextEdit";
             this.FotosTextEdit.Size = new System.Drawing.Size(614, 20);
@@ -748,7 +759,7 @@
             this.ObservacionesTextEdit.Location = new System.Drawing.Point(117, 376);
             this.ObservacionesTextEdit.MenuManager = this.barManager1;
             this.ObservacionesTextEdit.Name = "ObservacionesTextEdit";
-            this.ObservacionesTextEdit.Size = new System.Drawing.Size(614, 56);
+            this.ObservacionesTextEdit.Size = new System.Drawing.Size(614, 54);
             this.ObservacionesTextEdit.StyleController = this.dataLayoutControl1;
             this.ObservacionesTextEdit.TabIndex = 19;
             // 
@@ -949,7 +960,7 @@
             this.layoutControlGroup2});
             this.Root.Location = new System.Drawing.Point(0, 0);
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1170, 468);
+            this.Root.Size = new System.Drawing.Size(1170, 466);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -990,7 +1001,7 @@
             this.layoutControlItem14});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1150, 448);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1150, 446);
             // 
             // ItemForID_Proyecto
             // 
@@ -1106,7 +1117,7 @@
             // ItemForFotos
             // 
             this.ItemForFotos.Control = this.FotosTextEdit;
-            this.ItemForFotos.Location = new System.Drawing.Point(0, 424);
+            this.ItemForFotos.Location = new System.Drawing.Point(0, 422);
             this.ItemForFotos.Name = "ItemForFotos";
             this.ItemForFotos.Size = new System.Drawing.Size(723, 24);
             this.ItemForFotos.Text = "Fotos";
@@ -1186,7 +1197,7 @@
             this.ItemForObservaciones.MaxSize = new System.Drawing.Size(723, 0);
             this.ItemForObservaciones.MinSize = new System.Drawing.Size(723, 20);
             this.ItemForObservaciones.Name = "ItemForObservaciones";
-            this.ItemForObservaciones.Size = new System.Drawing.Size(723, 60);
+            this.ItemForObservaciones.Size = new System.Drawing.Size(723, 58);
             this.ItemForObservaciones.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForObservaciones.Text = "Observaciones";
             this.ItemForObservaciones.TextSize = new System.Drawing.Size(102, 13);
@@ -1212,35 +1223,13 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // ItemForID_Contacto1
-            // 
-            this.ItemForID_Contacto1.Control = this.ItemForID_cliente;
-            this.ItemForID_Contacto1.CustomizationFormText = "Contacto";
-            this.ItemForID_Contacto1.Location = new System.Drawing.Point(0, 288);
-            this.ItemForID_Contacto1.Name = "ItemForID_Contacto1";
-            this.ItemForID_Contacto1.Size = new System.Drawing.Size(603, 26);
-            this.ItemForID_Contacto1.Text = "Cliente";
-            this.ItemForID_Contacto1.TextSize = new System.Drawing.Size(102, 13);
-            // 
-            // layoutControlItem14
-            // 
-            this.layoutControlItem14.Control = this.simpleButton3;
-            this.layoutControlItem14.Location = new System.Drawing.Point(603, 288);
-            this.layoutControlItem14.MaxSize = new System.Drawing.Size(120, 26);
-            this.layoutControlItem14.MinSize = new System.Drawing.Size(120, 26);
-            this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(120, 26);
-            this.layoutControlItem14.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem14.TextVisible = false;
-            // 
             // layoutControlItem30
             // 
             this.layoutControlItem30.Control = this.gridControl1;
             this.layoutControlItem30.Location = new System.Drawing.Point(723, 52);
             this.layoutControlItem30.MinSize = new System.Drawing.Size(104, 24);
             this.layoutControlItem30.Name = "layoutControlItem30";
-            this.layoutControlItem30.Size = new System.Drawing.Size(427, 396);
+            this.layoutControlItem30.Size = new System.Drawing.Size(427, 394);
             this.layoutControlItem30.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem30.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem30.TextVisible = false;
@@ -1298,6 +1287,28 @@
             this.layoutControlItem32.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem32.TextVisible = false;
             // 
+            // ItemForID_Contacto1
+            // 
+            this.ItemForID_Contacto1.Control = this.ItemForID_cliente;
+            this.ItemForID_Contacto1.CustomizationFormText = "Contacto";
+            this.ItemForID_Contacto1.Location = new System.Drawing.Point(0, 288);
+            this.ItemForID_Contacto1.Name = "ItemForID_Contacto1";
+            this.ItemForID_Contacto1.Size = new System.Drawing.Size(603, 26);
+            this.ItemForID_Contacto1.Text = "Cliente";
+            this.ItemForID_Contacto1.TextSize = new System.Drawing.Size(102, 13);
+            // 
+            // layoutControlItem14
+            // 
+            this.layoutControlItem14.Control = this.simpleButton3;
+            this.layoutControlItem14.Location = new System.Drawing.Point(603, 288);
+            this.layoutControlItem14.MaxSize = new System.Drawing.Size(120, 26);
+            this.layoutControlItem14.MinSize = new System.Drawing.Size(120, 26);
+            this.layoutControlItem14.Name = "layoutControlItem14";
+            this.layoutControlItem14.Size = new System.Drawing.Size(120, 26);
+            this.layoutControlItem14.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem14.TextVisible = false;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1306,7 +1317,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1194, 492);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1194, 490);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -1314,7 +1325,7 @@
             this.layoutControlItem1.Control = this.dataLayoutControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1174, 472);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1174, 470);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -1915,17 +1926,6 @@
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem27.TextVisible = false;
             // 
-            // xFecha
-            // 
-            this.xFecha.Caption = "Fecha";
-            this.xFecha.FieldName = "Fecha";
-            this.xFecha.MaxWidth = 70;
-            this.xFecha.Name = "xFecha";
-            this.xFecha.OptionsColumn.AllowEdit = false;
-            this.xFecha.Visible = true;
-            this.xFecha.VisibleIndex = 1;
-            this.xFecha.Width = 70;
-            // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "09-04-2024";
@@ -2022,14 +2022,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForObservaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForUsuario_Creacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();

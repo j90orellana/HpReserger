@@ -12,7 +12,10 @@ namespace HpResergerNube
         //TEST
         //private string DATA = Encriptacion.Desencriptar("lwoX9KPfqFhssFfUh0BsUg==");
         //PROD
-        private string DATA = Encriptacion.Desencriptar("WXtU+M1PmvZNiUvHK9JjtQ==");
+        public string DATA { get; set; } = Encriptacion.Desencriptar("WXtU+M1PmvZNiUvHK9JjtQ==");
+        public static string Basesita { get; set; }
+
+        public static string Sdata = "WXtU+M1PmvZNiUvHK9JjtQ==";
 
         private string PASS = Encriptacion.Desencriptar("wIh5Z8uVnC6BD07xKB+BpA==");
         private string HOST = "6024ba9c-d9c4-48bf-8010-78995f9cdc2b.c9v3nfod0e3fgcbd1oug.databases.appdomain.cloud";
@@ -41,6 +44,9 @@ namespace HpResergerNube
             ////}
 
             // Configurar la cadena de conexión
+
+            DATA = Encriptacion.Desencriptar(Sdata);
+
             connectionString = $"Host={HOST};Port={PORT};Username={USER};Password={PASS};Database={DATA};SslMode=Prefer;Trust Server Certificate=true;";
         }
 

@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using SISGEM.ModuloShedule;
+using SISGEM.CRM;
 
 namespace SISGEM
 {
@@ -993,6 +995,27 @@ namespace SISGEM
             frm.MdiParent = this;
             frm.Text = "Seguimientos pasado Mañana";
             frm.dias = 2;
+            frm.Show();
+        }
+
+        private void barButtonItem33_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           frmReuniones  frm = new frmReuniones();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem36_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmAddExtrate frm = new frmAddExtrate();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void btnAgregarReunion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmAgendarCita frm = new frmAgendarCita();
+            frm.MdiParent = this;
             frm.Show();
         }
     }

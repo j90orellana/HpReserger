@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBalanceComprobacion));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,20 +43,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBalanceComprobacion));
             this.comboMesAño = new HpResergerUserControls.ComboMesAño();
             this.cboEmpresas = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
-            this.btnProcesar = new HpResergerUserControls.ButtonPer();
-            this.rb2digitos = new System.Windows.Forms.RadioButton();
-            this.rb7digitos = new System.Windows.Forms.RadioButton();
-            this.btnExportarExcel = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.chkCarpeta = new System.Windows.Forms.CheckBox();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.xCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xSaldoInicialDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +63,15 @@
             this.xNaturalezaGanancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFuncionPerdida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfuncionGanancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
+            this.btnProcesar = new HpResergerUserControls.ButtonPer();
+            this.rb2digitos = new System.Windows.Forms.RadioButton();
+            this.rb7digitos = new System.Windows.Forms.RadioButton();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.chkCarpeta = new System.Windows.Forms.CheckBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,6 +141,8 @@
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -185,111 +187,6 @@
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(1071, 438);
             this.dtgconten.TabIndex = 5;
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Location = new System.Drawing.Point(9, 562);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(91, 13);
-            this.lblmsg.TabIndex = 10;
-            this.lblmsg.Text = "Total Registos: 0";
-            // 
-            // BtnCerrar
-            // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
-            this.BtnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
-            this.BtnCerrar.Location = new System.Drawing.Point(1000, 557);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
-            this.BtnCerrar.TabIndex = 7;
-            this.BtnCerrar.Text = "&Cancelar";
-            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnCerrar.UseVisualStyleBackColor = false;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
-            // 
-            // btnProcesar
-            // 
-            this.btnProcesar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(1000, 86);
-            this.btnProcesar.Name = "btnProcesar";
-            this.btnProcesar.Size = new System.Drawing.Size(83, 24);
-            this.btnProcesar.TabIndex = 4;
-            this.btnProcesar.Text = "&Procesar";
-            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProcesar.UseVisualStyleBackColor = false;
-            this.btnProcesar.Click += new System.EventHandler(this.btnTxt_Click);
-            // 
-            // rb2digitos
-            // 
-            this.rb2digitos.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rb2digitos.AutoSize = true;
-            this.rb2digitos.BackColor = System.Drawing.Color.Transparent;
-            this.rb2digitos.Checked = true;
-            this.rb2digitos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.rb2digitos.Location = new System.Drawing.Point(476, 90);
-            this.rb2digitos.Name = "rb2digitos";
-            this.rb2digitos.Size = new System.Drawing.Size(68, 17);
-            this.rb2digitos.TabIndex = 2;
-            this.rb2digitos.TabStop = true;
-            this.rb2digitos.Text = "2Dígitos";
-            this.rb2digitos.UseVisualStyleBackColor = false;
-            // 
-            // rb7digitos
-            // 
-            this.rb7digitos.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rb7digitos.AutoSize = true;
-            this.rb7digitos.BackColor = System.Drawing.Color.Transparent;
-            this.rb7digitos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.rb7digitos.Location = new System.Drawing.Point(550, 90);
-            this.rb7digitos.Name = "rb7digitos";
-            this.rb7digitos.Size = new System.Drawing.Size(68, 17);
-            this.rb7digitos.TabIndex = 3;
-            this.rb7digitos.Text = "7Dígitos";
-            this.rb7digitos.UseVisualStyleBackColor = false;
-            // 
-            // btnExportarExcel
-            // 
-            this.btnExportarExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExportarExcel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarExcel.Image")));
-            this.btnExportarExcel.Location = new System.Drawing.Point(506, 557);
-            this.btnExportarExcel.Name = "btnExportarExcel";
-            this.btnExportarExcel.Size = new System.Drawing.Size(82, 23);
-            this.btnExportarExcel.TabIndex = 6;
-            this.btnExportarExcel.Text = "&Excel";
-            this.btnExportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExportarExcel.UseVisualStyleBackColor = true;
-            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // chkCarpeta
-            // 
-            this.chkCarpeta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkCarpeta.AutoSize = true;
-            this.chkCarpeta.BackColor = System.Drawing.Color.Transparent;
-            this.chkCarpeta.Location = new System.Drawing.Point(593, 560);
-            this.chkCarpeta.Name = "chkCarpeta";
-            this.chkCarpeta.Size = new System.Drawing.Size(103, 17);
-            this.chkCarpeta.TabIndex = 395;
-            this.chkCarpeta.Text = "Excel a Carpeta";
-            this.chkCarpeta.UseVisualStyleBackColor = false;
             // 
             // xCuenta
             // 
@@ -479,6 +376,111 @@
             this.xfuncionGanancia.ReadOnly = true;
             this.xfuncionGanancia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.xfuncionGanancia.Width = 70;
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Location = new System.Drawing.Point(9, 562);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(91, 13);
+            this.lblmsg.TabIndex = 10;
+            this.lblmsg.Text = "Total Registos: 0";
+            // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
+            this.BtnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
+            this.BtnCerrar.Location = new System.Drawing.Point(1000, 557);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(83, 24);
+            this.BtnCerrar.TabIndex = 7;
+            this.BtnCerrar.Text = "&Cancelar";
+            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            // 
+            // btnProcesar
+            // 
+            this.btnProcesar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProcesar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
+            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcesar.ForeColor = System.Drawing.Color.White;
+            this.btnProcesar.Location = new System.Drawing.Point(1000, 86);
+            this.btnProcesar.Name = "btnProcesar";
+            this.btnProcesar.Size = new System.Drawing.Size(83, 24);
+            this.btnProcesar.TabIndex = 4;
+            this.btnProcesar.Text = "&Procesar";
+            this.btnProcesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnTxt_Click);
+            // 
+            // rb2digitos
+            // 
+            this.rb2digitos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rb2digitos.AutoSize = true;
+            this.rb2digitos.BackColor = System.Drawing.Color.Transparent;
+            this.rb2digitos.Checked = true;
+            this.rb2digitos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.rb2digitos.Location = new System.Drawing.Point(476, 90);
+            this.rb2digitos.Name = "rb2digitos";
+            this.rb2digitos.Size = new System.Drawing.Size(68, 17);
+            this.rb2digitos.TabIndex = 2;
+            this.rb2digitos.TabStop = true;
+            this.rb2digitos.Text = "2Dígitos";
+            this.rb2digitos.UseVisualStyleBackColor = false;
+            // 
+            // rb7digitos
+            // 
+            this.rb7digitos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rb7digitos.AutoSize = true;
+            this.rb7digitos.BackColor = System.Drawing.Color.Transparent;
+            this.rb7digitos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.rb7digitos.Location = new System.Drawing.Point(550, 90);
+            this.rb7digitos.Name = "rb7digitos";
+            this.rb7digitos.Size = new System.Drawing.Size(68, 17);
+            this.rb7digitos.TabIndex = 3;
+            this.rb7digitos.Text = "7Dígitos";
+            this.rb7digitos.UseVisualStyleBackColor = false;
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarExcel.Image")));
+            this.btnExportarExcel.Location = new System.Drawing.Point(506, 557);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(82, 23);
+            this.btnExportarExcel.TabIndex = 6;
+            this.btnExportarExcel.Text = "&Excel";
+            this.btnExportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportarExcel.UseVisualStyleBackColor = true;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // chkCarpeta
+            // 
+            this.chkCarpeta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkCarpeta.AutoSize = true;
+            this.chkCarpeta.BackColor = System.Drawing.Color.Transparent;
+            this.chkCarpeta.Location = new System.Drawing.Point(593, 560);
+            this.chkCarpeta.Name = "chkCarpeta";
+            this.chkCarpeta.Size = new System.Drawing.Size(103, 17);
+            this.chkCarpeta.TabIndex = 395;
+            this.chkCarpeta.Text = "Excel a Carpeta";
+            this.chkCarpeta.UseVisualStyleBackColor = false;
             // 
             // frmBalanceComprobacion
             // 

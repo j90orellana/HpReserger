@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SCH_ClienteAdicionales.cs" />
     <Compile Include="CRM_ClienteRepository.cs" />
     <Compile Include="CRM_CodigoPostalRepository.cs" />
     <Compile Include="CRM_ContactoRepository.cs" />
@@ -83,6 +84,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SCH_Estrate.cs" />
+    <Compile Include="SCH_Estrate_Estrategia.cs" />
+    <Compile Include="SCH_Estrate_Objetivos.cs" />
+    <Compile Include="SCH_Estrate_Objetivos_Operativos.cs" />
+    <Compile Include="SCH_Estrate_Problemas.cs" />
+    <Compile Include="SCH_Nivel.cs" />
+    <Compile Include="SCH_Reuniones.cs" />
+    <Compile Include="SCH_ReunionesDet.cs" />
+    <Compile Include="SCH_Status.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

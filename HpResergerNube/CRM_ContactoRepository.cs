@@ -128,7 +128,11 @@ namespace HpResergerNube
                     // Utilizar un NpgsqlDataAdapter para llenar el DataTable
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
                     {
-                        adapter.Fill(contactosDataTable);
+                        try
+                        {
+                            adapter.Fill(contactosDataTable);
+                        }
+                        catch { }
                     }
                 }
             }

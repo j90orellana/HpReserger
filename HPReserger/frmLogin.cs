@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using HpResergerNube;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -221,7 +222,7 @@ namespace HPReserger
                         HpResergerNube.CRM_Usuario ouser = new HpResergerNube.CRM_Usuario();
                         DataTable Tuser = ouser.ConsultarUsuarioPorEmailYContraseña(user, contra);
 
-                        if (ouser.ContarUsuariosActivos() > 6)
+                        if (ouser.ContarUsuariosActivos() > 16)
                         {
                             XtraMessageBox.Show("No se puede iniciar sesión porque ha alcanzado el límite de usuarios activos permitidos en su plan. Por favor, contacte al administrador del sistema para obtener ayuda adicional.", "Límite de Usuarios Alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             return;
@@ -612,17 +613,31 @@ namespace HPReserger
 
             }
         }
-
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
             HpResergerNube.CRM_Usuario oUsuario = new HpResergerNube.CRM_Usuario();
             if (oUsuario.ConsultarUsuarioPorEmail(txtUsuario.Text).Rows.Count > 0)
             {
                 ChkCRM.Checked = true;
+                txtEmpresaData.Text = "A & A ASCENSORES S.A.C.";
             }
+
             else
             {
-                ChkCRM.Checked = false;
+                DLConexion conexion = new DLConexion();
+                DLConexion.Sdata = "SKgEBI6NpGBeNSaS8h/OEA==";
+                DLConexion.Basesita = "ClienteAdicionales";
+                HpResergerNube.CRM_Usuario oxUsuario = new HpResergerNube.CRM_Usuario();
+                if (oxUsuario.ConsultarUsuarioPorEmail(txtUsuario.Text).Rows.Count > 0)
+                {
+                    txtEmpresaData.Text = "BRASH";
+                    ChkCRM.Checked = true;
+                }
+                else
+                {
+
+                    ChkCRM.Checked = false;
+                }
             }
 
         }

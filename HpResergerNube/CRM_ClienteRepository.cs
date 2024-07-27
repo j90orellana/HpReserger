@@ -264,29 +264,43 @@ namespace HpResergerNube
 
         public CRM_Cliente SelectCliente(string clienteID)
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    cmd.Connection = connection;
-                    cmd.CommandText = "SELECT * FROM public.\"CRM_Cliente\" WHERE \"ID_Cliente\" = @ID_Cliente";
+                    connection.Open();
 
-                    // Set parameter
-                    cmd.Parameters.AddWithValue("@ID_Cliente", clienteID);
-
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    using (NpgsqlCommand cmd = new NpgsqlCommand())
                     {
-                        if (reader.Read())
+                        cmd.Connection = connection;
+                        cmd.CommandText = @"
+                SELECT * 
+                FROM public.""CRM_Cliente"" 
+                LEFT JOIN public.""SCH_Cliente_Adicionales"" 
+                ON public.""CRM_Cliente"".""ID_Cliente"" = public.""SCH_Cliente_Adicionales"".""fk_id_cliente"" 
+                WHERE public.""CRM_Cliente"".""ID_Cliente"" = @ID_Cliente
+            ";
+
+                        // Set parameter
+                        cmd.Parameters.AddWithValue("@ID_Cliente", clienteID);
+
+                        using (NpgsqlDataReader reader = cmd.ExecuteReader())
                         {
-                            return MapClienteFromDataReader(reader);
+                            if (reader.Read())
+                            {
+                                return MapClienteFromDataReader(reader);
+                            }
                         }
                     }
                 }
-
-                return null;
             }
+            catch (Exception ex)
+            {
+                // Log or display the error
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+
+            return null;
         }
         public DataTable FilterClientesByDateRange(DateTime startDate, DateTime endDate)
         {
@@ -427,13 +441,19 @@ namespace HpResergerNube
                 Fecha_Modificacion = reader["Fecha_Modificacion"] != DBNull.Value ? Convert.ToDateTime(reader["Fecha_Modificacion"]) : (DateTime?)null,
                 Usuario_Eliminacion = reader["Usuario_Eliminacion"] != DBNull.Value ? reader["Usuario_Eliminacion"].ToString() : null,
                 Fecha_Eliminacion = reader["Fecha_Eliminacion"] != DBNull.Value ? Convert.ToDateTime(reader["Fecha_Eliminacion"]) : (DateTime?)null,
-                TipodeCliente = reader["Tipo de Cliente"].ToString()
+                TipodeCliente = reader["Tipo de Cliente"].ToString(),
+                pkidClienteAdicional = reader["pk_id"] != DBNull.Value ? Convert.ToInt32(reader["pk_id"]) : 0
+
+
+
             };
         }
     }
 
     public class CRM_Cliente
     {
+        public int pkidClienteAdicional;
+
         public string ID_Cliente { get; set; }
         public string ID_Tipo_persona { get; set; }
         public string Nombre { get; set; }

@@ -218,6 +218,12 @@
     <Compile Include="CRM\FrmAddCliente.Designer.cs">
       <DependentUpon>FrmAddCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="CRM\FrmAddClienteAdicionales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\FrmAddClienteAdicionales.Designer.cs">
+      <DependentUpon>FrmAddClienteAdicionales.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRM\frmAddContacto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,12 @@
     </Compile>
     <Compile Include="CRM\frmAddCotizacionCRM.Designer.cs">
       <DependentUpon>frmAddCotizacionCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddExtrate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddExtrate.Designer.cs">
+      <DependentUpon>frmAddExtrate.cs</DependentUpon>
     </Compile>
     <Compile Include="CRM\frmAddProducto.cs">
       <SubType>Form</SubType>
@@ -1006,6 +1018,27 @@
     </Compile>
     <Compile Include="ModuloRRHH\frmVacacionesResumen.Designer.cs">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\DialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmAddObjetivosProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmAddObjetivosProyectos.Designer.cs">
+      <DependentUpon>frmAddObjetivosProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\frmAgendarCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmAgendarCita.Designer.cs">
+      <DependentUpon>frmAgendarCita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\frmReuniones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmReuniones.Designer.cs">
+      <DependentUpon>frmReuniones.cs</DependentUpon>
     </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -2380,11 +2413,17 @@
     <EmbeddedResource Include="CRM\FrmAddCliente.resx">
       <DependentUpon>FrmAddCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CRM\FrmAddClienteAdicionales.resx">
+      <DependentUpon>FrmAddClienteAdicionales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmAddContacto.resx">
       <DependentUpon>frmAddContacto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmAddCotizacionCRM.resx">
       <DependentUpon>frmAddCotizacionCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddExtrate.resx">
+      <DependentUpon>frmAddExtrate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmAddProducto.resx">
       <DependentUpon>frmAddProducto.cs</DependentUpon>
@@ -2782,6 +2821,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmVacacionesResumen.resx">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmAddObjetivosProyectos.resx">
+      <DependentUpon>frmAddObjetivosProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmAgendarCita.resx">
+      <DependentUpon>frmAgendarCita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmReuniones.resx">
+      <DependentUpon>frmReuniones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -3531,6 +3579,8 @@
     <None Include="Properties\DataSources\HpResergerNube.CRM_Tipo_Cliente.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_Usuario.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.Proyecto.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.SCH_ClienteAdicionales.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.SCH_Estrate_Objetivos_Operativos.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

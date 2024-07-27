@@ -25,33 +25,48 @@ namespace SISGEM.CRM
         public string _idCliente = "";
         HpResergerNube.CRM_Cliente oCliente = new HpResergerNube.CRM_Cliente();
 
+        public int _idAdiciones { get; private set; }
+
         private void FrmAddCliente_Load(object sender, EventArgs e)
         {
             CargarCombos();
             HpResergerNube.CRM_ClienteRepository obkjcliente = new HpResergerNube.CRM_ClienteRepository();
+
+            btnAdicionales.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
             if (_idCliente != "")
             {
                 oCliente = obkjcliente.SelectCliente(_idCliente.ToString());
-                ID_ClienteTextEdit.EditValue = _idCliente;
-                Apellido1TextEdit.EditValue = oCliente.Apellido1;
-                Apellido2TextEdit.EditValue = oCliente.Apellido2;
-                NombreTextEdit.EditValue = oCliente.Nombre;
-                ID_Tipo_personaTextEdit.EditValue = oCliente.ID_Tipo_persona;
-                Razon_SocialTextEdit.EditValue = oCliente.Razon_Social;
-                ID_TIpo_DocumentoTextEdit.EditValue = oCliente.ID_TIpo_Documento;
-                ID_Numero_DocTextEdit.EditValue = oCliente.ID_Numero_Doc;
-                DireccionTextEdit.EditValue = oCliente.Direccion;
-                InteriorTextEdit.EditValue = oCliente.Interior;
-                PisoTextEdit.EditValue = oCliente.Piso;
-                ID_Codigo_postalTextEdit.EditValue = oCliente.ID_Codigo_postal;
-                Telefono1TextEdit.EditValue = oCliente.Telefono1;
-                Telefono2TextEdit.EditValue = oCliente.Telefono2;
-                email1TextEdit.EditValue = oCliente.email1;
-                email2TextEdit.EditValue = oCliente.email2;
-                webTextEdit.EditValue = oCliente.web;
-                ID_ContactoTextEdit.EditValue = oCliente.ID_Contacto;
-                cboTipoCliente.EditValue = oCliente.TipodeCliente;
+                if (oCliente != null)
+                {
+                    ID_ClienteTextEdit.EditValue = _idCliente;
+                    Apellido1TextEdit.EditValue = oCliente.Apellido1;
+                    Apellido2TextEdit.EditValue = oCliente.Apellido2;
+                    NombreTextEdit.EditValue = oCliente.Nombre;
+                    ID_Tipo_personaTextEdit.EditValue = oCliente.ID_Tipo_persona;
+                    Razon_SocialTextEdit.EditValue = oCliente.Razon_Social;
+                    ID_TIpo_DocumentoTextEdit.EditValue = oCliente.ID_TIpo_Documento;
+                    ID_Numero_DocTextEdit.EditValue = oCliente.ID_Numero_Doc;
+                    DireccionTextEdit.EditValue = oCliente.Direccion;
+                    InteriorTextEdit.EditValue = oCliente.Interior;
+                    PisoTextEdit.EditValue = oCliente.Piso;
+                    ID_Codigo_postalTextEdit.EditValue = oCliente.ID_Codigo_postal;
+                    Telefono1TextEdit.EditValue = oCliente.Telefono1;
+                    Telefono2TextEdit.EditValue = oCliente.Telefono2;
+                    email1TextEdit.EditValue = oCliente.email1;
+                    email2TextEdit.EditValue = oCliente.email2;
+                    webTextEdit.EditValue = oCliente.web;
+                    ID_ContactoTextEdit.EditValue = oCliente.ID_Contacto;
+                    cboTipoCliente.EditValue = oCliente.TipodeCliente;
 
+                    HpResergerNube.SCH_ClienteAdicionales objClienteadicionales = new HpResergerNube.SCH_ClienteAdicionales();
+                    objClienteadicionales.ReadClienteAdicional(oCliente.pkidClienteAdicional);
+
+                    _idAdiciones = oCliente.pkidClienteAdicional;
+
+                    if (HpResergerNube.DLConexion.Basesita == "ClienteAdicionales")
+                        btnAdicionales.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                }
             }
         }
 
@@ -373,7 +388,7 @@ namespace SISGEM.CRM
             {
                 string respuesta = await GetHTTPs(ruc);
                 respuesta = "[\n " + respuesta + " \n]";
-                List<HPReserger.frmproveedor.Proveedor > LstData = JsonConvert.DeserializeObject<List<HPReserger.frmproveedor.Proveedor>>(respuesta);
+                List<HPReserger.frmproveedor.Proveedor> LstData = JsonConvert.DeserializeObject<List<HPReserger.frmproveedor.Proveedor>>(respuesta);
                 //SAcamos la Data             
                 if (LstData.Count > 0)
                 {
@@ -472,5 +487,12 @@ namespace SISGEM.CRM
             }
         }
 
+        private void btnAdicionales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmAddClienteAdicionales frmadd = new FrmAddClienteAdicionales();
+            frmadd.pkid = _idAdiciones;
+            frmadd.fkid = _idCliente;
+            frmadd.Show();
+        }
     }
 }
