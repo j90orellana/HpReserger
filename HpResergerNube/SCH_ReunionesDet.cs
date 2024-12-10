@@ -17,6 +17,7 @@ namespace HpResergerNube
 
         private string connectionString;
         public int idstatus { get; set; }
+        public int idcalendario { get; set; }
 
         public SCH_ReunionesDet()
         {
@@ -35,7 +36,7 @@ namespace HpResergerNube
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = connection;
-                    cmd.CommandText = "INSERT INTO public.\"SCH_Reuniones_det\"(\"fkid\", \"Accion\", \"Nivel\", \"Seguimiento\", \"Responsable_Oficina\", \"Responsable_Cliente\", \"Objetivo_Relacionado\",\"idstatus\") VALUES (@FKID, @Accion, @Nivel, @Seguimiento, @ResponsableOficina, @ResponsableCliente, @ObjetivoRelacionado,@idstatus) RETURNING \"id\"";
+                    cmd.CommandText = "INSERT INTO public.\"SCH_Reuniones_det\"(\"idcalendario\", \"fkid\", \"Accion\", \"Nivel\", \"Seguimiento\", \"Responsable_Oficina\", \"Responsable_Cliente\", \"Objetivo_Relacionado\",\"idstatus\") VALUES (@idcalendario,@FKID, @Accion, @Nivel, @Seguimiento, @ResponsableOficina, @ResponsableCliente, @ObjetivoRelacionado,@idstatus) RETURNING \"id\"";
                     cmd.Parameters.AddWithValue("@FKID", reunionDet.FKID);
                     cmd.Parameters.AddWithValue("@Accion", reunionDet.Accion);
                     cmd.Parameters.AddWithValue("@Nivel", reunionDet.Nivel);
@@ -44,6 +45,7 @@ namespace HpResergerNube
                     cmd.Parameters.AddWithValue("@ResponsableCliente", reunionDet.ResponsableCliente ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@ObjetivoRelacionado", reunionDet.ObjetivoRelacionado);
                     cmd.Parameters.AddWithValue("@idstatus", reunionDet.idstatus);
+                    cmd.Parameters.AddWithValue("@idcalendario", reunionDet.idcalendario);
 
                     newId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -74,6 +76,7 @@ namespace HpResergerNube
                                 FKID = Convert.ToInt32(reader["fkid"]),
                                 Accion = reader["Accion"].ToString(),
                                 Nivel = Convert.ToInt32(reader["Nivel"]),
+                                idcalendario = Convert.ToInt32(reader["idcalendario"]),
                                 Seguimiento = Convert.ToDateTime(reader["Seguimiento"]),
                                 ResponsableOficina = reader["Responsable_Oficina"].ToString(),
                                 ResponsableCliente = reader["Responsable_Cliente"] as string,
@@ -98,7 +101,7 @@ namespace HpResergerNube
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = connection;
-                    cmd.CommandText = "UPDATE public.\"SCH_Reuniones_det\" SET \"idstatus\"=@idstatus, \"fkid\" = @FKID, \"Accion\" = @Accion, \"Nivel\" = @Nivel, \"Seguimiento\" = @Seguimiento, \"Responsable_Oficina\" = @ResponsableOficina, \"Responsable_Cliente\" = @ResponsableCliente, \"Objetivo_Relacionado\" = @ObjetivoRelacionado WHERE \"id\" = @ID";
+                    cmd.CommandText = "UPDATE public.\"SCH_Reuniones_det\" SET \"idcalendario\"=@idcalendario,\"idstatus\"=@idstatus, \"fkid\" = @FKID, \"Accion\" = @Accion, \"Nivel\" = @Nivel, \"Seguimiento\" = @Seguimiento, \"Responsable_Oficina\" = @ResponsableOficina, \"Responsable_Cliente\" = @ResponsableCliente, \"Objetivo_Relacionado\" = @ObjetivoRelacionado WHERE \"id\" = @ID";
                     cmd.Parameters.AddWithValue("@ID", reunionDet.ID);
                     cmd.Parameters.AddWithValue("@FKID", reunionDet.FKID);
                     cmd.Parameters.AddWithValue("@Accion", reunionDet.Accion);
@@ -108,6 +111,7 @@ namespace HpResergerNube
                     cmd.Parameters.AddWithValue("@ResponsableCliente", reunionDet.ResponsableCliente ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@ObjetivoRelacionado", reunionDet.ObjetivoRelacionado);
                     cmd.Parameters.AddWithValue("@idstatus", reunionDet.idstatus);
+                    cmd.Parameters.AddWithValue("@idcalendario", reunionDet.idcalendario);
                     int rowsAffected = cmd.ExecuteNonQuery();
 
                     success = rowsAffected > 0;

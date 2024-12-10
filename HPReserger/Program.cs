@@ -119,9 +119,9 @@ namespace HPReserger
                 var repositoryOwner = "j90orellana"; // Reemplaza con el nombre del propietario del repositorio
                 var repositoryName = "HpReserger"; // Reemplaza con el nombre del repositorio
 
+               
 
-
-                var token = "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"; // Reemplaza con tu token de acceso personal
+                var token = "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"; // Reemplaza con tu token de acceso personal
 
 
                 //AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);

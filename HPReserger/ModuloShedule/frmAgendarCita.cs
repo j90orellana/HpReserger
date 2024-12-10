@@ -15,7 +15,7 @@ namespace SISGEM.ModuloShedule
     {
         private int fkid;
         private int idExtrate;
-        private string idcliente;
+        public string idcliente;
         public int idAgenda { get; internal set; }
 
         public frmAgendarCita()
@@ -53,7 +53,7 @@ namespace SISGEM.ModuloShedule
             ItemForID_cliente.Properties.DataSource = tcliente;
             ItemForID_cliente.Properties.DisplayMember = "nombrecompleto";
             ItemForID_cliente.Properties.ValueMember = "ID_Cliente";
-            ItemForID_cliente.EditValue = tcliente.Rows.Count > 0 ? tcliente.Rows[0]["ID_Cliente"] : null;
+            ItemForID_cliente.EditValue = tcliente.Rows.Count > 0 ? idcliente : null;
 
             ItemForID_cliente.Properties.View.Columns.Clear();
             ItemForID_cliente.Properties.View.Columns.AddVisible("ID_Cliente", "ID");
@@ -198,7 +198,8 @@ namespace SISGEM.ModuloShedule
         }
 
         DataTable TObjetivos;
-
+        private int idcalendario;
+        private int idcalendariodet;
 
         private void CargarObejtivos()
         {
@@ -224,6 +225,13 @@ namespace SISGEM.ModuloShedule
             if (TExtrate.Rows.Count > 0)
             {
                 idExtrate = (int)TExtrate.Rows[0]["id"];
+
+                DataTable tcliente = (DataTable)ItemForID_cliente.Properties.DataSource;
+                // Buscar el cliente por ID en la tabla
+                DataRow[] clienteEncontrado = tcliente.Select($"ID_Cliente = '{idcliente}'");
+                // Si se encuentra el cliente, establecer EditValue; si no, dejarlo en null
+                ItemForID_cliente.EditValue = clienteEncontrado.Length > 0 ? clienteEncontrado[0]["ID_Cliente"] : null;
+
             }
             else { idExtrate = 0; }
 
@@ -251,6 +259,7 @@ namespace SISGEM.ModuloShedule
             if (obclase != null)
             {
                 fkid = obclase.ID;
+                idcalendario = obclase.idcalendario;
                 dtpFechaReunion.EditValue = obclase.Fecha;
                 ID_ContactoTextEdit.EditValue = obclase.Participantes;
 
@@ -264,6 +273,7 @@ namespace SISGEM.ModuloShedule
                 ID_ContactoTextEdit.EditValue = null;
                 gridControl1.DataSource = "";
                 lblestado.Caption = "Nueva Reunión";
+                idcalendario = 0;
             }
 
         }
@@ -308,7 +318,34 @@ namespace SISGEM.ModuloShedule
                 obclase.FechaCreacion = DateTime.Now;
                 obclase.Participantes = ID_ContactoTextEdit.EditValue.ToString();
 
+                //ingresamos la reunion al calendario
+                HpResergerNube.Appointments aclase = new HpResergerNube.Appointments();
+                aclase.AllDay = true;
+                aclase.CustomField1 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                aclase.CustomField2 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                aclase.Description = $"Reunión" +
+                    $"{ID_ContactoTextEdit.Text}";
+                aclase.EndDate = (DateTime)dtpFechaReunion.EditValue;
+                aclase.Label = 2;
+                aclase.Location = "";
+                aclase.RecurrenceInfo = "";
+                aclase.ReminderInfo = "";
+                aclase.ResourceIDs = "";
+                aclase.StartDate = (DateTime)dtpFechaReunion.EditValue;
+                aclase.Status = 0;
+                aclase.Subject = $"Reunión con {ItemForID_cliente.Text}";
+                aclase.Type = 0;
+
+
+                idcalendario = aclase.UniqueID = aclase.InsertAppointment(aclase);
+                if (aclase.UniqueID == 0)
+                {
+                    XtraMessageBox.Show("Hubo un error al Crear la Reunión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Insertar la reunión en la base de datos
+                obclase.idcalendario = idcalendario;
                 fkid = obclase.InsertReunion(obclase);
 
                 if (fkid == 0)
@@ -332,6 +369,34 @@ namespace SISGEM.ModuloShedule
                 obclase.FechaCreacion = DateTime.Now;
                 obclase.Participantes = ID_ContactoTextEdit.EditValue.ToString();
                 obclase.ID = fkid;
+                obclase.idcalendario = idcalendario;
+
+                //ingresamos la reunion al calendario
+                HpResergerNube.Appointments aclase = new HpResergerNube.Appointments();
+                aclase.AllDay = true;
+                aclase.CustomField1 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                aclase.CustomField2 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                aclase.Description = $"Reunión para; {Environment.NewLine}{ID_ContactoTextEdit.Text}";
+
+                aclase.EndDate = (DateTime)dtpFechaReunion.EditValue;
+                aclase.Label = 2;
+                aclase.Location = "";
+                aclase.RecurrenceInfo = "";
+                aclase.ReminderInfo = "";
+                aclase.ResourceIDs = "";
+                aclase.StartDate = (DateTime)dtpFechaReunion.EditValue;
+                aclase.Status = 0;
+                aclase.Subject = $"Reunión con {ItemForID_cliente.Text}";
+                aclase.Type = 0;
+                aclase.UniqueID = idcalendario;
+
+                if (!aclase.UpdateAppointment(aclase))
+                {
+
+                    XtraMessageBox.Show("Hubo un error al Actualizar la Reunión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    aclase.InsertAppointment(aclase);
+                    return;
+                }
 
                 if (obclase.UpdateReunion(obclase))
                 {
@@ -365,6 +430,31 @@ namespace SISGEM.ModuloShedule
                     obclase.ResponsableCliente = "";// Asumiendo que txtResponsableCliente es el control de entrada para "Responsable_Cliente"
                     obclase.ObjetivoRelacionado = 0; // Asumiendo que txtObjetivoRelacionado es el control de entrada para "Objetivo_Relacionado"
 
+                    //ingresamos la reunion al calendario
+                    HpResergerNube.Appointments aclase = new HpResergerNube.Appointments();
+                    aclase.AllDay = true;
+                    aclase.CustomField1 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                    aclase.CustomField2 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                    aclase.Description = "";
+                    aclase.EndDate = (DateTime)DateTime.Now;
+                    aclase.Label = 3;
+                    aclase.Location = "";
+                    aclase.RecurrenceInfo = "";
+                    aclase.ReminderInfo = "";
+                    aclase.ResourceIDs = "";
+                    aclase.StartDate = (DateTime)DateTime.Now;
+                    aclase.Status = 0;
+                    aclase.Subject = $"Accion Pendiente";
+                    aclase.Type = 0;
+
+                    idcalendariodet = aclase.UniqueID = aclase.InsertAppointment(aclase);
+                    if (aclase.UniqueID == 0)
+                    {
+                        XtraMessageBox.Show("Hubo un error al Crear la Reunión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    obclase.idcalendario = idcalendariodet;
                     int result = obclase.InsertReunionDet(obclase);
 
                     if (result == 0)
@@ -373,7 +463,7 @@ namespace SISGEM.ModuloShedule
                     }
                     else
                     {
-                        XtraMessageBox.Show("El detalle de la reunión se ha guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //XtraMessageBox.Show("El detalle de la reunión se ha guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -430,18 +520,56 @@ namespace SISGEM.ModuloShedule
                 object Responsable_Cliente = gridView1.GetRowCellValue(fila, "Responsable_Cliente");
                 object Objetivo_Relacionado = gridView1.GetRowCellValue(fila, "Objetivo_Relacionado");
                 object idstatus = gridView1.GetRowCellValue(fila, "idstatus");
+                object idcalendariodet = gridView1.GetRowCellValue(fila, "idcalendario");
 
                 HpResergerNube.SCH_ReunionesDet obclase = new HpResergerNube.SCH_ReunionesDet();
                 obclase.ID = (int)idValor;
                 obclase.FKID = (int)fkid;
                 obclase.Accion = accion.ToString();
-                obclase.Nivel = (int)Nivel;
+                obclase.Nivel = 3;// (int)Nivel;
                 obclase.Seguimiento = (DateTime)Seguimiento;
                 obclase.ResponsableOficina = Responsable_Oficina.ToString();
                 obclase.ResponsableCliente = Responsable_Cliente.ToString();
                 obclase.ObjetivoRelacionado = (int)Objetivo_Relacionado;
                 obclase.idstatus = (int)idstatus;
+                obclase.idcalendario = (int)idcalendariodet;
                 // Intentar actualizar la estrategia
+
+
+                //ingresamos la reunion al calendario
+                HpResergerNube.Appointments aclase = new HpResergerNube.Appointments();
+                aclase.AllDay = true;
+                aclase.CustomField1 = Responsable_Oficina.ToString();
+                aclase.CustomField2 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                aclase.Description = $"Reunión para; {Environment.NewLine}{accion.ToString()}";
+
+                //EXTRAEMOS EL DATO ADICIONAL
+                HpResergerNube.SCH_ClienteAdicionales objClientesAdicionales = new HpResergerNube.SCH_ClienteAdicionales();
+                objClientesAdicionales = objClientesAdicionales.ReadClienteAdicional(idcliente);
+
+
+
+                aclase.EndDate = (DateTime)Seguimiento;
+                aclase.Label = 3;// (int)Nivel;
+                aclase.Location = $"";
+                aclase.RecurrenceInfo = "";
+                aclase.ReminderInfo = "";
+                aclase.ResourceIDs = "";
+                aclase.StartDate = (DateTime)Seguimiento;
+                aclase.Status = 0;
+                aclase.Subject = $"Reunión con {(objClientesAdicionales != null ? objClientesAdicionales.NombreComercial ?? ItemForID_cliente.Text : ItemForID_cliente.Text)}";
+
+                aclase.Subject = $"{(objClientesAdicionales != null ? objClientesAdicionales.NombreComercial ?? ItemForID_cliente.Text : ItemForID_cliente.Text)}: { obclase.Accion} ";
+                aclase.Type = 0;
+                aclase.UniqueID = (int)idcalendariodet;
+
+                if (!aclase.UpdateAppointment(aclase))
+                {
+                    XtraMessageBox.Show("Hubo un error al Actualizar la Reunión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
                 if (!obclase.UpdateReunionDet(obclase))
                 {
                     // Mostrar mensaje de error

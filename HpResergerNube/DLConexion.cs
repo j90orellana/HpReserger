@@ -17,7 +17,7 @@ namespace HpResergerNube
 
         public static string Sdata = "WXtU+M1PmvZNiUvHK9JjtQ==";
 
-        private string PASS = Encriptacion.Desencriptar("wIh5Z8uVnC6BD07xKB+BpA==");
+        private string PASS = Encriptacion.Desencriptar("5501nxT1FgZwKapqpXqOrQ==");
         private string HOST = "6024ba9c-d9c4-48bf-8010-78995f9cdc2b.c9v3nfod0e3fgcbd1oug.databases.appdomain.cloud";
         //private string SSL_ROOT_CERT_FILE = "a607ea3c-cbd8-4fc4-be71-43f01948bbeb"; // Nombre del archivo del certificado raíz
 

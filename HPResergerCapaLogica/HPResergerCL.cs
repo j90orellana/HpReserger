@@ -38,6 +38,7 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.AgregarPerfil(descripcion);
         }
+
         public DataTable ProductosProyecto(int codigo, int opcion, string cadena, int usuarioo)
         {
             return cdOrdenPedido.ProductosProyecto(codigo, opcion, cadena, usuarioo);

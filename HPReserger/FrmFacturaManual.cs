@@ -44,6 +44,8 @@ namespace HPReserger
         public int NotasEstado { get; private set; }
         public decimal igvs { get; private set; }
         public int ActivoFijo { get; private set; }
+        public bool PeriodoCerrado { get; private set; }
+
         public bool RomperMasivo = false;
 
         private void FrmFacturaManual_Load(object sender, EventArgs e)
@@ -789,6 +791,8 @@ namespace HPReserger
         int[] ListaIdNotas = { 8, 9 };
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
+            PeriodoCerrado = false;
+
             if (Estado == 2)
             {
                 //Validacion para que un Activo fijo no se quede sin su factura de registro y activacion
@@ -841,16 +845,18 @@ namespace HPReserger
                  //Validacion de que el periodo NO sea muy disperso, sea un mes continuo a los trabajados
                 int IdEmpresa = (int)cboempresa.SelectedValue;
                 DateTime FechaCoontable = dtpFechaContable.Value;
-                if (!ProcesoMasivo)
-                    if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
-                    {
-                        if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
-                            return;
-                    }
-                    else if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
-                    {
-                        msgError("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
-                    }
+                //if (!ProcesoMasivo)
+                if (!CapaLogica.ValidarCrearPeriodo(IdEmpresa, FechaCoontable))
+                {
+                    if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
+                        return;
+                }
+                else if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+                {
+                    msgError("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus();
+                    PeriodoCerrado = true;
+                    return;
+                }
                 //Validamos el Periodo Abierto
                 //DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                 //if (TPrueba2.Rows.Count == 0) { msg("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
@@ -1656,7 +1662,7 @@ namespace HPReserger
                 if (ErrorM) { cadena += "Hay Errores los Importe\n"; }
                 /////VALIDACION
                 if (conD == 0 || conH == 0 || error || errord || ErrorDH) { msgError(cadena); RomperMasivo = true; return; }
-                if (!ProcesoMasivo)
+                if (!ProcesoMasivo) // si no deja grabar algun dato es por este 
                     if (ErrorM) return;
                 ////FIN DE LAS VALIDACIONES
                 /////CALCULO DE DETRACCIONES
@@ -2421,6 +2427,13 @@ namespace HPReserger
                             if (CapaDatos.BuscarTipodeCambioQuery(FechaEmision).Rows.Count == 0)
                                 cadenaResultado += $"No existe Tipo de Cambio para la FechaEmision: {FechaEmision.ToShortDateString()}\n";
                         }
+
+                        //foreach (DateTime FechaEmision in ListaFechaPeriodo)
+                        //{
+                        //    if (CapaDatos.VerPeriodoAbierto(,FechaEmision).Rows.Count == 0)
+                        //        cadenaResultado += $"El Periodo esta Cerrado pare la FechaEmision: {FechaEmision.ToShortDateString()}\n";
+                        //}
+
                         if (cadenaResultado != "")
                         {
                             string path = $"{Application.CommonAppDataPath}";
@@ -2434,6 +2447,9 @@ namespace HPReserger
                         {
                             if (msgYesCancel("Se Cargo el Excel con exito, Desea proceder con los Registros") == DialogResult.Yes)
                             {
+
+
+
                                 ProcesoMasivo = true;
                                 //PROCEDEMOS CON LA CARGA MASIVA
                                 i = 0;
@@ -2445,6 +2461,13 @@ namespace HPReserger
                                         {
                                             break;
                                         }
+                                        if (PeriodoCerrado)
+                                        {
+                                            Cursor = Cursors.Default;
+                                            XtraMessageBox.Show("El período está cerrado. No se pueden realizar cambios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            return;
+                                        }
+
                                         Cursor = Cursors.WaitCursor;
                                         btnnuevo.PerformClick();
                                         //CARGA DE LA CABECERA
@@ -2739,17 +2762,22 @@ namespace HPReserger
 
                 if (dialogResult == DialogResult.OK)
                 {
-                    DataTable result = CapaDatos.CambiarEstadoDeFactura(_idFac, 2);
+                    if (cbocompensa.Items.Count > 0)
+                    {
 
-                    if (result.Rows.Count > 0)
-                    {
-                        XtraMessageBox.Show("La factura se ha marcado como pagada exitosamente.", "Cambio de estado",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Hubo un error al intentar cambiar el estado de la factura. Por favor, intente nuevamente.",
-                                            "Error en el cambio de estado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        DataTable result = CapaDatos.CambiarEstadoDeFactura(_idFac, cbocompensa.SelectedIndex == 0 ? 2 : 3);
+
+                        if (result.Rows.Count > 0)
+                        {
+                            XtraMessageBox.Show("La factura se ha marcado como pagada exitosamente.", "Cambio de estado",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Hubo un error al intentar cambiar el estado de la factura. Por favor, intente nuevamente.",
+                                                "Error en el cambio de estado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 else

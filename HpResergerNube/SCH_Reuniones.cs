@@ -11,6 +11,7 @@ namespace HpResergerNube
         public string Cliente { get; set; }
         public string Participantes { get; set; }
         public int Estado { get; set; }
+        public int idcalendario { get; set; }
         public DateTime FechaCreacion { get; set; }
 
         private string connectionString;
@@ -32,12 +33,13 @@ namespace HpResergerNube
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = connection;
-                    cmd.CommandText = "INSERT INTO public.\"SCH_Reuniones\"(\"Fecha\", \"Cliente\", \"Participantes\", \"Estado\", \"FechaCreacion\") VALUES (@Fecha, @Cliente, @Participantes, @Estado, @FechaCreacion) RETURNING \"id\"";
+                    cmd.CommandText = "INSERT INTO public.\"SCH_Reuniones\"(\"idcalendario\",\"Fecha\", \"Cliente\", \"Participantes\", \"Estado\", \"FechaCreacion\") VALUES (@idcalendario,@Fecha, @Cliente, @Participantes, @Estado, @FechaCreacion) RETURNING \"id\"";
                     cmd.Parameters.AddWithValue("@Fecha", reunion.Fecha);
                     cmd.Parameters.AddWithValue("@Cliente", reunion.Cliente);
                     cmd.Parameters.AddWithValue("@Participantes", reunion.Participantes);
                     cmd.Parameters.AddWithValue("@Estado", reunion.Estado);
                     cmd.Parameters.AddWithValue("@FechaCreacion", reunion.FechaCreacion);
+                    cmd.Parameters.AddWithValue("@idcalendario", reunion.idcalendario);
 
                     newId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -69,7 +71,8 @@ namespace HpResergerNube
                                 Cliente = reader["Cliente"].ToString(),
                                 Participantes = reader["Participantes"].ToString(),
                                 Estado = Convert.ToInt32(reader["Estado"]),
-                                FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"])
+                                FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
+                                idcalendario = Convert.ToInt32(reader["idcalendario"])
                             };
                         }
                     }
@@ -78,6 +81,58 @@ namespace HpResergerNube
 
             return reunion;
         }
+
+        public DataTable FilterReunionesBySeguimiento(DateTime startDate, DateTime endDate)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(this.connectionString))
+                {
+                    connection.Open();
+                    using (NpgsqlCommand selectCommand = new NpgsqlCommand(
+                        "SELECT " +
+                        "  reu.id,  det.fkid, " +
+                        "    det.\"Accion\", " +
+                        "    det.\"Nivel\", " +
+                        "    det.\"Seguimiento\", " +
+                        "    det.\"Responsable_Oficina\", " +
+                        "    det.\"Responsable_Cliente\", " +
+                        "    det.\"Objetivo_Relacionado\", " +
+                        "    det.idstatus, " +
+                        "    concat(con.\"Nombre\", ' ', con.\"Apellido1\", ' ', con.\"Apellido2\") AS contacto, " +
+                        "    clie.\"Razon_Social\" " +
+                        "FROM " +
+                        "    public.\"SCH_Reuniones_det\" det " +
+                        "LEFT JOIN " +
+                        "    \"SCH_Reuniones\" reu ON reu.id = det.\"fkid\" " +
+                        "LEFT JOIN " +
+                        "    \"CRM_Cliente\" clie ON clie.\"ID_Cliente\" = reu.\"Cliente\" " +
+                        "LEFT JOIN " +
+                        "    \"CRM_Contacto\" con ON con.\"ID_Contacto\" = det.\"Responsable_Cliente\" " +
+                        "WHERE " +
+                        "  \"Accion\" not like 'Ingrese Accion' and  det.\"Seguimiento\" >= @StartDate AND " +
+                        "    det.\"Seguimiento\" <= @EndDate " +
+                        "ORDER BY " +
+                        "    det.\"Seguimiento\" DESC", connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@StartDate", startDate);
+                        selectCommand.Parameters.AddWithValue("@EndDate", endDate);
+
+                        using (NpgsqlDataAdapter npgsqlDataAdapter = new NpgsqlDataAdapter(selectCommand))
+                        {
+                            npgsqlDataAdapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+            }
+            return dataTable;
+        }
+
 
         public bool UpdateReunion(SCH_Reuniones reunion)
         {
@@ -90,13 +145,14 @@ namespace HpResergerNube
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = connection;
-                    cmd.CommandText = "UPDATE public.\"SCH_Reuniones\" SET \"Fecha\" = @Fecha, \"Cliente\" = @Cliente, \"Participantes\" = @Participantes, \"Estado\" = @Estado, \"FechaCreacion\" = @FechaCreacion WHERE \"id\" = @ID";
+                    cmd.CommandText = "UPDATE public.\"SCH_Reuniones\" SET \"idcalendario\" = @idcalendario, \"Fecha\" = @Fecha, \"Cliente\" = @Cliente, \"Participantes\" = @Participantes, \"Estado\" = @Estado, \"FechaCreacion\" = @FechaCreacion WHERE \"id\" = @ID";
                     cmd.Parameters.AddWithValue("@ID", reunion.ID);
                     cmd.Parameters.AddWithValue("@Fecha", reunion.Fecha);
                     cmd.Parameters.AddWithValue("@Cliente", reunion.Cliente);
                     cmd.Parameters.AddWithValue("@Participantes", reunion.Participantes);
                     cmd.Parameters.AddWithValue("@Estado", reunion.Estado);
                     cmd.Parameters.AddWithValue("@FechaCreacion", reunion.FechaCreacion);
+                    cmd.Parameters.AddWithValue("@idcalendario", reunion.idcalendario);
                     int rowsAffected = cmd.ExecuteNonQuery();
 
                     success = rowsAffected > 0;
@@ -163,7 +219,7 @@ namespace HpResergerNube
 
             return dataTable;
         }
-        public DataTable GetReunionesByClienteYFecha( DateTime? fechaInicio, DateTime? fechaFin)
+        public DataTable GetReunionesByClienteYFecha(DateTime? fechaInicio, DateTime? fechaFin)
         {
             DataTable dataTable = new DataTable();
 
@@ -181,7 +237,7 @@ namespace HpResergerNube
                 r.""Fecha"", 
                 r.""Cliente"", 
                 r.""Participantes"", 
-                r.""Estado"", 
+                r.""Estado"",    r.""idcalendario"", 
                 r.""FechaCreacion""
             FROM public.""SCH_Reuniones"" r
             INNER JOIN public.""CRM_Cliente"" c ON r.""Cliente"" = c.""ID_Cliente""
@@ -201,7 +257,7 @@ namespace HpResergerNube
 
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
                 {
-                    
+
                     if (fechaInicio.HasValue)
                     {
                         cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio.Value);

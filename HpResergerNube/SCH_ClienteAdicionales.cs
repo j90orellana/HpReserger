@@ -69,7 +69,7 @@ namespace HpResergerNube
         }
 
 
-        public SCH_ClienteAdicionales ReadClienteAdicional(int pkId)
+        public SCH_ClienteAdicionales ReadClienteAdicional(string pkIdCliente)
         {
             SCH_ClienteAdicionales clienteAdicional = null;
 
@@ -77,9 +77,9 @@ namespace HpResergerNube
             {
                 connection.Open();
 
-                using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM public.\"SCH_Cliente_Adicionales\" WHERE \"pk_id\" = @pk_id", connection))
+                using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM public.\"SCH_Cliente_Adicionales\" WHERE \"fk_id_cliente\" = @pk_id", connection))
                 {
-                    cmd.Parameters.AddWithValue("@pk_id", pkId);
+                    cmd.Parameters.AddWithValue("@pk_id", pkIdCliente);
 
                     using (NpgsqlDataReader reader = cmd.ExecuteReader())
                     {

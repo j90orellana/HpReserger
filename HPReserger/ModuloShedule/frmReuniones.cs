@@ -104,9 +104,11 @@ namespace SISGEM.ModuloShedule
             if (view != null && view.FocusedRowHandle >= 0 && view.FocusedColumn != null)
             {
                 object cellValue = view.GetRowCellValue(view.FocusedRowHandle, xid.FieldName);
+                object cellValueCliente = view.GetRowCellValue(view.FocusedRowHandle, xCliente.FieldName);
                 frmAgendarCita xAgenda = new frmAgendarCita();
                 xAgenda.idAgenda = (int)cellValue;
-          xAgenda.MdiParent  = this.MdiParent;
+                xAgenda.idcliente = cellValueCliente.ToString();
+                xAgenda.MdiParent = this.MdiParent;
                 xAgenda.Show();
             }
         }

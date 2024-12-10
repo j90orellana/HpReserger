@@ -172,24 +172,37 @@ namespace HpResergerNube
         {
             DataTable resultTable = new DataTable();
 
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    cmd.Connection = connection;
+                    connection.Open();
 
-                    cmd.CommandText = "SELECT * FROM public.\"CRM_Usuario\" WHERE UPPER(\"email1\") = UPPER(@Email)";
-                    cmd.Parameters.AddWithValue("@Email", email);
+                    using (NpgsqlCommand cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = connection;
+                        cmd.CommandText = "SELECT * FROM public.\"CRM_Usuario\" WHERE UPPER(\"email1\") = UPPER(@Email)";
+                        cmd.Parameters.AddWithValue("@Email", email);
 
-                    NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd);
-                    adapter.Fill(resultTable);
+                        NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd);
+                        adapter.Fill(resultTable);
+                    }
                 }
+            }
+            catch (NpgsqlException ex)
+            {
+                // Manejo específico para excepciones de Npgsql (base de datos)
+                Console.WriteLine($"Error de base de datos: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones generales
+                Console.WriteLine($"Error: {ex.Message}");
             }
 
             return resultTable;
         }
+
         public bool UpdateUsuario(CRM_Usuario usuario)
         {
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))

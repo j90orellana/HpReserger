@@ -50,6 +50,7 @@
             this.xfkid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xAccion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.xidcalendario = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xSeguimiento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.xResponsable_Oficina = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -312,6 +313,7 @@
             this.xid,
             this.xfkid,
             this.xAccion,
+            this.xidcalendario,
             this.xNivel,
             this.xSeguimiento,
             this.xResponsable_Oficina,
@@ -391,6 +393,12 @@
             // repositoryItemMemoEdit1
             // 
             this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
+            // xidcalendario
+            // 
+            this.xidcalendario.Caption = "idcalendario";
+            this.xidcalendario.FieldName = "idcalendario";
+            this.xidcalendario.Name = "xidcalendario";
             // 
             // xSeguimiento
             // 
@@ -1558,5 +1566,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn yDetalle_Status;
         private DevExpress.XtraBars.BarStaticItem lblestado;
         private DevExpress.XtraBars.BarButtonItem btnNuevo;
+        private DevExpress.XtraGrid.Columns.GridColumn xidcalendario;
     }
 }

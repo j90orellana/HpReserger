@@ -253,6 +253,8 @@ namespace HPReserger
                             frmprincipal = new SISGEM.Principal();
                             frmprincipal.BaseRemota = true;
                             frmprincipal.Show();
+
+                            frmprincipal.barButtonItem37.PerformClick();
                         }
                         else
                         {
@@ -615,6 +617,8 @@ namespace HPReserger
         }
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
+            DLConexion conexion = new DLConexion();
+            DLConexion.Sdata = "WXtU+M1PmvZNiUvHK9JjtQ==";
             HpResergerNube.CRM_Usuario oUsuario = new HpResergerNube.CRM_Usuario();
             if (oUsuario.ConsultarUsuarioPorEmail(txtUsuario.Text).Rows.Count > 0)
             {
@@ -624,7 +628,7 @@ namespace HPReserger
 
             else
             {
-                DLConexion conexion = new DLConexion();
+                //DLConexion conexion = new DLConexion();
                 DLConexion.Sdata = "SKgEBI6NpGBeNSaS8h/OEA==";
                 DLConexion.Basesita = "ClienteAdicionales";
                 HpResergerNube.CRM_Usuario oxUsuario = new HpResergerNube.CRM_Usuario();

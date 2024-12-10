@@ -74,7 +74,7 @@ namespace HPReserger.ModuloCrystalReport
                 Reporteori.SetParameterValue("@FechaFinal", FechaFin);
                 Reporteori.SetParameterValue("@Empresa", ListadoEmpresas);
 
-                reporte.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
+                Reporteori.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
 
                 ConnectionInfo iConnectionInfo = new ConnectionInfo();
                 // ' ***************************************************************

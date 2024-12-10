@@ -5139,7 +5139,7 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@empresa", "@fecha" };
             object[] valores = { empresa, Fecha };
             return bd.DataTableFromProcedure("usp_VerPeriodoAbierto", parametros, valores, null);
-        }
+        }    
         public DataTable CreaciondeCuentasReflejo(string @cuenta)
         {
             string[] parametros = { "@cuenta" };

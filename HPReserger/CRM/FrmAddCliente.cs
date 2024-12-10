@@ -60,7 +60,7 @@ namespace SISGEM.CRM
                     cboTipoCliente.EditValue = oCliente.TipodeCliente;
 
                     HpResergerNube.SCH_ClienteAdicionales objClienteadicionales = new HpResergerNube.SCH_ClienteAdicionales();
-                    objClienteadicionales.ReadClienteAdicional(oCliente.pkidClienteAdicional);
+                    objClienteadicionales.ReadClienteAdicional(_idCliente);
 
                     _idAdiciones = oCliente.pkidClienteAdicional;
 
@@ -237,6 +237,9 @@ namespace SISGEM.CRM
                     XtraMessageBox.Show("El registro del cliente se ha completado exitosamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _idCliente = oCliente.ID_Cliente;
                     ID_ClienteTextEdit.EditValue = oCliente.ID_Cliente;
+
+                    if (HpResergerNube.DLConexion.Basesita == "ClienteAdicionales")
+                        btnAdicionales.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 }
                 else
                 {

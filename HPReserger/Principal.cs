@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.IO;
 using SISGEM.ModuloShedule;
 using SISGEM.CRM;
+using System.Configuration;
+using DevExpress.XtraEditors;
 
 namespace SISGEM
 {
@@ -23,6 +25,23 @@ namespace SISGEM
 
         private void Principal_Load(object sender, EventArgs e)
         {
+
+            string ERP_LIBRE = ConfigurationManager.AppSettings["ERP_LIBRE"];
+            string valor2 = ConfigurationManager.AppSettings["SALUDO"];
+
+            if (ERP_LIBRE == "SI")
+            {
+                ribbonPage1.Visible = false;
+                ribbonPage4.Visible = false;
+                ribbonPage10.Visible = false;
+                ribbonPage11.Visible = false;
+                ribbonPage7.Visible = false;
+
+                barStaticItem4.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barStaticItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+            //XtraMessageBox.Show(valor2, valor1);
+
             try
             {
                 string carpetaDeAplicacion = Application.CommonAppDataPath;
@@ -56,12 +75,12 @@ namespace SISGEM
                 }
             }
 
-            if (!BaseRemota)
+            if (!BaseRemota && ERP_LIBRE == "NO")
             {
                 //EMPRESA ACTUAL
-                frmDashBoard frmfrmDashBoard = new frmDashBoard();
-                frmfrmDashBoard.MdiParent = this;
-                frmfrmDashBoard.Show();
+                //frmDashBoard frmfrmDashBoard = new frmDashBoard();
+                //frmfrmDashBoard.MdiParent = this;
+                //frmfrmDashBoard.Show();
 
                 ControlPerfilPrioritario();
                 btnUsuario.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
@@ -83,6 +102,8 @@ namespace SISGEM
                 ribbonPageGroup32.Visible = false;
                 ribbonPageGroup33.Visible = false;
             }
+
+
         }
         public void ControlPerfilPrioritario()
         {
@@ -200,7 +221,7 @@ namespace SISGEM
 
         private void btnCrearActivo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            HPReserger.ModuloActivoFijo.frmActivoFijo frm = new HPReserger.ModuloActivoFijo.frmActivoFijo();
+            SISGEM.ModuloActivoFijo.frmActivosFijosC frm = new ModuloActivoFijo.frmActivosFijosC();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -1000,7 +1021,7 @@ namespace SISGEM
 
         private void barButtonItem33_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           frmReuniones  frm = new frmReuniones();
+            frmReuniones frm = new frmReuniones();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -1017,6 +1038,126 @@ namespace SISGEM
             frmAgendarCita frm = new frmAgendarCita();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void barButtonItem37_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (HPReserger.frmLogin.Basedatos != "A & A ASCENSORES S.A.C.")
+            {
+                OpenForm<frmCalendario>();
+            }
+        }
+
+        private void navBarItem2_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            if (HPReserger.frmLogin.Basedatos != "A & A ASCENSORES S.A.C.")
+            {
+                OpenForm<frmCalendario>();
+            }
+        }
+
+        private void barButtonItem38_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            if (HPReserger.frmLogin.Basedatos != "A & A ASCENSORES S.A.C.")
+            {
+                // Crea una nueva instancia del formulario calendario
+                frmCalendario frmxcal = new frmCalendario();
+
+                // No es necesario llamar a Show() seguido de Hide(), se puede omitir
+                frmxcal.Show();
+                frmxcal.Hide();
+
+                // Crea una nueva cita
+                DevExpress.XtraScheduler.Appointment apt = frmxcal.schedulerStorage1.CreateAppointment(DevExpress.XtraScheduler.AppointmentType.Normal);
+
+                // Establece la fecha y hora predeterminada para la cita
+                apt.Start = DateTime.Today.AddHours(10);
+                apt.End = DateTime.Today.AddHours(11);
+
+                // Muestra el formulario de edición de citas y captura el resultado
+                DialogResult result = frmxcal.schedulerControl1.ShowEditAppointmentForm(apt);
+
+                if (result == DialogResult.OK || result == DialogResult.Yes)
+                {
+                    // Si el usuario acepta la cita, la agregamos al almacenamiento
+                    frmxcal.schedulerStorage1.Appointments.Add(apt);
+                }
+
+                // Cierra el formulario
+                frmxcal.Close();
+            }
+        }
+        private void OpenForm<T>() where T : Form, new()
+        {
+            // Verificar si el formulario ya está abierto
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is T)
+                {
+                    form.Activate(); // Traer el formulario al frente si ya está abierto
+                    return;
+                }
+            }
+
+            // Si el formulario no está abierto, crearlo y mostrarlo
+            T newForm = new T();
+            newForm.MdiParent = this;
+            newForm.Show();
+        }
+
+        private void navBarItem3_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            //pendientes de reuniones
+            frmPendienteReuniones frm = new frmPendienteReuniones();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem40_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloAlmacen.frmEmpresaAbreviada>();
+        }
+
+        private void barButtonItem43_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloAlmacen.frmCatalogoExistencias>();
+        }
+
+        private void barButtonItem46_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloAlmacen.frmTipoBajaActivo>();
+
+        }
+
+        private void barButtonItem42_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloAlmacen.frmTabla18>();
+
+        }
+
+        private void barButtonItem44_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloAlmacen.frmTabla19>();
+
+        }
+
+        private void barButtonItem45_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloAlmacen.frmTabla20>();
+
+        }
+
+        private void barButtonItem49_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloAlmacen.frmTipoActivoFijos>();
+            
+        }
+
+        private void barButtonItem50_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloAlmacen.frmSubtipo>();
+
         }
     }
 }

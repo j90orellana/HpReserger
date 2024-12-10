@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointments.cs" />
     <Compile Include="SCH_ClienteAdicionales.cs" />
     <Compile Include="CRM_ClienteRepository.cs" />
     <Compile Include="CRM_CodigoPostalRepository.cs" />

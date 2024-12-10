@@ -75,7 +75,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contable\ActivoFijo.cs" />
+    <Compile Include="Contable\CatalogoExistencias.cs" />
+    <Compile Include="Contable\EmpresaAbreviatura.cs" />
+    <Compile Include="Contable\SubTipoActivoFijo.cs" />
+    <Compile Include="Contable\T18TipoActivoFijo.cs" />
+    <Compile Include="Contable\T19EstadoActivoFijo.cs" />
+    <Compile Include="Contable\T20MetodoDepreciacion.cs" />
     <Compile Include="Contable\Tabla30SunatService.cs" />
+    <Compile Include="Contable\TipoBajaActivo.cs" />
+    <Compile Include="Contable\TiposActivoFijos.cs" />
     <Compile Include="HPResergerCL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

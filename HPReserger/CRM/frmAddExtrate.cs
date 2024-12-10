@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraPrintingLinks;
 using HPReserger;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,10 +29,16 @@ namespace SISGEM.CRM
         public int idExtrate = 0;
         private void frmAddExtrate_Load(object sender, EventArgs e)
         {
+      
+            
+            //xProyectos.GroupIndex = 0;
+            //xProyectos.GroupInterval = DevExpress.XtraGrid.ColumnGroupInterval.DisplayText;
+
             CargarClientes();
             CargarExtrate();
             CargarDatosDetalle();
         }
+        
 
         private void CargarDatosDetalle()
         {
@@ -59,6 +67,14 @@ namespace SISGEM.CRM
             repositoryItemStatus.DisplayMember = "Detalle_Status";
             //repositoryItemStatus.EditValue = tstatus.Rows.Count > 0 ? tstatus.Rows[0]["ID_Status"] : null;
 
+            HpResergerNube.SCH_Estrate_Objetivos_Operativos objclasedetalle = new HpResergerNube.SCH_Estrate_Objetivos_Operativos();
+            DataTable tdetalleclase = objclasedetalle.GetObjetivosOperativosByFkIdNombreEstado(idExtrate, 3);
+
+            repositoryItemProyecto.DataSource = tdetalleclase;
+            repositoryItemProyecto.ValueMember = "Nombre";
+            repositoryItemProyecto.DisplayMember = "Nombre";
+            xProyectos.MaxWidth = 100;
+            //repositoryItemStatus.EditValue = tstatus.Rows.Count > 0 ? tstatus.Rows[0]["ID_Status"] : null;
 
         }
         DataTable TObjetivos;
@@ -366,7 +382,8 @@ namespace SISGEM.CRM
                     saveFileDialog.FilterIndex = 1;
                     saveFileDialog.RestoreDirectory = true;
                     saveFileDialog.Title = "Guardando Estrategia";
-                    saveFileDialog.FileName = "Estrategia.xlsx";
+                    saveFileDialog.FileName = $"{DateTime.Now.ToString("yyyy.MM.dd")} Control de Objetivos.xlsx"; 
+                                       
 
                     if (saveFileDialog.ShowDialog() != DialogResult.OK)
                         return;
@@ -549,7 +566,7 @@ namespace SISGEM.CRM
                 saveFileDialog.FilterIndex = 1;
                 saveFileDialog.RestoreDirectory = true;
                 saveFileDialog.Title = "Save PDF File";
-                saveFileDialog.FileName = "Estrategia.pdf";
+                saveFileDialog.FileName = $"{DateTime.Now.ToString("yyyy.MM.dd")} Control de Objetivos.pdf";
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -563,11 +580,11 @@ namespace SISGEM.CRM
                         // Crear un enlace compuesto
                         CompositeLink compositeLink = new CompositeLink(printingSystem);
 
-                        // Ajustar la apariencia de los GridView para la exportación
-                        gridView4.AppearancePrint.Row.Font = new Font("Tahoma", 4);
-                      
-                        gridView4.AppearancePrint.HeaderPanel.Font = new Font("Tahoma", 4);
-                        gridView4.AppearancePrint.GroupRow.Font = new Font("Tahoma", 4);
+                        // Ajustar la apariencia de los gridView1 para la exportación
+                        gridView4.AppearancePrint.Row.Font = new Font("Tahoma", 5);
+                     
+                        gridView4.AppearancePrint.HeaderPanel.Font = new Font("Tahoma", 5);
+                        gridView4.AppearancePrint.GroupRow.Font = new Font("Tahoma", 5);
 
                         // Habilitar WordWrap para las celdas
                         gridView4.OptionsPrint.PrintPreview = true;
@@ -583,21 +600,35 @@ namespace SISGEM.CRM
                         }
 
                         // Crear enlaces para cada GridControl y añadirlos al enlace compuesto
-                        PrintableComponentLink link1 = new PrintableComponentLink(printingSystem);
-                        link1.Component = gridEstrategias;
+                        PrintableComponentLink link1 = new PrintableComponentLink(printingSystem)
+                        {
+                            Component = gridEstrategias,
+                            Landscape = true, // Ajustar a horizontal
+                            PaperKind = System.Drawing.Printing.PaperKind.A4 // Ajustar tamaño de papel
+                        };
 
-                        PrintableComponentLink link2 = new PrintableComponentLink(printingSystem);
-                        link2.Component = GridObjetivos;
+                        PrintableComponentLink link2 = new PrintableComponentLink(printingSystem)
+                        {
+                            Component = GridObjetivos,
+                            Landscape = true, // Ajustar a horizontal
+                            PaperKind = System.Drawing.Printing.PaperKind.A4 // Ajustar tamaño de papel
+                        };
 
-                        PrintableComponentLink link3 = new PrintableComponentLink(printingSystem);
-                        link3.Component = GridProblemas;
+                        PrintableComponentLink link3 = new PrintableComponentLink(printingSystem)
+                        {
+                            Component = GridProblemas,
+                            Landscape = true, // Ajustar a horizontal
+                            PaperKind = System.Drawing.Printing.PaperKind.A4 // Ajustar tamaño de papel
+                        };
 
-                        PrintableComponentLink link4 = new PrintableComponentLink(printingSystem);
-                        link4.Component = GridDetalle;
-                        link4.Landscape = true; // Ajustar a horizontal
-                        link4.PaperKind = System.Drawing.Printing.PaperKind.A3; // Ajustar tamaño de papel
-                                                                                // Ajustar ancho de las columnas para el GridDetalle
-                   
+                        PrintableComponentLink link4 = new PrintableComponentLink(printingSystem)
+                        {
+                            Component = GridDetalle,
+                            Landscape = true, // Ajustar a horizontal
+                            PaperKind = System.Drawing.Printing.PaperKind.A4 // Ajustar tamaño de papel
+                        };
+
+
                         // Crear un enlace para añadir texto y saltos de línea
                         Link customTextLink1 = new Link();
                         customTextLink1.CreateDetailArea += (s, ea) =>
@@ -660,6 +691,10 @@ namespace SISGEM.CRM
                         compositeLink.Links.Add(link3);
                         compositeLink.Links.Add(customTextLink4);
                         compositeLink.Links.Add(link4);
+
+                        // Configurar la orientación horizontal y márgenes para el CompositeLink
+                        compositeLink.Landscape = true;
+                        compositeLink.Margins = new Margins(50, 50, 50, 50); // Ajustar márgenes
 
                         // Crear el documento
                         compositeLink.CreateDocument();

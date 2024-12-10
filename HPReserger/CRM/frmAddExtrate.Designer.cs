@@ -98,6 +98,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPDF = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -105,7 +106,9 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnPDF = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemProyecto = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_cliente.Properties)).BeginInit();
@@ -145,6 +148,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProyecto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -279,6 +284,7 @@
             // 
             // GridDetalle
             // 
+            this.GridDetalle.AllowDrop = true;
             this.GridDetalle.Location = new System.Drawing.Point(12, 428);
             this.GridDetalle.MainView = this.gridView4;
             this.GridDetalle.Name = "GridDetalle";
@@ -286,7 +292,8 @@
             this.repositoryItemObjetivoRelacionado,
             this.repositoryItemRespondables,
             this.repositoryItemStatus,
-            this.repositoryItemMemoEdit1});
+            this.repositoryItemMemoEdit1,
+            this.repositoryItemProyecto});
             this.GridDetalle.Size = new System.Drawing.Size(1153, 206);
             this.GridDetalle.TabIndex = 11;
             this.GridDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -306,7 +313,9 @@
             this.gridView4.GridControl = this.GridDetalle;
             this.gridView4.GroupCount = 1;
             this.gridView4.Name = "gridView4";
-            this.gridView4.OptionsView.ShowGroupPanel = false;
+            this.gridView4.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView4.OptionsSelection.MultiSelect = true;
+            this.gridView4.OptionsView.GroupDrawMode = DevExpress.XtraGrid.Views.Grid.GroupDrawMode.Office;
             this.gridView4.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.xProyectos, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView4.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView4_CellValueChanged);
@@ -314,6 +323,7 @@
             // xProyectos
             // 
             this.xProyectos.Caption = "Proyectos";
+            this.xProyectos.ColumnEdit = this.repositoryItemProyecto;
             this.xProyectos.FieldName = "Nombre";
             this.xProyectos.MinWidth = 150;
             this.xProyectos.Name = "xProyectos";
@@ -442,6 +452,7 @@
             this.did.Caption = "id";
             this.did.FieldName = "id";
             this.did.Name = "did";
+            this.did.OptionsColumn.AllowEdit = false;
             // 
             // GridProblemas
             // 
@@ -832,6 +843,15 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonExportaToExcel_ItemClick);
             // 
+            // btnPDF
+            // 
+            this.btnPDF.Caption = "Exportar PDF";
+            this.btnPDF.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPDF.Glyph")));
+            this.btnPDF.Id = 3;
+            this.btnPDF.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnPDF.LargeGlyph")));
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPDF_ItemClick);
+            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Cerrar";
@@ -882,14 +902,31 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // btnPDF
+            // repositoryItemProyecto
             // 
-            this.btnPDF.Caption = "Exportar PDF";
-            this.btnPDF.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPDF.Glyph")));
-            this.btnPDF.Id = 3;
-            this.btnPDF.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnPDF.LargeGlyph")));
-            this.btnPDF.Name = "btnPDF";
-            this.btnPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPDF_ItemClick);
+            this.repositoryItemProyecto.AutoHeight = false;
+            this.repositoryItemProyecto.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemProyecto.Name = "repositoryItemProyecto";
+            this.repositoryItemProyecto.NullText = "";
+            this.repositoryItemProyecto.View = this.gridView5;
+            // 
+            // gridView5
+            // 
+            this.gridView5.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1});
+            this.gridView5.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView5.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Nombre Proyecto";
+            this.gridColumn1.FieldName = "Nombre";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // frmAddExtrate
             // 
@@ -944,6 +981,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProyecto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1027,5 +1066,8 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private DevExpress.XtraBars.BarButtonItem btnPDF;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemProyecto;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

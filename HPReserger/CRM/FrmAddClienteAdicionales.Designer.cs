@@ -37,12 +37,16 @@
             this.NombreComercialTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.EspacioEnNubeTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.OficinaReunionTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.COORDINACION_CLIENTE1TextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.COORDINACION_CLIENTE2TextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.COORDINACION_CLIENTE3TextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.COORDINACION_CLIENTE4TextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ContactoCierreTextEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.COORDINACION_CLIENTE1TextEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.COORDINACION_CLIENTE2TextEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.COORDINACION_CLIENTE3TextEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.COORDINACION_CLIENTE4TextEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForpk_id = new DevExpress.XtraLayout.LayoutControlItem();
@@ -73,12 +77,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.NombreComercialTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EspacioEnNubeTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OficinaReunionTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE1TextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE2TextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE3TextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE4TextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ContactoCierreTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE1TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE2TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE3TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE4TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForpk_id)).BeginInit();
@@ -101,17 +109,17 @@
             this.dataLayoutControl1.Controls.Add(this.NombreComercialTextEdit);
             this.dataLayoutControl1.Controls.Add(this.EspacioEnNubeTextEdit);
             this.dataLayoutControl1.Controls.Add(this.OficinaReunionTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.ContactoCierreTextEdit);
             this.dataLayoutControl1.Controls.Add(this.COORDINACION_CLIENTE1TextEdit);
             this.dataLayoutControl1.Controls.Add(this.COORDINACION_CLIENTE2TextEdit);
             this.dataLayoutControl1.Controls.Add(this.COORDINACION_CLIENTE3TextEdit);
             this.dataLayoutControl1.Controls.Add(this.COORDINACION_CLIENTE4TextEdit);
-            this.dataLayoutControl1.Controls.Add(this.ContactoCierreTextEdit);
             this.dataLayoutControl1.DataSource = this.sCHClienteAdicionalesBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 24);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 26);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(680, 259);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(680, 257);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -169,42 +177,6 @@
             this.OficinaReunionTextEdit.StyleController = this.dataLayoutControl1;
             this.OficinaReunionTextEdit.TabIndex = 8;
             // 
-            // COORDINACION_CLIENTE1TextEdit
-            // 
-            this.COORDINACION_CLIENTE1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "COORDINACION_CLIENTE1", true));
-            this.COORDINACION_CLIENTE1TextEdit.Location = new System.Drawing.Point(122, 156);
-            this.COORDINACION_CLIENTE1TextEdit.Name = "COORDINACION_CLIENTE1TextEdit";
-            this.COORDINACION_CLIENTE1TextEdit.Size = new System.Drawing.Size(529, 20);
-            this.COORDINACION_CLIENTE1TextEdit.StyleController = this.dataLayoutControl1;
-            this.COORDINACION_CLIENTE1TextEdit.TabIndex = 10;
-            // 
-            // COORDINACION_CLIENTE2TextEdit
-            // 
-            this.COORDINACION_CLIENTE2TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "COORDINACION_CLIENTE2", true));
-            this.COORDINACION_CLIENTE2TextEdit.Location = new System.Drawing.Point(122, 180);
-            this.COORDINACION_CLIENTE2TextEdit.Name = "COORDINACION_CLIENTE2TextEdit";
-            this.COORDINACION_CLIENTE2TextEdit.Size = new System.Drawing.Size(529, 20);
-            this.COORDINACION_CLIENTE2TextEdit.StyleController = this.dataLayoutControl1;
-            this.COORDINACION_CLIENTE2TextEdit.TabIndex = 11;
-            // 
-            // COORDINACION_CLIENTE3TextEdit
-            // 
-            this.COORDINACION_CLIENTE3TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "COORDINACION_CLIENTE3", true));
-            this.COORDINACION_CLIENTE3TextEdit.Location = new System.Drawing.Point(122, 204);
-            this.COORDINACION_CLIENTE3TextEdit.Name = "COORDINACION_CLIENTE3TextEdit";
-            this.COORDINACION_CLIENTE3TextEdit.Size = new System.Drawing.Size(529, 20);
-            this.COORDINACION_CLIENTE3TextEdit.StyleController = this.dataLayoutControl1;
-            this.COORDINACION_CLIENTE3TextEdit.TabIndex = 12;
-            // 
-            // COORDINACION_CLIENTE4TextEdit
-            // 
-            this.COORDINACION_CLIENTE4TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "COORDINACION_CLIENTE4", true));
-            this.COORDINACION_CLIENTE4TextEdit.Location = new System.Drawing.Point(122, 228);
-            this.COORDINACION_CLIENTE4TextEdit.Name = "COORDINACION_CLIENTE4TextEdit";
-            this.COORDINACION_CLIENTE4TextEdit.Size = new System.Drawing.Size(529, 20);
-            this.COORDINACION_CLIENTE4TextEdit.StyleController = this.dataLayoutControl1;
-            this.COORDINACION_CLIENTE4TextEdit.TabIndex = 13;
-            // 
             // ContactoCierreTextEdit
             // 
             this.ContactoCierreTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "ContactoCierre", true));
@@ -224,6 +196,86 @@
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // COORDINACION_CLIENTE1TextEdit
+            // 
+            this.COORDINACION_CLIENTE1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "COORDINACION_CLIENTE1", true));
+            this.COORDINACION_CLIENTE1TextEdit.Location = new System.Drawing.Point(122, 156);
+            this.COORDINACION_CLIENTE1TextEdit.Name = "COORDINACION_CLIENTE1TextEdit";
+            this.COORDINACION_CLIENTE1TextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.COORDINACION_CLIENTE1TextEdit.Properties.NullText = "";
+            this.COORDINACION_CLIENTE1TextEdit.Properties.View = this.gridView1;
+            this.COORDINACION_CLIENTE1TextEdit.Size = new System.Drawing.Size(529, 20);
+            this.COORDINACION_CLIENTE1TextEdit.StyleController = this.dataLayoutControl1;
+            this.COORDINACION_CLIENTE1TextEdit.TabIndex = 10;
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // COORDINACION_CLIENTE2TextEdit
+            // 
+            this.COORDINACION_CLIENTE2TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "COORDINACION_CLIENTE2", true));
+            this.COORDINACION_CLIENTE2TextEdit.Location = new System.Drawing.Point(122, 180);
+            this.COORDINACION_CLIENTE2TextEdit.Name = "COORDINACION_CLIENTE2TextEdit";
+            this.COORDINACION_CLIENTE2TextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.COORDINACION_CLIENTE2TextEdit.Properties.NullText = "";
+            this.COORDINACION_CLIENTE2TextEdit.Properties.View = this.gridView2;
+            this.COORDINACION_CLIENTE2TextEdit.Size = new System.Drawing.Size(529, 20);
+            this.COORDINACION_CLIENTE2TextEdit.StyleController = this.dataLayoutControl1;
+            this.COORDINACION_CLIENTE2TextEdit.TabIndex = 11;
+            // 
+            // gridView2
+            // 
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // COORDINACION_CLIENTE3TextEdit
+            // 
+            this.COORDINACION_CLIENTE3TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "COORDINACION_CLIENTE3", true));
+            this.COORDINACION_CLIENTE3TextEdit.Location = new System.Drawing.Point(122, 204);
+            this.COORDINACION_CLIENTE3TextEdit.Name = "COORDINACION_CLIENTE3TextEdit";
+            this.COORDINACION_CLIENTE3TextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.COORDINACION_CLIENTE3TextEdit.Properties.NullText = "";
+            this.COORDINACION_CLIENTE3TextEdit.Properties.View = this.gridView3;
+            this.COORDINACION_CLIENTE3TextEdit.Size = new System.Drawing.Size(529, 20);
+            this.COORDINACION_CLIENTE3TextEdit.StyleController = this.dataLayoutControl1;
+            this.COORDINACION_CLIENTE3TextEdit.TabIndex = 12;
+            // 
+            // gridView3
+            // 
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // COORDINACION_CLIENTE4TextEdit
+            // 
+            this.COORDINACION_CLIENTE4TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sCHClienteAdicionalesBindingSource, "COORDINACION_CLIENTE4", true));
+            this.COORDINACION_CLIENTE4TextEdit.Location = new System.Drawing.Point(122, 228);
+            this.COORDINACION_CLIENTE4TextEdit.Name = "COORDINACION_CLIENTE4TextEdit";
+            this.COORDINACION_CLIENTE4TextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.COORDINACION_CLIENTE4TextEdit.Properties.NullText = "";
+            this.COORDINACION_CLIENTE4TextEdit.Properties.View = this.gridView4;
+            this.COORDINACION_CLIENTE4TextEdit.Size = new System.Drawing.Size(529, 20);
+            this.COORDINACION_CLIENTE4TextEdit.StyleController = this.dataLayoutControl1;
+            this.COORDINACION_CLIENTE4TextEdit.TabIndex = 13;
+            // 
+            // gridView4
+            // 
+            this.gridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView4.OptionsView.ShowGroupPanel = false;
             // 
             // layoutControlGroup1
             // 
@@ -414,7 +466,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(680, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(680, 26);
             // 
             // barDockControlBottom
             // 
@@ -427,15 +479,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 259);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 257);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(680, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 259);
+            this.barDockControlRight.Location = new System.Drawing.Point(680, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 257);
             // 
             // btnAdicionales
             // 
@@ -468,12 +520,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.NombreComercialTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EspacioEnNubeTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OficinaReunionTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE1TextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE2TextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE3TextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE4TextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ContactoCierreTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE1TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE2TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE3TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COORDINACION_CLIENTE4TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForpk_id)).EndInit();
@@ -501,10 +557,6 @@
         private DevExpress.XtraEditors.TextEdit NombreComercialTextEdit;
         private DevExpress.XtraEditors.TextEdit EspacioEnNubeTextEdit;
         private DevExpress.XtraEditors.TextEdit OficinaReunionTextEdit;
-        private DevExpress.XtraEditors.TextEdit COORDINACION_CLIENTE1TextEdit;
-        private DevExpress.XtraEditors.TextEdit COORDINACION_CLIENTE2TextEdit;
-        private DevExpress.XtraEditors.TextEdit COORDINACION_CLIENTE3TextEdit;
-        private DevExpress.XtraEditors.TextEdit COORDINACION_CLIENTE4TextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem ItemForpk_id;
@@ -529,5 +581,13 @@
         private DevExpress.XtraBars.BarButtonItem btnAdicionales;
         private DevExpress.XtraEditors.SearchLookUpEdit ContactoCierreTextEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraEditors.SearchLookUpEdit COORDINACION_CLIENTE1TextEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SearchLookUpEdit COORDINACION_CLIENTE2TextEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraEditors.SearchLookUpEdit COORDINACION_CLIENTE3TextEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraEditors.SearchLookUpEdit COORDINACION_CLIENTE4TextEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
     }
 }

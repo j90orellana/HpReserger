@@ -28,6 +28,21 @@ namespace HPResergerCapaLogica.Contable
                 return dataTable;
             }
         }
+        public DataTable ListarCuentasContablesActivas()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = @"select* from TBL_Cuenta_Contable where EstadoCta = 1 and CtaDetalle = 1";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
         // Obtener registro por Id_Empresa como DataTable
         public DataTable GetEmpresaById(int idEmpresa)
         {
