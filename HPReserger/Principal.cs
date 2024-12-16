@@ -1151,12 +1151,67 @@ namespace SISGEM
         private void barButtonItem49_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenForm<ModuloAlmacen.frmTipoActivoFijos>();
-            
+
         }
 
         private void barButtonItem50_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenForm<ModuloAlmacen.frmSubtipo>();
+
+        }
+
+        private void barButtonItem41_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloActivoFijo.frmActivosFijosListar>();
+
+        }
+
+        private void barButtonItem54_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //SPV FC
+            Flujo_de_Caja.frmaddServicio frm = new Flujo_de_Caja.frmaddServicio();
+            frm.Tipo = 1;
+            frm.MdiParent = this;
+            frm.Show();
+
+        }
+
+        private void barButtonItem55_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //servicios FC
+            Flujo_de_Caja.frmaddServicio frm = new Flujo_de_Caja.frmaddServicio();
+            frm.Tipo = 2;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem58_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //Holding FC
+            Flujo_de_Caja.frmaddServicio frm = new Flujo_de_Caja.frmaddServicio();
+            frm.Tipo = 3;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem59_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //Constructora FC
+            Flujo_de_Caja.frmaddServicio frm = new Flujo_de_Caja.frmaddServicio();
+            frm.Tipo = 4;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem62_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<Flujo_de_Caja.frmVentaInventario>();
+
+        }
+
+        private void barButtonItem63_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<Flujo_de_Caja.frmAddEstatusInventario>();
 
         }
     }

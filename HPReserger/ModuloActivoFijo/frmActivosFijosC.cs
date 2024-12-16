@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SISGEM.ModuloActivoFijo
 {
@@ -84,7 +85,7 @@ namespace SISGEM.ModuloActivoFijo
             {
                 lblEstado.Caption = "Activo Fijo Nuevo";
                 EmpresaIdTextEdit.Properties.ReadOnly = false;
-
+                EstadoTextEdit.EditValue = 1;
 
 
             }
@@ -355,13 +356,22 @@ namespace SISGEM.ModuloActivoFijo
                         }
                         else
                         {
-                            XtraMessageBox.Show(
-                                "Ocurrió un error al guardar el activo fijo.", "Error en la Operación", MessageBoxButtons.OK, MessageBoxIcon.Error
+                            XtraMessageBox.Show("Ocurrió un error al guardar el activo fijo.", "Error en la Operación", MessageBoxButtons.OK, MessageBoxIcon.Error
                             );
                         }
                     }
                     else
                     {
+                        string[] partes = oActivoFijo.Codigo.Split('-');
+                        // Validar y extraer la última parte
+                        if (partes.Length == 3 && int.TryParse(partes[2], out int numero))
+                        {
+                          if (numero == 0)
+                            {
+                                GenerarCodigoActivoNuevo();
+                                oActivoFijo.Codigo = ConvertToString(CodigoTextEdit.EditValue);
+                            }
+                        }
                         resultadoOperacion = cActivoFijo.Update(oActivoFijo);
                         // Mostrar mensaje según el resultado
                         if (resultadoOperacion)
@@ -395,6 +405,158 @@ namespace SISGEM.ModuloActivoFijo
         private void btnCerrar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+        }
+
+        private void bntFormatoCargaMasiva_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            string archivoOrigen = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ModuloActivoFijo", "FORMATO CARGA ACTIVOS FIJOS.xlsx");
+            if (!File.Exists(archivoOrigen))
+            {
+                XtraMessageBox.Show("El archivo de origen no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Archivos de Excel (*.xlsx)|*.xlsx";
+                saveFileDialog.Title = "Guardar archivo Excel";
+                saveFileDialog.FileName = "FORMATO CARGA ACTIVOS FIJOS.xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string rutaDestino = saveFileDialog.FileName;
+
+                    try
+                    {
+                        File.Copy(archivoOrigen, rutaDestino, true);
+                        XtraMessageBox.Show("El archivo se exportó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Abrir el archivo exportado
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = rutaDestino,
+                            UseShellExecute = true
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show($"Error al exportar el archivo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("La operación fue cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        DataTable TdatosExcel;
+        private Boolean CargarDatosDelExcel(string Ruta)
+        {
+            TdatosExcel = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, 1, 6, 11);
+            if (TdatosExcel.Rows.Count == 0)
+            {
+                return false;
+            }
+            return true;
+
+        }
+        private void btnCargaMasiva_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Archivos de Excel (*.xlsx)|*.xlsx";
+                openFileDialog.Title = "Seleccionar archivo Excel";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+
+                    try
+                    {
+                        if (CargarDatosDelExcel(openFileDialog.FileName))
+                        {
+                            if (TdatosExcel.Rows.Count <= 1) // Validar si hay más de una fila
+                            {
+                                XtraMessageBox.Show("El archivo Excel no contiene datos suficientes.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                if (XtraMessageBox.Show("Los datos se han cargado exitosamente. ¿Está seguro de que desea proceder con la carga de los activos fijos?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                                {
+
+                                    foreach (DataRow fila in TdatosExcel.Rows)
+                                    {
+                                        if (!(fila[0] == DBNull.Value || string.IsNullOrWhiteSpace(fila[0].ToString())))
+                                        {
+                                            if (int.TryParse(fila[0]?.ToString() ?? string.Empty, out int agua))
+                                            {
+                                                //MessageBox.Show("Se encontró una fila con la primera columna vacía.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                //break;
+                                                HPResergerCapaLogica.Contable.ActivosFijos cActivoFijo = new HPResergerCapaLogica.Contable.ActivosFijos();
+                                                var oActivoFijo = new HPResergerCapaLogica.Contable.ActivosFijos.oActivoFijo();
+
+                                                // Asignaciones de los controles al objeto con validaciones
+                                                oActivoFijo.EmpresaId = ConvertToInt(fila["Column0"]);
+                                                oActivoFijo.Codigo = ConvertToString(fila["Column1"]);
+                                                oActivoFijo.TipoActivoId = ConvertToInt(fila["Column2"]);
+                                                oActivoFijo.ClasificacionId = ConvertToInt(fila["Column3"]);
+                                                oActivoFijo.MetodoDepreciacionId = ConvertToInt(fila["Column4"]);
+                                                oActivoFijo.ValorActivo = ConvertToDecimal(fila["Column5"]);
+                                                oActivoFijo.ValorResidual = ConvertToDecimal(fila["Column6"]);
+                                                oActivoFijo.DepreciacionContable = ConvertToDecimal(fila["Column7"]);
+                                                oActivoFijo.DepreciacionTributaria = ConvertToDecimal(fila["Column8"]);
+                                                oActivoFijo.FechaAdquisicion = ConvertToDateTime(fila["Column9"]);
+                                                oActivoFijo.FechaAlta = ConvertToDateTime(fila["Column10"]);
+                                                oActivoFijo.Marca = ConvertToString(fila["Column11"]);
+                                                oActivoFijo.Modelo = ConvertToString(fila["Column12"]);
+                                                oActivoFijo.NumeroSerie = ConvertToString(fila["Column13"]);
+                                                oActivoFijo.CuentaActivo = ConvertToString(fila["Column14"]);
+                                                oActivoFijo.Descripcion = ConvertToString(fila["Column15"]);
+                                                oActivoFijo.CatalogoExistenciaId = ConvertToInt(fila["Column16"]);
+                                                oActivoFijo.CodigoExistencia = ConvertToString(fila["Column17"]);
+                                                oActivoFijo.TipoActivoFijoId = ConvertToInt(fila["Column18"]);
+                                                oActivoFijo.EstadoActivoFijoId = ConvertToInt(fila["Column19"]);
+                                                oActivoFijo.LE_Fecha = ConvertToDateTime(fila["Column20"]);
+                                                oActivoFijo.LE_NumeroContrato = ConvertToInt(fila["Column21"]);
+                                                oActivoFijo.LE_FechaInicio = ConvertToDateTime(fila["Column22"]);
+                                                oActivoFijo.LE_NumeroCuotas = ConvertToInt(fila["Column23"]);
+                                                oActivoFijo.LE_MontoTotal = ConvertToDecimal(fila["Column24"]);
+                                                oActivoFijo.Estado = ConvertToInt(fila["Column25"]);
+
+                                                cActivoFijo.Insert(oActivoFijo);
+                                            }
+                                        }
+                                    }
+
+                                    XtraMessageBox.Show("Datos cargados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    XtraMessageBox.Show($"Cancelado por el Usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show($"Error al leer el archivo Excel", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show($"Error al leer el archivo Excel: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void btndesproteger_Click(object sender, EventArgs e)
+        {
+            CodigoTextEdit.Properties.ReadOnly = false;
         }
     }
 }

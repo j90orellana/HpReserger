@@ -85,6 +85,9 @@
     <Compile Include="Contable\Tabla30SunatService.cs" />
     <Compile Include="Contable\TipoBajaActivo.cs" />
     <Compile Include="Contable\TiposActivoFijos.cs" />
+    <Compile Include="FlujoCaja\EstatusInventario.cs" />
+    <Compile Include="FlujoCaja\InventarioVentas.cs" />
+    <Compile Include="FlujoCaja\PartidasControl.cs" />
     <Compile Include="HPResergerCL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -35,6 +35,8 @@
             this.btnNuevo = new DevExpress.XtraBars.BarButtonItem();
             this.btnGuardar = new DevExpress.XtraBars.BarButtonItem();
             this.btnRecargaCombos = new DevExpress.XtraBars.BarButtonItem();
+            this.bntFormatoCargaMasiva = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCargaMasiva = new DevExpress.XtraBars.BarButtonItem();
             this.btnCerrar = new DevExpress.XtraBars.BarButtonItem();
             this.lblEstado = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -43,6 +45,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.actuaL_BETADataSet1 = new SISGEM.ACTUAL_BETADataSet();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.btndesproteger = new DevExpress.XtraEditors.SimpleButton();
             this.IdTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.oActivoFijoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CodigoTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -89,6 +92,7 @@
             this.ItemForCodigo = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForClasificacionId = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForMetodoDepreciacionId = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForValorActivo = new DevExpress.XtraLayout.LayoutControlItem();
@@ -98,7 +102,6 @@
             this.ItemForEstadoActivoFijoId = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCodigoExistencia = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForModelo = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForNumeroSerie = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForValorResidual = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForFechaAdquisicion = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForFechaAlta = new DevExpress.XtraLayout.LayoutControlItem();
@@ -108,6 +111,8 @@
             this.ItemForDescripcion = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCuentaActivo = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem9 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.ItemForNumeroSerie = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForLE_Fecha = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForLE_MontoTotal = new DevExpress.XtraLayout.LayoutControlItem();
@@ -117,7 +122,6 @@
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuaL_BETADataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
@@ -172,6 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForClasificacionId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMetodoDepreciacionId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForValorActivo)).BeginInit();
@@ -181,7 +186,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEstadoActivoFijoId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCodigoExistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForModelo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNumeroSerie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForValorResidual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForFechaAdquisicion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForFechaAlta)).BeginInit();
@@ -191,6 +195,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDescripcion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCuentaActivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForNumeroSerie)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLE_Fecha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLE_MontoTotal)).BeginInit();
@@ -200,7 +206,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -217,9 +222,11 @@
             this.btnRecargaCombos,
             this.btnGuardar,
             this.btnNuevo,
-            this.lblEstado});
+            this.lblEstado,
+            this.bntFormatoCargaMasiva,
+            this.btnCargaMasiva});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 10;
             // 
             // bar1
             // 
@@ -233,6 +240,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNuevo, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGuardar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRecargaCombos, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bntFormatoCargaMasiva, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCargaMasiva, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCerrar, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.lblEstado, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.Caption)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
@@ -268,6 +277,24 @@
             this.btnRecargaCombos.Name = "btnRecargaCombos";
             this.btnRecargaCombos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRecargaCombos_ItemClick);
             // 
+            // bntFormatoCargaMasiva
+            // 
+            this.bntFormatoCargaMasiva.Caption = "Carga Masiva Formato";
+            this.bntFormatoCargaMasiva.Glyph = ((System.Drawing.Image)(resources.GetObject("bntFormatoCargaMasiva.Glyph")));
+            this.bntFormatoCargaMasiva.Id = 8;
+            this.bntFormatoCargaMasiva.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bntFormatoCargaMasiva.LargeGlyph")));
+            this.bntFormatoCargaMasiva.Name = "bntFormatoCargaMasiva";
+            this.bntFormatoCargaMasiva.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bntFormatoCargaMasiva_ItemClick);
+            // 
+            // btnCargaMasiva
+            // 
+            this.btnCargaMasiva.Caption = "Carga Masiva";
+            this.btnCargaMasiva.Glyph = ((System.Drawing.Image)(resources.GetObject("btnCargaMasiva.Glyph")));
+            this.btnCargaMasiva.Id = 9;
+            this.btnCargaMasiva.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnCargaMasiva.LargeGlyph")));
+            this.btnCargaMasiva.Name = "btnCargaMasiva";
+            this.btnCargaMasiva.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCargaMasiva_ItemClick);
+            // 
             // btnCerrar
             // 
             this.btnCerrar.Caption = "Cerrar";
@@ -293,28 +320,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1007, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1006, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 546);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1007, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1006, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 522);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 520);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1007, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
+            this.barDockControlRight.Location = new System.Drawing.Point(1006, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 520);
             // 
             // actuaL_BETADataSet1
             // 
@@ -324,6 +351,7 @@
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.AllowGeneratingNestedGroups = DevExpress.Utils.DefaultBoolean.True;
+            this.dataLayoutControl1.Controls.Add(this.btndesproteger);
             this.dataLayoutControl1.Controls.Add(this.IdTextEdit);
             this.dataLayoutControl1.Controls.Add(this.CodigoTextEdit);
             this.dataLayoutControl1.Controls.Add(this.ValorActivoTextEdit);
@@ -353,17 +381,29 @@
             this.dataLayoutControl1.Controls.Add(this.EstadoActivoFijoIdTextEdit);
             this.dataLayoutControl1.DataSource = this.oActivoFijoBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 24);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 26);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1007, 522);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1006, 520);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // btndesproteger
+            // 
+            this.btndesproteger.Image = ((System.Drawing.Image)(resources.GetObject("btndesproteger.Image")));
+            this.btndesproteger.Location = new System.Drawing.Point(939, 67);
+            this.btndesproteger.MaximumSize = new System.Drawing.Size(24, 22);
+            this.btndesproteger.MinimumSize = new System.Drawing.Size(24, 22);
+            this.btndesproteger.Name = "btndesproteger";
+            this.btndesproteger.Size = new System.Drawing.Size(24, 22);
+            this.btndesproteger.StyleController = this.dataLayoutControl1;
+            this.btndesproteger.TabIndex = 31;
+            this.btndesproteger.Click += new System.EventHandler(this.btndesproteger_Click);
             // 
             // IdTextEdit
             // 
             this.IdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "Id", true));
-            this.IdTextEdit.Location = new System.Drawing.Point(174, 42);
+            this.IdTextEdit.Location = new System.Drawing.Point(174, 43);
             this.IdTextEdit.MenuManager = this.barManager1;
             this.IdTextEdit.Name = "IdTextEdit";
             this.IdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -382,10 +422,10 @@
             // CodigoTextEdit
             // 
             this.CodigoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "Codigo", true));
-            this.CodigoTextEdit.Location = new System.Drawing.Point(694, 66);
+            this.CodigoTextEdit.Location = new System.Drawing.Point(694, 67);
             this.CodigoTextEdit.MenuManager = this.barManager1;
             this.CodigoTextEdit.Name = "CodigoTextEdit";
-            this.CodigoTextEdit.Size = new System.Drawing.Size(269, 20);
+            this.CodigoTextEdit.Size = new System.Drawing.Size(241, 20);
             this.CodigoTextEdit.StyleController = this.dataLayoutControl1;
             this.CodigoTextEdit.TabIndex = 6;
             // 
@@ -393,7 +433,7 @@
             // 
             this.ValorActivoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "ValorActivo", true));
             this.ValorActivoTextEdit.EditValue = "0";
-            this.ValorActivoTextEdit.Location = new System.Drawing.Point(697, 180);
+            this.ValorActivoTextEdit.Location = new System.Drawing.Point(697, 184);
             this.ValorActivoTextEdit.MenuManager = this.barManager1;
             this.ValorActivoTextEdit.Name = "ValorActivoTextEdit";
             this.ValorActivoTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -409,7 +449,7 @@
             // 
             this.ValorResidualTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "ValorResidual", true));
             this.ValorResidualTextEdit.EditValue = "0";
-            this.ValorResidualTextEdit.Location = new System.Drawing.Point(697, 204);
+            this.ValorResidualTextEdit.Location = new System.Drawing.Point(697, 208);
             this.ValorResidualTextEdit.MenuManager = this.barManager1;
             this.ValorResidualTextEdit.Name = "ValorResidualTextEdit";
             this.ValorResidualTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -429,7 +469,7 @@
             0,
             0,
             0});
-            this.DepreciacionContableTextEdit.Location = new System.Drawing.Point(430, 180);
+            this.DepreciacionContableTextEdit.Location = new System.Drawing.Point(430, 184);
             this.DepreciacionContableTextEdit.MenuManager = this.barManager1;
             this.DepreciacionContableTextEdit.Name = "DepreciacionContableTextEdit";
             this.DepreciacionContableTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -450,7 +490,7 @@
             0,
             0,
             131072});
-            this.DepreciacionTributariaTextEdit.Location = new System.Drawing.Point(430, 204);
+            this.DepreciacionTributariaTextEdit.Location = new System.Drawing.Point(430, 208);
             this.DepreciacionTributariaTextEdit.MenuManager = this.barManager1;
             this.DepreciacionTributariaTextEdit.Name = "DepreciacionTributariaTextEdit";
             this.DepreciacionTributariaTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -466,7 +506,7 @@
             // 
             this.FechaAdquisicionDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "FechaAdquisicion", true));
             this.FechaAdquisicionDateEdit.EditValue = new System.DateTime(2024, 12, 5, 16, 21, 14, 888);
-            this.FechaAdquisicionDateEdit.Location = new System.Drawing.Point(174, 180);
+            this.FechaAdquisicionDateEdit.Location = new System.Drawing.Point(174, 184);
             this.FechaAdquisicionDateEdit.MenuManager = this.barManager1;
             this.FechaAdquisicionDateEdit.Name = "FechaAdquisicionDateEdit";
             this.FechaAdquisicionDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -481,7 +521,7 @@
             // 
             this.FechaAltaDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "FechaAlta", true));
             this.FechaAltaDateEdit.EditValue = new System.DateTime(2024, 12, 5, 16, 21, 24, 41);
-            this.FechaAltaDateEdit.Location = new System.Drawing.Point(174, 204);
+            this.FechaAltaDateEdit.Location = new System.Drawing.Point(174, 208);
             this.FechaAltaDateEdit.MenuManager = this.barManager1;
             this.FechaAltaDateEdit.Name = "FechaAltaDateEdit";
             this.FechaAltaDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -495,7 +535,7 @@
             // MarcaTextEdit
             // 
             this.MarcaTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "Marca", true));
-            this.MarcaTextEdit.Location = new System.Drawing.Point(174, 228);
+            this.MarcaTextEdit.Location = new System.Drawing.Point(174, 232);
             this.MarcaTextEdit.MenuManager = this.barManager1;
             this.MarcaTextEdit.Name = "MarcaTextEdit";
             this.MarcaTextEdit.Size = new System.Drawing.Size(369, 20);
@@ -505,7 +545,7 @@
             // ModeloTextEdit
             // 
             this.ModeloTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "Modelo", true));
-            this.ModeloTextEdit.Location = new System.Drawing.Point(697, 228);
+            this.ModeloTextEdit.Location = new System.Drawing.Point(697, 232);
             this.ModeloTextEdit.MenuManager = this.barManager1;
             this.ModeloTextEdit.Name = "ModeloTextEdit";
             this.ModeloTextEdit.Size = new System.Drawing.Size(266, 20);
@@ -515,7 +555,7 @@
             // NumeroSerieTextEdit
             // 
             this.NumeroSerieTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "NumeroSerie", true));
-            this.NumeroSerieTextEdit.Location = new System.Drawing.Point(174, 252);
+            this.NumeroSerieTextEdit.Location = new System.Drawing.Point(174, 256);
             this.NumeroSerieTextEdit.MenuManager = this.barManager1;
             this.NumeroSerieTextEdit.Name = "NumeroSerieTextEdit";
             this.NumeroSerieTextEdit.Size = new System.Drawing.Size(369, 20);
@@ -525,7 +565,7 @@
             // DescripcionTextEdit
             // 
             this.DescripcionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "Descripcion", true));
-            this.DescripcionTextEdit.Location = new System.Drawing.Point(174, 300);
+            this.DescripcionTextEdit.Location = new System.Drawing.Point(174, 304);
             this.DescripcionTextEdit.MenuManager = this.barManager1;
             this.DescripcionTextEdit.Name = "DescripcionTextEdit";
             this.DescripcionTextEdit.Size = new System.Drawing.Size(789, 20);
@@ -535,7 +575,7 @@
             // CodigoExistenciaTextEdit
             // 
             this.CodigoExistenciaTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "CodigoExistencia", true));
-            this.CodigoExistenciaTextEdit.Location = new System.Drawing.Point(697, 324);
+            this.CodigoExistenciaTextEdit.Location = new System.Drawing.Point(697, 328);
             this.CodigoExistenciaTextEdit.MenuManager = this.barManager1;
             this.CodigoExistenciaTextEdit.Name = "CodigoExistenciaTextEdit";
             this.CodigoExistenciaTextEdit.Size = new System.Drawing.Size(266, 20);
@@ -546,7 +586,7 @@
             // 
             this.LE_FechaDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "LE_Fecha", true));
             this.LE_FechaDateEdit.EditValue = new System.DateTime(2024, 12, 5, 16, 26, 37, 173);
-            this.LE_FechaDateEdit.Location = new System.Drawing.Point(174, 414);
+            this.LE_FechaDateEdit.Location = new System.Drawing.Point(174, 419);
             this.LE_FechaDateEdit.MenuManager = this.barManager1;
             this.LE_FechaDateEdit.Name = "LE_FechaDateEdit";
             this.LE_FechaDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -561,7 +601,7 @@
             // 
             this.LE_NumeroContratoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "LE_NumeroContrato", true));
             this.LE_NumeroContratoTextEdit.EditValue = "1";
-            this.LE_NumeroContratoTextEdit.Location = new System.Drawing.Point(174, 438);
+            this.LE_NumeroContratoTextEdit.Location = new System.Drawing.Point(174, 443);
             this.LE_NumeroContratoTextEdit.MenuManager = this.barManager1;
             this.LE_NumeroContratoTextEdit.Name = "LE_NumeroContratoTextEdit";
             this.LE_NumeroContratoTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -577,7 +617,7 @@
             // 
             this.LE_FechaInicioDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "LE_FechaInicio", true));
             this.LE_FechaInicioDateEdit.EditValue = new System.DateTime(2024, 12, 5, 16, 27, 19, 779);
-            this.LE_FechaInicioDateEdit.Location = new System.Drawing.Point(424, 414);
+            this.LE_FechaInicioDateEdit.Location = new System.Drawing.Point(424, 419);
             this.LE_FechaInicioDateEdit.MenuManager = this.barManager1;
             this.LE_FechaInicioDateEdit.Name = "LE_FechaInicioDateEdit";
             this.LE_FechaInicioDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -592,7 +632,7 @@
             // 
             this.LE_NumeroCuotasTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "LE_NumeroCuotas", true));
             this.LE_NumeroCuotasTextEdit.EditValue = "1";
-            this.LE_NumeroCuotasTextEdit.Location = new System.Drawing.Point(424, 438);
+            this.LE_NumeroCuotasTextEdit.Location = new System.Drawing.Point(424, 443);
             this.LE_NumeroCuotasTextEdit.MenuManager = this.barManager1;
             this.LE_NumeroCuotasTextEdit.Name = "LE_NumeroCuotasTextEdit";
             this.LE_NumeroCuotasTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -608,7 +648,7 @@
             // 
             this.LE_MontoTotalTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "LE_MontoTotal", true));
             this.LE_MontoTotalTextEdit.EditValue = "0";
-            this.LE_MontoTotalTextEdit.Location = new System.Drawing.Point(668, 438);
+            this.LE_MontoTotalTextEdit.Location = new System.Drawing.Point(668, 443);
             this.LE_MontoTotalTextEdit.MenuManager = this.barManager1;
             this.LE_MontoTotalTextEdit.Name = "LE_MontoTotalTextEdit";
             this.LE_MontoTotalTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -623,7 +663,7 @@
             // EstadoTextEdit
             // 
             this.EstadoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "Estado", true));
-            this.EstadoTextEdit.Location = new System.Drawing.Point(162, 474);
+            this.EstadoTextEdit.Location = new System.Drawing.Point(162, 479);
             this.EstadoTextEdit.MenuManager = this.barManager1;
             this.EstadoTextEdit.Name = "EstadoTextEdit";
             this.EstadoTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -631,14 +671,14 @@
             this.EstadoTextEdit.Properties.Mask.EditMask = "N0";
             this.EstadoTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.EstadoTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.EstadoTextEdit.Size = new System.Drawing.Size(833, 20);
+            this.EstadoTextEdit.Size = new System.Drawing.Size(823, 20);
             this.EstadoTextEdit.StyleController = this.dataLayoutControl1;
             this.EstadoTextEdit.TabIndex = 30;
             // 
             // EmpresaIdTextEdit
             // 
             this.EmpresaIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "EmpresaId", true));
-            this.EmpresaIdTextEdit.Location = new System.Drawing.Point(174, 66);
+            this.EmpresaIdTextEdit.Location = new System.Drawing.Point(174, 67);
             this.EmpresaIdTextEdit.MenuManager = this.barManager1;
             this.EmpresaIdTextEdit.Name = "EmpresaIdTextEdit";
             this.EmpresaIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -662,7 +702,7 @@
             // TipoActivoIdTextEdit
             // 
             this.TipoActivoIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "TipoActivoId", true));
-            this.TipoActivoIdTextEdit.Location = new System.Drawing.Point(174, 90);
+            this.TipoActivoIdTextEdit.Location = new System.Drawing.Point(174, 93);
             this.TipoActivoIdTextEdit.MenuManager = this.barManager1;
             this.TipoActivoIdTextEdit.Name = "TipoActivoIdTextEdit";
             this.TipoActivoIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -686,7 +726,7 @@
             // ClasificacionIdTextEdit
             // 
             this.ClasificacionIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "ClasificacionId", true));
-            this.ClasificacionIdTextEdit.Location = new System.Drawing.Point(694, 90);
+            this.ClasificacionIdTextEdit.Location = new System.Drawing.Point(694, 93);
             this.ClasificacionIdTextEdit.MenuManager = this.barManager1;
             this.ClasificacionIdTextEdit.Name = "ClasificacionIdTextEdit";
             this.ClasificacionIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -710,7 +750,7 @@
             // MetodoDepreciacionIdTextEdit
             // 
             this.MetodoDepreciacionIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "MetodoDepreciacionId", true));
-            this.MetodoDepreciacionIdTextEdit.Location = new System.Drawing.Point(174, 156);
+            this.MetodoDepreciacionIdTextEdit.Location = new System.Drawing.Point(174, 160);
             this.MetodoDepreciacionIdTextEdit.MenuManager = this.barManager1;
             this.MetodoDepreciacionIdTextEdit.Name = "MetodoDepreciacionIdTextEdit";
             this.MetodoDepreciacionIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -733,7 +773,7 @@
             // CuentaActivoTextEdit
             // 
             this.CuentaActivoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "CuentaActivo", true));
-            this.CuentaActivoTextEdit.Location = new System.Drawing.Point(174, 276);
+            this.CuentaActivoTextEdit.Location = new System.Drawing.Point(174, 280);
             this.CuentaActivoTextEdit.MenuManager = this.barManager1;
             this.CuentaActivoTextEdit.Name = "CuentaActivoTextEdit";
             this.CuentaActivoTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -754,7 +794,7 @@
             // CatalogoExistenciaIdTextEdit
             // 
             this.CatalogoExistenciaIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "CatalogoExistenciaId", true));
-            this.CatalogoExistenciaIdTextEdit.Location = new System.Drawing.Point(174, 324);
+            this.CatalogoExistenciaIdTextEdit.Location = new System.Drawing.Point(174, 328);
             this.CatalogoExistenciaIdTextEdit.MenuManager = this.barManager1;
             this.CatalogoExistenciaIdTextEdit.Name = "CatalogoExistenciaIdTextEdit";
             this.CatalogoExistenciaIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -777,7 +817,7 @@
             // TipoActivoFijoIdTextEdit
             // 
             this.TipoActivoFijoIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "TipoActivoFijoId", true));
-            this.TipoActivoFijoIdTextEdit.Location = new System.Drawing.Point(174, 348);
+            this.TipoActivoFijoIdTextEdit.Location = new System.Drawing.Point(174, 352);
             this.TipoActivoFijoIdTextEdit.MenuManager = this.barManager1;
             this.TipoActivoFijoIdTextEdit.Name = "TipoActivoFijoIdTextEdit";
             this.TipoActivoFijoIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -800,7 +840,7 @@
             // EstadoActivoFijoIdTextEdit
             // 
             this.EstadoActivoFijoIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oActivoFijoBindingSource, "EstadoActivoFijoId", true));
-            this.EstadoActivoFijoIdTextEdit.Location = new System.Drawing.Point(697, 348);
+            this.EstadoActivoFijoIdTextEdit.Location = new System.Drawing.Point(697, 352);
             this.EstadoActivoFijoIdTextEdit.MenuManager = this.barManager1;
             this.EstadoActivoFijoIdTextEdit.Name = "EstadoActivoFijoIdTextEdit";
             this.EstadoActivoFijoIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -828,7 +868,7 @@
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1007, 522);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(997, 521);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -843,14 +883,14 @@
             this.emptySpaceItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(987, 502);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(977, 501);
             // 
             // ItemForEstado
             // 
             this.ItemForEstado.Control = this.EstadoTextEdit;
-            this.ItemForEstado.Location = new System.Drawing.Point(0, 462);
+            this.ItemForEstado.Location = new System.Drawing.Point(0, 467);
             this.ItemForEstado.Name = "ItemForEstado";
-            this.ItemForEstado.Size = new System.Drawing.Size(987, 24);
+            this.ItemForEstado.Size = new System.Drawing.Size(977, 24);
             this.ItemForEstado.Text = "Estado";
             this.ItemForEstado.TextSize = new System.Drawing.Size(147, 13);
             this.ItemForEstado.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
@@ -863,10 +903,11 @@
             this.ItemForEmpresaId,
             this.ItemForCodigo,
             this.ItemForClasificacionId,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.layoutControlItem1});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(987, 114);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(977, 117);
             this.layoutControlGroup3.Text = "Creación de Activo Fijo\r\n";
             // 
             // ItemForId
@@ -882,7 +923,7 @@
             // ItemForTipoActivoId
             // 
             this.ItemForTipoActivoId.Control = this.TipoActivoIdTextEdit;
-            this.ItemForTipoActivoId.Location = new System.Drawing.Point(0, 48);
+            this.ItemForTipoActivoId.Location = new System.Drawing.Point(0, 50);
             this.ItemForTipoActivoId.MaxSize = new System.Drawing.Size(520, 24);
             this.ItemForTipoActivoId.MinSize = new System.Drawing.Size(520, 24);
             this.ItemForTipoActivoId.Name = "ItemForTipoActivoId";
@@ -898,7 +939,7 @@
             this.ItemForEmpresaId.MaxSize = new System.Drawing.Size(520, 24);
             this.ItemForEmpresaId.MinSize = new System.Drawing.Size(520, 24);
             this.ItemForEmpresaId.Name = "ItemForEmpresaId";
-            this.ItemForEmpresaId.Size = new System.Drawing.Size(520, 24);
+            this.ItemForEmpresaId.Size = new System.Drawing.Size(520, 26);
             this.ItemForEmpresaId.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForEmpresaId.Text = "Empresa";
             this.ItemForEmpresaId.TextSize = new System.Drawing.Size(147, 13);
@@ -907,10 +948,10 @@
             // 
             this.ItemForCodigo.Control = this.CodigoTextEdit;
             this.ItemForCodigo.Location = new System.Drawing.Point(520, 24);
-            this.ItemForCodigo.MaxSize = new System.Drawing.Size(423, 24);
-            this.ItemForCodigo.MinSize = new System.Drawing.Size(423, 24);
+            this.ItemForCodigo.MaxSize = new System.Drawing.Size(395, 26);
+            this.ItemForCodigo.MinSize = new System.Drawing.Size(395, 26);
             this.ItemForCodigo.Name = "ItemForCodigo";
-            this.ItemForCodigo.Size = new System.Drawing.Size(423, 24);
+            this.ItemForCodigo.Size = new System.Drawing.Size(395, 26);
             this.ItemForCodigo.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForCodigo.Text = "Código de Activo Fijo\t\t\t\r\n";
             this.ItemForCodigo.TextSize = new System.Drawing.Size(147, 13);
@@ -918,7 +959,7 @@
             // ItemForClasificacionId
             // 
             this.ItemForClasificacionId.Control = this.ClasificacionIdTextEdit;
-            this.ItemForClasificacionId.Location = new System.Drawing.Point(520, 48);
+            this.ItemForClasificacionId.Location = new System.Drawing.Point(520, 50);
             this.ItemForClasificacionId.MaxSize = new System.Drawing.Size(423, 24);
             this.ItemForClasificacionId.MinSize = new System.Drawing.Size(423, 24);
             this.ItemForClasificacionId.Name = "ItemForClasificacionId";
@@ -932,8 +973,17 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(943, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(20, 72);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(10, 74);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.btndesproteger;
+            this.layoutControlItem1.Location = new System.Drawing.Point(915, 24);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(28, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlGroup4
             // 
@@ -957,9 +1007,9 @@
             this.emptySpaceItem9,
             this.ItemForNumeroSerie,
             this.emptySpaceItem3});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 114);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 117);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(987, 258);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(977, 259);
             this.layoutControlGroup4.Text = "Configuración del Activo Fijo";
             // 
             // ItemForMetodoDepreciacionId
@@ -1058,18 +1108,6 @@
             this.ItemForModelo.Text = "Modelo Del Activo Fijo\r\n";
             this.ItemForModelo.TextSize = new System.Drawing.Size(147, 13);
             // 
-            // ItemForNumeroSerie
-            // 
-            this.ItemForNumeroSerie.Control = this.NumeroSerieTextEdit;
-            this.ItemForNumeroSerie.Location = new System.Drawing.Point(0, 96);
-            this.ItemForNumeroSerie.MaxSize = new System.Drawing.Size(523, 24);
-            this.ItemForNumeroSerie.MinSize = new System.Drawing.Size(523, 24);
-            this.ItemForNumeroSerie.Name = "ItemForNumeroSerie";
-            this.ItemForNumeroSerie.Size = new System.Drawing.Size(523, 24);
-            this.ItemForNumeroSerie.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.ItemForNumeroSerie.Text = "N° de Serie y/o Placa del A.F.\r\n";
-            this.ItemForNumeroSerie.TextSize = new System.Drawing.Size(147, 13);
-            // 
             // ItemForValorResidual
             // 
             this.ItemForValorResidual.Control = this.ValorResidualTextEdit;
@@ -1167,8 +1205,28 @@
             this.emptySpaceItem9.AllowHotTrack = false;
             this.emptySpaceItem9.Location = new System.Drawing.Point(943, 0);
             this.emptySpaceItem9.Name = "emptySpaceItem9";
-            this.emptySpaceItem9.Size = new System.Drawing.Size(20, 216);
+            this.emptySpaceItem9.Size = new System.Drawing.Size(10, 216);
             this.emptySpaceItem9.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // ItemForNumeroSerie
+            // 
+            this.ItemForNumeroSerie.Control = this.NumeroSerieTextEdit;
+            this.ItemForNumeroSerie.Location = new System.Drawing.Point(0, 96);
+            this.ItemForNumeroSerie.MaxSize = new System.Drawing.Size(523, 24);
+            this.ItemForNumeroSerie.MinSize = new System.Drawing.Size(523, 24);
+            this.ItemForNumeroSerie.Name = "ItemForNumeroSerie";
+            this.ItemForNumeroSerie.Size = new System.Drawing.Size(523, 24);
+            this.ItemForNumeroSerie.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.ItemForNumeroSerie.Text = "N° de Serie y/o Placa del A.F.\r\n";
+            this.ItemForNumeroSerie.TextSize = new System.Drawing.Size(147, 13);
+            // 
+            // emptySpaceItem3
+            // 
+            this.emptySpaceItem3.AllowHotTrack = false;
+            this.emptySpaceItem3.Location = new System.Drawing.Point(523, 96);
+            this.emptySpaceItem3.Name = "emptySpaceItem3";
+            this.emptySpaceItem3.Size = new System.Drawing.Size(420, 24);
+            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup5
             // 
@@ -1180,9 +1238,9 @@
             this.ItemForLE_NumeroContrato,
             this.emptySpaceItem4,
             this.emptySpaceItem5});
-            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 372);
+            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 376);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(987, 90);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(977, 91);
             this.layoutControlGroup5.Text = "Leasing Financiero\r\n";
             // 
             // ItemForLE_Fecha
@@ -1247,7 +1305,7 @@
             this.emptySpaceItem4.AllowHotTrack = false;
             this.emptySpaceItem4.Location = new System.Drawing.Point(494, 0);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(469, 24);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(459, 24);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem5
@@ -1255,30 +1313,22 @@
             this.emptySpaceItem5.AllowHotTrack = false;
             this.emptySpaceItem5.Location = new System.Drawing.Point(793, 24);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(170, 24);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(160, 24);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 486);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 491);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(987, 16);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(977, 10);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // emptySpaceItem3
-            // 
-            this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(523, 96);
-            this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(420, 24);
-            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // frmActivosFijosC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 546);
+            this.ClientSize = new System.Drawing.Size(1006, 546);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1343,6 +1393,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForClasificacionId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMetodoDepreciacionId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForValorActivo)).EndInit();
@@ -1352,7 +1403,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEstadoActivoFijoId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCodigoExistencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForModelo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNumeroSerie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForValorResidual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForFechaAdquisicion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForFechaAlta)).EndInit();
@@ -1362,6 +1412,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDescripcion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCuentaActivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForNumeroSerie)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLE_Fecha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLE_MontoTotal)).EndInit();
@@ -1371,7 +1423,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1467,5 +1518,9 @@
         private DevExpress.XtraBars.BarButtonItem btnNuevo;
         private DevExpress.XtraBars.BarStaticItem lblEstado;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
+        private DevExpress.XtraBars.BarButtonItem bntFormatoCargaMasiva;
+        private DevExpress.XtraBars.BarButtonItem btnCargaMasiva;
+        private DevExpress.XtraEditors.SimpleButton btndesproteger;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }
 }

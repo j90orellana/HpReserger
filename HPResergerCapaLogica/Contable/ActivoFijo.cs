@@ -7,38 +7,38 @@ namespace HPResergerCapaLogica.Contable
     public class ActivosFijos
     { // Clase oActivoFijo que representa la entidad de la tabla TBL_Activos_Fijos
         public class oActivoFijo
-    {
-        public int Id { get; set; }                  // Id no necesita valor por defecto si es auto-incremental en la base de datos
-        public int EmpresaId { get; set; } = 0;      // Valor predeterminado a 0 para IDs
-        public string Codigo { get; set; } = "";     // Valor predeterminado a cadena vacía
-        public int TipoActivoId { get; set; } = 0;
-        public int ClasificacionId { get; set; } = 0;
-        public int MetodoDepreciacionId { get; set; } = 0;
-        public decimal ValorActivo { get; set; } = 0.0m;            // Valor predeterminado a 0.0
-        public decimal ValorResidual { get; set; } = 0.0m;
-        public decimal DepreciacionContable { get; set; } = 0.0m;
-        public decimal DepreciacionTributaria { get; set; } = 0.0m;
-        public DateTime FechaAdquisicion { get; set; } = DateTime.Now;  // Fecha predeterminada al día actual
-        public DateTime FechaAlta { get; set; } = DateTime.Now;
-        public string Marca { get; set; } = "";
-        public string Modelo { get; set; } = "";
-        public string NumeroSerie { get; set; } = "";
-        public string CuentaActivo { get; set; } = "";
-        public string Descripcion { get; set; } = "";
-        public int CatalogoExistenciaId { get; set; } = 0;
-        public string CodigoExistencia { get; set; } = "";
-        public int TipoActivoFijoId { get; set; } = 0;
-        public int EstadoActivoFijoId { get; set; } = 0;
-        public DateTime LE_Fecha { get; set; } = DateTime.Now;
-        public int LE_NumeroContrato { get; set; } = 0;
-        public DateTime LE_FechaInicio { get; set; } = DateTime.Now;
-        public int LE_NumeroCuotas { get; set; } = 0;
-        public decimal LE_MontoTotal { get; set; } = 0.0m;
-        public int Estado { get; set; } = 1;         // Estado predeterminado a 1 (activo)
-    }
+        {
+            public int Id { get; set; }                  // Id no necesita valor por defecto si es auto-incremental en la base de datos
+            public int EmpresaId { get; set; } = 0;      // Valor predeterminado a 0 para IDs
+            public string Codigo { get; set; } = "";     // Valor predeterminado a cadena vacía
+            public int TipoActivoId { get; set; } = 0;
+            public int ClasificacionId { get; set; } = 0;
+            public int MetodoDepreciacionId { get; set; } = 0;
+            public decimal ValorActivo { get; set; } = 0.0m;            // Valor predeterminado a 0.0
+            public decimal ValorResidual { get; set; } = 0.0m;
+            public decimal DepreciacionContable { get; set; } = 0.0m;
+            public decimal DepreciacionTributaria { get; set; } = 0.0m;
+            public DateTime FechaAdquisicion { get; set; } = DateTime.Now;  // Fecha predeterminada al día actual
+            public DateTime FechaAlta { get; set; } = DateTime.Now;
+            public string Marca { get; set; } = "";
+            public string Modelo { get; set; } = "";
+            public string NumeroSerie { get; set; } = "";
+            public string CuentaActivo { get; set; } = "";
+            public string Descripcion { get; set; } = "";
+            public int CatalogoExistenciaId { get; set; } = 0;
+            public string CodigoExistencia { get; set; } = "";
+            public int TipoActivoFijoId { get; set; } = 0;
+            public int EstadoActivoFijoId { get; set; } = 0;
+            public DateTime LE_Fecha { get; set; } = DateTime.Now;
+            public int LE_NumeroContrato { get; set; } = 0;
+            public DateTime LE_FechaInicio { get; set; } = DateTime.Now;
+            public int LE_NumeroCuotas { get; set; } = 0;
+            public decimal LE_MontoTotal { get; set; } = 0.0m;
+            public int Estado { get; set; } = 1;         // Estado predeterminado a 1 (activo)
+        }
 
-    // Clase principal para las operaciones sobre la tabla TBL_Activos_Fijos
-   
+        // Clase principal para las operaciones sobre la tabla TBL_Activos_Fijos
+
         private readonly string _connectionString;
 
         public ActivosFijos()
@@ -62,14 +62,14 @@ namespace HPResergerCapaLogica.Contable
 
             return dataTable;
         }
-  public DataTable GetAll( )
+        public DataTable GetAll()
         {
             DataTable dataTable = new DataTable();
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string query = $" SELECT e.Empresa, a.* FROM TBL_Activos_Fijos a inner join TBL_Empresa e on a.EmpresaId = e.Id_Empresa order by 1, FechaAlta desc";
+                string query = $" SELECT e.Empresa, a.* FROM TBL_Activos_Fijos a inner join TBL_Empresa e on a.EmpresaId = e.Id_Empresa and a.estado!=0 order by 1, FechaAlta desc";
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dataTable);

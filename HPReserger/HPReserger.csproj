@@ -371,6 +371,24 @@
     <Compile Include="CRM\frmUsuariosCRM.Designer.cs">
       <DependentUpon>frmUsuariosCRM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Flujo de Caja\frmAddEstatusInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmAddEstatusInventario.Designer.cs">
+      <DependentUpon>frmAddEstatusInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmaddServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmaddServicio.Designer.cs">
+      <DependentUpon>frmaddServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmVentaInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmVentaInventario.Designer.cs">
+      <DependentUpon>frmVentaInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPruebas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -451,6 +469,12 @@
     </Compile>
     <Compile Include="ModuloActivoFijo\frmActivosFijosC.Designer.cs">
       <DependentUpon>frmActivosFijosC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivosFijosListar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivosFijosListar.Designer.cs">
+      <DependentUpon>frmActivosFijosListar.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloActivoFijo\frmProcesoDepreciacion.cs">
       <SubType>Form</SubType>
@@ -2566,6 +2590,15 @@
     <EmbeddedResource Include="CRM\frmUsuariosCRM.resx">
       <DependentUpon>frmUsuariosCRM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmAddEstatusInventario.resx">
+      <DependentUpon>frmAddEstatusInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmaddServicio.resx">
+      <DependentUpon>frmaddServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmVentaInventario.resx">
+      <DependentUpon>frmVentaInventario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPruebas.resx">
       <DependentUpon>FormPruebas.cs</DependentUpon>
     </EmbeddedResource>
@@ -2604,6 +2637,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloActivoFijo\frmActivosFijosC.resx">
       <DependentUpon>frmActivosFijosC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmActivosFijosListar.resx">
+      <DependentUpon>frmActivosFijosListar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloActivoFijo\frmProcesoDepreciacion.resx">
       <DependentUpon>frmProcesoDepreciacion.cs</DependentUpon>
@@ -3679,6 +3715,9 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="HPReserger_ClaveTemporal.pfx" />
+    <None Include="ModuloActivoFijo\FORMATO CARGA ACTIVOS FIJOS.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ActivosFijos+oActivoFijo.datasource" />
     <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ActivosFijos.datasource" />

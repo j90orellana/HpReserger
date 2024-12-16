@@ -38,6 +38,10 @@ namespace HPResergerFunciones
             cadena = Convert.ToBase64String(Encoding.Unicode.GetBytes(cadena));
             return cadena;
         }
+        public static string GenerarCodigoFechaHora()
+        {
+            return DateTime.Now.ToString("yyyyMMddHHmmssfff"); // Ejemplo: 20231210123045999
+        }
         public static string DesEncriptar(string cadena)
         {
             cadena = Encoding.Unicode.GetString(Convert.FromBase64String(cadena), 0, Convert.FromBase64String(cadena).Length);
