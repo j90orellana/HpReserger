@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
 using HpResergerUserControls;
+using Newtonsoft.Json;
+using System.Net;
 
 namespace HPReserger
 {
@@ -678,7 +680,54 @@ namespace HPReserger
                         CargarDatosEmpleado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                     }
                 }
+
+                if (estadito == 1 && txtNombres.Text.ToString() == "")
+                {
+                    if (txtNumeroDocumento.Text.Length == 8 && cboTipoDocumento.SelectedIndex >=0)
+                    {
+                        //ANULADO POR FALTA DE DATA DE LA API RENIEC
+                        BuscarReniecAPiToken(txtNumeroDocumento.Text);
+                    }
+                }
             }
+        }
+        private async void BuscarReniecAPiToken(string dni)
+        {
+            try
+            {
+                string respuesta = await GetHTTPs(dni);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<DNI> LstData = JsonConvert.DeserializeObject<List<DNI>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                    DNI data = LstData[0];
+                    txtApellidoPaterno.Text = data.apellidoPaterno;
+                    txtApellidoMaterno.Text = data.apellidoMaterno;
+                    txtNombres.Text = data.nombres;
+                    //cbopersona.SelectedIndex = 1;
+                    //cbotipoid.SelectedValue = 1;
+
+                }
+            }
+            catch (Exception) { }
+        }
+        public async Task<string> GetHTTPs(string dni)
+        {
+            string url = Configuraciones.ApiReniec + dni;// + Configuraciones.Token;// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        public class DNI
+        {
+            public string dni { get; set; }
+            public string nombres { get; set; }
+            public string apellidoPaterno { get; set; }
+            public string apellidoMaterno { get; set; }
+            public string codVerifica { get; set; }
         }
         DataRow PaisFila;
         private void CargarDatosEmpleado(int TipoDocumento, string NumeroDocumento)
@@ -1226,7 +1275,7 @@ namespace HPReserger
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (txtNumeroDocumento.Text.Length != txtNumeroDocumento.MaxLength && txtNumeroDocumento.Text != "0701046971")
+            if ((txtNumeroDocumento.Text.Length != txtNumeroDocumento.MaxLength && txtNumeroDocumento.Text != "0701046971"))
             {
                 msg("No Coincide el Tamaño con el tipo de Documento");
                 txtNumeroDocumento.Focus();

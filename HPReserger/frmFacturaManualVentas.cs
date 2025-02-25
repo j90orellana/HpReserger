@@ -27,6 +27,7 @@ namespace HPReserger
         public int _etapa { get; set; }
         public string coddet { get; set; }
         public int _idFac { get; private set; }
+        public string DatoPresupuesto_ { get; private set; }
         public decimal TotalIgv { get; private set; }
         public int TipoIdDoc { get { return (int)cbotipoid.SelectedValue; } set { cbotipoid.SelectedValue = value; } }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
@@ -552,9 +553,12 @@ namespace HPReserger
                 if (chkDocAnulado.Checked) { if (txttotalfac.EstaLLeno()) { msg("El Total del Comprobante debe ser Cero"); txttotalfac.Focus(); return; } }
                 if (!txtdoc.EstaLLeno()) { msg("Ingrese Nro.Doc. del Cliente"); txtdoc.Focus(); return; }
                 if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
-                if (!txtrazon.EstaLLeno()) { msg("No se Encontro Nombre del Cliente");
+                if (!txtrazon.EstaLLeno())
+                {
+                    msg("No se Encontro Nombre del Cliente");
                     txtdoc.Focus();
-                    return; }
+                    return;
+                }
                 //// SI TIENE DETALLE LA FACTURA
                 if (Dtgconten.RowCount > 0)
                 {
@@ -644,9 +648,9 @@ namespace HPReserger
                 DataTable Tprueba = CapaLogica.FacturaManualVentaCabecera(txtcodfactura.Text + "-" + txtnrofactura.Text, OpcionBusqueda, (int)cboempresa.SelectedValue, (int)cbotipodoc.SelectedValue);
                 if (Tprueba.Rows.Count > 0) { msg("Ya Existe esta Factura de Venta Registrada"); return; }
                 /////INSERTANDO LA FACTURA
-                CapaLogica.FacturaManualVentaCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, (int)cbotipoid.SelectedValue, txtdoc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbomoneda.SelectedValue,
-                    decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, dtpfechaemision.Value, dtpfechavence.Value, dtpFechaContable.Value, FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
-                    decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario);
+                DataTable tdata = CapaLogica.FacturaManualVentaCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, (int)cbotipoid.SelectedValue, txtdoc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbomoneda.SelectedValue,
+                              decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, dtpfechaemision.Value, dtpfechavence.Value, dtpFechaContable.Value, FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
+                              decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario);
                 ////INSERTANDO EL DETALLE DE LA FACTURA
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
@@ -654,6 +658,15 @@ namespace HPReserger
                     CapaLogica.FacturaManualVentaDetalle(1, 0, (int)cbotipodoc.SelectedValue, txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbotipoid.SelectedValue, txtdoc.Text, item.Cells[xDebeHaber.Name].Value.ToString(),
                         item.Cells[xCuentaContable.Name].Value.ToString(), item.Cells[xTipoIgvg.Name].Value.ToString() == "" ? 0 : (int)item.Cells[xTipoIgvg.Name].Value, (decimal)item.Cells[xImporteMN.Name].Value, (decimal)item.Cells[xImporteME.Name].Value, item.Cells[xGlosa.Name].Value.ToString(), cuo, usua, (int)cboempresa.SelectedValue);
                 }
+
+                if (DatoPresupuesto_ != "")
+                {
+                    int id = 0;
+                    int.TryParse(tdata.Rows[0][0].ToString(), out id);
+                    HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto oFacP = new HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto();
+                    oFacP.Insertar(id, OpcionBusqueda == 1 ? 2 : 200, (int)cboempresa.SelectedValue, DatoPresupuesto_);
+                }
+
                 ////INSERTAR ASIENTO DE CABECERA Y DETALLE
                 int i = 1;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -1770,7 +1783,7 @@ namespace HPReserger
         private string rucNiubiz = "";
         private string RazonNiubiz = "";
         private string CuentaNiubiz;
-        private string VoucherPago="";
+        private string VoucherPago = "";
         private int TipoPago;
 
         private void btnCargar_Click(object sender, EventArgs e)
@@ -1791,6 +1804,7 @@ namespace HPReserger
                         List<String> ListaRUC = new List<string>();
                         List<DateTime> ListaFechasEmision = new List<DateTime>();
                         List<String> ListaEmpresas = new List<string>();
+                        List<string> ListaPresupuestos = new List<string>();
                         //string CuentaContable =item[19].ToString();  //CUENTA CONTABLE 
                         string NroRuc = "";
                         ResultadoMasivoTXT = "";
@@ -1815,6 +1829,11 @@ namespace HPReserger
 
                                 string NombreEmpresa = item[0].ToString().Trim();  //NOMBRE DE LA EMPRESAS
                                 DateTime fecha = (DateTime)item[8];
+
+                                string DatoPresupuesto = item[40].ToString().Trim();
+                                string DatoEmpresaPresupuesto = item[0].ToString().Trim() + "-" + item[40].ToString().Trim();
+
+                                if (DatoPresupuesto != "" && !ListaPresupuestos.Contains(DatoEmpresaPresupuesto)) ListaPresupuestos.Add(DatoEmpresaPresupuesto);
 
                                 if (!ListaCuentas.Contains(CuentaContable27)) ListaCuentas.Add(CuentaContable27);
                                 if (!ListaCuentas.Contains(CuentaContable29)) ListaCuentas.Add(CuentaContable29);
@@ -1916,6 +1935,11 @@ namespace HPReserger
                             i++;
                         }
                         //fin de cargas de listas
+                        foreach (string presupuesto in ListaPresupuestos)
+                        {
+                            if (CapaDatos.BuscarPresupuestoQuery(presupuesto).Rows.Count == 0)
+                                cadenaResultado += $"No existe el Presupuesto: {presupuesto}\n";
+                        }
                         foreach (string Cuenta in ListaCuentas)
                         {
                             if (CapaDatos.BuscarCuentasQuery(Cuenta).Rows.Count == 0)
@@ -2006,10 +2030,13 @@ namespace HPReserger
                                         string[] Valr = item[7].ToString().Split('-'); //CODIGO SERIE FACTURA
                                         txtcodfactura.Text = Valr[0];
                                         txtnrofactura.Text = Valr[1];
+
+                                        DatoPresupuesto_ = item[40].ToString().Trim();
+
                                         cbomoneda.SelectedIndex = item[32].ToString() == "S" ? 0 : 1; //MONEDA
                                         cbotipodoc.SelectedValue = 1 + int.Parse(item[6].ToString()); //TIPO COMPROBANTE PAGO
                                                                                                       //
-                                        txttotalfac.Text = (Math.Abs(decimal.Parse(item[19].ToString())+   decimal.Parse(item[16].ToString()) + decimal.Parse(item[26].ToString()))).ToString("n2"); //TOTAL FACTURA
+                                        txttotalfac.Text = (Math.Abs(decimal.Parse(item[19].ToString()) + decimal.Parse(item[16].ToString()) + decimal.Parse(item[26].ToString()))).ToString("n2"); //TOTAL FACTURA
                                         txtglosa.Text = item[34].ToString() == "" ? "CARGA MASIVA" : item[34].ToString(); //GLOSA
                                         //LAS DETRACCIONES
                                         txtdescdetraccion.Text = ""; detrac = "";
@@ -2154,7 +2181,7 @@ namespace HPReserger
                                         Dtgconten.Rows[POS].Cells[xCuentaContable.Name].Value = item[38].ToString(); //CUENTA X COBRAR
                                         if (item[32].ToString() == "S")
                                         {
-                                            Dtgconten.Rows[POS].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[19].ToString()) + decimal.Parse(item[28].ToString())+ decimal.Parse(item[26].ToString()));
+                                            Dtgconten.Rows[POS].Cells[xImporteMN.Name].Value = Math.Abs(decimal.Parse(item[19].ToString()) + decimal.Parse(item[28].ToString()) + decimal.Parse(item[26].ToString()));
                                         }
                                         else
                                         {

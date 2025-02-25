@@ -117,6 +117,7 @@
             this.xfkidProyectoOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfkidEtapaOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xidBancoOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xnumdoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xbancoOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xsufijoori = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xidCtaOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -211,7 +212,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(28, 51);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Banco:";
             // 
@@ -340,7 +341,7 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(27, 138);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 13);
+            this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "Banco:";
             // 
@@ -571,7 +572,7 @@
             this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(767, 200);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(57, 13);
+            this.label17.Size = new System.Drawing.Size(58, 13);
             this.label17.TabIndex = 353;
             this.label17.Text = "T.C.Venta:";
             // 
@@ -646,6 +647,8 @@
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -663,6 +666,7 @@
             this.xfkidProyectoOri,
             this.xfkidEtapaOri,
             this.xidBancoOri,
+            this.xnumdoc,
             this.xbancoOri,
             this.xsufijoori,
             this.xidCtaOri,
@@ -751,7 +755,7 @@
             this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensaje.Location = new System.Drawing.Point(11, 471);
             this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(94, 13);
+            this.lblmensaje.Size = new System.Drawing.Size(95, 13);
             this.lblmensaje.TabIndex = 356;
             this.lblmensaje.Text = "Total Registros: 0";
             // 
@@ -981,7 +985,7 @@
             this.label24.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(594, 471);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(36, 13);
+            this.label24.Size = new System.Drawing.Size(37, 13);
             this.label24.TabIndex = 0;
             this.label24.Text = "T.MN:";
             // 
@@ -993,7 +997,7 @@
             this.label25.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(722, 471);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(34, 13);
+            this.label25.Size = new System.Drawing.Size(35, 13);
             this.label25.TabIndex = 0;
             this.label25.Text = "T.ME:";
             // 
@@ -1224,6 +1228,15 @@
             this.xidBancoOri.Name = "xidBancoOri";
             this.xidBancoOri.ReadOnly = true;
             this.xidBancoOri.Visible = false;
+            // 
+            // xnumdoc
+            // 
+            this.xnumdoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xnumdoc.DataPropertyName = "NumDoc";
+            this.xnumdoc.HeaderText = "Num Doc";
+            this.xnumdoc.Name = "xnumdoc";
+            this.xnumdoc.ReadOnly = true;
+            this.xnumdoc.Width = 72;
             // 
             // xbancoOri
             // 
@@ -1660,6 +1673,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkidProyectoOri;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkidEtapaOri;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidBancoOri;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xnumdoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn xbancoOri;
         private System.Windows.Forms.DataGridViewTextBoxColumn xsufijoori;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidCtaOri;

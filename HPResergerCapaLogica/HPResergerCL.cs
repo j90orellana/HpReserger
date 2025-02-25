@@ -28,6 +28,8 @@ namespace HPResergerCapaLogica
         public void CambiarBase(string cadena)
         {
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = cadena;
+            HPResergerCapaDatos.HPResergerCD.DATASOURCE = HPResergerCapaDatos.HPResergerCD.DataHost;
+            cdOrdenPedido = new HPResergerCapaDatos.HPResergerCD();
             cdOrdenPedido.HPResergerCDs(cadena);
         }
         /// <summary>
@@ -2812,9 +2814,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Conciliacion_Busqueda_ConDetalle(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
         }
-        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, string rucs, int fecha, DateTime fechade, DateTime fechahasta)
+        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, string rucs, string docs, int fecha, DateTime fechade, DateTime fechahasta)
         {
-            return cdOrdenPedido.CompensacionDeCuentas(empresa, cuos, cuentas, rucs, fecha, fechade, fechahasta);
+            return cdOrdenPedido.CompensacionDeCuentas(empresa, cuos, cuentas, rucs, docs, fecha, fechade, fechahasta);
         }
         public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento, int idlogin)
         {

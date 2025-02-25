@@ -43,8 +43,8 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xCuenta = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xNombre = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xCuenta = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xEstado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xdelete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
@@ -195,17 +195,6 @@
             this.gridColumn1.FieldName = "pkid";
             this.gridColumn1.Name = "gridColumn1";
             // 
-            // xCuenta
-            // 
-            this.xCuenta.Caption = "Cuenta";
-            this.xCuenta.FieldName = "Cuenta";
-            this.xCuenta.MaxWidth = 70;
-            this.xCuenta.MinWidth = 70;
-            this.xCuenta.Name = "xCuenta";
-            this.xCuenta.Visible = true;
-            this.xCuenta.VisibleIndex = 0;
-            this.xCuenta.Width = 70;
-            // 
             // xNombre
             // 
             this.xNombre.Caption = "Nombre";
@@ -215,6 +204,17 @@
             this.xNombre.Visible = true;
             this.xNombre.VisibleIndex = 0;
             this.xNombre.Width = 103;
+            // 
+            // xCuenta
+            // 
+            this.xCuenta.Caption = "Cuenta";
+            this.xCuenta.FieldName = "Cuenta";
+            this.xCuenta.MaxWidth = 70;
+            this.xCuenta.MinWidth = 70;
+            this.xCuenta.Name = "xCuenta";
+            this.xCuenta.Visible = true;
+            this.xCuenta.VisibleIndex = 1;
+            this.xCuenta.Width = 70;
             // 
             // xEstado
             // 

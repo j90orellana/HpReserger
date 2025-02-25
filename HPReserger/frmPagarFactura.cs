@@ -671,7 +671,8 @@ namespace HPReserger
                     if ((int)item.Cells[OK.Name].Value == 1)
                         ListaAuxiliar.Add(item.Cells[xCuentaContable.Name].Value.ToString());
                 ListaAuxiliar.Add(txtCuentaExceso.Text);
-                ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
+                if (cbocuentabanco.SelectedValue != null)
+                    ListaAuxiliar.Add(cbocuentabanco.SelectedValue.ToString());
                 if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
                 //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
                 //PROCESO DE ACTUALIZACION DE FACTURAS

@@ -2115,6 +2115,14 @@ namespace HPReserger
                 }
         }
 
+        private void generarReflejosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnmodificar.PerformClick();
+            btnProcesar.PerformClick();
+            // Esperar un poco para que el diálogo se abra antes de enviar ESC
+            //Task.Delay(500).ContinueWith(t => SendKeys.Send("{ESC}"));
+        }
+
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();

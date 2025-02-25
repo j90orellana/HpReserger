@@ -18,7 +18,7 @@ namespace HPReserger
     {
         private const string ReleasesApiUrl = "https://api.github.com/repos/j90orellana/HpReserger/releases/latest";
         private static string TempFolderPath = "";
-        private static string filePath = "";        
+        private static string filePath = "";
         [STAThread]
         static void Main()
         {
@@ -119,10 +119,16 @@ namespace HPReserger
                 var repositoryOwner = "j90orellana"; // Reemplaza con el nombre del propietario del repositorio
                 var repositoryName = "HpReserger"; // Reemplaza con el nombre del repositorio
 
-               
+                var token = "GHP"; // Reemplaza con tu token de acceso personal
 
-                var token = "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"; // Reemplaza con tu token de acceso personal
 
+                HpResergerNube.CRM_GIT ogit = new HpResergerNube.CRM_GIT();
+                var tData = ogit.GetOne();
+                if (tData != null)
+                {
+                    token = tData.Nombre;
+                }
+                
 
                 //AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);
                 //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;

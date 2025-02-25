@@ -45,6 +45,7 @@ namespace HPReserger
         public decimal igvs { get; private set; }
         public int ActivoFijo { get; private set; }
         public bool PeriodoCerrado { get; private set; }
+        public string DatoPresupuesto_ { get; private set; }
 
         public bool RomperMasivo = false;
 
@@ -1016,6 +1017,13 @@ namespace HPReserger
                 CapaDatos.FacturaManualDatosAdicionales(0, _idFac, Convert.ToInt32(igvs * 100), _Tipo);
                 //fin Actualizamos los datos adicionales
 
+                //si tenemos presupuesto añadimos su fila
+                //OpcionBusqueda = 1, FACTURA MANUALES, 2 NOTAS DEBITO CREDITO
+                if (DatoPresupuesto_ != "")
+                {
+                    HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto oFacP = new HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto();
+                    oFacP.Insertar(_idFac, OpcionBusqueda, (int)cboempresa.SelectedValue, DatoPresupuesto_);
+                }
                 ////INSERTAR ASIENTO DE CABECERA Y DETALLE
                 int i = 1;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -2265,6 +2273,9 @@ namespace HPReserger
                         List<String> ListaEmpresas = new List<string>();
                         List<DateTime> ListaFechasEmision = new List<DateTime>();
                         List<DateTime> ListaFechaPeriodo = new List<DateTime>();
+
+                        List<string> ListaPresupuestos = new List<string>();
+
                         string CuentaContablegas = "", CuentaContableFac = "", NroRuc = "", Solicitante = "";
                         ResultadoMasivoTXT = "";
                         string cadenaResultado = "";
@@ -2287,7 +2298,11 @@ namespace HPReserger
                                 NroRuc = item[7].ToString().Trim(); //RUC PROVEEDOR
                                 DateTime fecha = (DateTime)item[5];
 
+                                string DatoPresupuesto = item[26].ToString().Trim();
+                                string DatoEmpresaPresupuesto = item[0].ToString().Trim() + "-" + item[26].ToString().Trim();
+
                                 if (CuentaContablerenta != "" && !ListaCuentas.Contains(CuentaContablerenta)) ListaCuentas.Add(CuentaContablerenta);
+                                if (DatoPresupuesto != "" && !ListaPresupuestos.Contains(DatoEmpresaPresupuesto)) ListaPresupuestos.Add(DatoEmpresaPresupuesto);
                                 if (!ListaCuentas.Contains(CuentaContablegas)) ListaCuentas.Add(CuentaContablegas);
                                 if (!ListaCuentas.Contains(CuentaContableigv)) ListaCuentas.Add(CuentaContableigv);
                                 if (!ListaCuentas.Contains(CuentaContableFac)) ListaCuentas.Add(CuentaContableFac);
@@ -2312,95 +2327,130 @@ namespace HPReserger
                                 //T.Bien       
                                 item[27] = int.TryParse(item[27].ToString(), out int result) ? result : 0;
 
+                                //VALIDACION DE NUMERO DE COMPROBANTE QUE TENGA SEPARADOR GUION
+                                if (string.IsNullOrWhiteSpace(item[4].ToString()))
+                                {
+                                    cadenaResultado += $"Fila {i + 1}: Debe registrar la serie y número de la factura.\n";
+                                }
+                                if (!item[4].ToString().Trim().Contains("-"))
+                                {
+                                    cadenaResultado += $"Fila {i + 1}: El número del comprobante debe tener el formato 000-000 (incluir guion).\n";
+                                }
 
-                                //validamos que no tenga documento repetidos el excel
+
+
+                                // Validamos que no tenga documentos repetidos en el Excel
                                 string item7 = item[7].ToString().Trim();
                                 string item4 = item[4].ToString().Trim();
-                                int item3 = int.Parse(item[3].ToString());
+                                int item3;
+                                int.TryParse(item[3].ToString().Trim(), out item3);
+
                                 foreach (DataRow Buscando in TdatosExcel.Rows)
                                 {
                                     if (item != Buscando)
                                     {
-                                        if (item7 == Buscando[7].ToString().Trim() && item4 == Buscando[4].ToString().Trim() && item3 == int.Parse(Buscando[3].ToString()))
-                                            cadenaResultado += $"En la Fila:{i + 1}, No se puede Registrar,{item[4].ToString().Trim()} Este Documento esta Duplicado en el Excel\n";
+                                        int busItem3;
+                                        int.TryParse(Buscando[3].ToString().Trim(), out busItem3);
+                                        if (item7 == Buscando[7].ToString().Trim() && item4 == Buscando[4].ToString().Trim() && item3 == busItem3)
+                                            cadenaResultado += $"En la Fila:{i + 1}, No se puede Registrar, {item4} Este Documento está Duplicado en el Excel\n";
                                     }
                                 }
 
-                                //validamos las compensaciones
-                                if (!(item[1].ToString() == "" || item[1].ToString().ToLower() == "ninguno"))
+                                // Validamos las compensaciones
+                                if (!(string.IsNullOrEmpty(item[1].ToString()) || item[1].ToString().ToLower() == "ninguno"))
                                 {
-                                    Solicitante = item[32].ToString().Trim() + "-" + item[33].ToString().Trim(); //EMPLEADO SOLICITANTE
+                                    Solicitante = item[32].ToString().Trim() + "-" + item[33].ToString().Trim();
                                     if (!ListaSolicitante.Contains(Solicitante)) ListaSolicitante.Add(Solicitante);
 
-                                    if (item[32].ToString() == "")
+                                    if (string.IsNullOrEmpty(item[32].ToString()))
                                         cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el tipo de documento del solicitante\n";
-                                    if (item[33].ToString() == "")
+                                    if (string.IsNullOrEmpty(item[33].ToString()))
                                         cadenaResultado += $"En la Fila:{i + 1}, debe Registrar número de documento del solicitante\n";
                                 }
-                                //validamos documentos ya registrados
-                                DataTable Tprueba = CapaLogica.FacturaManualCabecera(item[7].ToString().Trim(), item[4].ToString().Trim(), 1 + int.Parse(item[3].ToString()));
+
+                                // Validamos documentos ya registrados
+                                int item3Incrementado = item3 + 1;
+                                DataTable Tprueba = CapaLogica.FacturaManualCabecera(item7, item4, item3Incrementado);
                                 if (Tprueba.Rows.Count > 0)
                                 {
-                                    cadenaResultado += $"En la Fila:{i + 1}, No se puede Registrar,{item[4].ToString().Trim()} Este Documento Ya Existe\n";
-                                }
-                                //validamos la moneda
-                                if ((item[18].ToString() == ""))
-                                {
-                                    if (item[18].ToString() == "")
-                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar la moneda: MN o ME\n";
-                                }
-                                item[14] = item[14].ToString() == "" ? "0" : item[14].ToString();   //RENTA
-                                //validamos la cta de renta4ta
-
-                                if (decimal.Parse(item[14].ToString()) != 0)
-                                {
-                                    if (item[15].ToString() == "")
-                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar Cuenta Contable de Renta 4ta";
+                                    cadenaResultado += $"En la Fila:{i + 1}, No se puede Registrar, {item4} Este Documento Ya Existe\n";
                                 }
 
-                                //T.Bien       
+                                // Validamos la moneda
+                                if (string.IsNullOrEmpty(item[18].ToString()))
+                                {
+                                    cadenaResultado += $"En la Fila:{i + 1}, debe Registrar la moneda: MN o ME\n";
+                                }
+
+                                // Validamos renta
+                                item[14] = string.IsNullOrEmpty(item[14].ToString()) ? "0" : item[14].ToString();
+                                decimal renta;
+                                decimal.TryParse(item[14].ToString(), out renta);
+                                if (renta != 0 && string.IsNullOrEmpty(item[15].ToString()))
+                                {
+                                    cadenaResultado += $"En la Fila:{i + 1}, debe Registrar Cuenta Contable de Renta 4ta";
+                                }
+
+                                // Validamos T.Bien
                                 if (_EmpresaNecesitaTabla30Bienes)
-                                    if (decimal.Parse(item[27].ToString()) != 0)
-                                    {
-                                        if (item[27].ToString() == "")
-                                            cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el Tipo de Bien según la tabla 30 de Sunat";
-                                    }
-
-
-                                //validamos la fecha emisiokn
-                                if (DateTime.Parse(item[5].ToString()) > DateTime.Now)
                                 {
-                                    cadenaResultado += $"En la Fila:{i + 1}, la fecha de emision no puede ser mayor a hoy\n";
-                                }
-                                //validamos que ingrese la palabra IGV-GNG-ONG
-                                if (decimal.Parse(item[8].ToString()) > 0)
-                                {
-                                    if (!((item[9].ToString().ToLower() == "igv") || (item[9].ToString().ToLower() == "gng") || (item[9].ToString().ToLower() == "ong")))
+                                    decimal tipoBien;
+                                    decimal.TryParse(item[27].ToString(), out tipoBien);
+                                    if (tipoBien != 0 && string.IsNullOrEmpty(item[27].ToString()))
                                     {
-                                        if (item[9].ToString() == "")
-                                            cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el tipo De Impuesto, IGV, GNG, ONG\n";
+                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el Tipo de Bien según la tabla 30 de Sunat";
                                     }
                                 }
 
-                                //Validamos notas
-                                if (int.Parse(item[3].ToString()) == 7)
+                                // Validamos la fecha de emisión
+                                DateTime fechaEmision;
+                                if (DateTime.TryParse(item[5].ToString(), out fechaEmision))
                                 {
-                                    if (item[28].ToString() == "")
-                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el Numero Documento Referencia\n";
+                                    if (fechaEmision > DateTime.Now)
+                                        cadenaResultado += $"En la Fila:{i + 1}, la fecha de emisión no puede ser mayor a hoy\n";
                                 }
-                                //VALIDACION DE FECHAS
-                                DateTime Fechaprueba;
-                                if (!DateTime.TryParse(item[2].ToString(), out Fechaprueba)) cadenaResultado += $"La Fecha del Voucher en la Fila:{i + 1}, es Incorrecta \n";
-                                if (!DateTime.TryParse(item[5].ToString(), out Fechaprueba)) cadenaResultado += $"La Fecha de Emisión. en la Fila:{i + 1}, es Incorrecta \n";
-                                if (!DateTime.TryParse(item[6].ToString(), out Fechaprueba)) cadenaResultado += $"La Fecha Vencimiento en la Fila:{i + 1}, es Incorrecta \n";
-                                //
-                                item[55] = item[55].ToString() == "" ? "" : int.Parse(item[55].ToString()).ToString("000");
+                                else
+                                {
+                                    cadenaResultado += $"La Fecha de Emisión en la Fila:{i + 1}, es Incorrecta\n";
+                                }
+
+                                // Validamos impuestos
+                                if (decimal.TryParse(item[8].ToString(), out decimal impuesto) && impuesto > 0)
+                                {
+                                    string tipoImpuesto = item[9].ToString().ToLower();
+                                    if (string.IsNullOrEmpty(tipoImpuesto) || !(tipoImpuesto == "igv" || tipoImpuesto == "gng" || tipoImpuesto == "ong"))
+                                    {
+                                        cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el tipo de Impuesto: IGV, GNG, ONG\n";
+                                    }
+                                }
+
+                                // Validamos notas
+                                if (item3 == 7 && string.IsNullOrEmpty(item[28].ToString()))
+                                {
+                                    cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el Número Documento Referencia\n";
+                                }
+
+                                // Validamos fechas
+                                DateTime fechaPrueba;
+                                if (!DateTime.TryParse(item[2].ToString(), out fechaPrueba))
+                                    cadenaResultado += $"La Fecha del Voucher en la Fila:{i + 1}, es Incorrecta\n";
+                                if (!DateTime.TryParse(item[6].ToString(), out fechaPrueba))
+                                    cadenaResultado += $"La Fecha Vencimiento en la Fila:{i + 1}, es Incorrecta\n";
+
+                                // Formateamos el item[55]
+                                int item55;
+                                item[55] = int.TryParse(item[55].ToString(), out item55) ? item55.ToString("000") : "";
+
                             }
                             i++;
                         }
 
                         //fin de cargas de listas
-
+                        foreach (string presupuesto in ListaPresupuestos)
+                        {
+                            if (CapaDatos.BuscarPresupuestoQuery(presupuesto).Rows.Count == 0)
+                                cadenaResultado += $"No existe el Presupuesto: {presupuesto}\n";
+                        }
                         //fin de cargas de listas
                         foreach (string Cuenta in ListaCuentas)
                         {
@@ -2490,6 +2540,9 @@ namespace HPReserger
 
                                         txtrenta.Text = item[14].ToString();
 
+                                        DatoPresupuesto_ = item[26].ToString().Trim();
+
+
                                         string[] Valr = item[4].ToString().Trim().Split('-');
                                         txtcodfactura.Text = Valr[0];
                                         txtnrofactura.Text = Valr[1];
@@ -2526,7 +2579,7 @@ namespace HPReserger
                                         //CUENTA DE GASTO QUE GRABA IGV
                                         int pos = -1;
                                         btnAdd.PerformClick();
-                                        if (decimal.Parse(item[8].ToString()) != 0 && (item[9].ToString().ToLower() == "igv" || item[9].ToString().ToLower() == "gng")) // IGV
+                                        if (decimal.Parse(item[8].ToString()) != 0 && (item[9].ToString().Trim().ToLower() == "igv" || item[9].ToString().ToLower() == "gng")) // IGV
                                         {
                                             pos++;
                                             TContenendor.Rows.Add(TContenendor.NewRow());
@@ -2551,7 +2604,7 @@ namespace HPReserger
                                             Dtgconten.Rows[pos].Cells[xTipoIgvg.Name].Value = igv == "igv" ? 1 : igv == "gng" ? 2 : 4;
                                             TContenendor.AcceptChanges();
                                         }
-                                        if (decimal.Parse(item[8].ToString()) != 0 && item[9].ToString().ToLower() == "ong") // ONG
+                                        if (decimal.Parse(item[8].ToString()) != 0 && item[9].ToString().Trim().ToLower() == "ong") // ONG
                                         {
                                             pos++;
                                             TContenendor.Rows.Add(TContenendor.NewRow());

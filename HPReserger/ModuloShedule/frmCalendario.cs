@@ -74,7 +74,10 @@ namespace SISGEM.ModuloShedule
             }
 
         }
-
+        public void RecargarCalendario()
+        {
+            EstadoInicial();
+        }
         private void EstadoInicial(bool Admin = false)
         {
 

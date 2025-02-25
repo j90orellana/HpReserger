@@ -543,7 +543,7 @@ namespace HPReserger
                                 {
                                     if (c == '-')
                                     {
-                                        resul += " ";
+                                        resul += "0";
                                     }
                                     else resul += c;
                                 }

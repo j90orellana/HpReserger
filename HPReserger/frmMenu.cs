@@ -93,6 +93,7 @@ namespace HPReserger
         {
             menuStrip2.SuspendLayout();
             DataTable datos = new DataTable();
+            CapaLogica = new HPResergerCapaLogica.HPResergerCL();
             DataRow filita;
             datos = CapaLogica.usuarios(frmLogin.LoginUser, 1, 10);
             if (datos.Rows.Count > 0)

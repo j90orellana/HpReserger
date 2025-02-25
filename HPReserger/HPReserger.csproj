@@ -614,6 +614,12 @@
     <Compile Include="ModuloContable\frmDiferenciaCambioMensual.Designer.cs">
       <DependentUpon>frmDiferenciaCambioMensual.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloContable\frmListadoFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmListadoFacturas.Designer.cs">
+      <DependentUpon>frmListadoFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmRevesarAsientos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -715,6 +721,12 @@
     </Compile>
     <Compile Include="ModuloFinanzas\FrmConciliarBanco.Designer.cs">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoPagos.Designer.cs">
+      <DependentUpon>frmListadoPagos.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloFinanzas\frmMediosPagos.cs">
       <SubType>Form</SubType>
@@ -1133,6 +1145,12 @@
     <Compile Include="ModuloShedule\frmCalendario.Designer.cs">
       <DependentUpon>frmCalendario.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloShedule\frmEstatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmEstatus.Designer.cs">
+      <DependentUpon>frmEstatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloShedule\frmPendienteReuniones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1144,6 +1162,12 @@
     </Compile>
     <Compile Include="ModuloShedule\frmReuniones.Designer.cs">
       <DependentUpon>frmReuniones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloVentas\frmListarVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloVentas\frmListarVentas.Designer.cs">
+      <DependentUpon>frmListarVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -2710,6 +2734,9 @@
     <EmbeddedResource Include="ModuloContable\frmDiferenciaCambioMensual.resx">
       <DependentUpon>frmDiferenciaCambioMensual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmListadoFacturas.resx">
+      <DependentUpon>frmListadoFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmRevesarAsientos.resx">
       <DependentUpon>frmRevesarAsientos.cs</DependentUpon>
     </EmbeddedResource>
@@ -2769,6 +2796,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\FrmConciliarBanco.resx">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmListadoPagos.resx">
+      <DependentUpon>frmListadoPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmMediosPagos.resx">
       <DependentUpon>frmMediosPagos.cs</DependentUpon>
@@ -2975,11 +3005,17 @@
     <EmbeddedResource Include="ModuloShedule\frmCalendario.resx">
       <DependentUpon>frmCalendario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmEstatus.resx">
+      <DependentUpon>frmEstatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloShedule\frmPendienteReuniones.resx">
       <DependentUpon>frmPendienteReuniones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloShedule\frmReuniones.resx">
       <DependentUpon>frmReuniones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloVentas\frmListarVentas.resx">
+      <DependentUpon>frmListarVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

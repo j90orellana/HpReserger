@@ -68,8 +68,9 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromQuery(sql, null, null, null);
 
         }
-
-        public static string DataBase;
+        public static List<string> ListaHost = new List<string>();
+        public static string DataHost;
+        public static string DataHostCambiado = "";
         public HPResergerCD()
         {
             try
@@ -79,8 +80,18 @@ namespace HPResergerCapaDatos
                 var datito = dato.ChildNodes[1];
                 if (BASEDEDATOS == "")
                     BASEDEDATOS = datito["BaseDeDatos"].InnerText;
-                DataBase = @datito["DataSource"].InnerText;
-                DATASOURCE = DataBase;
+
+                var host = datito.ChildNodes[1];
+                ListaHost.Clear();
+                foreach (XmlNode item in host.ChildNodes)
+                {
+                    ListaHost.Add(item.InnerText.ToString().Trim());
+                }
+
+                DataHost = ListaHost[0].ToString();
+                if (DataHostCambiado == "")
+                    DATASOURCE = DataHost;
+                else { DATASOURCE = DataHostCambiado; }
                 var Bases = datito.ChildNodes[2];
                 ListaBases = new List<string>();
                 foreach (XmlNode item in Bases.ChildNodes)
@@ -155,7 +166,7 @@ namespace HPResergerCapaDatos
         public void HPResergerCDs(string BaseDatos)
         {
             BASEDEDATOS = BaseDatos;
-            DATASOURCE = @DataBase;
+            //DATASOURCE = DataHost;
             bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
         }
         public DataTable ListarContratoEmpleado(int tipo, string numero)
@@ -1392,6 +1403,16 @@ namespace HPResergerCapaDatos
             object[] valor = { cuenta };
             ParameterDirection[] direccion = { ParameterDirection.InputOutput };
             string sql = "SELECT Id_Cuenta_Contable,Cuenta_Contable FROM TBL_Cuenta_Contable WHERE Id_Cuenta_Contable = @id";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
+        public DataTable BuscarPresupuestoQuery(string presupuesto)
+        {
+            string[] parametros = { "@presupuesto" };
+            object[] valor = { presupuesto };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = @"SELECT p.id,p.Codigo,p.Descripcion,e.Id_Empresa, e.Empresa FROM TBL_Partidas_Control P
+                            INNER JOIN TBL_Empresa E ON P.pkempresa = E.Id_Empresa
+                            where CONCAT(E.Empresa  ,'-',P.CODIGO) = @presupuesto";
             return bd.DataTableFromQuery(sql, parametros, valor, direccion);
         }
         public DataTable BuscarPeriodoQuery(DateTime periodo)
@@ -3218,7 +3239,9 @@ namespace HPResergerCapaDatos
             catch (Exception)
             {
                 MessageBox.Show("No Hay Conexión a la Base de datos", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return null;
+
             }
         }
 
@@ -5139,7 +5162,7 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@empresa", "@fecha" };
             object[] valores = { empresa, Fecha };
             return bd.DataTableFromProcedure("usp_VerPeriodoAbierto", parametros, valores, null);
-        }    
+        }
         public DataTable CreaciondeCuentasReflejo(string @cuenta)
         {
             string[] parametros = { "@cuenta" };
@@ -5273,10 +5296,10 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin, fecha };
             return bd.DataTableFromProcedure("usp_ReporteConcilicacionFinanzas", parametros, valores, null);
         }
-        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, string rucs, int fecha, DateTime fechade, DateTime fechahasta)
+        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, string rucs, string numdoc, int fecha, DateTime fechade, DateTime fechahasta)
         {
-            string[] parametros = { "@empresa", "@cuos", "@cuentas", "@rucs", "@fecha", "@Fechade", "@fechahasta" };
-            object[] valores = { empresa, cuos, cuentas, rucs, fecha, fechade, fechahasta };
+            string[] parametros = { "@empresa", "@cuos", "@cuentas", "@rucs", "@fecha", "@Fechade", "@fechahasta", "@numdoc" };
+            object[] valores = { empresa, cuos, cuentas, rucs, fecha, fechade, fechahasta, numdoc };
             return bd.DataTableFromProcedure("usp_CompensaciondeCuentas", parametros, valores, null);
         }
 

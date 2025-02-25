@@ -140,6 +140,8 @@
             this.emptySpaceItem11 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem12 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.xELiminar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -223,6 +225,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // xNivel
@@ -237,6 +240,9 @@
             // 
             // repositoryItemSearchLookUpEdit1
             // 
+            this.repositoryItemSearchLookUpEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Transparent;
+            this.repositoryItemSearchLookUpEdit1.AppearanceFocused.BackColor2 = System.Drawing.Color.Transparent;
+            this.repositoryItemSearchLookUpEdit1.AppearanceFocused.Options.UseBackColor = true;
             this.repositoryItemSearchLookUpEdit1.AutoHeight = false;
             this.repositoryItemSearchLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -301,7 +307,8 @@
             this.repositoryItemCheckedComboBoxEdit1,
             this.repositoryItemCheckedComboBoxEdit2,
             this.repositoryItemSearchLookUpEdit2,
-            this.repositoryItemSearchLookUpEdit3});
+            this.repositoryItemSearchLookUpEdit3,
+            this.repositoryItemButtonEdit1});
             this.gridControl1.Size = new System.Drawing.Size(1160, 273);
             this.gridControl1.TabIndex = 8;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -319,11 +326,13 @@
             this.xResponsable_Oficina,
             this.xResponsable_Cliente,
             this.xObjetivo_Relacionado,
-            this.xidstatus});
+            this.xidstatus,
+            this.xELiminar});
             gridFormatRule1.Column = this.xNivel;
             gridFormatRule1.ColumnApplyTo = this.xNivel;
             gridFormatRule1.Name = "Format0";
             formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            formatConditionRuleValue1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.White;
             formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
             formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
@@ -334,6 +343,7 @@
             gridFormatRule2.ColumnApplyTo = this.xNivel;
             gridFormatRule2.Name = "Format2";
             formatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            formatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
             formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.White;
             formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
             formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
@@ -344,6 +354,7 @@
             gridFormatRule3.ColumnApplyTo = this.xNivel;
             gridFormatRule3.Name = "Format1";
             formatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(126)))), ((int)(((byte)(20)))));
+            formatConditionRuleValue3.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(126)))), ((int)(((byte)(20)))));
             formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.White;
             formatConditionRuleValue3.Appearance.Options.UseBackColor = true;
             formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
@@ -354,6 +365,7 @@
             gridFormatRule4.ColumnApplyTo = this.xNivel;
             gridFormatRule4.Name = "Format3";
             formatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            formatConditionRuleValue4.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.White;
             formatConditionRuleValue4.Appearance.Options.UseBackColor = true;
             formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
@@ -1360,6 +1372,25 @@
             this.layoutControlItem26.Text = "Fecha Seguimiento";
             this.layoutControlItem26.TextSize = new System.Drawing.Size(90, 13);
             // 
+            // xELiminar
+            // 
+            this.xELiminar.Caption = "Eliminar";
+            this.xELiminar.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.xELiminar.MaxWidth = 50;
+            this.xELiminar.Name = "xELiminar";
+            this.xELiminar.Visible = true;
+            this.xELiminar.VisibleIndex = 7;
+            this.xELiminar.Width = 40;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
+            // 
             // frmAgendarCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1458,6 +1489,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1567,5 +1599,7 @@
         private DevExpress.XtraBars.BarStaticItem lblestado;
         private DevExpress.XtraBars.BarButtonItem btnNuevo;
         private DevExpress.XtraGrid.Columns.GridColumn xidcalendario;
+        private DevExpress.XtraGrid.Columns.GridColumn xELiminar;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }

@@ -136,7 +136,7 @@ namespace HPReserger.ModuloCompensaciones
             if (dtpfechade.Value > dtpFechaHasta.Value) { Fechade = dtpFechaHasta.Value; FechaHasta = dtpfechade.Value; }
             //
             Cursor = Cursors.WaitCursor;
-            Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa, txtcuos.TextValido(), txtCuentas.TextValido(), txtRucs.TextValido(), chkFecha.Checked ? 1 : 0, Fechade, FechaHasta);
+            Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa, txtcuos.TextValido(), txtCuentas.TextValido(), txtRucs.TextValido(),txtcomprobantes.TextValido(), chkFecha.Checked ? 1 : 0, Fechade, FechaHasta);
             Cursor = Cursors.Default;
             if (Tdatos == null) { msgError("No Hay Asientos que mostrar"); return; }
             foreach (DataRow item in Tdatos.Rows)

@@ -1,4 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Utils;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,9 +25,30 @@ namespace SISGEM.ModuloShedule
         {
             InitializeComponent();
         }
+        private void gridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view.IsCellSelected(e.RowHandle, e.Column))
+            {
+                // Obtener el color del formato condicional
+                AppearanceObject cellAppearance = new AppearanceObject();
+                FormatConditionRuleBase rule = view.FormatRules
+                    .FirstOrDefault(r => r.Column == e.Column && r.ApplyToRow == false)?
+                    .Rule;
+
+                if (rule is FormatConditionRuleValue ruleValue)
+                {
+                    // Aplicar el color original del formato condicional
+                    e.Appearance.BackColor = ruleValue.Appearance.BackColor;
+                }
+            }
+        }
 
         private void frmAgendarCita_Load(object sender, EventArgs e)
         {
+            gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            gridView1.OptionsView.EnableAppearanceOddRow = true;
+            gridView1.CustomDrawCell += gridView1_CustomDrawCell;
 
             dtpFechaReunion.EditValue = DateTime.Now;
             //dtpFechaSeguimiento.EditValue = DateTime.Now.AddHours(1);
@@ -358,6 +382,70 @@ namespace SISGEM.ModuloShedule
                     // Mostrar mensaje si la inserción es exitosa
                     XtraMessageBox.Show("La reunión se ha guardado correctamente con el ID: " + fkid.ToString(), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lblestado.Caption = "Reunión Guardada";
+
+
+                    //TRAER DATOS ANTIGUOS PENDIENTES
+                    HpResergerNube.SCH_ReunionesDet oclase = new HpResergerNube.SCH_ReunionesDet();
+                    DataTable tdata = oclase.ObtenerTareasPendientesDelCliente(ItemForID_cliente.EditValue.ToString());
+
+                    if (tdata.Rows.Count > 0)
+                    {
+                        DialogResult dResul = XtraMessageBox.Show($"Hay tareas pendientes disponibles ({tdata.Rows.Count}). ¿Deseas agregarlas a la reunión?", "Tareas Pendientes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dResul == DialogResult.Yes)
+                        {
+                            foreach (DataRow item in tdata.Rows)
+                            {
+                                //CREAMOS EL CALENDARIO Y EL DETALLE DELA REUNION
+                                HpResergerNube.SCH_ReunionesDet obclaseX = new HpResergerNube.SCH_ReunionesDet();
+
+                                // Supongo que debes establecer las propiedades del objeto antes de insertar
+                                obclaseX.FKID = fkid;
+                                obclaseX.Accion = item["Accion"].ToString().Trim(); // Asumiendo que txtAccion es el control de entrada para "Accion"
+                                obclaseX.Nivel = (int)item["Nivel"];// Asumiendo que txtNivel es el control de entrada para "Nivel"
+                                obclaseX.Seguimiento = DateTime.Now;// Asumiendo que dtpSeguimiento es el control de entrada para "Seguimiento"
+                                obclaseX.ResponsableOficina = item["Responsable_Oficina"].ToString().Trim();// Asumiendo que txtResponsableOficina es el control de entrada para "Responsable_Oficina"
+                                obclaseX.ResponsableCliente = item["Responsable_Cliente"].ToString().Trim();// Asumiendo que txtResponsableCliente es el control de entrada para "Responsable_Cliente"
+                                obclaseX.ObjetivoRelacionado = (int)item["Objetivo_Relacionado"]; // Asumiendo que txtObjetivoRelacionado es el control de entrada para "Objetivo_Relacionado"
+                                obclaseX.idstatus = (int)item["idstatus"]; // Asumiendo que txtObjetivoRelacionado es el control de entrada para "Objetivo_Relacionado"
+                                //obclaseX.idstatus
+
+                                //ingresamos la reunion al calendario
+                                HpResergerNube.Appointments aclaseX = new HpResergerNube.Appointments();
+                                aclaseX.AllDay = true;
+                                aclaseX.CustomField1 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                                aclaseX.CustomField2 = HPReserger.frmLogin.CodigoUsuario.ToString();
+                                aclaseX.Description = "";
+                                aclaseX.EndDate = (DateTime)DateTime.Now;
+                                aclaseX.Label = 3;
+                                aclaseX.Location = "";
+                                aclaseX.RecurrenceInfo = "";
+                                aclaseX.ReminderInfo = "";
+                                aclaseX.ResourceIDs = "";
+                                aclaseX.StartDate = (DateTime)DateTime.Now;
+                                aclaseX.Status = 0;
+                                aclaseX.Subject = item["Accion"].ToString().Trim();
+                                aclaseX.Type = 0;
+
+                                idcalendariodet = aclaseX.UniqueID = aclaseX.InsertAppointment(aclaseX);
+                                if (aclaseX.UniqueID == 0)
+                                {
+                                    XtraMessageBox.Show("Hubo un error al Crear la Reunión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
+                                obclaseX.idcalendario = idcalendariodet;
+                                int result = obclaseX.InsertReunionDet(obclaseX);
+
+                                if (result == 0)
+                                {
+                                    XtraMessageBox.Show("Hubo un error al guardar el detalle de la reunión. Por favor, intente nuevamente o contacte al administrador si el problema persiste.", "Error al Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            RecargarDetalle();
+                        }
+                    }
+
+
                 }
             }
             else
@@ -377,6 +465,30 @@ namespace SISGEM.ModuloShedule
                 aclase.CustomField1 = HPReserger.frmLogin.CodigoUsuario.ToString();
                 aclase.CustomField2 = HPReserger.frmLogin.CodigoUsuario.ToString();
                 aclase.Description = $"Reunión para; {Environment.NewLine}{ID_ContactoTextEdit.Text}";
+
+                DataTable tdata = (DataTable)gridControl1.DataSource;
+
+                var filasOrdenadas = tdata.AsEnumerable().OrderBy(row => row.Field<DateTime>("Seguimiento")); // Ordena de menor a mayor
+
+                string data = "";
+                foreach (DataRow item in filasOrdenadas)
+                {
+                    string datarespo = item["responsable_oficina"].ToString().ToString();
+                    string responsable = " Sin Responsable";
+                    if (datarespo.ToString() != "")
+                    {
+                        HpResergerNube.CRM_Usuario oclase = new HpResergerNube.CRM_Usuario();
+                        oclase = oclase.ReadUsuario(datarespo);
+
+                        if (!(oclase == null))
+                        {
+                            responsable = " Resp: " + oclase.Apellido1 + " " + oclase.Apellido2 + ", " + oclase.Nombre;
+                        }
+                    }
+
+                    data += ((DateTime)item["Seguimiento"]).ToShortDateString() + "  Tarea: " + item["Accion"].ToString() + " - " + responsable + Environment.NewLine;
+                }
+                aclase.Description = data;
 
                 aclase.EndDate = (DateTime)dtpFechaReunion.EditValue;
                 aclase.Label = 2;
@@ -403,6 +515,9 @@ namespace SISGEM.ModuloShedule
 
                     XtraMessageBox.Show("La reunión se ha actualizo correctamente con el ID: " + fkid.ToString(), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lblestado.Caption = "Reunión Guardada";
+                    BuscarYEjecutarFuncion("frmCalendario");
+
+
                 }
                 else
                 {
@@ -413,7 +528,26 @@ namespace SISGEM.ModuloShedule
 
 
         }
+        public static void BuscarYEjecutarFuncion(string Nformulario)
+        {
+            string nombreFormulario = Nformulario; // Nombre del formulario que buscas
 
+            // Verificar si el formulario está abierto
+            Form formulario = Application.OpenForms.Cast<Form>().FirstOrDefault(f => f.Name == nombreFormulario);
+
+            if (formulario != null)
+            {
+                // Convertir el formulario a su tipo específico y ejecutar la función pública
+                if (formulario is frmCalendario miForm)
+                {
+                    miForm.RecargarCalendario(); // Llamar la función pública
+                }
+            }
+            else
+            {
+                //MessageBox.Show("El formulario no está abierto.");
+            }
+        }
         private void btnAlñadirDetalleReunion(object sender, EventArgs e)
         {
             {
@@ -591,6 +725,37 @@ namespace SISGEM.ModuloShedule
             lblestado.Caption = "Nueva Reunión";
             ItemForID_cliente.EditValue = null;
             gridControl1.DataSource = null;
+        }
+
+        private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
+        {
+            var Fila = gridView1.GetFocusedDataRow();
+            if (Fila == null)
+            {
+                XtraMessageBox.Show("No se ha seleccionado ningún registro.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult result = XtraMessageBox.Show($"¿Está seguro de que desea eliminar este registro: {Fila["Accion"]}?", "Confirmar eliminación",
+                                                      MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                HpResergerNube.SCH_ReunionesDet crud = new HpResergerNube.SCH_ReunionesDet();
+                HpResergerNube.Appointments cruda = new HpResergerNube.Appointments();
+                bool eliminado = crud.DeleteReunionDet((int)Fila["id"]);
+                cruda.DeleteAppointment((int)Fila["idcalendario"]);
+
+                if (eliminado)
+                {
+                    //XtraMessageBox.Show("La operación se realizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RecargarDetalle();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Hubo un error al intentar el proceso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

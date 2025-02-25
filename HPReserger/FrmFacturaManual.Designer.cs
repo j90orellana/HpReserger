@@ -205,9 +205,9 @@
             this.btnFacturaPagada = new DevExpress.XtraEditors.SimpleButton();
             this.cboClasifBssYSss = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.label22 = new System.Windows.Forms.Label();
             this.xNumero = new DevExpress.XtraGrid.Columns.GridColumn();
             this.yDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.label22 = new System.Windows.Forms.Label();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -239,7 +239,7 @@
             this.btnFormato82.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFormato82.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFormato82.ForeColor = System.Drawing.Color.White;
-            this.btnFormato82.Location = new System.Drawing.Point(980, 202);
+            this.btnFormato82.Location = new System.Drawing.Point(980, 201);
             this.btnFormato82.Name = "btnFormato82";
             this.btnFormato82.Size = new System.Drawing.Size(92, 25);
             this.btnFormato82.TabIndex = 0;
@@ -446,7 +446,6 @@
             this.xIdComprobante.HeaderText = "IdComprobante";
             this.xIdComprobante.Name = "xIdComprobante";
             this.xIdComprobante.Visible = false;
-            this.xIdComprobante.Width = 111;
             // 
             // xNroComprobante
             // 
@@ -455,7 +454,6 @@
             this.xNroComprobante.HeaderText = "NroComprobante";
             this.xNroComprobante.Name = "xNroComprobante";
             this.xNroComprobante.Visible = false;
-            this.xNroComprobante.Width = 120;
             // 
             // xProveedor
             // 
@@ -464,7 +462,6 @@
             this.xProveedor.HeaderText = "Proveedor";
             this.xProveedor.Name = "xProveedor";
             this.xProveedor.Visible = false;
-            this.xProveedor.Width = 82;
             // 
             // xDebeHaber
             // 
@@ -1482,7 +1479,6 @@
             this.yFechaVencimiento.Name = "yFechaVencimiento";
             this.yFechaVencimiento.ReadOnly = true;
             this.yFechaVencimiento.Visible = false;
-            this.yFechaVencimiento.Width = 69;
             // 
             // yfechacontable
             // 
@@ -2318,17 +2314,6 @@
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(172, 234);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(100, 13);
-            this.label22.TabIndex = 333;
-            this.label22.Text = "Clasif de Bss y Sss:";
-            // 
             // xNumero
             // 
             this.xNumero.Caption = "Número";
@@ -2346,6 +2331,17 @@
             this.yDescripcion.Name = "yDescripcion";
             this.yDescripcion.Visible = true;
             this.yDescripcion.VisibleIndex = 1;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(172, 234);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(100, 13);
+            this.label22.TabIndex = 333;
+            this.label22.Text = "Clasif de Bss y Sss:";
             // 
             // FrmFacturaManual
             // 

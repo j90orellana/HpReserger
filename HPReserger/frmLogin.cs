@@ -127,6 +127,10 @@ namespace HPReserger
             cboBase.SelectedIndex = 0;
             clLogueo.CambiarBase(Basedatos);
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
+
+
+
+
             Intentos = 0;
             //int con = 0, stoc = 0;
             //clLogueo.delproducto(2, out con, out stoc);
@@ -183,6 +187,12 @@ namespace HPReserger
             //}
             //Asignacion de la base de datos estatica
             Basedatos = cboBase.Text;
+
+            if (HPResergerCapaDatos.HPResergerCD.ListaHost.Count > 1)
+            {
+                HPResergerCapaDatos.HPResergerCD.DataHost = HPResergerCapaDatos.HPResergerCD.ListaHost[cboBase.SelectedIndex].ToString();
+                HPResergerCapaDatos.HPResergerCD.DataHostCambiado = HPResergerCapaDatos.HPResergerCD.ListaHost[cboBase.SelectedIndex].ToString();
+            }
 
             if (BaseRemota)
             {
@@ -272,6 +282,10 @@ namespace HPReserger
             else
             {
 
+                if (HPResergerCapaDatos.HPResergerCD.ListaHost.Count > 1)
+                {
+                    HPResergerCapaDatos.HPResergerCD.DataHost = HPResergerCapaDatos.HPResergerCD.ListaHost[cboBase.SelectedIndex].ToString();
+                }
 
                 clLogueo.CambiarBase(Basedatos);
                 HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
@@ -617,6 +631,16 @@ namespace HPReserger
         }
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
+            pbdatagit.Visible = false;
+            txtgit.Visible = false;
+            if (txtUsuario.Text.ToString().ToUpper() == "SISADMIN")
+            {
+                pbdatagit.Visible = true;
+                txtgit.Visible = true;
+
+            }
+
+
             DLConexion conexion = new DLConexion();
             DLConexion.Sdata = "WXtU+M1PmvZNiUvHK9JjtQ==";
             HpResergerNube.CRM_Usuario oUsuario = new HpResergerNube.CRM_Usuario();
@@ -644,6 +668,20 @@ namespace HPReserger
                 }
             }
 
+        }
+
+        private void pbdatagit_EditValueChanged(object sender, EventArgs e)
+        {
+            HpResergerNube.CRM_GIT ogit = new CRM_GIT();
+            ogit.UpdateGIT(txtgit.Text);
+            txtgit.Text = "";
+        }
+
+        private void pbdatagit_Click(object sender, EventArgs e)
+        {
+            HpResergerNube.CRM_GIT ogit = new CRM_GIT();
+            ogit.UpdateGIT(txtgit.Text);
+            txtgit.Text = "";
         }
 
         private void panel_MouseDown(object sender, MouseEventArgs e)

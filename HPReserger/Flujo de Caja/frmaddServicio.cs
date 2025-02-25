@@ -20,6 +20,7 @@ namespace SISGEM.Flujo_de_Caja
         }
 
         public int Tipo { get; internal set; } = 1;
+        public int Empresa { get; internal set; } = 0;
 
         private void frmaddServicio_Load(object sender, EventArgs e)
         {
@@ -43,8 +44,47 @@ namespace SISGEM.Flujo_de_Caja
             }
             bntEliminarCargaMasiva.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             bntEliminarCargaMasiva.Enabled = false;
+            CargarEmpresas();
             CargarDatos();
         }
+
+        private void CargarEmpresas()
+        {
+            HPResergerCapaLogica.HPResergerCL oCL = new HPResergerCapaLogica.HPResergerCL();
+            DataTable tData = oCL.Empresa();
+
+            cboEmpresa.Properties.DataSource = tData;
+            cboEmpresa.Properties.DisplayMember = "descripcion";
+            cboEmpresa.Properties.ValueMember = "codigo";
+
+            // Limpiar y configurar columnas manualmente
+            cboEmpresa.Properties.Columns.Clear();
+
+            // Agregar la columna "descripcion" y ocultar todas las demás
+            foreach (DataColumn column in tData.Columns)
+            {
+                var lookupColumn = new DevExpress.XtraEditors.Controls.LookUpColumnInfo(column.ColumnName, column.ColumnName);
+                lookupColumn.Visible = column.ColumnName == "descripcion"; // Solo la columna "descripcion" será visible
+                cboEmpresa.Properties.Columns.Add(lookupColumn);
+            }
+
+            // Personalizar el encabezado de la columna visible
+            cboEmpresa.Properties.Columns["descripcion"].Caption = "Empresa";
+
+            // Seleccionar el primer registro si existen filas
+            if (tData.Rows.Count > 0)
+            {
+                cboEmpresa.EditValue = tData.Rows[0]["codigo"]; // Asigna el primer valor de "codigo"
+            }
+
+            // Otras opciones de personalización
+            cboEmpresa.Properties.ShowHeader = true; // Mostrar encabezado de columnas
+            cboEmpresa.Properties.ShowFooter = false; // Ocultar pie de página
+            cboEmpresa.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup; // Ajustar ancho automático
+
+
+        }
+
         DataTable TdatosExcel;
         private Boolean CargarDatosDelExcel(string Ruta)
         {
@@ -60,6 +100,12 @@ namespace SISGEM.Flujo_de_Caja
         }
         private void btnCarga_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (Empresa == 0)
+            {
+                XtraMessageBox.Show("Por favor, seleccione una empresa antes de continuar.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DataTable dataTable = new DataTable();
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -117,7 +163,7 @@ namespace SISGEM.Flujo_de_Caja
                                         cPartidas.Tipo = Tipo;
                                         cPartidas.Cabecera = item["Codigo"].ToString().EndsWith("00") ? 1 : 0;
                                         cPartidas.Estado = 1;
-
+                                        cPartidas.PKempresa = Empresa;
                                         cPartidas.Insertar(cPartidas);
                                     }
                                     CargarDatos();
@@ -170,27 +216,48 @@ namespace SISGEM.Flujo_de_Caja
 
         private void btnNuevo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
-
-            cPartidas.Descripcion = "Nuevo";
-            cPartidas.Tipo = Tipo;
-            if (cPartidas.Insertar(cPartidas) == 0)
+            if (Empresa == 0)
             {
-                XtraMessageBox.Show($"Error al Crear el Registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                XtraMessageBox.Show("Por favor, seleccione una empresa antes de continuar.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            CargarDatos();
+
+            try
+            {
+                HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control
+                {
+                    Descripcion = "Nuevo",
+                    Tipo = Tipo,
+                    PKempresa = Empresa
+                };
+
+                if (cPartidas.Insertar(cPartidas) == 0)
+                {
+                    XtraMessageBox.Show("No se pudo crear el registro. Intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                XtraMessageBox.Show("Registro creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CargarDatos();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnRecargaCombos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            CargarEmpresas();
             CargarDatos();
         }
 
         private void CargarDatos()
         {
             HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
-            gridControl1.DataSource = cPartidas.FiltrarPorTipo(Tipo);
+            gridControl1.DataSource = cPartidas.FiltrarPorTipo(Tipo, Empresa);
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -338,6 +405,14 @@ namespace SISGEM.Flujo_de_Caja
         private void btnCerrar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+        }
+
+        private void cboEmpresa_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cboEmpresa.EditValue != null)
+                Empresa = (int)cboEmpresa.EditValue;
+
+            CargarDatos();
         }
     }
 }

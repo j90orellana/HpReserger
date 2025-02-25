@@ -111,10 +111,10 @@
             this.schedulerControl1.BackColor = System.Drawing.Color.White;
             this.schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerControl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.schedulerControl1.Location = new System.Drawing.Point(0, 93);
+            this.schedulerControl1.Location = new System.Drawing.Point(0, 84);
             this.schedulerControl1.MenuManager = this.barManager1;
             this.schedulerControl1.Name = "schedulerControl1";
-            this.schedulerControl1.Size = new System.Drawing.Size(955, 550);
+            this.schedulerControl1.Size = new System.Drawing.Size(955, 559);
             this.schedulerControl1.Start = new System.DateTime(2024, 7, 28, 0, 0, 0, 0);
             this.schedulerControl1.Storage = this.schedulerStorage1;
             this.schedulerControl1.TabIndex = 0;
@@ -593,7 +593,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(955, 93);
+            this.barDockControlTop.Size = new System.Drawing.Size(955, 84);
             // 
             // barDockControlBottom
             // 
@@ -606,15 +606,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 93);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 550);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 84);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 559);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(955, 93);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 550);
+            this.barDockControlRight.Location = new System.Drawing.Point(955, 84);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 559);
             // 
             // schedulerStorage1
             // 

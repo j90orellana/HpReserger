@@ -274,13 +274,23 @@ namespace HPReserger.ModuloCompensaciones
                 ListaAuxiliar.Add(BanCuenta);
                 if (CapaLogica.CuentaContableValidarActivas(string.Join(",", ListaAuxiliar.ToArray()), "Cuentas Contables Desactivadas")) return;
                 //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
+                //Inserto compensaciones!
+                DataTable tdata = CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 4, TipoIdProveedor, RucProveedor, MontoSoles, MontoDolares, cuo, TipoPago, nroKuenta, NroOperacion,
+                                $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d")}", dtpFechaCompensa.Value, 2, CuentaAnticipo, "");
                 //Debe
                 //Asiento del Anticipo
+                string numdoc = "0";
+                if (tdata.Rows.Count > 0)
+                {
+                    int.TryParse(tdata.Rows[0]["id"].ToString(), out int numid);
+                    numdoc = $"Ant.N°{numid} {((DateTime)dtpFechaCompensa.Value).ToString("d")}";
+                }
+
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaAnticipo, moneda == 1 ? MontoSoles : MontoDolares, 0, tc,
                     proyecto, 0, cuo, moneda, glosa, dtpFechaCompensa.Value, -9);
                 //Detalle del asiento
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaAnticipo, proyecto, TipoIdProveedor, RucProveedor
-                    , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                    , NameProveedor, 0, "0", numdoc, 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
                 //Haber
                 //Asiento del salida del Banco
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, 0, moneda == 1 ? MontoSoles : MontoDolares, tc,
@@ -288,9 +298,6 @@ namespace HPReserger.ModuloCompensaciones
                 //Detalle del asiento
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoIdProveedor, RucProveedor
                     , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, NroOperacion, glosa, FechaCompensa, frmLogin.CodigoUsuario, "", TipoPago);
-                //Inserto compensaciones!
-                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 4, TipoIdProveedor, RucProveedor, MontoSoles, MontoDolares, cuo, TipoPago, nroKuenta, NroOperacion,
-                    $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d")}", dtpFechaCompensa.Value, 2, CuentaAnticipo, "");
                 //
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(cuo, proyecto, dtpFechaContable.Value, 2);

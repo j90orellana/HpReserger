@@ -45,10 +45,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbdatagit = new DevExpress.XtraEditors.PictureEdit();
+            this.txtgit = new DevExpress.XtraEditors.TextEdit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkCRM.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbdatagit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtgit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -135,6 +139,8 @@
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel.BackgroundImage")));
             this.panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel.Controls.Add(this.txtgit);
+            this.panel.Controls.Add(this.pbdatagit);
             this.panel.Controls.Add(this.txtEmpresaData);
             this.panel.Controls.Add(this.pbclose);
             this.panel.Controls.Add(this.ChkCRM);
@@ -287,6 +293,27 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
+            // pbdatagit
+            // 
+            this.pbdatagit.EditValue = ((object)(resources.GetObject("pbdatagit.EditValue")));
+            this.pbdatagit.Location = new System.Drawing.Point(189, 12);
+            this.pbdatagit.Name = "pbdatagit";
+            this.pbdatagit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pbdatagit.Size = new System.Drawing.Size(42, 44);
+            this.pbdatagit.TabIndex = 11;
+            this.pbdatagit.Visible = false;
+            this.pbdatagit.Click += new System.EventHandler(this.pbdatagit_Click);
+            // 
+            // txtgit
+            // 
+            this.txtgit.Location = new System.Drawing.Point(13, 22);
+            this.txtgit.Name = "txtgit";
+            this.txtgit.Properties.Appearance.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtgit.Properties.Appearance.Options.UseBackColor = true;
+            this.txtgit.Size = new System.Drawing.Size(170, 20);
+            this.txtgit.TabIndex = 12;
+            this.txtgit.Visible = false;
+            // 
             // frmLogin
             // 
             this.AllowDrop = true;
@@ -310,6 +337,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbclose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkCRM.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbdatagit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtgit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,5 +361,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pbclose;
         private System.Windows.Forms.TextBox txtEmpresaData;
+        private DevExpress.XtraEditors.PictureEdit pbdatagit;
+        private DevExpress.XtraEditors.TextEdit txtgit;
     }
 }

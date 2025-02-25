@@ -121,20 +121,29 @@ namespace HpResergerNube
             return success;
         }
 
-        public void DeleteReunionDet(int id)
+        public bool DeleteReunionDet(int id)
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    cmd.Connection = connection;
-                    cmd.CommandText = "DELETE FROM public.\"SCH_Reuniones_det\" WHERE \"id\" = @ID";
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.ExecuteNonQuery();
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = connection;
+                        cmd.CommandText = "DELETE FROM public.\"SCH_Reuniones_det\" WHERE \"id\" = @ID";
+                        cmd.Parameters.AddWithValue("@ID", id);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
                 }
             }
+            catch
+            {
+                return false;
+            }
+
         }
 
         public DataTable GetAllReunionesDet()
@@ -156,6 +165,37 @@ namespace HpResergerNube
 
             return dataTable;
         }
+        public DataTable ObtenerTareasPendientesDelCliente(string clienteId)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = @"
+                                SELECT d.* 
+                                FROM public.""SCH_Reuniones"" c 
+                                INNER JOIN public.""SCH_Reuniones_det"" d ON c.id = d.fkid
+                                INNER JOIN public.""SCH_Status"" s ON d.idstatus = s.""ID_Status"" 
+                                WHERE c.""Cliente"" = @ClienteId
+                                AND c.""Estado"" = 1
+                                AND s.importar = 1";
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ClienteId", clienteId);
+
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
 
         public DataTable GetReunionesDetByFKID(int fkid)
         {

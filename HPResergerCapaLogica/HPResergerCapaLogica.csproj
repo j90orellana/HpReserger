@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compras\FacturaManual.cs" />
     <Compile Include="Contable\ActivoFijo.cs" />
     <Compile Include="Contable\CatalogoExistencias.cs" />
     <Compile Include="Contable\EmpresaAbreviatura.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Contable\TipoBajaActivo.cs" />
     <Compile Include="Contable\TiposActivoFijos.cs" />
     <Compile Include="FlujoCaja\EstatusInventario.cs" />
+    <Compile Include="FlujoCaja\FacturaPresupuesto.cs" />
     <Compile Include="FlujoCaja\InventarioVentas.cs" />
     <Compile Include="FlujoCaja\PartidasControl.cs" />
     <Compile Include="HPResergerCL.cs" />

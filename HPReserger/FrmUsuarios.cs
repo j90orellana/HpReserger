@@ -387,13 +387,25 @@ namespace HPReserger
                     {
                         ConUsuarios++;
                     }
-                    //si sobrepasa el limite de usuarios
-                    if (ConUsuarios > frmMenu.Users)
+                    // Instanciar la capa lógica
+                    var objo = new HPResergerCapaLogica.HPResergerCL();
+
+                    // Obtener el número de usuarios permitidos
+                    var dataTable = objo.CantidadLlamadas(DateTime.Parse("2021-01-12"));
+                    if (dataTable.Rows.Count > 0 && int.TryParse(dataTable.Rows[0]["usuario"].ToString(), out int maxUsuarios))
                     {
-                        //mensaje de Cancelación
-                        frmMensajeLicencia frmmensa = new frmMensajeLicencia();
-                        frmmensa.ShowDialog();
-                        return;
+                        frmMenu.Users = maxUsuarios;
+
+                        // Validar si el número de usuarios excede el límite
+                        if (ConUsuarios > frmMenu.Users)
+                        {
+                            // Mostrar mensaje de cancelación
+                            using (var frmmensa = new frmMensajeLicencia())
+                            {
+                                frmmensa.ShowDialog();
+                            }
+                            return;
+                        }
                     }
                 }
             }

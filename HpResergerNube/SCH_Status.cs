@@ -6,8 +6,9 @@ namespace HpResergerNube
 {
     public class SCH_Status
     {
-        public int ID_Status { get; set; }
-        public string Detalle_Status { get; set; }
+        public int ID_Status { get; set; } = 0;
+        public string Detalle_Status { get; set; } = "Nuevo Estado";
+        public int Importar { get; set; } = 0;// Nueva columna
 
         private string connectionString;
 
@@ -17,110 +18,151 @@ namespace HpResergerNube
             this.connectionString = dx.GetConnectionString();
         }
 
-        public void InsertStatus(SCH_Status status)
+        public bool InsertStatus(SCH_Status status)
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    cmd.Connection = connection;
-                    cmd.CommandText = "INSERT INTO public.\"SCH_Status\"(\"ID_Status\", \"Detalle_Status\") VALUES (@ID_Status, @Detalle_Status)";
-                    cmd.Parameters.AddWithValue("@ID_Status", status.ID_Status);
-                    cmd.Parameters.AddWithValue("@Detalle_Status", status.Detalle_Status);
-                    cmd.ExecuteNonQuery();
+                    connection.Open();
+
+                    int newId = 1; // Valor por defecto si la tabla está vacía
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT COALESCE(MAX(\"ID_Status\"), 0) + 1 FROM public.\"SCH_Status\"", connection))
+                    {
+                        newId = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = connection;
+                        cmd.CommandText = "INSERT INTO public.\"SCH_Status\"(\"ID_Status\", \"Detalle_Status\", \"importar\") VALUES (@ID_Status, @Detalle_Status, @Importar)";
+                        cmd.Parameters.AddWithValue("@ID_Status", newId);
+                        cmd.Parameters.AddWithValue("@Detalle_Status", status.Detalle_Status);
+                        cmd.Parameters.AddWithValue("@Importar", status.Importar);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    return true;
                 }
+            }
+            catch
+            {
+                return false;
             }
         }
 
+
         public SCH_Status ReadStatus(int idStatus)
         {
-            SCH_Status status = null;
-
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
+                SCH_Status status = null;
 
-                using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM public.\"SCH_Status\" WHERE \"ID_Status\" = @ID_Status", connection))
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    cmd.Parameters.AddWithValue("@ID_Status", idStatus);
+                    connection.Open();
 
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM public.\"SCH_Status\" WHERE \"ID_Status\" = @ID_Status", connection))
                     {
-                        if (reader.Read())
+                        cmd.Parameters.AddWithValue("@ID_Status", idStatus);
+
+                        using (NpgsqlDataReader reader = cmd.ExecuteReader())
                         {
-                            status = new SCH_Status
+                            if (reader.Read())
                             {
-                                ID_Status = Convert.ToInt32(reader["ID_Status"]),
-                                Detalle_Status = reader["Detalle_Status"].ToString()
-                            };
+                                status = new SCH_Status
+                                {
+                                    ID_Status = Convert.ToInt32(reader["ID_Status"]),
+                                    Detalle_Status = reader["Detalle_Status"].ToString(),
+                                    Importar = Convert.ToInt32(reader["importar"])
+                                };
+                            }
                         }
                     }
                 }
+                return status;
             }
-
-            return status;
+            catch
+            {
+                return null;
+            }
         }
 
         public bool UpdateStatus(SCH_Status status)
         {
-            bool success = false;
-
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    cmd.Connection = connection;
-                    cmd.CommandText = "UPDATE public.\"SCH_Status\" SET \"Detalle_Status\" = @Detalle_Status WHERE \"ID_Status\" = @ID_Status";
-                    cmd.Parameters.AddWithValue("@ID_Status", status.ID_Status);
-                    cmd.Parameters.AddWithValue("@Detalle_Status", status.Detalle_Status);
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                    connection.Open();
 
-                    // Verificar si la actualización fue exitosa
-                    success = rowsAffected > 0;
+                    using (NpgsqlCommand cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = connection;
+                        cmd.CommandText = "UPDATE public.\"SCH_Status\" SET \"Detalle_Status\" = @Detalle_Status, \"importar\" = @Importar WHERE \"ID_Status\" = @ID_Status";
+                        cmd.Parameters.AddWithValue("@ID_Status", status.ID_Status);
+                        cmd.Parameters.AddWithValue("@Detalle_Status", status.Detalle_Status);
+                        cmd.Parameters.AddWithValue("@Importar", status.Importar);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
                 }
             }
-
-            return success;
+            catch
+            {
+                return false;
+            }
         }
 
-        public void DeleteStatus(int idStatus)
+        public bool DeleteStatus(int idStatus)
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    cmd.Connection = connection;
-                    cmd.CommandText = "DELETE FROM public.\"SCH_Status\" WHERE \"ID_Status\" = @ID_Status";
-                    cmd.Parameters.AddWithValue("@ID_Status", idStatus);
-                    cmd.ExecuteNonQuery();
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = connection;
+                        cmd.CommandText = "DELETE FROM public.\"SCH_Status\" WHERE \"ID_Status\" = @ID_Status";
+                        cmd.Parameters.AddWithValue("@ID_Status", idStatus);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
                 }
+            }
+            catch
+            {
+                return false;
             }
         }
 
         public DataTable GetAllStatus()
         {
-            DataTable dataTable = new DataTable();
-
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
+                DataTable dataTable = new DataTable();
 
-                using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM public.\"SCH_Status\"", connection))
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
+                    connection.Open();
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM public.\"SCH_Status\"", connection))
                     {
-                        adapter.Fill(dataTable);
+                        using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dataTable);
+                        }
                     }
                 }
+                return dataTable;
             }
-
-            return dataTable;
+            catch
+            {
+                return null;
+            }
         }
     }
 }

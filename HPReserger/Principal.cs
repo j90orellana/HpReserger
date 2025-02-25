@@ -103,7 +103,12 @@ namespace SISGEM
                 ribbonPageGroup33.Visible = false;
             }
 
-
+            if (!HPReserger.frmLogin.BaseRemota)
+            {
+                //validacion de tablas creadas! sino las creo
+                HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto ClaseFlujoCaja = new HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto();
+                ClaseFlujoCaja.ValidarTablaExiste();
+            }
         }
         public void ControlPerfilPrioritario()
         {
@@ -1213,6 +1218,26 @@ namespace SISGEM
         {
             OpenForm<Flujo_de_Caja.frmAddEstatusInventario>();
 
+        }
+
+        private void barButtonItem64_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloShedule.frmEstatus>();
+        }
+
+        private void barButtonItem65_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloContable.frmListadoFacturas>();
+        }
+
+        private void barButtonItem66_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloVentas.frmListarVentas>();
+        }
+
+        private void barButtonItem67_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloFinanzas.frmListadoPagos>();
         }
     }
 }
