@@ -1,4 +1,6 @@
-﻿namespace SISGEM
+﻿using System;
+
+namespace SISGEM
 {
     partial class frmDashBoard
     {
@@ -35,7 +37,7 @@
             // 
             // dashboardViewer1
             // 
-            this.dashboardViewer1.DashboardSource = new System.Uri("C:\\Users\\user\\OneDrive\\Escritorio\\Dashboard.xml", System.UriKind.Absolute);
+            this.dashboardViewer1.DashboardSource = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dashboard.xml");
             this.dashboardViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dashboardViewer1.Location = new System.Drawing.Point(0, 0);
             this.dashboardViewer1.Name = "dashboardViewer1";
@@ -43,10 +45,6 @@
             this.dashboardViewer1.PrintingOptions.FontInfo.Name = null;
             this.dashboardViewer1.Size = new System.Drawing.Size(1137, 526);
             this.dashboardViewer1.TabIndex = 0;
-            string appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string dashboardFilePath = System.IO.Path.Combine(appPath, "Dashboard.xml");
-            this.dashboardViewer1.DashboardSource = new System.Uri(dashboardFilePath, System.UriKind.Absolute);
-
             this.dashboardViewer1.ConfigureDataConnection += new DevExpress.DashboardCommon.DashboardConfigureDataConnectionEventHandler(this.dashboardViewer1_ConfigureDataConnection);
             // 
             // frmDashBoard

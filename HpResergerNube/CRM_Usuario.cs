@@ -286,7 +286,7 @@ namespace HpResergerNube
                         "\"Direccion\", \"Interior\", \"Piso\", \"ID_Codigo_postal\", \"ID_Tratamiento\", " +
                         "\"Otros\", \"Usuario_Creacion\", \"Fecha_Creacion\", \"Usuario_Modificacion\", " +
                         "\"Fecha_Modificacion\", \"Usuario_Eliminacion\", \"Fecha_Eliminacion\", " +
-                        "\"ID_Perfiles\" FROM public.\"CRM_Usuario\"", connection))
+                        "\"ID_Perfiles\" FROM public.\"CRM_Usuario\" WHERE \"Estado\" = 1 ", connection))
                     {
                         using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd))
                         {

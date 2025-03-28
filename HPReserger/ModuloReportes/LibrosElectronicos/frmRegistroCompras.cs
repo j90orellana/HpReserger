@@ -4,14 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Compression;
-
 namespace HPReserger
 {
     public partial class frmRegistroCompras : FormGradient
@@ -25,6 +24,7 @@ namespace HPReserger
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmRegistroCompras_Load(object sender, EventArgs e)
         {
+            chksubtotales.Visible = true;
             cargarEmpresa();
         }
         DataTable TablaEmpresa;
@@ -44,6 +44,7 @@ namespace HPReserger
         }
         private void btngenerar_Click(object sender, EventArgs e)
         {
+            //dtgconten.Columns[xNumero_TablaSunat.Name].Visible = true;
             CerrarPanelTxt();
             Cursor = Cursors.WaitCursor;
             if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
@@ -187,7 +188,7 @@ namespace HPReserger
                                     ///Tabla
                                     /////Proceso de ordenamiento y agrupacion                                    
                                     int PosInicialGrilla = 6;
-                                    int[] ColumnasSubtotal = { 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 };
+                                    int[] ColumnasSubtotal = { 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };
                                     if (chksubtotales.Checked)
                                     {
                                         //Ordenamos los datos
@@ -199,70 +200,24 @@ namespace HPReserger
                                         decimal SumaParcial = 0;
                                         //
                                         int fila = 6;
-                                        int filaT = 7;
+                                        int filaT = 12;
                                         Boolean PrimeraCarga = false;
-                                        foreach (int Columna in ColumnasSubtotal)
-                                        {
-                                            SumaParcial = SumatoriaTotal = 0;
-                                            for (int i = 0; i < TablaResult.Rows.Count; i++)
-                                            {
-                                                DataRow Fila = TablaResult.Rows[i];
-                                                if (!PrimeraCarga)
-                                                {
-                                                    if (Fila[fila].ToString() != val1)
-                                                    {
-                                                        DataRow Nueva = TablaResult.NewRow();
-                                                        Nueva[filaT] = $"Total {val1}";
-                                                        Nueva[Columna] = SumaParcial;
-                                                        TablaResult.Rows.InsertAt(Nueva, i);
-                                                        //
-                                                        val1 = Fila[fila].ToString();
-                                                        SumaParcial = (decimal)Fila[Columna];
-                                                        SumatoriaTotal += SumaParcial;
-                                                        i++;
+                                        // Crear una nueva fila de totales
+                                        DataRow totalRow = TablaResult.NewRow();
 
-                                                    }
-                                                    else
-                                                    {
-                                                        SumatoriaTotal += (decimal)Fila[Columna];
-                                                        SumaParcial += (decimal)Fila[Columna];
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    if (i < TablaResult.Rows.Count - 2)
-                                                        if (Fila[Columna].ToString() == "")
-                                                        {
-                                                            Fila[Columna] = SumaParcial;
-                                                            SumaParcial = 0;
-                                                        }
-                                                        else
-                                                        {
-                                                            SumaParcial += (decimal)Fila[Columna];
-                                                            SumatoriaTotal += (decimal)Fila[Columna];
-                                                        }
-                                                }
-                                            }
-                                            //UltimaFila
-                                            if (!PrimeraCarga)
-                                            {
-                                                DataRow Nuevaf = TablaResult.NewRow();
-                                                Nuevaf[filaT] = $"TOTAL {val1}";
-                                                Nuevaf[Columna] = SumaParcial;
-                                                TablaResult.Rows.InsertAt(Nuevaf, TablaResult.Rows.Count);
-                                                //TotalGeneral
-                                                DataRow Nuevax = TablaResult.NewRow();
-                                                Nuevax[filaT] = $"TOTAL GENERAL";
-                                                Nuevax[Columna] = SumatoriaTotal;
-                                                TablaResult.Rows.InsertAt(Nuevax, TablaResult.Rows.Count);
-                                                PrimeraCarga = true;
-                                            }
-                                            else
-                                            {
-                                                TablaResult.Rows[TablaResult.Rows.Count - 2][Columna] = SumaParcial;
-                                                TablaResult.Rows[TablaResult.Rows.Count - 1][Columna] = SumatoriaTotal;
-                                            }
+                                        // Colocar "TOTALES" en la columna 12
+                                        totalRow[12] = "TOTALES";
+                                        // Calcular la suma de cada columna en ColumnasSubtotal
+                                        foreach (int col in ColumnasSubtotal)
+                                        {
+                                            totalRow[col] = TablaResult.AsEnumerable()
+                                                              .Where(row => row[col] != DBNull.Value) // Evita valores nulos
+                                                              .Sum(row => Convert.ToDecimal(row[col]));
                                         }
+
+                                        // Agregar la fila de totales al DataTable
+                                        TablaResult.Rows.Add(totalRow);
+
                                     }
                                     foreach (DataColumn items in TablaResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
                                     HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnasCreado(TablaResult, CeldaCabecera, CeldaDefault, NameFile, _NombreHoja, contador++, Celdas, 6, _Columnas, new int[] { }, new int[] { }, "");
@@ -429,12 +384,35 @@ namespace HPReserger
                                 //Sí no hay datos 8.1 Vacio
                                 if (TablaResult.Rows.Count == 0)
                                 {
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00080100001{0}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00080400021{0}12.txt";
                                     //grabamos
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write("");
                                     st.Close();
+
+                                    string txtFilePath = path;
+                                    string zipFilePath = txtFilePath.Replace(".txt", ".zip");
+                                    string directoryPath = Path.GetDirectoryName(txtFilePath);
+                                    string fileName = Path.GetFileName(txtFilePath); // Solo el nombre del archivo
+
+                                    // Comando para comprimir usando tar (desde el directorio del archivo)
+                                    string command = $"cd /d \"{directoryPath}\" && tar -a -c -f \"{zipFilePath}\" \"{fileName}\"";
+
+                                    ProcessStartInfo psi = new ProcessStartInfo()
+                                    {
+                                        FileName = "cmd.exe",
+                                        Arguments = $"/C {command}",
+                                        RedirectStandardOutput = true,
+                                        UseShellExecute = false,
+                                        CreateNoWindow = true
+                                    };
+
+                                    using (Process process = Process.Start(psi))
+                                    {
+                                        process.WaitForExit();
+                                    }
+
                                 }
                                 //Sí no hay datos 8.2 Vacio
                                 //if (TablaResult.Rows.Count == 0)
@@ -484,14 +462,14 @@ namespace HPReserger
                                         Tfilas[1] = "";
                                         Tfilas = fila[xNumCom.DataPropertyName].ToString().Trim().Split('/');
                                         string numdoc = int.Parse(Tfilas[0].ToString()).ToString().PadLeft(10, '0');
-                                        campo[c++] = $"{fila[xNumpro.DataPropertyName].ToString().Trim()}{(int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00")}{fila[xSerieCom.DataPropertyName].ToString().Trim().Substring(0, Math.Min(4, fila[xSerieCom.DataPropertyName].ToString().Trim().Length))}{numdoc}";
+                                        campo[c++] = "";// $"{fila[xNumpro.DataPropertyName].ToString().Trim()}{(int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00")}{fila[xSerieCom.DataPropertyName].ToString().Trim().Substring(0, Math.Min(4, fila[xSerieCom.DataPropertyName].ToString().Trim().Length))}{numdoc}";
                                         campo[c++] = ((DateTime)fila[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");
                                         campo[c++] = int.Parse(fila[xidC.DataPropertyName].ToString()) != 14 ? "" : ((DateTime)fila[xFechaVencimiento.DataPropertyName]).ToString("dd/MM/yyyy");
                                         campo[c++] = (int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00");
                                         campo[c++] = fila[xSerieCom.DataPropertyName].ToString();
                                         //Año
                                         int.TryParse(fila[xAñoDua.DataPropertyName].ToString(), out ValorPrueba);
-                                        campo[c++] = ValorPrueba.ToString();
+                                        campo[c++] = ValorPrueba == 0 ? "" : ValorPrueba.ToString();
                                         //Nro CP o Doc. Nro Inicial (Rango)
                                         if ((new int[] { 1, 3, 4, 6, 7, 8, 36 }).Contains(idcomprobante))
                                             campo[c++] = Configuraciones.SubstringRight(fila[xNumCom.DataPropertyName].ToString().Trim(), 8);
@@ -515,7 +493,7 @@ namespace HPReserger
                                         campo[c++] = (decimal.Parse(fila[ximporteONG.DataPropertyName].ToString())).ToString("0.00");
                                         campo[c++] = (decimal.Parse(fila[xigvONG.DataPropertyName].ToString())).ToString("0.00");
                                         //Valor Adq. NG
-                                        campo[c++] = (decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString())).ToString("0.00");
+                                        campo[c++] = (Math.Abs(decimal.Parse(fila[ximporteNGR.DataPropertyName].ToString()))).ToString("0.00");
                                         campo[c++] = (decimal.Parse(fila[xisc.DataPropertyName].ToString())).ToString("0.00");
                                         campo[c++] = (decimal.Parse(fila[xICBP.DataPropertyName].ToString())).ToString("0.00");
                                         campo[c++] = (decimal.Parse(fila[xOtrosTributos.DataPropertyName].ToString())).ToString("0.00");
@@ -531,13 +509,13 @@ namespace HPReserger
                                         else
                                         {
                                             campo[c++] = "PEN";
-                                            campo[c++] = "1.000";
+                                            campo[c++] = "";
                                         }
                                         //Tipo de Cambio
                                         campo[c++] = fila[xFechaDocRef.DataPropertyName].ToString() == "" ? "" : ((DateTime)fila[xFechaDocRef.DataPropertyName]).ToString("dd/MM/yyyy");
                                         int.TryParse(fila[xTipoDocRef.DataPropertyName].ToString(), out ValorPrueba);
                                         //Tipo CP Modificado
-                                        campo[c++] = fila[xFechaDocRef.DataPropertyName].ToString() == "" ? "" : ValorPrueba.ToString("0");
+                                        campo[c++] = fila[xFechaDocRef.DataPropertyName].ToString() == "" ? "" : ValorPrueba.ToString("00");
                                         //Serie CP Modificado
                                         campo[c++] = fila[xSerieDocRef.DataPropertyName].ToString() == "" ? "" : fila[xSerieDocRef.DataPropertyName].ToString().Trim();
                                         //COD. DAM O DSI
@@ -554,6 +532,7 @@ namespace HPReserger
                                         campo[c++] = "0";
                                         //CAR Orig/ Ind E o I
                                         campo[c++] = "";
+                                        c += 4;
                                         //Detracción	
                                         campo[c++] = fila[xDetraccion.DataPropertyName].ToString();
                                         //Tipo de Nota	
@@ -703,12 +682,34 @@ namespace HPReserger
                                     //Formato 8.1
                                     SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}000804001{1}11.txt";
                                     SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00080400021112.txt";
-                                    
+
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);
                                     st.Close();
- 
+
+                                    string txtFilePath = path;
+                                    string zipFilePath = txtFilePath.Replace(".txt", ".zip");
+                                    string directoryPath = Path.GetDirectoryName(txtFilePath);
+                                    string fileName = Path.GetFileName(txtFilePath); // Solo el nombre del archivo
+
+                                    // Comando para comprimir usando tar (desde el directorio del archivo)
+                                    string command = $"cd /d \"{directoryPath}\" && tar -a -c -f \"{zipFilePath}\" \"{fileName}\"";
+
+                                    ProcessStartInfo psi = new ProcessStartInfo()
+                                    {
+                                        FileName = "cmd.exe",
+                                        Arguments = $"/C {command}",
+                                        RedirectStandardOutput = true,
+                                        UseShellExecute = false,
+                                        CreateNoWindow = true
+                                    };
+
+                                    using (Process process = Process.Start(psi))
+                                    {
+                                        process.WaitForExit();
+                                    }
+
                                     //Formato 8.2
                                     //SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00080200001{0}11.txt";
                                     //path = SaveFile.FileName;

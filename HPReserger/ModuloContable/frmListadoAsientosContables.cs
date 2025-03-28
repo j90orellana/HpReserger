@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SISGEM.ModuloContable;
+using DevExpress.DataAccess.Sql;
+using DevExpress.DataAccess.ConnectionParameters;
+using DevExpress.XtraReports.UI;
 
 namespace HPReserger.ModuloContable
 {
@@ -109,6 +113,70 @@ namespace HPReserger.ModuloContable
             frmReportito.StateInicialForm = this.WindowState;
             frmReportito.MdiParent = this.MdiParent;
             frmReportito.Show();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            int Valor = 1;
+            if (rbReversado.Checked) Valor = 4;
+            else if (rbActivo.Checked) Valor = 1;
+            else Valor = -1;
+            // ** 1. SOLICITAR LOS PARÁMETROS AL USUARIO **
+            int empresa = (int)cboempresa.SelectedValue;
+            DateTime fechaInicio = dtpfechaini.Value;
+            DateTime fechaFin = dtpfechafin.Value;
+            string cuo = txtbuscuo.TextValido();
+            string cuenta = txtbuscuenta.TextValido();
+            string glosa = txtbusGlosa.TextValido();
+            string subOperacion = txtbusSuboperacion.TextValido();
+            int estado = Valor;
+
+            // Crear instancia del reporte
+            XtraReportAsientoContable reporte = new XtraReportAsientoContable();
+
+            // Obtener el SqlDataSource del reporte
+            SqlDataSource dataSource = reporte.DataSource as SqlDataSource;
+
+            if (dataSource != null)
+            {
+                // Crear una nueva conexión
+                HPResergerCapaDatos.HPResergerCD capad = new HPResergerCapaDatos.HPResergerCD();
+                string nuevaConexion = capad.ObtenerConexion();
+
+                // Modificar la conexión
+                dataSource.ConnectionParameters = new CustomStringConnectionParameters(nuevaConexion);
+
+                var query = dataSource.Queries[0] as StoredProcQuery;
+                if (query != null)
+                {
+                    query.Parameters.Clear(); // Limpia los parámetros previos
+
+                    query.Parameters.Add(new QueryParameter("@empresa", typeof(int), empresa));
+                    query.Parameters.Add(new QueryParameter("@fechaini", typeof(DateTime), fechaInicio));
+                    query.Parameters.Add(new QueryParameter("@fechafin", typeof(DateTime), fechaFin));
+                    query.Parameters.Add(new QueryParameter("@cuo", typeof(string), cuo));
+                    query.Parameters.Add(new QueryParameter("@cuenta", typeof(string), cuenta));
+                    query.Parameters.Add(new QueryParameter("@glosa", typeof(string), glosa));
+                    query.Parameters.Add(new QueryParameter("@SubOperacion", typeof(string), subOperacion));
+                    query.Parameters.Add(new QueryParameter("@Estado", typeof(int), estado));
+                }
+
+                // ** 3.3 REFRESCAR Y LLENAR EL DATA SOURCE **
+                dataSource.RebuildResultSchema();
+                dataSource.Fill();
+            }
+
+            // ** 4. EVITAR QUE SE MUESTRE LA VENTANA DE PARÁMETROS**
+            foreach (var param in reporte.Parameters)
+            {
+                param.Visible = false; // Ocultar los parámetros en el visor
+            }
+            // ** 5. CONFIGURAR EL NOMBRE DEL ARCHIVO AL EXPORTAR A PDF**
+            reporte.ExportOptions.PrintPreview.DefaultFileName = "Reporte Asiento Contable";
+
+            // Mostrar el reporte en un visor
+            ReportPrintTool printTool = new ReportPrintTool(reporte);
+            printTool.ShowPreviewDialog();
         }
     }
 }

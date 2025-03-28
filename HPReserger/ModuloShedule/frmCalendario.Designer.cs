@@ -94,7 +94,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.schedulerStorage1 = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
-            this.schedulerBarController1 = new DevExpress.XtraScheduler.UI.SchedulerBarController();
+            this.schedulerBarController1 = new DevExpress.XtraScheduler.UI.SchedulerBarController(this.components);
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -109,14 +109,14 @@
             // 
             this.schedulerControl1.ActiveViewType = DevExpress.XtraScheduler.SchedulerViewType.Month;
             this.schedulerControl1.BackColor = System.Drawing.Color.White;
+            this.schedulerControl1.DataStorage = this.schedulerStorage1;
             this.schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerControl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.schedulerControl1.Location = new System.Drawing.Point(0, 84);
+            this.schedulerControl1.Location = new System.Drawing.Point(0, 74);
             this.schedulerControl1.MenuManager = this.barManager1;
             this.schedulerControl1.Name = "schedulerControl1";
-            this.schedulerControl1.Size = new System.Drawing.Size(955, 559);
+            this.schedulerControl1.Size = new System.Drawing.Size(955, 569);
             this.schedulerControl1.Start = new System.DateTime(2024, 7, 28, 0, 0, 0, 0);
-            this.schedulerControl1.Storage = this.schedulerStorage1;
             this.schedulerControl1.TabIndex = 0;
             this.schedulerControl1.Text = "schedulerControl1";
             this.schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler1);
@@ -285,9 +285,9 @@
             // btnrefrescar
             // 
             this.btnrefrescar.Caption = "Actualizar";
-            this.btnrefrescar.Glyph = ((System.Drawing.Image)(resources.GetObject("btnrefrescar.Glyph")));
             this.btnrefrescar.Id = 29;
-            this.btnrefrescar.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnrefrescar.LargeGlyph")));
+            this.btnrefrescar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnrefrescar.ImageOptions.Image")));
+            this.btnrefrescar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnrefrescar.ImageOptions.LargeImage")));
             this.btnrefrescar.Name = "btnrefrescar";
             this.btnrefrescar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefrescar_ItemClick);
             // 
@@ -398,9 +398,9 @@
             // btnTodoslosEmpleados
             // 
             this.btnTodoslosEmpleados.Caption = "Todos los Empleados";
-            this.btnTodoslosEmpleados.Glyph = ((System.Drawing.Image)(resources.GetObject("btnTodoslosEmpleados.Glyph")));
             this.btnTodoslosEmpleados.Id = 41;
-            this.btnTodoslosEmpleados.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnTodoslosEmpleados.LargeGlyph")));
+            this.btnTodoslosEmpleados.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTodoslosEmpleados.ImageOptions.Image")));
+            this.btnTodoslosEmpleados.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTodoslosEmpleados.ImageOptions.LargeImage")));
             this.btnTodoslosEmpleados.Name = "btnTodoslosEmpleados";
             this.btnTodoslosEmpleados.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTodoslosEmpleados_ItemClick);
             // 
@@ -571,10 +571,10 @@
             // changeAppointmentReminderItem1
             // 
             this.changeAppointmentReminderItem1.Edit = this.repositoryItemDuration1;
+            this.changeAppointmentReminderItem1.EditWidth = 111;
             this.changeAppointmentReminderItem1.Id = 40;
             this.changeAppointmentReminderItem1.Name = "changeAppointmentReminderItem1";
             this.changeAppointmentReminderItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption;
-            this.changeAppointmentReminderItem1.Width = 111;
             // 
             // repositoryItemDuration1
             // 
@@ -584,7 +584,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDuration1.DisabledStateText = null;
             this.repositoryItemDuration1.Name = "repositoryItemDuration1";
-            this.repositoryItemDuration1.NullValuePromptShowForEmptyValue = true;
             this.repositoryItemDuration1.ShowEmptyItem = true;
             this.repositoryItemDuration1.ValidateOnEnterKey = true;
             // 
@@ -593,45 +592,49 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(955, 84);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(955, 74);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 643);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(955, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 84);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 559);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 74);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 569);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(955, 84);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 559);
+            this.barDockControlRight.Location = new System.Drawing.Point(955, 74);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 569);
             // 
             // schedulerStorage1
             // 
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("IdUsuario", "CustomField1", DevExpress.XtraScheduler.FieldValueType.String));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("IdEmpresa", "CustomField2", DevExpress.XtraScheduler.FieldValueType.String));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.SystemColors.Window, "Ninguno", "&Ninguno"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(194)))), ((int)(((byte)(190))))), "Importante", "&Importante"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.MediumAquamarine, "Reuniones", "&Reuniones"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.Orange, "Tareas", "&Tareas"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.SteelBlue, "Seguimientos", "&Seguimientos"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.NavajoWhite, "Recordatorios", "&Recordatorios"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(228)))), ((int)(((byte)(199))))), "Vacaciones", "&Vacaciones"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(219)))), ((int)(((byte)(152))))), "Requiere preparación", "Requiere &preparación"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(207)))), ((int)(((byte)(233))))), "Cumpleaños", "&Cumpleaños"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(233)))), ((int)(((byte)(223))))), "Aniversario", "&Aniversario"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(247)))), ((int)(((byte)(165))))), "Llamada telefónica", "Llamada telefón&ica"));
-            this.schedulerStorage1.Appointments.Labels.Add(new DevExpress.XtraScheduler.AppointmentLabel(System.Drawing.Color.Lime, "Feriado", "&Feriado"));
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.SystemColors.Window, "Ninguno", "&Ninguno");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(194)))), ((int)(((byte)(190))))), "Importante", "&Importante");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.MediumAquamarine, "Reuniones", "&Reuniones");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.Orange, "Tareas", "&Tareas");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.SteelBlue, "Seguimientos", "&Seguimientos");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.NavajoWhite, "Recordatorios", "&Recordatorios");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(228)))), ((int)(((byte)(199))))), "Vacaciones", "&Vacaciones");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(219)))), ((int)(((byte)(152))))), "Requiere preparación", "Requiere &preparación");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(207)))), ((int)(((byte)(233))))), "Cumpleaños", "&Cumpleaños");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(233)))), ((int)(((byte)(223))))), "Aniversario", "&Aniversario");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(247)))), ((int)(((byte)(165))))), "Llamada telefónica", "Llamada telefón&ica");
+            this.schedulerStorage1.Appointments.Labels.Add(System.Drawing.Color.Lime, "Feriado", "&Feriado");
             this.schedulerStorage1.Appointments.Mappings.AllDay = "Alldays";
             this.schedulerStorage1.Appointments.Mappings.Description = "Description";
             this.schedulerStorage1.Appointments.Mappings.End = "EndDate";
@@ -697,7 +700,7 @@
             // comboBoxEdit1
             // 
             this.comboBoxEdit1.EditValue = "";
-            this.comboBoxEdit1.Location = new System.Drawing.Point(447, 60);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(446, 50);
             this.comboBoxEdit1.MenuManager = this.barManager1;
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -717,7 +720,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("frmCalendario.IconOptions.Icon")));
             this.Name = "frmCalendario";
             this.Text = "Calendario";
             this.Load += new System.EventHandler(this.frmCalendario_Load);

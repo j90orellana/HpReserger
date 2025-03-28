@@ -1405,6 +1405,22 @@ namespace HPResergerCapaDatos
             string sql = "SELECT Id_Cuenta_Contable,Cuenta_Contable FROM TBL_Cuenta_Contable WHERE Id_Cuenta_Contable = @id";
             return bd.DataTableFromQuery(sql, parametros, valor, direccion);
         }
+        public DataTable BuscarCuentasActivasQuery(string cuenta)
+        {
+            string[] parametros = { "@id" };
+            object[] valor = { cuenta };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT Id_Cuenta_Contable,Cuenta_Contable FROM TBL_Cuenta_Contable WHERE Id_Cuenta_Contable = @id and  EstadoCta=1";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
+        public DataTable BuscarCuentasActivasDetalleQuery(string cuenta)
+        {
+            string[] parametros = { "@id" };
+            object[] valor = { cuenta };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "SELECT Id_Cuenta_Contable,Cuenta_Contable ,CtaDetalle FROM TBL_Cuenta_Contable WHERE Id_Cuenta_Contable = @id and  EstadoCta=1  and CtaDetalle =1";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
         public DataTable BuscarPresupuestoQuery(string presupuesto)
         {
             string[] parametros = { "@presupuesto" };
@@ -1469,6 +1485,14 @@ namespace HPResergerCapaDatos
             object[] valor = { Name };
             ParameterDirection[] direccion = { ParameterDirection.InputOutput };
             string sql = "SELECT Tipo_Id_Cli,Nro_Id_Cli,Apepat_RazSoc_Cli,Apemat_Cli,Nombres_Cli FROM TBL_Cliente WHERE Nro_Id_Cli = @id";
+            return bd.DataTableFromQuery(sql, parametros, valor, direccion);
+        }
+        public DataTable BuscarEmpleadoQuery(string Name)
+        {
+            string[] parametros = { "@id" };
+            object[] valor = { Name };
+            ParameterDirection[] direccion = { ParameterDirection.InputOutput };
+            string sql = "select * from TBL_Empleado where Nro_ID_Emp = @id";
             return bd.DataTableFromQuery(sql, parametros, valor, direccion);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa

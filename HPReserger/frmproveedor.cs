@@ -1,5 +1,7 @@
 ﻿using HpResergerUserControls;
+using Microsoft.Office.Interop.Excel;
 using Newtonsoft.Json;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +13,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using System.Data.SqlClient;
 
 namespace HPReserger
 {
@@ -52,7 +56,7 @@ namespace HPReserger
             CProveedor.TablaTipoID(cbodocumento);
             cbodocumento.Text = "RUC";
             /////VALORES POR DEFECTO
-            DataTable TDoc = (DataTable)cbodocumento.DataSource;
+            System.Data.DataTable TDoc = (System.Data.DataTable)cbodocumento.DataSource;
             int length = TDoc.Rows.Count;
             for (int i = 0; i < length; i++)
             {
@@ -78,7 +82,7 @@ namespace HPReserger
         }
         public void CargarCondicioncontribuyente()
         {
-            DataTable tablita = new DataTable();
+          System.Data.  DataTable tablita = new System.Data.DataTable();
             tablita.Columns.Add("CODIGO");
             tablita.Columns.Add("DESCRIPCION");
             tablita.Rows.Add(new object[] { "1", "1. HABIDO" });
@@ -88,7 +92,7 @@ namespace HPReserger
             cbocondicion.ValueMember = "CODIGO";
             cbocondicion.SelectedIndex = 1;
             //////estado de lcontrubibuente
-            DataTable tabla2 = new DataTable();
+            System.Data.DataTable tabla2 = new System.Data.DataTable();
             tabla2.Columns.Add("CODIGO");
             tabla2.Columns.Add("DESCRIPCION");
             tabla2.Rows.Add(new object[] { "1", "1. ACTIVO" });
@@ -748,21 +752,137 @@ namespace HPReserger
             try
             {
                 if (cbodocumento.DataSource != null)
-                    txtnumeroidentidad.MaxLength = (int)((DataTable)cbodocumento.DataSource).Rows[x]["Leng"];
+                    txtnumeroidentidad.MaxLength = (int)((System.Data.DataTable)cbodocumento.DataSource).Rows[x]["Leng"];
             }
             catch (Exception) { }
         }
-
-        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        class Proveedorx
         {
-            if (llamada == 10)
+            public string RUC { get; set; }
+            public string RazonSocial { get; set; }
+            public string NombreComercial { get; set; }
+            public int SectorComercial { get; set; }
+            public string NroCtaDetracciones { get; set; }
+        }
+        static List<Proveedorx> LeerExcel(string excelPath)
+        {
+            List<Proveedorx> lista = new List<Proveedorx>();
+
+            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+            Workbook workbook = excelApp.Workbooks.Open(excelPath);
+            Worksheet worksheet = workbook.Sheets[1];
+            Range range = worksheet.UsedRange;
+
+            for (int row = 2; row <= range.Rows.Count; row++) // Desde la fila 2 (omitiendo encabezados)
             {
-                salida = true;
-                rucito = dtgconten[RUC.Name, e.RowIndex].Value.ToString();
-                tipoid = (int)dtgconten[xtipoid.Name, e.RowIndex].Value;
-                this.Close();
+                string ruc = (range.Cells[row, 1] as Range).Text;
+                string razonSocial = (range.Cells[row, 2] as Range).Text;
+                string nombreComercial = (range.Cells[row, 3] as Range).Text;
+                int sectorComercial = int.Parse((range.Cells[row, 4] as Range).Text);
+                string nroCtaDetracciones = (range.Cells[row, 5] as Range).Text;
+
+                lista.Add(new Proveedorx
+                {
+                    RUC = ruc,
+                    RazonSocial = razonSocial,
+                    NombreComercial = nombreComercial,
+                    SectorComercial = sectorComercial,
+                    NroCtaDetracciones = string.IsNullOrEmpty(nroCtaDetracciones) ? null : nroCtaDetracciones
+                });
+            }
+
+            workbook.Close(false);
+            excelApp.Quit();
+
+            return lista;
+        }
+        static void InsertarOActualizarProveedores(List<Proveedorx> proveedores, string connectionString)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                foreach (var proveedor in proveedores)
+                {
+                    string checkQuery = "SELECT COUNT(*) FROM TBL_Proveedor WHERE RUC = @RUC";
+                    using (SqlCommand cmdCheck = new SqlCommand(checkQuery, conn))
+                    {
+                        cmdCheck.Parameters.AddWithValue("@RUC", proveedor.RUC);
+                        int count = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                        if (count > 0) // Si el proveedor ya existe, actualizar nro_cta_detracciones
+                        {
+                            string updateQuery = @"
+                        UPDATE TBL_Proveedor 
+                        SET nro_cta_detracciones = @NroCtaDetracciones
+                        WHERE RUC = @RUC";
+
+                            using (SqlCommand cmdUpdate = new SqlCommand(updateQuery, conn))
+                            {
+                                cmdUpdate.Parameters.AddWithValue("@RUC", proveedor.RUC);
+                                cmdUpdate.Parameters.AddWithValue("@NroCtaDetracciones",
+                                    (object)proveedor.NroCtaDetracciones ?? DBNull.Value);
+                                cmdUpdate.ExecuteNonQuery();
+                            }
+                        }
+                        else // Si el proveedor no existe, insertar un nuevo registro
+                        {
+                            string insertQuery = @"
+                        INSERT INTO TBL_Proveedor 
+                        (EstadoContrib,tipo_id,RUC, razon_social, nombre_comercial, sector_comercial, PlazoDias, EstadoContrib, nro_cta_detracciones) 
+                        VALUES 
+                        (1,5,@RUC, @RazonSocial, @NombreComercial, @SectorComercial, DEFAULT, DEFAULT, @NroCtaDetracciones)";
+
+                            using (SqlCommand cmdInsert = new SqlCommand(insertQuery, conn))
+                            {
+                                cmdInsert.Parameters.AddWithValue("@RUC", proveedor.RUC);
+                                cmdInsert.Parameters.AddWithValue("@RazonSocial", proveedor.RazonSocial);
+                                cmdInsert.Parameters.AddWithValue("@NombreComercial", proveedor.NombreComercial);
+                                cmdInsert.Parameters.AddWithValue("@SectorComercial", proveedor.SectorComercial);
+                                cmdInsert.Parameters.AddWithValue("@NroCtaDetracciones",
+                                    (object)proveedor.NroCtaDetracciones ?? DBNull.Value);
+
+                                cmdInsert.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
             }
         }
+        private void btnCargaMasiva_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Archivos Excel (*.xlsx;*.xls)|*.xlsx;*.xls";
+                openFileDialog.Title = "Seleccionar archivo de Excel";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string excelPath = openFileDialog.FileName;
+                    HPResergerCapaDatos.HPResergerCD cddata = new HPResergerCapaDatos.HPResergerCD();
+                    string connectionString = cddata.ObtenerConexion();
+
+                    List<Proveedorx> proveedores = LeerExcel(excelPath);
+                    InsertarOActualizarProveedores(proveedores, connectionString);
+
+                    XtraMessageBox.Show("Datos importados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog SF = new SaveFileDialog();
+            SF.Filter = "Archivos de Excel *.xlsx|*.xlsx";
+            SF.FileName = "Formato de Carga de Ventas";
+            var result = SF.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                File.WriteAllBytes(SF.FileName, SISGEM.Resource1.CARGA_MASIVA_PROVEEDORES);
+                System.Diagnostics.Process.Start(SF.FileName);
+            }
+        }
+
         private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ValidarPegarSoloLetras(e, txtpersonacontacto, 40);

@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Compras\FacturaManual.cs" />
+    <Compile Include="Compras\Proveedor.cs" />
     <Compile Include="Contable\ActivoFijo.cs" />
     <Compile Include="Contable\CatalogoExistencias.cs" />
     <Compile Include="Contable\EmpresaAbreviatura.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="FlujoCaja\InventarioVentas.cs" />
     <Compile Include="FlujoCaja\PartidasControl.cs" />
     <Compile Include="HPResergerCL.cs" />
+    <Compile Include="Mantenimiento\Empresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

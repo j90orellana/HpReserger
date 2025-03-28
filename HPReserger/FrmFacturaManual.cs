@@ -45,7 +45,7 @@ namespace HPReserger
         public decimal igvs { get; private set; }
         public int ActivoFijo { get; private set; }
         public bool PeriodoCerrado { get; private set; }
-        public string DatoPresupuesto_ { get; private set; }
+        public string DatoPresupuesto_ { get; private set; } = "";
 
         public bool RomperMasivo = false;
 
@@ -2324,8 +2324,11 @@ namespace HPReserger
                                 item[13] = item[13].ToString() == "" ? 0.00 : item[13];
 
 
-                                //T.Bien       
+                                //PRESUPUESTO       
                                 item[27] = int.TryParse(item[27].ToString(), out int result) ? result : 0;
+
+                                //TIPO DE BIEN   - tabla 30 de sunat
+                                item[40] = int.TryParse(item[40].ToString(), out int resulta) ? resulta : 0;
 
                                 //VALIDACION DE NUMERO DE COMPROBANTE QUE TENGA SEPARADOR GUION
                                 if (string.IsNullOrWhiteSpace(item[4].ToString()))
@@ -2395,8 +2398,8 @@ namespace HPReserger
                                 if (_EmpresaNecesitaTabla30Bienes)
                                 {
                                     decimal tipoBien;
-                                    decimal.TryParse(item[27].ToString(), out tipoBien);
-                                    if (tipoBien != 0 && string.IsNullOrEmpty(item[27].ToString()))
+                                    decimal.TryParse(item[40].ToString(), out tipoBien);
+                                    if (tipoBien != 0 && string.IsNullOrEmpty(item[40].ToString()))
                                     {
                                         cadenaResultado += $"En la Fila:{i + 1}, debe Registrar el Tipo de Bien según la tabla 30 de Sunat";
                                     }

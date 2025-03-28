@@ -1402,6 +1402,8 @@ namespace HPReserger
             }
             if (txtbuscarDocumentos.TextValido().Length > 0)
             {
+                if (prove == 1)
+                    filter += " and ";
                 filter += $" NroFactura  like '%{txtbuscarDocumentos.TextValido()}%' ";
             }
             DataTable TableFiltrada;

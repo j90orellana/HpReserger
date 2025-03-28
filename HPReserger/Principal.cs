@@ -13,6 +13,7 @@ using SISGEM.ModuloShedule;
 using SISGEM.CRM;
 using System.Configuration;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 
 namespace SISGEM
 {
@@ -1111,6 +1112,32 @@ namespace SISGEM
             newForm.Show();
         }
 
+        private void OpenFormNoPadre<T>() where T : Form, new()
+        {
+            // Buscar si ya está abierto un formulario del mismo tipo fuera del MDI
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is T)
+                {
+                    form.WindowState = FormWindowState.Normal;
+                    form.BringToFront();
+                    form.Activate();
+                    return;
+                }
+            }
+
+            // Crear el formulario como ventana independiente
+            T newForm = new T
+            {
+                MdiParent = null, // No es hijo MDI
+                FormBorderStyle = FormBorderStyle.FixedDialog, // O FixedSingle si prefieres
+                MaximizeBox = false,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+
+            newForm.Show();
+        }
+
         private void navBarItem3_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             //pendientes de reuniones
@@ -1238,6 +1265,39 @@ namespace SISGEM
         private void barButtonItem67_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenForm<SISGEM.ModuloFinanzas.frmListadoPagos>();
+        }
+
+        private void barButtonItem68_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloShedule.frmDashboardTickets>();
+
+        }
+
+        private void barButtonItem69_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //estado financiero     
+            OpenForm<HPReserger.FrmConfiguracionBalanceSituacionFinanciera>();
+        }
+
+        private void barButtonItem70_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //estado de resultado
+            OpenForm<HPReserger.frmConfiguracionBalanceGanacias>();
+        }
+
+        private void barBtnEEFFpasado_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenFormNoPadre<ModuloXtraReports.frmReportesExternos>();
+        }
+
+        private void barBtnERIpasado_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           
+        }
+
+        private void btnCargaMasivaAsientos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloContable.frmCargaAsientosMasivos>();
         }
     }
 }

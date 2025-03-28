@@ -63,6 +63,26 @@ namespace SISGEM {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
+        internal static byte[] CARGA_MASIVA_PROVEEDORES {
+            get {
+                object obj = ResourceManager.GetObject("CARGA_MASIVA_PROVEEDORES", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] FORMATO_CARGA_MASIVA_ASIENTO {
+            get {
+                object obj = ResourceManager.GetObject("FORMATO_CARGA_MASIVA_ASIENTO", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
         internal static byte[] LISTADO_DE_COMPRAS {
             get {
                 object obj = ResourceManager.GetObject("LISTADO_DE_COMPRAS", resourceCulture);

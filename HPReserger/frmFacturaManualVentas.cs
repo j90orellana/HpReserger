@@ -27,7 +27,7 @@ namespace HPReserger
         public int _etapa { get; set; }
         public string coddet { get; set; }
         public int _idFac { get; private set; }
-        public string DatoPresupuesto_ { get; private set; }
+        public string DatoPresupuesto_ { get; private set; } = "";
         public decimal TotalIgv { get; private set; }
         public int TipoIdDoc { get { return (int)cbotipoid.SelectedValue; } set { cbotipoid.SelectedValue = value; } }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
@@ -548,7 +548,7 @@ namespace HPReserger
                 if (cbotipoid.Items.Count == 0) { msg("No hay Tipo Documento"); cbotipoid.Focus(); return; }
                 if (txtcodfactura.Text.Length == 0) { msg($"Ingrese Codigo de {cbotipodoc.Text}"); txtcodfactura.Focus(); return; }
                 if (txtnrofactura.Text.Length == 0) { msg($"Ingrese Número de {cbotipodoc.Text}"); txtnrofactura.Focus(); return; }
-                if (!chkDocAnulado.Checked) if (!txttotalfac.EstaLLeno()) { msg("Ingrese Total del Comprobante"); txttotalfac.Focus(); return; }
+                if (!chkDocAnulado.Checked && !rdbAnulacion.Checked) if (!txttotalfac.EstaLLeno()) { msg("Ingrese Total del Comprobante"); txttotalfac.Focus(); return; }
                 if (decimal.Parse(txttipocambio.TextValido()) == 0) { msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
                 if (chkDocAnulado.Checked) { if (txttotalfac.EstaLLeno()) { msg("El Total del Comprobante debe ser Cero"); txttotalfac.Focus(); return; } }
                 if (!txtdoc.EstaLLeno()) { msg("Ingrese Nro.Doc. del Cliente"); txtdoc.Focus(); return; }
@@ -1119,7 +1119,12 @@ namespace HPReserger
                 if (errord) { cadena += "Hay Errores en las Cuentas\n"; }
                 if (ErrorM) { cadena += "Hay Errores los Importe\n"; }
                 /////VALIDACION
-                if (conD == 0 || conH == 0 || error || errord || ErrorM || ErrorDH) { msg(cadena); return; }
+                if (rdbAnulacion.Checked)
+                {
+                    if (conD == 0 || conH == 0 || error || errord || ErrorDH) { msg(cadena); return; }
+                }
+                else
+                      if (conD == 0 || conH == 0 || error || errord || ErrorM || ErrorDH) { msg(cadena); return; }
                 //////VAMOS CON EL IGV
                 igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
                 string CuentaIgv = "4011102";

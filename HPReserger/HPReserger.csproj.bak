@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.props" Condition="Exists('..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.props')" />
+  <Import Project="..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props')" />
+  <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -10,12 +13,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SISGEM</RootNamespace>
     <AssemblyName>SISGEM</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
     <PublishUrl>C:\Users\Hp\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -57,7 +61,7 @@
     <StartupObject>HPReserger.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>LogoHP.ico</ApplicationIcon>
+    <ApplicationIcon>4ab51850-6ee1-4588-a945-bbf21a025f95.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>9DCF1CBD1B9DD084E858D2D5F3ACEC38BF85CD75</ManifestCertificateThumbprint>
@@ -85,6 +89,7 @@
     <Reference Include="abcBaseDatos">
       <HintPath>..\Referencias\abcBaseDatos.dll</HintPath>
     </Reference>
+    <Reference Include="Accessibility" />
     <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ejecutable\Bunifu_UI_v1.52.dll</HintPath>
@@ -97,18 +102,254 @@
     </Reference>
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.BonusSkins.19.2.5\lib\net452\DevExpress.BonusSkins.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Charts.Core.19.2.5\lib\net452\DevExpress.Charts.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.CodeParser.19.2.5\lib\net452\DevExpress.CodeParser.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v15.1.Win, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dashboard.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Dashboard.Core.19.2.5\lib\net452\DevExpress.Dashboard.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.ExpressApp.Images.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <HintPath>..\packages\DevExpress.ExpressApp.Images.19.2.5\lib\net452\DevExpress.ExpressApp.Images.v19.2.dll</HintPath>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Data.19.2.5\lib\net452\DevExpress.Data.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v15.1.UI, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.DataAccess.19.2.5\lib\net452\DevExpress.DataAccess.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v19.2.UI, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.DataAccess.UI.19.2.5\lib\net452\DevExpress.DataAccess.v19.2.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Diagram.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Diagram.Core.19.2.5\lib\net452\DevExpress.Diagram.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Images.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Images.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Images.19.2.5\lib\net452\DevExpress.Images.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Map.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Map.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Map.Core.19.2.5\lib\net452\DevExpress.Map.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Office.Core.19.2.5\lib\net452\DevExpress.Office.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Pdf.Core.19.2.5\lib\net452\DevExpress.Pdf.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.PivotGrid.Core.19.2.5\lib\net452\DevExpress.PivotGrid.v19.2.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Printing.Core.19.2.5\lib\net452\DevExpress.Printing.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.RichEdit.Core.19.2.5\lib\net452\DevExpress.RichEdit.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.RichEdit.Export.19.2.5\lib\net452\DevExpress.RichEdit.v19.2.Export.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Sparkline.Core.19.2.5\lib\net452\DevExpress.Sparkline.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.SpellChecker.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.SpellChecker.Core.19.2.5\lib\net452\DevExpress.SpellChecker.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.TreeMap.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.TreeMap.Core.19.2.5\lib\net452\DevExpress.TreeMap.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v15.1.UI, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Utils.19.2.5\lib\net452\DevExpress.Utils.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v19.2.UI, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Utils.UI.19.2.5\lib\net452\DevExpress.Utils.v19.2.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Xpo.19.2.5\lib\net452\DevExpress.Xpo.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Navigation.19.2.5\lib\net452\DevExpress.XtraBars.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v15.1.UI, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v15.1.Wizard, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Charts.19.2.5\lib\net452\DevExpress.XtraCharts.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.2.Extensions, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Charts.19.2.5\lib\net452\DevExpress.XtraCharts.v19.2.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.2.UI, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Charts.19.2.5\lib\net452\DevExpress.XtraCharts.v19.2.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.2.Wizard, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Charts.19.2.5\lib\net452\DevExpress.XtraCharts.v19.2.Wizard.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraDiagram.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Diagram.19.2.5\lib\net452\DevExpress.XtraDiagram.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Navigation.19.2.5\lib\net452\DevExpress.XtraEditors.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v15.1.Presets, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v15.1.Win, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Gauges.Core.19.2.5\lib\net452\DevExpress.XtraGauges.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v19.2.Presets, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Gauges.19.2.5\lib\net452\DevExpress.XtraGauges.v19.2.Presets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v19.2.Win, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Gauges.19.2.5\lib\net452\DevExpress.XtraGauges.v19.2.Win.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Grid.19.2.5\lib\net452\DevExpress.XtraGrid.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Navigation.19.2.5\lib\net452\DevExpress.XtraLayout.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraMap.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraMap.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Map.19.2.5\lib\net452\DevExpress.XtraMap.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.19.2.5\lib\net452\DevExpress.XtraNavBar.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.PivotGrid.19.2.5\lib\net452\DevExpress.XtraPivotGrid.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Printing.19.2.5\lib\net452\DevExpress.XtraPrinting.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Reporting.Core.19.2.5\lib\net452\DevExpress.XtraReports.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v19.2.Extensions, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Reporting.19.2.5\lib\net452\DevExpress.XtraReports.v19.2.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v15.1.Extensions, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.RichEdit.19.2.5\lib\net452\DevExpress.XtraRichEdit.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v15.1.Reporting.Extensions, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v15.1.Extensions, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.Scheduler.19.2.5\lib\net452\DevExpress.XtraScheduler.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Scheduler.Core.19.2.5\lib\net452\DevExpress.XtraScheduler.v19.2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Extensions, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.SchedulerExtensions.19.2.5\lib\net452\DevExpress.XtraScheduler.v19.2.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Reporting, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.SchedulerReporting.19.2.5\lib\net452\DevExpress.XtraScheduler.v19.2.Reporting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Reporting.Extensions, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.SchedulerExtensions.19.2.5\lib\net452\DevExpress.XtraScheduler.v19.2.Reporting.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraSpellChecker.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.SpellChecker.19.2.5\lib\net452\DevExpress.XtraSpellChecker.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.TreeList.19.2.5\lib\net452\DevExpress.XtraTreeList.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeMap.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.TreeMap.19.2.5\lib\net452\DevExpress.XtraTreeMap.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.VerticalGrid.19.2.5\lib\net452\DevExpress.XtraVerticalGrid.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraWizard.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Win.19.2.5\lib\net452\DevExpress.XtraWizard.v19.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dropbox.Api, Version=4.0.0.0, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
       <HintPath>..\packages\Dropbox.Api.4.9.4\lib\net45\Dropbox.Api.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -120,7 +361,6 @@
     </Reference>
     <Reference Include="EPPlus, Version=5.4.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.5.4.1\lib\net45\EPPlus.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="HPResergerCapaDatos">
@@ -136,7 +376,12 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    </Reference>
+    <Reference Include="Npgsql, Version=3.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.2.7\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit, Version=0.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.50.0\lib\net46\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -153,9 +398,13 @@
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -178,11 +427,191 @@
       <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Clases\Actualizaciones.cs" />
+    <Compile Include="CRM\FrmAddCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\FrmAddCliente.Designer.cs">
+      <DependentUpon>FrmAddCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\FrmAddClienteAdicionales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\FrmAddClienteAdicionales.Designer.cs">
+      <DependentUpon>FrmAddClienteAdicionales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddContacto.Designer.cs">
+      <DependentUpon>frmAddContacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddCotizacionCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddCotizacionCRM.Designer.cs">
+      <DependentUpon>frmAddCotizacionCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddExtrate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddExtrate.Designer.cs">
+      <DependentUpon>frmAddExtrate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddProducto.Designer.cs">
+      <DependentUpon>frmAddProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddProveedor.Designer.cs">
+      <DependentUpon>frmAddProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddProyecto.Designer.cs">
+      <DependentUpon>frmAddProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddSedesCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddSedesCRM.Designer.cs">
+      <DependentUpon>frmAddSedesCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddSeguimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddSeguimiento.Designer.cs">
+      <DependentUpon>frmAddSeguimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddServicio.Designer.cs">
+      <DependentUpon>frmAddServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddTipoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddTipoCliente.Designer.cs">
+      <DependentUpon>frmAddTipoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAddUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmAddUsuario.Designer.cs">
+      <DependentUpon>frmAddUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmClienteCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmClienteCRM.Designer.cs">
+      <DependentUpon>frmClienteCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmContactoCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmContactoCRM.Designer.cs">
+      <DependentUpon>frmContactoCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmCotizadorCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmCotizadorCRM.Designer.cs">
+      <DependentUpon>frmCotizadorCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmPerfilCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmPerfilCRM.Designer.cs">
+      <DependentUpon>frmPerfilCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmProductosCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmProductosCRM.Designer.cs">
+      <DependentUpon>frmProductosCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmProveedoresCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmProveedoresCRM.Designer.cs">
+      <DependentUpon>frmProveedoresCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmProyectos.Designer.cs">
+      <DependentUpon>frmProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmSedeCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmSedeCRM.Designer.cs">
+      <DependentUpon>frmSedeCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmSegumiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmSegumiento.Designer.cs">
+      <DependentUpon>frmSegumiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmServicioCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmServicioCRM.Designer.cs">
+      <DependentUpon>frmServicioCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmTipoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmTipoCliente.Designer.cs">
+      <DependentUpon>frmTipoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmUsuariosCRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmUsuariosCRM.Designer.cs">
+      <DependentUpon>frmUsuariosCRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmAddEstatusInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmAddEstatusInventario.Designer.cs">
+      <DependentUpon>frmAddEstatusInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmaddServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmaddServicio.Designer.cs">
+      <DependentUpon>frmaddServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmVentaInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmVentaInventario.Designer.cs">
+      <DependentUpon>frmVentaInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPruebas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPruebas.Designer.cs">
+      <DependentUpon>FormPruebas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAfpEmpresas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAfpEmpresas.Designer.cs">
       <DependentUpon>frmAfpEmpresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargarSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargarSistema.Designer.cs">
+      <DependentUpon>frmCargarSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConciliacionReportepdf.cs">
       <SubType>Form</SubType>
@@ -202,6 +631,12 @@
     <Compile Include="frmCuadreAsientos.Designer.cs">
       <DependentUpon>frmCuadreAsientos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDashBoard.Designer.cs">
+      <DependentUpon>frmDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInformativo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +648,9 @@
     </Compile>
     <Compile Include="frmListarFacturasPagadas.Designer.cs">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectorSkin.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTipoFaltas.cs">
       <SubType>Form</SubType>
@@ -232,6 +670,18 @@
     <Compile Include="ModuloActivoFijo\frmActivoFijoCuentasContable.Designer.cs">
       <DependentUpon>frmActivoFijoCuentasContable.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivosFijosC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivosFijosC.Designer.cs">
+      <DependentUpon>frmActivosFijosC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivosFijosListar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmActivosFijosListar.Designer.cs">
+      <DependentUpon>frmActivosFijosListar.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloActivoFijo\frmProcesoDepreciacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +699,54 @@
     </Compile>
     <Compile Include="ModuloActivoFijo\frmReporteDepreciaciones.Designer.cs">
       <DependentUpon>frmReporteDepreciaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmSubtipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmSubtipo.Designer.cs">
+      <DependentUpon>frmSubtipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTabla19.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTabla19.Designer.cs">
+      <DependentUpon>frmTabla19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmCatalogoExistencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmCatalogoExistencias.Designer.cs">
+      <DependentUpon>frmCatalogoExistencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmEmpresaAbreviada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmEmpresaAbreviada.Designer.cs">
+      <DependentUpon>frmEmpresaAbreviada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTabla18.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTabla18.Designer.cs">
+      <DependentUpon>frmTabla18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTabla20.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTabla20.Designer.cs">
+      <DependentUpon>frmTabla20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTipoActivoFijos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTipoActivoFijos.Designer.cs">
+      <DependentUpon>frmTipoActivoFijos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTipoBajaActivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActivoFijo\frmTipoBajaActivo.Designer.cs">
+      <DependentUpon>frmTipoBajaActivo.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloBancario\frmBancoBBVA.cs">
       <SubType>Form</SubType>
@@ -316,11 +814,23 @@
     <Compile Include="ModuloContable\frmAsientosApertura.Designer.cs">
       <DependentUpon>frmAsientosApertura.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloContable\frmCargaAsientosMasivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmCargaAsientosMasivos.Designer.cs">
+      <DependentUpon>frmCargaAsientosMasivos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmDiferenciaCambioMensual.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloContable\frmDiferenciaCambioMensual.Designer.cs">
       <DependentUpon>frmDiferenciaCambioMensual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\frmListadoFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmListadoFacturas.Designer.cs">
+      <DependentUpon>frmListadoFacturas.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\frmRevesarAsientos.cs">
       <SubType>Form</SubType>
@@ -339,6 +849,9 @@
     </Compile>
     <Compile Include="ModuloContable\frmTipoPlanCuenta.Designer.cs">
       <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\XtraReportAsientoContable.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ModuloCrystalReport\frmLibroBanco1_2.cs">
       <SubType>Form</SubType>
@@ -424,6 +937,12 @@
     <Compile Include="ModuloFinanzas\FrmConciliarBanco.Designer.cs">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoPagos.Designer.cs">
+      <DependentUpon>frmListadoPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloFinanzas\frmMediosPagos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -483,6 +1002,12 @@
     </Compile>
     <Compile Include="ModuloReportes\frmReporteDocumentosImpagos.Designer.cs">
       <DependentUpon>frmReporteDocumentosImpagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloReportes\frmReportePrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\frmReportePrueba.Designer.cs">
+      <DependentUpon>frmReportePrueba.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloReportes\LibrosElectronicos\frmLibroDiario5_2.cs">
       <SubType>Form</SubType>
@@ -813,6 +1338,63 @@
     </Compile>
     <Compile Include="ModuloRRHH\frmVacacionesResumen.Designer.cs">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\DialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmAddObjetivosProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmAddObjetivosProyectos.Designer.cs">
+      <DependentUpon>frmAddObjetivosProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\frmAgendarCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmAgendarCita.Designer.cs">
+      <DependentUpon>frmAgendarCita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\frmCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmCalendario.Designer.cs">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\frmDashboardTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmDashboardTickets.Designer.cs">
+      <DependentUpon>frmDashboardTickets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\frmEstatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmEstatus.Designer.cs">
+      <DependentUpon>frmEstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\frmPendienteReuniones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmPendienteReuniones.Designer.cs">
+      <DependentUpon>frmPendienteReuniones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloShedule\frmReuniones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloShedule\frmReuniones.Designer.cs">
+      <DependentUpon>frmReuniones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloVentas\frmListarVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloVentas\frmListarVentas.Designer.cs">
+      <DependentUpon>frmListarVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2178,8 +2760,98 @@
     <Compile Include="update.Designer.cs">
       <DependentUpon>update.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CRM\FrmAddCliente.resx">
+      <DependentUpon>FrmAddCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\FrmAddClienteAdicionales.resx">
+      <DependentUpon>FrmAddClienteAdicionales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddContacto.resx">
+      <DependentUpon>frmAddContacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddCotizacionCRM.resx">
+      <DependentUpon>frmAddCotizacionCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddExtrate.resx">
+      <DependentUpon>frmAddExtrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddProducto.resx">
+      <DependentUpon>frmAddProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddProveedor.resx">
+      <DependentUpon>frmAddProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddProyecto.resx">
+      <DependentUpon>frmAddProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddSedesCRM.resx">
+      <DependentUpon>frmAddSedesCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddSeguimiento.resx">
+      <DependentUpon>frmAddSeguimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddServicio.resx">
+      <DependentUpon>frmAddServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddTipoCliente.resx">
+      <DependentUpon>frmAddTipoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmAddUsuario.resx">
+      <DependentUpon>frmAddUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmClienteCRM.resx">
+      <DependentUpon>frmClienteCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmContactoCRM.resx">
+      <DependentUpon>frmContactoCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmCotizadorCRM.resx">
+      <DependentUpon>frmCotizadorCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmPerfilCRM.resx">
+      <DependentUpon>frmPerfilCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmProductosCRM.resx">
+      <DependentUpon>frmProductosCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmProveedoresCRM.resx">
+      <DependentUpon>frmProveedoresCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmProyectos.resx">
+      <DependentUpon>frmProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmSedeCRM.resx">
+      <DependentUpon>frmSedeCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmSegumiento.resx">
+      <DependentUpon>frmSegumiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmServicioCRM.resx">
+      <DependentUpon>frmServicioCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmTipoCliente.resx">
+      <DependentUpon>frmTipoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmUsuariosCRM.resx">
+      <DependentUpon>frmUsuariosCRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmAddEstatusInventario.resx">
+      <DependentUpon>frmAddEstatusInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmaddServicio.resx">
+      <DependentUpon>frmaddServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmVentaInventario.resx">
+      <DependentUpon>frmVentaInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPruebas.resx">
+      <DependentUpon>FormPruebas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAfpEmpresas.resx">
       <DependentUpon>frmAfpEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargarSistema.resx">
+      <DependentUpon>frmCargarSistema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConciliacionReportepdf.resx">
       <DependentUpon>frmConciliacionReportepdf.cs</DependentUpon>
@@ -2189,6 +2861,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCuadreAsientos.resx">
       <DependentUpon>frmCuadreAsientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDashBoard.resx">
+      <DependentUpon>frmDashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInformativo.resx">
       <DependentUpon>frmInformativo.cs</DependentUpon>
@@ -2205,6 +2880,12 @@
     <EmbeddedResource Include="ModuloActivoFijo\frmActivoFijoCuentasContable.resx">
       <DependentUpon>frmActivoFijoCuentasContable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmActivosFijosC.resx">
+      <DependentUpon>frmActivosFijosC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmActivosFijosListar.resx">
+      <DependentUpon>frmActivosFijosListar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloActivoFijo\frmProcesoDepreciacion.resx">
       <DependentUpon>frmProcesoDepreciacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -2213,6 +2894,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloActivoFijo\frmReporteDepreciaciones.resx">
       <DependentUpon>frmReporteDepreciaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmCatalogoExistencias.resx">
+      <DependentUpon>frmCatalogoExistencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmEmpresaAbreviada.resx">
+      <DependentUpon>frmEmpresaAbreviada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmSubtipo.resx">
+      <DependentUpon>frmSubtipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmTabla18.resx">
+      <DependentUpon>frmTabla18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmTabla19.resx">
+      <DependentUpon>frmTabla19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmTabla20.resx">
+      <DependentUpon>frmTabla20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmTipoActivoFijos.resx">
+      <DependentUpon>frmTipoActivoFijos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActivoFijo\frmTipoBajaActivo.resx">
+      <DependentUpon>frmTipoBajaActivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoBBVA.resx">
       <DependentUpon>frmBancoBBVA.cs</DependentUpon>
@@ -2247,8 +2952,14 @@
     <EmbeddedResource Include="ModuloContable\frmAsientosApertura.resx">
       <DependentUpon>frmAsientosApertura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmCargaAsientosMasivos.resx">
+      <DependentUpon>frmCargaAsientosMasivos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmDiferenciaCambioMensual.resx">
       <DependentUpon>frmDiferenciaCambioMensual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmListadoFacturas.resx">
+      <DependentUpon>frmListadoFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmRevesarAsientos.resx">
       <DependentUpon>frmRevesarAsientos.cs</DependentUpon>
@@ -2259,6 +2970,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmTipoPlanCuenta.resx">
       <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\XtraReportAsientoContable.resx">
+      <DependentUpon>XtraReportAsientoContable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCrystalReport\frmLibroBanco1_2.resx">
       <DependentUpon>frmLibroBanco1_2.cs</DependentUpon>
@@ -2309,6 +3023,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\FrmConciliarBanco.resx">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmListadoPagos.resx">
+      <DependentUpon>frmListadoPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmMediosPagos.resx">
       <DependentUpon>frmMediosPagos.cs</DependentUpon>
@@ -2505,6 +3222,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmVacacionesResumen.resx">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmAddObjetivosProyectos.resx">
+      <DependentUpon>frmAddObjetivosProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmAgendarCita.resx">
+      <DependentUpon>frmAgendarCita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmCalendario.resx">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmDashboardTickets.resx">
+      <DependentUpon>frmDashboardTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmEstatus.resx">
+      <DependentUpon>frmEstatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmPendienteReuniones.resx">
+      <DependentUpon>frmPendienteReuniones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloShedule\frmReuniones.resx">
+      <DependentUpon>frmReuniones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloVentas\frmListarVentas.resx">
+      <DependentUpon>frmListarVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Resource1.resx">
@@ -3228,14 +3972,39 @@
     <None Include="ACTUAL_BETADataSet.xss">
       <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
     </None>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="HPReserger_ClaveTemporal.pfx" />
+    <None Include="ModuloActivoFijo\FORMATO CARGA ACTIVOS FIJOS.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ActivosFijos+oActivoFijo.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ActivosFijos.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ClaseContable.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Cliente.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ClienteRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ContactoRepository+Contacto.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ContactoRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Cotizador.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ProductoRepository+Producto.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ProveedorRepository+CRM_Proveedor.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_ProyectoRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Sedes.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_SeguimientoRepository+CRM_Seguimiento.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_SeguimientoRepository.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Servicio+Servicio.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Tipo_Cliente.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.CRM_Usuario.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.Proyecto.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.SCH_ClienteAdicionales.datasource" />
+    <None Include="Properties\DataSources\HpResergerNube.SCH_Estrate_Objetivos_Operativos.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -3245,6 +4014,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\CARGA MASIVA PROVEEDORES.xlsx" />
+    <None Include="Resources\FORMATO CARGA MASIVA ASIENTO.xlsx" />
     <None Include="Resources\LISTADO DE COMPRAS.xlsx" />
     <None Include="Resources\LISTADO DE VENTAS.xlsx" />
     <None Include="SiGeDataSet.xsc">
@@ -3470,6 +4241,10 @@
       <Project>{2fe42f25-103c-4988-a3f5-132981069795}</Project>
       <Name>HPResergerFunciones</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HpResergerNube\HpResergerNube.csproj">
+      <Project>{61db4bea-1b3d-4dae-8605-7c30a1a6db8b}</Project>
+      <Name>HpResergerNube</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HPResergerUpdate\HPResergerUpdate.csproj">
       <Project>{7dcf9124-2f2e-436b-85b4-7dc3033f97c2}</Project>
       <Name>HPResergerUpdate</Name>
@@ -3480,6 +4255,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="4ab51850-6ee1-4588-a945-bbf21a025f95.ico" />
+    <Content Include="Dashboard.xml" />
     <Content Include="Datos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -3505,6 +4282,32 @@
     <None Include="Resources\LoadFile.ico" />
     <None Include="Resources\find_16x16.png" />
     <None Include="Resources\clearfilter_16x16.png" />
+    <None Include="Resources\icons8_coin_in_hand_16px_1.png" />
+    <None Include="Resources\icons8_coin_in_hand_30px.png" />
+    <None Include="Resources\icons8_refund_16px.png" />
+    <None Include="Resources\icons8_refund_30px.png" />
+    <None Include="Resources\icons8_refund_16px1.png" />
+    <None Include="Resources\icons8_cash_in_hand_16px.png" />
+    <None Include="Resources\icons8_cash_in_hand_30px_1.png" />
+    <None Include="Resources\icons8_expensive_price_16px_1.png" />
+    <None Include="Resources\icons8_coins_30px.png" />
+    <None Include="Resources\icons8_Cash_16px.png" />
+    <None Include="Resources\icons8_Cash_30px.png" />
+    <None Include="Resources\icons8_meeting_16px.png" />
+    <None Include="Resources\icons8_meeting_30px.png" />
+    <None Include="Resources\icons8_exchange_16px.png" />
+    <None Include="Resources\icons8_exchange_30px.png" />
+    <None Include="Resources\icons8_payment_history_16px_1.png" />
+    <None Include="Resources\icons8_payment_history_30px_1.png" />
+    <None Include="Resources\icons8_request_money_16px.png" />
+    <None Include="Resources\icons8_request_money_30px.png" />
+    <None Include="Resources\icons8_initiate_money_transfer_16px.png" />
+    <None Include="Resources\icons8_initiate_money_transfer_30px.png" />
+    <None Include="Resources\icons8_request_money_30px1.png" />
+    <None Include="Resources\icons8_invoice_16px.png" />
+    <None Include="Resources\icons8_invoice_30px.png" />
+    <None Include="Resources\icons8_Peru_32px_1.png" />
+    <None Include="Resources\icons8_Peru_16px.png" />
     <Content Include="Resources\xCloseBlue.ico" />
     <None Include="Resources\xCloseBlue1.ico" />
     <None Include="Resources\xCloseBlack.ico" />
@@ -3540,9 +4343,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -3550,8 +4351,17 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.1.1\build\Microsoft.Build.Tasks.Git.targets')" />
+  <Import Project="..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.1.1\build\Microsoft.SourceLink.Common.targets')" />
+  <Import Project="..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.targets" Condition="Exists('..\packages\Microsoft.SourceLink.GitHub.1.1.1\build\Microsoft.SourceLink.GitHub.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

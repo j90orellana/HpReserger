@@ -83,6 +83,12 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Proyecto_Productos(CodigoProducto, 40, 0, 0, 0, 0, 0, 0, 0, etapa, 0, "", 0, 0, 0);
         }
+
+        public object DetraccionesPorPAgarFechas(int idEmpresa, DateTime fechaDe, DateTime fechaa)
+        {
+            throw new NotImplementedException();
+        }
+
         public DataTable Proyecto_ProductosxProyecto(int CodigoProyecto)
         {
             return cdOrdenPedido.Proyecto_Productos(0, 30, CodigoProyecto, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0);

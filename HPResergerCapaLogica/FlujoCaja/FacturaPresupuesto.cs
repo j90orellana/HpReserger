@@ -66,6 +66,7 @@ namespace HPResergerCapaLogica.FlujoCaja
         // Insertar
         public int Insertar(int idfac, int tipofac, int empresa, string codigo)
         {
+            if (codigo == null) return 0;
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string query = @"

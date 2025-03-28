@@ -52,6 +52,7 @@ namespace HPReserger
         //}
         private void btngenerar_Click(object sender, EventArgs e)
         {
+            chksubtotales.Visible = true;
             CerrarPanelTxt();
             Cursor = Cursors.WaitCursor;
             if (chklist.CheckedItems.Count == 0) { msg("Seleccione una Empresa"); return; }
@@ -194,7 +195,7 @@ namespace HPReserger
                                     DataTable TableResult = new DataTable(); DataView dt = ((DataTable)dtgconten.DataSource).AsDataView(); TableResult = dt.ToTable();
                                     //
                                     int PosInicialGrilla = 6;
-                                    int[] ColumnasSubtotal = { 12, 13, 14, 15, 16, 17, 18, 19 };
+                                    int[] ColumnasSubtotal = { 12, 13, 14, 15, 16, 17, 18, 19, 20 };
                                     if (chksubtotales.Checked)
                                     {
                                         //Ordenamos los datos
@@ -208,68 +209,21 @@ namespace HPReserger
                                         int fila = 6;
                                         int filaT = 7;
                                         Boolean PrimeraCarga = false;
-                                        foreach (int Columna in ColumnasSubtotal)
-                                        {
-                                            SumaParcial = SumatoriaTotal = 0;
-                                            for (int i = 0; i < TablaResult.Rows.Count; i++)
-                                            {
-                                                DataRow Fila = TablaResult.Rows[i];
-                                                if (!PrimeraCarga)
-                                                {
-                                                    if (Fila[fila].ToString() != val1)
-                                                    {
-                                                        DataRow Nueva = TablaResult.NewRow();
-                                                        Nueva[filaT] = $"Total {val1}";
-                                                        Nueva[Columna] = SumaParcial;
-                                                        TablaResult.Rows.InsertAt(Nueva, i);
-                                                        //
-                                                        val1 = Fila[fila].ToString();
-                                                        SumaParcial = (decimal)Fila[Columna];
-                                                        SumatoriaTotal += SumaParcial;
-                                                        i++;
+                                        // Crear una nueva fila de totales
+                                        DataRow totalRow = TablaResult.NewRow();
 
-                                                    }
-                                                    else
-                                                    {
-                                                        SumatoriaTotal += (decimal)Fila[Columna];
-                                                        SumaParcial += (decimal)Fila[Columna];
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    if (i < TablaResult.Rows.Count - 2)
-                                                        if (Fila[Columna].ToString() == "")
-                                                        {
-                                                            Fila[Columna] = SumaParcial;
-                                                            SumaParcial = 0;
-                                                        }
-                                                        else
-                                                        {
-                                                            SumaParcial += (decimal)Fila[Columna];
-                                                            SumatoriaTotal += (decimal)Fila[Columna];
-                                                        }
-                                                }
-                                            }
-                                            //UltimaFila
-                                            if (!PrimeraCarga)
-                                            {
-                                                DataRow Nuevaf = TablaResult.NewRow();
-                                                Nuevaf[filaT] = $"TOTAL {val1}";
-                                                Nuevaf[Columna] = SumaParcial;
-                                                TablaResult.Rows.InsertAt(Nuevaf, TablaResult.Rows.Count);
-                                                //TotalGeneral
-                                                DataRow Nuevax = TablaResult.NewRow();
-                                                Nuevax[filaT] = $"TOTAL GENERAL";
-                                                Nuevax[Columna] = SumatoriaTotal;
-                                                TablaResult.Rows.InsertAt(Nuevax, TablaResult.Rows.Count);
-                                                PrimeraCarga = true;
-                                            }
-                                            else
-                                            {
-                                                TablaResult.Rows[TablaResult.Rows.Count - 2][Columna] = SumaParcial;
-                                                TablaResult.Rows[TablaResult.Rows.Count - 1][Columna] = SumatoriaTotal;
-                                            }
+                                        // Colocar "TOTALES" en la columna 12
+                                        totalRow[11] = "TOTALES";
+                                        // Calcular la suma de cada columna en ColumnasSubtotal
+                                        foreach (int col in ColumnasSubtotal)
+                                        {
+                                            totalRow[col] = TablaResult.AsEnumerable()
+                                                              .Where(row => row[col] != DBNull.Value) // Evita valores nulos
+                                                              .Sum(row => Convert.ToDecimal(row[col]));
                                         }
+
+                                        // Agregar la fila de totales al DataTable
+                                        TablaResult.Rows.Add(totalRow);
                                     }
                                     ///Tabla
                                     foreach (DataColumn items in TableResult.Columns) { items.ColumnName = dtgconten.Columns["x" + items.ColumnName].HeaderText; }
@@ -419,7 +373,7 @@ namespace HPReserger
                                 //Sí no hay datos 14.1 Vacio
                                 if (TablaResult.Rows.Count == 0)
                                 {
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00140100001{0}11.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00140400021{0}12.txt";
                                     //grabamos
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
@@ -469,7 +423,7 @@ namespace HPReserger
                                         campo[c++] = fila[xNumpro.DataPropertyName].ToString() == "" ? "-" : fila[xNumpro.DataPropertyName].ToString().Trim();
                                         string Cadena = fila[xNombrePro.DataPropertyName].ToString().ToUpper().Trim();
                                         campo[c++] = Cadena.Substring(0, Cadena.Length > 60 ? 60 : Cadena.Length);
-                                        
+
                                         //Valor Facturado Exportación
                                         campo[c++] = (decimal.Parse(fila[xImportacion.DataPropertyName].ToString())).ToString("0.00");
                                         //BI Gravada
@@ -636,7 +590,8 @@ namespace HPReserger
                                         //campo = null;
                                     }
                                     //Formato 14.1
-                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}0014040001.txt";
+                                    SaveFile.FileName = $"{valor}LE{Ruc}{añio}{mes}00140400021{1}12.txt";
+
                                     string path = SaveFile.FileName;
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);

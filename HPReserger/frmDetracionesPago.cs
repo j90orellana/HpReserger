@@ -22,6 +22,11 @@ namespace HPReserger
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmDetracionesPago_Load(object sender, EventArgs e)
         {
+            // Obtener el año actual
+            int currentYear = DateTime.Today.Year;
+            dtpfechade.EditValue = new DateTime(currentYear, 1, 1);
+            dtpfechaa.EditValue = new DateTime(currentYear, 12, 31);
+
             DataRow Filita = CapaLogica.VerUltimoIdentificador("TBL_Factura", "Nro_DocPago");
             if (Filita != null)
                 txtnropago.Text = (decimal.Parse(Filita["ultimo"].ToString()) + 1).ToString();
@@ -77,7 +82,13 @@ namespace HPReserger
         }
         public void CargarDAtos()
         {
-            dtgconten.DataSource = CapaLogica.DetraccionesPorPAgar((int)cboempresa.SelectedValue);
+            HPResergerCapaLogica.Compras.FacturaManual objFactura = new HPResergerCapaLogica.Compras.FacturaManual();
+
+            int idEmpresa = (int)cboempresa.SelectedValue;
+            DateTime FechaDe = (DateTime)dtpfechade.EditValue < (DateTime)dtpfechaa.EditValue ? (DateTime)dtpfechade.EditValue : (DateTime)dtpfechaa.EditValue;
+            DateTime Fechaa = (DateTime)dtpfechade.EditValue > (DateTime)dtpfechaa.EditValue ? (DateTime)dtpfechade.EditValue : (DateTime)dtpfechaa.EditValue;
+            dtgconten.DataSource = objFactura.DetraccionesPorPAgarFechas(idEmpresa, FechaDe, Fechaa);
+
             NumRegistrosdtg();
             SeleccionarDetracionesSeleccionadas();
             CalcularValoresRedondeoyDiferencia();
@@ -660,6 +671,11 @@ namespace HPReserger
         private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            CargarDAtos();
         }
 
         private void txtcuentadetracciones_TextChanged(object sender, EventArgs e)

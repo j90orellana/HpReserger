@@ -102,7 +102,16 @@
             this.cboproyecto = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnexcel = new System.Windows.Forms.Button();
+            this.dtpfechaa = new DevExpress.XtraEditors.DateEdit();
+            this.dtpfechade = new DevExpress.XtraEditors.DateEdit();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnBuscar = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpfechaa.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpfechaa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpfechade.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpfechade.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtnrooperacion
@@ -297,8 +306,7 @@
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(274, 21);
             this.cboempresa.TabIndex = 81;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
+            this.cboempresa.SelectedValueChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -599,12 +607,12 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 128);
+            this.dtgconten.Location = new System.Drawing.Point(12, 159);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1060, 329);
+            this.dtgconten.Size = new System.Drawing.Size(1060, 298);
             this.dtgconten.TabIndex = 0;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgconten_CellFormatting);
@@ -899,10 +907,71 @@
             this.btnexcel.UseVisualStyleBackColor = true;
             this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
             // 
+            // dtpfechaa
+            // 
+            this.dtpfechaa.EditValue = new System.DateTime(2024, 7, 26, 17, 44, 16, 809);
+            this.dtpfechaa.Location = new System.Drawing.Point(384, 133);
+            this.dtpfechaa.Name = "dtpfechaa";
+            this.dtpfechaa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpfechaa.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpfechaa.Size = new System.Drawing.Size(105, 20);
+            this.dtpfechaa.TabIndex = 375;
+            // 
+            // dtpfechade
+            // 
+            this.dtpfechade.EditValue = new System.DateTime(2024, 7, 26, 17, 43, 50, 104);
+            this.dtpfechade.Location = new System.Drawing.Point(161, 133);
+            this.dtpfechade.Name = "dtpfechade";
+            this.dtpfechade.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpfechade.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpfechade.Size = new System.Drawing.Size(113, 20);
+            this.dtpfechade.TabIndex = 374;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 136);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(143, 13);
+            this.label8.TabIndex = 376;
+            this.label8.Text = "FIltrar; Fecha Contable De:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(280, 136);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 13);
+            this.label9.TabIndex = 377;
+            this.label9.Text = "Fecha Contable A:";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.Location = new System.Drawing.Point(495, 132);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 378;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // frmDetracionesPago
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1084, 499);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.dtpfechaa);
+            this.Controls.Add(this.dtpfechade);
             this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.txtnrooperacion);
             this.Controls.Add(this.lblcheque);
@@ -948,6 +1017,10 @@
             this.Text = " Pago Detracciones - Compras";
             this.Load += new System.EventHandler(this.frmDetracionesPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpfechaa.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpfechaa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpfechade.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpfechade.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1015,5 +1088,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nrodetraccionesx;
         private System.Windows.Forms.DataGridViewTextBoxColumn xtotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcod_detraccion;
+        private DevExpress.XtraEditors.DateEdit dtpfechaa;
+        private DevExpress.XtraEditors.DateEdit dtpfechade;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private DevExpress.XtraEditors.SimpleButton btnBuscar;
     }
 }

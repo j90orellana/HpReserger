@@ -114,8 +114,10 @@ namespace HPReserger.ModuloFinanzas
         private void CargamosDatosParaContinuar()
         {
             BuscanEnSistemMovimientos();
+            TdatosSist = null;
             dtgContenExcel.DataSource = TdatosExcel = CapaLogica.ConciliacionCabeceraExcel(pkEmpresa, comboMesAño1.FechaFinMes, pkidCtaBanco);
-            dtgContenSistema.DataSource = TdatosSist = CapaLogica.ConciliacionCabeceraSistema(pkEmpresa, comboMesAño1.FechaFinMes, pkidCtaBanco);
+            TdatosSist = CapaLogica.ConciliacionCabeceraSistema(pkEmpresa, comboMesAño1.FechaFinMes, pkidCtaBanco);
+            dtgContenSistema.DataSource = TdatosSist;
             Cfilas = 0;
             foreach (DataRow item in TdatosExcel.Rows)
             {

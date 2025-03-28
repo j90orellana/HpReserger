@@ -138,8 +138,8 @@ namespace SISGEM.ModuloShedule
             this.schedulerStorage1.Appointments.Mappings.Subject = "Subject";
             this.schedulerStorage1.Appointments.Mappings.Type = "Type";
             this.schedulerStorage1.Appointments.Mappings.ResourceId = "CustomField1";
-            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping("IdUsuario", "CustomField1", FieldValueType.String));
-            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping("IdEmpresa", "CustomField2", FieldValueType.String));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping("UsuarioID", "CustomField1", FieldValueType.String));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping("EmpresaID", "CustomField2", FieldValueType.String));
 
 
         }
