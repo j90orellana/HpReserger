@@ -145,6 +145,7 @@ namespace HPReserger
             //Cargar Masica
             btnCargar.Enabled = !a;
             btnFormato.Enabled = !a;
+            chkNotaDetraccion.Enabled = a;
             ////
             txtNumRef.ReadOnly = txtSerieRef.ReadOnly = a;
             chkActivoFijo.Enabled = a;
@@ -885,15 +886,13 @@ namespace HPReserger
                     DatosCompensacion = cbotipoidcompensa.SelectedValue.ToString() + "-" + txtnumdocompensa.Text;
                 }
 
-
-
-
+                if (FacturaEstado < 2)
+                    FacturaEstado = 0;
                 //// SI TIENE DETALLE LA FACTURA
                 if (Dtgconten.RowCount > 0)
                 {
-
-
-                    FacturaEstado = 1;
+                    if (FacturaEstado < 2)
+                        FacturaEstado = 1;
                     Boolean errorc = false, ErrorDH = false;
                     foreach (DataGridViewRow item in Dtgconten.Rows)
                     {
@@ -1294,6 +1293,9 @@ namespace HPReserger
             {
                 DataTable TPrueba1 = CapaLogica.VerFacturasPagadasCompras(txtruc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
+
+                FacturaEstado = (int)dtgBusqueda[yEstado.Name, dtgBusqueda.CurrentRow.Index].Value;
+
                 if (TPrueba1.Rows.Count > 0 || dtgBusqueda[ynamestado.Name, dtgBusqueda.CurrentRow.Index].Value.ToString().ToUpper() == "PAGADA")
                 {
                     DialogResult Result = msgync("La Factura ya tiene un Pago. \nSolo se puede Actualizar la Imagen.");
@@ -1305,6 +1307,7 @@ namespace HPReserger
                         ///bloquear Controles
                         btnCargarFoto.Enabled = btnAceptar.Enabled = true;
                         ModoEdicionFoto(true);
+                        //FacturaEstado = 2;
                     }
                     if (Result == DialogResult.No)
                     {
@@ -1314,6 +1317,8 @@ namespace HPReserger
                         BloquearColumnas();
                         Estado = 2;
                         NotasEstado = 2;
+                        //FacturaEstado = 2;
+
                         ////fin eliminacion
                     }
                 }
@@ -1365,10 +1370,12 @@ namespace HPReserger
         {
             int x = e.RowIndex, y = e.ColumnIndex;
             btnFacturaPagada.Enabled = false;
+            btnQuitarPago.Enabled = false;
 
             if (x >= 0)
             {
                 btnFacturaPagada.Enabled = true;
+                btnQuitarPago.Enabled = true;
 
 
                 DataGridViewRow R = dtgBusqueda.Rows[x];
@@ -1623,13 +1630,13 @@ namespace HPReserger
                     else { HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xDebeHaber.Name]); ErrorDH = true; }
                     if ((item.Cells[xImporteMN.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xImporteMN.Name].Value) <= 0 && decimal.Parse(txttotalfac.Text) != 0)
                     {
-                        ErrorM = true;
+                        //ErrorM = true;
                         HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xImporteMN.Name]);
                     }
                     else HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xImporteMN.Name]);
                     if ((item.Cells[xImporteME.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xImporteME.Name].Value) <= 0 && decimal.Parse(txttotalfac.Text) != 0)
                     {
-                        ErrorM = true;
+                        //ErrorM = true;
                         HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xImporteME.Name]);
                     }
                     else HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xImporteME.Name]);
@@ -1713,7 +1720,7 @@ namespace HPReserger
 
                 string CuentaIgv = "4011101";
                 string NamecuentaIGV = "4011101 - IGV - COMPRAS";
-                DataTable Tpruebas = CapaLogica.BuscarCuentas("IGV % COM", 5);
+                DataTable Tpruebas = CapaLogica.BuscarCuentas("40%IGV % COM", 5);
                 if (Tpruebas.Rows.Count > 0)
                 {
                     CuentaIgv = (Tpruebas.Rows[0])["idcuenta"].ToString();
@@ -1782,7 +1789,7 @@ namespace HPReserger
                             }
                             //// FACTURA BOLETAS OTROS NOTA DEBITO
                             if (_TipoDoc != 1)
-                                if (item.Cells[xTipoIgvg.Name].Value.ToString() != "4" && item.Cells[xTipoIgvg.Name].Value.ToString() != "")
+                                if (item.Cells[xTipoIgvg.Name].Value.ToString() != "4" && item.Cells[xTipoIgvg.Name].Value.ToString() != "" && ((decimal)item.Cells[xImporteME.Name].Value) != 0 && ((decimal)item.Cells[xImporteME.Name].Value) != 0)
                                 {
                                     DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
                                     filaIgv[xDebeHaber.DataPropertyName] = item.Cells[xDebeHaber.Name].Value.ToString();
@@ -2065,11 +2072,27 @@ namespace HPReserger
         private void btnaplicar_Click(object sender, EventArgs e)
         {
             string NumDocRef = txtSerieRef.Text + "-" + txtNumRef.Text;
+            string cuoDetalle = "";
             int opcion = 0;
             if (rdbAnulacion.Checked) opcion = 1;
             else if (rdbDescuento.Checked) opcion = 2;
             else opcion = 3;
+
+            if (chkNotaDetraccion.Checked) opcion = opcion * 10;
+
+            if (Dtgconten.Rows.Count > 0)
+            {
+                cuoDetalle = Dtgconten[xCodAsientoCtble.Name, 0].Value.ToString();
+            }
+
+
             TFacRefDetalle = CapaLogica.BuscarFacturasManualesToNcNdDEtalle(opcion, txtruc.Text, NumDocRef);
+
+            foreach (DataRow item in TFacRefDetalle.Rows)
+            {
+                item["CodAsientoCtble"] = cuoDetalle;
+            }
+
             Dtgconten.DataSource = TFacRefDetalle;
             btnaplicar.Enabled = false;
         }
@@ -2820,9 +2843,9 @@ namespace HPReserger
                 {
                     if (cbocompensa.Items.Count > 0)
                     {
+                        bool tipo = cbotipodoc.Text.ToUpper().Contains("NOTA");
 
-
-                        DataTable result = CapaDatos.CambiarEstadoDeFactura(_idFac, cbocompensa.SelectedIndex == 0 ? 2 : 3);
+                        DataTable result = CapaDatos.CambiarEstadoDeFactura(_idFac, (cbocompensa.SelectedIndex == 0 ? 2 : 3), tipo);
 
                         if (result.Rows.Count > 0)
                         {
@@ -2849,7 +2872,69 @@ namespace HPReserger
             }
         }
 
+        private void chkNotaDetraccion_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNotaDetraccion.Checked)
+            {
+                btnaplicar.Enabled = true;
+            }
+        }
+        SISGEM.ModuloContable.frmListadoFacturasCompras frmListarFacturas;
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            if (frmListarFacturas == null)
+            {
+                frmListarFacturas = new SISGEM.ModuloContable.frmListadoFacturasCompras();
+                frmListarFacturas.MdiParent = this.MdiParent;
+                frmListarFacturas.Show();
+            }
+            else
+            {
+                frmListarFacturas.Activate();
+            }
+        }
 
+        private void btnQuitarPago_Click(object sender, EventArgs e)
+        {
+            if (_idFac > 0)
+            {
+                string facturaInfo = $"{txtcodfactura.Text}-{txtnrofactura.Text}";
+
+                DialogResult dialogResult = XtraMessageBox.Show($"¿Seguro que desea cambiar el estado de la factura {facturaInfo} a Pendiente de Pago", "Confirmación",
+                                                                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    if (cbocompensa.Items.Count > 0)
+                    {
+                        bool tipo = cbotipodoc.Text.ToUpper().Contains("NOTA");
+
+                        DataTable result = CapaDatos.CambiarEstadoDeFactura(_idFac, 1, tipo);
+
+                        if (result.Rows.Count > 0)
+                        {
+                            XtraMessageBox.Show("La factura se ha marcado como Pendiente exitosamente.", "Cambio de estado",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Hubo un error al intentar cambiar el estado de la factura. Por favor, intente nuevamente.",
+                                                "Error en el cambio de estado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Operación cancelada por el usuario.", "Cancelado",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Por favor, seleccione una factura antes de realizar el cambio de estado.", "Cambio de estado",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2893,7 +2978,8 @@ namespace HPReserger
                 //lblcompensacion.Visible = cbocompensa.Visible = false;
                 cbomoneda.Enabled = false;
                 //txtglosa.Text = txtglosa.TextoDefecto = "Ingrese La Glosa de la Nota de Crédito";
-                cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;
+                if (Estado == 2)
+                    cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;
                 PanelNotaCredito.Visible = true; txttipocambio.Enabled = false;
                 if (Estado == 1 || Estado == 2)
                 {
@@ -2910,7 +2996,8 @@ namespace HPReserger
                 //lblcompensacion.Visible = cbocompensa.Visible = false;
                 cbomoneda.Enabled = false;
                 // txtglosa.Text = txtglosa.TextoDefecto = "Ingrese La Glosa de la Nota de Débito";
-                cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;
+                if (Estado == 2)
+                    cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;
                 txttipocambio.Enabled = false;
                 PanelNotaCredito.Visible = true;
                 if (Estado == 1 || Estado == 2)

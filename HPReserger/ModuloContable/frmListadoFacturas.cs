@@ -158,10 +158,25 @@ namespace SISGEM.ModuloContable
             }
             if (e.Column.FieldName == "IdPP") // Detecta el cambio en la columna "IdPP"
             {
-                // Obtener los valores de las columnas necesarias
-                int idFactura = int.Parse(view.GetRowCellValue(e.RowHandle, "id")?.ToString());
-                int idPartida = int.Parse(view.GetRowCellValue(e.RowHandle, "IdPP")?.ToString());
-                int pkidpp = int.Parse(view.GetRowCellValue(e.RowHandle, "pkidpp")?.ToString());
+                // Mejor manejo de la conversión con TryParse y validación
+                string idStr = view.GetRowCellValue(e.RowHandle, "id")?.ToString();
+                if (!int.TryParse(idStr, out int idFactura))
+                {
+                    // Manejar el error - asignar un valor por defecto o mostrar mensaje
+                    idFactura = 0; // o lanzar una excepción más descriptiva
+                }
+
+                string idPartidaStr = view.GetRowCellValue(e.RowHandle, "IdPP")?.ToString();
+                if (!int.TryParse(idPartidaStr, out int idPartida))
+                {
+                    idPartida = 0;
+                }
+
+                string pkidppStr = view.GetRowCellValue(e.RowHandle, "pkidpp")?.ToString();
+                if (!int.TryParse(pkidppStr, out int pkidpp))
+                {
+                    pkidpp = 0;
+                }
                 string tipo = view.GetRowCellValue(e.RowHandle, "Tipo")?.ToString();
 
                 int ValorTipoFactura = 0;
@@ -235,9 +250,6 @@ namespace SISGEM.ModuloContable
                 btnBuscar.PerformClick();
                 e.SuppressKeyPress = true; // Evita que se agregue una nueva línea si es un TextEdit multilínea
             }
-
-
-
         }
 
         private void txtempresa_KeyPress(object sender, KeyPressEventArgs e)

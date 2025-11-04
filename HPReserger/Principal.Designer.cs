@@ -228,6 +228,16 @@
             this.barBtnEEFFpasado = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnERIpasado = new DevExpress.XtraBars.BarButtonItem();
             this.btnCargaMasivaAsientos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRazonesSociales = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDocumentosPendientes = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSaldoCuentas = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem71 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMovimientosFinancieros = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCEmpresa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnListadoOperacionesBancarias = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPagosEvolta = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem72 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem73 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -235,6 +245,8 @@
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup56 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.PagePagoEvolta = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage10 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -259,6 +271,7 @@
             this.ribbonPageGroup48 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup49 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup50 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup54 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup24 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup25 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -288,6 +301,8 @@
             this.ribbonPageGroup36 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.GrupoperfilesCRM = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup39 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup53 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup55 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage9 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar2 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -310,6 +325,9 @@
             this.ribbonPageGroup38 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup28 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup40 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup57 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem74 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem75 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -330,6 +348,7 @@
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
+            this.ribbonControl1.SearchEditItem,
             this.barButtonItem1,
             this.barButtonGroup1,
             this.barSubItem1,
@@ -522,9 +541,20 @@
             this.barBtnEEFFpasado,
             this.barBtnERIpasado,
             this.btnCargaMasivaAsientos,
-            this.ribbonControl1.SearchEditItem});
+            this.btnRazonesSociales,
+            this.btnDocumentosPendientes,
+            this.btnSaldoCuentas,
+            this.barButtonItem71,
+            this.btnMovimientosFinancieros,
+            this.btnCEmpresa,
+            this.btnListadoOperacionesBancarias,
+            this.btnPagosEvolta,
+            this.barButtonItem72,
+            this.barButtonItem73,
+            this.barButtonItem74,
+            this.barButtonItem75});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 6;
+            this.ribbonControl1.MaxItemId = 18;
             this.ribbonControl1.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barStaticItem4);
@@ -551,7 +581,7 @@
             this.repositoryItemCalcEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.Size = new System.Drawing.Size(1378, 136);
-            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar2;
             this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barButtonItem1
@@ -612,12 +642,12 @@
             this.barWorkspaceMenuItem1.Id = 4;
             this.barWorkspaceMenuItem1.ImageOptions.Image = global::SISGEM.Properties.Resources.AsientoContable;
             this.barWorkspaceMenuItem1.Name = "barWorkspaceMenuItem1";
+            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
             // 
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
-            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
             // 
             // barSubItem3
             // 
@@ -1683,7 +1713,7 @@
             this.btnTipoCuentas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTipoCuentas.ImageOptions.LargeImage")));
             this.btnTipoCuentas.Name = "btnTipoCuentas";
             this.btnTipoCuentas.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnTipoCuentas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTipoCuentas_ItemClick);
+            this.btnTipoCuentas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCuentasBancarias_ItemClick);
             // 
             // btnCuentasBancarias
             // 
@@ -1692,7 +1722,7 @@
             this.btnCuentasBancarias.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCuentasBancarias.ImageOptions.Image")));
             this.btnCuentasBancarias.Name = "btnCuentasBancarias";
             this.btnCuentasBancarias.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnCuentasBancarias.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCuentasBancarias_ItemClick);
+            this.btnCuentasBancarias.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTipoCuentas_ItemClick);
             // 
             // btnCerrarSesion
             // 
@@ -2138,6 +2168,7 @@
             this.barButtonItem53.Name = "barButtonItem53";
             this.barButtonItem53.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItem53.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem53_ItemClick);
             // 
             // barButtonItem54
             // 
@@ -2316,6 +2347,103 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.btnCargaMasivaAsientos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCargaMasivaAsientos_ItemClick);
             // 
+            // btnRazonesSociales
+            // 
+            this.btnRazonesSociales.Caption = "Razon Social";
+            this.btnRazonesSociales.Id = 6;
+            this.btnRazonesSociales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRazonesSociales.ImageOptions.Image")));
+            this.btnRazonesSociales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRazonesSociales.ImageOptions.LargeImage")));
+            this.btnRazonesSociales.Name = "btnRazonesSociales";
+            this.btnRazonesSociales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRazonesSociales_ItemClick);
+            // 
+            // btnDocumentosPendientes
+            // 
+            this.btnDocumentosPendientes.Caption = "Documentos Pendientes";
+            this.btnDocumentosPendientes.Id = 7;
+            this.btnDocumentosPendientes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDocumentosPendientes.ImageOptions.Image")));
+            this.btnDocumentosPendientes.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDocumentosPendientes.ImageOptions.LargeImage")));
+            this.btnDocumentosPendientes.Name = "btnDocumentosPendientes";
+            this.btnDocumentosPendientes.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnDocumentosPendientes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDocumentosPendientes_ItemClick);
+            // 
+            // btnSaldoCuentas
+            // 
+            this.btnSaldoCuentas.Caption = "Saldo Cuentas";
+            this.btnSaldoCuentas.Id = 8;
+            this.btnSaldoCuentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSaldoCuentas.ImageOptions.Image")));
+            this.btnSaldoCuentas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSaldoCuentas.ImageOptions.LargeImage")));
+            this.btnSaldoCuentas.Name = "btnSaldoCuentas";
+            this.btnSaldoCuentas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSaldoCuentas_ItemClick);
+            // 
+            // barButtonItem71
+            // 
+            this.barButtonItem71.Caption = "Movimientos";
+            this.barButtonItem71.Id = 9;
+            this.barButtonItem71.Name = "barButtonItem71";
+            // 
+            // btnMovimientosFinancieros
+            // 
+            this.btnMovimientosFinancieros.Caption = "Movimiento Financiero";
+            this.btnMovimientosFinancieros.Id = 10;
+            this.btnMovimientosFinancieros.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMovimientosFinancieros.ImageOptions.Image")));
+            this.btnMovimientosFinancieros.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMovimientosFinancieros.ImageOptions.LargeImage")));
+            this.btnMovimientosFinancieros.Name = "btnMovimientosFinancieros";
+            this.btnMovimientosFinancieros.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnMovimientosFinancieros.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMovimientosFinancieros_ItemClick);
+            // 
+            // btnCEmpresa
+            // 
+            this.btnCEmpresa.Caption = "Empresa";
+            this.btnCEmpresa.Id = 11;
+            this.btnCEmpresa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCEmpresa.ImageOptions.Image")));
+            this.btnCEmpresa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCEmpresa.ImageOptions.LargeImage")));
+            this.btnCEmpresa.Name = "btnCEmpresa";
+            this.btnCEmpresa.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnCEmpresa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCEmpresa_ItemClick);
+            // 
+            // btnListadoOperacionesBancarias
+            // 
+            this.btnListadoOperacionesBancarias.Caption = "Operaciones Bancarias";
+            this.btnListadoOperacionesBancarias.Id = 12;
+            this.btnListadoOperacionesBancarias.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnListadoOperacionesBancarias.ImageOptions.Image")));
+            this.btnListadoOperacionesBancarias.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnListadoOperacionesBancarias.ImageOptions.LargeImage")));
+            this.btnListadoOperacionesBancarias.Name = "btnListadoOperacionesBancarias";
+            this.btnListadoOperacionesBancarias.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnListadoOperacionesBancarias_ItemClick);
+            // 
+            // btnPagosEvolta
+            // 
+            this.btnPagosEvolta.Caption = "CRM Externo";
+            this.btnPagosEvolta.Id = 13;
+            this.btnPagosEvolta.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPagosEvolta.ImageOptions.Image")));
+            this.btnPagosEvolta.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPagosEvolta.ImageOptions.LargeImage")));
+            this.btnPagosEvolta.Name = "btnPagosEvolta";
+            this.btnPagosEvolta.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnPagosEvolta.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPagosEvolta_ItemClick);
+            // 
+            // barButtonItem72
+            // 
+            this.barButtonItem72.Caption = "Cuadratura MF";
+            this.barButtonItem72.Id = 14;
+            this.barButtonItem72.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem72.ImageOptions.Image")));
+            this.barButtonItem72.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem72.ImageOptions.LargeImage")));
+            this.barButtonItem72.Name = "barButtonItem72";
+            this.barButtonItem72.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem72_ItemClick);
+            // 
+            // barButtonItem73
+            // 
+            this.barButtonItem73.Caption = "Seguimientos";
+            this.barButtonItem73.Id = 15;
+            this.barButtonItem73.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem73.ImageOptions.Image")));
+            this.barButtonItem73.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem73.ImageOptions.LargeImage")));
+            this.barButtonItem73.Name = "barButtonItem73";
+            this.barButtonItem73.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItem73.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem73_ItemClick);
+            // 
             // ribbonMiniToolbar1
             // 
             this.ribbonMiniToolbar1.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2327,7 +2455,9 @@
             this.ribbonPageGroup3,
             this.ribbonPageGroup4,
             this.ribbonPageGroup6,
-            this.ribbonPageGroup5});
+            this.ribbonPageGroup5,
+            this.ribbonPageGroup56,
+            this.PagePagoEvolta});
             this.ribbonPage1.KeyTip = "F";
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Finanzas/Tesorería";
@@ -2378,6 +2508,20 @@
             this.ribbonPageGroup5.ItemLinks.Add(this.btnreportefinanzas);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Conciliaciones";
+            // 
+            // ribbonPageGroup56
+            // 
+            this.ribbonPageGroup56.AllowTextClipping = false;
+            this.ribbonPageGroup56.ItemLinks.Add(this.btnListadoOperacionesBancarias);
+            this.ribbonPageGroup56.Name = "ribbonPageGroup56";
+            this.ribbonPageGroup56.Text = "Movimientos";
+            // 
+            // PagePagoEvolta
+            // 
+            this.PagePagoEvolta.AllowTextClipping = false;
+            this.PagePagoEvolta.ItemLinks.Add(this.btnPagosEvolta);
+            this.PagePagoEvolta.Name = "PagePagoEvolta";
+            this.PagePagoEvolta.Text = "Pagos Externos";
             // 
             // ribbonPage2
             // 
@@ -2458,6 +2602,7 @@
             this.ribbonPageGroup37.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup37.ItemLinks.Add(this.barButtonItem14);
             this.ribbonPageGroup37.ItemLinks.Add(this.barButtonItem16);
+            this.ribbonPageGroup37.ItemLinks.Add(this.barButtonItem73);
             this.ribbonPageGroup37.ItemLinks.Add(this.barButtonItem32);
             this.ribbonPageGroup37.Name = "ribbonPageGroup37";
             this.ribbonPageGroup37.Text = "Operaciones";
@@ -2549,7 +2694,8 @@
             this.ribbonPageGroup47,
             this.ribbonPageGroup48,
             this.ribbonPageGroup49,
-            this.ribbonPageGroup50});
+            this.ribbonPageGroup50,
+            this.ribbonPageGroup54});
             this.ribbonPage12.Name = "ribbonPage12";
             this.ribbonPage12.Text = "Flujo de Caja";
             // 
@@ -2596,6 +2742,15 @@
             this.ribbonPageGroup50.ItemLinks.Add(this.barButtonItem63);
             this.ribbonPageGroup50.Name = "ribbonPageGroup50";
             this.ribbonPageGroup50.Text = "Inventario";
+            // 
+            // ribbonPageGroup54
+            // 
+            this.ribbonPageGroup54.AllowTextClipping = false;
+            this.ribbonPageGroup54.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbonPageGroup54.ItemLinks.Add(this.btnMovimientosFinancieros);
+            this.ribbonPageGroup54.ItemLinks.Add(this.barButtonItem72);
+            this.ribbonPageGroup54.Name = "ribbonPageGroup54";
+            this.ribbonPageGroup54.Text = "Movimientos";
             // 
             // ribbonPage4
             // 
@@ -2647,7 +2802,8 @@
             this.ribbonPageGroup20,
             this.ribbonPageGroup9,
             this.ribbonPGreportepasado,
-            this.ribbonPageGroup10});
+            this.ribbonPageGroup10,
+            this.ribbonPageGroup57});
             this.ribbonPage5.Name = "ribbonPage5";
             this.ribbonPage5.Text = "Contabilidad";
             // 
@@ -2707,10 +2863,12 @@
             this.ribbonPageGroup10.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup10.ItemLinks.Add(this.btnReporteAnalitico);
             this.ribbonPageGroup10.ItemLinks.Add(this.btnReporteAnalitico2);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnDocumentosPendientes);
             this.ribbonPageGroup10.ItemLinks.Add(this.btnBalanceComprobacion);
             this.ribbonPageGroup10.ItemLinks.Add(this.btnEstadoSituacion);
             this.ribbonPageGroup10.ItemLinks.Add(this.btnEstadoResultado);
             this.ribbonPageGroup10.ItemLinks.Add(this.btnConfigurar);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnSaldoCuentas);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
             this.ribbonPageGroup10.Text = "Reportes Contables";
             // 
@@ -2813,7 +2971,9 @@
             this.ribbonPageGroup29,
             this.ribbonPageGroup36,
             this.GrupoperfilesCRM,
-            this.ribbonPageGroup39});
+            this.ribbonPageGroup39,
+            this.ribbonPageGroup53,
+            this.ribbonPageGroup55});
             this.ribbonPage8.Name = "ribbonPage8";
             this.ribbonPage8.Text = "Mantenimiento";
             // 
@@ -2867,7 +3027,6 @@
             this.ribbonPageGroup29.ItemLinks.Add(this.btnEntidad);
             this.ribbonPageGroup29.ItemLinks.Add(this.btnTipoCuentas);
             this.ribbonPageGroup29.ItemLinks.Add(this.btnCuentasBancarias);
-            this.ribbonPageGroup29.ItemLinks.Add(this.barButtonItem29);
             this.ribbonPageGroup29.Name = "ribbonPageGroup29";
             this.ribbonPageGroup29.Text = "Entidades Financieras";
             // 
@@ -2895,6 +3054,20 @@
             this.ribbonPageGroup39.ItemLinks.Add(this.barButtonItem30);
             this.ribbonPageGroup39.Name = "ribbonPageGroup39";
             this.ribbonPageGroup39.Text = "Clientes";
+            // 
+            // ribbonPageGroup53
+            // 
+            this.ribbonPageGroup53.ItemLinks.Add(this.btnRazonesSociales);
+            this.ribbonPageGroup53.Name = "ribbonPageGroup53";
+            this.ribbonPageGroup53.Text = "Contable";
+            // 
+            // ribbonPageGroup55
+            // 
+            this.ribbonPageGroup55.AllowTextClipping = false;
+            this.ribbonPageGroup55.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbonPageGroup55.ItemLinks.Add(this.btnCEmpresa);
+            this.ribbonPageGroup55.Name = "ribbonPageGroup55";
+            this.ribbonPageGroup55.Text = "Configuraciones";
             // 
             // ribbonPage9
             // 
@@ -3067,6 +3240,29 @@
             this.ribbonPageGroup40.ItemLinks.Add(this.btnProveedor);
             this.ribbonPageGroup40.Name = "ribbonPageGroup40";
             this.ribbonPageGroup40.Text = "Proveedor";
+            // 
+            // ribbonPageGroup57
+            // 
+            this.ribbonPageGroup57.ItemLinks.Add(this.barButtonItem75);
+            this.ribbonPageGroup57.Name = "ribbonPageGroup57";
+            this.ribbonPageGroup57.Text = "Bitácora";
+            // 
+            // barButtonItem74
+            // 
+            this.barButtonItem74.Caption = "barButtonItem74";
+            this.barButtonItem74.Id = 16;
+            this.barButtonItem74.Name = "barButtonItem74";
+            // 
+            // barButtonItem75
+            // 
+            this.barButtonItem75.Caption = "Registros del Usuario";
+            this.barButtonItem75.Id = 17;
+            this.barButtonItem75.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem75.ImageOptions.Image")));
+            this.barButtonItem75.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem75.ImageOptions.LargeImage")));
+            this.barButtonItem75.Name = "barButtonItem75";
+            this.barButtonItem75.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItem75.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem75_ItemClick);
             // 
             // Principal
             // 
@@ -3384,5 +3580,23 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPGreportepasado;
         private DevExpress.XtraBars.BarButtonItem btnCargaMasivaAsientos;
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
+        private DevExpress.XtraBars.BarButtonItem btnRazonesSociales;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup53;
+        private DevExpress.XtraBars.BarButtonItem btnDocumentosPendientes;
+        private DevExpress.XtraBars.BarButtonItem btnSaldoCuentas;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem71;
+        private DevExpress.XtraBars.BarButtonItem btnMovimientosFinancieros;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup54;
+        private DevExpress.XtraBars.BarButtonItem btnCEmpresa;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup55;
+        private DevExpress.XtraBars.BarButtonItem btnListadoOperacionesBancarias;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup56;
+        private DevExpress.XtraBars.BarButtonItem btnPagosEvolta;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup PagePagoEvolta;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem72;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem73;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem74;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem75;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup57;
     }
 }

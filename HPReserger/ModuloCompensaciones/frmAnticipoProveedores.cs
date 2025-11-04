@@ -132,7 +132,7 @@ namespace HPReserger.ModuloCompensaciones
             ///mostramos datos
             if (cboproveedor.SelectedValue != null)
             {
-                string[] valor = cboproveedor.SelectedValue.ToString().Split('-');
+                string[] valor = cboproveedor.SelectedValue.ToString().Split(new char[] { '-' }, 2);
                 DataTable Table = CapaLogica.ListarCompensaciones(_idempresa, 4, int.Parse(valor[0]), valor[1]);
                 dtgconten.DataSource = Table;
             }
@@ -241,7 +241,7 @@ namespace HPReserger.ModuloCompensaciones
                 int moneda = (int)cbomoneda.SelectedValue;
                 int proyecto = (int)cboproyecto.SelectedValue;
                 string CuentaAnticipo = cbocuentaxpagar.SelectedValue.ToString();
-                string[] Proveedor = cboproveedor.SelectedValue.ToString().Split('-');
+                string[] Proveedor =  cboproveedor.SelectedValue.ToString().Split(new char[] { '-' }, 2);
                 int TipoIdProveedor = int.Parse(Proveedor[0]);
                 string RucProveedor = Proveedor[1];
                 string NameProveedor = cboproveedor.Text;
@@ -414,7 +414,7 @@ namespace HPReserger.ModuloCompensaciones
             frmproveedor provee = new frmproveedor();
             string[] proveedor = "0-0".Split();
             if (cboproveedor.SelectedValue != null)
-                proveedor = cboproveedor.SelectedValue.ToString().Split('-');
+                proveedor = cboproveedor.SelectedValue.ToString().Split(new char[] { '-' }, 2);
             provee.txtnumeroidentidad.Text = proveedor[0];
             provee.Txtbusca.Text = proveedor[1];
             provee.radioButton2.Checked = true;

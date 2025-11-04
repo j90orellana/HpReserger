@@ -5,12 +5,16 @@
 
     <data>192.168.1.6</data>
  <data>192.168.1.6</data> 
-  <data>192.168.10.200</data>
+  <data>192.168.10.10</data>
+    <data>192.168.10.10</data>
+    <data>25.12.16.79</data>
   </DataSource>
   <BasesdeDatos>
     <ListadoBases>Actual</ListadoBases>
     <ListadoBases>Actual_Beta</ListadoBases>
     <ListadoBases>LIBRE</ListadoBases>
+    <ListadoBases>LIBRE_BETA</ListadoBases>
+    <ListadoBases>Grou</ListadoBases>
   </BasesdeDatos>
   <Licencia>
     <Key>158015936624</Key>

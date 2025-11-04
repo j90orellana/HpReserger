@@ -382,6 +382,12 @@
       <DependentUpon>ACTUAL_BETADataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Clases\Actualizaciones.cs" />
+    <Compile Include="Configuracion\frmConfiguracionEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuracion\frmConfiguracionEmpresa.Designer.cs">
+      <DependentUpon>frmConfiguracionEmpresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRM\FrmAddCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -508,6 +514,12 @@
     <Compile Include="CRM\frmSedeCRM.Designer.cs">
       <DependentUpon>frmSedeCRM.cs</DependentUpon>
     </Compile>
+    <Compile Include="CRM\frmSeguimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRM\frmSeguimientos.Designer.cs">
+      <DependentUpon>frmSeguimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRM\frmSegumiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -543,6 +555,30 @@
     </Compile>
     <Compile Include="Flujo de Caja\frmaddServicio.Designer.cs">
       <DependentUpon>frmaddServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmCuadraturaMF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmCuadraturaMF.Designer.cs">
+      <DependentUpon>frmCuadraturaMF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmFlujoCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmFlujoCaja.Designer.cs">
+      <DependentUpon>frmFlujoCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmListadoMovimientosFinanciero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmListadoMovimientosFinanciero.Designer.cs">
+      <DependentUpon>frmListadoMovimientosFinanciero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmMovimientosSueltos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmMovimientosSueltos.Designer.cs">
+      <DependentUpon>frmMovimientosSueltos.cs</DependentUpon>
     </Compile>
     <Compile Include="Flujo de Caja\frmVentaInventario.cs">
       <SubType>Form</SubType>
@@ -703,6 +739,12 @@
     <Compile Include="ModuloActivoFijo\frmTipoBajaActivo.Designer.cs">
       <DependentUpon>frmTipoBajaActivo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloAdministracion\frmRepresentantesEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloAdministracion\frmRepresentantesEmpresas.Designer.cs">
+      <DependentUpon>frmRepresentantesEmpresas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloBancario\frmBancoBBVA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -781,17 +823,47 @@
     <Compile Include="ModuloContable\frmDiferenciaCambioMensual.Designer.cs">
       <DependentUpon>frmDiferenciaCambioMensual.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloContable\frmDocumentosPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmDocumentosPendientes.Designer.cs">
+      <DependentUpon>frmDocumentosPendientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmListadoFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloContable\frmListadoFacturas.Designer.cs">
       <DependentUpon>frmListadoFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloContable\frmListadoFacturasCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmListadoFacturasCompras.Designer.cs">
+      <DependentUpon>frmListadoFacturasCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\frmRazonesSocialesAsientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmRazonesSocialesAsientos.Designer.cs">
+      <DependentUpon>frmRazonesSocialesAsientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmRevesarAsientos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloContable\frmRevesarAsientos.Designer.cs">
       <DependentUpon>frmRevesarAsientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\frmRevisarCuentasEEFF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmRevisarCuentasEEFF.Designer.cs">
+      <DependentUpon>frmRevisarCuentasEEFF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\frmSaldoCuentasContables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmSaldoCuentasContables.Designer.cs">
+      <DependentUpon>frmSaldoCuentasContables.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\frmTipodeCambioSBS.cs">
       <SubType>Form</SubType>
@@ -804,6 +876,24 @@
     </Compile>
     <Compile Include="ModuloContable\frmTipoPlanCuenta.Designer.cs">
       <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\xBitacoraEmpleadoRegistros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\xBitacoraEmpleadoRegistros.Designer.cs">
+      <DependentUpon>xBitacoraEmpleadoRegistros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\xfrmCuentasSinUsar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\xfrmCuentasSinUsar.Designer.cs">
+      <DependentUpon>xfrmCuentasSinUsar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\xRevisarAsiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\xRevisarAsiento.Designer.cs">
+      <DependentUpon>xRevisarAsiento.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\XtraReportAsientoContable.cs">
       <SubType>Component</SubType>
@@ -847,8 +937,8 @@
     <Compile Include="ModuloCrystalReport\rptLibroBanco_2_Ori.cs">
       <DependentUpon>rptLibroBanco_2_Ori.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ModuloCrystalReport\rptLibroBanco_2.cs">
       <AutoGen>True</AutoGen>
@@ -859,8 +949,8 @@
     <Compile Include="ModuloCrystalReport\rptLibroDiario5_1_Ori.cs">
       <DependentUpon>rptLibroDiario5_1_Ori.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ModuloCrystalReport\rptLibroDiario5_1.cs">
       <AutoGen>True</AutoGen>
@@ -871,8 +961,8 @@
     <Compile Include="ModuloCrystalReport\rptLibroMayor6_1_Ori.cs">
       <DependentUpon>rptLibroMayor6_1_Ori.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ModuloCrystalReport\rptLibroMayor6_1.cs">
       <AutoGen>True</AutoGen>
@@ -892,6 +982,12 @@
     <Compile Include="ModuloFinanzas\FrmConciliarBanco.Designer.cs">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloFinanzas\frmListado de Operaciones Bancarias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListado de Operaciones Bancarias.Designer.cs">
+      <DependentUpon>frmListado de Operaciones Bancarias.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloFinanzas\frmListadoPagos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -903,6 +999,12 @@
     </Compile>
     <Compile Include="ModuloFinanzas\frmMediosPagos.Designer.cs">
       <DependentUpon>frmMediosPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmPagosEvolta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmPagosEvolta.Designer.cs">
+      <DependentUpon>frmPagosEvolta.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloFinanzas\frmPrestamoInterEmpresas.cs">
       <SubType>Form</SubType>
@@ -2733,6 +2835,9 @@
     <Compile Include="update.Designer.cs">
       <DependentUpon>update.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Configuracion\frmConfiguracionEmpresa.resx">
+      <DependentUpon>frmConfiguracionEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRM\FrmAddCliente.resx">
       <DependentUpon>FrmAddCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -2796,6 +2901,9 @@
     <EmbeddedResource Include="CRM\frmSedeCRM.resx">
       <DependentUpon>frmSedeCRM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CRM\frmSeguimientos.resx">
+      <DependentUpon>frmSeguimientos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRM\frmSegumiento.resx">
       <DependentUpon>frmSegumiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -2813,6 +2921,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Flujo de Caja\frmaddServicio.resx">
       <DependentUpon>frmaddServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmCuadraturaMF.resx">
+      <DependentUpon>frmCuadraturaMF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmFlujoCaja.resx">
+      <DependentUpon>frmFlujoCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmListadoMovimientosFinanciero.resx">
+      <DependentUpon>frmListadoMovimientosFinanciero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmMovimientosSueltos.resx">
+      <DependentUpon>frmMovimientosSueltos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Flujo de Caja\frmVentaInventario.resx">
       <DependentUpon>frmVentaInventario.cs</DependentUpon>
@@ -2892,6 +3012,9 @@
     <EmbeddedResource Include="ModuloActivoFijo\frmTipoBajaActivo.resx">
       <DependentUpon>frmTipoBajaActivo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloAdministracion\frmRepresentantesEmpresas.resx">
+      <DependentUpon>frmRepresentantesEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoBBVA.resx">
       <DependentUpon>frmBancoBBVA.cs</DependentUpon>
     </EmbeddedResource>
@@ -2931,11 +3054,26 @@
     <EmbeddedResource Include="ModuloContable\frmDiferenciaCambioMensual.resx">
       <DependentUpon>frmDiferenciaCambioMensual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmDocumentosPendientes.resx">
+      <DependentUpon>frmDocumentosPendientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmListadoFacturas.resx">
       <DependentUpon>frmListadoFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmListadoFacturasCompras.resx">
+      <DependentUpon>frmListadoFacturasCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmRazonesSocialesAsientos.resx">
+      <DependentUpon>frmRazonesSocialesAsientos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmRevesarAsientos.resx">
       <DependentUpon>frmRevesarAsientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmRevisarCuentasEEFF.resx">
+      <DependentUpon>frmRevisarCuentasEEFF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmSaldoCuentasContables.resx">
+      <DependentUpon>frmSaldoCuentasContables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmTipodeCambioSBS.resx">
       <DependentUpon>frmTipodeCambioSBS.cs</DependentUpon>
@@ -2943,6 +3081,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmTipoPlanCuenta.resx">
       <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\xBitacoraEmpleadoRegistros.resx">
+      <DependentUpon>xBitacoraEmpleadoRegistros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\xfrmCuentasSinUsar.resx">
+      <DependentUpon>xfrmCuentasSinUsar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\xRevisarAsiento.resx">
+      <DependentUpon>xRevisarAsiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\XtraReportAsientoContable.resx">
       <DependentUpon>XtraReportAsientoContable.cs</DependentUpon>
@@ -2997,11 +3144,17 @@
     <EmbeddedResource Include="ModuloFinanzas\FrmConciliarBanco.resx">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmListado de Operaciones Bancarias.resx">
+      <DependentUpon>frmListado de Operaciones Bancarias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmListadoPagos.resx">
       <DependentUpon>frmListadoPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmMediosPagos.resx">
       <DependentUpon>frmMediosPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmPagosEvolta.resx">
+      <DependentUpon>frmPagosEvolta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmPrestamoInterEmpresas.resx">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
@@ -4290,6 +4443,7 @@
     <None Include="Resources\icons8_invoice_30px.png" />
     <None Include="Resources\icons8_Peru_32px_1.png" />
     <None Include="Resources\icons8_Peru_16px.png" />
+    <None Include="Resources\EvoltaIcon.png" />
     <Content Include="Resources\xCloseBlue.ico" />
     <None Include="Resources\xCloseBlue1.ico" />
     <None Include="Resources\xCloseBlack.ico" />

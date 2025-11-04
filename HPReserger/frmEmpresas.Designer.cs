@@ -31,12 +31,11 @@ namespace HPReserger
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpresas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpresas));
             this.cbotipo = new System.Windows.Forms.ComboBox();
-            this.btnexportarExcel = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,11 +60,9 @@ namespace HPReserger
             this.eps = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xIngresosMayores = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btneliminar = new System.Windows.Forms.Button();
-            this.btnmodificar = new System.Windows.Forms.Button();
+            this.yppto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
-            this.btnnuevo = new System.Windows.Forms.Button();
             this.txtnombre = new System.Windows.Forms.TextBox();
             this.txtruc = new System.Windows.Forms.TextBox();
             this.txtdireccion = new System.Windows.Forms.TextBox();
@@ -108,14 +105,21 @@ namespace HPReserger
             this.xcia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xeps = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xstocks = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xppto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.btnnNuevo = new DevExpress.XtraBars.BarButtonItem();
+            this.btnnModificar = new DevExpress.XtraBars.BarButtonItem();
+            this.btnnEliminar = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRepresentantes = new DevExpress.XtraBars.BarButtonItem();
+            this.btnnAExcel = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.chkIngresosMayores = new DevExpress.XtraEditors.CheckEdit();
+            this.cboppto = new System.Windows.Forms.ComboBox();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -129,7 +133,6 @@ namespace HPReserger
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -137,6 +140,10 @@ namespace HPReserger
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -157,7 +164,6 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
@@ -165,6 +171,10 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // cbotipo
@@ -173,24 +183,11 @@ namespace HPReserger
             this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipo.Enabled = false;
             this.cbotipo.FormattingEnabled = true;
-            this.cbotipo.Location = new System.Drawing.Point(515, 12);
+            this.cbotipo.Location = new System.Drawing.Point(524, 6);
             this.cbotipo.Name = "cbotipo";
-            this.cbotipo.Size = new System.Drawing.Size(121, 21);
+            this.cbotipo.Size = new System.Drawing.Size(41, 21);
             this.cbotipo.TabIndex = 135;
             this.cbotipo.SelectedIndexChanged += new System.EventHandler(this.cbotipo_SelectedIndexChanged);
-            // 
-            // btnexportarExcel
-            // 
-            this.btnexportarExcel.Enabled = false;
-            this.btnexportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarExcel.Image")));
-            this.btnexportarExcel.Location = new System.Drawing.Point(281, -1);
-            this.btnexportarExcel.Name = "btnexportarExcel";
-            this.btnexportarExcel.Size = new System.Drawing.Size(82, 23);
-            this.btnexportarExcel.TabIndex = 132;
-            this.btnexportarExcel.Text = "A Excel";
-            this.btnexportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnexportarExcel.UseVisualStyleBackColor = true;
-            this.btnexportarExcel.Click += new System.EventHandler(this.btnexportarExcel_Click);
             // 
             // dtgconten
             // 
@@ -243,7 +240,8 @@ namespace HPReserger
             this.fecha,
             this.eps,
             this.xStock,
-            this.xIngresosMayores});
+            this.xIngresosMayores,
+            this.yppto});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -466,37 +464,20 @@ namespace HPReserger
             this.xIngresosMayores.Name = "xIngresosMayores";
             this.xIngresosMayores.ReadOnly = true;
             // 
-            // btneliminar
+            // yppto
             // 
-            this.btneliminar.Enabled = false;
-            this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(193, 0);
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(82, 23);
-            this.btneliminar.TabIndex = 129;
-            this.btneliminar.Text = "Eliminar";
-            this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btneliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnmodificar
-            // 
-            this.btnmodificar.Enabled = false;
-            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(105, 0);
-            this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(82, 23);
-            this.btnmodificar.TabIndex = 130;
-            this.btnmodificar.Text = "Modificar";
-            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
+            this.yppto.DataPropertyName = "ppto";
+            this.yppto.HeaderText = "ppto";
+            this.yppto.Name = "yppto";
+            this.yppto.ReadOnly = true;
+            this.yppto.Visible = false;
             // 
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(1009, 439);
+            this.btncancelar.Location = new System.Drawing.Point(989, 369);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 25);
             this.btncancelar.TabIndex = 125;
@@ -510,7 +491,7 @@ namespace HPReserger
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Enabled = false;
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(921, 439);
+            this.btnaceptar.Location = new System.Drawing.Point(901, 369);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 25);
             this.btnaceptar.TabIndex = 126;
@@ -519,25 +500,13 @@ namespace HPReserger
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
-            // btnnuevo
-            // 
-            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
-            this.btnnuevo.Location = new System.Drawing.Point(17, 0);
-            this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(82, 23);
-            this.btnnuevo.TabIndex = 127;
-            this.btnnuevo.Text = "Nuevo";
-            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnnuevo.UseVisualStyleBackColor = true;
-            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
-            // 
             // txtnombre
             // 
             this.txtnombre.Enabled = false;
             this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombre.Location = new System.Drawing.Point(127, 36);
+            this.txtnombre.Location = new System.Drawing.Point(102, 28);
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(245, 20);
+            this.txtnombre.Size = new System.Drawing.Size(301, 20);
             this.txtnombre.TabIndex = 131;
             this.txtnombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtnombre_KeyDown);
             this.txtnombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnombre_KeyPress);
@@ -546,10 +515,10 @@ namespace HPReserger
             // 
             this.txtruc.Enabled = false;
             this.txtruc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtruc.Location = new System.Drawing.Point(127, 12);
+            this.txtruc.Location = new System.Drawing.Point(102, 6);
             this.txtruc.MaxLength = 11;
             this.txtruc.Name = "txtruc";
-            this.txtruc.Size = new System.Drawing.Size(245, 20);
+            this.txtruc.Size = new System.Drawing.Size(301, 20);
             this.txtruc.TabIndex = 128;
             this.txtruc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtruc_KeyDown);
             this.txtruc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnroid_KeyPress_1);
@@ -558,18 +527,18 @@ namespace HPReserger
             // 
             this.txtdireccion.Enabled = false;
             this.txtdireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdireccion.Location = new System.Drawing.Point(515, 37);
+            this.txtdireccion.Location = new System.Drawing.Point(524, 29);
             this.txtdireccion.Name = "txtdireccion";
-            this.txtdireccion.Size = new System.Drawing.Size(576, 20);
+            this.txtdireccion.Size = new System.Drawing.Size(553, 20);
             this.txtdireccion.TabIndex = 139;
             // 
             // txtnroid
             // 
             this.txtnroid.Enabled = false;
             this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnroid.Location = new System.Drawing.Point(755, 12);
+            this.txtnroid.Location = new System.Drawing.Point(663, 6);
             this.txtnroid.Name = "txtnroid";
-            this.txtnroid.Size = new System.Drawing.Size(142, 20);
+            this.txtnroid.Size = new System.Drawing.Size(53, 20);
             this.txtnroid.TabIndex = 141;
             this.txtnroid.TextChanged += new System.EventHandler(this.txtnroid_TextChanged);
             this.txtnroid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtnroid_KeyDown);
@@ -581,9 +550,9 @@ namespace HPReserger
             this.cbosector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbosector.Enabled = false;
             this.cbosector.FormattingEnabled = true;
-            this.cbosector.Location = new System.Drawing.Point(127, 85);
+            this.cbosector.Location = new System.Drawing.Point(102, 73);
             this.cbosector.Name = "cbosector";
-            this.cbosector.Size = new System.Drawing.Size(245, 21);
+            this.cbosector.Size = new System.Drawing.Size(301, 21);
             this.cbosector.TabIndex = 142;
             // 
             // cbodep
@@ -592,9 +561,9 @@ namespace HPReserger
             this.cbodep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodep.Enabled = false;
             this.cbodep.FormattingEnabled = true;
-            this.cbodep.Location = new System.Drawing.Point(127, 60);
+            this.cbodep.Location = new System.Drawing.Point(102, 50);
             this.cbodep.Name = "cbodep";
-            this.cbodep.Size = new System.Drawing.Size(245, 21);
+            this.cbodep.Size = new System.Drawing.Size(301, 21);
             this.cbodep.TabIndex = 147;
             this.cbodep.SelectedIndexChanged += new System.EventHandler(this.cbodep_SelectedIndexChanged);
             // 
@@ -604,9 +573,9 @@ namespace HPReserger
             this.cbopro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbopro.Enabled = false;
             this.cbopro.FormattingEnabled = true;
-            this.cbopro.Location = new System.Drawing.Point(515, 61);
+            this.cbopro.Location = new System.Drawing.Point(524, 51);
             this.cbopro.Name = "cbopro";
-            this.cbopro.Size = new System.Drawing.Size(235, 21);
+            this.cbopro.Size = new System.Drawing.Size(106, 21);
             this.cbopro.TabIndex = 148;
             this.cbopro.SelectedIndexChanged += new System.EventHandler(this.cbopro_SelectedIndexChanged);
             // 
@@ -616,9 +585,9 @@ namespace HPReserger
             this.cbodis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodis.Enabled = false;
             this.cbodis.FormattingEnabled = true;
-            this.cbodis.Location = new System.Drawing.Point(893, 61);
+            this.cbodis.Location = new System.Drawing.Point(751, 51);
             this.cbodis.Name = "cbodis";
-            this.cbodis.Size = new System.Drawing.Size(198, 21);
+            this.cbodis.Size = new System.Drawing.Size(326, 21);
             this.cbodis.TabIndex = 149;
             // 
             // cboseguro
@@ -627,9 +596,9 @@ namespace HPReserger
             this.cboseguro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboseguro.Enabled = false;
             this.cboseguro.FormattingEnabled = true;
-            this.cboseguro.Location = new System.Drawing.Point(515, 86);
+            this.cboseguro.Location = new System.Drawing.Point(525, 74);
             this.cboseguro.Name = "cboseguro";
-            this.cboseguro.Size = new System.Drawing.Size(235, 21);
+            this.cboseguro.Size = new System.Drawing.Size(105, 21);
             this.cboseguro.TabIndex = 151;
             // 
             // cbonombre
@@ -640,9 +609,9 @@ namespace HPReserger
             this.cbonombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbonombre.Enabled = false;
             this.cbonombre.FormattingEnabled = true;
-            this.cbonombre.Location = new System.Drawing.Point(1016, 12);
+            this.cbonombre.Location = new System.Drawing.Point(814, 6);
             this.cbonombre.Name = "cbonombre";
-            this.cbonombre.Size = new System.Drawing.Size(75, 21);
+            this.cbonombre.Size = new System.Drawing.Size(263, 21);
             this.cbonombre.TabIndex = 152;
             this.cbonombre.SelectedIndexChanged += new System.EventHandler(this.cbonombre_SelectedIndexChanged);
             // 
@@ -650,9 +619,9 @@ namespace HPReserger
             // 
             this.btnsector.Enabled = false;
             this.btnsector.Image = ((System.Drawing.Image)(resources.GetObject("btnsector.Image")));
-            this.btnsector.Location = new System.Drawing.Point(376, 86);
+            this.btnsector.Location = new System.Drawing.Point(405, 74);
             this.btnsector.Name = "btnsector";
-            this.btnsector.Size = new System.Drawing.Size(20, 21);
+            this.btnsector.Size = new System.Drawing.Size(22, 23);
             this.btnsector.TabIndex = 153;
             this.btnsector.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnsector.UseVisualStyleBackColor = true;
@@ -662,9 +631,9 @@ namespace HPReserger
             // 
             this.btnciaseguro.Enabled = false;
             this.btnciaseguro.Image = ((System.Drawing.Image)(resources.GetObject("btnciaseguro.Image")));
-            this.btnciaseguro.Location = new System.Drawing.Point(754, 86);
+            this.btnciaseguro.Location = new System.Drawing.Point(632, 74);
             this.btnciaseguro.Name = "btnciaseguro";
-            this.btnciaseguro.Size = new System.Drawing.Size(20, 21);
+            this.btnciaseguro.Size = new System.Drawing.Size(22, 23);
             this.btnciaseguro.TabIndex = 154;
             this.btnciaseguro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnciaseguro.UseVisualStyleBackColor = true;
@@ -677,7 +646,7 @@ namespace HPReserger
             this.lbltotalregistros.AutoSize = true;
             this.lbltotalregistros.BackColor = System.Drawing.Color.Transparent;
             this.lbltotalregistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotalregistros.Location = new System.Drawing.Point(14, 445);
+            this.lbltotalregistros.Location = new System.Drawing.Point(14, 375);
             this.lbltotalregistros.Name = "lbltotalregistros";
             this.lbltotalregistros.Size = new System.Drawing.Size(105, 13);
             this.lbltotalregistros.TabIndex = 156;
@@ -690,9 +659,9 @@ namespace HPReserger
             this.chkStock.ColorUnChecked = System.Drawing.Color.Empty;
             this.chkStock.Enabled = false;
             this.chkStock.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkStock.Location = new System.Drawing.Point(12, 111);
+            this.chkStock.Location = new System.Drawing.Point(6, 99);
             this.chkStock.Name = "chkStock";
-            this.chkStock.Size = new System.Drawing.Size(63, 20);
+            this.chkStock.Size = new System.Drawing.Size(65, 22);
             this.chkStock.TabIndex = 157;
             this.chkStock.Text = "Stock";
             this.chkStock.UseVisualStyleBackColor = false;
@@ -721,23 +690,24 @@ namespace HPReserger
             this.layoutControl1.Controls.Add(this.txtdireccion);
             this.layoutControl1.Controls.Add(this.cbodep);
             this.layoutControl1.Controls.Add(this.dtgconten);
+            this.layoutControl1.Controls.Add(this.cboppto);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem10});
-            this.layoutControl1.Location = new System.Drawing.Point(0, 22);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 20);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1103, 417);
+            this.layoutControl1.Size = new System.Drawing.Size(1083, 352);
             this.layoutControl1.TabIndex = 158;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(12, 135);
+            this.gridControl1.Location = new System.Drawing.Point(6, 123);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1079, 270);
+            this.gridControl1.Size = new System.Drawing.Size(1071, 223);
             this.gridControl1.TabIndex = 159;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -767,7 +737,8 @@ namespace HPReserger
             this.xtipoid,
             this.xcia,
             this.xeps,
-            this.xstocks});
+            this.xstocks,
+            this.xppto});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsFind.AlwaysVisible = true;
@@ -938,6 +909,12 @@ namespace HPReserger
             this.xstocks.FieldName = "STOCk";
             this.xstocks.Name = "xstocks";
             // 
+            // xppto
+            // 
+            this.xppto.Caption = "ppto";
+            this.xppto.FieldName = "ppto";
+            this.xppto.Name = "xppto";
+            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -948,8 +925,14 @@ namespace HPReserger
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.btnnNuevo,
+            this.btnnModificar,
+            this.btnnEliminar,
+            this.btnnAExcel,
+            this.btnRepresentantes});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 0;
+            this.barManager1.MaxItemId = 6;
             this.barManager1.StatusBar = this.bar1;
             // 
             // bar2
@@ -958,9 +941,59 @@ namespace HPReserger
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnnNuevo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnnModificar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnnEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRepresentantes, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnnAExcel, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Menú principal";
+            // 
+            // btnnNuevo
+            // 
+            this.btnnNuevo.Caption = "Nuevo";
+            this.btnnNuevo.Id = 0;
+            this.btnnNuevo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnnNuevo.ImageOptions.Image")));
+            this.btnnNuevo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnnNuevo.ImageOptions.LargeImage")));
+            this.btnnNuevo.Name = "btnnNuevo";
+            this.btnnNuevo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnnNuevo_ItemClick);
+            // 
+            // btnnModificar
+            // 
+            this.btnnModificar.Caption = "Modificar";
+            this.btnnModificar.Id = 1;
+            this.btnnModificar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnnModificar.ImageOptions.Image")));
+            this.btnnModificar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnnModificar.ImageOptions.LargeImage")));
+            this.btnnModificar.Name = "btnnModificar";
+            this.btnnModificar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnnModificar_ItemClick);
+            // 
+            // btnnEliminar
+            // 
+            this.btnnEliminar.Caption = "Eliminar";
+            this.btnnEliminar.Id = 2;
+            this.btnnEliminar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnnEliminar.ImageOptions.Image")));
+            this.btnnEliminar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnnEliminar.ImageOptions.LargeImage")));
+            this.btnnEliminar.Name = "btnnEliminar";
+            // 
+            // btnRepresentantes
+            // 
+            this.btnRepresentantes.Caption = "Representantes";
+            this.btnRepresentantes.Id = 5;
+            this.btnRepresentantes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRepresentantes.ImageOptions.Image")));
+            this.btnRepresentantes.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRepresentantes.ImageOptions.LargeImage")));
+            this.btnRepresentantes.Name = "btnRepresentantes";
+            this.btnRepresentantes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRepresentantes_ItemClick);
+            // 
+            // btnnAExcel
+            // 
+            this.btnnAExcel.Caption = "A Excel";
+            this.btnnAExcel.Id = 4;
+            this.btnnAExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnnAExcel.ImageOptions.Image")));
+            this.btnnAExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnnAExcel.ImageOptions.LargeImage")));
+            this.btnnAExcel.Name = "btnnAExcel";
+            this.btnnAExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnexportarExcel_Click);
             // 
             // bar1
             // 
@@ -979,39 +1012,56 @@ namespace HPReserger
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1103, 22);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1083, 20);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 439);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1103, 25);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 372);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1083, 22);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 417);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 352);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1103, 22);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 417);
+            this.barDockControlRight.Location = new System.Drawing.Point(1083, 20);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 352);
             // 
             // chkIngresosMayores
             // 
             this.chkIngresosMayores.Enabled = false;
-            this.chkIngresosMayores.Location = new System.Drawing.Point(79, 111);
+            this.chkIngresosMayores.Location = new System.Drawing.Point(73, 99);
             this.chkIngresosMayores.MenuManager = this.barManager1;
             this.chkIngresosMayores.Name = "chkIngresosMayores";
             this.chkIngresosMayores.Properties.Caption = "Ingresos Mayores 1500 UIT";
-            this.chkIngresosMayores.Size = new System.Drawing.Size(1012, 19);
+            this.chkIngresosMayores.Size = new System.Drawing.Size(330, 18);
             this.chkIngresosMayores.StyleController = this.layoutControl1;
             this.chkIngresosMayores.TabIndex = 158;
+            // 
+            // cboppto
+            // 
+            this.cboppto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboppto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboppto.Enabled = false;
+            this.cboppto.FormattingEnabled = true;
+            this.cboppto.Location = new System.Drawing.Point(524, 99);
+            this.cboppto.Name = "cboppto";
+            this.cboppto.Size = new System.Drawing.Size(258, 21);
+            this.cboppto.TabIndex = 147;
+            this.cboppto.SelectionChangeCommitted += new System.EventHandler(this.cboppto_SelectionChangeCommitted);
+            this.cboppto.Enter += new System.EventHandler(this.cboppto_Enter);
             // 
             // layoutControlItem10
             // 
@@ -1038,17 +1088,19 @@ namespace HPReserger
             this.layoutControlItem9,
             this.layoutControlItem11,
             this.layoutControlItem13,
-            this.layoutControlItem16,
             this.layoutControlItem15,
             this.emptySpaceItem3,
             this.layoutControlItem12,
             this.layoutControlItem6,
             this.emptySpaceItem4,
             this.layoutControlItem14,
-            this.layoutControlItem17});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1103, 417);
+            this.layoutControlItem17,
+            this.layoutControlItem18,
+            this.layoutControlItem16,
+            this.emptySpaceItem2,
+            this.emptySpaceItem5});
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1083, 352);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -1056,112 +1108,106 @@ namespace HPReserger
             this.layoutControlItem1.Control = this.txtruc;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(364, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(399, 22);
             this.layoutControlItem1.Text = "Ruc:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.cbotipo;
-            this.layoutControlItem2.Location = new System.Drawing.Point(388, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(422, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(240, 25);
-            this.layoutControlItem2.Text = "Tipo Id Representante:";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem2.Size = new System.Drawing.Size(139, 23);
+            this.layoutControlItem2.Text = "Tipo Id:";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(93, 13);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(766, 74);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(650, 68);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(317, 25);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(423, 25);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtnroid;
-            this.layoutControlItem3.Location = new System.Drawing.Point(628, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(561, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(261, 25);
+            this.layoutControlItem3.Size = new System.Drawing.Size(151, 23);
             this.layoutControlItem3.Text = "Id Representante:";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.cbonombre;
-            this.layoutControlItem4.Location = new System.Drawing.Point(889, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(712, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(194, 25);
+            this.layoutControlItem4.Size = new System.Drawing.Size(361, 23);
             this.layoutControlItem4.Text = "Nombre:";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtnombre;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 22);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(364, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(399, 22);
             this.layoutControlItem5.Text = "Nombre:";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.cbodep;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 44);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(364, 25);
+            this.layoutControlItem7.Size = new System.Drawing.Size(399, 23);
             this.layoutControlItem7.Text = "Departamento:";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.cbopro;
-            this.layoutControlItem8.Location = new System.Drawing.Point(388, 49);
+            this.layoutControlItem8.Location = new System.Drawing.Point(422, 45);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(354, 25);
+            this.layoutControlItem8.Size = new System.Drawing.Size(204, 23);
             this.layoutControlItem8.Text = "Provincia:";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.cbodis;
-            this.layoutControlItem9.Location = new System.Drawing.Point(766, 49);
+            this.layoutControlItem9.Location = new System.Drawing.Point(649, 45);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(317, 25);
+            this.layoutControlItem9.Size = new System.Drawing.Size(424, 23);
             this.layoutControlItem9.Text = "Distrito:";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.cbosector;
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 73);
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 67);
+            this.layoutControlItem11.MaxSize = new System.Drawing.Size(399, 26);
+            this.layoutControlItem11.MinSize = new System.Drawing.Size(399, 26);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(364, 26);
+            this.layoutControlItem11.Size = new System.Drawing.Size(399, 26);
+            this.layoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem11.Text = "Sector Empresarial:";
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.cboseguro;
-            this.layoutControlItem13.Location = new System.Drawing.Point(388, 74);
+            this.layoutControlItem13.Location = new System.Drawing.Point(423, 68);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(354, 25);
+            this.layoutControlItem13.Size = new System.Drawing.Size(203, 25);
             this.layoutControlItem13.Text = "Cia. Seguro:";
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(112, 13);
-            // 
-            // layoutControlItem16
-            // 
-            this.layoutControlItem16.Control = this.chkIngresosMayores;
-            this.layoutControlItem16.Location = new System.Drawing.Point(67, 99);
-            this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(1016, 24);
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem16.TextVisible = false;
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.chkStock;
-            this.layoutControlItem15.Location = new System.Drawing.Point(0, 99);
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 93);
             this.layoutControlItem15.MaxSize = new System.Drawing.Size(67, 24);
             this.layoutControlItem15.MinSize = new System.Drawing.Size(67, 24);
             this.layoutControlItem15.Name = "layoutControlItem15";
@@ -1173,15 +1219,18 @@ namespace HPReserger
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(364, 0);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(399, 0);
+            this.emptySpaceItem3.MaxSize = new System.Drawing.Size(23, 68);
+            this.emptySpaceItem3.MinSize = new System.Drawing.Size(23, 68);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(24, 74);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(23, 68);
+            this.emptySpaceItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.btnsector;
-            this.layoutControlItem12.Location = new System.Drawing.Point(364, 74);
+            this.layoutControlItem12.Location = new System.Drawing.Point(399, 68);
             this.layoutControlItem12.MaxSize = new System.Drawing.Size(24, 25);
             this.layoutControlItem12.MinSize = new System.Drawing.Size(24, 25);
             this.layoutControlItem12.Name = "layoutControlItem12";
@@ -1193,24 +1242,24 @@ namespace HPReserger
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.txtdireccion;
-            this.layoutControlItem6.Location = new System.Drawing.Point(388, 25);
+            this.layoutControlItem6.Location = new System.Drawing.Point(422, 23);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(695, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(651, 22);
             this.layoutControlItem6.Text = "Dirección:";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(112, 13);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(93, 13);
             // 
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(742, 49);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(626, 45);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(24, 25);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(23, 23);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.btnciaseguro;
-            this.layoutControlItem14.Location = new System.Drawing.Point(742, 74);
+            this.layoutControlItem14.Location = new System.Drawing.Point(626, 68);
             this.layoutControlItem14.MaxSize = new System.Drawing.Size(24, 25);
             this.layoutControlItem14.MinSize = new System.Drawing.Size(24, 25);
             this.layoutControlItem14.Name = "layoutControlItem14";
@@ -1222,25 +1271,66 @@ namespace HPReserger
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.gridControl1;
-            this.layoutControlItem17.Location = new System.Drawing.Point(0, 123);
+            this.layoutControlItem17.Location = new System.Drawing.Point(0, 117);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(1083, 274);
+            this.layoutControlItem17.Size = new System.Drawing.Size(1073, 225);
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.cboppto;
+            this.layoutControlItem18.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem18.CustomizationFormText = "Departamento:";
+            this.layoutControlItem18.Location = new System.Drawing.Point(422, 93);
+            this.layoutControlItem18.MaxSize = new System.Drawing.Size(356, 24);
+            this.layoutControlItem18.MinSize = new System.Drawing.Size(356, 24);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(356, 24);
+            this.layoutControlItem18.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem18.Text = "Presupuesto";
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // layoutControlItem16
+            // 
+            this.layoutControlItem16.Control = this.chkIngresosMayores;
+            this.layoutControlItem16.Location = new System.Drawing.Point(67, 93);
+            this.layoutControlItem16.MaxSize = new System.Drawing.Size(332, 24);
+            this.layoutControlItem16.MinSize = new System.Drawing.Size(332, 24);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Size = new System.Drawing.Size(332, 24);
+            this.layoutControlItem16.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem16.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(778, 93);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(295, 24);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // emptySpaceItem5
+            // 
+            this.emptySpaceItem5.AllowHotTrack = false;
+            this.emptySpaceItem5.Location = new System.Drawing.Point(399, 93);
+            this.emptySpaceItem5.MaxSize = new System.Drawing.Size(23, 24);
+            this.emptySpaceItem5.MinSize = new System.Drawing.Size(23, 24);
+            this.emptySpaceItem5.Name = "emptySpaceItem5";
+            this.emptySpaceItem5.Size = new System.Drawing.Size(23, 24);
+            this.emptySpaceItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
             // frmEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 464);
+            this.ClientSize = new System.Drawing.Size(1083, 394);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.lbltotalregistros);
-            this.Controls.Add(this.btnexportarExcel);
-            this.Controls.Add(this.btneliminar);
-            this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
-            this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -1270,7 +1360,6 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
@@ -1278,6 +1367,10 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1285,13 +1378,9 @@ namespace HPReserger
 
         #endregion
         private System.Windows.Forms.ComboBox cbotipo;
-        private System.Windows.Forms.Button btnexportarExcel;
         private Dtgconten dtgconten;
-        private System.Windows.Forms.Button btneliminar;
-        private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnaceptar;
-        private System.Windows.Forms.Button btnnuevo;
         private System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.TextBox txtruc;
         private System.Windows.Forms.TextBox txtdireccion;
@@ -1363,6 +1452,12 @@ namespace HPReserger
         private DevExpress.XtraGrid.Columns.GridColumn xcia;
         private DevExpress.XtraGrid.Columns.GridColumn xeps;
         private DevExpress.XtraGrid.Columns.GridColumn xstocks;
+        private DevExpress.XtraBars.BarButtonItem btnnNuevo;
+        private DevExpress.XtraBars.BarButtonItem btnnModificar;
+        private DevExpress.XtraBars.BarButtonItem btnnEliminar;
+        private DevExpress.XtraBars.BarButtonItem btnnAExcel;
+        private DevExpress.XtraBars.BarButtonItem btnRepresentantes;
+        private DevExpress.XtraGrid.Columns.GridColumn xppto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ruc;
         private System.Windows.Forms.DataGridViewTextBoxColumn empresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
@@ -1386,5 +1481,10 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn eps;
         private System.Windows.Forms.DataGridViewTextBoxColumn xStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn xIngresosMayores;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yppto;
+        private System.Windows.Forms.ComboBox cboppto;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem5;
     }
 }

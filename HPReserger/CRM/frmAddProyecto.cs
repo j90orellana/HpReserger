@@ -136,6 +136,7 @@ namespace SISGEM.CRM
             ID_Codigo_postalTextEdit.EditValue = codigosPostales.Rows.Count > 0 ? codigosPostales.Rows[0]["ID_Codigo_postal"] : null;
 
             ID_Codigo_postalTextEdit.Properties.View.Columns.Clear();
+            ID_Codigo_postalTextEdit.Properties.View.Columns.AddVisible("ID_Codigo_postal", "Ubigeo");
             ID_Codigo_postalTextEdit.Properties.View.Columns.AddVisible("Departamento", "Departamento");
             ID_Codigo_postalTextEdit.Properties.View.Columns.AddVisible("Provincia", "Provincia");
             ID_Codigo_postalTextEdit.Properties.View.Columns.AddVisible("Distrito", "Distrito");
@@ -226,6 +227,9 @@ namespace SISGEM.CRM
                 Foto = oProyecto.Imagen;
                 ItemForID_cliente.EditValue = oProyecto.idcliente;
                 ID_ContactoTextEdit.EditValue = oProyecto.ID_Contacto;
+
+                ValorSolesTextEdit.EditValue = oProyecto.ValorSoles;
+                ValorDolaresTextEdit.EditValue = oProyecto.ValorDolares;
 
                 ListarArchivos();
 
@@ -389,6 +393,9 @@ namespace SISGEM.CRM
             oProyecto.Fotos = FotosTextEdit.EditValue?.ToString() ?? string.Empty;
             oProyecto.Imagen = ImageToByteArray(ImagenPictureBox.Image);
             oProyecto.idcliente = ItemForID_cliente.EditValue.ToString();
+
+            oProyecto.ValorSoles = Convert.ToDecimal(ValorSolesTextEdit.EditValue ?? 0);
+            oProyecto.ValorDolares = Convert.ToDecimal(ValorDolaresTextEdit.EditValue ?? 0);
 
             HpResergerNube.CRM_ProyectoRepository objproyecto = new HpResergerNube.CRM_ProyectoRepository();
 
@@ -656,6 +663,91 @@ namespace SISGEM.CRM
                 XtraMessageBox.Show("Debe seleccionar un proyecto.", "Seleccione un proyecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validar que tenemos una fila seleccionada válida
+                if (gridView16.FocusedRowHandle < 0 || !gridView16.IsDataRow(gridView16.FocusedRowHandle))
+                {
+                    XtraMessageBox.Show("Por favor, seleccione un archivo válido para eliminar.",
+                                      "Selección Inválida",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Obtener valores de la fila
+                string nombreArchivo = gridView16.GetRowCellValue(gridView16.FocusedRowHandle, "Nombre_Archivo")?.ToString();
+                string idDocumento = gridView16.GetRowCellValue(gridView16.FocusedRowHandle, "ID_Documento")?.ToString();
+
+                // Validar datos obtenidos
+                if (string.IsNullOrEmpty(nombreArchivo) || string.IsNullOrEmpty(idDocumento))
+                {
+                    XtraMessageBox.Show("No se pudieron obtener los datos del archivo seleccionado.",
+                                      "Error de Datos",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Confirmación de eliminación con mensaje más descriptivo
+                var confirmacion = XtraMessageBox.Show(
+                    $"¿Está seguro que desea eliminar el archivo:\n\n" +
+                    $"• Nombre: {nombreArchivo}\n" +
+                    $"Esta acción no se puede deshacer.",
+                    "Confirmar Eliminación de Archivo",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2); // Por defecto selecciona "No" para prevenir eliminaciones accidentales
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    // Mostrar indicador de progreso
+                    Cursor.Current = Cursors.WaitCursor;
+
+                    // Realizar eliminación lógica
+                    HpResergerNube.CRM_Documentos odocumentos = new CRM_Documentos();
+                    bool eliminado = odocumentos.EliminarLogica(int.Parse(idDocumento), $"{this.Text}-Eliminado");
+
+                    // Restaurar cursor
+                    Cursor.Current = Cursors.Default;
+
+                    if (eliminado)
+                    {
+                        //XtraMessageBox.Show($"El archivo '{nombreArchivo}' ha sido eliminado correctamente.",
+                        //                  "Eliminación Exitosa",
+                        //                  MessageBoxButtons.OK,
+                        //                  MessageBoxIcon.Information);
+
+                        // Refrescar la lista de archivos
+                        ListarArchivos();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("No se pudo eliminar el archivo. Por favor, intente nuevamente.",
+                                          "Error al Eliminar",
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                XtraMessageBox.Show("El ID del documento no tiene un formato válido.",
+                                  "Error de Formato",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Ocurrió un error inesperado:\n\n{ex.Message}",
+                                  "Error",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
+            }
         }
     }
 }

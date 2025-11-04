@@ -1858,7 +1858,7 @@
             // btnbuscar
             // 
             this.btnbuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnbuscar.Image = global::SISGEM.Properties.Resources.find_16x16;
+            this.btnbuscar.ImageOptions.Image = global::SISGEM.Properties.Resources.find_16x16;
             this.btnbuscar.Location = new System.Drawing.Point(607, 473);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(75, 23);
@@ -1869,7 +1869,7 @@
             // btncleanfind
             // 
             this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btncleanfind.Image = global::SISGEM.Properties.Resources.clearfilter_16x16;
+            this.btncleanfind.ImageOptions.Image = global::SISGEM.Properties.Resources.clearfilter_16x16;
             this.btncleanfind.Location = new System.Drawing.Point(526, 473);
             this.btncleanfind.Name = "btncleanfind";
             this.btncleanfind.Size = new System.Drawing.Size(75, 23);

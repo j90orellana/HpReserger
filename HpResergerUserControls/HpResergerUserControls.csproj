@@ -237,6 +237,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Resources\icons8_Download_16px.png" />
   </ItemGroup>
   <ItemGroup>

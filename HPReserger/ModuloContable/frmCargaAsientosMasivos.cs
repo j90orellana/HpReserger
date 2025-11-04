@@ -35,6 +35,7 @@ namespace SISGEM.ModuloContable
                 column.OptionsColumn.AllowEdit = false;
                 //column.OptionsColumn.ReadOnly = true;
             }
+            dtpfechacontable.EditValue = DateTime.Now;
 
             CargarCombos();
         }
@@ -217,6 +218,24 @@ namespace SISGEM.ModuloContable
                 bool esCliente = CapaDatos.BuscarClienteQuery(ruc).Rows.Count > 0;
                 bool esEmpleado = CapaDatos.BuscarEmpleadoQuery(ruc).Rows.Count > 0;
 
+                HPResergerCapaLogica.Contable.ClaseContable Cclase = new HPResergerCapaLogica.Contable.ClaseContable();
+                DataTable Tdato = Cclase.BusquedaProveedorEmpleadoCliente(ruc);
+
+                if (Tdato.Rows.Count > 0)
+                {
+                    string valorBuscado = ruc;
+                    string nuevoValor = Tdato.Rows[0]["Nombre"].ToString().Trim();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row["RUC"].ToString() == valorBuscado)
+                        {
+                            row["RAZON SOCIAL"] = nuevoValor;
+                        }
+                    }
+
+                }
+
                 if (!esProveedor && !esCliente && !esEmpleado)
                 {
                     resultado.AppendLine($"No existe el proveedor, cliente o empleado: {ruc}");
@@ -289,12 +308,6 @@ namespace SISGEM.ModuloContable
 
         private void btnGrabarAsiento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!ArchivoCargado)
-            {
-                XtraMessageBox.Show("Primero debe cargar un archivo que haya sido validado correctamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
             if (dtpfechacontable.EditValue == null)
             {
                 XtraMessageBox.Show("Debes seleccionar una fecha contable correctamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -308,12 +321,32 @@ namespace SISGEM.ModuloContable
                 return;
             }
 
-            // Validar que se haya seleccionado una empresa
+            // Validar que se haya seleccionado un proyecto
             if (string.IsNullOrWhiteSpace(cboproyecto.Text))
             {
                 XtraMessageBox.Show("Debe seleccionar un proyecto antes de proceder con la carga masiva.", "Proyecto no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            HPResergerCapaLogica.Contable.Contabilidad Cconta = new HPResergerCapaLogica.Contable.Contabilidad();
+
+            int empresa = Convert.ToInt32(cboempresa.EditValue);
+            DateTime fechaContable = Convert.ToDateTime(dtpfechacontable.EditValue);
+
+            var tdata = Cconta.PeriodoCerrado(empresa, fechaContable);
+            if (tdata.Rows.Count > 0)
+            {
+                XtraMessageBox.Show("El período está cerrado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+
+            if (!ArchivoCargado)
+            {
+                XtraMessageBox.Show("Primero debe cargar un archivo que haya sido validado correctamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
 
             // Confirmación para la carga masiva
             DialogResult respuesta = XtraMessageBox.Show($"¿Está seguro de que desea proceder con la carga masiva de asientos para la empresa \"{cboempresa.Text}\"?",
@@ -356,73 +389,160 @@ namespace SISGEM.ModuloContable
             int IdUsuario = HPReserger.frmLogin.CodigoUsuario;
             decimal TC = CapaLogica.TipoCambioDia("Venta", (DateTime)dtpfechacontable.EditValue);
 
+            //PRIMERO EL DEBE
             foreach (var cuentas in cuentasUnicas)
             {
                 var filasCoinciden = dt.AsEnumerable()
-                           .Where(row => row[0]?.ToString() == cuentas)
-                           .ToList();
+              .Where(row => row[0] != null && cuentas.Contains(row[0].ToString()) &&
+                           decimal.TryParse(row[5]?.ToString(), out decimal val) && val > 0)
+              .ToList();
 
                 decimal totalDebe = dt.AsEnumerable()
-                    .Where(row => cuentas.Contains(row[0]?.ToString()))
+                    .Where(row => row[0] != null && cuentas.Contains(row[0].ToString()) &&
+                                 decimal.TryParse(row[5]?.ToString(), out decimal val) && val > 0)
                     .Sum(row => decimal.TryParse(row[5]?.ToString(), out decimal val) ? val : 0);
+
+
+                //decimal totalHaber = dt.AsEnumerable()
+                //    .Where(row => cuentas.Contains(row[0]?.ToString()))
+                //    .Sum(row => decimal.TryParse(row[6]?.ToString(), out decimal val) ? val : 0);
+
+
+                //decimal diferenciaDebe = Math.Max(totalDebe - totalHaber, 0);
+                //decimal diferenciaHaber = Math.Max(totalHaber - totalDebe, 0);
+
+                if (filasCoinciden.Count > 0)
+                {
+
+                    DataRow FilaFiltrada = filasCoinciden[0];
+
+                    int.TryParse((FilaFiltrada[16].ToString().Split('-'))[0], out int Dinamica);
+                    int.TryParse((FilaFiltrada[13].ToString().Split('-'))[0], out int pkMoneda);
+                    //decimal.TryParse(FilaFiltrada[14].ToString(), out decimal TC);
+                    int fkProyecto = (int)cboproyecto.EditValue;
+                    string GlosaCabecera = txtglosa.EditValue?.ToString() ?? "Asiento Masivo";
+                    GlosaCabecera = GlosaCabecera == "" ? "Asiento Masivo" : GlosaCabecera;
+                    Dinamica = Dinamica * -1;
+
+                    //CABECERA
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, cuentas, totalDebe, 0,
+                      TC, fkProyecto, 0, Cuo, pkMoneda, GlosaCabecera, FechaContable, Dinamica);
+
+                    // Aquí puedes procesar cada fila si deseas
+                    foreach (DataRow fila in filasCoinciden)
+                    {
+                        // Acceder a otras columnas, por ejemplo fila[5] para el Debe
+                        string[] tipoid = fila[2].ToString().Split('-');
+                        int.TryParse(tipoid[0].ToString(), out int TipoIdProveedor);
+                        string RucProveedor = fila[3].ToString().Trim();
+                        string NameProveedor = fila[4].ToString().Trim();
+                        int.TryParse(fila[8].ToString(), out int idcomprobante);
+                        string codcomprobante = fila[9].ToString().Trim();
+                        string numcomprobante = fila[10].ToString().Trim();
+                        string GlosaDetalle = fila[15].ToString() ?? string.Empty;
+
+                        DateTime.TryParse((fila[11].ToString().Split('-'))[0], out DateTime fechaemision); // 1: MN, 2: ME
+                        DateTime.TryParse((fila[12].ToString().Split('-'))[0], out DateTime fechavencimiento); // 1: MN, 2: ME
+
+                        int.TryParse((fila[13].ToString().Split('-'))[0], out int moneda); // 1: MN, 2: ME
+                        decimal.TryParse(fila[14].ToString(), out decimal tc); // Tipo de cambio
+                        decimal.TryParse(fila[5].ToString(), out decimal debe);
+                        decimal.TryParse(fila[6].ToString(), out decimal haber);
+                        decimal mov = debe + haber;
+
+                        decimal importemn = moneda == 1 ? mov : Math.Round(mov * tc, 2);
+                        decimal importeme = moneda == 2 ? mov : (tc != 0 ? Math.Round(mov / tc, 2) : 0);
+
+                        //CAMPOS ABANDONADOS
+                        int cc = 0;
+                        int CtaBancaria = 0;
+                        String nroopbanco = "";
+
+                        CapaLogica.InsertarAsientoDetalle(10, PosFila, numasiento, FechaContable, cuentas, fkProyecto, TipoIdProveedor, RucProveedor, NameProveedor, idcomprobante,
+                            codcomprobante, numcomprobante, cc, fechaemision, fechavencimiento, fechaemision, importemn, importeme, tc, moneda, CtaBancaria, nroopbanco, GlosaDetalle,
+                            DateTime.Now, IdUsuario, "");
+
+                    }
+                }
+
+            }
+
+            //SEGUNDO HABER
+            foreach (var cuentas in cuentasUnicas)
+            {
+                var filasCoinciden = dt.AsEnumerable()
+                           .Where(row => row[0]?.ToString() == cuentas && (decimal.TryParse(row[6]?.ToString(), out decimal val) ? val : 0) > 0)
+                           .ToList();
+
+                //decimal totalDebe = dt.AsEnumerable()
+                //    .Where(row => (decimal.TryParse(row[5]?.ToString(), out decimal val) ? val : 0) > 0 && cuentas.Contains(row[0]?.ToString()))
+                //    .Sum(row => decimal.TryParse(row[5]?.ToString(), out decimal val) ? val : 0);
 
                 decimal totalHaber = dt.AsEnumerable()
                     .Where(row => cuentas.Contains(row[0]?.ToString()))
                     .Sum(row => decimal.TryParse(row[6]?.ToString(), out decimal val) ? val : 0);
 
 
-                decimal diferenciaDebe = Math.Max(totalDebe - totalHaber, 0);
-                decimal diferenciaHaber = Math.Max(totalHaber - totalDebe, 0);
+                //decimal diferenciaDebe = Math.Max(totalDebe - totalHaber, 0);
+                //decimal diferenciaHaber = Math.Max(totalHaber - totalDebe, 0);
 
-                DataRow FilaFiltrada = filasCoinciden[0];
-
-                int.TryParse((FilaFiltrada[16].ToString().Split('-'))[0], out int Dinamica);
-                string GlosaDetalle = FilaFiltrada[15].ToString() ?? string.Empty;
-                int.TryParse((FilaFiltrada[13].ToString().Split('-'))[0], out int pkMoneda);
-                //decimal.TryParse(FilaFiltrada[14].ToString(), out decimal TC);
-                int fkProyecto = (int)cboproyecto.EditValue;
-                string GlosaCabecera = txtglosa.EditValue?.ToString() ?? "Asiento Masivo";
-
-                //CABECERA
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, cuentas, diferenciaDebe, diferenciaHaber,
-                  TC, fkProyecto, 0, Cuo, pkMoneda, GlosaCabecera, FechaContable, Dinamica);
-
-                // Aquí puedes procesar cada fila si deseas
-                foreach (DataRow fila in filasCoinciden)
+                if (filasCoinciden.Count > 0)
                 {
-                    // Acceder a otras columnas, por ejemplo fila[5] para el Debe
-                    string[] tipoid = fila[2].ToString().Split('-');
-                    int.TryParse(tipoid[0].ToString(), out int TipoIdProveedor);
-                    string RucProveedor = fila[3].ToString().Trim();
-                    string NameProveedor = fila[4].ToString().Trim();
-                    int.TryParse(fila[8].ToString(), out int idcomprobante);
-                    string codcomprobante = fila[9].ToString().Trim();
-                    string numcomprobante = fila[10].ToString().Trim();
+                    DataRow FilaFiltrada = filasCoinciden[0];
 
-                    DateTime.TryParse((fila[11].ToString().Split('-'))[0], out DateTime fechaemision); // 1: MN, 2: ME
-                    DateTime.TryParse((fila[12].ToString().Split('-'))[0], out DateTime fechavencimiento); // 1: MN, 2: ME
+                    int.TryParse((FilaFiltrada[16].ToString().Split('-'))[0], out int Dinamica);
+                    int.TryParse((FilaFiltrada[13].ToString().Split('-'))[0], out int pkMoneda);
+                    //decimal.TryParse(FilaFiltrada[14].ToString(), out decimal TC);
+                    int fkProyecto = (int)cboproyecto.EditValue;
+                    string GlosaCabecera = txtglosa.EditValue?.ToString() ?? "Asiento Masivo";
+                    GlosaCabecera = GlosaCabecera == "" ? "Asiento Masivo" : GlosaCabecera;
 
-                    int.TryParse((fila[13].ToString().Split('-'))[0], out int moneda); // 1: MN, 2: ME
-                    decimal.TryParse(fila[14].ToString(), out decimal tc); // Tipo de cambio
-                    decimal.TryParse(fila[5].ToString(), out decimal debe);
-                    decimal.TryParse(fila[6].ToString(), out decimal haber);
-                    decimal mov = debe + haber;
+                    Dinamica = Dinamica * -1;
 
-                    decimal importemn = moneda == 1 ? mov : Math.Round(mov * tc, 2);
-                    decimal importeme = moneda == 2 ? mov : (tc != 0 ? Math.Round(mov / tc, 2) : 0);
+                    //CABECERA
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, cuentas, 0, totalHaber,
+                      TC, fkProyecto, 0, Cuo, pkMoneda, GlosaCabecera, FechaContable, Dinamica);
 
-                    //CAMPOS ABANDONADOS
-                    int cc = 0;
-                    int CtaBancaria = 0;
-                    String nroopbanco = "";
+                    // Aquí puedes procesar cada fila si deseas
+                    foreach (DataRow fila in filasCoinciden)
+                    {
+                        // Acceder a otras columnas, por ejemplo fila[5] para el Debe
+                        string[] tipoid = fila[2].ToString().Split('-');
+                        int.TryParse(tipoid[0].ToString(), out int TipoIdProveedor);
+                        string RucProveedor = fila[3].ToString().Trim();
+                        string NameProveedor = fila[4].ToString().Trim();
+                        int.TryParse(fila[8].ToString(), out int idcomprobante);
+                        string codcomprobante = fila[9].ToString().Trim();
+                        string numcomprobante = fila[10].ToString().Trim();
+                        string GlosaDetalle = fila[15].ToString() ?? string.Empty;
 
-                    CapaLogica.InsertarAsientoDetalle(10, PosFila, numasiento, FechaContable, cuentas, fkProyecto, TipoIdProveedor, RucProveedor, NameProveedor, idcomprobante,
-                        codcomprobante, numcomprobante, cc, fechaemision, fechavencimiento, fechaemision, importemn, importeme, tc, moneda, CtaBancaria, nroopbanco, GlosaDetalle,
-                        DateTime.Now, IdUsuario, "");
+                        DateTime.TryParse((fila[11].ToString().Split('-'))[0], out DateTime fechaemision); // 1: MN, 2: ME
+                        DateTime.TryParse((fila[12].ToString().Split('-'))[0], out DateTime fechavencimiento); // 1: MN, 2: ME
 
+                        int.TryParse((fila[13].ToString().Split('-'))[0], out int moneda); // 1: MN, 2: ME
+                        decimal.TryParse(fila[14].ToString(), out decimal tc); // Tipo de cambio
+                        decimal.TryParse(fila[5].ToString(), out decimal debe);
+                        decimal.TryParse(fila[6].ToString(), out decimal haber);
+                        decimal mov = debe + haber;
+
+                        decimal importemn = moneda == 1 ? mov : Math.Round(mov * tc, 2);
+                        decimal importeme = moneda == 2 ? mov : (tc != 0 ? Math.Round(mov / tc, 2) : 0);
+
+                        //CAMPOS ABANDONADOS
+                        int cc = 0;
+                        int CtaBancaria = 0;
+                        String nroopbanco = "";
+
+                        CapaLogica.InsertarAsientoDetalle(10, PosFila, numasiento, FechaContable, cuentas, fkProyecto, TipoIdProveedor, RucProveedor, NameProveedor, idcomprobante,
+                            codcomprobante, numcomprobante, cc, fechaemision, fechavencimiento, fechaemision, importemn, importeme, tc, moneda, CtaBancaria, nroopbanco, GlosaDetalle,
+                            DateTime.Now, IdUsuario, "");
+
+                    }
                 }
 
             }
+
+
             XtraMessageBox.Show($"✅ El asiento contable masivo se ha cargado correctamente.\nCUO generado: {Cuo}",
                                 "Carga finalizada",
                                 MessageBoxButtons.OK,

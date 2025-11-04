@@ -41,18 +41,6 @@ namespace HPReserger
             this.Cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Grid = new HpResergerUserControls.Dtgconten();
-            this.btnaddselected = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.btnaddgroup = new System.Windows.Forms.Button();
-            this.lblmensaje2 = new System.Windows.Forms.Label();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.Txtbusca = new HpResergerUserControls.txtBuscar();
-            this.button1 = new System.Windows.Forms.Button();
             this.codcuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUENTAN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUENTACONTABLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +62,20 @@ namespace HPReserger
             this.xctadetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xestadocta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xnestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnaddselected = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.btnaddgroup = new System.Windows.Forms.Button();
+            this.lblmensaje2 = new System.Windows.Forms.Label();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.Txtbusca = new HpResergerUserControls.txtBuscar();
+            this.button1 = new System.Windows.Forms.Button();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuplicados = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgConten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -96,6 +98,8 @@ namespace HPReserger
             this.dtgConten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgConten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgConten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgConten.CheckColumna = null;
+            this.dtgConten.CheckValor = 1;
             this.dtgConten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -166,6 +170,8 @@ namespace HPReserger
             this.Grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.Grid.CheckColumna = null;
+            this.Grid.CheckValor = 1;
             this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -219,165 +225,6 @@ namespace HPReserger
             this.Grid.Size = new System.Drawing.Size(738, 197);
             this.Grid.TabIndex = 138;
             this.Grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellDoubleClick);
-            // 
-            // btnaddselected
-            // 
-            this.btnaddselected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaddselected.Image = ((System.Drawing.Image)(resources.GetObject("btnaddselected.Image")));
-            this.btnaddselected.Location = new System.Drawing.Point(498, 259);
-            this.btnaddselected.Name = "btnaddselected";
-            this.btnaddselected.Size = new System.Drawing.Size(123, 26);
-            this.btnaddselected.TabIndex = 150;
-            this.btnaddselected.Text = "Agregar Selección";
-            this.btnaddselected.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaddselected.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaddselected.UseVisualStyleBackColor = true;
-            this.btnaddselected.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 28);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(567, 28);
-            this.groupBox1.TabIndex = 146;
-            this.groupBox1.TabStop = false;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton4.Location = new System.Drawing.Point(120, 10);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(85, 18);
-            this.radioButton4.TabIndex = 130;
-            this.radioButton4.Text = "Cuenta N1";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton2.Location = new System.Drawing.Point(211, 10);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(118, 18);
-            this.radioButton2.TabIndex = 130;
-            this.radioButton2.Text = "Cuenta Contable";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton1.Location = new System.Drawing.Point(18, 10);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(109, 18);
-            this.radioButton1.TabIndex = 130;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Código Cuenta";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmsg.Location = new System.Drawing.Point(12, 266);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(101, 13);
-            this.lblmsg.TabIndex = 151;
-            this.lblmsg.Text = "Total de Registros:";
-            // 
-            // btnaddgroup
-            // 
-            this.btnaddgroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaddgroup.Image = ((System.Drawing.Image)(resources.GetObject("btnaddgroup.Image")));
-            this.btnaddgroup.Location = new System.Drawing.Point(627, 259);
-            this.btnaddgroup.Name = "btnaddgroup";
-            this.btnaddgroup.Size = new System.Drawing.Size(123, 26);
-            this.btnaddgroup.TabIndex = 152;
-            this.btnaddgroup.Text = "Agregar Todo";
-            this.btnaddgroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaddgroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaddgroup.UseVisualStyleBackColor = true;
-            this.btnaddgroup.Click += new System.EventHandler(this.btnaddgroup_Click);
-            // 
-            // lblmensaje2
-            // 
-            this.lblmensaje2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmensaje2.AutoSize = true;
-            this.lblmensaje2.BackColor = System.Drawing.Color.Transparent;
-            this.lblmensaje2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmensaje2.Location = new System.Drawing.Point(12, 643);
-            this.lblmensaje2.Name = "lblmensaje2";
-            this.lblmensaje2.Size = new System.Drawing.Size(101, 13);
-            this.lblmensaje2.TabIndex = 153;
-            this.lblmensaje2.Text = "Total de Registros:";
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(627, 636);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(123, 26);
-            this.btncancelar.TabIndex = 155;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(498, 636);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(123, 26);
-            this.btnaceptar.TabIndex = 154;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // Txtbusca
-            // 
-            this.Txtbusca.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Txtbusca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
-            this.Txtbusca.ImgBotonCerrar = null;
-            this.Txtbusca.Location = new System.Drawing.Point(12, 10);
-            this.Txtbusca.Name = "Txtbusca";
-            this.Txtbusca.Size = new System.Drawing.Size(567, 22);
-            this.Txtbusca.TabIndex = 156;
-            this.Txtbusca.BuscarClick += new System.EventHandler(this.Txtbusca_TextChanged);
-            this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(320, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 26);
-            this.button1.TabIndex = 157;
-            this.button1.Text = "CuentaPrueba";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // codcuenta
             // 
@@ -533,11 +380,194 @@ namespace HPReserger
             this.xnestado.Name = "xnestado";
             this.xnestado.Width = 66;
             // 
+            // btnaddselected
+            // 
+            this.btnaddselected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaddselected.Image = ((System.Drawing.Image)(resources.GetObject("btnaddselected.Image")));
+            this.btnaddselected.Location = new System.Drawing.Point(498, 259);
+            this.btnaddselected.Name = "btnaddselected";
+            this.btnaddselected.Size = new System.Drawing.Size(123, 26);
+            this.btnaddselected.TabIndex = 150;
+            this.btnaddselected.Text = "Agregar Selección";
+            this.btnaddselected.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnaddselected.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaddselected.UseVisualStyleBackColor = true;
+            this.btnaddselected.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.radioButton4);
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 28);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(567, 28);
+            this.groupBox1.TabIndex = 146;
+            this.groupBox1.TabStop = false;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.radioButton4.Location = new System.Drawing.Point(120, 10);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(85, 18);
+            this.radioButton4.TabIndex = 130;
+            this.radioButton4.Text = "Cuenta N1";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.radioButton2.Location = new System.Drawing.Point(211, 10);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(118, 18);
+            this.radioButton2.TabIndex = 130;
+            this.radioButton2.Text = "Cuenta Contable";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.radioButton1.Location = new System.Drawing.Point(18, 10);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(109, 18);
+            this.radioButton1.TabIndex = 130;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Código Cuenta";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsg.Location = new System.Drawing.Point(12, 266);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(102, 13);
+            this.lblmsg.TabIndex = 151;
+            this.lblmsg.Text = "Total de Registros:";
+            // 
+            // btnaddgroup
+            // 
+            this.btnaddgroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaddgroup.Image = ((System.Drawing.Image)(resources.GetObject("btnaddgroup.Image")));
+            this.btnaddgroup.Location = new System.Drawing.Point(627, 259);
+            this.btnaddgroup.Name = "btnaddgroup";
+            this.btnaddgroup.Size = new System.Drawing.Size(123, 26);
+            this.btnaddgroup.TabIndex = 152;
+            this.btnaddgroup.Text = "Agregar Todo";
+            this.btnaddgroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnaddgroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaddgroup.UseVisualStyleBackColor = true;
+            this.btnaddgroup.Click += new System.EventHandler(this.btnaddgroup_Click);
+            // 
+            // lblmensaje2
+            // 
+            this.lblmensaje2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmensaje2.AutoSize = true;
+            this.lblmensaje2.BackColor = System.Drawing.Color.Transparent;
+            this.lblmensaje2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmensaje2.Location = new System.Drawing.Point(12, 643);
+            this.lblmensaje2.Name = "lblmensaje2";
+            this.lblmensaje2.Size = new System.Drawing.Size(102, 13);
+            this.lblmensaje2.TabIndex = 153;
+            this.lblmensaje2.Text = "Total de Registros:";
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(627, 636);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(123, 26);
+            this.btncancelar.TabIndex = 155;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(498, 636);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(123, 26);
+            this.btnaceptar.TabIndex = 154;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // Txtbusca
+            // 
+            this.Txtbusca.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Txtbusca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
+            this.Txtbusca.ImgBotonCerrar = null;
+            this.Txtbusca.Location = new System.Drawing.Point(12, 10);
+            this.Txtbusca.Name = "Txtbusca";
+            this.Txtbusca.Size = new System.Drawing.Size(567, 22);
+            this.Txtbusca.TabIndex = 156;
+            this.Txtbusca.BuscarClick += new System.EventHandler(this.Txtbusca_TextChanged);
+            this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(320, 259);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 26);
+            this.button1.TabIndex = 157;
+            this.button1.Text = "CuentaPrueba";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(296, 639);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(107, 23);
+            this.simpleButton1.TabIndex = 158;
+            this.simpleButton1.Text = "Limpiar todo";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // btnDuplicados
+            // 
+            this.btnDuplicados.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDuplicados.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDuplicados.ImageOptions.Image")));
+            this.btnDuplicados.Location = new System.Drawing.Point(175, 639);
+            this.btnDuplicados.Name = "btnDuplicados";
+            this.btnDuplicados.Size = new System.Drawing.Size(117, 23);
+            this.btnDuplicados.TabIndex = 159;
+            this.btnDuplicados.Text = "Quitar Duplicados";
+            this.btnDuplicados.Click += new System.EventHandler(this.btnDuplicados_Click);
+            // 
             // FrmListarCuentasParaConfigurar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 669);
+            this.Controls.Add(this.btnDuplicados);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.btncancelar);
@@ -602,5 +632,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn xctadetalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn xestadocta;
         private System.Windows.Forms.DataGridViewTextBoxColumn xnestado;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnDuplicados;
     }
 }

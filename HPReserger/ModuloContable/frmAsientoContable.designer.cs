@@ -76,6 +76,7 @@ namespace HPReserger
             this.SolicitaDetallex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cuadrarAsientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarReflejosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnpdf = new System.Windows.Forms.Button();
             this.txtbuscuenta = new HpResergerUserControls.TextBoxPer();
             this.btncleanfind = new System.Windows.Forms.Button();
@@ -144,7 +145,8 @@ namespace HPReserger
             this.btnnuevo = new HpResergerUserControls.ButtonPer();
             this.btneliminar = new HpResergerUserControls.ButtonPer();
             this.btndina = new HpResergerUserControls.ButtonPer();
-            this.generarReflejosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRevisarAsiento = new DevExpress.XtraEditors.SimpleButton();
+            this.chkActivos = new DevExpress.XtraEditors.CheckButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -160,7 +162,7 @@ namespace HPReserger
             this.txtbusGlosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusGlosa.ForeColor = System.Drawing.Color.Black;
             this.txtbusGlosa.Format = null;
-            this.txtbusGlosa.Location = new System.Drawing.Point(189, 371);
+            this.txtbusGlosa.Location = new System.Drawing.Point(189, 392);
             this.txtbusGlosa.MaxLength = 100;
             this.txtbusGlosa.Name = "txtbusGlosa";
             this.txtbusGlosa.NextControlOnEnter = null;
@@ -182,7 +184,7 @@ namespace HPReserger
             this.btnreversa.Enabled = false;
             this.btnreversa.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnreversa.Image = ((System.Drawing.Image)(resources.GetObject("btnreversa.Image")));
-            this.btnreversa.Location = new System.Drawing.Point(250, 578);
+            this.btnreversa.Location = new System.Drawing.Point(312, 599);
             this.btnreversa.Name = "btnreversa";
             this.btnreversa.Size = new System.Drawing.Size(92, 23);
             this.btnreversa.TabIndex = 30;
@@ -198,7 +200,7 @@ namespace HPReserger
             this.duplicadorBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.duplicadorBase1.dataTable = this.dtgbusca;
             this.duplicadorBase1.img = ((System.Drawing.Image)(resources.GetObject("duplicadorBase1.img")));
-            this.duplicadorBase1.Location = new System.Drawing.Point(624, 424);
+            this.duplicadorBase1.Location = new System.Drawing.Point(748, 445);
             this.duplicadorBase1.Name = "duplicadorBase1";
             this.duplicadorBase1.Size = new System.Drawing.Size(18, 18);
             this.duplicadorBase1.TabIndex = 168;
@@ -260,7 +262,7 @@ namespace HPReserger
             this.dtgbusca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgbusca.EnableHeadersVisualStyles = false;
             this.dtgbusca.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgbusca.Location = new System.Drawing.Point(9, 420);
+            this.dtgbusca.Location = new System.Drawing.Point(9, 441);
             this.dtgbusca.MultiSelect = false;
             this.dtgbusca.Name = "dtgbusca";
             this.dtgbusca.ReadOnly = true;
@@ -268,7 +270,7 @@ namespace HPReserger
             this.dtgbusca.RowHeadersVisible = false;
             this.dtgbusca.RowTemplate.Height = 16;
             this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgbusca.Size = new System.Drawing.Size(664, 155);
+            this.dtgbusca.Size = new System.Drawing.Size(788, 155);
             this.dtgbusca.TabIndex = 34;
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
             // 
@@ -466,7 +468,7 @@ namespace HPReserger
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
-            this.Dtgconten.Size = new System.Drawing.Size(664, 158);
+            this.Dtgconten.Size = new System.Drawing.Size(788, 179);
             this.Dtgconten.TabIndex = 17;
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.Dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellEndEdit);
@@ -572,7 +574,7 @@ namespace HPReserger
             this.cuadrarAsientoToolStripMenuItem,
             this.generarReflejosToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 48);
             // 
             // cuadrarAsientoToolStripMenuItem
             // 
@@ -583,6 +585,14 @@ namespace HPReserger
             this.cuadrarAsientoToolStripMenuItem.Visible = false;
             this.cuadrarAsientoToolStripMenuItem.Click += new System.EventHandler(this.cuadrarAsientoToolStripMenuItem_Click);
             // 
+            // generarReflejosToolStripMenuItem
+            // 
+            this.generarReflejosToolStripMenuItem.Name = "generarReflejosToolStripMenuItem";
+            this.generarReflejosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.generarReflejosToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.generarReflejosToolStripMenuItem.Text = "Generar Reflejos";
+            this.generarReflejosToolStripMenuItem.Click += new System.EventHandler(this.generarReflejosToolStripMenuItem_Click);
+            // 
             // btnpdf
             // 
             this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -591,7 +601,7 @@ namespace HPReserger
             this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnpdf.ForeColor = System.Drawing.Color.White;
             this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
-            this.btnpdf.Location = new System.Drawing.Point(342, 577);
+            this.btnpdf.Location = new System.Drawing.Point(404, 598);
             this.btnpdf.Name = "btnpdf";
             this.btnpdf.Size = new System.Drawing.Size(92, 25);
             this.btnpdf.TabIndex = 31;
@@ -610,7 +620,7 @@ namespace HPReserger
             this.txtbuscuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscuenta.ForeColor = System.Drawing.Color.Black;
             this.txtbuscuenta.Format = null;
-            this.txtbuscuenta.Location = new System.Drawing.Point(9, 396);
+            this.txtbuscuenta.Location = new System.Drawing.Point(9, 417);
             this.txtbuscuenta.MaxLength = 100;
             this.txtbuscuenta.Name = "txtbuscuenta";
             this.txtbuscuenta.NextControlOnEnter = null;
@@ -630,7 +640,7 @@ namespace HPReserger
             this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btncleanfind.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
-            this.btncleanfind.Location = new System.Drawing.Point(553, 395);
+            this.btncleanfind.Location = new System.Drawing.Point(645, 415);
             this.btncleanfind.Name = "btncleanfind";
             this.btncleanfind.Size = new System.Drawing.Size(25, 23);
             this.btncleanfind.TabIndex = 71;
@@ -648,7 +658,7 @@ namespace HPReserger
             this.dtpfechaini.CalendarTitleForeColor = System.Drawing.Color.Red;
             this.dtpfechaini.CalendarTrailingForeColor = System.Drawing.Color.Lime;
             this.dtpfechaini.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechaini.Location = new System.Drawing.Point(269, 395);
+            this.dtpfechaini.Location = new System.Drawing.Point(269, 416);
             this.dtpfechaini.Name = "dtpfechaini";
             this.dtpfechaini.Size = new System.Drawing.Size(93, 22);
             this.dtpfechaini.TabIndex = 27;
@@ -662,7 +672,7 @@ namespace HPReserger
             this.lbl2.BackColor = System.Drawing.Color.Transparent;
             this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lbl2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.lbl2.Location = new System.Drawing.Point(373, 399);
+            this.lbl2.Location = new System.Drawing.Point(373, 420);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(79, 15);
             this.lbl2.TabIndex = 70;
@@ -676,7 +686,7 @@ namespace HPReserger
             this.lbl1.BackColor = System.Drawing.Color.Transparent;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lbl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.lbl1.Location = new System.Drawing.Point(186, 399);
+            this.lbl1.Location = new System.Drawing.Point(186, 420);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(83, 15);
             this.lbl1.TabIndex = 67;
@@ -688,7 +698,7 @@ namespace HPReserger
             this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radioButton2.AutoSize = true;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton2.Location = new System.Drawing.Point(78, 399);
+            this.radioButton2.Location = new System.Drawing.Point(78, 420);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(68, 18);
             this.radioButton2.TabIndex = 65;
@@ -705,7 +715,7 @@ namespace HPReserger
             this.dtpfechafin.CalendarTitleForeColor = System.Drawing.Color.Red;
             this.dtpfechafin.CalendarTrailingForeColor = System.Drawing.Color.Lime;
             this.dtpfechafin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechafin.Location = new System.Drawing.Point(457, 395);
+            this.dtpfechafin.Location = new System.Drawing.Point(457, 416);
             this.dtpfechafin.Name = "dtpfechafin";
             this.dtpfechafin.Size = new System.Drawing.Size(93, 22);
             this.dtpfechafin.TabIndex = 28;
@@ -716,7 +726,7 @@ namespace HPReserger
             // 
             this.fechafin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.fechafin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.fechafin.Location = new System.Drawing.Point(310, 397);
+            this.fechafin.Location = new System.Drawing.Point(310, 418);
             this.fechafin.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.fechafin.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.fechafin.Name = "fechafin";
@@ -729,7 +739,7 @@ namespace HPReserger
             // 
             this.fechaini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.fechaini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.fechaini.Location = new System.Drawing.Point(202, 397);
+            this.fechaini.Location = new System.Drawing.Point(202, 418);
             this.fechaini.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.fechaini.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.fechaini.Name = "fechaini";
@@ -748,7 +758,7 @@ namespace HPReserger
             this.txtbusSuboperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusSuboperacion.ForeColor = System.Drawing.Color.Black;
             this.txtbusSuboperacion.Format = null;
-            this.txtbusSuboperacion.Location = new System.Drawing.Point(407, 371);
+            this.txtbusSuboperacion.Location = new System.Drawing.Point(407, 392);
             this.txtbusSuboperacion.MaxLength = 100;
             this.txtbusSuboperacion.Name = "txtbusSuboperacion";
             this.txtbusSuboperacion.NextControlOnEnter = null;
@@ -769,7 +779,7 @@ namespace HPReserger
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton1.Location = new System.Drawing.Point(9, 399);
+            this.radioButton1.Location = new System.Drawing.Point(9, 420);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(69, 18);
             this.radioButton1.TabIndex = 30;
@@ -782,7 +792,7 @@ namespace HPReserger
             // 
             this.chkfecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkfecha.AutoSize = true;
-            this.chkfecha.Location = new System.Drawing.Point(146, 400);
+            this.chkfecha.Location = new System.Drawing.Point(146, 421);
             this.chkfecha.Name = "chkfecha";
             this.chkfecha.Size = new System.Drawing.Size(56, 17);
             this.chkfecha.TabIndex = 66;
@@ -800,7 +810,7 @@ namespace HPReserger
             this.txtbuscuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscuo.ForeColor = System.Drawing.Color.Black;
             this.txtbuscuo.Format = null;
-            this.txtbuscuo.Location = new System.Drawing.Point(9, 371);
+            this.txtbuscuo.Location = new System.Drawing.Point(9, 392);
             this.txtbuscuo.MaxLength = 100;
             this.txtbuscuo.Name = "txtbuscuo";
             this.txtbuscuo.NextControlOnEnter = null;
@@ -823,7 +833,7 @@ namespace HPReserger
             this.chkPulser.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkPulser.ColorChecked = System.Drawing.Color.Empty;
             this.chkPulser.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkPulser.Location = new System.Drawing.Point(594, 373);
+            this.chkPulser.Location = new System.Drawing.Point(594, 394);
             this.chkPulser.Name = "chkPulser";
             this.chkPulser.Size = new System.Drawing.Size(76, 17);
             this.chkPulser.TabIndex = 24;
@@ -837,7 +847,7 @@ namespace HPReserger
             this.labelAmarillo.AutoSize = true;
             this.labelAmarillo.BackColor = System.Drawing.Color.Transparent;
             this.labelAmarillo.ForeColor = System.Drawing.Color.Chocolate;
-            this.labelAmarillo.Location = new System.Drawing.Point(240, 333);
+            this.labelAmarillo.Location = new System.Drawing.Point(302, 354);
             this.labelAmarillo.Name = "labelAmarillo";
             this.labelAmarillo.Size = new System.Drawing.Size(204, 13);
             this.labelAmarillo.TabIndex = 59;
@@ -947,11 +957,11 @@ namespace HPReserger
             this.separadorOre2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre2.Location = new System.Drawing.Point(0, 364);
+            this.separadorOre2.Location = new System.Drawing.Point(0, 385);
             this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre2.Name = "separadorOre2";
-            this.separadorOre2.Size = new System.Drawing.Size(711, 2);
+            this.separadorOre2.Size = new System.Drawing.Size(835, 2);
             this.separadorOre2.TabIndex = 57;
             // 
             // separadorOre1
@@ -963,7 +973,7 @@ namespace HPReserger
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(711, 2);
+            this.separadorOre1.Size = new System.Drawing.Size(835, 2);
             this.separadorOre1.TabIndex = 51;
             // 
             // Txtbusca
@@ -974,7 +984,7 @@ namespace HPReserger
             this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
             this.Txtbusca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbusca.ImgBotonCerrar = null;
-            this.Txtbusca.Location = new System.Drawing.Point(9, 369);
+            this.Txtbusca.Location = new System.Drawing.Point(9, 390);
             this.Txtbusca.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(565, 22);
@@ -990,7 +1000,7 @@ namespace HPReserger
             this.labelCuadre.AutoSize = true;
             this.labelCuadre.BackColor = System.Drawing.Color.Transparent;
             this.labelCuadre.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelCuadre.Location = new System.Drawing.Point(12, 346);
+            this.labelCuadre.Location = new System.Drawing.Point(12, 367);
             this.labelCuadre.Name = "labelCuadre";
             this.labelCuadre.Size = new System.Drawing.Size(64, 13);
             this.labelCuadre.TabIndex = 63;
@@ -1001,7 +1011,7 @@ namespace HPReserger
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Location = new System.Drawing.Point(12, 333);
+            this.label11.Location = new System.Drawing.Point(12, 354);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 13);
             this.label11.TabIndex = 56;
@@ -1011,7 +1021,7 @@ namespace HPReserger
             this.lbldetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbldetalle.AutoSize = true;
             this.lbldetalle.BackColor = System.Drawing.Color.Transparent;
-            this.lbldetalle.Location = new System.Drawing.Point(12, 320);
+            this.lbldetalle.Location = new System.Drawing.Point(12, 341);
             this.lbldetalle.Name = "lbldetalle";
             this.lbldetalle.Size = new System.Drawing.Size(46, 13);
             this.lbldetalle.TabIndex = 55;
@@ -1023,7 +1033,7 @@ namespace HPReserger
             this.labelAzul.AutoSize = true;
             this.labelAzul.BackColor = System.Drawing.Color.Transparent;
             this.labelAzul.ForeColor = System.Drawing.Color.Blue;
-            this.labelAzul.Location = new System.Drawing.Point(273, 320);
+            this.labelAzul.Location = new System.Drawing.Point(335, 341);
             this.labelAzul.Name = "labelAzul";
             this.labelAzul.Size = new System.Drawing.Size(139, 13);
             this.labelAzul.TabIndex = 60;
@@ -1036,7 +1046,7 @@ namespace HPReserger
             this.labelRojo.AutoSize = true;
             this.labelRojo.BackColor = System.Drawing.Color.Transparent;
             this.labelRojo.ForeColor = System.Drawing.Color.Red;
-            this.labelRojo.Location = new System.Drawing.Point(284, 307);
+            this.labelRojo.Location = new System.Drawing.Point(346, 328);
             this.labelRojo.Name = "labelRojo";
             this.labelRojo.Size = new System.Drawing.Size(117, 13);
             this.labelRojo.TabIndex = 58;
@@ -1107,7 +1117,7 @@ namespace HPReserger
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(581, 395);
+            this.btnActualizar.Location = new System.Drawing.Point(705, 416);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(92, 23);
             this.btnActualizar.TabIndex = 29;
@@ -1136,7 +1146,7 @@ namespace HPReserger
             this.lblmsg.AutoSize = true;
             this.lblmsg.BackColor = System.Drawing.Color.Transparent;
             this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmsg.Location = new System.Drawing.Point(12, 307);
+            this.lblmsg.Location = new System.Drawing.Point(12, 328);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(102, 13);
             this.lblmsg.TabIndex = 54;
@@ -1148,7 +1158,7 @@ namespace HPReserger
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(506, 346);
+            this.label5.Location = new System.Drawing.Point(630, 367);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 64;
@@ -1159,7 +1169,7 @@ namespace HPReserger
             this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdiferencia.BackColor = System.Drawing.SystemColors.Window;
             this.txtdiferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdiferencia.Location = new System.Drawing.Point(571, 342);
+            this.txtdiferencia.Location = new System.Drawing.Point(695, 363);
             this.txtdiferencia.MaxLength = 20;
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
@@ -1173,7 +1183,7 @@ namespace HPReserger
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(485, 307);
+            this.label4.Location = new System.Drawing.Point(609, 328);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 61;
@@ -1184,7 +1194,7 @@ namespace HPReserger
             this.txttotaldebe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotaldebe.BackColor = System.Drawing.SystemColors.Window;
             this.txttotaldebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotaldebe.Location = new System.Drawing.Point(466, 320);
+            this.txttotaldebe.Location = new System.Drawing.Point(590, 341);
             this.txttotaldebe.MaxLength = 20;
             this.txttotaldebe.Name = "txttotaldebe";
             this.txttotaldebe.ReadOnly = true;
@@ -1198,7 +1208,7 @@ namespace HPReserger
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(590, 307);
+            this.label3.Location = new System.Drawing.Point(714, 328);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 62;
@@ -1209,7 +1219,7 @@ namespace HPReserger
             this.txttotalhaber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotalhaber.BackColor = System.Drawing.SystemColors.Window;
             this.txttotalhaber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalhaber.Location = new System.Drawing.Point(571, 320);
+            this.txttotalhaber.Location = new System.Drawing.Point(695, 341);
             this.txttotalhaber.MaxLength = 20;
             this.txttotalhaber.Name = "txttotalhaber";
             this.txttotalhaber.ReadOnly = true;
@@ -1250,7 +1260,7 @@ namespace HPReserger
             this.lblmsg2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg2.AutoSize = true;
             this.lblmsg2.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg2.Location = new System.Drawing.Point(6, 583);
+            this.lblmsg2.Location = new System.Drawing.Point(6, 604);
             this.lblmsg2.Name = "lblmsg2";
             this.lblmsg2.Size = new System.Drawing.Size(102, 13);
             this.lblmsg2.TabIndex = 35;
@@ -1456,7 +1466,7 @@ namespace HPReserger
             this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProcesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(484, 578);
+            this.btnProcesar.Location = new System.Drawing.Point(608, 599);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(92, 23);
             this.btnProcesar.TabIndex = 169;
@@ -1474,7 +1484,7 @@ namespace HPReserger
             this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.ForeColor = System.Drawing.Color.White;
-            this.btncancelar.Location = new System.Drawing.Point(581, 578);
+            this.btncancelar.Location = new System.Drawing.Point(705, 599);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(92, 23);
             this.btncancelar.TabIndex = 170;
@@ -1559,23 +1569,38 @@ namespace HPReserger
             this.btndina.UseVisualStyleBackColor = false;
             this.btndina.Click += new System.EventHandler(this.btndina_Click);
             // 
-            // generarReflejosToolStripMenuItem
+            // btnRevisarAsiento
             // 
-            this.generarReflejosToolStripMenuItem.Name = "generarReflejosToolStripMenuItem";
-            this.generarReflejosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.generarReflejosToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.generarReflejosToolStripMenuItem.Text = "Generar Reflejos";
-            this.generarReflejosToolStripMenuItem.Click += new System.EventHandler(this.generarReflejosToolStripMenuItem_Click);
+            this.btnRevisarAsiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRevisarAsiento.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRevisarAsiento.ImageOptions.Image")));
+            this.btnRevisarAsiento.Location = new System.Drawing.Point(202, 328);
+            this.btnRevisarAsiento.Name = "btnRevisarAsiento";
+            this.btnRevisarAsiento.Size = new System.Drawing.Size(22, 20);
+            this.btnRevisarAsiento.TabIndex = 371;
+            this.btnRevisarAsiento.Click += new System.EventHandler(this.btnRevisarAsiento_Click);
+            // 
+            // chkActivos
+            // 
+            this.chkActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkActivos.Checked = true;
+            this.chkActivos.Location = new System.Drawing.Point(555, 416);
+            this.chkActivos.Name = "chkActivos";
+            this.chkActivos.Size = new System.Drawing.Size(84, 23);
+            this.chkActivos.TabIndex = 372;
+            this.chkActivos.Text = "Asientos Activos";
+            this.chkActivos.Visible = false;
             // 
             // frmAsientoContable
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(684, 605);
+            this.ClientSize = new System.Drawing.Size(808, 626);
             this.Colores = new System.Drawing.Color[] {
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.chkActivos);
+            this.Controls.Add(this.btnRevisarAsiento);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btneliminar);
@@ -1765,5 +1790,7 @@ namespace HPReserger
         private ButtonPer btneliminar;
         private ButtonPer btndina;
         private System.Windows.Forms.ToolStripMenuItem generarReflejosToolStripMenuItem;
+        private DevExpress.XtraEditors.SimpleButton btnRevisarAsiento;
+        private DevExpress.XtraEditors.CheckButton chkActivos;
     }
 }

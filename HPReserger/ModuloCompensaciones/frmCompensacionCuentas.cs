@@ -32,8 +32,8 @@ namespace HPReserger.ModuloCompensaciones
                     txtSoles.Text = txtDolares.Text = "0.00";
                     SumaSoles = SumaDolares = 0;
                     cboempresa.Enabled = a;
-                    txtcuos.Enabled = a;
-                    txtCuentas.Enabled = txtRucs.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = a;
+                    //txtcuos.Enabled = a;
+                    txtcomprobantes.Enabled = txtCuentas.Enabled = txtRucs.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = a;
                     dtgconten.Enabled = !a;
                     btnPaso1.Enabled = a;
                     if (dtgconten.DataSource != null)
@@ -48,8 +48,8 @@ namespace HPReserger.ModuloCompensaciones
                 else if (value == 1)
                 {
                     cboempresa.Enabled = !a;
-                    txtcuos.Enabled = !a;
-                    txtCuentas.Enabled = txtRucs.Enabled = chkFecha.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = !a;
+                    //txtcuos.Enabled = !a;
+                    txtcomprobantes.Enabled = txtCuentas.Enabled = txtRucs.Enabled = dtpfechade.Enabled = dtpFechaHasta.Enabled = !a;
                     dtgconten.Enabled = a;
                 }
             }
@@ -79,7 +79,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         private void CargarTextxDefecto()
         {
-            txtcuos.CargarTextoporDefecto();
+            //txtcuos.CargarTextoporDefecto();
             txtCuenta.CargarTextoporDefecto();
             txtGlosa.CargarTextoporDefecto();
             txtRucs.CargarTextoporDefecto();
@@ -126,7 +126,7 @@ namespace HPReserger.ModuloCompensaciones
         private void btnPaso1_Click(object sender, EventArgs e)
         {
             if (cboempresa.SelectedValue == null) { msgError("Seleccione una Empresa"); cboempresa.Focus(); return; }
-            if (Configuraciones.ValidarSQLInyect(txtcuos)) { msgError("Codigo Malicioso Detectado"); txtcuos.Focus(); return; }
+            //if (Configuraciones.ValidarSQLInyect(txtcuos)) { msgError("Codigo Malicioso Detectado"); txtcuos.Focus(); return; }
             //if (!txtcuos.EstaLLeno()) { msgError("Ingrese 2 CUOS minimos"); txtcuos.Focus(); return; }
             //if ((txtcuos.TextValido().Split(',')).Count() < 2) { msgError("Ingrese 2 CUOS minimos"); txtcuos.Focus(); return; }
             List<string> Listado = new List<string>();
@@ -134,16 +134,30 @@ namespace HPReserger.ModuloCompensaciones
             DateTime FechaHasta;
             FechaHasta = dtpFechaHasta.Value; Fechade = dtpfechade.Value;
             if (dtpfechade.Value > dtpFechaHasta.Value) { Fechade = dtpFechaHasta.Value; FechaHasta = dtpfechade.Value; }
-            //
+
+            //hacemos para que cambien el cursor a espera
             Cursor = Cursors.WaitCursor;
-            Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa, txtcuos.TextValido(), txtCuentas.TextValido(), txtRucs.TextValido(),txtcomprobantes.TextValido(), chkFecha.Checked ? 1 : 0, Fechade, FechaHasta);
+
+            if (chkSaldo.Checked)
+            {
+                //consulta por saldos de documentos
+                HPResergerCapaLogica.Contable.ClaseContable Cclase = new HPResergerCapaLogica.Contable.ClaseContable();
+                Tdatos = Cclase.CompensacionDeCuentas(pkEmpresa, txtCuentas.TextValido(), txtRucs.TextValido(), txtcomprobantes.TextValido(), Fechade, FechaHasta);
+            }
+            else
+            {
+                //consulta por movimiento de documentos
+                Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa,  txtCuentas.TextValido(), txtRucs.TextValido(), txtcomprobantes.TextValido(), Fechade, FechaHasta);
+            }
+
+            //Tdatos = CapaLogica.CompensacionDeCuentas(pkEmpresa, txtCuentas.TextValido(), txtRucs.TextValido(), txtcomprobantes.TextValido(), Fechade, FechaHasta);
             Cursor = Cursors.Default;
             if (Tdatos == null) { msgError("No Hay Asientos que mostrar"); return; }
             foreach (DataRow item in Tdatos.Rows)
             {
                 if (!Listado.Contains(item["cuo"].ToString())) Listado.Add(item["cuo"].ToString());
             }
-            if (Listado.Count < 2) { msgError("No hay Datos para mostrar"); return; }
+            //if (Listado.Count < 2) { msgError("No hay Datos para mostrar"); return; }
 
             Estado++;
             dtgconten.DataSource = Tdatos;
@@ -359,18 +373,18 @@ namespace HPReserger.ModuloCompensaciones
         private void checkboxOre1_CheckedChanged(object sender, EventArgs e)
         {
             dtpfechade.Enabled = dtpFechaHasta.Enabled = false;
-            if (chkFecha.Checked) dtpfechade.Enabled = dtpFechaHasta.Enabled = true;
+            //if (chkFecha.Checked) dtpfechade.Enabled = dtpFechaHasta.Enabled = true;
         }
         private void SerializarTexto(TextBox textbox)
         {
-            string txt = textbox.Text;
-            string cadena = $"{txt},";// {Clipboard.GetText()},";
-            cadena = cadena.Replace("\n", ",");
-            cadena = cadena.Replace("\r", ",");
-            cadena = cadena.Replace(" ", ",");
-            string[] Array = cadena.Split(',');
-            string[] Array2 = Array.OrderBy(x => x).GroupBy(x => x).Select(x => x.Key).ToArray();
-            textbox.Text = $"{string.Join(",", Array2)},";
+            //string txt = textbox.Text;
+            //string cadena = $"{txt},";// {Clipboard.GetText()},";
+            //cadena = cadena.Replace("\n", ",");
+            //cadena = cadena.Replace("\r", ",");
+            //cadena = cadena.Replace(" ", ",");
+            //string[] Array = cadena.Split(',');
+            //string[] Array2 = Array.OrderBy(x => x).GroupBy(x => x).Select(x => x.Key).ToArray();
+            //textbox.Text = $"{string.Join(",", Array2)},";
         }
         private void txtcuos_KeyDown(object sender, KeyEventArgs e)
         {
@@ -578,7 +592,7 @@ namespace HPReserger.ModuloCompensaciones
             cbomoneda.Enabled = !a;
             dtpFechaContable.Enabled = !a;
             dtpFechaEmision.Enabled = !a;
-            if (contador > 1)
+            if (contador > 0)
             {
                 //Desbloquearlos
                 txtCuenta.Enabled = a;

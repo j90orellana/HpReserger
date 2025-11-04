@@ -29,14 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule9 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue9 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule10 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue10 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule11 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue11 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule12 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue12 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargaAsientosMasivos));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
@@ -45,7 +38,14 @@
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargaAsientosMasivos));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule5 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue5 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule6 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue6 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule7 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue7 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule8 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue8 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnGrabarAsiento = new DevExpress.XtraBars.BarButtonItem();
@@ -99,12 +99,16 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.cboproyecto = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView12 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.txtglosa = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.xtrafechacontable = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.xtrafechacontable = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
@@ -148,10 +152,6 @@
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.txtglosa = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -177,12 +177,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboproyecto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtglosa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtrafechacontable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtrafechacontable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
@@ -208,10 +212,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtglosa.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -303,31 +303,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1153, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1111, 22);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 520);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 493);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1153, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1111, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 500);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 471);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1153, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1111, 22);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 500);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 471);
             // 
             // layoutControl1
             // 
@@ -337,11 +337,11 @@
             this.layoutControl1.Controls.Add(this.cboproyecto);
             this.layoutControl1.Controls.Add(this.txtglosa);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 20);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 22);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-650, 286, 650, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1153, 500);
+            this.layoutControl1.Size = new System.Drawing.Size(1111, 471);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -396,7 +396,7 @@
             this.repositoryItemSearchLookUpEdit3,
             this.repositoryItemSearchLookUpEdit4,
             this.repositoryItemButtonEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1141, 420);
+            this.gridControl1.Size = new System.Drawing.Size(1099, 391);
             this.gridControl1.TabIndex = 10;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -422,42 +422,42 @@
             this.xGLOSA,
             this.xDINAMICA,
             this.xdelete});
-            gridFormatRule9.Name = "Format0";
-            formatConditionRuleValue9.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
-            formatConditionRuleValue9.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue9.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue9.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue9.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue9.Value1 = "4";
-            gridFormatRule9.Rule = formatConditionRuleValue9;
-            gridFormatRule10.Name = "Format2";
-            formatConditionRuleValue10.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            formatConditionRuleValue10.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue10.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue10.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue10.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue10.Value1 = "3";
-            gridFormatRule10.Rule = formatConditionRuleValue10;
-            gridFormatRule11.Name = "Format1";
-            formatConditionRuleValue11.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(126)))), ((int)(((byte)(20)))));
-            formatConditionRuleValue11.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue11.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue11.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue11.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue11.Value1 = "2";
-            gridFormatRule11.Rule = formatConditionRuleValue11;
-            gridFormatRule12.Name = "Format3";
-            formatConditionRuleValue12.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            formatConditionRuleValue12.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue12.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue12.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue12.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue12.Value1 = "1";
-            gridFormatRule12.Rule = formatConditionRuleValue12;
-            this.gridView1.FormatRules.Add(gridFormatRule9);
-            this.gridView1.FormatRules.Add(gridFormatRule10);
-            this.gridView1.FormatRules.Add(gridFormatRule11);
-            this.gridView1.FormatRules.Add(gridFormatRule12);
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = "4";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            gridFormatRule2.Name = "Format2";
+            formatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Value1 = "3";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            gridFormatRule3.Name = "Format1";
+            formatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(126)))), ((int)(((byte)(20)))));
+            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue3.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue3.Value1 = "2";
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            gridFormatRule4.Name = "Format3";
+            formatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue4.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue4.Value1 = "1";
+            gridFormatRule4.Rule = formatConditionRuleValue4;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
+            this.gridView1.FormatRules.Add(gridFormatRule2);
+            this.gridView1.FormatRules.Add(gridFormatRule3);
+            this.gridView1.FormatRules.Add(gridFormatRule4);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowFooter = true;
@@ -557,6 +557,7 @@
             // 
             this.xTCOMPR.Caption = "T.COMPR.";
             this.xTCOMPR.FieldName = "T.COMPR.";
+            this.xTCOMPR.MaxWidth = 200;
             this.xTCOMPR.Name = "xTCOMPR";
             this.xTCOMPR.Visible = true;
             this.xTCOMPR.VisibleIndex = 8;
@@ -806,6 +807,18 @@
             this.gridView12.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView12.OptionsView.ShowGroupPanel = false;
             // 
+            // txtglosa
+            // 
+            this.txtglosa.EditValue = "";
+            this.txtglosa.Location = new System.Drawing.Point(95, 30);
+            this.txtglosa.MenuManager = this.barManager1;
+            this.txtglosa.Name = "txtglosa";
+            this.txtglosa.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtglosa.Properties.NullValuePrompt = "Ingrese Glosa del Asiento";
+            this.txtglosa.Size = new System.Drawing.Size(288, 20);
+            this.txtglosa.StyleController = this.layoutControl1;
+            this.txtglosa.TabIndex = 26;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -820,7 +833,7 @@
             this.emptySpaceItem5,
             this.xtrafechacontable});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1153, 500);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1111, 471);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -828,7 +841,7 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 68);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1143, 422);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1101, 393);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -849,21 +862,8 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(758, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(385, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(343, 24);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // xtrafechacontable
-            // 
-            this.xtrafechacontable.BestFitWeight = 0;
-            this.xtrafechacontable.Control = this.dtpfechacontable;
-            this.xtrafechacontable.Location = new System.Drawing.Point(0, 46);
-            this.xtrafechacontable.MaxSize = new System.Drawing.Size(193, 22);
-            this.xtrafechacontable.MinSize = new System.Drawing.Size(193, 22);
-            this.xtrafechacontable.Name = "xtrafechacontable";
-            this.xtrafechacontable.Size = new System.Drawing.Size(193, 22);
-            this.xtrafechacontable.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.xtrafechacontable.Text = "Fecha Contable:";
-            this.xtrafechacontable.TextSize = new System.Drawing.Size(86, 13);
             // 
             // layoutControlItem6
             // 
@@ -877,6 +877,47 @@
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.Text = "Proyecto Destino:";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(86, 13);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.txtglosa;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(379, 22);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(379, 22);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(379, 22);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem4.Text = "Glosa:";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(86, 13);
+            // 
+            // emptySpaceItem6
+            // 
+            this.emptySpaceItem6.AllowHotTrack = false;
+            this.emptySpaceItem6.Location = new System.Drawing.Point(379, 24);
+            this.emptySpaceItem6.Name = "emptySpaceItem6";
+            this.emptySpaceItem6.Size = new System.Drawing.Size(722, 22);
+            this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // emptySpaceItem5
+            // 
+            this.emptySpaceItem5.AllowHotTrack = false;
+            this.emptySpaceItem5.Location = new System.Drawing.Point(193, 46);
+            this.emptySpaceItem5.Name = "emptySpaceItem5";
+            this.emptySpaceItem5.Size = new System.Drawing.Size(908, 22);
+            this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // xtrafechacontable
+            // 
+            this.xtrafechacontable.BestFitWeight = 0;
+            this.xtrafechacontable.Control = this.dtpfechacontable;
+            this.xtrafechacontable.Location = new System.Drawing.Point(0, 46);
+            this.xtrafechacontable.MaxSize = new System.Drawing.Size(193, 22);
+            this.xtrafechacontable.MinSize = new System.Drawing.Size(193, 22);
+            this.xtrafechacontable.Name = "xtrafechacontable";
+            this.xtrafechacontable.Size = new System.Drawing.Size(193, 22);
+            this.xtrafechacontable.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.xtrafechacontable.Text = "Fecha Contable:";
+            this.xtrafechacontable.TextSize = new System.Drawing.Size(86, 13);
             // 
             // layoutControl2
             // 
@@ -944,42 +985,42 @@
             this.gridColumn16,
             this.gridColumn17,
             this.gridColumn18});
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
-            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Value1 = "4";
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            gridFormatRule2.Name = "Format2";
-            formatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = "3";
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            gridFormatRule3.Name = "Format1";
-            formatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(126)))), ((int)(((byte)(20)))));
-            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue3.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue3.Value1 = "2";
-            gridFormatRule3.Rule = formatConditionRuleValue3;
-            gridFormatRule4.Name = "Format3";
-            formatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue4.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue4.Value1 = "1";
-            gridFormatRule4.Rule = formatConditionRuleValue4;
-            this.gridView7.FormatRules.Add(gridFormatRule1);
-            this.gridView7.FormatRules.Add(gridFormatRule2);
-            this.gridView7.FormatRules.Add(gridFormatRule3);
-            this.gridView7.FormatRules.Add(gridFormatRule4);
+            gridFormatRule5.Name = "Format0";
+            formatConditionRuleValue5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            formatConditionRuleValue5.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue5.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue5.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue5.Value1 = "4";
+            gridFormatRule5.Rule = formatConditionRuleValue5;
+            gridFormatRule6.Name = "Format2";
+            formatConditionRuleValue6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            formatConditionRuleValue6.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue6.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue6.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue6.Value1 = "3";
+            gridFormatRule6.Rule = formatConditionRuleValue6;
+            gridFormatRule7.Name = "Format1";
+            formatConditionRuleValue7.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(126)))), ((int)(((byte)(20)))));
+            formatConditionRuleValue7.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue7.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue7.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue7.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue7.Value1 = "2";
+            gridFormatRule7.Rule = formatConditionRuleValue7;
+            gridFormatRule8.Name = "Format3";
+            formatConditionRuleValue8.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            formatConditionRuleValue8.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue8.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue8.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue8.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue8.Value1 = "1";
+            gridFormatRule8.Rule = formatConditionRuleValue8;
+            this.gridView7.FormatRules.Add(gridFormatRule5);
+            this.gridView7.FormatRules.Add(gridFormatRule6);
+            this.gridView7.FormatRules.Add(gridFormatRule7);
+            this.gridView7.FormatRules.Add(gridFormatRule8);
             this.gridView7.GridControl = this.gridControl2;
             this.gridView7.Name = "gridView7";
             this.gridView7.OptionsView.ShowFooter = true;
@@ -1356,50 +1397,11 @@
             this.emptySpaceItem4.Size = new System.Drawing.Size(761, 22);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // txtglosa
-            // 
-            this.txtglosa.EditValue = "";
-            this.txtglosa.Location = new System.Drawing.Point(95, 30);
-            this.txtglosa.MenuManager = this.barManager1;
-            this.txtglosa.Name = "txtglosa";
-            this.txtglosa.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtglosa.Size = new System.Drawing.Size(288, 20);
-            this.txtglosa.StyleController = this.layoutControl1;
-            this.txtglosa.TabIndex = 26;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.txtglosa;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem4.MaxSize = new System.Drawing.Size(379, 22);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(379, 22);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(379, 22);
-            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem4.Text = "Glosa:";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(86, 13);
-            // 
-            // emptySpaceItem6
-            // 
-            this.emptySpaceItem6.AllowHotTrack = false;
-            this.emptySpaceItem6.Location = new System.Drawing.Point(379, 24);
-            this.emptySpaceItem6.Name = "emptySpaceItem6";
-            this.emptySpaceItem6.Size = new System.Drawing.Size(764, 22);
-            this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // emptySpaceItem5
-            // 
-            this.emptySpaceItem5.AllowHotTrack = false;
-            this.emptySpaceItem5.Location = new System.Drawing.Point(193, 46);
-            this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(950, 22);
-            this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // frmCargaAsientosMasivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 520);
+            this.ClientSize = new System.Drawing.Size(1111, 493);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1434,12 +1436,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboproyecto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtglosa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtrafechacontable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtrafechacontable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
@@ -1465,10 +1471,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtglosa.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

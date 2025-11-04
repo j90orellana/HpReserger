@@ -25,7 +25,12 @@ namespace HpResergerNube
                     object obj = npgsqlCommand.ExecuteScalar();
                     num = obj == DBNull.Value || obj == null ? 1 : Convert.ToInt32(obj) + 1;
                 }
-                using (NpgsqlCommand npgsqlCommand = new NpgsqlCommand("INSERT INTO public.\"CRM_Proyecto\" (\"ID_Proyecto\", \"Nombre_Proyecto\", \"Referencia\", \"ID_Codigo_postal\", \"Direccion\", \"ID_Tipo_proyecto\", \"ID_Prioridad\", \"ID_Estado\", \"ID_Situacion\", \"Requerimiento\", \"Usuario_Creacion\", \"Fecha_Creacion\", \"Fecha_Recordatorio\", \"Fecha_Cotizacion\", \"Fecha_Cierre\", \"Observaciones\", \"ID_Tipo_Seguimiento\", \"ID_Usuario\", \"ID_Contacto\", \"Archivo\", \"Fotos\", \"Imagen\", \"ID_Cliente\") VALUES (@ID_Proyecto, @Nombre_Proyecto, @Referencia, @ID_Codigo_postal, @Direccion, @ID_Tipo_proyecto, @ID_Prioridad, @ID_Estado, @ID_Situacion, @Requerimiento, @Usuario_Creacion, @Fecha_Creacion, @Fecha_Recordatorio, @Fecha_Cotizacion, @Fecha_Cierre, @Observaciones, @ID_Tipo_Seguimiento, @ID_Usuario, @ID_Contacto, @Archivo, @Fotos, @Imagen,@ID_Cliente)", connection))
+                using (NpgsqlCommand npgsqlCommand = new NpgsqlCommand("INSERT INTO public.\"CRM_Proyecto\" (\"ID_Proyecto\", \"Nombre_Proyecto\", \"Referencia\"," +
+                    " \"ID_Codigo_postal\", \"Direccion\", \"ID_Tipo_proyecto\", \"ID_Prioridad\", \"ID_Estado\", \"ID_Situacion\", \"Requerimiento\", \"Usuario_Creacion\"," +
+                    " \"Fecha_Creacion\", \"Fecha_Recordatorio\", \"Fecha_Cotizacion\", \"Fecha_Cierre\", \"Observaciones\", \"ID_Tipo_Seguimiento\", \"ID_Usuario\"," +
+                    " \"ID_Contacto\", \"Archivo\", \"Fotos\", \"Imagen\", \"ID_Cliente\" , \"ValorSoles\" , \"ValorDolares\") VALUES (@ID_Proyecto, @Nombre_Proyecto, @Referencia, @ID_Codigo_postal, @Direccion," +
+                    " @ID_Tipo_proyecto, @ID_Prioridad, @ID_Estado, @ID_Situacion, @Requerimiento, @Usuario_Creacion, @Fecha_Creacion, @Fecha_Recordatorio, @Fecha_Cotizacion, " +
+                    "@Fecha_Cierre, @Observaciones, @ID_Tipo_Seguimiento, @ID_Usuario, @ID_Contacto, @Archivo, @Fotos, @Imagen,@ID_Cliente, @soles, @dolares)", connection))
                 {
                     npgsqlCommand.Parameters.AddWithValue("@ID_Proyecto", (object)num);
                     npgsqlCommand.Parameters.AddWithValue("@Nombre_Proyecto", (object)proyecto.Nombre_Proyecto);
@@ -50,6 +55,10 @@ namespace HpResergerNube
                     npgsqlCommand.Parameters.AddWithValue("@Fotos", (object)proyecto.Fotos ?? (object)DBNull.Value);
                     npgsqlCommand.Parameters.AddWithValue("@Imagen", (object)proyecto.Imagen ?? (object)DBNull.Value);
                     npgsqlCommand.Parameters.AddWithValue("@ID_Cliente", (object)proyecto.idcliente ?? (object)DBNull.Value);
+
+                    npgsqlCommand.Parameters.AddWithValue("@soles", (object)proyecto.ValorSoles);
+                    npgsqlCommand.Parameters.AddWithValue("@dolares", (object)proyecto.ValorDolares);
+
                     npgsqlCommand.ExecuteNonQuery();
                 }
             }
@@ -108,7 +117,7 @@ namespace HpResergerNube
                 CASE WHEN CLI.""ID_Tipo_persona"" = 'J' THEN CLI.""Razon_Social"" ELSE CONCAT(CLI.""Nombre"", ' ', COALESCE(CLI.""Apellido1"", ''), ' ', COALESCE(CLI.""Apellido2"", '')) END AS ""Nombre_Cliente"" 
                 	, (SELECT COUNT(1) FROM public.""CRM_Seguimiento"" SEG WHERE SEG.""ID_Proyecto"" = PRO.""ID_Proyecto"") AS ""Seguimientos""
                     , (SELECT COUNT(1) FROM public.""CRM_Documentos"" DOC WHERE DOC.""fk_id"" = PRO.""ID_Proyecto"") AS ""Documentos""
-                ,    EST.""Detalle_Estado"" AS ""Estado"" 
+                ,    EST.""Detalle_Estado"" AS ""Estado"" , ""ValorSoles"" as ""ValorSoles"" , ""ValorDolares"" as ""ValorDolares""
 
                 FROM public.""CRM_Proyecto"" PRO
                 LEFT JOIN public.""CRM_Prioridad"" PRI ON PRO.""ID_Prioridad"" = PRI.""ID_Prioridad""
@@ -152,7 +161,14 @@ namespace HpResergerNube
                     using (NpgsqlCommand npgsqlCommand = new NpgsqlCommand())
                     {
                         npgsqlCommand.Connection = npgsqlConnection;
-                        npgsqlCommand.CommandText = "UPDATE public.\"CRM_Proyecto\" SET \"ID_Cliente\" = @ID_Cliente, \"Nombre_Proyecto\" = @Nombre_Proyecto, \"Referencia\" = @Referencia, \"ID_Codigo_postal\" = @ID_Codigo_postal, \"Direccion\" = @Direccion, \"ID_Tipo_proyecto\" = @ID_Tipo_proyecto, \"ID_Prioridad\" = @ID_Prioridad, \"ID_Estado\" = @ID_Estado, \"ID_Situacion\" = @ID_Situacion, \"Requerimiento\" = @Requerimiento, \"Fecha_Creacion\" = @Fecha_Creacion, \"Fecha_Recordatorio\" = @Fecha_Recordatorio, \"Fecha_Cotizacion\" = @Fecha_Cotizacion, \"Fecha_Cierre\" = @Fecha_Cierre, \"Observaciones\" = @Observaciones, \"ID_Tipo_Seguimiento\" = @ID_Tipo_Seguimiento, \"ID_Usuario\" = @ID_Usuario, \"ID_Contacto\" = @ID_Contacto, \"Archivo\" = @Archivo, \"Fotos\" = @Fotos, \"Imagen\" = @Imagen WHERE \"ID_Proyecto\" = @ID_Proyecto";
+                        npgsqlCommand.CommandText = "UPDATE public.\"CRM_Proyecto\" SET \"ID_Cliente\" = @ID_Cliente, \"Nombre_Proyecto\" = @Nombre_Proyecto, " +
+                            "\"Referencia\" = @Referencia, \"ID_Codigo_postal\" = @ID_Codigo_postal, \"Direccion\" = @Direccion, \"ID_Tipo_proyecto\" = @ID_Tipo_proyecto," +
+                            " \"ID_Prioridad\" = @ID_Prioridad, \"ID_Estado\" = @ID_Estado, \"ID_Situacion\" = @ID_Situacion, \"Requerimiento\" = @Requerimiento," +
+                            " \"Fecha_Creacion\" = @Fecha_Creacion, \"Fecha_Recordatorio\" = @Fecha_Recordatorio, \"Fecha_Cotizacion\" = @Fecha_Cotizacion, " +
+                            "\"Fecha_Cierre\" = @Fecha_Cierre, \"Observaciones\" = @Observaciones, \"ID_Tipo_Seguimiento\" = @ID_Tipo_Seguimiento," +
+                            " \"ID_Usuario\" = @ID_Usuario, \"ID_Contacto\" = @ID_Contacto, \"Archivo\" = @Archivo, \"Fotos\" = @Fotos" +
+                            ", \"Imagen\" = @Imagen , \"ValorSoles\" = @soles , \"ValorDolares\" = @dolares" +
+                            " WHERE \"ID_Proyecto\" = @ID_Proyecto";
                         npgsqlCommand.Parameters.AddWithValue("@ID_Proyecto", (object)proyecto.ID_Proyecto);
                         npgsqlCommand.Parameters.AddWithValue("@Nombre_Proyecto", (object)proyecto.Nombre_Proyecto);
                         npgsqlCommand.Parameters.AddWithValue("@Referencia", (object)proyecto.Referencia);
@@ -175,6 +191,9 @@ namespace HpResergerNube
                         npgsqlCommand.Parameters.AddWithValue("@Fotos", (object)proyecto.Fotos ?? (object)DBNull.Value);
                         npgsqlCommand.Parameters.AddWithValue("@Imagen", (object)proyecto.Imagen ?? (object)DBNull.Value);
                         npgsqlCommand.Parameters.AddWithValue("@ID_Cliente", (object)proyecto.idcliente ?? (object)DBNull.Value);
+
+                        npgsqlCommand.Parameters.AddWithValue("@soles", (object)proyecto.ValorSoles);
+                        npgsqlCommand.Parameters.AddWithValue("@dolares", (object)proyecto.ValorDolares);
                         return npgsqlCommand.ExecuteNonQuery() > 0;
                     }
                 }
@@ -238,6 +257,10 @@ namespace HpResergerNube
                                 Fotos = npgsqlDataReader["Fotos"].ToString(),
                                 Imagen = npgsqlDataReader["Imagen"] == DBNull.Value ? (byte[])null : (byte[])npgsqlDataReader["Imagen"]
                                 ,
+                                ValorSoles = Convert.ToDecimal(npgsqlDataReader["ValorSoles"]),
+                                ValorDolares = Convert.ToDecimal(npgsqlDataReader["ValorDolares"]),
+
+                                
                                 idcliente = npgsqlDataReader["ID_Cliente"].ToString()
                             };
                     }
@@ -339,5 +362,9 @@ namespace HpResergerNube
         public string Fotos { get; set; }
 
         public byte[] Imagen { get; set; }
+
+        public decimal ValorSoles { get; set; } = 0;
+
+        public decimal ValorDolares { get; set; } = 0;
     }
 }

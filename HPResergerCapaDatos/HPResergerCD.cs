@@ -34,13 +34,19 @@ namespace HPResergerCapaDatos
             string sql = "SELECT Id,Version,Contenido FROM tbl_sistema  order by id desc";
             return bd.DataTableFromQuery(sql, null, null, null);
         }
-        public DataTable CambiarEstadoDeFactura(int id, int estado)
+        public DataTable CambiarEstadoDeFactura(int id, int estado , bool nota)
         {
             string sql = "UPDATE f " +
                          $"SET estado = {estado} " +
                          "FROM TBL_FacturaManual f WHERE id = " + id +
                          "SELECT * " +
                          "FROM TBL_FacturaManual f WHERE id = " + id;
+
+            if (nota)
+            {
+                sql = $"UPDATE f SET estado = {estado} FROM TBL_NC_ND_CompraManual f WHERE id ={id} ; SELECT* FROM TBL_NC_ND_CompraManual f WHERE id ={id}";
+            }
+
             return bd.DataTableFromQuery(sql, null, null, null);
         }
 
@@ -4433,10 +4439,11 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_InsertarActualizarListarSubOperacion", parametros, valores, null);
         }
         public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo,
-            string @repre, int @cia, int usuario, int stock, int ingresos)
+            string @repre, int @cia, int usuario, int stock, int ingresos, int ppto)
         {
-            string[] parametros = { "@id", "@opcion", "@campo1", "@campo2", "@sector", "@direcc", "@dep", "@prov", "@dis", "@tipo", "@repre", "@cia", "@usuario", "@stock", "@ingresos" };
-            object[] valores = { @id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario, stock, ingresos };
+            string[] parametros = { "@id", "@opcion", "@campo1", "@campo2", "@sector", "@direcc", "@dep", "@prov", "@dis", "@tipo", "@repre", "@cia", "@usuario", "@stock",
+                "@ingresos","@ppto" };
+            object[] valores = { @id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario, stock, ingresos, ppto };
             return bd.DataTableFromProcedure("usp_InsertarActualizarListarEmpresas", parametros, valores, null);
         }
         public DataTable ComisionesBonos(int @opcion, int @pkid, int @tipoid, string @numdoc, int @pkempresa, int @fkempresa, DateTime @periodo, decimal sueldo, decimal @comision, decimal @bono,
@@ -5320,10 +5327,10 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, banco, nrocuenta, FechaIni, FechaFin, fecha };
             return bd.DataTableFromProcedure("usp_ReporteConcilicacionFinanzas", parametros, valores, null);
         }
-        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, string rucs, string numdoc, int fecha, DateTime fechade, DateTime fechahasta)
+        public DataTable CompensacionDeCuentas(int empresa, string cuentas, string rucs, string numdoc, DateTime fechade, DateTime fechahasta)
         {
-            string[] parametros = { "@empresa", "@cuos", "@cuentas", "@rucs", "@fecha", "@Fechade", "@fechahasta", "@numdoc" };
-            object[] valores = { empresa, cuos, cuentas, rucs, fecha, fechade, fechahasta, numdoc };
+            string[] parametros = { "@empresa", "@cuentas", "@rucs", "@Fechade", "@fechahasta", "@numdoc" };
+            object[] valores = { empresa, cuentas, rucs, fechade, fechahasta, numdoc };
             return bd.DataTableFromProcedure("usp_CompensaciondeCuentas", parametros, valores, null);
         }
 

@@ -34,6 +34,14 @@ namespace HPReserger
             CargarTiposID("TBL_Tipo_ID");
             cargarempresas();
             //cbotipo.SelectedIndex = 0;
+
+          if (((DataTable)cboempresa.DataSource).Rows.Count > 0)
+            {
+                cboempresa.SelectedIndex = 0;
+                // Llamar manualmente tu lógica como si fuera el evento
+                CargarEmpresaSeleccionada();
+            }
+
             Detracion = new List<Detracciones>();
             CargarDAtos();
             dtpFechaPago.Value = dtpFechaContable.Value = DateTime.Now;
@@ -44,6 +52,20 @@ namespace HPReserger
             CargarTipoPagos();
             GenerarGlosaxDefectoxFechaPago();
         }
+        private void CargarEmpresaSeleccionada()
+        {
+            NameProyecto = cboproyecto.Text;
+
+            if (cbobanco.SelectedValue != null)
+            {
+                CargarCuentasBancos();
+                NameEmpresa = cboempresa.Text;
+                CargarDAtos();
+            }
+
+            CargarProyecto();
+        }
+
         private void GenerarGlosaxDefectoxFechaPago()
         {
             if (!txtglosa.EstaLLeno())
@@ -562,14 +584,7 @@ namespace HPReserger
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            NameProyecto = cboproyecto.Text;
-            if (cbobanco.SelectedValue != null)
-            {
-                CargarCuentasBancos();
-                NameEmpresa = cboempresa.Text;
-                CargarDAtos();
-            }
-            CargarProyecto();
+
         }
         public void CargarProyecto()
         {
@@ -676,6 +691,11 @@ namespace HPReserger
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarDAtos();
+        }
+
+        private void cboempresa_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            CargarEmpresaSeleccionada();
         }
 
         private void txtcuentadetracciones_TextChanged(object sender, EventArgs e)

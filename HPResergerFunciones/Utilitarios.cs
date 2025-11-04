@@ -1051,14 +1051,14 @@ namespace HPResergerFunciones
                     Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                     Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
                     if (CeldaDefecto.FuenteRelleno != null)
-                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
                 }
                 else
                 {
                     Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                     Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(Color.White);
                     if (CeldaDefecto.FuenteRelleno != null)
-                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                        Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
                 }
             }
             int CountRows = grd.Rows.Count + PosInicialGrilla;
@@ -1435,14 +1435,14 @@ namespace HPResergerFunciones
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
                         if (CeldaDefecto.FuenteRelleno != null)
-                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
                     }
                     else
                     {
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(Color.White);
                         if (CeldaDefecto.FuenteRelleno != null)
-                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
                     }
                 }
                 int CountRows = grd.Rows.Count + PosInicialGrilla;
@@ -1592,14 +1592,14 @@ namespace HPResergerFunciones
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
                         if (CeldaDefecto.FuenteRelleno != null)
-                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
                     }
                     else
                     {
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(Color.White);
                         if (CeldaDefecto.FuenteRelleno != null)
-                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
                     }
                 }
                 int CountRows = grd.Rows.Count + PosInicialGrilla;
@@ -1826,14 +1826,14 @@ namespace HPResergerFunciones
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
                         if (CeldaDefecto.FuenteRelleno != null)
-                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
                     }
                     else
                     {
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(Color.White);
                         if (CeldaDefecto.FuenteRelleno != null)
-                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
+                            Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaCabecera.FuenteRelleno);
                     }
                 }
                 int CountRows = grd.Rows.Count + PosInicialGrilla;

@@ -113,7 +113,7 @@ namespace SISGEM.CRM
             //gridView1.Columns.AddVisible("Detalle_Relacion", "Tipo Relación");
 
             // TIPO DOCUMENTO
-            DataTable tipoDocumentos = objtipodocumento.GetAllTipoDocumentos();
+            DataTable tipoDocumentos = objtipodocumento.GetAllTipoDocumentosPersonas();
             ID_TIpo_DocumentoTextEdit.Properties.DataSource = tipoDocumentos;
             ID_TIpo_DocumentoTextEdit.Properties.ValueMember = "ID_Tipo_documento";
             ID_TIpo_DocumentoTextEdit.Properties.DisplayMember = "Detalle_Tipo_documento";
@@ -397,7 +397,7 @@ namespace SISGEM.CRM
                 {
                     Razon_SocialTextEdit.EditValue = LstData[0].nombre;
                     DireccionTextEdit.EditValue = LstData[0].direccion + " - " + LstData[0].distrito + " - " + LstData[0].departamento;
-                    ID_Codigo_postalTextEdit.EditValue = LstData[0].ubigeo;
+                    ID_Codigo_postalTextEdit.EditValue = int.Parse(LstData[0].ubigeo);
                     ID_Tipo_personaTextEdit.EditValue = "J";
 
                     //txtnombrerazonsocial.Text = txtnombrecomercial.Text = LstData[0].nombre;

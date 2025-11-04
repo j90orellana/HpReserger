@@ -1804,9 +1804,10 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.InsertarActualizarListarSubOperacion(cod, opcion, campo1, campo2, campo3, usuario, cod2);
         }
         public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo,
-            string @repre, int @cia, int usuario, int stock, int ingresos)
+            string @repre, int @cia, int usuario, int stock, int ingresos, int ppto)
         {
-            return cdOrdenPedido.InsertarActualizarListarEmpresas(@id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario, stock, ingresos);
+            return cdOrdenPedido.InsertarActualizarListarEmpresas(@id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario,
+                stock, ingresos, ppto);
         }
         public DataTable ComisionesBonos(int @opcion, int @pkid, int @tipoid, string @numdoc, int @pkempresa, int @fkempresa, DateTime @periodo, decimal sueldo, decimal @comision, decimal @bono,
             int @idusuario, DateTime @fecha, int estado)
@@ -1838,7 +1839,7 @@ namespace HPResergerCapaLogica
         public DataTable ListarEmpresas()
         {
             //id_empresa    empresa
-            return cdOrdenPedido.InsertarActualizarListarEmpresas("", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0);
+            return cdOrdenPedido.InsertarActualizarListarEmpresas("", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0);
         }
         public void TablaComprobantes(ComboBox combo)
         {
@@ -2732,6 +2733,13 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.InsertarAsientoFacturaDetalle(@opcion, @Id, @Asiento, @fechaContable, @Cuenta, @proyecto, @tipodoc, @numdoc, @razon, @idcomprobante, @codcomprobante, @numcomprobante, @cc, @fechaemision,
                 @fechavencimiento, @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi, tipopago, 0);
         }
+        public DataTable InsertarAsientoFacturaDetalle(int @opcion, int @Id, int @Asiento, DateTime @fechaContable, string @Cuenta, int @proyecto, int @tipodoc, string @numdoc, string @razon, int @idcomprobante,
+       string @codcomprobante, string @numcomprobante, int @cc, DateTime @fechaemision, DateTime @fechavencimiento, DateTime @fecharecepcion, decimal @impormn, decimal @importeme, decimal @tc, int @Fkmoneda,
+       string @cuentabanco, string @nroopbanco, string @glosa, DateTime @fechaasiento, int @usuario, string @fkasi, int tipopago, int idctabancaria)
+        {
+            return cdOrdenPedido.InsertarAsientoFacturaDetalle(@opcion, @Id, @Asiento, @fechaContable, @Cuenta, @proyecto, @tipodoc, @numdoc, @razon, @idcomprobante, @codcomprobante, @numcomprobante, @cc, @fechaemision,
+                @fechavencimiento, @fecharecepcion, @impormn, @importeme, @tc, @Fkmoneda, @cuentabanco, @nroopbanco, @glosa, @fechaasiento, @usuario, @fkasi, tipopago, idctabancaria);
+        }
         public DataTable BuscarCuentasBancariasxEmpresas(int empresa) //1 activa ,cualquiera desactiva
         {
             return cdOrdenPedido.BuscarCuentasBancariasxEmpresas(empresa);
@@ -2820,9 +2828,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Conciliacion_Busqueda_ConDetalle(empresa, banco, nrocuenta, FechaIni, FechaFin, fecha);
         }
-        public DataTable CompensacionDeCuentas(int empresa, string cuos, string cuentas, string rucs, string docs, int fecha, DateTime fechade, DateTime fechahasta)
+        public DataTable CompensacionDeCuentas(int empresa, string cuentas, string rucs, string docs, DateTime fechade, DateTime fechahasta)
         {
-            return cdOrdenPedido.CompensacionDeCuentas(empresa, cuos, cuentas, rucs, docs, fecha, fechade, fechahasta);
+            return cdOrdenPedido.CompensacionDeCuentas(empresa, cuentas, rucs, docs, fechade, fechahasta);
         }
         public DataTable ComisionesEmpleados(int opcion, int pkid, int tipodoc, string nrodoc, DateTime periodo, decimal importe, byte[] sustento, int idlogin)
         {

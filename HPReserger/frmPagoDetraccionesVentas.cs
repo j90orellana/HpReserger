@@ -649,6 +649,44 @@ namespace HPReserger
         {
             CargarCuentasBancariaDetraccion();
         }
+        private void btnEstadoPagadas_Click(object sender, EventArgs e)
+        {
+            string NroBoleta = "", Idcliente = "";
+            int idcomprobante = 0;
+            int Tipoid = 0;
+            string NroCuenta = "";
+            DateTime fechaPago = DateTime.Now;
+            DateTime FechaContable = dtpFechaContable.Value;
+            int IdUsuario = frmLogin.CodigoUsuario;
+            string glosa = txtglosa.TextValido();
+            string cuoPago = "APLICADO";
+            string NroOperacion = "";
+            int IdEmpresa = (int)cboempresa.SelectedValue;
+
+
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                if ((int)item.Cells[opcionx.Name].Value == 1)
+                {
+                    //si el valor a pagar es superior a cero
+                    if ((decimal)item.Cells[ImportePEN.Name].Value != 0)
+                    {
+                        NroBoleta = item.Cells[nrofacturax.Name].Value.ToString();
+                        Idcliente = item.Cells[Clientex.Name].Value.ToString();
+                        Tipoid = (int)item.Cells[tipoidx.Name].Value;
+                        idcomprobante = (int)item.Cells[xtipocomprobante.Name].Value;
+                        CapaLogica.DetraccionesVenta(1, NroBoleta, Tipoid, Idcliente, (decimal)item.Cells[ImporteMOx.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value
+                            , (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value, NroOperacion,
+                            cbobanco.SelectedValue.ToString(), NroCuenta, fechaPago, IdUsuario, IdEmpresa, idcomprobante, cuoPago, Tipoid);
+                    }
+                }
+            }
+
+            msgOK($"Detracciones Aplicadas!");
+            btnActualizar_Click(sender, e);
+            txttotal.Text = txtdiferencia.Text = txtredondeo.Text = "0.00";
+
+        }
 
         private void Txt_KeyPress(object sender, KeyPressEventArgs e)
         {

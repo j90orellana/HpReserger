@@ -1,8 +1,11 @@
-﻿using HpResergerUserControls;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
+using HpResergerUserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -317,6 +320,57 @@ namespace HPReserger
                     }
                 }
             }
+
+            decimal.TryParse(txtcomision.EditValue.ToString(), out decimal valorComision);
+            string cuentaComision = string.Empty;
+            bool detallarCuentaBanco = false;
+
+            if (chkComision.Checked)
+            {
+                if (valorComision == 0)
+                {
+                    DialogResult respuesta = XtraMessageBox.Show("El valor de la comisión es cero. ¿Desea continuar?",
+                        "Confirmación",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Question);
+
+                    if (respuesta == DialogResult.Cancel)
+                        return;
+                }
+                var configuracionEmpresa = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+                var configuracion = configuracionEmpresa.GetByTipo(2);
+                var configuracion1 = configuracionEmpresa.GetByTipo(1);
+
+                cuentaComision = configuracion?.Texto ?? string.Empty;
+                detallarCuentaBanco = (configuracion1?.Valor ?? 0) != 0;
+
+                if (string.IsNullOrEmpty(cuentaComision))
+                {
+                    XtraMessageBox.Show(
+                        "No se ha configurado la cuenta de comisiones. Por favor, configure la cuenta en Mantenimiento → Empresas.",
+                        "Configuración requerida",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (Comprobantes.Count > 1)
+                {
+                    XtraMessageBox.Show(
+                        "La aplicación de comisiones bancarias solo está permitida para un comprobante. Por favor, seleccione solo uno.",
+                        "Validación de comprobantes",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+            }
+            else
+            {
+                valorComision = 0;
+            }
+
+
             if (Comprobantes.Count == 0)
             {
                 msg("Seleccione Comprobantes");
@@ -364,6 +418,57 @@ namespace HPReserger
                     msg("Ingrese La Cuenta Contable para El Exceso");
                     txtCuentaExceso.Focus(); return;
                 }
+
+
+
+            var datos = ((DataTable)Dtguias.DataSource)?.AsEnumerable();
+                   
+            // Obtener las monedas únicas de las facturas marcadas con 'ok' = 1
+            var monedasSeleccionadas = datos
+                .Where(row => row.Field<int>("ok") == 1)
+                .Select(row => row.Field<int>("IDMONEDA"))
+                .Distinct()
+                .ToList();
+
+            //if (!monedasSeleccionadas.Any())
+            //{
+            //    XtraMessageBox.Show("Debe seleccionar al menos una factura para validar la moneda.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
+
+            // Convertir a CSV
+            string monedasCsv = string.Join(",", monedasSeleccionadas);
+
+            // Obtener ID de la cuenta seleccionada
+            int idCuenta = -1;
+            if (cbocuentabanco.DataSource is DataTable cuentas && cbocuentabanco.SelectedIndex >= 0)
+            {
+                idCuenta = Convert.ToInt32(cuentas.Rows[cbocuentabanco.SelectedIndex]["idTipoCta"]);
+            }
+            else
+            {
+                XtraMessageBox.Show("Debe seleccionar una cuenta bancaria válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Consultar si hay monedas diferentes
+            var cclase = new HPResergerCapaLogica.Finanzas.PagoFacturas();
+            var facturasDiferentes = cclase.ListarFacturasConMonedaNoCoincidente(monedasCsv, idCuenta);
+
+            if (facturasDiferentes.Rows.Count > 0)
+            {
+                DialogResult respuesta = XtraMessageBox.Show(
+                    "Está intentando pagar una o más facturas cuya moneda es diferente a la de la cuenta bancaria seleccionada.\n\n¿Desea continuar con el proceso?",
+                    "Moneda diferente detectada",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning
+                );
+
+                if (respuesta == DialogResult.Cancel)
+                    return;
+            }
+                   
+
             ////LISTADO DE NOTAS
             List<NotaCreditoDebito> ListadoNotas = new List<NotaCreditoDebito>();
             foreach (DataGridViewRow item in Dtguias.Rows)
@@ -771,6 +876,12 @@ namespace HPReserger
                 string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, FechaContable);
                 int idUsuario = frmLogin.CodigoUsuario;
 
+                // Inicialización correcta de todas las variables
+                decimal valorSoles = 0;
+                decimal valorDolares = 0;
+                decimal debe = 0;
+                decimal haber = 0;
+
                 ///INSERTADO DE LOS ASIENTOS DE LAS FACTURAS
                 int ContadorFacturas = 0;
                 foreach (DataGridViewRow item in Dtguias.Rows)
@@ -804,6 +915,25 @@ namespace HPReserger
                             CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContablesFacturas, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0]
                                 , valor[1], CC, FechaPago, FechaContable, FechaContable, (AbonoCabecera < 0 ? -1 : 1) * (ExcesoMN), (AbonoCabecera < 0 ? -1 : 1) * (ExcesoME), tcReg, idMoneda, "", NroOperacion,
                                 glosa, FechaPago, idUsuario, "", MedioPago);
+
+                            //COMISIONES
+                            if (!string.IsNullOrEmpty(cuentaComision) && valorComision != 0)
+                            {
+                                valorSoles = IdMonedaAsiento == 1 ? valorComision : valorComision * tc;
+                                valorDolares = IdMonedaAsiento == 2 ? valorComision : valorComision / tc;
+                                debe = valorComision > 0 ? Math.Abs(valorComision) : 0;
+                                haber = valorComision < 0 ? Math.Abs(valorComision) : 0;
+
+                                // Cabecera factura comisiones
+                                CapaLogica.InsertarAsientoFacturaCabecera(1, ++ContadorFacturas, numasiento + 1, FechaContable,
+                                    cuentaComision, debe, haber, tc, proyecto, 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
+
+                                // Detalle factura comisiones
+                                CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, cuentaComision,
+                                    proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], CC, FechaPago, FechaContable,
+                                    FechaContable, valorSoles, valorDolares, tcReg, idMoneda, "", NroOperacion, glosa, FechaPago,
+                                    idUsuario, "", MedioPago);
+                            }
                         }
                     }
                 }
@@ -857,6 +987,7 @@ namespace HPReserger
                 string CuentaContable = txtCuentaExceso.Text;
                 decimal Abonado = 0;
                 Abonado = IdMonedaAsiento == 1 ? decimal.Parse(txttotalAbonadoMN.Text) : decimal.Parse(txttotalAbonadoME.Text);
+                Abonado += (debe + haber);
                 //fin de busqueda de moneda
                 if (decimal.Parse(txttotalMN.Text) != 0)
                 {
@@ -888,8 +1019,51 @@ namespace HPReserger
                     //
                     //CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
                     //FechaPago, FechaContable, FechaContable, (Abonado < 0 ? -1 : 1) * ExcesoMN, (Abonado < 0 ? -1 : 1) * ExcesoME, tc, idMoneda, nroKuenta, "", glosa, FechaPago, idUsuario, "");
-                    CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 0, "99999", "VARIOS", 0, "0", "0", CC,
-                   FechaPago, FechaContable, FechaContable, Math.Abs(decimal.Parse(txttotalAbonadoMN.Text)), Math.Abs(decimal.Parse(txttotalAbonadoME.Text)), tc, IdMonedaAsiento, nroKuenta, NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
+
+                    if (ListaComprobantes.Count > 1)
+                    {
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 0, "99999", "VARIOS", 0, "0", "0", CC,
+                            FechaPago, FechaContable, FechaContable, valorSoles + Math.Abs(decimal.Parse(txttotalAbonadoMN.Text)), valorDolares + Math.Abs(decimal.Parse(txttotalAbonadoME.Text)), tc,
+                            IdMonedaAsiento, nroKuenta, NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
+                    }
+                    else
+                    {
+                        foreach (DataGridViewRow item in Dtguias.Rows)
+                        {
+                            if ((int)item.Cells[OK.Name].Value == 1)
+                            {
+                                string tipos = item.Cells[tipodoc.Name].Value.ToString();
+                                DateTime f = new DateTime(); f = DateTime.Now;
+                                //Espaciador
+                                ++con;
+                                //Declaracion de las variables para guardar los datos de las notas
+                                decimal aPagar = (decimal)item.Cells[Pagox.Name].Value;
+                                decimal saldo = (decimal)item.Cells[Saldox.Name].Value;
+                                string moneda = item.Cells[monedax.Name].Value.ToString();
+                                int idMoneda = (moneda == "SOL" ? 1 : moneda == "USD" ? 2 : 0);
+                                string ruc = item.Cells[proveedor.Name].Value.ToString();
+                                string RazonSocial = item.Cells[razon.Name].Value.ToString();
+                                int idComprobante = (int)item.Cells[xidcomprobante.Name].Value;
+                                string[] valor = item.Cells[nrofactura.Name].Value.ToString().Split('-');
+                                //Calculo del Exceso 
+                                if (aPagar > saldo) aPagar = saldo;
+                                int Multiplicador = 1;
+                                if (ContenedorNotasCredito.Contains(item.Cells[xidcomprobante.Name].Value.ToString())) Multiplicador = -1;
+                                decimal ExcesoMN = (idMoneda == 1 ? aPagar : (aPagar) * tc) * Multiplicador;
+                                decimal ExcesoME = (idMoneda == 2 ? aPagar : (aPagar) / tc) * Multiplicador;
+                                decimal AbonoCabecera = IdMonedaAsiento == 1 ? ExcesoMN : ExcesoME;
+                                string CuentaContableNotas = item.Cells[xCuentaContable.Name].Value.ToString();
+                                CC = (int)item.Cells[centrocostox.Name].Value;
+                                /// fin de la declaracion del dato de las ntoas
+
+                                //DETALLE de las notas
+                                CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], CC,
+                                FechaPago, FechaContable, FechaContable, valorSoles + Math.Abs(decimal.Parse(txttotalAbonadoMN.Text)), valorDolares + Math.Abs(decimal.Parse(txttotalAbonadoME.Text)), tc,
+                                idMoneda, nroKuenta, NroOperacion, glosa, FechaPago, idUsuario, "", MedioPago);
+                                break;
+                            }
+                        }
+                    }
                     //    }
                     //}
                 }
@@ -928,6 +1102,8 @@ namespace HPReserger
                 if (totalExcesoME > 0)
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, IdMonedaAsiento == 1 ? totalExcesoMN : totalExcesoME, 0, tc, proyecto, 0
                         , Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
+
+
                 //fin de cabecera en exceso
                 //frmInformativo.MostrarDialog($"Documento Pagado \nGenerado su Asiento {Cuo}", fkEmpresa, Cuo, FechaContable);
                 msgOK($"Documento Pagado \nGenerado su Asiento {Cuo}");
@@ -1902,6 +2078,78 @@ namespace HPReserger
                 cboproyecto.DataSource = table;
                 cboproyecto.DisplayMember = "proyecto";
                 cboproyecto.ValueMember = "id_proyecto";
+            }
+        }
+
+        private void chkComision_CheckedChanged(object sender, EventArgs e)
+        {
+            txtcomision.Enabled = chkComision.Checked;
+        }
+
+        private void btnTodolosPendientes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string NameTitulo = "Facturas_Pendientes";
+
+                HPResergerCapaLogica.Finanzas.PagoFacturas Cclase = new HPResergerCapaLogica.Finanzas.PagoFacturas();
+                DataTable TdatA = Cclase.ListarFacturasPendientesdePago();
+
+                if (TdatA == null || TdatA.Rows.Count == 0)
+                {
+                    XtraMessageBox.Show("No se encontraron facturas pendientes de pago en el sistema.",
+                                       "Consulta de Facturas Pendientes",
+                                       MessageBoxButtons.OK,
+                                       MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Configurar el grid con los datos
+                gridControl1.DataSource = TdatA;
+                              
+                string rutaExcel = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"{NameTitulo}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx");
+
+                XlsxExportOptionsEx options = new XlsxExportOptionsEx()
+                {
+                    ExportType = DevExpress.Export.ExportType.WYSIWYG, // Usar DataAware en lugar de WYSIWYG
+                    ShowGridLines = true,
+                    TextExportMode = TextExportMode.Text,
+                    SheetName = NameTitulo,
+                    FitToPrintedPageWidth = true,
+                    RawDataMode = false,
+                    ExportHyperlinks = false
+                };
+
+                options.DocumentOptions.Author = "j90orellana@hotmail.com";
+                options.DocumentOptions.Title = NameTitulo;
+                options.DocumentOptions.Subject = NameTitulo;
+
+
+                gridControl1.ExportToXlsx(rutaExcel,options);
+
+                // Verificar que se haya creado
+                if (System.IO.File.Exists(rutaExcel))
+                {
+                    // Abrir el archivo Excel con la aplicación predeterminada
+                    Process.Start(new ProcessStartInfo()
+                    {
+                        FileName = rutaExcel,
+                        UseShellExecute = true
+                    });
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo exportar el archivo Excel.");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Ocurrió un error al procesar las facturas pendientes:\n{ex.Message}",
+                                   "Error en el Proceso",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Error);
             }
         }
     }

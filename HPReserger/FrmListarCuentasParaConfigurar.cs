@@ -61,27 +61,48 @@ namespace HPReserger
         List<string> ListaCuentas = new List<string>();
         public void SAcarCuentas()
         {
-            tablita.Columns.Add("codigo");
-            tablita.Columns.Add("valor");
+            // Asegurar que las columnas no se repitan
+            if (!tablita.Columns.Contains("codigo"))
+                tablita.Columns.Add("codigo");
+            if (!tablita.Columns.Contains("valor"))
+                tablita.Columns.Add("valor");
+
+            // Separar las cuentas
             CadenaCuentas = Cuentas.Split(',');
+
+            // Obtener el listado de cuentas contables
+            DataTable Tcuentas = CapaLogica.ListarCuentasContables("", 10);
+            // Se espera que Tcuentas tenga las columnas:
+            // 0: CodCuenta
+            // 1: Descripción N1
+            // 2: CUENTA CONTABLE (formato completo)
+
+            // Convertir Tcuentas en lista de DataRow para LINQ
+            var listaCuentas = Tcuentas.AsEnumerable();
+
             foreach (string item in CadenaCuentas)
             {
-                if (item.Length > 1)
+                string cuenta = item.Trim();
+                if (cuenta.Length > 1)
                 {
-                    DataRow filita = tablita.NewRow();
-                    filita[0] = item.Trim();
-                    tableaux = CapaLogica.BuscarCuentas(item.Trim(), 1);
-                    if (tableaux.Rows.Count > 0)
-                    {
-                        DataRow filas = tableaux.Rows[0];
-                        filita[1] = filas[0];
-                    }
-                    tablita.Rows.Add(filita);
+                    var resultado = listaCuentas
+                        .FirstOrDefault(r => r.Field<string>(0) == cuenta);
+
+                    DataRow nuevaFila = tablita.NewRow();
+                    nuevaFila["codigo"] = cuenta;
+                    nuevaFila["valor"] = resultado != null ? resultado.Field<string>(2) : "";
+
+                    tablita.Rows.Add(nuevaFila);
                 }
             }
+
+            // Guardar lista de cuentas en variable
             ListaCuentas = CadenaCuentas.ToList();
+
+            // Asignar la tabla al control
             dtgConten.DataSource = tablita;
         }
+
         private void dtgConten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex, y = e.RowIndex;
@@ -164,18 +185,29 @@ namespace HPReserger
         }
         private void btnaddgroup_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in Grid.Rows)
+            // HashSet es más eficiente para búsquedas que List
+            var cuentasExistentes = new HashSet<string>(ListaCuentas);
+
+            var nuevasCuentas = Grid.Rows
+                .Cast<DataGridViewRow>()
+                .Where(row =>
+                    row.Cells[xestadocta.Name].Value is int estado && estado == 1 &&
+                    row.Cells[xctadetalle.Name].Value is int detalle && detalle == 1)
+                .Select(row => row.Cells[codcuenta.Name].Value?.ToString()?.Trim())
+                .Where(cuenta => !string.IsNullOrEmpty(cuenta) && !cuentasExistentes.Contains(cuenta))
+                .Distinct()
+                .ToList();
+
+            dtgConten.SuspendLayout();
+
+            foreach (string cuenta in nuevasCuentas)
             {
-                string CadeAux = item.Cells[codcuenta.Name].Value.ToString();
-                if ((int)item.Cells[xestadocta.Name].Value == 1 && (int)item.Cells[xctadetalle.Name].Value == 1)
-                {
-                    if (!ListaCuentas.Exists(cust => cust == CadeAux))
-                    {
-                        ListaCuentas.Add(CadeAux.Trim());
-                        tablita.Rows.Add(CadeAux.Trim());
-                    }
-                }
+                ListaCuentas.Add(cuenta);
+                tablita.Rows.Add(cuenta);
             }
+
+            dtgConten.ResumeLayout();
+
             msj("Agregado Todo el Grupo");
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
@@ -227,6 +259,47 @@ namespace HPReserger
                 msj("Agregado");
             }
             else msj("No Se puede Agregar, Ya Existe");
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            ListaCuentas.Clear();
+            tablita.Clear();
+        }
+
+        private void btnDuplicados_Click(object sender, EventArgs e)
+        {           
+            
+            if (tablita != null && tablita.Rows.Count > 0)
+            {
+                try
+                {
+                    // Filtrar registros con valor no vacío y luego agrupar por código
+                    var registrosFiltrados = tablita.AsEnumerable()
+                        .Where(row => !string.IsNullOrEmpty(row.Field<string>("valor")))
+                        .GroupBy(row => row.Field<string>("codigo"))
+                        .Select(group => group.First());
+
+                    // Verificar si hay registros antes de crear la tabla
+                    if (registrosFiltrados.Any())
+                    {
+                        DataTable tablaUnica = registrosFiltrados.CopyToDataTable();
+                        tablita = tablaUnica;
+                        dtgConten.DataSource = tablita;
+                    }
+                    else
+                    {
+                        tablita.Clear();
+                        dtgConten.DataSource = null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            else
+            {
+            }
         }
     }
 }

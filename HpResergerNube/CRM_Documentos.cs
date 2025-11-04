@@ -134,5 +134,30 @@ namespace HpResergerNube
             }
             return documentos;
         }
+        public bool EliminarLogica(int idDocumento, string NombreEliminado)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE public.\"CRM_Documentos\" " +
+                                   "SET \"Ventana\" = @ventana " +
+                                   "WHERE \"ID_Documento\" = @idDocumento";
+                    using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@idDocumento", idDocumento);
+                        command.Parameters.AddWithValue("@ventana", NombreEliminado);
+
+                        return command.ExecuteNonQuery() > 0 ? true : false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el documento: " + ex.Message);
+                return false;
+            }
+        }
     }
 }

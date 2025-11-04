@@ -521,9 +521,9 @@ namespace HPReserger.ModuloFinanzas
             if (CodSunat == 1) //Banco BCP
             {
                 //validamos Que pertenezca ala misma cuenta
-                if (TdatosExcel.Columns.Count != 11)
+                if (TdatosExcel.Columns.Count < 11 || TdatosExcel.Columns.Count > 12)
                 {
-                    msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
+                    msgError("El archivo Excel debe tener entre 11 y 12 columnas");
                     return false;
                 }
                 EstadoCuenta = decimal.Parse(TdatosExcel.Rows[5][4].ToString());

@@ -461,7 +461,7 @@ namespace HPReserger
                                         Tfilas[0] = "";
                                         Tfilas[1] = "";
                                         Tfilas = fila[xNumCom.DataPropertyName].ToString().Trim().Split('/');
-                                        string numdoc = int.Parse(Tfilas[0].ToString()).ToString().PadLeft(10, '0');
+                                        string numdoc = Int64.Parse(Tfilas[0].ToString()).ToString().PadLeft(10, '0');
                                         campo[c++] = "";// $"{fila[xNumpro.DataPropertyName].ToString().Trim()}{(int.Parse(fila[xidC.DataPropertyName].ToString())).ToString("00")}{fila[xSerieCom.DataPropertyName].ToString().Trim().Substring(0, Math.Min(4, fila[xSerieCom.DataPropertyName].ToString().Trim().Length))}{numdoc}";
                                         campo[c++] = ((DateTime)fila[xFechaEmision.DataPropertyName]).ToString("dd/MM/yyyy");
                                         campo[c++] = int.Parse(fila[xidC.DataPropertyName].ToString()) != 14 ? "" : ((DateTime)fila[xFechaVencimiento.DataPropertyName]).ToString("dd/MM/yyyy");

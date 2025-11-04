@@ -559,10 +559,13 @@ namespace HPReserger
                     txtdoc.Focus();
                     return;
                 }
+                if (FacturaEstado != 2)
+                    FacturaEstado = 0;
                 //// SI TIENE DETALLE LA FACTURA
                 if (Dtgconten.RowCount > 0)
                 {
-                    FacturaEstado = 1;
+                    if (FacturaEstado != 2)
+                        FacturaEstado = 1;
                     Boolean errorc = false, ErrorDH = false;
                     foreach (DataGridViewRow item in Dtgconten.Rows)
                     {
@@ -589,7 +592,7 @@ namespace HPReserger
                     /////VALIDACION
                     if (errorc || ErrorDH) { msg(cadena); return; }
                 }
-                else FacturaEstado = 0;
+                //else FacturaEstado = 0;
             }
             //////INSERTANDO
             int codigo = 0;
@@ -891,7 +894,7 @@ namespace HPReserger
                 }
                 txtmontodetraccion.Text = R.Cells[yDetraccion.Name].Value.ToString();
                 //////CARGA DEL DETALLE DE LA FACTURA MANUAL
-                Dtgconten.DataSource = CapaLogica.FacturaManualVentaDetalleBusqueda("", R.Cells[yNroComprobante.Name].Value.ToString(), (int)R.Cells[yfkempresa.Name].Value, (int)R.Cells[yIdComprobante.Name].Value);
+                Dtgconten.DataSource = CapaLogica.FacturaManualVentaDetalleBusqueda(txtdoc.Text, R.Cells[yNroComprobante.Name].Value.ToString(), (int)R.Cells[yfkempresa.Name].Value, (int)R.Cells[yIdComprobante.Name].Value);
                 if (Dtgconten.RowCount > 0)
                 {
                     OldCuo = Dtgconten[xCodAsientoCtble.Name, 0].Value.ToString();
@@ -934,6 +937,10 @@ namespace HPReserger
             {
                 DataTable TPrueba1 = CapaLogica.VerFacturasPagadasVentas((int)cbotipoid.SelectedValue + "-" + txtdoc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue, (int)cboempresa.SelectedValue);
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
+
+                FacturaEstado = (int)dtgBusqueda[yEstado.Name, dtgBusqueda.CurrentRow.Index].Value;
+
+
                 if (TPrueba1.Rows.Count > 0)
                 {
                     DialogResult Result = msgync("La Factura ya tiene un Pago. \nSolo se puede Actualizar la Imagen.");
@@ -954,6 +961,7 @@ namespace HPReserger
                         BloquearColumnas();
                         Estado = 2;
                         NotasEstado = 2;
+                        btnaplicar.Enabled = true;
                         ////fin eliminacion
                     }
                 }
@@ -969,6 +977,8 @@ namespace HPReserger
                     Estado = 2;
                     ModoEdicion(true);
                     BloquearColumnas();
+                    btnaplicar.Enabled = true;
+
                 }
             }
             else
@@ -1129,7 +1139,7 @@ namespace HPReserger
                 igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
                 string CuentaIgv = "4011102";
                 string NameCuentaIGV = "";
-                DataTable Tpruebas = CapaLogica.BuscarCuentas("IGV %VENT", 5);
+                DataTable Tpruebas = CapaLogica.BuscarCuentas("40%IGV %VENT", 5);
                 if (Tpruebas.Rows.Count > 0)
                 {
                     CuentaIgv = (Tpruebas.Rows[0])["IDCUENTA"].ToString();
@@ -1676,12 +1686,37 @@ namespace HPReserger
         {
             string NumDocRef = txtSerieRef.Text + "-" + txtNumRef.Text;
             int opcion = 0;
+            string cuoDetalle = "";
+
             if (rdbAnulacion.Checked) opcion = 1;
             else if (rdbDescuento.Checked) opcion = 2;
             else opcion = 3;
+
+            if (Dtgconten.Rows.Count > 0)
+            {
+                cuoDetalle = Dtgconten[xCodAsientoCtble.Name, 0].Value.ToString();
+            }
+
             TFacRefDetalle = CapaLogica.BuscarVentasManualesToNcNdDEtalle(opcion, txtdoc.Text, (int)cbotipoid.SelectedValue, NumDocRef);
+
+            foreach (DataRow item in TFacRefDetalle.Rows)
+            {
+                item["CodAsientoCtble"] = cuoDetalle;
+            }
+
+            HPResergerCapaLogica.Contable.Contabilidad Cclase = new HPResergerCapaLogica.Contable.Contabilidad();
+            DataTable tdata = Cclase.FacturaVenta_BuscarTC(txtdoc.Text, NumDocRef);
+
+            if (tdata.Rows.Count > 0)
+            {
+                txttipocambio.Text = tdata.Rows[0]["TC"].ToString();
+            }
+
+
             Dtgconten.DataSource = TFacRefDetalle;
             btnaplicar.Enabled = false;
+
+
         }
 
         private void chkfac_CheckedChanged(object sender, EventArgs e)

@@ -217,7 +217,7 @@ namespace HPReserger
                         if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
                             tipocuenta = "B";
                     }
-                    else if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
+                    else if (x.tipocuenta.ToString().Trim().ToUpper().Contains("CORRIENTE"))
                         tipocuenta = "C";
                     else tipocuenta = "A";
 

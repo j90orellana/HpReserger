@@ -82,7 +82,7 @@ namespace HPReserger
         }
         public void CargarCondicioncontribuyente()
         {
-          System.Data.  DataTable tablita = new System.Data.DataTable();
+            System.Data.DataTable tablita = new System.Data.DataTable();
             tablita.Columns.Add("CODIGO");
             tablita.Columns.Add("DESCRIPCION");
             tablita.Rows.Add(new object[] { "1", "1. HABIDO" });
@@ -614,15 +614,64 @@ namespace HPReserger
                 this.Close();
             }
         }
-        private void txtnumeroidentidad_TextChanged(object sender, EventArgs e)
+        private async void txtnumeroidentidad_TextChanged(object sender, EventArgs e)
         {
-            if (estado == 1)//cuando vamos a ingresar uno nuevo
+            if (estado == 1 || (estado == 2 && txtnombrerazonsocial.Text.Length == 0))//cuando vamos a ingresar uno nuevo
                 if (txtnumeroidentidad.Text.Length == 11)
                 {
                     //BuscarProveedorAPiToken(txtnumeroidentidad.Text);
                     BuscarProveedorAPi(txtnumeroidentidad.Text);
                 }
+                else if (txtnumeroidentidad.Text.Trim().Length == 9)
+                {
+                    try
+                    {
+                        HpResergerNube.FactilizaApiClient.ApiResponseResultCEE response =
+                            await HpResergerNube.FactilizaApiClient.GetInfoAsyncCEE(txtnumeroidentidad.Text.Trim());
+
+                        if (response != null && response.Response.Status == 200 && response.Response.Data != null)
+                        {
+                            txtnombrecomercial.Text = response.NombreCompleto;
+                            txtnombrerazonsocial.Text = response.NombreCompleto;
+                        }
+                        else
+                        {
+                            //MessageBox.Show("No se encontró información para el número ingresado.",
+                            //                "Información no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show($"Error al consultar la API: {ex.Message}",
+                        //                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (txtnumeroidentidad.Text.Trim().Length == 8)
+                {
+                    try
+                    {
+                        HpResergerNube.FactilizaApiClient.ApiResponseResultDNI response =
+                            await HpResergerNube.FactilizaApiClient.GetInfoAsyncDNI(txtnumeroidentidad.Text.Trim());
+
+                        if (response != null && response.Response.Status == 200 && response.Response.Data != null)
+                        {
+                            txtnombrecomercial.Text = response.NombreCompleto;
+                            txtnombrerazonsocial.Text = response.NombreCompleto;
+                        }
+                        else
+                        {
+                            //MessageBox.Show("No se encontró información para el número ingresado.",
+                            //                "Información no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show($"Error al consultar la API: {ex.Message}",
+                        //                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
         }
+
         public async Task<string> GetHTTPsToken(string ruc)
         {
             string url = Configuraciones.ApiRUCToken + ruc + Configuraciones.Token;
@@ -881,6 +930,28 @@ namespace HPReserger
                 File.WriteAllBytes(SF.FileName, SISGEM.Resource1.CARGA_MASIVA_PROVEEDORES);
                 System.Diagnostics.Process.Start(SF.FileName);
             }
+        }
+
+        private void btnRepresentantes_Click(object sender, EventArgs e)
+        {
+            // Buscar formulario abierto manualmente
+            Form formularioExistente = null;
+            foreach (Form f in System.Windows.Forms.Application.OpenForms)
+            {
+                if (f is SISGEM.ModuloAdministracion.frmRepresentantesEmpresas)
+                {
+                    formularioExistente = f;
+                    break;
+                }
+            }
+
+            // Cerrar si existe
+            formularioExistente?.Close();
+
+            // Crear y mostrar nuevo
+            var nuevoForm = new SISGEM.ModuloAdministracion.frmRepresentantesEmpresas();
+            nuevoForm.ruc = txtnumeroidentidad.Text;
+            nuevoForm.Show();
         }
 
         private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)

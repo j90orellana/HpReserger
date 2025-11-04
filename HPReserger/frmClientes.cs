@@ -671,7 +671,7 @@ namespace HPReserger
                 //SAcamos la Data             
                 if (LstData.Count > 0)
                 {
-                     txtnombre.Text = LstData[0].nombre;
+                    txtnombre.Text = LstData[0].nombre;
                     //cbodocumento.SelectedValue = LstData[0].tipoDocumento - 1;
                     txtdireccion.Text = LstData[0].direccion + " - " + LstData[0].distrito + " - " + LstData[0].departamento;
                     if (txtdireccion.Text == "- -  - ") txtdireccion.Text = "-";
@@ -685,19 +685,73 @@ namespace HPReserger
             }
             catch (Exception e) { }
         }
-        private void txtnroid_TextChanged(object sender, EventArgs e)
+        private async void txtnroid_TextChanged(object sender, EventArgs e)
         {
             if (estado == 1)
                 if (txtnroid.Text.Length == 8)
                 {
                     //ANULADO POR FALTA DE DATA DE LA API RENIEC
                     BuscarReniecAPiToken(txtnroid.Text);
+                    if (txtnombre.TextValido().Length == 0)
+                    {
+                        try
+                        {
+                            HpResergerNube.FactilizaApiClient.ApiResponseResultDNI response =
+                                await HpResergerNube.FactilizaApiClient.GetInfoAsyncDNI(txtnroid.Text.Trim());
+
+                            if (response != null && response.Response.Status == 200 && response.Response.Data != null)
+                            {
+                                txtapetpat.Text = response.Response.Data.Apellido_Paterno;
+                                txtapemat.Text = response.Response.Data.Apellido_Materno;
+                                txtnombre.Text = response.Response.Data.Nombres;
+                                cbopersona.SelectedIndex = 1;
+                                cbotipoid.SelectedValue = 1;
+                                
+                            }
+                            else
+                            {
+                                //MessageBox.Show("No se encontró información para el número ingresado.",
+                                //                "Información no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            //MessageBox.Show($"Error al consultar la API: {ex.Message}",
+                            //                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             if (estado == 1)//cuando vamos a ingresar uno nuevo
                 if (txtnroid.Text.Length == 11)
                 {
                     //BuscarProveedorAPiToken(txtnumeroidentidad.Text);
                     BuscarProveedorAPi(txtnroid.Text);
+                }
+                else if (txtnroid.Text.Trim().Length == 9)
+                {
+                    try
+                    {
+                        HpResergerNube.FactilizaApiClient.ApiResponseResultCEE response =
+                            await HpResergerNube.FactilizaApiClient.GetInfoAsyncCEE(txtnroid.Text.Trim());
+
+                        if (response != null && response.Response.Status == 200 && response.Response.Data != null)
+                        {
+                            txtnombre.Text = response.Response.Data.Nombres;
+                            txtapemat.Text = response.Response.Data.Apellido_Materno;
+                            txtapetpat.Text = response.Response.Data.Apellido_Paterno;
+                            cbotipoid.SelectedValue = 2;
+                        }
+                        //else
+                        //{
+                        //    MessageBox.Show("No se encontró información para el número ingresado.",
+                        //                    "Información no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //}
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show($"Error al consultar la API: {ex.Message}",
+                        //                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
         }
         public class Proveedor

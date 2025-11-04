@@ -30,6 +30,7 @@ namespace HPReserger
         public int _dinamica { get; set; }
         public string cuenta { get { return txtcuenta.Text; } set { txtcuenta.Text = value; } }
         public string descripcion { get { return txtdescripcion.Text; } set { txtdescripcion.Text = value; } }
+        public string nombreEmpresa { get { return txtempresa.Text; } set { txtempresa.Text = value; } }
         public decimal Total { get { return decimal.Parse(txttotal.Text); } set { txttotal.Text = value.ToString("n2"); } }
         ///Recibe la fecha del asiento
         public DateTime _fecha;

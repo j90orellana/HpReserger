@@ -306,7 +306,7 @@
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(274, 21);
             this.cboempresa.TabIndex = 81;
-            this.cboempresa.SelectedValueChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            this.cboempresa.SelectionChangeCommitted += new System.EventHandler(this.cboempresa_SelectionChangeCommitted);
             // 
             // label12
             // 
@@ -955,7 +955,6 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
             this.btnBuscar.Location = new System.Drawing.Point(495, 132);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);

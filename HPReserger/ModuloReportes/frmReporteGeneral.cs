@@ -590,6 +590,43 @@ namespace HPReserger
                 }
             }
         }
+        private static SISGEM.ModuloContable.frmRevisarCuentasEEFF frmRevisa;
+        private void btnDetalleCuentas_Click(object sender, EventArgs e)
+        {
+            // Intentar obtener el id de empresa de manera segura
+            if (!int.TryParse(cboempresas.SelectedValue?.ToString(), out int idEmpresa) || idEmpresa == 0)
+            {
+                MessageBox.Show("Por favor, seleccione una empresa válida antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (frmRevisa != null && !frmRevisa.IsDisposed)
+            {
+                frmRevisa.Close();
+                frmRevisa.Dispose(); // buena práctica
+            }
+
+            frmRevisa = new SISGEM.ModuloContable.frmRevisarCuentasEEFF();
+            //frmRevisa.cuo = txtcuo.Text.Trim();
+            frmRevisa.idEmpresa = idEmpresa;
+            frmRevisa.NombreEmpresa = cboempresas.Text;
+            frmRevisa.Fecha = comboMesAño.GetFechaPRimerDia();
+            frmRevisa.Show();
+        }
+
+        SISGEM.ModuloContable.xfrmCuentasSinUsar frmcuentas;
+        private void btnCuentasSinUsar_Click(object sender, EventArgs e)
+        {
+            if (frmcuentas != null && !frmcuentas.IsDisposed)
+            {
+                frmcuentas.Close();
+                frmcuentas.Dispose(); // buena práctica
+            }
+
+            frmcuentas = new SISGEM.ModuloContable.xfrmCuentasSinUsar();
+            //frmRevisa.cuo = txtcuo.Text.Trim();
+            frmcuentas.Show();
+        }
 
         private void comboMesAño_CambioFechas(object sender, EventArgs e)
         {

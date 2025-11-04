@@ -177,6 +177,7 @@
             this.PanelRecibo = new System.Windows.Forms.Panel();
             this.PanelFactura = new System.Windows.Forms.Panel();
             this.PanelNotaCredito = new System.Windows.Forms.Panel();
+            this.chkNotaDetraccion = new DevExpress.XtraEditors.CheckEdit();
             this.chkfac = new System.Windows.Forms.CheckBox();
             this.rdbInteres = new System.Windows.Forms.RadioButton();
             this.rdbDescuento = new System.Windows.Forms.RadioButton();
@@ -208,6 +209,8 @@
             this.xNumero = new DevExpress.XtraGrid.Columns.GridColumn();
             this.yDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label22 = new System.Windows.Forms.Label();
+            this.btnListar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnQuitarPago = new DevExpress.XtraEditors.SimpleButton();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -216,6 +219,7 @@
             this.PanelRecibo.SuspendLayout();
             this.PanelFactura.SuspendLayout();
             this.PanelNotaCredito.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNotaDetraccion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumIGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboClasifBssYSss.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
@@ -1616,11 +1620,11 @@
             this.txtbusnrodoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusnrodoc.ForeColor = System.Drawing.Color.Black;
             this.txtbusnrodoc.Format = null;
-            this.txtbusnrodoc.Location = new System.Drawing.Point(169, 474);
+            this.txtbusnrodoc.Location = new System.Drawing.Point(167, 474);
             this.txtbusnrodoc.MaxLength = 300;
             this.txtbusnrodoc.Name = "txtbusnrodoc";
             this.txtbusnrodoc.NextControlOnEnter = null;
-            this.txtbusnrodoc.Size = new System.Drawing.Size(149, 21);
+            this.txtbusnrodoc.Size = new System.Drawing.Size(133, 21);
             this.txtbusnrodoc.TabIndex = 20;
             this.txtbusnrodoc.Tag = "";
             this.txtbusnrodoc.Text = "Buscar Nro Documento";
@@ -1729,11 +1733,11 @@
             this.txtbuscaempresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscaempresa.ForeColor = System.Drawing.Color.Black;
             this.txtbuscaempresa.Format = null;
-            this.txtbuscaempresa.Location = new System.Drawing.Point(321, 474);
+            this.txtbuscaempresa.Location = new System.Drawing.Point(302, 474);
             this.txtbuscaempresa.MaxLength = 300;
             this.txtbuscaempresa.Name = "txtbuscaempresa";
             this.txtbuscaempresa.NextControlOnEnter = null;
-            this.txtbuscaempresa.Size = new System.Drawing.Size(195, 21);
+            this.txtbuscaempresa.Size = new System.Drawing.Size(145, 21);
             this.txtbuscaempresa.TabIndex = 21;
             this.txtbuscaempresa.Text = "Buscar Empresa";
             this.txtbuscaempresa.TextoDefecto = "Buscar Empresa";
@@ -1752,11 +1756,11 @@
             this.txtbusproveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusproveedor.ForeColor = System.Drawing.Color.Black;
             this.txtbusproveedor.Format = null;
-            this.txtbusproveedor.Location = new System.Drawing.Point(521, 474);
+            this.txtbusproveedor.Location = new System.Drawing.Point(449, 474);
             this.txtbusproveedor.MaxLength = 300;
             this.txtbusproveedor.Name = "txtbusproveedor";
             this.txtbusproveedor.NextControlOnEnter = null;
-            this.txtbusproveedor.Size = new System.Drawing.Size(155, 21);
+            this.txtbusproveedor.Size = new System.Drawing.Size(138, 21);
             this.txtbusproveedor.TabIndex = 22;
             this.txtbusproveedor.Text = "Buscar Proveedor";
             this.txtbusproveedor.TextoDefecto = "Buscar Proveedor";
@@ -1917,6 +1921,7 @@
             // PanelNotaCredito
             // 
             this.PanelNotaCredito.BackColor = System.Drawing.Color.Transparent;
+            this.PanelNotaCredito.Controls.Add(this.chkNotaDetraccion);
             this.PanelNotaCredito.Controls.Add(this.chkfac);
             this.PanelNotaCredito.Controls.Add(this.rdbInteres);
             this.PanelNotaCredito.Controls.Add(this.rdbDescuento);
@@ -1929,6 +1934,15 @@
             this.PanelNotaCredito.Name = "PanelNotaCredito";
             this.PanelNotaCredito.Size = new System.Drawing.Size(567, 48);
             this.PanelNotaCredito.TabIndex = 257;
+            // 
+            // chkNotaDetraccion
+            // 
+            this.chkNotaDetraccion.Location = new System.Drawing.Point(358, 2);
+            this.chkNotaDetraccion.Name = "chkNotaDetraccion";
+            this.chkNotaDetraccion.Properties.Caption = "Calcular Detracciòn";
+            this.chkNotaDetraccion.Size = new System.Drawing.Size(122, 18);
+            this.chkNotaDetraccion.TabIndex = 325;
+            this.chkNotaDetraccion.CheckedChanged += new System.EventHandler(this.chkNotaDetraccion_CheckedChanged);
             // 
             // chkfac
             // 
@@ -1958,7 +1972,7 @@
             // 
             this.rdbDescuento.AutoSize = true;
             this.rdbDescuento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbDescuento.Location = new System.Drawing.Point(147, 26);
+            this.rdbDescuento.Location = new System.Drawing.Point(146, 26);
             this.rdbDescuento.Name = "rdbDescuento";
             this.rdbDescuento.Size = new System.Drawing.Size(80, 17);
             this.rdbDescuento.TabIndex = 222;
@@ -2019,7 +2033,7 @@
             this.btnaplicar.Enabled = false;
             this.btnaplicar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaplicar.Image = ((System.Drawing.Image)(resources.GetObject("btnaplicar.Image")));
-            this.btnaplicar.Location = new System.Drawing.Point(227, 22);
+            this.btnaplicar.Location = new System.Drawing.Point(245, 22);
             this.btnaplicar.Name = "btnaplicar";
             this.btnaplicar.Size = new System.Drawing.Size(92, 25);
             this.btnaplicar.TabIndex = 0;
@@ -2034,7 +2048,7 @@
             this.btnFacturasIncompletas.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnFacturasIncompletas.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFacturasIncompletas.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturasIncompletas.Image")));
-            this.btnFacturasIncompletas.Location = new System.Drawing.Point(899, 473);
+            this.btnFacturasIncompletas.Location = new System.Drawing.Point(899, 472);
             this.btnFacturasIncompletas.Name = "btnFacturasIncompletas";
             this.btnFacturasIncompletas.Size = new System.Drawing.Size(173, 23);
             this.btnFacturasIncompletas.TabIndex = 253;
@@ -2261,8 +2275,8 @@
             // btnbuscar
             // 
             this.btnbuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnbuscar.Image = global::SISGEM.Properties.Resources.find_16x16;
-            this.btnbuscar.Location = new System.Drawing.Point(763, 473);
+            this.btnbuscar.ImageOptions.Image = global::SISGEM.Properties.Resources.find_16x16;
+            this.btnbuscar.Location = new System.Drawing.Point(666, 472);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(75, 23);
             this.btnbuscar.TabIndex = 329;
@@ -2272,8 +2286,8 @@
             // btncleanfind
             // 
             this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btncleanfind.Image = global::SISGEM.Properties.Resources.clearfilter_16x16;
-            this.btncleanfind.Location = new System.Drawing.Point(682, 473);
+            this.btncleanfind.ImageOptions.Image = global::SISGEM.Properties.Resources.clearfilter_16x16;
+            this.btncleanfind.Location = new System.Drawing.Point(589, 472);
             this.btncleanfind.Name = "btncleanfind";
             this.btncleanfind.Size = new System.Drawing.Size(75, 23);
             this.btncleanfind.TabIndex = 330;
@@ -2283,7 +2297,7 @@
             // btnFacturaPagada
             // 
             this.btnFacturaPagada.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFacturaPagada.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturaPagada.Image")));
+            this.btnFacturaPagada.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturaPagada.ImageOptions.Image")));
             this.btnFacturaPagada.Location = new System.Drawing.Point(331, 432);
             this.btnFacturaPagada.Name = "btnFacturaPagada";
             this.btnFacturaPagada.Size = new System.Drawing.Size(136, 23);
@@ -2300,7 +2314,7 @@
             this.cboClasifBssYSss.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboClasifBssYSss.Properties.NullText = "";
-            this.cboClasifBssYSss.Properties.View = this.searchLookUpEdit1View;
+            this.cboClasifBssYSss.Properties.PopupView = this.searchLookUpEdit1View;
             this.cboClasifBssYSss.Size = new System.Drawing.Size(497, 20);
             this.cboClasifBssYSss.TabIndex = 332;
             // 
@@ -2343,11 +2357,35 @@
             this.label22.TabIndex = 333;
             this.label22.Text = "Clasif de Bss y Sss:";
             // 
+            // btnListar
+            // 
+            this.btnListar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnListar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnListar.ImageOptions.Image")));
+            this.btnListar.Location = new System.Drawing.Point(758, 472);
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(139, 23);
+            this.btnListar.TabIndex = 334;
+            this.btnListar.Text = "Mostrar Lista Completa";
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
+            // 
+            // btnQuitarPago
+            // 
+            this.btnQuitarPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnQuitarPago.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitarPago.ImageOptions.Image")));
+            this.btnQuitarPago.Location = new System.Drawing.Point(169, 432);
+            this.btnQuitarPago.Name = "btnQuitarPago";
+            this.btnQuitarPago.Size = new System.Drawing.Size(99, 23);
+            this.btnQuitarPago.TabIndex = 335;
+            this.btnQuitarPago.Text = "QuitarPago";
+            this.btnQuitarPago.Click += new System.EventHandler(this.btnQuitarPago_Click);
+            // 
             // FrmFacturaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.btnQuitarPago);
+            this.Controls.Add(this.btnListar);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.cboClasifBssYSss);
             this.Controls.Add(this.btnFacturaPagada);
@@ -2443,6 +2481,7 @@
             this.PanelFactura.PerformLayout();
             this.PanelNotaCredito.ResumeLayout(false);
             this.PanelNotaCredito.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNotaDetraccion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumIGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboClasifBssYSss.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
@@ -2615,5 +2654,8 @@
         private System.Windows.Forms.Label label22;
         private DevExpress.XtraGrid.Columns.GridColumn xNumero;
         private DevExpress.XtraGrid.Columns.GridColumn yDescripcion;
+        private DevExpress.XtraEditors.CheckEdit chkNotaDetraccion;
+        private DevExpress.XtraEditors.SimpleButton btnListar;
+        private DevExpress.XtraEditors.SimpleButton btnQuitarPago;
     }
 }

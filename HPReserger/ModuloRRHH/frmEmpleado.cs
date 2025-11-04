@@ -627,7 +627,7 @@ namespace HPReserger
             }
         }
         DateTime FEchaActual;
-        private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
+        private async void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
             if (estadito != 2)
             {
@@ -683,10 +683,35 @@ namespace HPReserger
 
                 if (estadito == 1 && txtNombres.Text.ToString() == "")
                 {
-                    if (txtNumeroDocumento.Text.Length == 8 && cboTipoDocumento.SelectedIndex >=0)
+                    if (txtNumeroDocumento.Text.Length == 8 && cboTipoDocumento.SelectedIndex >= 0)
                     {
                         //ANULADO POR FALTA DE DATA DE LA API RENIEC
                         BuscarReniecAPiToken(txtNumeroDocumento.Text);
+                    }
+                    else if (txtNumeroDocumento.Text.Trim().Length == 9)
+                    {
+                        try
+                        {
+                            HpResergerNube.FactilizaApiClient.ApiResponseResultCEE response =
+                                await HpResergerNube.FactilizaApiClient.GetInfoAsyncCEE(txtNumeroDocumento.Text.Trim());
+
+                            if (response != null && response.Response.Status == 200 && response.Response.Data != null)
+                            {
+                                HpResergerNube.FactilizaApiClient.ApiResponseResultCEE Response = await HpResergerNube.FactilizaApiClient.GetInfoAsyncCEE(txtNumeroDocumento.Text.Trim());
+                                if (Response.Response.Status == 200)
+                                {
+                                    txtNombres.Text = Response.Response.Data.Nombres;
+                                    txtApellidoMaterno.Text = Response.Response.Data.Apellido_Materno;
+                                    txtApellidoPaterno.Text = Response.Response.Data.Apellido_Paterno;
+                                    cboTipoDocumento.SelectedValue = 2;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            //MessageBox.Show($"Error al consultar la API: {ex.Message}",
+                            //                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

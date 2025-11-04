@@ -86,7 +86,7 @@ namespace SISGEM.CRM
             HpResergerNube.CRM_PerfilesRepository oPerfil = new HpResergerNube.CRM_PerfilesRepository();
 
             //TIPO DOCUMENTO
-            DataTable tipoDocumentos = objtipodocumento.GetAllTipoDocumentos();
+            DataTable tipoDocumentos = objtipodocumento.GetAllTipoDocumentosPersonas();
             ID_Tipo_DocumentoTextEdit.Properties.DataSource = tipoDocumentos;
             ID_Tipo_DocumentoTextEdit.Properties.ValueMember = "ID_Tipo_documento";
             ID_Tipo_DocumentoTextEdit.Properties.DisplayMember = "Detalle_Tipo_documento";

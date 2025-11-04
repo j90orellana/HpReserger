@@ -53,6 +53,7 @@
             this.btnColorLetra = new System.Windows.Forms.Button();
             this.comboMesAño = new HpResergerUserControls.ComboMesAño();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnDetalleCuentas = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -318,11 +319,23 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // btnDetalleCuentas
+            // 
+            this.btnDetalleCuentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDetalleCuentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDetalleCuentas.ImageOptions.Image")));
+            this.btnDetalleCuentas.Location = new System.Drawing.Point(477, 12);
+            this.btnDetalleCuentas.Name = "btnDetalleCuentas";
+            this.btnDetalleCuentas.Size = new System.Drawing.Size(25, 23);
+            this.btnDetalleCuentas.TabIndex = 92;
+            this.btnDetalleCuentas.ToolTip = "Ver detalle de cuentas";
+            this.btnDetalleCuentas.Click += new System.EventHandler(this.btnDetalleCuentas_Click);
+            // 
             // EstadoGananciaPerdidas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 695);
+            this.Controls.Add(this.btnDetalleCuentas);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboMesAño);
             this.Controls.Add(this.btnColorFondo);
@@ -368,5 +381,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn empresax;
         private HpResergerUserControls.ComboMesAño comboMesAño;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevExpress.XtraEditors.SimpleButton btnDetalleCuentas;
     }
 }

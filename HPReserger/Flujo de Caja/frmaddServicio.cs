@@ -1,10 +1,14 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Export;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,46 +48,46 @@ namespace SISGEM.Flujo_de_Caja
             }
             bntEliminarCargaMasiva.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             bntEliminarCargaMasiva.Enabled = false;
-            CargarEmpresas();
+            //CargarEmpresas();
             CargarDatos();
         }
 
-        private void CargarEmpresas()
-        {
-            HPResergerCapaLogica.HPResergerCL oCL = new HPResergerCapaLogica.HPResergerCL();
-            DataTable tData = oCL.Empresa();
+        //private void CargarEmpresas()
+        //{
+        //    HPResergerCapaLogica.HPResergerCL oCL = new HPResergerCapaLogica.HPResergerCL();
+        //    DataTable tData = oCL.Empresa();
 
-            cboEmpresa.Properties.DataSource = tData;
-            cboEmpresa.Properties.DisplayMember = "descripcion";
-            cboEmpresa.Properties.ValueMember = "codigo";
+        //    cboEmpresa.Properties.DataSource = tData;
+        //    cboEmpresa.Properties.DisplayMember = "descripcion";
+        //    cboEmpresa.Properties.ValueMember = "codigo";
 
-            // Limpiar y configurar columnas manualmente
-            cboEmpresa.Properties.Columns.Clear();
+        //    // Limpiar y configurar columnas manualmente
+        //    cboEmpresa.Properties.Columns.Clear();
 
-            // Agregar la columna "descripcion" y ocultar todas las demás
-            foreach (DataColumn column in tData.Columns)
-            {
-                var lookupColumn = new DevExpress.XtraEditors.Controls.LookUpColumnInfo(column.ColumnName, column.ColumnName);
-                lookupColumn.Visible = column.ColumnName == "descripcion"; // Solo la columna "descripcion" será visible
-                cboEmpresa.Properties.Columns.Add(lookupColumn);
-            }
+        //    // Agregar la columna "descripcion" y ocultar todas las demás
+        //    foreach (DataColumn column in tData.Columns)
+        //    {
+        //        var lookupColumn = new DevExpress.XtraEditors.Controls.LookUpColumnInfo(column.ColumnName, column.ColumnName);
+        //        lookupColumn.Visible = column.ColumnName == "descripcion"; // Solo la columna "descripcion" será visible
+        //        cboEmpresa.Properties.Columns.Add(lookupColumn);
+        //    }
 
-            // Personalizar el encabezado de la columna visible
-            cboEmpresa.Properties.Columns["descripcion"].Caption = "Empresa";
+        //    // Personalizar el encabezado de la columna visible
+        //    cboEmpresa.Properties.Columns["descripcion"].Caption = "Empresa";
 
-            // Seleccionar el primer registro si existen filas
-            if (tData.Rows.Count > 0)
-            {
-                cboEmpresa.EditValue = tData.Rows[0]["codigo"]; // Asigna el primer valor de "codigo"
-            }
+        //    // Seleccionar el primer registro si existen filas
+        //    if (tData.Rows.Count > 0)
+        //    {
+        //        cboEmpresa.EditValue = tData.Rows[0]["codigo"]; // Asigna el primer valor de "codigo"
+        //    }
 
-            // Otras opciones de personalización
-            cboEmpresa.Properties.ShowHeader = true; // Mostrar encabezado de columnas
-            cboEmpresa.Properties.ShowFooter = false; // Ocultar pie de página
-            cboEmpresa.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup; // Ajustar ancho automático
+        //    // Otras opciones de personalización
+        //    cboEmpresa.Properties.ShowHeader = true; // Mostrar encabezado de columnas
+        //    cboEmpresa.Properties.ShowFooter = false; // Ocultar pie de página
+        //    cboEmpresa.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup; // Ajustar ancho automático
 
 
-        }
+        //}
 
         DataTable TdatosExcel;
         private Boolean CargarDatosDelExcel(string Ruta)
@@ -100,11 +104,6 @@ namespace SISGEM.Flujo_de_Caja
         }
         private void btnCarga_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (Empresa == 0)
-            {
-                XtraMessageBox.Show("Por favor, seleccione una empresa antes de continuar.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             DataTable dataTable = new DataTable();
 
@@ -128,42 +127,47 @@ namespace SISGEM.Flujo_de_Caja
                             }
                             else
                             {
-                                if (XtraMessageBox.Show("Los datos se han cargado exitosamente. ¿Está seguro de que desea proceder con la carga de los activos fijos?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                                if (XtraMessageBox.Show("Los datos se han cargado exitosamente. ¿Está seguro de que desea proceder con la carga masiva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                                 {
                                     int i = 0;
+                                    //TdatosExcel.Columns[0].ColumnName = "Tipo";
                                     for (i = 0; i < TdatosExcel.Rows.Count; i++)
                                     {
                                         DataRow item = TdatosExcel.Rows[i];
-                                        if (item[0].ToString().Trim().ToUpper() == "CODIGO")
+                                        if (item[0].ToString().Trim().ToUpper() == "Tipo")
                                         {
                                             break;
                                         }
                                     }
-                                    for (int j = 0; j < i; j++)
-                                    {
-                                        TdatosExcel.Rows.RemoveAt(0);
+                                    //for (int j = 0; j < i; j++)
+                                    //{
+                                    //    TdatosExcel.Rows.RemoveAt(0);
 
-                                    }
+                                    //}
 
-                                    if (TdatosExcel.Rows[0][0].ToString().Trim().ToUpper() == "CODIGO")
-                                        TdatosExcel.Rows.RemoveAt(0);
+                                    //if (TdatosExcel.Rows[0][0].ToString().Trim().ToUpper() == "Tipo")
+                                    TdatosExcel.Rows.RemoveAt(0);
 
-                                    TdatosExcel.Columns[0].ColumnName = "Codigo";
-                                    TdatosExcel.Columns[1].ColumnName = "Descripcion";
-                                    TdatosExcel.Columns[2].ColumnName = "completo";
+                                    TdatosExcel.Columns[0].ColumnName = "Tipo";
+                                    TdatosExcel.Columns[1].ColumnName = "Det_Partida_Madre";
+                                    TdatosExcel.Columns[2].ColumnName = "Cod_Partida_Madre";
+                                    TdatosExcel.Columns[3].ColumnName = "Det_Sub_Partida";
+                                    TdatosExcel.Columns[4].ColumnName = "Cod_Sub_Partida";
 
                                     foreach (DataRow item in TdatosExcel.Rows)
                                     {
                                         HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
 
-                                        cPartidas.Codigo = item["Codigo"].ToString();
-                                        cPartidas.Descripcion = item["Descripcion"].ToString();
-                                        cPartidas.Completo = item["completo"].ToString();
+                                        cPartidas.NTipo = item["Tipo"].ToString();
+                                        cPartidas.CodigoPadre = item["Det_Partida_Madre"].ToString();
+                                        cPartidas.PatidaPadre = item["Cod_Partida_Madre"].ToString();
+                                        cPartidas.Codigo = item["Det_Sub_Partida"].ToString();
+                                        cPartidas.Descripcion = item["Cod_Sub_Partida"].ToString();
+
                                         cPartidas.Tag = IdCargaMasiva;
                                         cPartidas.Tipo = Tipo;
-                                        cPartidas.Cabecera = item["Codigo"].ToString().EndsWith("00") ? 1 : 0;
+                                        cPartidas.Cabecera = 0;
                                         cPartidas.Estado = 1;
-                                        cPartidas.PKempresa = Empresa;
                                         cPartidas.Insertar(cPartidas);
                                     }
                                     CargarDatos();
@@ -250,14 +254,14 @@ namespace SISGEM.Flujo_de_Caja
 
         private void btnRecargaCombos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            CargarEmpresas();
+            //CargarEmpresas();
             CargarDatos();
         }
 
         private void CargarDatos()
         {
             HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
-            gridControl1.DataSource = cPartidas.FiltrarPorTipo(Tipo, Empresa);
+            gridControl1.DataSource = cPartidas.FiltrarPorTipo(Tipo);
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -265,18 +269,23 @@ namespace SISGEM.Flujo_de_Caja
             // Obtener los valores de la fila actual
             var rowHandle = e.RowHandle;
             int id = Convert.ToInt32(gridView1.GetRowCellValue(rowHandle, "id"));
-            string codigo = gridView1.GetRowCellValue(rowHandle, "Codigo").ToString();
-            string descripcion = (gridView1.GetRowCellValue(rowHandle, "Descripcion").ToString());
-            string completo = (gridView1.GetRowCellValue(rowHandle, "completo").ToString());
+            string NTipo = gridView1.GetRowCellValue(rowHandle, "NTipo").ToString();
+            string CodigoPadre = (gridView1.GetRowCellValue(rowHandle, "CodigoPadre").ToString());
+            string PartidaPadre = (gridView1.GetRowCellValue(rowHandle, "PatidaPadre").ToString());
+            string Codigo = (gridView1.GetRowCellValue(rowHandle, "Codigo").ToString());
+            string Descripcion = (gridView1.GetRowCellValue(rowHandle, "Descripcion").ToString());
             int usuario = HPReserger.frmLogin.CodigoUsuario;
             DateTime fecha = DateTime.Now;
 
             HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
 
             cPartidas.Id = id;
-            cPartidas.Codigo = codigo;
-            cPartidas.Descripcion = descripcion;
-            cPartidas.Completo = completo;
+            cPartidas.NTipo = NTipo;
+            cPartidas.CodigoPadre = CodigoPadre;
+            cPartidas.PatidaPadre = PartidaPadre;
+            cPartidas.Codigo = Codigo;
+            cPartidas.Descripcion = Descripcion;
+            cPartidas.Fecha = fecha;
 
             if (!cPartidas.ActualizarGrilla(cPartidas))
             {
@@ -407,12 +416,124 @@ namespace SISGEM.Flujo_de_Caja
             this.Close();
         }
 
-        private void cboEmpresa_EditValueChanged(object sender, EventArgs e)
+        private void btnExportarExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (cboEmpresa.EditValue != null)
-                Empresa = (int)cboEmpresa.EditValue;
+            var exporter = new GridExporter(gridControl1, gridView1, this.Text);
+            exporter.ExportarAExcel();
+        }
+        public class GridExporter
+        {
+            private readonly GridControl _gridControl;
+            private readonly GridView _gridview;
+            private readonly string _appDataPath;
 
-            CargarDatos();
+            private readonly string _nombre;
+
+            public GridExporter(GridControl gridControl, GridView gridview, string name)
+            {
+
+                _gridControl = gridControl ?? throw new ArgumentNullException(nameof(gridControl));
+                _gridview = gridview ?? throw new ArgumentNullException(nameof(gridview));
+                _appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "");
+
+                _nombre = name;
+
+                // Crear directorio si no existe
+                if (!Directory.Exists(_appDataPath))
+                {
+                    Directory.CreateDirectory(_appDataPath);
+                }
+            }
+            private bool ValidarDatos()
+            {
+                if (_gridControl.DataSource == null || _gridControl.MainView.RowCount == 0)
+                {
+                    MessageBox.Show("No se puede exportar porque la grilla no contiene datos.",
+                                  "Exportación cancelada",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Warning);
+                    return false;
+                }
+                return true;
+            }
+            private void MostrarError(string mensaje)
+            {
+                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            private void AbrirArchivo(string filePath)
+            {
+                try
+                {
+                    if (File.Exists(filePath))
+                    {
+                        System.Diagnostics.Process.Start(filePath);
+                        //MessageBox.Show($"Archivo exportado correctamente:\n{filePath}",
+                        //"Éxito",
+                        //                MessageBoxButtons.OK,
+                        //                MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MostrarError($"Error al abrir el archivo: {ex.Message}");
+                }
+            }
+
+            public void ExportarAExcel()
+            {
+                if (!ValidarDatos())
+                    return;
+
+                string filePath = Path.Combine(_appDataPath, $"Listado de {_nombre}.xls");
+
+                try
+                {
+                    var options = new XlsExportOptionsEx
+                    {
+                        ExportType = ExportType.WYSIWYG,
+                        ShowGridLines = true,
+                        TextExportMode = TextExportMode.Text,
+                        SheetName = $"Listado de {_nombre}",
+                        FitToPrintedPageWidth = true,
+                        RawDataMode = false,
+                        ExportHyperlinks = false,
+                        DocumentOptions = {
+                                        Author = "j90orellana@hotmail.com",
+                                        Title = $"Listado de {_nombre}",
+                                        Subject = $"Listado de {_nombre}"
+                        }
+
+                    };
+
+                    // Validar si el archivo existe y está abierto
+                    if (File.Exists(filePath))
+                    {
+                        try
+                        {
+                            // Intenta abrir el archivo en modo exclusivo
+                            using (var file = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
+                            {
+                                // Si no hay excepción, el archivo no está bloqueado
+                            }
+                        }
+                        catch (IOException)
+                        {
+                            // El archivo está abierto/bloqueado
+                            XtraMessageBox.Show("El archivo está abierto en otro programa. Ciérrelo antes de continuar.", "Archivo en Uso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return; // Salir sin exportar
+                        }
+                    }
+                    _gridControl.ExportToXls(filePath, options);
+
+                    AbrirArchivo(filePath);
+                }
+                catch (Exception ex)
+                {
+                    MostrarError($"Error al exportar a Excel: {ex.Message}");
+                }
+            }
         }
     }
 }

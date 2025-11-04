@@ -334,6 +334,10 @@ namespace HPReserger
                 cboDesEtapa.DataSource = CapaLogica.ListarEtapasProyecto(cboDesProyecto.SelectedValue.ToString());
             }
         }
+        DialogResult PAsoBanco = DialogResult.Cancel;
+        List<string> Proveedores = new List<string>();
+        public Boolean PasoFactura = false;
+
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             ///Declaraciones
@@ -364,7 +368,7 @@ namespace HPReserger
                 if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
                     return;
             }
-            else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa,FechaContable))
+            else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContable))
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }
@@ -375,7 +379,7 @@ namespace HPReserger
                 if (HPResergerFunciones.frmPregunta.MostrarDialogYesCancel("No se Puede Registrar este Asiento\nEl Periodo no puede Crearse", $"¿Desea Crear el Periodo de {FechaCoontable.ToString("MMMM")}-{FechaCoontable.Year}?") != DialogResult.Yes)
                     return;
             }
-            else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa,FechaContable))
+            else if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContable))
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }
@@ -428,8 +432,187 @@ namespace HPReserger
             //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
             //Modificar Cartel Consulta
             string CartelPregunta = Estado == 1 ? "Seguro Desea Proceder con el Préstamo" : "Seguro Desea Proceder con la Modificación";
+
+            Boolean GenerarTxt = false;
+            DialogResult ResultadoDialogo = HPResergerFunciones.Utilitarios.msgync("Desea Generar TXT del pago?");
+            if (ResultadoDialogo == DialogResult.Yes)
+            {
+                GenerarTxt = false;
+                ///Verificar si el esta el Generador de txt de ese banco 
+                string bancox = cboOriBanco.SelectedValue.ToString().Trim();
+                if (bancox == "CREDITO" || bancox == "INTERBANK" || bancox == "BIF" || bancox == "SCOTIABANK" || bancox == "CONTINENTAL")
+                {
+                    //bancos que generan el txt bcp ibk bif
+                    GenerarTxt = true;
+                }
+                else
+                {
+                    if (msgp("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?") == DialogResult.Yes)
+                    {
+                        GenerarTxt = false;
+                    }
+                    else
+                        return;
+                }
+            }
+            if (ResultadoDialogo == DialogResult.No)
+            {
+                PAsoBanco = DialogResult.OK;
+                GenerarTxt = false;
+                //msg("selecciones no en generar txt");
+            }
+            if (ResultadoDialogo == DialogResult.Cancel)
+                return;
+
+
+            //PROCESO PARA GENERAR EL TXT
+            ////FIN DE REMOVER NOTAS
+            if (GenerarTxt)
+            {
+                //Carga de Variables
+                string glosa = txtGlosa.Text;
+                DateTime FechaPago = dtpFechaPrestamo.Value;
+                string Proveedor = (((DataTable)cboDesEmpresa.DataSource).Rows[cboDesEmpresa.SelectedIndex]["RUC"]).ToString();
+                int idMoneda = (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["pkmoneda"];
+                decimal tipoCambio = decimal.Parse(txtTipoCambio.Text);
+                decimal montoPrestado = decimal.Parse(txtMontoPrestamo.Text);
+                DateTime fechaContable = dtpFechaContable.Value;
+
+                Proveedores.Clear();
+                Proveedores.Add(Proveedor);
+
+                List<frmPagarFactura.FACTURAS> ComprobantesCopia = new List<frmPagarFactura.FACTURAS>();
+                int SiguientePkId = (int)CapaLogica.SiguienteIdPrestamoInterEmpresa(IdEmpresaOri).Rows[0]["SiguientePkid"];
+
+                string NumComprobante = "";
+                if (Estado == 1)
+                    NumComprobante = "Pr." + SiguientePkId + "-" + FechaPrestamo.ToString("dd/MM/yyyy");
+                if (Estado == 2)
+                    NumComprobante = "Pr." + _FkId + "-" + FechaPrestamo.ToString("dd/MM/yyyy");
+
+                ComprobantesCopia.Add(new frmPagarFactura.FACTURAS(
+                    NumComprobante,
+                    Proveedor,
+                    "0",
+                    montoPrestado,
+                    0,
+                    montoPrestado,
+                    0,
+                    0,
+                    montoPrestado,
+                    FechaPrestamo,
+                    0,
+                    FechaPrestamo,
+                    fechaContable,
+                    idMoneda,
+                    "",
+                    tipoCambio,
+                    0));
+
+
+                //ventanas de seleccion para generar txt
+                frmCargaDatosProveedor frmcargardatosproveedor = new frmCargaDatosProveedor();
+                frmcargardatosproveedor.Proveedores = Proveedores.Distinct().ToList<string>();
+                frmcargardatosproveedor.banco = cboOriBanco.SelectedValue.ToString();
+                frmcargardatosproveedor.txtbanco.Text = cboOriBanco.Text;
+                frmcargardatosproveedor.cuenta = cboOriCuentaBanco.Text;
+
+                frmcargardatosproveedor.idCtaOrigen = (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["IdTipoCta"];
+                frmcargardatosproveedor.idCtaDestino = (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["IdTipoCta"];
+
+                if (cboOriBanco.Text != "")
+                {
+                    frmcargardatosproveedor.CuentaBancaria = HPResergerFunciones.Utilitarios.ExtraerCuenta(cboOriCuentaBanco.Text);
+                    if (frmcargardatosproveedor.ShowDialog() == DialogResult.Cancel || frmcargardatosproveedor.Resultado == DialogResult.Cancel)
+                        return;
+                }
+                else return;
+                //msg("vamos a pagar la factura");
+                PasoFactura = false;
+                if (cboOriBanco.SelectedValue.ToString().ToUpper().Trim() == "CREDITO")
+                {
+                    //Abrimos eL formulario del banco de credito
+                    //msg("FORMULARIO DEL BCP");
+                    frmBancoBcp bancobcp = new frmBancoBcp();
+                    bancobcp.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
+                    //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
+                    //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
+                    bancobcp.txtcuentapago.Text = frmcargardatosproveedor.txtcuenta.Text;
+                    bancobcp.Icon = Icon;
+                    bancobcp.Comprobantes = ComprobantesCopia;
+                    bancobcp.ShowDialog();
+                    PAsoBanco = bancobcp.DialogResult;
+                }
+                else if (cboOriBanco.SelectedValue.ToString().ToUpper().Trim() == "SCOTIABANK")
+                {
+                    //Abrimos eL formulario del banco de credito
+                    //msg("FORMULARIO DEL BCP");
+                    ModuloBancario.frmBancoScotiaBank BancoScotiaBank = new ModuloBancario.frmBancoScotiaBank();
+                    BancoScotiaBank.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
+                    //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
+                    //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
+                    BancoScotiaBank.txtcuentapago.Text = frmcargardatosproveedor.txtcuenta.Text;
+                    BancoScotiaBank.Icon = Icon;
+                    BancoScotiaBank.Comprobantes = ComprobantesCopia;
+                    BancoScotiaBank.FechaPago = FechaPago;
+                    BancoScotiaBank.Concepto = glosa;
+                    BancoScotiaBank.ShowDialog();
+                    PAsoBanco = BancoScotiaBank.DialogResult;
+                }
+                else if (cboOriBanco.SelectedValue.ToString().ToUpper().Trim() == "CONTINENTAL")
+                {
+                    //Abrimos eL formulario del banco de credito
+                    //msg("FORMULARIO DEL BCP");
+                    ModuloBancario.frmBancoBBVA BancoBBVA = new ModuloBancario.frmBancoBBVA();
+                    BancoBBVA.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
+                    //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
+                    //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
+                    BancoBBVA.NroCuenta = frmcargardatosproveedor.txtcuenta.Text;
+                    BancoBBVA.Icon = Icon;
+                    BancoBBVA.Comprobantes = ComprobantesCopia;
+                    BancoBBVA.Glosa = glosa;
+                    //
+                    BancoBBVA.PkMoneda = IdMoneda;
+                    BancoBBVA.ShowDialog();
+                    PAsoBanco = BancoBBVA.DialogResult;
+                }
+                else if (cboOriBanco.SelectedValue.ToString().ToUpper().Trim() == "INTERBANK")
+                {
+                    //abrimos el formulario del banco interbank
+                    // msg("FORMULARIO DEL IBK");
+                    frmBancoInterbank bancointerbank = new frmBancoInterbank();
+                    bancointerbank.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
+                    //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
+                    //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
+                    bancointerbank.txtcuenta.Text = frmcargardatosproveedor.txtcuenta.Text;
+                    bancointerbank.Comprobantes = ComprobantesCopia;
+                    bancointerbank.Icon = Icon;
+                    bancointerbank.ShowDialog();
+                    PAsoBanco = bancointerbank.DialogResult;
+                }
+                else if (cboOriBanco.SelectedValue.ToString().ToUpper().Trim() == "BIF")
+                {
+                    //abrimso el formulario del banco interarmericano de finanzas
+                    //  msg("FORMULARIO DEL BIF");
+                    frmBancoInterAmericano bancointeramericano = new frmBancoInterAmericano();
+                    bancointeramericano.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
+                    //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
+                    //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
+                    bancointeramericano.txtcuenta.Text = frmcargardatosproveedor.txtcuenta.Text;
+                    bancointeramericano.Comprobantes = ComprobantesCopia;
+                    bancointeramericano.Icon = Icon;
+                    bancointeramericano.ShowDialog();
+                    PAsoBanco = bancointeramericano.DialogResult;
+                }
+            }
+
+
+
+
+
             //Procedemos
-            if (msgp(CartelPregunta) == DialogResult.Yes)
+            //if (msgp(CartelPregunta) == DialogResult.Yes)
+            if (PAsoBanco == DialogResult.OK)
             {
                 //Sí es Modificación Debemos Eliminar Asiento y su Detalle 
                 if (Estado == 2)

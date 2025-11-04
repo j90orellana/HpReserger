@@ -41,9 +41,19 @@ namespace HPReserger
             consulta = string.Join(",", Proveedores);
             cuenta = txtcuenta.Text = HPResergerFunciones.Utilitarios.ExtraerCuenta(cuenta);
             // msg(cadenas + "\nConsulta=" + consulta + "\nBanco=" + banco);
-            Dtguias.DataSource = CapaLogica.BuscarCuentasBancoPagar(banco, consulta, CuentaBancaria);
-        }       
+            if (idCtaOrigen == 0)
+            {
+                Dtguias.DataSource = CapaLogica.BuscarCuentasBancoPagar(banco, consulta, CuentaBancaria);
+            }
+            else
+            {
+                HPResergerCapaLogica.Finanzas.PagoFacturas cCLASE = new HPResergerCapaLogica.Finanzas.PagoFacturas();
+                Dtguias.DataSource = cCLASE.ListarCuentasBancarias(idCtaOrigen,idCtaDestino);
+            }
+        }
         public DataTable TablaProvedoresBancos;
+        public int idCtaOrigen = 0;
+        public int idCtaDestino = 0;
 
         public string CuentaBancaria { get; internal set; }
 

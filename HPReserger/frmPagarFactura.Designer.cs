@@ -32,20 +32,20 @@ namespace HPReserger
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagarFactura));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbobanco = new System.Windows.Forms.ComboBox();
             this.btnmaspro = new System.Windows.Forms.Button();
             this.cbotipo = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,25 @@ namespace HPReserger
             this.label4 = new System.Windows.Forms.Label();
             this.txttotaldetrac = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.zempresa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zruc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zrazonsocial = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ztipo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.znrofactura = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zglosa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zfechaemision = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zfechacancelado = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zmoneda = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ztotal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zdetraccion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zsaldo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.zsaldousd = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnTodolosPendientes = new DevExpress.XtraEditors.SimpleButton();
+            this.txtcomision = new DevExpress.XtraEditors.TextEdit();
+            this.chkComision = new DevExpress.XtraEditors.CheckEdit();
+            this.txtbuscarDocumentos = new HpResergerUserControls.TextBoxPer();
             this.label10 = new System.Windows.Forms.Label();
             this.txtbuscar = new HpResergerUserControls.TextBoxPer();
             this.label11 = new System.Windows.Forms.Label();
@@ -140,8 +159,11 @@ namespace HPReserger
             this.txttotalME = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txttotalAbonadoME = new System.Windows.Forms.TextBox();
-            this.txtbuscarDocumentos = new HpResergerUserControls.TextBoxPer();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcomision.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkComision.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -263,7 +285,7 @@ namespace HPReserger
             this.txttotalMN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotalMN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotalMN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalMN.Location = new System.Drawing.Point(720, 518);
+            this.txttotalMN.Location = new System.Drawing.Point(722, 481);
             this.txttotalMN.Name = "txttotalMN";
             this.txttotalMN.ReadOnly = true;
             this.txttotalMN.Size = new System.Drawing.Size(91, 21);
@@ -278,7 +300,7 @@ namespace HPReserger
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(730, 504);
+            this.label3.Location = new System.Drawing.Point(732, 467);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 33;
@@ -294,7 +316,7 @@ namespace HPReserger
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(341, 504);
+            this.label4.Location = new System.Drawing.Point(343, 467);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 31;
@@ -305,7 +327,7 @@ namespace HPReserger
             this.txttotaldetrac.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotaldetrac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotaldetrac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotaldetrac.Location = new System.Drawing.Point(343, 518);
+            this.txttotaldetrac.Location = new System.Drawing.Point(345, 481);
             this.txttotaldetrac.Name = "txttotaldetrac";
             this.txttotaldetrac.ReadOnly = true;
             this.txttotaldetrac.Size = new System.Drawing.Size(89, 21);
@@ -316,6 +338,10 @@ namespace HPReserger
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.gridControl1);
+            this.groupBox1.Controls.Add(this.btnTodolosPendientes);
+            this.groupBox1.Controls.Add(this.txtcomision);
+            this.groupBox1.Controls.Add(this.chkComision);
             this.groupBox1.Controls.Add(this.txtbuscarDocumentos);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtbuscar);
@@ -335,6 +361,198 @@ namespace HPReserger
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busqueda";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Location = new System.Drawing.Point(682, 12);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(99, 43);
+            this.gridControl1.TabIndex = 73;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gridControl1.Visible = false;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.zempresa,
+            this.zruc,
+            this.zrazonsocial,
+            this.ztipo,
+            this.znrofactura,
+            this.zglosa,
+            this.zfechaemision,
+            this.zfechacancelado,
+            this.zmoneda,
+            this.ztotal,
+            this.zdetraccion,
+            this.zsaldo,
+            this.zsaldousd});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            // 
+            // zempresa
+            // 
+            this.zempresa.Caption = "Empresa";
+            this.zempresa.FieldName = "empresa";
+            this.zempresa.Name = "zempresa";
+            this.zempresa.Visible = true;
+            this.zempresa.VisibleIndex = 0;
+            // 
+            // zruc
+            // 
+            this.zruc.Caption = "RUC";
+            this.zruc.FieldName = "ruc";
+            this.zruc.Name = "zruc";
+            this.zruc.Visible = true;
+            this.zruc.VisibleIndex = 1;
+            // 
+            // zrazonsocial
+            // 
+            this.zrazonsocial.Caption = "Beneficiario";
+            this.zrazonsocial.FieldName = "razonsocial";
+            this.zrazonsocial.Name = "zrazonsocial";
+            this.zrazonsocial.Visible = true;
+            this.zrazonsocial.VisibleIndex = 2;
+            // 
+            // ztipo
+            // 
+            this.ztipo.Caption = "Tipo";
+            this.ztipo.FieldName = "tipo";
+            this.ztipo.Name = "ztipo";
+            this.ztipo.Visible = true;
+            this.ztipo.VisibleIndex = 3;
+            // 
+            // znrofactura
+            // 
+            this.znrofactura.Caption = "Documento";
+            this.znrofactura.FieldName = "nrofactura";
+            this.znrofactura.Name = "znrofactura";
+            this.znrofactura.Visible = true;
+            this.znrofactura.VisibleIndex = 4;
+            // 
+            // zglosa
+            // 
+            this.zglosa.Caption = "Concepto";
+            this.zglosa.FieldName = "glosa";
+            this.zglosa.Name = "zglosa";
+            this.zglosa.Visible = true;
+            this.zglosa.VisibleIndex = 5;
+            // 
+            // zfechaemision
+            // 
+            this.zfechaemision.Caption = "Fecha Factura\r\n";
+            this.zfechaemision.FieldName = "fechaemision";
+            this.zfechaemision.Name = "zfechaemision";
+            this.zfechaemision.Visible = true;
+            this.zfechaemision.VisibleIndex = 6;
+            // 
+            // zfechacancelado
+            // 
+            this.zfechacancelado.Caption = "Fecha Vencimiento\r\n";
+            this.zfechacancelado.FieldName = "fechacancelado";
+            this.zfechacancelado.Name = "zfechacancelado";
+            this.zfechacancelado.Visible = true;
+            this.zfechacancelado.VisibleIndex = 7;
+            // 
+            // zmoneda
+            // 
+            this.zmoneda.Caption = "Moneda";
+            this.zmoneda.FieldName = "moneda";
+            this.zmoneda.Name = "zmoneda";
+            this.zmoneda.Visible = true;
+            this.zmoneda.VisibleIndex = 8;
+            // 
+            // ztotal
+            // 
+            this.ztotal.Caption = "Total Factura\r\n";
+            this.ztotal.FieldName = "total";
+            this.ztotal.Name = "ztotal";
+            this.ztotal.Visible = true;
+            this.ztotal.VisibleIndex = 9;
+            // 
+            // zdetraccion
+            // 
+            this.zdetraccion.Caption = "Detracción\r\n";
+            this.zdetraccion.FieldName = "detraccion";
+            this.zdetraccion.Name = "zdetraccion";
+            this.zdetraccion.Visible = true;
+            this.zdetraccion.VisibleIndex = 10;
+            // 
+            // zsaldo
+            // 
+            this.zsaldo.Caption = " Neto a pagar      S/ \r\n";
+            this.zsaldo.FieldName = "saldopen";
+            this.zsaldo.Name = "zsaldo";
+            this.zsaldo.Visible = true;
+            this.zsaldo.VisibleIndex = 11;
+            // 
+            // zsaldousd
+            // 
+            this.zsaldousd.Caption = " Neto a pagar     $ \r\n";
+            this.zsaldousd.FieldName = "saldousd";
+            this.zsaldousd.Name = "zsaldousd";
+            this.zsaldousd.Visible = true;
+            this.zsaldousd.VisibleIndex = 12;
+            // 
+            // btnTodolosPendientes
+            // 
+            this.btnTodolosPendientes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTodolosPendientes.ImageOptions.Image")));
+            this.btnTodolosPendientes.Location = new System.Drawing.Point(844, 39);
+            this.btnTodolosPendientes.Name = "btnTodolosPendientes";
+            this.btnTodolosPendientes.Size = new System.Drawing.Size(206, 23);
+            this.btnTodolosPendientes.TabIndex = 72;
+            this.btnTodolosPendientes.Text = "Exportar todos los Pagos Pendientes";
+            this.btnTodolosPendientes.Click += new System.EventHandler(this.btnTodolosPendientes_Click);
+            // 
+            // txtcomision
+            // 
+            this.txtcomision.EditValue = "0.00";
+            this.txtcomision.Enabled = false;
+            this.txtcomision.Location = new System.Drawing.Point(988, 14);
+            this.txtcomision.Name = "txtcomision";
+            this.txtcomision.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtcomision.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtcomision.Properties.DisplayFormat.FormatString = "0.00";
+            this.txtcomision.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtcomision.Properties.EditFormat.FormatString = "0.00";
+            this.txtcomision.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtcomision.Properties.Mask.EditMask = "f2";
+            this.txtcomision.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtcomision.Properties.NullText = "0.00";
+            this.txtcomision.Size = new System.Drawing.Size(62, 20);
+            this.txtcomision.TabIndex = 14;
+            // 
+            // chkComision
+            // 
+            this.chkComision.Location = new System.Drawing.Point(804, 14);
+            this.chkComision.Name = "chkComision";
+            this.chkComision.Properties.Caption = "¿Este pago incluye una comisión?";
+            this.chkComision.Size = new System.Drawing.Size(183, 18);
+            this.chkComision.TabIndex = 13;
+            this.chkComision.CheckedChanged += new System.EventHandler(this.chkComision_CheckedChanged);
+            // 
+            // txtbuscarDocumentos
+            // 
+            this.txtbuscarDocumentos.BackColor = System.Drawing.Color.White;
+            this.txtbuscarDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbuscarDocumentos.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbuscarDocumentos.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbuscarDocumentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbuscarDocumentos.ForeColor = System.Drawing.Color.Black;
+            this.txtbuscarDocumentos.Format = null;
+            this.txtbuscarDocumentos.Location = new System.Drawing.Point(16, 38);
+            this.txtbuscarDocumentos.MaxLength = 300;
+            this.txtbuscarDocumentos.Name = "txtbuscarDocumentos";
+            this.txtbuscarDocumentos.NextControlOnEnter = null;
+            this.txtbuscarDocumentos.Size = new System.Drawing.Size(272, 21);
+            this.txtbuscarDocumentos.TabIndex = 12;
+            this.txtbuscarDocumentos.Text = "Buscar por Documento";
+            this.txtbuscarDocumentos.TextoDefecto = "Buscar por Documento";
+            this.txtbuscarDocumentos.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbuscarDocumentos.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtbuscarDocumentos.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
             // 
             // label10
             // 
@@ -520,7 +738,7 @@ namespace HPReserger
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(917, 517);
+            this.btnaceptar.Location = new System.Drawing.Point(919, 480);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 16;
@@ -533,7 +751,7 @@ namespace HPReserger
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(998, 517);
+            this.btncancelar.Location = new System.Drawing.Point(1000, 480);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 17;
@@ -572,9 +790,9 @@ namespace HPReserger
             this.Dtguias.AllowUserToOrderColumns = true;
             this.Dtguias.AllowUserToResizeColumns = false;
             this.Dtguias.AllowUserToResizeRows = false;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.Dtguias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.Dtguias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dtguias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -585,14 +803,14 @@ namespace HPReserger
             this.Dtguias.CheckColumna = null;
             this.Dtguias.CheckValor = 1;
             this.Dtguias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dtguias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dtguias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Dtguias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtguias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OK,
@@ -620,14 +838,14 @@ namespace HPReserger
             this.xidmoneda,
             this.xCuentaContable,
             this.xglosa});
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dtguias.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dtguias.DefaultCellStyle = dataGridViewCellStyle14;
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtguias.EnableHeadersVisualStyles = false;
             this.Dtguias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -637,7 +855,7 @@ namespace HPReserger
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.RowTemplate.Height = 20;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.Dtguias.Size = new System.Drawing.Size(1059, 299);
+            this.Dtguias.Size = new System.Drawing.Size(1061, 262);
             this.Dtguias.TabIndex = 46;
             this.Dtguias.TabStop = false;
             this.Dtguias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellContentClick);
@@ -655,8 +873,8 @@ namespace HPReserger
             // 
             this.OK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.OK.DataPropertyName = "OK";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.OK.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.OK.DefaultCellStyle = dataGridViewCellStyle3;
             this.OK.FalseValue = "0";
             this.OK.FillWeight = 126.9036F;
             this.OK.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -727,9 +945,9 @@ namespace HPReserger
             // 
             this.xtc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xtc.DataPropertyName = "tc";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "n3";
-            this.xtc.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n3";
+            this.xtc.DefaultCellStyle = dataGridViewCellStyle4;
             this.xtc.HeaderText = "T.C. Reg.";
             this.xtc.Name = "xtc";
             this.xtc.ReadOnly = true;
@@ -740,9 +958,9 @@ namespace HPReserger
             // 
             this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.subtotal.DataPropertyName = "subtotal";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "n2";
-            this.subtotal.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.subtotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.subtotal.HeaderText = "Subtotal";
             this.subtotal.MinimumWidth = 70;
             this.subtotal.Name = "subtotal";
@@ -753,9 +971,9 @@ namespace HPReserger
             // 
             this.Igv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.Igv.DataPropertyName = "Igv";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.Format = "n2";
-            this.Igv.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.Igv.DefaultCellStyle = dataGridViewCellStyle6;
             this.Igv.HeaderText = "Igv/Rta";
             this.Igv.MinimumWidth = 60;
             this.Igv.Name = "Igv";
@@ -766,9 +984,9 @@ namespace HPReserger
             // 
             this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.Total.DataPropertyName = "Total";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.Format = "n2";
-            this.Total.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "n2";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle7;
             this.Total.HeaderText = "Total";
             this.Total.MinimumWidth = 56;
             this.Total.Name = "Total";
@@ -779,9 +997,9 @@ namespace HPReserger
             // 
             this.detraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.detraccion.DataPropertyName = "detrac";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle22.Format = "n2";
-            this.detraccion.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n2";
+            this.detraccion.DefaultCellStyle = dataGridViewCellStyle8;
             this.detraccion.HeaderText = "Detrac.";
             this.detraccion.MinimumWidth = 70;
             this.detraccion.Name = "detraccion";
@@ -792,9 +1010,9 @@ namespace HPReserger
             // 
             this.Saldox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Saldox.DataPropertyName = "saldo";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle23.Format = "n2";
-            this.Saldox.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "n2";
+            this.Saldox.DefaultCellStyle = dataGridViewCellStyle9;
             this.Saldox.HeaderText = "Saldo";
             this.Saldox.MinimumWidth = 50;
             this.Saldox.Name = "Saldox";
@@ -805,9 +1023,9 @@ namespace HPReserger
             // 
             this.Pagox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Pagox.DataPropertyName = "pago";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle24.Format = "n2";
-            this.Pagox.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "n2";
+            this.Pagox.DefaultCellStyle = dataGridViewCellStyle10;
             this.Pagox.HeaderText = "Pago";
             this.Pagox.MinimumWidth = 50;
             this.Pagox.Name = "Pagox";
@@ -817,8 +1035,8 @@ namespace HPReserger
             // 
             this.FechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.FechaEmision.DataPropertyName = "FechaEmision";
-            dataGridViewCellStyle25.Format = "g";
-            this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle11.Format = "g";
+            this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle11;
             this.FechaEmision.HeaderText = "Fecha Emisión";
             this.FechaEmision.MinimumWidth = 70;
             this.FechaEmision.Name = "FechaEmision";
@@ -829,9 +1047,9 @@ namespace HPReserger
             // 
             this.fechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.fechaRecepcion.DataPropertyName = "fechaRecepcion";
-            dataGridViewCellStyle26.Format = "g";
-            dataGridViewCellStyle26.NullValue = null;
-            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle12.Format = "g";
+            dataGridViewCellStyle12.NullValue = null;
+            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle12;
             this.fechaRecepcion.HeaderText = "Fecha Recepción";
             this.fechaRecepcion.MinimumWidth = 80;
             this.fechaRecepcion.Name = "fechaRecepcion";
@@ -842,9 +1060,9 @@ namespace HPReserger
             // 
             this.FechaCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.FechaCancelado.DataPropertyName = "FechaCancelado";
-            dataGridViewCellStyle27.Format = "g";
-            this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle27;
-            this.FechaCancelado.HeaderText = "Fecha Cancelado";
+            dataGridViewCellStyle13.Format = "g";
+            this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle13;
+            this.FechaCancelado.HeaderText = "Fecha Vencimiento";
             this.FechaCancelado.MinimumWidth = 70;
             this.FechaCancelado.Name = "FechaCancelado";
             this.FechaCancelado.ReadOnly = true;
@@ -940,7 +1158,7 @@ namespace HPReserger
             this.lblmensaje.AutoSize = true;
             this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
             this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmensaje.Location = new System.Drawing.Point(12, 522);
+            this.lblmensaje.Location = new System.Drawing.Point(12, 485);
             this.lblmensaje.Name = "lblmensaje";
             this.lblmensaje.Size = new System.Drawing.Size(129, 13);
             this.lblmensaje.TabIndex = 25;
@@ -973,7 +1191,7 @@ namespace HPReserger
             this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
-            this.btnpdf.Location = new System.Drawing.Point(438, 516);
+            this.btnpdf.Location = new System.Drawing.Point(440, 479);
             this.btnpdf.Name = "btnpdf";
             this.btnpdf.Size = new System.Drawing.Size(82, 25);
             this.btnpdf.TabIndex = 15;
@@ -993,7 +1211,7 @@ namespace HPReserger
             this.rdbporPagar.AutoSize = true;
             this.rdbporPagar.BackColor = System.Drawing.Color.Transparent;
             this.rdbporPagar.Checked = true;
-            this.rdbporPagar.Location = new System.Drawing.Point(468, 179);
+            this.rdbporPagar.Location = new System.Drawing.Point(469, 179);
             this.rdbporPagar.Name = "rdbporPagar";
             this.rdbporPagar.Size = new System.Drawing.Size(74, 17);
             this.rdbporPagar.TabIndex = 45;
@@ -1007,7 +1225,7 @@ namespace HPReserger
             this.rdbPagados.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rdbPagados.AutoSize = true;
             this.rdbPagados.BackColor = System.Drawing.Color.Transparent;
-            this.rdbPagados.Location = new System.Drawing.Point(548, 179);
+            this.rdbPagados.Location = new System.Drawing.Point(549, 179);
             this.rdbPagados.Name = "rdbPagados";
             this.rdbPagados.Size = new System.Drawing.Size(69, 17);
             this.rdbPagados.TabIndex = 44;
@@ -1089,7 +1307,7 @@ namespace HPReserger
             this.txttotaldiferencial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotaldiferencial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotaldiferencial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotaldiferencial.Location = new System.Drawing.Point(250, 518);
+            this.txttotaldiferencial.Location = new System.Drawing.Point(252, 481);
             this.txttotaldiferencial.Name = "txttotaldiferencial";
             this.txttotaldiferencial.ReadOnly = true;
             this.txttotaldiferencial.Size = new System.Drawing.Size(91, 21);
@@ -1103,7 +1321,7 @@ namespace HPReserger
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(250, 504);
+            this.label13.Location = new System.Drawing.Point(252, 467);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(92, 13);
             this.label13.TabIndex = 29;
@@ -1169,7 +1387,7 @@ namespace HPReserger
             // 
             this.btnRefrescar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefrescar.Image = ((System.Drawing.Image)(resources.GetObject("btnRefrescar.Image")));
-            this.btnRefrescar.Location = new System.Drawing.Point(894, 176);
+            this.btnRefrescar.Location = new System.Drawing.Point(896, 176);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(86, 23);
             this.btnRefrescar.TabIndex = 13;
@@ -1209,7 +1427,7 @@ namespace HPReserger
             this.btnVerPagados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerPagados.ForeColor = System.Drawing.Color.White;
             this.btnVerPagados.Image = ((System.Drawing.Image)(resources.GetObject("btnVerPagados.Image")));
-            this.btnVerPagados.Location = new System.Drawing.Point(982, 176);
+            this.btnVerPagados.Location = new System.Drawing.Point(984, 176);
             this.btnVerPagados.Name = "btnVerPagados";
             this.btnVerPagados.Size = new System.Drawing.Size(89, 23);
             this.btnVerPagados.TabIndex = 14;
@@ -1238,7 +1456,7 @@ namespace HPReserger
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(1093, 2);
+            this.separadorOre1.Size = new System.Drawing.Size(1095, 2);
             this.separadorOre1.TabIndex = 24;
             // 
             // txttotalAbonadoMN
@@ -1246,7 +1464,7 @@ namespace HPReserger
             this.txttotalAbonadoMN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotalAbonadoMN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotalAbonadoMN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalAbonadoMN.Location = new System.Drawing.Point(813, 518);
+            this.txttotalAbonadoMN.Location = new System.Drawing.Point(815, 481);
             this.txttotalAbonadoMN.Name = "txttotalAbonadoMN";
             this.txttotalAbonadoMN.ReadOnly = true;
             this.txttotalAbonadoMN.Size = new System.Drawing.Size(99, 21);
@@ -1261,7 +1479,7 @@ namespace HPReserger
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(822, 504);
+            this.label6.Location = new System.Drawing.Point(824, 467);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 13);
             this.label6.TabIndex = 35;
@@ -1319,7 +1537,7 @@ namespace HPReserger
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(537, 504);
+            this.label18.Location = new System.Drawing.Point(539, 467);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(70, 13);
             this.label18.TabIndex = 33;
@@ -1330,7 +1548,7 @@ namespace HPReserger
             this.txttotalME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotalME.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotalME.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalME.Location = new System.Drawing.Point(526, 518);
+            this.txttotalME.Location = new System.Drawing.Point(528, 481);
             this.txttotalME.Name = "txttotalME";
             this.txttotalME.ReadOnly = true;
             this.txttotalME.Size = new System.Drawing.Size(91, 21);
@@ -1345,7 +1563,7 @@ namespace HPReserger
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(629, 504);
+            this.label20.Location = new System.Drawing.Point(631, 467);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(80, 13);
             this.label20.TabIndex = 35;
@@ -1356,7 +1574,7 @@ namespace HPReserger
             this.txttotalAbonadoME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotalAbonadoME.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotalAbonadoME.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalAbonadoME.Location = new System.Drawing.Point(619, 518);
+            this.txttotalAbonadoME.Location = new System.Drawing.Point(621, 481);
             this.txttotalAbonadoME.Name = "txttotalAbonadoME";
             this.txttotalAbonadoME.ReadOnly = true;
             this.txttotalAbonadoME.Size = new System.Drawing.Size(99, 21);
@@ -1365,32 +1583,11 @@ namespace HPReserger
             this.txttotalAbonadoME.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttotalAbonadoME.TextChanged += new System.EventHandler(this.txttotal_TextChanged);
             // 
-            // txtbuscarDocumentos
-            // 
-            this.txtbuscarDocumentos.BackColor = System.Drawing.Color.White;
-            this.txtbuscarDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtbuscarDocumentos.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtbuscarDocumentos.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtbuscarDocumentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbuscarDocumentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtbuscarDocumentos.Format = null;
-            this.txtbuscarDocumentos.Location = new System.Drawing.Point(16, 38);
-            this.txtbuscarDocumentos.MaxLength = 300;
-            this.txtbuscarDocumentos.Name = "txtbuscarDocumentos";
-            this.txtbuscarDocumentos.NextControlOnEnter = null;
-            this.txtbuscarDocumentos.Size = new System.Drawing.Size(272, 21);
-            this.txtbuscarDocumentos.TabIndex = 12;
-            this.txtbuscarDocumentos.Text = "Buscar por Documento";
-            this.txtbuscarDocumentos.TextoDefecto = "Buscar por Documento";
-            this.txtbuscarDocumentos.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtbuscarDocumentos.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            this.txtbuscarDocumentos.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
-            // 
             // frmPagarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 546);
+            this.ClientSize = new System.Drawing.Size(1087, 509);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label13);
@@ -1453,6 +1650,10 @@ namespace HPReserger
             this.Load += new System.EventHandler(this.frmPagarFactura_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcomision.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkComision.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1529,6 +1730,9 @@ namespace HPReserger
         private System.Windows.Forms.TextBox txttotalME;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txttotalAbonadoME;
+        private TextBoxPer txtbuscarDocumentos;
+        private DevExpress.XtraEditors.TextEdit txtcomision;
+        private DevExpress.XtraEditors.CheckEdit chkComision;
         private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipodoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidcomprobante;
@@ -1554,6 +1758,21 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn xidmoneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
         private System.Windows.Forms.DataGridViewTextBoxColumn xglosa;
-        private TextBoxPer txtbuscarDocumentos;
+        private DevExpress.XtraEditors.SimpleButton btnTodolosPendientes;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn zempresa;
+        private DevExpress.XtraGrid.Columns.GridColumn zruc;
+        private DevExpress.XtraGrid.Columns.GridColumn zrazonsocial;
+        private DevExpress.XtraGrid.Columns.GridColumn ztipo;
+        private DevExpress.XtraGrid.Columns.GridColumn znrofactura;
+        private DevExpress.XtraGrid.Columns.GridColumn zglosa;
+        private DevExpress.XtraGrid.Columns.GridColumn zfechaemision;
+        private DevExpress.XtraGrid.Columns.GridColumn zfechacancelado;
+        private DevExpress.XtraGrid.Columns.GridColumn zmoneda;
+        private DevExpress.XtraGrid.Columns.GridColumn ztotal;
+        private DevExpress.XtraGrid.Columns.GridColumn zdetraccion;
+        private DevExpress.XtraGrid.Columns.GridColumn zsaldo;
+        private DevExpress.XtraGrid.Columns.GridColumn zsaldousd;
     }
 }

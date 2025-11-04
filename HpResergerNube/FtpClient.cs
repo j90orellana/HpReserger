@@ -15,6 +15,10 @@ namespace HpResergerNube
             ftpUsername = "Conta@conbarmal.com";
             ftpPassword = "Conta{1^}";
             ftpServer = "ftp://ftp.conbarmal.com/";
+
+            ftpUsername = "Conta@inmogroup.com.pe";
+            ftpPassword = "^Bxy[KEUg*e!";
+            ftpServer = "ftp://148.72.59.107/";
         }
 
         public void UploadFile(string localFilePath, string remoteFileName)
@@ -44,6 +48,10 @@ namespace HpResergerNube
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpUrl);
                 request.Method = WebRequestMethods.Ftp.MakeDirectory;
                 request.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
+
+                //request.EnableSsl = true;  // <- importante si el servidor requiere FTPS
+                //request.UsePassive = true; // <- casi siempre es necesario en hosting compartido
+                //request.KeepAlive = false;
 
                 using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
                 {

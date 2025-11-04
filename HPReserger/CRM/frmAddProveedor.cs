@@ -90,7 +90,7 @@ namespace SISGEM.CRM
             this.ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("ID_Tipo_persona", "Codigo");
             this.ID_Tipo_personaTextEdit.Properties.View.Columns.AddVisible("Detalle_Tipo_Persona", "Tipo Persona");
             this.ID_Tipo_personaTextEdit.Properties.View.BestFitColumns();
-            DataTable allTipoDocumentos = documentoRepository.GetAllTipoDocumentos();
+            DataTable allTipoDocumentos = documentoRepository.GetAllTipoDocumentosPersonas();
             this.ID_Tipo_DocumentoTextEdit.Properties.DataSource = (object)allTipoDocumentos;
             this.ID_Tipo_DocumentoTextEdit.Properties.ValueMember = "ID_Tipo_documento";
             this.ID_Tipo_DocumentoTextEdit.Properties.DisplayMember = "Detalle_Tipo_documento";

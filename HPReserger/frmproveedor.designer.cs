@@ -153,6 +153,7 @@ namespace HPReserger
             this.btnCargaMasiva = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.btnRepresentantes = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -1505,7 +1506,7 @@ namespace HPReserger
             // 
             // btnCargaMasiva
             // 
-            this.btnCargaMasiva.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaMasiva.Image")));
+            this.btnCargaMasiva.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaMasiva.ImageOptions.Image")));
             this.btnCargaMasiva.Location = new System.Drawing.Point(706, 126);
             this.btnCargaMasiva.Name = "btnCargaMasiva";
             this.btnCargaMasiva.Size = new System.Drawing.Size(82, 23);
@@ -1515,7 +1516,7 @@ namespace HPReserger
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(706, 150);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(82, 23);
@@ -1531,11 +1532,23 @@ namespace HPReserger
             this.labelControl1.TabIndex = 146;
             this.labelControl1.Text = "Carga Masiva";
             // 
+            // btnRepresentantes
+            // 
+            this.btnRepresentantes.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnRepresentantes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRepresentantes.ImageOptions.Image")));
+            this.btnRepresentantes.Location = new System.Drawing.Point(346, 551);
+            this.btnRepresentantes.Name = "btnRepresentantes";
+            this.btnRepresentantes.Size = new System.Drawing.Size(110, 23);
+            this.btnRepresentantes.TabIndex = 147;
+            this.btnRepresentantes.Text = "Representantes";
+            this.btnRepresentantes.Click += new System.EventHandler(this.btnRepresentantes_Click);
+            // 
             // frmproveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 579);
+            this.Controls.Add(this.btnRepresentantes);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.btnCargaMasiva);
@@ -1744,5 +1757,6 @@ namespace HPReserger
         private DevExpress.XtraEditors.SimpleButton btnCargaMasiva;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton btnRepresentantes;
     }
 }

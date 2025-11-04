@@ -1,4 +1,5 @@
 ﻿using HpResergerUserControls;
+using SISGEM.ModuloContable;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -114,7 +115,7 @@ namespace HPReserger
             modifico = true;
             try
             {
-                if (!llamado)                    
+                if (!llamado)
                 {
                     TDinamica = CapaLogica.ListarDinamicas(coddinamica + "", 10);
                 }
@@ -229,6 +230,7 @@ namespace HPReserger
                                 frmdetalle._asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
                                 frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
                                 frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
+                                frmdetalle.nombreEmpresa = cboempresa.Text;
                                 frmdetalle.Total = (decimal)Dtgconten[debe.Name, y].Value + (decimal)Dtgconten[haber.Name, y].Value;
                                 frmdetalle.Estado = (int)Dtgconten[EstadoCuen.Name, e.RowIndex].Value;
                                 frmdetalle._dinamica = (int)dtgbusca[Iddinamica.Name, dtgbusca.CurrentCell.RowIndex].Value;
@@ -738,44 +740,76 @@ namespace HPReserger
         public int tipobusca = 0;
         public void BuscarDatos()
         {
-            if (Configuraciones.ValidarSQLInyect(txtbuscuenta, txtbuscuo, txtbusGlosa, txtbusSuboperacion)) return;
-            if (ListoParaBuscar)
+            // Validación de SQL Injection
+            if (Configuraciones.ValidarSQLInyect(txtbuscuenta, txtbuscuo, txtbusGlosa, txtbusSuboperacion))
+                return;
+
+            if (!ListoParaBuscar) return;
+
+            try
             {
                 Cursor = Cursors.WaitCursor;
+
+                // Determinar fechas ordenadas
+                DateTime fechaInicio, fechaFin;
                 if (fechaini.Value < fechafin.Value)
                 {
-                    if (!chkPulser.Checked)
-                    {
-                        //Forma Normal
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechaini.Value, fechafin.Value, fechacheck, _idempresa);
-                    }
-                    else
-                    {
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
-                            dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(),
-                            txtbusSuboperacion.TextValido());
-                    }
+                    fechaInicio = fechaini.Value;
+                    fechaFin = fechafin.Value;
                 }
                 else
                 {
-                    if (!chkPulser.Checked)
-                    {
-                        //Forma Normal
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechafin.Value, fechaini.Value, fechacheck, _idempresa);
-                    }
-                    else
-                    {
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
-                            dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(),
-                            txtbusSuboperacion.TextValido());
-                    }
+                    fechaInicio = fechafin.Value;
+                    fechaFin = fechaini.Value;
                 }
-                msg2(dtgbusca);
-                if (dtgbusca.RowCount < 1)
+
+                DateTime fechaInicio1, fechaFin1;
+                if (dtpfechaini.Value < dtpfechafin.Value)
                 {
-                    if (Dtgconten.DataSource != null)
-                        Dtgconten.DataSource = ((DataTable)Dtgconten.DataSource).Clone();
+                    fechaInicio1 = dtpfechaini.Value;
+                    fechaFin1 = dtpfechafin.Value;
                 }
+                else
+                {
+                    fechaInicio1 = dtpfechafin.Value;
+                    fechaFin1 = dtpfechaini.Value;
+                }
+
+                // Obtener datos según el modo de búsqueda
+                object dataSource;
+                if (!chkPulser.Checked)
+                {
+                    // Forma Normal
+                    string textoBusqueda = Txtbusca.EstaLLeno() ? Txtbusca.Text : "";
+                    dataSource = CapaLogica.ListarAsientosContables(textoBusqueda, tipobusca, fechaInicio, fechaFin, fechacheck, _idempresa);
+                }
+                else
+                {
+                    // Forma Filtrada
+                    var cclase = new HPResergerCapaLogica.Contable.Contabilidad();
+                    dataSource = cclase.ListarAsientosFiltrados(
+                        _idempresa,
+                        fechaInicio1,
+                        fechaFin1,
+                        txtbuscuo.TextValido(),
+                        txtbuscuenta.TextValido(),
+                        txtbusGlosa.TextValido(),
+                        txtbusSuboperacion.TextValido(),
+                        chkActivos.Checked ? 1 : 0);
+                }
+
+                // Asignar datos y mostrar resultados
+                dtgbusca.DataSource = dataSource;
+                msg2(dtgbusca);
+
+                // Limpiar datos si no hay resultados
+                if (dtgbusca.RowCount < 1 && Dtgconten.DataSource != null)
+                {
+                    Dtgconten.DataSource = ((DataTable)Dtgconten.DataSource).Clone();
+                }
+            }
+            finally
+            {
                 Cursor = Cursors.Default;
             }
         }
@@ -1119,7 +1153,7 @@ namespace HPReserger
             else if (IdentificadorDinamica < 0)
             {
                 msg("Este Asiento no se Puede Modificar\nEs Automático");
-                return;
+                //return;
             }
             /////PROCESO DE EDICION SI NO ES AUTOMATICO
             //if (chkfechavalor.Checked)
@@ -1368,19 +1402,71 @@ namespace HPReserger
                 //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones  
                 if (estado == 1 && Dtgconten.RowCount > 1)
                 {
+
                     //string cadena = "";
                     if (txtdinamica.Text.Length <= 0) txtdinamica.Text = "CD_000";
                     CArgarValoresIngreso();
                     //SACAMOS EL ULTIMO ASIENTO
                     ultimoasiento();
+
+                    int IdUsuario = HPReserger.frmLogin.CodigoUsuario;
                     // MostrarValores(cadena + Detalle(), codigo);
                     for (int i = 0; i < Dtgconten.RowCount; i++)
                     {
                         DateTime? fechita;
                         //if (chkfechavalor.Checked)
                         fechita = dtpfechavalor.Value;
+                        DateTime _FechaAsiento = dtpfechavalor.Value;
                         //else fechita = null;
-                        CapaLogica.InsertarAsiento((int)Dtgconten[IDASIENTOX.Name, i].Value, codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue, decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text));
+                        // Para la primera llamada a InsertarAsiento
+                        int idAsiento = (int)Dtgconten[IDASIENTOX.Name, i].Value;
+                        string _cuenta = Dtgconten[cuenta.Name, i].Value.ToString();
+                        double _debe = Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString());
+                        double _haber = Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString());
+                        string _glosa = txtglosa.TextValido();
+                        decimal _tipoCambio = decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text);
+                        double _tc = double.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text);
+                        // Extracción de variables de los combobox
+                        int proyectoId = (int)cboproyecto.SelectedValue;
+                        int etapaId = (int)cboetapa.SelectedValue;
+                        int monedaId = (int)cbomoneda.SelectedValue;
+
+                        string Cuo = txtcuo.Text;
+                        //CABECERA
+                        //CapaLogica.InsertarAsiento(idAsiento, codigo, FECHA, _cuenta, _debe, _haber, DINAMICA, ESTADO, fechita, proyectoId, etapaId, _glosa, monedaId, _tipoCambio);
+
+
+                        CapaLogica.InsertarAsientoFacturaCabecera(1, idAsiento, codigo, _FechaAsiento, _cuenta, Convert.ToDecimal(_debe), Convert.ToDecimal(_haber), _tipoCambio, proyectoId, etapaId, Cuo, monedaId, _glosa, _FechaAsiento, DINAMICA);
+                        //CapaLogica.InsertarAsiento((int)Dtgconten[IDASIENTOX.Name, i].Value, codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(),
+                        //    Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, 
+                        //    ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue,
+                        //    decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text));
+
+                        double valorSoles = 0, valorDolares = 0;
+                        if (monedaId == 1)
+                        {
+                            valorSoles = _debe + _haber;
+                            valorDolares = valorSoles / _tc;
+                        }
+                        if (monedaId == 2)
+                        {
+                            valorDolares = _debe + _haber;
+                            valorSoles = valorDolares * _tc;
+                        }
+
+                        decimal ValSoles = Convert.ToDecimal(valorSoles);
+                        decimal ValDolares = Convert.ToDecimal(valorDolares);
+
+                        int idctabancaria = 0;
+                        DataTable TcuentasBancarias = CapaLogica.CuentaBancaria(IdEmpresa, _cuenta);
+                        if (TcuentasBancarias.Rows.Count > 1)
+                            int.TryParse(TcuentasBancarias.Rows[1]["codigo"].ToString(), out idctabancaria);
+
+                        //DETALLE
+                        //normal es opcion 10, pero para guardar datos de banco le ponemos 11
+                        CapaLogica.InsertarAsientoFacturaDetalle(11, idAsiento, codigo, _FechaAsiento, _cuenta, proyectoId, 0, "0", "0", 0, "0", "0", 0, FECHA,
+                            FECHA.AddMonths(1).AddDays(-1), FECHA, ValSoles, ValDolares, _tipoCambio, monedaId, "", "", _glosa, _FechaAsiento, IdUsuario, "", 0, idctabancaria);
+
                     }
                     DateTime Feccc;
                     //if (chkfechavalor.Checked)
@@ -1463,7 +1549,21 @@ namespace HPReserger
                                 CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue, decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text));
                             else
                                 CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), dinamimodi, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue, decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text));
+
+                            //ACTUALIZAMOS LOS DATOS DEL DETALLE
+                            if (ESTADO == 1)
+                            {
+                                HPResergerCapaLogica.Contable.ClaseContable cCLASE = new HPResergerCapaLogica.Contable.ClaseContable();
+
+                                int idProyecto = (int)cboproyecto.SelectedValue;
+                                int idAsiento = codigo;
+                                DateTime Fecha = FECHA;
+                                int id = i + 1;
+
+                                cCLASE.ActualizarDetalledeAsientos(idProyecto, id, idAsiento, Fecha);
+                            }
                         }
+
                         DateTime Feccc;
                         //if (chkfechavalor.Checked) 
                         Feccc = dtpfechavalor.Value;
@@ -1973,6 +2073,7 @@ namespace HPReserger
                 radioButton1.Visible = radioButton2.Visible = chkfecha.Visible = fechaini.Visible = fechafin.Visible = false;
                 txtbuscuenta.Visible = txtbuscuo.Visible = txtbusGlosa.Visible = txtbusSuboperacion.Visible = dtpfechaini.Visible = dtpfechafin.Visible = true;
                 btncleanfind.Visible = lbl1.Visible = lbl2.Visible = true;
+                chkActivos.Visible = true;
             }
             else
             {
@@ -1980,6 +2081,8 @@ namespace HPReserger
                 radioButton1.Visible = radioButton2.Visible = chkfecha.Visible = fechaini.Visible = fechafin.Visible = true;
                 txtbuscuenta.Visible = txtbuscuo.Visible = txtbusGlosa.Visible = txtbusSuboperacion.Visible = dtpfechaini.Visible = dtpfechafin.Visible = false;
                 btncleanfind.Visible = lbl1.Visible = lbl2.Visible = false;
+
+                chkActivos.Visible = false;
 
             }
         }
@@ -2122,6 +2225,30 @@ namespace HPReserger
             // Esperar un poco para que el diálogo se abra antes de enviar ESC
             //Task.Delay(500).ContinueWith(t => SendKeys.Send("{ESC}"));
         }
+        private static xRevisarAsiento frmRevisa;
+
+        private void btnRevisarAsiento_Click(object sender, EventArgs e)
+        {
+            // Intentar obtener el id de empresa de manera segura
+            if (!int.TryParse(cboempresa.SelectedValue?.ToString(), out int idEmpresa) || idEmpresa == 0)
+            {
+                MessageBox.Show("Por favor, seleccione una empresa válida antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (frmRevisa != null && !frmRevisa.IsDisposed)
+            {
+                frmRevisa.Close();
+                frmRevisa.Dispose(); // buena práctica
+            }
+
+            frmRevisa = new xRevisarAsiento();
+            frmRevisa.cuo = txtcuo.Text.Trim();
+            frmRevisa.idEmpresa = idEmpresa;
+            frmRevisa.NombreEmpresa = cboempresa.Text;
+            frmRevisa.Show();
+        }
+
 
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {

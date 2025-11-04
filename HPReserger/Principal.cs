@@ -30,6 +30,12 @@ namespace SISGEM
             string ERP_LIBRE = ConfigurationManager.AppSettings["ERP_LIBRE"];
             string valor2 = ConfigurationManager.AppSettings["SALUDO"];
 
+            if (HPReserger.frmLogin.CodigoUsuario != 0)
+            {
+                barStaticItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+            }
+
             if (ERP_LIBRE == "SI")
             {
                 ribbonPage1.Visible = false;
@@ -60,7 +66,7 @@ namespace SISGEM
             //DataTable x = xas.GetAll();
 
             barVersion.Caption = $"Version:{Application.ProductVersion}";
-            barBasedatos.Caption = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
+            barBasedatos.Caption = $" {HPResergerCapaDatos.HPResergerCD.DataHostCambiado} / { HPResergerCapaDatos.HPResergerCD.BASEDEDATOS}";
             barUser.Caption = $"{HPReserger.frmLogin.Usuario}";
 
             MdiClient mdi;
@@ -114,7 +120,7 @@ namespace SISGEM
         public void ControlPerfilPrioritario()
         {
             btnPeriodos.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            if ((new int[] { 0, 1, 2 }).Contains(HPReserger.frmLogin.CodigoUsuario))//Luego se lo cambia por el perfil
+            if ((new int[] { 0, 1, 2, 3 }).Contains(HPReserger.frmLogin.CodigoUsuario))//Luego se lo cambia por el perfil
             {
                 btnPeriodos.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
 
@@ -1292,12 +1298,92 @@ namespace SISGEM
 
         private void barBtnERIpasado_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+
         }
 
         private void btnCargaMasivaAsientos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenForm<SISGEM.ModuloContable.frmCargaAsientosMasivos>();
+        }
+
+        private void btnRazonesSociales_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloContable.frmRazonesSocialesAsientos>();
+
+        }
+
+        private void btnDocumentosPendientes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloContable.frmDocumentosPendientes>();
+
+        }
+
+        private void barButtonItem53_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.Flujo_de_Caja.frmFlujoCaja>();
+
+        }
+
+        private void btnSaldoCuentas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloContable.frmSaldoCuentasContables>();
+        }
+
+        private void btnMovimientosFinancieros_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.Flujo_de_Caja.frmListadoMovimientosFinanciero>();
+
+        }
+
+        private void btnCEmpresa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenFormNoPadre<SISGEM.Configuracion.frmConfiguracionEmpresa>();
+
+        }
+
+        private void btnListadoOperacionesBancarias_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Verificar si el formulario ya está abierto
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is SISGEM.Flujo_de_Caja.frmListadoMovimientosFinanciero)
+                {
+                    form.Activate(); // Traer el formulario al frente si ya está abierto
+                    form.WindowState = FormWindowState.Normal; // Restaurar si estaba minimizado
+                    return;
+                }
+            }
+
+            // Si el formulario no está abierto, crearlo y mostrarlo
+            SISGEM.Flujo_de_Caja.frmListadoMovimientosFinanciero newForm = new SISGEM.Flujo_de_Caja.frmListadoMovimientosFinanciero();
+            newForm.SoloMovimientos = 1;
+            newForm.MdiParent = this;
+            newForm.Show();
+        }
+
+        private void btnPagosEvolta_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloFinanzas.frmPagosEvolta>();
+
+        }
+
+        private void barButtonItem72_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.Flujo_de_Caja.frmCuadraturaMF>();
+
+        }
+
+        private void barButtonItem73_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.frmSeguimientos frm = new CRM.frmSeguimientos();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem75_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloContable.xBitacoraEmpleadoRegistros>();
+
         }
     }
 }

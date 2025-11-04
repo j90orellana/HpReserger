@@ -199,7 +199,7 @@ namespace HPReserger.ModuloCompensaciones
             if (cboproveedor.SelectedValue != null)
             {
                 //Compensaciones
-                string[] valor = cboproveedor.SelectedValue.ToString().Split('-');
+                string[] valor = cboproveedor.SelectedValue.ToString().Split(new char[] { '-' }, 2);
                 DataTable Table = CapaLogica.ListarCompensacionesxPagar(_idempresa, 4, int.Parse(valor[0]), valor[1], 2);
                 DataColumn ColumnaOk = new DataColumn("ok", typeof(int));
                 ColumnaOk.DefaultValue = 0;
@@ -672,7 +672,7 @@ namespace HPReserger.ModuloCompensaciones
                     decimal MontoSoles = Configuraciones.Redondear(moneda == 1 ? ImporteTotal : ImporteTotal * tc);
                     decimal MontoDolares = Configuraciones.Redondear(moneda == 2 ? ImporteTotal : ImporteTotal / tc);
                     decimal TC = tc;
-                    string[] NumFac = $"0-Ant.{ dtpFechaCompensa.Value.ToString("d")}".Split('-');
+                    string[] NumFac = $"0-Ant.N°{ dtpFechaCompensa.Value.ToString("d")}".Split('-');
                     int idfac = 0;
                     //si se Abono el Total de la Factura
                     if (Math.Abs(ImporteTotal) - decimal.Parse(txtPorAbonar.Text) == 0)

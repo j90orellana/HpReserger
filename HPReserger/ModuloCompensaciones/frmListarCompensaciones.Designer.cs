@@ -122,6 +122,8 @@
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -191,7 +193,7 @@
             this.xNameTipo.HeaderText = "Tipo";
             this.xNameTipo.Name = "xNameTipo";
             this.xNameTipo.ReadOnly = true;
-            this.xNameTipo.Width = 55;
+            this.xNameTipo.Width = 54;
             // 
             // xTipo
             // 
@@ -216,7 +218,7 @@
             this.xtipodesc.HeaderText = "TipoDoc";
             this.xtipodesc.Name = "xtipodesc";
             this.xtipodesc.ReadOnly = true;
-            this.xtipodesc.Width = 76;
+            this.xtipodesc.Width = 75;
             // 
             // xNumDoc
             // 
@@ -338,7 +340,7 @@
             this.lbltotalregistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltotalregistros.Location = new System.Drawing.Point(12, 469);
             this.lbltotalregistros.Name = "lbltotalregistros";
-            this.lbltotalregistros.Size = new System.Drawing.Size(104, 13);
+            this.lbltotalregistros.Size = new System.Drawing.Size(105, 13);
             this.lbltotalregistros.TabIndex = 19;
             this.lbltotalregistros.Text = "Total de Registros: ";
             // 
@@ -395,7 +397,7 @@
             this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(12, 67);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(55, 13);
+            this.label22.Size = new System.Drawing.Size(56, 13);
             this.label22.TabIndex = 21;
             this.label22.Text = "Tipo Doc:";
             // 
@@ -525,7 +527,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(673, 458);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 13);
+            this.label4.Size = new System.Drawing.Size(124, 13);
             this.label4.TabIndex = 11;
             this.label4.Text = "Totales Por Regularizar";
             // 
@@ -538,7 +540,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(457, 458);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 13);
+            this.label5.Size = new System.Drawing.Size(108, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Total Regularizados";
             // 
@@ -614,7 +616,7 @@
             // 
             // btnExportarPlan
             // 
-            this.btnExportarPlan.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExportarPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportarPlan.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarPlan.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarPlan.Image")));
             this.btnExportarPlan.Location = new System.Drawing.Point(847, 77);

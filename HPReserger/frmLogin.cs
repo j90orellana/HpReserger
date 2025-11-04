@@ -193,7 +193,6 @@ namespace HPReserger
                 HPResergerCapaDatos.HPResergerCD.DataHost = HPResergerCapaDatos.HPResergerCD.ListaHost[cboBase.SelectedIndex].ToString();
                 HPResergerCapaDatos.HPResergerCD.DataHostCambiado = HPResergerCapaDatos.HPResergerCD.ListaHost[cboBase.SelectedIndex].ToString();
             }
-
             if (BaseRemota)
             {
                 Basedatos = txtEmpresaData.Text;

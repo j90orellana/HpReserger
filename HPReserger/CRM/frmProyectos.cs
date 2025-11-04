@@ -27,6 +27,7 @@ namespace SISGEM.CRM
 
         private void frmProyectos_Load(object sender, EventArgs e)
         {
+
             CargarCombos();
             dtpFechade.EditValue = HpResergerNube.DLConexion.ObtenerPrimerDiaDelMes(DateTime.Now);
             dtpFechaa.EditValue = HpResergerNube.DLConexion.ObtenerUltimoDiaDelMes(DateTime.Now);
@@ -99,8 +100,14 @@ namespace SISGEM.CRM
             string usuarioCreacion = Usuario_CreacionTextEdit.EditValue?.ToString() ?? "0";
             string estadoproyecto = ID_EstadoTextEdit.EditValue?.ToString() ?? "0";
 
+            xNombre_Proyecto.MaxWidth = 250;
+            xDireccion.MaxWidth = 250;
+            xNombre_Cliente.MaxWidth = 250;
+
+
             gridControl3.DataSource = objproyecto.FilterProyectosByDateRange(fechaInicio, fechaFin, tipoPersona, usuarioCreacion, estadoproyecto);
 
+            gridView3.BestFitColumns();
         }
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

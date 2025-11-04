@@ -94,7 +94,7 @@ namespace HPResergerCapaLogica.Compras
                     LEFT JOIN TBL_Moneda m ON m.Id_Moneda = X.Moneda
                     LEFT JOIN TBL_Usuario U ON U.Codigo_User = X.Usuario
                     left join TBL_FacturasPresupuestos pp on pp.idFactura = x.Id and pp.tipofactura = x.tipofactura
-                    left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and e.Id_Empresa =pc.pkempresa
+                    left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and e.ppto = pc.Tipo
 
                     WHERE X.fechacontable BETWEEN @fechade AND @fechaa
                     AND(E.Empresa LIKE '%' + @EMPRESA + '%')
@@ -122,6 +122,257 @@ namespace HPResergerCapaLogica.Compras
             return dataTable;
         }
 
+        public object ListarFacturasxAño(DateTime Fecha)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+
+      
+SELECT 
+e.Empresa, Proveedor,p.razon_social RazonSocial,IdComprobante,dbo.NameComprobante(IdComprobante)Comprobante ,NroComprobante,FechaEmision,Total,Glosa,
+CASE Compensacion
+when 0 then 'NINGUNA'
+WHEN 1 THEN 'FONDO FIJO'
+WHEN 2 THEN 'REEMBOLSO GASTOS'
+WHEN 3 THEN 'ENTREGAS A RENDIR'
+WHEN 4 THEN 'ANTICIPO PROVEEDOR'
+ELSE 'NINGUNA'
+END Compensacion
+,case Estado
+when 1 then 'PENDIENTE'
+when 2 then 'PAGADA'
+when 3 then 'COMPENSADA'
+else 'Incompleta'
+end EstadoCP
+
+
+
+FROM (
+select Empresa, Proveedor,IdComprobante,NroComprobante,FechaEmision,Total,Glosa,Compensacion,Estado from TBL_FacturaManual 
+UNION ALL
+select Empresa, Proveedor,IdComprobante,NroComprobante,FechaEmision,Total,Glosa,Compensacion,Estado from TBL_NC_ND_CompraManual
+) AS X
+left join TBL_Proveedor p on p.ruc = X.Proveedor
+left join TBL_Empresa e on e.Id_Empresa = x.Empresa
+where Estado >=1
+and year(FechaEmision)= year(@fecha	)
+;
+
+";
+
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@fecha", Fecha);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public DataTable BuscarFiltradoMovimientosFinancieros(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante,
+            string cuentabancaria, string tipo)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+select * from (
+SELECT DISTINCT
+   e.Id_Empresa idempresa, e.Empresa,   
+    a.Id_Asiento_Contable fkid,
+    a.id_Asiento fkiddet,
+    a.Cuenta_Contable cuenta,
+    a.id_proyecto fkproyecto,
+    CAST(ISNULL(a.fecha_asiento_Valor, a.fecha_asiento) AS DATE) fecha,
+    FORMAT(CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE), 'dd/MM/yyyy') AS FechaOperacion,
+ISNULL(NULLIF(cb.Nro_Cta, ''), '') 'CtaBancaria',
+    CAST(ISNULL(NULLIF(a.Glosa, ''), '-') AS NVARCHAR(200)) AS Glosa,
+    ISNULL(tp.Cod_Sunat, '-') AS TipoDoc,
+    ISNULL(NULLIF(ax.Num_Doc, '0'), '-') AS NumDoc,
+    CAST(ISNULL(NULLIF(ax.Razon_Social, ''), 'VARIOS') AS NVARCHAR(200)) AS Beneficiario,
+    CAST(ISNULL(NULLIF(ax.NroOPBanco, ''), '-') AS NVARCHAR(20)) AS NroOpBanco,
+    IIF(Saldo_Debe>0,1,-1)* ax.Importe_MN SOLES,
+    IIF(Saldo_Debe>0,1,-1)* ax.Importe_ME DOLARES,
+    ISNULL(NULLIF(ax.Num_Comprobante, '0'), '-') AS NumComprobante,
+
+	IIF( IIF(Saldo_Debe>0,1,-1)* ax.Importe_MN +  IIF(Saldo_Debe>0,1,-1)* ax.Importe_ME >0 ,'INGRESO','EGRESO') 'Tipo' ,
+
+    idpartida pkidpp, 
+    idpartida IdPP, a.Cod_Asiento_Contable cuo
+FROM TBL_Asiento_Contable a
+INNER JOIN TBL_Proyecto p ON a.id_proyecto = p.Id_Proyecto
+INNER JOIN TBL_Empresa e ON p.Id_Empresa = e.Id_Empresa
+
+and (e.Id_Empresa IN (
+    SELECT TRY_CAST(value AS INT)
+    FROM STRING_SPLIT(@EMPRESA, ',')
+    WHERE TRY_CAST(value AS INT) IS NOT NULL
+) OR @EMPRESA =''
+)
+
+LEFT JOIN TBL_Asiento_Contable_Aux ax ON a.Id_Asiento_Contable = ax.Id_Asiento_Contable
+    AND a.id_Asiento = ax.Id_Aux
+    AND a.Cuenta_Contable = Ax.Cuenta_Contable
+    AND a.id_proyecto = ax.fk_proyecto
+    AND CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE) = ax.Fecha_Asiento
+LEFT JOIN TBL_Tipo_ID tp ON tp.Codigo_Tipo_ID = ax.Tipo_Doc
+left join TBL_CtaBancaria cb on cb.Id_Tipo_Cta = ax.Cta_Banco
+LEFT JOIN TBL_MovimientoPartidas pp ON pp.fkid = a.Id_Asiento_Contable 
+    AND pp.fkiddet = id_Asiento 
+    AND pp.fecha = CAST(ISNULL(a.fecha_asiento_Valor, a.fecha_asiento) AS DATE)
+    AND pp.cuenta = a.Cuenta_Contable
+    AND pp.fkproyecto = a.id_proyecto
+LEFT JOIN TBL_Partidas_Control pc ON pc.id = pp.idPartida AND pc.Tipo = e.ppto
+WHERE a.Cuenta_Contable BETWEEN '104' AND '108'
+    AND CAST(ISNULL(a.fecha_asiento_Valor, a.fecha_asiento) AS DATE) BETWEEN @fechade AND @fechaa
+    --AND (E.Empresa LIKE '%' + @EMPRESA + '%')
+    AND (ax.Razon_Social LIKE '%' + @PROVEEDOR + '%' OR ax.Num_Doc LIKE '%' + @PROVEEDOR + '%')
+    AND a.Glosa LIKE '%' + @GLOSA + '%'  
+    AND CONCAT(ax.Cod_Comprobante,'-', ax.Num_Comprobante) LIKE '%' + @nrocompro + '%'
+    AND (ISNULL(pc.id,0) = @ocultar OR @ocultar = 1)
+        AND Id_Dinamica_Contable NOT IN (-30,-31)
+    AND NOT EXISTS (
+        SELECT 1
+        FROM TBL_Asiento_Contable h
+        INNER JOIN TBL_Proyecto po ON po.Id_Proyecto = h.id_proyecto
+        INNER JOIN TBL_Empresa ex ON po.Id_Empresa = ex.Id_Empresa AND ex.Id_Empresa = e.Id_Empresa
+        WHERE h.Estado = 4
+            AND h.Cod_Asiento_Contable = a.Cod_Asiento_Contable
+            AND CAST(ISNULL(h.Fecha_Asiento_Valor, h.Fecha_Asiento) AS DATE) BETWEEN @fechade AND @fechaa
+    )
+)as x
+ where   (CtaBancaria LIKE '%' + @CUENTABANCARIA + '%')
+   AND (Tipo LIKE '%' + @TIPOMOVIMIENTO + '%')
+ORDER BY x.Empresa ASC, fecha ASC;";
+
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@fechade", fechade);
+                cmd.Parameters.AddWithValue("@fechaa", fechaa);
+                cmd.Parameters.AddWithValue("@EMPRESA", empresa);
+                cmd.Parameters.AddWithValue("@PROVEEDOR", proveedor);
+                cmd.Parameters.AddWithValue("@GLOSA", glosa);
+                cmd.Parameters.AddWithValue("@nrocompro", nrocomprobante);
+                cmd.Parameters.AddWithValue("@ocultar", ocultarpp);
+
+                cmd.Parameters.AddWithValue("@TIPOMOVIMIENTO", tipo);
+                cmd.Parameters.AddWithValue("@CUENTABANCARIA", cuentabancaria);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+        public DataTable BuscarFiltradoMovimientosFinancierosMov(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante,
+            string cuentabancaria, string tipo)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+
+
+select * from (
+
+SELECT DISTINCT
+   
+e.Id_Empresa idempresa, e.Empresa,   
+    a.Id_Asiento_Contable fkid,
+    a.id_Asiento fkiddet,
+    a.Cuenta_Contable cuenta,
+    a.id_proyecto fkproyecto,
+    CAST(ISNULL(a.fecha_asiento_Valor, a.fecha_asiento) AS DATE) fecha,
+    FORMAT(CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE), 'dd/MM/yyyy') AS FechaOperacion,
+    FORMAT(CAST(isnull(ax.Fecha_Asiento,ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento)) AS DATE), 'dd/MM/yyyy') AS FechaPago,
+	
+	ISNULL(NULLIF(cb.Nro_Cta, ''), '') 'CtaBancaria',
+
+	IIF( IIF(Saldo_Debe>0,1,-1)* ax.Importe_MN +  IIF(Saldo_Debe>0,1,-1)* ax.Importe_ME >0 ,'INGRESO','EGRESO') 'Tipo' 
+
+    ,CAST(ISNULL(NULLIF(a.Glosa, ''), '-') AS NVARCHAR(200)) AS Glosa,
+    ISNULL(tp.Cod_Sunat, '-') AS TipoDoc,
+    ISNULL(NULLIF(ax.Num_Doc, '0'), '-') AS NumDoc,
+    CAST(ISNULL(NULLIF(ax.Razon_Social, ''), 'VARIOS') AS NVARCHAR(200)) AS Beneficiario,
+    CAST(ISNULL(NULLIF(ax.NroOPBanco, ''), '-') AS NVARCHAR(20)) AS NroOpBanco,
+    IIF(Saldo_Debe>0,1,-1)* ax.Importe_MN SOLES,
+    IIF(Saldo_Debe>0,1,-1)* ax.Importe_ME DOLARES,
+    ISNULL(NULLIF(ax.Num_Comprobante, '0'), '-') AS NumComprobante,
+    idpartida pkidpp, 
+    idpartida IdPP, a.Cod_Asiento_Contable cuo
+FROM TBL_Asiento_Contable a
+INNER JOIN TBL_Proyecto p ON a.id_proyecto = p.Id_Proyecto
+INNER JOIN TBL_Empresa e ON p.Id_Empresa = e.Id_Empresa
+
+and (e.Id_Empresa IN (
+    SELECT TRY_CAST(value AS INT)
+    FROM STRING_SPLIT(@EMPRESA, ',')
+    WHERE TRY_CAST(value AS INT) IS NOT NULL
+) OR @EMPRESA =''
+)
+
+LEFT JOIN TBL_Asiento_Contable_Aux ax ON a.Id_Asiento_Contable = ax.Id_Asiento_Contable
+    AND a.id_Asiento = ax.Id_Aux
+    AND a.Cuenta_Contable = Ax.Cuenta_Contable
+    AND a.id_proyecto = ax.fk_proyecto
+    AND CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE) = ax.Fecha_Asiento
+LEFT JOIN TBL_Tipo_ID tp ON tp.Codigo_Tipo_ID = ax.Tipo_Doc
+LEFT JOIN TBL_MovimientoPartidas pp ON pp.fkid = a.Id_Asiento_Contable 
+    AND pp.fkiddet = id_Asiento 
+    AND pp.fecha = CAST(ISNULL(a.fecha_asiento_Valor, a.fecha_asiento) AS DATE)
+    AND pp.cuenta = a.Cuenta_Contable
+    AND pp.fkproyecto = a.id_proyecto
+LEFT JOIN TBL_Partidas_Control pc ON pc.id = pp.idPartida AND pc.Tipo = e.ppto
+left join TBL_CtaBancaria cb on cb.Id_Tipo_Cta = ax.Cta_Banco
+WHERE a.Cuenta_Contable BETWEEN '104' AND '108'
+    AND CAST(ISNULL(a.fecha_asiento_Valor, a.fecha_asiento) AS DATE) BETWEEN @fechade AND @fechaa
+    --AND (E.Empresa LIKE '%' + @EMPRESA + '%')
+    AND (ax.Razon_Social LIKE '%' + @PROVEEDOR + '%' OR ax.Num_Doc LIKE '%' + @PROVEEDOR + '%')
+    AND a.Glosa LIKE '%' + @GLOSA + '%'  
+    AND CONCAT(ax.Cod_Comprobante,'-', ax.Num_Comprobante) LIKE '%' + @nrocompro + '%'
+    AND (ISNULL(pc.id,0) = @ocultar OR @ocultar = 1)
+    AND NOT EXISTS (
+        SELECT 1
+        FROM TBL_Asiento_Contable h
+        INNER JOIN TBL_Proyecto po ON po.Id_Proyecto = h.id_proyecto
+        INNER JOIN TBL_Empresa ex ON po.Id_Empresa = ex.Id_Empresa AND ex.Id_Empresa = e.Id_Empresa
+        WHERE h.Estado = 4
+            AND h.Cod_Asiento_Contable = a.Cod_Asiento_Contable
+            AND CAST(ISNULL(h.Fecha_Asiento_Valor, h.Fecha_Asiento) AS DATE) BETWEEN @fechade AND @fechaa
+    )
+)as x
+ where   (CtaBancaria LIKE '%' + @CUENTABANCARIA + '%')
+   AND (Tipo LIKE '%' + @TIPOMOVIMIENTO + '%')
+ORDER BY x.Empresa ASC, fecha ASC;";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@fechade", fechade);
+                cmd.Parameters.AddWithValue("@fechaa", fechaa);
+                cmd.Parameters.AddWithValue("@EMPRESA", empresa);
+                cmd.Parameters.AddWithValue("@PROVEEDOR", proveedor);
+                cmd.Parameters.AddWithValue("@TIPOMOVIMIENTO", tipo);
+                cmd.Parameters.AddWithValue("@CUENTABANCARIA", cuentabancaria);
+                cmd.Parameters.AddWithValue("@GLOSA", glosa);
+                cmd.Parameters.AddWithValue("@nrocompro", nrocomprobante);
+                cmd.Parameters.AddWithValue("@ocultar", ocultarpp);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
         public DataTable BuscarFiltradoVentas(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante)
         {
             DataTable dataTable = new DataTable();
@@ -202,7 +453,7 @@ namespace HPResergerCapaLogica.Compras
                     LEFT JOIN TBL_Moneda m ON m.Id_Moneda = X.Moneda
                     LEFT JOIN TBL_Usuario U ON U.Codigo_User = X.Usuario
                     left join TBL_FacturasPresupuestos pp on pp.idFactura = x.Id and pp.tipofactura = x.tipofactura
-                    left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and e.Id_Empresa =pc.pkempresa
+                    left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and e.ppto = pc.Tipo
 
                     WHERE X.fechacontable BETWEEN @fechade AND @fechaa
                     AND(E.Empresa LIKE '%' + @EMPRESA + '%')
@@ -258,7 +509,7 @@ namespace HPResergerCapaLogica.Compras
                 ,tc.Compra TCC,
                 tc.Venta TCV, cb.Moneda
                 ,m.NameCorto
-                ,f.NroFacturaDet id, e. Id_Empresa
+                ,f.NroFacturaDet id, e. Id_Empresa,e.ppto
                  from tbl_factura_Det f
                 inner join TBL_Empresa e on e.Id_Empresa  = f.fkempresa
                 inner join TBL_Proveedor p on f.Proveedor = p.RUC
@@ -273,7 +524,7 @@ namespace HPResergerCapaLogica.Compras
                 WHERE f.Estado =1
                 ) as x
                  left join TBL_FacturasPresupuestos pp on pp.idFactura = x.Id and pp.tipofactura = 5
-                                    left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and x.Id_Empresa =pc.pkempresa
+                                    left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and x.ppto = pc.Tipo
 
                   WHERE X.FechaPago BETWEEN @fechade AND @fechaa
                                     AND(x.Empresa LIKE '%' + @EMPRESA + '%')
@@ -433,7 +684,7 @@ namespace HPResergerCapaLogica.Compras
                 cmd.Parameters.AddWithValue("@fechade", fechade);
                 cmd.Parameters.AddWithValue("@fechaa", fechaa);
                 cmd.Parameters.AddWithValue("@Empresa", idEmpresa);
-             
+
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 

@@ -429,7 +429,7 @@
         554e0g3AhwepAeQBBgYABxFNRI3IEa8AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnFacturaPagada.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnFacturaPagada.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAYdEVYdFRpdGxlAFNhbGU7RG9sbGFyO01vbmV5O/mn
@@ -447,6 +447,31 @@
         ulTCmSJrjlRA8iEaQD+HjSsrJoaboP0oIOfmSqvg4i82knX6xy0ist4Tz6rOj1utVwlX7Svc5N9G1uwo
         nrScYotLyJiBLHbyDkvwCs2YdGGJG8icMbuu2U7nF4rXLvXRJnAG94r8+wK8HGfAf31lBkLkTkS/s9Xc
         b06C7sT+p0gO1A++AraRs0uR4gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnListar.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABJ0RVh0VGl0
+        bGUATGlzdDtOdW1iZXI7HTbsSAAAAiRJREFUOE+NkctPE1EUxs9ejYgghEeJtrVPhkpbqPVBeRVKhfII
+        CxJ3JsaFiTH+FbKwkY1GFyxkg6YxcelGaRNF/Qt0wR/Qpi3TNn23x/tdnUlHYsIk38yduef8vu/cIWYm
+        XO12+1Oz2fzcarWe49tpJW9oOj46+pIYMXGj0QDkGZ71ev2EqtWqfKJGBwjnnY8L4eN3pmHGJpKs3n3C
+        ys0NVm6ssxJc49Hrq0IxdgdibPXMSyNDgkqlcvB2aIjhIN6fam4Q9jql1egAXGjYHxiUCfC+vPWYhCsJ
+        R3IFVsg1uUyuiTvk9EfpsvO27DmRoFQqHYhoCWxGtx79aZxYIeffRqd/iRzeJRqxB40AuO719fOH0LSK
+        eAIS14CdKhaLUuVyGUZxHYADyeVyyTe9fazNGNl8yA5/lB2+CDu8EbZ7F9k2vsC2a2EeNPtknQ5Aw/tb
+        ITWTyaSQRgC34VIoFJKdUlVVCilQowNQvNvdy7vdPZKM+cIbD8g2vkjCkWyeebo6NidlVWap3zRmPINa
+        rZaAO4S1BKzdF82i0YPGWdloVWbIMjpNl4bdRgASvD5/kfcngyrWYow4IuNcOpXNZlMQxkCNDsDcvw6/
+        fX917gLn8/kkIHOxe2xRZlg4ssUdYrPQFfcUm11T3DNgZ5yDAfDz6+GPl2e7JECMsQ0XuGmjaUqn0ymk
+        QY0OwD9+caaL93yBgkY+reRNJNiBI+bG+t+i/4vpNwwtpR/kM20BAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnQuitarPago.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABadEVYdFRpdGxlAERlbGV0ZTtEZWxldGVJdGVtO1Jl
+        bW92ZTtSZW1vdmVJdGVtO0RlbGV0ZUxpc3Q7TGlzdDtSZW1vdmVMaXN0O0l0ZW07TGlzdDtDbGVhcjtF
+        cmFzZVjiFwsAAACQSURBVDhPY/j//z9FGM5oaWn5jwf/g9LGyJpBGMUAfAAk39fXdxfdEJIMAIJf6IaQ
+        ZAAyBgLSDEAGA28AFBBnwPuDW/7fSHb5//3BLajIfzAbJAbEaQQNgCqEG4KkGYwJGoCuAQ0bEzQABHAY
+        Ak4LtDeAJC+gYxBA1gAyDN1AuAG4MFBRGlQxPP2D2BAxlzQA4kErhH0QtpkAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

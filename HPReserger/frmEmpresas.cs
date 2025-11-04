@@ -1,4 +1,5 @@
 ﻿using HpResergerUserControls;
+using SISGEM.ModuloAdministracion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,11 +26,11 @@ namespace HPReserger
         string id = "Id_Cargo";
         public void iniciar(Boolean a)
         {
-            btnnuevo.Enabled = !a;
-            btnmodificar.Enabled = !a;
+            btnnNuevo.Enabled = !a;
+            btnnModificar.Enabled = !a;
             btnaceptar.Enabled = a;
             dtgconten.Enabled = !a;
-            btneliminar.Enabled = !a;
+            btnnEliminar.Enabled = !a;
             txtruc.Enabled = a;
             //btnborrar.Enabled = !a;
             //txtbuscar.Enabled = !a;
@@ -38,6 +39,7 @@ namespace HPReserger
             txtdireccion.Enabled = a;
             txtnroid.Enabled = a;
             cbodep.Enabled = a;
+            cboppto.Enabled = a;
             cbodis.Enabled = a;
             cbopro.Enabled = a;
             cbosector.Enabled = a;
@@ -48,6 +50,8 @@ namespace HPReserger
             btnciaseguro.Enabled = a;
             chkStock.Enabled = a;
             chkIngresosMayores.Enabled = a;
+
+            gridControl1.Enabled = !a;
         }
         public void CargarCombos(ComboBox combito)
         {
@@ -67,7 +71,7 @@ namespace HPReserger
         DataTable Tdatos;
         public void CargarDatos()
         {
-            Tdatos = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0);
+            Tdatos = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0);
             gridControl1.DataSource = Tdatos;
 
 
@@ -77,11 +81,34 @@ namespace HPReserger
         }
         private void frmEmpresas_Load(object sender, EventArgs e)
         {
+            CargarPPTo();
+
             CargarDatos();
             dtgconten.Ocultar();
             gridView1.BestFitColumns(true);
             dtgconten.Visible = false;
         }
+        public DataTable ObtenerPartidasControl()
+        {
+            DataTable dtTiposPresupuesto = new DataTable("TiposPresupuesto");
+            dtTiposPresupuesto.Columns.Add("Codigo", typeof(int));
+            dtTiposPresupuesto.Columns.Add("Nombre", typeof(string));
+
+            dtTiposPresupuesto.Rows.Add(0, "Ninguno");          // Opción adicional
+            dtTiposPresupuesto.Rows.Add(1, "SPV");
+            dtTiposPresupuesto.Rows.Add(2, "Servicio");
+            dtTiposPresupuesto.Rows.Add(3, "Holding");
+            dtTiposPresupuesto.Rows.Add(4, "Constructora");
+
+            return dtTiposPresupuesto;
+        }
+        private void CargarPPTo()
+        {
+            cboppto.DataSource = ObtenerPartidasControl();
+            cboppto.ValueMember = "Codigo";
+            cboppto.DisplayMember = "Nombre";
+        }
+
         public void CargarSectores(ComboBox combito)
         {
             combito.DisplayMember = "descripcion";
@@ -145,7 +172,7 @@ namespace HPReserger
                 CargarDepartamento(cbodep);
                 CargarEmpleado(cbonombre);
 
-                btnmodificar.Enabled = true;
+                btnnModificar.Enabled = true;
                 txtruc.Text = dtgconten["ruc", e.RowIndex].Value.ToString();
                 txtnombre.Text = dtgconten["empresa", e.RowIndex].Value.ToString();
                 txtdireccion.Text = dtgconten["direccion", e.RowIndex].Value.ToString();
@@ -157,21 +184,24 @@ namespace HPReserger
                 cbodis.Text = dtgconten["dis", e.RowIndex].Value.ToString();
                 cbosector.Text = dtgconten["sector", e.RowIndex].Value.ToString();
                 cboseguro.SelectedValue = dtgconten["cia", e.RowIndex].Value.ToString();
-                btneliminar.Enabled = true;
-                btnexportarExcel.Enabled = true;
+                btnnEliminar.Enabled = true;
+                btnnAExcel.Enabled = true;
                 chkStock.Checked = dtgconten[xStock.Name, e.RowIndex].Value.ToString() == "SI" ? true : false;
 
                 chkIngresosMayores.Checked = dtgconten[xIngresosMayores.Name, e.RowIndex].Value.ToString() == "1" ? true : false;
+
+                cboppto.SelectedValue = dtgconten[yppto.Name, e.RowIndex].Value;
             }
             else
             {
-                btnexportarExcel.Enabled = false;
-                btnmodificar.Enabled = false;
-                btneliminar.Enabled = false;
+                btnnAExcel.Enabled = false;
+                btnnModificar.Enabled = false;
+                btnnEliminar.Enabled = false;
             }
         }
 
-        private void btnnuevo_Click(object sender, EventArgs e)
+        private void btnnNuevo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+
         {
             CargarSectores(cbosector);
             CargarSeguros(cboseguro);
@@ -203,7 +233,7 @@ namespace HPReserger
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.frmPregunta.MostrarDialogYesCancel(cadena); }
         frmProcesando frmproce;
-        private void btnexportarExcel_Click(object sender, EventArgs e)
+        private void btnexportarExcel_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (Tdatos.Rows.Count == 0)
             {
@@ -232,9 +262,9 @@ namespace HPReserger
                 Cursor = Cursors.Default;
             }
         }
-        private void btnmodificar_Click(object sender, EventArgs e)
+        private void btnnModificar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            estado = 2; btnmodificar.Enabled = false;
+            estado = 2; btnnModificar.Enabled = false;
             iniciar(true); txtnombre.Focus();
         }
 
@@ -331,8 +361,11 @@ namespace HPReserger
                     }
                 }
                 //Insertando;
+                int idppto = cboppto.SelectedValue != null ? Convert.ToInt32(cboppto.SelectedValue) : 0;
+
                 CapaLogica.InsertarActualizarListarEmpresas(txtruc.Text, 1, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue,
-                    (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario, Stock, ingresos);
+                    (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario,
+                    Stock, ingresos, idppto);
                 HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -358,8 +391,11 @@ namespace HPReserger
                     fila++;
                 }
                 //modificando
+                int idppto = cboppto.SelectedValue != null ? Convert.ToInt32(cboppto.SelectedValue) : 0;
+
                 CapaLogica.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text,
-                    (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario, Stock, ingresos);
+                    (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue,
+                    frmLogin.CodigoUsuario, Stock, ingresos, idppto);
                 HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -491,6 +527,46 @@ namespace HPReserger
         {
             Cursor = Cursors.Default;
             frmproce.Close();
+        }
+
+        private void btnRepresentantes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            frmRepresentantesEmpresas frm = new frmRepresentantesEmpresas();
+            frm.ruc = txtruc.Text;
+            frm.Show();
+        }
+
+        private void cboppto_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (estado == 2 && valorAnterior != 0)
+            {
+                // Configura el mensaje de advertencia
+                string mensaje = "⚠️ ¡Advertencia! ⚠️\n\n" +
+                                 "Al cambiar el tipo de presupuesto de la empresa, " +
+                                 "podrían perderse los datos avanzados.\n\n" +
+                                 "¿Desea continuar?";
+
+                // Muestra el XtraMessageBox con botones Sí/No
+                DialogResult resultado = DevExpress.XtraEditors.XtraMessageBox.Show(
+                    mensaje,
+                    "Confirmar Cambio de Presupuesto",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+                if (resultado == DialogResult.No)
+                {
+                    // Revertir al valor anterior
+                    cboppto.SelectedValue = valorAnterior;
+                }
+            }
+
+        }
+        private int valorAnterior; // Variable para almacenar el valor anterior
+        private void cboppto_Enter(object sender, EventArgs e)
+        {
+            // Guardar el valor actual al entrar al ComboBox (antes de cualquier cambio)
+            valorAnterior = cboppto.SelectedValue != null ? (int)cboppto.SelectedValue : 0;
         }
     }
 }

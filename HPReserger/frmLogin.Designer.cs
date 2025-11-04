@@ -35,6 +35,8 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnLogueo = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.txtgit = new DevExpress.XtraEditors.TextEdit();
+            this.pbdatagit = new DevExpress.XtraEditors.PictureEdit();
             this.txtEmpresaData = new System.Windows.Forms.TextBox();
             this.pbclose = new System.Windows.Forms.PictureBox();
             this.ChkCRM = new DevExpress.XtraEditors.CheckEdit();
@@ -45,14 +47,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbdatagit = new DevExpress.XtraEditors.PictureEdit();
-            this.txtgit = new DevExpress.XtraEditors.TextEdit();
             this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtgit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbdatagit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkCRM.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbdatagit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtgit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -166,6 +166,27 @@
             this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
             // 
+            // txtgit
+            // 
+            this.txtgit.Location = new System.Drawing.Point(13, 22);
+            this.txtgit.Name = "txtgit";
+            this.txtgit.Properties.Appearance.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtgit.Properties.Appearance.Options.UseBackColor = true;
+            this.txtgit.Size = new System.Drawing.Size(170, 20);
+            this.txtgit.TabIndex = 12;
+            this.txtgit.Visible = false;
+            // 
+            // pbdatagit
+            // 
+            this.pbdatagit.EditValue = ((object)(resources.GetObject("pbdatagit.EditValue")));
+            this.pbdatagit.Location = new System.Drawing.Point(189, 12);
+            this.pbdatagit.Name = "pbdatagit";
+            this.pbdatagit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pbdatagit.Size = new System.Drawing.Size(42, 44);
+            this.pbdatagit.TabIndex = 11;
+            this.pbdatagit.Visible = false;
+            this.pbdatagit.Click += new System.EventHandler(this.pbdatagit_Click);
+            // 
             // txtEmpresaData
             // 
             this.txtEmpresaData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
@@ -212,6 +233,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("labelControl1.Appearance.Image")));
+            this.labelControl1.Appearance.Options.UseImage = true;
             this.labelControl1.Location = new System.Drawing.Point(595, 282);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(16, 16);
@@ -223,12 +245,12 @@
             // 
             this.lblVersion.BackColor = System.Drawing.Color.Transparent;
             this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(536, 261);
+            this.lblVersion.Location = new System.Drawing.Point(530, 261);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblVersion.Size = new System.Drawing.Size(80, 19);
+            this.lblVersion.Size = new System.Drawing.Size(101, 19);
             this.lblVersion.TabIndex = 6;
-            this.lblVersion.Text = "Version:1.1.1.1";
+            this.lblVersion.Text = "Version:3.2.0.12";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblmsg
@@ -293,27 +315,6 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
-            // pbdatagit
-            // 
-            this.pbdatagit.EditValue = ((object)(resources.GetObject("pbdatagit.EditValue")));
-            this.pbdatagit.Location = new System.Drawing.Point(189, 12);
-            this.pbdatagit.Name = "pbdatagit";
-            this.pbdatagit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pbdatagit.Size = new System.Drawing.Size(42, 44);
-            this.pbdatagit.TabIndex = 11;
-            this.pbdatagit.Visible = false;
-            this.pbdatagit.Click += new System.EventHandler(this.pbdatagit_Click);
-            // 
-            // txtgit
-            // 
-            this.txtgit.Location = new System.Drawing.Point(13, 22);
-            this.txtgit.Name = "txtgit";
-            this.txtgit.Properties.Appearance.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtgit.Properties.Appearance.Options.UseBackColor = true;
-            this.txtgit.Size = new System.Drawing.Size(170, 20);
-            this.txtgit.TabIndex = 12;
-            this.txtgit.Visible = false;
-            // 
             // frmLogin
             // 
             this.AllowDrop = true;
@@ -334,11 +335,11 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmLogin_Paint);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtgit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbdatagit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkCRM.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbdatagit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtgit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
