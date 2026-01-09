@@ -38,11 +38,11 @@ namespace SISGEM
 
             if (ERP_LIBRE == "SI")
             {
-                ribbonPage1.Visible = false;
-                ribbonPage4.Visible = false;
-                ribbonPage10.Visible = false;
-                ribbonPage11.Visible = false;
-                ribbonPage7.Visible = false;
+                rbPFinanzas.Visible = false;
+                rbPAlmacenes.Visible = false;
+                rbPCRM.Visible = false;
+                rbPSchedule.Visible = false;
+                rbPlanilla.Visible = false;
 
                 barStaticItem4.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barStaticItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -89,10 +89,57 @@ namespace SISGEM
                 //frmfrmDashBoard.MdiParent = this;
                 //frmfrmDashBoard.Show();
 
+                //TRAEMOS EL PERFIL DEL USUARIO
+                HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa ceMPRESA = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+                DataTable TEmpleado = ceMPRESA.GetDatosEmpleadoPerfil(HPReserger.frmLogin.CodigoUsuario);
+
+
                 ControlPerfilPrioritario();
                 btnUsuario.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 btnUsuarioCRM.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 btnProveedorCRM.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+
+                if (TEmpleado.Rows.Count > 0)
+                {
+                    int perfil = (int)TEmpleado.Rows[0]["Perfil_User"];
+
+                    if (perfil == 3)
+                    {
+                        //perfil 3 compras
+                        rbPFinanzas.Visible = false;
+                        rbPProyectos.Visible = false;
+                        rbPCRM.Visible = false;
+                        rbPSchedule.Visible = false;
+                        rbPVentas.Visible = false;
+                        rbPFlujoCaja.Visible = false;
+                        rbPAlmacenes.Visible = false;
+                        rbLibrosElectronicos.Visible = false;
+                        rbPlanilla.Visible = false;
+                        rbMantenimiento.Visible = false;
+
+                        btnUsuario.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnUsuarioCRM.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnFacturaCompra.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        rbPContable.Visible = false;
+                        rbPCierre.Visible = false;
+                        rbPCompensaciones.Visible = false;
+                        rbPGreportepasado.Visible = false;
+                        rbPBitacora.Visible = false;
+                        //rbPReportesContables.Visible = false;
+
+                        btnReporteAnalitico.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnReporteAnalitico2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnBalanceComprobacion.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnEstadoSituacion.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnEstadoResultado.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnConfigurar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnSaldoCuentas.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+                        btnDocumentosPendientes.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                    }
+                }
+
             }
             else
             {
@@ -120,7 +167,10 @@ namespace SISGEM
         public void ControlPerfilPrioritario()
         {
             btnPeriodos.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            if ((new int[] { 0, 1, 2, 3 }).Contains(HPReserger.frmLogin.CodigoUsuario))//Luego se lo cambia por el perfil
+            List<string> usuariosPermitidos = new List<string> { "WCHAVEZ" };
+            String usuarioLogin = HPReserger.frmLogin.LoginUser;
+
+            if ((new int[] { 0, 1, 2, 3 }).Contains(HPReserger.frmLogin.CodigoUsuario) || usuariosPermitidos.Contains(usuarioLogin))//Luego se lo cambia por el perfil
             {
                 btnPeriodos.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
 
@@ -1143,7 +1193,33 @@ namespace SISGEM
 
             newForm.Show();
         }
+        private void OpenFormNoPadreMaximizado<T>() where T : Form, new()
+        {
+            // Buscar si ya está abierto un formulario del mismo tipo fuera del MDI
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is T)
+                {
+                    form.WindowState = FormWindowState.Normal;
+                    form.BringToFront();
+                    form.Activate();
+                    return;
+                }
+            }
 
+            // Crear el formulario como ventana independiente
+            T newForm = new T
+            {
+                WindowState = FormWindowState.Maximized,
+                MdiParent = null, // No es hijo MDI
+                FormBorderStyle = FormBorderStyle.FixedDialog, // O FixedSingle si prefieres
+                //MaximizeBox = false,
+                StartPosition = FormStartPosition.CenterScreen
+
+            };
+
+            newForm.Show();
+        }
         private void navBarItem3_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             //pendientes de reuniones
@@ -1383,6 +1459,59 @@ namespace SISGEM
         private void barButtonItem75_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenForm<SISGEM.ModuloContable.xBitacoraEmpleadoRegistros>();
+
+        }
+
+        private void barButtonItem76_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SISGEM.ModuloContable.frmDashboardBitacora frmfrmDashBoard = new ModuloContable.frmDashboardBitacora();
+            frmfrmDashBoard.MdiParent = this;
+            frmfrmDashBoard.Show();
+        }
+
+        private void btnRegistrarCompraDirecta_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloCompras.frmComprobantesComprasDirectas>();
+
+        }
+
+        private void barButtonItem18_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem17_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<HPReserger.frmProyectos>();
+
+        }
+
+        private void btnBarGerencia_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<HPReserger.frmgerencia>();
+
+        }
+
+        private void barButtonItem77_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenFormNoPadreMaximizado<SISGEM.ModuloCompras.frmAddOrdenCompra>();
+
+        }
+
+        private void btnListadoOrdenes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloCompras.frmListarOrdenesCompra>();
+
+        }
+
+        private void btnRendicionesReembolsos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloCompras.frmRendicionesReembolso>();
+        }
+
+        private void barButtonItem77_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloCompras.frmListadoRendiciones>();
 
         }
     }

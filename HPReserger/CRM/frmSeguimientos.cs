@@ -31,6 +31,7 @@ namespace SISGEM.CRM
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+            
         }
 
         private void btnFiltrar_Click(object sender, EventArgs e)

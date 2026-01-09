@@ -414,7 +414,7 @@ END
 			)
 
 				and ax.Fecha_Asiento between @fechade and @fechahasta
-                and Id_Dinamica_Contable not in (-30,-31,-50,-20,-51)
+                and Id_Dinamica_Contable not in (-30,-31,-50,-51)
 
             GROUP BY
                 e.Empresa,
@@ -580,7 +580,7 @@ END
                 string query = @"
                     select DISTINCT substring( cuenta_contable,1,2)CUENTA from TBL_Asiento_Contable  a
                     inner join TBL_Proyecto p on p.id_proyecto = a.id_proyecto and p.id_empresa = @empresa
-                    WHERE Cuenta_Contable< '51' and Estado =1
+                    WHERE Cuenta_Contable< '53' and Estado =1
                     ORDER BY 1 ASC";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.SelectCommand.Parameters.AddWithValue("@empresa", idEmpresa);

@@ -79,12 +79,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Compras\FacturaManual.cs" />
+    <Compile Include="Compras\FacturaManualCompra.cs" />
+    <Compile Include="Compras\NC_ND_CompraManualCompra.cs" />
+    <Compile Include="Compras\OrdenCompra.cs" />
     <Compile Include="Compras\Proveedor.cs" />
     <Compile Include="Configuracion\Configuraciones.cs" />
     <Compile Include="Contable\ActivoFijo.cs" />
     <Compile Include="Contable\CatalogoExistencias.cs" />
     <Compile Include="Contable\Contabilidad.cs" />
     <Compile Include="Contable\EmpresaAbreviatura.cs" />
+    <Compile Include="Contable\ReembolsosMasivos.cs" />
     <Compile Include="Contable\SubTipoActivoFijo.cs" />
     <Compile Include="Contable\T18TipoActivoFijo.cs" />
     <Compile Include="Contable\T19EstadoActivoFijo.cs" />

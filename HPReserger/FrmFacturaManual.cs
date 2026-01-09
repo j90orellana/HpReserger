@@ -20,6 +20,7 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        int usuarioCreador { get; set; } = 0;
         public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         HPResergerCapaDatos.HPResergerCD CapaDatos = new HPResergerCapaDatos.HPResergerCD();
@@ -48,9 +49,16 @@ namespace HPReserger
         public string DatoPresupuesto_ { get; private set; } = "";
 
         public bool RomperMasivo = false;
+        bool trabajarconPartidas = false;
 
         private void FrmFacturaManual_Load(object sender, EventArgs e)
         {
+            var configuracionEmpresa = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+            var configuracion1 = configuracionEmpresa.GetByTipo(3);
+
+            trabajarconPartidas = (configuracion1?.Valor ?? 0) != 0;
+            cboPresupuestos.Visible = trabajarconPartidas;
+
             Estado = 0; _idempresa = 0; _proyecto = 0; _etapa = 0; coddet = "";
             CargarCombitoTipoid();
             CargarMoneda(); CargarTipoComprobante(); CargarDetracciones(); CargarEmpresa(); CargarCompensaciones();
@@ -60,7 +68,11 @@ namespace HPReserger
             cbograba.SelectedIndex = 0;
             ModoEdicion(false);
             LimpiarBusquedas();
+
+            CargarPresupuetos();
             CargarDatos();
+
+
         }
         public void CargarCompensaciones()
         {
@@ -156,6 +168,8 @@ namespace HPReserger
             chkIGV.Enabled = a;
 
             cboClasifBssYSss.Enabled = !a;
+
+            cboPresupuestos.Enabled = a;
 
             if (_EmpresaNecesitaTabla30Bienes)
             {
@@ -493,6 +507,8 @@ namespace HPReserger
                     //    txtcodigo.Text = (codigo).ToString();
                     //}
 
+                    CargarPresupuetos();
+
                     HPResergerCapaLogica.Contable.ClaseContable oclase = new HPResergerCapaLogica.Contable.ClaseContable();
                     DataTable Tdata = oclase.GetEmpresaById((int)cboempresa.SelectedValue);
                     if (Tdata.Rows.Count > 0)
@@ -513,6 +529,26 @@ namespace HPReserger
             }
             else msgError("No hay Empresas");
         }
+        DataTable dtPresupuestos;
+        private void CargarPresupuetos()
+        {
+            if (trabajarconPartidas)
+            {
+                HPResergerCapaLogica.FlujoCaja.Partidas_Control cClase = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
+                dtPresupuestos = cClase.GetAllxEmpresa(_idempresa);
+
+                cboPresupuestos.Properties.DisplayMember = "Nombre";
+                cboPresupuestos.Properties.ValueMember = "id";
+                cboPresupuestos.Properties.DataSource = dtPresupuestos; // Fuente de datos general
+
+                cboPresupuestos.Properties.View.Columns.Clear();
+                cboPresupuestos.Properties.View.Columns.AddVisible("Nombre", "Nombre del Presupuesto");
+                cboPresupuestos.Properties.View.OptionsView.ShowColumnHeaders = false; // Opcional: Ocultar encabezado de columna
+                cboPresupuestos.Properties.View.OptionsSelection.EnableAppearanceFocusedCell = false; // Evitar resaltado de celda seleccionada
+                cboPresupuestos.Properties.View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus; // Resaltar toda la fila
+            }
+        }
+
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboproyecto.SelectedIndex >= 0)
@@ -1018,10 +1054,11 @@ namespace HPReserger
 
                 //si tenemos presupuesto añadimos su fila
                 //OpcionBusqueda = 1, FACTURA MANUALES, 2 NOTAS DEBITO CREDITO
+                if (!ProcesoMasivo) DatoPresupuesto_ = cboPresupuestos.EditValue?.ToString() ?? "";
                 if (DatoPresupuesto_ != "")
                 {
                     HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto oFacP = new HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto();
-                    oFacP.Insertar(_idFac, OpcionBusqueda, (int)cboempresa.SelectedValue, DatoPresupuesto_);
+                    oFacP.InsertarxNombreyCodigo(_idFac, OpcionBusqueda, (int)cboempresa.SelectedValue, DatoPresupuesto_);
                 }
                 ////INSERTAR ASIENTO DE CABECERA Y DETALLE
                 int i = 1;
@@ -1062,13 +1099,13 @@ namespace HPReserger
                     //Inserto un Nuevo Registro
                     CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
                         decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, OpcionBusqueda == 1 ? compensada ? 3 : FacturaEstado : NotasEstado == 2 ? 2 : compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
-                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion, ActivoFijo == 2 ? 2 : chkActivoFijo.Checked ? 1 : 0);
+                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), usuarioCreador, DatosCompensacion, ActivoFijo == 2 ? 2 : chkActivoFijo.Checked ? 1 : 0);
 
                 }
                 else
                     CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 2 : 200, _idFac, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
                         decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, OpcionBusqueda == 1 ? compensada ? 3 : FacturaEstado : NotasEstado == 2 ? 2 : compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
-                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion, ActivoFijo == 2 ? 2 : chkActivoFijo.Checked ? 1 : 0);
+                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), usuarioCreador, DatosCompensacion, ActivoFijo == 2 ? 2 : chkActivoFijo.Checked ? 1 : 0);
 
                 ///BORRAMOS LOS DATOS ANTERIOES
                 if (OldCuo != null)
@@ -1084,6 +1121,13 @@ namespace HPReserger
                 }
                 CapaDatos.FacturaManualDatosAdicionales(0, _idFac, Convert.ToInt32(igvs * 100), _Tipo);
                 //fin Actualizamos los datos adicionales
+
+                if (!ProcesoMasivo) DatoPresupuesto_ = cboPresupuestos.EditValue?.ToString() ?? "";
+                if (DatoPresupuesto_ != "")
+                {
+                    HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto oFacP = new HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto();
+                    oFacP.ActualizarxNombreyCodigo(_idFac, _Tipo, (int)cboempresa.SelectedValue, DatoPresupuesto_);
+                }
 
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
@@ -1376,8 +1420,7 @@ namespace HPReserger
             {
                 btnFacturaPagada.Enabled = true;
                 btnQuitarPago.Enabled = true;
-
-
+                
                 DataGridViewRow R = dtgBusqueda.Rows[x];
                 _idFac = (int)R.Cells[yid.Name].Value;
                 _idComprobante = (int)R.Cells[yIdComprobante.Name].Value;
@@ -1410,7 +1453,7 @@ namespace HPReserger
                     chkActivoFijo.Checked = ((int)R.Cells[xActivoFijo.Name].Value) == 0 ? false : true;
                 }
                 //
-                if (NumFacRefe != "")
+                if (NumFacRefe.Trim() != "")
                 {
                     CodNroFacRef = R.Cells[yNroComprobanteRef.Name].Value.ToString().Split('-'); txtSerieRef.Text = CodNroFacRef[0]; txtNumRef.Text = CodNroFacRef[1];
                 }
@@ -1511,7 +1554,7 @@ namespace HPReserger
                 else
                     chkIGV.Checked = false;
 
-
+                usuarioCreador = (int)R.Cells[yUsuario.Name].Value;
 
                 //BUSCAMOS LOS DATOS DE ADICIONALES
                 if (_EmpresaNecesitaTabla30Bienes)
@@ -1531,6 +1574,15 @@ namespace HPReserger
                 {
                     cboClasifBssYSss.EditValue = 0;
                 }
+
+                //vamos por presupuestos
+                HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto cFacturaPresupuesto = new HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto();
+                DataTable TdataPresupuesto = cFacturaPresupuesto.GetByIdFactura(_idFac, _Tipo);
+                if (TdataPresupuesto.Rows.Count > 0)
+                {
+                    cboPresupuestos.EditValue = TdataPresupuesto.Rows[0]["idPartida"];
+                }
+                else cboPresupuestos.EditValue = null;
             }
 
         }
@@ -2934,6 +2986,20 @@ namespace HPReserger
                 XtraMessageBox.Show("Por favor, seleccione una factura antes de realizar el cambio de estado.", "Cambio de estado",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnDescargar_Click(object sender, EventArgs e)
+        {
+            SISGEM.ModuloCompras.frmComprobantesComprasDirectas cclase = new SISGEM.ModuloCompras.frmComprobantesComprasDirectas();
+            cclase.DescargarTodosArchivos(_Tipo, _idFac, 2);
+
+        }
+
+        private void btnDescargarDocumento_Click(object sender, EventArgs e)
+        {
+            SISGEM.ModuloCompras.frmComprobantesComprasDirectas cclase = new SISGEM.ModuloCompras.frmComprobantesComprasDirectas();
+            cclase.DescargarTodosArchivos(_Tipo, _idFac, 1);
+
         }
 
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)

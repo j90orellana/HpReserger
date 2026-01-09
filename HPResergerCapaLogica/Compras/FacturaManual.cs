@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -12,6 +13,159 @@ namespace HPResergerCapaLogica.Compras
         {
             _connectionString = HPResergerCapaDatos.HPResergerCD.StringObtenerConexion();
         }
+        public class FacturaArchivo
+        {
+            public int Id { get; set; }
+            public int IdFactura { get; set; }
+            public int TipoFactura { get; set; }
+            public int Tipo { get; set; }
+            public string NombreArchivo { get; set; }
+            public string Extension { get; set; }
+            public byte[] Archivo { get; set; }
+            public DateTime FechaSubida { get; set; }
+        }
+        public bool DeleteArchivoFactura(int tipoFactura, int idFactura, int tipo)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+        DELETE FROM TBL_FacturaArchivos
+         WHERE TipoFactura = @TipoFactura AND IdFactura = @IdFactura and Tipo= @tipo";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdFactura", idFactura);
+                    cmd.Parameters.AddWithValue("@TipoFactura", tipoFactura); // 1 FACTURAS, 2 NOTAS DE CREDITO
+                    cmd.Parameters.AddWithValue("@tipo", tipo); // 1 DOCUMENTO 2 SUSTENTO
+                    conn.Open();
+                    int filas = cmd.ExecuteNonQuery();
+
+                    // true si eliminó al menos un registro
+                    return filas > 0;
+                }
+            }
+        }
+
+        public List<FacturaArchivo> GetArchivosFactura(int tipoFactura, int idFactura, int tipo)
+        {
+            List<FacturaArchivo> lista = new List<FacturaArchivo>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+            SELECT Id, IdFactura, TipoFactura, Tipo,NombreArchivo, Extension, Archivo, FechaSubida
+            FROM TBL_FacturaArchivos
+            WHERE TipoFactura = @TipoFactura AND IdFactura = @IdFactura and Tipo= @tipo ";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdFactura", idFactura);
+                    cmd.Parameters.AddWithValue("@TipoFactura", tipoFactura); // 1 FACTURAS, 2 NOTAS DE CREDITO
+                    cmd.Parameters.AddWithValue("@tipo", tipo); // 1 DOCUMENTO 2 SUSTENTO
+
+                    conn.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new FacturaArchivo
+                            {
+                                Id = dr.GetInt32(0),
+                                IdFactura = dr.GetInt32(1),
+                                TipoFactura = dr.GetInt32(2),
+                                Tipo = dr.GetInt32(3),
+                                NombreArchivo = dr.GetString(4),
+                                Extension = dr.GetString(5),
+                                Archivo = (byte[])dr["Archivo"],
+                                FechaSubida = dr.GetDateTime(7)
+                            });
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public bool GuardarAdjuntoSQL(int idFactura, int tipofactura, int tipo, string nombre, string extension, byte[] archivo)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+        INSERT INTO TBL_FacturaArchivos
+        (IdFactura, tipoFactura, tipo, NombreArchivo, Extension, Archivo)
+        VALUES
+        (@IdFactura, @tipofactura, @tipo, @NombreArchivo, @Extension, @Archivo)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdFactura", idFactura);
+                    cmd.Parameters.AddWithValue("@tipofactura", tipofactura);
+                    cmd.Parameters.AddWithValue("@tipo", tipo);
+                    cmd.Parameters.AddWithValue("@NombreArchivo", nombre);
+                    cmd.Parameters.AddWithValue("@Extension", extension);
+                    cmd.Parameters.Add("@Archivo", SqlDbType.VarBinary).Value = archivo;
+
+                    int filas = cmd.ExecuteNonQuery();
+
+                    // Retorna true si insertó correctamente
+                    return filas > 0;
+                }
+            }
+        }
+
+        public int ObtenerIdAdjunto(int idFactura, int tipoFactura)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT TOP 1 Id
+            FROM TBL_FacturaAdjuntos
+            WHERE IdFactura = @IdFactura
+              AND TipoFactura = @TipoFactura
+            ORDER BY FechaRegistro DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@IdFactura", idFactura);
+                cmd.Parameters.AddWithValue("@TipoFactura", tipoFactura);
+
+                object result = cmd.ExecuteScalar();
+
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
+        }
+
+        private void ObtenerArchivoSQL(int idAdjunto, out byte[] archivo, out string nombre, out string extension)
+        {
+            archivo = null;
+            nombre = "";
+            extension = "";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                string query = @"
+            SELECT NombreArchivo, Extension, Archivo
+            FROM TBL_FacturaAdjuntos
+            WHERE Id = @Id";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Id", idAdjunto);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    nombre = dr["NombreArchivo"].ToString();
+                    extension = dr["Extension"].ToString();
+                    archivo = (byte[])dr["Archivo"];
+                }
+            }
+        }
 
         // Create
         public DataTable BuscarFiltradoCompras(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante)
@@ -21,7 +175,7 @@ namespace HPResergerCapaLogica.Compras
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string query = @"
-                    SELECT
+                      SELECT
                       e.empresa AS Empresa, x.Id id,
                         cp.nombre AS Comprobante, 
                         p.razon_social AS RazonSocial, 
@@ -33,7 +187,7 @@ namespace HPResergerCapaLogica.Compras
                         CASE X.estado
                             WHEN 1 THEN 'COMPLETA'
                             WHEN 2 THEN 'PAGADA'
-
+                            WHEN 0 THEN 'REG. PARCIAL'
                             WHEN 3 THEN 'COMPENSADA'
                         END AS EstadoFactura,
                         X.Tipo, 
@@ -44,10 +198,13 @@ namespace HPResergerCapaLogica.Compras
                         X.Glosa, 
 	                    pc.id IdPP,--,pc.Codigo CodigoPP, pc.Tipo tipopartida,
                          ISNULL(U.Login_User, 'ADMIN') AS Usuario , isnull(pp.id,0) pkidpp
+
+						 ,count(tipoDocumento)tipoDocumento,count( tipoSustento)tipoSustento
+
                     FROM(
                         SELECT
                             'Facturas Compras' AS Tipo,
-                            Id,
+                            F.Id,
                             IdComprobante,
                             NroComprobante,
                             Proveedor,
@@ -61,16 +218,18 @@ namespace HPResergerCapaLogica.Compras
                             Estado,
                             Detraccion,
                             Glosa,
-                            Usuario, 1 tipofactura
-                        FROM TBL_FacturaManual
-
-
+                            Usuario, 1 tipofactura, FA.Tipo tipoDocumento,fs.Tipo tipoSustento
+                        FROM TBL_FacturaManual f 
+						left join TBL_FacturaArchivos fa on fa.IdFactura =f.Id
+						and fa.TipoFactura = 1 and fa.Tipo =1 --documento
+						left join TBL_FacturaArchivos fs on fs.IdFactura =f.Id
+						and fs.TipoFactura = 1 and fs.Tipo =2 --sustento
                         UNION ALL
 
 
                         SELECT
                             'Notas Compras' AS Tipo,
-                            Id,
+                            F.Id,
                             IdComprobante,
                             NroComprobante,
                             Proveedor,
@@ -85,10 +244,21 @@ namespace HPResergerCapaLogica.Compras
                             0 AS Detraccion,
                             Glosa,
                             Usuario, 100
-                        FROM TBL_NC_ND_CompraManual
+							, FA.Tipo tipoDocumento,fs.Tipo tipoSustento
+                        FROM TBL_NC_ND_CompraManual F
+						left join TBL_FacturaArchivos fa on fa.IdFactura =f.Id
+						and fa.TipoFactura = 2 and fa.Tipo =1 --documento
+						left join TBL_FacturaArchivos fs on fs.IdFactura =f.Id
+						and fs.TipoFactura = 2 and fs.Tipo =2 --sustento
                     ) X
 
                     INNER JOIN TBL_Empresa e ON e.Id_Empresa = X.Empresa
+                        and (e.Id_Empresa IN (
+                            SELECT TRY_CAST(value AS INT)
+                            FROM STRING_SPLIT(@EMPRESA, ',')
+                            WHERE TRY_CAST(value AS INT) IS NOT NULL
+                        ) OR @EMPRESA ='')
+
                     LEFT JOIN TBL_Comprobante_Pago cp ON cp.Id_Comprobante = X.IdComprobante
                     LEFT JOIN TBL_Proveedor p ON p.ruc = X.Proveedor
                     LEFT JOIN TBL_Moneda m ON m.Id_Moneda = X.Moneda
@@ -97,10 +267,13 @@ namespace HPResergerCapaLogica.Compras
                     left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and e.ppto = pc.Tipo
 
                     WHERE X.fechacontable BETWEEN @fechade AND @fechaa
-                    AND(E.Empresa LIKE '%' + @EMPRESA + '%')
+                    --AND(E.Empresa LIKE '%' + @EMPRESA + '%')
                     AND(P.razon_social LIKE '%' + @PROVEEDOR + '%' OR P.RUC LIKE '%' + @PROVEEDOR + '%')
                     AND X.Glosa LIKE '%' + @GLOSA + '%'  AND X.NroComprobante LIKE '%' + @nrocompro + '%'
                     and (isnull(pc.id,0)= @ocultar or @ocultar=1)
+
+					group by e.Empresa,x.Id,Nombre,razon_social,NameCorto,x.NroComprobante,x.Proveedor,x.FechaEmision,x.FechaContable,x.Estado,x.Tipo,x.Total,x.Igv
+					,x.tc,x.Detraccion,x.Glosa,pc.Id,Login_User,pp.id
                     ORDER BY Empresa ASC, FechaContable ASC; ";
 
 
@@ -272,6 +445,7 @@ ORDER BY x.Empresa ASC, fecha ASC;";
 
             return dataTable;
         }
+
         public DataTable BuscarFiltradoMovimientosFinancierosMov(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante,
             string cuentabancaria, string tipo)
         {
@@ -692,6 +866,64 @@ ORDER BY x.Empresa ASC, fecha ASC;";
                 adapter.Fill(dataTable);
             }
 
+            return dataTable;
+        }
+        public DataTable GetTipoComprobantes()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "select Id_Comprobante idComprobante,cod_sunat codSunat, nombre nombre from TBL_Comprobante_Pago";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetMoneda()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "select Id_Moneda idMoneda, Moneda moneda, NameCorto nombreCorto from TBL_Moneda";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetCentroCosto()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "select Id_CCosto id, Cod_CCosto codigo, CentroCosto centroCosto, TieneCtaCtble tiene, Id_CtaCtble ctaContablle from TBL_Centro_Costo";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetUsuariosActivos()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"
+                                select u.Codigo_User id, Tipo_ID_User tipoId, Nro_ID_User numId , Login_User 'login'
+                                ,dbo.NombreEmpleado(Tipo_ID_Emp,Nro_ID_Emp) nombre
+                                 from TBL_Usuario u left join
+                                TBL_Empleado e on u .Tipo_ID_User = e.Tipo_ID_Emp and u.Nro_ID_User = e.Nro_ID_Emp
+
+                                where u.Estado =1";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
             return dataTable;
         }
     }

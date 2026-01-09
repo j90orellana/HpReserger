@@ -272,11 +272,11 @@
             this.layoutControl1.Controls.Add(this.txttipomovimiento);
             this.layoutControl1.Controls.Add(this.cboempresa);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 22);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 20);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-818, 348, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1137, 481);
+            this.layoutControl1.Size = new System.Drawing.Size(1137, 483);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -319,7 +319,7 @@
             this.chkPPf.MenuManager = this.barManager1;
             this.chkPPf.Name = "chkPPf";
             this.chkPPf.Properties.Caption = "Ocultar con PP";
-            this.chkPPf.Size = new System.Drawing.Size(206, 19);
+            this.chkPPf.Size = new System.Drawing.Size(206, 18);
             this.chkPPf.StyleController = this.layoutControl1;
             this.chkPPf.TabIndex = 19;
             // 
@@ -401,7 +401,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1137, 22);
+            this.barDockControlTop.Size = new System.Drawing.Size(1137, 20);
             // 
             // barDockControlBottom
             // 
@@ -415,17 +415,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 481);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 483);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1137, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(1137, 20);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 481);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 483);
             // 
             // txtproveedor
             // 
@@ -517,7 +517,7 @@
             this.repositoryItemSearchLookUpEdit6,
             this.repositoryItemSearchLookUpEdit7,
             this.repositoryItemSearchLookUpEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1125, 329);
+            this.gridControl1.Size = new System.Drawing.Size(1125, 331);
             this.gridControl1.TabIndex = 18;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -785,6 +785,7 @@
             this.xDOLARES.Caption = "DOLARES";
             this.xDOLARES.FieldName = "DOLARES";
             this.xDOLARES.MaxWidth = 90;
+            this.xDOLARES.MinWidth = 30;
             this.xDOLARES.Name = "xDOLARES";
             this.xDOLARES.OptionsColumn.AllowEdit = false;
             this.xDOLARES.Visible = true;
@@ -987,7 +988,7 @@
             this.layoutControlItem17,
             this.layoutControlItem18});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1137, 481);
+            this.Root.Size = new System.Drawing.Size(1137, 483);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -1117,7 +1118,7 @@
             this.layoutControlItem9.Control = this.gridControl1;
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 140);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(1127, 331);
+            this.layoutControlItem9.Size = new System.Drawing.Size(1127, 333);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
@@ -1228,7 +1229,7 @@
             this.chkPP.Location = new System.Drawing.Point(6, 54);
             this.chkPP.Name = "chkPP";
             this.chkPP.Properties.Caption = "Ocultar con PP";
-            this.chkPP.Size = new System.Drawing.Size(604, 19);
+            this.chkPP.Size = new System.Drawing.Size(604, 18);
             this.chkPP.StyleController = this.layoutControl11;
             this.chkPP.TabIndex = 16;
             // 

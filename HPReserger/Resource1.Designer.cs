@@ -83,6 +83,16 @@ namespace SISGEM {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
+        internal static byte[] FormatoCargaPartidasControl {
+            get {
+                object obj = ResourceManager.GetObject("FormatoCargaPartidasControl", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
         internal static byte[] LISTADO_DE_COMPRAS {
             get {
                 object obj = ResourceManager.GetObject("LISTADO_DE_COMPRAS", resourceCulture);

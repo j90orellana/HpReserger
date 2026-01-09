@@ -84,6 +84,7 @@ namespace HPReserger
                 dtgconten.Enabled = true; cargarproyectos(); btnaceptar.Enabled = btncancelar.Enabled = false;
                 btnnuevo.Enabled = btnmodificar.Enabled = true;
                 btncancelar.Enabled = true;
+                estado = 0;
             }
             else this.Close();
         }

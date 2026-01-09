@@ -62,6 +62,22 @@ namespace HPResergerCapaLogica.Compras
             }
             return dataTable;
         }
+        public DataTable GetAll()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"
+                         SELECT Tipo_Id tipoId, RUC ruc, razon_social razonSocial,Tipo_Id tipoId, concat(ruc,' - ',razon_social)proveedor
+                            , direccion_oficina direccion    ,nombre_contacto contacto
+                            FROM TBL_Proveedor";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
 
         public bool Insert(Proveedor proveedor)
         {

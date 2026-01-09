@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -596,6 +597,34 @@ namespace HPReserger
                                     st = File.CreateText(path);
                                     st.Write(cadenatxt);
                                     st.Close();
+
+
+                                    //CONVERSION A ZIP
+                                    string txtFilePath = path;
+                                    string zipFilePath = txtFilePath.Replace(".txt", ".zip");
+                                    string directoryPath = Path.GetDirectoryName(txtFilePath);
+                                    string fileName = Path.GetFileName(txtFilePath); // Solo el nombre del archivo
+
+                                    // Comando para comprimir usando tar (desde el directorio del archivo)
+                                    string command = $"cd /d \"{directoryPath}\" && tar -a -c -f \"{zipFilePath}\" \"{fileName}\"";
+
+                                    ProcessStartInfo psi = new ProcessStartInfo()
+                                    {
+                                        FileName = "cmd.exe",
+                                        Arguments = $"/C {command}",
+                                        RedirectStandardOutput = true,
+                                        UseShellExecute = false,
+                                        CreateNoWindow = true
+                                    };
+
+                                    using (Process process = Process.Start(psi))
+                                    {
+                                        process.WaitForExit();
+                                    }
+
+
+
+
                                 }
                             }
                         }

@@ -50,6 +50,7 @@
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.btnFormato82 = new System.Windows.Forms.Button();
             this.chkActivoFijo = new System.Windows.Forms.CheckBox();
+            this.btnDescargarSustento = new DevExpress.XtraEditors.SimpleButton();
             this.btnCargarFoto = new System.Windows.Forms.Button();
             this.frmimagen = new HpResergerUserControls.frmimagen();
             this.cmsImagen = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -211,6 +212,9 @@
             this.label22 = new System.Windows.Forms.Label();
             this.btnListar = new DevExpress.XtraEditors.SimpleButton();
             this.btnQuitarPago = new DevExpress.XtraEditors.SimpleButton();
+            this.cboPresupuestos = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnDescargarDocumento = new DevExpress.XtraEditors.SimpleButton();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -223,6 +227,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumIGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboClasifBssYSss.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPresupuestos.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Openfd
@@ -243,7 +249,7 @@
             this.btnFormato82.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFormato82.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFormato82.ForeColor = System.Drawing.Color.White;
-            this.btnFormato82.Location = new System.Drawing.Point(980, 201);
+            this.btnFormato82.Location = new System.Drawing.Point(980, 177);
             this.btnFormato82.Name = "btnFormato82";
             this.btnFormato82.Size = new System.Drawing.Size(92, 25);
             this.btnFormato82.TabIndex = 0;
@@ -266,6 +272,16 @@
             this.chkActivoFijo.Text = "Es Activo Fijo";
             this.tooltip.SetToolTip(this.chkActivoFijo, "Seleccionar Sí la Factura es de un Activo Fijo");
             this.chkActivoFijo.UseVisualStyleBackColor = false;
+            // 
+            // btnDescargarSustento
+            // 
+            this.btnDescargarSustento.Location = new System.Drawing.Point(980, 230);
+            this.btnDescargarSustento.Name = "btnDescargarSustento";
+            this.btnDescargarSustento.Size = new System.Drawing.Size(92, 22);
+            this.btnDescargarSustento.TabIndex = 337;
+            this.btnDescargarSustento.Text = "Sustento";
+            this.tooltip.SetToolTip(this.btnDescargarSustento, "Descargar Sustento");
+            this.btnDescargarSustento.Click += new System.EventHandler(this.btnDescargar_Click);
             // 
             // btnCargarFoto
             // 
@@ -1940,7 +1956,7 @@
             this.chkNotaDetraccion.Location = new System.Drawing.Point(358, 2);
             this.chkNotaDetraccion.Name = "chkNotaDetraccion";
             this.chkNotaDetraccion.Properties.Caption = "Calcular Detracciòn";
-            this.chkNotaDetraccion.Size = new System.Drawing.Size(122, 18);
+            this.chkNotaDetraccion.Size = new System.Drawing.Size(122, 19);
             this.chkNotaDetraccion.TabIndex = 325;
             this.chkNotaDetraccion.CheckedChanged += new System.EventHandler(this.chkNotaDetraccion_CheckedChanged);
             // 
@@ -2194,7 +2210,7 @@
             // 
             this.btnCargar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargar.Image = ((System.Drawing.Image)(resources.GetObject("btnCargar.Image")));
-            this.btnCargar.Location = new System.Drawing.Point(980, 131);
+            this.btnCargar.Location = new System.Drawing.Point(980, 128);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(92, 25);
             this.btnCargar.TabIndex = 0;
@@ -2208,7 +2224,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(980, 118);
+            this.label12.Location = new System.Drawing.Point(980, 115);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(75, 13);
             this.label12.TabIndex = 326;
@@ -2218,7 +2234,7 @@
             // 
             this.btnFormato.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFormato.Image = ((System.Drawing.Image)(resources.GetObject("btnFormato.Image")));
-            this.btnFormato.Location = new System.Drawing.Point(980, 155);
+            this.btnFormato.Location = new System.Drawing.Point(980, 152);
             this.btnFormato.Name = "btnFormato";
             this.btnFormato.Size = new System.Drawing.Size(92, 25);
             this.btnFormato.TabIndex = 0;
@@ -2379,11 +2395,42 @@
             this.btnQuitarPago.Text = "QuitarPago";
             this.btnQuitarPago.Click += new System.EventHandler(this.btnQuitarPago_Click);
             // 
+            // cboPresupuestos
+            // 
+            this.cboPresupuestos.EditValue = "";
+            this.cboPresupuestos.Location = new System.Drawing.Point(15, 206);
+            this.cboPresupuestos.Name = "cboPresupuestos";
+            this.cboPresupuestos.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboPresupuestos.Properties.NullText = "[ Partida Presupuestaria ]";
+            this.cboPresupuestos.Properties.PopupView = this.gridView1;
+            this.cboPresupuestos.Size = new System.Drawing.Size(203, 20);
+            this.cboPresupuestos.TabIndex = 336;
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // btnDescargarDocumento
+            // 
+            this.btnDescargarDocumento.Location = new System.Drawing.Point(980, 207);
+            this.btnDescargarDocumento.Name = "btnDescargarDocumento";
+            this.btnDescargarDocumento.Size = new System.Drawing.Size(92, 22);
+            this.btnDescargarDocumento.TabIndex = 338;
+            this.btnDescargarDocumento.Text = "Documento";
+            this.btnDescargarDocumento.Click += new System.EventHandler(this.btnDescargarDocumento_Click);
+            // 
             // FrmFacturaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.btnDescargarDocumento);
+            this.Controls.Add(this.btnDescargarSustento);
+            this.Controls.Add(this.cboPresupuestos);
             this.Controls.Add(this.btnQuitarPago);
             this.Controls.Add(this.btnListar);
             this.Controls.Add(this.label22);
@@ -2485,6 +2532,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumIGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboClasifBssYSss.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPresupuestos.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2657,5 +2706,9 @@
         private DevExpress.XtraEditors.CheckEdit chkNotaDetraccion;
         private DevExpress.XtraEditors.SimpleButton btnListar;
         private DevExpress.XtraEditors.SimpleButton btnQuitarPago;
+        private DevExpress.XtraEditors.SearchLookUpEdit cboPresupuestos;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SimpleButton btnDescargarSustento;
+        private DevExpress.XtraEditors.SimpleButton btnDescargarDocumento;
     }
 }

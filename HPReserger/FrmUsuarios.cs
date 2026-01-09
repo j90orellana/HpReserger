@@ -240,6 +240,7 @@ namespace HPReserger
             txtbusnro.ReadOnly = !a;
             txtbustipodoc.ReadOnly = !a;
             dtgconten.ReadOnly = !a;
+            //cboarea.Enabled = !a;
         }
         public int estado = 0;
         private void btnnuevo_Click(object sender, EventArgs e)

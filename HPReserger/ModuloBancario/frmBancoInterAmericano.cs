@@ -376,7 +376,7 @@ namespace HPReserger
                     cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                 }
                 //msg(cadenatxt);
-                SaveFile.FileName = "BanBif " + DateTime.Now.ToLongDateString();
+                SaveFile.FileName = $"BANBIF { txtcuenta.Text.Trim()} { DateTime.Now.ToString("yyyy-MM-dd")}";
                 if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
                 {
                     string path = SaveFile.FileName;

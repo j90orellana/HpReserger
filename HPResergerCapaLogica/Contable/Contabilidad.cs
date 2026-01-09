@@ -337,7 +337,7 @@ WITH SplitCuentas AS (
             {
                 cmd.Parameters.Add("@empresa", SqlDbType.Int).Value = idEmpresa;
                 cmd.Parameters.Add("@año", SqlDbType.Date).Value = fecha;
-
+                cmd.CommandTimeout = 0;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }

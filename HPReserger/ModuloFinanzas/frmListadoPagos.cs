@@ -100,7 +100,7 @@ namespace SISGEM.ModuloFinanzas
         private void FiltrarFacturasDeVentas()
         {
             HPResergerCapaLogica.Compras.FacturaManual CFactura = new HPResergerCapaLogica.Compras.FacturaManual();
-    
+
 
             // Obtener fechas
             DateTime fecha1 = Convert.ToDateTime(dtpfechade.EditValue);
@@ -237,19 +237,16 @@ namespace SISGEM.ModuloFinanzas
                 int.TryParse(view.GetRowCellValue(e.RowHandle, "id")?.ToString(), out int idFactura);
                 int.TryParse(view.GetRowCellValue(e.RowHandle, "IdPP")?.ToString(), out int idPartida);
                 int.TryParse(view.GetRowCellValue(e.RowHandle, "pkidpp")?.ToString(), out int pkidpp);
-                //string tipo = view.GetRowCellValue(e.RowHandle, "Tipo")?.ToString() ?? string.Empty;
+                string tipo = view.GetRowCellValue(e.RowHandle, xTipoDocumento.FieldName)?.ToString() ?? string.Empty;
 
 
                 int ValorTipoFactura = 5;
 
-                //// Asignar valor basado en la celda "Tipo"
-                //if (!string.IsNullOrEmpty(tipo))
-                //{
-                //    if (tipo.Equals("Facturas Ventas", StringComparison.OrdinalIgnoreCase))
-                //        ValorTipoFactura = 2;
-                //    else if (tipo.Equals("Notas Ventas", StringComparison.OrdinalIgnoreCase))
-                //        ValorTipoFactura = 200;
-                //}
+                ////// Asignar valor basado en la celda "Tipo"
+                //if (tipo.Contains("NOTA"))
+                //    ValorTipoFactura = 2;
+                //else ValorTipoFactura = 1;
+
 
                 HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto Cclase = new HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto();
                 Cclase.InsertarUpdate(idFactura, ValorTipoFactura, idPartida);

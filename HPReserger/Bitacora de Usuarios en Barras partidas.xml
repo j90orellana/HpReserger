@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="es-PE">
+  <Title Text="Bitácora de Usuarios" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="192.168.10.10_LIBRE_Connection" ProviderKey="MSSqlServer">
+        <Parameters>
+          <Parameter Name="server" Value="192.168.10.10" />
+          <Parameter Name="database" Value="LIBRE" />
+          <Parameter Name="useIntegratedSecurity" Value="False" />
+          <Parameter Name="read only" Value="1" />
+          <Parameter Name="generateConnectionHelper" Value="false" />
+          <Parameter Name="userid" Value="" />
+          <Parameter Name="password" Value="" />
+        </Parameters>
+      </Connection>
+      <Query Type="CustomSqlQuery" Name="CustomSqlQuery">
+        <Parameter Name="@fecha" Type="System.DateTime">638997984000000000</Parameter>
+        <Sql>   SELECT 
+                        u.Login_User AS usuario,
+                       ax.Fecha  fecha,
+                        --DATEPART(HOUR, ax.Fecha) AS hora,
+                        COUNT(ax.Usuario) AS registros
+                    FROM 
+                        TBL_Asiento_Contable_Aux ax
+                    LEFT JOIN 
+                        tbl_usuario u ON u.Codigo_User = ax.Usuario
+                    WHERE 
+                        MONTH(ax.Fecha) = MONTH(@fecha)
+                        AND YEAR(ax.Fecha) = YEAR(@fecha)
+                        AND u.Login_User IS NOT NULL
+                    GROUP BY 
+                        u.Login_User
+                    , ax.Fecha
+                        --DATEPART(HOUR, ax.Fecha)
+                    ORDER BY  Fecha DESC,usuario asc, Registros DESC;</Sql>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="CustomSqlQuery">
+            <Field Name="usuario" Type="String" />
+            <Field Name="fecha" Type="DateTime" />
+            <Field Name="registros" Type="Int32" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Bitácora por Dias" DataSource="dashboardSqlDataSource1" DataMember="CustomSqlQuery">
+      <DataItems>
+        <Measure DataMember="registros" UniqueName="DataItem1" />
+        <Dimension DataMember="fecha" DateTimeGroupInterval="Day" ColoringMode="None" UniqueName="DataItem2" />
+        <Dimension DataMember="usuario" SortOrder="Descending" ColoringMode="Hue" SortByMeasure="DataItem1" TopNMeasure="DataItem1" UniqueName="DataItem0" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Panel 1">
+          <Series>
+            <Simple SeriesType="StackedBar">
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem2" Name="Bitácora por Registros" DataSource="dashboardSqlDataSource1" DataMember="CustomSqlQuery">
+      <DataItems>
+        <Measure DataMember="registros" UniqueName="DataItem1" />
+        <Dimension DataMember="usuario" SortOrder="Descending" ColoringMode="Hue" SortByMeasure="DataItem1" TopNMeasure="DataItem1" UniqueName="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Panel 1">
+          <Series>
+            <Simple SeriesType="StackedBar">
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="chartDashboardItem1" Weight="50" />
+      <LayoutItem DashboardItem="chartDashboardItem2" Weight="50" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

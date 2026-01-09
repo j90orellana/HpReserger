@@ -1172,7 +1172,7 @@ namespace HPReserger
                     dinamimodi = int.Parse(dtgbusca[Iddinamica.Name, dtgbusca.CurrentRow.Index].Value.ToString());
                     modifico = false;
                     desactivar();
-                    //Dtgconten.ReadOnly = true;
+                    Dtgconten.ReadOnly = false;
                     btnmas.Focus();
                     //chkfechavalor.Enabled = true;
                     btnActualizar.Enabled = false;
@@ -1210,7 +1210,7 @@ namespace HPReserger
                 dinamimodi = Convert.ToInt16(TAyuda3.Rows[0][7].ToString());
                 modifico = false;
                 desactivar();
-                Dtgconten.ReadOnly = true;
+                Dtgconten.ReadOnly = false;
                 btnmas.Focus();
                 //chkfechavalor.Enabled = true;
                 btnActualizar.Enabled = false;

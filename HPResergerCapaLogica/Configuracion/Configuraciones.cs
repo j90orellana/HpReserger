@@ -102,6 +102,25 @@ namespace HPResergerCapaLogica.Configuracion
             }
             return null;
         }
+
+        public DataTable GetDatosEmpleadoPerfil(int codigoUsuario)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT  * FROM TBL_Usuario WHERE Codigo_User = @id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", codigoUsuario);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
         public DataTable GetAll()
         {
             DataTable dataTable = new DataTable();
@@ -169,6 +188,23 @@ namespace HPResergerCapaLogica.Configuracion
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
+        }
+
+        public DataTable GetAreas()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "select Id_Area id,Area area, Gerencia gerencia, CCosto centroCosto  from TBL_Area ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
         }
     }
 }

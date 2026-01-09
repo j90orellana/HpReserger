@@ -36,6 +36,8 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmgerencia));
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.xidcodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xgerencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -46,8 +48,6 @@ namespace HPReserger
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
-            this.xidcodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xgerencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +67,8 @@ namespace HPReserger
             this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.CheckColumna = null;
+            this.dtgconten.CheckValor = 1;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -103,6 +105,25 @@ namespace HPReserger
             this.dtgconten.Size = new System.Drawing.Size(283, 207);
             this.dtgconten.TabIndex = 6;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // xidcodigo
+            // 
+            this.xidcodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xidcodigo.DataPropertyName = "codigo";
+            this.xidcodigo.HeaderText = "Código";
+            this.xidcodigo.MinimumWidth = 50;
+            this.xidcodigo.Name = "xidcodigo";
+            this.xidcodigo.ReadOnly = true;
+            this.xidcodigo.Width = 70;
+            // 
+            // xgerencia
+            // 
+            this.xgerencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xgerencia.DataPropertyName = "descripcion";
+            this.xgerencia.HeaderText = "Descripción";
+            this.xgerencia.MinimumWidth = 100;
+            this.xgerencia.Name = "xgerencia";
+            this.xgerencia.ReadOnly = true;
             // 
             // btneliminar
             // 
@@ -220,25 +241,6 @@ namespace HPReserger
             // tipmsg
             // 
             this.tipmsg.IsBalloon = true;
-            // 
-            // xidcodigo
-            // 
-            this.xidcodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xidcodigo.DataPropertyName = "codigo";
-            this.xidcodigo.HeaderText = "Código";
-            this.xidcodigo.MinimumWidth = 50;
-            this.xidcodigo.Name = "xidcodigo";
-            this.xidcodigo.ReadOnly = true;
-            this.xidcodigo.Width = 70;
-            // 
-            // xgerencia
-            // 
-            this.xgerencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xgerencia.DataPropertyName = "descripcion";
-            this.xgerencia.HeaderText = "Descripción";
-            this.xgerencia.MinimumWidth = 100;
-            this.xgerencia.Name = "xgerencia";
-            this.xgerencia.ReadOnly = true;
             // 
             // frmgerencia
             // 

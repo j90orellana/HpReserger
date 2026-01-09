@@ -50,7 +50,7 @@ namespace SISGEM.ModuloContable
 
             // Obtener valores de los filtros, asegurando que no sean nulos
             string glosa = txtglosa.EditValue?.ToString() ?? string.Empty;
-            string empresa = txtempresa.EditValue?.ToString() ?? string.Empty;
+            string empresa = cboempresa.EditValue?.ToString() ?? string.Empty;
             string proveedor = txtproveedor.EditValue?.ToString() ?? string.Empty;
             string nrocomprobante = txtnrocomprobante.EditValue?.ToString() ?? string.Empty;
 
@@ -109,6 +109,13 @@ namespace SISGEM.ModuloContable
             HPResergerCapaLogica.FlujoCaja.Partidas_Control cClase = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
             dtPresupuestos = cClase.GetAll();
             dtPresupuestosUnicos = cClase.GetAllUnicos();
+
+            HPResergerCapaLogica.HPResergerCL oCL = new HPResergerCapaLogica.HPResergerCL();
+            DataTable tData = oCL.Empresa();
+
+            cboempresa.Properties.DataSource = tData;
+            cboempresa.Properties.DisplayMember = "descripcion";
+            cboempresa.Properties.ValueMember = "codigo";
         }
 
         private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
@@ -181,14 +188,11 @@ namespace SISGEM.ModuloContable
 
                 int ValorTipoFactura = 0;
 
-                // Asignar valor basado en la celda "Tipo"
-                if (!string.IsNullOrEmpty(tipo))
-                {
-                    if (tipo.Equals("Facturas Compras", StringComparison.OrdinalIgnoreCase))
-                        ValorTipoFactura = 1;
-                    else if (tipo.Equals("Notas Compras", StringComparison.OrdinalIgnoreCase))
-                        ValorTipoFactura = 100;
-                }
+                //// Asignar valor basado en la celda "Tipo"
+                if (tipo.Contains("NOTA"))
+                    ValorTipoFactura = 2;
+                else ValorTipoFactura = 1;
+
 
                 HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto Cclase = new HPResergerCapaLogica.FlujoCaja.FacturaPresupuesto();
                 Cclase.InsertarUpdate(idFactura, ValorTipoFactura, idPartida);
@@ -309,6 +313,215 @@ namespace SISGEM.ModuloContable
         private void btnAplicarTodo_Click(object sender, EventArgs e)
         {
             AsignarValoresIdPP(true);
+        }
+        int idFactura;
+        int tipoFactura;
+        int tipoSustento;
+        int tipoDocumento;
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            // Restablece valores predeterminados
+            idFactura = 0;
+            tipoFactura = 0;
+            tipoSustento = 0;
+            tipoDocumento = 0;
+
+            // Obtén el índice de la fila seleccionada
+            int focusedRowHandle = e.FocusedRowHandle;
+
+            // Verifica si la fila es válida y contiene datos
+            if (focusedRowHandle >= 0 && gridView1.IsDataRow(focusedRowHandle))
+            {
+                // Obtén el valor de "id" de manera segura
+                object ididFacturaValue = gridView1.GetRowCellValue(focusedRowHandle, xid.FieldName);
+                idFactura = ididFacturaValue is int ? (int)ididFacturaValue : 0;
+
+                object tipoFacturaValue = gridView1.GetRowCellValue(focusedRowHandle, xTipo.FieldName);
+                tipoFactura = tipoFacturaValue.ToString().Trim() == "Facturas Compras" ? 1 : 2;
+
+                object tipoSustentoValue = gridView1.GetRowCellValue(focusedRowHandle, xtipoSustento.FieldName);
+                tipoSustento = tipoSustentoValue is int ? (int)tipoSustentoValue : 0;
+
+                object tipoDocumentoValue = gridView1.GetRowCellValue(focusedRowHandle, xtipoDocumento.FieldName);
+                tipoDocumento = tipoDocumentoValue is int ? (int)tipoDocumentoValue : 0;
+
+                if (tipoDocumento == 0)
+                {
+                    btnCargaDocumento.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                    btnDescargarDocumento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    btnEliminarDocumento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                }
+                else
+                {
+                    btnCargaDocumento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    btnDescargarDocumento.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                    btnEliminarDocumento.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                }
+                if (tipoSustento == 0)
+                {
+                    btnCargaSustento.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                    btnDescargarSustento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    btnEliminarSustento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                }
+                else
+                {
+                    btnCargaSustento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    btnDescargarSustento.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                    btnEliminarSustento.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+
+                }
+            }
+        }
+
+        string _nombreFile = "";
+        string _extensionFile = "";
+        byte[] _dataFile = null;
+
+        private void btnCargaDocumento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Seleccionar archivo adjunto";
+            ofd.Filter = "Todos los archivos|*.*";
+
+            _dataFile = null;
+            _nombreFile = "";
+            _extensionFile = "";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // Leer archivo en bytes
+                _dataFile = System.IO.File.ReadAllBytes(ofd.FileName);
+                _nombreFile = System.IO.Path.GetFileName(ofd.FileName);
+                _extensionFile = System.IO.Path.GetExtension(ofd.FileName);
+
+                if (_nombreFile != "") // 1 documento 2 sustento
+                {
+                    HPResergerCapaLogica.Compras.FacturaManual ccalse = new HPResergerCapaLogica.Compras.FacturaManual();
+                    if (ccalse.GuardarAdjuntoSQL(idFactura, tipoFactura, 1, _nombreFile, _extensionFile, _dataFile))
+                    {
+                        XtraMessageBox.Show("Adjunto guardado correctamente.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        gridView1.SetRowCellValue(gridView1.FocusedRowHandle, xtipoDocumento.FieldName, 1);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Ocurrió un problema y no se pudo guardar. Por favor, intente nuevamente ", "Error al Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+            }
+        }
+
+        private void btnCargaSustento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Seleccionar archivo adjunto";
+            ofd.Filter = "Todos los archivos|*.*";
+
+            _dataFile = null;
+            _nombreFile = "";
+            _extensionFile = "";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // Leer archivo en bytes
+                _dataFile = System.IO.File.ReadAllBytes(ofd.FileName);
+                _nombreFile = System.IO.Path.GetFileName(ofd.FileName);
+                _extensionFile = System.IO.Path.GetExtension(ofd.FileName);
+
+                if (_nombreFile != "") // 1 documento 2 sustento
+                {
+                    HPResergerCapaLogica.Compras.FacturaManual ccalse = new HPResergerCapaLogica.Compras.FacturaManual();
+                    if (ccalse.GuardarAdjuntoSQL(idFactura, tipoFactura, 2, _nombreFile, _extensionFile, _dataFile))
+                    {
+                        XtraMessageBox.Show("Adjunto guardado correctamente.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        gridView1.SetRowCellValue(gridView1.FocusedRowHandle, xtipoSustento.FieldName, 1);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Ocurrió un problema y no se pudo guardar. Por favor, intente nuevamente ", "Error al Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+            }
+        }
+
+        private void btnDescargarDocumento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SISGEM.ModuloCompras.frmComprobantesComprasDirectas cclase = new SISGEM.ModuloCompras.frmComprobantesComprasDirectas();
+            cclase.DescargarTodosArchivos(tipoFactura, idFactura, 1);
+        }
+
+        private void btnDescargarSustento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SISGEM.ModuloCompras.frmComprobantesComprasDirectas cclase = new SISGEM.ModuloCompras.frmComprobantesComprasDirectas();
+            cclase.DescargarTodosArchivos(tipoFactura, idFactura, 2);
+        }
+
+        private void btnEliminarDocumento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HPResergerCapaLogica.Compras.FacturaManual clase = new HPResergerCapaLogica.Compras.FacturaManual();
+
+            // Pregunta de confirmación
+            DialogResult respuesta = XtraMessageBox.Show("¿Está seguro de que desea eliminar este adjunto?\n\n" +
+                "Esta acción no se puede deshacer.", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Si el usuario cancela
+            if (respuesta != DialogResult.Yes)
+            {
+                XtraMessageBox.Show("La eliminación del adjunto fue cancelada por el usuario.",
+                    "Operación cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information); return;
+            }
+
+            // Ejecutar eliminación
+            if (clase.DeleteArchivoFactura(tipoFactura, idFactura, 1))
+            {
+                XtraMessageBox.Show("El adjunto se eliminó correctamente.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Actualizar valor en el grid
+                if (gridView1.FocusedRowHandle >= 0)
+                {
+                    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, xtipoDocumento.FieldName, 0);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("No fue posible eliminar el adjunto.\n\n" +
+                    "Es posible que el registro ya no exista o esté siendo utilizado.",
+                    "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnEliminarSustento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HPResergerCapaLogica.Compras.FacturaManual clase = new HPResergerCapaLogica.Compras.FacturaManual();
+
+            // Pregunta de confirmación
+            DialogResult respuesta = XtraMessageBox.Show("¿Está seguro de que desea eliminar este adjunto?\n\n" +
+                "Esta acción no se puede deshacer.", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Si el usuario cancela
+            if (respuesta != DialogResult.Yes)
+            {
+                XtraMessageBox.Show("La eliminación del adjunto fue cancelada por el usuario.",
+                    "Operación cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information); return;
+            }
+
+            // Ejecutar eliminación
+            if (clase.DeleteArchivoFactura(tipoFactura, idFactura, 2))
+            {
+                XtraMessageBox.Show("El adjunto se eliminó correctamente.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Actualizar valor en el grid
+                if (gridView1.FocusedRowHandle >= 0)
+                {
+                    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, xtipoSustento.FieldName, 0);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("No fue posible eliminar el adjunto.\n\n" +
+                    "Es posible que el registro ya no exista o esté siendo utilizado.",
+                    "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

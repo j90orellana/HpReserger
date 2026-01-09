@@ -787,6 +787,36 @@
     <Compile Include="ModuloCompensaciones\frmReembolsoGastosPago.Designer.cs">
       <DependentUpon>frmReembolsoGastosPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCompras\frmAddOrdenCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompras\frmAddOrdenCompra.Designer.cs">
+      <DependentUpon>frmAddOrdenCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompras\frmComprobantesComprasDirectas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompras\frmComprobantesComprasDirectas.Designer.cs">
+      <DependentUpon>frmComprobantesComprasDirectas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompras\frmListadoRendiciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompras\frmListadoRendiciones.Designer.cs">
+      <DependentUpon>frmListadoRendiciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompras\frmListarOrdenesCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompras\frmListarOrdenesCompra.Designer.cs">
+      <DependentUpon>frmListarOrdenesCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompras\frmRendicionesReembolso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompras\frmRendicionesReembolso.Designer.cs">
+      <DependentUpon>frmRendicionesReembolso.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmAddFormato82.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -816,6 +846,12 @@
     </Compile>
     <Compile Include="ModuloContable\frmCargaAsientosMasivos.Designer.cs">
       <DependentUpon>frmCargaAsientosMasivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\frmDashboardBitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmDashboardBitacora.Designer.cs">
+      <DependentUpon>frmDashboardBitacora.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\frmDiferenciaCambioMensual.cs">
       <SubType>Form</SubType>
@@ -876,6 +912,12 @@
     </Compile>
     <Compile Include="ModuloContable\frmTipoPlanCuenta.Designer.cs">
       <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\Reportes\xtraReportOrdenCompra.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\Reportes\xtraReportOrdenCompra.Designer.cs">
+      <DependentUpon>xtraReportOrdenCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\xBitacoraEmpleadoRegistros.cs">
       <SubType>Form</SubType>
@@ -1446,6 +1488,12 @@
     </Compile>
     <Compile Include="ModuloVentas\frmListarVentas.Designer.cs">
       <DependentUpon>frmListarVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloXtraReports\Compras\xReportReembolsos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModuloXtraReports\Compras\xReportReembolsos.Designer.cs">
+      <DependentUpon>xReportReembolsos.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloXtraReports\Contable\XtraReportEstadoResultadoFinanciera.cs">
       <SubType>Component</SubType>
@@ -3036,6 +3084,21 @@
     <EmbeddedResource Include="ModuloCompensaciones\frmReembolsoGastosPago.resx">
       <DependentUpon>frmReembolsoGastosPago.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompras\frmAddOrdenCompra.resx">
+      <DependentUpon>frmAddOrdenCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompras\frmComprobantesComprasDirectas.resx">
+      <DependentUpon>frmComprobantesComprasDirectas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompras\frmListadoRendiciones.resx">
+      <DependentUpon>frmListadoRendiciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompras\frmListarOrdenesCompra.resx">
+      <DependentUpon>frmListarOrdenesCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompras\frmRendicionesReembolso.resx">
+      <DependentUpon>frmRendicionesReembolso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmAddFormato82.resx">
       <DependentUpon>frmAddFormato82.cs</DependentUpon>
     </EmbeddedResource>
@@ -3050,6 +3113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmCargaAsientosMasivos.resx">
       <DependentUpon>frmCargaAsientosMasivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmDashboardBitacora.resx">
+      <DependentUpon>frmDashboardBitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmDiferenciaCambioMensual.resx">
       <DependentUpon>frmDiferenciaCambioMensual.cs</DependentUpon>
@@ -3081,6 +3147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmTipoPlanCuenta.resx">
       <DependentUpon>frmTipoPlanCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\Reportes\xtraReportOrdenCompra.resx">
+      <DependentUpon>xtraReportOrdenCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\xBitacoraEmpleadoRegistros.resx">
       <DependentUpon>xBitacoraEmpleadoRegistros.cs</DependentUpon>
@@ -3372,6 +3441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloVentas\frmListarVentas.resx">
       <DependentUpon>frmListarVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloXtraReports\Compras\xReportReembolsos.resx">
+      <DependentUpon>xReportReembolsos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloXtraReports\Contable\XtraReportEstadoResultadoFinanciera.resx">
       <DependentUpon>XtraReportEstadoResultadoFinanciera.cs</DependentUpon>
@@ -4123,6 +4195,11 @@
     <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ActivosFijos+oActivoFijo.datasource" />
     <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ActivosFijos.datasource" />
     <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ClaseContable.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.Contabilidad.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.EmpresaAbreviatura+OEmpresaAbreviatura.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.EmpresaAbreviatura.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ReembolsosMasivos+oReembolsoMasivo.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ReembolsosMasivos.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_Cliente.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_ClienteRepository.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_ContactoRepository+Contacto.datasource" />
@@ -4151,6 +4228,7 @@
     </Compile>
     <None Include="Resources\CARGA MASIVA PROVEEDORES.xlsx" />
     <None Include="Resources\FORMATO CARGA MASIVA ASIENTO.xlsx" />
+    <None Include="Resources\FormatoCargaPartidasControl.xlsx" />
     <None Include="Resources\LISTADO DE COMPRAS.xlsx" />
     <None Include="Resources\LISTADO DE VENTAS.xlsx" />
     <None Include="SiGeDataSet.xsc">
@@ -4391,6 +4469,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="4ab51850-6ee1-4588-a945-bbf21a025f95.ico" />
+    <Content Include="Bitacora de Usuarios en Barras partidas.xml" />
     <Content Include="Dashboard.xml" />
     <Content Include="Datos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

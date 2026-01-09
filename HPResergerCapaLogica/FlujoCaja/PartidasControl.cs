@@ -17,22 +17,20 @@ namespace HPResergerCapaLogica.FlujoCaja
     public class Partidas_Control
     {
         public int Id { get; set; } = 0;
-        public string NTipo { get; set; } = string.Empty;
-        public string Ncodigo { get; set; } = string.Empty;
-        public string CodigoPadre { get; set; } = string.Empty;
-        public string PatidaPadre { get; set; } = string.Empty;
-        public string Codigo { get; set; } = string.Empty;
-        public string Partida { get; set; } = string.Empty;
-        public int Tipo { get; set; } = 0;
-        public int Cabecera { get; set; } = 0;
-        public string Tag { get; set; } = string.Empty;
+        public string Codigo { get; set; } = "";
+        public int Nivel { get; set; } = 0;
+        public string Matriz { get; set; } = "";
+        public string Area { get; set; } = "";
+        public string Partida { get; set; } = "";
+        public string SubPartida { get; set; } = "";
+        public string DetallePartida { get; set; } = "";
+        public string DetalleSubPartida { get; set; } = "";
+        public int AreaOwner { get; set; } = 0;
+        public int AreaOwner2 { get; set; } = 0;
+        public int? Tipo { get; set; } = null;
+        public string Tag { get; set; } = "";
         public int Estado { get; set; } = 1;
-        public int PKempresa { get; set; } = 1;
         public DateTime Fecha { get; set; } = DateTime.Now;
-
-        // Campos heredados (para mantener compatibilidad)
-        public string Descripcion { get => Partida; set => Partida = value; }
-        public string Completo { get; set; } = string.Empty;
 
         private readonly string _connectionString;
 
@@ -65,6 +63,39 @@ namespace HPResergerCapaLogica.FlujoCaja
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public DataTable GetAreas()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+                    SELECT 
+                        0 AS Id_Area,
+                        '[Ninguna]' AS Area,
+                        NULL AS Gerencia,
+                        NULL AS CCosto
+
+                    UNION ALL
+                    SELECT 
+                    Id_Area,
+                    Area,
+                    Gerencia,
+                    CCosto
+                    FROM TBL_Area
+                    ORDER BY Id_Area;
+
+";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
         public bool ActualizarMovimiento(MovimientoPartida movimiento)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -116,36 +147,44 @@ namespace HPResergerCapaLogica.FlujoCaja
             }
         }
         // Create
-        public int Insertar(Partidas_Control partida)
+        public int Insertar(Partidas_Control p)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                string query = @"INSERT INTO TBL_Partidas_Control 
-                            (NTipo, Ncodigo, CodigoPadre, PatidaPadre, Codigo, Partida,Tipo, Cabecera, Tag, Estado, Fecha) 
-                            OUTPUT INSERTED.id 
-                            VALUES (@NTipo, @Ncodigo, @CodigoPadre, @PatidaPadre, @Codigo, @Partida,@Tipo, @Cabecera, @Tag, @Estado, @Fecha)";
+                string query = @"
+        INSERT INTO TBL_Partidas_Control
+        (Codigo, Nivel, Matriz, Area, Partida, SubPartida, DetallePartida, DetalleSubPartida,
+         AreaOwner, AreaOwner2, Tipo, Tag, Estado, Fecha)
+        OUTPUT INSERTED.Id
+        VALUES
+        (@Codigo, @Nivel, @Matriz, @Area, @Partida, @SubPartida, @DetallePartida, @DetalleSubPartida,
+         @AreaOwner, @AreaOwner2, @Tipo, @Tag, @Estado, @Fecha)";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@NTipo", partida.NTipo);
-                cmd.Parameters.AddWithValue("@Ncodigo", partida.Ncodigo);
-                cmd.Parameters.AddWithValue("@CodigoPadre", partida.CodigoPadre);
-                cmd.Parameters.AddWithValue("@PatidaPadre", partida.PatidaPadre);
-                cmd.Parameters.AddWithValue("@Codigo", partida.Codigo);
-                cmd.Parameters.AddWithValue("@Partida", partida.Partida);
-                cmd.Parameters.AddWithValue("@Tipo", partida.Tipo);
-                cmd.Parameters.AddWithValue("@Cabecera", partida.Cabecera);
-                cmd.Parameters.AddWithValue("@Tag", partida.Tag);
-                cmd.Parameters.AddWithValue("@Estado", partida.Estado);
-                cmd.Parameters.AddWithValue("@Fecha", partida.Fecha);
+
+                cmd.Parameters.AddWithValue("@Codigo", p.Codigo);
+                cmd.Parameters.AddWithValue("@Nivel", p.Nivel);
+                cmd.Parameters.AddWithValue("@Matriz", (object)p.Matriz ?? "");
+                cmd.Parameters.AddWithValue("@Area", (object)p.Area ?? "");
+                cmd.Parameters.AddWithValue("@Partida", (object)p.Partida ?? "");
+                cmd.Parameters.AddWithValue("@SubPartida", (object)p.SubPartida ?? "");
+                cmd.Parameters.AddWithValue("@DetallePartida", (object)p.DetallePartida ?? "");
+                cmd.Parameters.AddWithValue("@DetalleSubPartida", (object)p.DetalleSubPartida ?? "");
+                cmd.Parameters.AddWithValue("@AreaOwner", p.AreaOwner);
+                cmd.Parameters.AddWithValue("@AreaOwner2", p.AreaOwner2);
+                cmd.Parameters.AddWithValue("@Tipo", (object)p.Tipo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Tag", (object)p.Tag ?? "");
+                cmd.Parameters.AddWithValue("@Estado", p.Estado);
+                cmd.Parameters.AddWithValue("@Fecha", p.Fecha);
 
                 conn.Open();
                 return (int)cmd.ExecuteScalar();
             }
         }
 
+
         // Read
-        // Read
-        public DataTable ObtenerTodos( )
+        public DataTable ObtenerTodos()
         {
             DataTable dataTable = new DataTable();
 
@@ -173,10 +212,10 @@ namespace HPResergerCapaLogica.FlujoCaja
             {
                 string query = @"
 
-                        SELECT CONCAT(codigo, ' - ', Partida) AS Nombre, c.*, e.Empresa 
+                        SELECT id id, CONCAT(codigo, ' - ', DetalleSubPartida) AS Nombre,  e.Empresa 
                         FROM TBL_Partidas_Control c
                         INNER JOIN TBL_Empresa e ON e.ppto =c.Tipo
-                        WHERE estado = 1 AND cabecera = 0 AND Codigo != ''
+                        WHERE estado = 1 AND nivel = 4 AND Codigo != ''
                         ORDER BY 1
 ";
 
@@ -187,6 +226,38 @@ namespace HPResergerCapaLogica.FlujoCaja
 
             return dataTable;
         }
+        public DataTable GetAllxEmpresa(int idempresa)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+            SELECT Id id,
+                CONCAT(c.codigo, ' - ', c.DetalleSubPartida) AS Nombre,
+                
+                e.Empresa 
+            FROM TBL_Partidas_Control c
+            INNER JOIN TBL_Empresa e ON e.ppto = c.Tipo
+            WHERE e.id_empresa = @idempresa
+              AND c.estado = 1 
+              AND c.nivel = 4 
+              AND c.Codigo != ''
+            ORDER BY 1;
+        ";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+
+                // Agrega el parámetro seguro
+                adapter.SelectCommand.Parameters.AddWithValue("@idempresa", idempresa);
+
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
         public DataTable GetAllUnicos()
         {
             DataTable dataTable = new DataTable();
@@ -194,14 +265,14 @@ namespace HPResergerCapaLogica.FlujoCaja
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string query = @"SELECT DISTINCT 
-                                CONCAT(codigo, ' - ', Partida) AS Nombre, 
+                                CONCAT(codigo, ' - ', DetalleSubPartida) AS Nombre, 
                                 c.Codigo, 
                                 MAX(id) AS id 
                             FROM TBL_Partidas_Control c
                             WHERE estado = 1 
-                                AND cabecera = 0 
+                                AND nivel = 4 
                                 AND Codigo <> ''
-                            GROUP BY codigo, Partida
+                            GROUP BY codigo, DetalleSubPartida
                             ORDER BY Nombre";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
@@ -212,72 +283,89 @@ namespace HPResergerCapaLogica.FlujoCaja
             return dataTable;
         }
         // Update
-        // Update
-        public bool Actualizar(Partidas_Control partida)
+        public bool Actualizar(Partidas_Control p)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                string query = @"UPDATE TBL_Partidas_Control SET 
-                           NTipo = @NTipo, 
-                           Ncodigo = @Ncodigo, 
-                           CodigoPadre = @CodigoPadre,
-                           PatidaPadre = @PatidaPadre,
-                           Codigo = @Codigo, 
-                           Partida = @Partida, 
-                           Tipo = @Tipo, 
-                           Cabecera = @Cabecera, 
-                           Tag = @Tag, 
-                           Estado = @Estado, 
-                           Fecha = @Fecha
-                           WHERE id = @Id";
+                string query = @"
+        UPDATE TBL_Partidas_Control SET
+            Codigo=@Codigo,
+            Nivel=@Nivel,
+            Matriz=@Matriz,
+            Area=@Area,
+            Partida=@Partida,
+            SubPartida=@SubPartida,
+            DetallePartida=@DetallePartida,
+            DetalleSubPartida=@DetalleSubPartida,
+            AreaOwner=@AreaOwner,
+            AreaOwner2=@AreaOwner2,
+            Tipo=@Tipo,
+            Tag=@Tag,
+            Estado=@Estado,
+            Fecha=@Fecha
+        WHERE Id=@Id";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@NTipo", partida.NTipo);
-                cmd.Parameters.AddWithValue("@Ncodigo", partida.Ncodigo);
-                cmd.Parameters.AddWithValue("@CodigoPadre", partida.CodigoPadre);
-                cmd.Parameters.AddWithValue("@PatidaPadre", partida.PatidaPadre);
-                cmd.Parameters.AddWithValue("@Codigo", partida.Codigo);
-                cmd.Parameters.AddWithValue("@Partida", partida.Partida);
-                cmd.Parameters.AddWithValue("@Tipo", partida.Tipo);
-                cmd.Parameters.AddWithValue("@Cabecera", partida.Cabecera);
-                cmd.Parameters.AddWithValue("@Tag", partida.Tag);
-                cmd.Parameters.AddWithValue("@Estado", partida.Estado);
-                cmd.Parameters.AddWithValue("@Fecha", partida.Fecha);
-                cmd.Parameters.AddWithValue("@Id", partida.Id);
+
+                cmd.Parameters.AddWithValue("@Codigo", p.Codigo);
+                cmd.Parameters.AddWithValue("@Nivel", p.Nivel);
+                cmd.Parameters.AddWithValue("@Matriz", (object)p.Matriz ?? "");
+                cmd.Parameters.AddWithValue("@Area", (object)p.Area ?? "");
+                cmd.Parameters.AddWithValue("@Partida", (object)p.Partida ?? "");
+                cmd.Parameters.AddWithValue("@SubPartida", (object)p.SubPartida ?? "");
+                cmd.Parameters.AddWithValue("@DetallePartida", (object)p.DetallePartida ?? "");
+                cmd.Parameters.AddWithValue("@DetalleSubPartida", (object)p.DetalleSubPartida ?? "");
+                cmd.Parameters.AddWithValue("@AreaOwner", p.AreaOwner);
+                cmd.Parameters.AddWithValue("@AreaOwner2", p.AreaOwner2);
+                cmd.Parameters.AddWithValue("@Tipo", (object)p.Tipo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Tag", (object)p.Tag ?? "");
+                cmd.Parameters.AddWithValue("@Estado", p.Estado);
+                cmd.Parameters.AddWithValue("@Fecha", p.Fecha);
+                cmd.Parameters.AddWithValue("@Id", p.Id);
 
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
 
-        public bool ActualizarGrilla(Partidas_Control partida)
+        public bool ActualizarGrilla(Partidas_Control p)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                string query = @"UPDATE TBL_Partidas_Control SET 
-                        Codigo = @Codigo, 
-                        Partida = @Partida,                        
-                        Fecha = @Fecha,
-                        NTipo = @NTipo,
-                        Ncodigo = @Ncodigo,
-                        CodigoPadre = @CodigoPadre,
-                        PatidaPadre = @PatidaPadre
-                        WHERE id = @Id";
+                string query = @"
+        UPDATE TBL_Partidas_Control SET
+            Codigo=@Codigo,
+            Nivel=@Nivel,
+            Matriz=@Matriz,
+            Area=@Area,
+            Partida=@Partida,
+            SubPartida=@SubPartida,
+            DetallePartida=@DetallePartida,
+            DetalleSubPartida=@DetalleSubPartida,
+            AreaOwner=@AreaOwner,
+            AreaOwner2=@AreaOwner2
+          
+        WHERE Id=@Id";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Codigo", partida.Codigo);
-                cmd.Parameters.AddWithValue("@Partida", partida.Partida);
-                cmd.Parameters.AddWithValue("@Fecha", partida.Fecha);
-                cmd.Parameters.AddWithValue("@NTipo", partida.NTipo);
-                cmd.Parameters.AddWithValue("@Ncodigo", partida.Ncodigo);
-                cmd.Parameters.AddWithValue("@CodigoPadre", partida.CodigoPadre);
-                cmd.Parameters.AddWithValue("@PatidaPadre", partida.PatidaPadre);
-                cmd.Parameters.AddWithValue("@Id", partida.Id);
+
+                cmd.Parameters.AddWithValue("@Codigo", p.Codigo);
+                cmd.Parameters.AddWithValue("@Nivel", p.Nivel);
+                cmd.Parameters.AddWithValue("@Matriz", (object)p.Matriz ?? "");
+                cmd.Parameters.AddWithValue("@Area", (object)p.Area ?? "");
+                cmd.Parameters.AddWithValue("@Partida", (object)p.Partida ?? "");
+                cmd.Parameters.AddWithValue("@SubPartida", (object)p.SubPartida ?? "");
+                cmd.Parameters.AddWithValue("@DetallePartida", (object)p.DetallePartida ?? "");
+                cmd.Parameters.AddWithValue("@DetalleSubPartida", (object)p.DetalleSubPartida ?? "");
+                cmd.Parameters.AddWithValue("@AreaOwner", p.AreaOwner);
+                cmd.Parameters.AddWithValue("@AreaOwner2", p.AreaOwner2);             
+                cmd.Parameters.AddWithValue("@Id", p.Id);
 
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+        
         // Delete
         public bool Eliminar(int id)
         {
@@ -330,43 +418,23 @@ namespace HPResergerCapaLogica.FlujoCaja
         // Filter by Tipo
         public DataTable FiltrarPorTipo(int tipo)
         {
-            DataTable dataTable = new DataTable();
+            DataTable dt = new DataTable();
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string query = @"
-                        SELECT 
-                            id,
-                            NTipo,
-                            Ncodigo,
-                            CodigoPadre,
-                            PatidaPadre,
-                            Codigo,
-                            Partida AS Descripcion, -- Mantener compatibilidad
-                            Tipo,
-                            Cabecera,
-                            Tag tag,
-                            Estado,
-                            Fecha
-                            
-                        FROM TBL_Partidas_Control
-                        WHERE estado = 1 
-                            AND tipo = @Tipo 
-                           
-                          ORDER BY 
-                           
-                        TRY_CAST(   REPLACE(codigo,'.','0') as int )  asc";
+                SELECT *
+                FROM TBL_Partidas_Control
+                WHERE Estado = 1 AND Tipo = @Tipo
+                ORDER BY Codigo";
 
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Tipo", tipo);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("@Tipo", tipo);
 
                 conn.Open();
-                adapter.Fill(dataTable);
+                da.Fill(dt);
             }
-
-            return dataTable;
+            return dt;
         }
     }
 }

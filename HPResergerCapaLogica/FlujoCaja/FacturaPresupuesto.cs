@@ -62,7 +62,83 @@ namespace HPResergerCapaLogica.FlujoCaja
                 cmd.ExecuteNonQuery();
             }
         }
+        // Insertar por codigo y nombre
+        public int InsertarxNombreyCodigo(int idfac, int tipofac, int empresa, string codigo)
+        {
+            if (codigo == null) return 0;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
 
+                            declare @id as int=0
+                            declare @tipo as int =0
+
+                            select @id = p.id, @tipo = p.Tipo from TBL_Partidas_Control p where  id =@codigo --and pkempresa = @empresa
+                            select @id,@tipo
+                            INSERT INTO TBL_FacturasPresupuestos (idFactura, TipoFactura, idPartida, TipoPartida)
+                                                             OUTPUT INSERTED.id
+                                                             VALUES (@idFactura, @TipoFactura, @id, @tipo)
+
+";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@idFactura", idfac);
+                cmd.Parameters.AddWithValue("@TipoFactura", tipofac);
+                cmd.Parameters.AddWithValue("@empresa", empresa);
+                cmd.Parameters.AddWithValue("@codigo", codigo);
+
+                conn.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+        }
+        public int ActualizarxNombreyCodigo(int idfac, int tipofac, int empresa, string codigo)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+
+                            declare @id as int=0
+                            declare @tipo as int =0
+
+                            select @id = p.id, @tipo = p.Tipo from TBL_Partidas_Control p where  id =@codigo --and pkempresa = @empresa
+                            select @id,@tipo
+                           update f set idPartida=@id,TipoPArtida = @tipo
+                                from TBL_FacturasPresupuestos f where idFactura = @idFactura and TipoFactura = @TipoFactura
+
+";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@idFactura", idfac);
+                cmd.Parameters.AddWithValue("@TipoFactura", tipofac);
+                cmd.Parameters.AddWithValue("@empresa", empresa);
+                cmd.Parameters.AddWithValue("@codigo", codigo);
+
+                conn.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+        }
+        public DataTable GetByIdFactura(int idfac, int tipofac)
+        {
+            var dt = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+
+                          select * from TBL_FacturasPresupuestos where idFactura = @idFactura and TipoFactura = @TipoFactura
+";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@idFactura", idfac);
+                cmd.Parameters.AddWithValue("@TipoFactura", tipofac);
+
+                conn.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         // Insertar
         public int Insertar(int idfac, int tipofac, int empresa, string codigo)
         {
@@ -74,7 +150,7 @@ namespace HPResergerCapaLogica.FlujoCaja
                             declare @id as int=0
                             declare @tipo as int =0
 
-                            select @id = p.id, @tipo = p.Tipo from TBL_Partidas_Control p where codigo =@codigo and pkempresa = @empresa
+                            select @id = p.id, @tipo = p.Tipo from TBL_Partidas_Control p where codigo =@codigo --and pkempresa = @empresa
                             select @id,@tipo
                             INSERT INTO TBL_FacturasPresupuestos (idFactura, TipoFactura, idPartida, TipoPartida)
                                                              OUTPUT INSERTED.id
@@ -110,7 +186,7 @@ namespace HPResergerCapaLogica.FlujoCaja
 	                IIF(Saldo_Debe>0,1,-1)* ax.Importe_ME 'USD', 
 
 	                CAST(ISNULL(NULLIF(a.Glosa, ''), '-') AS NVARCHAR(200)) AS Glosa,
-	                concat(pc.Codigo,' ', pc.partida) 'Presupuesto',CONCAT(CodigoPadre,' ',PatidaPadre)PartidaPadre,
+	                concat(pc.Codigo,' ', pc.DetalleSubPartida) 'Presupuesto',(partida)PartidaPadre,
 		                case pc.tipo
 		                when 1 then 'SPV'
 		                WHEN 2 THEN 'Servicio'
@@ -473,41 +549,41 @@ and @pagos = 1
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string query = @"
+                          
+                        DECLARE @id AS INT = 0;
+                        DECLARE @tipoPartida AS INT = 0;
 
-                            DECLARE @id AS INT = 0;
-                            DECLARE @tipoPartida AS INT = 0;
+                        -- Obtener el ID si ya existe en TBL_FacturasPresupuestos
+                        SELECT @id = id 
+                        FROM TBL_FacturasPresupuestos
+                        WHERE idFactura = @idFactura AND TipoFactura = @tipoFacturas;
 
-                            -- Obtener el ID si ya existe en TBL_FacturasPresupuestos
-                            SELECT @id = id 
-                            FROM TBL_FacturasPresupuestos
-                            WHERE idFactura = @idFactura AND TipoFactura = @tipoFacturas;
+                        -- Obtener el tipo de partida
+                        SELECT @tipoPartida = p.Tipo 
+                        FROM TBL_Partidas_Control p 
+                        WHERE p.id = @idPartida;
 
-                            -- Obtener el tipo de partida
-                            SELECT @tipoPartida = p.Tipo 
-                            FROM TBL_Partidas_Control p 
-                            WHERE p.id = @idPartida;
+                        -- Validar si el tipo de partida es NULL (para evitar errores en el insert)
+                        IF @tipoPartida IS NULL 
+                            SET @tipoPartida = 0;
 
-                            -- Validar si el tipo de partida es NULL (para evitar errores en el insert)
-                            IF @tipoPartida IS NULL 
-                                SET @tipoPartida = 0;
-
-                            -- Si no existe, insertar un nuevo registro
-                            IF @id = 0 
-                            BEGIN
-                                INSERT INTO TBL_FacturasPresupuestos (idFactura, TipoFactura, idPartida, TipoPartida)
-                                OUTPUT INSERTED.id
-                                VALUES (@idFactura, @tipoFacturas, @idPartida, @tipoPartida);
-                            END
-                            ELSE 
-                            BEGIN
-                                -- Si ya existe, actualizar
-                                UPDATE TBL_FacturasPresupuestos
-                                SET idFactura = @idFactura, 
-                                    TipoFactura = @tipoFacturas, 
-                                    idPartida = @idPartida, 
-                                    TipoPartida = @tipoPartida
-                                WHERE id = @id;
-                            END
+                         --Si no existe, insertar un nuevo registro
+                        IF @id = 0 
+                        BEGIN
+                            INSERT INTO TBL_FacturasPresupuestos (idFactura, TipoFactura, idPartida, TipoPartida)
+                            OUTPUT INSERTED.id
+                            VALUES (@idFactura, @tipoFacturas, @idPartida, @tipoPartida);
+                        END
+                        ELSE 
+                        BEGIN
+                            -- Si ya existe, actualizar
+                            UPDATE TBL_FacturasPresupuestos
+                                                    SET idFactura = @idFactura, 
+                                                        TipoFactura = @tipoFacturas, 
+                                                        idPartida = @idPartida, 
+                                                        TipoPartida = @tipoPartida
+                                                    WHERE id = @id;
+                                                END
 
 select @id
 

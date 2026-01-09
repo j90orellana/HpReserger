@@ -1,5 +1,6 @@
 ﻿using DevExpress.Export;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
@@ -48,10 +49,45 @@ namespace SISGEM.Flujo_de_Caja
             }
             bntEliminarCargaMasiva.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             bntEliminarCargaMasiva.Enabled = false;
+
+            CargarAreas();
             //CargarEmpresas();
             CargarDatos();
         }
 
+        private void CargarAreas()
+        {
+            HPResergerCapaLogica.FlujoCaja.Partidas_Control oPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
+            // Obtener áreas una sola vez
+            DataTable dtAreas = oPartidas.GetAreas();
+
+            // Si la consulta no devolvió nada, se evita asignar
+            if (dtAreas == null || dtAreas.Rows.Count == 0)
+            {
+                repositoryItemSearchLookUpEdit1.DataSource = null;
+                repositoryItemSearchLookUpEdit2.DataSource = null;
+                return;
+            }
+            // Cargar el primer lookup
+            ConfigurarLookup(repositoryItemSearchLookUpEdit1, dtAreas);
+
+            // Cargar el segundo lookup
+            ConfigurarLookup(repositoryItemSearchLookUpEdit2, dtAreas);
+
+        }
+        private void ConfigurarLookup(RepositoryItemSearchLookUpEdit lookup, DataTable data)
+        {
+            lookup.DataSource = data;
+            lookup.ValueMember = "Id_Area";
+            lookup.DisplayMember = "Area";
+
+            // Opcional: mensaje cuando no hay selección
+            lookup.NullText = "Seleccione área";
+
+            lookup.View.Columns.Clear();
+            lookup.View.Columns.AddVisible("Area", "Area");
+
+        }
         //private void CargarEmpresas()
         //{
         //    HPResergerCapaLogica.HPResergerCL oCL = new HPResergerCapaLogica.HPResergerCL();
@@ -127,47 +163,86 @@ namespace SISGEM.Flujo_de_Caja
                             }
                             else
                             {
+                                //if (TdatosExcel.Columns.Count != 10)
+                                //{
+                                //    XtraMessageBox.Show("El archivo no tiene las 10 columnas requeridas, descarge el formato", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                //    return;
+                                //}
+
                                 if (XtraMessageBox.Show("Los datos se han cargado exitosamente. ¿Está seguro de que desea proceder con la carga masiva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                                 {
-                                    int i = 0;
-                                    //TdatosExcel.Columns[0].ColumnName = "Tipo";
-                                    for (i = 0; i < TdatosExcel.Rows.Count; i++)
+                                    // 1. Obtener la primera fila como encabezados
+                                    DataRow encabezado = TdatosExcel.Rows[0];
+
+                                    // 2. Cambiar los nombres de las columnas
+                                    for (int i = 0; i < TdatosExcel.Columns.Count; i++)
                                     {
-                                        DataRow item = TdatosExcel.Rows[i];
-                                        if (item[0].ToString().Trim().ToUpper() == "Tipo")
+                                        string nuevoNombre = encabezado[i]?.ToString()?.Trim();
+
+                                        // Si está vacío, asignamos un nombre temporal para luego eliminar la columna
+                                        if (string.IsNullOrEmpty(nuevoNombre))
                                         {
-                                            break;
+                                            TdatosExcel.Columns[i].ColumnName = $"__ELIMINAR__{i}";
+                                        }
+                                        else
+                                        {
+                                            TdatosExcel.Columns[i].ColumnName = nuevoNombre;
                                         }
                                     }
-                                    //for (int j = 0; j < i; j++)
-                                    //{
-                                    //    TdatosExcel.Rows.RemoveAt(0);
 
-                                    //}
-
-                                    //if (TdatosExcel.Rows[0][0].ToString().Trim().ToUpper() == "Tipo")
+                                    // 3. Eliminar la primera fila (ya es encabezado)
                                     TdatosExcel.Rows.RemoveAt(0);
 
-                                    TdatosExcel.Columns[0].ColumnName = "Tipo";
-                                    TdatosExcel.Columns[1].ColumnName = "Det_Partida_Madre";
-                                    TdatosExcel.Columns[2].ColumnName = "Cod_Partida_Madre";
-                                    TdatosExcel.Columns[3].ColumnName = "Det_Sub_Partida";
-                                    TdatosExcel.Columns[4].ColumnName = "Cod_Sub_Partida";
+                                    // 4. Remover columnas cuyo nombre empieza con "__ELIMINAR__"
+                                    var columnasAEliminar = TdatosExcel.Columns.Cast<DataColumn>()
+                                        .Where(c => c.ColumnName.StartsWith("__ELIMINAR__"))
+                                        .ToList();
+
+                                    foreach (var col in columnasAEliminar)
+                                    {
+                                        TdatosExcel.Columns.Remove(col);
+                                    }
+
+                                    // comenzamos con el insert
+
+                                    HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa CAreas = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+                                    DataTable TAreas = CAreas.GetAreas();
+
 
                                     foreach (DataRow item in TdatosExcel.Rows)
                                     {
                                         HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
 
-                                        cPartidas.NTipo = item["Tipo"].ToString();
-                                        cPartidas.CodigoPadre = item["Det_Partida_Madre"].ToString();
-                                        cPartidas.PatidaPadre = item["Cod_Partida_Madre"].ToString();
-                                        cPartidas.Codigo = item["Det_Sub_Partida"].ToString();
-                                        cPartidas.Descripcion = item["Cod_Sub_Partida"].ToString();
+                                        // Mapea cada campo según la entidad
+                                        cPartidas.Codigo = item["codigo"]?.ToString() ?? "";
+                                        cPartidas.Nivel = int.TryParse(item["nivel"]?.ToString(), out int nv) ? nv : 0;
+                                        cPartidas.Matriz = item["matriz"]?.ToString() ?? "";
+                                        cPartidas.Area = item["area"]?.ToString() ?? "";
+                                        cPartidas.Partida = item["partida"]?.ToString() ?? "";
+                                        cPartidas.SubPartida = item["subPartida"]?.ToString() ?? "";
+                                        cPartidas.DetallePartida = item["detallePartida"]?.ToString() ?? "";
+                                        cPartidas.DetalleSubPartida = item["detalleSubPartida"]?.ToString() ?? "";
 
+
+                                        int id = TAreas.AsEnumerable()
+                                            .Where(x => x.Field<string>("area").ToUpper() == item["areaOwner"]?.ToString().ToUpper())
+                                            .Select(x => x.Field<int>("id"))
+                                            .FirstOrDefault(); // Si no hay coincidencia devuelve 0
+
+                                        int id2 = TAreas.AsEnumerable()
+                                            .Where(x => x.Field<string>("area").ToUpper() == item["areaOrwner2"]?.ToString().ToUpper())
+                                            .Select(x => x.Field<int>("id"))
+                                            .FirstOrDefault(); // Si no hay coincidencia devuelve 0
+
+                                        cPartidas.AreaOwner = id;
+                                        cPartidas.AreaOwner2 = id2;
+
+                                        // Campos adicionales que tú asignas
                                         cPartidas.Tag = IdCargaMasiva;
                                         cPartidas.Tipo = Tipo;
-                                        cPartidas.Cabecera = 0;
                                         cPartidas.Estado = 1;
+                                        cPartidas.Fecha = DateTime.Now;
+
                                         cPartidas.Insertar(cPartidas);
                                     }
                                     CargarDatos();
@@ -220,19 +295,19 @@ namespace SISGEM.Flujo_de_Caja
 
         private void btnNuevo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (Empresa == 0)
-            {
-                XtraMessageBox.Show("Por favor, seleccione una empresa antes de continuar.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (Empresa == 0)
+            //{
+            //    XtraMessageBox.Show("Por favor, seleccione una empresa antes de continuar.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
             try
             {
                 HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control
                 {
-                    Descripcion = "Nuevo",
+                    Partida = "Nuevo",
                     Tipo = Tipo,
-                    PKempresa = Empresa
+                    //PKempresa = Empresa
                 };
 
                 if (cPartidas.Insertar(cPartidas) == 0)
@@ -268,23 +343,41 @@ namespace SISGEM.Flujo_de_Caja
         {
             // Obtener los valores de la fila actual
             var rowHandle = e.RowHandle;
-            int id = Convert.ToInt32(gridView1.GetRowCellValue(rowHandle, "id"));
-            string NTipo = gridView1.GetRowCellValue(rowHandle, "NTipo").ToString();
-            string CodigoPadre = (gridView1.GetRowCellValue(rowHandle, "CodigoPadre").ToString());
-            string PartidaPadre = (gridView1.GetRowCellValue(rowHandle, "PatidaPadre").ToString());
-            string Codigo = (gridView1.GetRowCellValue(rowHandle, "Codigo").ToString());
-            string Descripcion = (gridView1.GetRowCellValue(rowHandle, "Descripcion").ToString());
+            int id = Convert.ToInt32(gridView1.GetRowCellValue(rowHandle, "Id"));
+            string codigo = gridView1.GetRowCellValue(rowHandle, "Codigo").ToString();
+            string matriz = (gridView1.GetRowCellValue(rowHandle, "Matriz").ToString());
+            string area = (gridView1.GetRowCellValue(rowHandle, "Area").ToString());
+            string Partida = (gridView1.GetRowCellValue(rowHandle, "Partida").ToString());
+            string subPartida = (gridView1.GetRowCellValue(rowHandle, "SubPartida").ToString());
+            string detallePartida = (gridView1.GetRowCellValue(rowHandle, "DetallePartida").ToString());
+            string detalleSubPartida = (gridView1.GetRowCellValue(rowHandle, "DetalleSubPartida").ToString());
             int usuario = HPReserger.frmLogin.CodigoUsuario;
             DateTime fecha = DateTime.Now;
 
             HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
 
             cPartidas.Id = id;
-            cPartidas.NTipo = NTipo;
-            cPartidas.CodigoPadre = CodigoPadre;
-            cPartidas.PatidaPadre = PartidaPadre;
-            cPartidas.Codigo = Codigo;
-            cPartidas.Descripcion = Descripcion;
+
+            // Mapea cada campo según la entidad
+            cPartidas.Codigo = codigo;
+            cPartidas.Matriz = matriz;
+            cPartidas.Area = area;
+            cPartidas.Partida = Partida;
+            cPartidas.SubPartida = subPartida;
+            cPartidas.DetallePartida = detallePartida;
+            cPartidas.DetalleSubPartida = detalleSubPartida;
+
+            cPartidas.Nivel = int.TryParse(gridView1.GetRowCellValue(rowHandle, "Nivel").ToString(), out int nv) ? nv : 0;
+            // Estos son numéricos en tu tabla
+            cPartidas.AreaOwner = int.TryParse(gridView1.GetRowCellValue(rowHandle, "AreaOwner").ToString(), out int ow) ? ow : 0;
+            cPartidas.AreaOwner2 = int.TryParse(gridView1.GetRowCellValue(rowHandle, "AreaOwner2").ToString(), out int ow2) ? ow2 : 0;
+
+            // Campos adicionales que tú asignas
+            //cPartidas.Tag = IdCargaMasiva;
+            //cPartidas.Tipo = Tipo;
+            //cPartidas.Estado = 1;
+            //cPartidas.Fecha = DateTime.Now;
+
             cPartidas.Fecha = fecha;
 
             if (!cPartidas.ActualizarGrilla(cPartidas))
@@ -310,12 +403,12 @@ namespace SISGEM.Flujo_de_Caja
             if (focusedRowHandle >= 0 && gridView1.IsDataRow(focusedRowHandle))
             {
                 // Obtén el valor de "id" de manera segura
-                object idValue = gridView1.GetRowCellValue(focusedRowHandle, "id");
+                object idValue = gridView1.GetRowCellValue(focusedRowHandle, "Id");
                 idFocus = idValue is int ? (int)idValue : 0;
 
                 // Obtén el valor de "tag" de manera segura
-                object tagValue = gridView1.GetRowCellValue(focusedRowHandle, "tag");
-                object descripcionValue = gridView1.GetRowCellValue(focusedRowHandle, "Descripcion");
+                object tagValue = gridView1.GetRowCellValue(focusedRowHandle, "Tag");
+                object descripcionValue = gridView1.GetRowCellValue(focusedRowHandle, "DetalleSubPartida");
                 tagFocus = tagValue as string ?? string.Empty;
                 nombreFocus = descripcionValue as string ?? string.Empty;
 
@@ -533,6 +626,19 @@ namespace SISGEM.Flujo_de_Caja
                 {
                     MostrarError($"Error al exportar a Excel: {ex.Message}");
                 }
+            }
+        }
+
+        private void btnExportarFormato_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SaveFileDialog SF = new SaveFileDialog();
+            SF.Filter = "Archivos de Excel *.xlsx|*.xlsx";
+            SF.FileName = "Formato de Carga de Partidas de Control";
+            var result = SF.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                File.WriteAllBytes(SF.FileName, SISGEM.Resource1.FormatoCargaPartidasControl);
+                System.Diagnostics.Process.Start(SF.FileName);
             }
         }
     }

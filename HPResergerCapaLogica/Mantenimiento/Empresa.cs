@@ -46,7 +46,60 @@ namespace HPResergerCapaLogica.Mantenimiento
             }
             return dataTable;
         }
-
+        public DataTable GetEmpleado(int codigo)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"
+                                select Tipo_ID_Emp tipoId, Nro_ID_Emp nroDoc
+                                , CONCAT(Tipo_ID_Emp, '-', Nro_ID_Emp)tipoNroDoc
+                                   from TBL_Empleado where Cod_Emp = @codigo";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@codigo", codigo);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetComprobantesPago()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "select Id_Comprobante Id, Cod_Sunat CodSunat, Nombre Nombre,dbo.NameComprobante(Id_Comprobante) Sufijo from TBL_Comprobante_Pago";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetEmpleados()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"select dbo.NombreEmpleado(Tipo_ID_Emp,Nro_ID_Emp)Nombre, Tipo_ID_Emp TipoId,Nro_ID_Emp NroId,Cod_Emp Id from TBL_Empleado
+                                order by id desc";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetUsuariosActivos()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"select Codigo_User Id, Login_User Usuario from TBL_Usuario
+                                where estado!=0";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
         // Insertar un nuevo registro
         public bool Insert(oEmpresa empresa)
         {

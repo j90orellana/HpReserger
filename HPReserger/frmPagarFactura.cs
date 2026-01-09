@@ -354,16 +354,16 @@ namespace HPReserger
                     return;
                 }
 
-                if (Comprobantes.Count > 1)
-                {
-                    XtraMessageBox.Show(
-                        "La aplicación de comisiones bancarias solo está permitida para un comprobante. Por favor, seleccione solo uno.",
-                        "Validación de comprobantes",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                    return;
-                }
+                //if (Comprobantes.Count > 1)
+                //{
+                //    XtraMessageBox.Show(
+                //        "La aplicación de comisiones bancarias solo está permitida para un comprobante. Por favor, seleccione solo uno.",
+                //        "Validación de comprobantes",
+                //        MessageBoxButtons.OK,
+                //        MessageBoxIcon.Warning
+                //    );
+                //    return;
+                //}
             }
             else
             {
@@ -422,7 +422,7 @@ namespace HPReserger
 
 
             var datos = ((DataTable)Dtguias.DataSource)?.AsEnumerable();
-                   
+
             // Obtener las monedas únicas de las facturas marcadas con 'ok' = 1
             var monedasSeleccionadas = datos
                 .Where(row => row.Field<int>("ok") == 1)
@@ -467,7 +467,7 @@ namespace HPReserger
                 if (respuesta == DialogResult.Cancel)
                     return;
             }
-                   
+
 
             ////LISTADO DE NOTAS
             List<NotaCreditoDebito> ListadoNotas = new List<NotaCreditoDebito>();
@@ -917,23 +917,24 @@ namespace HPReserger
                                 glosa, FechaPago, idUsuario, "", MedioPago);
 
                             //COMISIONES
-                            if (!string.IsNullOrEmpty(cuentaComision) && valorComision != 0)
-                            {
-                                valorSoles = IdMonedaAsiento == 1 ? valorComision : valorComision * tc;
-                                valorDolares = IdMonedaAsiento == 2 ? valorComision : valorComision / tc;
-                                debe = valorComision > 0 ? Math.Abs(valorComision) : 0;
-                                haber = valorComision < 0 ? Math.Abs(valorComision) : 0;
+                            if (ContadorFacturas == 1)
+                                if (!string.IsNullOrEmpty(cuentaComision) && valorComision != 0)
+                                {
+                                    valorSoles = IdMonedaAsiento == 1 ? valorComision : valorComision * tc;
+                                    valorDolares = IdMonedaAsiento == 2 ? valorComision : valorComision / tc;
+                                    debe = valorComision > 0 ? Math.Abs(valorComision) : 0;
+                                    haber = valorComision < 0 ? Math.Abs(valorComision) : 0;
 
-                                // Cabecera factura comisiones
-                                CapaLogica.InsertarAsientoFacturaCabecera(1, ++ContadorFacturas, numasiento + 1, FechaContable,
-                                    cuentaComision, debe, haber, tc, proyecto, 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
+                                    // Cabecera factura comisiones
+                                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++ContadorFacturas, numasiento + 1, FechaContable,
+                                        cuentaComision, debe, haber, tc, proyecto, 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
 
-                                // Detalle factura comisiones
-                                CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, cuentaComision,
-                                    proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], CC, FechaPago, FechaContable,
-                                    FechaContable, valorSoles, valorDolares, tcReg, idMoneda, "", NroOperacion, glosa, FechaPago,
-                                    idUsuario, "", MedioPago);
-                            }
+                                    // Detalle factura comisiones
+                                    CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, cuentaComision,
+                                        proyecto, 0, "99999", "VARIOS", 0, "0", "0", CC, FechaPago, FechaContable,
+                                        FechaContable, valorSoles, valorDolares, tcReg, idMoneda, "", NroOperacion, glosa, FechaPago,
+                                        idUsuario, "", MedioPago);
+                                }
                         }
                     }
                 }
@@ -2106,7 +2107,7 @@ namespace HPReserger
 
                 // Configurar el grid con los datos
                 gridControl1.DataSource = TdatA;
-                              
+
                 string rutaExcel = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"{NameTitulo}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx");
 
                 XlsxExportOptionsEx options = new XlsxExportOptionsEx()
@@ -2125,7 +2126,7 @@ namespace HPReserger
                 options.DocumentOptions.Subject = NameTitulo;
 
 
-                gridControl1.ExportToXlsx(rutaExcel,options);
+                gridControl1.ExportToXlsx(rutaExcel, options);
 
                 // Verificar que se haya creado
                 if (System.IO.File.Exists(rutaExcel))

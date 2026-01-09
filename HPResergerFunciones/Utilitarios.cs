@@ -2097,45 +2097,59 @@ namespace HPResergerFunciones
         {
             try
             {
-                FileStream fs = File.Open(ruta, FileMode.Open, FileAccess.Read);
-                //IExcelDataReader reader = ExcelReaderFactory.CreateBinaryReader(fs);
-                IExcelDataReader reader = ExcelReaderFactory.CreateReader(fs);
-                DataSet result = reader.AsDataSet();
-                reader.Close();
-                return result.Tables[0];
-                //Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
-                //Microsoft.Office.Interop.Excel.Workbook Libro;
-                //Microsoft.Office.Interop.Excel.Worksheet Hoja;
-                //Libro = ExcelApp.Workbooks.Open(ruta);
-                //Hoja = (Microsoft.Office.Interop.Excel.Worksheet)Libro.Worksheets.get_Item(iHoja);
-                //int contador = 0;
-                //string cadena = "";
-                //do
-                //{
-                //    contador++;
-                //    cadena = (((Microsoft.Office.Interop.Excel.Range)Hoja.Cells[contador, 1]).Value2??"").ToString();
-                //    //Array[] Listado = new Array[ColCuenta];
-                //    //for (int i = 0; i < ColCuenta; i++)
-                //    //{
-                //    //    Listado[i] = (((Microsoft.Office.Interop.Excel.Range)Hoja.Cells[contador, 1]).Value2);
-                //    //}
-                //    //Data.Rows.Add(Listado);
-                //} while (PosCuenta > contador || cadena != "");
-                //object Hola = new object();
-                //Hoja.Range["a1", $"k{contador}"].Copy();
-                //Data = Clipboard.;
-                ////foreach (var item in Valor.Rows)
-                ////{
-                ////    Data.Rows.Add(item);
-                ////}
-                //contador++;
+                try
+                {
+                    // Intentar leer como Excel real
+                    using (FileStream fs = File.Open(ruta, FileMode.Open, FileAccess.Read))
+                    {
+                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(fs))
+                        {
+                            DataSet result = reader.AsDataSet();
+                            return result.Tables[0];
+                        }
+                    }
+                }
+                catch (Exception exExcel)
+                {
+                    // Si NO es Excel real, detectar firma inválida
+                    if (exExcel.Message.Contains("Invalid file signature") ||
+                        exExcel.Message.Contains("Invalid format") ||
+                        exExcel.Message.Contains("header signature"))
+                    {
+                        // Leer como archivo de texto tabulado (TSV)
+                        DataTable dt = new DataTable();
+
+                        string[] lines = File.ReadAllLines(ruta);
+
+                        if (lines.Length == 0)
+                            return dt;
+
+                        // Crear columnas desde la primera línea
+                        string[] headers = lines[0].Split('\t');
+                        foreach (var h in headers)
+                            dt.Columns.Add(h.Trim());
+
+                        // Agregar filas
+                        for (int i = 1; i < lines.Length; i++)
+                        {
+                            string[] parts = lines[i].Split('\t');
+                            dt.Rows.Add(parts);
+                        }
+
+                        return dt;
+                    }
+
+                    // Otros errores → se siguen manejando en el catch externo
+                    throw;
+                }
             }
             catch (Exception e)
             {
                 msgCancel(e.Message, "No se Pudo Abrir el Archivo Excel");
                 return new DataTable();
-            };
+            }
         }
+
         public static DataTable CargarDatosDeExcelAGrilla(string ruta, string Tabla)
         {
             string strConnnectionOle = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ruta + ";Extended Properties=" + '"' + " Excel 12.0 Xml;HDR=YES" + '"';

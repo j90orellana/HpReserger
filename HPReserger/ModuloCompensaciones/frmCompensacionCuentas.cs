@@ -240,6 +240,9 @@ namespace HPReserger.ModuloCompensaciones
             }
             SumaSoles = SumaSoles * -1;
             SumaDolares = SumaDolares * -1;
+
+            if (SumaDolares != 0) cbomoneda.SelectedValue = 2;
+
             MostrarParteFinal();
         }
 
@@ -340,10 +343,10 @@ namespace HPReserger.ModuloCompensaciones
                         itemx[xRazonSocial.DataPropertyName].ToString(), (int)itemx[xidComprobante.DataPropertyName], itemx[xCodComprobante.DataPropertyName].ToString(),
                         itemx[xNumComprobante.DataPropertyName].ToString(), (int)itemx[xCC.DataPropertyName], (DateTime)itemx[xFechaEmision.DataPropertyName],
                         (DateTime)itemx[xFechaVence.DataPropertyName], (DateTime)itemx[xFechaREcepcion.DataPropertyName],
-                        (HaberUsd + DebeUsd == 0 ? (DebePen + HaberPen > 0) ? -1 : 1 : 1) * Math.Abs(DebePen + HaberPen),
-                        (HaberPen + DebePen == 0 ? (DebeUsd + HaberUsd > 0) ? -1 : 1 : 1) * Math.Abs(DebeUsd + HaberUsd),
+                /*        (HaberUsd + DebeUsd == 0 ? (DebePen + HaberPen > 0) ? -1 : 1 : 1) */  Math.Abs(DebePen + HaberPen),
+                  /*      (HaberPen + DebePen == 0 ? (DebeUsd + HaberUsd > 0) ? -1 : 1 : 1) */ Math.Abs(DebeUsd + HaberUsd),
                         (decimal)itemx[xTC.DataPropertyName], (int)itemx[xfkmoneda.DataPropertyName],
-                        itemx[xctabanco.DataPropertyName].ToString() == "" ? 0 : (int)itemx[xctabanco.DataPropertyName], "", itemx[xGlosa.DataPropertyName].ToString(), FechaContable, idUsuario,
+                        itemx[xctabanco.DataPropertyName].ToString() == "" ? 0 : (int)itemx[xctabanco.DataPropertyName], "", GlosaCab, FechaContable, idUsuario,
                         itemx[xCUO.DataPropertyName].ToString(), 0);
                     //}
                 }

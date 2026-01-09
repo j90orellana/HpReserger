@@ -39,6 +39,9 @@ namespace SISGEM.Configuracion
 
             var comisionConfig = ObtenerConfiguracion(tconfig, 2);
             cboCuentaComision.EditValue = comisionConfig.Item2;
+
+            var trabajarConPartidasConfiguracion = ObtenerConfiguracion(tconfig, 3);
+            chkfacturasConPartida.EditValue = trabajarConPartidasConfiguracion.Item1 != 0;
         }
         public Tuple<int, string> ObtenerConfiguracion(DataTable configTable, int tipo, int valorDefecto = 0, string textoDefecto = "")
         {
@@ -81,6 +84,16 @@ namespace SISGEM.Configuracion
                 texto: cboCuentaComision.EditValue?.ToString(),
                 valor: 0
             );
+        }
+
+        private void chkfacturasConPartida_CheckedChanged(object sender, EventArgs e)
+        {
+            ActualizarConfiguracion(
+               tipo: 3,
+               descripcion: "Trabajar Facturas con Partidas Presupuestarias",
+               texto: "",
+               valor: chkfacturasConPartida.Checked ? 1 : 0
+           );
         }
     }
 }

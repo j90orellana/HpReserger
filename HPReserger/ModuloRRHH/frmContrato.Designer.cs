@@ -96,6 +96,7 @@ namespace HPReserger
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.grpcontrato = new System.Windows.Forms.Panel();
+            this.chkBonos = new HpResergerUserControls.checkboxOre();
             this.cbotipocontratacion = new System.Windows.Forms.ComboBox();
             this.cboJefeInmediato = new System.Windows.Forms.ComboBox();
             this.cboCargo = new System.Windows.Forms.ComboBox();
@@ -145,7 +146,6 @@ namespace HPReserger
             this.pbFotoContrato = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.chkBonos = new HpResergerUserControls.checkboxOre();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.grpcontrato.SuspendLayout();
             this.grpcontra.SuspendLayout();
@@ -745,6 +745,7 @@ namespace HPReserger
             // 
             // lblmsg
             // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.AutoSize = true;
             this.lblmsg.BackColor = System.Drawing.Color.Transparent;
             this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -756,6 +757,7 @@ namespace HPReserger
             // 
             // btnaceptar
             // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(571, 621);
             this.btnaceptar.Name = "btnaceptar";
@@ -768,6 +770,7 @@ namespace HPReserger
             // 
             // btncancelar
             // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(653, 621);
             this.btncancelar.Name = "btncancelar";
@@ -816,6 +819,19 @@ namespace HPReserger
             this.grpcontrato.Name = "grpcontrato";
             this.grpcontrato.Size = new System.Drawing.Size(528, 242);
             this.grpcontrato.TabIndex = 152;
+            // 
+            // chkBonos
+            // 
+            this.chkBonos.AutoSize = true;
+            this.chkBonos.BackColor = System.Drawing.Color.Transparent;
+            this.chkBonos.ColorChecked = System.Drawing.Color.Empty;
+            this.chkBonos.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkBonos.Location = new System.Drawing.Point(104, 219);
+            this.chkBonos.Name = "chkBonos";
+            this.chkBonos.Size = new System.Drawing.Size(56, 17);
+            this.chkBonos.TabIndex = 161;
+            this.chkBonos.Text = "Bonos";
+            this.chkBonos.UseVisualStyleBackColor = false;
             // 
             // cbotipocontratacion
             // 
@@ -1355,19 +1371,6 @@ namespace HPReserger
             this.label17.Size = new System.Drawing.Size(115, 13);
             this.label17.TabIndex = 150;
             this.label17.Text = "Detalle Del Contrato:";
-            // 
-            // chkBonos
-            // 
-            this.chkBonos.AutoSize = true;
-            this.chkBonos.BackColor = System.Drawing.Color.Transparent;
-            this.chkBonos.ColorChecked = System.Drawing.Color.Empty;
-            this.chkBonos.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkBonos.Location = new System.Drawing.Point(104, 219);
-            this.chkBonos.Name = "chkBonos";
-            this.chkBonos.Size = new System.Drawing.Size(56, 17);
-            this.chkBonos.TabIndex = 161;
-            this.chkBonos.Text = "Bonos";
-            this.chkBonos.UseVisualStyleBackColor = false;
             // 
             // frmContrato
             // 

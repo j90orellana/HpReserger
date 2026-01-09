@@ -498,6 +498,38 @@ namespace HPReserger.ModuloFinanzas
 
                 return true;
             }
+            else if (CodSunat == 8) //Banco banbif
+            {
+
+                TdatosExcel.Columns[0].ColumnName = "Fecha";
+                TdatosExcel.Columns[2].ColumnName = "Glosa";
+                TdatosExcel.Columns[5].ColumnName = "Monto";
+                TdatosExcel.Columns[1].ColumnName = "Operacion";
+
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    item[1] = "";
+                    item["monto"] = -decimal.Parse(item[3].ToString()) + decimal.Parse(item[4].ToString());
+                }
+
+                TdatosExcel.Columns.RemoveAt(3);
+                TdatosExcel.Columns.RemoveAt(3);
+
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Comentario");
+                TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.AcceptChanges();
+                return true;
+            }
             return false;
         }
 
@@ -774,12 +806,44 @@ namespace HPReserger.ModuloFinanzas
 
                 return true;
             }
+            else if (CodSunat == 8) //banbif
+            {
+                string ruta = txtRutaExcel.Text;
+                string nombreArchivo = Path.GetFileName(ruta);
+
+                //if (!nombreArchivo.Contains(nroCuenta))
+                //{
+                //    msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
+                //    return false;
+                //}
+                string periodox = comboMesAño1.GetFecha().ToString("MM.yyyy");
+                if (!nombreArchivo.Contains(periodox))
+                {
+                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos 'MM.yyyy'");
+                    return false;
+                }
+
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    decimal valor = 0;
+                    if (!decimal.TryParse(item[5].ToString(), out valor))
+                    {
+                        item.Delete();
+                    }
+                }
+                TdatosExcel.AcceptChanges();
+
+                EstadoCuentaInicial = decimal.Parse(TdatosExcel.Rows[0][5].ToString()) + decimal.Parse(TdatosExcel.Rows[0][3].ToString()) + decimal.Parse(TdatosExcel.Rows[0][4].ToString());
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][5].ToString());
+
+                TdatosExcel.AcceptChanges();
+                return true;
+            }
             else
             {
-                msgError("Por el Momento se puede Conciliar el Banco BCP - Pichincha - BBVA - ScotiaBank - B.Nación");
+                msgError("Por el Momento se puede Conciliar el Banco BCP - Pichincha - BBVA - ScotiaBank - B.Nación - BANBIF");
                 return false;
             }
-            return false;
         }
         DataTable TdatosExcel;
         DataTable TdatosSist;
@@ -891,7 +955,7 @@ namespace HPReserger.ModuloFinanzas
             if (cboCuentasBancarias.SelectedValue != null)
             {
                 pkBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["banco"];
-                CodSunat = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["banco"];
+                CodSunat = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Cod_Sunat"];
                 NroCuenta = ((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Nro_Cta"].ToString();
                 pkMoneda = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Moneda"];
                 pkidCtaBanco = (int)((DataTable)cboCuentasBancarias.DataSource).Rows[cboCuentasBancarias.SelectedIndex]["Id_Tipo_Cta"];

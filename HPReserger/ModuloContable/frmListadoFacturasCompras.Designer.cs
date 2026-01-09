@@ -55,19 +55,19 @@
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.btnBuscar = new DevExpress.XtraBars.BarButtonItem();
             this.btnExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDesagruparGrupos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAgruparEmpresa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAgruparProveedor = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAgruparxMes = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAgruparEstado = new DevExpress.XtraBars.BarButtonItem();
             this.btnAgrupar = new DevExpress.XtraBars.BarButtonItem();
             this.btnDesAgrupar = new DevExpress.XtraBars.BarButtonItem();
-            this.btnAgruparProveedor = new DevExpress.XtraBars.BarButtonItem();
             this.btnCerrar = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btnRefrescar = new DevExpress.XtraBars.BarButtonItem();
-            this.btnAgruparxMes = new DevExpress.XtraBars.BarButtonItem();
-            this.btnAgruparEmpresa = new DevExpress.XtraBars.BarButtonItem();
-            this.btnAgruparEstado = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDesagruparGrupos = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -88,10 +88,10 @@
             this.layoutControl1.Controls.Add(this.gridControl1);
             this.layoutControl1.Controls.Add(this.dtpfecha);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 20);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 22);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1220, 492);
+            this.layoutControl1.Size = new System.Drawing.Size(1206, 481);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -111,7 +111,7 @@
             this.gridControl1.Location = new System.Drawing.Point(6, 30);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1208, 456);
+            this.gridControl1.Size = new System.Drawing.Size(1194, 445);
             this.gridControl1.TabIndex = 20;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -325,7 +325,7 @@
             this.layoutControlItem2,
             this.emptySpaceItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1220, 492);
+            this.Root.Size = new System.Drawing.Size(1206, 481);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -333,7 +333,7 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1210, 458);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1196, 447);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -368,7 +368,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(347, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(863, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(849, 24);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // barManager1
@@ -438,6 +438,51 @@
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExcel_ItemClick);
             // 
+            // btnDesagruparGrupos
+            // 
+            this.btnDesagruparGrupos.Caption = "Desagrupar";
+            this.btnDesagruparGrupos.Id = 14;
+            this.btnDesagruparGrupos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDesagruparGrupos.ImageOptions.Image")));
+            this.btnDesagruparGrupos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDesagruparGrupos.ImageOptions.LargeImage")));
+            this.btnDesagruparGrupos.Name = "btnDesagruparGrupos";
+            this.btnDesagruparGrupos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDesagruparGrupos_ItemClick);
+            // 
+            // btnAgruparEmpresa
+            // 
+            this.btnAgruparEmpresa.Caption = "Agrupar Empresas";
+            this.btnAgruparEmpresa.Id = 12;
+            this.btnAgruparEmpresa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgruparEmpresa.ImageOptions.Image")));
+            this.btnAgruparEmpresa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgruparEmpresa.ImageOptions.LargeImage")));
+            this.btnAgruparEmpresa.Name = "btnAgruparEmpresa";
+            this.btnAgruparEmpresa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgruparEmpresa_ItemClick);
+            // 
+            // btnAgruparProveedor
+            // 
+            this.btnAgruparProveedor.Caption = "Agrupar Proveedor";
+            this.btnAgruparProveedor.Id = 10;
+            this.btnAgruparProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgruparProveedor.ImageOptions.Image")));
+            this.btnAgruparProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgruparProveedor.ImageOptions.LargeImage")));
+            this.btnAgruparProveedor.Name = "btnAgruparProveedor";
+            this.btnAgruparProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgruparProveedor_ItemClick);
+            // 
+            // btnAgruparxMes
+            // 
+            this.btnAgruparxMes.Caption = "Agrupar x Mes";
+            this.btnAgruparxMes.Id = 11;
+            this.btnAgruparxMes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgruparxMes.ImageOptions.Image")));
+            this.btnAgruparxMes.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgruparxMes.ImageOptions.LargeImage")));
+            this.btnAgruparxMes.Name = "btnAgruparxMes";
+            this.btnAgruparxMes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgruparxMes_ItemClick);
+            // 
+            // btnAgruparEstado
+            // 
+            this.btnAgruparEstado.Caption = "Agrupar Estado";
+            this.btnAgruparEstado.Id = 13;
+            this.btnAgruparEstado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgruparEstado.ImageOptions.Image")));
+            this.btnAgruparEstado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgruparEstado.ImageOptions.LargeImage")));
+            this.btnAgruparEstado.Name = "btnAgruparEstado";
+            this.btnAgruparEstado.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgruparEstado_ItemClick);
+            // 
             // btnAgrupar
             // 
             this.btnAgrupar.Caption = "Expandir Grupo";
@@ -456,15 +501,6 @@
             this.btnDesAgrupar.Name = "btnDesAgrupar";
             this.btnDesAgrupar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDesAgrupar_ItemClick);
             // 
-            // btnAgruparProveedor
-            // 
-            this.btnAgruparProveedor.Caption = "Agrupar Proveedor";
-            this.btnAgruparProveedor.Id = 10;
-            this.btnAgruparProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnConsolidar.ImageOptions.Image")));
-            this.btnAgruparProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnConsolidar.ImageOptions.LargeImage")));
-            this.btnAgruparProveedor.Name = "btnAgruparProveedor";
-            this.btnAgruparProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgruparProveedor_ItemClick);
-            // 
             // btnCerrar
             // 
             this.btnCerrar.Caption = "Cerrar";
@@ -480,31 +516,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1220, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1206, 22);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 512);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 503);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1220, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1206, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 492);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 481);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1220, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1206, 22);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 492);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 481);
             // 
             // btnRefrescar
             // 
@@ -515,47 +551,11 @@
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
-            // btnAgruparxMes
-            // 
-            this.btnAgruparxMes.Caption = "Agrupar x Mes";
-            this.btnAgruparxMes.Id = 11;
-            this.btnAgruparxMes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgruparxMes.ImageOptions.Image")));
-            this.btnAgruparxMes.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgruparxMes.ImageOptions.LargeImage")));
-            this.btnAgruparxMes.Name = "btnAgruparxMes";
-            this.btnAgruparxMes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgruparxMes_ItemClick);
-            // 
-            // btnAgruparEmpresa
-            // 
-            this.btnAgruparEmpresa.Caption = "Agrupar Empresas";
-            this.btnAgruparEmpresa.Id = 12;
-            this.btnAgruparEmpresa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgruparEmpresa.ImageOptions.Image")));
-            this.btnAgruparEmpresa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgruparEmpresa.ImageOptions.LargeImage")));
-            this.btnAgruparEmpresa.Name = "btnAgruparEmpresa";
-            this.btnAgruparEmpresa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgruparEmpresa_ItemClick);
-            // 
-            // btnAgruparEstado
-            // 
-            this.btnAgruparEstado.Caption = "Agrupar Estado";
-            this.btnAgruparEstado.Id = 13;
-            this.btnAgruparEstado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgruparEstado.ImageOptions.Image")));
-            this.btnAgruparEstado.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgruparEstado.ImageOptions.LargeImage")));
-            this.btnAgruparEstado.Name = "btnAgruparEstado";
-            this.btnAgruparEstado.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgruparEstado_ItemClick);
-            // 
-            // btnDesagruparGrupos
-            // 
-            this.btnDesagruparGrupos.Caption = "Desagrupar";
-            this.btnDesagruparGrupos.Id = 14;
-            this.btnDesagruparGrupos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDesagruparGrupos.ImageOptions.Image")));
-            this.btnDesagruparGrupos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDesagruparGrupos.ImageOptions.LargeImage")));
-            this.btnDesagruparGrupos.Name = "btnDesagruparGrupos";
-            this.btnDesagruparGrupos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDesagruparGrupos_ItemClick);
-            // 
             // frmListadoFacturasCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 512);
+            this.ClientSize = new System.Drawing.Size(1206, 503);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
