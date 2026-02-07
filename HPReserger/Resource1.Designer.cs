@@ -73,6 +73,16 @@ namespace SISGEM {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
+        internal static byte[] CONTRATO_MUTUO {
+            get {
+                object obj = ResourceManager.GetObject("CONTRATO_MUTUO", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
         internal static byte[] FORMATO_CARGA_MASIVA_ASIENTO {
             get {
                 object obj = ResourceManager.GetObject("FORMATO_CARGA_MASIVA_ASIENTO", resourceCulture);

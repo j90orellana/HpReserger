@@ -1018,17 +1018,47 @@
     <Compile Include="ModuloFacturacion\frmListarFacturas.Designer.cs">
       <DependentUpon>frmListarFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloFinanzas\frmAbonarMutuos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmAbonarMutuos.Designer.cs">
+      <DependentUpon>frmAbonarMutuos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmAddMutuos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmAddMutuos.Designer.cs">
+      <DependentUpon>frmAddMutuos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloFinanzas\FrmConciliarBanco.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloFinanzas\FrmConciliarBanco.Designer.cs">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloFinanzas\FrmCondicionesPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\FrmCondicionesPrestamo.Designer.cs">
+      <DependentUpon>FrmCondicionesPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFinanzas\FrmCronogramaMutuo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\FrmCronogramaMutuo.Designer.cs">
+      <DependentUpon>FrmCronogramaMutuo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloFinanzas\frmListado de Operaciones Bancarias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloFinanzas\frmListado de Operaciones Bancarias.Designer.cs">
       <DependentUpon>frmListado de Operaciones Bancarias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoMutuos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoMutuos.Designer.cs">
+      <DependentUpon>frmListadoMutuos.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloFinanzas\frmListadoPagos.cs">
       <SubType>Form</SubType>
@@ -3210,11 +3240,26 @@
     <EmbeddedResource Include="ModuloFacturacion\frmListarFacturas.resx">
       <DependentUpon>frmListarFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmAbonarMutuos.resx">
+      <DependentUpon>frmAbonarMutuos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmAddMutuos.resx">
+      <DependentUpon>frmAddMutuos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\FrmConciliarBanco.resx">
       <DependentUpon>FrmConciliarBanco.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\FrmCondicionesPrestamo.resx">
+      <DependentUpon>FrmCondicionesPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\FrmCronogramaMutuo.resx">
+      <DependentUpon>FrmCronogramaMutuo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmListado de Operaciones Bancarias.resx">
       <DependentUpon>frmListado de Operaciones Bancarias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmListadoMutuos.resx">
+      <DependentUpon>frmListadoMutuos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmListadoPagos.resx">
       <DependentUpon>frmListadoPagos.cs</DependentUpon>
@@ -4200,6 +4245,14 @@
     <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.EmpresaAbreviatura.datasource" />
     <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ReembolsosMasivos+oReembolsoMasivo.datasource" />
     <None Include="Properties\DataSources\HPResergerCapaLogica.Contable.ReembolsosMasivos.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Finanzas.EvoltaApiService+PagoAprobado.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Finanzas.EvoltaApiService+Proyecto.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Finanzas.EvoltaApiService+TokenResponse.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Finanzas.EvoltaApiService.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Finanzas.EvotaConfiguracion.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Finanzas.Mutuos+MutuoEntidad.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Finanzas.Mutuos.datasource" />
+    <None Include="Properties\DataSources\HPResergerCapaLogica.Finanzas.PagoFacturas.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_Cliente.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_ClienteRepository.datasource" />
     <None Include="Properties\DataSources\HpResergerNube.CRM_ContactoRepository+Contacto.datasource" />
@@ -4227,6 +4280,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\CARGA MASIVA PROVEEDORES.xlsx" />
+    <None Include="Resources\CONTRATO_MUTUO.docx" />
     <None Include="Resources\FORMATO CARGA MASIVA ASIENTO.xlsx" />
     <None Include="Resources\FormatoCargaPartidasControl.xlsx" />
     <None Include="Resources\LISTADO DE COMPRAS.xlsx" />

@@ -8,6 +8,166 @@ namespace HPResergerCapaLogica.Contable
     public class ClaseContable
     {
         private readonly string _connectionString;
+        public class AsientoContableEntidad
+        {
+            public int IdAsiento { get; set; }
+            public int IdAsientoContable { get; set; }
+            public DateTime FechaAsiento { get; set; }
+            public DateTime? FechaAsientoValor { get; set; }
+            public string CuentaContable { get; set; }
+            public decimal SaldoDebe { get; set; }
+            public decimal SaldoHaber { get; set; }
+            public int IdDinamicaContable { get; set; }
+            public int IdProyecto { get; set; } = 2;
+            public int FkIdEtapa { get; set; } = 1;
+            public string NroDocumento { get; set; }
+            public int Estado { get; set; }
+            public string CodAsientoContable { get; set; }
+            public int? Moneda { get; set; }
+            public decimal? TC { get; set; }
+            public string Glosa { get; set; }
+        }
+        public class AsientoContableAuxEntidad
+        {
+            public int IdAux { get; set; }
+            public int IdAsientoContable { get; set; }
+            public string CuentaContable { get; set; }
+            public int? FkProyecto { get; set; }
+
+            public int TipoDoc { get; set; }
+            public string NumDoc { get; set; }
+            public string RazonSocial { get; set; }
+
+            public int IdComprobante { get; set; }
+            public string CodComprobante { get; set; }
+            public string NumComprobante { get; set; }
+
+            public int CentroCosto { get; set; }
+            public DateTime FechaEmision { get; set; }
+            public DateTime? FechaVencimiento { get; set; }
+            public DateTime? FechaRecepcion { get; set; }
+
+            public decimal ImporteMN { get; set; }
+            public decimal ImporteME { get; set; }
+            public decimal TipoCambio { get; set; }
+            public int? FkMoneda { get; set; }
+
+            public string FkAsi { get; set; }
+            public int? CtaBanco { get; set; }
+            public string NroOPBanco { get; set; }
+
+            public string Glosa { get; set; }
+            public DateTime? FechaAsiento { get; set; }
+
+            public int Usuario { get; set; }
+            public DateTime Fecha { get; set; }
+            public int TipoPago { get; set; }
+        }
+        public int InsertarAux(AsientoContableAuxEntidad o)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string sql = @"
+        INSERT INTO TBL_Asiento_Contable_Aux
+        (
+            Id_Aux,
+            Id_Asiento_Contable,
+            Cuenta_Contable,
+            fk_proyecto,
+            Tipo_Doc,
+            Num_Doc,
+            Razon_Social,
+            Id_Comprobante,
+            Cod_Comprobante,
+            Num_Comprobante,
+            Centro_Costo,
+            Fecha_Emision,
+            Fecha_Vencimiento,
+            Fecha_Recepcion,
+            Importe_MN,
+            Importe_ME,
+            Tipo_Cambio,
+            fk_Moneda,
+            fk_asi,
+            Cta_Banco,
+            NroOPBanco,
+            Glosa,
+            Fecha_Asiento,
+            Usuario,
+            Fecha,
+            TipoPago
+        )
+        VALUES
+        (
+            @Id_Aux,
+            @Id_Asiento_Contable,
+            @Cuenta_Contable,
+            @fk_proyecto,
+            @Tipo_Doc,
+            @Num_Doc,
+            @Razon_Social,
+            @Id_Comprobante,
+            @Cod_Comprobante,
+            @Num_Comprobante,
+            @Centro_Costo,
+            @Fecha_Emision,
+            @Fecha_Vencimiento,
+            @Fecha_Recepcion,
+            @Importe_MN,
+            @Importe_ME,
+            @Tipo_Cambio,
+            @fk_Moneda,
+            @fk_asi,
+            @Cta_Banco,
+            @NroOPBanco,
+            @Glosa,
+            @Fecha_Asiento,
+            @Usuario,
+            @Fecha,
+            @TipoPago
+        )";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Id_Aux", o.IdAux);
+                    cmd.Parameters.AddWithValue("@Id_Asiento_Contable", o.IdAsientoContable);
+                    cmd.Parameters.AddWithValue("@Cuenta_Contable", o.CuentaContable);
+                    cmd.Parameters.AddWithValue("@fk_proyecto", (object)o.FkProyecto ?? DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@Tipo_Doc", o.TipoDoc);
+                    cmd.Parameters.AddWithValue("@Num_Doc", o.NumDoc);
+                    cmd.Parameters.AddWithValue("@Razon_Social", o.RazonSocial);
+
+                    cmd.Parameters.AddWithValue("@Id_Comprobante", o.IdComprobante);
+                    cmd.Parameters.AddWithValue("@Cod_Comprobante", o.CodComprobante);
+                    cmd.Parameters.AddWithValue("@Num_Comprobante", o.NumComprobante);
+
+                    cmd.Parameters.AddWithValue("@Centro_Costo", o.CentroCosto);
+                    cmd.Parameters.AddWithValue("@Fecha_Emision", o.FechaEmision);
+                    cmd.Parameters.AddWithValue("@Fecha_Vencimiento", (object)o.FechaVencimiento ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Fecha_Recepcion", (object)o.FechaRecepcion ?? DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@Importe_MN", o.ImporteMN);
+                    cmd.Parameters.AddWithValue("@Importe_ME", o.ImporteME);
+                    cmd.Parameters.AddWithValue("@Tipo_Cambio", o.TipoCambio);
+                    cmd.Parameters.AddWithValue("@fk_Moneda", (object)o.FkMoneda ?? DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@fk_asi", (object)o.FkAsi ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Cta_Banco", (object)o.CtaBanco ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@NroOPBanco", (object)o.NroOPBanco ?? DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@Glosa", (object)o.Glosa ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Fecha_Asiento", (object)o.FechaAsiento ?? DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@Usuario", o.Usuario);
+                    cmd.Parameters.AddWithValue("@Fecha", o.Fecha);
+                    cmd.Parameters.AddWithValue("@TipoPago", o.TipoPago);
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery(); // filas afectadas
+                }
+            }
+        }
 
         public ClaseContable()
         {
@@ -29,6 +189,77 @@ namespace HPResergerCapaLogica.Contable
                 return dataTable;
             }
         }
+        public int InsertarAsiento(AsientoContableEntidad o)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string sql = @"
+        INSERT INTO TBL_Asiento_Contable
+        (
+            id_Asiento,
+            Id_Asiento_Contable,
+            Fecha_Asiento,
+            Fecha_Asiento_Valor,
+            Cuenta_Contable,
+            Saldo_Debe,
+            Saldo_Haber,
+            Id_Dinamica_Contable,
+            id_proyecto,
+            fk_id_Etapa,
+            Nro_Documento,
+            Estado,
+            Cod_Asiento_Contable,
+            Moneda,
+            TC,
+            Glosa
+        )
+        VALUES
+        (
+            @id_Asiento,
+            @Id_Asiento_Contable,
+            @Fecha_Asiento,
+            @Fecha_Asiento_Valor,
+            @Cuenta_Contable,
+            @Saldo_Debe,
+            @Saldo_Haber,
+            @Id_Dinamica_Contable,
+            @id_proyecto,
+            @fk_id_Etapa,
+            @Nro_Documento,
+            @Estado,
+            @Cod_Asiento_Contable,
+            @Moneda,
+            @TC,
+            @Glosa
+        )";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id_Asiento", o.IdAsiento);
+                    cmd.Parameters.AddWithValue("@Id_Asiento_Contable", o.IdAsientoContable);
+                    cmd.Parameters.AddWithValue("@Fecha_Asiento", o.FechaAsiento);
+                    cmd.Parameters.AddWithValue("@Fecha_Asiento_Valor", (object)o.FechaAsientoValor ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Cuenta_Contable", o.CuentaContable);
+                    cmd.Parameters.AddWithValue("@Saldo_Debe", o.SaldoDebe);
+                    cmd.Parameters.AddWithValue("@Saldo_Haber", o.SaldoHaber);
+                    cmd.Parameters.AddWithValue("@Id_Dinamica_Contable", o.IdDinamicaContable);
+                    cmd.Parameters.AddWithValue("@id_proyecto", o.IdProyecto);
+                    cmd.Parameters.AddWithValue("@fk_id_Etapa", o.FkIdEtapa);
+                    cmd.Parameters.AddWithValue("@Nro_Documento", (object)o.NroDocumento ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Estado", o.Estado);
+                    cmd.Parameters.AddWithValue("@Cod_Asiento_Contable", (object)o.CodAsientoContable ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Moneda", (object)o.Moneda ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TC", (object)o.TC ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Glosa", (object)o.Glosa ?? DBNull.Value);
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery(); // devuelve filas afectadas
+                }
+            }
+        }
+
+
+
         public DataTable GetAllCuentasValidasDetalle()
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -52,7 +283,159 @@ namespace HPResergerCapaLogica.Contable
                 return dataTable;
             }
         }
+        public DataTable GetTipoCambioDia(DateTime fecha)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
 
+                string query = @"            
+                    select* from TBL_Tipo_Cambio
+                    where DATEFROMPARTS(anio,mes,dia)= cast(@fecha as date);
+                    
+";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@fecha", fecha);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+        public DataTable GetCliente(int idcliente)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = @"            
+                   select dbo.NameCliente(Tipo_Id_Cli,Nro_Id_Cli)nombre, Tipo_Id_Cli tipoid,Nro_Id_Cli numdoc,tp.Desc_Tipo_ID tipoDocumento,
+	 lower (isnull(ec.EstadoCivil ,'Soltero'))estadoCivil
+	,c.* 
+	from TBL_Cliente c
+	inner join TBL_Tipo_ID tp on tp.Codigo_Tipo_ID = c. Tipo_Id_Cli
+	left join TBL_EstadoCivil ec on ec.Id_EstCivil = c.Estado_Civil
+	where Cod_Cli =@id
+                    
+";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@id", idcliente);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+        public DataTable GetEmpresa(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = @"            
+            select dbo.NombreEmpleado(ee.Tipo_ID_Emp,ee.Nro_ID_Emp )nombreEmpleado, * from TBL_Empresa e
+   inner join TBL_Departamento d on d.Cod_Dept = e.Cod_Dep
+   inner join TBL_Provincia p on p.Cod_Prov = e.Cod_Prov and p.Cod_Dept = d.Cod_Dept
+   inner join TBL_Distrito dd on dd.Cod_Dist = e. Cod_Dist and p.Cod_Prov = dd.Cod_Prov and dd.Cod_Dept = d.Cod_Dept
+   left join TBL_Empleado ee on ee.Nro_ID_Emp = e.NroID_Representado and ee.Tipo_ID_Emp =e.TipoID_Representado
+   where Id_Empresa =@id
+";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@id", id);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+        public DataTable GetMoneda(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = @"            
+              select Id_Moneda,	Moneda,	NameCorto from TBL_Moneda where Id_Moneda =@id
+";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@id", id);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+        public DataTable GetNumeroDocumentoMutuo(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = @"            
+select id , concat(serie,'-', format( numero,'000000'))documento, serie, numero 
+--update c set cuo='',estado=1
+from tbl_mutuos c 
+where id = @id
+";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@id", id);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+        public bool PeriodoAbierto(int idempresa, DateTime fecha)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = @"            
+                    select* from TBL_Periodo 
+                    where Empresa = @idempresa
+                    and estado=1
+                    and Año = year(@fecha)
+                    and Mes = MONTH(@fecha)
+                    
+";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@fecha", fecha);
+                adapter.SelectCommand.Parameters.AddWithValue("@idempresa", idempresa);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable.Rows.Count > 0;
+            }
+        }
+        public DataTable GetCuentaContabledelaCuentaBancaria(int idcta)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = @"            
+                  select CC.Id_Cuenta_Contable cuenta,c.Nro_Cta cuentaBancaria
+from TBL_CtaBancaria c
+inner join TBL_Entidad_Financiera b on c.Banco = b.ID_Entidad
+inner join TBL_Moneda m on c.Moneda = m.Id_Moneda
+inner join TBL_Cuenta_Contable cc on cc.EstadoCta =1 and CtaDetalle =1
+and Cuenta_Contable like '104%'
+and Cuenta_Contable like '%' + iif(m.Id_Moneda=1,'MN','ME') + '%'
+AND Cuenta_Contable LIKE '%' +B.Sufijo +'%'
+where Id_Tipo_Cta = @idcta
+
+ORDER BY 1
+                    
+";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@idcta", idcta);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
         public object reporteRegistrosPorUsuario(DateTime fechaReportar)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -665,6 +1048,99 @@ END
         }
 
 
+        public DataTable ListarSaldodelasCuentas(int idEmpresa, DateTime date, out string result)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    string query = @"                    
+                    
+                     SELECT Empresa, max(fk_proyecto)idProyecto,min(Fecha_Asiento )FechaAsiento,max( Id_Aux)Id_Aux,max (Id_Asiento_Contable)Id_Asiento_Contable	,IdCuentaContable	,CuentaContable	,Tipo,	SubQuery.Numero,	max(Razon_Social )Razon_Social ,	IdComprobante,	Cod_Comprobante,	Num_Comprobante	,min(FechaEmision)FechaEmision,SUM(	Importe_MN)Importe_MN,SUM(	Importe_ME)Importe_ME ,MIN( Cod_Asiento_Contable)  CUO
+                          FROM (
+                                select ax.Fecha_Asiento,  ax.fk_proyecto, Id_Aux, ax.Id_Asiento_Contable, e.Empresa,a.Cuenta_Contable IdCuentaContable, c.Cuenta_Contable CuentaContable,
+                            isnull(t.Cod_Sunat ,0)Tipo,ax.Num_Doc Numero,ax.Razon_Social,ax.Id_Comprobante IdComprobante,ax.Cod_Comprobante,ax.Num_Comprobante,cast(ax.Fecha_Emision as date)FechaEmision,
+                            IIF(a.Saldo_Debe>0,1,-1)* Importe_MN Importe_MN,IIF(a.Saldo_Debe>0,1,-1)* Importe_ME Importe_ME ,Cod_Asiento_Contable
+                            from TBL_Asiento_Contable a 
+                            inner join TBL_Cuenta_Contable c on c.Id_Cuenta_Contable = a.Cuenta_Contable
+                            inner join TBL_Proyecto p on p.Id_Proyecto = a.id_proyecto and p.Id_Empresa = @empresa
+                            inner join TBL_Empresa e on e.Id_Empresa = p.Id_Empresa
+                            left join TBL_Asiento_Contable_Aux ax on ax.Id_Asiento_Contable = a.Id_Asiento_Contable 
+                                and ax.Id_Aux = a.id_Asiento 
+                                and ax.fk_proyecto = a.id_proyecto
+                                and ax.Cuenta_Contable = a.Cuenta_Contable
+                                and ax.Fecha_Asiento= CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE)
+                            left join TBL_Tipo_ID t on t.Codigo_Tipo_ID = ax.Tipo_Doc
+                       WHERE ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) >= DATEFROMPARTS(YEAR(@fecha), 1, 1)
+                                 AND ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) <  DATEADD(DAY, 1, EOMONTH(@fecha))
+
+                            and a.Estado in (1,3)
+                                and Id_Dinamica_Contable not in (-10)
+
+	                        --and Id_Dinamica_Contable not in (-30,-31)
+                            and a.Cuenta_Contable < '53'
+                        ) AS SubQuery
+                        inner join (
+                           SELECT *
+                            FROM (
+                                SELECT Numero, SUM(Importe_MN) AS TotalImporteMN,SUM(Importe_ME) AS TotalImporte_ME,Cuenta_Contable  
+                                FROM (
+                                    select isnull( ax.Num_Doc ,0) as Numero,a.Moneda,Cod_Asiento_Contable,a.Cuenta_Contable,a.Fecha_Asiento,
+                                    IIF(a.Saldo_Debe>0,1,-1)* isnull(Importe_MN,a.Saldo_Debe+a.Saldo_Haber) * iif(a.Moneda=1,1,a.tc) as Importe_MN,
+			                        IIF(a.Saldo_Debe>0,1,-1)* isnull(Importe_ME,a.Saldo_Debe+a.Saldo_Haber) / iif(a.Moneda=2,1,a.tc) as Importe_ME
+                                    from TBL_Asiento_Contable a 
+                                    inner join TBL_Cuenta_Contable c on c.Id_Cuenta_Contable = a.Cuenta_Contable
+                                    inner join TBL_Proyecto p on p.Id_Proyecto = a.id_proyecto and p.Id_Empresa = @empresa
+                                    left join TBL_Asiento_Contable_Aux ax on ax.Id_Asiento_Contable = a.Id_Asiento_Contable 
+                                        and ax.Id_Aux = a.id_Asiento 
+                                        and ax.fk_proyecto = a.id_proyecto
+                                        and ax.Cuenta_Contable = a.Cuenta_Contable
+                                        and ax.Fecha_Asiento= CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE)
+               
+                                    where a.Estado in (1,3) 
+                                        and Id_Dinamica_Contable not in (-10)-- and Id_Dinamica_Contable not in (-30,-31)
+                                    and a.Cuenta_Contable < '53'
+			                        AND ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) >= DATEFROMPARTS(YEAR(@fecha), 1, 1)
+                                 AND ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) <  DATEADD(DAY, 1, EOMONTH(@fecha))
+                                ) AS InnerSubQuery
+  
+	                         GROUP BY Numero,Cuenta_Contable 
+		                           --having SUM(Importe_MN) <> 0 and SUM(Importe_ME) <> 0  
+                            ) AS SumQuery
+	                           where TotalImporteMN + TotalImporte_ME <> 0 
+   
+   
+                        ) as SumQuery
+                           on  SumQuery.Numero = SubQuery.Numero and SumQuery.Cuenta_Contable = SubQuery.IdCuentaContable
+
+                           group by Empresa	,IdCuentaContable	,CuentaContable	,Tipo,	SubQuery.Numero,	IdComprobante,	Cod_Comprobante,	Num_Comprobante
+
+                           having SUM(	Importe_MN) <> 0 --+ SUM(	Importe_ME) <> 0  
+
+                          order by IdCuentaContable, Numero,Cod_Comprobante,Num_Comprobante
+                    ";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    adapter.SelectCommand.Parameters.AddWithValue("@empresa", idEmpresa);
+                    adapter.SelectCommand.Parameters.AddWithValue("@fecha", date);
+
+                    adapter.SelectCommand.CommandTimeout = 60;
+                    adapter.Fill(dataTable);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+                return dataTable;
+            }
+            result = string.Empty;
+            return dataTable;
+        }
+
         public DataTable ListarSaldodelasCuentas(int idEmpresa, string cuentas, DateTime date, out string result)
         {
             DataTable dataTable = new DataTable();
@@ -758,6 +1234,7 @@ END
             result = string.Empty;
             return dataTable;
         }
+
 
         // Obtener registros con número 0 y descripción "ninguno" y luego todos los datos como DataTable
         public DataTable GetAllWithDefaultAsDataTable30Sunat()

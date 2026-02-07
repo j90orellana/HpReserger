@@ -175,18 +175,18 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem13});
-            this.layoutControl1.Location = new System.Drawing.Point(0, 22);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 20);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-880, 164, 650, 588);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(741, 372);
+            this.layoutControl1.Size = new System.Drawing.Size(741, 374);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // btnSubirSustento
             // 
             this.btnSubirSustento.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirSustento.ImageOptions.Image")));
-            this.btnSubirSustento.Location = new System.Drawing.Point(12, 294);
+            this.btnSubirSustento.Location = new System.Drawing.Point(12, 309);
             this.btnSubirSustento.Name = "btnSubirSustento";
             this.btnSubirSustento.Size = new System.Drawing.Size(113, 22);
             this.btnSubirSustento.StyleController = this.layoutControl1;
@@ -197,7 +197,7 @@
             // btnDescargar
             // 
             this.btnDescargar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDescargar.ImageOptions.Image")));
-            this.btnDescargar.Location = new System.Drawing.Point(127, 270);
+            this.btnDescargar.Location = new System.Drawing.Point(127, 285);
             this.btnDescargar.Name = "btnDescargar";
             this.btnDescargar.Size = new System.Drawing.Size(114, 22);
             this.btnDescargar.StyleController = this.layoutControl1;
@@ -209,7 +209,7 @@
             // btnSubirDocumento
             // 
             this.btnSubirDocumento.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirDocumento.ImageOptions.Image")));
-            this.btnSubirDocumento.Location = new System.Drawing.Point(12, 270);
+            this.btnSubirDocumento.Location = new System.Drawing.Point(12, 285);
             this.btnSubirDocumento.Name = "btnSubirDocumento";
             this.btnSubirDocumento.Size = new System.Drawing.Size(113, 22);
             this.btnSubirDocumento.StyleController = this.layoutControl1;
@@ -219,7 +219,7 @@
             // 
             // pbFotoFactura
             // 
-            this.pbFotoFactura.Location = new System.Drawing.Point(564, 160);
+            this.pbFotoFactura.Location = new System.Drawing.Point(564, 175);
             this.pbFotoFactura.Name = "pbFotoFactura";
             this.pbFotoFactura.Properties.PictureStoreMode = DevExpress.XtraEditors.Controls.PictureStoreMode.ByteArray;
             this.pbFotoFactura.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -232,7 +232,7 @@
             // cboPartida
             // 
             this.cboPartida.EditValue = "[Selecciones Partida]";
-            this.cboPartida.Location = new System.Drawing.Point(109, 248);
+            this.cboPartida.Location = new System.Drawing.Point(109, 263);
             this.cboPartida.Name = "cboPartida";
             this.cboPartida.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -251,7 +251,7 @@
             // 
             // txtGlosa
             // 
-            this.txtGlosa.Location = new System.Drawing.Point(109, 226);
+            this.txtGlosa.Location = new System.Drawing.Point(109, 241);
             this.txtGlosa.Name = "txtGlosa";
             this.txtGlosa.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtGlosa.Size = new System.Drawing.Size(453, 20);
@@ -260,7 +260,7 @@
             // 
             // txtMonto
             // 
-            this.txtMonto.Location = new System.Drawing.Point(385, 204);
+            this.txtMonto.Location = new System.Drawing.Point(385, 219);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Properties.DisplayFormat.FormatString = "n2";
             this.txtMonto.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -275,7 +275,7 @@
             // 
             // txtNumeroComprobante
             // 
-            this.txtNumeroComprobante.Location = new System.Drawing.Point(385, 182);
+            this.txtNumeroComprobante.Location = new System.Drawing.Point(385, 197);
             this.txtNumeroComprobante.Name = "txtNumeroComprobante";
             this.txtNumeroComprobante.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNumeroComprobante.Size = new System.Drawing.Size(177, 20);
@@ -284,7 +284,7 @@
             // 
             // txtSerie
             // 
-            this.txtSerie.Location = new System.Drawing.Point(109, 182);
+            this.txtSerie.Location = new System.Drawing.Point(109, 197);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSerie.Size = new System.Drawing.Size(177, 20);
@@ -293,7 +293,7 @@
             // 
             // cboTipoDocumento
             // 
-            this.cboTipoDocumento.Location = new System.Drawing.Point(109, 160);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(109, 175);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -314,7 +314,7 @@
             // dtpFechaEmision
             // 
             this.dtpFechaEmision.EditValue = new System.DateTime(2025, 11, 28, 22, 4, 16, 77);
-            this.dtpFechaEmision.Location = new System.Drawing.Point(109, 138);
+            this.dtpFechaEmision.Location = new System.Drawing.Point(109, 153);
             this.dtpFechaEmision.Name = "dtpFechaEmision";
             this.dtpFechaEmision.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -327,7 +327,7 @@
             // 
             // cboProveedor
             // 
-            this.cboProveedor.Location = new System.Drawing.Point(109, 92);
+            this.cboProveedor.Location = new System.Drawing.Point(109, 102);
             this.cboProveedor.Name = "cboProveedor";
             this.cboProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -348,7 +348,7 @@
             // cboEmpresa
             // 
             this.cboEmpresa.EditValue = "[Seleccione Empresa]";
-            this.cboEmpresa.Location = new System.Drawing.Point(109, 24);
+            this.cboEmpresa.Location = new System.Drawing.Point(109, 29);
             this.cboEmpresa.Name = "cboEmpresa";
             this.cboEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -362,7 +362,7 @@
             // cboProyecto
             // 
             this.cboProyecto.EditValue = "";
-            this.cboProyecto.Location = new System.Drawing.Point(109, 46);
+            this.cboProyecto.Location = new System.Drawing.Point(109, 51);
             this.cboProyecto.Name = "cboProyecto";
             this.cboProyecto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -376,7 +376,7 @@
             // cboEtapa
             // 
             this.cboEtapa.EditValue = "";
-            this.cboEtapa.Location = new System.Drawing.Point(384, 46);
+            this.cboEtapa.Location = new System.Drawing.Point(384, 51);
             this.cboEtapa.Name = "cboEtapa";
             this.cboEtapa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -388,7 +388,7 @@
             // 
             // cboMoneda
             // 
-            this.cboMoneda.Location = new System.Drawing.Point(109, 204);
+            this.cboMoneda.Location = new System.Drawing.Point(109, 219);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -401,7 +401,7 @@
             // dtpfechaVencimiento
             // 
             this.dtpfechaVencimiento.EditValue = new System.DateTime(2025, 11, 28, 22, 4, 16, 77);
-            this.dtpfechaVencimiento.Location = new System.Drawing.Point(307, 138);
+            this.dtpfechaVencimiento.Location = new System.Drawing.Point(307, 153);
             this.dtpfechaVencimiento.Name = "dtpfechaVencimiento";
             this.dtpfechaVencimiento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -428,7 +428,7 @@
             this.layoutControlGroup2,
             this.layoutControlGroup3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(741, 372);
+            this.Root.Size = new System.Drawing.Size(741, 374);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -441,7 +441,7 @@
             this.emptySpaceItem9});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(731, 68);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(731, 73);
             this.layoutControlGroup1.Text = "Datos de la Empresa";
             // 
             // layoutControlItem1
@@ -498,9 +498,9 @@
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem4,
             this.emptySpaceItem3});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 68);
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 73);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(731, 46);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(731, 51);
             this.layoutControlGroup2.Text = "Datos del Proveedor";
             // 
             // layoutControlItem4
@@ -548,9 +548,9 @@
             this.layoutControlItem17,
             this.emptySpaceItem12,
             this.layoutControlItem18});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 114);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 124);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(731, 248);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(731, 240);
             this.layoutControlGroup3.Text = "Datos del Comprobante de Pago";
             // 
             // emptySpaceItem4
@@ -658,7 +658,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 180);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(719, 44);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(719, 31);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem6
@@ -863,7 +863,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(741, 22);
+            this.barDockControlTop.Size = new System.Drawing.Size(741, 20);
             // 
             // barDockControlBottom
             // 
@@ -877,17 +877,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 372);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 374);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(741, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(741, 20);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 372);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 374);
             // 
             // frmComprobantesComprasDirectas
             // 

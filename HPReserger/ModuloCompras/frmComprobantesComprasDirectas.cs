@@ -646,5 +646,6 @@ namespace SISGEM.ModuloCompras
                 //XtraMessageBox.Show("Archivo subido correctamente.");
             }
         }
+         
     }
 }

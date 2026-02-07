@@ -1,6 +1,6 @@
-﻿namespace SISGEM.ModuloCompras
+﻿namespace SISGEM.ModuloFinanzas
 {
-    partial class frmListadoRendiciones
+    partial class frmListadoMutuos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListadoRendiciones));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListadoMutuos));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.btnBuscar = new DevExpress.XtraBars.BarButtonItem();
-            this.btnVer = new DevExpress.XtraBars.BarButtonItem();
-            this.btnExportarPDF = new DevExpress.XtraBars.BarButtonItem();
             this.btnAgruparEmpresa = new DevExpress.XtraBars.BarButtonItem();
             this.btnAgruparProveedor = new DevExpress.XtraBars.BarButtonItem();
             this.btnAgruparEstado = new DevExpress.XtraBars.BarButtonItem();
@@ -49,7 +47,9 @@
             this.btnExcel = new DevExpress.XtraBars.BarButtonItem();
             this.btnAgruparxMes = new DevExpress.XtraBars.BarButtonItem();
             this.btnDesagruparGrupos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnExportarPDF = new DevExpress.XtraBars.BarButtonItem();
             this.bntEliminar = new DevExpress.XtraBars.BarButtonItem();
+            this.btnVer = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -63,15 +63,12 @@
             this.xMoneda = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xNEstado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xglosa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dtpfecha = new DevExpress.XtraEditors.DateEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.btnFiltrar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnFiltrar1 = new DevExpress.XtraEditors.SimpleButton();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -81,9 +78,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpfecha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -123,8 +120,6 @@
             this.bar4.FloatSize = new System.Drawing.Size(169, 44);
             this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBuscar, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnVer, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExportarPDF, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAgruparEmpresa, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAgruparProveedor, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAgruparEstado, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -146,24 +141,6 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscar_ItemClick);
             // 
-            // btnVer
-            // 
-            this.btnVer.Caption = "Ver Rendición";
-            this.btnVer.Id = 17;
-            this.btnVer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVer.ImageOptions.Image")));
-            this.btnVer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVer.ImageOptions.LargeImage")));
-            this.btnVer.Name = "btnVer";
-            this.btnVer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVer_ItemClick);
-            // 
-            // btnExportarPDF
-            // 
-            this.btnExportarPDF.Caption = "Exportar PDF";
-            this.btnExportarPDF.Id = 15;
-            this.btnExportarPDF.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarPDF.ImageOptions.Image")));
-            this.btnExportarPDF.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnExportarPDF.ImageOptions.LargeImage")));
-            this.btnExportarPDF.Name = "btnExportarPDF";
-            this.btnExportarPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportarPDF_ItemClick);
-            // 
             // btnAgruparEmpresa
             // 
             this.btnAgruparEmpresa.Caption = "Agrupar Empresas";
@@ -175,7 +152,7 @@
             // 
             // btnAgruparProveedor
             // 
-            this.btnAgruparProveedor.Caption = "Agrupar Empleado";
+            this.btnAgruparProveedor.Caption = "Agrupar Cliente";
             this.btnAgruparProveedor.Id = 10;
             this.btnAgruparProveedor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAgruparProveedor.ImageOptions.Image")));
             this.btnAgruparProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgruparProveedor.ImageOptions.LargeImage")));
@@ -224,15 +201,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1148, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1020, 20);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 490);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 502);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1148, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1020, 0);
             // 
             // barDockControlLeft
             // 
@@ -240,15 +217,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 470);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 482);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1148, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1020, 20);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 470);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 482);
             // 
             // btnRefrescar
             // 
@@ -283,6 +260,14 @@
             this.btnDesagruparGrupos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDesagruparGrupos.ImageOptions.LargeImage")));
             this.btnDesagruparGrupos.Name = "btnDesagruparGrupos";
             // 
+            // btnExportarPDF
+            // 
+            this.btnExportarPDF.Caption = "Exportar PDF";
+            this.btnExportarPDF.Id = 15;
+            this.btnExportarPDF.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarPDF.ImageOptions.Image")));
+            this.btnExportarPDF.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnExportarPDF.ImageOptions.LargeImage")));
+            this.btnExportarPDF.Name = "btnExportarPDF";
+            // 
             // bntEliminar
             // 
             this.bntEliminar.Caption = "Anular";
@@ -290,6 +275,14 @@
             this.bntEliminar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bntEliminar.ImageOptions.Image")));
             this.bntEliminar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bntEliminar.ImageOptions.LargeImage")));
             this.bntEliminar.Name = "bntEliminar";
+            // 
+            // btnVer
+            // 
+            this.btnVer.Caption = "Ver Rendición";
+            this.btnVer.Id = 17;
+            this.btnVer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVer.ImageOptions.Image")));
+            this.btnVer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVer.ImageOptions.LargeImage")));
+            this.btnVer.Name = "btnVer";
             // 
             // layoutControl1
             // 
@@ -299,9 +292,8 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 20);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-650, 258, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1148, 470);
+            this.layoutControl1.Size = new System.Drawing.Size(1020, 482);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -312,7 +304,7 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(52, 22);
             this.simpleButton1.StyleController = this.layoutControl1;
-            this.simpleButton1.TabIndex = 24;
+            this.simpleButton1.TabIndex = 25;
             this.simpleButton1.Text = "Listar";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
@@ -321,8 +313,8 @@
             this.gridControl1.Location = new System.Drawing.Point(6, 30);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1136, 434);
-            this.gridControl1.TabIndex = 22;
+            this.gridControl1.Size = new System.Drawing.Size(1008, 446);
+            this.gridControl1.TabIndex = 23;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -337,8 +329,7 @@
             this.xFechaEmision,
             this.xMoneda,
             this.xTotal,
-            this.xNEstado,
-            this.xglosa});
+            this.xNEstado});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -381,7 +372,6 @@
             this.xEmpresa.GroupInterval = DevExpress.XtraGrid.ColumnGroupInterval.DisplayText;
             this.xEmpresa.MinWidth = 10;
             this.xEmpresa.Name = "xEmpresa";
-            this.xEmpresa.OptionsColumn.AllowEdit = false;
             this.xEmpresa.OptionsColumn.ReadOnly = true;
             this.xEmpresa.SortMode = DevExpress.XtraGrid.ColumnSortMode.DisplayText;
             this.xEmpresa.Visible = true;
@@ -391,7 +381,7 @@
             // xnumeroDni
             // 
             this.xnumeroDni.Caption = "Doc";
-            this.xnumeroDni.FieldName = "numeroDni";
+            this.xnumeroDni.FieldName = "numDoc";
             this.xnumeroDni.MaxWidth = 100;
             this.xnumeroDni.MinWidth = 80;
             this.xnumeroDni.Name = "xnumeroDni";
@@ -405,10 +395,9 @@
             // xnombreEmpleado
             // 
             this.xnombreEmpleado.Caption = "Nombre Empleado";
-            this.xnombreEmpleado.FieldName = "nombreEmpleado";
+            this.xnombreEmpleado.FieldName = "cliente";
             this.xnombreEmpleado.MinWidth = 120;
             this.xnombreEmpleado.Name = "xnombreEmpleado";
-            this.xnombreEmpleado.OptionsColumn.AllowEdit = false;
             this.xnombreEmpleado.OptionsColumn.ReadOnly = true;
             this.xnombreEmpleado.Visible = true;
             this.xnombreEmpleado.VisibleIndex = 2;
@@ -417,14 +406,14 @@
             // xcorrelativo
             // 
             this.xcorrelativo.Caption = "Numero";
-            this.xcorrelativo.FieldName = "correlativo";
-            this.xcorrelativo.MaxWidth = 65;
-            this.xcorrelativo.MinWidth = 65;
+            this.xcorrelativo.FieldName = "numero";
+            this.xcorrelativo.MaxWidth = 100;
+            this.xcorrelativo.MinWidth = 100;
             this.xcorrelativo.Name = "xcorrelativo";
             this.xcorrelativo.OptionsColumn.ReadOnly = true;
             this.xcorrelativo.Visible = true;
             this.xcorrelativo.VisibleIndex = 3;
-            this.xcorrelativo.Width = 65;
+            this.xcorrelativo.Width = 100;
             // 
             // xFechaEmision
             // 
@@ -467,11 +456,7 @@
             this.xTotal.OptionsColumn.AllowEdit = false;
             this.xTotal.OptionsColumn.ReadOnly = true;
             this.xTotal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:n2}", new decimal(new int[] {
-                            0,
-                            0,
-                            0,
-                            0}))});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "total", "{0:n2}")});
             this.xTotal.Visible = true;
             this.xTotal.VisibleIndex = 6;
             this.xTotal.Width = 99;
@@ -489,21 +474,10 @@
             this.xNEstado.VisibleIndex = 7;
             this.xNEstado.Width = 60;
             // 
-            // xglosa
-            // 
-            this.xglosa.Caption = "Glosa";
-            this.xglosa.FieldName = "glosa";
-            this.xglosa.MinWidth = 100;
-            this.xglosa.Name = "xglosa";
-            this.xglosa.OptionsColumn.ReadOnly = true;
-            this.xglosa.Visible = true;
-            this.xglosa.VisibleIndex = 8;
-            this.xglosa.Width = 100;
-            // 
             // dtpfecha
             // 
             this.dtpfecha.EditValue = null;
-            this.dtpfecha.Location = new System.Drawing.Point(69, 6);
+            this.dtpfecha.Location = new System.Drawing.Point(45, 6);
             this.dtpfecha.Name = "dtpfecha";
             this.dtpfecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -513,7 +487,7 @@
             this.dtpfecha.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtpfecha.Properties.Mask.EditMask = "yyyy";
             this.dtpfecha.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
-            this.dtpfecha.Size = new System.Drawing.Size(105, 20);
+            this.dtpfecha.Size = new System.Drawing.Size(129, 20);
             this.dtpfecha.StyleController = this.layoutControl1;
             this.dtpfecha.TabIndex = 22;
             // 
@@ -523,11 +497,11 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
-            this.layoutControlItem3,
             this.layoutControlItem2,
-            this.emptySpaceItem2});
+            this.emptySpaceItem1,
+            this.layoutControlItem3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1148, 470);
+            this.Root.Size = new System.Drawing.Size(1020, 482);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -535,76 +509,58 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1138, 436);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1010, 448);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.simpleButton1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(170, 0);
-            this.layoutControlItem3.MaxSize = new System.Drawing.Size(54, 24);
-            this.layoutControlItem3.MinSize = new System.Drawing.Size(54, 24);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(54, 24);
-            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.dtpfecha;
-            this.layoutControlItem2.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem2.CustomizationFormText = "Fecha Hasta";
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem2.MaxSize = new System.Drawing.Size(170, 24);
-            this.layoutControlItem2.MinSize = new System.Drawing.Size(170, 24);
+            this.layoutControlItem2.Control = this.simpleButton1;
+            this.layoutControlItem2.Location = new System.Drawing.Point(170, 0);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(54, 24);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(54, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(170, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(54, 24);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem2.Text = "Fecha Hasta";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
             // 
-            // emptySpaceItem2
+            // emptySpaceItem1
             // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(224, 0);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(914, 24);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(224, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(786, 24);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // btnFiltrar
+            // layoutControlItem3
             // 
-            this.btnFiltrar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.ImageOptions.Image")));
-            this.btnFiltrar.Location = new System.Drawing.Point(176, 6);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(52, 22);
-            this.btnFiltrar.TabIndex = 23;
-            this.btnFiltrar.Text = "Listar";
+            this.layoutControlItem3.Control = this.dtpfecha;
+            this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem3.CustomizationFormText = "Fecha Hasta";
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(170, 24);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(170, 24);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(170, 24);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem3.Text = "Periodo";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(36, 13);
             // 
-            // btnFiltrar1
-            // 
-            this.btnFiltrar1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar1.ImageOptions.Image")));
-            this.btnFiltrar1.Location = new System.Drawing.Point(176, 6);
-            this.btnFiltrar1.Name = "btnFiltrar1";
-            this.btnFiltrar1.Size = new System.Drawing.Size(52, 22);
-            this.btnFiltrar1.TabIndex = 23;
-            this.btnFiltrar1.Text = "Listar";
-            // 
-            // frmListadoRendiciones
+            // frmListadoMutuos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 490);
+            this.ClientSize = new System.Drawing.Size(1020, 502);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("frmListadoRendiciones.IconOptions.Icon")));
-            this.Name = "frmListadoRendiciones";
-            this.Text = "Listado Rendciones de Reembolsos";
-            this.Load += new System.EventHandler(this.frmListadoRendiciones_Load);
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("frmListadoMutuos.IconOptions.Icon")));
+            this.Name = "frmListadoMutuos";
+            this.Text = "Listado de Mutuos";
+            this.Load += new System.EventHandler(this.frmListadoMutuos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -614,9 +570,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpfecha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -628,8 +584,6 @@
         private DevExpress.XtraBars.Bar bar4;
         private DevExpress.XtraBars.BarButtonItem btnBuscar;
         private DevExpress.XtraBars.BarButtonItem btnVer;
-        private DevExpress.XtraBars.BarButtonItem bntEliminar;
-        private DevExpress.XtraBars.BarButtonItem btnExcel;
         private DevExpress.XtraBars.BarButtonItem btnExportarPDF;
         private DevExpress.XtraBars.BarButtonItem btnAgruparEmpresa;
         private DevExpress.XtraBars.BarButtonItem btnAgruparProveedor;
@@ -642,8 +596,10 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem btnRefrescar;
+        private DevExpress.XtraBars.BarButtonItem btnExcel;
         private DevExpress.XtraBars.BarButtonItem btnAgruparxMes;
         private DevExpress.XtraBars.BarButtonItem btnDesagruparGrupos;
+        private DevExpress.XtraBars.BarButtonItem bntEliminar;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraGrid.GridControl gridControl1;
@@ -658,13 +614,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn xTotal;
         private DevExpress.XtraGrid.Columns.GridColumn xNEstado;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
-        private DevExpress.XtraEditors.DateEdit dtpfecha;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraEditors.SimpleButton btnFiltrar;
-        private DevExpress.XtraEditors.SimpleButton btnFiltrar1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraEditors.DateEdit dtpfecha;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraGrid.Columns.GridColumn xglosa;
     }
 }

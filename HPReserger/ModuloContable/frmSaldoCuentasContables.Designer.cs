@@ -80,6 +80,8 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
+            this.btnGenerarTodaslasCuentas = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -99,10 +101,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.btnGenerarTodaslasCuentas);
             this.dataLayoutControl1.Controls.Add(this.gridControl1);
             this.dataLayoutControl1.Controls.Add(this.dtpfecha);
             this.dataLayoutControl1.Controls.Add(this.btnGenerar);
@@ -170,6 +174,7 @@
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Max, "IdCuentaContable", this.xCuentaContable, "TOTAL CUENTA :{0}", "")});
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView1.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsFind.AlwaysVisible = true;
             this.gridView1.OptionsFind.FindNullPrompt = "Ingrese Texto a Buscar";
             this.gridView1.OptionsSelection.MultiSelect = true;
@@ -578,10 +583,11 @@
             this.layoutControlItem2,
             this.emptySpaceItem1,
             this.layoutControlItem1,
-            this.emptySpaceItem2,
             this.layoutControlItem3,
             this.layoutControlItem4,
-            this.layoutControlItem5});
+            this.layoutControlItem5,
+            this.layoutControlItem6,
+            this.emptySpaceItem2});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1103, 486);
             this.layoutControlGroup1.TextVisible = false;
@@ -628,7 +634,7 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(547, 22);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(546, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(388, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
@@ -706,6 +712,29 @@
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Menú principal";
             // 
+            // btnGenerarTodaslasCuentas
+            // 
+            this.btnGenerarTodaslasCuentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnGenerarTodaslasCuentas.Location = new System.Drawing.Point(941, 28);
+            this.btnGenerarTodaslasCuentas.Name = "btnGenerarTodaslasCuentas";
+            this.btnGenerarTodaslasCuentas.Size = new System.Drawing.Size(156, 22);
+            this.btnGenerarTodaslasCuentas.StyleController = this.dataLayoutControl1;
+            this.btnGenerarTodaslasCuentas.TabIndex = 20;
+            this.btnGenerarTodaslasCuentas.Text = "Generar Todas las Cuentas";
+            this.btnGenerarTodaslasCuentas.Click += new System.EventHandler(this.btnGenerarTodaslasCuentas_Click);
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.btnGenerarTodaslasCuentas;
+            this.layoutControlItem6.Location = new System.Drawing.Point(935, 22);
+            this.layoutControlItem6.MaxSize = new System.Drawing.Size(158, 24);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(158, 24);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(158, 24);
+            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
             // frmSaldoCuentasContables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -740,6 +769,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -796,5 +826,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn xId_Asiento_Contable;
         private DevExpress.XtraGrid.Columns.GridColumn xidProyecto;
         private DevExpress.XtraGrid.Columns.GridColumn xFechaAsiento;
+        private DevExpress.XtraEditors.SimpleButton btnGenerarTodaslasCuentas;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

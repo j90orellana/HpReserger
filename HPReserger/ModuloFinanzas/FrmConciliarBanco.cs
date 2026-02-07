@@ -288,7 +288,7 @@ namespace HPReserger.ModuloFinanzas
         }
         private Boolean FormatearlaTabla(int Banco)
         {
-            if (CodSunat == 1) //Banco BCP
+            if (CodSunat == 2) //Banco BCP
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -367,7 +367,7 @@ namespace HPReserger.ModuloFinanzas
                     item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 3) // para el banco continental
+            else if (CodSunat == 11) // para el banco continental
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
@@ -407,7 +407,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 2) // Banco ScotiaBank
+            else if (CodSunat == 9) // Banco ScotiaBank
             {
                 try
                 {
@@ -454,7 +454,7 @@ namespace HPReserger.ModuloFinanzas
                 //    item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 5) //Banco de la Nacion
+            else if (CodSunat == 18) //Banco de la Nacion
             {
                 int PosDelete = 7, i = 0;
                 foreach (DataRow item in TdatosExcel.Rows)
@@ -498,7 +498,7 @@ namespace HPReserger.ModuloFinanzas
 
                 return true;
             }
-            else if (CodSunat == 8) //Banco banbif
+            else if (CodSunat == 38) //Banco banbif
             {
 
                 TdatosExcel.Columns[0].ColumnName = "Fecha";
@@ -550,7 +550,7 @@ namespace HPReserger.ModuloFinanzas
         decimal EstadoCuenta = 0;
         private Boolean ProcesodeAnalisis(int pkBanco, string nroCuenta)
         {
-            if (CodSunat == 1) //Banco BCP
+            if (CodSunat == 2) //Banco BCP
             {
                 //validamos Que pertenezca ala misma cuenta
                 if (TdatosExcel.Columns.Count < 11 || TdatosExcel.Columns.Count > 12)
@@ -635,7 +635,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (CodSunat == 3) //BBVA continental
+            else if (CodSunat == 11) //BBVA continental
             {
                 if (TdatosExcel.Columns.Count != 7)
                 {
@@ -690,7 +690,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (CodSunat == 2)//ScotiaBank
+            else if (CodSunat == 9)//ScotiaBank
             {
                 if (TdatosExcel.Columns.Count != 17)
                 {
@@ -743,7 +743,7 @@ namespace HPReserger.ModuloFinanzas
                 }
                 return true;
             }
-            else if (CodSunat == 5)// Banco de la Nacion
+            else if (CodSunat == 18)// Banco de la Nacion
             {
                 if (TdatosExcel.Columns.Count <= 5)
                 {
@@ -792,7 +792,7 @@ namespace HPReserger.ModuloFinanzas
                         else item.Delete();
                     }
                 }
-                if (CodSunat == 5 && c == 18)//banco de la nacion
+                if (CodSunat == 18 && c == 18)//banco de la nacion
                 {
                     FechaMin = FechaMax = DateTime.Parse(TdatosExcel.Rows[3][5].ToString());
                 }
@@ -806,7 +806,7 @@ namespace HPReserger.ModuloFinanzas
 
                 return true;
             }
-            else if (CodSunat == 8) //banbif
+            else if (CodSunat == 38) //banbif
             {
                 string ruta = txtRutaExcel.Text;
                 string nombreArchivo = Path.GetFileName(ruta);
@@ -1711,7 +1711,7 @@ namespace HPReserger.ModuloFinanzas
         private bool FormatearlaTablaVacia(int Banco)
         {
 
-            if (CodSunat == 1) //Banco BCP
+            if (CodSunat == 2) //Banco BCP
             {
                 TdatosExcel.Columns.Add("Fecha", typeof(DateTime));
 
@@ -1780,7 +1780,7 @@ namespace HPReserger.ModuloFinanzas
                     item["monto"] = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(item["monto"].ToString(), ' ');
                 return true;
             }
-            else if (CodSunat == 3) // para el banco continental
+            else if (CodSunat == 11) // para el banco continental
             {
                 foreach (DataRow item in TdatosExcel.Rows)
                 {

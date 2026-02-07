@@ -267,6 +267,7 @@ namespace HPResergerCapaLogica.Finanzas
                     LEFT JOIN TBL_Usuario u1 ON p.IdUsuarioCreador = u1.Codigo_User
                     LEFT JOIN TBL_Usuario u2 ON p.IdUsuarioPagador = u2.Codigo_User
                         WHERE Fecha_Pago BETWEEN @FechaDesde AND @FechaHasta
+                        and p.estado !=-1   
                             ORDER BY Fecha_Pago DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);

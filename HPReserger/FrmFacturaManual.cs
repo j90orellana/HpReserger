@@ -51,6 +51,8 @@ namespace HPReserger
         public bool RomperMasivo = false;
         bool trabajarconPartidas = false;
 
+        DataTable Tusuarios;
+
         private void FrmFacturaManual_Load(object sender, EventArgs e)
         {
             var configuracionEmpresa = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
@@ -68,6 +70,9 @@ namespace HPReserger
             cbograba.SelectedIndex = 0;
             ModoEdicion(false);
             LimpiarBusquedas();
+
+            HPResergerCapaLogica.Mantenimiento.Empresa cClase = new HPResergerCapaLogica.Mantenimiento.Empresa();
+            Tusuarios = cClase.GetUsuarios();
 
             CargarPresupuetos();
             CargarDatos();
@@ -965,9 +970,15 @@ namespace HPReserger
             ///semantiene la misma empresa
             ///
 
-
             if (_EmpresaNecesitaTabla30Bienes)
             {
+                // Validar que el combo tenga valor seleccionado
+                if (cboClasifBssYSss.EditValue == null || cboClasifBssYSss.EditValue.ToString() == string.Empty)
+                {
+                    MessageBox.Show("Debe seleccionar valores del Clasif de Bss y Sss", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 HPResergerCapaLogica.Contable.ClaseContable oclase = new HPResergerCapaLogica.Contable.ClaseContable();
                 oclase.UpdateOrInsertRelacion(_idFac, (int)cboClasifBssYSss.EditValue);
             }
@@ -1092,19 +1103,30 @@ namespace HPReserger
                 //////ACTUALIZANDO LA FACTURA  
                 Boolean ResultOld = ListaIdNotas.Contains(OldIdComprobanteSelect);
                 Boolean ResultNew = ListaIdNotas.Contains((int)cbotipodoc.SelectedValue);
+
+                int EstadoDocumento = 0;
+                if (compensada) EstadoDocumento = 3;
+                else if (FacturaEstado == 2 & OpcionBusqueda == 1) EstadoDocumento = 2;
+                else if (NotasEstado == 2 & OpcionBusqueda != 1) EstadoDocumento = 2;
+                else EstadoDocumento = FacturaEstado;
+
                 if (ResultOld != ResultNew)
                 {
                     //Elimino la Cabecera Anterior
                     CapaLogica.FacturaManualCabeceraRemover((int)dtgBusqueda[yid.Name, dtgBusqueda.CurrentRow.Index].Value, ResultOld ? 300 : 3);
                     //Inserto un Nuevo Registro
                     CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
-                        decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, OpcionBusqueda == 1 ? compensada ? 3 : FacturaEstado : NotasEstado == 2 ? 2 : compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
+                        decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value,
+                       EstadoDocumento
+                        , 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
                         decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), usuarioCreador, DatosCompensacion, ActivoFijo == 2 ? 2 : chkActivoFijo.Checked ? 1 : 0);
 
                 }
                 else
                     CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 2 : 200, _idFac, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
-                        decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, OpcionBusqueda == 1 ? compensada ? 3 : FacturaEstado : NotasEstado == 2 ? 2 : compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
+                        decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value,
+                        EstadoDocumento
+                        , 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
                         decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), usuarioCreador, DatosCompensacion, ActivoFijo == 2 ? 2 : chkActivoFijo.Checked ? 1 : 0);
 
                 ///BORRAMOS LOS DATOS ANTERIOES
@@ -1263,6 +1285,8 @@ namespace HPReserger
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
+            lblCreador.Text = HPReserger.frmLogin.LoginUser;
+
             //_IndicadorColumna = dtgBusqueda.CurrentCell == null ? 6 : dtgBusqueda.CurrentCell.ColumnIndex;
             if (dtgBusqueda.CurrentCell != null)
             {
@@ -1416,11 +1440,13 @@ namespace HPReserger
             btnFacturaPagada.Enabled = false;
             btnQuitarPago.Enabled = false;
 
+            lblCreador.Text = HPReserger.frmLogin.LoginUser;
+
             if (x >= 0)
             {
                 btnFacturaPagada.Enabled = true;
                 btnQuitarPago.Enabled = true;
-                
+
                 DataGridViewRow R = dtgBusqueda.Rows[x];
                 _idFac = (int)R.Cells[yid.Name].Value;
                 _idComprobante = (int)R.Cells[yIdComprobante.Name].Value;
@@ -1554,7 +1580,14 @@ namespace HPReserger
                 else
                     chkIGV.Checked = false;
 
-                usuarioCreador = (int)R.Cells[yUsuario.Name].Value;
+                usuarioCreador = Convert.ToInt32(R.Cells[yUsuario.Name].Value);
+                DataRow[] filas = Tusuarios.Select($"Id = {usuarioCreador}");
+                if (filas.Length == 0)
+                {
+                    lblCreador.Text = HPReserger.frmLogin.LoginUser;
+                }
+                else
+                    lblCreador.Text = filas[0]["Usuario"].ToString();
 
                 //BUSCAMOS LOS DATOS DE ADICIONALES
                 if (_EmpresaNecesitaTabla30Bienes)
@@ -1914,6 +1947,16 @@ namespace HPReserger
                 decimal conme = 0, conmn = 0;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
+                    // Validar nulos o vacíos en los importes
+                    if (item.Cells[xImporteME.Name].Value == null || item.Cells[xImporteMN.Name].Value == null ||
+                        item.Cells[xImporteME.Name].Value.ToString() == "" || item.Cells[xImporteMN.Name].Value.ToString() == "")
+                    {
+                        // Aquí haces el return que pediste
+                        MessageBox.Show("Debe ingresar los importes de las cuentas contables.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+
                     if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "D")
                     {
                         //conme += Redondear(decimal.Parse(((decimal)item.Cells[xImporteME.Name].Value).ToString("n2")));

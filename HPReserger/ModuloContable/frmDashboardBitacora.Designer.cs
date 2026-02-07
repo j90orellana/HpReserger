@@ -34,20 +34,20 @@ namespace SISGEM.ModuloContable
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashboardBitacora));
             this.dashboardViewer1 = new DevExpress.DashboardWin.DashboardViewer(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.dtpfecha = new DevExpress.XtraEditors.DateEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dtpfecha = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardViewer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpfecha.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpfecha.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
@@ -55,10 +55,10 @@ namespace SISGEM.ModuloContable
             // 
             // dashboardViewer1
             // 
-            this.dashboardViewer1.DashboardSource = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Bitacora de Usuarios en Barras partidas.xml");
-
             this.dashboardViewer1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
             this.dashboardViewer1.Appearance.Options.UseBackColor = true;
+            this.dashboardViewer1.DashboardSource = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\Bita" +
+    "cora de Usuarios en Barras partidas.xml";
             this.dashboardViewer1.Location = new System.Drawing.Point(6, 30);
             this.dashboardViewer1.Name = "dashboardViewer1";
             this.dashboardViewer1.Size = new System.Drawing.Size(657, 427);
@@ -77,6 +77,34 @@ namespace SISGEM.ModuloContable
             this.layoutControl1.Size = new System.Drawing.Size(669, 463);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(237, 6);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(80, 22);
+            this.simpleButton1.StyleController = this.layoutControl1;
+            this.simpleButton1.TabIndex = 5;
+            this.simpleButton1.Text = "Reportar";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // dtpfecha
+            // 
+            this.dtpfecha.EditValue = null;
+            this.dtpfecha.Location = new System.Drawing.Point(45, 6);
+            this.dtpfecha.Name = "dtpfecha";
+            this.dtpfecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpfecha.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpfecha.Properties.DisplayFormat.FormatString = "MMMM yyyy";
+            this.dtpfecha.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpfecha.Properties.EditFormat.FormatString = "MMMM yyyy";
+            this.dtpfecha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpfecha.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
+            this.dtpfecha.Size = new System.Drawing.Size(190, 20);
+            this.dtpfecha.TabIndex = 4;
             // 
             // Root
             // 
@@ -100,24 +128,6 @@ namespace SISGEM.ModuloContable
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // dtpfecha
-            // 
-            this.dtpfecha.EditValue = null;
-            this.dtpfecha.Location = new System.Drawing.Point(46, 6);
-            this.dtpfecha.Name = "dtpfecha";
-            this.dtpfecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpfecha.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpfecha.Properties.DisplayFormat.FormatString = "MMMM yyyy";
-            this.dtpfecha.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtpfecha.Properties.EditFormat.FormatString = "MMMM yyyy";
-            this.dtpfecha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtpfecha.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
-            this.dtpfecha.Size = new System.Drawing.Size(189, 20);
-            this.dtpfecha.StyleController = this.layoutControl1;
-            this.dtpfecha.TabIndex = 4;
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.dtpfecha;
@@ -129,17 +139,6 @@ namespace SISGEM.ModuloContable
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "Periodo";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(36, 13);
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(237, 6);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(80, 22);
-            this.simpleButton1.StyleController = this.layoutControl1;
-            this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Text = "Reportar";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // layoutControlItem3
             // 
@@ -174,10 +173,10 @@ namespace SISGEM.ModuloContable
             ((System.ComponentModel.ISupportInitialize)(this.dashboardViewer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpfecha.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpfecha.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();

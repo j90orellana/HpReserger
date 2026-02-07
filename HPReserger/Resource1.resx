@@ -133,4 +133,7 @@
   <data name="FormatoCargaPartidasControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\FormatoCargaPartidasControl.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="CONTRATO_MUTUO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CONTRATO_MUTUO.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

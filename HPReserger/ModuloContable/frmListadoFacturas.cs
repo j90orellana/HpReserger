@@ -67,6 +67,10 @@ namespace SISGEM.ModuloContable
         {
             Refrescar();
 
+            gridView1.OptionsSelection.MultiSelect = true;
+            gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            gridView1.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
+
             // Obtener el año actual
             int currentYear = DateTime.Today.Year;
             dtpfechade.EditValue = new DateTime(currentYear, 1, 1);

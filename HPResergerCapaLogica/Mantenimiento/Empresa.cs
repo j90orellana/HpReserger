@@ -62,6 +62,27 @@ namespace HPResergerCapaLogica.Mantenimiento
             }
             return dataTable;
         }
+        public DataTable GetCuentasBancarias(int empresa)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"
+                               select Id_Tipo_Cta id,CONCAT(Entidad_Financiera,' - ',m.NameCorto,' - ',Nro_Cta) nombre,
+                                Entidad_Financiera banco, Nro_Cta nroCta, Nro_Cta_Cci cci
+
+                                from TBL_CtaBancaria c
+                                inner join TBL_Entidad_Financiera e on c.Banco = e.ID_Entidad
+                                inner join TBL_Moneda m on m.Id_Moneda =c.Moneda
+                                where Empresa = @idEmpresa
+";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@idEmpresa", empresa);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
         public DataTable GetComprobantesPago()
         {
             DataTable dataTable = new DataTable();
@@ -94,6 +115,18 @@ namespace HPResergerCapaLogica.Mantenimiento
             {
                 string query = @"select Codigo_User Id, Login_User Usuario from TBL_Usuario
                                 where estado!=0";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetUsuarios()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"select Codigo_User Id, Login_User Usuario from TBL_Usuario                                ";
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dataTable);

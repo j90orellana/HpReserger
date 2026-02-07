@@ -391,5 +391,44 @@ namespace SISGEM.ModuloContable
             }
 
         }
+
+        private void btnGenerarTodaslasCuentas_Click(object sender, EventArgs e)
+        {
+            GenerarTodaslasCuentas();
+        }
+        private void GenerarTodaslasCuentas()
+        {
+            if (string.IsNullOrWhiteSpace(cboEmpresa.Text))
+            {
+                XtraMessageBox.Show("Por favor, seleccione una empresa.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+           
+
+            if (dtpfecha.EditValue == null)
+            {
+                XtraMessageBox.Show("Por favor, seleccione una fecha válida.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            HPResergerCapaLogica.Contable.ClaseContable cclase = new HPResergerCapaLogica.Contable.ClaseContable();
+            int idEmpresa = (int)cboEmpresa.EditValue;
+            //string cuentas = cbocuentas.Text;
+            DateTime date = (DateTime)dtpfecha.EditValue;
+
+            DataTable tData = cclase.ListarSaldodelasCuentas(idEmpresa, date, out string Result);
+            if (Result != string.Empty)
+            {
+                XtraMessageBox.Show($"{Result}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                gridControl1.DataSource = tData;
+
+                gridView1.BestFitColumns();
+                gridView1.ExpandAllGroups();
+            }
+        }
     }
 }

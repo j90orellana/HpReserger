@@ -29,26 +29,37 @@ namespace HpResergerUserControls
         public int SegundosAparecer { get { return _Seguntos; } set { _Seguntos = value; } }
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (this.ClientRectangle.Height > 0 && this.ClientRectangle.Width > 0)
-                if (_colores.Length > 0)
-                {
-                    LinearGradientBrush BrochaGradienteLineal = new LinearGradientBrush(this.ClientRectangle, Color.Black, Color.Black, Angulo);
-                    ColorBlend BlendColor = new ColorBlend();
-                    BlendColor.Colors = _colores;
-                    float[] colorea = new float[_colores.Length];
-                    float Valor = 1.0f / (_colores.Length - 1);
-                    for (int i = 0; i < _colores.Length; i++)
-                    {
-                        colorea[i] = i * Valor;
-                    }
-                    BlendColor.Positions = colorea;
-                    BrochaGradienteLineal.InterpolationColors = BlendColor;
-                    e.Graphics.FillRectangle(BrochaGradienteLineal, this.ClientRectangle);
-                    //e.Graphics.FillRectangle(Brushes.BlanchedAlmond, this.ClientRectangle);
-                }
             base.OnPaint(e);
-            this.ResumeLayout();
+
+            // Si el control está siendo destruido, no pintes
+            if (!this.IsHandleCreated || this.ClientRectangle.Width == 0 || this.ClientRectangle.Height == 0)
+                return;
+
+            if (_colores == null || _colores.Length < 2)
+                return; // evita división entre cero
+
+            using (LinearGradientBrush brocha = new LinearGradientBrush(
+                this.ClientRectangle,
+                Color.Black,
+                Color.Black,
+                Angulo))
+            {
+                ColorBlend blend = new ColorBlend();
+                blend.Colors = _colores;
+
+                float[] posiciones = new float[_colores.Length];
+                float paso = 1.0f / (_colores.Length - 1);
+
+                for (int i = 0; i < _colores.Length; i++)
+                    posiciones[i] = i * paso;
+
+                blend.Positions = posiciones;
+                brocha.InterpolationColors = blend;
+
+                e.Graphics.FillRectangle(brocha, this.ClientRectangle);
+            }
         }
+
         public Boolean CerrarAlPresionarESC { get; set; }
         protected override void OnKeyDown(KeyEventArgs e)
         {

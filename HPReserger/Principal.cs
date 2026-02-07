@@ -1514,6 +1514,25 @@ namespace SISGEM
             OpenForm<SISGEM.ModuloCompras.frmListadoRendiciones>();
 
         }
+
+        private void btnMutuos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //Listado de Mutuos
+            OpenForm<SISGEM.ModuloFinanzas.frmListadoMutuos>();
+        }
+
+        private void btnNuevoMutuos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //Agregar Mutuos
+            OpenForm<SISGEM.ModuloFinanzas.frmAddMutuos>();
+        }
+
+        private void btnAbonarMutuo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //Abonar Mutuo
+            OpenForm<SISGEM.ModuloFinanzas.frmAbonarMutuos>();
+
+        }
     }
 }
 

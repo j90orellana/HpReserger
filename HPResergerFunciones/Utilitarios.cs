@@ -33,6 +33,76 @@ namespace HPResergerFunciones
                )
                .Normalize(NormalizationForm.FormC);
         }
+        public static string NumeroALetras(decimal numero)
+        {
+            long entero = (long)Math.Floor(numero);
+            int centimos = (int)Math.Round((numero - entero) * 100, 0);
+
+            string letras = ConvertirNumero(entero).Trim();
+
+            return $"{letras} con {centimos:00}/100 ";
+        }
+        private static string ConvertirNumero(long numero)
+        {
+            if (numero == 0) return "cero";
+
+            if (numero < 0)
+                return "menos " + ConvertirNumero(Math.Abs(numero));
+
+            string[] unidades = {
+        "", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve",
+        "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis",
+        "diecisiete", "dieciocho", "diecinueve", "veinte"
+    };
+
+            string[] decenas = {
+        "", "", "veinte", "treinta", "cuarenta", "cincuenta",
+        "sesenta", "setenta", "ochenta", "noventa"
+    };
+
+            string[] centenas = {
+        "", "ciento", "doscientos", "trescientos", "cuatrocientos",
+        "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"
+    };
+
+            if (numero <= 20)
+                return unidades[numero];
+
+            if (numero < 100)
+            {
+                long d = numero / 10;
+                long r = numero % 10;
+                if (numero <= 29)
+                    return "veinti" + ConvertirNumero(r);
+                return decenas[d] + (r > 0 ? " y " + ConvertirNumero(r) : "");
+            }
+
+            if (numero < 1000)
+            {
+                if (numero == 100) return "cien";
+                long c = numero / 100;
+                long r = numero % 100;
+                return centenas[c] + (r > 0 ? " " + ConvertirNumero(r) : "");
+            }
+
+            if (numero < 1_000_000)
+            {
+                long m = numero / 1000;
+                long r = numero % 1000;
+                string miles = m == 1 ? "mil" : ConvertirNumero(m) + " mil";
+                return miles + (r > 0 ? " " + ConvertirNumero(r) : "");
+            }
+
+            if (numero < 1_000_000_000)
+            {
+                long m = numero / 1_000_000;
+                long r = numero % 1_000_000;
+                string millones = m == 1 ? "un millón" : ConvertirNumero(m) + " millones";
+                return millones + (r > 0 ? " " + ConvertirNumero(r) : "");
+            }
+
+            return numero.ToString();
+        }
         public static string Encriptar(string cadena)
         {
             cadena = Convert.ToBase64String(Encoding.Unicode.GetBytes(cadena));

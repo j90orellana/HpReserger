@@ -881,6 +881,48 @@ ORDER BY x.Empresa ASC, fecha ASC;";
             }
             return dataTable;
         }
+        public DataTable GetTipoComprobantesMutuos()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"select Id_Comprobante idComprobante,cod_sunat codSunat, nombre nombre from TBL_Comprobante_Pago
+                                where nombre like '%factura%'
+                                union all
+                                select Id_Comprobante idComprobante,cod_sunat codSunat, nombre nombre from TBL_Comprobante_Pago
+                                where nombre like '%honorarios%'";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }public DataTable GetTablaTipoInteres()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"select * from tbl_mutuos_tipoInteres";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetCargarTipoContratos()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "select Id_Comprobante idComprobante,cod_sunat codSunat, nombre nombre from TBL_Comprobante_Pago where nombre like '%contrato%'";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
         public DataTable GetMoneda()
         {
             DataTable dataTable = new DataTable();

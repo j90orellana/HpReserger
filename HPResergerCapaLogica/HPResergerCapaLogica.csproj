@@ -98,6 +98,7 @@
     <Compile Include="Contable\TiposActivoFijos.cs" />
     <Compile Include="Finanzas\EvoltaApiService.cs" />
     <Compile Include="Finanzas\EvotaConfiguracion.cs" />
+    <Compile Include="Finanzas\Mutuos.cs" />
     <Compile Include="Finanzas\PagoFacturas.cs" />
     <Compile Include="FlujoCaja\EstatusInventario.cs" />
     <Compile Include="FlujoCaja\FacturaPresupuesto.cs" />

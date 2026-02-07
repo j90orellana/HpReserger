@@ -71,7 +71,7 @@ namespace HPReserger
         DataTable Tdatos;
         public void CargarDatos()
         {
-            Tdatos = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0);
+            Tdatos = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0, "");
             gridControl1.DataSource = Tdatos;
 
 
@@ -191,6 +191,7 @@ namespace HPReserger
                 chkIngresosMayores.Checked = dtgconten[xIngresosMayores.Name, e.RowIndex].Value.ToString() == "1" ? true : false;
 
                 cboppto.SelectedValue = dtgconten[yppto.Name, e.RowIndex].Value;
+                txtPartidaRegistral.EditValue = dtgconten[ypartidaRegistral.Name, e.RowIndex].Value;
             }
             else
             {
@@ -214,6 +215,7 @@ namespace HPReserger
             //DataRow codigo = CCargos.VerUltimoIdentificador(tabla, id);
             //txtaporte.Text = (int.Parse(codigo["ultimo"].ToString()) + 1).ToString();
             txtnombre.Focus();
+            txtPartidaRegistral.EditValue = "0";
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -362,10 +364,11 @@ namespace HPReserger
                 }
                 //Insertando;
                 int idppto = cboppto.SelectedValue != null ? Convert.ToInt32(cboppto.SelectedValue) : 0;
+                string partida = txtPartidaRegistral.Text ?? "";
 
                 CapaLogica.InsertarActualizarListarEmpresas(txtruc.Text, 1, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue,
                     (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario,
-                    Stock, ingresos, idppto);
+                    Stock, ingresos, idppto, partida);
                 HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -392,10 +395,11 @@ namespace HPReserger
                 }
                 //modificando
                 int idppto = cboppto.SelectedValue != null ? Convert.ToInt32(cboppto.SelectedValue) : 0;
+                string partida = txtPartidaRegistral.Text ?? "";
 
                 CapaLogica.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text,
                     (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue,
-                    frmLogin.CodigoUsuario, Stock, ingresos, idppto);
+                    frmLogin.CodigoUsuario, Stock, ingresos, idppto, partida);
                 HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -246,6 +246,7 @@
             this.btnRegistrarOC = new DevExpress.XtraBars.BarButtonItem();
             this.btnListadoOrdenes = new DevExpress.XtraBars.BarButtonItem();
             this.btnRendicionesReembolsos = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem77 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.rbPFinanzas = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -338,7 +339,10 @@
             this.ribbonPageGroup28 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup40 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup58 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem77 = new DevExpress.XtraBars.BarButtonItem();
+            this.rbMutuos = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnMutuos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnNuevoMutuos = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAbonarMutuo = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -348,10 +352,10 @@
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 477);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 480);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1011, 26);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1011, 23);
             // 
             // ribbonControl1
             // 
@@ -570,9 +574,12 @@
             this.btnRegistrarOC,
             this.btnListadoOrdenes,
             this.btnRendicionesReembolsos,
-            this.barButtonItem77});
+            this.barButtonItem77,
+            this.btnMutuos,
+            this.btnNuevoMutuos,
+            this.btnAbonarMutuo});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 25;
+            this.ribbonControl1.MaxItemId = 28;
             this.ribbonControl1.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barStaticItem4);
@@ -600,7 +607,7 @@
             this.repositoryItemCalcEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.Size = new System.Drawing.Size(1378, 136);
-            this.ribbonControl1.StatusBar = this.ribbonStatusBar2;
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barButtonItem1
@@ -666,7 +673,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // barSubItem3
             // 
@@ -2547,6 +2554,15 @@
             this.btnRendicionesReembolsos.Name = "btnRendicionesReembolsos";
             this.btnRendicionesReembolsos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRendicionesReembolsos_ItemClick);
             // 
+            // barButtonItem77
+            // 
+            this.barButtonItem77.Caption = "Listado Rendiciones";
+            this.barButtonItem77.Id = 24;
+            this.barButtonItem77.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem77.ImageOptions.Image")));
+            this.barButtonItem77.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem77.ImageOptions.LargeImage")));
+            this.barButtonItem77.Name = "barButtonItem77";
+            this.barButtonItem77.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem77_ItemClick_1);
+            // 
             // ribbonMiniToolbar1
             // 
             this.ribbonMiniToolbar1.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2560,7 +2576,8 @@
             this.ribbonPageGroup6,
             this.ribbonPageGroup5,
             this.ribbonPageGroup56,
-            this.PagePagoEvolta});
+            this.PagePagoEvolta,
+            this.rbMutuos});
             this.rbPFinanzas.KeyTip = "F";
             this.rbPFinanzas.Name = "rbPFinanzas";
             this.rbPFinanzas.Text = "Finanzas/Tesorería";
@@ -3387,14 +3404,40 @@
             this.ribbonPageGroup58.Name = "ribbonPageGroup58";
             this.ribbonPageGroup58.Text = "Compras";
             // 
-            // barButtonItem77
+            // rbMutuos
             // 
-            this.barButtonItem77.Caption = "Listado Rendiciones";
-            this.barButtonItem77.Id = 24;
-            this.barButtonItem77.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem77.ImageOptions.Image")));
-            this.barButtonItem77.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem77.ImageOptions.LargeImage")));
-            this.barButtonItem77.Name = "barButtonItem77";
-            this.barButtonItem77.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem77_ItemClick_1);
+            this.rbMutuos.ItemLinks.Add(this.btnMutuos);
+            this.rbMutuos.ItemLinks.Add(this.btnNuevoMutuos);
+            this.rbMutuos.ItemLinks.Add(this.btnAbonarMutuo);
+            this.rbMutuos.Name = "rbMutuos";
+            this.rbMutuos.Text = "Mutuos";
+            // 
+            // btnMutuos
+            // 
+            this.btnMutuos.Caption = "Listado Mutuos";
+            this.btnMutuos.Id = 25;
+            this.btnMutuos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMutuos.ImageOptions.Image")));
+            this.btnMutuos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMutuos.ImageOptions.LargeImage")));
+            this.btnMutuos.Name = "btnMutuos";
+            this.btnMutuos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMutuos_ItemClick);
+            // 
+            // btnNuevoMutuos
+            // 
+            this.btnNuevoMutuos.Caption = "Mutuos";
+            this.btnNuevoMutuos.Id = 26;
+            this.btnNuevoMutuos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoMutuos.ImageOptions.Image")));
+            this.btnNuevoMutuos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnNuevoMutuos.ImageOptions.LargeImage")));
+            this.btnNuevoMutuos.Name = "btnNuevoMutuos";
+            this.btnNuevoMutuos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNuevoMutuos_ItemClick);
+            // 
+            // btnAbonarMutuo
+            // 
+            this.btnAbonarMutuo.Caption = "Abonar Mutuo";
+            this.btnAbonarMutuo.Id = 27;
+            this.btnAbonarMutuo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAbonarMutuo.ImageOptions.Image")));
+            this.btnAbonarMutuo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAbonarMutuo.ImageOptions.LargeImage")));
+            this.btnAbonarMutuo.Name = "btnAbonarMutuo";
+            this.btnAbonarMutuo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbonarMutuo_ItemClick);
             // 
             // Principal
             // 
@@ -3741,5 +3784,9 @@
         private DevExpress.XtraBars.BarButtonItem btnListadoOrdenes;
         private DevExpress.XtraBars.BarButtonItem btnRendicionesReembolsos;
         private DevExpress.XtraBars.BarButtonItem barButtonItem77;
+        private DevExpress.XtraBars.BarButtonItem btnMutuos;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbMutuos;
+        private DevExpress.XtraBars.BarButtonItem btnNuevoMutuos;
+        private DevExpress.XtraBars.BarButtonItem btnAbonarMutuo;
     }
 }
