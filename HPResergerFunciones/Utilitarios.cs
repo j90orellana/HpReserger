@@ -19,6 +19,7 @@ using System.Drawing;
 using OfficeOpenXml;
 using System.Data.OleDb;
 using ExcelDataReader;
+using DevExpress.XtraEditors;
 
 namespace HPResergerFunciones
 {
@@ -328,6 +329,11 @@ namespace HPResergerFunciones
                 Clipboard.SetText(cajita.SelectedText);
             }
         }
+
+        public static void MensajeCanceladoxUsuario()
+        {
+        }
+
         public static void ValidarPegarSoloLetrasyEspacio(KeyEventArgs e, TextBox cajita, int tamaño)
         {
             if (e.Control && e.KeyCode == Keys.V)

@@ -1,4 +1,5 @@
 ﻿using HpResergerUserControls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +20,19 @@ namespace HPReserger
         public frmDatosExterno()
         {
             InitializeComponent();
+            txtruc.TextChanged += Txtruc_TextChanged;
+                     
+        }
+        private void Txtruc_TextChanged(object sender, EventArgs e)
+        {
+            if (estado == 1 || estado == 10)
+            {
+                if (txtruc.Text.Length == 11)
+                {
+                    //BuscarProveedorAPiToken(txtnumeroidentidad.Text);
+                    BuscarProveedorAPi(txtruc.Text);
+                }
+            }
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public int CodigoEmpleado;
@@ -235,6 +250,68 @@ namespace HPReserger
             NroRegsitro++;
             estado = 10;
             iniciar(true);
+        }
+        public async void BuscarProveedorAPi(string ruc)
+        {
+            try
+            {
+                string respuesta = await GetHTTPs(ruc);
+                respuesta = "[\n " + respuesta + " \n]";
+                List<Proveedor> LstData = JsonConvert.DeserializeObject<List<Proveedor>>(respuesta);
+                //SAcamos la Data             
+                if (LstData.Count > 0)
+                {
+                    txtempresa.Text =  LstData[0].nombre;
+                    //cbodocumento.SelectedValue = LstData[0].tipoDocumento - 1;
+                    //txtdireccionoficina.Text = LstData[0].direccion + " - " + LstData[0].distrito + " - " + LstData[0].departamento;
+                    //if (txtdireccionoficina.Text == "- -  - ") txtdireccionoficina.Text = "-";
+                    //if (LstData[0].condicion == "HABIDO") cbocondicion.SelectedIndex = 0; else cbocondicion.SelectedIndex = 1;
+                    //if (LstData[0].estado == "ACTIVO") cboestado.SelectedValue = 1;
+                    //if (LstData[0].estado == "SUSPENSION TEMPORAL") cboestado.SelectedValue = 2;
+                    //if (LstData[0].estado == "BAJA DEFINITIVA") cboestado.SelectedValue = 3;
+                    //if (LstData[0].estado == "BAJA DE OFICIO") cboestado.SelectedValue = 3;
+                }
+            }
+            catch (Exception e) { }
+        }
+        public async Task<string> GetHTTPs(string ruc)
+        {
+            string url = Configuraciones.ApiRuc + ruc;// + año + "-" + mes.ToString("00");
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest oRequest = WebRequest.Create(url);
+            oRequest.Headers.Clear();
+            oRequest.Headers.Add(HttpRequestHeader.Authorization, "Bearer $apis-token-1887.qDw9MbrxloHL-d0c8MlKO44xEQ3S-STB");
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
+        }
+        public class Proveedor
+        {
+            public string nombre { get; set; }
+            public int tipoDocumento { get; set; }
+            public string numeroDocumento { get; set; }
+            public string estado { get; set; }
+            public string condicion { get; set; }
+            public string direccion { get; set; }
+            public string ubigeo { get; set; }
+            public string viaTipo { get; set; }
+            public string viaNombre { get; set; }
+            public string zonaCodigo { get; set; }
+            public string zonaTipo { get; set; }
+            public string numero { get; set; }
+            public string interior { get; set; }
+            public string lote { get; set; }
+            public string dpto { get; set; }
+            public string manzana { get; set; }
+            public string kilometro { get; set; }
+            public string distrito { get; set; }
+            public string provincia { get; set; }
+            public string departamento { get; set; }
+        }
+
+        private void txtruc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+          
         }
     }
 }

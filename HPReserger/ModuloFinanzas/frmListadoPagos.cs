@@ -43,6 +43,14 @@ namespace SISGEM.ModuloFinanzas
             HPResergerCapaLogica.FlujoCaja.Partidas_Control cClase = new HPResergerCapaLogica.FlujoCaja.Partidas_Control();
             dtPresupuestos = cClase.GetAll();
             dtPresupuestosUnicos = cClase.GetAllUnicos();
+
+
+            HPResergerCapaLogica.HPResergerCL oCL = new HPResergerCapaLogica.HPResergerCL();
+            DataTable tData = oCL.Empresa();
+
+            cboempresa.Properties.DataSource = tData;
+            cboempresa.Properties.DisplayMember = "descripcion";
+            cboempresa.Properties.ValueMember = "codigo";
         }
 
         private void btnExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -112,14 +120,15 @@ namespace SISGEM.ModuloFinanzas
 
             // Obtener valores de los filtros, asegurando que no sean nulos
             string nrocta = txtnrocta.EditValue?.ToString() ?? string.Empty;
-            string empresa = txtempresa.EditValue?.ToString() ?? string.Empty;
+            string empresa = cboempresa.EditValue?.ToString() ?? string.Empty;
             string proveedor = txtproveedor.EditValue?.ToString() ?? string.Empty;
             string nrocomprobante = txtnrocomprobante.EditValue?.ToString() ?? string.Empty;
+            string partida = txtPartida.EditValue?.ToString() ?? string.Empty;
 
             int OcultarPP = chkPP.Checked ? 0 : 1;
 
             // Llamar a la consulta con las fechas ordenadas
-            DataTable tdata = CFactura.BuscarFiltradoPagoCompras(fechaDesde, fechaHasta, empresa, proveedor, nrocta, OcultarPP, nrocomprobante);
+            DataTable tdata = CFactura.BuscarFiltradoPagoCompras(fechaDesde, fechaHasta, empresa, proveedor, nrocta, OcultarPP, nrocomprobante, partida);
             gridControl1.DataSource = tdata;
         }
 

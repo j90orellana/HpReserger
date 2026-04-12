@@ -117,7 +117,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(35, 88);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Trabajo:";
             // 
@@ -143,6 +143,7 @@
             // 
             // numrenta
             // 
+            this.numrenta.BackColor = System.Drawing.Color.Transparent;
             this.numrenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numrenta.Location = new System.Drawing.Point(252, 3);
             this.numrenta.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
@@ -162,6 +163,7 @@
             // 
             // numimporte
             // 
+            this.numimporte.BackColor = System.Drawing.Color.Transparent;
             this.numimporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numimporte.Location = new System.Drawing.Point(86, 3);
             this.numimporte.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
@@ -191,8 +193,10 @@
             this.comboMesAño1.Location = new System.Drawing.Point(86, 52);
             this.comboMesAño1.Margin = new System.Windows.Forms.Padding(3, 23, 3, 23);
             this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(211, 24);
+            this.comboMesAño1.Size = new System.Drawing.Size(211, 27);
             this.comboMesAño1.TabIndex = 9;
+            this.comboMesAño1.VerAño = true;
+            this.comboMesAño1.VerMes = true;
             // 
             // label7
             // 
@@ -254,7 +258,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 13);
+            this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 59;
             this.label5.Text = "Renta Bruta:";
             // 
@@ -307,6 +311,7 @@
             this.txtruc.Name = "txtruc";
             this.txtruc.Size = new System.Drawing.Size(134, 23);
             this.txtruc.TabIndex = 1;
+            this.txtruc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtruc_KeyPress);
             // 
             // btnnuevo
             // 

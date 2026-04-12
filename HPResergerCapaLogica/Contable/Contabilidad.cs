@@ -15,6 +15,163 @@ namespace HPResergerCapaLogica.Contable
         {
             _connectionString = HPResergerCapaDatos.HPResergerCD.StringObtenerConexion();
         }
+
+        public DataTable CierreMensualDocumentos(int empresa, DateTime fechaini, DateTime fechafin, decimal tccomprasbs, decimal tcventasbs, Boolean generar)
+        {
+            var dt = new DataTable();
+            string query = @"
+     
+  DECLARE @dinamica AS INT=-31
+     IF(@Generar = 0)
+         BEGIN
+             SET @dinamica=-31
+     END
+     ELSE
+         BEGIN
+             SET @dinamica=-1000
+     END
+    BEGIN
+
+		SET @FechaInicial=DATEFROMPARTS(year(@FechaFinal),1,1)
+
+        --
+        SELECT CuentaContable,Cuenta_Contable,IdComprobante,NameComprobante,NumDoc,TipoidPro,Proveedor,NombreProveedor,MontoDolares,MontoSoles,
+        FinMesSoles,DifCambio,tcCompra,tcVenta,Naturaleza,CtaBancaria,NroCuenta
+        FROM
+            (
+             SELECT a.CuentaContable,a.Cuenta_Contable--
+             ,a.IdComprobante,dbo.NameComprobante(IdComprobante) NameComprobante,A.NumDoc,TipoidPro,a.Proveedor,a.NombreProveedor--
+             ,SUM(a.MontoDolares) MontoDolares,SUM(a.MontoSoles) MontoSoles,--
+             SUM(IIF(a.Naturaleza = 'D',@TCCompraSBS,@TCVentaSBS) * a.MontoDolares) FinMesSoles,--
+             SUM((-a.montosoles + IIF(a.Naturaleza = 'D',@TCCompraSBS,@TCVentaSBS) * a.MontoDolares)) DifCambio--
+             ,@TCCompraSBS tcCompra,@TCVentaSBS tcVenta,a.Naturaleza,0 CtaBancaria,'' NroCuenta
+             FROM
+                 (
+                  SELECT a.Cuenta_Contable CuentaContable,c.Cuenta_Contable Cuenta_Contable,@TCCompraSBS tcCompra,@TCVentaSBS tcVenta,c.
+                  Cuenta_Contable_Naturaleza Naturaleza,ax.Id_Comprobante IdComprobante,concat(ax.Cod_Comprobante,'-',ax.Num_Comprobante) NumDoc,IIF(
+                  Tipo_Doc = 0,5,tipo_doc) TipoidPro,ax.Num_Doc Proveedor,SUM(IIF(a.Saldo_Debe > 0,1,-1) * ax.Importe_MN) MontoSoles,SUM(IIF(a.
+                  Saldo_Debe > 0,1,-1) * ax.Importe_ME) MontoDolares,ax.Razon_Social NombreProveedor
+                  FROM TBL_Asiento_Contable a
+                       LEFT JOIN TBL_Asiento_Contable_Aux ax ON a.id_Asiento = ax.Id_Aux
+                                                                AND a.Id_Asiento_Contable = ax.Id_Asiento_Contable
+                                                                AND a.Cuenta_Contable = ax.Cuenta_Contable
+                                                                AND a.id_proyecto = ax.fk_proyecto
+                                                                --AND a.Cod_Asiento_Contable = dbo.CodigoAsientoFecha(ax.Fecha_Asiento,ax.Id_Asiento_Contable)
+                                                                AND CAST(ISNULL(a.Fecha_Asiento_Valor,a.Fecha_Asiento) AS DATE) = ax.Fecha_Asiento --4647
+                       --LEFT JOIN TBL_Comprobante_Pago cp ON cp.Id_Comprobante = ISNULL(ax.Id_Comprobante,10)--4677
+                       INNER JOIN TBL_Cuenta_Contable c ON c.Id_Cuenta_Contable = a.Cuenta_Contable --4677
+                                                           AND c.Ajuste_Cuenta_Contable_CambioMensual = 4
+                       INNER JOIN TBL_Proyecto p ON a.id_proyecto = p.Id_Proyecto --4677
+                       INNER JOIN TBL_Empresa e ON e.Id_Empresa = p.Id_Empresa --4677
+                                                   AND e.Id_Empresa = @empresa
+                       ---+--- Sacamos los Documentos que no tan Completos
+                       INNER JOIN
+                                 (
+                       SELECT DISTINCT 
+                              e.RUC ruc,a.Cuenta_Contable CuentaContable,ax.Id_Comprobante IdComprobante,CONCAT(Cod_Comprobante,'-',Num_Comprobante)
+                              NumComprobante,CONCAT(IIF(Tipo_Doc = 0,5,tipo_doc),'-',Num_Doc) Proveedor,--SUM(Importe_MN) Total,
+                              e.Id_Empresa
+                       FROM TBL_Asiento_Contable a
+                            INNER JOIN TBL_Proyecto p ON a.id_proyecto = p.Id_Proyecto --4677
+                            INNER JOIN TBL_Empresa e ON e.Id_Empresa = p.Id_Empresa --4677  
+                                                        AND e.Id_Empresa = @empresa
+                            INNER JOIN TBL_Cuenta_Contable c ON c.Id_Cuenta_Contable = a.Cuenta_Contable --4677 
+                                                                AND c.Ajuste_Cuenta_Contable_CambioMensual = 4
+                            LEFT JOIN TBL_Asiento_Contable_Aux ax ON a.id_Asiento = ax.Id_Aux
+                                                                     AND a.Id_Asiento_Contable = ax.Id_Asiento_Contable
+                                                                     AND a.Cuenta_Contable = ax.Cuenta_Contable
+                                                                     AND a.id_proyecto = ax.fk_proyecto
+                                                                     --AND a.Cod_Asiento_Contable = dbo.CodigoAsientoFecha(ax.Fecha_Asiento,ax.Id_Asiento_Contable)
+                                                                     AND CAST(ISNULL(a.Fecha_Asiento_Valor,a.Fecha_Asiento) AS DATE) = ax.Fecha_Asiento --4647
+
+                                                                  and a.FechaReal between @FechaInicial and @FechaFinal
+                     
+					 WHERE NOT EXISTS
+								(
+								   SELECT 1
+								   FROM TBL_Asiento_Contable h
+								   INNER JOIN TBL_Proyecto po ON po.Id_Proyecto = h.id_proyecto
+								   INNER JOIN TBL_Empresa ex ON po.Id_Empresa = ex.Id_Empresa
+								   WHERE ex.Id_Empresa = @empresa
+									 AND h.Cod_Asiento_Contable = a.Cod_Asiento_Contable
+									 AND h.Estado IN (4,0)
+									and h.FechaReal BETWEEN @FechaInicial AND @FechaFinal
+								)
+
+                       --AND a.Id_Dinamica_Contable NOT IN(-50,-51)
+                       AND ax.Id_Comprobante IS NOT NULL
+                       ---FIN FILTROS AVANZADOS
+                       GROUP BY e.ruc,a.Cuenta_Contable,ax.Id_Comprobante,Cod_Comprobante,Num_Comprobante,IIF(Tipo_Doc = 0,5,tipo_doc),Num_Doc--,Saldo_Debe
+                       ,e.Id_Empresa
+                                 --HAVING((SUM((IIF(a.Saldo_Debe > 0,1,-1) * ISNULL(IIF(a.moneda = 1,Importe_MN,importe_me),(A.SALDO_DEBE + A.SALDO_HABER) * A.TC))) != 0))
+                                 --       AND (SUM(IIF(a.Saldo_Debe > 0,1,-1) * ISNULL(Importe_MN + importe_me,0)) != 0))
+                                 --HAVING SUM(IIF(a.Saldo_Debe > 0,1,-1) * ax.Importe_MN) != 0
+                                 ) x ON x.ruc = e.RUC
+                                        AND x.CuentaContable = a.Cuenta_Contable
+                                        AND x.IdComprobante = ax.Id_Comprobante
+                                        AND x.NumComprobante = concat(ax.Cod_Comprobante,'-',ax.Num_Comprobante)
+                                        AND x.Proveedor = CONCAT(IIF(ax.Tipo_Doc = 0,5,ax.tipo_doc),'-',ax.Num_Doc)
+                                        AND x.Id_Empresa = e.Id_Empresa
+                  ---+--- Fin de Sacar los Documentos que no tan Completos
+
+
+                 WHERE NOT EXISTS
+						(
+						   SELECT 1
+						   FROM TBL_Asiento_Contable h
+						   INNER JOIN TBL_Proyecto po ON po.Id_Proyecto = h.id_proyecto
+						   INNER JOIN TBL_Empresa ex ON po.Id_Empresa = ex.Id_Empresa
+						   WHERE ex.Id_Empresa = @empresa
+							 AND h.Cod_Asiento_Contable = a.Cod_Asiento_Contable
+							 AND h.Estado IN (4,0)
+							 
+							 and h.FechaReal between @FechaInicial and @FechaFinal
+						)
+
+						AND a.Id_Dinamica_Contable NOT IN(-50)
+						--FILTROS AVANZADOS
+						AND e.Id_Empresa = @empresa
+						AND c.Ajuste_Cuenta_Contable_CambioMensual = 4
+						---FIN FILTROS AVANZADOS
+						AND a.Id_Dinamica_Contable NOT IN(@dinamica) -- ASiento Cierre Documentos
+
+						and a.FechaReal between @FechaInicial and @FechaFinal
+                  --+--
+                  GROUP BY a.Cuenta_Contable,c.Cuenta_Contable,ax.Num_Doc,IIF(Tipo_Doc = 0,5,tipo_doc),ax.Id_Comprobante,ax.Cod_Comprobante,ax.
+                  Num_Comprobante,c.Cuenta_Contable_Naturaleza,Razon_Social
+             --+--
+                 ) a
+             GROUP BY A.CuentaContable,A.Cuenta_Contable,A.IdComprobante,A.NumDoc,A.TipoidPro,A.Proveedor,A.NombreProveedor,A.Naturaleza
+             HAVING  abs( SUM(A.MontoSoles)) !=0
+            ) AS Y
+    -- WHERE a.MontoSoles + a.MontoDolares != 0
+    --ORDER BY 1,3,4,5,12,9
+    END
+
+
+";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.Add("@empresa", SqlDbType.Int).Value = empresa;
+                cmd.Parameters.Add("@FechaFinal", SqlDbType.Date).Value = fechafin;
+                cmd.Parameters.Add("@FechaInicial", SqlDbType.Date).Value = fechaini;
+                cmd.Parameters.Add("@TCCompraSBS", SqlDbType.Decimal).Value =  tccomprasbs;
+                cmd.Parameters.Add("@TCVentaSBS", SqlDbType.Decimal).Value = tcventasbs;
+                cmd.Parameters.Add("@Generar", SqlDbType.Bit).Value = generar;
+
+                cmd.CommandTimeout = 0;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+                 
+            return dt;
+        }
+
+
+
         public DataTable PeriodoCerrado(int empresa, DateTime fecha)
         {
             var dt = new DataTable();

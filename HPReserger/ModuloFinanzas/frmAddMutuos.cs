@@ -1109,7 +1109,7 @@ namespace SISGEM.ModuloFinanzas
             oEntidad.FkIdEtapa = idEtapa;
             oEntidad.Glosa = glosa;
             oEntidad.IdAsientoContable = numasiento;
-            oEntidad.IdDinamicaContable = -26;
+            oEntidad.IdDinamicaContable = -35;
             oEntidad.IdProyecto = idProyecto;
             oEntidad.Moneda = idMoneda;
             oEntidad.NroDocumento = "";
@@ -1249,7 +1249,7 @@ namespace SISGEM.ModuloFinanzas
                     oEntidad.FkIdEtapa = idEtapa;
                     oEntidad.Glosa = glosa;
                     oEntidad.IdAsientoContable = numasiento;
-                    oEntidad.IdDinamicaContable = -28;
+                    oEntidad.IdDinamicaContable = -36;
                     oEntidad.IdProyecto = idProyecto;
                     oEntidad.Moneda = idMoneda;
                     oEntidad.NroDocumento = "";

@@ -186,7 +186,7 @@ namespace HPResergerCapaLogica.FlujoCaja
 	                IIF(Saldo_Debe>0,1,-1)* ax.Importe_ME 'USD', 
 
 	                CAST(ISNULL(NULLIF(a.Glosa, ''), '-') AS NVARCHAR(200)) AS Glosa,
-	                concat(pc.Codigo,' ', pc.DetalleSubPartida) 'Presupuesto',(partida)PartidaPadre,
+	                concat(pc.Codigo,' ', pc.DetalleSubPartida) 'Presupuesto',concat(isnull(po.posicion,'0'), ' - ', pc.partida)PartidaPadre,
 		                case pc.tipo
 		                when 1 then 'SPV'
 		                WHEN 2 THEN 'Servicio'
@@ -210,6 +210,9 @@ namespace HPResergerCapaLogica.FlujoCaja
                     AND pp.cuenta = a.Cuenta_Contable
                     AND pp.fkproyecto = a.id_proyecto
                 INNER JOIN TBL_Partidas_Control pc ON pc.id = pp.idPartida AND  e.ppto = pc.Tipo
+
+	left join TBL_PartidasOrden po on po.Tipo = pc.Tipo and po.Partida = pc.Partida
+
                 WHERE a.Cuenta_Contable BETWEEN '104' AND '108'
                     --AND CAST(ISNULL(a.fecha_asiento_Valor, a.fecha_asiento) AS DATE) BETWEEN @fechade AND @fechaa
                    AND  e.Id_Empresa= @empresa
@@ -228,6 +231,45 @@ namespace HPResergerCapaLogica.FlujoCaja
                     )
                 ORDER BY e.Empresa ASC, 6 ASC;";
 
+            query = @"
+
+select 
+e.Empresa empresa,cp.Nombre Comprobante,p.razon_social RazonSocial, f.NroComprobante NumeroComprobante,f.Proveedor  Proveedor
+,f.FechaEmision FechaEmision , fd.fechapago FechaContable ,
+round( iif(f.Moneda=1,  fd.Total,fd.Total*f.tc) ,2)PEN,
+round(iif(f.Moneda=2,  fd.Total,fd.total/f.tc),2) USD,
+F.Glosa Glosa, 
+
+    concat(pc.Codigo,' ', pc.DetalleSubPartida) 'Presupuesto', pc.partida PartidaPadre,isnull(posicion,1) posicion,
+		                case pc.tipo
+		                when 1 then 'SPV'
+		                WHEN 2 THEN 'Servicio'
+		                when 3 then 'Holding'
+		                when 4 then 'Constructora'
+		                else 'Desconocido'
+		                END  'Tipo'
+
+ from TBL_FacturaManual f
+inner join TBL_Empresa e on e.Id_Empresa = f.Empresa
+inner join TBL_Comprobante_Pago cp on cp.Id_Comprobante = f.IdComprobante
+inner join TBL_Proveedor p on p.RUC = f.Proveedor
+ inner join TBL_FacturasPresupuestos pp on pp.idFactura = f.Id and pp.tipofactura = 1
+ inner join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and e.ppto = pc.Tipo
+
+				left join TBL_PartidasOrden po on po.Tipo = pc.Tipo and po.Partida = pc.Partida
+
+
+ inner join TBL_Factura_Det fd on fd.Id_Comprobante = f.IdComprobante and fd.NroFactura = f.NroComprobante and fd.Proveedor = f.Proveedor --40
+				and fd.estado =1
+
+where f.Estado =2
+and f.Empresa =@empresa
+
+
+order by posicion,PartidaPadre
+
+
+";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             using (SqlCommand cmd = new SqlCommand(query, connection))

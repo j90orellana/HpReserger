@@ -121,6 +121,15 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCargarConciliacion.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFRpdGxlAFJlcG9ydDtTYWxlc1JlcG9ydDuAQF7eAAAAeUlEQVQ4T72Q3QmAMAyEO1xf
+        naKbSIfytVt0m8hBKv25Ri3oBx8cklyDTkSmbvshUDOdGT6UpZn9/BVijALZUm2ZowWALdUCs+AJ3xak
+        lEzBvxcY8AJGDr5R4QXsAlZQ8vIFmtd+InhVoMPMtoBp4JqCO/Fin3Pw7gT50SWvmm/glgAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
   <data name="btnCargar.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m

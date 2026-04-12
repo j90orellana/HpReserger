@@ -99,7 +99,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(88, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 14;
             this.label1.Text = "Banco";
             // 
@@ -165,7 +165,7 @@
             this.txtCuentaCCI.ForeColor = System.Drawing.Color.Black;
             this.txtCuentaCCI.Format = null;
             this.txtCuentaCCI.Location = new System.Drawing.Point(127, 89);
-            this.txtCuentaCCI.MaxLength = 20;
+            this.txtCuentaCCI.MaxLength = 30;
             this.txtCuentaCCI.Name = "txtCuentaCCI";
             this.txtCuentaCCI.NextControlOnEnter = this.btnaceptar;
             this.txtCuentaCCI.Size = new System.Drawing.Size(209, 21);
@@ -187,7 +187,7 @@
             this.txtCuenta.ForeColor = System.Drawing.Color.Black;
             this.txtCuenta.Format = null;
             this.txtCuenta.Location = new System.Drawing.Point(127, 63);
-            this.txtCuenta.MaxLength = 10;
+            this.txtCuenta.MaxLength = 20;
             this.txtCuenta.Name = "txtCuenta";
             this.txtCuenta.NextControlOnEnter = this.txtCuentaCCI;
             this.txtCuenta.Size = new System.Drawing.Size(209, 21);

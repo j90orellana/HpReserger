@@ -87,6 +87,238 @@ namespace HPResergerCapaLogica.Compras
             return lista;
         }
 
+        public DataTable BuscarLibroMayorxProyecto(DateTime fechaDesde, DateTime fechaHasta, string empresa, string cuentas, string glosa, string razonsocial, string nrocomprobante)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+              
+DECLARE @EmpresasFiltro TABLE (Id_Empresa INT)    
+-- Insertar valores en la tabla temporal si no es el valor por defecto
+IF @Empresa <> '0'
+BEGIN
+	INSERT INTO @EmpresasFiltro (Id_Empresa)
+	SELECT value FROM STRING_SPLIT(REPLACE(@Empresa, ' ', ''), ',')
+	WHERE value <> ''
+END
+
+
+			  --Tabla Temporal
+IF OBJECT_ID('tempdb..#Reversados') IS NOT NULL DROP TABLE #Reversados
+--Insertamos Registros en la TAbla Temporal
+SELECT DISTINCT h.Cod_Asiento_Contable,ex.Id_Empresa idEmpresa
+INTO #Reversados
+FROM TBL_Asiento_Contable h
+INNER JOIN TBL_Proyecto po ON po.Id_Proyecto = h.id_proyecto
+INNER JOIN TBL_Empresa ex ON po.Id_Empresa = ex.Id_Empresa
+WHERE (@Empresa = '0' OR ex.Id_Empresa IN (SELECT Id_Empresa FROM @EmpresasFiltro)) 
+AND h.Estado in (4,0)
+AND CAST(ISNULL(h.Fecha_Asiento_Valor, h.Fecha_Asiento) AS DATE) BETWEEN @Fechaini AND @FechaFin
+--Creamos un Indice
+CREATE INDEX IX_Rev ON #Reversados(Cod_Asiento_Contable,idEmpresa)
+
+
+
+DECLARE @GlosaFiltro TABLE (GlosaBusqueda NVARCHAR(max))
+-- Insertar valores en la tabla temporal si no es el valor por defecto
+IF @Glosas <> ''
+BEGIN
+-- Limpiar espacios y dividir los valores
+INSERT INTO @GlosaFiltro (GlosaBusqueda)
+SELECT LTRIM(RTRIM(value)) 
+FROM STRING_SPLIT(REPLACE(@Glosas, '', ''), ';')
+WHERE value <> ''
+END
+
+	DECLARE @CuentasFiltro TABLE (CodigoCuenta NVARCHAR(50))
+	-- Insertar valores en la tabla temporal si no es el valor por defecto
+	IF @cuentas <> '(0=0)'
+	BEGIN
+	-- Limpiar espacios y dividir los valores
+	INSERT INTO @CuentasFiltro (CodigoCuenta)
+	SELECT LTRIM(RTRIM(value)) 
+	FROM STRING_SPLIT(REPLACE(@cuentas, ' ', ''), ';')
+	WHERE value <> ''
+	END
+
+DECLARE @nroDocFiltro TABLE (NumDocFitros NVARCHAR(max))
+-- Insertar valores en la tabla temporal si no es el valor por defecto
+IF @NroDoc <> ''
+BEGIN
+-- Limpiar espacios y dividir los valores
+INSERT INTO @nroDocFiltro(NumDocFitros)
+SELECT LTRIM(RTRIM(value)) 
+FROM STRING_SPLIT(REPLACE(@NroDoc, ' ', ''), ';')
+WHERE value <> ''
+END
+
+	DECLARE @RazonSocialFiltro TABLE (RazonSocialF NVARCHAR(max))
+	-- Insertar valores en la tabla temporal si no es el valor por defecto
+	IF @RazonSocial <> ''
+	BEGIN
+	-- Limpiar espacios y dividir los valores
+	INSERT INTO @RazonSocialFiltro(RazonSocialF)
+	SELECT LTRIM(RTRIM(value)) 
+	FROM STRING_SPLIT(REPLACE(@RazonSocial, '', ''), ';')
+	WHERE value <> ''
+	END
+
+-- Ajustar fecha de inicio
+--SET @Fechaini = DATEFROMPARTS(YEAR(@fechaini), MONTH(@fechaini), 1)
+    
+    SELECT 
+        X.Periodo,
+        X.RUC,
+        X.Cod_Asiento_Contable,
+        X.Empresa,Proyecto, Etapa,
+        X.FechaContable,
+        x.FechaRegistro,
+        X.FechaEmision,
+        x.Id_Comprobante,
+        x.TipoComprobante,
+        X.Cod_Comprobante,
+        X.Num_Comprobante,
+        x.Num_Doc,
+        UPPER(x.Razon_Social) AS Razon_Social,
+        UPPER(ISNULL(X.Glosa, '')) AS Glosa,
+        X.Cuenta_Contable,
+        X.DESCRIPCION,
+        ISNULL(x.nro_cta, '') AS CuentaBanco,
+        X.Moneda,
+        CAST(IIF(x.credito+x.debito=0,
+                IIF(X.Cuenta_Contable='7599103' OR X.Cuenta_Contable='7761101' OR X.Cuenta_Contable='6595101' OR X.Cuenta_Contable='6761101', -1, 1),
+                IIF(X.CREDITO > 0, -1, 1)) * x.Importe_MN AS DECIMAL(20,6)) AS PEN,
+        CAST(IIF(X.CREDITO+x.debito=0,
+                IIF(X.Cuenta_Contable='7599103' OR X.Cuenta_Contable='7761101' OR X.Cuenta_Contable='6595101' OR X.Cuenta_Contable='6761101', -1, 1),
+                IIF(x.credito > 0, -1, 1)) * X.Importe_ME AS DECIMAL(20,6)) AS USD,
+        X.Mes,
+        ISNULL(X.TipoCambio, x.TC) AS TipoCambio,
+        ISNULL(Login_User, 'SYSADMIN') AS Users
+    FROM
+    (
+        SELECT 
+            CONCAT(YEAR(ISNULL(Fecha_Asiento_Valor, a.Fecha_Asiento)), FORMAT(MONTH(ISNULL(Fecha_Asiento_Valor, a.Fecha_Asiento)), '00')) AS Periodo,
+            e.ruc AS RUC,
+            a.Cod_Asiento_Contable,
+            e.Empresa,
+            e.id_empresa,d.proyecto,et.descripcion ETAPA,
+            CAST(ISNULL(a.Fecha_Asiento_Valor, A.Fecha_Asiento) AS DATE) AS FechaContable,
+            CAST(ISNULL(f.fecha, ISNULL(a.Fecha_Asiento, a.Fecha_Asiento)) AS DATE) AS FechaRegistro,
+            CAST(f.Fecha_Emision AS DATE) AS FechaEmision,
+            g.Cod_sunat AS Id_Comprobante,
+            g.Nombre AS TipoComprobante,
+            f.Cod_Comprobante AS Cod_Comprobante,
+            f.Num_Comprobante AS Num_Comprobante,
+            f.Num_Doc,
+            f.Razon_Social,
+            ISNULL(F.GLOSA, a.Glosa) AS GLOSA,
+            a.Cuenta_Contable,
+            b.Cuenta_Contable AS Descripcion,
+            c.NameCorto AS Moneda,
+            a.Saldo_Debe AS Debito,
+            a.Saldo_Haber AS Credito,
+            MONTH(ISNULL(Fecha_Asiento_Valor, a.Fecha_Asiento)) AS Mes,
+            IIF(f.Tipo_Cambio = 0, a.tc, f.Tipo_Cambio) AS TipoCambio,
+            IIF(a.Moneda = 2, 
+                CAST(ROUND(((a.saldo_debe + a.saldo_haber) * a.tc), 2) AS NUMERIC(15,4)), 
+                CAST(ROUND((a.saldo_debe + a.saldo_haber), 2) AS NUMERIC(15,4))) AS Conversion,
+            ISNULL(f.Importe_ME, ABS(IIF(a.moneda = 1, (a.saldo_haber - a.saldo_debe) / a.tc, (a.saldo_haber - a.saldo_debe)))) AS Importe_ME,
+            ISNULL(f.Importe_MN, ABS(IIF(a.moneda = 1, (a.saldo_haber - a.saldo_debe), (a.saldo_haber - a.saldo_debe) * a.tc))) AS Importe_MN,
+            a.id_Asiento,
+            a.TC,
+            u.Login_User,
+            cb.Nro_Cta,
+            ISNULL(f.fecha, a.Fecha_Asiento_Valor) AS FechaAX
+        FROM TBL_Asiento_Contable a
+        INNER JOIN TBL_Cuenta_Contable b ON a.Cuenta_Contable = b.Id_Cuenta_Contable
+        left JOIN TBL_Proyecto d ON  a.id_proyecto = d.Id_Proyecto
+	left join tbl_etapa et on et.Id_etapa = a.fk_id_Etapa
+        INNER JOIN TBL_Empresa e ON d.Id_Empresa = e.Id_Empresa
+        LEFT JOIN TBL_Asiento_Contable_Aux f ON a.id_Asiento = f.Id_Aux
+            AND a.Id_Asiento_Contable = f.Id_Asiento_Contable
+            AND a.id_proyecto = f.fk_proyecto
+            AND a.Cuenta_Contable = f.Cuenta_Contable
+            AND CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE) = f.Fecha_Asiento
+        LEFT JOIN TBL_CtaBancaria cb ON cb.Id_Tipo_Cta = f.Cta_Banco
+        LEFT JOIN TBL_Usuario u ON u.Codigo_User = f.Usuario
+        LEFT JOIN TBL_Comprobante_Pago g ON IIF(ISNULL(f.Id_Comprobante, 0) = 0, 1, f.Id_Comprobante) = g.Id_Comprobante
+        INNER JOIN TBL_Moneda c ON c.Id_Moneda = ISNULL(f.fk_moneda, a.Moneda)
+
+		LEFT JOIN #Reversados r ON r.Cod_Asiento_Contable = a.Cod_Asiento_Contable and r.idEmpresa = e.Id_Empresa
+		
+        WHERE a.Cuenta_Contable = b.Id_Cuenta_Contable
+           
+		    and r.Cod_Asiento_Contable IS NULL
+
+            AND CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE) BETWEEN @Fechaini AND @FechaFin
+
+			AND (@Empresa = '0' OR e.Id_Empresa IN (SELECT Id_Empresa FROM @EmpresasFiltro)) -- Condición modificada
+
+            --AND (@Glosas = '(0=0)' OR (@Glosas <> '(0=0)' AND @Glosas))           
+            --AND (@Ruc = '(0=0)' OR (@Ruc <> '(0=0)' AND @Ruc)) 
+            --AND (@RazonSocial = '(0=0)' OR (@RazonSocial <> '(0=0)' AND @RazonSocial))
+
+			AND (@cuentas = '' OR 
+			EXISTS (
+				SELECT CodigoCuenta
+				FROM @CuentasFiltro cf 
+				WHERE A.Cuenta_Contable LIKE cf.CodigoCuenta + '%'
+			    )   
+            )
+
+			AND (@Glosas = '' OR 
+			EXISTS (
+				SELECT GlosaBusqueda
+				FROM @GlosaFiltro cf 
+				WHERE ( a.Glosa LIKE '%' + cf.GlosaBusqueda + '%'
+				or f.Glosa	 LIKE '%' + cf.GlosaBusqueda + '%')
+				)
+			)
+
+			AND (@RazonSocial = '' OR 
+			EXISTS (
+				SELECT cf.RazonSocialF
+				FROM @RazonSocialFiltro cf 
+				WHERE ( f.Razon_Social LIKE '%' + cf.RazonSocialF + '%'
+				or f.Num_Doc LIKE '%' + cf.RazonSocialF + '%')
+				)
+			)
+
+			AND (@NroDoc = '' OR 
+			EXISTS (
+				SELECT cf.NumDocFitros
+				FROM @nroDocFiltro cf 
+				WHERE CONCAT(f.Cod_Comprobante ,'-', f.Num_Comprobante) LIKE '%' + cf.NumDocFitros + '%'				
+				)
+			)
+
+            AND Id_Dinamica_Contable NOT IN (-50)
+    ) AS X
+   
+    ORDER BY Empresa, periodo, cod_asiento_contable, Cuenta_Contable  --58- 126
+ ";
+
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Fechaini", fechaDesde);
+                cmd.Parameters.AddWithValue("@FechaFin", fechaHasta);
+                cmd.Parameters.AddWithValue("@cuentas", cuentas);
+                cmd.Parameters.AddWithValue("@Glosas", glosa);
+                cmd.Parameters.AddWithValue("@NroDoc", nrocomprobante);
+                cmd.Parameters.AddWithValue("@Empresa", empresa);
+                cmd.Parameters.AddWithValue("@RazonSocial", razonsocial);
+                
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
         public bool GuardarAdjuntoSQL(int idFactura, int tipofactura, int tipo, string nombre, string extension, byte[] archivo)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -168,14 +400,14 @@ namespace HPResergerCapaLogica.Compras
         }
 
         // Create
-        public DataTable BuscarFiltradoCompras(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante)
+        public DataTable BuscarFiltradoCompras(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante,string partida)
         {
             DataTable dataTable = new DataTable();
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string query = @"
-                      SELECT
+                   SELECT
                       e.empresa AS Empresa, x.Id id,
                         cp.nombre AS Comprobante, 
                         p.razon_social AS RazonSocial, 
@@ -184,6 +416,8 @@ namespace HPResergerCapaLogica.Compras
 	                    X.Proveedor,
                         FORMAT(X.FechaEmision, 'yyyy-MM-dd') AS FechaEmision,
                         FORMAT(X.FechaContable, 'yyyy-MM-dd') AS FechaContable,
+                        FORMAT(X.FechaVencimiento, 'yyyy-MM-dd') AS FechaVencimiento,
+                        FORMAT(xx.FechaPago, 'yyyy-MM-dd') AS FechaPago,
                         CASE X.estado
                             WHEN 1 THEN 'COMPLETA'
                             WHEN 2 THEN 'PAGADA'
@@ -214,7 +448,7 @@ namespace HPResergerCapaLogica.Compras
                             Total,
                             IGV,
                             FechaEmision,
-                            FechaContable,
+                            FechaContable,FechaVencimiento,
                             Estado,
                             Detraccion,
                             Glosa,
@@ -239,7 +473,7 @@ namespace HPResergerCapaLogica.Compras
                             Total,
                             IGV,
                             FechaEmision,
-                            FechaContable,
+                            FechaContable,FechaVencimiento,
                             Estado,
                             0 AS Detraccion,
                             Glosa,
@@ -266,14 +500,39 @@ namespace HPResergerCapaLogica.Compras
                     left join TBL_FacturasPresupuestos pp on pp.idFactura = x.Id and pp.tipofactura = x.tipofactura
                     left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and e.ppto = pc.Tipo
 
+					left join (
+					
+select Id_Comprobante,NroFactura,Proveedor,max(FechaPago ) FechaPago 
+from TBL_Factura_Det d
+where estado =1
+group by Id_Comprobante,nrofactura,proveedor
+union all
+select Id_Comprobante,NroComprobante,Proveedor,max(FechaPago ) FechaPago 
+from TBL_NC_ND_Compra_Det d
+where estado =1
+group by Id_Comprobante,NroComprobante,proveedor
+union all
+
+select IdComprobante,NroComprobante,Proveedor , max(FechaPago)
+from Tbl_ReembolsoGastos_Det
+where Estado !=0
+group by IdComprobante,NroComprobante,proveedor
+
+					
+					) as xx on xx.Id_Comprobante =x.IdComprobante
+					and xx.NroFactura = x.NroComprobante
+					and xx.Proveedor = x.Proveedor
+
                     WHERE X.fechacontable BETWEEN @fechade AND @fechaa
                     --AND(E.Empresa LIKE '%' + @EMPRESA + '%')
                     AND(P.razon_social LIKE '%' + @PROVEEDOR + '%' OR P.RUC LIKE '%' + @PROVEEDOR + '%')
                     AND X.Glosa LIKE '%' + @GLOSA + '%'  AND X.NroComprobante LIKE '%' + @nrocompro + '%'
+                    AND X.Glosa LIKE '%' + @GLOSA + '%'  AND X.NroComprobante LIKE '%' + @nrocompro + '%'
                     and (isnull(pc.id,0)= @ocultar or @ocultar=1)
+                    and isnull( CONCAT(codigo, ' - ', DetalleSubPartida)  ,'')like   '%' + @partidas + '%' 
 
-					group by e.Empresa,x.Id,Nombre,razon_social,NameCorto,x.NroComprobante,x.Proveedor,x.FechaEmision,x.FechaContable,x.Estado,x.Tipo,x.Total,x.Igv
-					,x.tc,x.Detraccion,x.Glosa,pc.Id,Login_User,pp.id
+					group by e.Empresa,x.Id,Nombre,razon_social,NameCorto,x.NroComprobante,x.Proveedor,x.FechaEmision,x.FechaContable,x.FechaVencimiento,x.Estado,x.Tipo,x.Total,x.Igv
+					,x.tc,x.Detraccion,x.Glosa,pc.Id,Login_User,pp.id,xx.FechaPago
                     ORDER BY Empresa ASC, FechaContable ASC; ";
 
 
@@ -285,6 +544,7 @@ namespace HPResergerCapaLogica.Compras
                 cmd.Parameters.AddWithValue("@GLOSA", glosa);
                 cmd.Parameters.AddWithValue("@nrocompro", nrocomprobante);
                 cmd.Parameters.AddWithValue("@ocultar", ocultarpp);
+                cmd.Parameters.AddWithValue("@partidas", partida);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
@@ -349,7 +609,7 @@ and year(FechaEmision)= year(@fecha	)
         }
 
         public DataTable BuscarFiltradoMovimientosFinancieros(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante,
-            string cuentabancaria, string tipo)
+            string cuentabancaria, string tipo,string partida)
         {
             DataTable dataTable = new DataTable();
 
@@ -409,6 +669,7 @@ WHERE a.Cuenta_Contable BETWEEN '104' AND '108'
     AND (ax.Razon_Social LIKE '%' + @PROVEEDOR + '%' OR ax.Num_Doc LIKE '%' + @PROVEEDOR + '%')
     AND a.Glosa LIKE '%' + @GLOSA + '%'  
     AND CONCAT(ax.Cod_Comprobante,'-', ax.Num_Comprobante) LIKE '%' + @nrocompro + '%'
+and isnull( CONCAT(codigo, ' - ', DetalleSubPartida)  ,'')like   '%' + @partidas + '%' 
     AND (ISNULL(pc.id,0) = @ocultar OR @ocultar = 1)
         AND Id_Dinamica_Contable NOT IN (-30,-31)
     AND NOT EXISTS (
@@ -434,6 +695,7 @@ ORDER BY x.Empresa ASC, fecha ASC;";
                 cmd.Parameters.AddWithValue("@GLOSA", glosa);
                 cmd.Parameters.AddWithValue("@nrocompro", nrocomprobante);
                 cmd.Parameters.AddWithValue("@ocultar", ocultarpp);
+                cmd.Parameters.AddWithValue("@partidas", partida);
 
                 cmd.Parameters.AddWithValue("@TIPOMOVIMIENTO", tipo);
                 cmd.Parameters.AddWithValue("@CUENTABANCARIA", cuentabancaria);
@@ -447,7 +709,7 @@ ORDER BY x.Empresa ASC, fecha ASC;";
         }
 
         public DataTable BuscarFiltradoMovimientosFinancierosMov(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string glosa, int ocultarpp, string nrocomprobante,
-            string cuentabancaria, string tipo)
+            string cuentabancaria, string tipo,string partida)
         {
             DataTable dataTable = new DataTable();
 
@@ -513,6 +775,7 @@ WHERE a.Cuenta_Contable BETWEEN '104' AND '108'
     AND (ax.Razon_Social LIKE '%' + @PROVEEDOR + '%' OR ax.Num_Doc LIKE '%' + @PROVEEDOR + '%')
     AND a.Glosa LIKE '%' + @GLOSA + '%'  
     AND CONCAT(ax.Cod_Comprobante,'-', ax.Num_Comprobante) LIKE '%' + @nrocompro + '%'
+and  isnull( CONCAT(codigo, ' - ', DetalleSubPartida)  ,'')like   '%' + @partidas + '%' 
     AND (ISNULL(pc.id,0) = @ocultar OR @ocultar = 1)
     AND NOT EXISTS (
         SELECT 1
@@ -538,6 +801,7 @@ ORDER BY x.Empresa ASC, fecha ASC;";
                 cmd.Parameters.AddWithValue("@GLOSA", glosa);
                 cmd.Parameters.AddWithValue("@nrocompro", nrocomprobante);
                 cmd.Parameters.AddWithValue("@ocultar", ocultarpp);
+                cmd.Parameters.AddWithValue("@partidas", partida);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
@@ -654,7 +918,7 @@ ORDER BY x.Empresa ASC, fecha ASC;";
 
             return dataTable;
         }
-        public DataTable BuscarFiltradoPagoCompras(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string nrocta, int ocultarpp, string nrocomprobante)
+        public DataTable BuscarFiltradoPagoCompras(DateTime fechade, DateTime fechaa, string empresa, string proveedor, string nrocta, int ocultarpp, string nrocomprobante,string partida)
         {
             DataTable dataTable = new DataTable();
 
@@ -685,7 +949,15 @@ ORDER BY x.Empresa ASC, fecha ASC;";
                 ,m.NameCorto
                 ,f.NroFacturaDet id, e. Id_Empresa,e.ppto
                  from tbl_factura_Det f
-                inner join TBL_Empresa e on e.Id_Empresa  = f.fkempresa
+
+   INNER JOIN TBL_Empresa e ON e.Id_Empresa = f.fkempresa
+                        and (e.Id_Empresa IN (
+                            SELECT TRY_CAST(value AS INT)
+                            FROM STRING_SPLIT(@EMPRESA, ',')
+                            WHERE TRY_CAST(value AS INT) IS NOT NULL
+                        ) OR @EMPRESA ='')
+
+          --      inner join TBL_Empresa e on e.Id_Empresa  = f.fkempresa
                 inner join TBL_Proveedor p on f.Proveedor = p.RUC
                 Inner join TBL_Comprobante_Pago cp on cp.Id_Comprobante  = f.Id_Comprobante
                 left join TBL_CtaBancaria cb on cb.Nro_Cta  = CtaBanco
@@ -701,9 +973,12 @@ ORDER BY x.Empresa ASC, fecha ASC;";
                                     left join TBL_Partidas_Control pc on pc.id = pp.idPartida and pc.Tipo = pp.TipoPartida and x.ppto = pc.Tipo
 
                   WHERE X.FechaPago BETWEEN @fechade AND @fechaa
-                                    AND(x.Empresa LIKE '%' + @EMPRESA + '%')
+                            --        AND(x.Empresa LIKE '%' + @EMPRESA + '%')
                                     AND(Ruc  LIKE '%' + @PROVEEDOR + '%' OR Razon LIKE '%' + @PROVEEDOR + '%')
                                     AND X.Cuenta LIKE '%' + @GLOSA + '%'  AND X.NroComprobante LIKE '%' + @nrocompro + '%'
+                                    
+                                    and isnull( CONCAT(codigo, ' - ', DetalleSubPartida)  ,'')like   '%' + @partidas + '%' 
+                                    
                                     and (isnull(pc.id,0)= @ocultar or @ocultar=1)
                                     ORDER BY Empresa ASC, FechaPago ASC; 
  ";
@@ -717,6 +992,7 @@ ORDER BY x.Empresa ASC, fecha ASC;";
                 cmd.Parameters.AddWithValue("@GLOSA", nrocta);
                 cmd.Parameters.AddWithValue("@nrocompro", nrocomprobante);
                 cmd.Parameters.AddWithValue("@ocultar", ocultarpp);
+                cmd.Parameters.AddWithValue("@partidas", partida);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
@@ -949,7 +1225,7 @@ ORDER BY x.Empresa ASC, fecha ASC;";
             }
             return dataTable;
         }
-        public DataTable GetUsuariosActivos()
+        public DataTable GetUsuariosActivos(Boolean SoloJefe = false)
         {
             DataTable dataTable = new DataTable();
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -961,7 +1237,19 @@ ORDER BY x.Empresa ASC, fecha ASC;";
                                  from TBL_Usuario u left join
                                 TBL_Empleado e on u .Tipo_ID_User = e.Tipo_ID_Emp and u.Nro_ID_User = e.Nro_ID_Emp
 
-                                where u.Estado =1";
+                                ";
+
+                if (SoloJefe)
+                    query = @"
+                                select u.Codigo_User id, Tipo_ID_User tipoId, Nro_ID_User numId , Login_User 'login'
+                                ,dbo.NombreEmpleado(e.Tipo_ID_Emp,e.Nro_ID_Emp) nombre
+                                from TBL_Usuario u left join
+                                TBL_Empleado e on u .Tipo_ID_User = e.Tipo_ID_Emp and u.Nro_ID_User = e.Nro_ID_Emp
+                                inner join TBL_Empleado_Contrato  ec on ec.Tipo_ID_Emp  = e.Tipo_ID_Emp and ec.Nro_ID_Emp = e.Nro_ID_Emp
+                                where u.Estado =1
+                                and ec.MarcaResponsable=1
+";
+
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dataTable);

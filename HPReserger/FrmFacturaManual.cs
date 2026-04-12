@@ -1035,6 +1035,7 @@ namespace HPReserger
             //FIN DE LA VALDIACION DE LAS CUENTAS CONTABLES DESACTIVADAS
             if (Estado == 1)
             {
+                compensada = false;
                 /////VALIDO SI EXISTE LA FACTURA  
                 DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
                 if (Tprueba.Rows.Count > 0) { msgError("No se puede Registrar, Este Documento Ya Existe"); return; }
@@ -1317,6 +1318,7 @@ namespace HPReserger
             MostrarFormato82(false);
 
             chkIGV.Checked = false;
+            compensada = false;
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {

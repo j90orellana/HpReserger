@@ -57,6 +57,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnCargarConciliacion = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
@@ -298,9 +299,10 @@
             this.btnCerrar,
             this.btnCargar,
             this.btnMovimiento,
-            this.btnExcel});
+            this.btnExcel,
+            this.btnCargarConciliacion});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             // 
             // bar1
             // 
@@ -311,7 +313,8 @@
             this.bar1.FloatLocation = new System.Drawing.Point(432, 133);
             this.bar1.FloatSize = new System.Drawing.Size(169, 44);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCargar, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCargarConciliacion, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCargar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnMovimiento, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExcel, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCerrar, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -323,7 +326,7 @@
             // 
             // btnCargar
             // 
-            this.btnCargar.Caption = "Cargar";
+            this.btnCargar.Caption = "Cargar de Asientos";
             this.btnCargar.Id = 5;
             this.btnCargar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCargar.ImageOptions.Image")));
             this.btnCargar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCargar.ImageOptions.LargeImage")));
@@ -389,6 +392,14 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 481);
             // 
+            // btnCargarConciliacion
+            // 
+            this.btnCargarConciliacion.Caption = "Cargar de Conciliaciones";
+            this.btnCargarConciliacion.Id = 8;
+            this.btnCargarConciliacion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarConciliacion.ImageOptions.Image")));
+            this.btnCargarConciliacion.Name = "btnCargarConciliacion";
+            this.btnCargarConciliacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCargarConciliacion_ItemClick);
+            // 
             // frmCuadraturaMF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,5 +454,6 @@
         private DevExpress.XtraPivotGrid.PivotGridField xMOVIMIENTO;
         private DevExpress.XtraPivotGrid.PivotGridField xDIFERENCIA;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraBars.BarButtonItem btnCargarConciliacion;
     }
 }

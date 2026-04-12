@@ -37,12 +37,13 @@ namespace SISGEM
             // 
             // dashboardViewer1
             // 
-            this.dashboardViewer1.DashboardSource = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dashboard.xml");
+            this.dashboardViewer1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.dashboardViewer1.Appearance.Options.UseBackColor = true;
+            this.dashboardViewer1.DashboardSource = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\Dash" +
+    "board.xml";
             this.dashboardViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dashboardViewer1.Location = new System.Drawing.Point(0, 0);
             this.dashboardViewer1.Name = "dashboardViewer1";
-            this.dashboardViewer1.PrintingOptions.FontInfo.GdiCharSet = ((byte)(0));
-            this.dashboardViewer1.PrintingOptions.FontInfo.Name = null;
             this.dashboardViewer1.Size = new System.Drawing.Size(1137, 526);
             this.dashboardViewer1.TabIndex = 0;
             this.dashboardViewer1.ConfigureDataConnection += new DevExpress.DashboardCommon.DashboardConfigureDataConnectionEventHandler(this.dashboardViewer1_ConfigureDataConnection);

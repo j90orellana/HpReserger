@@ -514,14 +514,32 @@ ORDER BY 1
                 connection.Open();
 
                 string query = @"
-      	DECLARE @EmpresasFiltro TABLE (Id_Empresa INT)    
-	-- Insertar valores en la tabla temporal si no es el valor por defecto
-	IF @Empresa <> '0'
-	BEGIN
-		INSERT INTO @EmpresasFiltro (Id_Empresa)
-		SELECT value FROM STRING_SPLIT(REPLACE(@Empresa, ' ', ''), ',')
-		WHERE value <> ''
-	END
+  
+DECLARE @EmpresasFiltro TABLE (Id_Empresa INT)    
+-- Insertar valores en la tabla temporal si no es el valor por defecto
+IF @Empresa <> '0'
+BEGIN
+	INSERT INTO @EmpresasFiltro (Id_Empresa)
+	SELECT value FROM STRING_SPLIT(REPLACE(@Empresa, ' ', ''), ',')
+	WHERE value <> ''
+END
+
+
+			  --Tabla Temporal
+IF OBJECT_ID('tempdb..#Reversados') IS NOT NULL DROP TABLE #Reversados
+--Insertamos Registros en la TAbla Temporal
+SELECT DISTINCT h.Cod_Asiento_Contable,ex.Id_Empresa idEmpresa
+INTO #Reversados
+FROM TBL_Asiento_Contable h
+INNER JOIN TBL_Proyecto po ON po.Id_Proyecto = h.id_proyecto
+INNER JOIN TBL_Empresa ex ON po.Id_Empresa = ex.Id_Empresa
+WHERE (@Empresa = '0' OR ex.Id_Empresa IN (SELECT Id_Empresa FROM @EmpresasFiltro)) 
+AND h.Estado in (4,0)
+AND CAST(ISNULL(h.Fecha_Asiento_Valor, h.Fecha_Asiento) AS DATE) BETWEEN @Fechaini AND @FechaFin
+--Creamos un Indice
+CREATE INDEX IX_Rev ON #Reversados(Cod_Asiento_Contable,idEmpresa)
+
+
 
 DECLARE @GlosaFiltro TABLE (GlosaBusqueda NVARCHAR(max))
 -- Insertar valores en la tabla temporal si no es el valor por defecto
@@ -646,15 +664,13 @@ END
         LEFT JOIN TBL_Usuario u ON u.Codigo_User = f.Usuario
         LEFT JOIN TBL_Comprobante_Pago g ON IIF(ISNULL(f.Id_Comprobante, 0) = 0, 1, f.Id_Comprobante) = g.Id_Comprobante
         INNER JOIN TBL_Moneda c ON c.Id_Moneda = ISNULL(f.fk_moneda, a.Moneda)
+
+		LEFT JOIN #Reversados r ON r.Cod_Asiento_Contable = a.Cod_Asiento_Contable and r.idEmpresa = e.Id_Empresa
+		
         WHERE a.Cuenta_Contable = b.Id_Cuenta_Contable
-            AND a.Cod_Asiento_Contable NOT IN (
-                SELECT DISTINCT h.Cod_Asiento_Contable
-                FROM TBL_Asiento_Contable h
-                INNER JOIN TBL_Proyecto po ON po.Id_Proyecto = h.id_proyecto
-                INNER JOIN TBL_Empresa ex ON po.Id_Empresa = ex.Id_Empresa AND ex.Id_Empresa = e.Id_Empresa
-                WHERE h.Estado IN (4)
-                AND CAST(ISNULL(h.Fecha_Asiento_Valor, h.Fecha_Asiento) AS DATE) BETWEEN @Fechaini AND @FechaFin
-            )
+           
+		    and r.Cod_Asiento_Contable IS NULL
+
             AND CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE) BETWEEN @Fechaini AND @FechaFin
 
 			AND (@Empresa = '0' OR e.Id_Empresa IN (SELECT Id_Empresa FROM @EmpresasFiltro)) -- Condición modificada
@@ -700,7 +716,7 @@ END
             AND Id_Dinamica_Contable NOT IN (-50)
     ) AS X
    
-    ORDER BY Empresa, periodo, cod_asiento_contable, Cuenta_Contable
+    ORDER BY Empresa, periodo, cod_asiento_contable, Cuenta_Contable  --58- 126
 ";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.SelectCommand.Parameters.AddWithValue("@Fechaini", fechaIni);
@@ -888,7 +904,7 @@ END
                                sum  (IIF(a.Saldo_Debe > 0, ax.Importe_MN, -ax.Importe_MN)) AS Saldo_Soles,
                               sum   (IIF(a.Saldo_Debe > 0, ax.Importe_ME, -ax.Importe_ME)) AS Saldo_Dolares,
 	                            concat(ax.Cod_Comprobante,'-', ax.Num_Comprobante) NroComprobante,Num_Doc, max(Razon_Social)RazonSocial
-                                , max(ax.Fecha_Asiento) FechaAsiento,min (A.Cod_Asiento_Contable)Cuo
+                                , min(ax.Fecha_Asiento) FechaAsiento,min (A.Cod_Asiento_Contable)Cuo
                             FROM 
                                 TBL_Asiento_Contable a 
 								inner join TBL_Cuenta_Contable c on c.Id_Cuenta_Contable = a.Cuenta_Contable
@@ -906,7 +922,7 @@ END
                                     WHERE LEFT(a.Cuenta_Contable, LEN(value)) = value
                                 )
                                 AND a.Estado = 1
-                                   and Id_Dinamica_Contable not in (-10)
+                                   and Id_Dinamica_Contable not in (-10,-50)
 
 								   AND ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) >= DATEFROMPARTS(YEAR(@fecha), 1, 1)
                                  AND ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) <  DATEADD(DAY, 1, EOMONTH(@fecha))
@@ -1171,7 +1187,7 @@ END
                                  AND ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) <  DATEADD(DAY, 1, EOMONTH(@fecha))
 
                             and a.Estado in (1,3)
-                                and Id_Dinamica_Contable not in (-10)
+                                and Id_Dinamica_Contable not in (-10,-50)
 
 	                        --and Id_Dinamica_Contable not in (-30,-31)
                             and a.Cuenta_Contable like @cuenta + '%'
@@ -1194,7 +1210,7 @@ END
                                         and ax.Fecha_Asiento= CAST(ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) AS DATE)
                
                                     where a.Estado in (1,3) 
-                                        and Id_Dinamica_Contable not in (-10)-- and Id_Dinamica_Contable not in (-30,-31)
+                                        and Id_Dinamica_Contable not in (-10,-50)-- and Id_Dinamica_Contable not in (-30,-31)
                                     and a.Cuenta_Contable like @cuenta + '%'
 			                        AND ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) >= DATEFROMPARTS(YEAR(@fecha), 1, 1)
                                  AND ISNULL(a.Fecha_Asiento_Valor, a.Fecha_Asiento) <  DATEADD(DAY, 1, EOMONTH(@fecha))

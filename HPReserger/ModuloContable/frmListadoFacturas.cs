@@ -53,11 +53,12 @@ namespace SISGEM.ModuloContable
             string empresa = cboempresa.EditValue?.ToString() ?? string.Empty;
             string proveedor = txtproveedor.EditValue?.ToString() ?? string.Empty;
             string nrocomprobante = txtnrocomprobante.EditValue?.ToString() ?? string.Empty;
+            string partida = txtPartida.EditValue?.ToString() ?? string.Empty;
 
             int OcultarPP = chkPP.Checked ? 0 : 1;
 
             // Llamar a la consulta con las fechas ordenadas
-            DataTable tdata = CFactura.BuscarFiltradoCompras(fechaDesde, fechaHasta, empresa, proveedor, glosa, OcultarPP, nrocomprobante);
+            DataTable tdata = CFactura.BuscarFiltradoCompras(fechaDesde, fechaHasta, empresa, proveedor, glosa, OcultarPP, nrocomprobante,partida);
             gridControl1.DataSource = tdata;
         }
 

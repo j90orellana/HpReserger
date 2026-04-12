@@ -744,9 +744,9 @@ namespace HPReserger
         {
             if (cboempresa.SelectedValue == null) { msg("Selecione una Empresa"); cboempresa.Focus(); return; }
             if (cboproyectoCierre.SelectedValue == null) { msg("Selecciones un Proyecto"); cboproyectoCierre.Focus(); return; }
-            if (dtgconten.RowCount == 0) { msg("No Hay filas para Generar el Asiento"); return; }
+            if (dtgconten.RowCount == 0 && dtgcontenBalance.RowCount == 0) { msg("No Hay filas para Generar el Asiento"); return; }
             if (rbCierre.Checked && !rbCierre.Enabled) { msg("No se Puede Aplicar Asiento de Cierre"); return; }
-            if (rbApertura.Checked && !rbApertura.Enabled) { msg("No se Puede Aplicar Asiento de Apertura"); return; }
+            if (rbApertura.Checked && Tdatos.Rows.Count != 0 && !rbApertura.Enabled) { msg("No se Puede Aplicar Asiento de Apertura"); return; }
             //validamos que este todos los periodos Cerrados
             //Boolean Validar = false;
             //for (int i = 1; i < 12; i++)

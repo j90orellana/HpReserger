@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddProyecto));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddProyecto));
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -51,9 +51,12 @@
             this.txtRuta = new DevExpress.XtraEditors.TextEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView16 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xID_Documento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xNombre_Completo_ftp = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xNombre_Archivo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xFecha = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -91,12 +94,13 @@
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ItemForID_cliente = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView15 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ValorSolesTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ValorDolaresTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForID_Proyecto = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForNombre_Proyecto = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForReferencia = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForID_Codigo_postal = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForID_Tipo_proyecto = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForID_Prioridad = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForRequerimiento = new DevExpress.XtraLayout.LayoutControlItem();
@@ -124,6 +128,9 @@
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForID_Contacto1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForID_Codigo_postal = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForDireccion1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForDireccion2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
@@ -184,13 +191,6 @@
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xID_Documento = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.ValorSolesTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.ItemForDireccion1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ValorDolaresTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.ItemForDireccion2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -199,6 +199,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRuta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenPictureBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ID_ProyectoTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectoBindingSource)).BeginInit();
@@ -236,12 +237,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_cliente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorSolesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorDolaresTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Proyecto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNombre_Proyecto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForReferencia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Codigo_postal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Tipo_proyecto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Prioridad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForRequerimiento)).BeginInit();
@@ -269,6 +271,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Codigo_postal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDireccion1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDireccion2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -333,11 +338,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValorSolesTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDireccion1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValorDolaresTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDireccion2)).BeginInit();
             this.SuspendLayout();
             // 
             // bar2
@@ -548,6 +548,12 @@
             this.gridView16.Click += new System.EventHandler(this.gridView16_Click);
             this.gridView16.DoubleClick += new System.EventHandler(this.gridView16_DoubleClick);
             // 
+            // xID_Documento
+            // 
+            this.xID_Documento.Caption = "ID_Documento";
+            this.xID_Documento.FieldName = "ID_Documento";
+            this.xID_Documento.Name = "xID_Documento";
+            // 
             // xNombre_Completo_ftp
             // 
             this.xNombre_Completo_ftp.Caption = "Nombre Archivo";
@@ -574,6 +580,27 @@
             this.xFecha.Visible = true;
             this.xFecha.VisibleIndex = 2;
             this.xFecha.Width = 70;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Eliminar";
+            this.gridColumn2.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.gridColumn2.MaxWidth = 45;
+            this.gridColumn2.MinWidth = 45;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.Width = 45;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", 20, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit1.MaxLength = 20;
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
             // simpleButton5
             // 
@@ -979,6 +1006,34 @@
             this.gridView15.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView15.OptionsView.ShowGroupPanel = false;
             // 
+            // ValorSolesTextEdit
+            // 
+            this.ValorSolesTextEdit.Location = new System.Drawing.Point(111, 138);
+            this.ValorSolesTextEdit.Name = "ValorSolesTextEdit";
+            this.ValorSolesTextEdit.Properties.DisplayFormat.FormatString = "f2";
+            this.ValorSolesTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.ValorSolesTextEdit.Properties.EditFormat.FormatString = "f2";
+            this.ValorSolesTextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.ValorSolesTextEdit.Properties.Mask.EditMask = "f2";
+            this.ValorSolesTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.ValorSolesTextEdit.Size = new System.Drawing.Size(174, 20);
+            this.ValorSolesTextEdit.StyleController = this.dataLayoutControl1;
+            this.ValorSolesTextEdit.TabIndex = 8;
+            // 
+            // ValorDolaresTextEdit
+            // 
+            this.ValorDolaresTextEdit.Location = new System.Drawing.Point(392, 138);
+            this.ValorDolaresTextEdit.Name = "ValorDolaresTextEdit";
+            this.ValorDolaresTextEdit.Properties.DisplayFormat.FormatString = "f2";
+            this.ValorDolaresTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.ValorDolaresTextEdit.Properties.EditFormat.FormatString = "f2";
+            this.ValorDolaresTextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.ValorDolaresTextEdit.Properties.Mask.EditMask = "f2";
+            this.ValorDolaresTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.ValorDolaresTextEdit.Size = new System.Drawing.Size(161, 20);
+            this.ValorDolaresTextEdit.StyleController = this.dataLayoutControl1;
+            this.ValorDolaresTextEdit.TabIndex = 8;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1058,15 +1113,6 @@
             this.ItemForReferencia.Size = new System.Drawing.Size(549, 22);
             this.ItemForReferencia.Text = "Referencia";
             this.ItemForReferencia.TextSize = new System.Drawing.Size(102, 13);
-            // 
-            // ItemForID_Codigo_postal
-            // 
-            this.ItemForID_Codigo_postal.Control = this.ID_Codigo_postalTextEdit;
-            this.ItemForID_Codigo_postal.Location = new System.Drawing.Point(0, 88);
-            this.ItemForID_Codigo_postal.Name = "ItemForID_Codigo_postal";
-            this.ItemForID_Codigo_postal.Size = new System.Drawing.Size(549, 22);
-            this.ItemForID_Codigo_postal.Text = "Codigo Postal";
-            this.ItemForID_Codigo_postal.TextSize = new System.Drawing.Size(102, 13);
             // 
             // ItemForID_Tipo_proyecto
             // 
@@ -1336,6 +1382,37 @@
             this.layoutControlItem14.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
+            // 
+            // ItemForID_Codigo_postal
+            // 
+            this.ItemForID_Codigo_postal.Control = this.ID_Codigo_postalTextEdit;
+            this.ItemForID_Codigo_postal.Location = new System.Drawing.Point(0, 88);
+            this.ItemForID_Codigo_postal.Name = "ItemForID_Codigo_postal";
+            this.ItemForID_Codigo_postal.Size = new System.Drawing.Size(549, 22);
+            this.ItemForID_Codigo_postal.Text = "Codigo Postal";
+            this.ItemForID_Codigo_postal.TextSize = new System.Drawing.Size(102, 13);
+            // 
+            // ItemForDireccion1
+            // 
+            this.ItemForDireccion1.Control = this.ValorSolesTextEdit;
+            this.ItemForDireccion1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.ItemForDireccion1.CustomizationFormText = "Direccion";
+            this.ItemForDireccion1.Location = new System.Drawing.Point(0, 132);
+            this.ItemForDireccion1.Name = "ItemForDireccion1";
+            this.ItemForDireccion1.Size = new System.Drawing.Size(281, 22);
+            this.ItemForDireccion1.Text = "Valor Soles";
+            this.ItemForDireccion1.TextSize = new System.Drawing.Size(102, 13);
+            // 
+            // ItemForDireccion2
+            // 
+            this.ItemForDireccion2.Control = this.ValorDolaresTextEdit;
+            this.ItemForDireccion2.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.ItemForDireccion2.CustomizationFormText = "Direccion";
+            this.ItemForDireccion2.Location = new System.Drawing.Point(281, 132);
+            this.ItemForDireccion2.Name = "ItemForDireccion2";
+            this.ItemForDireccion2.Size = new System.Drawing.Size(268, 22);
+            this.ItemForDireccion2.Text = "Valor Dolares";
+            this.ItemForDireccion2.TextSize = new System.Drawing.Size(102, 13);
             // 
             // layoutControlGroup1
             // 
@@ -1962,83 +2039,6 @@
             this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 70;
             // 
-            // xID_Documento
-            // 
-            this.xID_Documento.Caption = "ID_Documento";
-            this.xID_Documento.FieldName = "ID_Documento";
-            this.xID_Documento.Name = "xID_Documento";
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Eliminar";
-            this.gridColumn2.ColumnEdit = this.repositoryItemButtonEdit1;
-            this.gridColumn2.MaxWidth = 45;
-            this.gridColumn2.MinWidth = 45;
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 45;
-            // 
-            // repositoryItemButtonEdit1
-            // 
-            this.repositoryItemButtonEdit1.AutoHeight = false;
-            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", 20, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repositoryItemButtonEdit1.MaxLength = 20;
-            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
-            this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
-            // 
-            // ValorSolesTextEdit
-            // 
-            this.ValorSolesTextEdit.Location = new System.Drawing.Point(111, 138);
-            this.ValorSolesTextEdit.Name = "ValorSolesTextEdit";
-            this.ValorSolesTextEdit.Properties.DisplayFormat.FormatString = "f2";
-            this.ValorSolesTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.ValorSolesTextEdit.Properties.EditFormat.FormatString = "f2";
-            this.ValorSolesTextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.ValorSolesTextEdit.Properties.Mask.EditMask = "f2";
-            this.ValorSolesTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.ValorSolesTextEdit.Size = new System.Drawing.Size(174, 20);
-            this.ValorSolesTextEdit.StyleController = this.dataLayoutControl1;
-            this.ValorSolesTextEdit.TabIndex = 8;
-            // 
-            // ItemForDireccion1
-            // 
-            this.ItemForDireccion1.Control = this.ValorSolesTextEdit;
-            this.ItemForDireccion1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.ItemForDireccion1.CustomizationFormText = "Direccion";
-            this.ItemForDireccion1.Location = new System.Drawing.Point(0, 132);
-            this.ItemForDireccion1.Name = "ItemForDireccion1";
-            this.ItemForDireccion1.Size = new System.Drawing.Size(281, 22);
-            this.ItemForDireccion1.Text = "Valor Soles";
-            this.ItemForDireccion1.TextSize = new System.Drawing.Size(102, 13);
-            // 
-            // ValorDolaresTextEdit
-            // 
-            this.ValorDolaresTextEdit.Location = new System.Drawing.Point(392, 138);
-            this.ValorDolaresTextEdit.Name = "ValorDolaresTextEdit";
-            this.ValorDolaresTextEdit.Properties.DisplayFormat.FormatString = "f2";
-            this.ValorDolaresTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.ValorDolaresTextEdit.Properties.EditFormat.FormatString = "f2";
-            this.ValorDolaresTextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.ValorDolaresTextEdit.Properties.Mask.EditMask = "f2";
-            this.ValorDolaresTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.ValorDolaresTextEdit.Size = new System.Drawing.Size(161, 20);
-            this.ValorDolaresTextEdit.StyleController = this.dataLayoutControl1;
-            this.ValorDolaresTextEdit.TabIndex = 8;
-            // 
-            // ItemForDireccion2
-            // 
-            this.ItemForDireccion2.Control = this.ValorDolaresTextEdit;
-            this.ItemForDireccion2.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.ItemForDireccion2.CustomizationFormText = "Direccion";
-            this.ItemForDireccion2.Location = new System.Drawing.Point(281, 132);
-            this.ItemForDireccion2.Name = "ItemForDireccion2";
-            this.ItemForDireccion2.Size = new System.Drawing.Size(268, 22);
-            this.ItemForDireccion2.Text = "Valor Dolares";
-            this.ItemForDireccion2.TextSize = new System.Drawing.Size(102, 13);
-            // 
             // frmAddProyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2062,6 +2062,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRuta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenPictureBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ID_ProyectoTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectoBindingSource)).EndInit();
@@ -2099,12 +2100,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_cliente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorSolesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorDolaresTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Proyecto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNombre_Proyecto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForReferencia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Codigo_postal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Tipo_proyecto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Prioridad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForRequerimiento)).EndInit();
@@ -2132,6 +2134,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Contacto1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForID_Codigo_postal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDireccion1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDireccion2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
@@ -2196,11 +2201,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValorSolesTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDireccion1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValorDolaresTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDireccion2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

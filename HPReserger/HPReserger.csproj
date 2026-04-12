@@ -580,6 +580,12 @@
     <Compile Include="Flujo de Caja\frmMovimientosSueltos.Designer.cs">
       <DependentUpon>frmMovimientosSueltos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Flujo de Caja\frmOrdenPartidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmOrdenPartidas.Designer.cs">
+      <DependentUpon>frmOrdenPartidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Flujo de Caja\frmVentaInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -816,6 +822,12 @@
     </Compile>
     <Compile Include="ModuloCompras\frmRendicionesReembolso.Designer.cs">
       <DependentUpon>frmRendicionesReembolso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompras\frmReportexProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompras\frmReportexProyectos.Designer.cs">
+      <DependentUpon>frmReportexProyectos.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\frmAddFormato82.cs">
       <SubType>Form</SubType>
@@ -3012,6 +3024,9 @@
     <EmbeddedResource Include="Flujo de Caja\frmMovimientosSueltos.resx">
       <DependentUpon>frmMovimientosSueltos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmOrdenPartidas.resx">
+      <DependentUpon>frmOrdenPartidas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Flujo de Caja\frmVentaInventario.resx">
       <DependentUpon>frmVentaInventario.cs</DependentUpon>
     </EmbeddedResource>
@@ -3128,6 +3143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompras\frmRendicionesReembolso.resx">
       <DependentUpon>frmRendicionesReembolso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompras\frmReportexProyectos.resx">
+      <DependentUpon>frmReportexProyectos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmAddFormato82.resx">
       <DependentUpon>frmAddFormato82.cs</DependentUpon>

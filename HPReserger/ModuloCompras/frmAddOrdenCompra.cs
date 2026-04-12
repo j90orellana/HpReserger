@@ -47,12 +47,13 @@ namespace SISGEM.ModuloCompras
             CargarMoneda();
             CargarCentrosCosto();
 
-            CargarAprobadores();
+            CargarAprobadores(true);
 
             HPResergerCapaLogica.Compras.OrdenCompra oClase = new HPResergerCapaLogica.Compras.OrdenCompra();
             if (_idOrden != 0)
             {
                 DataTable dt = oClase.ObtenerPorID(_idOrden);
+                CargarAprobadores();
 
                 if (dt.Rows.Count == 0)
                 {
@@ -177,12 +178,12 @@ namespace SISGEM.ModuloCompras
         }
 
         DataTable Tdata;
-        private void CargarAprobadores()
+        private void CargarAprobadores(Boolean SoloJefe = false)
         {
             HPResergerCapaLogica.Compras.FacturaManual cClase = new HPResergerCapaLogica.Compras.FacturaManual();
 
-            DataTable tData = cClase.GetUsuariosActivos();
-            DataTable tData2 = cClase.GetUsuariosActivos();
+            DataTable tData = cClase.GetUsuariosActivos(SoloJefe);
+            DataTable tData2 = cClase.GetUsuariosActivos(SoloJefe);
 
             cboaprobador.Properties.DataSource = tData;
             cboaprobador.Properties.DisplayMember = "nombre";

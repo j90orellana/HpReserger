@@ -93,6 +93,7 @@ namespace SISGEM.Flujo_de_Caja
             DataTable dt;
             if (movimientos == 1)
             {
+                //por aqui entra por defecto
                 dt = cClase.FlujodeCajaMovimientos(Empresa, pagos);
             }
             else
@@ -133,6 +134,12 @@ namespace SISGEM.Flujo_de_Caja
             pivotGridFieldAnio.GroupInterval = DevExpress.XtraPivotGrid.PivotGroupInterval.DateYear;
             pivotGridFieldAnio.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             pivotGridFieldAnio.ValueFormat.FormatString = "####"; // solo muestra el año
+
+            pivotGridFieldPartidaPadre.SortMode = DevExpress.XtraPivotGrid.PivotSortMode.Value;
+            pivotGridFieldPartidaPadre.SortBySummaryInfo.Field = xposicion;
+            pivotGridFieldPartidaPadre.SortOrder = DevExpress.XtraPivotGrid.PivotSortOrder.Ascending;
+
+            xposicion.Visible = false;
 
             //pivotGridFieldMes.GroupInterval = DevExpress.XtraPivotGrid.PivotGroupInterval.DateMonthYear;
             //pivotGridFieldMes.ValueFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -331,6 +338,28 @@ namespace SISGEM.Flujo_de_Caja
         private void pivotGridControl1_CustomGroupInterval(object sender, PivotCustomGroupIntervalEventArgs e)
         {
 
+        }
+
+        private void pivotGridControl1_CustomFieldSort(object sender, PivotGridCustomFieldSortEventArgs e)
+        {
+            if (e.Field.FieldName == "PartidaPadre")
+            {
+                int n1 = ObtenerNumero(e.Value1.ToString());
+                int n2 = ObtenerNumero(e.Value2.ToString());
+
+                e.Result = n1.CompareTo(n2);
+                e.Handled = true;
+            }
+        }
+        int ObtenerNumero(string texto)
+        {
+            if (texto.Contains("-"))
+            {
+                int numero;
+                if (int.TryParse(texto.Split('-')[0].Trim(), out numero))
+                    return numero;
+            }
+            return 0;
         }
     }
 }

@@ -281,6 +281,18 @@ namespace SISGEM.Flujo_de_Caja
             }
 
         }
-             
+
+        private void btnCargarConciliacion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HPResergerCapaLogica.FlujoCaja.SaldosCuentasBancarias Cclase = new HPResergerCapaLogica.FlujoCaja.SaldosCuentasBancarias();
+            Tdatos = Cclase.ObtenerCuadraturaMFdeConciliaciones();
+            pivotGridControl1.DataSource = Tdatos;
+
+
+            // Permitir edición en celdas de datos
+            pivotGridControl1.OptionsCustomization.AllowEdit = false;
+
+            pivotGridControl1.BestFitRowArea();
+        }
     }
 }

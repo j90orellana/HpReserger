@@ -1616,6 +1616,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@codigo", SqlDbType.Int).Value = codigo;
                     cmd.Parameters.Add("@proyecto", SqlDbType.Int).Value = proyecto;
                     cmd.Parameters.Add("@Fecha", SqlDbType.Date).Value = Fechas;
+                    cmd.CommandTimeout = 0;
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
@@ -5632,7 +5633,7 @@ namespace HPResergerCapaDatos
         public DataTable CierreMensualDocumentos(int empresa, DateTime fechaini, DateTime fechafin, decimal tccomprasbs, decimal tcventasbs, Boolean Generar)
         {
             string[] parametros = { "@Empresa", "@FechaInicial", "@FechaFinal", "@TCCompraSBS", "@TCVentaSBS", "@Generar" };
-            object[] valores = { empresa, fechaini, fechafin, tccomprasbs, tcventasbs, Generar };
+            object[] valores = { empresa, fechaini, fechafin, tccomprasbs, tcventasbs, Generar };           
             return bd.DataTableFromProcedure("usp_CierreMensualDocumentos", parametros, valores, null);
         }
         public DataTable CierreMensualDinamicaYaExiste(int dinamica, DateTime FechaPeriodo, int empresa)

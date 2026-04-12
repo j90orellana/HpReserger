@@ -85,7 +85,7 @@ namespace HPReserger
                         btnAplicar.Enabled = true;
                     if (chkSaldos.Checked)
                     {
-                        dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = false;
+                                                   dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = false;
                         if (GenerarAsientoSaldos)
                             dtgconten.DataSource = CapaLogica.CierreMensualSaldos((int)cboempresa.SelectedValue, new DateTime(FEcha.Year, 1, 1), ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2]);
                         else
@@ -95,7 +95,12 @@ namespace HPReserger
                     {
                         dtgconten.Columns[xProveedor.Name].Visible = dtgconten.Columns[xNumDoc.Name].Visible = dtgconten.Columns[xNameComprobante.Name].Visible = true;
                         if (GenerarAsientoDocumentos)
+                        {
+                            //var cclase = new HPResergerCapaLogica.Contable.Contabilidad();
+                            //dtgconten.DataSource = cclase.CierreMensualDocumentos((int)cboempresa.SelectedValue, new DateTime(FEcha.Year, 1, 1), ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2], btnAplicar.Enabled);
+
                             dtgconten.DataSource = CapaLogica.CierreMensualDocumentos((int)cboempresa.SelectedValue, new DateTime(FEcha.Year, 1, 1), ((DateTime)cboperiodo.SelectedValue).AddMonths(1).AddDays(-1), (decimal)FilaTC[1], (decimal)FilaTC[2], btnAplicar.Enabled);
+                        }
                         else
                             dtgconten.DataSource = CapaLogica.DiferenciadeCambioMensual((int)cboempresa.SelectedValue, FEcha, -31);
 

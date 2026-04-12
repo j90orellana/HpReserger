@@ -14,6 +14,14 @@ namespace HPResergerCapaLogica.FlujoCaja
         public DateTime Fecha { get; set; } = DateTime.Now;
         public int Idpartida { get; set; } = 0;
     }
+    public class TBL_PartidasOrden
+    {
+        public string Codigo { get; set; }
+        public string Partida { get; set; }
+        public int Tipo { get; set; } = 1;
+        public int Posicion { get; set; } = 1;
+        public int Estado { get; set; } = 1;
+    }
     public class Partidas_Control
     {
         public int Id { get; set; } = 0;
@@ -64,6 +72,140 @@ namespace HPResergerCapaLogica.FlujoCaja
             }
         }
 
+        public bool InsertarActualizarOrdenPartidasCambiadas(TBL_PartidasOrden obj)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+
+                     
+        DECLARE @posActual INT;
+
+                SELECT @posActual = posicion
+        FROM TBL_PartidasOrden
+        WHERE partida = @Partida AND Tipo = @tipo;
+
+                IF @posActual IS NOT NULL
+                BEGIN
+            IF @posActual<> @nuevaPosicion
+            BEGIN
+                IF @nuevaPosicion < @posActual
+                BEGIN
+                    UPDATE TBL_PartidasOrden
+                    SET posicion = posicion + 1
+                    WHERE Tipo = @tipo
+                      AND posicion >= @nuevaPosicion
+                      AND posicion<@posActual;
+                END
+                ELSE
+                BEGIN
+                    UPDATE TBL_PartidasOrden
+                    SET posicion = posicion - 1
+                    WHERE Tipo = @tipo
+                      AND posicion > @posActual
+                      AND posicion <= @nuevaPosicion;
+                END
+
+                UPDATE TBL_PartidasOrden
+                SET posicion = @nuevaPosicion
+                WHERE Partida = @Partida AND Tipo = @tipo;
+                END
+            END";
+
+
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+
+                    cmd.Parameters.AddWithValue("@Partida", obj.Partida );
+                    cmd.Parameters.AddWithValue("@tipo", obj.Tipo);
+                    cmd.Parameters.AddWithValue("@nuevaPosicion", obj.Posicion);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        public bool InsertarActualizarOrdenPartidas(TBL_PartidasOrden obj)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+                   
+                    IF EXISTS (SELECT 1 FROM TBL_PartidasOrden WHERE partida = @partida AND Tipo = @tipo)
+                    BEGIN
+                        UPDATE TBL_PartidasOrden
+                        SET 
+                            posicion = @posicion
+       
+                        WHERE Partida = @partida AND Tipo = @tipo
+                    END
+                    ELSE
+                    BEGIN
+                        INSERT INTO TBL_PartidasOrden (codigo, Partida, Tipo, posicion, Estado)
+                        VALUES (@codigo, @partida, @tipo, @posicion, @estado)
+                    END
+";
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@codigo", obj.Codigo);
+                    cmd.Parameters.AddWithValue("@partida", obj.Partida);
+                    cmd.Parameters.AddWithValue("@tipo", obj.Tipo);
+                    cmd.Parameters.AddWithValue("@posicion", obj.Posicion);
+                    cmd.Parameters.AddWithValue("@estado", obj.Estado);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+        public DataTable ListarOrdendelasPArtidas(int tipo)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+
+select '0'codigo, x.Partida partida,x.Tipo tipo
+,isnull( po.posicion ,0)posicion
+ 
+
+from (
+SELECT  
+  distinct
+    Partida,
+    Tipo
+  
+FROM TBL_Partidas_Control p
+
+WHERE Estado = 1
+  AND Partida != ''
+  AND DetalleSubPartida != ''
+  AND Tipo = @tipo
+  ) x
+
+left join TBL_PartidasOrden po on po.Tipo = x.Tipo and po.Partida= x.Partida
+ORDER BY  po.posicion,x.Partida;
+"
+
+;
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@tipo", tipo);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
         public DataTable GetAreas()
         {
             DataTable dataTable = new DataTable();
@@ -358,14 +500,14 @@ namespace HPResergerCapaLogica.FlujoCaja
                 cmd.Parameters.AddWithValue("@DetallePartida", (object)p.DetallePartida ?? "");
                 cmd.Parameters.AddWithValue("@DetalleSubPartida", (object)p.DetalleSubPartida ?? "");
                 cmd.Parameters.AddWithValue("@AreaOwner", p.AreaOwner);
-                cmd.Parameters.AddWithValue("@AreaOwner2", p.AreaOwner2);             
+                cmd.Parameters.AddWithValue("@AreaOwner2", p.AreaOwner2);
                 cmd.Parameters.AddWithValue("@Id", p.Id);
 
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-        
+
         // Delete
         public bool Eliminar(int id)
         {

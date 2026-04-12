@@ -144,16 +144,17 @@ namespace SISGEM.Flujo_de_Caja
 
             string tipo = txttipomovimiento.EditValue?.ToString() ?? string.Empty;
             string cuentabancaria = txtCuentaBancaria.EditValue?.ToString() ?? string.Empty;
+            string partida = txtPartida.EditValue?.ToString() ?? string.Empty;
 
             int OcultarPP = chkPPf.Checked ? 0 : 1;
             DataTable tdata;
             // Llamar a la consulta con las fechas ordenadas
             if (SoloMovimientos == 1)
             {
-                tdata = CFactura.BuscarFiltradoMovimientosFinancierosMov(fechaDesde, fechaHasta, empresa, proveedor, glosa, OcultarPP, nrocomprobante, cuentabancaria, tipo);
+                tdata = CFactura.BuscarFiltradoMovimientosFinancierosMov(fechaDesde, fechaHasta, empresa, proveedor, glosa, OcultarPP, nrocomprobante, cuentabancaria, tipo,partida);
             }
             else  //entra directo aca para debug
-                tdata = CFactura.BuscarFiltradoMovimientosFinancieros(fechaDesde, fechaHasta, empresa, proveedor, glosa, OcultarPP, nrocomprobante, cuentabancaria, tipo);
+                tdata = CFactura.BuscarFiltradoMovimientosFinancieros(fechaDesde, fechaHasta, empresa, proveedor, glosa, OcultarPP, nrocomprobante, cuentabancaria, tipo,partida);
             gridControl1.DataSource = tdata;
 
             gridView1.BestFitColumns();

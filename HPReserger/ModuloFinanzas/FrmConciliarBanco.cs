@@ -530,6 +530,59 @@ namespace HPReserger.ModuloFinanzas
                 TdatosExcel.AcceptChanges();
                 return true;
             }
+            else if (CodSunat == 3) //Banco Inerbank
+            {
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    DateTime Fecha;
+                    if (!DateTime.TryParse(item[0].ToString(), out Fecha))
+                    {
+                        item.Delete();
+                    }
+                }
+
+                TdatosExcel.AcceptChanges();
+
+                TdatosExcel.Columns[0].ColumnName = "Fecha";
+                TdatosExcel.Columns[3].ColumnName = "Glosa";
+                TdatosExcel.Columns[4].ColumnName = "Glosa2";
+                TdatosExcel.Columns[6].ColumnName = "Monto";
+                TdatosExcel.Columns[2].ColumnName = "Operacion";
+
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    item[1] = "";
+                    //item[3] = item[3] + " " + item[4];
+
+                    decimal debe = decimal.TryParse(item[6]?.ToString(), out var d) ? d : 0;
+                    decimal haber = decimal.TryParse(item[7]?.ToString(), out var h) ? h : 0;
+
+                    item["monto"] = debe + haber;
+                }
+
+                TdatosExcel.Columns.RemoveAt(9);
+                TdatosExcel.Columns.RemoveAt(8);
+                TdatosExcel.Columns.RemoveAt(7);
+                TdatosExcel.Columns.RemoveAt(5);
+                //TdatosExcel.Columns.RemoveAt(4);
+                TdatosExcel.Columns.RemoveAt(1);
+
+
+                //Agregamos la Columnas
+                DataColumn ColOk = new DataColumn("ok", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColOk);
+                DataColumn ColIndex = new DataColumn("Index", typeof(int));
+                ColOk.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColIndex);
+                DataColumn ColPkid = new DataColumn("pkid", typeof(int));
+                ColPkid.DefaultValue = 0;
+                TdatosExcel.Columns.Add(ColPkid);
+                TdatosExcel.Columns.Add("Comentario");
+                //TdatosExcel.Columns.Add("Glosa2");
+                TdatosExcel.AcceptChanges();
+                return true;
+            }
             return false;
         }
 
@@ -797,6 +850,7 @@ namespace HPReserger.ModuloFinanzas
                     FechaMin = FechaMax = DateTime.Parse(TdatosExcel.Rows[3][5].ToString());
                 }
                 DateTime FechaCombo = comboMesAño1.GetFecha();
+
                 if (!(FechaMin.Month == FechaCombo.Month && FechaCombo.Year == FechaMax.Year))
                 {
                     msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
@@ -819,7 +873,7 @@ namespace HPReserger.ModuloFinanzas
                 string periodox = comboMesAño1.GetFecha().ToString("MM.yyyy");
                 if (!nombreArchivo.Contains(periodox))
                 {
-                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos 'MM.yyyy'");
+                    msgError("El Periodo Seleccionado No Coincide con la Fecha del Nombre del Archivo 'MM.yyyy'");
                     return false;
                 }
 
@@ -839,12 +893,58 @@ namespace HPReserger.ModuloFinanzas
                 TdatosExcel.AcceptChanges();
                 return true;
             }
+            else if (CodSunat == 3)
+            {
+                Boolean ColumnaVacia = true;
+                foreach (DataRow item in TdatosExcel.Rows)
+                {
+                    if (item[0].ToString() != "")
+                    {
+                        ColumnaVacia = false;
+                    }
+                }
+                if (ColumnaVacia) TdatosExcel.Columns.RemoveAt(0);
+
+                string ValCuenta = TdatosExcel.Rows[7][2].ToString();
+                if (!ValCuenta.Contains(nroCuenta))
+                {
+                    msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
+                    return false;
+                }
+
+                string FechaMinString = (TdatosExcel.Rows[8][2].ToString());
+                string FechaMaxString = (TdatosExcel.Rows[9][2].ToString());
+
+                string fechaDesdeStr = FechaMinString.Split(':')[1].Trim();
+                string fechaHastaStr = FechaMaxString.Split(':')[1].Trim();
+
+                DateTime fechaDesde = DateTime.ParseExact(fechaDesdeStr, "dd/MM/yyyy", null);
+                DateTime fechaHasta = DateTime.ParseExact(fechaHastaStr, "dd/MM/yyyy", null);
+
+                DateTime FechaCombo = comboMesAño1.GetFecha();
+                if (!(fechaDesde.Month == FechaCombo.Month && FechaCombo.Year == fechaHasta.Year))
+                {
+                    msgError("El Periodo Seleccionado No Coincide con la Fecha de Los Movimientos");
+                    return false;
+                }
+
+                decimal Cargo = decimal.TryParse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][6]?.ToString(), out var h) ? h : 0;
+                decimal Abono = decimal.TryParse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][7]?.ToString(), out var h1) ? h1 : 0;
+                decimal Saldo = decimal.TryParse(TdatosExcel.Rows[TdatosExcel.Rows.Count - 1][8]?.ToString(), out var h2) ? h2 : 0;
+
+
+                EstadoCuenta = decimal.Parse(TdatosExcel.Rows[12][8].ToString());
+                EstadoCuentaInicial = Saldo - Cargo - Abono;
+
+                return true;
+            }
             else
             {
                 msgError("Por el Momento se puede Conciliar el Banco BCP - Pichincha - BBVA - ScotiaBank - B.Nación - BANBIF");
                 return false;
             }
         }
+
         DataTable TdatosExcel;
         DataTable TdatosSist;
         private Boolean CargarDatosDelExcel(string Ruta)

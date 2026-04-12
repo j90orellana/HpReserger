@@ -38,8 +38,8 @@
             this.txt.Name = "txt";
             this.txt.Size = new System.Drawing.Size(178, 20);
             this.txt.TabIndex = 0;
-            this.txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
-            this.txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
+            this.txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            this.txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_KeyPress);
             // 
             // TextboxSoloNumeros
             // 

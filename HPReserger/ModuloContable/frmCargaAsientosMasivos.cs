@@ -142,14 +142,45 @@ namespace SISGEM.ModuloContable
         HashSet<string> rucsUnicos = new HashSet<string>();
         private bool ValidarExcel(DataTable dt)
         {
+
             StringBuilder resultado = new StringBuilder();
             cuentasUnicas = new HashSet<string>();
             rucsUnicos = new HashSet<string>();
+
+            // Validar columnas de fecha (11 y 12)
+            int[] columnasFecha = { 11, 12 };
+
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow row = dt.Rows[i];
                 int filaExcel = i + 2; // Por encabezado
+
+                //validacion de las fechas
+                foreach (int col in columnasFecha)
+                {
+                    string fechaStr = row[col]?.ToString().Trim();
+
+                    if (string.IsNullOrEmpty(fechaStr))
+                    {
+                        resultado.AppendLine($"Fecha vacía en columna {col} fila {filaExcel}");
+                        continue;
+                    }
+
+                    // Intentar convertir fecha
+                    if (!DateTime.TryParse(fechaStr, out DateTime fecha))
+                    {
+                        resultado.AppendLine($"Fecha inválida en columna {col} fila {filaExcel}: {fechaStr}");
+                        continue;
+                    }
+
+                    // Validar rango permitido por SQL Server
+                    if (fecha < new DateTime(1753, 1, 1) || fecha > new DateTime(9999, 12, 31))
+                    {
+                        resultado.AppendLine($"Fecha fuera de rango SQL en columna {col} fila {filaExcel}: {fechaStr}");
+                    }
+                }
+                
 
                 // Validar columna 0 (cuenta)
                 string cuenta = row[0]?.ToString().Trim();

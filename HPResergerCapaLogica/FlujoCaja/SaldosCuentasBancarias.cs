@@ -379,6 +379,102 @@ OPTION (MAXRECURSION 0);
             return dataTable;
         }
 
+        public DataTable ObtenerCuadraturaMFdeConciliaciones()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = @"
+
+
+DECLARE @FechaIni DATE = '2025-01-01';
+DECLARE @FechaFin DATE = '2025-12-31';
+
+select @FechaIni= MIN(ISNULL(Fecha_Asiento_Valor, Fecha_Asiento) ),@FechaFin= MAX(ISNULL(Fecha_Asiento_Valor, Fecha_Asiento) ) from TBL_Asiento_Contable
+    WHERE Cuenta_Contable BETWEEN '104' AND '108' and estado=1 ;
+
+-- 1️⃣ Tabla de meses (primer día de cada mes)
+WITH Meses AS (
+    SELECT DATEFROMPARTS(YEAR(@FechaIni), MONTH(@FechaIni), 1) AS FechaOperacion
+    UNION ALL
+    SELECT DATEADD(MONTH, 1, FechaOperacion)
+    FROM Meses
+    WHERE DATEADD(MONTH, 1, FechaOperacion) <= @FechaFin
+),
+ 
+DATOS AS(
+select 
+e.Id_Empresa IDEMPRESA,CC.pkIdCtaBancaria IDCTABANCO,
+E.EMPRESA EMPRESA,CB.Nro_Cta	CTABANCARIA,M.Moneda	MONEDA,DATEFROMPARTS( YEAR(CC.Fecha	),MONTH(CC.FECHA),1)FECHAOPERACION, SUM( CD. MONTO) MONTO, 
+MIN(CC.EstadoCuentaInicial) SALDOINICIAL	,
+MIN(CC.EstadoCuenta )SALDOFINAL	
+
+
+from TBL_Conciliacion_Detalle cd 
+inner join TBL_ConciliacionCabecera cc on cd.fkid = cc.pkId
+inner join TBL_Empresa e on e.Id_Empresa = cc.pkEmpresa
+INNER JOIN TBL_CtaBancaria CB ON CB.Id_Tipo_Cta  = CC.pkIdCtaBancaria
+INNER JOIN TBL_Moneda M ON M.Id_Moneda = CB.Moneda
+where 
+ CUO !=''
+GROUP BY E.Id_Empresa,E.Empresa, pkIdCtaBancaria,Nro_Cta,M.Moneda,CC.Fecha
+)
+
+
+-- 3️⃣ CROSS JOIN de Meses y cuentas bancarias → LEFT JOIN con Datos
+select *,
+(saldofinal- SALDOINICIAL) MOVIMIENTO,
+MONTO - (saldofinal- SALDOINICIAL)DIFERENCIA
+from (
+SELECT 
+    c.IDEMPRESA,
+    c.IDCTABANCO,
+    c.EMPRESA,
+    c.CTABANCARIA,
+    c.MONEDA,
+    m.FECHAOPERACION,
+  ISNULL(d.Monto,0) AS MONTO,
+     isnull( iif( ISNULL(d.SaldoInicial,0)=0,0,d.SaldoInicial),0) AS SALDOINICIAL,
+    ISNULL(d.SaldoFinal,0) AS SALDOFINAL
+	--,	iif( ISNULL(d.SaldoInicial,0)=0,tsb.saldofinal- ISNULL(d.SaldoFinal,0) ,d.MOVIMIENTO) MOVIMIENTO,
+	--iif( ISNULL(d.SaldoInicial,0)=0,tsb.saldofinal- ISNULL(d.SaldoFinal,0)-ISNULL(d.Monto,0),d.Diferencia) DIFERENCIA
+FROM Meses m
+CROSS JOIN (
+    SELECT DISTINCT IDEMPRESA AS IdEmpresa,
+                    IDCTABANCO AS IdCtaBanco,
+                    EMPRESA,
+                    CTABANCARIA AS CtaBancaria,
+                    MONEDA
+    FROM Datos
+) AS c
+LEFT JOIN Datos d
+       ON d.FechaOperacion = m.FechaOperacion
+      AND d.IDEMPRESA     = c.IdEmpresa
+      AND d.IDCTABANCO    = c.IdCtaBanco
+      AND d.CTABANCARIA   = c.CtaBancaria
+      AND d.MONEDA        = c.Moneda
+
+	  --left join  TBL_SaldosCuentasBancarias TSB on TSB.idCtaBancaria = d.IDCTABANCO
+			--		and DATEADD(month,1, TSB.fecha) = d.FechaOperacion
+
+					) as xx
+ORDER BY xx.Empresa, xx.Moneda, xx.CtaBancaria, xx.FechaOperacion
+OPTION (MAXRECURSION 0);
+
+
+
+
+                    ";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+
+                conn.Open();
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
         // Read
         public DataTable ObtenerTodos()
         {

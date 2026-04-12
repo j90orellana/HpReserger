@@ -300,14 +300,14 @@ namespace HPResergerCapaLogica.Finanzas
             public string Cuo { get; set; } = "";
         }
 
-        public object GetMutuosxPagar(int idEmpresa, DateTime fecha, int idctabanco)
+        public DataTable GetMutuosxPagar(int idEmpresa, DateTime fecha, int idctabanco)
         {
             DataTable dt = new DataTable();
             string sql = @"
 
       set @fechas = EOMONTH(@fechas)
 
-       SELECT c.id idCronograma, c.idMutuo,m.idMutuante,cli.Tipo_Id_Cli tipoid,Nro_Id_Cli nrocli,dbo.NameCliente(cli.Tipo_Id_Cli,cli.Nro_Id_Cli)mutuante,
+      SELECT c.id idCronograma, c.idMutuo,m.idMutuante,cli.Tipo_Id_Cli tipoid,Nro_Id_Cli nrocli,dbo.NameCliente(cli.Tipo_Id_Cli,cli.Nro_Id_Cli)mutuante,
 		c.Nro,m.fechaEmision fechaEmision, c.Principal, c.Interes, c.Cuota, c.Impuesto, c.Transferencia
 		,case p.EstadoPago
 		when 0 then 'Pendiente'
@@ -315,12 +315,28 @@ namespace HPResergerCapaLogica.Finanzas
 		else 'Parcial'
 		end Estado, p.fechaProgramada Fecha, m.periodo,m.cuentaContable,m.moneda
 		,p.id idPago,CuentaContableHaber,CuentaContableDebe, mo.NameCorto Nmoneda
+
+		,(select top 1 c.Id_Cuenta_Contable from TBL_Cuenta_Contable C where 
+Cuenta_Contable like '%RENTA DE%'+
+case mi.Id
+when 1 then 'segunda'
+when 2 then 'cuarta'
+when 3 then 'tercera'
+end +'%' 
+AND EstadoCta =1
+AND C.CtaDetalle =1) cuentaImpuesto,
+(select top 1 Id_Cuenta_Contable from TBL_Cuenta_Contable where 
+Cuenta_Contable like '%intereses%'
+and Cuenta_Contable like '9%'
+and Cuenta_Contable like '%terceros%'
+and CtaDetalle = 1 and EstadoCta =1) cuentaGasto
+
         FROM tbl_mutuo_cronograma c
 		inner join tbl_mutuos m on m.id = c.idMutuo
 		inner join TBL_Cliente cli on cli.Cod_Cli = m.idMutuante
 		inner join TBL_Moneda mo on mo.Id_Moneda = m.moneda
 		inner join TBL_CtaBancaria ct on ct.Id_Tipo_Cta = @idcuentabancaria and ct.Moneda= mo.Id_Moneda
-
+		INNER JOIN tbl_mutuos_impuestos mi on mi.Id = m.impuesto
 		left join tbl_mutuo_pagos p on c.id = p.idCronograma
         WHERE 		 Nro!=0
 		and p.EstadoPago = 0   -- Pendiente

@@ -138,6 +138,41 @@ namespace SISGEM
 
                         btnDocumentosPendientes.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                     }
+                    else if (perfil == 4)
+                    {
+                        //perfil 3 compras
+                        //rbPFinanzas.Visible = false;
+                        rbPProyectos.Visible = false;
+                        rbContabilidad.Visible = false;
+                        rbPCRM.Visible = false;
+                        rbPSchedule.Visible = false;
+                        rbPVentas.Visible = false;
+                        //rbPFlujoCaja.Visible = false;
+                        rbPAlmacenes.Visible = false;
+                        rbLibrosElectronicos.Visible = false;
+                        rbPlanilla.Visible = false;
+                        rbMantenimiento.Visible = false;
+
+                        btnUsuario.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnUsuarioCRM.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnFacturaCompra.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        rbPContable.Visible = false;
+                        rbPCierre.Visible = false;
+                        rbPCompensaciones.Visible = false;
+                        rbPGreportepasado.Visible = false;
+                        rbPBitacora.Visible = false;
+                        //rbPReportesContables.Visible = false;
+
+                        btnReporteAnalitico.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnReporteAnalitico2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnBalanceComprobacion.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnEstadoSituacion.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnEstadoResultado.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnConfigurar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        btnSaldoCuentas.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+                        btnDocumentosPendientes.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                    }
                 }
 
             }
@@ -167,7 +202,7 @@ namespace SISGEM
         public void ControlPerfilPrioritario()
         {
             btnPeriodos.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            List<string> usuariosPermitidos = new List<string> { "WCHAVEZ" };
+            List<string> usuariosPermitidos = new List<string> { "WCHAVEZ", "PEDRO" };
             String usuarioLogin = HPReserger.frmLogin.LoginUser;
 
             if ((new int[] { 0, 1, 2, 3 }).Contains(HPReserger.frmLogin.CodigoUsuario) || usuariosPermitidos.Contains(usuarioLogin))//Luego se lo cambia por el perfil
@@ -1531,6 +1566,18 @@ namespace SISGEM
         {
             //Abonar Mutuo
             OpenForm<SISGEM.ModuloFinanzas.frmAbonarMutuos>();
+
+        }
+
+        private void barButtonItem51_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.Flujo_de_Caja.frmOrdenPartidas>();
+
+        }
+
+        private void barbtnReporteporProyectos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloCompras.frmReportexProyectos>();
 
         }
     }

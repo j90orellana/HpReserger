@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFlujoCaja));
-            DevExpress.XtraPivotGrid.PivotGridGroup pivotGridGroup2 = new DevExpress.XtraPivotGrid.PivotGridGroup();
+            DevExpress.XtraPivotGrid.PivotGridGroup pivotGridGroup1 = new DevExpress.XtraPivotGrid.PivotGridGroup();
             this.xTipo = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.xposicion = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridFieldPartidaPadre = new DevExpress.XtraPivotGrid.PivotGridField();
             this.xPresupuesto = new DevExpress.XtraPivotGrid.PivotGridField();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -94,21 +95,38 @@
             this.xTipo.Name = "xTipo";
             this.xTipo.Options.HideEmptyVariationItems = true;
             // 
+            // xposicion
+            // 
+            this.xposicion.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.xposicion.AreaIndex = 1;
+            this.xposicion.Caption = "Orden";
+            this.xposicion.FieldName = "posicion";
+            this.xposicion.MinWidth = 10;
+            this.xposicion.Name = "xposicion";
+            this.xposicion.Options.AllowHide = DevExpress.Utils.DefaultBoolean.True;
+            this.xposicion.Options.HideEmptyVariationItems = true;
+            this.xposicion.Options.ShowGrandTotal = false;
+            this.xposicion.Options.ShowTotals = false;
+            this.xposicion.Options.ShowValues = false;
+            // 
             // pivotGridFieldPartidaPadre
             // 
             this.pivotGridFieldPartidaPadre.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.pivotGridFieldPartidaPadre.AreaIndex = 1;
+            this.pivotGridFieldPartidaPadre.AreaIndex = 2;
             this.pivotGridFieldPartidaPadre.Caption = "Partida Padre";
             this.pivotGridFieldPartidaPadre.FieldName = "PartidaPadre";
             this.pivotGridFieldPartidaPadre.MinWidth = 90;
             this.pivotGridFieldPartidaPadre.Name = "pivotGridFieldPartidaPadre";
+            this.pivotGridFieldPartidaPadre.Options.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.pivotGridFieldPartidaPadre.Options.HideEmptyVariationItems = true;
+            this.pivotGridFieldPartidaPadre.SortBySummaryInfo.Field = this.xposicion;
+            this.pivotGridFieldPartidaPadre.SortMode = DevExpress.XtraPivotGrid.PivotSortMode.Value;
             this.pivotGridFieldPartidaPadre.Width = 120;
             // 
             // xPresupuesto
             // 
             this.xPresupuesto.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.xPresupuesto.AreaIndex = 2;
+            this.xPresupuesto.AreaIndex = 3;
             this.xPresupuesto.Caption = "Presupuesto";
             this.xPresupuesto.FieldName = "Presupuesto";
             this.xPresupuesto.Name = "xPresupuesto";
@@ -129,7 +147,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-922, 260, 650, 640);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(756, 452);
+            this.layoutControl1.Size = new System.Drawing.Size(728, 434);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -277,15 +295,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(756, 22);
+            this.barDockControlTop.Size = new System.Drawing.Size(728, 22);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 474);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 456);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(756, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(728, 0);
             // 
             // barDockControlLeft
             // 
@@ -293,15 +311,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 452);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 434);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(756, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(728, 22);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 452);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 434);
             // 
             // pivotGridControl1
             // 
@@ -312,12 +330,14 @@
             this.xPEN,
             this.pivotGridField1,
             this.pivotGridFieldMes,
-            this.pivotGridFieldPartidaPadre});
-            pivotGridGroup2.Fields.Add(this.xTipo);
-            pivotGridGroup2.Fields.Add(this.pivotGridFieldPartidaPadre);
-            pivotGridGroup2.Fields.Add(this.xPresupuesto);
+            this.pivotGridFieldPartidaPadre,
+            this.xposicion});
+            pivotGridGroup1.Fields.Add(this.xTipo);
+            pivotGridGroup1.Fields.Add(this.xposicion);
+            pivotGridGroup1.Fields.Add(this.pivotGridFieldPartidaPadre);
+            pivotGridGroup1.Fields.Add(this.xPresupuesto);
             this.pivotGridControl1.Groups.AddRange(new DevExpress.XtraPivotGrid.PivotGridGroup[] {
-            pivotGridGroup2});
+            pivotGridGroup1});
             this.pivotGridControl1.Location = new System.Drawing.Point(6, 52);
             this.pivotGridControl1.Name = "pivotGridControl1";
             this.pivotGridControl1.OptionsCustomization.AllowHideFields = DevExpress.XtraPivotGrid.AllowHideFieldsType.Never;
@@ -332,9 +352,10 @@
             this.pivotGridControl1.OptionsPrint.PrintUnusedFilterFields = false;
             this.pivotGridControl1.OptionsPrint.PrintVertLines = DevExpress.Utils.DefaultBoolean.True;
             this.pivotGridControl1.OptionsView.ShowTotalsForSingleValues = true;
-            this.pivotGridControl1.Size = new System.Drawing.Size(744, 394);
+            this.pivotGridControl1.Size = new System.Drawing.Size(716, 376);
             this.pivotGridControl1.TabIndex = 4;
             this.pivotGridControl1.CustomFieldValueCells += new DevExpress.XtraPivotGrid.PivotCustomFieldValueCellsEventHandler(this.pivotGridControl1_CustomFieldValueCells);
+            this.pivotGridControl1.CustomFieldSort += new DevExpress.XtraPivotGrid.PivotGridCustomFieldSortEventHandler(this.pivotGridControl1_CustomFieldSort);
             this.pivotGridControl1.FieldValueDisplayText += new DevExpress.XtraPivotGrid.PivotFieldDisplayTextEventHandler(this.pivotGridControl1_FieldValueDisplayText);
             this.pivotGridControl1.CustomCellDisplayText += new DevExpress.XtraPivotGrid.PivotCellDisplayTextEventHandler(this.pivotGridControl1_CustomCellDisplayText);
             // 
@@ -400,7 +421,7 @@
             this.layoutControlItem7,
             this.layoutControlItem4});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(756, 452);
+            this.Root.Size = new System.Drawing.Size(728, 434);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -408,7 +429,7 @@
             this.layoutControlItem1.Control = this.pivotGridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 46);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(746, 396);
+            this.layoutControlItem1.Size = new System.Drawing.Size(718, 378);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -429,7 +450,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(551, 22);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(195, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(167, 24);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
@@ -437,7 +458,7 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(475, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(271, 22);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(243, 22);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
@@ -503,7 +524,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 474);
+            this.ClientSize = new System.Drawing.Size(728, 456);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -572,5 +593,6 @@
         private DevExpress.XtraEditors.CheckButton chkMovimientos;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraPivotGrid.PivotGridField pivotGridFieldPartidaPadre;
+        private DevExpress.XtraPivotGrid.PivotGridField xposicion;
     }
 }

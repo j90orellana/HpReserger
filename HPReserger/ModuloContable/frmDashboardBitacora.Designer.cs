@@ -57,11 +57,11 @@ namespace SISGEM.ModuloContable
             // 
             this.dashboardViewer1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
             this.dashboardViewer1.Appearance.Options.UseBackColor = true;
-            this.dashboardViewer1.DashboardSource = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\Bita" +
-    "cora de Usuarios en Barras partidas.xml";
+  
+            this.dashboardViewer1.DashboardSource = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Bitacora de Usuarios en Barras partidas.xml");          
             this.dashboardViewer1.Location = new System.Drawing.Point(6, 30);
             this.dashboardViewer1.Name = "dashboardViewer1";
-            this.dashboardViewer1.Size = new System.Drawing.Size(657, 427);
+            this.dashboardViewer1.Size = new System.Drawing.Size(1023, 418);
             this.dashboardViewer1.TabIndex = 0;
             this.dashboardViewer1.ConfigureDataConnection += new DevExpress.DashboardCommon.DashboardConfigureDataConnectionEventHandler(this.dashboardViewer1_ConfigureDataConnection);
             // 
@@ -74,7 +74,7 @@ namespace SISGEM.ModuloContable
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(669, 463);
+            this.layoutControl1.Size = new System.Drawing.Size(1035, 454);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -104,6 +104,7 @@ namespace SISGEM.ModuloContable
             this.dtpfecha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtpfecha.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
             this.dtpfecha.Size = new System.Drawing.Size(190, 20);
+            this.dtpfecha.StyleController = this.layoutControl1;
             this.dtpfecha.TabIndex = 4;
             // 
             // Root
@@ -116,7 +117,7 @@ namespace SISGEM.ModuloContable
             this.layoutControlItem3,
             this.emptySpaceItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(669, 463);
+            this.Root.Size = new System.Drawing.Size(1035, 454);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -124,7 +125,7 @@ namespace SISGEM.ModuloContable
             this.layoutControlItem1.Control = this.dashboardViewer1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(659, 429);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1025, 420);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -157,14 +158,14 @@ namespace SISGEM.ModuloContable
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(313, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(346, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(712, 24);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // frmDashboardBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 463);
+            this.ClientSize = new System.Drawing.Size(1035, 454);
             this.Controls.Add(this.layoutControl1);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("frmDashboardBitacora.IconOptions.Icon")));
             this.Name = "frmDashboardBitacora";
