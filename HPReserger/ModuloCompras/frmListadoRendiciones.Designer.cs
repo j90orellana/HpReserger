@@ -328,6 +328,7 @@
             // 
             // gridView1
             // 
+            this.gridView1.ActiveFilterString = "[estado] <> \'Anulada\'";
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.xid,
             this.xEmpresa,
@@ -361,6 +362,7 @@
             this.gridView1.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupedColumns = true;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -480,6 +482,7 @@
             // 
             this.xNEstado.Caption = "Estado";
             this.xNEstado.FieldName = "estado";
+            this.xNEstado.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText;
             this.xNEstado.MaxWidth = 80;
             this.xNEstado.MinWidth = 60;
             this.xNEstado.Name = "xNEstado";

@@ -121,6 +121,36 @@ CREATE INDEX IX_Rev ON #Reversados(Cod_Asiento_Contable,idEmpresa)
 
 
 
+DECLARE @CuentasFiltro TABLE (CodigoCuenta NVARCHAR(50))
+DECLARE @RangosFiltro TABLE (Desde NVARCHAR(50), Hasta NVARCHAR(50))
+
+IF @cuentas <> ''
+BEGIN
+    -- Separar valores
+    SELECT value
+    INTO #tmpValores
+    FROM STRING_SPLIT(REPLACE(@cuentas, ' ', ''), ';')
+    WHERE value <> ''
+
+    -- Insertar cuentas normales
+    INSERT INTO @CuentasFiltro (CodigoCuenta)
+    SELECT value
+    FROM #tmpValores
+    WHERE value NOT LIKE '%-%'
+
+    -- Insertar rangos
+    INSERT INTO @RangosFiltro (Desde, Hasta)
+    SELECT 
+        LEFT(value, CHARINDEX('-', value) - 1),
+        SUBSTRING(value, CHARINDEX('-', value) + 1, LEN(value))
+    FROM #tmpValores
+    WHERE value LIKE '%-%'
+
+    DROP TABLE #tmpValores
+END
+
+
+
 DECLARE @GlosaFiltro TABLE (GlosaBusqueda NVARCHAR(max))
 -- Insertar valores en la tabla temporal si no es el valor por defecto
 IF @Glosas <> ''
@@ -131,17 +161,6 @@ SELECT LTRIM(RTRIM(value))
 FROM STRING_SPLIT(REPLACE(@Glosas, '', ''), ';')
 WHERE value <> ''
 END
-
-	DECLARE @CuentasFiltro TABLE (CodigoCuenta NVARCHAR(50))
-	-- Insertar valores en la tabla temporal si no es el valor por defecto
-	IF @cuentas <> '(0=0)'
-	BEGIN
-	-- Limpiar espacios y dividir los valores
-	INSERT INTO @CuentasFiltro (CodigoCuenta)
-	SELECT LTRIM(RTRIM(value)) 
-	FROM STRING_SPLIT(REPLACE(@cuentas, ' ', ''), ';')
-	WHERE value <> ''
-	END
 
 DECLARE @nroDocFiltro TABLE (NumDocFitros NVARCHAR(max))
 -- Insertar valores en la tabla temporal si no es el valor por defecto
@@ -154,20 +173,18 @@ FROM STRING_SPLIT(REPLACE(@NroDoc, ' ', ''), ';')
 WHERE value <> ''
 END
 
-	DECLARE @RazonSocialFiltro TABLE (RazonSocialF NVARCHAR(max))
-	-- Insertar valores en la tabla temporal si no es el valor por defecto
-	IF @RazonSocial <> ''
-	BEGIN
-	-- Limpiar espacios y dividir los valores
-	INSERT INTO @RazonSocialFiltro(RazonSocialF)
-	SELECT LTRIM(RTRIM(value)) 
-	FROM STRING_SPLIT(REPLACE(@RazonSocial, '', ''), ';')
-	WHERE value <> ''
-	END
+DECLARE @RazonSocialFiltro TABLE (RazonSocialF NVARCHAR(max))
+-- Insertar valores en la tabla temporal si no es el valor por defecto
+IF @RazonSocial <> ''
+BEGIN
+-- Limpiar espacios y dividir los valores
+INSERT INTO @RazonSocialFiltro(RazonSocialF)
+SELECT LTRIM(RTRIM(value)) 
+FROM STRING_SPLIT(REPLACE(@RazonSocial, '', ''), ';')
+WHERE value <> ''
+END
+	
 
--- Ajustar fecha de inicio
---SET @Fechaini = DATEFROMPARTS(YEAR(@fechaini), MONTH(@fechaini), 1)
-    
     SELECT 
         X.Periodo,
         X.RUC,
@@ -260,13 +277,23 @@ END
             --AND (@Ruc = '(0=0)' OR (@Ruc <> '(0=0)' AND @Ruc)) 
             --AND (@RazonSocial = '(0=0)' OR (@RazonSocial <> '(0=0)' AND @RazonSocial))
 
-			AND (@cuentas = '' OR 
-			EXISTS (
-				SELECT CodigoCuenta
-				FROM @CuentasFiltro cf 
-				WHERE A.Cuenta_Contable LIKE cf.CodigoCuenta + '%'
-			    )   
-            )
+			AND (
+    @cuentas = '' 
+    OR 
+    -- Coincidencia por lista
+    EXISTS (
+        SELECT 1
+        FROM @CuentasFiltro cf 
+        WHERE A.Cuenta_Contable LIKE cf.CodigoCuenta + '%'
+    )
+    OR
+    -- Coincidencia por rango
+    EXISTS (
+        SELECT 1
+        FROM @RangosFiltro rf
+        WHERE A.Cuenta_Contable between rf.Desde          and rf.Hasta
+    )
+)
 
 			AND (@Glosas = '' OR 
 			EXISTS (
@@ -617,7 +644,7 @@ and year(FechaEmision)= year(@fecha	)
             {
                 string query = @"
 select * from (
-SELECT DISTINCT
+SELECT 
    e.Id_Empresa idempresa, e.Empresa,   
     a.Id_Asiento_Contable fkid,
     a.id_Asiento fkiddet,

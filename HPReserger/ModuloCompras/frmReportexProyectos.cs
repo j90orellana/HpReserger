@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.Export;
+using DevExpress.Utils;
 
 namespace SISGEM.ModuloCompras
 {
@@ -29,7 +30,21 @@ namespace SISGEM.ModuloCompras
         {
             CargarDatos();
 
+            ToolTipTitleItem title = new ToolTipTitleItem();
+            title.Text = "Filtro de Cuentas";
 
+            ToolTipItem item = new ToolTipItem();
+            item.LeftIndent = 6;
+            item.Text =
+            "• Cuentas: 1041110;1041202\n" +
+            "• Rangos: 104-422\n" +
+            "• Puede combinar ambos";
+
+            SuperToolTip superTip = new SuperToolTip();
+            superTip.Items.Add(title);
+            superTip.Items.Add(item);
+
+            txtcuentas.SuperTip = superTip;
         }
 
         private void CargarDatos()

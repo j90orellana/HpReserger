@@ -27,6 +27,10 @@ namespace SISGEM
         private void Principal_Load(object sender, EventArgs e)
         {
 
+            HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa cClase = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+            cClase.CrearTablaYGuardarToken();
+
+
             string ERP_LIBRE = ConfigurationManager.AppSettings["ERP_LIBRE"];
             string valor2 = ConfigurationManager.AppSettings["SALUDO"];
 
@@ -1579,6 +1583,28 @@ namespace SISGEM
         {
             OpenForm<SISGEM.ModuloCompras.frmReportexProyectos>();
 
+        }
+
+        private void btnEERR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<SISGEM.ModuloContable.frmEERRPivote>();
+        }
+
+        private void barButtonItem78_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SISGEM.Flujo_de_Caja.frmDashboardVentas frmDashboardVentas = new Flujo_de_Caja.frmDashboardVentas();
+            frmDashboardVentas.MdiParent = this;
+            frmDashboardVentas.Show();
+        }
+
+        private void barButtonItem79_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<HPReserger.frmGenerarBoletas>();
+        }
+
+        private void barButtonItem81_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<HPReserger.ModuloRRHH.frmComisionesBonos>();
         }
     }
 }

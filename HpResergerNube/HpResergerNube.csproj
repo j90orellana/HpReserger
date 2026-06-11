@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appointments.cs" />
+    <Compile Include="Configuracion_PeruDev.cs" />
     <Compile Include="Contabilidad.cs" />
     <Compile Include="CRM_GIT.cs" />
     <Compile Include="FactilizaApiClient.cs" />

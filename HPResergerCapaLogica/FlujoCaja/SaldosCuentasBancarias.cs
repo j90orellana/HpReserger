@@ -408,7 +408,7 @@ select
 e.Id_Empresa IDEMPRESA,CC.pkIdCtaBancaria IDCTABANCO,
 E.EMPRESA EMPRESA,CB.Nro_Cta	CTABANCARIA,M.Moneda	MONEDA,DATEFROMPARTS( YEAR(CC.Fecha	),MONTH(CC.FECHA),1)FECHAOPERACION, SUM( CD. MONTO) MONTO, 
 MIN(CC.EstadoCuentaInicial) SALDOINICIAL	,
-MIN(CC.EstadoCuenta )SALDOFINAL	
+MIN(CC.EstadoCuenta )SALDOFINAL	, ef.Entidad_Financiera BANCO
 
 
 from TBL_Conciliacion_Detalle cd 
@@ -416,16 +416,17 @@ inner join TBL_ConciliacionCabecera cc on cd.fkid = cc.pkId
 inner join TBL_Empresa e on e.Id_Empresa = cc.pkEmpresa
 INNER JOIN TBL_CtaBancaria CB ON CB.Id_Tipo_Cta  = CC.pkIdCtaBancaria
 INNER JOIN TBL_Moneda M ON M.Id_Moneda = CB.Moneda
+inner join TBL_Entidad_Financiera ef on ef.ID_Entidad =CB.Banco
 where 
  CUO !=''
-GROUP BY E.Id_Empresa,E.Empresa, pkIdCtaBancaria,Nro_Cta,M.Moneda,CC.Fecha
+GROUP BY E.Id_Empresa,E.Empresa, pkIdCtaBancaria,Nro_Cta,M.Moneda,CC.Fecha,EF.Entidad_Financiera
 )
 
 
 -- 3️⃣ CROSS JOIN de Meses y cuentas bancarias → LEFT JOIN con Datos
 select *,
 (saldofinal- SALDOINICIAL) MOVIMIENTO,
-MONTO - (saldofinal- SALDOINICIAL)DIFERENCIA
+MONTO - (saldofinal- SALDOINICIAL)DIFERENCIA,BANCO
 from (
 SELECT 
     c.IDEMPRESA,
@@ -436,7 +437,7 @@ SELECT
     m.FECHAOPERACION,
   ISNULL(d.Monto,0) AS MONTO,
      isnull( iif( ISNULL(d.SaldoInicial,0)=0,0,d.SaldoInicial),0) AS SALDOINICIAL,
-    ISNULL(d.SaldoFinal,0) AS SALDOFINAL
+    ISNULL(d.SaldoFinal,0) AS SALDOFINAL,C.BANCO
 	--,	iif( ISNULL(d.SaldoInicial,0)=0,tsb.saldofinal- ISNULL(d.SaldoFinal,0) ,d.MOVIMIENTO) MOVIMIENTO,
 	--iif( ISNULL(d.SaldoInicial,0)=0,tsb.saldofinal- ISNULL(d.SaldoFinal,0)-ISNULL(d.Monto,0),d.Diferencia) DIFERENCIA
 FROM Meses m
@@ -445,7 +446,7 @@ CROSS JOIN (
                     IDCTABANCO AS IdCtaBanco,
                     EMPRESA,
                     CTABANCARIA AS CtaBancaria,
-                    MONEDA
+                    MONEDA,BANCO
     FROM Datos
 ) AS c
 LEFT JOIN Datos d
@@ -461,7 +462,6 @@ LEFT JOIN Datos d
 					) as xx
 ORDER BY xx.Empresa, xx.Moneda, xx.CtaBancaria, xx.FechaOperacion
 OPTION (MAXRECURSION 0);
-
 
 
 

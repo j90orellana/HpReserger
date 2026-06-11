@@ -1,4 +1,5 @@
-﻿using HpResergerUserControls;
+﻿using DevExpress.XtraEditors;
+using HpResergerUserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +12,15 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmPagoDetraccionesVentas : FormGradient
+    public partial class frmPagoDetraccionesVentas : XtraForm
     {
         public frmPagoDetraccionesVentas()
         {
             InitializeComponent();
         }
+
+        public string CuentaDetraccion = "";
+
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public void msgError(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
@@ -35,6 +39,25 @@ namespace HPReserger
             txtglosa.CargarTextoporDefecto();
             txtcuentadetracciones.CargarTextoporDefecto(); txtnrooperacion.CargarTextoporDefecto();
             CargarTipoPagos();
+
+            CargarcuentasDetracciones();
+        }
+        public void CargarcuentasDetracciones()
+        {
+            HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa cclase = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+            DataTable tconfig = cclase.GetAll();
+
+            SISGEM.Configuracion.frmConfiguracionEmpresa cFuncion = new SISGEM.Configuracion.frmConfiguracionEmpresa();
+            var trabajarConDetraccionesEnVenta = cFuncion.ObtenerConfiguracion(tconfig, 4);
+            if (trabajarConDetraccionesEnVenta.Item1 != 0)
+            {
+                var cbodetraccion = cFuncion.ObtenerConfiguracion(tconfig, 5);
+                CuentaDetraccion = cbodetraccion.Item2;
+            }
+            else
+            {
+                xtraTabPage2.PageVisible = false;
+            }
         }
         public void CargarTipoPagos()
         {
@@ -361,30 +384,50 @@ namespace HPReserger
             {
                 if (sumatoria > 0)
                 {
-                    if (cbobanco.Items.Count == 0)
+                    string NroOperacion = "";
+                    int TipoPago = 0;
+
+                    bool TrabajarCuentasBancarias = true;
+
+                    if (xTabControl1.SelectedTabPage == xtraTabPage1)
                     {
-                        msgError("No hay Bancos");
-                        cbobanco.Focus();
-                        return;
-                    }
-                    if (cbocuentabanco.Items.Count == 0)
-                    {
-                        msgError("El Banco Seleccionado No tiene Cuenta");
-                        cbobanco.Focus();
-                        return;
-                    }
-                    if (txttotal.Text.Length > 0)
-                    {
-                        if (decimal.Parse(txttotal.Text) == 0)
+
+                        if (cbobanco.Items.Count == 0)
                         {
-                            msgError("El total a pagar no puede ser Cero");
-                            dtgconten.Focus();
+                            msgError("No hay Bancos");
+                            cbobanco.Focus();
+                            return;
+                        }
+                        if (cbocuentabanco.Items.Count == 0)
+                        {
+                            msgError("El Banco Seleccionado No tiene Cuenta");
+                            cbobanco.Focus();
+                            return;
+                        }
+                        if (txttotal.Text.Length > 0)
+                        {
+                            if (decimal.Parse(txttotal.Text) == 0)
+                            {
+                                msgError("El total a pagar no puede ser Cero");
+                                dtgconten.Focus();
+                                return;
+                            }
+                        }
+                        if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msgError("Seleccione Tipo de Pago"); return; }
+                        TipoPago = (int)cbotipo.SelectedValue;
+                        NroOperacion = txtnrooperacion.TextValido();
+                    }
+                    else if (xTabControl1.SelectedTabPage == xtraTabPage2)
+                    {
+                        TrabajarCuentasBancarias = false;
+
+                        CargarcuentasDetracciones();
+                        if (CuentaDetraccion == "")
+                        {
+                            msgError("Debe Configurar una cuenta contable para las detracciones por cobrar");
                             return;
                         }
                     }
-                    if (cbotipo.Items.Count == 0) { cbotipo.Focus(); msgError("Seleccione Tipo de Pago"); return; }
-                    int TipoPago = (int)cbotipo.SelectedValue;
-                    string NroOperacion = txtnrooperacion.TextValido();
                     //
                     if (cboproyecto.SelectedValue == null) { msgError("Seleccione un Proyecto"); cboproyecto.Focus(); return; }
                     if (cboempresa.SelectedValue == null) { msgError("Seleccione una Empresa"); cboempresa.Focus(); return; }
@@ -423,23 +466,26 @@ namespace HPReserger
                     if (!VerificarErrorDiferencia()) return;
                     if (Verificar) { msgError("No se Puede Pagar Valores en Cero"); return; }
                     ///PROCESO DEL TXT
-                    DialogResult Result = msgP("Desea Generar el TXT de Pago");
-                    if (Result == DialogResult.Cancel) return;
-                    if (Result == DialogResult.Yes)
+                    if (TrabajarCuentasBancarias)
                     {
-                        frmDetraccionVentaPagoBancoNacion frmpagoventa = new frmDetraccionVentaPagoBancoNacion();
-                        frmpagoventa.IdEmpresa = (int)cboempresa.SelectedValue;
-                        frmpagoventa.NroCuentaBanco = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros($"{cboCuentasBancarias.Text} "), '-');
-                        ////datos de la tabla
-                        //frmpagoventa.TDetracciones = new DataTable();
-                        dtgconten.EndEdit();
-                        dtgconten.RefreshEdit();
-                        //frmpagoventa.TDetracciones = new DataTable();
-                        frmpagoventa.TDetracciones = ((DataTable)dtgconten.DataSource).Clone();
-                        foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
-                            frmpagoventa.TDetracciones.Rows.Add(item.ItemArray);
+                        DialogResult Result = msgP("Desea Generar el TXT de Pago");
+                        if (Result == DialogResult.Cancel) return;
+                        if (Result == DialogResult.Yes)
+                        {
+                            frmDetraccionVentaPagoBancoNacion frmpagoventa = new frmDetraccionVentaPagoBancoNacion();
+                            frmpagoventa.IdEmpresa = (int)cboempresa.SelectedValue;
+                            frmpagoventa.NroCuentaBanco = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(HPResergerFunciones.Utilitarios.ExtraerCuentaSoloEnteros($"{cboCuentasBancarias.Text} "), '-');
+                            ////datos de la tabla
+                            //frmpagoventa.TDetracciones = new DataTable();
+                            dtgconten.EndEdit();
+                            dtgconten.RefreshEdit();
+                            //frmpagoventa.TDetracciones = new DataTable();
+                            frmpagoventa.TDetracciones = ((DataTable)dtgconten.DataSource).Clone();
+                            foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
+                                frmpagoventa.TDetracciones.Rows.Add(item.ItemArray);
 
-                        if (frmpagoventa.ShowDialog() != DialogResult.Yes) return;
+                            if (frmpagoventa.ShowDialog() != DialogResult.Yes) return;
+                        }
                     }
                     //PROCESO DE PAGO
                     ///DECLARACION DE VARIABLES
@@ -452,8 +498,8 @@ namespace HPReserger
                     DataRow FilaDato = (CapaLogica.UltimoAsiento(IdEmpresa, FechaContable)).Rows[0];
                     int codigo = (int)FilaDato["codigo"];
                     string CuopPago = FilaDato["cuo"].ToString();
-                    int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
-                    string CuentaContableBanco = cbocuentabanco.SelectedValue.ToString();
+                    int idCta = TrabajarCuentasBancarias ? (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"] : 0;
+                    string CuentaContableBanco = TrabajarCuentasBancarias ? cbocuentabanco.SelectedValue.ToString() : CuentaDetraccion;
                     string CuentaDetracciones = txtcuentadetracciones.Text;
                     decimal TC = 0;
                     TC = CapaLogica.TipoCambioDia("Venta", FechaPago);
@@ -462,8 +508,8 @@ namespace HPReserger
                     string NroBoleta = "", Idcliente = "";
                     int idcomprobante = 0;
                     int Tipoid = 0;
-                    int posSelec = cbocuentabanco.SelectedIndex;
-                    string NroCuenta = ((DataTable)cbocuentabanco.DataSource).Rows[posSelec]["NroCta"].ToString();
+                    int posSelec = TrabajarCuentasBancarias ? cbocuentabanco.SelectedIndex : 0;
+                    string NroCuenta = TrabajarCuentasBancarias ? ((DataTable)cbocuentabanco.DataSource).Rows[posSelec]["NroCta"].ToString() : "";
                     //VALIDAMOS QUE NO EXISTAN CUENTAS CONTABLES DESACTIVADAS
                     List<string> ListaAuxiliar = new List<string>();
                     ListaAuxiliar.Add("9559501");

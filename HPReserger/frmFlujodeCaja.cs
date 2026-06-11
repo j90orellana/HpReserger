@@ -108,8 +108,8 @@ namespace HPReserger
             @fechamax as datetime='20181231',
             @empresa as int=1002,
             @lenMes as int =100            */
-            reporte.SetParameterValue("@fechamin", fechaini);
-            reporte.SetParameterValue("@fechamax", fechafin);
+            reporte.SetParameterValue("@fechamin", fechaini.ToString("yyyy-MM-dd"));
+            reporte.SetParameterValue("@fechamax", fechafin.ToString("yyyy-MM-dd"));
             reporte.SetParameterValue("@NombreEmpresa", cboempresa.Text);
             reporte.SetParameterValue("@empresa", (int)cboempresa.SelectedValue);
             reporte.SetParameterValue("@lenmes", 100);

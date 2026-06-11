@@ -36,8 +36,8 @@ namespace HPReserger
             reporte.SetParameterValue("@empresa", empresa);
             reporte.SetParameterValue("@banco", banco);
             reporte.SetParameterValue("@NroCuenta", nrocuenta);
-            reporte.SetParameterValue("@FechaIni", fechaini);
-            reporte.SetParameterValue("@FechaFin", fechafin);
+            reporte.SetParameterValue("@FechaIni", fechaini.ToString("yyyy-MM-dd"));
+            reporte.SetParameterValue("@FechaFin", fechafin.ToString("yyyy-MM-dd"));
             reporte.SetParameterValue("@Fecha", Fecha);
             reporte.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
 

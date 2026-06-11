@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSaldoCuentasContables));
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.btnGenerarTodaslasCuentas = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xEmpresa = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,15 +74,14 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
-            this.btnGenerarTodaslasCuentas = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -97,11 +97,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -113,12 +113,23 @@
             this.dataLayoutControl1.Controls.Add(this.cboEmpresa);
             this.dataLayoutControl1.Controls.Add(this.cbocuentas);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 20);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 22);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1103, 486);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1103, 484);
             this.dataLayoutControl1.TabIndex = 1;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // btnGenerarTodaslasCuentas
+            // 
+            this.btnGenerarTodaslasCuentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarTodaslasCuentas.ImageOptions.Image")));
+            this.btnGenerarTodaslasCuentas.Location = new System.Drawing.Point(941, 28);
+            this.btnGenerarTodaslasCuentas.Name = "btnGenerarTodaslasCuentas";
+            this.btnGenerarTodaslasCuentas.Size = new System.Drawing.Size(156, 22);
+            this.btnGenerarTodaslasCuentas.StyleController = this.dataLayoutControl1;
+            this.btnGenerarTodaslasCuentas.TabIndex = 20;
+            this.btnGenerarTodaslasCuentas.Text = "Generar Todas las Cuentas";
+            this.btnGenerarTodaslasCuentas.Click += new System.EventHandler(this.btnGenerarTodaslasCuentas_Click);
             // 
             // gridControl1
             // 
@@ -128,7 +139,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckedComboBoxEdit1,
             this.repositoryItemButtonEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1091, 428);
+            this.gridControl1.Size = new System.Drawing.Size(1091, 426);
             this.gridControl1.TabIndex = 19;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -515,7 +526,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1103, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1103, 22);
             // 
             // barDockControlBottom
             // 
@@ -529,17 +540,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 486);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 484);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1103, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1103, 22);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 486);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 484);
             // 
             // btnGenerar
             // 
@@ -589,7 +600,7 @@
             this.layoutControlItem6,
             this.emptySpaceItem2});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1103, 486);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1103, 484);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -629,14 +640,6 @@
             this.layoutControlItem1.Text = "Saldo de Cuenta";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(81, 13);
             // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(547, 22);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(388, 24);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnGenerar;
@@ -666,9 +669,29 @@
             this.layoutControlItem5.Control = this.gridControl1;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 46);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1093, 430);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1093, 428);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.btnGenerarTodaslasCuentas;
+            this.layoutControlItem6.Location = new System.Drawing.Point(935, 22);
+            this.layoutControlItem6.MaxSize = new System.Drawing.Size(158, 24);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(158, 24);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(158, 24);
+            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(547, 22);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(388, 24);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // bar1
             // 
@@ -712,29 +735,6 @@
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Menú principal";
             // 
-            // btnGenerarTodaslasCuentas
-            // 
-            this.btnGenerarTodaslasCuentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnGenerarTodaslasCuentas.Location = new System.Drawing.Point(941, 28);
-            this.btnGenerarTodaslasCuentas.Name = "btnGenerarTodaslasCuentas";
-            this.btnGenerarTodaslasCuentas.Size = new System.Drawing.Size(156, 22);
-            this.btnGenerarTodaslasCuentas.StyleController = this.dataLayoutControl1;
-            this.btnGenerarTodaslasCuentas.TabIndex = 20;
-            this.btnGenerarTodaslasCuentas.Text = "Generar Todas las Cuentas";
-            this.btnGenerarTodaslasCuentas.Click += new System.EventHandler(this.btnGenerarTodaslasCuentas_Click);
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.btnGenerarTodaslasCuentas;
-            this.layoutControlItem6.Location = new System.Drawing.Point(935, 22);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(158, 24);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(158, 24);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(158, 24);
-            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
-            // 
             // frmSaldoCuentasContables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -765,11 +765,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

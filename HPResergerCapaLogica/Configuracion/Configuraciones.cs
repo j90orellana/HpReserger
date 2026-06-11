@@ -13,10 +13,81 @@ namespace HPResergerCapaLogica.Configuracion
         public string Texto { get; set; } = string.Empty;
 
         private readonly string _connectionString;
+        public string token = "cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNmEwMzViODcxYzlhY2M1YmI0MjI2YjI3";
 
         public ConfiguracionEmpresa()
         {
             _connectionString = HPResergerCapaDatos.HPResergerCD.StringObtenerConexion();
+        }
+        // INSERTAR O ACTUALIZAR TOKEN
+        public void CrearTablaYGuardarToken(string tokens = "")
+        {
+            if (tokens != "")
+                token = tokens;
+
+            using (SqlConnection cn = new SqlConnection(_connectionString))
+            {
+                cn.Open();
+
+                string sql = @"
+
+-- VALIDAR SI EXISTE TABLA
+IF NOT EXISTS (
+    SELECT * 
+    FROM sysobjects 
+    WHERE name='TBL_Configuracion_PeruDev'
+    AND xtype='U'
+)
+BEGIN
+    CREATE TABLE TBL_Configuracion_PeruDev
+    (
+        Id INT PRIMARY KEY IDENTITY(1,1),
+        Token VARCHAR(500)
+    )
+END
+
+-- VALIDAR SI EXISTE REGISTRO
+IF EXISTS(SELECT 1 FROM TBL_Configuracion_PeruDev)
+BEGIN
+    UPDATE TBL_Configuracion_PeruDev
+    SET Token = @Token
+END
+ELSE
+BEGIN
+    INSERT INTO TBL_Configuracion_PeruDev(Token)
+    VALUES(@Token)
+END
+
+";
+
+                using (SqlCommand cmd = new SqlCommand(sql, cn))
+                {
+                    cmd.Parameters.AddWithValue("@Token", token);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // LEER TOKEN
+        public string ObtenerToken()
+        {
+            using (SqlConnection cn = new SqlConnection(_connectionString))
+            {
+                cn.Open();
+
+                string sql = "SELECT TOP 1 Token FROM TBL_Configuracion_PeruDev";
+
+                using (SqlCommand cmd = new SqlCommand(sql, cn))
+                {
+                    object valor = cmd.ExecuteScalar();
+
+                    if (valor != null)
+                        return valor.ToString();
+
+                    return "";
+                }
+            }
         }
 
         public void VerificarCrearTabla()

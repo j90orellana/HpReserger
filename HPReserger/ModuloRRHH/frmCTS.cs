@@ -34,7 +34,7 @@ namespace HPReserger
             Reporte.Refresh();
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
             Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
-            Reporte.SetParameterValue("@fecha", fechacese);
+            Reporte.SetParameterValue("@fecha", fechacese.ToString("yyyy-MM-dd"));
             // Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS, datos.DATASOURCE, datos.BASEDEDATOS);
             Reporte.SetDatabaseLogon("jorellana", "456");
 

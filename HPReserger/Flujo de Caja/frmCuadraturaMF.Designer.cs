@@ -49,6 +49,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.btnCargarConciliacion = new DevExpress.XtraBars.BarButtonItem();
             this.btnCargar = new DevExpress.XtraBars.BarButtonItem();
             this.btnMovimiento = new DevExpress.XtraBars.BarButtonItem();
             this.btnExcel = new DevExpress.XtraBars.BarButtonItem();
@@ -57,7 +58,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.btnCargarConciliacion = new DevExpress.XtraBars.BarButtonItem();
+            this.xBANCO = new DevExpress.XtraPivotGrid.PivotGridField();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
@@ -92,7 +93,7 @@
             // xCTABANCARIA
             // 
             this.xCTABANCARIA.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.xCTABANCARIA.AreaIndex = 1;
+            this.xCTABANCARIA.AreaIndex = 2;
             this.xCTABANCARIA.Caption = "CTABANCARIA";
             this.xCTABANCARIA.FieldName = "CTABANCARIA";
             this.xCTABANCARIA.Name = "xCTABANCARIA";
@@ -102,7 +103,7 @@
             // xMONEDA
             // 
             this.xMONEDA.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.xMONEDA.AreaIndex = 2;
+            this.xMONEDA.AreaIndex = 3;
             this.xMONEDA.Caption = "MONEDA";
             this.xMONEDA.FieldName = "MONEDA";
             this.xMONEDA.MinWidth = 90;
@@ -114,10 +115,10 @@
             // 
             this.layoutControl1.Controls.Add(this.pivotGridControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 20);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 22);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(919, 481);
+            this.layoutControl1.Size = new System.Drawing.Size(919, 479);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -129,6 +130,7 @@
             this.xIDEMPRESA,
             this.xIDCTABANCO,
             this.xEMPRESA,
+            this.xBANCO,
             this.xCTABANCARIA,
             this.xMONEDA,
             this.xFECHAOPERACION,
@@ -163,7 +165,7 @@
             this.pivotGridControl1.OptionsView.ShowRowTotals = false;
             this.pivotGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.pivotGridControl1.Size = new System.Drawing.Size(907, 469);
+            this.pivotGridControl1.Size = new System.Drawing.Size(907, 467);
             this.pivotGridControl1.TabIndex = 5;
             this.pivotGridControl1.CustomUnboundFieldData += new DevExpress.XtraPivotGrid.CustomFieldDataEventHandler(this.pivotGridControl1_CustomUnboundFieldData);
             this.pivotGridControl1.FieldValueDisplayText += new DevExpress.XtraPivotGrid.PivotFieldDisplayTextEventHandler(this.pivotGridControl1_FieldValueDisplayText);
@@ -274,7 +276,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(919, 481);
+            this.Root.Size = new System.Drawing.Size(919, 479);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -282,7 +284,7 @@
             this.layoutControlItem1.Control = this.pivotGridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(909, 471);
+            this.layoutControlItem1.Size = new System.Drawing.Size(909, 469);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -323,6 +325,14 @@
             this.bar1.OptionsBar.MultiLine = true;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Menú principal";
+            // 
+            // btnCargarConciliacion
+            // 
+            this.btnCargarConciliacion.Caption = "Cargar de Conciliaciones";
+            this.btnCargarConciliacion.Id = 8;
+            this.btnCargarConciliacion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarConciliacion.ImageOptions.Image")));
+            this.btnCargarConciliacion.Name = "btnCargarConciliacion";
+            this.btnCargarConciliacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCargarConciliacion_ItemClick);
             // 
             // btnCargar
             // 
@@ -366,7 +376,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(919, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(919, 22);
             // 
             // barDockControlBottom
             // 
@@ -380,25 +390,25 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 481);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 479);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(919, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(919, 22);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 481);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 479);
             // 
-            // btnCargarConciliacion
+            // xBANCO
             // 
-            this.btnCargarConciliacion.Caption = "Cargar de Conciliaciones";
-            this.btnCargarConciliacion.Id = 8;
-            this.btnCargarConciliacion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarConciliacion.ImageOptions.Image")));
-            this.btnCargarConciliacion.Name = "btnCargarConciliacion";
-            this.btnCargarConciliacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCargarConciliacion_ItemClick);
+            this.xBANCO.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.xBANCO.AreaIndex = 1;
+            this.xBANCO.Caption = "BANCO";
+            this.xBANCO.FieldName = "BANCO";
+            this.xBANCO.Name = "xBANCO";
             // 
             // frmCuadraturaMF
             // 
@@ -455,5 +465,6 @@
         private DevExpress.XtraPivotGrid.PivotGridField xDIFERENCIA;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem btnCargarConciliacion;
+        private DevExpress.XtraPivotGrid.PivotGridField xBANCO;
     }
 }

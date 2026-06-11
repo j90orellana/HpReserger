@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFlujoCaja));
-            DevExpress.XtraPivotGrid.PivotGridGroup pivotGridGroup1 = new DevExpress.XtraPivotGrid.PivotGridGroup();
+            DevExpress.XtraPivotGrid.PivotGridGroup pivotGridGroup2 = new DevExpress.XtraPivotGrid.PivotGridGroup();
             this.xTipo = new DevExpress.XtraPivotGrid.PivotGridField();
             this.xposicion = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridFieldPartidaPadre = new DevExpress.XtraPivotGrid.PivotGridField();
@@ -207,13 +207,11 @@
             // cboEmpresa
             // 
             this.cboEmpresa.Location = new System.Drawing.Point(90, 6);
-            this.cboEmpresa.MenuManager = this.barManager1;
             this.cboEmpresa.Name = "cboEmpresa";
             this.cboEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboEmpresa.Properties.NullText = "";
             this.cboEmpresa.Size = new System.Drawing.Size(389, 20);
-            this.cboEmpresa.StyleController = this.layoutControl1;
             this.cboEmpresa.TabIndex = 11;
             this.cboEmpresa.EditValueChanged += new System.EventHandler(this.cboEmpresa_EditValueChanged);
             // 
@@ -332,12 +330,12 @@
             this.pivotGridFieldMes,
             this.pivotGridFieldPartidaPadre,
             this.xposicion});
-            pivotGridGroup1.Fields.Add(this.xTipo);
-            pivotGridGroup1.Fields.Add(this.xposicion);
-            pivotGridGroup1.Fields.Add(this.pivotGridFieldPartidaPadre);
-            pivotGridGroup1.Fields.Add(this.xPresupuesto);
+            pivotGridGroup2.Fields.Add(this.xTipo);
+            pivotGridGroup2.Fields.Add(this.xposicion);
+            pivotGridGroup2.Fields.Add(this.pivotGridFieldPartidaPadre);
+            pivotGridGroup2.Fields.Add(this.xPresupuesto);
             this.pivotGridControl1.Groups.AddRange(new DevExpress.XtraPivotGrid.PivotGridGroup[] {
-            pivotGridGroup1});
+            pivotGridGroup2});
             this.pivotGridControl1.Location = new System.Drawing.Point(6, 52);
             this.pivotGridControl1.Name = "pivotGridControl1";
             this.pivotGridControl1.OptionsCustomization.AllowHideFields = DevExpress.XtraPivotGrid.AllowHideFieldsType.Never;

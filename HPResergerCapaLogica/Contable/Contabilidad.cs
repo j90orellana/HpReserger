@@ -157,7 +157,7 @@ namespace HPResergerCapaLogica.Contable
                 cmd.Parameters.Add("@empresa", SqlDbType.Int).Value = empresa;
                 cmd.Parameters.Add("@FechaFinal", SqlDbType.Date).Value = fechafin;
                 cmd.Parameters.Add("@FechaInicial", SqlDbType.Date).Value = fechaini;
-                cmd.Parameters.Add("@TCCompraSBS", SqlDbType.Decimal).Value =  tccomprasbs;
+                cmd.Parameters.Add("@TCCompraSBS", SqlDbType.Decimal).Value = tccomprasbs;
                 cmd.Parameters.Add("@TCVentaSBS", SqlDbType.Decimal).Value = tcventasbs;
                 cmd.Parameters.Add("@Generar", SqlDbType.Bit).Value = generar;
 
@@ -166,11 +166,98 @@ namespace HPResergerCapaLogica.Contable
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
-                 
+
             return dt;
         }
 
+        public DataTable GenerarEERR(int empresa, DateTime Fecha)
+        {
+            var dt = new DataTable();
+            string query = @"
+                
 
+--Declaracio de variables
+DECLARE @FechaInicial AS DATE=CAST(concat('1-1-',YEAR(@año)) AS DATE)
+declare  @FechaFinal as  date =  EOMONTH(@año)
+
+--Tabla Temporal
+IF OBJECT_ID('tempdb..#Reversados') IS NOT NULL DROP TABLE #Reversados
+--Insertamos Registros en la TAbla Temporal
+SELECT DISTINCT h.Cod_Asiento_Contable
+INTO #Reversados
+FROM TBL_Asiento_Contable h
+INNER JOIN TBL_Proyecto po ON po.Id_Proyecto = h.id_proyecto
+INNER JOIN TBL_Empresa ex ON po.Id_Empresa = ex.Id_Empresa
+WHERE ex.Id_Empresa = @empresa
+AND h.Estado = 4
+AND h.FechaReal BETWEEN @FechaInicial AND @FechaFinal
+--Creamos un Indice
+CREATE INDEX IX_Rev ON #Reversados(Cod_Asiento_Contable)
+ 
+IF OBJECT_ID('tempdb..#Cuentas') IS NOT NULL DROP TABLE #Cuentas
+
+SELECT DISTINCT 
+    LTRIM(RTRIM(value)) AS Cuenta_Contable
+INTO #Cuentas
+FROM TBL_Balance_Ganacias_Parametros
+CROSS APPLY STRING_SPLIT(Cuenta_Contable, ',')
+WHERE Cuenta_Contable <> ''
+
+
+ 
+ SELECT 
+ bp.Cod_Balance,bp.Nombre_Balance NombreBalance,bp.Posicion Posicion,
+ 
+ 
+ ac.Cuenta_Contable cuenta, (ISNULL(IIF(ac.CREDITO + ac.debito = 0,IIF(ac.Cuenta_Contable IN ('7599103','7761101','6595101','6761101'),1,-1),IIF(ac.credito > 0,1,-1)),00) --
+                            * ac.Importe_MN)  Monto,pr.Proyecto
+                FROM
+                    (
+                    SELECT a.Cuenta_Contable,a.Estado,a.id_proyecto,a.Fecha_Asiento_Valor,a.Fecha_Asiento,a.saldo_haber credito,a.saldo_debe debito,                          
+                    ISNULL(ax.Importe_MN,ABS(IIF(a.moneda = 1,(a.saldo_haber - a.saldo_debe),(a.saldo_haber - a.saldo_debe) * a.tc))) Importe_MN
+                    FROM dbo.TBL_Asiento_Contable a
+
+					INNER JOIN #Cuentas c     ON c.Cuenta_Contable = a.Cuenta_Contable
+					LEFT JOIN #Reversados r ON r.Cod_Asiento_Contable = a.Cod_Asiento_Contable
+
+                            LEFT JOIN dbo.TBL_Asiento_Contable_Aux ax ON a.Id_Asiento_Contable = ax.Id_Asiento_Contable
+                                                                        AND a.id_Asiento = ax.Id_Aux
+                                                                        AND a.Cuenta_Contable = Ax.Cuenta_Contable
+                                                                        AND a.id_proyecto = ax.fk_proyecto
+                                                                        AND CAST(ISNULL(a.Fecha_Asiento_Valor,a.Fecha_Asiento) AS DATE) = ax.
+                                                                        Fecha_Asiento
+                    WHERE CAST(ISNULL(a.fecha_asiento_Valor,a.fecha_asiento) AS DATE) BETWEEN @FechaInicial AND EOMONTH(@año)
+                    
+					and r.Cod_Asiento_Contable IS NULL
+
+                    AND a.estado IN(1,3)
+                    AND a.Id_Dinamica_Contable NOT IN(-50)--ASiento Cierre =-50,Asiento APertura=-51
+                    ) --
+                AS ac
+                    INNER JOIN dbo.TBL_Proyecto pr ON pr.Id_Proyecto = ac.id_proyecto
+                                                        AND pr.Id_Empresa = @empresa
+                    INNER JOIN dbo.TBL_Cuenta_Contable c ON c.Id_Cuenta_Contable = ac.Cuenta_Contable
+
+					right join TBL_Balance_Ganacias_Parametros bp on  c.Id_Cuenta_Contable in (select * from dbo.ExtraerIntdeCadena(bp.Cuenta_Contable))
+
+
+
+                WHERE ac.estado IN(1,3)
+
+";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@empresa", empresa);
+                cmd.Parameters.AddWithValue("@año", Fecha);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
 
         public DataTable PeriodoCerrado(int empresa, DateTime fecha)
         {
@@ -225,7 +312,7 @@ namespace HPResergerCapaLogica.Contable
             using (SqlConnection connection = new SqlConnection(_connectionString))
             using (SqlCommand cmd = new SqlCommand(query, connection))
             {
-              
+
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);

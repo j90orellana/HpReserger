@@ -1,4 +1,5 @@
-﻿using HpResergerUserControls;
+﻿using DevExpress.XtraEditors;
+using HpResergerUserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1151,6 +1152,49 @@ namespace HPReserger
                     CuentaIgv = (Tpruebas.Rows[0])["idcuenta"].ToString();
                     NameCuentaIGV = (Tpruebas.Rows[0])["cuenta_contable"].ToString();
                 }
+
+                HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa cclase = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+                DataTable tconfig = cclase.GetAll();
+                var configuraciones = tconfig.AsEnumerable();
+
+                string CuentaDetraccion = "";
+
+                SISGEM.Configuracion.frmConfiguracionEmpresa cFuncion = new SISGEM.Configuracion.frmConfiguracionEmpresa();
+                var trabajarConDetraccionesEnVenta = cFuncion.ObtenerConfiguracion(tconfig, 4);
+                if (trabajarConDetraccionesEnVenta.Item1 != 0)
+                {
+                    var cbodetraccion = cFuncion.ObtenerConfiguracion(tconfig, 5);
+                    CuentaDetraccion = cbodetraccion.Item2;
+
+                    DataTable Tpruebass = CapaLogica.BuscarCuentas(CuentaDetraccion, 5);
+                    DataRow filita = Tpruebass.Rows[0];
+                    string NombreCuentaDetraccion = filita["cuenta_contable"].ToString();
+                    decimal montodetracionMN = 0;
+                    decimal montodetracionME = 0;
+                    decimal tc = 0;
+                    decimal.TryParse(txtmontodetraccion.Text, out montodetracionMN);
+                    decimal.TryParse(txtmontodetraccion.Text, out montodetracionME);
+                    decimal.TryParse(txttipocambio.Text, out tc);
+
+                    if (montodetracionME != 0)
+                    {
+                        if ((int)cbomoneda.SelectedValue == 1)
+                            montodetracionME = montodetracionMN / tc;
+                        else
+                            montodetracionMN = montodetracionME * tc;
+
+                        DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[0], TDatos);
+                        filaIgv[xDebeHaber.DataPropertyName] = "D";
+                        filaIgv[xCuentaContable.DataPropertyName] = CuentaDetraccion;
+                        filaIgv[xdescripcion.DataPropertyName] = NombreCuentaDetraccion;
+                        filaIgv[xUsuario.DataPropertyName] = 999;
+                        filaIgv[xImporteME.DataPropertyName] = montodetracionME;
+                        filaIgv[xImporteMN.DataPropertyName] = montodetracionMN;
+                        filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
+                        TDatos.Rows.Add(filaIgv);
+                    }
+                }
+
                 /////CALCULO DE LOS REFLEJOS
                 TotalIgv = 0;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -1650,9 +1694,9 @@ namespace HPReserger
                     DataRow Fila = TFacReferencia.Rows[0];
                     cbomoneda.SelectedValue = Fila["moneda"];
                     txttipocambio.Text = ((decimal)Fila["tc"]).ToString("n3");
-                    cboempresa.SelectedValue = Fila["empresa"];
-                    cboproyecto.SelectedValue = Fila["Proyecto"];
-                    cboetapa.SelectedValue = Fila["etapa"];
+                    //cboempresa.SelectedValue = Fila["empresa"];
+                    //cboproyecto.SelectedValue = Fila["Proyecto"];
+                    //cboetapa.SelectedValue = Fila["etapa"];
                     btnaplicar.Enabled = true;
                     Encontrado = 1;
                 }
@@ -2293,6 +2337,58 @@ namespace HPReserger
                 CargarDatos();
             }
         }
+
+        private void btnQuitarPago_Click(object sender, EventArgs e)
+        {
+            if (_idFac > 0)
+            {
+                string facturaInfo = $"{txtcodfactura.Text}-{txtnrofactura.Text}";
+
+                DialogResult dialogResult = XtraMessageBox.Show($"¿Seguro que desea cambiar el estado de la factura {facturaInfo} a Pendiente de Pago", "Confirmación",
+                                                                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.OK)
+                {
+
+                    {
+                        bool tipo = cbotipodoc.Text.ToUpper().Contains("NOTA");
+
+                        DataTable result = CapaDatos.CambiarEstadoDeFacturaVenta(_idFac, 1, tipo);
+
+                        if (result.Rows.Count > 0)
+                        {
+                            XtraMessageBox.Show("La factura se ha marcado como Pendiente exitosamente.", "Cambio de estado",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Hubo un error al intentar cambiar el estado de la factura. Por favor, intente nuevamente.",
+                                                "Error en el cambio de estado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Operación cancelada por el usuario.", "Cancelado",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Por favor, seleccione una factura antes de realizar el cambio de estado.", "Cambio de estado",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtmontodetraccion_TextChanged(object sender, EventArgs e)
+        {
+            decimal valTotal = 0, valDetra = 0;
+            decimal.TryParse(txttotalfac.Text, out valTotal);
+            decimal.TryParse(txtmontodetraccion.Text, out valDetra);
+
+            txtDifDetra.Text = (valTotal - valDetra).ToString("n2");
+        }
+
         private void btneliminar_Click(object sender, EventArgs e)
         {
             if (_TipoDoc == 0 || _TipoDoc == 1) OpcionBusqueda = 1;

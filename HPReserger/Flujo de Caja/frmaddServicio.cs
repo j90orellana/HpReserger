@@ -472,12 +472,12 @@ namespace SISGEM.Flujo_de_Caja
             if (focusedRowHandle >= 0 && gridView1.IsDataRow(focusedRowHandle))
             {
                 // Obtén el valor de "id" de manera segura
-                object idValue = gridView1.GetRowCellValue(focusedRowHandle, "id");
+                object idValue = gridView1.GetRowCellValue(focusedRowHandle, "Id");
                 idFocus = idValue is int ? (int)idValue : 0;
 
                 // Obtén el valor de "tag" de manera segura
-                object tagValue = gridView1.GetRowCellValue(focusedRowHandle, "tag");
-                object descripcionValue = gridView1.GetRowCellValue(focusedRowHandle, "Descripcion");
+                object tagValue = gridView1.GetRowCellValue(focusedRowHandle, "Tag");
+                object descripcionValue = gridView1.GetRowCellValue(focusedRowHandle, "DetalleSubPartida");
                 tagFocus = tagValue as string ?? string.Empty;
                 nombreFocus = descripcionValue as string ?? string.Empty;
             }
@@ -639,6 +639,73 @@ namespace SISGEM.Flujo_de_Caja
             {
                 File.WriteAllBytes(SF.FileName, SISGEM.Resource1.FormatoCargaPartidasControl);
                 System.Diagnostics.Process.Start(SF.FileName);
+            }
+        }
+
+        private void btnDuplicarFila_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Obtén el índice de la fila seleccionada
+            int focusedRowHandle = gridView1.FocusedRowHandle;
+
+            // Verifica si la fila es válida y contiene datos
+            if (focusedRowHandle >= 0 && gridView1.IsDataRow(focusedRowHandle))
+            {
+                // Obtén el valor de "id" de manera segura
+                object idValue = gridView1.GetRowCellValue(focusedRowHandle, "Id");
+                idFocus = idValue is int ? (int)idValue : 0;
+
+                // Obtén el valor de "tag" de manera segura
+                object tagValue = gridView1.GetRowCellValue(focusedRowHandle, "Tag");
+                object descripcionValue = gridView1.GetRowCellValue(focusedRowHandle, "DetalleSubPartida");
+                tagFocus = tagValue as string ?? string.Empty;
+                nombreFocus = descripcionValue as string ?? string.Empty;
+
+            }
+            if (idFocus != 0)
+            {
+                var result = XtraMessageBox.Show($"¿Está seguro de duplicar esta fila ({nombreFocus})?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        int row = focusedRowHandle;
+
+                        HPResergerCapaLogica.FlujoCaja.Partidas_Control cPartidas =
+                            new HPResergerCapaLogica.FlujoCaja.Partidas_Control
+                            {
+                                Id = 0,
+                                Area = Convert.ToString(gridView1.GetRowCellValue(row, "Area")),
+                                AreaOwner = Convert.ToInt32(gridView1.GetRowCellValue(row, "AreaOwner")),
+                                AreaOwner2 = Convert.ToInt32(gridView1.GetRowCellValue(row, "AreaOwner2")),
+                                Codigo = Convert.ToString(gridView1.GetRowCellValue(row, "Codigo")),
+                                DetallePartida = Convert.ToString(gridView1.GetRowCellValue(row, "DetallePartida")),
+                                DetalleSubPartida = Convert.ToString(gridView1.GetRowCellValue(row, "DetalleSubPartida")),
+                                Estado = 1,
+                                Fecha = DateTime.Now,
+                                Matriz = Convert.ToString(gridView1.GetRowCellValue(row, "Matriz")),
+                                Nivel = Convert.ToInt32(gridView1.GetRowCellValue(row, "Nivel")),
+                                Partida = Convert.ToString(gridView1.GetRowCellValue(row, "Partida")),
+                                SubPartida = Convert.ToString(gridView1.GetRowCellValue(row, "SubPartida")),
+                                Tag = Convert.ToString(gridView1.GetRowCellValue(row, "Tag")),
+                                Tipo = Tipo
+                            };
+
+                        if (cPartidas.Insertar(cPartidas) == 0)
+                        {
+                            XtraMessageBox.Show("No se pudo crear el registro. Intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        //XtraMessageBox.Show("Registro creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        CargarDatos();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }

@@ -209,6 +209,8 @@
             this.btnFacturaPagada = new DevExpress.XtraEditors.SimpleButton();
             this.cboClasifBssYSss = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xNumero = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.yDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label22 = new System.Windows.Forms.Label();
             this.btnListar = new DevExpress.XtraEditors.SimpleButton();
             this.btnQuitarPago = new DevExpress.XtraEditors.SimpleButton();
@@ -216,8 +218,6 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.btnDescargarDocumento = new DevExpress.XtraEditors.SimpleButton();
             this.lblCreador = new DevExpress.XtraEditors.SimpleButton();
-            this.xNumero = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.yDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -2362,6 +2362,24 @@
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
+            // xNumero
+            // 
+            this.xNumero.Caption = "Número";
+            this.xNumero.FieldName = "Numero";
+            this.xNumero.MaxWidth = 20;
+            this.xNumero.Name = "xNumero";
+            this.xNumero.Visible = true;
+            this.xNumero.VisibleIndex = 0;
+            this.xNumero.Width = 20;
+            // 
+            // yDescripcion
+            // 
+            this.yDescripcion.Caption = "Descripción";
+            this.yDescripcion.FieldName = "Descripcion";
+            this.yDescripcion.Name = "yDescripcion";
+            this.yDescripcion.Visible = true;
+            this.yDescripcion.VisibleIndex = 1;
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -2435,24 +2453,6 @@
             this.lblCreador.TabIndex = 339;
             this.lblCreador.Text = "Creador";
             this.lblCreador.ToolTip = "Usuario Creador";
-            // 
-            // xNumero
-            // 
-            this.xNumero.Caption = "Número";
-            this.xNumero.FieldName = "Numero";
-            this.xNumero.MaxWidth = 20;
-            this.xNumero.Name = "xNumero";
-            this.xNumero.Visible = true;
-            this.xNumero.VisibleIndex = 0;
-            this.xNumero.Width = 20;
-            // 
-            // yDescripcion
-            // 
-            this.yDescripcion.Caption = "Descripción";
-            this.yDescripcion.FieldName = "Descripcion";
-            this.yDescripcion.Name = "yDescripcion";
-            this.yDescripcion.Visible = true;
-            this.yDescripcion.VisibleIndex = 1;
             // 
             // FrmFacturaManual
             // 

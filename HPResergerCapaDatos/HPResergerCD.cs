@@ -50,6 +50,22 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromQuery(sql, null, null, null);
         }
 
+        public DataTable CambiarEstadoDeFacturaVenta(int id, int estado, bool nota)
+        {
+            string sql = "UPDATE f " +
+                         $"SET estado = {estado} " +
+                         "FROM TBL_VentaManual f WHERE id = " + id +
+                         "SELECT * " +
+                         "FROM TBL_VentaManual f WHERE id = " + id;
+
+            if (nota)
+            {
+                sql = $"UPDATE f SET estado = {estado} FROM TBL_NC_ND_VentaManual f WHERE id ={id} ; SELECT* FROM TBL_NC_ND_VentaManual f WHERE id ={id}";
+            }
+
+            return bd.DataTableFromQuery(sql, null, null, null);
+        }
+
         public void CargarSistema_Insertar(string nombre, string text, byte[] datos)
         {
             string[] parametros = { "@nombre", "@texto", "@dato" };
@@ -1624,7 +1640,7 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public DataTable FacturaManualDatosAdicionales(int opcion, int idfactura, int igv, int TIPO)
+        public DataTable FacturaManualDatosAdicionales(int opcion, int idfactura, decimal igv, int TIPO)
         {
             // 0 : Actualiza e Inserta
             //10: Muestra el dato de la factura

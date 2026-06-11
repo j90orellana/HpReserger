@@ -1061,7 +1061,7 @@ namespace HPReserger
                     _idFac = (int)tfACTURA.Rows[0]["ID"];
                     _Tipo = (int)tfACTURA.Rows[0]["tipo"];
                 }
-                CapaDatos.FacturaManualDatosAdicionales(0, _idFac, Convert.ToInt32(igvs * 100), _Tipo);
+                CapaDatos.FacturaManualDatosAdicionales(0, _idFac, (igvs * 100), _Tipo);
                 //fin Actualizamos los datos adicionales
 
                 //si tenemos presupuesto añadimos su fila
@@ -1142,7 +1142,7 @@ namespace HPReserger
                     _idFac = (int)tfACTURA.Rows[0]["ID"];
                     _Tipo = (int)tfACTURA.Rows[0]["tipo"];
                 }
-                CapaDatos.FacturaManualDatosAdicionales(0, _idFac, Convert.ToInt32(igvs * 100), _Tipo);
+                CapaDatos.FacturaManualDatosAdicionales(0, _idFac, (igvs * 100), _Tipo);
                 //fin Actualizamos los datos adicionales
 
                 if (!ProcesoMasivo) DatoPresupuesto_ = cboPresupuestos.EditValue?.ToString() ?? "";
@@ -1569,14 +1569,14 @@ namespace HPReserger
                 DataTable TdataAdicional = CapaDatos.FacturaManualDatosAdicionales(10, _idFac, 0, _Tipo);
                 if (TdataAdicional.Rows.Count > 0)
                 {
-                    if ((Int32)TdataAdicional.Rows[0]["igv"] == Convert.ToInt32(igvs * 100))
+                    if ((decimal)TdataAdicional.Rows[0]["igv"] == (igvs * 100))
                     {
                         chkIGV.Checked = false;
                     }
                     else
                     {
                         chkIGV.Checked = true;
-                        NumIGV.Value = (Int32)TdataAdicional.Rows[0]["igv"];
+                        NumIGV.Value = (decimal)TdataAdicional.Rows[0]["igv"];
                     }
                 }
                 else

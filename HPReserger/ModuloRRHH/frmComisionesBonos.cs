@@ -114,7 +114,7 @@ namespace HPReserger.ModuloRRHH
                     int tipoid = (int)item[xtipoid.DataPropertyName];
                     string numdoc = item[xnumdoc.DataPropertyName].ToString();
                     int pkEmpresa = (int)item[xpkEmpresa.DataPropertyName];
-                    int fkempresa = (int)item[xfkempresa.DataPropertyName];
+                    int fkempresa = (int)item[xpkEmpresa.DataPropertyName];
                     decimal sueldo = (decimal)item[xSueldo.DataPropertyName];
                     decimal comision = (decimal)item[xComision.DataPropertyName];
                     decimal bono = (decimal)item[xBono.DataPropertyName];

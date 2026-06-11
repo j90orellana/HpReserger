@@ -562,6 +562,12 @@
     <Compile Include="Flujo de Caja\frmCuadraturaMF.Designer.cs">
       <DependentUpon>frmCuadraturaMF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Flujo de Caja\frmDashboardVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flujo de Caja\frmDashboardVentas.Designer.cs">
+      <DependentUpon>frmDashboardVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Flujo de Caja\frmFlujoCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -876,6 +882,12 @@
     </Compile>
     <Compile Include="ModuloContable\frmDocumentosPendientes.Designer.cs">
       <DependentUpon>frmDocumentosPendientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\frmEERRPivote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmEERRPivote.Designer.cs">
+      <DependentUpon>frmEERRPivote.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\frmListadoFacturas.cs">
       <SubType>Form</SubType>
@@ -3015,6 +3027,9 @@
     <EmbeddedResource Include="Flujo de Caja\frmCuadraturaMF.resx">
       <DependentUpon>frmCuadraturaMF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Flujo de Caja\frmDashboardVentas.resx">
+      <DependentUpon>frmDashboardVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Flujo de Caja\frmFlujoCaja.resx">
       <DependentUpon>frmFlujoCaja.cs</DependentUpon>
     </EmbeddedResource>
@@ -3170,6 +3185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmDocumentosPendientes.resx">
       <DependentUpon>frmDocumentosPendientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmEERRPivote.resx">
+      <DependentUpon>frmEERRPivote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmListadoFacturas.resx">
       <DependentUpon>frmListadoFacturas.cs</DependentUpon>
@@ -4543,6 +4561,7 @@
     <Content Include="4ab51850-6ee1-4588-a945-bbf21a025f95.ico" />
     <Content Include="Bitacora de Usuarios en Barras partidas.xml" />
     <Content Include="Dashboard.xml" />
+    <Content Include="DashBoardVentasCostos.xml" />
     <Content Include="Datos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

@@ -685,8 +685,77 @@ namespace HPReserger
                 {
                     if (txtNumeroDocumento.Text.Length == 8 && cboTipoDocumento.SelectedIndex >= 0)
                     {
+                        try
+                        {
+                            HpResergerNube.Configuracion_PeruDev api = new HpResergerNube.Configuracion_PeruDev();
+                            HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa cclase = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+                            string token = cclase.ObtenerToken();
+
+                            if (token == "")
+                            {
+                                cclase.CrearTablaYGuardarToken();
+                                token = cclase.ObtenerToken();
+
+                            }
+
+                            HpResergerNube.Configuracion_PeruDev.DniResultado datos = await api.ConsultarDNI(txtNumeroDocumento.Text, token);
+
+                            txtNombres.Text = datos.nombres;
+                            txtApellidoPaterno.Text = datos.apellido_paterno;
+                            txtApellidoMaterno.Text = datos.apellido_materno;
+
+                            cboSexo.SelectedValue = datos.genero == "M" ? 1 : 2;
+
+                            DateTime Fecha;
+                            if (datos.fecha_nacimiento != "")
+                            {
+                                DateTime.TryParse(datos.fecha_nacimiento, out Fecha);
+                                dtpFecha.Value = Fecha;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa cclase = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+                            cclase.CrearTablaYGuardarToken();
+                            //XtraMessageBox.Show(ex.Message);
+                        }
+
+
                         //ANULADO POR FALTA DE DATA DE LA API RENIEC
-                        BuscarReniecAPiToken(txtNumeroDocumento.Text);
+                        if (txtNombres.Text == "")
+                            BuscarReniecAPiToken(txtNumeroDocumento.Text);
+
+                        if (txtNombres.Text == "")
+                        {
+                            try
+                            {
+                                HpResergerNube.FactilizaApiClient.ApiResponseResultDNI response =
+                                    await HpResergerNube.FactilizaApiClient.GetInfoAsyncDNI(txtNumeroDocumento.Text.Trim());
+
+                                if (response != null && response.Response.Status == 200 && response.Response.Data != null)
+                                {
+                                    txtApellidoPaterno.Text = response.Response.Data.Apellido_Paterno;
+                                    txtApellidoMaterno.Text = response.Response.Data.Apellido_Materno;
+                                    txtNombres.Text = response.Response.Data.Nombres;
+                                    //cbopersona.SelectedIndex = 1;
+                                    cboTipoDocumento.SelectedValue = 1;
+
+                                }
+                                else
+                                {
+                                    //MessageBox.Show("No se encontró información para el número ingresado.",
+                                    //                "Información no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                //MessageBox.Show($"Error al consultar la API: {ex.Message}",
+                                //                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+
+
                     }
                     else if (txtNumeroDocumento.Text.Trim().Length == 9)
                     {

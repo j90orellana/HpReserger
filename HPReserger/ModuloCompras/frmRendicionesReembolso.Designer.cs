@@ -71,6 +71,7 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnNuevo = new DevExpress.XtraBars.BarButtonItem();
             this.btnGuardar = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAnular = new DevExpress.XtraBars.BarButtonItem();
             this.btnCerrar = new DevExpress.XtraBars.BarButtonItem();
             this.lblEstado = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -190,11 +191,11 @@
             this.dataLayoutControl1.Controls.Add(this.cboEtapa);
             this.dataLayoutControl1.DataSource = this.oReembolsoMasivoBindingSource1;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 22);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 20);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-650, 219, 650, 400);
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1136, 429);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1136, 431);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -227,7 +228,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.gridControl1.Size = new System.Drawing.Size(1124, 217);
+            this.gridControl1.Size = new System.Drawing.Size(1124, 219);
             this.gridControl1.TabIndex = 18;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -565,9 +566,10 @@
             this.btnGuardar,
             this.btnNuevo,
             this.lblEstado,
-            this.btnAprobar});
+            this.btnAprobar,
+            this.btnAnular});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 13;
+            this.barManager1.MaxItemId = 14;
             // 
             // bar1
             // 
@@ -580,6 +582,7 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNuevo, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGuardar, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAnular, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCerrar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.lblEstado)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
@@ -606,6 +609,15 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGuardar_ItemClick);
             // 
+            // btnAnular
+            // 
+            this.btnAnular.Caption = "Anular";
+            this.btnAnular.Id = 13;
+            this.btnAnular.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAnular.ImageOptions.Image")));
+            this.btnAnular.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAnular.ImageOptions.LargeImage")));
+            this.btnAnular.Name = "btnAnular";
+            this.btnAnular.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAnular_ItemClick);
+            // 
             // btnCerrar
             // 
             this.btnCerrar.Caption = "Cerrar";
@@ -631,7 +643,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1136, 22);
+            this.barDockControlTop.Size = new System.Drawing.Size(1136, 20);
             // 
             // barDockControlBottom
             // 
@@ -645,17 +657,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 429);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 431);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1136, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(1136, 20);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 429);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 431);
             // 
             // btnAprobar
             // 
@@ -748,7 +760,7 @@
             // 
             this.cboUsuario.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.oReembolsoMasivoBindingSource1, "IdUsuario", true));
             this.cboUsuario.Enabled = false;
-            this.cboUsuario.Location = new System.Drawing.Point(997, 403);
+            this.cboUsuario.Location = new System.Drawing.Point(997, 405);
             this.cboUsuario.Name = "cboUsuario";
             this.cboUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -821,7 +833,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1136, 429);
+            this.Root.Size = new System.Drawing.Size(1136, 431);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -852,7 +864,7 @@
             this.emptySpaceItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1126, 419);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1126, 421);
             // 
             // ItemForIdEmpresa
             // 
@@ -938,7 +950,7 @@
             // ItemForIdUsuario
             // 
             this.ItemForIdUsuario.Control = this.cboUsuario;
-            this.ItemForIdUsuario.Location = new System.Drawing.Point(922, 397);
+            this.ItemForIdUsuario.Location = new System.Drawing.Point(922, 399);
             this.ItemForIdUsuario.MaxSize = new System.Drawing.Size(204, 22);
             this.ItemForIdUsuario.MinSize = new System.Drawing.Size(204, 22);
             this.ItemForIdUsuario.Name = "ItemForIdUsuario";
@@ -950,7 +962,7 @@
             // emptySpaceItem7
             // 
             this.emptySpaceItem7.AllowHotTrack = false;
-            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 397);
+            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 399);
             this.emptySpaceItem7.Name = "emptySpaceItem7";
             this.emptySpaceItem7.Size = new System.Drawing.Size(922, 22);
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
@@ -968,7 +980,7 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 178);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1126, 219);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1126, 221);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -1239,5 +1251,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn xSusExtension;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit4;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem6;
+        private DevExpress.XtraBars.BarButtonItem btnAnular;
     }
 }

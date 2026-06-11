@@ -65,10 +65,13 @@ namespace SISGEM.ModuloCompras
             CargarUsuariosActivos();
 
             dtpFechaEmision.EditValue = DateTime.Now;
+            btnAnular.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
 
             HPResergerCapaLogica.Contable.ReembolsosMasivos oClase = new HPResergerCapaLogica.Contable.ReembolsosMasivos();
             if (idReembolso != 0)
             {
+                btnAnular.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 DataTable dt = oClase.ObtenerPorID(idReembolso);
 
                 if (dt.Rows.Count == 0)
@@ -965,6 +968,41 @@ namespace SISGEM.ModuloCompras
                 decimal total = ToDec(gv.GetRowCellValue(e.RowHandle, xtotal.FieldName));
 
                 CalcularTotalGeneral();
+            }
+        }
+
+        private void btnAnular_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult resultado = XtraMessageBox.Show(
+                "¿Seguro que desea anular el reembolso?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultado != DialogResult.Yes)
+                return;
+
+            try
+            {
+                var oClase = new HPResergerCapaLogica.Contable.ReembolsosMasivos();
+
+                oClase.EliminarLogico(idReembolso);
+
+                XtraMessageBox.Show(
+                    "El reembolso fue anulado exitosamente.",
+                    "Información",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(
+                    $"Ocurrió un error al anular el reembolso.\n\nDetalle: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }

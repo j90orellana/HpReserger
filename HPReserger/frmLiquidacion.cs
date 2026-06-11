@@ -31,7 +31,7 @@ namespace HPReserger
         {
             rptLiquidacion Reporte = new rptLiquidacion();
             Reporte.Refresh();            
-            Reporte.SetParameterValue("@fecha", _FechaInicio);
+            Reporte.SetParameterValue("@fecha", _FechaInicio.ToString("yyyy-MM-dd"));
             Reporte.SetParameterValue("@motivo", _MotivoCese);
             Reporte.SetParameterValue("@monto", _Monto);
             Reporte.SetParameterValue("@tipo", TipoDocumento);

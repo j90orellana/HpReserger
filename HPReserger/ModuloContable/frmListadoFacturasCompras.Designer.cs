@@ -312,7 +312,6 @@
             this.dtpfecha.Properties.Mask.EditMask = "yyyy";
             this.dtpfecha.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
             this.dtpfecha.Size = new System.Drawing.Size(184, 20);
-            this.dtpfecha.StyleController = this.layoutControl1;
             this.dtpfecha.TabIndex = 18;
             // 
             // Root

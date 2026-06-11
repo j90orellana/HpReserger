@@ -35,6 +35,7 @@
             this.btnNuevo = new DevExpress.XtraBars.BarButtonItem();
             this.btnRecargaCombos = new DevExpress.XtraBars.BarButtonItem();
             this.btnEliminarFila = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDuplicarFila = new DevExpress.XtraBars.BarButtonItem();
             this.btnExportarExcel = new DevExpress.XtraBars.BarButtonItem();
             this.btnExportarFormato = new DevExpress.XtraBars.BarButtonItem();
             this.btnCarga = new DevExpress.XtraBars.BarButtonItem();
@@ -57,32 +58,32 @@
             this.xPartida = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xSubPartida = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xDetallePartida = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xDetalleSubPartida = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xAreaOwner = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xAreaOwner2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSearchLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtag = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xEstado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.xDetalleSubPartida = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xAreaOwner = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xAreaOwner2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.repositoryItemSearchLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -104,9 +105,10 @@
             this.bntEliminarCargaMasiva,
             this.btnEliminarFila,
             this.btnExportarExcel,
-            this.btnExportarFormato});
+            this.btnExportarFormato,
+            this.btnDuplicarFila});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 13;
+            this.barManager1.MaxItemId = 14;
             // 
             // bar1
             // 
@@ -120,6 +122,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNuevo, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRecargaCombos, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEliminarFila, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDuplicarFila, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExportarExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExportarFormato, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCarga, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -157,6 +160,15 @@
             this.btnEliminarFila.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarFila.ImageOptions.LargeImage")));
             this.btnEliminarFila.Name = "btnEliminarFila";
             this.btnEliminarFila.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEliminarFila_ItemClick);
+            // 
+            // btnDuplicarFila
+            // 
+            this.btnDuplicarFila.Caption = "Duplicar Fila";
+            this.btnDuplicarFila.Id = 13;
+            this.btnDuplicarFila.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDuplicarFila.ImageOptions.Image")));
+            this.btnDuplicarFila.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDuplicarFila.ImageOptions.LargeImage")));
+            this.btnDuplicarFila.Name = "btnDuplicarFila";
+            this.btnDuplicarFila.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDuplicarFila_ItemClick);
             // 
             // btnExportarExcel
             // 
@@ -384,6 +396,70 @@
             this.xDetallePartida.VisibleIndex = 6;
             this.xDetallePartida.Width = 115;
             // 
+            // xDetalleSubPartida
+            // 
+            this.xDetalleSubPartida.Caption = "DetalleSubPartida";
+            this.xDetalleSubPartida.FieldName = "DetalleSubPartida";
+            this.xDetalleSubPartida.MinWidth = 100;
+            this.xDetalleSubPartida.Name = "xDetalleSubPartida";
+            this.xDetalleSubPartida.Visible = true;
+            this.xDetalleSubPartida.VisibleIndex = 7;
+            this.xDetalleSubPartida.Width = 115;
+            // 
+            // xAreaOwner
+            // 
+            this.xAreaOwner.Caption = "AreaOwner";
+            this.xAreaOwner.ColumnEdit = this.repositoryItemSearchLookUpEdit1;
+            this.xAreaOwner.FieldName = "AreaOwner";
+            this.xAreaOwner.MaxWidth = 80;
+            this.xAreaOwner.MinWidth = 80;
+            this.xAreaOwner.Name = "xAreaOwner";
+            this.xAreaOwner.Visible = true;
+            this.xAreaOwner.VisibleIndex = 8;
+            this.xAreaOwner.Width = 80;
+            // 
+            // repositoryItemSearchLookUpEdit1
+            // 
+            this.repositoryItemSearchLookUpEdit1.AutoHeight = false;
+            this.repositoryItemSearchLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchLookUpEdit1.Name = "repositoryItemSearchLookUpEdit1";
+            this.repositoryItemSearchLookUpEdit1.PopupView = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // xAreaOwner2
+            // 
+            this.xAreaOwner2.Caption = "AreaOwner2";
+            this.xAreaOwner2.ColumnEdit = this.repositoryItemSearchLookUpEdit2;
+            this.xAreaOwner2.FieldName = "AreaOwner2";
+            this.xAreaOwner2.MaxWidth = 80;
+            this.xAreaOwner2.MinWidth = 80;
+            this.xAreaOwner2.Name = "xAreaOwner2";
+            this.xAreaOwner2.Visible = true;
+            this.xAreaOwner2.VisibleIndex = 9;
+            this.xAreaOwner2.Width = 80;
+            // 
+            // repositoryItemSearchLookUpEdit2
+            // 
+            this.repositoryItemSearchLookUpEdit2.AutoHeight = false;
+            this.repositoryItemSearchLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchLookUpEdit2.Name = "repositoryItemSearchLookUpEdit2";
+            this.repositoryItemSearchLookUpEdit2.PopupView = this.repositoryItemSearchLookUpEdit2View;
+            // 
+            // repositoryItemSearchLookUpEdit2View
+            // 
+            this.repositoryItemSearchLookUpEdit2View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit2View.Name = "repositoryItemSearchLookUpEdit2View";
+            this.repositoryItemSearchLookUpEdit2View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit2View.OptionsView.ShowGroupPanel = false;
+            // 
             // xtag
             // 
             this.xtag.Caption = "tag";
@@ -430,70 +506,6 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // xDetalleSubPartida
-            // 
-            this.xDetalleSubPartida.Caption = "DetalleSubPartida";
-            this.xDetalleSubPartida.FieldName = "DetalleSubPartida";
-            this.xDetalleSubPartida.MinWidth = 100;
-            this.xDetalleSubPartida.Name = "xDetalleSubPartida";
-            this.xDetalleSubPartida.Visible = true;
-            this.xDetalleSubPartida.VisibleIndex = 7;
-            this.xDetalleSubPartida.Width = 115;
-            // 
-            // xAreaOwner
-            // 
-            this.xAreaOwner.Caption = "AreaOwner";
-            this.xAreaOwner.ColumnEdit = this.repositoryItemSearchLookUpEdit1;
-            this.xAreaOwner.FieldName = "AreaOwner";
-            this.xAreaOwner.MaxWidth = 80;
-            this.xAreaOwner.MinWidth = 80;
-            this.xAreaOwner.Name = "xAreaOwner";
-            this.xAreaOwner.Visible = true;
-            this.xAreaOwner.VisibleIndex = 8;
-            this.xAreaOwner.Width = 80;
-            // 
-            // xAreaOwner2
-            // 
-            this.xAreaOwner2.Caption = "AreaOwner2";
-            this.xAreaOwner2.ColumnEdit = this.repositoryItemSearchLookUpEdit2;
-            this.xAreaOwner2.FieldName = "AreaOwner2";
-            this.xAreaOwner2.MaxWidth = 80;
-            this.xAreaOwner2.MinWidth = 80;
-            this.xAreaOwner2.Name = "xAreaOwner2";
-            this.xAreaOwner2.Visible = true;
-            this.xAreaOwner2.VisibleIndex = 9;
-            this.xAreaOwner2.Width = 80;
-            // 
-            // repositoryItemSearchLookUpEdit1
-            // 
-            this.repositoryItemSearchLookUpEdit1.AutoHeight = false;
-            this.repositoryItemSearchLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEdit1.Name = "repositoryItemSearchLookUpEdit1";
-            this.repositoryItemSearchLookUpEdit1.PopupView = this.repositoryItemSearchLookUpEdit1View;
-            // 
-            // repositoryItemSearchLookUpEdit1View
-            // 
-            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
-            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // repositoryItemSearchLookUpEdit2
-            // 
-            this.repositoryItemSearchLookUpEdit2.AutoHeight = false;
-            this.repositoryItemSearchLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEdit2.Name = "repositoryItemSearchLookUpEdit2";
-            this.repositoryItemSearchLookUpEdit2.PopupView = this.repositoryItemSearchLookUpEdit2View;
-            // 
-            // repositoryItemSearchLookUpEdit2View
-            // 
-            this.repositoryItemSearchLookUpEdit2View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.repositoryItemSearchLookUpEdit2View.Name = "repositoryItemSearchLookUpEdit2View";
-            this.repositoryItemSearchLookUpEdit2View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.repositoryItemSearchLookUpEdit2View.OptionsView.ShowGroupPanel = false;
-            // 
             // frmaddServicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,14 +525,14 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -568,5 +580,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit2;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit2View;
+        private DevExpress.XtraBars.BarButtonItem btnDuplicarFila;
     }
 }

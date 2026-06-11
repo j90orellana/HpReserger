@@ -784,91 +784,7 @@ namespace HPReserger
                 ////////////////
                 int MedioPago = (int)cbotipo.SelectedValue;
                 string NroOperacion = txtnrocheque.TextValido();
-                foreach (FACTURAS fac in ListaComprobantes)
-                {
-                    DataTable TBanco = new DataTable();
-                    TBanco = CapaLogica.EntidadFinanciera();
-                    DataRow[] filita = TBanco.Select($"sufijo='{cbobanco.SelectedValue.ToString()}'");
-                    //Declaracion de las variables para la insercion de lso registros del detalle del pago
-                    int banko = int.Parse((filita[0])["codigo"].ToString());
-                    string Nropago = CodigoPago == 7 ? txtnrocheque.Text : "";
-                    //Recorremos los comprobantes seleccionados RH / FT
-                    //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
-                    if (fac.tipo.Substring(0, 2) == "RH")
-                    {
-                        ContadorPosicion++;
-                        //actualizo que el recibo este pagado
-                        if (fac.Saldo == fac.aPagar) CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
-                            , fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
-                        else CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
-                            , fac.subtotal, fac.igv, fac.total, IdUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
-                        //cuenta de recibo por honorarios 4241101
-
-
-                        //CapaLogica.guardarfactura(1, numasiento + 1, fac.numero, fac.CuentaContable != "" ? fac.CuentaContable : fac.Moneda == 1 ? "4241101" : "4241201", fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
-                        //    , 0, 1, FechaPago, fac.fechacancelado, fac.FechaRecepcion, IdUsuario, fac.centrocosto, fac.tipo.Substring(0, 2), fac.proveedor, fac.Moneda, nroKuenta, ""
-                        //    , fac.TipoCambio, decimal.Parse(txttipocambio.Text), FechaPago, Configuraciones.Redondear((fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar) * decimal.Parse(txttipocambio.Text))
-                        //    - Configuraciones.Redondear((fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar) * fac.TipoCambio), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), fac.IdComprobante, FechaContable
-                        //    , txtglosa.TextValido());
-                        //facturar = fac.numero;
-                        //proveer = fac.proveedor;
-                        ////IdMonedaAsiento = fac.Moneda;
-
-
-                    }
-                    else if ((fac.tipo.Substring(0, 2) == "NC" || fac.tipo.Substring(0, 2) == "ND"))// && fac.tipo.Substring(fac.tipo.Length - 1, 1) != "e")
-                    {
-                        //Actualizo el estado a pagado!
-                        if (fac.tipo.Substring(fac.tipo.Length - 1, 1) != "x")
-                        {
-                            //registramos el ingreso del abono (5: Opcion pago)
-                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, txtnrocheque.TextValido(), fac.aPagar, fac.subtotal, fac.igv, fac.aPagar, IdUsuario, 5, banko, nroKuenta, FechaPago, fac.IdComprobante
-                                , fkEmpresa, cuoPago);
-                            if (fac.aPagar >= fac.Saldo)
-                                //Actualizacion de notas de credito 
-                                //fac.IdComprobante --+--
-                                CapaLogica.ActualizarNotaCreditoDebito(fac.IdComprobante, fac.proveedor, fac.numero, 1, (int)cboempresa.SelectedValue);
-                        }
-                    }
-                    else
-                    {
-                        ContadorPosicion++;
-                        //if (fac.detraccion > 0)
-                        //{
-                        //actualizo que la factura esta pagada
-                        //if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, hoy);
-                        //else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, IdUsuario, 1, banko, nroKuenta, hoy);
-                        /////facturas por pagar 4212101
-                        //cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, IdUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
-                        //cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, IdUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
-                        //facturar = fac.numero; proveer = fac.proveedor;
-                        //idmoneda = fac.Moneda;
-                        //}
-                        //else
-                        //{
-                        //actualizo que la factura esta pagada
-                        if (fac.Saldo <= fac.aPagar)
-                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
-                                , fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
-                        else
-                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
-                                , fac.subtotal, fac.igv, fac.total, IdUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
-                        ///facturas por pagar 4212101
-                        ///
-
-                        //CapaLogica.guardarfactura(1, numasiento + 1, fac.numero, fac.CuentaContable != "" ? fac.CuentaContable : fac.Moneda == 1 ? "4212101" : "4212201", fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
-                        //    , 0, 2, FechaPago, fac.fechacancelado, fac.FechaRecepcion, IdUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta, "", fac.TipoCambio
-                        //    , decimal.Parse(txttipocambio.Text), FechaPago, Configuraciones.Redondear((fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar) * decimal.Parse(txttipocambio.Text))
-                        //    - Configuraciones.Redondear((fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar) * fac.TipoCambio), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), fac.IdComprobante
-                        //    , FechaContable, txtglosa.TextValido());
-                        //facturar = fac.numero;
-                        //proveer = fac.proveedor;
-
-
-                        //IdMonedaAsiento = fac.Moneda;
-                        //}
-                    }
-                }
+           
                 //Declaracion de las variables generales
                 string glosa = txtglosa.TextValido();
                 decimal tc = decimal.Parse(txttipocambio.Text);
@@ -1103,6 +1019,95 @@ namespace HPReserger
                 if (totalExcesoME > 0)
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, IdMonedaAsiento == 1 ? totalExcesoMN : totalExcesoME, 0, tc, proyecto, 0
                         , Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
+
+
+                foreach (FACTURAS fac in ListaComprobantes)
+                {
+                    DataTable TBanco = new DataTable();
+                    TBanco = CapaLogica.EntidadFinanciera();
+                    DataRow[] filita = TBanco.Select($"sufijo='{cbobanco.SelectedValue.ToString()}'");
+                    //Declaracion de las variables para la insercion de lso registros del detalle del pago
+                    int banko = int.Parse((filita[0])["codigo"].ToString());
+                    string Nropago = CodigoPago == 7 ? txtnrocheque.Text : "";
+                    //Recorremos los comprobantes seleccionados RH / FT
+                    //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
+                    if (fac.tipo.Substring(0, 2) == "RH")
+                    {
+                        ContadorPosicion++;
+                        //actualizo que el recibo este pagado
+                        if (fac.Saldo == fac.aPagar) CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                            , fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
+                        else CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                            , fac.subtotal, fac.igv, fac.total, IdUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
+                        //cuenta de recibo por honorarios 4241101
+
+
+                        //CapaLogica.guardarfactura(1, numasiento + 1, fac.numero, fac.CuentaContable != "" ? fac.CuentaContable : fac.Moneda == 1 ? "4241101" : "4241201", fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                        //    , 0, 1, FechaPago, fac.fechacancelado, fac.FechaRecepcion, IdUsuario, fac.centrocosto, fac.tipo.Substring(0, 2), fac.proveedor, fac.Moneda, nroKuenta, ""
+                        //    , fac.TipoCambio, decimal.Parse(txttipocambio.Text), FechaPago, Configuraciones.Redondear((fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar) * decimal.Parse(txttipocambio.Text))
+                        //    - Configuraciones.Redondear((fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar) * fac.TipoCambio), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), fac.IdComprobante, FechaContable
+                        //    , txtglosa.TextValido());
+                        //facturar = fac.numero;
+                        //proveer = fac.proveedor;
+                        ////IdMonedaAsiento = fac.Moneda;
+
+
+                    }
+                    else if ((fac.tipo.Substring(0, 2) == "NC" || fac.tipo.Substring(0, 2) == "ND"))// && fac.tipo.Substring(fac.tipo.Length - 1, 1) != "e")
+                    {
+                        //Actualizo el estado a pagado!
+                        if (fac.tipo.Substring(fac.tipo.Length - 1, 1) != "x")
+                        {
+                            //registramos el ingreso del abono (5: Opcion pago)
+                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, txtnrocheque.TextValido(), fac.aPagar, fac.subtotal, fac.igv, fac.aPagar, IdUsuario, 5, banko, nroKuenta, FechaPago, fac.IdComprobante
+                                , fkEmpresa, cuoPago);
+                            if (fac.aPagar >= fac.Saldo)
+                                //Actualizacion de notas de credito 
+                                //fac.IdComprobante --+--
+                                CapaLogica.ActualizarNotaCreditoDebito(fac.IdComprobante, fac.proveedor, fac.numero, 1, (int)cboempresa.SelectedValue);
+                        }
+                    }
+                    else
+                    {
+                        ContadorPosicion++;
+                        //if (fac.detraccion > 0)
+                        //{
+                        //actualizo que la factura esta pagada
+                        //if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, hoy);
+                        //else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, IdUsuario, 1, banko, nroKuenta, hoy);
+                        /////facturas por pagar 4212101
+                        //cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, IdUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
+                        //cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, IdUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
+                        //facturar = fac.numero; proveer = fac.proveedor;
+                        //idmoneda = fac.Moneda;
+                        //}
+                        //else
+                        //{
+                        //actualizo que la factura esta pagada
+                        if (fac.Saldo <= fac.aPagar)
+                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                                , fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
+                        else
+                            CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, MedioPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                                , fac.subtotal, fac.igv, fac.total, IdUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
+                        ///facturas por pagar 4212101
+                        ///
+
+                        //CapaLogica.guardarfactura(1, numasiento + 1, fac.numero, fac.CuentaContable != "" ? fac.CuentaContable : fac.Moneda == 1 ? "4212101" : "4212201", fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
+                        //    , 0, 2, FechaPago, fac.fechacancelado, fac.FechaRecepcion, IdUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta, "", fac.TipoCambio
+                        //    , decimal.Parse(txttipocambio.Text), FechaPago, Configuraciones.Redondear((fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar) * decimal.Parse(txttipocambio.Text))
+                        //    - Configuraciones.Redondear((fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar) * fac.TipoCambio), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), fac.IdComprobante
+                        //    , FechaContable, txtglosa.TextValido());
+                        //facturar = fac.numero;
+                        //proveer = fac.proveedor;
+
+
+                        //IdMonedaAsiento = fac.Moneda;
+                        //}
+                    }
+                }
+
+
 
 
                 //fin de cabecera en exceso

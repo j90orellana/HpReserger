@@ -33,8 +33,8 @@ namespace HPReserger.ModuloCrystalReport
             if (Matricial)
             {
                 reporte = new rptLibroMayor6_1();
-                reporte.SetParameterValue("@Fechaini", FechaIni);
-                reporte.SetParameterValue("@FechaFin", FechaFin);
+                reporte.SetParameterValue("@Fechaini", FechaIni.ToString("yyyy-MM-dd"));
+                reporte.SetParameterValue("@FechaFin", FechaFin.ToString("yyyy-MM-dd"));
                 reporte.SetParameterValue("@cuentas", Cuentas);
                 reporte.SetParameterValue("@Glosas", glosas);
                 reporte.SetParameterValue("@NroDoc", nrodoc);
@@ -75,8 +75,10 @@ namespace HPReserger.ModuloCrystalReport
                 if (!Matricial)
                 {
                     Reporteori = new rptLibroMayor6_1_Ori();
-                    Reporteori.SetParameterValue("@Fechaini", FechaIni);
-                    Reporteori.SetParameterValue("@FechaFin", FechaFin);
+                    //Reporteori.SetParameterValue("@Fechaini", FechaIni.Date);
+                    //Reporteori.SetParameterValue("@FechaFin", FechaFin.Date);
+                    Reporteori.SetParameterValue("@FechaIni", FechaIni.ToString("yyyy-MM-dd"));
+                    Reporteori.SetParameterValue("@FechaFin", FechaFin.ToString("yyyy-MM-dd"));
                     Reporteori.SetParameterValue("@cuentas", Cuentas);
                     Reporteori.SetParameterValue("@Glosas", glosas);
                     Reporteori.SetParameterValue("@NroDoc", nrodoc);

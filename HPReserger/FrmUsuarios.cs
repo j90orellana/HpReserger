@@ -343,7 +343,10 @@ namespace HPReserger
         private int CodigoUser;
         public void CargarValores()
         {
-            CodigoUser = (int)GridUser[Codigox.Name, GridUser.CurrentCell.RowIndex].Value;
+
+            if (GridUser.Rows.Count > 0)
+                CodigoUser = (int)GridUser[Codigox.Name, GridUser.CurrentCell.RowIndex].Value;
+            else CodigoUser = 0;
             if (cbotipoid.SelectedValue != null)
                 tipoid = (int)cbotipoid.SelectedValue;
             else tipoid = 1;

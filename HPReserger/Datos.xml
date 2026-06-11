@@ -3,11 +3,13 @@
   <BaseDeDatos>Actual</BaseDeDatos>
   <DataSource>
 
-    <data>192.168.1.6</data>
- <data>192.168.1.6</data> 
+    <data>192.168.1.5</data>
+ <data>192.168.1.5</data> 
   <data>192.168.10.10</data>
     <data>192.168.10.10</data>
     <data>25.12.16.79</data>
+    <data>192.168.1.5</data>
+    <data>192.168.1.5</data>
   </DataSource>
   <BasesdeDatos>
     <ListadoBases>Actual</ListadoBases>
@@ -15,6 +17,8 @@
     <ListadoBases>LIBRE</ListadoBases>
     <ListadoBases>LIBRE_BETA</ListadoBases>
     <ListadoBases>Grou</ListadoBases>
+    <ListadoBases>PRUEBAS</ListadoBases>
+    <ListadoBases>DEMO</ListadoBases>
   </BasesdeDatos>
   <Licencia>
     <Key>158015936624</Key>

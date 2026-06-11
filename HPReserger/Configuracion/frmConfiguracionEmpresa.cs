@@ -21,6 +21,10 @@ namespace SISGEM.Configuracion
 
         private void frmConfiguracionEmpresa_Load(object sender, EventArgs e)
         {
+            if (HPReserger.frmLogin.CodigoUsuario != 0)
+                PageSisAdmin.PageVisible = false;
+
+
             HPResergerCapaLogica.Contable.ClaseContable ccuentas = new HPResergerCapaLogica.Contable.ClaseContable();
             DataTable TCuentas = ccuentas.GetAllCuentasValidasDetalleRango(0, "90", "99");
             cboCuentaComision.Properties.DataSource = TCuentas;
@@ -28,6 +32,12 @@ namespace SISGEM.Configuracion
             cboCuentaComision.Properties.ValueMember = "id";
             searchLookUpEdit1View.Columns[0].BestFit();
             //CONFIGURACIONES
+
+            DataTable TCuentas1 = ccuentas.GetAllCuentasValidasDetalleRango(0, "12", "13");
+            cboCuentaDetracciones.Properties.DataSource = TCuentas1;
+            cboCuentaDetracciones.Properties.DisplayMember = "cuentacontable";
+            cboCuentaDetracciones.Properties.ValueMember = "id";
+            searchLookUpEdit1View1.Columns[0].BestFit();
 
             cclase.VerificarCrearTabla();
 
@@ -42,7 +52,23 @@ namespace SISGEM.Configuracion
 
             var trabajarConPartidasConfiguracion = ObtenerConfiguracion(tconfig, 3);
             chkfacturasConPartida.EditValue = trabajarConPartidasConfiguracion.Item1 != 0;
+
+            var trabajarConDetraccionesEnVenta = ObtenerConfiguracion(tconfig, 4);
+            chkDetraccionxCobrar.EditValue = trabajarConDetraccionesEnVenta.Item1 != 0;
+
+            var cbodetraccion = ObtenerConfiguracion(tconfig, 5);
+            cboCuentaDetracciones.EditValue = cbodetraccion.Item2;
+
+
+            CargarConfiguracionSisAdmin();
         }
+
+        private void CargarConfiguracionSisAdmin()
+        {
+            HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa Cclase = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+            txtTokenPeruDevs.EditValue = cclase.ObtenerToken();
+        }
+
         public Tuple<int, string> ObtenerConfiguracion(DataTable configTable, int tipo, int valorDefecto = 0, string textoDefecto = "")
         {
             var config = configTable.AsEnumerable()
@@ -94,6 +120,32 @@ namespace SISGEM.Configuracion
                texto: "",
                valor: chkfacturasConPartida.Checked ? 1 : 0
            );
+        }
+
+        private void chkDetraccionxCobrar_CheckedChanged(object sender, EventArgs e)
+        {
+            ActualizarConfiguracion(
+               tipo: 4,
+               descripcion: chkDetraccionxCobrar.Text,
+               texto: "",
+               valor: chkDetraccionxCobrar.Checked ? 1 : 0
+           );
+        }
+
+        private void cboCuentaDetracciones_EditValueChanged(object sender, EventArgs e)
+        {
+            ActualizarConfiguracion(
+              tipo: 5,
+              descripcion: layoutControlItem6.Text,
+              texto: cboCuentaDetracciones.EditValue?.ToString(),
+              valor: 0
+          );
+        }
+
+        private void txtTokenPeruDevs_EditValueChanged(object sender, EventArgs e)
+        {
+            HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa Cclase = new HPResergerCapaLogica.Configuracion.ConfiguracionEmpresa();
+             cclase.CrearTablaYGuardarToken(txtTokenPeruDevs.EditValue.ToString());
         }
     }
 }

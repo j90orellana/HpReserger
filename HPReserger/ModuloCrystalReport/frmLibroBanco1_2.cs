@@ -33,8 +33,8 @@ namespace HPReserger.ModuloCrystalReport
             if (Matricial)
             {
                 reporte = new rptLibroBanco_2();
-                reporte.SetParameterValue("@FechaInicial", FechaIni);
-                reporte.SetParameterValue("@FechaFinal", FechaFin);
+                reporte.SetParameterValue("@FechaInicial", FechaIni.ToString("yyyy-MM-dd"));
+                reporte.SetParameterValue("@FechaFinal", FechaFin.ToString("yyyy-MM-dd"));
                 reporte.SetParameterValue("@Empresa", ListadoEmpresas);
 
                 reporte.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);
@@ -70,8 +70,8 @@ namespace HPReserger.ModuloCrystalReport
             else
             {
                 Reporteori = new rptLibroBanco_2_Ori();
-                Reporteori.SetParameterValue("@FechaInicial", FechaIni);
-                Reporteori.SetParameterValue("@FechaFinal", FechaFin);
+                Reporteori.SetParameterValue("@FechaInicial", FechaIni.ToString("yyyy-MM-dd"));
+                Reporteori.SetParameterValue("@FechaFinal", FechaFin.ToString("yyyy-MM-dd"));
                 Reporteori.SetParameterValue("@Empresa", ListadoEmpresas);
 
                 Reporteori.SetDatabaseLogon(HPResergerCapaDatos.HPResergerCD.USERID, HPResergerCapaDatos.HPResergerCD.USERPASS);

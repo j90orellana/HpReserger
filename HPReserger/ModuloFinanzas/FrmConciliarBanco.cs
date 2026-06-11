@@ -1,4 +1,5 @@
-﻿using HpResergerUserControls;
+﻿using DevExpress.XtraEditors;
+using HpResergerUserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -690,7 +691,7 @@ namespace HPReserger.ModuloFinanzas
             }
             else if (CodSunat == 11) //BBVA continental
             {
-                if (TdatosExcel.Columns.Count != 7)
+                if (TdatosExcel.Columns.Count < 7)
                 {
                     msgError("El Archivo Excel No contienen todas las Columnas Necesarias");
                     return false;
@@ -708,7 +709,10 @@ namespace HPReserger.ModuloFinanzas
                 if (!ValCuenta.Contains(Cuentax))
                 {
                     msgError("El Excel de Movimientos NO coincide con la cuenta Seleccionada");
-                    return false;
+                    DialogResult respuesta = XtraMessageBox.Show("¿Desea continuar?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                    if (respuesta == DialogResult.Cancel)
+                        return false;
                 }
                 int pos = 10; int i = 0;
                 foreach (DataRow item in TdatosExcel.Rows)
@@ -728,7 +732,7 @@ namespace HPReserger.ModuloFinanzas
                 DateTime FechaMax = new DateTime(1900, 1, 1);
                 foreach (DataRow item in TdatosExcel.Rows)
                 {
-                    if (c++ >= pos)
+                    if (c++ >= pos && item[0].ToString() != "")
                     {
                         DateTime Fecha = DateTime.Parse(item[0].ToString());
                         if (Fecha < FechaMin) FechaMin = Fecha;
