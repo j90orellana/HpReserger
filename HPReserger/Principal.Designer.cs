@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -253,6 +253,9 @@
             this.barbtnReporteporProyectos = new DevExpress.XtraBars.BarButtonItem();
             this.btnEERR = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem78 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem79 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem80 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem81 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.rbPFinanzas = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -314,6 +317,8 @@
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPlanilla = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup21 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbMantenimiento = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup19 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup26 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -348,11 +353,8 @@
             this.ribbonPageGroup28 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup40 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup58 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem79 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem80 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup21 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem81 = new DevExpress.XtraBars.BarButtonItem();
+            this.rpgSeguimiento = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem82 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -593,9 +595,10 @@
             this.barButtonItem78,
             this.barButtonItem79,
             this.barButtonItem80,
-            this.barButtonItem81});
+            this.barButtonItem81,
+            this.barButtonItem82});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 34;
+            this.ribbonControl1.MaxItemId = 35;
             this.ribbonControl1.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barStaticItem4);
@@ -623,7 +626,7 @@
             this.repositoryItemCalcEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.Size = new System.Drawing.Size(1378, 136);
-            this.ribbonControl1.StatusBar = this.ribbonStatusBar2;
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barButtonItem1
@@ -689,7 +692,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // barSubItem3
             // 
@@ -2636,6 +2639,30 @@
             this.barButtonItem78.Name = "barButtonItem78";
             this.barButtonItem78.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem78_ItemClick);
             // 
+            // barButtonItem79
+            // 
+            this.barButtonItem79.Caption = "Generar";
+            this.barButtonItem79.Id = 31;
+            this.barButtonItem79.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem79.ImageOptions.Image")));
+            this.barButtonItem79.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem79.ImageOptions.LargeImage")));
+            this.barButtonItem79.Name = "barButtonItem79";
+            this.barButtonItem79.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem79_ItemClick);
+            // 
+            // barButtonItem80
+            // 
+            this.barButtonItem80.Caption = "barButtonItem80";
+            this.barButtonItem80.Id = 32;
+            this.barButtonItem80.Name = "barButtonItem80";
+            // 
+            // barButtonItem81
+            // 
+            this.barButtonItem81.Caption = "Comisiones";
+            this.barButtonItem81.Id = 33;
+            this.barButtonItem81.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem81.ImageOptions.Image")));
+            this.barButtonItem81.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem81.ImageOptions.LargeImage")));
+            this.barButtonItem81.Name = "barButtonItem81";
+            this.barButtonItem81.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem81_ItemClick);
+            // 
             // ribbonMiniToolbar1
             // 
             this.ribbonMiniToolbar1.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3212,6 +3239,18 @@
             this.ribbonPageGroup17.Name = "ribbonPageGroup17";
             this.ribbonPageGroup17.Text = "Empleados";
             // 
+            // ribbonPageGroup21
+            // 
+            this.ribbonPageGroup21.ItemLinks.Add(this.barButtonItem81);
+            this.ribbonPageGroup21.Name = "ribbonPageGroup21";
+            this.ribbonPageGroup21.Text = "Movimientos";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem79);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.Text = "Boletas";
+            // 
             // rbMantenimiento
             // 
             this.rbMantenimiento.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -3324,7 +3363,8 @@
             // rbUsuarios
             // 
             this.rbUsuarios.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup18});
+            this.ribbonPageGroup18,
+            this.rpgSeguimiento});
             this.rbUsuarios.Name = "rbUsuarios";
             this.rbUsuarios.Text = "Seguridad";
             // 
@@ -3502,41 +3542,20 @@
             this.ribbonPageGroup58.Name = "ribbonPageGroup58";
             this.ribbonPageGroup58.Text = "Compras";
             // 
-            // ribbonPageGroup10
+            // rpgSeguimiento
             // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem79);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            this.ribbonPageGroup10.Text = "Boletas";
+            this.rpgSeguimiento.ItemLinks.Add(this.barButtonItem82);
+            this.rpgSeguimiento.Name = "rpgSeguimiento";
+            this.rpgSeguimiento.Text = "Seguimiento";
             // 
-            // barButtonItem79
+            // barButtonItem82
             // 
-            this.barButtonItem79.Caption = "Generar";
-            this.barButtonItem79.Id = 31;
-            this.barButtonItem79.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem79.ImageOptions.Image")));
-            this.barButtonItem79.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem79.ImageOptions.LargeImage")));
-            this.barButtonItem79.Name = "barButtonItem79";
-            this.barButtonItem79.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem79_ItemClick);
-            // 
-            // barButtonItem80
-            // 
-            this.barButtonItem80.Caption = "barButtonItem80";
-            this.barButtonItem80.Id = 32;
-            this.barButtonItem80.Name = "barButtonItem80";
-            // 
-            // ribbonPageGroup21
-            // 
-            this.ribbonPageGroup21.ItemLinks.Add(this.barButtonItem81);
-            this.ribbonPageGroup21.Name = "ribbonPageGroup21";
-            this.ribbonPageGroup21.Text = "Movimientos";
-            // 
-            // barButtonItem81
-            // 
-            this.barButtonItem81.Caption = "Comisiones";
-            this.barButtonItem81.Id = 33;
-            this.barButtonItem81.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem81.ImageOptions.Image")));
-            this.barButtonItem81.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem81.ImageOptions.LargeImage")));
-            this.barButtonItem81.Name = "barButtonItem81";
-            this.barButtonItem81.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem81_ItemClick);
+            this.barButtonItem82.Caption = "Historial Usuario";
+            this.barButtonItem82.Id = 34;
+            this.barButtonItem82.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem82.ImageOptions.Image")));
+            this.barButtonItem82.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem82.ImageOptions.LargeImage")));
+            this.barButtonItem82.Name = "barButtonItem82";
+            this.barButtonItem82.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem82_ItemClick);
             // 
             // Principal
             // 
@@ -3897,5 +3916,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem80;
         private DevExpress.XtraBars.BarButtonItem barButtonItem81;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup21;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem82;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgSeguimiento;
     }
 }

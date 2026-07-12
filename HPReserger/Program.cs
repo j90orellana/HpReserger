@@ -19,19 +19,48 @@ namespace HPReserger
         private const string ReleasesApiUrl = "https://api.github.com/repos/j90orellana/HpReserger/releases/latest";
         private static string TempFolderPath = "";
         private static string filePath = "";
+
+        public static bool actualizacionRealizada { get; private set; } = false;
+
         [STAThread]
         static void Main()
         {
-            filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "cambios.txt");
+            filePath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "cambios.txt");
+
             TempFolderPath = System.Windows.Forms.Application.CommonAppDataPath;
+
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            VerificarActualizacion();
 
-            //Application.Run(new ModuloFinanzas.FrmConciliarBanco());
             System.Windows.Forms.Application.Run(new frmLogin());
         }
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            try
+            {
+                Exception ex = e.ExceptionObject as Exception;
+                HPResergerCapaLogica.Auditoria.CLS_LogAuditoria auditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
 
+                auditoria.Registrar(HPReserger.frmLogin.CodigoUsuario, HPResergerCapaDatos.HPResergerCD.BASEDEDATOS, "ERROR_FATAL", ex?.ToString(), "SISTEMA", "GLOBAL");
+            }
+            catch
+            {
+            }
+        }
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            try
+            {
+                HPResergerCapaLogica.Auditoria.CLS_LogAuditoria auditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
+
+                auditoria.Registrar(HPReserger.frmLogin.CodigoUsuario, HPResergerCapaDatos.HPResergerCD.BASEDEDATOS, "ERROR_FATAL", e.Exception.ToString(), "SISTEMA", "GLOBAL");
+            }
+            catch
+            {
+            }
+        }
         //private static async void VerificarActualizacion()
         //{
         //    Version latestVersion = await ObtenerUltimaVersionDesdeGitHubAsync();
@@ -60,45 +89,47 @@ namespace HPReserger
         //        XtraMessageBox.Show("No se encontró ninguna actualización disponible.", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
         //    }
         //}
-        private static async void VerificarActualizacion()
+        public static async Task<bool> VerificarActualizacion()
         {
             Version latestVersion = await ObtenerUltimaVersionDesdeGitHubAsync();
 
             if (latestVersion != null && latestVersion > ObtenerVersionActual())
             {
-                // Obtener información adicional de la última versión
+                var result = XtraMessageBox.Show(
+                    $"Se encontró una actualización disponible. Descargando versión {latestVersion}...\n\n{cuerpo}",
+                    "Actualización",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Information);
 
-                XtraMessageBox.Show($"Se encontró una actualización disponible. Descargando versión {latestVersion}...\n\n{cuerpo}", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                string installerPath = await DescargarInstaladorDesdeGitHub();
-                try
+                if (result == DialogResult.OK)
                 {
-                    using (StreamWriter writer = new StreamWriter(filePath))
+                    var frm = new SISGEM.ModuloSeguridad.frmActualizando();
+
+                    try
                     {
-                        writer.Write(cuerpo); // Escribir el texto en el archivo
+                        frm.Show();
+                        System.Windows.Forms.Application.DoEvents();
+
+                        string installerPath = await DescargarInstaladorDesdeGitHub();
+
+                        if (!string.IsNullOrEmpty(installerPath))
+                        {
+                            frm.ActualizarMensaje("Instalando actualización...");
+                            System.Windows.Forms.Application.DoEvents();
+
+                            EjecutarInstalador(installerPath);
+                            return true;
+                        }
                     }
-                    //MessageBox.Show("El texto se ha guardado correctamente.");
-                }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show("Error al guardar el texto: " + ex.Message);
-                }
-                if (!string.IsNullOrEmpty(installerPath))
-                {
-                    XtraMessageBox.Show("Descarga completada. Iniciando actualización...", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    EjecutarInstalador(installerPath);
-
-                    XtraMessageBox.Show("La actualización se completó exitosamente.", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    XtraMessageBox.Show("Error al descargar el instalador. No se pudo realizar la actualización.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    finally
+                    {
+                        frm.Close();
+                        frm.Dispose();
+                    }
                 }
             }
-            else
-            {
-                //XtraMessageBox.Show("No se encontró ninguna actualización disponible.", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
+            return false;
         }
 
         private static Version ObtenerVersionActual()
@@ -112,6 +143,8 @@ namespace HPReserger
         private const string GitHubApiVersionHeader = "application/vnd.github.v3+json";
         public static string cuerpo = "";
         public static string urlhtml = "";
+
+
         private static async Task<Version> ObtenerUltimaVersionDesdeGitHubAsync()
         {
             try
@@ -128,7 +161,7 @@ namespace HPReserger
                 {
                     token = tData.Nombre;
                 }
-                
+
 
                 //AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);
                 //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;

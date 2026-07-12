@@ -46,6 +46,19 @@ namespace HPReserger
             // comprobamos actualizaciones (cada vez que se inicia el programa)     
             lblVersion.Text = $"Version:{fvi.FileVersion}";
         }
+        protected override async void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            this.Hide();
+
+            bool actualizando = await Program.VerificarActualizacion();
+
+            if (!actualizando)
+            {
+                this.Show();
+            }
+        }
         public void ComprobarVersion()
         {
             DataTable tdatos;
@@ -218,6 +231,10 @@ namespace HPReserger
                     menusito.Hide();
                     frmprincipal = new SISGEM.Principal();
                     frmprincipal.BaseRemota = true;
+
+                    HPResergerCapaLogica.Auditoria.CLS_LogAuditoria clAuditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
+                    clAuditoria.RegistrarInicioSesion(CodigoUsuario, Basedatos);
+
                     frmprincipal.Show();
                 }
                 else
@@ -261,6 +278,10 @@ namespace HPReserger
                             _Perfil = Tuser.Rows[0]["ID_Perfiles"].ToString(); ;
                             frmprincipal = new SISGEM.Principal();
                             frmprincipal.BaseRemota = true;
+
+                            HPResergerCapaLogica.Auditoria.CLS_LogAuditoria clAuditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
+                            clAuditoria.RegistrarInicioSesion(CodigoUsuario, Basedatos);
+
                             frmprincipal.Show();
 
                             frmprincipal.barButtonItem37.PerformClick();
@@ -363,6 +384,9 @@ namespace HPReserger
                     frmprincipal = new SISGEM.Principal();
                     frmprincipal.BaseRemota = false;
 
+                    HPResergerCapaLogica.Auditoria.CLS_LogAuditoria clAuditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
+                    clAuditoria.RegistrarInicioSesion(CodigoUsuario, Basedatos);               
+
                     frmprincipal.Show();
                     Prueba = true;
                 }
@@ -420,6 +444,9 @@ namespace HPReserger
                                 menusito.Hide();
                                 frmprincipal = new SISGEM.Principal();
                                 frmprincipal.BaseRemota = false;
+
+                                HPResergerCapaLogica.Auditoria.CLS_LogAuditoria clAuditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
+                                clAuditoria.RegistrarInicioSesion(CodigoUsuario, Basedatos);
 
                                 frmprincipal.Show();
                                 Prueba = true;
@@ -657,7 +684,7 @@ namespace HPReserger
                 HpResergerNube.CRM_Usuario oxUsuario = new HpResergerNube.CRM_Usuario();
                 if (oxUsuario.ConsultarUsuarioPorEmail(txtUsuario.Text).Rows.Count > 0)
                 {
-                    txtEmpresaData.Text = "BRASH";
+                    //txtEmpresaData.Text = "BRASH";
                     ChkCRM.Checked = true;
                 }
                 else

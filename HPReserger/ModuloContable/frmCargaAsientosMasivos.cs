@@ -180,7 +180,7 @@ namespace SISGEM.ModuloContable
                         resultado.AppendLine($"Fecha fuera de rango SQL en columna {col} fila {filaExcel}: {fechaStr}");
                     }
                 }
-                
+
 
                 // Validar columna 0 (cuenta)
                 string cuenta = row[0]?.ToString().Trim();
@@ -275,15 +275,29 @@ namespace SISGEM.ModuloContable
 
 
             // Recorremos todas las filas del DataTable
-            decimal totalDebe = 0.00m;
-            decimal totalHaber = 0.00m;
+            decimal totalDebe = 0m;
+            decimal totalHaber = 0m;
+
             foreach (DataRow row in dt.Rows)
             {
-                if (decimal.TryParse(row[5]?.ToString(), out decimal debe))
-                    totalDebe += debe;
+                decimal debe = 0m;
+                decimal haber = 0m;
 
-                if (decimal.TryParse(row[6]?.ToString(), out decimal haber))
+                if (row[5] != DBNull.Value &&
+                    decimal.TryParse(row[5].ToString(), out debe))
+                {
+                    debe = decimal.Round(debe, 2, MidpointRounding.AwayFromZero);
+                    row[5] = debe;
+                    totalDebe += debe;
+                }
+
+                if (row[6] != DBNull.Value &&
+                    decimal.TryParse(row[6].ToString(), out haber))
+                {
+                    haber = decimal.Round(haber, 2, MidpointRounding.AwayFromZero);
+                    row[6] = haber;
                     totalHaber += haber;
+                }
             }
 
             // Validar que la diferencia sea cero
@@ -306,6 +320,8 @@ namespace SISGEM.ModuloContable
                 File.WriteAllText(path, resultado.ToString());
 
                 Process.Start(path); // Esto abre el archivo con el programa predeterminado del sistema
+
+                gridControl1.DataSource = DBNull.Value;
                 return false;
             }
             else
@@ -420,6 +436,8 @@ namespace SISGEM.ModuloContable
             int IdUsuario = HPReserger.frmLogin.CodigoUsuario;
             decimal TC = CapaLogica.TipoCambioDia("Venta", (DateTime)dtpfechacontable.EditValue);
 
+            DataTable tCentroCC = CapaLogica.ListarCentroCostos();
+
             //PRIMERO EL DEBE
             foreach (var cuentas in cuentasUnicas)
             {
@@ -483,9 +501,15 @@ namespace SISGEM.ModuloContable
 
                         decimal importemn = moneda == 1 ? mov : Math.Round(mov * tc, 2);
                         decimal importeme = moneda == 2 ? mov : (tc != 0 ? Math.Round(mov / tc, 2) : 0);
+                        
+                        string codigoBuscar = fila[7].ToString().ToUpper();
+                        int cc = tCentroCC.AsEnumerable()
+                                   .Where(x => x.Field<string>("CentroCosto").ToString().ToUpper() == codigoBuscar)
+                                   .Select(x => x.Field<int>("Id_CCosto"))
+                                   .FirstOrDefault();
+                        
 
                         //CAMPOS ABANDONADOS
-                        int cc = 0;
                         int CtaBancaria = 0;
                         String nroopbanco = "";
 
@@ -559,8 +583,14 @@ namespace SISGEM.ModuloContable
                         decimal importemn = moneda == 1 ? mov : Math.Round(mov * tc, 2);
                         decimal importeme = moneda == 2 ? mov : (tc != 0 ? Math.Round(mov / tc, 2) : 0);
 
+                        string codigoBuscar = fila[7].ToString().ToUpper();
+                        int cc = tCentroCC.AsEnumerable()
+                                   .Where(x => x.Field<string>("CentroCosto").ToString().ToUpper() == codigoBuscar)
+                                   .Select(x => x.Field<int>("Id_CCosto"))
+                                   .FirstOrDefault();
+
                         //CAMPOS ABANDONADOS
-                        int cc = 0;
+
                         int CtaBancaria = 0;
                         String nroopbanco = "";
 

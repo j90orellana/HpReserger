@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditoria\CLS_LogAuditoria.cs" />
     <Compile Include="Compras\FacturaManual.cs" />
     <Compile Include="Compras\FacturaManualCompra.cs" />
     <Compile Include="Compras\NC_ND_CompraManualCompra.cs" />

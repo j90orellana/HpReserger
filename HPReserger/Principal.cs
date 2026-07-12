@@ -895,13 +895,19 @@ namespace SISGEM
             {
                 if (cerrado == 0 && cerrar == 10)
                 {
+                    HPResergerCapaLogica.Auditoria.CLS_LogAuditoria clAuditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
+                    clAuditoria.RegistrarSalidaSistema(HPReserger.frmLogin.CodigoUsuario, HPResergerCapaDatos.HPResergerCD.BASEDEDATOS);
+
                     HPReserger.frmLogin.DesconectarUsuario();
                     Application.Exit();
                 }
-                if (cerrar == 0)
+                else if (cerrar == 0)
                 {
                     if (msgp("Seguro Desea Salir del Sistema") == DialogResult.Yes)
                     {
+                        //HPResergerCapaLogica.Auditoria.CLS_LogAuditoria clAuditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
+                        //clAuditoria.RegistrarSalidaSistema(HPReserger.frmLogin.CodigoUsuario, HPResergerCapaDatos.HPResergerCD.BASEDEDATOS);
+
                         cerrado = 0; cerrar = 10;
                         HPReserger.frmLogin.DesconectarUsuario();
                         Application.Exit();
@@ -910,8 +916,11 @@ namespace SISGEM
                         e.Cancel = true;
 
                 }
-                if (cerrar == 5)
+                else if (cerrar == 5)
                 {
+                    HPResergerCapaLogica.Auditoria.CLS_LogAuditoria clAuditoria = new HPResergerCapaLogica.Auditoria.CLS_LogAuditoria();
+                    clAuditoria.RegistrarFinSesion(HPReserger.frmLogin.CodigoUsuario, HPResergerCapaDatos.HPResergerCD.BASEDEDATOS);
+
                     cerrar = 10;
                 }
             }
@@ -1605,6 +1614,12 @@ namespace SISGEM
         private void barButtonItem81_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenForm<HPReserger.ModuloRRHH.frmComisionesBonos>();
+        }
+
+        private void barButtonItem82_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm<ModuloSeguridad.frmSeguimientoUsuarios>();
+
         }
     }
 }

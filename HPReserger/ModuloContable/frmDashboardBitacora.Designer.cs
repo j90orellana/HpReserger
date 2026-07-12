@@ -57,8 +57,8 @@ namespace SISGEM.ModuloContable
             // 
             this.dashboardViewer1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
             this.dashboardViewer1.Appearance.Options.UseBackColor = true;
-  
-            this.dashboardViewer1.DashboardSource = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Bitacora de Usuarios en Barras partidas.xml");          
+            this.dashboardViewer1.DashboardSource = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\Bita" +
+    "cora de Usuarios en Barras partidas.xml";
             this.dashboardViewer1.Location = new System.Drawing.Point(6, 30);
             this.dashboardViewer1.Name = "dashboardViewer1";
             this.dashboardViewer1.Size = new System.Drawing.Size(1023, 418);

@@ -96,14 +96,43 @@ namespace HPResergerCapaLogica.FlujoCaja
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string query = @"
+                 
+                    DECLARE @id   INT;
+                    DECLARE @tipo INT;
 
-                            declare @id as int=0
-                            declare @tipo as int =0
+                    SELECT
+                        @id   = p.id,
+                        @tipo = p.Tipo
+                    FROM TBL_Partidas_Control p
+                    WHERE p.id = @codigo;
+                    -- AND p.pkempresa = @empresa
 
-                            select @id = p.id, @tipo = p.Tipo from TBL_Partidas_Control p where  id =@codigo --and pkempresa = @empresa
-                            select @id,@tipo
-                           update f set idPartida=@id,TipoPArtida = @tipo
-                                from TBL_FacturasPresupuestos f where idFactura = @idFactura and TipoFactura = @TipoFactura
+                    IF @id IS NOT NULL
+                    BEGIN
+                        IF EXISTS (
+                            SELECT 1
+                            FROM TBL_FacturasPresupuestos
+                            WHERE idFactura = @idFactura
+                              AND TipoFactura = @TipoFactura
+                        )
+                        BEGIN
+                            UPDATE TBL_FacturasPresupuestos
+                            SET
+                                idPartida = @id,
+                                TipoPartida = @tipo
+                            WHERE idFactura = @idFactura
+                              AND TipoFactura = @TipoFactura;
+                        END
+                        ELSE
+                        BEGIN
+                            INSERT INTO TBL_FacturasPresupuestos
+                                (idFactura, TipoFactura, idPartida, TipoPartida)
+                            VALUES
+                                (@idFactura, @TipoFactura, @id, @tipo);
+                        END
+                    END   
+
+SELECT @@ROWCOUNT
 
 ";
 

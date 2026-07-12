@@ -1040,8 +1040,10 @@ namespace HPReserger
                 DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
                 if (Tprueba.Rows.Count > 0) { msgError("No se puede Registrar, Este Documento Ya Existe"); return; }
                 /////INSERTANDO LA FACTURA
+
+
                 CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
-                   decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
+                   decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, ProcesoMasivo ? 1 : compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
                   decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario, DatosCompensacion, chkActivoFijo.Checked ? 1 : 0);
 
                 ////INSERTANDO EL DETALLE DE LA FACTURA
@@ -2825,6 +2827,7 @@ namespace HPReserger
                                         //Grabado
                                         cboempresa.Text = item[0].ToString();
                                         //cboempresa.SelectedValue = ValorEmpresa; //porsi se cambia la empresa
+                                        Estado = 1;
                                         btnAceptar.PerformClick();
                                         //return;
                                     }

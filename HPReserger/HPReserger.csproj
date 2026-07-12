@@ -1492,6 +1492,18 @@
     <Compile Include="ModuloRRHH\frmVacacionesResumen.Designer.cs">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloSeguridad\frmActualizando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloSeguridad\frmActualizando.Designer.cs">
+      <DependentUpon>frmActualizando.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloSeguridad\frmSeguimientoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloSeguridad\frmSeguimientoUsuarios.Designer.cs">
+      <DependentUpon>frmSeguimientoUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloShedule\DialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3498,6 +3510,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloRRHH\frmVacacionesResumen.resx">
       <DependentUpon>frmVacacionesResumen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloSeguridad\frmActualizando.resx">
+      <DependentUpon>frmActualizando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloSeguridad\frmSeguimientoUsuarios.resx">
+      <DependentUpon>frmSeguimientoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloShedule\frmAddObjetivosProyectos.resx">
       <DependentUpon>frmAddObjetivosProyectos.cs</DependentUpon>

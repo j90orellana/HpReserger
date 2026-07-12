@@ -95,6 +95,8 @@ namespace HPResergerCapaLogica.Compras
             {
                 string query = @"
               
+
+
 DECLARE @EmpresasFiltro TABLE (Id_Empresa INT)    
 -- Insertar valores en la tabla temporal si no es el valor por defecto
 IF @Empresa <> '0'
@@ -220,7 +222,7 @@ END
             e.ruc AS RUC,
             a.Cod_Asiento_Contable,
             e.Empresa,
-            e.id_empresa,d.proyecto,et.descripcion ETAPA,
+            e.id_empresa, isnull(pp.Proyecto,  d.proyecto)proyecto,et.descripcion ETAPA,
             CAST(ISNULL(a.Fecha_Asiento_Valor, A.Fecha_Asiento) AS DATE) AS FechaContable,
             CAST(ISNULL(f.fecha, ISNULL(a.Fecha_Asiento, a.Fecha_Asiento)) AS DATE) AS FechaRegistro,
             CAST(f.Fecha_Emision AS DATE) AS FechaEmision,
@@ -263,6 +265,9 @@ END
         LEFT JOIN TBL_Comprobante_Pago g ON IIF(ISNULL(f.Id_Comprobante, 0) = 0, 1, f.Id_Comprobante) = g.Id_Comprobante
         INNER JOIN TBL_Moneda c ON c.Id_Moneda = ISNULL(f.fk_moneda, a.Moneda)
 
+		left join TBL_Centro_Costo cc on cc.Id_CCosto = f.Centro_Costo
+
+        left join TBL_Proyecto pp on pp.Proyecto = cc.CentroCosto and pp.Id_Empresa = e.Id_Empresa
 		LEFT JOIN #Reversados r ON r.Cod_Asiento_Contable = a.Cod_Asiento_Contable and r.idEmpresa = e.Id_Empresa
 		
         WHERE a.Cuenta_Contable = b.Id_Cuenta_Contable
@@ -325,6 +330,8 @@ END
     ) AS X
    
     ORDER BY Empresa, periodo, cod_asiento_contable, Cuenta_Contable  --58- 126
+
+
  ";
 
 
